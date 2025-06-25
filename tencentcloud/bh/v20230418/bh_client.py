@@ -164,6 +164,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckLDAPConnection(self, request):
+        """测试LDAP连接
+
+        :param request: Request instance for CheckLDAPConnection.
+        :type request: :class:`tencentcloud.bh.v20230418.models.CheckLDAPConnectionRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.CheckLDAPConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckLDAPConnection", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckLDAPConnectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccessWhiteListRule(self, request):
         """添加访问白名单规则
 
@@ -969,6 +992,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLDAPUnitSet(self, request):
+        """获取LDAP ou 列表
+
+        :param request: Request instance for DescribeLDAPUnitSet.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DescribeLDAPUnitSetRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DescribeLDAPUnitSetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLDAPUnitSet", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLDAPUnitSetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLoginEvent(self, request):
         """查询登录日志
 
@@ -1268,6 +1314,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyLDAPSetting(self, request):
+        """修改LDAP配置信息
+
+        :param request: Request instance for ModifyLDAPSetting.
+        :type request: :class:`tencentcloud.bh.v20230418.models.ModifyLDAPSettingRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.ModifyLDAPSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLDAPSetting", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLDAPSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyOAuthSetting(self, request):
         """设置OAuth认证参数
 
@@ -1374,6 +1443,29 @@ class BhClient(AbstractClient):
             body = self.call("ModifyUserGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReplaySession(self, request):
+        """会话回放
+
+        :param request: Request instance for ReplaySession.
+        :type request: :class:`tencentcloud.bh.v20230418.models.ReplaySessionRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.ReplaySessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaySession", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaySessionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1696,6 +1788,52 @@ class BhClient(AbstractClient):
             body = self.call("SearchTaskResult", params, headers=headers)
             response = json.loads(body)
             model = models.SearchTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetLDAPSyncFlag(self, request):
+        """设置LDAP 立即同步标记
+
+        :param request: Request instance for SetLDAPSyncFlag.
+        :type request: :class:`tencentcloud.bh.v20230418.models.SetLDAPSyncFlagRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.SetLDAPSyncFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetLDAPSyncFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetLDAPSyncFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnlockUser(self, request):
+        """解锁用户
+
+        :param request: Request instance for UnlockUser.
+        :type request: :class:`tencentcloud.bh.v20230418.models.UnlockUserRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.UnlockUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnlockUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnlockUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

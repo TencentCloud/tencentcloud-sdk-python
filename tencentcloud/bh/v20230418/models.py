@@ -2424,6 +2424,190 @@ class ChangePwdTaskInfo(AbstractModel):
         
 
 
+class CheckLDAPConnectionRequest(AbstractModel):
+    """CheckLDAPConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启LDAP认证，必须为true
+        :type Enable: bool
+        :param _Ip: 服务器地址
+        :type Ip: str
+        :param _Port: 服务端口
+        :type Port: int
+        :param _EnableSSL: 是否开启SSL，false-不开启，true-开启
+        :type EnableSSL: bool
+        :param _BaseDN: Base DN
+        :type BaseDN: str
+        :param _AdminAccount: 管理员账号
+        :type AdminAccount: str
+        :param _AdminPassword: 管理员密码
+        :type AdminPassword: str
+        :param _IpBackup: 备用服务器地址
+        :type IpBackup: str
+        :param _DomainId: 网络域id
+        :type DomainId: str
+        """
+        self._Enable = None
+        self._Ip = None
+        self._Port = None
+        self._EnableSSL = None
+        self._BaseDN = None
+        self._AdminAccount = None
+        self._AdminPassword = None
+        self._IpBackup = None
+        self._DomainId = None
+
+    @property
+    def Enable(self):
+        """是否开启LDAP认证，必须为true
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Ip(self):
+        """服务器地址
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        """服务端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def EnableSSL(self):
+        """是否开启SSL，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._EnableSSL
+
+    @EnableSSL.setter
+    def EnableSSL(self, EnableSSL):
+        self._EnableSSL = EnableSSL
+
+    @property
+    def BaseDN(self):
+        """Base DN
+        :rtype: str
+        """
+        return self._BaseDN
+
+    @BaseDN.setter
+    def BaseDN(self, BaseDN):
+        self._BaseDN = BaseDN
+
+    @property
+    def AdminAccount(self):
+        """管理员账号
+        :rtype: str
+        """
+        return self._AdminAccount
+
+    @AdminAccount.setter
+    def AdminAccount(self, AdminAccount):
+        self._AdminAccount = AdminAccount
+
+    @property
+    def AdminPassword(self):
+        """管理员密码
+        :rtype: str
+        """
+        return self._AdminPassword
+
+    @AdminPassword.setter
+    def AdminPassword(self, AdminPassword):
+        self._AdminPassword = AdminPassword
+
+    @property
+    def IpBackup(self):
+        """备用服务器地址
+        :rtype: str
+        """
+        return self._IpBackup
+
+    @IpBackup.setter
+    def IpBackup(self, IpBackup):
+        self._IpBackup = IpBackup
+
+    @property
+    def DomainId(self):
+        """网络域id
+        :rtype: str
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._EnableSSL = params.get("EnableSSL")
+        self._BaseDN = params.get("BaseDN")
+        self._AdminAccount = params.get("AdminAccount")
+        self._AdminPassword = params.get("AdminPassword")
+        self._IpBackup = params.get("IpBackup")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckLDAPConnectionResponse(AbstractModel):
+    """CheckLDAPConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Clb(AbstractModel):
     """负载均衡
 
@@ -7807,6 +7991,235 @@ class DescribeDomainsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLDAPUnitSetRequest(AbstractModel):
+    """DescribeLDAPUnitSet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启LDAP认证，true-开启
+        :type Enable: bool
+        :param _Ip: 服务器地址
+        :type Ip: str
+        :param _Port: 服务端口
+        :type Port: int
+        :param _EnableSSL: 是否开启SSL，false-不开启，true-开启
+        :type EnableSSL: bool
+        :param _BaseDN: Base DN
+        :type BaseDN: str
+        :param _AdminAccount: 管理员账号
+        :type AdminAccount: str
+        :param _AdminPassword: 管理员密码
+        :type AdminPassword: str
+        :param _AttributeUserName: 用户名映射属性
+        :type AttributeUserName: str
+        :param _AttributeUnit: 部门过滤
+        :type AttributeUnit: str
+        :param _IpBackup: 备用服务器地址
+        :type IpBackup: str
+        :param _DomainId: 网络域Id
+        :type DomainId: str
+        """
+        self._Enable = None
+        self._Ip = None
+        self._Port = None
+        self._EnableSSL = None
+        self._BaseDN = None
+        self._AdminAccount = None
+        self._AdminPassword = None
+        self._AttributeUserName = None
+        self._AttributeUnit = None
+        self._IpBackup = None
+        self._DomainId = None
+
+    @property
+    def Enable(self):
+        """是否开启LDAP认证，true-开启
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Ip(self):
+        """服务器地址
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        """服务端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def EnableSSL(self):
+        """是否开启SSL，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._EnableSSL
+
+    @EnableSSL.setter
+    def EnableSSL(self, EnableSSL):
+        self._EnableSSL = EnableSSL
+
+    @property
+    def BaseDN(self):
+        """Base DN
+        :rtype: str
+        """
+        return self._BaseDN
+
+    @BaseDN.setter
+    def BaseDN(self, BaseDN):
+        self._BaseDN = BaseDN
+
+    @property
+    def AdminAccount(self):
+        """管理员账号
+        :rtype: str
+        """
+        return self._AdminAccount
+
+    @AdminAccount.setter
+    def AdminAccount(self, AdminAccount):
+        self._AdminAccount = AdminAccount
+
+    @property
+    def AdminPassword(self):
+        """管理员密码
+        :rtype: str
+        """
+        return self._AdminPassword
+
+    @AdminPassword.setter
+    def AdminPassword(self, AdminPassword):
+        self._AdminPassword = AdminPassword
+
+    @property
+    def AttributeUserName(self):
+        """用户名映射属性
+        :rtype: str
+        """
+        return self._AttributeUserName
+
+    @AttributeUserName.setter
+    def AttributeUserName(self, AttributeUserName):
+        self._AttributeUserName = AttributeUserName
+
+    @property
+    def AttributeUnit(self):
+        """部门过滤
+        :rtype: str
+        """
+        return self._AttributeUnit
+
+    @AttributeUnit.setter
+    def AttributeUnit(self, AttributeUnit):
+        self._AttributeUnit = AttributeUnit
+
+    @property
+    def IpBackup(self):
+        """备用服务器地址
+        :rtype: str
+        """
+        return self._IpBackup
+
+    @IpBackup.setter
+    def IpBackup(self, IpBackup):
+        self._IpBackup = IpBackup
+
+    @property
+    def DomainId(self):
+        """网络域Id
+        :rtype: str
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._EnableSSL = params.get("EnableSSL")
+        self._BaseDN = params.get("BaseDN")
+        self._AdminAccount = params.get("AdminAccount")
+        self._AdminPassword = params.get("AdminPassword")
+        self._AttributeUserName = params.get("AttributeUserName")
+        self._AttributeUnit = params.get("AttributeUnit")
+        self._IpBackup = params.get("IpBackup")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLDAPUnitSetResponse(AbstractModel):
+    """DescribeLDAPUnitSet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitSet: ou 列表
+        :type UnitSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UnitSet = None
+        self._RequestId = None
+
+    @property
+    def UnitSet(self):
+        """ou 列表
+        :rtype: list of str
+        """
+        return self._UnitSet
+
+    @UnitSet.setter
+    def UnitSet(self, UnitSet):
+        self._UnitSet = UnitSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UnitSet = params.get("UnitSet")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLoginEventRequest(AbstractModel):
     """DescribeLoginEvent请求参数结构体
 
@@ -11697,6 +12110,355 @@ class ModifyDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLDAPSettingRequest(AbstractModel):
+    """ModifyLDAPSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启LDAP认证，false-不开启，true-开启
+        :type Enable: bool
+        :param _Ip: 服务器地址
+        :type Ip: str
+        :param _IpBackup: 备用服务器地址
+        :type IpBackup: str
+        :param _Port: 服务端口
+        :type Port: int
+        :param _EnableSSL: 是否开启SSL，false-不开启，true-开启
+        :type EnableSSL: bool
+        :param _BaseDN: Base DN
+        :type BaseDN: str
+        :param _AdminAccount: 管理员账号
+        :type AdminAccount: str
+        :param _AdminPassword: 管理员密码
+        :type AdminPassword: str
+        :param _AttributeUser: 用户属性
+        :type AttributeUser: str
+        :param _AttributeUserName: 用户名属性
+        :type AttributeUserName: str
+        :param _AutoSync: 自动同步，false-不开启，true-开启
+        :type AutoSync: bool
+        :param _Overwrite: 覆盖用户信息，false-不开启，true-开启
+        :type Overwrite: bool
+        :param _SyncPeriod: 同步周期，30～60000之间的整数
+        :type SyncPeriod: int
+        :param _SyncAll: 是否同步全部，false-不开启，true-开启
+        :type SyncAll: bool
+        :param _SyncUnitSet: 同步OU列表，SyncAll为false时必传
+        :type SyncUnitSet: list of str
+        :param _AttributeUnit: 组织单元属性
+        :type AttributeUnit: str
+        :param _AttributeRealName: 用户姓名属性
+        :type AttributeRealName: str
+        :param _AttributePhone: 手机号属性
+        :type AttributePhone: str
+        :param _AttributeEmail: 邮箱属性
+        :type AttributeEmail: str
+        :param _DomainId: 网络域Id
+        :type DomainId: str
+        """
+        self._Enable = None
+        self._Ip = None
+        self._IpBackup = None
+        self._Port = None
+        self._EnableSSL = None
+        self._BaseDN = None
+        self._AdminAccount = None
+        self._AdminPassword = None
+        self._AttributeUser = None
+        self._AttributeUserName = None
+        self._AutoSync = None
+        self._Overwrite = None
+        self._SyncPeriod = None
+        self._SyncAll = None
+        self._SyncUnitSet = None
+        self._AttributeUnit = None
+        self._AttributeRealName = None
+        self._AttributePhone = None
+        self._AttributeEmail = None
+        self._DomainId = None
+
+    @property
+    def Enable(self):
+        """是否开启LDAP认证，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Ip(self):
+        """服务器地址
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def IpBackup(self):
+        """备用服务器地址
+        :rtype: str
+        """
+        return self._IpBackup
+
+    @IpBackup.setter
+    def IpBackup(self, IpBackup):
+        self._IpBackup = IpBackup
+
+    @property
+    def Port(self):
+        """服务端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def EnableSSL(self):
+        """是否开启SSL，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._EnableSSL
+
+    @EnableSSL.setter
+    def EnableSSL(self, EnableSSL):
+        self._EnableSSL = EnableSSL
+
+    @property
+    def BaseDN(self):
+        """Base DN
+        :rtype: str
+        """
+        return self._BaseDN
+
+    @BaseDN.setter
+    def BaseDN(self, BaseDN):
+        self._BaseDN = BaseDN
+
+    @property
+    def AdminAccount(self):
+        """管理员账号
+        :rtype: str
+        """
+        return self._AdminAccount
+
+    @AdminAccount.setter
+    def AdminAccount(self, AdminAccount):
+        self._AdminAccount = AdminAccount
+
+    @property
+    def AdminPassword(self):
+        """管理员密码
+        :rtype: str
+        """
+        return self._AdminPassword
+
+    @AdminPassword.setter
+    def AdminPassword(self, AdminPassword):
+        self._AdminPassword = AdminPassword
+
+    @property
+    def AttributeUser(self):
+        """用户属性
+        :rtype: str
+        """
+        return self._AttributeUser
+
+    @AttributeUser.setter
+    def AttributeUser(self, AttributeUser):
+        self._AttributeUser = AttributeUser
+
+    @property
+    def AttributeUserName(self):
+        """用户名属性
+        :rtype: str
+        """
+        return self._AttributeUserName
+
+    @AttributeUserName.setter
+    def AttributeUserName(self, AttributeUserName):
+        self._AttributeUserName = AttributeUserName
+
+    @property
+    def AutoSync(self):
+        """自动同步，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._AutoSync
+
+    @AutoSync.setter
+    def AutoSync(self, AutoSync):
+        self._AutoSync = AutoSync
+
+    @property
+    def Overwrite(self):
+        """覆盖用户信息，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._Overwrite
+
+    @Overwrite.setter
+    def Overwrite(self, Overwrite):
+        self._Overwrite = Overwrite
+
+    @property
+    def SyncPeriod(self):
+        """同步周期，30～60000之间的整数
+        :rtype: int
+        """
+        return self._SyncPeriod
+
+    @SyncPeriod.setter
+    def SyncPeriod(self, SyncPeriod):
+        self._SyncPeriod = SyncPeriod
+
+    @property
+    def SyncAll(self):
+        """是否同步全部，false-不开启，true-开启
+        :rtype: bool
+        """
+        return self._SyncAll
+
+    @SyncAll.setter
+    def SyncAll(self, SyncAll):
+        self._SyncAll = SyncAll
+
+    @property
+    def SyncUnitSet(self):
+        """同步OU列表，SyncAll为false时必传
+        :rtype: list of str
+        """
+        return self._SyncUnitSet
+
+    @SyncUnitSet.setter
+    def SyncUnitSet(self, SyncUnitSet):
+        self._SyncUnitSet = SyncUnitSet
+
+    @property
+    def AttributeUnit(self):
+        """组织单元属性
+        :rtype: str
+        """
+        return self._AttributeUnit
+
+    @AttributeUnit.setter
+    def AttributeUnit(self, AttributeUnit):
+        self._AttributeUnit = AttributeUnit
+
+    @property
+    def AttributeRealName(self):
+        """用户姓名属性
+        :rtype: str
+        """
+        return self._AttributeRealName
+
+    @AttributeRealName.setter
+    def AttributeRealName(self, AttributeRealName):
+        self._AttributeRealName = AttributeRealName
+
+    @property
+    def AttributePhone(self):
+        """手机号属性
+        :rtype: str
+        """
+        return self._AttributePhone
+
+    @AttributePhone.setter
+    def AttributePhone(self, AttributePhone):
+        self._AttributePhone = AttributePhone
+
+    @property
+    def AttributeEmail(self):
+        """邮箱属性
+        :rtype: str
+        """
+        return self._AttributeEmail
+
+    @AttributeEmail.setter
+    def AttributeEmail(self, AttributeEmail):
+        self._AttributeEmail = AttributeEmail
+
+    @property
+    def DomainId(self):
+        """网络域Id
+        :rtype: str
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._Ip = params.get("Ip")
+        self._IpBackup = params.get("IpBackup")
+        self._Port = params.get("Port")
+        self._EnableSSL = params.get("EnableSSL")
+        self._BaseDN = params.get("BaseDN")
+        self._AdminAccount = params.get("AdminAccount")
+        self._AdminPassword = params.get("AdminPassword")
+        self._AttributeUser = params.get("AttributeUser")
+        self._AttributeUserName = params.get("AttributeUserName")
+        self._AutoSync = params.get("AutoSync")
+        self._Overwrite = params.get("Overwrite")
+        self._SyncPeriod = params.get("SyncPeriod")
+        self._SyncAll = params.get("SyncAll")
+        self._SyncUnitSet = params.get("SyncUnitSet")
+        self._AttributeUnit = params.get("AttributeUnit")
+        self._AttributeRealName = params.get("AttributeRealName")
+        self._AttributePhone = params.get("AttributePhone")
+        self._AttributeEmail = params.get("AttributeEmail")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLDAPSettingResponse(AbstractModel):
+    """ModifyLDAPSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOAuthSettingRequest(AbstractModel):
     """ModifyOAuthSetting请求参数结构体
 
@@ -12830,6 +13592,70 @@ class OperationTask(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReplaySessionRequest(AbstractModel):
+    """ReplaySession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sid: 会话Sid
+        :type Sid: str
+        """
+        self._Sid = None
+
+    @property
+    def Sid(self):
+        """会话Sid
+        :rtype: str
+        """
+        return self._Sid
+
+    @Sid.setter
+    def Sid(self, Sid):
+        self._Sid = Sid
+
+
+    def _deserialize(self, params):
+        self._Sid = params.get("Sid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaySessionResponse(AbstractModel):
+    """ReplaySession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ResetDeviceAccountPasswordRequest(AbstractModel):
@@ -17392,6 +18218,40 @@ class SessionResult(AbstractModel):
         
 
 
+class SetLDAPSyncFlagRequest(AbstractModel):
+    """SetLDAPSyncFlag请求参数结构体
+
+    """
+
+
+class SetLDAPSyncFlagResponse(AbstractModel):
+    """SetLDAPSyncFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class TagFilter(AbstractModel):
     """资产标签
 
@@ -17597,6 +18457,70 @@ class TaskResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnlockUserRequest(AbstractModel):
+    """UnlockUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdSet: 用户id
+        :type IdSet: list of int non-negative
+        """
+        self._IdSet = None
+
+    @property
+    def IdSet(self):
+        """用户id
+        :rtype: list of int non-negative
+        """
+        return self._IdSet
+
+    @IdSet.setter
+    def IdSet(self, IdSet):
+        self._IdSet = IdSet
+
+
+    def _deserialize(self, params):
+        self._IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnlockUserResponse(AbstractModel):
+    """UnlockUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class User(AbstractModel):

@@ -460,6 +460,85 @@ class BindCloudResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CancelDataKeyDeletionRequest(AbstractModel):
+    """CancelDataKeyDeletion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 数据密钥的唯一标志符
+        :type DataKeyId: str
+        """
+        self._DataKeyId = None
+
+    @property
+    def DataKeyId(self):
+        """数据密钥的唯一标志符
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelDataKeyDeletionResponse(AbstractModel):
+    """CancelDataKeyDeletion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 唯一标志被计划删除的数据密钥
+        :type DataKeyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataKeyId = None
+        self._RequestId = None
+
+    @property
+    def DataKeyId(self):
+        """唯一标志被计划删除的数据密钥
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        self._RequestId = params.get("RequestId")
+
+
 class CancelKeyArchiveRequest(AbstractModel):
     """CancelKeyArchive请求参数结构体
 
@@ -1071,6 +1150,258 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DataKey(AbstractModel):
+    """数据密钥属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: DataKey的全局唯一标识。
+        :type DataKeyId: str
+        """
+        self._DataKeyId = None
+
+    @property
+    def DataKeyId(self):
+        """DataKey的全局唯一标识。
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataKeyMetadata(AbstractModel):
+    """数据密钥属性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: DataKey的全局唯一标识
+        :type DataKeyId: str
+        :param _KeyId: CMK的全局唯一标识
+        :type KeyId: str
+        :param _DataKeyName: 作为密钥更容易辨识，更容易被人看懂的数据密钥名称
+        :type DataKeyName: str
+        :param _NumberOfBytes: 数据密钥的长度,单位字节
+        :type NumberOfBytes: int
+        :param _CreateTime: 密钥创建时间
+        :type CreateTime: int
+        :param _Description: DataKey的描述
+        :type Description: str
+        :param _KeyState: DataKey的状态， 取值为：Enabled | Disabled | PendingDelete
+        :type KeyState: str
+        :param _CreatorUin: 创建者
+        :type CreatorUin: int
+        :param _Owner: 数据密钥的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+        :type Owner: str
+        :param _DeletionDate: 计划删除的时间
+        :type DeletionDate: int
+        :param _Origin: DataKey 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+        :type Origin: str
+        :param _HsmClusterId: HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        :type HsmClusterId: str
+        :param _ResourceId: 资源ID，格式：creatorUin/$creatorUin/$dataKeyId
+        :type ResourceId: str
+        """
+        self._DataKeyId = None
+        self._KeyId = None
+        self._DataKeyName = None
+        self._NumberOfBytes = None
+        self._CreateTime = None
+        self._Description = None
+        self._KeyState = None
+        self._CreatorUin = None
+        self._Owner = None
+        self._DeletionDate = None
+        self._Origin = None
+        self._HsmClusterId = None
+        self._ResourceId = None
+
+    @property
+    def DataKeyId(self):
+        """DataKey的全局唯一标识
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+    @property
+    def KeyId(self):
+        """CMK的全局唯一标识
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def DataKeyName(self):
+        """作为密钥更容易辨识，更容易被人看懂的数据密钥名称
+        :rtype: str
+        """
+        return self._DataKeyName
+
+    @DataKeyName.setter
+    def DataKeyName(self, DataKeyName):
+        self._DataKeyName = DataKeyName
+
+    @property
+    def NumberOfBytes(self):
+        """数据密钥的长度,单位字节
+        :rtype: int
+        """
+        return self._NumberOfBytes
+
+    @NumberOfBytes.setter
+    def NumberOfBytes(self, NumberOfBytes):
+        self._NumberOfBytes = NumberOfBytes
+
+    @property
+    def CreateTime(self):
+        """密钥创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Description(self):
+        """DataKey的描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def KeyState(self):
+        """DataKey的状态， 取值为：Enabled | Disabled | PendingDelete
+        :rtype: str
+        """
+        return self._KeyState
+
+    @KeyState.setter
+    def KeyState(self, KeyState):
+        self._KeyState = KeyState
+
+    @property
+    def CreatorUin(self):
+        """创建者
+        :rtype: int
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def Owner(self):
+        """数据密钥的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def DeletionDate(self):
+        """计划删除的时间
+        :rtype: int
+        """
+        return self._DeletionDate
+
+    @DeletionDate.setter
+    def DeletionDate(self, DeletionDate):
+        self._DeletionDate = DeletionDate
+
+    @property
+    def Origin(self):
+        """DataKey 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+        :rtype: str
+        """
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def HsmClusterId(self):
+        """HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        :rtype: str
+        """
+        return self._HsmClusterId
+
+    @HsmClusterId.setter
+    def HsmClusterId(self, HsmClusterId):
+        self._HsmClusterId = HsmClusterId
+
+    @property
+    def ResourceId(self):
+        """资源ID，格式：creatorUin/$creatorUin/$dataKeyId
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        self._KeyId = params.get("KeyId")
+        self._DataKeyName = params.get("DataKeyName")
+        self._NumberOfBytes = params.get("NumberOfBytes")
+        self._CreateTime = params.get("CreateTime")
+        self._Description = params.get("Description")
+        self._KeyState = params.get("KeyState")
+        self._CreatorUin = params.get("CreatorUin")
+        self._Owner = params.get("Owner")
+        self._DeletionDate = params.get("DeletionDate")
+        self._Origin = params.get("Origin")
+        self._HsmClusterId = params.get("HsmClusterId")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DecryptRequest(AbstractModel):
     """Decrypt请求参数结构体
 
@@ -1337,6 +1668,171 @@ class DeleteWhiteBoxKeyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataKeyRequest(AbstractModel):
+    """DescribeDataKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 数据密钥全局唯一标识符
+        :type DataKeyId: str
+        """
+        self._DataKeyId = None
+
+    @property
+    def DataKeyId(self):
+        """数据密钥全局唯一标识符
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataKeyResponse(AbstractModel):
+    """DescribeDataKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyMetadata: 数据密钥属性信息
+        :type DataKeyMetadata: :class:`tencentcloud.kms.v20190118.models.DataKeyMetadata`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataKeyMetadata = None
+        self._RequestId = None
+
+    @property
+    def DataKeyMetadata(self):
+        """数据密钥属性信息
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DataKeyMetadata`
+        """
+        return self._DataKeyMetadata
+
+    @DataKeyMetadata.setter
+    def DataKeyMetadata(self, DataKeyMetadata):
+        self._DataKeyMetadata = DataKeyMetadata
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataKeyMetadata") is not None:
+            self._DataKeyMetadata = DataKeyMetadata()
+            self._DataKeyMetadata._deserialize(params.get("DataKeyMetadata"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataKeysRequest(AbstractModel):
+    """DescribeDataKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyIds: 查询DataKey的ID列表，批量查询一次最多支持100个DataKeyId
+        :type DataKeyIds: list of str
+        """
+        self._DataKeyIds = None
+
+    @property
+    def DataKeyIds(self):
+        """查询DataKey的ID列表，批量查询一次最多支持100个DataKeyId
+        :rtype: list of str
+        """
+        return self._DataKeyIds
+
+    @DataKeyIds.setter
+    def DataKeyIds(self, DataKeyIds):
+        self._DataKeyIds = DataKeyIds
+
+
+    def _deserialize(self, params):
+        self._DataKeyIds = params.get("DataKeyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataKeysResponse(AbstractModel):
+    """DescribeDataKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyMetadatas: 返回数据密钥属性信息列表
+        :type DataKeyMetadatas: list of DataKeyMetadata
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataKeyMetadatas = None
+        self._RequestId = None
+
+    @property
+    def DataKeyMetadatas(self):
+        """返回数据密钥属性信息列表
+        :rtype: list of DataKeyMetadata
+        """
+        return self._DataKeyMetadatas
+
+    @DataKeyMetadatas.setter
+    def DataKeyMetadatas(self, DataKeyMetadatas):
+        self._DataKeyMetadatas = DataKeyMetadatas
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataKeyMetadatas") is not None:
+            self._DataKeyMetadatas = []
+            for item in params.get("DataKeyMetadatas"):
+                obj = DataKeyMetadata()
+                obj._deserialize(item)
+                self._DataKeyMetadatas.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1998,6 +2494,134 @@ class DeviceFingerprint(AbstractModel):
         
 
 
+class DisableDataKeyRequest(AbstractModel):
+    """DisableDataKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 数据密钥唯一标识符
+        :type DataKeyId: str
+        """
+        self._DataKeyId = None
+
+    @property
+    def DataKeyId(self):
+        """数据密钥唯一标识符
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableDataKeyResponse(AbstractModel):
+    """DisableDataKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DisableDataKeysRequest(AbstractModel):
+    """DisableDataKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyIds: 需要批量禁用的DataKey Id 列表，数据密钥数量最大支持100
+        :type DataKeyIds: list of str
+        """
+        self._DataKeyIds = None
+
+    @property
+    def DataKeyIds(self):
+        """需要批量禁用的DataKey Id 列表，数据密钥数量最大支持100
+        :rtype: list of str
+        """
+        return self._DataKeyIds
+
+    @DataKeyIds.setter
+    def DataKeyIds(self, DataKeyIds):
+        self._DataKeyIds = DataKeyIds
+
+
+    def _deserialize(self, params):
+        self._DataKeyIds = params.get("DataKeyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableDataKeysResponse(AbstractModel):
+    """DisableDataKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DisableKeyRequest(AbstractModel):
     """DisableKey请求参数结构体
 
@@ -2292,6 +2916,134 @@ class DisableWhiteBoxKeysRequest(AbstractModel):
 
 class DisableWhiteBoxKeysResponse(AbstractModel):
     """DisableWhiteBoxKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EnableDataKeyRequest(AbstractModel):
+    """EnableDataKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 数据密钥唯一标识符
+        :type DataKeyId: str
+        """
+        self._DataKeyId = None
+
+    @property
+    def DataKeyId(self):
+        """数据密钥唯一标识符
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableDataKeyResponse(AbstractModel):
+    """EnableDataKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EnableDataKeysRequest(AbstractModel):
+    """EnableDataKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyIds: 需要批量启用的DataKey Id 列表， 数据密钥数量最大支持100
+        :type DataKeyIds: list of str
+        """
+        self._DataKeyIds = None
+
+    @property
+    def DataKeyIds(self):
+        """需要批量启用的DataKey Id 列表， 数据密钥数量最大支持100
+        :rtype: list of str
+        """
+        return self._DataKeyIds
+
+    @DataKeyIds.setter
+    def DataKeyIds(self, DataKeyIds):
+        self._DataKeyIds = DataKeyIds
+
+
+    def _deserialize(self, params):
+        self._DataKeyIds = params.get("DataKeyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableDataKeysResponse(AbstractModel):
+    """EnableDataKeys返回参数结构体
 
     """
 
@@ -2971,6 +3723,16 @@ class GenerateDataKeyRequest(AbstractModel):
         :type EncryptionPublicKey: str
         :param _EncryptionAlgorithm: 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
         :type EncryptionAlgorithm: str
+        :param _IsHostedByKms: 表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。
+        :type IsHostedByKms: int
+        :param _DataKeyName: 数据密钥的名称，当IsHostedByKms为1时,必须填写。当IsHostedByKms为0时,可以不填，KMS不托管。
+        :type DataKeyName: str
+        :param _Description: 数据密钥 的描述，最大100字节
+        :type Description: str
+        :param _HsmClusterId: KMS 独享版对应的 HSM 集群 ID。
+当KeyId 没有传入时有效，如果指定HsmClusterId,会默认在此集群下生成根密钥，然后利用创建的根密钥产生数据密钥。
+如果没有指定HsmClusterId，则会在公有云共享集群下创建一个根密钥，然后利用创建的根密钥产生数据密钥。
+        :type HsmClusterId: str
         """
         self._KeyId = None
         self._KeySpec = None
@@ -2978,6 +3740,10 @@ class GenerateDataKeyRequest(AbstractModel):
         self._EncryptionContext = None
         self._EncryptionPublicKey = None
         self._EncryptionAlgorithm = None
+        self._IsHostedByKms = None
+        self._DataKeyName = None
+        self._Description = None
+        self._HsmClusterId = None
 
     @property
     def KeyId(self):
@@ -3045,6 +3811,52 @@ class GenerateDataKeyRequest(AbstractModel):
     def EncryptionAlgorithm(self, EncryptionAlgorithm):
         self._EncryptionAlgorithm = EncryptionAlgorithm
 
+    @property
+    def IsHostedByKms(self):
+        """表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。
+        :rtype: int
+        """
+        return self._IsHostedByKms
+
+    @IsHostedByKms.setter
+    def IsHostedByKms(self, IsHostedByKms):
+        self._IsHostedByKms = IsHostedByKms
+
+    @property
+    def DataKeyName(self):
+        """数据密钥的名称，当IsHostedByKms为1时,必须填写。当IsHostedByKms为0时,可以不填，KMS不托管。
+        :rtype: str
+        """
+        return self._DataKeyName
+
+    @DataKeyName.setter
+    def DataKeyName(self, DataKeyName):
+        self._DataKeyName = DataKeyName
+
+    @property
+    def Description(self):
+        """数据密钥 的描述，最大100字节
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def HsmClusterId(self):
+        """KMS 独享版对应的 HSM 集群 ID。
+当KeyId 没有传入时有效，如果指定HsmClusterId,会默认在此集群下生成根密钥，然后利用创建的根密钥产生数据密钥。
+如果没有指定HsmClusterId，则会在公有云共享集群下创建一个根密钥，然后利用创建的根密钥产生数据密钥。
+        :rtype: str
+        """
+        return self._HsmClusterId
+
+    @HsmClusterId.setter
+    def HsmClusterId(self, HsmClusterId):
+        self._HsmClusterId = HsmClusterId
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -3053,6 +3865,10 @@ class GenerateDataKeyRequest(AbstractModel):
         self._EncryptionContext = params.get("EncryptionContext")
         self._EncryptionPublicKey = params.get("EncryptionPublicKey")
         self._EncryptionAlgorithm = params.get("EncryptionAlgorithm")
+        self._IsHostedByKms = params.get("IsHostedByKms")
+        self._DataKeyName = params.get("DataKeyName")
+        self._Description = params.get("Description")
+        self._HsmClusterId = params.get("HsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3077,12 +3893,15 @@ class GenerateDataKeyResponse(AbstractModel):
         :type Plaintext: str
         :param _CiphertextBlob: 数据密钥DataKey加密后的密文，用户需要自行保存该密文，KMS不托管用户的数据密钥。可以通过Decrypt接口从CiphertextBlob中获取数据密钥DataKey明文
         :type CiphertextBlob: str
+        :param _DataKeyId: DataKey的全局唯一标识,当KMS托管数据密钥时返回。
+        :type DataKeyId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KeyId = None
         self._Plaintext = None
         self._CiphertextBlob = None
+        self._DataKeyId = None
         self._RequestId = None
 
     @property
@@ -3120,6 +3939,17 @@ class GenerateDataKeyResponse(AbstractModel):
         self._CiphertextBlob = CiphertextBlob
 
     @property
+    def DataKeyId(self):
+        """DataKey的全局唯一标识,当KMS托管数据密钥时返回。
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3135,6 +3965,7 @@ class GenerateDataKeyResponse(AbstractModel):
         self._KeyId = params.get("KeyId")
         self._Plaintext = params.get("Plaintext")
         self._CiphertextBlob = params.get("CiphertextBlob")
+        self._DataKeyId = params.get("DataKeyId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3192,6 +4023,194 @@ class GenerateRandomResponse(AbstractModel):
     @property
     def Plaintext(self):
         """生成的随机数的明文，该明文使用base64编码，用户需要使用base64解码得到明文。
+        :rtype: str
+        """
+        return self._Plaintext
+
+    @Plaintext.setter
+    def Plaintext(self, Plaintext):
+        self._Plaintext = Plaintext
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Plaintext = params.get("Plaintext")
+        self._RequestId = params.get("RequestId")
+
+
+class GetDataKeyCiphertextBlobRequest(AbstractModel):
+    """GetDataKeyCiphertextBlob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 数据密钥的唯一标志符
+        :type DataKeyId: str
+        """
+        self._DataKeyId = None
+
+    @property
+    def DataKeyId(self):
+        """数据密钥的唯一标志符
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDataKeyCiphertextBlobResponse(AbstractModel):
+    """GetDataKeyCiphertextBlob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CiphertextBlob: 数据密钥的密文
+        :type CiphertextBlob: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CiphertextBlob = None
+        self._RequestId = None
+
+    @property
+    def CiphertextBlob(self):
+        """数据密钥的密文
+        :rtype: str
+        """
+        return self._CiphertextBlob
+
+    @CiphertextBlob.setter
+    def CiphertextBlob(self, CiphertextBlob):
+        self._CiphertextBlob = CiphertextBlob
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CiphertextBlob = params.get("CiphertextBlob")
+        self._RequestId = params.get("RequestId")
+
+
+class GetDataKeyPlaintextRequest(AbstractModel):
+    """GetDataKeyPlaintext请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 数据密钥的唯一标志符
+        :type DataKeyId: str
+        :param _EncryptionPublicKey: PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+        :type EncryptionPublicKey: str
+        :param _EncryptionAlgorithm: 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+        :type EncryptionAlgorithm: str
+        """
+        self._DataKeyId = None
+        self._EncryptionPublicKey = None
+        self._EncryptionAlgorithm = None
+
+    @property
+    def DataKeyId(self):
+        """数据密钥的唯一标志符
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+    @property
+    def EncryptionPublicKey(self):
+        """PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+        :rtype: str
+        """
+        return self._EncryptionPublicKey
+
+    @EncryptionPublicKey.setter
+    def EncryptionPublicKey(self, EncryptionPublicKey):
+        self._EncryptionPublicKey = EncryptionPublicKey
+
+    @property
+    def EncryptionAlgorithm(self):
+        """非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+        :rtype: str
+        """
+        return self._EncryptionAlgorithm
+
+    @EncryptionAlgorithm.setter
+    def EncryptionAlgorithm(self, EncryptionAlgorithm):
+        self._EncryptionAlgorithm = EncryptionAlgorithm
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        self._EncryptionPublicKey = params.get("EncryptionPublicKey")
+        self._EncryptionAlgorithm = params.get("EncryptionAlgorithm")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDataKeyPlaintextResponse(AbstractModel):
+    """GetDataKeyPlaintext返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Plaintext: 若调用时未提供 EncryptionPublicKey，该字段值为 Base64 编码的明文，需进行 Base64 解码以获取明文。 若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取明文。
+        :type Plaintext: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Plaintext = None
+        self._RequestId = None
+
+    @property
+    def Plaintext(self):
+        """若调用时未提供 EncryptionPublicKey，该字段值为 Base64 编码的明文，需进行 Base64 解码以获取明文。 若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取明文。
         :rtype: str
         """
         return self._Plaintext
@@ -3631,7 +4650,7 @@ class GetServiceStatusResponse(AbstractModel):
         :type ProExpireTime: int
         :param _ProRenewFlag: 旗舰版是否自动续费：0-不自动续费，1-自动续费
         :type ProRenewFlag: int
-        :param _ProResourceId: 旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
+        :param _ProResourceId: 旗舰版购买记录的唯一性标识。如果未开通旗舰版，则返回值为空
         :type ProResourceId: str
         :param _ExclusiveVSMEnabled: 是否开通 KMS 托管版
         :type ExclusiveVSMEnabled: bool
@@ -3645,6 +4664,14 @@ class GetServiceStatusResponse(AbstractModel):
         :type CmkLimit: int
         :param _ExclusiveHSMList: 返回独享集群组
         :type ExclusiveHSMList: list of ExclusiveHSM
+        :param _IsAllowedDataKeyHosted: 是否支持数据密钥托管。1:支持，0:不支持。
+        :type IsAllowedDataKeyHosted: bool
+        :param _DataKeyLimit: IsAllowedDataKeyHosted为1时有效，数据密钥的购买额度
+        :type DataKeyLimit: int
+        :param _FreeDataKeyLimit: IsAllowedDataKeyHosted为1时有效，数据密钥免费额度。
+        :type FreeDataKeyLimit: int
+        :param _DataKeyUsedCount: IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。
+        :type DataKeyUsedCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3660,6 +4687,10 @@ class GetServiceStatusResponse(AbstractModel):
         self._CmkUserCount = None
         self._CmkLimit = None
         self._ExclusiveHSMList = None
+        self._IsAllowedDataKeyHosted = None
+        self._DataKeyLimit = None
+        self._FreeDataKeyLimit = None
+        self._DataKeyUsedCount = None
         self._RequestId = None
 
     @property
@@ -3719,7 +4750,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ProResourceId(self):
-        """旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
+        """旗舰版购买记录的唯一性标识。如果未开通旗舰版，则返回值为空
         :rtype: str
         """
         return self._ProResourceId
@@ -3795,6 +4826,50 @@ class GetServiceStatusResponse(AbstractModel):
         self._ExclusiveHSMList = ExclusiveHSMList
 
     @property
+    def IsAllowedDataKeyHosted(self):
+        """是否支持数据密钥托管。1:支持，0:不支持。
+        :rtype: bool
+        """
+        return self._IsAllowedDataKeyHosted
+
+    @IsAllowedDataKeyHosted.setter
+    def IsAllowedDataKeyHosted(self, IsAllowedDataKeyHosted):
+        self._IsAllowedDataKeyHosted = IsAllowedDataKeyHosted
+
+    @property
+    def DataKeyLimit(self):
+        """IsAllowedDataKeyHosted为1时有效，数据密钥的购买额度
+        :rtype: int
+        """
+        return self._DataKeyLimit
+
+    @DataKeyLimit.setter
+    def DataKeyLimit(self, DataKeyLimit):
+        self._DataKeyLimit = DataKeyLimit
+
+    @property
+    def FreeDataKeyLimit(self):
+        """IsAllowedDataKeyHosted为1时有效，数据密钥免费额度。
+        :rtype: int
+        """
+        return self._FreeDataKeyLimit
+
+    @FreeDataKeyLimit.setter
+    def FreeDataKeyLimit(self, FreeDataKeyLimit):
+        self._FreeDataKeyLimit = FreeDataKeyLimit
+
+    @property
+    def DataKeyUsedCount(self):
+        """IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。
+        :rtype: int
+        """
+        return self._DataKeyUsedCount
+
+    @DataKeyUsedCount.setter
+    def DataKeyUsedCount(self, DataKeyUsedCount):
+        self._DataKeyUsedCount = DataKeyUsedCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3824,6 +4899,189 @@ class GetServiceStatusResponse(AbstractModel):
                 obj = ExclusiveHSM()
                 obj._deserialize(item)
                 self._ExclusiveHSMList.append(obj)
+        self._IsAllowedDataKeyHosted = params.get("IsAllowedDataKeyHosted")
+        self._DataKeyLimit = params.get("DataKeyLimit")
+        self._FreeDataKeyLimit = params.get("FreeDataKeyLimit")
+        self._DataKeyUsedCount = params.get("DataKeyUsedCount")
+        self._RequestId = params.get("RequestId")
+
+
+class ImportDataKeyRequest(AbstractModel):
+    """ImportDataKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyName: 数据密钥的名称
+        :type DataKeyName: str
+        :param _ImportKeyMaterial: 如果导入的是明文数据密钥，则是base64 转换后的明文数据密钥，  如果导入的是密文数据密钥，则是由KMS GenerateDataKey接口生成的密文数据密钥。
+        :type ImportKeyMaterial: str
+        :param _ImportType: 1:密文导入(由KMS接口生成的密文数据密钥)，2:明文导入。
+        :type ImportType: int
+        :param _Description: 数据密钥 的描述，最大100字节
+        :type Description: str
+        :param _KeyId: 当导入密文数据密钥时，无需传入根密钥,如果传入也会忽略。
+当KeyId 为空，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
+如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
+如果KeyId 不为空，根据指定的根密钥加密数据密钥。
+        :type KeyId: str
+        :param _HsmClusterId: KMS 独享版对应的 HSM 集群 ID。
+当KeyId 没有传入时有效，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+        :type HsmClusterId: str
+        """
+        self._DataKeyName = None
+        self._ImportKeyMaterial = None
+        self._ImportType = None
+        self._Description = None
+        self._KeyId = None
+        self._HsmClusterId = None
+
+    @property
+    def DataKeyName(self):
+        """数据密钥的名称
+        :rtype: str
+        """
+        return self._DataKeyName
+
+    @DataKeyName.setter
+    def DataKeyName(self, DataKeyName):
+        self._DataKeyName = DataKeyName
+
+    @property
+    def ImportKeyMaterial(self):
+        """如果导入的是明文数据密钥，则是base64 转换后的明文数据密钥，  如果导入的是密文数据密钥，则是由KMS GenerateDataKey接口生成的密文数据密钥。
+        :rtype: str
+        """
+        return self._ImportKeyMaterial
+
+    @ImportKeyMaterial.setter
+    def ImportKeyMaterial(self, ImportKeyMaterial):
+        self._ImportKeyMaterial = ImportKeyMaterial
+
+    @property
+    def ImportType(self):
+        """1:密文导入(由KMS接口生成的密文数据密钥)，2:明文导入。
+        :rtype: int
+        """
+        return self._ImportType
+
+    @ImportType.setter
+    def ImportType(self, ImportType):
+        self._ImportType = ImportType
+
+    @property
+    def Description(self):
+        """数据密钥 的描述，最大100字节
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def KeyId(self):
+        """当导入密文数据密钥时，无需传入根密钥,如果传入也会忽略。
+当KeyId 为空，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
+如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
+如果KeyId 不为空，根据指定的根密钥加密数据密钥。
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def HsmClusterId(self):
+        """KMS 独享版对应的 HSM 集群 ID。
+当KeyId 没有传入时有效，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+        :rtype: str
+        """
+        return self._HsmClusterId
+
+    @HsmClusterId.setter
+    def HsmClusterId(self, HsmClusterId):
+        self._HsmClusterId = HsmClusterId
+
+
+    def _deserialize(self, params):
+        self._DataKeyName = params.get("DataKeyName")
+        self._ImportKeyMaterial = params.get("ImportKeyMaterial")
+        self._ImportType = params.get("ImportType")
+        self._Description = params.get("Description")
+        self._KeyId = params.get("KeyId")
+        self._HsmClusterId = params.get("HsmClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportDataKeyResponse(AbstractModel):
+    """ImportDataKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: CMK的全局唯一标识
+        :type KeyId: str
+        :param _DataKeyId: DataKey的全局唯一标识  否  官网/国内&国际站展示
+        :type DataKeyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KeyId = None
+        self._DataKeyId = None
+        self._RequestId = None
+
+    @property
+    def KeyId(self):
+        """CMK的全局唯一标识
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def DataKeyId(self):
+        """DataKey的全局唯一标识  否  官网/国内&国际站展示
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._DataKeyId = params.get("DataKeyId")
         self._RequestId = params.get("RequestId")
 
 
@@ -4354,6 +5612,384 @@ class ListAlgorithmsResponse(AbstractModel):
                 obj = AlgorithmInfo()
                 obj._deserialize(item)
                 self._AsymmetricSignVerifyAlgorithms.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListDataKeyDetailRequest(AbstractModel):
+    """ListDataKeyDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :type Offset: int
+        :param _Limit: 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
+        :type Limit: int
+        :param _Role: 根据创建者角色筛选，默认 0 表示用户自己创建的数据密钥， 1 表示授权其它云产品自动创建的数据密钥
+        :type Role: int
+        :param _OrderType: 根据DataKey创建时间排序， 0 表示按照降序排序，1表示按照升序排序
+        :type OrderType: int
+        :param _KeyState: 根据DataKey状态筛选， 0表示全部DataKey， 1 表示仅查询Enabled DataKey， 2 表示仅查询Disabled DataKey，3 表示查询PendingDelete 状态的DataKey(处于计划删除状态的Key)。
+        :type KeyState: int
+        :param _SearchKeyAlias: 根据DataKeyId或者DataKeyName进行模糊匹配查询
+        :type SearchKeyAlias: str
+        :param _Origin: 根据DateKey类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的数据密钥， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型数据密钥，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
+        :type Origin: str
+        :param _HsmClusterId: KMS 高级版对应的 HSM 集群 ID。
+        :type HsmClusterId: str
+        :param _KeyId: 根密钥全局唯一标识符
+        :type KeyId: str
+        :param _DataKeyLen: 数据密钥的长度
+        :type DataKeyLen: int
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Role = None
+        self._OrderType = None
+        self._KeyState = None
+        self._SearchKeyAlias = None
+        self._Origin = None
+        self._HsmClusterId = None
+        self._KeyId = None
+        self._DataKeyLen = None
+
+    @property
+    def Offset(self):
+        """含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Role(self):
+        """根据创建者角色筛选，默认 0 表示用户自己创建的数据密钥， 1 表示授权其它云产品自动创建的数据密钥
+        :rtype: int
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def OrderType(self):
+        """根据DataKey创建时间排序， 0 表示按照降序排序，1表示按照升序排序
+        :rtype: int
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def KeyState(self):
+        """根据DataKey状态筛选， 0表示全部DataKey， 1 表示仅查询Enabled DataKey， 2 表示仅查询Disabled DataKey，3 表示查询PendingDelete 状态的DataKey(处于计划删除状态的Key)。
+        :rtype: int
+        """
+        return self._KeyState
+
+    @KeyState.setter
+    def KeyState(self, KeyState):
+        self._KeyState = KeyState
+
+    @property
+    def SearchKeyAlias(self):
+        """根据DataKeyId或者DataKeyName进行模糊匹配查询
+        :rtype: str
+        """
+        return self._SearchKeyAlias
+
+    @SearchKeyAlias.setter
+    def SearchKeyAlias(self, SearchKeyAlias):
+        self._SearchKeyAlias = SearchKeyAlias
+
+    @property
+    def Origin(self):
+        """根据DateKey类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的数据密钥， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型数据密钥，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
+        :rtype: str
+        """
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def HsmClusterId(self):
+        """KMS 高级版对应的 HSM 集群 ID。
+        :rtype: str
+        """
+        return self._HsmClusterId
+
+    @HsmClusterId.setter
+    def HsmClusterId(self, HsmClusterId):
+        self._HsmClusterId = HsmClusterId
+
+    @property
+    def KeyId(self):
+        """根密钥全局唯一标识符
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def DataKeyLen(self):
+        """数据密钥的长度
+        :rtype: int
+        """
+        return self._DataKeyLen
+
+    @DataKeyLen.setter
+    def DataKeyLen(self, DataKeyLen):
+        self._DataKeyLen = DataKeyLen
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Role = params.get("Role")
+        self._OrderType = params.get("OrderType")
+        self._KeyState = params.get("KeyState")
+        self._SearchKeyAlias = params.get("SearchKeyAlias")
+        self._Origin = params.get("Origin")
+        self._HsmClusterId = params.get("HsmClusterId")
+        self._KeyId = params.get("KeyId")
+        self._DataKeyLen = params.get("DataKeyLen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListDataKeyDetailResponse(AbstractModel):
+    """ListDataKeyDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyMetadatas: 返回的属性信息列表。
+        :type DataKeyMetadatas: list of DataKeyMetadata
+        :param _TotalCount: DataKey的总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataKeyMetadatas = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DataKeyMetadatas(self):
+        """返回的属性信息列表。
+        :rtype: list of DataKeyMetadata
+        """
+        return self._DataKeyMetadatas
+
+    @DataKeyMetadatas.setter
+    def DataKeyMetadatas(self, DataKeyMetadatas):
+        self._DataKeyMetadatas = DataKeyMetadatas
+
+    @property
+    def TotalCount(self):
+        """DataKey的总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataKeyMetadatas") is not None:
+            self._DataKeyMetadatas = []
+            for item in params.get("DataKeyMetadatas"):
+                obj = DataKeyMetadata()
+                obj._deserialize(item)
+                self._DataKeyMetadatas.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class ListDataKeysRequest(AbstractModel):
+    """ListDataKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :type Offset: int
+        :param _Limit: 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
+        :type Limit: int
+        :param _Role: 根据创建者角色筛选，默认 0 表示用户自己创建的数据密钥， 1 表示授权其它云产品自动创建的数据密钥
+        :type Role: int
+        :param _HsmClusterId: KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        :type HsmClusterId: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Role = None
+        self._HsmClusterId = None
+
+    @property
+    def Offset(self):
+        """含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Role(self):
+        """根据创建者角色筛选，默认 0 表示用户自己创建的数据密钥， 1 表示授权其它云产品自动创建的数据密钥
+        :rtype: int
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def HsmClusterId(self):
+        """KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        :rtype: str
+        """
+        return self._HsmClusterId
+
+    @HsmClusterId.setter
+    def HsmClusterId(self, HsmClusterId):
+        self._HsmClusterId = HsmClusterId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Role = params.get("Role")
+        self._HsmClusterId = params.get("HsmClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListDataKeysResponse(AbstractModel):
+    """ListDataKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeys: 数据密钥Id列表数组
+        :type DataKeys: list of DataKey
+        :param _TotalCount: 数据密钥的总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataKeys = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DataKeys(self):
+        """数据密钥Id列表数组
+        :rtype: list of DataKey
+        """
+        return self._DataKeys
+
+    @DataKeys.setter
+    def DataKeys(self, DataKeys):
+        self._DataKeys = DataKeys
+
+    @property
+    def TotalCount(self):
+        """数据密钥的总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataKeys") is not None:
+            self._DataKeys = []
+            for item in params.get("DataKeys"):
+                obj = DataKey()
+                obj._deserialize(item)
+                self._DataKeys.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -5431,6 +7067,115 @@ class ReEncryptResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ScheduleDataKeyDeletionRequest(AbstractModel):
+    """ScheduleDataKeyDeletion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 数据密钥的唯一标志符
+        :type DataKeyId: str
+        :param _PendingWindowInDays: 计划删除时间区间[7,30]
+        :type PendingWindowInDays: int
+        """
+        self._DataKeyId = None
+        self._PendingWindowInDays = None
+
+    @property
+    def DataKeyId(self):
+        """数据密钥的唯一标志符
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+    @property
+    def PendingWindowInDays(self):
+        """计划删除时间区间[7,30]
+        :rtype: int
+        """
+        return self._PendingWindowInDays
+
+    @PendingWindowInDays.setter
+    def PendingWindowInDays(self, PendingWindowInDays):
+        self._PendingWindowInDays = PendingWindowInDays
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        self._PendingWindowInDays = params.get("PendingWindowInDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduleDataKeyDeletionResponse(AbstractModel):
+    """ScheduleDataKeyDeletion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeletionDate: 计划删除执行时间
+        :type DeletionDate: int
+        :param _DataKeyId: 唯一标志被计划删除的数据密钥
+        :type DataKeyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeletionDate = None
+        self._DataKeyId = None
+        self._RequestId = None
+
+    @property
+    def DeletionDate(self):
+        """计划删除执行时间
+        :rtype: int
+        """
+        return self._DeletionDate
+
+    @DeletionDate.setter
+    def DeletionDate(self, DeletionDate):
+        self._DeletionDate = DeletionDate
+
+    @property
+    def DataKeyId(self):
+        """唯一标志被计划删除的数据密钥
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeletionDate = params.get("DeletionDate")
+        self._DataKeyId = params.get("DataKeyId")
+        self._RequestId = params.get("RequestId")
+
+
 class ScheduleKeyDeletionRequest(AbstractModel):
     """ScheduleKeyDeletion请求参数结构体
 
@@ -5913,6 +7658,164 @@ class UpdateAliasRequest(AbstractModel):
 
 class UpdateAliasResponse(AbstractModel):
     """UpdateAlias返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateDataKeyDescriptionRequest(AbstractModel):
+    """UpdateDataKeyDescription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 数据密钥的唯一标志符
+        :type DataKeyId: str
+        :param _Description: 数据密钥 的描述，最大100字节
+        :type Description: str
+        """
+        self._DataKeyId = None
+        self._Description = None
+
+    @property
+    def DataKeyId(self):
+        """数据密钥的唯一标志符
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+    @property
+    def Description(self):
+        """数据密钥 的描述，最大100字节
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDataKeyDescriptionResponse(AbstractModel):
+    """UpdateDataKeyDescription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateDataKeyNameRequest(AbstractModel):
+    """UpdateDataKeyName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataKeyId: 数据密钥的唯一标志符
+        :type DataKeyId: str
+        :param _DataKeyName: 数据密钥的名称
+        :type DataKeyName: str
+        """
+        self._DataKeyId = None
+        self._DataKeyName = None
+
+    @property
+    def DataKeyId(self):
+        """数据密钥的唯一标志符
+        :rtype: str
+        """
+        return self._DataKeyId
+
+    @DataKeyId.setter
+    def DataKeyId(self, DataKeyId):
+        self._DataKeyId = DataKeyId
+
+    @property
+    def DataKeyName(self):
+        """数据密钥的名称
+        :rtype: str
+        """
+        return self._DataKeyName
+
+    @DataKeyName.setter
+    def DataKeyName(self, DataKeyName):
+        self._DataKeyName = DataKeyName
+
+
+    def _deserialize(self, params):
+        self._DataKeyId = params.get("DataKeyId")
+        self._DataKeyName = params.get("DataKeyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDataKeyNameResponse(AbstractModel):
+    """UpdateDataKeyName返回参数结构体
 
     """
 

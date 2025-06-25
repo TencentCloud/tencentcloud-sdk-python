@@ -4752,6 +4752,8 @@ class CreateClusterRequest(AbstractModel):
         :type ZoneResourceConfiguration: list of ZoneResourceConfiguration
         :param _CosBucket: cos桶路径，创建StarRocks存算分离集群时用到
         :type CosBucket: str
+        :param _NodeMarks: 节点标识信息，目前只提供给tf平台使用
+        :type NodeMarks: list of NodeMark
         """
         self._ProductVersion = None
         self._EnableSupportHAFlag = None
@@ -4774,6 +4776,7 @@ class CreateClusterRequest(AbstractModel):
         self._DependService = None
         self._ZoneResourceConfiguration = None
         self._CosBucket = None
+        self._NodeMarks = None
 
     @property
     def ProductVersion(self):
@@ -5025,6 +5028,17 @@ class CreateClusterRequest(AbstractModel):
     def CosBucket(self, CosBucket):
         self._CosBucket = CosBucket
 
+    @property
+    def NodeMarks(self):
+        """节点标识信息，目前只提供给tf平台使用
+        :rtype: list of NodeMark
+        """
+        return self._NodeMarks
+
+    @NodeMarks.setter
+    def NodeMarks(self, NodeMarks):
+        self._NodeMarks = NodeMarks
+
 
     def _deserialize(self, params):
         self._ProductVersion = params.get("ProductVersion")
@@ -5076,6 +5090,12 @@ class CreateClusterRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ZoneResourceConfiguration.append(obj)
         self._CosBucket = params.get("CosBucket")
+        if params.get("NodeMarks") is not None:
+            self._NodeMarks = []
+            for item in params.get("NodeMarks"):
+                obj = NodeMark()
+                obj._deserialize(item)
+                self._NodeMarks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5345,6 +5365,8 @@ Hadoop-Hbase
         :type MultiZoneSettings: list of MultiZoneSetting
         :param _CosBucket: cos桶路径，创建StarRocks存算分离集群时用到
         :type CosBucket: str
+        :param _NodeMarks: 节点标识信息，目前只提供给tf平台使用
+        :type NodeMarks: list of NodeMark
         """
         self._ProductId = None
         self._Software = None
@@ -5379,6 +5401,7 @@ Hadoop-Hbase
         self._MultiZone = None
         self._MultiZoneSettings = None
         self._CosBucket = None
+        self._NodeMarks = None
 
     @property
     def ProductId(self):
@@ -5782,6 +5805,17 @@ Hadoop-Hbase
     def CosBucket(self, CosBucket):
         self._CosBucket = CosBucket
 
+    @property
+    def NodeMarks(self):
+        """节点标识信息，目前只提供给tf平台使用
+        :rtype: list of NodeMark
+        """
+        return self._NodeMarks
+
+    @NodeMarks.setter
+    def NodeMarks(self, NodeMarks):
+        self._NodeMarks = NodeMarks
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -5849,6 +5883,12 @@ Hadoop-Hbase
                 obj._deserialize(item)
                 self._MultiZoneSettings.append(obj)
         self._CosBucket = params.get("CosBucket")
+        if params.get("NodeMarks") is not None:
+            self._NodeMarks = []
+            for item in params.get("NodeMarks"):
+                obj = NodeMark()
+                obj._deserialize(item)
+                self._NodeMarks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23998,6 +24038,8 @@ class NodeHardwareInfo(AbstractModel):
         :type TkeClusterId: str
         :param _ConfigurableServices: 新挂磁盘时可支持配置的服务名称列表
         :type ConfigurableServices: list of str
+        :param _NodeMark: 节点标注信息，目前只提供给tf平台使用
+        :type NodeMark: str
         """
         self._AppId = None
         self._SerialNo = None
@@ -24056,6 +24098,7 @@ class NodeHardwareInfo(AbstractModel):
         self._TimingResource = None
         self._TkeClusterId = None
         self._ConfigurableServices = None
+        self._NodeMark = None
 
     @property
     def AppId(self):
@@ -24691,6 +24734,17 @@ class NodeHardwareInfo(AbstractModel):
     def ConfigurableServices(self, ConfigurableServices):
         self._ConfigurableServices = ConfigurableServices
 
+    @property
+    def NodeMark(self):
+        """节点标注信息，目前只提供给tf平台使用
+        :rtype: str
+        """
+        return self._NodeMark
+
+    @NodeMark.setter
+    def NodeMark(self, NodeMark):
+        self._NodeMark = NodeMark
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -24764,6 +24818,73 @@ class NodeHardwareInfo(AbstractModel):
         self._TimingResource = params.get("TimingResource")
         self._TkeClusterId = params.get("TkeClusterId")
         self._ConfigurableServices = params.get("ConfigurableServices")
+        self._NodeMark = params.get("NodeMark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeMark(AbstractModel):
+    """节点标记信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeType: 节点类型：master,core,task,router
+        :type NodeType: str
+        :param _NodeNames: 节点标记信息，目前只提供给tf平台使用，作为入参区分同类型节点信息
+        :type NodeNames: list of str
+        :param _Zone: 可用区名称
+        :type Zone: str
+        """
+        self._NodeType = None
+        self._NodeNames = None
+        self._Zone = None
+
+    @property
+    def NodeType(self):
+        """节点类型：master,core,task,router
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeNames(self):
+        """节点标记信息，目前只提供给tf平台使用，作为入参区分同类型节点信息
+        :rtype: list of str
+        """
+        return self._NodeNames
+
+    @NodeNames.setter
+    def NodeNames(self, NodeNames):
+        self._NodeNames = NodeNames
+
+    @property
+    def Zone(self):
+        """可用区名称
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._NodeNames = params.get("NodeNames")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30248,6 +30369,8 @@ class ScaleOutClusterRequest(AbstractModel):
         :type SubnetId: str
         :param _ScaleOutServiceConfGroupsInfo: 扩容指定配置组
         :type ScaleOutServiceConfGroupsInfo: list of ScaleOutServiceConfGroupsInfo
+        :param _NodeMarks: 节点标记信息，当前只提供给tf平台使用
+        :type NodeMarks: :class:`tencentcloud.emr.v20190103.models.NodeMark`
         """
         self._InstanceChargeType = None
         self._InstanceId = None
@@ -30269,6 +30392,7 @@ class ScaleOutClusterRequest(AbstractModel):
         self._Zone = None
         self._SubnetId = None
         self._ScaleOutServiceConfGroupsInfo = None
+        self._NodeMarks = None
 
     @property
     def InstanceChargeType(self):
@@ -30496,6 +30620,17 @@ class ScaleOutClusterRequest(AbstractModel):
     def ScaleOutServiceConfGroupsInfo(self, ScaleOutServiceConfGroupsInfo):
         self._ScaleOutServiceConfGroupsInfo = ScaleOutServiceConfGroupsInfo
 
+    @property
+    def NodeMarks(self):
+        """节点标记信息，当前只提供给tf平台使用
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeMark`
+        """
+        return self._NodeMarks
+
+    @NodeMarks.setter
+    def NodeMarks(self, NodeMarks):
+        self._NodeMarks = NodeMarks
+
 
     def _deserialize(self, params):
         self._InstanceChargeType = params.get("InstanceChargeType")
@@ -30541,6 +30676,9 @@ class ScaleOutClusterRequest(AbstractModel):
                 obj = ScaleOutServiceConfGroupsInfo()
                 obj._deserialize(item)
                 self._ScaleOutServiceConfGroupsInfo.append(obj)
+        if params.get("NodeMarks") is not None:
+            self._NodeMarks = NodeMark()
+            self._NodeMarks._deserialize(params.get("NodeMarks"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30747,6 +30885,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type ComputeResourceId: str
         :param _ComputeResourceAdvanceParams: 计算资源高级设置
         :type ComputeResourceAdvanceParams: :class:`tencentcloud.emr.v20190103.models.ComputeResourceAdvanceParams`
+        :param _NodeMarks: 节点标记信息，目前只提供tf平台使用
+        :type NodeMarks: :class:`tencentcloud.emr.v20190103.models.NodeMark`
         """
         self._TimeUnit = None
         self._TimeSpan = None
@@ -30777,6 +30917,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self._ResourceBaseType = None
         self._ComputeResourceId = None
         self._ComputeResourceAdvanceParams = None
+        self._NodeMarks = None
 
     @property
     def TimeUnit(self):
@@ -31108,6 +31249,17 @@ class ScaleOutInstanceRequest(AbstractModel):
     def ComputeResourceAdvanceParams(self, ComputeResourceAdvanceParams):
         self._ComputeResourceAdvanceParams = ComputeResourceAdvanceParams
 
+    @property
+    def NodeMarks(self):
+        """节点标记信息，目前只提供tf平台使用
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeMark`
+        """
+        return self._NodeMarks
+
+    @NodeMarks.setter
+    def NodeMarks(self, NodeMarks):
+        self._NodeMarks = NodeMarks
+
 
     def _deserialize(self, params):
         self._TimeUnit = params.get("TimeUnit")
@@ -31155,6 +31307,9 @@ class ScaleOutInstanceRequest(AbstractModel):
         if params.get("ComputeResourceAdvanceParams") is not None:
             self._ComputeResourceAdvanceParams = ComputeResourceAdvanceParams()
             self._ComputeResourceAdvanceParams._deserialize(params.get("ComputeResourceAdvanceParams"))
+        if params.get("NodeMarks") is not None:
+            self._NodeMarks = NodeMark()
+            self._NodeMarks._deserialize(params.get("NodeMarks"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

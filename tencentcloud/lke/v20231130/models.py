@@ -128,6 +128,219 @@ class AICallConfig(AbstractModel):
         
 
 
+class Agent(AbstractModel):
+    """Agent 的定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: AgentID
+        :type AgentId: str
+        :param _WorkflowId: WorkflowID，非空则当前Agent从workflow转换而来
+        :type WorkflowId: str
+        :param _Name: Agent名称，同一个应用内，Agent名称不能重复
+        :type Name: str
+        :param _IconUrl: 插件图标url
+        :type IconUrl: str
+        :param _Instructions: Agent指令；当该Agent被调用时，将作为“系统提示词”使用，描述Agent应执行的操作和响应方式
+        :type Instructions: str
+        :param _HandoffDescription: 当Agent作为转交目标时的描述，用于让其他Agent的LLM理解其功能和转交时机
+        :type HandoffDescription: str
+        :param _Handoffs: Agent可转交的子AgentId列表
+        :type Handoffs: list of str
+        :param _Model: Agent调用LLM时使用的模型配置
+        :type Model: :class:`tencentcloud.lke.v20231130.models.AgentModelInfo`
+        :param _Tools: Agent可使用的工具列表
+        :type Tools: list of AgentToolInfo
+        :param _Plugins: Agent可使用的插件列表
+        :type Plugins: list of AgentPluginInfo
+        :param _IsStartingAgent: 当前Agent是否是启动Agent
+        :type IsStartingAgent: bool
+        :param _AgentType: Agent类型; 0: 未指定类型; 1: 知识库检索Agent
+        :type AgentType: int
+        """
+        self._AgentId = None
+        self._WorkflowId = None
+        self._Name = None
+        self._IconUrl = None
+        self._Instructions = None
+        self._HandoffDescription = None
+        self._Handoffs = None
+        self._Model = None
+        self._Tools = None
+        self._Plugins = None
+        self._IsStartingAgent = None
+        self._AgentType = None
+
+    @property
+    def AgentId(self):
+        """AgentID
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def WorkflowId(self):
+        """WorkflowID，非空则当前Agent从workflow转换而来
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def Name(self):
+        """Agent名称，同一个应用内，Agent名称不能重复
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IconUrl(self):
+        """插件图标url
+        :rtype: str
+        """
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def Instructions(self):
+        """Agent指令；当该Agent被调用时，将作为“系统提示词”使用，描述Agent应执行的操作和响应方式
+        :rtype: str
+        """
+        return self._Instructions
+
+    @Instructions.setter
+    def Instructions(self, Instructions):
+        self._Instructions = Instructions
+
+    @property
+    def HandoffDescription(self):
+        """当Agent作为转交目标时的描述，用于让其他Agent的LLM理解其功能和转交时机
+        :rtype: str
+        """
+        return self._HandoffDescription
+
+    @HandoffDescription.setter
+    def HandoffDescription(self, HandoffDescription):
+        self._HandoffDescription = HandoffDescription
+
+    @property
+    def Handoffs(self):
+        """Agent可转交的子AgentId列表
+        :rtype: list of str
+        """
+        return self._Handoffs
+
+    @Handoffs.setter
+    def Handoffs(self, Handoffs):
+        self._Handoffs = Handoffs
+
+    @property
+    def Model(self):
+        """Agent调用LLM时使用的模型配置
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentModelInfo`
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Tools(self):
+        """Agent可使用的工具列表
+        :rtype: list of AgentToolInfo
+        """
+        return self._Tools
+
+    @Tools.setter
+    def Tools(self, Tools):
+        self._Tools = Tools
+
+    @property
+    def Plugins(self):
+        """Agent可使用的插件列表
+        :rtype: list of AgentPluginInfo
+        """
+        return self._Plugins
+
+    @Plugins.setter
+    def Plugins(self, Plugins):
+        self._Plugins = Plugins
+
+    @property
+    def IsStartingAgent(self):
+        """当前Agent是否是启动Agent
+        :rtype: bool
+        """
+        return self._IsStartingAgent
+
+    @IsStartingAgent.setter
+    def IsStartingAgent(self, IsStartingAgent):
+        self._IsStartingAgent = IsStartingAgent
+
+    @property
+    def AgentType(self):
+        """Agent类型; 0: 未指定类型; 1: 知识库检索Agent
+        :rtype: int
+        """
+        return self._AgentType
+
+    @AgentType.setter
+    def AgentType(self, AgentType):
+        self._AgentType = AgentType
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._Name = params.get("Name")
+        self._IconUrl = params.get("IconUrl")
+        self._Instructions = params.get("Instructions")
+        self._HandoffDescription = params.get("HandoffDescription")
+        self._Handoffs = params.get("Handoffs")
+        if params.get("Model") is not None:
+            self._Model = AgentModelInfo()
+            self._Model._deserialize(params.get("Model"))
+        if params.get("Tools") is not None:
+            self._Tools = []
+            for item in params.get("Tools"):
+                obj = AgentToolInfo()
+                obj._deserialize(item)
+                self._Tools.append(obj)
+        if params.get("Plugins") is not None:
+            self._Plugins = []
+            for item in params.get("Plugins"):
+                obj = AgentPluginInfo()
+                obj._deserialize(item)
+                self._Plugins.append(obj)
+        self._IsStartingAgent = params.get("IsStartingAgent")
+        self._AgentType = params.get("AgentType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentDebugInfo(AbstractModel):
     """Agent调试信息
 
@@ -173,6 +386,811 @@ class AgentDebugInfo(AbstractModel):
     def _deserialize(self, params):
         self._Input = params.get("Input")
         self._Output = params.get("Output")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentInput(AbstractModel):
+    """Agent输入值，支持直接赋值和引用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputType: 输入来源类型：0 用户输入，3 自定义变量（API参数）
+        :type InputType: int
+        :param _UserInputValue: 用户手写输入
+        :type UserInputValue: :class:`tencentcloud.lke.v20231130.models.AgentInputUserInputValue`
+        :param _CustomVarId: 自定义变量（API参数）
+        :type CustomVarId: str
+        """
+        self._InputType = None
+        self._UserInputValue = None
+        self._CustomVarId = None
+
+    @property
+    def InputType(self):
+        """输入来源类型：0 用户输入，3 自定义变量（API参数）
+        :rtype: int
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def UserInputValue(self):
+        """用户手写输入
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentInputUserInputValue`
+        """
+        return self._UserInputValue
+
+    @UserInputValue.setter
+    def UserInputValue(self, UserInputValue):
+        self._UserInputValue = UserInputValue
+
+    @property
+    def CustomVarId(self):
+        """自定义变量（API参数）
+        :rtype: str
+        """
+        return self._CustomVarId
+
+    @CustomVarId.setter
+    def CustomVarId(self, CustomVarId):
+        self._CustomVarId = CustomVarId
+
+
+    def _deserialize(self, params):
+        self._InputType = params.get("InputType")
+        if params.get("UserInputValue") is not None:
+            self._UserInputValue = AgentInputUserInputValue()
+            self._UserInputValue._deserialize(params.get("UserInputValue"))
+        self._CustomVarId = params.get("CustomVarId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentInputUserInputValue(AbstractModel):
+    """用户手写输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Values: 用户输入的值
+        :type Values: list of str
+        """
+        self._Values = None
+
+    @property
+    def Values(self):
+        """用户输入的值
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentKnowledgeAttrLabel(AbstractModel):
+    """标签过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttributeBizId: 属性ID
+        :type AttributeBizId: str
+        :param _Inputs: 标签值，标签值之间是或的关系，只有匹配的，才会进行知识检索，否则报检索不到
+        :type Inputs: list of AgentInput
+        """
+        self._AttributeBizId = None
+        self._Inputs = None
+
+    @property
+    def AttributeBizId(self):
+        """属性ID
+        :rtype: str
+        """
+        return self._AttributeBizId
+
+    @AttributeBizId.setter
+    def AttributeBizId(self, AttributeBizId):
+        self._AttributeBizId = AttributeBizId
+
+    @property
+    def Inputs(self):
+        """标签值，标签值之间是或的关系，只有匹配的，才会进行知识检索，否则报检索不到
+        :rtype: list of AgentInput
+        """
+        return self._Inputs
+
+    @Inputs.setter
+    def Inputs(self, Inputs):
+        self._Inputs = Inputs
+
+
+    def _deserialize(self, params):
+        self._AttributeBizId = params.get("AttributeBizId")
+        if params.get("Inputs") is not None:
+            self._Inputs = []
+            for item in params.get("Inputs"):
+                obj = AgentInput()
+                obj._deserialize(item)
+                self._Inputs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentKnowledgeFilter(AbstractModel):
+    """知识检索筛选范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterType: 知识检索筛选方式; 0: 全部知识; 1:按文档和问答; 2: 按标签
+        :type FilterType: int
+        :param _DocAndAnswer: 文档和问答过滤器
+        :type DocAndAnswer: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilterDocAndAnswer`
+        :param _Tag: 标签过滤器
+        :type Tag: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilterTag`
+        """
+        self._FilterType = None
+        self._DocAndAnswer = None
+        self._Tag = None
+
+    @property
+    def FilterType(self):
+        """知识检索筛选方式; 0: 全部知识; 1:按文档和问答; 2: 按标签
+        :rtype: int
+        """
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def DocAndAnswer(self):
+        """文档和问答过滤器
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilterDocAndAnswer`
+        """
+        return self._DocAndAnswer
+
+    @DocAndAnswer.setter
+    def DocAndAnswer(self, DocAndAnswer):
+        self._DocAndAnswer = DocAndAnswer
+
+    @property
+    def Tag(self):
+        """标签过滤器
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilterTag`
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+
+    def _deserialize(self, params):
+        self._FilterType = params.get("FilterType")
+        if params.get("DocAndAnswer") is not None:
+            self._DocAndAnswer = AgentKnowledgeFilterDocAndAnswer()
+            self._DocAndAnswer._deserialize(params.get("DocAndAnswer"))
+        if params.get("Tag") is not None:
+            self._Tag = AgentKnowledgeFilterTag()
+            self._Tag._deserialize(params.get("Tag"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentKnowledgeFilterDocAndAnswer(AbstractModel):
+    """文档和问答过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocBizIds: 文档ID列表
+        :type DocBizIds: list of str
+        :param _AllQa: 问答
+        :type AllQa: bool
+        """
+        self._DocBizIds = None
+        self._AllQa = None
+
+    @property
+    def DocBizIds(self):
+        """文档ID列表
+        :rtype: list of str
+        """
+        return self._DocBizIds
+
+    @DocBizIds.setter
+    def DocBizIds(self, DocBizIds):
+        self._DocBizIds = DocBizIds
+
+    @property
+    def AllQa(self):
+        """问答
+        :rtype: bool
+        """
+        return self._AllQa
+
+    @AllQa.setter
+    def AllQa(self, AllQa):
+        self._AllQa = AllQa
+
+
+    def _deserialize(self, params):
+        self._DocBizIds = params.get("DocBizIds")
+        self._AllQa = params.get("AllQa")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentKnowledgeFilterTag(AbstractModel):
+    """标签过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 标签之间的关系;0:AND, 1:OR
+        :type Operator: int
+        :param _Labels: 标签
+        :type Labels: list of AgentKnowledgeAttrLabel
+        """
+        self._Operator = None
+        self._Labels = None
+
+    @property
+    def Operator(self):
+        """标签之间的关系;0:AND, 1:OR
+        :rtype: int
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Labels(self):
+        """标签
+        :rtype: list of AgentKnowledgeAttrLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._Operator = params.get("Operator")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = AgentKnowledgeAttrLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentKnowledgeQAPlugin(AbstractModel):
+    """知识库问答插件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 知识检索筛选范围
+        :type Filter: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        """知识检索筛选范围
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = AgentKnowledgeFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentMCPServerInfo(AbstractModel):
+    """mcp的服务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _McpServerUrl: mcp server URL地址
+        :type McpServerUrl: str
+        :param _Headers: mcp server header信息
+        :type Headers: list of AgentPluginHeader
+        :param _Timeout: 超时时间，单位秒
+        :type Timeout: int
+        :param _SseReadTimeout: sse服务超时时间，单位秒
+        :type SseReadTimeout: int
+        """
+        self._McpServerUrl = None
+        self._Headers = None
+        self._Timeout = None
+        self._SseReadTimeout = None
+
+    @property
+    def McpServerUrl(self):
+        """mcp server URL地址
+        :rtype: str
+        """
+        return self._McpServerUrl
+
+    @McpServerUrl.setter
+    def McpServerUrl(self, McpServerUrl):
+        self._McpServerUrl = McpServerUrl
+
+    @property
+    def Headers(self):
+        """mcp server header信息
+        :rtype: list of AgentPluginHeader
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def Timeout(self):
+        """超时时间，单位秒
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def SseReadTimeout(self):
+        """sse服务超时时间，单位秒
+        :rtype: int
+        """
+        return self._SseReadTimeout
+
+    @SseReadTimeout.setter
+    def SseReadTimeout(self, SseReadTimeout):
+        self._SseReadTimeout = SseReadTimeout
+
+
+    def _deserialize(self, params):
+        self._McpServerUrl = params.get("McpServerUrl")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = AgentPluginHeader()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._Timeout = params.get("Timeout")
+        self._SseReadTimeout = params.get("SseReadTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentModelInfo(AbstractModel):
+    """Agent 配置里面的模型定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: 模型名称
+        :type ModelName: str
+        :param _ModelAliasName: 模型别名
+        :type ModelAliasName: str
+        :param _Temperature: 模型温度
+        :type Temperature: float
+        :param _TopP: 模型TopP
+        :type TopP: float
+        :param _IsEnabled: 模型是否可用
+        :type IsEnabled: bool
+        :param _HistoryLimit: 对话历史条数限制
+        :type HistoryLimit: int
+        :param _ModelContextWordsLimit: 模型上下文长度字符限制
+        :type ModelContextWordsLimit: str
+        :param _InstructionsWordsLimit: 指令长度字符限制
+        :type InstructionsWordsLimit: int
+        """
+        self._ModelName = None
+        self._ModelAliasName = None
+        self._Temperature = None
+        self._TopP = None
+        self._IsEnabled = None
+        self._HistoryLimit = None
+        self._ModelContextWordsLimit = None
+        self._InstructionsWordsLimit = None
+
+    @property
+    def ModelName(self):
+        """模型名称
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelAliasName(self):
+        """模型别名
+        :rtype: str
+        """
+        return self._ModelAliasName
+
+    @ModelAliasName.setter
+    def ModelAliasName(self, ModelAliasName):
+        self._ModelAliasName = ModelAliasName
+
+    @property
+    def Temperature(self):
+        """模型温度
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def TopP(self):
+        """模型TopP
+        :rtype: float
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def IsEnabled(self):
+        """模型是否可用
+        :rtype: bool
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def HistoryLimit(self):
+        """对话历史条数限制
+        :rtype: int
+        """
+        return self._HistoryLimit
+
+    @HistoryLimit.setter
+    def HistoryLimit(self, HistoryLimit):
+        self._HistoryLimit = HistoryLimit
+
+    @property
+    def ModelContextWordsLimit(self):
+        """模型上下文长度字符限制
+        :rtype: str
+        """
+        return self._ModelContextWordsLimit
+
+    @ModelContextWordsLimit.setter
+    def ModelContextWordsLimit(self, ModelContextWordsLimit):
+        self._ModelContextWordsLimit = ModelContextWordsLimit
+
+    @property
+    def InstructionsWordsLimit(self):
+        """指令长度字符限制
+        :rtype: int
+        """
+        return self._InstructionsWordsLimit
+
+    @InstructionsWordsLimit.setter
+    def InstructionsWordsLimit(self, InstructionsWordsLimit):
+        self._InstructionsWordsLimit = InstructionsWordsLimit
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelAliasName = params.get("ModelAliasName")
+        self._Temperature = params.get("Temperature")
+        self._TopP = params.get("TopP")
+        self._IsEnabled = params.get("IsEnabled")
+        self._HistoryLimit = params.get("HistoryLimit")
+        self._ModelContextWordsLimit = params.get("ModelContextWordsLimit")
+        self._InstructionsWordsLimit = params.get("InstructionsWordsLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentPluginHeader(AbstractModel):
+    """应用配置MCP插件header信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: 参数名称
+        :type ParamName: str
+        :param _ParamValue: 参数值
+        :type ParamValue: str
+        :param _GlobalHidden: header参数配置是否隐藏不可见
+        :type GlobalHidden: bool
+        :param _Input: 输入的值
+        :type Input: :class:`tencentcloud.lke.v20231130.models.AgentInput`
+        :param _IsRequired: 参数是否可以为空
+        :type IsRequired: bool
+        """
+        self._ParamName = None
+        self._ParamValue = None
+        self._GlobalHidden = None
+        self._Input = None
+        self._IsRequired = None
+
+    @property
+    def ParamName(self):
+        """参数名称
+        :rtype: str
+        """
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def ParamValue(self):
+        """参数值
+        :rtype: str
+        """
+        return self._ParamValue
+
+    @ParamValue.setter
+    def ParamValue(self, ParamValue):
+        self._ParamValue = ParamValue
+
+    @property
+    def GlobalHidden(self):
+        """header参数配置是否隐藏不可见
+        :rtype: bool
+        """
+        return self._GlobalHidden
+
+    @GlobalHidden.setter
+    def GlobalHidden(self, GlobalHidden):
+        self._GlobalHidden = GlobalHidden
+
+    @property
+    def Input(self):
+        """输入的值
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def IsRequired(self):
+        """参数是否可以为空
+        :rtype: bool
+        """
+        return self._IsRequired
+
+    @IsRequired.setter
+    def IsRequired(self, IsRequired):
+        self._IsRequired = IsRequired
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        self._ParamValue = params.get("ParamValue")
+        self._GlobalHidden = params.get("GlobalHidden")
+        if params.get("Input") is not None:
+            self._Input = AgentInput()
+            self._Input._deserialize(params.get("Input"))
+        self._IsRequired = params.get("IsRequired")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentPluginInfo(AbstractModel):
+    """Agent 的插件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: 插件id
+        :type PluginId: str
+        :param _Headers: 应用配置的插件header信息
+        :type Headers: list of AgentPluginHeader
+        :param _Model: 插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型
+        :type Model: :class:`tencentcloud.lke.v20231130.models.AgentModelInfo`
+        :param _PluginInfoType: 插件信息类型; 0: 未指定类型; 1: 知识库问答插件
+        :type PluginInfoType: int
+        :param _KnowledgeQa: 知识库问答插件配置
+        :type KnowledgeQa: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeQAPlugin`
+        """
+        self._PluginId = None
+        self._Headers = None
+        self._Model = None
+        self._PluginInfoType = None
+        self._KnowledgeQa = None
+
+    @property
+    def PluginId(self):
+        """插件id
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def Headers(self):
+        """应用配置的插件header信息
+        :rtype: list of AgentPluginHeader
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def Model(self):
+        """插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentModelInfo`
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def PluginInfoType(self):
+        """插件信息类型; 0: 未指定类型; 1: 知识库问答插件
+        :rtype: int
+        """
+        return self._PluginInfoType
+
+    @PluginInfoType.setter
+    def PluginInfoType(self, PluginInfoType):
+        self._PluginInfoType = PluginInfoType
+
+    @property
+    def KnowledgeQa(self):
+        """知识库问答插件配置
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeQAPlugin`
+        """
+        return self._KnowledgeQa
+
+    @KnowledgeQa.setter
+    def KnowledgeQa(self, KnowledgeQa):
+        self._KnowledgeQa = KnowledgeQa
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = AgentPluginHeader()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        if params.get("Model") is not None:
+            self._Model = AgentModelInfo()
+            self._Model._deserialize(params.get("Model"))
+        self._PluginInfoType = params.get("PluginInfoType")
+        if params.get("KnowledgeQa") is not None:
+            self._KnowledgeQa = AgentKnowledgeQAPlugin()
+            self._KnowledgeQa._deserialize(params.get("KnowledgeQa"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -976,6 +1994,609 @@ class AgentThought(AbstractModel):
                 obj = FileInfo()
                 obj._deserialize(item)
                 self._Files.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentToolInfo(AbstractModel):
+    """Agent的工具信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: 插件id
+        :type PluginId: str
+        :param _PluginName: 插件名称
+        :type PluginName: str
+        :param _IconUrl: 插件图标url
+        :type IconUrl: str
+        :param _PluginType: 0 自定义插件
+1 官方插件
+2 第三方插件 目前用于第三方实现的mcp server
+        :type PluginType: int
+        :param _ToolId: 工具id
+        :type ToolId: str
+        :param _ToolName: 工具名称
+        :type ToolName: str
+        :param _ToolDesc: 工具描述
+        :type ToolDesc: str
+        :param _Inputs: 输入参数
+        :type Inputs: list of AgentToolReqParam
+        :param _Outputs: 输出参数
+        :type Outputs: list of AgentToolRspParam
+        :param _CreateType: 创建方式，0:服务创建，1:代码创建，2:MCP创建	
+        :type CreateType: int
+        :param _McpServer: MCP插件的配置信息
+        :type McpServer: :class:`tencentcloud.lke.v20231130.models.AgentMCPServerInfo`
+        :param _IsBindingKnowledge: 该工具是否和知识库绑定
+        :type IsBindingKnowledge: bool
+        :param _Status: 插件状态，1:可用，2:不可用	
+        :type Status: int
+        :param _Headers: header信息
+        :type Headers: list of AgentPluginHeader
+        :param _CallingMethod: NON_STREAMING: 非流式  STREAMIN: 流式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallingMethod: str
+        """
+        self._PluginId = None
+        self._PluginName = None
+        self._IconUrl = None
+        self._PluginType = None
+        self._ToolId = None
+        self._ToolName = None
+        self._ToolDesc = None
+        self._Inputs = None
+        self._Outputs = None
+        self._CreateType = None
+        self._McpServer = None
+        self._IsBindingKnowledge = None
+        self._Status = None
+        self._Headers = None
+        self._CallingMethod = None
+
+    @property
+    def PluginId(self):
+        """插件id
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def PluginName(self):
+        """插件名称
+        :rtype: str
+        """
+        return self._PluginName
+
+    @PluginName.setter
+    def PluginName(self, PluginName):
+        self._PluginName = PluginName
+
+    @property
+    def IconUrl(self):
+        """插件图标url
+        :rtype: str
+        """
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def PluginType(self):
+        """0 自定义插件
+1 官方插件
+2 第三方插件 目前用于第三方实现的mcp server
+        :rtype: int
+        """
+        return self._PluginType
+
+    @PluginType.setter
+    def PluginType(self, PluginType):
+        self._PluginType = PluginType
+
+    @property
+    def ToolId(self):
+        """工具id
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+    @property
+    def ToolName(self):
+        """工具名称
+        :rtype: str
+        """
+        return self._ToolName
+
+    @ToolName.setter
+    def ToolName(self, ToolName):
+        self._ToolName = ToolName
+
+    @property
+    def ToolDesc(self):
+        """工具描述
+        :rtype: str
+        """
+        return self._ToolDesc
+
+    @ToolDesc.setter
+    def ToolDesc(self, ToolDesc):
+        self._ToolDesc = ToolDesc
+
+    @property
+    def Inputs(self):
+        """输入参数
+        :rtype: list of AgentToolReqParam
+        """
+        return self._Inputs
+
+    @Inputs.setter
+    def Inputs(self, Inputs):
+        self._Inputs = Inputs
+
+    @property
+    def Outputs(self):
+        """输出参数
+        :rtype: list of AgentToolRspParam
+        """
+        return self._Outputs
+
+    @Outputs.setter
+    def Outputs(self, Outputs):
+        self._Outputs = Outputs
+
+    @property
+    def CreateType(self):
+        """创建方式，0:服务创建，1:代码创建，2:MCP创建	
+        :rtype: int
+        """
+        return self._CreateType
+
+    @CreateType.setter
+    def CreateType(self, CreateType):
+        self._CreateType = CreateType
+
+    @property
+    def McpServer(self):
+        """MCP插件的配置信息
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentMCPServerInfo`
+        """
+        return self._McpServer
+
+    @McpServer.setter
+    def McpServer(self, McpServer):
+        self._McpServer = McpServer
+
+    @property
+    def IsBindingKnowledge(self):
+        """该工具是否和知识库绑定
+        :rtype: bool
+        """
+        return self._IsBindingKnowledge
+
+    @IsBindingKnowledge.setter
+    def IsBindingKnowledge(self, IsBindingKnowledge):
+        self._IsBindingKnowledge = IsBindingKnowledge
+
+    @property
+    def Status(self):
+        """插件状态，1:可用，2:不可用	
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Headers(self):
+        """header信息
+        :rtype: list of AgentPluginHeader
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def CallingMethod(self):
+        """NON_STREAMING: 非流式  STREAMIN: 流式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CallingMethod
+
+    @CallingMethod.setter
+    def CallingMethod(self, CallingMethod):
+        self._CallingMethod = CallingMethod
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._PluginName = params.get("PluginName")
+        self._IconUrl = params.get("IconUrl")
+        self._PluginType = params.get("PluginType")
+        self._ToolId = params.get("ToolId")
+        self._ToolName = params.get("ToolName")
+        self._ToolDesc = params.get("ToolDesc")
+        if params.get("Inputs") is not None:
+            self._Inputs = []
+            for item in params.get("Inputs"):
+                obj = AgentToolReqParam()
+                obj._deserialize(item)
+                self._Inputs.append(obj)
+        if params.get("Outputs") is not None:
+            self._Outputs = []
+            for item in params.get("Outputs"):
+                obj = AgentToolRspParam()
+                obj._deserialize(item)
+                self._Outputs.append(obj)
+        self._CreateType = params.get("CreateType")
+        if params.get("McpServer") is not None:
+            self._McpServer = AgentMCPServerInfo()
+            self._McpServer._deserialize(params.get("McpServer"))
+        self._IsBindingKnowledge = params.get("IsBindingKnowledge")
+        self._Status = params.get("Status")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = AgentPluginHeader()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._CallingMethod = params.get("CallingMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentToolReqParam(AbstractModel):
+    """Agent工具的请求参数定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 参数名称
+        :type Name: str
+        :param _Desc: 参数描述
+        :type Desc: str
+        :param _Type: 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+        :type Type: int
+        :param _IsRequired: 参数是否必填
+        :type IsRequired: bool
+        :param _DefaultValue: 参数默认值
+        :type DefaultValue: str
+        :param _SubParams: 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+        :type SubParams: list of AgentToolReqParam
+        :param _GlobalHidden: 是否隐藏不可见
+        :type GlobalHidden: bool
+        :param _AgentHidden: agent模式下模型是否可见
+        :type AgentHidden: bool
+        :param _AnyOf: 其中任意
+        :type AnyOf: list of AgentToolReqParam
+        :param _OneOf: 其中一个
+        :type OneOf: list of AgentToolReqParam
+        :param _Input: 输入
+        :type Input: :class:`tencentcloud.lke.v20231130.models.AgentInput`
+        """
+        self._Name = None
+        self._Desc = None
+        self._Type = None
+        self._IsRequired = None
+        self._DefaultValue = None
+        self._SubParams = None
+        self._GlobalHidden = None
+        self._AgentHidden = None
+        self._AnyOf = None
+        self._OneOf = None
+        self._Input = None
+
+    @property
+    def Name(self):
+        """参数名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        """参数描述
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Type(self):
+        """参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsRequired(self):
+        """参数是否必填
+        :rtype: bool
+        """
+        return self._IsRequired
+
+    @IsRequired.setter
+    def IsRequired(self, IsRequired):
+        self._IsRequired = IsRequired
+
+    @property
+    def DefaultValue(self):
+        """参数默认值
+        :rtype: str
+        """
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def SubParams(self):
+        """子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+        :rtype: list of AgentToolReqParam
+        """
+        return self._SubParams
+
+    @SubParams.setter
+    def SubParams(self, SubParams):
+        self._SubParams = SubParams
+
+    @property
+    def GlobalHidden(self):
+        """是否隐藏不可见
+        :rtype: bool
+        """
+        return self._GlobalHidden
+
+    @GlobalHidden.setter
+    def GlobalHidden(self, GlobalHidden):
+        self._GlobalHidden = GlobalHidden
+
+    @property
+    def AgentHidden(self):
+        """agent模式下模型是否可见
+        :rtype: bool
+        """
+        return self._AgentHidden
+
+    @AgentHidden.setter
+    def AgentHidden(self, AgentHidden):
+        self._AgentHidden = AgentHidden
+
+    @property
+    def AnyOf(self):
+        """其中任意
+        :rtype: list of AgentToolReqParam
+        """
+        return self._AnyOf
+
+    @AnyOf.setter
+    def AnyOf(self, AnyOf):
+        self._AnyOf = AnyOf
+
+    @property
+    def OneOf(self):
+        """其中一个
+        :rtype: list of AgentToolReqParam
+        """
+        return self._OneOf
+
+    @OneOf.setter
+    def OneOf(self, OneOf):
+        self._OneOf = OneOf
+
+    @property
+    def Input(self):
+        """输入
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._Type = params.get("Type")
+        self._IsRequired = params.get("IsRequired")
+        self._DefaultValue = params.get("DefaultValue")
+        if params.get("SubParams") is not None:
+            self._SubParams = []
+            for item in params.get("SubParams"):
+                obj = AgentToolReqParam()
+                obj._deserialize(item)
+                self._SubParams.append(obj)
+        self._GlobalHidden = params.get("GlobalHidden")
+        self._AgentHidden = params.get("AgentHidden")
+        if params.get("AnyOf") is not None:
+            self._AnyOf = []
+            for item in params.get("AnyOf"):
+                obj = AgentToolReqParam()
+                obj._deserialize(item)
+                self._AnyOf.append(obj)
+        if params.get("OneOf") is not None:
+            self._OneOf = []
+            for item in params.get("OneOf"):
+                obj = AgentToolReqParam()
+                obj._deserialize(item)
+                self._OneOf.append(obj)
+        if params.get("Input") is not None:
+            self._Input = AgentInput()
+            self._Input._deserialize(params.get("Input"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentToolRspParam(AbstractModel):
+    """Agent工具的响应参数定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 参数名称
+        :type Name: str
+        :param _Desc: 参数描述
+        :type Desc: str
+        :param _Type: 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+        :type Type: int
+        :param _SubParams: 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+        :type SubParams: list of AgentToolRspParam
+        :param _AgentHidden: agent模式下模型是否可见
+        :type AgentHidden: bool
+        :param _GlobalHidden: 是否隐藏不可见
+        :type GlobalHidden: bool
+        :param _AnalysisMethod: COVER: 覆盖解析 INCREMENT:增量解析
+        :type AnalysisMethod: str
+        """
+        self._Name = None
+        self._Desc = None
+        self._Type = None
+        self._SubParams = None
+        self._AgentHidden = None
+        self._GlobalHidden = None
+        self._AnalysisMethod = None
+
+    @property
+    def Name(self):
+        """参数名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        """参数描述
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Type(self):
+        """参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SubParams(self):
+        """子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+        :rtype: list of AgentToolRspParam
+        """
+        return self._SubParams
+
+    @SubParams.setter
+    def SubParams(self, SubParams):
+        self._SubParams = SubParams
+
+    @property
+    def AgentHidden(self):
+        """agent模式下模型是否可见
+        :rtype: bool
+        """
+        return self._AgentHidden
+
+    @AgentHidden.setter
+    def AgentHidden(self, AgentHidden):
+        self._AgentHidden = AgentHidden
+
+    @property
+    def GlobalHidden(self):
+        """是否隐藏不可见
+        :rtype: bool
+        """
+        return self._GlobalHidden
+
+    @GlobalHidden.setter
+    def GlobalHidden(self, GlobalHidden):
+        self._GlobalHidden = GlobalHidden
+
+    @property
+    def AnalysisMethod(self):
+        """COVER: 覆盖解析 INCREMENT:增量解析
+        :rtype: str
+        """
+        return self._AnalysisMethod
+
+    @AnalysisMethod.setter
+    def AnalysisMethod(self, AnalysisMethod):
+        self._AnalysisMethod = AnalysisMethod
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._Type = params.get("Type")
+        if params.get("SubParams") is not None:
+            self._SubParams = []
+            for item in params.get("SubParams"):
+                obj = AgentToolRspParam()
+                obj._deserialize(item)
+                self._SubParams.append(obj)
+        self._AgentHidden = params.get("AgentHidden")
+        self._GlobalHidden = params.get("GlobalHidden")
+        self._AnalysisMethod = params.get("AnalysisMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3395,6 +5016,102 @@ class Coord(AbstractModel):
         
 
 
+class CreateAgentRequest(AbstractModel):
+    """CreateAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _Agent: 要增加的Agent的信息
+        :type Agent: :class:`tencentcloud.lke.v20231130.models.Agent`
+        """
+        self._AppBizId = None
+        self._Agent = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def Agent(self):
+        """要增加的Agent的信息
+        :rtype: :class:`tencentcloud.lke.v20231130.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAgentResponse(AbstractModel):
+    """CreateAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: 新建的AgentID
+        :type AgentId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AgentId = None
+        self._RequestId = None
+
+    @property
+    def AgentId(self):
+        """新建的AgentID
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAppRequest(AbstractModel):
     """CreateApp请求参数结构体
 
@@ -5200,6 +6917,100 @@ class CustomVariable(AbstractModel):
         
 
 
+class DeleteAgentRequest(AbstractModel):
+    """DeleteAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: Agent的ID
+        :type AgentId: str
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        """
+        self._AgentId = None
+        self._AppBizId = None
+
+    @property
+    def AgentId(self):
+        """Agent的ID
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._AppBizId = params.get("AppBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAgentResponse(AbstractModel):
+    """DeleteAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: Agent的ID
+        :type AgentId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AgentId = None
+        self._RequestId = None
+
+    @property
+    def AgentId(self):
+        """Agent的ID
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAppRequest(AbstractModel):
     """DeleteApp请求参数结构体
 
@@ -5944,6 +7755,105 @@ class DeleteVarResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAppAgentListRequest(AbstractModel):
+    """DescribeAppAgentList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        """
+        self._AppBizId = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppAgentListResponse(AbstractModel):
+    """DescribeAppAgentList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StaringAgentId: 入口启动AgentID
+        :type StaringAgentId: str
+        :param _Agents: 应用Agent信息列表
+        :type Agents: list of Agent
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StaringAgentId = None
+        self._Agents = None
+        self._RequestId = None
+
+    @property
+    def StaringAgentId(self):
+        """入口启动AgentID
+        :rtype: str
+        """
+        return self._StaringAgentId
+
+    @StaringAgentId.setter
+    def StaringAgentId(self, StaringAgentId):
+        self._StaringAgentId = StaringAgentId
+
+    @property
+    def Agents(self):
+        """应用Agent信息列表
+        :rtype: list of Agent
+        """
+        return self._Agents
+
+    @Agents.setter
+    def Agents(self, Agents):
+        self._Agents = Agents
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StaringAgentId = params.get("StaringAgentId")
+        if params.get("Agents") is not None:
+            self._Agents = []
+            for item in params.get("Agents"):
+                obj = Agent()
+                obj._deserialize(item)
+                self._Agents.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7344,6 +9254,9 @@ class DescribeDocResponse(AbstractModel):
         :type CateBizId: str
         :param _IsDisabled: 文档是否停用，false:未停用，true:已停用
         :type IsDisabled: bool
+        :param _IsDownload: 是否支持下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDownload: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7372,6 +9285,7 @@ class DescribeDocResponse(AbstractModel):
         self._AttrLabels = None
         self._CateBizId = None
         self._IsDisabled = None
+        self._IsDownload = None
         self._RequestId = None
 
     @property
@@ -7650,6 +9564,18 @@ class DescribeDocResponse(AbstractModel):
         self._IsDisabled = IsDisabled
 
     @property
+    def IsDownload(self):
+        """是否支持下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsDownload
+
+    @IsDownload.setter
+    def IsDownload(self, IsDownload):
+        self._IsDownload = IsDownload
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -7692,6 +9618,7 @@ class DescribeDocResponse(AbstractModel):
                 self._AttrLabels.append(obj)
         self._CateBizId = params.get("CateBizId")
         self._IsDisabled = params.get("IsDisabled")
+        self._IsDownload = params.get("IsDownload")
         self._RequestId = params.get("RequestId")
 
 
@@ -10590,6 +12517,8 @@ class DocSegment(AbstractModel):
         :param _DocUrl: 文档链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type DocUrl: str
+        :param _WebUrl: 文档的自定义链接
+        :type WebUrl: str
         """
         self._Id = None
         self._BusinessId = None
@@ -10601,6 +12530,7 @@ class DocSegment(AbstractModel):
         self._DocId = None
         self._DocBizId = None
         self._DocUrl = None
+        self._WebUrl = None
 
     @property
     def Id(self):
@@ -10722,6 +12652,17 @@ class DocSegment(AbstractModel):
     def DocUrl(self, DocUrl):
         self._DocUrl = DocUrl
 
+    @property
+    def WebUrl(self):
+        """文档的自定义链接
+        :rtype: str
+        """
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -10734,6 +12675,7 @@ class DocSegment(AbstractModel):
         self._DocId = params.get("DocId")
         self._DocBizId = params.get("DocBizId")
         self._DocUrl = params.get("DocUrl")
+        self._WebUrl = params.get("WebUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12384,6 +14326,9 @@ class GetDocPreviewResponse(AbstractModel):
         :type NewName: str
         :param _ParseResultCosUrl: 文件md结果cos临时地址
         :type ParseResultCosUrl: str
+        :param _IsDownload: 是否可下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDownload: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12394,6 +14339,7 @@ class GetDocPreviewResponse(AbstractModel):
         self._Bucket = None
         self._NewName = None
         self._ParseResultCosUrl = None
+        self._IsDownload = None
         self._RequestId = None
 
     @property
@@ -12477,6 +14423,18 @@ class GetDocPreviewResponse(AbstractModel):
         self._ParseResultCosUrl = ParseResultCosUrl
 
     @property
+    def IsDownload(self):
+        """是否可下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsDownload
+
+    @IsDownload.setter
+    def IsDownload(self, IsDownload):
+        self._IsDownload = IsDownload
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12496,6 +14454,7 @@ class GetDocPreviewResponse(AbstractModel):
         self._Bucket = params.get("Bucket")
         self._NewName = params.get("NewName")
         self._ParseResultCosUrl = params.get("ParseResultCosUrl")
+        self._IsDownload = params.get("IsDownload")
         self._RequestId = params.get("RequestId")
 
 
@@ -21295,6 +23254,102 @@ class ModelParameter(AbstractModel):
         
 
 
+class ModifyAgentRequest(AbstractModel):
+    """ModifyAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 需要修改的应用ID
+        :type AppBizId: str
+        :param _Agent: 修改后的Agent的信息
+        :type Agent: :class:`tencentcloud.lke.v20231130.models.Agent`
+        """
+        self._AppBizId = None
+        self._Agent = None
+
+    @property
+    def AppBizId(self):
+        """需要修改的应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def Agent(self):
+        """修改后的Agent的信息
+        :rtype: :class:`tencentcloud.lke.v20231130.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAgentResponse(AbstractModel):
+    """ModifyAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: 修改的AgentId
+        :type AgentId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AgentId = None
+        self._RequestId = None
+
+    @property
+    def AgentId(self):
+        """修改的AgentId
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAppRequest(AbstractModel):
     """ModifyApp请求参数结构体
 
@@ -23281,12 +25336,24 @@ class MsgRecordReference(AbstractModel):
         :type Name: str
         :param _DocId: 来源文档ID
         :type DocId: str
+        :param _KnowledgeName: 知识库名称
+        :type KnowledgeName: str
+        :param _KnowledgeBizId: 知识库业务id
+        :type KnowledgeBizId: str
+        :param _DocBizId: 文档业务id
+        :type DocBizId: str
+        :param _QaBizId: 问答业务id
+        :type QaBizId: str
         """
         self._Id = None
         self._Url = None
         self._Type = None
         self._Name = None
         self._DocId = None
+        self._KnowledgeName = None
+        self._KnowledgeBizId = None
+        self._DocBizId = None
+        self._QaBizId = None
 
     @property
     def Id(self):
@@ -23343,6 +25410,50 @@ class MsgRecordReference(AbstractModel):
     def DocId(self, DocId):
         self._DocId = DocId
 
+    @property
+    def KnowledgeName(self):
+        """知识库名称
+        :rtype: str
+        """
+        return self._KnowledgeName
+
+    @KnowledgeName.setter
+    def KnowledgeName(self, KnowledgeName):
+        self._KnowledgeName = KnowledgeName
+
+    @property
+    def KnowledgeBizId(self):
+        """知识库业务id
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def DocBizId(self):
+        """文档业务id
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def QaBizId(self):
+        """问答业务id
+        :rtype: str
+        """
+        return self._QaBizId
+
+    @QaBizId.setter
+    def QaBizId(self, QaBizId):
+        self._QaBizId = QaBizId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -23350,6 +25461,10 @@ class MsgRecordReference(AbstractModel):
         self._Type = params.get("Type")
         self._Name = params.get("Name")
         self._DocId = params.get("DocId")
+        self._KnowledgeName = params.get("KnowledgeName")
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        self._DocBizId = params.get("DocBizId")
+        self._QaBizId = params.get("QaBizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27460,6 +29575,8 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         :type Opt: int
         :param _CateBizId: 分类ID
         :type CateBizId: str
+        :param _IsDownload: 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+        :type IsDownload: bool
         """
         self._BotBizId = None
         self._FileName = None
@@ -27478,6 +29595,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         self._IsRefer = None
         self._Opt = None
         self._CateBizId = None
+        self._IsDownload = None
 
     @property
     def BotBizId(self):
@@ -27676,6 +29794,17 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
     def CateBizId(self, CateBizId):
         self._CateBizId = CateBizId
 
+    @property
+    def IsDownload(self):
+        """是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+        :rtype: bool
+        """
+        return self._IsDownload
+
+    @IsDownload.setter
+    def IsDownload(self, IsDownload):
+        self._IsDownload = IsDownload
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -27700,6 +29829,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         self._IsRefer = params.get("IsRefer")
         self._Opt = params.get("Opt")
         self._CateBizId = params.get("CateBizId")
+        self._IsDownload = params.get("IsDownload")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

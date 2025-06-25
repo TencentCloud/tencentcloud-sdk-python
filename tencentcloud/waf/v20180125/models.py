@@ -2142,7 +2142,7 @@ UpstreamProtocol：与Protocol相同
         :type PrivateKey: str
         :param _SSLId: CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
         :type SSLId: str
-        :param _ResourceId: 待废弃，可不填。Waf的资源ID。
+        :param _ResourceId: Waf的资源ID。
         :type ResourceId: str
         :param _IpHeaders: IsCdn为3时，需要填此参数，表示自定义header
         :type IpHeaders: list of str
@@ -2152,9 +2152,9 @@ https：使用https协议回源
         :type UpstreamScheme: str
         :param _HttpsUpstreamPort: HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
         :type HttpsUpstreamPort: str
-        :param _IsGray: 待废弃，可不填。是否开启灰度，0表示不开启灰度。
+        :param _IsGray: 是否开启灰度，0表示不开启灰度。
         :type IsGray: int
-        :param _GrayAreas: 待废弃，可不填。灰度的地区
+        :param _GrayAreas: 灰度的地区
         :type GrayAreas: list of str
         :param _HttpsRewrite: 必填项，是否开启HTTP强制跳转到HTTPS。
 0：不强制跳转
@@ -2168,12 +2168,12 @@ https：使用https协议回源
 0：关闭
 1：开启
         :type IsHttp2: int
-        :param _Edition: 待废弃，可不填。WAF实例类型。
+        :param _Edition: WAF实例类型。
 sparta-waf：SAAS型WAF
 clb-waf：负载均衡型WAF
 cdn-waf：CDN上的Web防护能力
         :type Edition: str
-        :param _Anycast: 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+        :param _Anycast: 目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
         :type Anycast: int
         :param _Weights: 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
         :type Weights: list of int
@@ -2231,6 +2231,8 @@ cdn-waf：CDN上的Web防护能力
         :type UpstreamPolicy: int
         :param _UpstreamRules: 分流回源时生效，分流回源的规则。
         :type UpstreamRules: list of UpstreamRule
+        :param _UseCase: 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        :type UseCase: int
         """
         self._Domain = None
         self._CertType = None
@@ -2279,6 +2281,7 @@ cdn-waf：CDN上的Web防护能力
         self._GmSSLId = None
         self._UpstreamPolicy = None
         self._UpstreamRules = None
+        self._UseCase = None
 
     @property
     def Domain(self):
@@ -2435,13 +2438,17 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def ResourceId(self):
-        """待废弃，可不填。Waf的资源ID。
+        warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
+
+        """Waf的资源ID。
         :rtype: str
         """
         return self._ResourceId
 
     @ResourceId.setter
     def ResourceId(self, ResourceId):
+        warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
+
         self._ResourceId = ResourceId
 
     @property
@@ -2481,24 +2488,32 @@ https：使用https协议回源
 
     @property
     def IsGray(self):
-        """待废弃，可不填。是否开启灰度，0表示不开启灰度。
+        warnings.warn("parameter `IsGray` is deprecated", DeprecationWarning) 
+
+        """是否开启灰度，0表示不开启灰度。
         :rtype: int
         """
         return self._IsGray
 
     @IsGray.setter
     def IsGray(self, IsGray):
+        warnings.warn("parameter `IsGray` is deprecated", DeprecationWarning) 
+
         self._IsGray = IsGray
 
     @property
     def GrayAreas(self):
-        """待废弃，可不填。灰度的地区
+        warnings.warn("parameter `GrayAreas` is deprecated", DeprecationWarning) 
+
+        """灰度的地区
         :rtype: list of str
         """
         return self._GrayAreas
 
     @GrayAreas.setter
     def GrayAreas(self, GrayAreas):
+        warnings.warn("parameter `GrayAreas` is deprecated", DeprecationWarning) 
+
         self._GrayAreas = GrayAreas
 
     @property
@@ -2551,7 +2566,9 @@ https：使用https协议回源
 
     @property
     def Edition(self):
-        """待废弃，可不填。WAF实例类型。
+        warnings.warn("parameter `Edition` is deprecated", DeprecationWarning) 
+
+        """WAF实例类型。
 sparta-waf：SAAS型WAF
 clb-waf：负载均衡型WAF
 cdn-waf：CDN上的Web防护能力
@@ -2561,17 +2578,23 @@ cdn-waf：CDN上的Web防护能力
 
     @Edition.setter
     def Edition(self, Edition):
+        warnings.warn("parameter `Edition` is deprecated", DeprecationWarning) 
+
         self._Edition = Edition
 
     @property
     def Anycast(self):
-        """待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+        warnings.warn("parameter `Anycast` is deprecated", DeprecationWarning) 
+
+        """目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
         :rtype: int
         """
         return self._Anycast
 
     @Anycast.setter
     def Anycast(self, Anycast):
+        warnings.warn("parameter `Anycast` is deprecated", DeprecationWarning) 
+
         self._Anycast = Anycast
 
     @property
@@ -2837,6 +2860,17 @@ cdn-waf：CDN上的Web防护能力
     def UpstreamRules(self, UpstreamRules):
         self._UpstreamRules = UpstreamRules
 
+    @property
+    def UseCase(self):
+        """业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        :rtype: int
+        """
+        return self._UseCase
+
+    @UseCase.setter
+    def UseCase(self, UseCase):
+        self._UseCase = UseCase
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -2896,6 +2930,7 @@ cdn-waf：CDN上的Web防护能力
                 obj = UpstreamRule()
                 obj._deserialize(item)
                 self._UpstreamRules.append(obj)
+        self._UseCase = params.get("UseCase")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7142,6 +7177,8 @@ class ClbDomainsInfo(AbstractModel):
         :type Note: str
         :param _Labels: 域名标签
         :type Labels: list of str
+        :param _AccessStatus: clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
+        :type AccessStatus: int
         """
         self._Domain = None
         self._DomainId = None
@@ -7158,6 +7195,7 @@ class ClbDomainsInfo(AbstractModel):
         self._CloudType = None
         self._Note = None
         self._Labels = None
+        self._AccessStatus = None
 
     @property
     def Domain(self):
@@ -7324,6 +7362,17 @@ class ClbDomainsInfo(AbstractModel):
     def Labels(self, Labels):
         self._Labels = Labels
 
+    @property
+    def AccessStatus(self):
+        """clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
+        :rtype: int
+        """
+        return self._AccessStatus
+
+    @AccessStatus.setter
+    def AccessStatus(self, AccessStatus):
+        self._AccessStatus = AccessStatus
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -7346,6 +7395,7 @@ class ClbDomainsInfo(AbstractModel):
         self._CloudType = params.get("CloudType")
         self._Note = params.get("Note")
         self._Labels = params.get("Labels")
+        self._AccessStatus = params.get("AccessStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22444,7 +22494,7 @@ public：公有云域名
         :type UpstreamDomainList: list of str
         :param _SgID: 安全组ID
         :type SgID: str
-        :param _AccessStatus: clbwaf接入状态
+        :param _AccessStatus: clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
         :type AccessStatus: int
         :param _Labels: 域名标签
         :type Labels: list of str
@@ -22939,7 +22989,7 @@ public：公有云域名
 
     @property
     def AccessStatus(self):
-        """clbwaf接入状态
+        """clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
         :rtype: int
         """
         return self._AccessStatus
@@ -23272,7 +23322,7 @@ class DomainsPartInfo(AbstractModel):
 2：有部署代理服务，waf将使用remote_addr获取客户端IP
 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
         :type IsCdn: int
-        :param _IsGray: 是否开启灰度，已废弃。
+        :param _IsGray: 是否开启灰度。
         :type IsGray: int
         :param _IsHttp2: 是否开启HTTP2，需要开启HTTPS协议支持。
 0：关闭
@@ -23390,6 +23440,8 @@ https：使用https协议回源
         :type UpstreamPolicy: int
         :param _UpstreamRules: 分流回源策略
         :type UpstreamRules: list of UpstreamRule
+        :param _UseCase: 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        :type UseCase: int
         """
         self._Domain = None
         self._DomainId = None
@@ -23444,6 +23496,7 @@ https：使用https协议回源
         self._ProbeStatus = None
         self._UpstreamPolicy = None
         self._UpstreamRules = None
+        self._UseCase = None
 
     @property
     def Domain(self):
@@ -23581,13 +23634,17 @@ https：使用https协议回源
 
     @property
     def IsGray(self):
-        """是否开启灰度，已废弃。
+        warnings.warn("parameter `IsGray` is deprecated", DeprecationWarning) 
+
+        """是否开启灰度。
         :rtype: int
         """
         return self._IsGray
 
     @IsGray.setter
     def IsGray(self, IsGray):
+        warnings.warn("parameter `IsGray` is deprecated", DeprecationWarning) 
+
         self._IsGray = IsGray
 
     @property
@@ -24075,6 +24132,17 @@ https：使用https协议回源
     def UpstreamRules(self, UpstreamRules):
         self._UpstreamRules = UpstreamRules
 
+    @property
+    def UseCase(self):
+        """业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        :rtype: int
+        """
+        return self._UseCase
+
+    @UseCase.setter
+    def UseCase(self, UseCase):
+        self._UseCase = UseCase
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -24140,6 +24208,7 @@ https：使用https协议回源
                 obj = UpstreamRule()
                 obj._deserialize(item)
                 self._UpstreamRules.append(obj)
+        self._UseCase = params.get("UseCase")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35173,7 +35242,7 @@ https：使用https协议回源
         :type IsWebsocket: int
         :param _LoadBalance: 回源负载均衡策略。0：轮询1：IP hash2：加权轮询
         :type LoadBalance: int
-        :param _IsGray: 待废弃，可不填。是否开启灰度，0表示不开启灰度。
+        :param _IsGray: 是否开启灰度，0表示不开启灰度。
         :type IsGray: int
         :param _Edition: 域名所属实例类型
         :type Edition: str
@@ -35181,7 +35250,7 @@ https：使用https协议回源
         :type Ports: list of SpartaProtectionPort
         :param _IsKeepAlive: 是否开启长连接。0： 短连接1： 长连接
         :type IsKeepAlive: str
-        :param _Anycast: 待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+        :param _Anycast: 目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
         :type Anycast: int
         :param _Weights: 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
         :type Weights: list of int
@@ -35235,6 +35304,8 @@ https：使用https协议回源
         :type UpstreamPolicy: int
         :param _UpstreamRules: 分流回源时生效，分流回源的规则。
         :type UpstreamRules: list of UpstreamRule
+        :param _UseCase: 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        :type UseCase: int
         """
         self._Domain = None
         self._DomainId = None
@@ -35282,6 +35353,7 @@ https：使用https协议回源
         self._GmSSLId = None
         self._UpstreamPolicy = None
         self._UpstreamRules = None
+        self._UseCase = None
 
     @property
     def Domain(self):
@@ -35474,13 +35546,17 @@ https：使用https协议回源
 
     @property
     def IsGray(self):
-        """待废弃，可不填。是否开启灰度，0表示不开启灰度。
+        warnings.warn("parameter `IsGray` is deprecated", DeprecationWarning) 
+
+        """是否开启灰度，0表示不开启灰度。
         :rtype: int
         """
         return self._IsGray
 
     @IsGray.setter
     def IsGray(self, IsGray):
+        warnings.warn("parameter `IsGray` is deprecated", DeprecationWarning) 
+
         self._IsGray = IsGray
 
     @property
@@ -35518,13 +35594,17 @@ https：使用https协议回源
 
     @property
     def Anycast(self):
-        """待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+        warnings.warn("parameter `Anycast` is deprecated", DeprecationWarning) 
+
+        """目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
         :rtype: int
         """
         return self._Anycast
 
     @Anycast.setter
     def Anycast(self, Anycast):
+        warnings.warn("parameter `Anycast` is deprecated", DeprecationWarning) 
+
         self._Anycast = Anycast
 
     @property
@@ -35795,6 +35875,17 @@ https：使用https协议回源
     def UpstreamRules(self, UpstreamRules):
         self._UpstreamRules = UpstreamRules
 
+    @property
+    def UseCase(self):
+        """业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        :rtype: int
+        """
+        return self._UseCase
+
+    @UseCase.setter
+    def UseCase(self, UseCase):
+        self._UseCase = UseCase
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -35853,6 +35944,7 @@ https：使用https协议回源
                 obj = UpstreamRule()
                 obj._deserialize(item)
                 self._UpstreamRules.append(obj)
+        self._UseCase = params.get("UseCase")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

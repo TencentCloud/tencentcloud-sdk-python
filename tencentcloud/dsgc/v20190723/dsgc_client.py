@@ -1855,9 +1855,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPADiscoveryTaskResult(self, request):
-        """获取分类分级任务结果，该接口只有在任务状态为以下状态时才支持结果正常查询：
-        3 扫描成功，
-        4 扫描失败
+        """获取分类分级任务结果，该接口只有在任务状态为以下状态时才支持结果正常查询：3 扫描成功，4 扫描失败
 
         :param request: Request instance for DescribeDSPADiscoveryTaskResult.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADiscoveryTaskResultRequest`

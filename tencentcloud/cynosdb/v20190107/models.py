@@ -6200,6 +6200,10 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type GdnId: str
         :param _ProxyConfig: 数据库代理配置
         :type ProxyConfig: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConfig`
+        :param _AutoArchive: 是否自动归档
+        :type AutoArchive: str
+        :param _AutoArchiveDelayHours: 暂停后的归档处理时间
+        :type AutoArchiveDelayHours: int
         """
         self._Zone = None
         self._VpcId = None
@@ -6244,6 +6248,8 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._InstanceInitInfos = None
         self._GdnId = None
         self._ProxyConfig = None
+        self._AutoArchive = None
+        self._AutoArchiveDelayHours = None
 
     @property
     def Zone(self):
@@ -6740,6 +6746,28 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
     def ProxyConfig(self, ProxyConfig):
         self._ProxyConfig = ProxyConfig
 
+    @property
+    def AutoArchive(self):
+        """是否自动归档
+        :rtype: str
+        """
+        return self._AutoArchive
+
+    @AutoArchive.setter
+    def AutoArchive(self, AutoArchive):
+        self._AutoArchive = AutoArchive
+
+    @property
+    def AutoArchiveDelayHours(self):
+        """暂停后的归档处理时间
+        :rtype: int
+        """
+        return self._AutoArchiveDelayHours
+
+    @AutoArchiveDelayHours.setter
+    def AutoArchiveDelayHours(self, AutoArchiveDelayHours):
+        self._AutoArchiveDelayHours = AutoArchiveDelayHours
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -6802,6 +6830,8 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         if params.get("ProxyConfig") is not None:
             self._ProxyConfig = ProxyConfig()
             self._ProxyConfig._deserialize(params.get("ProxyConfig"))
+        self._AutoArchive = params.get("AutoArchive")
+        self._AutoArchiveDelayHours = params.get("AutoArchiveDelayHours")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18411,6 +18441,8 @@ offlined 已下线
         :type Status: str
         :param _InstanceIds: 实例id列表
         :type InstanceIds: list of str
+        :param _ClusterType: 集群类型，取值范围<li> CYNOSDB：事务集群 </li><li> LIBRADB：分析集群 </li><li> ALL：全部 </li>，缺省为 ALL
+        :type ClusterType: str
         """
         self._Limit = None
         self._Offset = None
@@ -18420,6 +18452,7 @@ offlined 已下线
         self._DbType = None
         self._Status = None
         self._InstanceIds = None
+        self._ClusterType = None
 
     @property
     def Limit(self):
@@ -18520,6 +18553,17 @@ offlined 已下线
     def InstanceIds(self, InstanceIds):
         self._InstanceIds = InstanceIds
 
+    @property
+    def ClusterType(self):
+        """集群类型，取值范围<li> CYNOSDB：事务集群 </li><li> LIBRADB：分析集群 </li><li> ALL：全部 </li>，缺省为 ALL
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -18535,6 +18579,7 @@ offlined 已下线
         self._DbType = params.get("DbType")
         self._Status = params.get("Status")
         self._InstanceIds = params.get("InstanceIds")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

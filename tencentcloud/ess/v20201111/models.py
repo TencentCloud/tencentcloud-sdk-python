@@ -32126,12 +32126,12 @@ class RegisterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LegalName: 法人姓名
+        :param _LegalName: <font color="red">字段不再使用</font>，法人姓名
         :type LegalName: str
         :param _Uscc: 社会统一信用代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uscc: str
-        :param _UnifiedSocialCreditCode: 社会统一信用代码
+        :param _UnifiedSocialCreditCode: <font color="red">字段不再使用</font>，社会统一信用代码
         :type UnifiedSocialCreditCode: str
         :param _AuthorizationTypes: 指定企业认证的授权方式 支持多选:
 
@@ -32140,15 +32140,23 @@ class RegisterInfo(AbstractModel):
 <li><strong>5</strong>: 授权书+对公打款方式</li>
 </ul>
         :type AuthorizationTypes: list of int non-negative
+        :param _AuthorizationType: 指定企业认证的授权方式 支持多选:
+
+<ul>
+<li><strong>2</strong>: 法人授权方式</li>
+<li><strong>5</strong>: 授权书+对公打款方式</li>
+</ul>
+        :type AuthorizationType: int
         """
         self._LegalName = None
         self._Uscc = None
         self._UnifiedSocialCreditCode = None
         self._AuthorizationTypes = None
+        self._AuthorizationType = None
 
     @property
     def LegalName(self):
-        """法人姓名
+        """<font color="red">字段不再使用</font>，法人姓名
         :rtype: str
         """
         return self._LegalName
@@ -32175,7 +32183,7 @@ class RegisterInfo(AbstractModel):
 
     @property
     def UnifiedSocialCreditCode(self):
-        """社会统一信用代码
+        """<font color="red">字段不再使用</font>，社会统一信用代码
         :rtype: str
         """
         return self._UnifiedSocialCreditCode
@@ -32186,6 +32194,8 @@ class RegisterInfo(AbstractModel):
 
     @property
     def AuthorizationTypes(self):
+        warnings.warn("parameter `AuthorizationTypes` is deprecated", DeprecationWarning) 
+
         """指定企业认证的授权方式 支持多选:
 
 <ul>
@@ -32198,7 +32208,25 @@ class RegisterInfo(AbstractModel):
 
     @AuthorizationTypes.setter
     def AuthorizationTypes(self, AuthorizationTypes):
+        warnings.warn("parameter `AuthorizationTypes` is deprecated", DeprecationWarning) 
+
         self._AuthorizationTypes = AuthorizationTypes
+
+    @property
+    def AuthorizationType(self):
+        """指定企业认证的授权方式 支持多选:
+
+<ul>
+<li><strong>2</strong>: 法人授权方式</li>
+<li><strong>5</strong>: 授权书+对公打款方式</li>
+</ul>
+        :rtype: int
+        """
+        return self._AuthorizationType
+
+    @AuthorizationType.setter
+    def AuthorizationType(self, AuthorizationType):
+        self._AuthorizationType = AuthorizationType
 
 
     def _deserialize(self, params):
@@ -32206,6 +32234,7 @@ class RegisterInfo(AbstractModel):
         self._Uscc = params.get("Uscc")
         self._UnifiedSocialCreditCode = params.get("UnifiedSocialCreditCode")
         self._AuthorizationTypes = params.get("AuthorizationTypes")
+        self._AuthorizationType = params.get("AuthorizationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

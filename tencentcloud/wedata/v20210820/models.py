@@ -26955,6 +26955,235 @@ class DescribeDsParentFolderTreeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDsTaskVersionInfoRequest(AbstractModel):
+    """DescribeDsTaskVersionInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TaskVersion: 版本
+        :type TaskVersion: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        """
+        self._TaskId = None
+        self._TaskVersion = None
+        self._ProjectId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskVersion(self):
+        """版本
+        :rtype: str
+        """
+        return self._TaskVersion
+
+    @TaskVersion.setter
+    def TaskVersion(self, TaskVersion):
+        self._TaskVersion = TaskVersion
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskVersion = params.get("TaskVersion")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDsTaskVersionInfoResponse(AbstractModel):
+    """DescribeDsTaskVersionInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务版本详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.TaskVersionDsDTO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """任务版本详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskVersionDsDTO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TaskVersionDsDTO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDsTaskVersionListRequest(AbstractModel):
+    """DescribeDsTaskVersionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _IsOnlyCurrentEditingVersion: 是否仅返回当前编辑版本
+        :type IsOnlyCurrentEditingVersion: bool
+        """
+        self._TaskId = None
+        self._ProjectId = None
+        self._IsOnlyCurrentEditingVersion = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def IsOnlyCurrentEditingVersion(self):
+        """是否仅返回当前编辑版本
+        :rtype: bool
+        """
+        return self._IsOnlyCurrentEditingVersion
+
+    @IsOnlyCurrentEditingVersion.setter
+    def IsOnlyCurrentEditingVersion(self, IsOnlyCurrentEditingVersion):
+        self._IsOnlyCurrentEditingVersion = IsOnlyCurrentEditingVersion
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ProjectId = params.get("ProjectId")
+        self._IsOnlyCurrentEditingVersion = params.get("IsOnlyCurrentEditingVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDsTaskVersionListResponse(AbstractModel):
+    """DescribeDsTaskVersionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of TaskVersionDsDTO
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskVersionDsDTO
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TaskVersionDsDTO()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDutyScheduleDetailsRequest(AbstractModel):
     """DescribeDutyScheduleDetails请求参数结构体
 
@@ -43443,7 +43672,7 @@ class DescribeTaskScriptResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 任务脚本内容
+        :param _Data: 任务脚本内容，BASE64编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20210820.models.TaskScriptContent`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -43454,7 +43683,7 @@ class DescribeTaskScriptResponse(AbstractModel):
 
     @property
     def Data(self):
-        """任务脚本内容
+        """任务脚本内容，BASE64编码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskScriptContent`
         """
@@ -50250,6 +50479,117 @@ class EventOpsDto(AbstractModel):
                 obj = EventCaseOpsDto()
                 obj._deserialize(item)
                 self._EventCases.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventPublisherDTO(AbstractModel):
+    """事件发布者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 关键字，一般为任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Type: REST_API、KAFKA
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _CreationTs: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTs: str
+        :param _PropertiesList: 配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PropertiesList: list of ParamInfoDs
+        :param _Description: 描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._Key = None
+        self._Type = None
+        self._CreationTs = None
+        self._PropertiesList = None
+        self._Description = None
+
+    @property
+    def Key(self):
+        """关键字，一般为任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Type(self):
+        """REST_API、KAFKA
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CreationTs(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreationTs
+
+    @CreationTs.setter
+    def CreationTs(self, CreationTs):
+        self._CreationTs = CreationTs
+
+    @property
+    def PropertiesList(self):
+        """配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ParamInfoDs
+        """
+        return self._PropertiesList
+
+    @PropertiesList.setter
+    def PropertiesList(self, PropertiesList):
+        self._PropertiesList = PropertiesList
+
+    @property
+    def Description(self):
+        """描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Type = params.get("Type")
+        self._CreationTs = params.get("CreationTs")
+        if params.get("PropertiesList") is not None:
+            self._PropertiesList = []
+            for item in params.get("PropertiesList"):
+                obj = ParamInfoDs()
+                obj._deserialize(item)
+                self._PropertiesList.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70532,7 +70872,7 @@ class ModifyTaskScriptRequest(AbstractModel):
         :type ProjectId: str
         :param _TaskId: 任务ID
         :type TaskId: str
-        :param _ScriptContent: 脚本内容 base64编码
+        :param _ScriptContent: 必填，脚本内容 base64编码
         :type ScriptContent: str
         :param _IntegrationNodeDetails: 集成任务脚本配置
         :type IntegrationNodeDetails: list of IntegrationNodeDetail
@@ -70566,7 +70906,7 @@ class ModifyTaskScriptRequest(AbstractModel):
 
     @property
     def ScriptContent(self):
-        """脚本内容 base64编码
+        """必填，脚本内容 base64编码
         :rtype: str
         """
         return self._ScriptContent
@@ -102983,6 +103323,426 @@ class TaskTypeOpsDto(AbstractModel):
         self._TypeDesc = params.get("TypeDesc")
         self._TypeId = params.get("TypeId")
         self._TypeSort = params.get("TypeSort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskVersionDsDTO(AbstractModel):
+    """TaskVersionVO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionId: 版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: str
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _VersionNum: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionNum: str
+        :param _VersionRemark: 版本备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionRemark: str
+        :param _Creator: 版本创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param _CreateTime: 版本创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 版本更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _LastSchedulerCommitTime: 最新调度计划变更时间 生产态存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastSchedulerCommitTime: str
+        :param _UsedVersion: 版本是否正在使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedVersion: int
+        :param _TaskInfo: 任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskInfo: :class:`tencentcloud.wedata.v20210820.models.TaskDsDTO`
+        :param _TaskParaInfo: 任务参数信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskParaInfo: list of ParameterTaskDsDto
+        :param _TaskInputParam: TaskInputParam输入参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskInputParam: list of ParameterTaskInDsDto
+        :param _TaskOutputParam: TaskOutputParam输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskOutputParam: list of ParameterTaskOutDsDto
+        :param _TaskLinkInfo: 任务上游依赖信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskLinkInfo: list of TaskLinkDsDTO
+        :param _ApproveStatus: 审批状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveStatus: str
+        :param _ApproveName: 审批人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveName: str
+        :param _TaskEventPublisher: 任务事件绑定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskEventPublisher: list of EventPublisherDTO
+        :param _TaskRegisterOutputTable: 任务产出登记信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskRegisterOutputTable: list of TaskDataRegistryDTO
+        :param _TaskCycleLinkInfo: 循环依赖信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskCycleLinkInfo: list of TaskCycleLinkDTO
+        :param _TaskEventListener: 事件监听信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskEventListener: list of EventListenerDTO
+        :param _ApproveTime: 审批时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveTime: str
+        """
+        self._VersionId = None
+        self._TaskId = None
+        self._VersionNum = None
+        self._VersionRemark = None
+        self._Creator = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LastSchedulerCommitTime = None
+        self._UsedVersion = None
+        self._TaskInfo = None
+        self._TaskParaInfo = None
+        self._TaskInputParam = None
+        self._TaskOutputParam = None
+        self._TaskLinkInfo = None
+        self._ApproveStatus = None
+        self._ApproveName = None
+        self._TaskEventPublisher = None
+        self._TaskRegisterOutputTable = None
+        self._TaskCycleLinkInfo = None
+        self._TaskEventListener = None
+        self._ApproveTime = None
+
+    @property
+    def VersionId(self):
+        """版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def TaskId(self):
+        """任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def VersionNum(self):
+        """版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionNum
+
+    @VersionNum.setter
+    def VersionNum(self, VersionNum):
+        self._VersionNum = VersionNum
+
+    @property
+    def VersionRemark(self):
+        """版本备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionRemark
+
+    @VersionRemark.setter
+    def VersionRemark(self, VersionRemark):
+        self._VersionRemark = VersionRemark
+
+    @property
+    def Creator(self):
+        """版本创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreateTime(self):
+        """版本创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """版本更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LastSchedulerCommitTime(self):
+        """最新调度计划变更时间 生产态存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastSchedulerCommitTime
+
+    @LastSchedulerCommitTime.setter
+    def LastSchedulerCommitTime(self, LastSchedulerCommitTime):
+        self._LastSchedulerCommitTime = LastSchedulerCommitTime
+
+    @property
+    def UsedVersion(self):
+        """版本是否正在使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UsedVersion
+
+    @UsedVersion.setter
+    def UsedVersion(self, UsedVersion):
+        self._UsedVersion = UsedVersion
+
+    @property
+    def TaskInfo(self):
+        """任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskDsDTO`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def TaskParaInfo(self):
+        """任务参数信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ParameterTaskDsDto
+        """
+        return self._TaskParaInfo
+
+    @TaskParaInfo.setter
+    def TaskParaInfo(self, TaskParaInfo):
+        self._TaskParaInfo = TaskParaInfo
+
+    @property
+    def TaskInputParam(self):
+        """TaskInputParam输入参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ParameterTaskInDsDto
+        """
+        return self._TaskInputParam
+
+    @TaskInputParam.setter
+    def TaskInputParam(self, TaskInputParam):
+        self._TaskInputParam = TaskInputParam
+
+    @property
+    def TaskOutputParam(self):
+        """TaskOutputParam输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ParameterTaskOutDsDto
+        """
+        return self._TaskOutputParam
+
+    @TaskOutputParam.setter
+    def TaskOutputParam(self, TaskOutputParam):
+        self._TaskOutputParam = TaskOutputParam
+
+    @property
+    def TaskLinkInfo(self):
+        """任务上游依赖信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskLinkDsDTO
+        """
+        return self._TaskLinkInfo
+
+    @TaskLinkInfo.setter
+    def TaskLinkInfo(self, TaskLinkInfo):
+        self._TaskLinkInfo = TaskLinkInfo
+
+    @property
+    def ApproveStatus(self):
+        """审批状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApproveStatus
+
+    @ApproveStatus.setter
+    def ApproveStatus(self, ApproveStatus):
+        self._ApproveStatus = ApproveStatus
+
+    @property
+    def ApproveName(self):
+        """审批人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApproveName
+
+    @ApproveName.setter
+    def ApproveName(self, ApproveName):
+        self._ApproveName = ApproveName
+
+    @property
+    def TaskEventPublisher(self):
+        """任务事件绑定
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventPublisherDTO
+        """
+        return self._TaskEventPublisher
+
+    @TaskEventPublisher.setter
+    def TaskEventPublisher(self, TaskEventPublisher):
+        self._TaskEventPublisher = TaskEventPublisher
+
+    @property
+    def TaskRegisterOutputTable(self):
+        """任务产出登记信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskDataRegistryDTO
+        """
+        return self._TaskRegisterOutputTable
+
+    @TaskRegisterOutputTable.setter
+    def TaskRegisterOutputTable(self, TaskRegisterOutputTable):
+        self._TaskRegisterOutputTable = TaskRegisterOutputTable
+
+    @property
+    def TaskCycleLinkInfo(self):
+        """循环依赖信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskCycleLinkDTO
+        """
+        return self._TaskCycleLinkInfo
+
+    @TaskCycleLinkInfo.setter
+    def TaskCycleLinkInfo(self, TaskCycleLinkInfo):
+        self._TaskCycleLinkInfo = TaskCycleLinkInfo
+
+    @property
+    def TaskEventListener(self):
+        """事件监听信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventListenerDTO
+        """
+        return self._TaskEventListener
+
+    @TaskEventListener.setter
+    def TaskEventListener(self, TaskEventListener):
+        self._TaskEventListener = TaskEventListener
+
+    @property
+    def ApproveTime(self):
+        """审批时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+
+    def _deserialize(self, params):
+        self._VersionId = params.get("VersionId")
+        self._TaskId = params.get("TaskId")
+        self._VersionNum = params.get("VersionNum")
+        self._VersionRemark = params.get("VersionRemark")
+        self._Creator = params.get("Creator")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LastSchedulerCommitTime = params.get("LastSchedulerCommitTime")
+        self._UsedVersion = params.get("UsedVersion")
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = TaskDsDTO()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        if params.get("TaskParaInfo") is not None:
+            self._TaskParaInfo = []
+            for item in params.get("TaskParaInfo"):
+                obj = ParameterTaskDsDto()
+                obj._deserialize(item)
+                self._TaskParaInfo.append(obj)
+        if params.get("TaskInputParam") is not None:
+            self._TaskInputParam = []
+            for item in params.get("TaskInputParam"):
+                obj = ParameterTaskInDsDto()
+                obj._deserialize(item)
+                self._TaskInputParam.append(obj)
+        if params.get("TaskOutputParam") is not None:
+            self._TaskOutputParam = []
+            for item in params.get("TaskOutputParam"):
+                obj = ParameterTaskOutDsDto()
+                obj._deserialize(item)
+                self._TaskOutputParam.append(obj)
+        if params.get("TaskLinkInfo") is not None:
+            self._TaskLinkInfo = []
+            for item in params.get("TaskLinkInfo"):
+                obj = TaskLinkDsDTO()
+                obj._deserialize(item)
+                self._TaskLinkInfo.append(obj)
+        self._ApproveStatus = params.get("ApproveStatus")
+        self._ApproveName = params.get("ApproveName")
+        if params.get("TaskEventPublisher") is not None:
+            self._TaskEventPublisher = []
+            for item in params.get("TaskEventPublisher"):
+                obj = EventPublisherDTO()
+                obj._deserialize(item)
+                self._TaskEventPublisher.append(obj)
+        if params.get("TaskRegisterOutputTable") is not None:
+            self._TaskRegisterOutputTable = []
+            for item in params.get("TaskRegisterOutputTable"):
+                obj = TaskDataRegistryDTO()
+                obj._deserialize(item)
+                self._TaskRegisterOutputTable.append(obj)
+        if params.get("TaskCycleLinkInfo") is not None:
+            self._TaskCycleLinkInfo = []
+            for item in params.get("TaskCycleLinkInfo"):
+                obj = TaskCycleLinkDTO()
+                obj._deserialize(item)
+                self._TaskCycleLinkInfo.append(obj)
+        if params.get("TaskEventListener") is not None:
+            self._TaskEventListener = []
+            for item in params.get("TaskEventListener"):
+                obj = EventListenerDTO()
+                obj._deserialize(item)
+                self._TaskEventListener.append(obj)
+        self._ApproveTime = params.get("ApproveTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

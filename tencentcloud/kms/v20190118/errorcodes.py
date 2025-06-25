@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 未授权的操作。
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
@@ -50,6 +53,12 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # 别名已经存在。
 INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = 'InvalidParameterValue.AliasAlreadyExists'
 
+# 数据密钥名称已存在
+INVALIDPARAMETERVALUE_DATAKEYNAMEALREADYEXISTS = 'InvalidParameterValue.DataKeyNameAlreadyExists'
+
+# 存在重复的数据密钥ID
+INVALIDPARAMETERVALUE_DUPLICATEDDATAKEYID = 'InvalidParameterValue.DuplicatedDataKeyId'
+
 # KeyId重复。
 INVALIDPARAMETERVALUE_DUPLICATEDKEYID = 'InvalidParameterValue.DuplicatedKeyId'
 
@@ -59,8 +68,17 @@ INVALIDPARAMETERVALUE_INVALIDALIAS = 'InvalidParameterValue.InvalidAlias'
 # 密文格式错误。
 INVALIDPARAMETERVALUE_INVALIDCIPHERTEXT = 'InvalidParameterValue.InvalidCiphertext'
 
+# 不合法的数据密钥ID
+INVALIDPARAMETERVALUE_INVALIDDATAKEYID = 'InvalidParameterValue.InvalidDataKeyId'
+
+# 不合法的数据密钥名称
+INVALIDPARAMETERVALUE_INVALIDDATAKEYNAME = 'InvalidParameterValue.InvalidDataKeyName'
+
 # 无效的 HSM 集群 ID。
 INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = 'InvalidParameterValue.InvalidHsmClusterId'
+
+# 导入的数据密钥合法
+INVALIDPARAMETERVALUE_INVALIDIMPORTKEYMATERIAL = 'InvalidParameterValue.InvalidImportKeyMaterial'
 
 # KeyId不合法。
 INVALIDPARAMETERVALUE_INVALIDKEYID = 'InvalidParameterValue.InvalidKeyId'
@@ -85,6 +103,9 @@ INVALIDPARAMETERVALUE_TAGSNOTEXISTED = 'InvalidParameterValue.TagsNotExisted'
 
 # CMK数量已达上限。
 LIMITEXCEEDED_CMKLIMITEXCEEDED = 'LimitExceeded.CmkLimitExceeded'
+
+# DataKey超过上限
+LIMITEXCEEDED_DATAKEYLIMITEXCEEDED = 'LimitExceeded.DataKeyLimitExceeded'
 
 # 设备指纹个数超过限制。
 LIMITEXCEEDED_FINGERPRINTSLIMITEXCEEDED = 'LimitExceeded.FingerprintsLimitExceeded'
@@ -118,6 +139,21 @@ RESOURCEUNAVAILABLE_CMKSHOULDBEDISABLED = 'ResourceUnavailable.CmkShouldBeDisabl
 
 # CMK 状态不支持该操作。
 RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = 'ResourceUnavailable.CmkStateNotSupport'
+
+# 数据密钥已禁用
+RESOURCEUNAVAILABLE_DATAKEYDISABLED = 'ResourceUnavailable.DataKeyDisabled'
+
+# 数据密钥不存在
+RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = 'ResourceUnavailable.DataKeyNotFound'
+
+# 数据密钥不是计划删除状态不能被执行取消计划删除。
+RESOURCEUNAVAILABLE_DATAKEYNOTPENDINGDELETE = 'ResourceUnavailable.DataKeyNotPendingDelete'
+
+# 数据密钥已计划删除
+RESOURCEUNAVAILABLE_DATAKEYPENDINGDELETE = 'ResourceUnavailable.DataKeyPendingDelete'
+
+# 数据密钥状态不支持该操作
+RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = 'ResourceUnavailable.DataKeyStateNotSupport'
 
 # 密钥已被禁用。
 RESOURCEUNAVAILABLE_KEYDISABLED = 'ResourceUnavailable.KeyDisabled'

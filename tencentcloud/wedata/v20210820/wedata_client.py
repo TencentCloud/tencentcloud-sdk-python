@@ -2121,6 +2121,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDsTaskVersionInfo(self, request):
+        """查看任务版本详细信息
+
+        :param request: Request instance for DescribeDsTaskVersionInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDsTaskVersionInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDsTaskVersionInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDsTaskVersionInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDsTaskVersionInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDsTaskVersionList(self, request):
+        """拉取任务版本列表
+
+        :param request: Request instance for DescribeDsTaskVersionList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDsTaskVersionListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDsTaskVersionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDsTaskVersionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDsTaskVersionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDutyScheduleDetails(self, request):
         """获取值班日历
 
@@ -4314,7 +4360,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskScript(self, request):
-        """查询任务脚本
+        """查询任务脚本。本接口已废弃，请使用接口GetPaginationTaskScript。
 
         :param request: Request instance for DescribeTaskScript.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskScriptRequest`
@@ -5559,7 +5605,7 @@ class WedataClient(AbstractClient):
 
     def ModifyTaskScript(self, request):
         """<p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
-        修改任务脚本
+        修改任务脚本。本接口已废弃，请使用接口ModifyTaskInfoDs。
 
         :param request: Request instance for ModifyTaskScript.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskScriptRequest`

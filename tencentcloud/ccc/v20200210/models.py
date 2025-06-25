@@ -2956,7 +2956,7 @@ HoaiMy
         :param _WelcomeType: 0：使用welcomeMessage(为空时，被叫先说话；不为空时，机器人先说话)
 1:   使用ai根据prompt自动生成welcomeMessage并先说话
         :type WelcomeType: int
-        :param _WelcomeMessagePriority: 0: 默认可打断， 1：高优先不可打断
+        :param _WelcomeMessagePriority: 0: 默认可打断， 2：高优先不可打断
         :type WelcomeMessagePriority: int
         :param _MaxDuration: 最大等待时长(毫秒)，默认60秒，超过这个时间用户没说话，自动挂断
         :type MaxDuration: int
@@ -3317,7 +3317,7 @@ HoaiMy
 
     @property
     def WelcomeMessagePriority(self):
-        """0: 默认可打断， 1：高优先不可打断
+        """0: 默认可打断， 2：高优先不可打断
         :rtype: int
         """
         return self._WelcomeMessagePriority

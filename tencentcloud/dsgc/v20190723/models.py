@@ -5245,6 +5245,8 @@ selfbuilt-db 表示自建数据库
         :type Rows: int
         :param _GlobalOrderField: 抽样的排序字段
         :type GlobalOrderField: str
+        :param _ScanRange: full:全量扫描 incre:变更扫描
+        :type ScanRange: str
         """
         self._DspaId = None
         self._Name = None
@@ -5262,6 +5264,7 @@ selfbuilt-db 表示自建数据库
         self._Order = None
         self._Rows = None
         self._GlobalOrderField = None
+        self._ScanRange = None
 
     @property
     def DspaId(self):
@@ -5451,6 +5454,17 @@ selfbuilt-db 表示自建数据库
     def GlobalOrderField(self, GlobalOrderField):
         self._GlobalOrderField = GlobalOrderField
 
+    @property
+    def ScanRange(self):
+        """full:全量扫描 incre:变更扫描
+        :rtype: str
+        """
+        return self._ScanRange
+
+    @ScanRange.setter
+    def ScanRange(self, ScanRange):
+        self._ScanRange = ScanRange
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -5469,6 +5483,7 @@ selfbuilt-db 表示自建数据库
         self._Order = params.get("Order")
         self._Rows = params.get("Rows")
         self._GlobalOrderField = params.get("GlobalOrderField")
+        self._ScanRange = params.get("ScanRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13139,10 +13154,13 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
         :type TaskId: int
         :param _BucketResultId: 扫描Bucket任务结果ID
         :type BucketResultId: int
+        :param _ScanResultId: 扫描结果id
+        :type ScanResultId: int
         """
         self._DspaId = None
         self._TaskId = None
         self._BucketResultId = None
+        self._ScanResultId = None
 
     @property
     def DspaId(self):
@@ -13168,6 +13186,8 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
 
     @property
     def BucketResultId(self):
+        warnings.warn("parameter `BucketResultId` is deprecated", DeprecationWarning) 
+
         """扫描Bucket任务结果ID
         :rtype: int
         """
@@ -13175,13 +13195,27 @@ class DescribeDSPACOSDiscoveryTaskFilesRequest(AbstractModel):
 
     @BucketResultId.setter
     def BucketResultId(self, BucketResultId):
+        warnings.warn("parameter `BucketResultId` is deprecated", DeprecationWarning) 
+
         self._BucketResultId = BucketResultId
+
+    @property
+    def ScanResultId(self):
+        """扫描结果id
+        :rtype: int
+        """
+        return self._ScanResultId
+
+    @ScanResultId.setter
+    def ScanResultId(self, ScanResultId):
+        self._ScanResultId = ScanResultId
 
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._TaskId = params.get("TaskId")
         self._BucketResultId = params.get("BucketResultId")
+        self._ScanResultId = params.get("ScanResultId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13256,11 +13290,20 @@ DataSourceId：数据源ID，
 ResourceRegion：资源所在地域
 每项过滤条件最多支持5个。
         :type Filters: list of Filter
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _FetchHistory: 是否查询历史结果
+        :type FetchHistory: bool
         """
         self._DspaId = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._FetchHistory = None
 
     @property
     def DspaId(self):
@@ -13312,6 +13355,39 @@ ResourceRegion：资源所在地域
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FetchHistory(self):
+        """是否查询历史结果
+        :rtype: bool
+        """
+        return self._FetchHistory
+
+    @FetchHistory.setter
+    def FetchHistory(self, FetchHistory):
+        self._FetchHistory = FetchHistory
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -13323,6 +13399,9 @@ ResourceRegion：资源所在地域
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._FetchHistory = params.get("FetchHistory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13344,11 +13423,14 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
         :type Items: list of DspaCOSDiscoveryTaskResult
         :param _TotalCount: 符合条件的数据结果数目
         :type TotalCount: int
+        :param _MaxCount: 最大展示扫描结果次数
+        :type MaxCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
         self._TotalCount = None
+        self._MaxCount = None
         self._RequestId = None
 
     @property
@@ -13374,6 +13456,17 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def MaxCount(self):
+        """最大展示扫描结果次数
+        :rtype: int
+        """
+        return self._MaxCount
+
+    @MaxCount.setter
+    def MaxCount(self, MaxCount):
+        self._MaxCount = MaxCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -13393,6 +13486,7 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._MaxCount = params.get("MaxCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -13581,10 +13675,10 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
         :type DspaId: str
         :param _TaskId: 任务ID
         :type TaskId: int
-        :param _BucketResultId: 扫描Bucket结果ID
-        :type BucketResultId: int
         :param _ComplianceId: 合规组ID
         :type ComplianceId: int
+        :param _BucketResultId: 扫描Bucket结果ID
+        :type BucketResultId: int
         :param _FileName: 文件名
         :type FileName: str
         :param _CategoryId: 敏感数据分类ID
@@ -13599,11 +13693,13 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
         :type BucketName: str
         :param _CategoryIdList: 多级分类的分类ID集合
         :type CategoryIdList: list of int
+        :param _ScanResultId: 扫描结果id
+        :type ScanResultId: int
         """
         self._DspaId = None
         self._TaskId = None
-        self._BucketResultId = None
         self._ComplianceId = None
+        self._BucketResultId = None
         self._FileName = None
         self._CategoryId = None
         self._LevelId = None
@@ -13611,6 +13707,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
         self._Limit = None
         self._BucketName = None
         self._CategoryIdList = None
+        self._ScanResultId = None
 
     @property
     def DspaId(self):
@@ -13635,17 +13732,6 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
         self._TaskId = TaskId
 
     @property
-    def BucketResultId(self):
-        """扫描Bucket结果ID
-        :rtype: int
-        """
-        return self._BucketResultId
-
-    @BucketResultId.setter
-    def BucketResultId(self, BucketResultId):
-        self._BucketResultId = BucketResultId
-
-    @property
     def ComplianceId(self):
         """合规组ID
         :rtype: int
@@ -13655,6 +13741,21 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
     @ComplianceId.setter
     def ComplianceId(self, ComplianceId):
         self._ComplianceId = ComplianceId
+
+    @property
+    def BucketResultId(self):
+        warnings.warn("parameter `BucketResultId` is deprecated", DeprecationWarning) 
+
+        """扫描Bucket结果ID
+        :rtype: int
+        """
+        return self._BucketResultId
+
+    @BucketResultId.setter
+    def BucketResultId(self, BucketResultId):
+        warnings.warn("parameter `BucketResultId` is deprecated", DeprecationWarning) 
+
+        self._BucketResultId = BucketResultId
 
     @property
     def FileName(self):
@@ -13733,12 +13834,23 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
     def CategoryIdList(self, CategoryIdList):
         self._CategoryIdList = CategoryIdList
 
+    @property
+    def ScanResultId(self):
+        """扫描结果id
+        :rtype: int
+        """
+        return self._ScanResultId
+
+    @ScanResultId.setter
+    def ScanResultId(self, ScanResultId):
+        self._ScanResultId = ScanResultId
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._TaskId = params.get("TaskId")
-        self._BucketResultId = params.get("BucketResultId")
         self._ComplianceId = params.get("ComplianceId")
+        self._BucketResultId = params.get("BucketResultId")
         self._FileName = params.get("FileName")
         self._CategoryId = params.get("CategoryId")
         self._LevelId = params.get("LevelId")
@@ -13746,6 +13858,7 @@ class DescribeDSPACOSTaskResultDetailRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._BucketName = params.get("BucketName")
         self._CategoryIdList = params.get("CategoryIdList")
+        self._ScanResultId = params.get("ScanResultId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15295,6 +15408,8 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
         :type Limit: int
         :param _CategoryIdList: 多级分类的分类ID集合
         :type CategoryIdList: list of int
+        :param _ScanResultId: 任务扫描id
+        :type ScanResultId: int
         """
         self._DspaId = None
         self._TaskId = None
@@ -15307,6 +15422,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._CategoryIdList = None
+        self._ScanResultId = None
 
     @property
     def DspaId(self):
@@ -15429,6 +15545,17 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
     def CategoryIdList(self, CategoryIdList):
         self._CategoryIdList = CategoryIdList
 
+    @property
+    def ScanResultId(self):
+        """任务扫描id
+        :rtype: int
+        """
+        return self._ScanResultId
+
+    @ScanResultId.setter
+    def ScanResultId(self, ScanResultId):
+        self._ScanResultId = ScanResultId
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -15442,6 +15569,7 @@ class DescribeDSPADiscoveryTaskResultDetailRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._CategoryIdList = params.get("CategoryIdList")
+        self._ScanResultId = params.get("ScanResultId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15547,6 +15675,12 @@ selfbuilt-db 表示自建数据库
         :type Limit: int
         :param _ResourceRegion: 资源所在地域
         :type ResourceRegion: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _FetchHistory: 是否查询历史结果
+        :type FetchHistory: bool
         """
         self._DspaId = None
         self._DataSourceType = None
@@ -15557,6 +15691,9 @@ selfbuilt-db 表示自建数据库
         self._Offset = None
         self._Limit = None
         self._ResourceRegion = None
+        self._StartTime = None
+        self._EndTime = None
+        self._FetchHistory = None
 
     @property
     def DspaId(self):
@@ -15664,6 +15801,39 @@ selfbuilt-db 表示自建数据库
     def ResourceRegion(self, ResourceRegion):
         self._ResourceRegion = ResourceRegion
 
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FetchHistory(self):
+        """是否查询历史结果
+        :rtype: bool
+        """
+        return self._FetchHistory
+
+    @FetchHistory.setter
+    def FetchHistory(self, FetchHistory):
+        self._FetchHistory = FetchHistory
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -15675,6 +15845,9 @@ selfbuilt-db 表示自建数据库
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._ResourceRegion = params.get("ResourceRegion")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._FetchHistory = params.get("FetchHistory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15696,11 +15869,14 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
         :type Items: list of DspaDiscoveryTaskDbResult
         :param _TotalCount: 符合条件的扫描任务结果记录数
         :type TotalCount: int
+        :param _MaxCount: 最大展示扫描结果次数
+        :type MaxCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
         self._TotalCount = None
+        self._MaxCount = None
         self._RequestId = None
 
     @property
@@ -15726,6 +15902,17 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def MaxCount(self):
+        """最大展示扫描结果次数
+        :rtype: int
+        """
+        return self._MaxCount
+
+    @MaxCount.setter
+    def MaxCount(self, MaxCount):
+        self._MaxCount = MaxCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -15745,6 +15932,7 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._MaxCount = params.get("MaxCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -15763,11 +15951,14 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
         :type DbResultId: int
         :param _DbName: db名称
         :type DbName: str
+        :param _ScanResultId: 任务扫描id
+        :type ScanResultId: int
         """
         self._DspaId = None
         self._TaskId = None
         self._DbResultId = None
         self._DbName = None
+        self._ScanResultId = None
 
     @property
     def DspaId(self):
@@ -15793,6 +15984,8 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @property
     def DbResultId(self):
+        warnings.warn("parameter `DbResultId` is deprecated", DeprecationWarning) 
+
         """数据库扫描结果ID
         :rtype: int
         """
@@ -15800,6 +15993,8 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
 
     @DbResultId.setter
     def DbResultId(self, DbResultId):
+        warnings.warn("parameter `DbResultId` is deprecated", DeprecationWarning) 
+
         self._DbResultId = DbResultId
 
     @property
@@ -15813,12 +16008,24 @@ class DescribeDSPADiscoveryTaskTablesRequest(AbstractModel):
     def DbName(self, DbName):
         self._DbName = DbName
 
+    @property
+    def ScanResultId(self):
+        """任务扫描id
+        :rtype: int
+        """
+        return self._ScanResultId
+
+    @ScanResultId.setter
+    def ScanResultId(self, ScanResultId):
+        self._ScanResultId = ScanResultId
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._TaskId = params.get("TaskId")
         self._DbResultId = params.get("DbResultId")
         self._DbName = params.get("DbName")
+        self._ScanResultId = params.get("ScanResultId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20003,6 +20210,10 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
         :type ResourceRegion: str
         :param _OverSize: 是否超额
         :type OverSize: str
+        :param _TaskInstanceId: 任务实例id
+        :type TaskInstanceId: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
         """
         self._BucketResultId = None
         self._TaskId = None
@@ -20018,6 +20229,8 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
         self._ErrorInfo = None
         self._ResourceRegion = None
         self._OverSize = None
+        self._TaskInstanceId = None
+        self._StartTime = None
 
     @property
     def BucketResultId(self):
@@ -20173,6 +20386,28 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
     def OverSize(self, OverSize):
         self._OverSize = OverSize
 
+    @property
+    def TaskInstanceId(self):
+        """任务实例id
+        :rtype: str
+        """
+        return self._TaskInstanceId
+
+    @TaskInstanceId.setter
+    def TaskInstanceId(self, TaskInstanceId):
+        self._TaskInstanceId = TaskInstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
 
     def _deserialize(self, params):
         self._BucketResultId = params.get("BucketResultId")
@@ -20189,6 +20424,8 @@ class DspaCOSDiscoveryTaskResult(AbstractModel):
         self._ErrorInfo = params.get("ErrorInfo")
         self._ResourceRegion = params.get("ResourceRegion")
         self._OverSize = params.get("OverSize")
+        self._TaskInstanceId = params.get("TaskInstanceId")
+        self._StartTime = params.get("StartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21976,6 +22213,8 @@ class DspaDiscoveryTask(AbstractModel):
         :type TimingStartTime: str
         :param _ComplianceUpdate: 关联模板是否更新
         :type ComplianceUpdate: bool
+        :param _ScanRange: 	full:全量扫描 incre:变更扫描
+        :type ScanRange: str
         """
         self._TaskId = None
         self._Name = None
@@ -21988,6 +22227,7 @@ class DspaDiscoveryTask(AbstractModel):
         self._Result = None
         self._TimingStartTime = None
         self._ComplianceUpdate = None
+        self._ScanRange = None
 
     @property
     def TaskId(self):
@@ -22111,6 +22351,17 @@ class DspaDiscoveryTask(AbstractModel):
     def ComplianceUpdate(self, ComplianceUpdate):
         self._ComplianceUpdate = ComplianceUpdate
 
+    @property
+    def ScanRange(self):
+        """	full:全量扫描 incre:变更扫描
+        :rtype: str
+        """
+        return self._ScanRange
+
+    @ScanRange.setter
+    def ScanRange(self, ScanRange):
+        self._ScanRange = ScanRange
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -22128,6 +22379,7 @@ class DspaDiscoveryTask(AbstractModel):
             self._Result._deserialize(params.get("Result"))
         self._TimingStartTime = params.get("TimingStartTime")
         self._ComplianceUpdate = params.get("ComplianceUpdate")
+        self._ScanRange = params.get("ScanRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22352,6 +22604,12 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
         :type SensitiveField: int
         :param _TotalField: 总的字段数
         :type TotalField: int
+        :param _TaskInstanceId: 任务实例id
+        :type TaskInstanceId: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _ScanRange: 扫描范围（full:全量扫描 incre：变更扫描）
+        :type ScanRange: str
         """
         self._DbResultId = None
         self._TaskId = None
@@ -22368,6 +22626,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
         self._ResourceRegion = None
         self._SensitiveField = None
         self._TotalField = None
+        self._TaskInstanceId = None
+        self._StartTime = None
+        self._ScanRange = None
 
     @property
     def DbResultId(self):
@@ -22534,6 +22795,39 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
     def TotalField(self, TotalField):
         self._TotalField = TotalField
 
+    @property
+    def TaskInstanceId(self):
+        """任务实例id
+        :rtype: str
+        """
+        return self._TaskInstanceId
+
+    @TaskInstanceId.setter
+    def TaskInstanceId(self, TaskInstanceId):
+        self._TaskInstanceId = TaskInstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ScanRange(self):
+        """扫描范围（full:全量扫描 incre：变更扫描）
+        :rtype: str
+        """
+        return self._ScanRange
+
+    @ScanRange.setter
+    def ScanRange(self, ScanRange):
+        self._ScanRange = ScanRange
+
 
     def _deserialize(self, params):
         self._DbResultId = params.get("DbResultId")
@@ -22551,6 +22845,9 @@ class DspaDiscoveryTaskDbResult(AbstractModel):
         self._ResourceRegion = params.get("ResourceRegion")
         self._SensitiveField = params.get("SensitiveField")
         self._TotalField = params.get("TotalField")
+        self._TaskInstanceId = params.get("TaskInstanceId")
+        self._StartTime = params.get("StartTime")
+        self._ScanRange = params.get("ScanRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22588,6 +22885,8 @@ class DspaDiscoveryTaskDetail(AbstractModel):
         :type CustomComplianceInfo: list of ScanTaskComplianceInfo
         :param _TimingStartTime: 定时开始时间
         :type TimingStartTime: str
+        :param _ScanRange: full:全量扫描 incre:变更扫描
+        :type ScanRange: str
         """
         self._Name = None
         self._Description = None
@@ -22599,6 +22898,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
         self._DefaultComplianceInfo = None
         self._CustomComplianceInfo = None
         self._TimingStartTime = None
+        self._ScanRange = None
 
     @property
     def Name(self):
@@ -22710,6 +23010,17 @@ class DspaDiscoveryTaskDetail(AbstractModel):
     def TimingStartTime(self, TimingStartTime):
         self._TimingStartTime = TimingStartTime
 
+    @property
+    def ScanRange(self):
+        """full:全量扫描 incre:变更扫描
+        :rtype: str
+        """
+        return self._ScanRange
+
+    @ScanRange.setter
+    def ScanRange(self, ScanRange):
+        self._ScanRange = ScanRange
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -22734,6 +23045,7 @@ class DspaDiscoveryTaskDetail(AbstractModel):
                 obj._deserialize(item)
                 self._CustomComplianceInfo.append(obj)
         self._TimingStartTime = params.get("TimingStartTime")
+        self._ScanRange = params.get("ScanRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28682,6 +28994,8 @@ cynosdbpg 表示TDSQL-C PostgreSQL版,
 cynosdbmysql 表示TDSQL-C MySQL版,
 selfbuilt-db 表示自建数据库
         :type DataSourceType: str
+        :param _ScanRange: 	full:全量扫描 incre:变更扫描
+        :type ScanRange: str
         """
         self._DspaId = None
         self._TaskId = None
@@ -28697,6 +29011,7 @@ selfbuilt-db 表示自建数据库
         self._TimingStartTime = None
         self._ResourceRegion = None
         self._DataSourceType = None
+        self._ScanRange = None
 
     @property
     def DspaId(self):
@@ -28860,6 +29175,17 @@ selfbuilt-db 表示自建数据库
     def DataSourceType(self, DataSourceType):
         self._DataSourceType = DataSourceType
 
+    @property
+    def ScanRange(self):
+        """	full:全量扫描 incre:变更扫描
+        :rtype: str
+        """
+        return self._ScanRange
+
+    @ScanRange.setter
+    def ScanRange(self, ScanRange):
+        self._ScanRange = ScanRange
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -28876,6 +29202,7 @@ selfbuilt-db 表示自建数据库
         self._TimingStartTime = params.get("TimingStartTime")
         self._ResourceRegion = params.get("ResourceRegion")
         self._DataSourceType = params.get("DataSourceType")
+        self._ScanRange = params.get("ScanRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

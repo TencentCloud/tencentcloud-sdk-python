@@ -257,7 +257,7 @@ class TrocketClient(AbstractClient):
 
 
     def DeleteInstance(self, request):
-        """删除 RocketMQ 5.x 集群。
+        """删除 RocketMQ 5.x 集群，删除前请先删除正在使用的主题、消费组和角色信息。
 
         :param request: Request instance for DeleteInstance.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteInstanceRequest`
@@ -454,6 +454,29 @@ class TrocketClient(AbstractClient):
             body = self.call("DescribeConsumerClient", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConsumerClientResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConsumerClientList(self, request):
+        """查询消费组下的客户端连接列表。
+
+        :param request: Request instance for DescribeConsumerClientList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerClientListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerClientListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerClientList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerClientListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1365,7 +1388,7 @@ class TrocketClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """修改 RocketMQ 5.x 集群属性。
+        """修改 RocketMQ 5.x 集群属性，仅支持修改运行中的集群。
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyInstanceRequest`
@@ -1388,7 +1411,7 @@ class TrocketClient(AbstractClient):
 
 
     def ModifyInstanceEndpoint(self, request):
-        """修改 RocketMQ 5.x 集群接入点。
+        """修改 RocketMQ 5.x 集群接入点，操作前请先确认接入点已存在。
 
         :param request: Request instance for ModifyInstanceEndpoint.
         :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyInstanceEndpointRequest`

@@ -4923,7 +4923,6 @@ class SendTaskData(AbstractModel):
         :param _Subject: 邮件主题
         :type Subject: str
         :param _Template: 模板和模板数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
         :param _CycleParam: 周期任务参数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4932,7 +4931,6 @@ class SendTaskData(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         :param _ErrMsg: 任务异常信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         :param _ReceiversName: 收件人列表名称
         :type ReceiversName: str
@@ -5078,7 +5076,6 @@ class SendTaskData(AbstractModel):
     @property
     def Template(self):
         """模板和模板数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -5114,7 +5111,6 @@ class SendTaskData(AbstractModel):
     @property
     def ErrMsg(self):
         """任务异常信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrMsg
@@ -5942,7 +5938,6 @@ class Volume(AbstractModel):
     def __init__(self):
         r"""
         :param _SendDate: 日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type SendDate: str
         :param _RequestCount: 邮件请求数量
         :type RequestCount: int
@@ -5957,7 +5952,6 @@ class Volume(AbstractModel):
         :param _BounceCount: 退信数量
         :type BounceCount: int
         :param _UnsubscribeCount: 取消订阅的用户数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnsubscribeCount: int
         """
         self._SendDate = None
@@ -5972,7 +5966,6 @@ class Volume(AbstractModel):
     @property
     def SendDate(self):
         """日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SendDate
@@ -6050,7 +6043,6 @@ class Volume(AbstractModel):
     @property
     def UnsubscribeCount(self):
         """取消订阅的用户数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UnsubscribeCount

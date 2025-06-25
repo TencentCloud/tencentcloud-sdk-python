@@ -2048,7 +2048,7 @@ class CreateWorkspacesRequest(AbstractModel):
         :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20230321.models.SpaceVirtualPrivateCloud`
         :param _InternetAccessible: 公网带宽相关信息设置
         :type InternetAccessible: :class:`tencentcloud.thpc.v20230321.models.SpaceInternetAccessible`
-        :param _SpaceCount: 购买工作空间数量
+        :param _SpaceCount: 购买工作空间实例的数量
         :type SpaceCount: int
         :param _SpaceName: 工作空间显示名称
         :type SpaceName: str
@@ -2208,7 +2208,7 @@ class CreateWorkspacesRequest(AbstractModel):
 
     @property
     def SpaceCount(self):
-        """购买工作空间数量
+        """购买工作空间实例的数量
         :rtype: int
         """
         return self._SpaceCount
@@ -5504,6 +5504,8 @@ class NodeOverview(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
         :param _InstanceId: 节点实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
@@ -5530,7 +5532,12 @@ class NodeOverview(AbstractModel):
         :type NodeId: str
         :param _NodeAllocateState: 节点的工作状态
         :type NodeAllocateState: str
+        :param _NodeName: 节点的名称
+        :type NodeName: str
+        :param _CreateTime: 节点的创建时间
+        :type CreateTime: str
         """
+        self._ClusterId = None
         self._InstanceId = None
         self._Zone = None
         self._NodeState = None
@@ -5540,6 +5547,19 @@ class NodeOverview(AbstractModel):
         self._NodeType = None
         self._NodeId = None
         self._NodeAllocateState = None
+        self._NodeName = None
+        self._CreateTime = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
     @property
     def InstanceId(self):
@@ -5648,8 +5668,31 @@ class NodeOverview(AbstractModel):
     def NodeAllocateState(self, NodeAllocateState):
         self._NodeAllocateState = NodeAllocateState
 
+    @property
+    def NodeName(self):
+        """节点的名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def CreateTime(self):
+        """节点的创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
         self._InstanceId = params.get("InstanceId")
         self._Zone = params.get("Zone")
         self._NodeState = params.get("NodeState")
@@ -5659,6 +5702,8 @@ class NodeOverview(AbstractModel):
         self._NodeType = params.get("NodeType")
         self._NodeId = params.get("NodeId")
         self._NodeAllocateState = params.get("NodeAllocateState")
+        self._NodeName = params.get("NodeName")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

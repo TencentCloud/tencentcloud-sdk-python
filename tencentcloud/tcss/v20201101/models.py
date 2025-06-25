@@ -39419,6 +39419,8 @@ class DescribeNewestVulResponse(AbstractModel):
         :type Status: str
         :param _CVEID: 漏洞CVEID
         :type CVEID: str
+        :param _SupportDefense: 漏洞是否支持防御 0:不支持 1:支持
+        :type SupportDefense: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -39427,6 +39429,7 @@ class DescribeNewestVulResponse(AbstractModel):
         self._SubmitTime = None
         self._Status = None
         self._CVEID = None
+        self._SupportDefense = None
         self._RequestId = None
 
     @property
@@ -39485,6 +39488,17 @@ class DescribeNewestVulResponse(AbstractModel):
         self._CVEID = CVEID
 
     @property
+    def SupportDefense(self):
+        """漏洞是否支持防御 0:不支持 1:支持
+        :rtype: int
+        """
+        return self._SupportDefense
+
+    @SupportDefense.setter
+    def SupportDefense(self, SupportDefense):
+        self._SupportDefense = SupportDefense
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -39502,6 +39516,7 @@ class DescribeNewestVulResponse(AbstractModel):
         self._SubmitTime = params.get("SubmitTime")
         self._Status = params.get("Status")
         self._CVEID = params.get("CVEID")
+        self._SupportDefense = params.get("SupportDefense")
         self._RequestId = params.get("RequestId")
 
 

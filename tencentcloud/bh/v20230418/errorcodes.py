@@ -35,6 +35,9 @@ FAILEDOPERATION_DUPLICATEDATA = 'FailedOperation.DuplicateData'
 # 非专业版资源
 FAILEDOPERATION_RESOURCENOTPRO = 'FailedOperation.ResourceNotPro'
 
+# FailedOperation.SearchFailed
+FAILEDOPERATION_SEARCHFAILED = 'FailedOperation.SearchFailed'
+
 # FailedOperation.TooFrequent
 FAILEDOPERATION_TOOFREQUENT = 'FailedOperation.TooFrequent'
 

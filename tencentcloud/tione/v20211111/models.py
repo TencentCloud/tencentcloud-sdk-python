@@ -16030,6 +16030,8 @@ class Pod(AbstractModel):
         :type StartScheduleTime: str
         :param _Message: 实例状态的补充信息
         :type Message: str
+        :param _NodeIP: 当前实例所在的节点 IP
+        :type NodeIP: str
         """
         self._Name = None
         self._Uid = None
@@ -16043,6 +16045,7 @@ class Pod(AbstractModel):
         self._Status = None
         self._StartScheduleTime = None
         self._Message = None
+        self._NodeIP = None
 
     @property
     def Name(self):
@@ -16189,6 +16192,17 @@ class Pod(AbstractModel):
     def Message(self, Message):
         self._Message = Message
 
+    @property
+    def NodeIP(self):
+        """当前实例所在的节点 IP
+        :rtype: str
+        """
+        return self._NodeIP
+
+    @NodeIP.setter
+    def NodeIP(self, NodeIP):
+        self._NodeIP = NodeIP
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -16212,6 +16226,7 @@ class Pod(AbstractModel):
         self._Status = params.get("Status")
         self._StartScheduleTime = params.get("StartScheduleTime")
         self._Message = params.get("Message")
+        self._NodeIP = params.get("NodeIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

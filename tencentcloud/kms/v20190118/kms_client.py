@@ -118,6 +118,29 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelDataKeyDeletion(self, request):
+        """取消计划删除数据密钥
+
+        :param request: Request instance for CancelDataKeyDeletion.
+        :type request: :class:`tencentcloud.kms.v20190118.models.CancelDataKeyDeletionRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.CancelDataKeyDeletionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelDataKeyDeletion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelDataKeyDeletionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelKeyArchive(self, request):
         """取消密钥归档，取消后密钥的状态变为Enabled。
 
@@ -270,6 +293,52 @@ class KmsClient(AbstractClient):
             body = self.call("DeleteWhiteBoxKey", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteWhiteBoxKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataKey(self, request):
+        """获取数据密钥的详情
+
+        :param request: Request instance for DescribeDataKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataKeys(self, request):
+        """返回数据密钥属性信息列表
+
+        :param request: Request instance for DescribeDataKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataKeysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -440,6 +509,52 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableDataKey(self, request):
+        """禁用数据密钥
+
+        :param request: Request instance for DisableDataKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DisableDataKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DisableDataKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableDataKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableDataKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisableDataKeys(self, request):
+        """批量禁用数据密钥
+
+        :param request: Request instance for DisableDataKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DisableDataKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DisableDataKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableDataKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableDataKeysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableKey(self, request):
         """本接口用于禁用一个主密钥，处于禁用状态的Key无法用于加密、解密操作。
 
@@ -546,6 +661,52 @@ class KmsClient(AbstractClient):
             body = self.call("DisableWhiteBoxKeys", params, headers=headers)
             response = json.loads(body)
             model = models.DisableWhiteBoxKeysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableDataKey(self, request):
+        """启用数据密钥
+
+        :param request: Request instance for EnableDataKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.EnableDataKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.EnableDataKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableDataKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableDataKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableDataKeys(self, request):
+        """批量启用数据密钥
+
+        :param request: Request instance for EnableDataKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.EnableDataKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.EnableDataKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableDataKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableDataKeysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -762,6 +923,52 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetDataKeyCiphertextBlob(self, request):
+        """下载数据密钥密文
+
+        :param request: Request instance for GetDataKeyCiphertextBlob.
+        :type request: :class:`tencentcloud.kms.v20190118.models.GetDataKeyCiphertextBlobRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GetDataKeyCiphertextBlobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDataKeyCiphertextBlob", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDataKeyCiphertextBlobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetDataKeyPlaintext(self, request):
+        """获取数据密钥明文
+
+        :param request: Request instance for GetDataKeyPlaintext.
+        :type request: :class:`tencentcloud.kms.v20190118.models.GetDataKeyPlaintextRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GetDataKeyPlaintextResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDataKeyPlaintext", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDataKeyPlaintextResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetKeyRotationStatus(self, request):
         """查询指定的CMK是否开启了密钥轮换功能。
 
@@ -877,6 +1084,29 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImportDataKey(self, request):
+        """数据密钥导入接口，并托管到KMS
+
+        :param request: Request instance for ImportDataKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ImportDataKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ImportDataKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportDataKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportDataKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImportKeyMaterial(self, request):
         """用于导入密钥材料。只有类型为EXTERNAL 的CMK 才可以导入，导入的密钥材料使用 GetParametersForImport 获取的密钥进行加密。可以为指定的 CMK 重新导入密钥材料，并重新指定过期时间，但必须导入相同的密钥材料。CMK 密钥材料导入后不可以更换密钥材料。导入的密钥材料过期或者被删除后，指定的CMK将无法使用，需要再次导入相同的密钥材料才能正常使用。CMK是独立的，同样的密钥材料可导入不同的 CMK 中，但使用其中一个 CMK 加密的数据无法使用另一个 CMK解密。
         只有Enabled 和 PendingImport状态的CMK可以导入密钥材料。
@@ -915,6 +1145,52 @@ class KmsClient(AbstractClient):
             body = self.call("ListAlgorithms", params, headers=headers)
             response = json.loads(body)
             model = models.ListAlgorithmsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDataKeyDetail(self, request):
+        """根据指定Offset和Limit获取数据密钥列表详情。
+
+        :param request: Request instance for ListDataKeyDetail.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ListDataKeyDetailRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ListDataKeyDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDataKeyDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDataKeyDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDataKeys(self, request):
+        """用于查询数据密钥的列表
+
+        :param request: Request instance for ListDataKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ListDataKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ListDataKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDataKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDataKeysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1108,6 +1384,29 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ScheduleDataKeyDeletion(self, request):
+        """计划删除数据密钥
+
+        :param request: Request instance for ScheduleDataKeyDeletion.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ScheduleDataKeyDeletionRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ScheduleDataKeyDeletionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScheduleDataKeyDeletion", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScheduleDataKeyDeletionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScheduleKeyDeletion(self, request):
         """CMK计划删除接口，用于指定CMK删除的时间，可选时间区间为[7,30]天
 
@@ -1192,6 +1491,52 @@ class KmsClient(AbstractClient):
             body = self.call("UpdateAlias", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAliasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataKeyDescription(self, request):
+        """修改数据密钥描述
+
+        :param request: Request instance for UpdateDataKeyDescription.
+        :type request: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyDescriptionRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyDescriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataKeyDescription", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataKeyDescriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataKeyName(self, request):
+        """修改数据密钥名称
+
+        :param request: Request instance for UpdateDataKeyName.
+        :type request: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyNameRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataKeyName", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataKeyNameResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

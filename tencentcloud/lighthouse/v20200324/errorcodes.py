@@ -215,11 +215,17 @@ INVALIDPARAMETER_FIREWALLRULESDUPLICATED = 'InvalidParameter.FirewallRulesDuplic
 # 参数非法，防火墙规则已存在。
 INVALIDPARAMETER_FIREWALLRULESEXIST = 'InvalidParameter.FirewallRulesExist'
 
+# 游戏专区实例镜像无效。
+INVALIDPARAMETER_GAMEPORTALINSTANCEBLUEPRINTINVALID = 'InvalidParameter.GamePortalInstanceBlueprintInvalid'
+
 # 游戏专区实例仅支持当前镜像。
 INVALIDPARAMETER_GAMEPORTALINSTANCEONLYSUPPORTCURRENTBLUEPRINT = 'InvalidParameter.GamePortalInstanceOnlySupportCurrentBlueprint'
 
 # 实例展示区域不支持该参数。
 INVALIDPARAMETER_INSTANCEDISPLAYAREANOTSUPPORTPARAMETER = 'InvalidParameter.InstanceDisplayAreaNotSupportParameter'
+
+# 实例当前的操作不支持该操作。
+INVALIDPARAMETER_INSTANCEOPERATIONUNSUPPORTEDPARAMETER = 'InvalidParameter.InstanceOperationUnsupportedParameter'
 
 # 参数非法，Filter 参数非法。
 INVALIDPARAMETER_INVALIDFILTER = 'InvalidParameter.InvalidFilter'
@@ -601,6 +607,9 @@ RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = 'ResourceNotFound.FirewallTemplateNo
 
 # 防火墙模板规则不存在。
 RESOURCENOTFOUND_FIREWALLTEMPLATERULENOTFOUND = 'ResourceNotFound.FirewallTemplateRuleNotFound'
+
+# 实例镜像不存在。
+RESOURCENOTFOUND_INSTANCEBLUEPRINTNOTFOUND = 'ResourceNotFound.InstanceBlueprintNotFound'
 
 # 实例不存在挂载的数据盘。
 RESOURCENOTFOUND_INSTANCEDATADISKNOTFOUND = 'ResourceNotFound.InstanceDataDiskNotFound'

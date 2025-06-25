@@ -3683,12 +3683,15 @@ class AssociateIPv6AddressRequest(AbstractModel):
         r"""
         :param _IPv6AddressId: 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
         :type IPv6AddressId: str
+        :param _InstanceId: 要绑定的实例 ID。实例 ID 形如：ins-djflxkvi。可通过登录控制台查询，也可通过 DescribeInstances 接口返回值中的InstanceId获取。
+        :type InstanceId: str
         :param _NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的networkInterfaceId获取。
         :type NetworkInterfaceId: str
         :param _PrivateIPv6Address: 要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的Ipv6AddressSet.Address获取。
         :type PrivateIPv6Address: str
         """
         self._IPv6AddressId = None
+        self._InstanceId = None
         self._NetworkInterfaceId = None
         self._PrivateIPv6Address = None
 
@@ -3702,6 +3705,17 @@ class AssociateIPv6AddressRequest(AbstractModel):
     @IPv6AddressId.setter
     def IPv6AddressId(self, IPv6AddressId):
         self._IPv6AddressId = IPv6AddressId
+
+    @property
+    def InstanceId(self):
+        """要绑定的实例 ID。实例 ID 形如：ins-djflxkvi。可通过登录控制台查询，也可通过 DescribeInstances 接口返回值中的InstanceId获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def NetworkInterfaceId(self):
@@ -3728,6 +3742,7 @@ class AssociateIPv6AddressRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._IPv6AddressId = params.get("IPv6AddressId")
+        self._InstanceId = params.get("InstanceId")
         self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         self._PrivateIPv6Address = params.get("PrivateIPv6Address")
         memeber_set = set(params.keys())

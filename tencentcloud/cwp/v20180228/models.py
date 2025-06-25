@@ -40236,10 +40236,16 @@ MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，
         :type Offset: int
         :param _Limit: 需要返回的数量，默认为10，最大值为100
         :type Limit: int
+        :param _Order: 排序，大小写无关：asc 升序，desc降序
+        :type Order: str
+        :param _By: 排序列，严格相等：最近检测时间RecentFoundTime
+        :type By: str
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._Order = None
+        self._By = None
 
     @property
     def Filters(self):
@@ -40276,6 +40282,28 @@ MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Order(self):
+        """排序，大小写无关：asc 升序，desc降序
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """排序列，严格相等：最近检测时间RecentFoundTime
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -40286,6 +40314,8 @@ MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41046,6 +41076,10 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         :type DestroyOrderNum: int
         :param _RepurchaseRenewSwitch: 自动加购是否自动续费开关,true 开启,false 关闭
         :type RepurchaseRenewSwitch: bool
+        :param _AutoBindRaspSwitch: 是否自动新增机器绑定rasp防护,false 关闭 true 开启
+        :type AutoBindRaspSwitch: bool
+        :param _AutoOpenRaspSwitch: 是否自动新增机器开启rasp防护,false 关闭 true 开启
+        :type AutoOpenRaspSwitch: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -41068,6 +41102,8 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._AutoRepurchaseRenewSwitch = None
         self._DestroyOrderNum = None
         self._RepurchaseRenewSwitch = None
+        self._AutoBindRaspSwitch = None
+        self._AutoOpenRaspSwitch = None
         self._RequestId = None
 
     @property
@@ -41280,6 +41316,28 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._RepurchaseRenewSwitch = RepurchaseRenewSwitch
 
     @property
+    def AutoBindRaspSwitch(self):
+        """是否自动新增机器绑定rasp防护,false 关闭 true 开启
+        :rtype: bool
+        """
+        return self._AutoBindRaspSwitch
+
+    @AutoBindRaspSwitch.setter
+    def AutoBindRaspSwitch(self, AutoBindRaspSwitch):
+        self._AutoBindRaspSwitch = AutoBindRaspSwitch
+
+    @property
+    def AutoOpenRaspSwitch(self):
+        """是否自动新增机器开启rasp防护,false 关闭 true 开启
+        :rtype: bool
+        """
+        return self._AutoOpenRaspSwitch
+
+    @AutoOpenRaspSwitch.setter
+    def AutoOpenRaspSwitch(self, AutoOpenRaspSwitch):
+        self._AutoOpenRaspSwitch = AutoOpenRaspSwitch
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -41311,6 +41369,8 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._AutoRepurchaseRenewSwitch = params.get("AutoRepurchaseRenewSwitch")
         self._DestroyOrderNum = params.get("DestroyOrderNum")
         self._RepurchaseRenewSwitch = params.get("RepurchaseRenewSwitch")
+        self._AutoBindRaspSwitch = params.get("AutoBindRaspSwitch")
+        self._AutoOpenRaspSwitch = params.get("AutoOpenRaspSwitch")
         self._RequestId = params.get("RequestId")
 
 
@@ -58972,6 +59032,8 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         :type SuccessFixCount: int
         :param _FixSwitch: 修复是否支持：0-windows/linux均不支持修复 ;1-windows/linux 均支持修复 ;2-仅linux支持修复;3-仅windows支持修复
         :type FixSwitch: int
+        :param _SupportDefence: 是否支持防御： 0-不支持 1-支持
+        :type SupportDefence: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -58992,6 +59054,7 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         self._DefenseAttackCount = None
         self._SuccessFixCount = None
         self._FixSwitch = None
+        self._SupportDefence = None
         self._RequestId = None
 
     @property
@@ -59182,6 +59245,17 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         self._FixSwitch = FixSwitch
 
     @property
+    def SupportDefence(self):
+        """是否支持防御： 0-不支持 1-支持
+        :rtype: int
+        """
+        return self._SupportDefence
+
+    @SupportDefence.setter
+    def SupportDefence(self, SupportDefence):
+        self._SupportDefence = SupportDefence
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -59211,6 +59285,7 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         self._DefenseAttackCount = params.get("DefenseAttackCount")
         self._SuccessFixCount = params.get("SuccessFixCount")
         self._FixSwitch = params.get("FixSwitch")
+        self._SupportDefence = params.get("SupportDefence")
         self._RequestId = params.get("RequestId")
 
 
@@ -67954,9 +68029,15 @@ MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，
         :type Filters: list of Filter
         :param _Where: 导出字段
         :type Where: list of str
+        :param _Order: 排序，大小写无关：asc 升序，desc降序
+        :type Order: str
+        :param _By: 排序列，严格相等：最近检测时间RecentFoundTime
+        :type By: str
         """
         self._Filters = None
         self._Where = None
+        self._Order = None
+        self._By = None
 
     @property
     def Filters(self):
@@ -67982,6 +68063,28 @@ MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，
     def Where(self, Where):
         self._Where = Where
 
+    @property
+    def Order(self):
+        """排序，大小写无关：asc 升序，desc降序
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """排序列，严格相等：最近检测时间RecentFoundTime
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -67991,6 +68094,8 @@ MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._Where = params.get("Where")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79883,11 +79988,17 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
         :type AutoRepurchaseRenewSwitch: int
         :param _RepurchaseRenewSwitch: 手动购买的订单是否自动续费,默认0, 0关闭 ,1 开启
         :type RepurchaseRenewSwitch: int
+        :param _AutoBindRaspSwitch: 新增机器自动绑定rasp,0 关闭 1开启
+        :type AutoBindRaspSwitch: int
+        :param _AutoOpenRaspSwitch: 新增机器自动开启rasp防护,默认关闭,0 关闭 1开启
+        :type AutoOpenRaspSwitch: int
         """
         self._Status = None
         self._AutoRepurchaseSwitch = None
         self._AutoRepurchaseRenewSwitch = None
         self._RepurchaseRenewSwitch = None
+        self._AutoBindRaspSwitch = None
+        self._AutoOpenRaspSwitch = None
 
     @property
     def Status(self):
@@ -79935,12 +80046,36 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
     def RepurchaseRenewSwitch(self, RepurchaseRenewSwitch):
         self._RepurchaseRenewSwitch = RepurchaseRenewSwitch
 
+    @property
+    def AutoBindRaspSwitch(self):
+        """新增机器自动绑定rasp,0 关闭 1开启
+        :rtype: int
+        """
+        return self._AutoBindRaspSwitch
+
+    @AutoBindRaspSwitch.setter
+    def AutoBindRaspSwitch(self, AutoBindRaspSwitch):
+        self._AutoBindRaspSwitch = AutoBindRaspSwitch
+
+    @property
+    def AutoOpenRaspSwitch(self):
+        """新增机器自动开启rasp防护,默认关闭,0 关闭 1开启
+        :rtype: int
+        """
+        return self._AutoOpenRaspSwitch
+
+    @AutoOpenRaspSwitch.setter
+    def AutoOpenRaspSwitch(self, AutoOpenRaspSwitch):
+        self._AutoOpenRaspSwitch = AutoOpenRaspSwitch
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._AutoRepurchaseSwitch = params.get("AutoRepurchaseSwitch")
         self._AutoRepurchaseRenewSwitch = params.get("AutoRepurchaseRenewSwitch")
         self._RepurchaseRenewSwitch = params.get("RepurchaseRenewSwitch")
+        self._AutoBindRaspSwitch = params.get("AutoBindRaspSwitch")
+        self._AutoOpenRaspSwitch = params.get("AutoOpenRaspSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -104006,11 +104141,17 @@ class VulEmergentMsgInfo(AbstractModel):
         :type Name: str
         :param _NameEn: 漏洞名,英文描述
         :type NameEn: str
+        :param _SupportFix: 是否支持自动修复 0:不支持 >0: 支持
+        :type SupportFix: int
+        :param _SupportDefense: 是否支持自动防御 0:不支持 1:支持
+        :type SupportDefense: int
         """
         self._VulId = None
         self._PublishTime = None
         self._Name = None
         self._NameEn = None
+        self._SupportFix = None
+        self._SupportDefense = None
 
     @property
     def VulId(self):
@@ -104056,12 +104197,36 @@ class VulEmergentMsgInfo(AbstractModel):
     def NameEn(self, NameEn):
         self._NameEn = NameEn
 
+    @property
+    def SupportFix(self):
+        """是否支持自动修复 0:不支持 >0: 支持
+        :rtype: int
+        """
+        return self._SupportFix
+
+    @SupportFix.setter
+    def SupportFix(self, SupportFix):
+        self._SupportFix = SupportFix
+
+    @property
+    def SupportDefense(self):
+        """是否支持自动防御 0:不支持 1:支持
+        :rtype: int
+        """
+        return self._SupportDefense
+
+    @SupportDefense.setter
+    def SupportDefense(self, SupportDefense):
+        self._SupportDefense = SupportDefense
+
 
     def _deserialize(self, params):
         self._VulId = params.get("VulId")
         self._PublishTime = params.get("PublishTime")
         self._Name = params.get("Name")
         self._NameEn = params.get("NameEn")
+        self._SupportFix = params.get("SupportFix")
+        self._SupportDefense = params.get("SupportDefense")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
