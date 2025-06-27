@@ -55227,6 +55227,245 @@ class GetOfflineInstanceListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetPaginationTaskScriptRequest(AbstractModel):
+    """GetPaginationTaskScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目编号
+        :type ProjectId: str
+        :param _TaskId: 任务编号
+        :type TaskId: str
+        :param _PageNum: 页码（从1开始）
+        :type PageNum: int
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._PageNum = None
+
+    @property
+    def ProjectId(self):
+        """项目编号
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        """任务编号
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def PageNum(self):
+        """页码（从1开始）
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._PageNum = params.get("PageNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetPaginationTaskScriptResponse(AbstractModel):
+    """GetPaginationTaskScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of GetPaginationTaskScriptResponseInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GetPaginationTaskScriptResponseInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = GetPaginationTaskScriptResponseInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetPaginationTaskScriptResponseInfo(AbstractModel):
+    """获取任务脚本内容返回体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _TaskId: 任务编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _PageSize: 页内尺寸
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _PageNum: 页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNum: int
+        :param _PageTotal: 总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageTotal: int
+        :param _Base64ScriptContent: 分页内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Base64ScriptContent: str
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._PageSize = None
+        self._PageNum = None
+        self._PageTotal = None
+        self._Base64ScriptContent = None
+
+    @property
+    def ProjectId(self):
+        """项目编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        """任务编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def PageSize(self):
+        """页内尺寸
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        """页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageTotal(self):
+        """总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageTotal
+
+    @PageTotal.setter
+    def PageTotal(self, PageTotal):
+        self._PageTotal = PageTotal
+
+    @property
+    def Base64ScriptContent(self):
+        """分页内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Base64ScriptContent
+
+    @Base64ScriptContent.setter
+    def Base64ScriptContent(self, Base64ScriptContent):
+        self._Base64ScriptContent = Base64ScriptContent
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        self._PageTotal = params.get("PageTotal")
+        self._Base64ScriptContent = params.get("Base64ScriptContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetTaskInstanceRequest(AbstractModel):
     """GetTaskInstance请求参数结构体
 

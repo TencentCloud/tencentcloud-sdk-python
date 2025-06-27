@@ -9172,7 +9172,7 @@ class DescribeProxySlowLogResponse(AbstractModel):
         r"""
         :param _TotalCount: 慢查询总数。
         :type TotalCount: int
-        :param _InstanceProxySlowLogDetail: 慢查询详情。
+        :param _InstanceProxySlowLogDetail: 慢查询详情，注意：TotalCount大于1W，即慢日志超过1万条，不支持返回日志详情，返回数据为空。 建议缩小BeginTime和EndTime的时间间隔，多次查询。
         :type InstanceProxySlowLogDetail: list of InstanceProxySlowlogDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9194,7 +9194,7 @@ class DescribeProxySlowLogResponse(AbstractModel):
 
     @property
     def InstanceProxySlowLogDetail(self):
-        """慢查询详情。
+        """慢查询详情，注意：TotalCount大于1W，即慢日志超过1万条，不支持返回日志详情，返回数据为空。 建议缩小BeginTime和EndTime的时间间隔，多次查询。
         :rtype: list of InstanceProxySlowlogDetail
         """
         return self._InstanceProxySlowLogDetail
@@ -10284,7 +10284,7 @@ class DescribeSlowLogResponse(AbstractModel):
         :type TotalCount: int
         :param _InstanceSlowlogDetail: 已废弃，该参数存在命名不规范问题，后续用参数InstanceSlowLogDetail取代。慢查询详情。
         :type InstanceSlowlogDetail: list of InstanceSlowlogDetail
-        :param _InstanceSlowLogDetail: 慢查询详情。
+        :param _InstanceSlowLogDetail: 慢查询详情，注意：TotalCount大于1W，即慢日志超过1万条，不支持返回日志详情，返回数据为空。 建议缩小BeginTime和EndTime的时间间隔，多次查询。
         :type InstanceSlowLogDetail: list of InstanceSlowlogDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10322,7 +10322,7 @@ class DescribeSlowLogResponse(AbstractModel):
 
     @property
     def InstanceSlowLogDetail(self):
-        """慢查询详情。
+        """慢查询详情，注意：TotalCount大于1W，即慢日志超过1万条，不支持返回日志详情，返回数据为空。 建议缩小BeginTime和EndTime的时间间隔，多次查询。
         :rtype: list of InstanceSlowlogDetail
         """
         return self._InstanceSlowLogDetail
@@ -11017,7 +11017,7 @@ class DescribeTendisSlowLogResponse(AbstractModel):
         r"""
         :param _TotalCount: 慢查询总数
         :type TotalCount: int
-        :param _TendisSlowLogDetail: 慢查询详情
+        :param _TendisSlowLogDetail: 慢查询详情，注意：TotalCount大于1W，即慢日志超过1万条，不支持返回日志详情，返回数据为空。 建议缩小BeginTime和EndTime的时间间隔，多次查询。
         :type TendisSlowLogDetail: list of TendisSlowLogDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11039,7 +11039,7 @@ class DescribeTendisSlowLogResponse(AbstractModel):
 
     @property
     def TendisSlowLogDetail(self):
-        """慢查询详情
+        """慢查询详情，注意：TotalCount大于1W，即慢日志超过1万条，不支持返回日志详情，返回数据为空。 建议缩小BeginTime和EndTime的时间间隔，多次查询。
         :rtype: list of TendisSlowLogDetail
         """
         return self._TendisSlowLogDetail

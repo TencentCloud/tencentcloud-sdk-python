@@ -3648,12 +3648,15 @@ class Line(AbstractModel):
         :type DataSerial: list of float
         :param _Tags: 维度列表
         :type Tags: list of ApmTag
+        :param _MetricUnit: 指标数据单位
+        :type MetricUnit: str
         """
         self._MetricName = None
         self._MetricNameCN = None
         self._TimeSerial = None
         self._DataSerial = None
         self._Tags = None
+        self._MetricUnit = None
 
     @property
     def MetricName(self):
@@ -3710,6 +3713,17 @@ class Line(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def MetricUnit(self):
+        """指标数据单位
+        :rtype: str
+        """
+        return self._MetricUnit
+
+    @MetricUnit.setter
+    def MetricUnit(self, MetricUnit):
+        self._MetricUnit = MetricUnit
+
 
     def _deserialize(self, params):
         self._MetricName = params.get("MetricName")
@@ -3722,6 +3736,7 @@ class Line(AbstractModel):
                 obj = ApmTag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._MetricUnit = params.get("MetricUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

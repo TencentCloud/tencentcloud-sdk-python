@@ -17741,7 +17741,7 @@ class GenerateSignedVideoURLRequest(AbstractModel):
         r"""
         :param _VideoURL: 视频播放原始URL地址
         :type VideoURL: str
-        :param _ExpireTime: 播放链接过期时间
+        :param _ExpireTime: 播放链接过期时间（时间戳，单位秒）
         :type ExpireTime: int
         :param _ChannelId: 通道ID 非NVR设备不填 NVR设备必填 默认为无	
         :type ChannelId: int
@@ -17763,7 +17763,7 @@ class GenerateSignedVideoURLRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """播放链接过期时间
+        """播放链接过期时间（时间戳，单位秒）
         :rtype: int
         """
         return self._ExpireTime
@@ -20434,7 +20434,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
         :type SummaryLang: str
         :param _ChannelId: 通道ID
         :type ChannelId: int
-        :param _EnableSummary: 是否需要返回总结，默认为False；  开启后会加大接口响应时长
+        :param _EnableSummary: 是否需要返回总结，默认为True；  开启后会加大接口响应时长
         :type EnableSummary: bool
         :param _StartTimeMs: 开始时间。
 
@@ -20524,7 +20524,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def EnableSummary(self):
-        """是否需要返回总结，默认为False；  开启后会加大接口响应时长
+        """是否需要返回总结，默认为True；  开启后会加大接口响应时长
         :rtype: bool
         """
         return self._EnableSummary

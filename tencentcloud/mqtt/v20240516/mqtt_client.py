@@ -790,6 +790,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMessageDetails(self, request):
+        """查询MQTT消息详情
+
+        :param request: Request instance for DescribeMessageDetails.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageDetailsRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMessageDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMessageDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMessageList(self, request):
         """根据一级Topic查询消息列表
 

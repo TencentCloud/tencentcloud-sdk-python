@@ -317,6 +317,9 @@ OPERATIONDENIED_PROXYNOTRUNNINGERROR = 'OperationDenied.ProxyNotRunningError'
 # 可用区不存在
 OPERATIONDENIED_PROXYSALEZONECHECKERROR = 'OperationDenied.ProxySaleZoneCheckError'
 
+# proxy库存不足
+OPERATIONDENIED_PROXYSTOCKCHECKERROR = 'OperationDenied.ProxyStockCheckError'
+
 # 代理版本检查失败
 OPERATIONDENIED_PROXYVERSIONCHECKERROR = 'OperationDenied.ProxyVersionCheckError'
 

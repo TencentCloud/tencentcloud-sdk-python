@@ -5049,6 +5049,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetPaginationTaskScript(self, request):
+        """获取带分页的任务脚本
+
+        :param request: Request instance for GetPaginationTaskScript.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.GetPaginationTaskScriptRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.GetPaginationTaskScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetPaginationTaskScript", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetPaginationTaskScriptResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetTaskInstance(self, request):
         """获取实例列表
 

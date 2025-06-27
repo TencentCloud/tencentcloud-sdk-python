@@ -543,18 +543,18 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _MaxRetryTimes: 最大重试次数
+        :param _MaxRetryTimes: 最大重试次数，取值范围0～1000
         :type MaxRetryTimes: int
         :param _ConsumeEnable: 是否开启消费
         :type ConsumeEnable: bool
         :param _ConsumeMessageOrderly: 顺序投递：true
 并发投递：false
         :type ConsumeMessageOrderly: bool
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :type ConsumerGroup: str
-        :param _Remark: 备注
+        :param _Remark: 备注信息，最多 128 个字符
         :type Remark: str
         :param _TagList: 标签列表
         :type TagList: list of Tag
@@ -569,7 +569,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -580,7 +580,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def MaxRetryTimes(self):
-        """最大重试次数
+        """最大重试次数，取值范围0～1000
         :rtype: int
         """
         return self._MaxRetryTimes
@@ -614,7 +614,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -625,7 +625,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        """备注信息，最多 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -1699,7 +1699,7 @@ class CreateRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
         :param _Role: 角色名称
         :type Role: str
@@ -1711,7 +1711,7 @@ class CreateRoleRequest(AbstractModel):
         :type Remark: str
         :param _PermType: 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
         :type PermType: str
-        :param _DetailedPerms: Topic&Group维度权限配置
+        :param _DetailedPerms: Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
         :type DetailedPerms: list of DetailedRolePerm
         """
         self._InstanceId = None
@@ -1724,7 +1724,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1790,7 +1790,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def DetailedPerms(self):
-        """Topic&Group维度权限配置
+        """Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
         :rtype: list of DetailedRolePerm
         """
         return self._DetailedPerms
@@ -1873,9 +1873,9 @@ class CreateTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :type Topic: str
         :param _TopicType: 主题类型
 UNSPECIFIED:未指定,
@@ -1884,11 +1884,11 @@ FIFO:顺序消息,
 DELAY:延时消息,
 TRANSACTION:事务消息
         :type TopicType: str
-        :param _QueueNum: 队列数量
+        :param _QueueNum: 队列数量，取值范围3～16
         :type QueueNum: int
-        :param _Remark: 备注
+        :param _Remark: 备注，最多 128 字符
         :type Remark: str
-        :param _MsgTTL: 消息保留时长
+        :param _MsgTTL: 消息保留时长（单位：小时）
         :type MsgTTL: int
         :param _TagList: 标签列表
         :type TagList: list of Tag
@@ -1903,7 +1903,7 @@ TRANSACTION:事务消息
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1914,7 +1914,7 @@ TRANSACTION:事务消息
 
     @property
     def Topic(self):
-        """主题名称
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -1941,7 +1941,7 @@ TRANSACTION:事务消息
 
     @property
     def QueueNum(self):
-        """队列数量
+        """队列数量，取值范围3～16
         :rtype: int
         """
         return self._QueueNum
@@ -1952,7 +1952,7 @@ TRANSACTION:事务消息
 
     @property
     def Remark(self):
-        """备注
+        """备注，最多 128 字符
         :rtype: str
         """
         return self._Remark
@@ -1963,7 +1963,7 @@ TRANSACTION:事务消息
 
     @property
     def MsgTTL(self):
-        """消息保留时长
+        """消息保留时长（单位：小时）
         :rtype: int
         """
         return self._MsgTTL
@@ -2127,9 +2127,9 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
@@ -2137,7 +2137,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2148,7 +2148,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -2556,9 +2556,9 @@ class DeleteRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _Role: 角色名称
+        :param _Role: 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
         :type Role: str
         """
         self._InstanceId = None
@@ -2566,7 +2566,7 @@ class DeleteRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2577,7 +2577,7 @@ class DeleteRoleRequest(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称
+        """角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
         :rtype: str
         """
         return self._Role
@@ -2701,9 +2701,9 @@ class DeleteTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :type Topic: str
         """
         self._InstanceId = None
@@ -2711,7 +2711,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2722,7 +2722,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -2780,15 +2780,15 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :type ConsumerGroup: str
-        :param _Filters: 查询条件列表
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
-        :param _Offset: 查询起始位置
+        :param _Offset: 查询起始位置，默认为0。
         :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
         """
         self._InstanceId = None
@@ -2799,7 +2799,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2810,7 +2810,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -2821,7 +2821,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件列表
+        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -2832,7 +2832,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        """查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -2843,7 +2843,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        """查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -2944,17 +2944,17 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _ClientId: 客户端ID
+        :param _ClientId: 客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
         :type ClientId: str
-        :param _Filters: 查询条件列表
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
-        :param _Offset: 查询起始位置
+        :param _Offset: 查询起始位置，默认为0。
         :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
@@ -2966,7 +2966,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2977,7 +2977,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID
+        """客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
         :rtype: str
         """
         return self._ClientId
@@ -2988,7 +2988,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件列表
+        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -2999,7 +2999,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        """查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -3010,7 +3010,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        """查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -3021,7 +3021,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -3293,9 +3293,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
@@ -3303,7 +3303,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3314,7 +3314,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -3350,9 +3350,13 @@ class DescribeConsumerGroupResponse(AbstractModel):
         :type Tps: int
         :param _ConsumerLag: 消息堆积数量
         :type ConsumerLag: int
-        :param _ConsumeType: 消费者类型
+        :param _ConsumeType: 消费类型，枚举值如下：
+
+- PULL：PULL 消费类型
+- PUSH：PUSH 消费类型
+- POP：POP 消费类型
         :type ConsumeType: str
-        :param _CreatedTime: 创建时间，秒为单位
+        :param _CreatedTime: 创建时间，**Unix时间戳（毫秒）**
         :type CreatedTime: int
         :param _ConsumeMessageOrderly: 顺序投递：true
 并发投递：false
@@ -3417,7 +3421,11 @@ CLUSTERING 集群模式
 
     @property
     def ConsumeType(self):
-        """消费者类型
+        """消费类型，枚举值如下：
+
+- PULL：PULL 消费类型
+- PUSH：PUSH 消费类型
+- POP：POP 消费类型
         :rtype: str
         """
         return self._ConsumeType
@@ -3428,7 +3436,7 @@ CLUSTERING 集群模式
 
     @property
     def CreatedTime(self):
-        """创建时间，秒为单位
+        """创建时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._CreatedTime
@@ -3528,13 +3536,13 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :type ConsumerGroup: str
-        :param _Namespace: 命名空间，4.x集群必填
+        :param _Namespace: 命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口或控制台获得。
         :type Namespace: str
-        :param _SubscribeTopic: 订阅主题，不为空则查询订阅了该主题的消费组的堆积
+        :param _SubscribeTopic: 订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :type SubscribeTopic: str
         """
         self._InstanceId = None
@@ -3544,7 +3552,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3555,7 +3563,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -3566,7 +3574,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，4.x集群必填
+        """命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口或控制台获得。
         :rtype: str
         """
         return self._Namespace
@@ -3577,7 +3585,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def SubscribeTopic(self):
-        """订阅主题，不为空则查询订阅了该主题的消费组的堆积
+        """订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :rtype: str
         """
         return self._SubscribeTopic
@@ -8338,15 +8346,15 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _Offset: 查询起始位置
+        :param _Offset: 查询起始位置，默认为0。
         :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :type ConsumerGroup: str
-        :param _Filters: 查询条件列表
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
         """
         self._InstanceId = None
@@ -8357,7 +8365,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8368,7 +8376,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        """查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -8379,7 +8387,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        """查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -8390,7 +8398,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -8401,7 +8409,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件列表
+        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -8651,15 +8659,15 @@ class DescribeTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :type Topic: str
-        :param _Filters: 查询条件列表
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
-        :param _Offset: 查询起始位置
+        :param _Offset: 查询起始位置，默认为0。
         :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
         """
         self._InstanceId = None
@@ -8670,7 +8678,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8681,7 +8689,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -8692,7 +8700,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """查询条件列表
+        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -8703,7 +8711,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        """查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -8714,7 +8722,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        """查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -8931,6 +8939,8 @@ class DetailedRolePerm(AbstractModel):
     def __init__(self):
         r"""
         :param _Resource: 权限对应的资源
+可以是主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+可以是消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :type Resource: str
         :param _PermWrite: 是否开启生产权限
         :type PermWrite: bool
@@ -8950,6 +8960,8 @@ class DetailedRolePerm(AbstractModel):
     @property
     def Resource(self):
         """权限对应的资源
+可以是主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+可以是消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :rtype: str
         """
         return self._Resource
@@ -12259,18 +12271,18 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :type ConsumerGroup: str
         :param _ConsumeEnable: 是否开启消费
         :type ConsumeEnable: bool
         :param _ConsumeMessageOrderly: 顺序投递：true
 并发投递：false
         :type ConsumeMessageOrderly: bool
-        :param _MaxRetryTimes: 最大重试次数
+        :param _MaxRetryTimes: 最大重试次数，取值范围0～1000
         :type MaxRetryTimes: int
-        :param _Remark: 备注
+        :param _Remark: 备注信息，最多 128 个字符
         :type Remark: str
         """
         self._InstanceId = None
@@ -12282,7 +12294,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -12293,7 +12305,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -12327,7 +12339,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def MaxRetryTimes(self):
-        """最大重试次数
+        """最大重试次数，取值范围0～1000
         :rtype: int
         """
         return self._MaxRetryTimes
@@ -12338,7 +12350,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        """备注信息，最多 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -13264,9 +13276,9 @@ class ModifyRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _Role: 角色名称
+        :param _Role: 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
         :type Role: str
         :param _PermRead: 是否开启消费
         :type PermRead: bool
@@ -13276,7 +13288,7 @@ class ModifyRoleRequest(AbstractModel):
         :type PermType: str
         :param _Remark: 备注
         :type Remark: str
-        :param _DetailedPerms: Topic&Group维度权限配置
+        :param _DetailedPerms: Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
         :type DetailedPerms: list of DetailedRolePerm
         """
         self._InstanceId = None
@@ -13289,7 +13301,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -13300,7 +13312,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称
+        """角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
         :rtype: str
         """
         return self._Role
@@ -13355,7 +13367,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def DetailedPerms(self):
-        """Topic&Group维度权限配置
+        """Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
         :rtype: list of DetailedRolePerm
         """
         return self._DetailedPerms
@@ -13423,15 +13435,15 @@ class ModifyTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :type Topic: str
-        :param _QueueNum: 队列数量
+        :param _QueueNum: 队列数量，取值范围3～16
         :type QueueNum: int
-        :param _Remark: 备注信息
+        :param _Remark: 备注信息，最多 128 个字符
         :type Remark: str
-        :param _MsgTTL: 消息保留时长
+        :param _MsgTTL: 消息保留时长（单位：小时）
         :type MsgTTL: int
         """
         self._InstanceId = None
@@ -13442,7 +13454,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -13453,7 +13465,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -13464,7 +13476,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def QueueNum(self):
-        """队列数量
+        """队列数量，取值范围3～16
         :rtype: int
         """
         return self._QueueNum
@@ -13475,7 +13487,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        """备注信息，最多 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -13486,7 +13498,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def MsgTTL(self):
-        """消息保留时长
+        """消息保留时长（单位：小时）
         :rtype: int
         """
         return self._MsgTTL
@@ -15219,7 +15231,11 @@ class SubscriptionData(AbstractModel):
         :param _IsOnline: 是否在线
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsOnline: bool
-        :param _ConsumeType: 消费类型
+        :param _ConsumeType: 消费类型，枚举值如下：
+
+- PULL：PULL 消费类型
+- PUSH：PUSH 消费类型
+- POP：POP 消费类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumeType: str
         :param _SubString: 订阅规则
@@ -15228,7 +15244,10 @@ class SubscriptionData(AbstractModel):
         :param _ExpressionType: 过滤类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpressionType: str
-        :param _Consistency: 订阅一致性
+        :param _Consistency: 订阅一致性，枚举如下：
+
+- 0: 订阅一致
+- 1: 订阅不一致
 注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: int
         :param _ConsumerLag: 消费堆积
@@ -15343,7 +15362,11 @@ CLUSTERING 集群模式;
 
     @property
     def ConsumeType(self):
-        """消费类型
+        """消费类型，枚举值如下：
+
+- PULL：PULL 消费类型
+- PUSH：PUSH 消费类型
+- POP：POP 消费类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15379,7 +15402,10 @@ CLUSTERING 集群模式;
 
     @property
     def Consistency(self):
-        """订阅一致性
+        """订阅一致性，枚举如下：
+
+- 0: 订阅一致
+- 1: 订阅不一致
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15611,15 +15637,20 @@ class TopicConsumeStats(AbstractModel):
         r"""
         :param _Topic: 主题名称
         :type Topic: str
-        :param _TopicType: 主题类型
+        :param _TopicType: 主题类型，枚举值如下：
+
+- NORMAL：普通消息主题
+- FIFO：顺序消息主题
+- DELAY：延迟消息主题
+- TRANSACTION：事务消息主题
         :type TopicType: str
         :param _QueueNum: 单节点主题队列数量
         :type QueueNum: int
         :param _ConsumerLag: 消费堆积
         :type ConsumerLag: int
-        :param _SubString: 订阅规则
+        :param _SubString: 订阅规则，`*`表示订阅全部TAG
         :type SubString: str
-        :param _LastUpdateTime: 最后消费进度更新时间
+        :param _LastUpdateTime: 最后消费进度更新时间，**Unix时间戳（毫秒）**
         :type LastUpdateTime: int
         """
         self._Topic = None
@@ -15642,7 +15673,12 @@ class TopicConsumeStats(AbstractModel):
 
     @property
     def TopicType(self):
-        """主题类型
+        """主题类型，枚举值如下：
+
+- NORMAL：普通消息主题
+- FIFO：顺序消息主题
+- DELAY：延迟消息主题
+- TRANSACTION：事务消息主题
         :rtype: str
         """
         return self._TopicType
@@ -15675,7 +15711,7 @@ class TopicConsumeStats(AbstractModel):
 
     @property
     def SubString(self):
-        """订阅规则
+        """订阅规则，`*`表示订阅全部TAG
         :rtype: str
         """
         return self._SubString
@@ -15686,7 +15722,7 @@ class TopicConsumeStats(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """最后消费进度更新时间
+        """最后消费进度更新时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._LastUpdateTime
@@ -15732,7 +15768,7 @@ TRANSACTION:事务消息
         :type TopicType: str
         :param _QueueNum: 队列数量
         :type QueueNum: int
-        :param _Remark: 描述
+        :param _Remark: 备注信息
         :type Remark: str
         :param _ClusterIdV4: 4.x的集群id
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15747,7 +15783,6 @@ TRANSACTION:事务消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullNamespaceV4: str
         :param _MsgTTL: 消息保留时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type MsgTTL: int
         """
         self._InstanceId = None
@@ -15811,7 +15846,7 @@ TRANSACTION:事务消息
 
     @property
     def Remark(self):
-        """描述
+        """备注信息
         :rtype: str
         """
         return self._Remark
@@ -15871,7 +15906,6 @@ TRANSACTION:事务消息
     @property
     def MsgTTL(self):
         """消息保留时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MsgTTL

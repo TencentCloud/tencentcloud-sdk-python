@@ -6334,8 +6334,12 @@ class CreateAccountsRequest(AbstractModel):
         :param _Accounts: 云数据库账号。
         :type Accounts: list of Account
         :param _Password: 新账户的密码。
+说明：
+1. 在8 ～ 64位字符数以内（推荐12位以上）。
+2. 至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&=!@#$%^*().|。
+3. 不能包含非法字符。
         :type Password: str
-        :param _Description: 备注信息。
+        :param _Description: 备注信息。最多支持输入255个字符。
         :type Description: str
         :param _MaxUserConnections: 新账户最大可用连接数，默认值为10240，最大可设置值为10240。
         :type MaxUserConnections: int
@@ -6371,6 +6375,10 @@ class CreateAccountsRequest(AbstractModel):
     @property
     def Password(self):
         """新账户的密码。
+说明：
+1. 在8 ～ 64位字符数以内（推荐12位以上）。
+2. 至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&=!@#$%^*().|。
+3. 不能包含非法字符。
         :rtype: str
         """
         return self._Password
@@ -6381,7 +6389,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def Description(self):
-        """备注信息。
+        """备注信息。最多支持输入255个字符。
         :rtype: str
         """
         return self._Description
@@ -26771,7 +26779,7 @@ class ModifyAccountMaxUserConnectionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Accounts: 云数据库账号。
+        :param _Accounts: 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
         :type Accounts: list of Account
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
@@ -26784,7 +26792,7 @@ class ModifyAccountMaxUserConnectionsRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        """云数据库账号。
+        """云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
         :rtype: list of Account
         """
         return self._Accounts
@@ -26889,7 +26897,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
         :type InstanceId: str
         :param _NewPassword: 数据库账号的新密码。密码应至少包含字母、数字和字符（_+-&=!@#$%^*()）中的两种，长度为8-64个字符。
         :type NewPassword: str
-        :param _Accounts: 云数据库账号。
+        :param _Accounts: 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
         :type Accounts: list of Account
         """
         self._InstanceId = None
@@ -26920,7 +26928,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        """云数据库账号。
+        """云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
         :rtype: list of Account
         """
         return self._Accounts
@@ -27001,7 +27009,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param _Accounts: 数据库的账号，包括用户名和域名。
+        :param _Accounts: 数据库的账号，包括用户名和域名。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
         :type Accounts: list of Account
         :param _GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE"。
 注意，ModifyAction为空时，不传该参数表示清除该权限。
@@ -27039,7 +27047,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        """数据库的账号，包括用户名和域名。
+        """数据库的账号，包括用户名和域名。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
         :rtype: list of Account
         """
         return self._Accounts
@@ -30407,11 +30415,11 @@ class ModifyRoGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoGroupId: RO 组的 ID。
+        :param _RoGroupId: RO 组的 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
         :type RoGroupId: str
         :param _RoGroupInfo: RO 组的详细信息。
         :type RoGroupInfo: :class:`tencentcloud.cdb.v20170320.models.RoGroupAttr`
-        :param _RoWeightValues: RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。
+        :param _RoWeightValues: RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。RO 实例 ID 可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
         :type RoWeightValues: list of RoWeightValue
         :param _IsBalanceRoLoad: 是否重新均衡 RO 组内的 RO 实例的负载。支持值包括：1 - 重新均衡负载；0 - 不重新均衡负载。默认值为 0。注意，设置为重新均衡负载时，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库。
         :type IsBalanceRoLoad: int
@@ -30426,7 +30434,7 @@ class ModifyRoGroupInfoRequest(AbstractModel):
 
     @property
     def RoGroupId(self):
-        """RO 组的 ID。
+        """RO 组的 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
         :rtype: str
         """
         return self._RoGroupId
@@ -30448,7 +30456,7 @@ class ModifyRoGroupInfoRequest(AbstractModel):
 
     @property
     def RoWeightValues(self):
-        """RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。
+        """RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。RO 实例 ID 可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
         :rtype: list of RoWeightValue
         """
         return self._RoWeightValues

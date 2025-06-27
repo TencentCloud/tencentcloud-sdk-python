@@ -16629,10 +16629,13 @@ class KnowledgeCapacityPieGraphDetail(AbstractModel):
         :param _Proportion: 当前应用对于总用量的占比
 注意：此字段可能返回 null，表示取不到有效值。
         :type Proportion: float
+        :param _KnowledgeType: 知识库类型:0默认1共享
+        :type KnowledgeType: int
         """
         self._AppName = None
         self._UsedCharSize = None
         self._Proportion = None
+        self._KnowledgeType = None
 
     @property
     def AppName(self):
@@ -16670,11 +16673,23 @@ class KnowledgeCapacityPieGraphDetail(AbstractModel):
     def Proportion(self, Proportion):
         self._Proportion = Proportion
 
+    @property
+    def KnowledgeType(self):
+        """知识库类型:0默认1共享
+        :rtype: int
+        """
+        return self._KnowledgeType
+
+    @KnowledgeType.setter
+    def KnowledgeType(self, KnowledgeType):
+        self._KnowledgeType = KnowledgeType
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
         self._UsedCharSize = params.get("UsedCharSize")
         self._Proportion = params.get("Proportion")
+        self._KnowledgeType = params.get("KnowledgeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16704,15 +16719,18 @@ class KnowledgeDetail(AbstractModel):
         :param _ExceedCharSize: 超量字符数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceedCharSize: str
-        :param _IsSharedKnowledge: 是否共享知识库类型
+        :param _IsSharedKnowledge: 废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSharedKnowledge: bool
+        :param _KnowledgeType: 知识库类型:0默认1共享
+        :type KnowledgeType: int
         """
         self._AppName = None
         self._UsedCharSize = None
         self._Proportion = None
         self._ExceedCharSize = None
         self._IsSharedKnowledge = None
+        self._KnowledgeType = None
 
     @property
     def AppName(self):
@@ -16764,7 +16782,7 @@ class KnowledgeDetail(AbstractModel):
 
     @property
     def IsSharedKnowledge(self):
-        """是否共享知识库类型
+        """废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -16774,6 +16792,17 @@ class KnowledgeDetail(AbstractModel):
     def IsSharedKnowledge(self, IsSharedKnowledge):
         self._IsSharedKnowledge = IsSharedKnowledge
 
+    @property
+    def KnowledgeType(self):
+        """知识库类型:0默认1共享
+        :rtype: int
+        """
+        return self._KnowledgeType
+
+    @KnowledgeType.setter
+    def KnowledgeType(self, KnowledgeType):
+        self._KnowledgeType = KnowledgeType
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
@@ -16781,6 +16810,7 @@ class KnowledgeDetail(AbstractModel):
         self._Proportion = params.get("Proportion")
         self._ExceedCharSize = params.get("ExceedCharSize")
         self._IsSharedKnowledge = params.get("IsSharedKnowledge")
+        self._KnowledgeType = params.get("KnowledgeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

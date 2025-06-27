@@ -285,7 +285,7 @@ class ChatCompletionsRequest(AbstractModel):
 4. 安全审核能力不属于功能增强范围，不受此字段影响。
 5. 2025-04-20 00:00:00起，由默认开启状态转为默认关闭状态。
         :type EnableEnhancement: bool
-        :param _Tools: 可调用的工具列表，仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。
+        :param _Tools: 可调用的工具列表，仅对 hunyuan-turbos、hunyuan-t1、hunyuan-functioncall 模型生效。
         :type Tools: list of Tool
         :param _ToolChoice: 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
         :type ToolChoice: str
@@ -339,6 +339,8 @@ class ChatCompletionsRequest(AbstractModel):
         :type WebSearchOptions: :class:`tencentcloud.hunyuan.v20230901.models.WebSearchOptions`
         :param _TopicChoice: 用户传入Topic
         :type TopicChoice: str
+        :param _EnableThinking: 模型思维链开关 说明： 1. 未传值时默认开启，打开模型思维链推理能力。 2. 关闭后，关闭模型思维链推理能力。  开关当前仅对hunyuan-a13b模型生效 示例值：ture
+        :type EnableThinking: bool
         """
         self._Model = None
         self._Messages = None
@@ -362,6 +364,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._EnableDeepRead = None
         self._WebSearchOptions = None
         self._TopicChoice = None
+        self._EnableThinking = None
 
     @property
     def Model(self):
@@ -477,7 +480,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Tools(self):
-        """可调用的工具列表，仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。
+        """可调用的工具列表，仅对 hunyuan-turbos、hunyuan-t1、hunyuan-functioncall 模型生效。
         :rtype: list of Tool
         """
         return self._Tools
@@ -664,6 +667,17 @@ class ChatCompletionsRequest(AbstractModel):
     def TopicChoice(self, TopicChoice):
         self._TopicChoice = TopicChoice
 
+    @property
+    def EnableThinking(self):
+        """模型思维链开关 说明： 1. 未传值时默认开启，打开模型思维链推理能力。 2. 关闭后，关闭模型思维链推理能力。  开关当前仅对hunyuan-a13b模型生效 示例值：ture
+        :rtype: bool
+        """
+        return self._EnableThinking
+
+    @EnableThinking.setter
+    def EnableThinking(self, EnableThinking):
+        self._EnableThinking = EnableThinking
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -702,6 +716,7 @@ class ChatCompletionsRequest(AbstractModel):
             self._WebSearchOptions = WebSearchOptions()
             self._WebSearchOptions._deserialize(params.get("WebSearchOptions"))
         self._TopicChoice = params.get("TopicChoice")
+        self._EnableThinking = params.get("EnableThinking")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

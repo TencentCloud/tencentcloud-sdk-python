@@ -26,23 +26,17 @@ class AudioResult(AbstractModel):
     def __init__(self):
         r"""
         :param _HitFlag: 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
         :param _Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _Text: 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Url: 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Duration: 该字段用于返回音频文件的时长，单位为毫秒。
         :type Duration: str
@@ -55,10 +49,8 @@ class AudioResult(AbstractModel):
         :param _LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
         :type LanguageResults: list of AudioResultDetailLanguageResult
         :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         :param _RecognitionResults: 识别类标签结果信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecognitionResults: list of RecognitionResult
         :param _SpeakerResults: 说话人结果
         :type SpeakerResults: list of SpeakerResults
@@ -70,6 +62,8 @@ class AudioResult(AbstractModel):
         :type SubTag: str
         :param _SubTagCode: 三级标签码
         :type SubTagCode: str
+        :param _HitType: 审核检测类型
+        :type HitType: str
         """
         self._HitFlag = None
         self._Label = None
@@ -89,11 +83,11 @@ class AudioResult(AbstractModel):
         self._TravelResults = None
         self._SubTag = None
         self._SubTagCode = None
+        self._HitType = None
 
     @property
     def HitFlag(self):
         """该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HitFlag
@@ -105,7 +99,6 @@ class AudioResult(AbstractModel):
     @property
     def Label(self):
         """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -118,7 +111,6 @@ class AudioResult(AbstractModel):
     def Suggestion(self):
         """该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Suggestion
@@ -130,7 +122,6 @@ class AudioResult(AbstractModel):
     @property
     def Score(self):
         """该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -142,7 +133,6 @@ class AudioResult(AbstractModel):
     @property
     def Text(self):
         """该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -154,7 +144,6 @@ class AudioResult(AbstractModel):
     @property
     def Url(self):
         """该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -221,7 +210,6 @@ class AudioResult(AbstractModel):
     @property
     def SubLabel(self):
         """该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabel
@@ -233,7 +221,6 @@ class AudioResult(AbstractModel):
     @property
     def RecognitionResults(self):
         """识别类标签结果信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecognitionResult
         """
         return self._RecognitionResults
@@ -297,6 +284,17 @@ class AudioResult(AbstractModel):
     def SubTagCode(self, SubTagCode):
         self._SubTagCode = SubTagCode
 
+    @property
+    def HitType(self):
+        """审核检测类型
+        :rtype: str
+        """
+        return self._HitType
+
+    @HitType.setter
+    def HitType(self, HitType):
+        self._HitType = HitType
+
 
     def _deserialize(self, params):
         self._HitFlag = params.get("HitFlag")
@@ -352,6 +350,7 @@ class AudioResult(AbstractModel):
                 self._TravelResults.append(obj)
         self._SubTag = params.get("SubTag")
         self._SubTagCode = params.get("SubTagCode")
+        self._HitType = params.get("HitType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -370,19 +369,14 @@ class AudioResultDetailLanguageResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 该字段用于返回对应的语言种类信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Score: 该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _StartTime: 该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
         :param _EndTime: 该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
         :param _SubLabelCode: *内测中，敬请期待*
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabelCode: str
         """
         self._Label = None
@@ -394,7 +388,6 @@ class AudioResultDetailLanguageResult(AbstractModel):
     @property
     def Label(self):
         """该字段用于返回对应的语言种类信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -406,7 +399,6 @@ class AudioResultDetailLanguageResult(AbstractModel):
     @property
     def Score(self):
         """该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -418,7 +410,6 @@ class AudioResultDetailLanguageResult(AbstractModel):
     @property
     def StartTime(self):
         """该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._StartTime
@@ -430,7 +421,6 @@ class AudioResultDetailLanguageResult(AbstractModel):
     @property
     def EndTime(self):
         """该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._EndTime
@@ -442,7 +432,6 @@ class AudioResultDetailLanguageResult(AbstractModel):
     @property
     def SubLabelCode(self):
         """*内测中，敬请期待*
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabelCode
@@ -855,20 +844,17 @@ class AudioResultDetailTextResult(AbstractModel):
 
 
 class AudioSegments(AbstractModel):
-    """表示声音段信息
+    """表示该段声音的信息
 
     """
 
     def __init__(self):
         r"""
         :param _OffsetTime: 该字段用于返回音频片段的开始时间，单位为秒。对于点播文件，该参数代表对应音频相对于完整音轨的偏移时间，如0（代表不偏移），5（音轨开始后5秒），10（音轨开始后10秒）；对于直播文件，该参数则返回对应音频片段开始时的Unix时间戳，如：1594650717。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetTime: str
         :param _Result: 该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ams.v20201229.models.AudioResult`
         :param _CreatedAt: 入库时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         """
         self._OffsetTime = None
@@ -878,7 +864,6 @@ class AudioSegments(AbstractModel):
     @property
     def OffsetTime(self):
         """该字段用于返回音频片段的开始时间，单位为秒。对于点播文件，该参数代表对应音频相对于完整音轨的偏移时间，如0（代表不偏移），5（音轨开始后5秒），10（音轨开始后10秒）；对于直播文件，该参数则返回对应音频片段开始时的Unix时间戳，如：1594650717。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OffsetTime
@@ -890,7 +875,6 @@ class AudioSegments(AbstractModel):
     @property
     def Result(self):
         """该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ams.v20201229.models.AudioResult`
         """
         return self._Result
@@ -902,7 +886,6 @@ class AudioSegments(AbstractModel):
     @property
     def CreatedAt(self):
         """入库时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -937,13 +920,10 @@ class BucketInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Bucket: 该字段用于标识腾讯云对象存储的存储桶名称,关于文件桶的详细信息敬请参考 [腾讯云存储相关说明](https://cloud.tencent.com/document/product/436/44352)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
         :param _Region: 该字段用于标识腾讯云对象存储的托管机房的分布地区，对象存储 COS 的数据存放在这些地域的存储桶中。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Object: 该字段用于标识腾讯云对象存储的对象Key,对象作为基本单元被存放在存储桶中；用户可以通过腾讯云控制台、API、SDK 等多种方式管理对象。有关对象的详细描述敬请参阅相应 [产品文档](https://cloud.tencent.com/document/product/436/13324)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Object: str
         """
         self._Bucket = None
@@ -953,7 +933,6 @@ class BucketInfo(AbstractModel):
     @property
     def Bucket(self):
         """该字段用于标识腾讯云对象存储的存储桶名称,关于文件桶的详细信息敬请参考 [腾讯云存储相关说明](https://cloud.tencent.com/document/product/436/44352)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bucket
@@ -965,7 +944,6 @@ class BucketInfo(AbstractModel):
     @property
     def Region(self):
         """该字段用于标识腾讯云对象存储的托管机房的分布地区，对象存储 COS 的数据存放在这些地域的存储桶中。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -977,7 +955,6 @@ class BucketInfo(AbstractModel):
     @property
     def Object(self):
         """该字段用于标识腾讯云对象存储的对象Key,对象作为基本单元被存放在存储桶中；用户可以通过腾讯云控制台、API、SDK 等多种方式管理对象。有关对象的详细描述敬请参阅相应 [产品文档](https://cloud.tencent.com/document/product/436/13324)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Object
@@ -1620,7 +1597,6 @@ class CreateAudioModerationTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Results: 该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1631,7 +1607,6 @@ class CreateAudioModerationTaskResponse(AbstractModel):
     @property
     def Results(self):
         """该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskResult
         """
         return self._Results
@@ -1723,56 +1698,39 @@ class DescribeTaskDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _DataId: 该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
         :param _BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
         :param _Name: 该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Status: 该字段用于返回所查询内容的任务状态。
 <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
         :param _InputInfo: 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputInfo: :class:`tencentcloud.ams.v20201229.models.InputInfo`
         :param _AudioText: 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioText: str
         :param _AudioSegments: 该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSegments: list of AudioSegments
         :param _ErrorType: 当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorType: str
         :param _ErrorDescription: 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorDescription: str
         :param _CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _Label: 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _MediaInfo: 媒体信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfo: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1799,7 +1757,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def TaskId(self):
         """该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -1811,7 +1768,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def DataId(self):
         """该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataId
@@ -1823,7 +1779,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def BizType(self):
         """该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BizType
@@ -1835,7 +1790,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def Name(self):
         """该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1848,7 +1802,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     def Status(self):
         """该字段用于返回所查询内容的任务状态。
 <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1860,7 +1813,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def Type(self):
         """该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -1872,7 +1824,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def Suggestion(self):
         """该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Suggestion
@@ -1884,7 +1835,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def Labels(self):
         """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskLabel
         """
         return self._Labels
@@ -1896,7 +1846,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def InputInfo(self):
         """该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ams.v20201229.models.InputInfo`
         """
         return self._InputInfo
@@ -1908,7 +1857,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def AudioText(self):
         """该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AudioText
@@ -1920,7 +1868,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def AudioSegments(self):
         """该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AudioSegments
         """
         return self._AudioSegments
@@ -1932,7 +1879,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def ErrorType(self):
         """当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorType
@@ -1944,7 +1890,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def ErrorDescription(self):
         """当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorDescription
@@ -1956,7 +1901,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def CreatedAt(self):
         """该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -1968,7 +1912,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def UpdatedAt(self):
         """该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedAt
@@ -1980,7 +1923,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def Label(self):
         """该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -1992,7 +1934,6 @@ class DescribeTaskDetailResponse(AbstractModel):
     @property
     def MediaInfo(self):
         """媒体信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
         """
         return self._MediaInfo
@@ -2154,13 +2095,10 @@ class DescribeTasksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 该字段用于返回当前查询的任务总量，格式为int字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: str
         :param _Data: 该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of TaskData
         :param _PageToken: 该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2173,7 +2111,6 @@ class DescribeTasksResponse(AbstractModel):
     @property
     def Total(self):
         """该字段用于返回当前查询的任务总量，格式为int字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Total
@@ -2185,7 +2122,6 @@ class DescribeTasksResponse(AbstractModel):
     @property
     def Data(self):
         """该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskData
         """
         return self._Data
@@ -2197,7 +2133,6 @@ class DescribeTasksResponse(AbstractModel):
     @property
     def PageToken(self):
         """该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PageToken
@@ -2324,10 +2259,8 @@ class InputInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Url: 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _BucketInfo: 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2340,7 +2273,6 @@ class InputInfo(AbstractModel):
     @property
     def Type(self):
         """该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -2352,7 +2284,6 @@ class InputInfo(AbstractModel):
     @property
     def Url(self):
         """该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -2398,25 +2329,18 @@ class LabelResults(AbstractModel):
     def __init__(self):
         r"""
         :param _Scene: 场景
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scene: str
         :param _Suggestion: 建议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: int
         :param _Label: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Name: 名称：歌曲名，语种名，说话人名 等
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Score: 得分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
         """
         self._Scene = None
@@ -2430,7 +2354,6 @@ class LabelResults(AbstractModel):
     @property
     def Scene(self):
         """场景
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Scene
@@ -2442,7 +2365,6 @@ class LabelResults(AbstractModel):
     @property
     def Suggestion(self):
         """建议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Suggestion
@@ -2454,7 +2376,6 @@ class LabelResults(AbstractModel):
     @property
     def Label(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -2466,7 +2387,6 @@ class LabelResults(AbstractModel):
     @property
     def Name(self):
         """名称：歌曲名，语种名，说话人名 等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2478,7 +2398,6 @@ class LabelResults(AbstractModel):
     @property
     def Score(self):
         """得分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -2490,7 +2409,6 @@ class LabelResults(AbstractModel):
     @property
     def StartTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._StartTime
@@ -2502,7 +2420,6 @@ class LabelResults(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._EndTime
@@ -2634,7 +2551,6 @@ class MoanResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表该音频中无呻吟/娇喘相关违规内容；
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Score: 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
 （如：Moan 99，则该样本属于呻吟/娇喘的置信度非常高。）
@@ -2647,8 +2563,6 @@ class MoanResult(AbstractModel):
         :param _EndTime: 违规事件结束时间，单位为秒（s）；
         :type EndTime: float
         :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
         self._Label = None
@@ -2661,7 +2575,6 @@ class MoanResult(AbstractModel):
     @property
     def Label(self):
         """固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表该音频中无呻吟/娇喘相关违规内容；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -2719,8 +2632,6 @@ class MoanResult(AbstractModel):
     @property
     def SubLabel(self):
         """该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabel
@@ -2806,10 +2717,8 @@ class RecognitionResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 可能的取值有：Teenager 、Gender
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Tags: 识别标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._Label = None
@@ -2818,7 +2727,6 @@ class RecognitionResult(AbstractModel):
     @property
     def Label(self):
         """可能的取值有：Teenager 、Gender
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -2830,7 +2738,6 @@ class RecognitionResult(AbstractModel):
     @property
     def Tags(self):
         """识别标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -2866,16 +2773,12 @@ class SpeakerResults(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Score: 得分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._Label = None
@@ -2886,7 +2789,6 @@ class SpeakerResults(AbstractModel):
     @property
     def Label(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -2898,7 +2800,6 @@ class SpeakerResults(AbstractModel):
     @property
     def Score(self):
         """得分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -2910,7 +2811,6 @@ class SpeakerResults(AbstractModel):
     @property
     def StartTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._StartTime
@@ -2922,7 +2822,6 @@ class SpeakerResults(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -3025,16 +2924,12 @@ class Tag(AbstractModel):
         :param _Name: 根据Label字段确定具体名称：
 当Label 为Teenager 时 Name可能取值有：Teenager 
 当Label 为Gender 时 Name可能取值有：Male 、Female
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Score: 置信分：0～100，数值越大表示置信度越高
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _StartTime: 识别开始偏移时间，单位：毫秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
         :param _EndTime: 识别结束偏移时间，单位：毫秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
         """
         self._Name = None
@@ -3047,7 +2942,6 @@ class Tag(AbstractModel):
         """根据Label字段确定具体名称：
 当Label 为Teenager 时 Name可能取值有：Teenager 
 当Label 为Gender 时 Name可能取值有：Male 、Female
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3059,7 +2953,6 @@ class Tag(AbstractModel):
     @property
     def Score(self):
         """置信分：0～100，数值越大表示置信度越高
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -3071,7 +2964,6 @@ class Tag(AbstractModel):
     @property
     def StartTime(self):
         """识别开始偏移时间，单位：毫秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._StartTime
@@ -3083,7 +2975,6 @@ class Tag(AbstractModel):
     @property
     def EndTime(self):
         """识别结束偏移时间，单位：毫秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._EndTime
@@ -3116,7 +3007,6 @@ class TaskData(AbstractModel):
     def __init__(self):
         r"""
         :param _DataId: 该字段用于返回音频审核任务数据所对应的数据ID，方便后续查询和管理审核任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
         :param _TaskId: 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
         :type TaskId: str
@@ -3124,30 +3014,22 @@ class TaskData(AbstractModel):
 <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
         :type Status: str
         :param _Name: 该字段用于返回音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
         :param _Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _MediaInfo: 输入信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfo: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
         :param _Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
         :param _CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
         :type CreatedAt: str
         :param _UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _InputInfo: 任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputInfo: :class:`tencentcloud.ams.v20201229.models.InputInfo`
         """
         self._DataId = None
@@ -3166,7 +3048,6 @@ class TaskData(AbstractModel):
     @property
     def DataId(self):
         """该字段用于返回音频审核任务数据所对应的数据ID，方便后续查询和管理审核任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataId
@@ -3201,7 +3082,6 @@ class TaskData(AbstractModel):
     @property
     def Name(self):
         """该字段用于返回音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3213,7 +3093,6 @@ class TaskData(AbstractModel):
     @property
     def BizType(self):
         """该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BizType
@@ -3225,7 +3104,6 @@ class TaskData(AbstractModel):
     @property
     def Type(self):
         """该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -3237,7 +3115,6 @@ class TaskData(AbstractModel):
     @property
     def Suggestion(self):
         """该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Suggestion
@@ -3249,7 +3126,6 @@ class TaskData(AbstractModel):
     @property
     def MediaInfo(self):
         """输入信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
         """
         return self._MediaInfo
@@ -3261,7 +3137,6 @@ class TaskData(AbstractModel):
     @property
     def Labels(self):
         """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskLabel
         """
         return self._Labels
@@ -3284,7 +3159,6 @@ class TaskData(AbstractModel):
     @property
     def UpdatedAt(self):
         """该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedAt
@@ -3296,7 +3170,6 @@ class TaskData(AbstractModel):
     @property
     def InputInfo(self):
         """任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ams.v20201229.models.InputInfo`
         """
         return self._InputInfo
@@ -3495,16 +3368,12 @@ class TaskLabel(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Suggestion: 该字段用于返回当前标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
         self._Label = None
@@ -3515,7 +3384,6 @@ class TaskLabel(AbstractModel):
     @property
     def Label(self):
         """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -3527,7 +3395,6 @@ class TaskLabel(AbstractModel):
     @property
     def Suggestion(self):
         """该字段用于返回当前标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Suggestion
@@ -3539,7 +3406,6 @@ class TaskLabel(AbstractModel):
     @property
     def Score(self):
         """该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -3551,7 +3417,6 @@ class TaskLabel(AbstractModel):
     @property
     def SubLabel(self):
         """该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabel
@@ -3584,16 +3449,12 @@ class TaskResult(AbstractModel):
     def __init__(self):
         r"""
         :param _DataId: 该字段用于返回创建音频审核任务时在TaskInput结构内传入的DataId，用于标识具体审核任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
         :param _TaskId: 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _Code: 该字段用于返回任务创建的状态，如返回OK则代表任务创建成功，其他返回值可参考公共错误码。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Message: **仅在Code的返回值为错误码时生效**，用于返回错误的详情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
         self._DataId = None
@@ -3604,7 +3465,6 @@ class TaskResult(AbstractModel):
     @property
     def DataId(self):
         """该字段用于返回创建音频审核任务时在TaskInput结构内传入的DataId，用于标识具体审核任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataId
@@ -3616,7 +3476,6 @@ class TaskResult(AbstractModel):
     @property
     def TaskId(self):
         """该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -3628,7 +3487,6 @@ class TaskResult(AbstractModel):
     @property
     def Code(self):
         """该字段用于返回任务创建的状态，如返回OK则代表任务创建成功，其他返回值可参考公共错误码。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -3640,7 +3498,6 @@ class TaskResult(AbstractModel):
     @property
     def Message(self):
         """**仅在Code的返回值为错误码时生效**，用于返回错误的详情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -3676,32 +3533,24 @@ class TextResult(AbstractModel):
 以及其他令人反感、不安全或不适宜的内容类型。
 
 如音频中无复杂类型「TextResults」的返回则代表该音频中无相关违规内容；
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Keywords: 命中的关键词，为空则代表该违规内容出自于模型的判断；
-注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
         :param _LibId: 命中关键词库的库标识；
-注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
         :param _LibName: 命中关键词库的名字；
-注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
         :param _Score: 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
 （如：Porn 99，则该样本属于色情的置信度非常高。）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _LibType: 自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
 1：自定义黑白库；
 2：公库；
         :type LibType: int
         :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         :param _HitInfos: 该字段用于返回违规文本命中信息
         :type HitInfos: list of HitInfo
@@ -3722,7 +3571,6 @@ class TextResult(AbstractModel):
 以及其他令人反感、不安全或不适宜的内容类型。
 
 如音频中无复杂类型「TextResults」的返回则代表该音频中无相关违规内容；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -3734,7 +3582,6 @@ class TextResult(AbstractModel):
     @property
     def Keywords(self):
         """命中的关键词，为空则代表该违规内容出自于模型的判断；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Keywords
@@ -3746,7 +3593,6 @@ class TextResult(AbstractModel):
     @property
     def LibId(self):
         """命中关键词库的库标识；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LibId
@@ -3758,7 +3604,6 @@ class TextResult(AbstractModel):
     @property
     def LibName(self):
         """命中关键词库的名字；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LibName
@@ -3771,7 +3616,6 @@ class TextResult(AbstractModel):
     def Score(self):
         """机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
 （如：Porn 99，则该样本属于色情的置信度非常高。）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -3784,7 +3628,6 @@ class TextResult(AbstractModel):
     def Suggestion(self):
         """建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Suggestion
@@ -3809,8 +3652,6 @@ class TextResult(AbstractModel):
     @property
     def SubLabel(self):
         """该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabel
@@ -3864,25 +3705,18 @@ class TravelResults(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 一级标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _SubLabel: 二级标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         :param _RiskLevel: 风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _AudioRole: 出行音频角色
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioRole: str
         :param _AudioText: 出行语音文本
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioText: str
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
         """
         self._Label = None
@@ -3896,7 +3730,6 @@ class TravelResults(AbstractModel):
     @property
     def Label(self):
         """一级标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -3908,7 +3741,6 @@ class TravelResults(AbstractModel):
     @property
     def SubLabel(self):
         """二级标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabel
@@ -3920,7 +3752,6 @@ class TravelResults(AbstractModel):
     @property
     def RiskLevel(self):
         """风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -3932,7 +3763,6 @@ class TravelResults(AbstractModel):
     @property
     def AudioRole(self):
         """出行音频角色
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AudioRole
@@ -3944,7 +3774,6 @@ class TravelResults(AbstractModel):
     @property
     def AudioText(self):
         """出行语音文本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AudioText
@@ -3956,7 +3785,6 @@ class TravelResults(AbstractModel):
     @property
     def StartTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._StartTime
@@ -3968,7 +3796,6 @@ class TravelResults(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._EndTime

@@ -4045,6 +4045,10 @@ class ClusterNetworkSettings(AbstractModel):
         :param _CiliumMode: 集群Cilium Mode配置
 - clusterIP
         :type CiliumMode: str
+        :param _SubnetId: 控制面子网信息，仅在以下场景返回。
+- 容器网络插件为CiliumOverlay。
+- 支持CDC的托管集群，且网络插件为VPC-CNI。
+        :type SubnetId: str
         """
         self._ClusterCIDR = None
         self._IgnoreClusterCIDRConflict = None
@@ -4060,6 +4064,7 @@ class ClusterNetworkSettings(AbstractModel):
         self._IsDualStack = None
         self._Ipv6ServiceCIDR = None
         self._CiliumMode = None
+        self._SubnetId = None
 
     @property
     def ClusterCIDR(self):
@@ -4217,6 +4222,19 @@ class ClusterNetworkSettings(AbstractModel):
     def CiliumMode(self, CiliumMode):
         self._CiliumMode = CiliumMode
 
+    @property
+    def SubnetId(self):
+        """控制面子网信息，仅在以下场景返回。
+- 容器网络插件为CiliumOverlay。
+- 支持CDC的托管集群，且网络插件为VPC-CNI。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
 
     def _deserialize(self, params):
         self._ClusterCIDR = params.get("ClusterCIDR")
@@ -4233,6 +4251,7 @@ class ClusterNetworkSettings(AbstractModel):
         self._IsDualStack = params.get("IsDualStack")
         self._Ipv6ServiceCIDR = params.get("Ipv6ServiceCIDR")
         self._CiliumMode = params.get("CiliumMode")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

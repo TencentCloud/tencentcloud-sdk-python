@@ -798,13 +798,10 @@ class LabelDetailItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 该字段用于返回识别对象的ID以方便识别和区分。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _Name: 该字段用于返回识命中的子标签名称。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Name: 该字段用于返回时命中的子标签名称。
         :type Name: str
         :param _Score: 该字段用于返回对应子标签命中的分值，取值为**0-100**，如：*Porn-SexBehavior 99* 则代表相应识别内容命中色情-性行为标签的分值为99。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         """
         self._Id = None
@@ -814,7 +811,6 @@ class LabelDetailItem(AbstractModel):
     @property
     def Id(self):
         """该字段用于返回识别对象的ID以方便识别和区分。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -825,8 +821,7 @@ class LabelDetailItem(AbstractModel):
 
     @property
     def Name(self):
-        """该字段用于返回识命中的子标签名称。
-注意：此字段可能返回 null，表示取不到有效值。
+        """该字段用于返回时命中的子标签名称。
         :rtype: str
         """
         return self._Name
@@ -838,7 +833,6 @@ class LabelDetailItem(AbstractModel):
     @property
     def Score(self):
         """该字段用于返回对应子标签命中的分值，取值为**0-100**，如：*Porn-SexBehavior 99* 则代表相应识别内容命中色情-性行为标签的分值为99。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -880,7 +874,6 @@ class LabelResult(AbstractModel):
         :param _Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表图片越有可能属于当前返回的标签；如：*色情 99*，则表明该图片非常有可能属于色情内容；*色情 0*，则表明该图片不属于色情内容。
         :type Score: int
         :param _Details: 该字段用于返回分类模型命中子标签的详细信息，如：序号、命中标签名称、分数等信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of LabelDetailItem
         """
         self._Scene = None
@@ -948,7 +941,6 @@ class LabelResult(AbstractModel):
     @property
     def Details(self):
         """该字段用于返回分类模型命中子标签的详细信息，如：序号、命中标签名称、分数等信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LabelDetailItem
         """
         return self._Details
@@ -1129,7 +1121,6 @@ class LibResult(AbstractModel):
         :param _Score: 该字段用于返回图片检索模型识别的分值，取值为**0-100**，表示该审核图片**与库中样本的相似分值**，得分越高，代表当前内容越有可能命中相似图库内的样本。
         :type Score: int
         :param _Details: 该字段用于返回黑白库比对结果的详细信息，如：序号、库名称、恶意标签等信息；详细返回信息敬请参考对应数据结构（[LibDetail](https://cloud.tencent.com/document/product/1125/53274#LibDetail)）的描述文档
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of LibDetail
         """
         self._Scene = None
@@ -1198,7 +1189,6 @@ class LibResult(AbstractModel):
     @property
     def Details(self):
         """该字段用于返回黑白库比对结果的详细信息，如：序号、库名称、恶意标签等信息；详细返回信息敬请参考对应数据结构（[LibDetail](https://cloud.tencent.com/document/product/1125/53274#LibDetail)）的描述文档
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LibDetail
         """
         return self._Details
@@ -1346,7 +1336,6 @@ class ObjectDetail(AbstractModel):
         :param _SubLabel: 该参数用于返回命中的实体二级标签。
         :type SubLabel: str
         :param _ObjectId: 该参数用于返回命中的人脸id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectId: str
         """
         self._Id = None
@@ -1426,7 +1415,6 @@ class ObjectDetail(AbstractModel):
     @property
     def ObjectId(self):
         """该参数用于返回命中的人脸id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjectId
@@ -1474,11 +1462,9 @@ class ObjectResult(AbstractModel):
         :param _Score: 该字段用于返回命中当前恶意标签下子标签的分值，取值为**0-100**，如：*Porn-SexBehavior 99* 则代表相应识别内容命中色情-性行为标签的分值为99。
         :type Score: int
         :param _Names: 该标签用于返回所识别出的实体名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Names: list of str
         :param _Details: 该标签用于返回所识别出实体的详细信息，如：序号、命中标签名称、位置坐标等信息，详细返回内容敬请参考相应数据结构（[ObjectDetail
 ](https://cloud.tencent.com/document/api/1125/53274#ObjectDetail)）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of ObjectDetail
         """
         self._Scene = None
@@ -1547,7 +1533,6 @@ class ObjectResult(AbstractModel):
     @property
     def Names(self):
         """该标签用于返回所识别出的实体名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Names
@@ -1560,7 +1545,6 @@ class ObjectResult(AbstractModel):
     def Details(self):
         """该标签用于返回所识别出实体的详细信息，如：序号、命中标签名称、位置坐标等信息，详细返回内容敬请参考相应数据结构（[ObjectDetail
 ](https://cloud.tencent.com/document/api/1125/53274#ObjectDetail)）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ObjectDetail
         """
         return self._Details
@@ -1697,7 +1681,6 @@ class OcrResult(AbstractModel):
         :param _Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
         :type Score: int
         :param _Details: 该字段用于返回OCR识别出的结果的详细内容，如：文本内容、对应标签、识别框位置等信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of OcrTextDetail
         :param _Text: 该字段用于返回OCR识别出的文字信息。
         :type Text: str
@@ -1768,7 +1751,6 @@ class OcrResult(AbstractModel):
     @property
     def Details(self):
         """该字段用于返回OCR识别出的结果的详细内容，如：文本内容、对应标签、识别框位置等信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OcrTextDetail
         """
         return self._Details
@@ -2049,10 +2031,8 @@ class RecognitionResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 当前可能的取值：Scene（图片场景模型）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Tags: Label对应模型下的识别标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of RecognitionTag
         """
         self._Label = None
@@ -2061,7 +2041,6 @@ class RecognitionResult(AbstractModel):
     @property
     def Label(self):
         """当前可能的取值：Scene（图片场景模型）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -2073,7 +2052,6 @@ class RecognitionResult(AbstractModel):
     @property
     def Tags(self):
         """Label对应模型下的识别标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecognitionTag
         """
         return self._Tags
@@ -2109,13 +2087,10 @@ class RecognitionTag(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 标签名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Score: 置信分：0～100，数值越大表示置信度越高
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _Location: 标签位置信息，若模型无位置信息，则可能为零值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Location: :class:`tencentcloud.ims.v20201229.models.Location`
         """
         self._Name = None
@@ -2125,7 +2100,6 @@ class RecognitionTag(AbstractModel):
     @property
     def Name(self):
         """标签名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2137,7 +2111,6 @@ class RecognitionTag(AbstractModel):
     @property
     def Score(self):
         """置信分：0～100，数值越大表示置信度越高
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -2149,7 +2122,6 @@ class RecognitionTag(AbstractModel):
     @property
     def Location(self):
         """标签位置信息，若模型无位置信息，则可能为零值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ims.v20201229.models.Location`
         """
         return self._Location

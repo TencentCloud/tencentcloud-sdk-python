@@ -13936,7 +13936,7 @@ class GenerateSignedVideoURLRequest(AbstractModel):
         r"""
         :param _VideoURL: 视频播放原始URL地址
         :type VideoURL: str
-        :param _ExpireTime: 播放链接过期时间
+        :param _ExpireTime: 播放链接过期时间（时间戳，单位秒）
         :type ExpireTime: int
         :param _ChannelId: 通道ID 非NVR设备不填 NVR设备必填 默认为无	
         :type ChannelId: int
@@ -13958,7 +13958,7 @@ class GenerateSignedVideoURLRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """播放链接过期时间
+        """播放链接过期时间（时间戳，单位秒）
         :rtype: int
         """
         return self._ExpireTime

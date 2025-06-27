@@ -11541,6 +11541,8 @@ class SlowLogPattern(AbstractModel):
         r"""
         :param _Pattern: 慢日志模式
         :type Pattern: str
+        :param _QueryHash: queryHash
+        :type QueryHash: str
         :param _MaxTime: 最大执行时间
         :type MaxTime: int
         :param _AverageTime: 平均执行时间
@@ -11549,6 +11551,7 @@ class SlowLogPattern(AbstractModel):
         :type Total: int
         """
         self._Pattern = None
+        self._QueryHash = None
         self._MaxTime = None
         self._AverageTime = None
         self._Total = None
@@ -11563,6 +11566,17 @@ class SlowLogPattern(AbstractModel):
     @Pattern.setter
     def Pattern(self, Pattern):
         self._Pattern = Pattern
+
+    @property
+    def QueryHash(self):
+        """queryHash
+        :rtype: str
+        """
+        return self._QueryHash
+
+    @QueryHash.setter
+    def QueryHash(self, QueryHash):
+        self._QueryHash = QueryHash
 
     @property
     def MaxTime(self):
@@ -11600,6 +11614,7 @@ class SlowLogPattern(AbstractModel):
 
     def _deserialize(self, params):
         self._Pattern = params.get("Pattern")
+        self._QueryHash = params.get("QueryHash")
         self._MaxTime = params.get("MaxTime")
         self._AverageTime = params.get("AverageTime")
         self._Total = params.get("Total")

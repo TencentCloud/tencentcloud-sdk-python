@@ -40971,12 +40971,16 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
         :param _Paragraphs: 分段结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Paragraphs: list of AiParagraphInfo
+        :param _MindMapUrl: 摘要思维导图地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MindMapUrl: str
         """
         self._Description = None
         self._Confidence = None
         self._Title = None
         self._Keywords = None
         self._Paragraphs = None
+        self._MindMapUrl = None
 
     @property
     def Description(self):
@@ -41034,6 +41038,18 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
     def Paragraphs(self, Paragraphs):
         self._Paragraphs = Paragraphs
 
+    @property
+    def MindMapUrl(self):
+        """摘要思维导图地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MindMapUrl
+
+    @MindMapUrl.setter
+    def MindMapUrl(self, MindMapUrl):
+        self._MindMapUrl = MindMapUrl
+
 
     def _deserialize(self, params):
         self._Description = params.get("Description")
@@ -41046,6 +41062,7 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
                 obj = AiParagraphInfo()
                 obj._deserialize(item)
                 self._Paragraphs.append(obj)
+        self._MindMapUrl = params.get("MindMapUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59354,21 +59371,38 @@ class SubtitleTemplate(AbstractModel):
         :param _Path: 要压制到视频中的字幕文件地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param _StreamIndex: 指定要压制到视频中的字幕轨道，如果有指定Path，则Path 优先级更高。Path 和 StreamIndex 至少指定一个。
+        :param _StreamIndex: 指定要压制到视频中的字幕轨道，Path 和 StreamIndex 至少指定一个；如果指定了Path，则优先使用Path。
+Streamindex的取值须与源文件中的字幕轨索引一致。例如，源文件中的字幕轨为stream#0:3，则StreamIndex应为3，否则可能导致任务处理失败。
+
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamIndex: int
-        :param _FontType: 字体类型，
+        :param _FontType: 字体类型，支持：
 <li>hei.ttf：黑体</li>
 <li>song.ttf：宋体</li>
-<li>simkai.ttf：楷体</li>
+<li>kai.ttf（推荐）或 simkai.ttf：楷体</li>
+<li>msyh.ttf：微软雅黑</li>
+<li>msyhbd.ttf：微软雅黑加粗</li>
+<li>hkjgt.ttf：华康金刚体</li>
+<li>dhttx.ttf：典黑体特细</li>
+<li>xqgdzt.ttf：喜鹊古字典体</li>
+<li>qpcyt.ttf：巧拼超圆体</li>
 <li>arial.ttf：仅支持英文</li>
-默认hei.ttf
+<li>dinalternate.ttf：DIN Alternate Bold</li>
+<li>helveticalt.ttf：Helvetica</li>
+<li>helveticains.ttf：Helvetica Inserat</li>
+<li>trajanpro.ttf：TrajanPro-Bold</li>
+<li>korean.ttf：韩语</li>
+<li>japanese.ttf：日语</li>
+<li>thai.ttf：泰语</li>
+默认：hei.ttf 黑体。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FontType: str
         :param _FontSize: 字体大小，格式：Npx，N 为数值，不指定则以字幕文件中为准。
+默认源视频高度的5%。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FontSize: str
-        :param _FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）
+        :param _FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FontColor: str
         :param _FontAlpha: 文字透明度，取值范围：(0, 1]
@@ -59377,6 +59411,47 @@ class SubtitleTemplate(AbstractModel):
 默认值：1。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FontAlpha: float
+        :param _YPos: 字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：
+
+- 像素：Npx，N范围：[0,4096]。
+- 百分百：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%*源视频高度。
+
+默认值：源视频高度*4%。
+注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YPos: str
+        :param _BoardY: 字幕背景底板的y轴坐标位置；支持像素和百分比格式：
+
+- 像素：Npx，N范围：[0,4096]。
+- 百分百：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。
+
+不传表示不开启字幕背景底板。
+注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图：
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoardY: str
+        :param _BoardWidth: 底板的宽度，单位为像素，取值范围：[0,4096]。
+默认源视频宽像素的90%。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoardWidth: int
+        :param _BoardHeight: 底板的高度。单位为像素，取值范围：[0,4096]。
+默认为源视频高像素的15%。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoardHeight: int
+        :param _BoardColor: 底板颜色。格式：0xRRGGBB，
+默认值：0x000000（黑色）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoardColor: str
+        :param _BoardAlpha: 字幕背景板透明度，取值范围：[0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
+默认值：0.8。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoardAlpha: float
         """
         self._Path = None
         self._StreamIndex = None
@@ -59384,6 +59459,12 @@ class SubtitleTemplate(AbstractModel):
         self._FontSize = None
         self._FontColor = None
         self._FontAlpha = None
+        self._YPos = None
+        self._BoardY = None
+        self._BoardWidth = None
+        self._BoardHeight = None
+        self._BoardColor = None
+        self._BoardAlpha = None
 
     @property
     def Path(self):
@@ -59399,7 +59480,10 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def StreamIndex(self):
-        """指定要压制到视频中的字幕轨道，如果有指定Path，则Path 优先级更高。Path 和 StreamIndex 至少指定一个。
+        """指定要压制到视频中的字幕轨道，Path 和 StreamIndex 至少指定一个；如果指定了Path，则优先使用Path。
+Streamindex的取值须与源文件中的字幕轨索引一致。例如，源文件中的字幕轨为stream#0:3，则StreamIndex应为3，否则可能导致任务处理失败。
+
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -59411,12 +59495,25 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def FontType(self):
-        """字体类型，
+        """字体类型，支持：
 <li>hei.ttf：黑体</li>
 <li>song.ttf：宋体</li>
-<li>simkai.ttf：楷体</li>
+<li>kai.ttf（推荐）或 simkai.ttf：楷体</li>
+<li>msyh.ttf：微软雅黑</li>
+<li>msyhbd.ttf：微软雅黑加粗</li>
+<li>hkjgt.ttf：华康金刚体</li>
+<li>dhttx.ttf：典黑体特细</li>
+<li>xqgdzt.ttf：喜鹊古字典体</li>
+<li>qpcyt.ttf：巧拼超圆体</li>
 <li>arial.ttf：仅支持英文</li>
-默认hei.ttf
+<li>dinalternate.ttf：DIN Alternate Bold</li>
+<li>helveticalt.ttf：Helvetica</li>
+<li>helveticains.ttf：Helvetica Inserat</li>
+<li>trajanpro.ttf：TrajanPro-Bold</li>
+<li>korean.ttf：韩语</li>
+<li>japanese.ttf：日语</li>
+<li>thai.ttf：泰语</li>
+默认：hei.ttf 黑体。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59429,6 +59526,7 @@ class SubtitleTemplate(AbstractModel):
     @property
     def FontSize(self):
         """字体大小，格式：Npx，N 为数值，不指定则以字幕文件中为准。
+默认源视频高度的5%。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59440,7 +59538,7 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def FontColor(self):
-        """字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）
+        """字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59465,6 +59563,101 @@ class SubtitleTemplate(AbstractModel):
     def FontAlpha(self, FontAlpha):
         self._FontAlpha = FontAlpha
 
+    @property
+    def YPos(self):
+        """字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：
+
+- 像素：Npx，N范围：[0,4096]。
+- 百分百：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%*源视频高度。
+
+默认值：源视频高度*4%。
+注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+    @property
+    def BoardY(self):
+        """字幕背景底板的y轴坐标位置；支持像素和百分比格式：
+
+- 像素：Npx，N范围：[0,4096]。
+- 百分百：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。
+
+不传表示不开启字幕背景底板。
+注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图：
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BoardY
+
+    @BoardY.setter
+    def BoardY(self, BoardY):
+        self._BoardY = BoardY
+
+    @property
+    def BoardWidth(self):
+        """底板的宽度，单位为像素，取值范围：[0,4096]。
+默认源视频宽像素的90%。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BoardWidth
+
+    @BoardWidth.setter
+    def BoardWidth(self, BoardWidth):
+        self._BoardWidth = BoardWidth
+
+    @property
+    def BoardHeight(self):
+        """底板的高度。单位为像素，取值范围：[0,4096]。
+默认为源视频高像素的15%。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BoardHeight
+
+    @BoardHeight.setter
+    def BoardHeight(self, BoardHeight):
+        self._BoardHeight = BoardHeight
+
+    @property
+    def BoardColor(self):
+        """底板颜色。格式：0xRRGGBB，
+默认值：0x000000（黑色）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BoardColor
+
+    @BoardColor.setter
+    def BoardColor(self, BoardColor):
+        self._BoardColor = BoardColor
+
+    @property
+    def BoardAlpha(self):
+        """字幕背景板透明度，取值范围：[0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
+默认值：0.8。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._BoardAlpha
+
+    @BoardAlpha.setter
+    def BoardAlpha(self, BoardAlpha):
+        self._BoardAlpha = BoardAlpha
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -59473,6 +59666,12 @@ class SubtitleTemplate(AbstractModel):
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
+        self._YPos = params.get("YPos")
+        self._BoardY = params.get("BoardY")
+        self._BoardWidth = params.get("BoardWidth")
+        self._BoardHeight = params.get("BoardHeight")
+        self._BoardColor = params.get("BoardColor")
+        self._BoardAlpha = params.get("BoardAlpha")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64494,10 +64693,10 @@ class WatermarkTemplate(AbstractModel):
         :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         :param _CoordinateOrigin: 原点位置，可选值：
-<li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
-<li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
-<li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
-<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>
+<li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
         :type CoordinateOrigin: str
         """
         self._Definition = None
@@ -64646,10 +64845,10 @@ class WatermarkTemplate(AbstractModel):
     @property
     def CoordinateOrigin(self):
         """原点位置，可选值：
-<li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
-<li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
-<li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
-<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>
+<li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
         :rtype: str
         """
         return self._CoordinateOrigin
