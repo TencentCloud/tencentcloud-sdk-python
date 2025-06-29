@@ -535,6 +535,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDetailedSlowLogs(self, request):
+        """查询实例慢日志详情
+
+        :param request: Request instance for DescribeDetailedSlowLogs.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDetailedSlowLogsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDetailedSlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDetailedSlowLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDetailedSlowLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceParams(self, request):
         """本接口（DescribeInstanceParams）用于查询当前实例可修改的参数列表。
 

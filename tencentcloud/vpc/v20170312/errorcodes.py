@@ -32,6 +32,9 @@ FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
 # 创建云联网失败. 请重试你的请求，如果问题仍然存在，请联系腾讯云客服。
 FAILEDOPERATION_CREATECCNFAILED = 'FailedOperation.CreateCcnFailed'
 
+# 创建VPN网关失败,请重试你的请求，如果问题仍然存在，请联系腾讯云客服。
+FAILEDOPERATION_CREATEVPNGATEWAYFAILED = 'FailedOperation.CreateVpnGatewayFailed'
+
 # 不支持的地域。
 FAILEDOPERATION_INVALIDREGION = 'FailedOperation.InvalidRegion'
 
@@ -139,6 +142,12 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 接入网段掩码必须在12-28之间。
+INVALIDPARAMETERVALUE_ACCESSSUBNETMASK = 'InvalidParameterValue.AccessSubnetMask'
+
+# 接入网段前缀必须是10，172，192开头。
+INVALIDPARAMETERVALUE_ACCESSSUBNETPREFIX = 'InvalidParameterValue.AccessSubnetPrefix'
 
 # 被攻击的IP地址。
 INVALIDPARAMETERVALUE_ADDRESSATTACKED = 'InvalidParameterValue.AddressAttacked'
@@ -1124,6 +1133,9 @@ UNSUPPORTEDOPERATION_NOTSUPPORTATTACHEDGEANDCROSSBORDERINSTANCE = 'UnsupportedOp
 # 没有开启多路由表特性，不能创建用户路由表。
 UNSUPPORTEDOPERATION_NOTSUPPORTCREATECCNROUTETABLE = 'UnsupportedOperation.NotSupportCreateCcnRouteTable'
 
+# 当前操作不支持创建Ipv6类型VPN网关。
+UNSUPPORTEDOPERATION_NOTSUPPORTCREATEIPV6VPNGATEWAY = 'UnsupportedOperation.NotSupportCreateIpv6VpnGateway'
+
 # 默认路由表，不支持删除。
 UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTCCNROUTETABLE = 'UnsupportedOperation.NotSupportDeleteDefaultCcnRouteTable'
 
@@ -1175,8 +1187,17 @@ UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTINTERREGIONLIMIT = 'UnsupportedOperati
 # 指定的值是主IP。
 UNSUPPORTEDOPERATION_PRIMARYIP = 'UnsupportedOperation.PrimaryIp'
 
+# 不支持创建私网BGP类型VPN网关。
+UNSUPPORTEDOPERATION_PRIVATEBGPVPNGATEWAY = 'UnsupportedOperation.PrivateBgpVpnGateway'
+
 # 私网NAT网关存在关联规则。
 UNSUPPORTEDOPERATION_PRIVATENATGATEWAYASSOCIATIONEXISTS = 'UnsupportedOperation.PrivateNatGatewayAssociationExists'
+
+# 不支持创建私网Ssl类型VPN网关。
+UNSUPPORTEDOPERATION_PRIVATESSLVPNGATEWAY = 'UnsupportedOperation.PrivateSslVpnGateway'
+
+# 不支持创建私网类型VPN网关。
+UNSUPPORTEDOPERATION_PRIVATEVPNGATEWAY = 'UnsupportedOperation.PrivateVpnGateway'
 
 # 不支持公网CLB。
 UNSUPPORTEDOPERATION_PUBLICCLBNOTSUPPORT = 'UnsupportedOperation.PublicClbNotSupport'

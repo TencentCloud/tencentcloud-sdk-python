@@ -5151,6 +5151,270 @@ class DescribeDBInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDetailedSlowLogsRequest(AbstractModel):
+    """DescribeDetailedSlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _StartTime: 待查询慢日志的开始时间
+        :type StartTime: str
+        :param _EndTime: 待慢日志的结束时间
+        :type EndTime: str
+        :param _ExecTime: 过滤执行时间大于此值的慢日志，单位ms，默认值100
+        :type ExecTime: int
+        :param _Commands: 过滤慢日志的命令类型
+        :type Commands: list of str
+        :param _Texts: 全文搜索关键字，多个关键字间为或关系
+        :type Texts: list of str
+        :param _NodeNames: 根据节点名过滤
+        :type NodeNames: list of str
+        :param _QueryHash: 根据queryHash过滤
+        :type QueryHash: list of str
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        :param _Limit: 返回条数
+        :type Limit: int
+        :param _OrderBy: 排序条件，只支持StartTime(按慢日志生成时间)和ExecTime(慢日志执行时间)
+        :type OrderBy: str
+        :param _OrderByType: 排序。desc倒排，asc正排
+        :type OrderByType: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ExecTime = None
+        self._Commands = None
+        self._Texts = None
+        self._NodeNames = None
+        self._QueryHash = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """待查询慢日志的开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """待慢日志的结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ExecTime(self):
+        """过滤执行时间大于此值的慢日志，单位ms，默认值100
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Commands(self):
+        """过滤慢日志的命令类型
+        :rtype: list of str
+        """
+        return self._Commands
+
+    @Commands.setter
+    def Commands(self, Commands):
+        self._Commands = Commands
+
+    @property
+    def Texts(self):
+        """全文搜索关键字，多个关键字间为或关系
+        :rtype: list of str
+        """
+        return self._Texts
+
+    @Texts.setter
+    def Texts(self, Texts):
+        self._Texts = Texts
+
+    @property
+    def NodeNames(self):
+        """根据节点名过滤
+        :rtype: list of str
+        """
+        return self._NodeNames
+
+    @NodeNames.setter
+    def NodeNames(self, NodeNames):
+        self._NodeNames = NodeNames
+
+    @property
+    def QueryHash(self):
+        """根据queryHash过滤
+        :rtype: list of str
+        """
+        return self._QueryHash
+
+    @QueryHash.setter
+    def QueryHash(self, QueryHash):
+        self._QueryHash = QueryHash
+
+    @property
+    def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderBy(self):
+        """排序条件，只支持StartTime(按慢日志生成时间)和ExecTime(慢日志执行时间)
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        """排序。desc倒排，asc正排
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ExecTime = params.get("ExecTime")
+        self._Commands = params.get("Commands")
+        self._Texts = params.get("Texts")
+        self._NodeNames = params.get("NodeNames")
+        self._QueryHash = params.get("QueryHash")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDetailedSlowLogsResponse(AbstractModel):
+    """DescribeDetailedSlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 满足条件的慢日志数量
+        :type TotalCount: int
+        :param _DetailedSlowLogs: 慢日志详情
+        :type DetailedSlowLogs: list of SlowLogItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DetailedSlowLogs = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """满足条件的慢日志数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DetailedSlowLogs(self):
+        """慢日志详情
+        :rtype: list of SlowLogItem
+        """
+        return self._DetailedSlowLogs
+
+    @DetailedSlowLogs.setter
+    def DetailedSlowLogs(self, DetailedSlowLogs):
+        self._DetailedSlowLogs = DetailedSlowLogs
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DetailedSlowLogs") is not None:
+            self._DetailedSlowLogs = []
+            for item in params.get("DetailedSlowLogs"):
+                obj = SlowLogItem()
+                obj._deserialize(item)
+                self._DetailedSlowLogs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceParamsRequest(AbstractModel):
     """DescribeInstanceParams请求参数结构体
 
@@ -11522,6 +11786,72 @@ class ShardInfo(AbstractModel):
         self._OplogSize = params.get("OplogSize")
         self._SecondaryNum = params.get("SecondaryNum")
         self._RealReplicaSetId = params.get("RealReplicaSetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogItem(AbstractModel):
+    """慢日志详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Log: 慢日志
+        :type Log: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _QueryHash: queryHash
+        :type QueryHash: str
+        """
+        self._Log = None
+        self._NodeName = None
+        self._QueryHash = None
+
+    @property
+    def Log(self):
+        """慢日志
+        :rtype: str
+        """
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def NodeName(self):
+        """节点名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def QueryHash(self):
+        """queryHash
+        :rtype: str
+        """
+        return self._QueryHash
+
+    @QueryHash.setter
+    def QueryHash(self, QueryHash):
+        self._QueryHash = QueryHash
+
+
+    def _deserialize(self, params):
+        self._Log = params.get("Log")
+        self._NodeName = params.get("NodeName")
+        self._QueryHash = params.get("QueryHash")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

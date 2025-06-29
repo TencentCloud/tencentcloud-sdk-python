@@ -3296,7 +3296,7 @@ ChildrenComponent结构体定义:
         :type KeywordIndexes: list of int
         :param _LockComponentValue: **web嵌入发起合同场景下**， 是否锁定填写和签署控件值不允许嵌入页面进行编辑
 <ul><li>false（默认）：不锁定控件值，允许在页面编辑控件值</li>
-<li>true：锁定控件值，在页面编辑控件值</li></ul>
+<li>true：锁定控件值，在页面无法编辑控件值</li></ul>
         :type LockComponentValue: bool
         :param _ForbidMoveAndDelete: **web嵌入发起合同场景下**，是否禁止移动和删除填写和签署控件
 <ul><li> <b>false（默认）</b> :可以移动和删除控件</li>
@@ -3798,7 +3798,7 @@ ChildrenComponent结构体定义:
     def LockComponentValue(self):
         """**web嵌入发起合同场景下**， 是否锁定填写和签署控件值不允许嵌入页面进行编辑
 <ul><li>false（默认）：不锁定控件值，允许在页面编辑控件值</li>
-<li>true：锁定控件值，在页面编辑控件值</li></ul>
+<li>true：锁定控件值，在页面无法编辑控件值</li></ul>
         :rtype: bool
         """
         return self._LockComponentValue

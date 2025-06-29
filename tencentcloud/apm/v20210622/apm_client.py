@@ -49,6 +49,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateProfileTask(self, request):
+        """创建事件任务
+
+        :param request: Request instance for CreateProfileTask.
+        :type request: :class:`tencentcloud.apm.v20210622.models.CreateProfileTaskRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.CreateProfileTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProfileTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProfileTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApmAgent(self, request):
         """获取 APM 接入点
 

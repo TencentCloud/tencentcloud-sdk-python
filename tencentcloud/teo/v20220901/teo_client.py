@@ -118,6 +118,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConfirmOriginACLUpdate(self, request):
+        """本接口用于回源 IP 网段发生变更时，确认已将最新回源 IP 网段更新至源站防火墙。确认已更新至最新的回源 IP 网段后，相关变更通知将会停止推送。
+
+        :param request: Request instance for ConfirmOriginACLUpdate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ConfirmOriginACLUpdateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ConfirmOriginACLUpdateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConfirmOriginACLUpdate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConfirmOriginACLUpdateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccelerationDomain(self, request):
         """在创建完站点之后，您可以通过本接口创建加速域名。
 
@@ -1812,6 +1835,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOriginACL(self, request):
+        """本接口用于查询站点下的七层加速域名/四层代理实例与回源 IP 网段的绑定关系，以及回源 IP 网段详情。如果您想通过自动化脚本定期获取回源 IP 网段的最新版本，可以较低频率（建议每三天一次）轮询本接口，若 NextOriginACL 字段有返回值，则将最新的回源 IP 网段同步到源站防火墙配置中。
+
+        :param request: Request instance for DescribeOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOriginACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOriginGroup(self, request):
         """获取源站组列表
 
@@ -2352,6 +2398,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableOriginACL(self, request):
+        """本接口用于关闭站点的源站防护功能。停用后，相关资源不再仅使用「源站防护」提供的回源 IP 网段请求您的源站，同时停止发送回源 IP 网段更新通知。
+
+        :param request: Request instance for DisableOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DisableOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DisableOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableOriginACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DownloadL4Logs(self, request):
         """本接口（DownloadL4Logs）用于下载四层离线日志。
 
@@ -2389,6 +2458,29 @@ class TeoClient(AbstractClient):
             body = self.call("DownloadL7Logs", params, headers=headers)
             response = json.loads(body)
             model = models.DownloadL7LogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableOriginACL(self, request):
+        """开启回源白名单功能，按照4/7层实例开启。当前启用时候的实例数有上限设置，七层域名为200，四层转发实例为100，总实例个数不超过200，超过会提醒报错；可以先最大数量开启，超过的数量用ModifyOriginACL接口来设置。
+
+        :param request: Request instance for EnableOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.EnableOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.EnableOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableOriginACLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3065,6 +3157,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyLoadBalancer", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOriginACL(self, request):
+        """本接口用于对七层加速域名/四层代理实例启用/关闭特定回源 IP 网段回源。单次支持提交的七层加速域名的数量最大为 200，四层代理实例的数量最大为 100，支持七层加速域名/四层代理实例混合提交，总实例个数最大为 200。如需变更超过 200 个实例，请通过本接口分批提交。
+
+        :param request: Request instance for ModifyOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOriginACLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

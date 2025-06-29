@@ -4304,9 +4304,12 @@ class CustomsPaymentReceipt(AbstractModel):
         :type Title: str
         :param _Content: 识别出的字段名称(关键字)，支持以下字段： 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。 示例值：纳税人识别号
         :type Content: list of OtherInvoiceItem
+        :param _CommonContent: 海关缴款书常用字段
+        :type CommonContent: list of OtherInvoiceItem
         """
         self._Title = None
         self._Content = None
+        self._CommonContent = None
 
     @property
     def Title(self):
@@ -4330,6 +4333,17 @@ class CustomsPaymentReceipt(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def CommonContent(self):
+        """海关缴款书常用字段
+        :rtype: list of OtherInvoiceItem
+        """
+        return self._CommonContent
+
+    @CommonContent.setter
+    def CommonContent(self, CommonContent):
+        self._CommonContent = CommonContent
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -4339,6 +4353,12 @@ class CustomsPaymentReceipt(AbstractModel):
                 obj = OtherInvoiceItem()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        if params.get("CommonContent") is not None:
+            self._CommonContent = []
+            for item in params.get("CommonContent"):
+                obj = OtherInvoiceItem()
+                obj._deserialize(item)
+                self._CommonContent.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

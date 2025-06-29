@@ -1358,6 +1358,57 @@ class AdaptiveFrequencyControl(AbstractModel):
         
 
 
+class Addresses(AbstractModel):
+    """IP 网段详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv4: IPv4 网段列表。
+        :type IPv4: list of str
+        :param _IPv6: IPv6 网段列表。
+        :type IPv6: list of str
+        """
+        self._IPv4 = None
+        self._IPv6 = None
+
+    @property
+    def IPv4(self):
+        """IPv4 网段列表。
+        :rtype: list of str
+        """
+        return self._IPv4
+
+    @IPv4.setter
+    def IPv4(self, IPv4):
+        self._IPv4 = IPv4
+
+    @property
+    def IPv6(self):
+        """IPv6 网段列表。
+        :rtype: list of str
+        """
+        return self._IPv6
+
+    @IPv6.setter
+    def IPv6(self, IPv6):
+        self._IPv6 = IPv6
+
+
+    def _deserialize(self, params):
+        self._IPv4 = params.get("IPv4")
+        self._IPv6 = params.get("IPv6")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdvancedFilter(AbstractModel):
     """描述键值对过滤器，用于条件过滤查询，支持模糊查询。例如过滤ID、名称、状态等。
     若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
@@ -6414,6 +6465,70 @@ class ConfigGroupVersionInfo(AbstractModel):
         
 
 
+class ConfirmOriginACLUpdateRequest(AbstractModel):
+    """ConfirmOriginACLUpdate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfirmOriginACLUpdateResponse(AbstractModel):
+    """ConfirmOriginACLUpdate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ContentIdentifier(AbstractModel):
     """内容标识符。该功能仅白名单开放。
 
@@ -10643,6 +10758,101 @@ Type = noDomainAccess 时，该值为空，不需要进行任何操作。
             self._OwnershipVerification = OwnershipVerification()
             self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         self._RequestId = params.get("RequestId")
+
+
+class CurrentOriginACL(AbstractModel):
+    """当前生效的回源 IP 网段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EntireAddresses: 回源 IP 网段详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntireAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _Version: 版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _ActiveTime: 版本生效时间，时间是北京时间 UTC+8， 遵循 ISO 8601 标准的日期和时间格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveTime: str
+        :param _IsPlaned: 本参数用于记录当前版本生效前是否完成「我已更新至最新回源 IP 网段」的确认。取值有：
+<li>true：版本生效时，已完成更新至最新回源 IP 的确认；</li>
+<li>false：版本生效时，仍未完成已更新至最新回源 IP 的确认，回源 IP 网段由后台强制更新至最新版本。</li>注意：本参数返回 false 时，请及时确认您的源站防火墙配置是否已更新至最新的回源 IP 网段，以避免出现回源失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPlaned: str
+        """
+        self._EntireAddresses = None
+        self._Version = None
+        self._ActiveTime = None
+        self._IsPlaned = None
+
+    @property
+    def EntireAddresses(self):
+        """回源 IP 网段详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._EntireAddresses
+
+    @EntireAddresses.setter
+    def EntireAddresses(self, EntireAddresses):
+        self._EntireAddresses = EntireAddresses
+
+    @property
+    def Version(self):
+        """版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def ActiveTime(self):
+        """版本生效时间，时间是北京时间 UTC+8， 遵循 ISO 8601 标准的日期和时间格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def IsPlaned(self):
+        """本参数用于记录当前版本生效前是否完成「我已更新至最新回源 IP 网段」的确认。取值有：
+<li>true：版本生效时，已完成更新至最新回源 IP 的确认；</li>
+<li>false：版本生效时，仍未完成已更新至最新回源 IP 的确认，回源 IP 网段由后台强制更新至最新版本。</li>注意：本参数返回 false 时，请及时确认您的源站防火墙配置是否已更新至最新的回源 IP 网段，以避免出现回源失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IsPlaned
+
+    @IsPlaned.setter
+    def IsPlaned(self, IsPlaned):
+        self._IsPlaned = IsPlaned
+
+
+    def _deserialize(self, params):
+        if params.get("EntireAddresses") is not None:
+            self._EntireAddresses = Addresses()
+            self._EntireAddresses._deserialize(params.get("EntireAddresses"))
+        self._Version = params.get("Version")
+        self._ActiveTime = params.get("ActiveTime")
+        self._IsPlaned = params.get("IsPlaned")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CustomEndpoint(AbstractModel):
@@ -18046,6 +18256,87 @@ class DescribeLoadBalancerListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOriginACLRequest(AbstractModel):
+    """DescribeOriginACL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOriginACLResponse(AbstractModel):
+    """DescribeOriginACL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginACLInfo: 七层加速域名/四层代理实例与回源 IP 网段的绑定关系详情。
+        :type OriginACLInfo: :class:`tencentcloud.teo.v20220901.models.OriginACLInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OriginACLInfo = None
+        self._RequestId = None
+
+    @property
+    def OriginACLInfo(self):
+        """七层加速域名/四层代理实例与回源 IP 网段的绑定关系详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OriginACLInfo`
+        """
+        return self._OriginACLInfo
+
+    @OriginACLInfo.setter
+    def OriginACLInfo(self, OriginACLInfo):
+        self._OriginACLInfo = OriginACLInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OriginACLInfo") is not None:
+            self._OriginACLInfo = OriginACLInfo()
+            self._OriginACLInfo._deserialize(params.get("OriginACLInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOriginGroupHealthStatusRequest(AbstractModel):
     """DescribeOriginGroupHealthStatus请求参数结构体
 
@@ -22548,6 +22839,70 @@ class DiffIPWhitelist(AbstractModel):
         
 
 
+class DisableOriginACLRequest(AbstractModel):
+    """DisableOriginACL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableOriginACLResponse(AbstractModel):
+    """DisableOriginACL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DnsRecord(AbstractModel):
     """DNS 记录
 
@@ -23353,6 +23708,142 @@ class DropPageDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EnableOriginACLRequest(AbstractModel):
+    """EnableOriginACL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _L7EnableMode: 七层加速域名开启回源白名单的模式。
+<li>all：为站点下的所有七层加速域名开启回源白名单。</li>
+<li>specific：为站点下指定的七层加速域名开启回源白名单。</li>
+当参数为空时，默认为specific。
+        :type L7EnableMode: str
+        :param _L7Hosts: 开启回源白名单的七层加速域名列表，当请求参数 L7EnableMode 为 all 时必须为空。
+        :type L7Hosts: list of str
+        :param _L4EnableMode: 四层代理 ID 开启回源白名单的模式。
+<li>all：为站点下的所有四层代理开启回源白名单。</li>
+<li>specific：为站点下指定的四层代理 ID 开启回源白名单。</li>
+当参数为空时，默认为specific。
+        :type L4EnableMode: str
+        :param _L4ProxyIds: 开启回源白名单的四层代理 ID 列表，当请求参数 L4EnableMode 为 all 时必须为空。单次最多支持 200 个实例。
+        :type L4ProxyIds: list of str
+        """
+        self._ZoneId = None
+        self._L7EnableMode = None
+        self._L7Hosts = None
+        self._L4EnableMode = None
+        self._L4ProxyIds = None
+
+    @property
+    def ZoneId(self):
+        """站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def L7EnableMode(self):
+        """七层加速域名开启回源白名单的模式。
+<li>all：为站点下的所有七层加速域名开启回源白名单。</li>
+<li>specific：为站点下指定的七层加速域名开启回源白名单。</li>
+当参数为空时，默认为specific。
+        :rtype: str
+        """
+        return self._L7EnableMode
+
+    @L7EnableMode.setter
+    def L7EnableMode(self, L7EnableMode):
+        self._L7EnableMode = L7EnableMode
+
+    @property
+    def L7Hosts(self):
+        """开启回源白名单的七层加速域名列表，当请求参数 L7EnableMode 为 all 时必须为空。
+        :rtype: list of str
+        """
+        return self._L7Hosts
+
+    @L7Hosts.setter
+    def L7Hosts(self, L7Hosts):
+        self._L7Hosts = L7Hosts
+
+    @property
+    def L4EnableMode(self):
+        """四层代理 ID 开启回源白名单的模式。
+<li>all：为站点下的所有四层代理开启回源白名单。</li>
+<li>specific：为站点下指定的四层代理 ID 开启回源白名单。</li>
+当参数为空时，默认为specific。
+        :rtype: str
+        """
+        return self._L4EnableMode
+
+    @L4EnableMode.setter
+    def L4EnableMode(self, L4EnableMode):
+        self._L4EnableMode = L4EnableMode
+
+    @property
+    def L4ProxyIds(self):
+        """开启回源白名单的四层代理 ID 列表，当请求参数 L4EnableMode 为 all 时必须为空。单次最多支持 200 个实例。
+        :rtype: list of str
+        """
+        return self._L4ProxyIds
+
+    @L4ProxyIds.setter
+    def L4ProxyIds(self, L4ProxyIds):
+        self._L4ProxyIds = L4ProxyIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._L7EnableMode = params.get("L7EnableMode")
+        self._L7Hosts = params.get("L7Hosts")
+        self._L4EnableMode = params.get("L4EnableMode")
+        self._L4ProxyIds = params.get("L4ProxyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableOriginACLResponse(AbstractModel):
+    """EnableOriginACL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class EntityStatus(AbstractModel):
@@ -32584,6 +33075,90 @@ class ModifyLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOriginACLRequest(AbstractModel):
+    """ModifyOriginACL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _OriginACLEntities: 需要启用/关闭特定回源 IP 网段回源的实例。
+        :type OriginACLEntities: list of OriginACLEntity
+        """
+        self._ZoneId = None
+        self._OriginACLEntities = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def OriginACLEntities(self):
+        """需要启用/关闭特定回源 IP 网段回源的实例。
+        :rtype: list of OriginACLEntity
+        """
+        return self._OriginACLEntities
+
+    @OriginACLEntities.setter
+    def OriginACLEntities(self, OriginACLEntities):
+        self._OriginACLEntities = OriginACLEntities
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("OriginACLEntities") is not None:
+            self._OriginACLEntities = []
+            for item in params.get("OriginACLEntities"):
+                obj = OriginACLEntity()
+                obj._deserialize(item)
+                self._OriginACLEntities.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOriginACLResponse(AbstractModel):
+    """ModifyOriginACL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOriginGroupRequest(AbstractModel):
     """ModifyOriginGroup请求参数结构体
 
@@ -34473,6 +35048,125 @@ class MutualTLS(AbstractModel):
         
 
 
+class NextOriginACL(AbstractModel):
+    """当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前生效的回源 IP 网段的对比。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: 版本号。
+        :type Version: str
+        :param _PlannedActiveTime: 版本生效时间，时间是北京时间 UTC+8， 遵循 ISO 8601 标准的日期和时间格式。
+        :type PlannedActiveTime: str
+        :param _EntireAddresses: 回源 IP 网段详情。
+        :type EntireAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _AddedAddresses: 最新回源 IP 网段相较于 CurrentOrginACL 中回源 IP 网段新增的部分。
+        :type AddedAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _RemovedAddresses: 最新回源 IP 网段相较于 CurrentOrginACL 中回源 IP 网段删减的部分。
+        :type RemovedAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _NoChangeAddresses: 最新回源 IP 网段相较于 CurrentOrginACL 中回源 IP 网段无变化的部分。
+        :type NoChangeAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        self._Version = None
+        self._PlannedActiveTime = None
+        self._EntireAddresses = None
+        self._AddedAddresses = None
+        self._RemovedAddresses = None
+        self._NoChangeAddresses = None
+
+    @property
+    def Version(self):
+        """版本号。
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def PlannedActiveTime(self):
+        """版本生效时间，时间是北京时间 UTC+8， 遵循 ISO 8601 标准的日期和时间格式。
+        :rtype: str
+        """
+        return self._PlannedActiveTime
+
+    @PlannedActiveTime.setter
+    def PlannedActiveTime(self, PlannedActiveTime):
+        self._PlannedActiveTime = PlannedActiveTime
+
+    @property
+    def EntireAddresses(self):
+        """回源 IP 网段详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._EntireAddresses
+
+    @EntireAddresses.setter
+    def EntireAddresses(self, EntireAddresses):
+        self._EntireAddresses = EntireAddresses
+
+    @property
+    def AddedAddresses(self):
+        """最新回源 IP 网段相较于 CurrentOrginACL 中回源 IP 网段新增的部分。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._AddedAddresses
+
+    @AddedAddresses.setter
+    def AddedAddresses(self, AddedAddresses):
+        self._AddedAddresses = AddedAddresses
+
+    @property
+    def RemovedAddresses(self):
+        """最新回源 IP 网段相较于 CurrentOrginACL 中回源 IP 网段删减的部分。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._RemovedAddresses
+
+    @RemovedAddresses.setter
+    def RemovedAddresses(self, RemovedAddresses):
+        self._RemovedAddresses = RemovedAddresses
+
+    @property
+    def NoChangeAddresses(self):
+        """最新回源 IP 网段相较于 CurrentOrginACL 中回源 IP 网段无变化的部分。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._NoChangeAddresses
+
+    @NoChangeAddresses.setter
+    def NoChangeAddresses(self, NoChangeAddresses):
+        self._NoChangeAddresses = NoChangeAddresses
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._PlannedActiveTime = params.get("PlannedActiveTime")
+        if params.get("EntireAddresses") is not None:
+            self._EntireAddresses = Addresses()
+            self._EntireAddresses._deserialize(params.get("EntireAddresses"))
+        if params.get("AddedAddresses") is not None:
+            self._AddedAddresses = Addresses()
+            self._AddedAddresses._deserialize(params.get("AddedAddresses"))
+        if params.get("RemovedAddresses") is not None:
+            self._RemovedAddresses = Addresses()
+            self._RemovedAddresses._deserialize(params.get("RemovedAddresses"))
+        if params.get("NoChangeAddresses") is not None:
+            self._NoChangeAddresses = Addresses()
+            self._NoChangeAddresses._deserialize(params.get("NoChangeAddresses"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NoCache(AbstractModel):
     """不缓存配置
 
@@ -34806,6 +35500,194 @@ class Origin(AbstractModel):
         self._BackupOrigins = params.get("BackupOrigins")
         self._OriginPullProtocol = params.get("OriginPullProtocol")
         self._CosPrivateAccess = params.get("CosPrivateAccess")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginACLEntity(AbstractModel):
+    """需要配置特定回源 IP 网段回源的实例。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 实例类型，取值有：
+- l7：七层加速域名；
+- l4：四层代理实例。
+        :type Type: str
+        :param _Instances: 实例详情，取值有：
+- 当 Type = l7 时，请填写七层加速域名；
+- 当 Type = l4 时，请填写四层代理实例 ID。
+        :type Instances: list of str
+        :param _OperationMode: 操作模式，取值有：
+<li>enable：启用；</li>
+<li>disable：停用。</li>
+        :type OperationMode: str
+        """
+        self._Type = None
+        self._Instances = None
+        self._OperationMode = None
+
+    @property
+    def Type(self):
+        """实例类型，取值有：
+- l7：七层加速域名；
+- l4：四层代理实例。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Instances(self):
+        """实例详情，取值有：
+- 当 Type = l7 时，请填写七层加速域名；
+- 当 Type = l4 时，请填写四层代理实例 ID。
+        :rtype: list of str
+        """
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def OperationMode(self):
+        """操作模式，取值有：
+<li>enable：启用；</li>
+<li>disable：停用。</li>
+        :rtype: str
+        """
+        return self._OperationMode
+
+    @OperationMode.setter
+    def OperationMode(self, OperationMode):
+        self._OperationMode = OperationMode
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Instances = params.get("Instances")
+        self._OperationMode = params.get("OperationMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginACLInfo(AbstractModel):
+    """七层加速域名/四层代理实例与回源 IP 网段的绑定关系，以及回源 IP 网段详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L7Hosts: 启用了特定回源 IP 网段回源的七层加速域名列表。源站防护未开启时为空。
+        :type L7Hosts: list of str
+        :param _L4ProxyIds: 启用了特定回源 IP 网段回源的四层代理实例列表。源站防护未开启时为空。
+        :type L4ProxyIds: list of str
+        :param _CurrentOriginACL: 当前生效的回源 IP 网段。源站防护未开启时为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentOriginACL: :class:`tencentcloud.teo.v20220901.models.CurrentOriginACL`
+        :param _NextOriginACL: 当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前回源 IP 网段的对比。无更新或者源站防护未开启时该字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextOriginACL: :class:`tencentcloud.teo.v20220901.models.NextOriginACL`
+        :param _Status: 源站防护状态，取值有：
+<li>online：已生效；</li>
+<li>offline：已停用；</li>
+<li>updating: 配置部署中。</li>
+        :type Status: str
+        """
+        self._L7Hosts = None
+        self._L4ProxyIds = None
+        self._CurrentOriginACL = None
+        self._NextOriginACL = None
+        self._Status = None
+
+    @property
+    def L7Hosts(self):
+        """启用了特定回源 IP 网段回源的七层加速域名列表。源站防护未开启时为空。
+        :rtype: list of str
+        """
+        return self._L7Hosts
+
+    @L7Hosts.setter
+    def L7Hosts(self, L7Hosts):
+        self._L7Hosts = L7Hosts
+
+    @property
+    def L4ProxyIds(self):
+        """启用了特定回源 IP 网段回源的四层代理实例列表。源站防护未开启时为空。
+        :rtype: list of str
+        """
+        return self._L4ProxyIds
+
+    @L4ProxyIds.setter
+    def L4ProxyIds(self, L4ProxyIds):
+        self._L4ProxyIds = L4ProxyIds
+
+    @property
+    def CurrentOriginACL(self):
+        """当前生效的回源 IP 网段。源站防护未开启时为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CurrentOriginACL`
+        """
+        return self._CurrentOriginACL
+
+    @CurrentOriginACL.setter
+    def CurrentOriginACL(self, CurrentOriginACL):
+        self._CurrentOriginACL = CurrentOriginACL
+
+    @property
+    def NextOriginACL(self):
+        """当回源 IP 网段发生更新时，该字段会返回下一个版本将要生效的回源 IP 网段，包含与当前回源 IP 网段的对比。无更新或者源站防护未开启时该字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NextOriginACL`
+        """
+        return self._NextOriginACL
+
+    @NextOriginACL.setter
+    def NextOriginACL(self, NextOriginACL):
+        self._NextOriginACL = NextOriginACL
+
+    @property
+    def Status(self):
+        """源站防护状态，取值有：
+<li>online：已生效；</li>
+<li>offline：已停用；</li>
+<li>updating: 配置部署中。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._L7Hosts = params.get("L7Hosts")
+        self._L4ProxyIds = params.get("L4ProxyIds")
+        if params.get("CurrentOriginACL") is not None:
+            self._CurrentOriginACL = CurrentOriginACL()
+            self._CurrentOriginACL._deserialize(params.get("CurrentOriginACL"))
+        if params.get("NextOriginACL") is not None:
+            self._NextOriginACL = NextOriginACL()
+            self._NextOriginACL._deserialize(params.get("NextOriginACL"))
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
