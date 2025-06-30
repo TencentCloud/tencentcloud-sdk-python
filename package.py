@@ -116,7 +116,7 @@ def mk_config_file(temp_dir, mod):
     if mod == 'common':
         required = '\n    install_requires=["requests>=2.16.0"],'
     else:
-        required = '\n    install_requires=["tencentcloud-sdk-python-common==%s"],' % __version__
+        required = '\n    install_requires=["tencentcloud-sdk-python-common>=%s"],' % __version__
     with open(os.path.join(temp_dir, 'setup.py'), 'w') as f:
         f.write(SETUP % (mod, required, mod.capitalize()))
     with open(os.path.join(temp_dir, 'README.rst'), 'w') as f:
