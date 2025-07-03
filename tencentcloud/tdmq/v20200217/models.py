@@ -541,6 +541,140 @@ class BindCluster(AbstractModel):
         
 
 
+class CertificateInfo(AbstractModel):
+    """Pulsar集群TLS证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: SSL证书管理中的id
+        :type CertificateId: str
+        :param _ExpireTime: 证书到期时间
+        :type ExpireTime: str
+        :param _DomainName: 证书绑定的域名
+        :type DomainName: str
+        :param _Status: 证书状态：0 已签发
+1 即将过期
+2 未启用
+3 已过期
+4 不可用
+        :type Status: str
+        :param _Type: 证书类型：0：根证书，1：服务端证书
+        :type Type: str
+        :param _Origin: TencentCloud：SSL证书；Default：TDMQ官方默认证书
+        :type Origin: str
+        :param _ModifyTime: 证书添加/更新时间
+        :type ModifyTime: str
+        """
+        self._CertificateId = None
+        self._ExpireTime = None
+        self._DomainName = None
+        self._Status = None
+        self._Type = None
+        self._Origin = None
+        self._ModifyTime = None
+
+    @property
+    def CertificateId(self):
+        """SSL证书管理中的id
+        :rtype: str
+        """
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def ExpireTime(self):
+        """证书到期时间
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DomainName(self):
+        """证书绑定的域名
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Status(self):
+        """证书状态：0 已签发
+1 即将过期
+2 未启用
+3 已过期
+4 不可用
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        """证书类型：0：根证书，1：服务端证书
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Origin(self):
+        """TencentCloud：SSL证书；Default：TDMQ官方默认证书
+        :rtype: str
+        """
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def ModifyTime(self):
+        """证书添加/更新时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DomainName = params.get("DomainName")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._Origin = params.get("Origin")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClearCmqQueueRequest(AbstractModel):
     """ClearCmqQueue请求参数结构体
 
@@ -4883,6 +5017,8 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         :type Bandwidth: int
         :param _EnablePublicAccess: 是否打开公网接入，不传默认为false
         :type EnablePublicAccess: bool
+        :param _EnableDeletionProtection: 是否打开集群删除保护，不传默认为 false
+        :type EnableDeletionProtection: bool
         """
         self._ZoneIds = None
         self._VpcId = None
@@ -4900,6 +5036,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         self._ResourceTags = None
         self._Bandwidth = None
         self._EnablePublicAccess = None
+        self._EnableDeletionProtection = None
 
     @property
     def ZoneIds(self):
@@ -5086,6 +5223,17 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
     def EnablePublicAccess(self, EnablePublicAccess):
         self._EnablePublicAccess = EnablePublicAccess
 
+    @property
+    def EnableDeletionProtection(self):
+        """是否打开集群删除保护，不传默认为 false
+        :rtype: bool
+        """
+        return self._EnableDeletionProtection
+
+    @EnableDeletionProtection.setter
+    def EnableDeletionProtection(self, EnableDeletionProtection):
+        self._EnableDeletionProtection = EnableDeletionProtection
+
 
     def _deserialize(self, params):
         self._ZoneIds = params.get("ZoneIds")
@@ -5109,6 +5257,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Bandwidth = params.get("Bandwidth")
         self._EnablePublicAccess = params.get("EnablePublicAccess")
+        self._EnableDeletionProtection = params.get("EnableDeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14513,14 +14662,14 @@ class DescribeRabbitMQVipInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        """集群 ID
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._ClusterId
@@ -14563,6 +14712,8 @@ class DescribeRabbitMQVipInstanceResponse(AbstractModel):
         :type ExchangeQuota: :class:`tencentcloud.tdmq.v20200217.models.ExchangeQuota`
         :param _QueueQuota: queue配额信息
         :type QueueQuota: :class:`tencentcloud.tdmq.v20200217.models.QueueQuota`
+        :param _UserQuota: 用户配额信息
+        :type UserQuota: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQUserQuota`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -14573,6 +14724,7 @@ class DescribeRabbitMQVipInstanceResponse(AbstractModel):
         self._VirtualHostQuota = None
         self._ExchangeQuota = None
         self._QueueQuota = None
+        self._UserQuota = None
         self._RequestId = None
 
     @property
@@ -14653,6 +14805,17 @@ class DescribeRabbitMQVipInstanceResponse(AbstractModel):
         self._QueueQuota = QueueQuota
 
     @property
+    def UserQuota(self):
+        """用户配额信息
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQUserQuota`
+        """
+        return self._UserQuota
+
+    @UserQuota.setter
+    def UserQuota(self, UserQuota):
+        self._UserQuota = UserQuota
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -14686,6 +14849,9 @@ class DescribeRabbitMQVipInstanceResponse(AbstractModel):
         if params.get("QueueQuota") is not None:
             self._QueueQuota = QueueQuota()
             self._QueueQuota._deserialize(params.get("QueueQuota"))
+        if params.get("UserQuota") is not None:
+            self._UserQuota = RabbitMQUserQuota()
+            self._UserQuota._deserialize(params.get("UserQuota"))
         self._RequestId = params.get("RequestId")
 
 
@@ -23934,14 +24100,17 @@ class ModifyRabbitMQVipInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例Id
         :type InstanceId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: 集群名称，不填则不修改。非空字符串时必须 3-64 个字符，只能包含数字、字母、“-”和“_”
         :type ClusterName: str
-        :param _Remark: 备注
+        :param _Remark: 备注，不填则不修改
         :type Remark: str
+        :param _EnableDeletionProtection: 是否开启删除保护，不填则不修改
+        :type EnableDeletionProtection: bool
         """
         self._InstanceId = None
         self._ClusterName = None
         self._Remark = None
+        self._EnableDeletionProtection = None
 
     @property
     def InstanceId(self):
@@ -23956,7 +24125,7 @@ class ModifyRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        """集群名称
+        """集群名称，不填则不修改。非空字符串时必须 3-64 个字符，只能包含数字、字母、“-”和“_”
         :rtype: str
         """
         return self._ClusterName
@@ -23967,7 +24136,7 @@ class ModifyRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        """备注，不填则不修改
         :rtype: str
         """
         return self._Remark
@@ -23976,11 +24145,23 @@ class ModifyRabbitMQVipInstanceRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def EnableDeletionProtection(self):
+        """是否开启删除保护，不填则不修改
+        :rtype: bool
+        """
+        return self._EnableDeletionProtection
+
+    @EnableDeletionProtection.setter
+    def EnableDeletionProtection(self, EnableDeletionProtection):
+        self._EnableDeletionProtection = EnableDeletionProtection
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ClusterName = params.get("ClusterName")
         self._Remark = params.get("Remark")
+        self._EnableDeletionProtection = params.get("EnableDeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26503,6 +26684,10 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
         :param _ZoneName: 可用区信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
+        :param _Tls: 是否开启TLS加密
+        :type Tls: bool
+        :param _CustomUrl: 接入点自定义域名
+        :type CustomUrl: str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -26515,6 +26700,8 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
         self._SecurityPolicy = None
         self._StandardAccessPoint = None
         self._ZoneName = None
+        self._Tls = None
+        self._CustomUrl = None
 
     @property
     def VpcId(self):
@@ -26652,6 +26839,28 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     def ZoneName(self, ZoneName):
         self._ZoneName = ZoneName
 
+    @property
+    def Tls(self):
+        """是否开启TLS加密
+        :rtype: bool
+        """
+        return self._Tls
+
+    @Tls.setter
+    def Tls(self, Tls):
+        self._Tls = Tls
+
+    @property
+    def CustomUrl(self):
+        """接入点自定义域名
+        :rtype: str
+        """
+        return self._CustomUrl
+
+    @CustomUrl.setter
+    def CustomUrl(self, CustomUrl):
+        self._CustomUrl = CustomUrl
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -26670,6 +26879,8 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
                 self._SecurityPolicy.append(obj)
         self._StandardAccessPoint = params.get("StandardAccessPoint")
         self._ZoneName = params.get("ZoneName")
+        self._Tls = params.get("Tls")
+        self._CustomUrl = params.get("CustomUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27133,6 +27344,8 @@ class PulsarProInstance(AbstractModel):
         :type BillingLabelVersion: str
         :param _Tenant: 自定义租户
         :type Tenant: str
+        :param _CertificateList: 集群的证书列表
+        :type CertificateList: list of CertificateInfo
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -27154,6 +27367,7 @@ class PulsarProInstance(AbstractModel):
         self._CreateTime = None
         self._BillingLabelVersion = None
         self._Tenant = None
+        self._CertificateList = None
 
     @property
     def InstanceId(self):
@@ -27382,6 +27596,17 @@ class PulsarProInstance(AbstractModel):
     def Tenant(self, Tenant):
         self._Tenant = Tenant
 
+    @property
+    def CertificateList(self):
+        """集群的证书列表
+        :rtype: list of CertificateInfo
+        """
+        return self._CertificateList
+
+    @CertificateList.setter
+    def CertificateList(self, CertificateList):
+        self._CertificateList = CertificateList
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -27409,6 +27634,12 @@ class PulsarProInstance(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._BillingLabelVersion = params.get("BillingLabelVersion")
         self._Tenant = params.get("Tenant")
+        if params.get("CertificateList") is not None:
+            self._CertificateList = []
+            for item in params.get("CertificateList"):
+                obj = CertificateInfo()
+                obj._deserialize(item)
+                self._CertificateList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27693,6 +27924,8 @@ OFF/ON/CREATING/DELETING
         :type WebConsoleDomainEndpoint: str
         :param _ControlPlaneEndpointInfo: 控制面所使用的VPC信息
         :type ControlPlaneEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
+        :param _PublicTlsAccessEndpoint: TLS加密的数据流公网接入点
+        :type PublicTlsAccessEndpoint: str
         """
         self._PublicAccessEndpoint = None
         self._WebConsoleEndpoint = None
@@ -27708,6 +27941,7 @@ OFF/ON/CREATING/DELETING
         self._PrometheusEndpointInfo = None
         self._WebConsoleDomainEndpoint = None
         self._ControlPlaneEndpointInfo = None
+        self._PublicTlsAccessEndpoint = None
 
     @property
     def PublicAccessEndpoint(self):
@@ -27865,6 +28099,17 @@ OFF/ON/CREATING/DELETING
     def ControlPlaneEndpointInfo(self, ControlPlaneEndpointInfo):
         self._ControlPlaneEndpointInfo = ControlPlaneEndpointInfo
 
+    @property
+    def PublicTlsAccessEndpoint(self):
+        """TLS加密的数据流公网接入点
+        :rtype: str
+        """
+        return self._PublicTlsAccessEndpoint
+
+    @PublicTlsAccessEndpoint.setter
+    def PublicTlsAccessEndpoint(self, PublicTlsAccessEndpoint):
+        self._PublicTlsAccessEndpoint = PublicTlsAccessEndpoint
+
 
     def _deserialize(self, params):
         self._PublicAccessEndpoint = params.get("PublicAccessEndpoint")
@@ -27885,6 +28130,7 @@ OFF/ON/CREATING/DELETING
         if params.get("ControlPlaneEndpointInfo") is not None:
             self._ControlPlaneEndpointInfo = VpcEndpointInfo()
             self._ControlPlaneEndpointInfo._deserialize(params.get("ControlPlaneEndpointInfo"))
+        self._PublicTlsAccessEndpoint = params.get("PublicTlsAccessEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27955,6 +28201,10 @@ class RabbitMQClusterInfo(AbstractModel):
         :type IsolatedTime: int
         :param _Container: 是否为容器实例，默认 true
         :type Container: bool
+        :param _Tags: 标签列表
+        :type Tags: list of Tag
+        :param _EnableDeletionProtection: 是否已开启删除保护
+        :type EnableDeletionProtection: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -27982,6 +28232,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._InstanceType = None
         self._IsolatedTime = None
         self._Container = None
+        self._Tags = None
+        self._EnableDeletionProtection = None
 
     @property
     def ClusterId(self):
@@ -28270,6 +28522,28 @@ class RabbitMQClusterInfo(AbstractModel):
     def Container(self, Container):
         self._Container = Container
 
+    @property
+    def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def EnableDeletionProtection(self):
+        """是否已开启删除保护
+        :rtype: bool
+        """
+        return self._EnableDeletionProtection
+
+    @EnableDeletionProtection.setter
+    def EnableDeletionProtection(self, EnableDeletionProtection):
+        self._EnableDeletionProtection = EnableDeletionProtection
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -28303,6 +28577,13 @@ class RabbitMQClusterInfo(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._IsolatedTime = params.get("IsolatedTime")
         self._Container = params.get("Container")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._EnableDeletionProtection = params.get("EnableDeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29680,6 +29961,57 @@ class RabbitMQUser(AbstractModel):
         
 
 
+class RabbitMQUserQuota(AbstractModel):
+    """RabbitMQ 实例用户配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxUser: 最大可创建用户数
+        :type MaxUser: int
+        :param _UsedUser: 已使用用户数
+        :type UsedUser: int
+        """
+        self._MaxUser = None
+        self._UsedUser = None
+
+    @property
+    def MaxUser(self):
+        """最大可创建用户数
+        :rtype: int
+        """
+        return self._MaxUser
+
+    @MaxUser.setter
+    def MaxUser(self, MaxUser):
+        self._MaxUser = MaxUser
+
+    @property
+    def UsedUser(self):
+        """已使用用户数
+        :rtype: int
+        """
+        return self._UsedUser
+
+    @UsedUser.setter
+    def UsedUser(self, UsedUser):
+        self._UsedUser = UsedUser
+
+
+    def _deserialize(self, params):
+        self._MaxUser = params.get("MaxUser")
+        self._UsedUser = params.get("UsedUser")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RabbitMQVipInstance(AbstractModel):
     """RabbitMQ 托管版实例信息
 
@@ -29737,10 +30069,14 @@ class RabbitMQVipInstance(AbstractModel):
         :type Vpcs: list of VpcEndpointInfo
         :param _CreateTime: 创建时间，毫秒为单位。unix 时间戳
         :type CreateTime: int
-        :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
+        :param _InstanceType: 实例类型，0 托管版、1 Serverless 版
         :type InstanceType: int
-        :param _IsolatedTime: 隔离时间，毫秒为单位
+        :param _IsolatedTime: 隔离时间，毫秒为单位。unix 时间戳
         :type IsolatedTime: int
+        :param _EnableDeletionProtection: 是否已开启删除保护
+        :type EnableDeletionProtection: bool
+        :param _Tags: 标签列表
+        :type Tags: list of Tag
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -29763,6 +30099,8 @@ class RabbitMQVipInstance(AbstractModel):
         self._CreateTime = None
         self._InstanceType = None
         self._IsolatedTime = None
+        self._EnableDeletionProtection = None
+        self._Tags = None
 
     @property
     def InstanceId(self):
@@ -29987,7 +30325,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型，0 专享版、1 Serverless 版
+        """实例类型，0 托管版、1 Serverless 版
         :rtype: int
         """
         return self._InstanceType
@@ -29998,7 +30336,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        """隔离时间，毫秒为单位
+        """隔离时间，毫秒为单位。unix 时间戳
         :rtype: int
         """
         return self._IsolatedTime
@@ -30006,6 +30344,28 @@ class RabbitMQVipInstance(AbstractModel):
     @IsolatedTime.setter
     def IsolatedTime(self, IsolatedTime):
         self._IsolatedTime = IsolatedTime
+
+    @property
+    def EnableDeletionProtection(self):
+        """是否已开启删除保护
+        :rtype: bool
+        """
+        return self._EnableDeletionProtection
+
+    @EnableDeletionProtection.setter
+    def EnableDeletionProtection(self, EnableDeletionProtection):
+        self._EnableDeletionProtection = EnableDeletionProtection
+
+    @property
+    def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -30035,6 +30395,13 @@ class RabbitMQVipInstance(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._InstanceType = params.get("InstanceType")
         self._IsolatedTime = params.get("IsolatedTime")
+        self._EnableDeletionProtection = params.get("EnableDeletionProtection")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37495,9 +37862,18 @@ class VirtualHostQuota(AbstractModel):
         :type MaxVirtualHost: int
         :param _UsedVirtualHost: 已创建vhost数
         :type UsedVirtualHost: int
+        :param _MaxConnectionPerVhost: 单个 vhost 下允许的最大连接数
+        :type MaxConnectionPerVhost: int
+        :param _MaxExchangePerVhost: 单个 vhost 下允许的最大交换机数
+        :type MaxExchangePerVhost: int
+        :param _MaxQueuePerVhost: 单个 vhost 下允许的最大队列机数
+        :type MaxQueuePerVhost: int
         """
         self._MaxVirtualHost = None
         self._UsedVirtualHost = None
+        self._MaxConnectionPerVhost = None
+        self._MaxExchangePerVhost = None
+        self._MaxQueuePerVhost = None
 
     @property
     def MaxVirtualHost(self):
@@ -37521,10 +37897,46 @@ class VirtualHostQuota(AbstractModel):
     def UsedVirtualHost(self, UsedVirtualHost):
         self._UsedVirtualHost = UsedVirtualHost
 
+    @property
+    def MaxConnectionPerVhost(self):
+        """单个 vhost 下允许的最大连接数
+        :rtype: int
+        """
+        return self._MaxConnectionPerVhost
+
+    @MaxConnectionPerVhost.setter
+    def MaxConnectionPerVhost(self, MaxConnectionPerVhost):
+        self._MaxConnectionPerVhost = MaxConnectionPerVhost
+
+    @property
+    def MaxExchangePerVhost(self):
+        """单个 vhost 下允许的最大交换机数
+        :rtype: int
+        """
+        return self._MaxExchangePerVhost
+
+    @MaxExchangePerVhost.setter
+    def MaxExchangePerVhost(self, MaxExchangePerVhost):
+        self._MaxExchangePerVhost = MaxExchangePerVhost
+
+    @property
+    def MaxQueuePerVhost(self):
+        """单个 vhost 下允许的最大队列机数
+        :rtype: int
+        """
+        return self._MaxQueuePerVhost
+
+    @MaxQueuePerVhost.setter
+    def MaxQueuePerVhost(self, MaxQueuePerVhost):
+        self._MaxQueuePerVhost = MaxQueuePerVhost
+
 
     def _deserialize(self, params):
         self._MaxVirtualHost = params.get("MaxVirtualHost")
         self._UsedVirtualHost = params.get("UsedVirtualHost")
+        self._MaxConnectionPerVhost = params.get("MaxConnectionPerVhost")
+        self._MaxExchangePerVhost = params.get("MaxExchangePerVhost")
+        self._MaxQueuePerVhost = params.get("MaxQueuePerVhost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37714,11 +38126,14 @@ class VpcEndpointInfo(AbstractModel):
         :type VpcEndpoint: str
         :param _VpcDataStreamEndpointStatus: vpc接入点状态 OFF/ON/CREATING/DELETING
         :type VpcDataStreamEndpointStatus: str
+        :param _VpcTlsEndpoint: TLS加密的数据流接入点
+        :type VpcTlsEndpoint: str
         """
         self._VpcId = None
         self._SubnetId = None
         self._VpcEndpoint = None
         self._VpcDataStreamEndpointStatus = None
+        self._VpcTlsEndpoint = None
 
     @property
     def VpcId(self):
@@ -37764,12 +38179,24 @@ class VpcEndpointInfo(AbstractModel):
     def VpcDataStreamEndpointStatus(self, VpcDataStreamEndpointStatus):
         self._VpcDataStreamEndpointStatus = VpcDataStreamEndpointStatus
 
+    @property
+    def VpcTlsEndpoint(self):
+        """TLS加密的数据流接入点
+        :rtype: str
+        """
+        return self._VpcTlsEndpoint
+
+    @VpcTlsEndpoint.setter
+    def VpcTlsEndpoint(self, VpcTlsEndpoint):
+        self._VpcTlsEndpoint = VpcTlsEndpoint
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._VpcEndpoint = params.get("VpcEndpoint")
         self._VpcDataStreamEndpointStatus = params.get("VpcDataStreamEndpointStatus")
+        self._VpcTlsEndpoint = params.get("VpcTlsEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

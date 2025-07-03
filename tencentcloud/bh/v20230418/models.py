@@ -2725,6 +2725,312 @@ class CmdTemplate(AbstractModel):
         
 
 
+class Command(AbstractModel):
+    """命令集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cmd: 命令
+        :type Cmd: str
+        :param _Time: 命令输入的时间
+        :type Time: str
+        :param _TimeOffset: 命令执行时间相对于所属会话开始时间的偏移量，单位ms
+        :type TimeOffset: int
+        :param _Action: 命令执行情况，1--允许，2--拒绝，3--确认
+        :type Action: int
+        :param _Sid: 会话id
+        :type Sid: str
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _Account: 设备account
+        :type Account: str
+        :param _InstanceId: 设备ip
+        :type InstanceId: str
+        :param _FromIp: source ip
+        :type FromIp: str
+        :param _SessTime: 该命令所属会话的会话开始时间
+        :type SessTime: str
+        :param _SessionTime: 该命令所属会话的会话开始时间
+        :type SessionTime: str
+        :param _ConfirmTime: 复核时间
+        :type ConfirmTime: str
+        :param _UserDepartmentId: 用户部门id
+        :type UserDepartmentId: str
+        :param _UserDepartmentName: 用户部门name
+        :type UserDepartmentName: str
+        :param _DeviceDepartmentId: 设备部门id
+        :type DeviceDepartmentId: str
+        :param _DeviceDepartmentName: 设备部门name
+        :type DeviceDepartmentName: str
+        :param _Size: 会话大小
+        :type Size: int
+        :param _SignValue: 签名值
+        :type SignValue: str
+        :param _DeviceKind: 资产类型
+        :type DeviceKind: str
+        """
+        self._Cmd = None
+        self._Time = None
+        self._TimeOffset = None
+        self._Action = None
+        self._Sid = None
+        self._UserName = None
+        self._Account = None
+        self._InstanceId = None
+        self._FromIp = None
+        self._SessTime = None
+        self._SessionTime = None
+        self._ConfirmTime = None
+        self._UserDepartmentId = None
+        self._UserDepartmentName = None
+        self._DeviceDepartmentId = None
+        self._DeviceDepartmentName = None
+        self._Size = None
+        self._SignValue = None
+        self._DeviceKind = None
+
+    @property
+    def Cmd(self):
+        """命令
+        :rtype: str
+        """
+        return self._Cmd
+
+    @Cmd.setter
+    def Cmd(self, Cmd):
+        self._Cmd = Cmd
+
+    @property
+    def Time(self):
+        """命令输入的时间
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def TimeOffset(self):
+        """命令执行时间相对于所属会话开始时间的偏移量，单位ms
+        :rtype: int
+        """
+        return self._TimeOffset
+
+    @TimeOffset.setter
+    def TimeOffset(self, TimeOffset):
+        self._TimeOffset = TimeOffset
+
+    @property
+    def Action(self):
+        """命令执行情况，1--允许，2--拒绝，3--确认
+        :rtype: int
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Sid(self):
+        """会话id
+        :rtype: str
+        """
+        return self._Sid
+
+    @Sid.setter
+    def Sid(self, Sid):
+        self._Sid = Sid
+
+    @property
+    def UserName(self):
+        """用户名
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Account(self):
+        """设备account
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def InstanceId(self):
+        """设备ip
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FromIp(self):
+        """source ip
+        :rtype: str
+        """
+        return self._FromIp
+
+    @FromIp.setter
+    def FromIp(self, FromIp):
+        self._FromIp = FromIp
+
+    @property
+    def SessTime(self):
+        """该命令所属会话的会话开始时间
+        :rtype: str
+        """
+        return self._SessTime
+
+    @SessTime.setter
+    def SessTime(self, SessTime):
+        self._SessTime = SessTime
+
+    @property
+    def SessionTime(self):
+        """该命令所属会话的会话开始时间
+        :rtype: str
+        """
+        return self._SessionTime
+
+    @SessionTime.setter
+    def SessionTime(self, SessionTime):
+        self._SessionTime = SessionTime
+
+    @property
+    def ConfirmTime(self):
+        """复核时间
+        :rtype: str
+        """
+        return self._ConfirmTime
+
+    @ConfirmTime.setter
+    def ConfirmTime(self, ConfirmTime):
+        self._ConfirmTime = ConfirmTime
+
+    @property
+    def UserDepartmentId(self):
+        """用户部门id
+        :rtype: str
+        """
+        return self._UserDepartmentId
+
+    @UserDepartmentId.setter
+    def UserDepartmentId(self, UserDepartmentId):
+        self._UserDepartmentId = UserDepartmentId
+
+    @property
+    def UserDepartmentName(self):
+        """用户部门name
+        :rtype: str
+        """
+        return self._UserDepartmentName
+
+    @UserDepartmentName.setter
+    def UserDepartmentName(self, UserDepartmentName):
+        self._UserDepartmentName = UserDepartmentName
+
+    @property
+    def DeviceDepartmentId(self):
+        """设备部门id
+        :rtype: str
+        """
+        return self._DeviceDepartmentId
+
+    @DeviceDepartmentId.setter
+    def DeviceDepartmentId(self, DeviceDepartmentId):
+        self._DeviceDepartmentId = DeviceDepartmentId
+
+    @property
+    def DeviceDepartmentName(self):
+        """设备部门name
+        :rtype: str
+        """
+        return self._DeviceDepartmentName
+
+    @DeviceDepartmentName.setter
+    def DeviceDepartmentName(self, DeviceDepartmentName):
+        self._DeviceDepartmentName = DeviceDepartmentName
+
+    @property
+    def Size(self):
+        """会话大小
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def SignValue(self):
+        """签名值
+        :rtype: str
+        """
+        return self._SignValue
+
+    @SignValue.setter
+    def SignValue(self, SignValue):
+        self._SignValue = SignValue
+
+    @property
+    def DeviceKind(self):
+        """资产类型
+        :rtype: str
+        """
+        return self._DeviceKind
+
+    @DeviceKind.setter
+    def DeviceKind(self, DeviceKind):
+        self._DeviceKind = DeviceKind
+
+
+    def _deserialize(self, params):
+        self._Cmd = params.get("Cmd")
+        self._Time = params.get("Time")
+        self._TimeOffset = params.get("TimeOffset")
+        self._Action = params.get("Action")
+        self._Sid = params.get("Sid")
+        self._UserName = params.get("UserName")
+        self._Account = params.get("Account")
+        self._InstanceId = params.get("InstanceId")
+        self._FromIp = params.get("FromIp")
+        self._SessTime = params.get("SessTime")
+        self._SessionTime = params.get("SessionTime")
+        self._ConfirmTime = params.get("ConfirmTime")
+        self._UserDepartmentId = params.get("UserDepartmentId")
+        self._UserDepartmentName = params.get("UserDepartmentName")
+        self._DeviceDepartmentId = params.get("DeviceDepartmentId")
+        self._DeviceDepartmentName = params.get("DeviceDepartmentName")
+        self._Size = params.get("Size")
+        self._SignValue = params.get("SignValue")
+        self._DeviceKind = params.get("DeviceKind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAccessWhiteListRuleRequest(AbstractModel):
     """CreateAccessWhiteListRule请求参数结构体
 
@@ -13594,6 +13900,87 @@ class OperationTask(AbstractModel):
         
 
 
+class ReplayInformation(AbstractModel):
+    """回放所需字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: 令牌
+        :type Token: str
+        :param _StartTime: 会话开始时间
+        :type StartTime: str
+        :param _Address: 回放链接
+        :type Address: str
+        :param _ReplayType: 回放类型 ，默认0， 1-rfb 2-mp4 3-ssh
+        :type ReplayType: int
+        """
+        self._Token = None
+        self._StartTime = None
+        self._Address = None
+        self._ReplayType = None
+
+    @property
+    def Token(self):
+        """令牌
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def StartTime(self):
+        """会话开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Address(self):
+        """回放链接
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def ReplayType(self):
+        """回放类型 ，默认0， 1-rfb 2-mp4 3-ssh
+        :rtype: int
+        """
+        return self._ReplayType
+
+    @ReplayType.setter
+    def ReplayType(self, ReplayType):
+        self._ReplayType = ReplayType
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._StartTime = params.get("StartTime")
+        self._Address = params.get("Address")
+        self._ReplayType = params.get("ReplayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReplaySessionRequest(AbstractModel):
     """ReplaySession请求参数结构体
 
@@ -13637,10 +14024,24 @@ class ReplaySessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ReplayInfo: 回放所需信息
+        :type ReplayInfo: :class:`tencentcloud.bh.v20230418.models.ReplayInformation`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ReplayInfo = None
         self._RequestId = None
+
+    @property
+    def ReplayInfo(self):
+        """回放所需信息
+        :rtype: :class:`tencentcloud.bh.v20230418.models.ReplayInformation`
+        """
+        return self._ReplayInfo
+
+    @ReplayInfo.setter
+    def ReplayInfo(self, ReplayInfo):
+        self._ReplayInfo = ReplayInfo
 
     @property
     def RequestId(self):
@@ -13655,6 +14056,9 @@ class ReplaySessionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ReplayInfo") is not None:
+            self._ReplayInfo = ReplayInformation()
+            self._ReplayInfo._deserialize(params.get("ReplayInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -15116,10 +15520,13 @@ class SearchCommandBySidResponse(AbstractModel):
         r"""
         :param _TotalCount: 总记录数
         :type TotalCount: int
+        :param _CommandSet: 命令列表
+        :type CommandSet: list of Command
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
+        self._CommandSet = None
         self._RequestId = None
 
     @property
@@ -15132,6 +15539,17 @@ class SearchCommandBySidResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def CommandSet(self):
+        """命令列表
+        :rtype: list of Command
+        """
+        return self._CommandSet
+
+    @CommandSet.setter
+    def CommandSet(self, CommandSet):
+        self._CommandSet = CommandSet
 
     @property
     def RequestId(self):
@@ -15147,6 +15565,12 @@ class SearchCommandBySidResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
+        if params.get("CommandSet") is not None:
+            self._CommandSet = []
+            for item in params.get("CommandSet"):
+                obj = Command()
+                obj._deserialize(item)
+                self._CommandSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -3837,6 +3837,10 @@ class Task(AbstractModel):
         :type TaskRegionName: str
         :param _TaskArchId: 架构ID
         :type TaskArchId: str
+        :param _TaskScenario: 演练场景
+        :type TaskScenario: list of TaskTarget
+        :param _TaskPurpose: 演练目的
+        :type TaskPurpose: list of TaskTarget
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -3873,6 +3877,8 @@ class Task(AbstractModel):
         self._TaskIssue = None
         self._TaskRegionName = None
         self._TaskArchId = None
+        self._TaskScenario = None
+        self._TaskPurpose = None
 
     @property
     def TaskId(self):
@@ -4273,6 +4279,28 @@ class Task(AbstractModel):
     def TaskArchId(self, TaskArchId):
         self._TaskArchId = TaskArchId
 
+    @property
+    def TaskScenario(self):
+        """演练场景
+        :rtype: list of TaskTarget
+        """
+        return self._TaskScenario
+
+    @TaskScenario.setter
+    def TaskScenario(self, TaskScenario):
+        self._TaskScenario = TaskScenario
+
+    @property
+    def TaskPurpose(self):
+        """演练目的
+        :rtype: list of TaskTarget
+        """
+        return self._TaskPurpose
+
+    @TaskPurpose.setter
+    def TaskPurpose(self, TaskPurpose):
+        self._TaskPurpose = TaskPurpose
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -4337,6 +4365,18 @@ class Task(AbstractModel):
         self._TaskIssue = params.get("TaskIssue")
         self._TaskRegionName = params.get("TaskRegionName")
         self._TaskArchId = params.get("TaskArchId")
+        if params.get("TaskScenario") is not None:
+            self._TaskScenario = []
+            for item in params.get("TaskScenario"):
+                obj = TaskTarget()
+                obj._deserialize(item)
+                self._TaskScenario.append(obj)
+        if params.get("TaskPurpose") is not None:
+            self._TaskPurpose = []
+            for item in params.get("TaskPurpose"):
+                obj = TaskTarget()
+                obj._deserialize(item)
+                self._TaskPurpose.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6165,6 +6205,89 @@ class TaskReportInfo(AbstractModel):
         self._ArchiveStage = params.get("ArchiveStage")
         self._ArchiveTime = params.get("ArchiveTime")
         self._ArchiveUuid = params.get("ArchiveUuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskTarget(AbstractModel):
+    """演练目标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetId: 目标标签ID
+        :type TargetId: int
+        :param _TargetDesc: 目标描述
+        :type TargetDesc: str
+        :param _Type: 1:演练场景
+2:演练目标
+        :type Type: int
+        :param _Source: 1:平台 2:用户个人
+        :type Source: int
+        """
+        self._TargetId = None
+        self._TargetDesc = None
+        self._Type = None
+        self._Source = None
+
+    @property
+    def TargetId(self):
+        """目标标签ID
+        :rtype: int
+        """
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def TargetDesc(self):
+        """目标描述
+        :rtype: str
+        """
+        return self._TargetDesc
+
+    @TargetDesc.setter
+    def TargetDesc(self, TargetDesc):
+        self._TargetDesc = TargetDesc
+
+    @property
+    def Type(self):
+        """1:演练场景
+2:演练目标
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Source(self):
+        """1:平台 2:用户个人
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._TargetId = params.get("TargetId")
+        self._TargetDesc = params.get("TargetDesc")
+        self._Type = params.get("Type")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -8541,6 +8541,61 @@ class ContainerGroupDetail(AbstractModel):
         
 
 
+class ContainerGroupObservabilityConfig(AbstractModel):
+    """可观测配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessLogConfigIdList: 日志配置项ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessLogConfigIdList: list of str
+        :param _BusinessLogDeliveryConfigIdList: 投递配置项ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessLogDeliveryConfigIdList: list of str
+        """
+        self._BusinessLogConfigIdList = None
+        self._BusinessLogDeliveryConfigIdList = None
+
+    @property
+    def BusinessLogConfigIdList(self):
+        """日志配置项ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BusinessLogConfigIdList
+
+    @BusinessLogConfigIdList.setter
+    def BusinessLogConfigIdList(self, BusinessLogConfigIdList):
+        self._BusinessLogConfigIdList = BusinessLogConfigIdList
+
+    @property
+    def BusinessLogDeliveryConfigIdList(self):
+        """投递配置项ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BusinessLogDeliveryConfigIdList
+
+    @BusinessLogDeliveryConfigIdList.setter
+    def BusinessLogDeliveryConfigIdList(self, BusinessLogDeliveryConfigIdList):
+        self._BusinessLogDeliveryConfigIdList = BusinessLogDeliveryConfigIdList
+
+
+    def _deserialize(self, params):
+        self._BusinessLogConfigIdList = params.get("BusinessLogConfigIdList")
+        self._BusinessLogDeliveryConfigIdList = params.get("BusinessLogDeliveryConfigIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerGroupOther(AbstractModel):
     """部署组列表-其它字段
 
@@ -8745,6 +8800,609 @@ class ContainerGroupOther(AbstractModel):
             self._HealthCheckSettings = HealthCheckSettings()
             self._HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
         self._IsNotEqualServiceConfig = params.get("IsNotEqualServiceConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerGroupServiceGovernanceConfig(AbstractModel):
+    """服务治理相关配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableGovernance: 是否开启服务治理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableGovernance: bool
+        :param _ServiceConfigList: 控制台场景使用 mesh服务配置信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceConfigList: list of ServiceConfig
+        :param _ExclusiveInstances: 注册服务治理实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusiveInstances: list of ExclusiveInstance
+        :param _GovernanceType: 服务治理类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GovernanceType: str
+        """
+        self._EnableGovernance = None
+        self._ServiceConfigList = None
+        self._ExclusiveInstances = None
+        self._GovernanceType = None
+
+    @property
+    def EnableGovernance(self):
+        """是否开启服务治理
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableGovernance
+
+    @EnableGovernance.setter
+    def EnableGovernance(self, EnableGovernance):
+        self._EnableGovernance = EnableGovernance
+
+    @property
+    def ServiceConfigList(self):
+        """控制台场景使用 mesh服务配置信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceConfig
+        """
+        return self._ServiceConfigList
+
+    @ServiceConfigList.setter
+    def ServiceConfigList(self, ServiceConfigList):
+        self._ServiceConfigList = ServiceConfigList
+
+    @property
+    def ExclusiveInstances(self):
+        """注册服务治理实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExclusiveInstance
+        """
+        return self._ExclusiveInstances
+
+    @ExclusiveInstances.setter
+    def ExclusiveInstances(self, ExclusiveInstances):
+        self._ExclusiveInstances = ExclusiveInstances
+
+    @property
+    def GovernanceType(self):
+        """服务治理类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GovernanceType
+
+    @GovernanceType.setter
+    def GovernanceType(self, GovernanceType):
+        self._GovernanceType = GovernanceType
+
+
+    def _deserialize(self, params):
+        self._EnableGovernance = params.get("EnableGovernance")
+        if params.get("ServiceConfigList") is not None:
+            self._ServiceConfigList = []
+            for item in params.get("ServiceConfigList"):
+                obj = ServiceConfig()
+                obj._deserialize(item)
+                self._ServiceConfigList.append(obj)
+        if params.get("ExclusiveInstances") is not None:
+            self._ExclusiveInstances = []
+            for item in params.get("ExclusiveInstances"):
+                obj = ExclusiveInstance()
+                obj._deserialize(item)
+                self._ExclusiveInstances.append(obj)
+        self._GovernanceType = params.get("GovernanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerInfo(AbstractModel):
+    """容器详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 容器名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ContainerId: 容器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerId: str
+        :param _Status: 容器状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Reason: 容器的Reason
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _Image: 镜像地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Image: str
+        :param _IsBusinessMainContainer: 是否为业务主容器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsBusinessMainContainer: bool
+        :param _Server: 镜像Server
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Server: str
+        :param _RepoName: 镜像名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoName: str
+        :param _RepoType: 仓库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoType: str
+        :param _TcrRepoInfo: TCR 仓库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        :param _SecretName: 容器访问凭证名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretName: str
+        :param _TagName: 镜像版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param _HealthCheckSettings: 健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        :param _CpuRequest: 容器Cpu request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuRequest: str
+        :param _CpuLimit: 容器Cpu limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuLimit: str
+        :param _MemRequest: 容器Mem request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemRequest: str
+        :param _MemLimit: 容器Mem Limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemLimit: str
+        :param _Envs: 环境变量参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Envs: list of Env
+        :param _UserEnvs: 环境变量参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserEnvs: list of Env
+        :param _JvmOpts: JVM参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JvmOpts: str
+        :param _VolumeMountInfoList: 挂载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeMountInfoList: list of VolumeMountInfo
+        :param _InitContainerEnable: 是否为初始化容器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitContainerEnable: bool
+        :param _LifeCycleHookList: 生命周期钩子
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeCycleHookList: list of LifeCycleHook
+        :param _PrivilegeContainerEnable: 是否为特权容器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivilegeContainerEnable: bool
+        :param _RunCommand: 运行命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunCommand: str
+        :param _RunArg: 运行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunArg: str
+        :param _ContainerName: 容器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        """
+        self._Name = None
+        self._ContainerId = None
+        self._Status = None
+        self._Reason = None
+        self._Image = None
+        self._IsBusinessMainContainer = None
+        self._Server = None
+        self._RepoName = None
+        self._RepoType = None
+        self._TcrRepoInfo = None
+        self._SecretName = None
+        self._TagName = None
+        self._HealthCheckSettings = None
+        self._CpuRequest = None
+        self._CpuLimit = None
+        self._MemRequest = None
+        self._MemLimit = None
+        self._Envs = None
+        self._UserEnvs = None
+        self._JvmOpts = None
+        self._VolumeMountInfoList = None
+        self._InitContainerEnable = None
+        self._LifeCycleHookList = None
+        self._PrivilegeContainerEnable = None
+        self._RunCommand = None
+        self._RunArg = None
+        self._ContainerName = None
+
+    @property
+    def Name(self):
+        """容器名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContainerId(self):
+        """容器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+    @property
+    def Status(self):
+        """容器状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        """容器的Reason
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Image(self):
+        """镜像地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def IsBusinessMainContainer(self):
+        """是否为业务主容器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsBusinessMainContainer
+
+    @IsBusinessMainContainer.setter
+    def IsBusinessMainContainer(self, IsBusinessMainContainer):
+        self._IsBusinessMainContainer = IsBusinessMainContainer
+
+    @property
+    def Server(self):
+        """镜像Server
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Server
+
+    @Server.setter
+    def Server(self, Server):
+        self._Server = Server
+
+    @property
+    def RepoName(self):
+        """镜像名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RepoName
+
+    @RepoName.setter
+    def RepoName(self, RepoName):
+        self._RepoName = RepoName
+
+    @property
+    def RepoType(self):
+        """仓库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RepoType
+
+    @RepoType.setter
+    def RepoType(self, RepoType):
+        self._RepoType = RepoType
+
+    @property
+    def TcrRepoInfo(self):
+        """TCR 仓库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        """
+        return self._TcrRepoInfo
+
+    @TcrRepoInfo.setter
+    def TcrRepoInfo(self, TcrRepoInfo):
+        self._TcrRepoInfo = TcrRepoInfo
+
+    @property
+    def SecretName(self):
+        """容器访问凭证名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def TagName(self):
+        """镜像版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TagName
+
+    @TagName.setter
+    def TagName(self, TagName):
+        self._TagName = TagName
+
+    @property
+    def HealthCheckSettings(self):
+        """健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        """
+        return self._HealthCheckSettings
+
+    @HealthCheckSettings.setter
+    def HealthCheckSettings(self, HealthCheckSettings):
+        self._HealthCheckSettings = HealthCheckSettings
+
+    @property
+    def CpuRequest(self):
+        """容器Cpu request
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CpuRequest
+
+    @CpuRequest.setter
+    def CpuRequest(self, CpuRequest):
+        self._CpuRequest = CpuRequest
+
+    @property
+    def CpuLimit(self):
+        """容器Cpu limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CpuLimit
+
+    @CpuLimit.setter
+    def CpuLimit(self, CpuLimit):
+        self._CpuLimit = CpuLimit
+
+    @property
+    def MemRequest(self):
+        """容器Mem request
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MemRequest
+
+    @MemRequest.setter
+    def MemRequest(self, MemRequest):
+        self._MemRequest = MemRequest
+
+    @property
+    def MemLimit(self):
+        """容器Mem Limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MemLimit
+
+    @MemLimit.setter
+    def MemLimit(self, MemLimit):
+        self._MemLimit = MemLimit
+
+    @property
+    def Envs(self):
+        """环境变量参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Env
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def UserEnvs(self):
+        """环境变量参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Env
+        """
+        return self._UserEnvs
+
+    @UserEnvs.setter
+    def UserEnvs(self, UserEnvs):
+        self._UserEnvs = UserEnvs
+
+    @property
+    def JvmOpts(self):
+        """JVM参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JvmOpts
+
+    @JvmOpts.setter
+    def JvmOpts(self, JvmOpts):
+        self._JvmOpts = JvmOpts
+
+    @property
+    def VolumeMountInfoList(self):
+        """挂载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VolumeMountInfo
+        """
+        return self._VolumeMountInfoList
+
+    @VolumeMountInfoList.setter
+    def VolumeMountInfoList(self, VolumeMountInfoList):
+        self._VolumeMountInfoList = VolumeMountInfoList
+
+    @property
+    def InitContainerEnable(self):
+        """是否为初始化容器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._InitContainerEnable
+
+    @InitContainerEnable.setter
+    def InitContainerEnable(self, InitContainerEnable):
+        self._InitContainerEnable = InitContainerEnable
+
+    @property
+    def LifeCycleHookList(self):
+        """生命周期钩子
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LifeCycleHook
+        """
+        return self._LifeCycleHookList
+
+    @LifeCycleHookList.setter
+    def LifeCycleHookList(self, LifeCycleHookList):
+        self._LifeCycleHookList = LifeCycleHookList
+
+    @property
+    def PrivilegeContainerEnable(self):
+        """是否为特权容器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._PrivilegeContainerEnable
+
+    @PrivilegeContainerEnable.setter
+    def PrivilegeContainerEnable(self, PrivilegeContainerEnable):
+        self._PrivilegeContainerEnable = PrivilegeContainerEnable
+
+    @property
+    def RunCommand(self):
+        """运行命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunCommand
+
+    @RunCommand.setter
+    def RunCommand(self, RunCommand):
+        self._RunCommand = RunCommand
+
+    @property
+    def RunArg(self):
+        """运行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunArg
+
+    @RunArg.setter
+    def RunArg(self, RunArg):
+        self._RunArg = RunArg
+
+    @property
+    def ContainerName(self):
+        """容器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ContainerId = params.get("ContainerId")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        self._Image = params.get("Image")
+        self._IsBusinessMainContainer = params.get("IsBusinessMainContainer")
+        self._Server = params.get("Server")
+        self._RepoName = params.get("RepoName")
+        self._RepoType = params.get("RepoType")
+        if params.get("TcrRepoInfo") is not None:
+            self._TcrRepoInfo = TcrRepoInfo()
+            self._TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
+        self._SecretName = params.get("SecretName")
+        self._TagName = params.get("TagName")
+        if params.get("HealthCheckSettings") is not None:
+            self._HealthCheckSettings = HealthCheckSettings()
+            self._HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+        self._CpuRequest = params.get("CpuRequest")
+        self._CpuLimit = params.get("CpuLimit")
+        self._MemRequest = params.get("MemRequest")
+        self._MemLimit = params.get("MemLimit")
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = Env()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("UserEnvs") is not None:
+            self._UserEnvs = []
+            for item in params.get("UserEnvs"):
+                obj = Env()
+                obj._deserialize(item)
+                self._UserEnvs.append(obj)
+        self._JvmOpts = params.get("JvmOpts")
+        if params.get("VolumeMountInfoList") is not None:
+            self._VolumeMountInfoList = []
+            for item in params.get("VolumeMountInfoList"):
+                obj = VolumeMountInfo()
+                obj._deserialize(item)
+                self._VolumeMountInfoList.append(obj)
+        self._InitContainerEnable = params.get("InitContainerEnable")
+        if params.get("LifeCycleHookList") is not None:
+            self._LifeCycleHookList = []
+            for item in params.get("LifeCycleHookList"):
+                obj = LifeCycleHook()
+                obj._deserialize(item)
+                self._LifeCycleHookList.append(obj)
+        self._PrivilegeContainerEnable = params.get("PrivilegeContainerEnable")
+        self._RunCommand = params.get("RunCommand")
+        self._RunArg = params.get("RunArg")
+        self._ContainerName = params.get("ContainerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17119,6 +17777,1040 @@ custom, 选了custom那么CustomRule就要填入具体的自定义值
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeployContainerApplicationRequest(AbstractModel):
+    """DeployContainerApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param _ObservabilityConfig: 可观测配置
+        :type ObservabilityConfig: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupObservabilityConfig`
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _GroupId: 部署组ID，分组唯一标识
+        :type GroupId: str
+        :param _Envs: 业务容器的环境变量参数
+        :type Envs: list of Env
+        :param _VolumeMountInfoList: 业务容器的挂载信息
+        :type VolumeMountInfoList: list of VolumeMountInfo
+        :param _LifeCycleHookList: 业务主容器生命周期钩子列表
+        :type LifeCycleHookList: list of LifeCycleHook
+        :param _AdditionalContainerList: 附属容器列表
+        :type AdditionalContainerList: list of ContainerInfo
+        :param _VolumeInfoList: 容器卷信息
+        :type VolumeInfoList: list of VolumeInfo
+        :param _ServiceSettingList: Service访问配置列表
+        :type ServiceSettingList: list of ServiceSetting
+        :param _Alias: 备注
+        :type Alias: str
+        :param _GroupName: 部署组名称
+        :type GroupName: str
+        :param _Tags: 标签列表
+        :type Tags: list of Tag
+        :param _ContainerKind: 容器类型
+        :type ContainerKind: str
+        :param _Server: 业务容器的 镜像Server ccr.ccs.tencentyun.com
+        :type Server: str
+        :param _RepoName: 业务容器的镜像名
+        :type RepoName: str
+        :param _RepoType: 仓库类型
+        :type RepoType: str
+        :param _TcrRepoInfo: TCR仓库信息
+        :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        :param _SecretName: 容器访问凭证名称
+        :type SecretName: str
+        :param _TagName: 业务容器的镜像版本号
+        :type TagName: str
+        :param _HealthCheckSettings: 健康检查
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        :param _CpuRequest: 业务容器的 cpu  request
+        :type CpuRequest: str
+        :param _CpuLimit: 业务容器的 cpu limit
+        :type CpuLimit: str
+        :param _MemRequest: 业务容器的 mem request
+        :type MemRequest: str
+        :param _MemLimit: 业务容器的 mem limit
+        :type MemLimit: str
+        :param _JvmOpts: 业务容器的 jvm 参数
+        :type JvmOpts: str
+        :param _InitContainerEnable: 是否为初始化容器 业务主容器不能为初始化容
+        :type InitContainerEnable: bool
+        :param _PrivilegeContainerEnable: 业务主容器是否为特权容器
+        :type PrivilegeContainerEnable: bool
+        :param _RunCommand: 业务主容器运行命令(转base64)
+        :type RunCommand: str
+        :param _RunArg: 业务主容器运行参数(转base64)
+        :type RunArg: str
+        :param _InstanceNum: 实例数量
+        :type InstanceNum: int
+        :param _SchedulingStrategy: 调度策略
+        :type SchedulingStrategy: :class:`tencentcloud.tsf.v20180326.models.SchedulingStrategy`
+        :param _RestartPolicy: 重启策略
+        :type RestartPolicy: str
+        :param _ServiceSpecEncode: 服务治理配置
+        :type ServiceSpecEncode: str
+        :param _IstioMemRequest: istio容器的 mem Request
+        :type IstioMemRequest: str
+        :param _IstioCpuRequest:  istio容器的 cpu Request
+        :type IstioCpuRequest: str
+        :param _IstioMemLimit: istio容器的 mem Limit
+        :type IstioMemLimit: str
+        :param _IstioCpuLimit: istio容器的 cpu Limit
+        :type IstioCpuLimit: str
+        :param _ServiceGovernanceConfig: 服务治理配置
+        :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupServiceGovernanceConfig`
+        :param _AgentMemRequest: agent容器的 mem Request
+        :type AgentMemRequest: str
+        :param _AgentCpuRequest: agent容器的 cpu Request
+        :type AgentCpuRequest: str
+        :param _AgentMemLimit: agent容器的 mem Limit
+        :type AgentMemLimit: str
+        :param _AgentCpuLimit: agent容器的 cpu Limit
+        :type AgentCpuLimit: str
+        :param _UpdateType: 发布策略(0表示快速更新，1表示滚动更新。默认值为0)
+        :type UpdateType: int
+        :param _UpdateIvl: 更新间隔,单位秒
+        :type UpdateIvl: int
+        :param _MaxSurge: 对应更新策略和策略配置参数
+        :type MaxSurge: str
+        :param _MaxUnavailable: 对应更新策略和策略配置参数
+        :type MaxUnavailable: str
+        :param _WarmupSetting: 预热参数配置
+        :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
+        :param _ConfigTemplateId: 配置模版ID
+        :type ConfigTemplateId: str
+        :param _ConfigTemplateVersion: 配置模版Version
+        :type ConfigTemplateVersion: int
+        :param _VolumeClean: 是否清除数据卷信息
+        :type VolumeClean: bool
+        :param _NamespaceId: 命名空间Id
+        :type NamespaceId: str
+        :param _DeployAgent: 是否部署agent容器
+        :type DeployAgent: bool
+        :param _AgentProfileList: javaagent信息: SERVICE_AGENT/OT_AGENT
+        :type AgentProfileList: list of AgentProfile
+        :param _ServiceClean: 是否清除Service信息
+        :type ServiceClean: bool
+        :param _EnvClean: 是否清除Env信息
+        :type EnvClean: bool
+        :param _DeployDesc: 本次部署的描述信息
+        :type DeployDesc: str
+        """
+        self._ApplicationId = None
+        self._ObservabilityConfig = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._Envs = None
+        self._VolumeMountInfoList = None
+        self._LifeCycleHookList = None
+        self._AdditionalContainerList = None
+        self._VolumeInfoList = None
+        self._ServiceSettingList = None
+        self._Alias = None
+        self._GroupName = None
+        self._Tags = None
+        self._ContainerKind = None
+        self._Server = None
+        self._RepoName = None
+        self._RepoType = None
+        self._TcrRepoInfo = None
+        self._SecretName = None
+        self._TagName = None
+        self._HealthCheckSettings = None
+        self._CpuRequest = None
+        self._CpuLimit = None
+        self._MemRequest = None
+        self._MemLimit = None
+        self._JvmOpts = None
+        self._InitContainerEnable = None
+        self._PrivilegeContainerEnable = None
+        self._RunCommand = None
+        self._RunArg = None
+        self._InstanceNum = None
+        self._SchedulingStrategy = None
+        self._RestartPolicy = None
+        self._ServiceSpecEncode = None
+        self._IstioMemRequest = None
+        self._IstioCpuRequest = None
+        self._IstioMemLimit = None
+        self._IstioCpuLimit = None
+        self._ServiceGovernanceConfig = None
+        self._AgentMemRequest = None
+        self._AgentCpuRequest = None
+        self._AgentMemLimit = None
+        self._AgentCpuLimit = None
+        self._UpdateType = None
+        self._UpdateIvl = None
+        self._MaxSurge = None
+        self._MaxUnavailable = None
+        self._WarmupSetting = None
+        self._ConfigTemplateId = None
+        self._ConfigTemplateVersion = None
+        self._VolumeClean = None
+        self._NamespaceId = None
+        self._DeployAgent = None
+        self._AgentProfileList = None
+        self._ServiceClean = None
+        self._EnvClean = None
+        self._DeployDesc = None
+
+    @property
+    def ApplicationId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ObservabilityConfig(self):
+        """可观测配置
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupObservabilityConfig`
+        """
+        return self._ObservabilityConfig
+
+    @ObservabilityConfig.setter
+    def ObservabilityConfig(self, ObservabilityConfig):
+        self._ObservabilityConfig = ObservabilityConfig
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        """部署组ID，分组唯一标识
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Envs(self):
+        """业务容器的环境变量参数
+        :rtype: list of Env
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def VolumeMountInfoList(self):
+        """业务容器的挂载信息
+        :rtype: list of VolumeMountInfo
+        """
+        return self._VolumeMountInfoList
+
+    @VolumeMountInfoList.setter
+    def VolumeMountInfoList(self, VolumeMountInfoList):
+        self._VolumeMountInfoList = VolumeMountInfoList
+
+    @property
+    def LifeCycleHookList(self):
+        """业务主容器生命周期钩子列表
+        :rtype: list of LifeCycleHook
+        """
+        return self._LifeCycleHookList
+
+    @LifeCycleHookList.setter
+    def LifeCycleHookList(self, LifeCycleHookList):
+        self._LifeCycleHookList = LifeCycleHookList
+
+    @property
+    def AdditionalContainerList(self):
+        """附属容器列表
+        :rtype: list of ContainerInfo
+        """
+        return self._AdditionalContainerList
+
+    @AdditionalContainerList.setter
+    def AdditionalContainerList(self, AdditionalContainerList):
+        self._AdditionalContainerList = AdditionalContainerList
+
+    @property
+    def VolumeInfoList(self):
+        """容器卷信息
+        :rtype: list of VolumeInfo
+        """
+        return self._VolumeInfoList
+
+    @VolumeInfoList.setter
+    def VolumeInfoList(self, VolumeInfoList):
+        self._VolumeInfoList = VolumeInfoList
+
+    @property
+    def ServiceSettingList(self):
+        """Service访问配置列表
+        :rtype: list of ServiceSetting
+        """
+        return self._ServiceSettingList
+
+    @ServiceSettingList.setter
+    def ServiceSettingList(self, ServiceSettingList):
+        self._ServiceSettingList = ServiceSettingList
+
+    @property
+    def Alias(self):
+        """备注
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def GroupName(self):
+        """部署组名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ContainerKind(self):
+        """容器类型
+        :rtype: str
+        """
+        return self._ContainerKind
+
+    @ContainerKind.setter
+    def ContainerKind(self, ContainerKind):
+        self._ContainerKind = ContainerKind
+
+    @property
+    def Server(self):
+        """业务容器的 镜像Server ccr.ccs.tencentyun.com
+        :rtype: str
+        """
+        return self._Server
+
+    @Server.setter
+    def Server(self, Server):
+        self._Server = Server
+
+    @property
+    def RepoName(self):
+        """业务容器的镜像名
+        :rtype: str
+        """
+        return self._RepoName
+
+    @RepoName.setter
+    def RepoName(self, RepoName):
+        self._RepoName = RepoName
+
+    @property
+    def RepoType(self):
+        """仓库类型
+        :rtype: str
+        """
+        return self._RepoType
+
+    @RepoType.setter
+    def RepoType(self, RepoType):
+        self._RepoType = RepoType
+
+    @property
+    def TcrRepoInfo(self):
+        """TCR仓库信息
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        """
+        return self._TcrRepoInfo
+
+    @TcrRepoInfo.setter
+    def TcrRepoInfo(self, TcrRepoInfo):
+        self._TcrRepoInfo = TcrRepoInfo
+
+    @property
+    def SecretName(self):
+        """容器访问凭证名称
+        :rtype: str
+        """
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def TagName(self):
+        """业务容器的镜像版本号
+        :rtype: str
+        """
+        return self._TagName
+
+    @TagName.setter
+    def TagName(self, TagName):
+        self._TagName = TagName
+
+    @property
+    def HealthCheckSettings(self):
+        """健康检查
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        """
+        return self._HealthCheckSettings
+
+    @HealthCheckSettings.setter
+    def HealthCheckSettings(self, HealthCheckSettings):
+        self._HealthCheckSettings = HealthCheckSettings
+
+    @property
+    def CpuRequest(self):
+        """业务容器的 cpu  request
+        :rtype: str
+        """
+        return self._CpuRequest
+
+    @CpuRequest.setter
+    def CpuRequest(self, CpuRequest):
+        self._CpuRequest = CpuRequest
+
+    @property
+    def CpuLimit(self):
+        """业务容器的 cpu limit
+        :rtype: str
+        """
+        return self._CpuLimit
+
+    @CpuLimit.setter
+    def CpuLimit(self, CpuLimit):
+        self._CpuLimit = CpuLimit
+
+    @property
+    def MemRequest(self):
+        """业务容器的 mem request
+        :rtype: str
+        """
+        return self._MemRequest
+
+    @MemRequest.setter
+    def MemRequest(self, MemRequest):
+        self._MemRequest = MemRequest
+
+    @property
+    def MemLimit(self):
+        """业务容器的 mem limit
+        :rtype: str
+        """
+        return self._MemLimit
+
+    @MemLimit.setter
+    def MemLimit(self, MemLimit):
+        self._MemLimit = MemLimit
+
+    @property
+    def JvmOpts(self):
+        """业务容器的 jvm 参数
+        :rtype: str
+        """
+        return self._JvmOpts
+
+    @JvmOpts.setter
+    def JvmOpts(self, JvmOpts):
+        self._JvmOpts = JvmOpts
+
+    @property
+    def InitContainerEnable(self):
+        """是否为初始化容器 业务主容器不能为初始化容
+        :rtype: bool
+        """
+        return self._InitContainerEnable
+
+    @InitContainerEnable.setter
+    def InitContainerEnable(self, InitContainerEnable):
+        self._InitContainerEnable = InitContainerEnable
+
+    @property
+    def PrivilegeContainerEnable(self):
+        """业务主容器是否为特权容器
+        :rtype: bool
+        """
+        return self._PrivilegeContainerEnable
+
+    @PrivilegeContainerEnable.setter
+    def PrivilegeContainerEnable(self, PrivilegeContainerEnable):
+        self._PrivilegeContainerEnable = PrivilegeContainerEnable
+
+    @property
+    def RunCommand(self):
+        """业务主容器运行命令(转base64)
+        :rtype: str
+        """
+        return self._RunCommand
+
+    @RunCommand.setter
+    def RunCommand(self, RunCommand):
+        self._RunCommand = RunCommand
+
+    @property
+    def RunArg(self):
+        """业务主容器运行参数(转base64)
+        :rtype: str
+        """
+        return self._RunArg
+
+    @RunArg.setter
+    def RunArg(self, RunArg):
+        self._RunArg = RunArg
+
+    @property
+    def InstanceNum(self):
+        """实例数量
+        :rtype: int
+        """
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
+
+    @property
+    def SchedulingStrategy(self):
+        """调度策略
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.SchedulingStrategy`
+        """
+        return self._SchedulingStrategy
+
+    @SchedulingStrategy.setter
+    def SchedulingStrategy(self, SchedulingStrategy):
+        self._SchedulingStrategy = SchedulingStrategy
+
+    @property
+    def RestartPolicy(self):
+        """重启策略
+        :rtype: str
+        """
+        return self._RestartPolicy
+
+    @RestartPolicy.setter
+    def RestartPolicy(self, RestartPolicy):
+        self._RestartPolicy = RestartPolicy
+
+    @property
+    def ServiceSpecEncode(self):
+        """服务治理配置
+        :rtype: str
+        """
+        return self._ServiceSpecEncode
+
+    @ServiceSpecEncode.setter
+    def ServiceSpecEncode(self, ServiceSpecEncode):
+        self._ServiceSpecEncode = ServiceSpecEncode
+
+    @property
+    def IstioMemRequest(self):
+        """istio容器的 mem Request
+        :rtype: str
+        """
+        return self._IstioMemRequest
+
+    @IstioMemRequest.setter
+    def IstioMemRequest(self, IstioMemRequest):
+        self._IstioMemRequest = IstioMemRequest
+
+    @property
+    def IstioCpuRequest(self):
+        """ istio容器的 cpu Request
+        :rtype: str
+        """
+        return self._IstioCpuRequest
+
+    @IstioCpuRequest.setter
+    def IstioCpuRequest(self, IstioCpuRequest):
+        self._IstioCpuRequest = IstioCpuRequest
+
+    @property
+    def IstioMemLimit(self):
+        """istio容器的 mem Limit
+        :rtype: str
+        """
+        return self._IstioMemLimit
+
+    @IstioMemLimit.setter
+    def IstioMemLimit(self, IstioMemLimit):
+        self._IstioMemLimit = IstioMemLimit
+
+    @property
+    def IstioCpuLimit(self):
+        """istio容器的 cpu Limit
+        :rtype: str
+        """
+        return self._IstioCpuLimit
+
+    @IstioCpuLimit.setter
+    def IstioCpuLimit(self, IstioCpuLimit):
+        self._IstioCpuLimit = IstioCpuLimit
+
+    @property
+    def ServiceGovernanceConfig(self):
+        """服务治理配置
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupServiceGovernanceConfig`
+        """
+        return self._ServiceGovernanceConfig
+
+    @ServiceGovernanceConfig.setter
+    def ServiceGovernanceConfig(self, ServiceGovernanceConfig):
+        self._ServiceGovernanceConfig = ServiceGovernanceConfig
+
+    @property
+    def AgentMemRequest(self):
+        """agent容器的 mem Request
+        :rtype: str
+        """
+        return self._AgentMemRequest
+
+    @AgentMemRequest.setter
+    def AgentMemRequest(self, AgentMemRequest):
+        self._AgentMemRequest = AgentMemRequest
+
+    @property
+    def AgentCpuRequest(self):
+        """agent容器的 cpu Request
+        :rtype: str
+        """
+        return self._AgentCpuRequest
+
+    @AgentCpuRequest.setter
+    def AgentCpuRequest(self, AgentCpuRequest):
+        self._AgentCpuRequest = AgentCpuRequest
+
+    @property
+    def AgentMemLimit(self):
+        """agent容器的 mem Limit
+        :rtype: str
+        """
+        return self._AgentMemLimit
+
+    @AgentMemLimit.setter
+    def AgentMemLimit(self, AgentMemLimit):
+        self._AgentMemLimit = AgentMemLimit
+
+    @property
+    def AgentCpuLimit(self):
+        """agent容器的 cpu Limit
+        :rtype: str
+        """
+        return self._AgentCpuLimit
+
+    @AgentCpuLimit.setter
+    def AgentCpuLimit(self, AgentCpuLimit):
+        self._AgentCpuLimit = AgentCpuLimit
+
+    @property
+    def UpdateType(self):
+        """发布策略(0表示快速更新，1表示滚动更新。默认值为0)
+        :rtype: int
+        """
+        return self._UpdateType
+
+    @UpdateType.setter
+    def UpdateType(self, UpdateType):
+        self._UpdateType = UpdateType
+
+    @property
+    def UpdateIvl(self):
+        """更新间隔,单位秒
+        :rtype: int
+        """
+        return self._UpdateIvl
+
+    @UpdateIvl.setter
+    def UpdateIvl(self, UpdateIvl):
+        self._UpdateIvl = UpdateIvl
+
+    @property
+    def MaxSurge(self):
+        """对应更新策略和策略配置参数
+        :rtype: str
+        """
+        return self._MaxSurge
+
+    @MaxSurge.setter
+    def MaxSurge(self, MaxSurge):
+        self._MaxSurge = MaxSurge
+
+    @property
+    def MaxUnavailable(self):
+        """对应更新策略和策略配置参数
+        :rtype: str
+        """
+        return self._MaxUnavailable
+
+    @MaxUnavailable.setter
+    def MaxUnavailable(self, MaxUnavailable):
+        self._MaxUnavailable = MaxUnavailable
+
+    @property
+    def WarmupSetting(self):
+        """预热参数配置
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
+        """
+        return self._WarmupSetting
+
+    @WarmupSetting.setter
+    def WarmupSetting(self, WarmupSetting):
+        self._WarmupSetting = WarmupSetting
+
+    @property
+    def ConfigTemplateId(self):
+        """配置模版ID
+        :rtype: str
+        """
+        return self._ConfigTemplateId
+
+    @ConfigTemplateId.setter
+    def ConfigTemplateId(self, ConfigTemplateId):
+        self._ConfigTemplateId = ConfigTemplateId
+
+    @property
+    def ConfigTemplateVersion(self):
+        """配置模版Version
+        :rtype: int
+        """
+        return self._ConfigTemplateVersion
+
+    @ConfigTemplateVersion.setter
+    def ConfigTemplateVersion(self, ConfigTemplateVersion):
+        self._ConfigTemplateVersion = ConfigTemplateVersion
+
+    @property
+    def VolumeClean(self):
+        """是否清除数据卷信息
+        :rtype: bool
+        """
+        return self._VolumeClean
+
+    @VolumeClean.setter
+    def VolumeClean(self, VolumeClean):
+        self._VolumeClean = VolumeClean
+
+    @property
+    def NamespaceId(self):
+        """命名空间Id
+        :rtype: str
+        """
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def DeployAgent(self):
+        """是否部署agent容器
+        :rtype: bool
+        """
+        return self._DeployAgent
+
+    @DeployAgent.setter
+    def DeployAgent(self, DeployAgent):
+        self._DeployAgent = DeployAgent
+
+    @property
+    def AgentProfileList(self):
+        """javaagent信息: SERVICE_AGENT/OT_AGENT
+        :rtype: list of AgentProfile
+        """
+        return self._AgentProfileList
+
+    @AgentProfileList.setter
+    def AgentProfileList(self, AgentProfileList):
+        self._AgentProfileList = AgentProfileList
+
+    @property
+    def ServiceClean(self):
+        """是否清除Service信息
+        :rtype: bool
+        """
+        return self._ServiceClean
+
+    @ServiceClean.setter
+    def ServiceClean(self, ServiceClean):
+        self._ServiceClean = ServiceClean
+
+    @property
+    def EnvClean(self):
+        """是否清除Env信息
+        :rtype: bool
+        """
+        return self._EnvClean
+
+    @EnvClean.setter
+    def EnvClean(self, EnvClean):
+        self._EnvClean = EnvClean
+
+    @property
+    def DeployDesc(self):
+        """本次部署的描述信息
+        :rtype: str
+        """
+        return self._DeployDesc
+
+    @DeployDesc.setter
+    def DeployDesc(self, DeployDesc):
+        self._DeployDesc = DeployDesc
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        if params.get("ObservabilityConfig") is not None:
+            self._ObservabilityConfig = ContainerGroupObservabilityConfig()
+            self._ObservabilityConfig._deserialize(params.get("ObservabilityConfig"))
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = Env()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("VolumeMountInfoList") is not None:
+            self._VolumeMountInfoList = []
+            for item in params.get("VolumeMountInfoList"):
+                obj = VolumeMountInfo()
+                obj._deserialize(item)
+                self._VolumeMountInfoList.append(obj)
+        if params.get("LifeCycleHookList") is not None:
+            self._LifeCycleHookList = []
+            for item in params.get("LifeCycleHookList"):
+                obj = LifeCycleHook()
+                obj._deserialize(item)
+                self._LifeCycleHookList.append(obj)
+        if params.get("AdditionalContainerList") is not None:
+            self._AdditionalContainerList = []
+            for item in params.get("AdditionalContainerList"):
+                obj = ContainerInfo()
+                obj._deserialize(item)
+                self._AdditionalContainerList.append(obj)
+        if params.get("VolumeInfoList") is not None:
+            self._VolumeInfoList = []
+            for item in params.get("VolumeInfoList"):
+                obj = VolumeInfo()
+                obj._deserialize(item)
+                self._VolumeInfoList.append(obj)
+        if params.get("ServiceSettingList") is not None:
+            self._ServiceSettingList = []
+            for item in params.get("ServiceSettingList"):
+                obj = ServiceSetting()
+                obj._deserialize(item)
+                self._ServiceSettingList.append(obj)
+        self._Alias = params.get("Alias")
+        self._GroupName = params.get("GroupName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ContainerKind = params.get("ContainerKind")
+        self._Server = params.get("Server")
+        self._RepoName = params.get("RepoName")
+        self._RepoType = params.get("RepoType")
+        if params.get("TcrRepoInfo") is not None:
+            self._TcrRepoInfo = TcrRepoInfo()
+            self._TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
+        self._SecretName = params.get("SecretName")
+        self._TagName = params.get("TagName")
+        if params.get("HealthCheckSettings") is not None:
+            self._HealthCheckSettings = HealthCheckSettings()
+            self._HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+        self._CpuRequest = params.get("CpuRequest")
+        self._CpuLimit = params.get("CpuLimit")
+        self._MemRequest = params.get("MemRequest")
+        self._MemLimit = params.get("MemLimit")
+        self._JvmOpts = params.get("JvmOpts")
+        self._InitContainerEnable = params.get("InitContainerEnable")
+        self._PrivilegeContainerEnable = params.get("PrivilegeContainerEnable")
+        self._RunCommand = params.get("RunCommand")
+        self._RunArg = params.get("RunArg")
+        self._InstanceNum = params.get("InstanceNum")
+        if params.get("SchedulingStrategy") is not None:
+            self._SchedulingStrategy = SchedulingStrategy()
+            self._SchedulingStrategy._deserialize(params.get("SchedulingStrategy"))
+        self._RestartPolicy = params.get("RestartPolicy")
+        self._ServiceSpecEncode = params.get("ServiceSpecEncode")
+        self._IstioMemRequest = params.get("IstioMemRequest")
+        self._IstioCpuRequest = params.get("IstioCpuRequest")
+        self._IstioMemLimit = params.get("IstioMemLimit")
+        self._IstioCpuLimit = params.get("IstioCpuLimit")
+        if params.get("ServiceGovernanceConfig") is not None:
+            self._ServiceGovernanceConfig = ContainerGroupServiceGovernanceConfig()
+            self._ServiceGovernanceConfig._deserialize(params.get("ServiceGovernanceConfig"))
+        self._AgentMemRequest = params.get("AgentMemRequest")
+        self._AgentCpuRequest = params.get("AgentCpuRequest")
+        self._AgentMemLimit = params.get("AgentMemLimit")
+        self._AgentCpuLimit = params.get("AgentCpuLimit")
+        self._UpdateType = params.get("UpdateType")
+        self._UpdateIvl = params.get("UpdateIvl")
+        self._MaxSurge = params.get("MaxSurge")
+        self._MaxUnavailable = params.get("MaxUnavailable")
+        if params.get("WarmupSetting") is not None:
+            self._WarmupSetting = WarmupSetting()
+            self._WarmupSetting._deserialize(params.get("WarmupSetting"))
+        self._ConfigTemplateId = params.get("ConfigTemplateId")
+        self._ConfigTemplateVersion = params.get("ConfigTemplateVersion")
+        self._VolumeClean = params.get("VolumeClean")
+        self._NamespaceId = params.get("NamespaceId")
+        self._DeployAgent = params.get("DeployAgent")
+        if params.get("AgentProfileList") is not None:
+            self._AgentProfileList = []
+            for item in params.get("AgentProfileList"):
+                obj = AgentProfile()
+                obj._deserialize(item)
+                self._AgentProfileList.append(obj)
+        self._ServiceClean = params.get("ServiceClean")
+        self._EnvClean = params.get("EnvClean")
+        self._DeployDesc = params.get("DeployDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployContainerApplicationResp(AbstractModel):
+    """部署后返回的结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self._GroupId = None
+        self._TaskId = None
+
+    @property
+    def GroupId(self):
+        """部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployContainerApplicationResponse(AbstractModel):
+    """DeployContainerApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 部署容器应用是否成功。
+true：成功。
+false：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.DeployContainerApplicationResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """部署容器应用是否成功。
+true：成功。
+false：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeployContainerApplicationResp`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DeployContainerApplicationResp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeployContainerGroupRequest(AbstractModel):
@@ -35633,6 +37325,95 @@ class HealthCheckSettings(AbstractModel):
         
 
 
+class HttpGetOption(AbstractModel):
+    """HttpGet 执行内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: 主机地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _Path: 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
+        :param _Scheme: 协议：HTTP｜HTTPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scheme: str
+        """
+        self._Host = None
+        self._Path = None
+        self._Port = None
+        self._Scheme = None
+
+    @property
+    def Host(self):
+        """主机地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Path(self):
+        """路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Port(self):
+        """端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Scheme(self):
+        """协议：HTTP｜HTTPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Path = params.get("Path")
+        self._Port = params.get("Port")
+        self._Scheme = params.get("Scheme")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageRepository(AbstractModel):
     """镜像仓库
 
@@ -39077,6 +40858,97 @@ class LaneRules(AbstractModel):
                 obj = LaneRule()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LifeCycleHook(AbstractModel):
+    """LifeCycleHook
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HookType: 生命周期函数类型：PostStart|PreStop
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HookType: str
+        :param _ExecMode: 函数执行方式：execCommand|httpGet|none
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecMode: str
+        :param _ExecCommandContent: execCommand函数执行内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecCommandContent: str
+        :param _HttpGetOption: HttpGet执行内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpGetOption: :class:`tencentcloud.tsf.v20180326.models.HttpGetOption`
+        """
+        self._HookType = None
+        self._ExecMode = None
+        self._ExecCommandContent = None
+        self._HttpGetOption = None
+
+    @property
+    def HookType(self):
+        """生命周期函数类型：PostStart|PreStop
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HookType
+
+    @HookType.setter
+    def HookType(self, HookType):
+        self._HookType = HookType
+
+    @property
+    def ExecMode(self):
+        """函数执行方式：execCommand|httpGet|none
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecMode
+
+    @ExecMode.setter
+    def ExecMode(self, ExecMode):
+        self._ExecMode = ExecMode
+
+    @property
+    def ExecCommandContent(self):
+        """execCommand函数执行内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecCommandContent
+
+    @ExecCommandContent.setter
+    def ExecCommandContent(self, ExecCommandContent):
+        self._ExecCommandContent = ExecCommandContent
+
+    @property
+    def HttpGetOption(self):
+        """HttpGet执行内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.HttpGetOption`
+        """
+        return self._HttpGetOption
+
+    @HttpGetOption.setter
+    def HttpGetOption(self, HttpGetOption):
+        self._HttpGetOption = HttpGetOption
+
+
+    def _deserialize(self, params):
+        self._HookType = params.get("HookType")
+        self._ExecMode = params.get("ExecMode")
+        self._ExecCommandContent = params.get("ExecCommandContent")
+        if params.get("HttpGetOption") is not None:
+            self._HttpGetOption = HttpGetOption()
+            self._HttpGetOption._deserialize(params.get("HttpGetOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

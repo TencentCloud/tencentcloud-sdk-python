@@ -3725,19 +3725,15 @@ class TaskLabel(AbstractModel):
         r"""
         :param _Label: 该字段用于返回检测结果所对应的恶意标签。
 返回值：Porn：色情，Abuse：谩骂，Ad：广告；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Suggestion: 审核建议，可选值：
 Pass 通过，
 Review 建议人审，
 Block 确认违规
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _Score: 得分，分数是 0 ～ 100
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _SubLabel: 命中的二级标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
         self._Label = None
@@ -3749,7 +3745,6 @@ Block 确认违规
     def Label(self):
         """该字段用于返回检测结果所对应的恶意标签。
 返回值：Porn：色情，Abuse：谩骂，Ad：广告；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -3764,7 +3759,6 @@ Block 确认违规
 Pass 通过，
 Review 建议人审，
 Block 确认违规
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Suggestion
@@ -3776,7 +3770,6 @@ Block 确认违规
     @property
     def Score(self):
         """得分，分数是 0 ～ 100
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -3788,7 +3781,6 @@ Block 确认违规
     @property
     def SubLabel(self):
         """命中的二级标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabel

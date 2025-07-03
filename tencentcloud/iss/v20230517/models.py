@@ -14580,7 +14580,7 @@ class ListVideoDownloadTaskRequest(AbstractModel):
         :type ChannelName: str
         :param _Status: 任务状态（0：准备中，1：执行中，2：已完成，3：失败）
         :type Status: int
-        :param _SortRule: 排序规则（仅支持 StartTime，EndTime，倒序为-StartTime，-EndTime）
+        :param _SortRule: 排序规则（仅支持 StartTime，倒序为-StartTime）
         :type SortRule: str
         :param _WithPreviewUrl: 响应是否携带预览地址(0:不携带；1:携带)
         :type WithPreviewUrl: int
@@ -14592,6 +14592,8 @@ class ListVideoDownloadTaskRequest(AbstractModel):
         :type DownloadTaskId: str
         :param _UrlExpires: 下载地址过期时间，单位秒，最大为 1 天， 86400秒
         :type UrlExpires: int
+        :param _Date: 任务日期，默认当天
+        :type Date: str
         """
         self._DeviceName = None
         self._ChannelName = None
@@ -14602,6 +14604,7 @@ class ListVideoDownloadTaskRequest(AbstractModel):
         self._PageSize = None
         self._DownloadTaskId = None
         self._UrlExpires = None
+        self._Date = None
 
     @property
     def DeviceName(self):
@@ -14638,7 +14641,7 @@ class ListVideoDownloadTaskRequest(AbstractModel):
 
     @property
     def SortRule(self):
-        """排序规则（仅支持 StartTime，EndTime，倒序为-StartTime，-EndTime）
+        """排序规则（仅支持 StartTime，倒序为-StartTime）
         :rtype: str
         """
         return self._SortRule
@@ -14702,6 +14705,17 @@ class ListVideoDownloadTaskRequest(AbstractModel):
     def UrlExpires(self, UrlExpires):
         self._UrlExpires = UrlExpires
 
+    @property
+    def Date(self):
+        """任务日期，默认当天
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
 
     def _deserialize(self, params):
         self._DeviceName = params.get("DeviceName")
@@ -14713,6 +14727,7 @@ class ListVideoDownloadTaskRequest(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._DownloadTaskId = params.get("DownloadTaskId")
         self._UrlExpires = params.get("UrlExpires")
+        self._Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

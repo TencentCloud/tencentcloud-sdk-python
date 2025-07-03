@@ -479,6 +479,327 @@ class BackupTableContent(AbstractModel):
         
 
 
+class CNResource(AbstractModel):
+    """资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 无
+        :type ID: int
+        :param _InstanceID: 无
+        :type InstanceID: str
+        :param _AppID: 无
+        :type AppID: int
+        :param _Uin: 无
+        :type Uin: str
+        :param _Component: 无
+        :type Component: str
+        :param _DeployMode: 无
+        :type DeployMode: int
+        :param _SpecName: 无
+        :type SpecName: str
+        :param _ResourceID: 无
+        :type ResourceID: str
+        :param _Status: 无
+        :type Status: int
+        :param _IP: 无
+        :type IP: str
+        :param _CPU: 无
+        :type CPU: int
+        :param _Memory: 无
+        :type Memory: int
+        :param _Storage: 无
+        :type Storage: int
+        :param _UUID: 无
+        :type UUID: str
+        :param _Region: 无
+        :type Region: str
+        :param _Zone: 无
+        :type Zone: str
+        :param _Details: 无
+        :type Details: str
+        :param _CreateTime: 无
+        :type CreateTime: str
+        :param _ModifyTime: 无
+        :type ModifyTime: str
+        :param _ExpireTime: 无
+        :type ExpireTime: str
+        """
+        self._ID = None
+        self._InstanceID = None
+        self._AppID = None
+        self._Uin = None
+        self._Component = None
+        self._DeployMode = None
+        self._SpecName = None
+        self._ResourceID = None
+        self._Status = None
+        self._IP = None
+        self._CPU = None
+        self._Memory = None
+        self._Storage = None
+        self._UUID = None
+        self._Region = None
+        self._Zone = None
+        self._Details = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._ExpireTime = None
+
+    @property
+    def ID(self):
+        """无
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def InstanceID(self):
+        """无
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def AppID(self):
+        """无
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Uin(self):
+        """无
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Component(self):
+        """无
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def DeployMode(self):
+        """无
+        :rtype: int
+        """
+        return self._DeployMode
+
+    @DeployMode.setter
+    def DeployMode(self, DeployMode):
+        self._DeployMode = DeployMode
+
+    @property
+    def SpecName(self):
+        """无
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def ResourceID(self):
+        """无
+        :rtype: str
+        """
+        return self._ResourceID
+
+    @ResourceID.setter
+    def ResourceID(self, ResourceID):
+        self._ResourceID = ResourceID
+
+    @property
+    def Status(self):
+        """无
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IP(self):
+        """无
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def CPU(self):
+        """无
+        :rtype: int
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        """无
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        """无
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def UUID(self):
+        """无
+        :rtype: str
+        """
+        return self._UUID
+
+    @UUID.setter
+    def UUID(self, UUID):
+        self._UUID = UUID
+
+    @property
+    def Region(self):
+        """无
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        """无
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Details(self):
+        """无
+        :rtype: str
+        """
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def CreateTime(self):
+        """无
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        """无
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def ExpireTime(self):
+        """无
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._InstanceID = params.get("InstanceID")
+        self._AppID = params.get("AppID")
+        self._Uin = params.get("Uin")
+        self._Component = params.get("Component")
+        self._DeployMode = params.get("DeployMode")
+        self._SpecName = params.get("SpecName")
+        self._ResourceID = params.get("ResourceID")
+        self._Status = params.get("Status")
+        self._IP = params.get("IP")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
+        self._UUID = params.get("UUID")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._Details = params.get("Details")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Charge(AbstractModel):
     """集群计费相关信息
 
@@ -778,6 +1099,170 @@ class ClusterInfo(AbstractModel):
     def _deserialize(self, params):
         self._ClusterName = params.get("ClusterName")
         self._NodeIps = params.get("NodeIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CnInstanceInfo(AbstractModel):
+    """云原生实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: ID值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param _InstanceType: cdwch-cn或者其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _InstanceName: cdwch-cn或者其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _Status: Running
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _StatusDesc: 运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param _InstanceStateInfo: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStateInfo: :class:`tencentcloud.cdwch.v20200915.models.InstanceStateInfo`
+        :param _InstanceID: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
+        :param _Resources: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: list of CNResource
+        """
+        self._ID = None
+        self._InstanceType = None
+        self._InstanceName = None
+        self._Status = None
+        self._StatusDesc = None
+        self._InstanceStateInfo = None
+        self._InstanceID = None
+        self._Resources = None
+
+    @property
+    def ID(self):
+        """ID值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def InstanceType(self):
+        """cdwch-cn或者其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceName(self):
+        """cdwch-cn或者其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Status(self):
+        """Running
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        """运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def InstanceStateInfo(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.InstanceStateInfo`
+        """
+        return self._InstanceStateInfo
+
+    @InstanceStateInfo.setter
+    def InstanceStateInfo(self, InstanceStateInfo):
+        self._InstanceStateInfo = InstanceStateInfo
+
+    @property
+    def InstanceID(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Resources(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CNResource
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceName = params.get("InstanceName")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        if params.get("InstanceStateInfo") is not None:
+            self._InstanceStateInfo = InstanceStateInfo()
+            self._InstanceStateInfo._deserialize(params.get("InstanceStateInfo"))
+        self._InstanceID = params.get("InstanceID")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = CNResource()
+                obj._deserialize(item)
+                self._Resources.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2114,6 +2599,221 @@ class DescribeBackUpTablesResponse(AbstractModel):
                 obj = BackupTableContent()
                 obj._deserialize(item)
                 self._AvailableTables.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCNInstancesRequest(AbstractModel):
+    """DescribeCNInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SearchInstanceID: 搜索的集群id名称
+        :type SearchInstanceID: str
+        :param _SearchInstanceName: 搜索的集群name
+        :type SearchInstanceName: str
+        :param _Offset: 分页参数，第一页为0，第二页为10
+        :type Offset: int
+        :param _Limit: 分页参数，分页步长，默认为10
+        :type Limit: int
+        :param _SearchTags: 搜索标签列表
+        :type SearchTags: list of SearchTags
+        :param _InstanceType: 集群类型，弹性版或自研数仓版
+        :type InstanceType: str
+        :param _Components: 组件名称列表
+        :type Components: list of str
+        """
+        self._SearchInstanceID = None
+        self._SearchInstanceName = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchTags = None
+        self._InstanceType = None
+        self._Components = None
+
+    @property
+    def SearchInstanceID(self):
+        """搜索的集群id名称
+        :rtype: str
+        """
+        return self._SearchInstanceID
+
+    @SearchInstanceID.setter
+    def SearchInstanceID(self, SearchInstanceID):
+        self._SearchInstanceID = SearchInstanceID
+
+    @property
+    def SearchInstanceName(self):
+        """搜索的集群name
+        :rtype: str
+        """
+        return self._SearchInstanceName
+
+    @SearchInstanceName.setter
+    def SearchInstanceName(self, SearchInstanceName):
+        self._SearchInstanceName = SearchInstanceName
+
+    @property
+    def Offset(self):
+        """分页参数，第一页为0，第二页为10
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页参数，分页步长，默认为10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchTags(self):
+        """搜索标签列表
+        :rtype: list of SearchTags
+        """
+        return self._SearchTags
+
+    @SearchTags.setter
+    def SearchTags(self, SearchTags):
+        self._SearchTags = SearchTags
+
+    @property
+    def InstanceType(self):
+        """集群类型，弹性版或自研数仓版
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Components(self):
+        """组件名称列表
+        :rtype: list of str
+        """
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+
+    def _deserialize(self, params):
+        self._SearchInstanceID = params.get("SearchInstanceID")
+        self._SearchInstanceName = params.get("SearchInstanceName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("SearchTags") is not None:
+            self._SearchTags = []
+            for item in params.get("SearchTags"):
+                obj = SearchTags()
+                obj._deserialize(item)
+                self._SearchTags.append(obj)
+        self._InstanceType = params.get("InstanceType")
+        self._Components = params.get("Components")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCNInstancesResponse(AbstractModel):
+    """DescribeCNInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _InstancesList: 实例数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancesList: list of CnInstanceInfo
+        :param _ErrorMsg: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstancesList = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstancesList(self):
+        """实例数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CnInstanceInfo
+        """
+        return self._InstancesList
+
+    @InstancesList.setter
+    def InstancesList(self, InstancesList):
+        self._InstancesList = InstancesList
+
+    @property
+    def ErrorMsg(self):
+        """-
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstancesList") is not None:
+            self._InstancesList = []
+            for item in params.get("InstancesList"):
+                obj = CnInstanceInfo()
+                obj._deserialize(item)
+                self._InstancesList.append(obj)
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 

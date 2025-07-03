@@ -86710,6 +86710,8 @@ class ScreenTaskInfo(AbstractModel):
         :param _MinuteNum: 分钟任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinuteNum: int
+        :param _WorkflowNum: 工作流总数
+        :type WorkflowNum: int
         """
         self._CountTag = None
         self._TotalNum = None
@@ -86724,6 +86726,7 @@ class ScreenTaskInfo(AbstractModel):
         self._DayNum = None
         self._HourNum = None
         self._MinuteNum = None
+        self._WorkflowNum = None
 
     @property
     def CountTag(self):
@@ -86880,6 +86883,17 @@ class ScreenTaskInfo(AbstractModel):
     def MinuteNum(self, MinuteNum):
         self._MinuteNum = MinuteNum
 
+    @property
+    def WorkflowNum(self):
+        """工作流总数
+        :rtype: int
+        """
+        return self._WorkflowNum
+
+    @WorkflowNum.setter
+    def WorkflowNum(self, WorkflowNum):
+        self._WorkflowNum = WorkflowNum
+
 
     def _deserialize(self, params):
         self._CountTag = params.get("CountTag")
@@ -86895,6 +86909,7 @@ class ScreenTaskInfo(AbstractModel):
         self._DayNum = params.get("DayNum")
         self._HourNum = params.get("HourNum")
         self._MinuteNum = params.get("MinuteNum")
+        self._WorkflowNum = params.get("WorkflowNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

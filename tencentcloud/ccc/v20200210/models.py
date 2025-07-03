@@ -12986,6 +12986,8 @@ class ModifyStaffRequest(AbstractModel):
         :type UseMobileAccept: int
         :param _ExtensionNumber: 座席分机号（1 到 8 打头，4 - 6 位）
         :type ExtensionNumber: str
+        :param _ForwardingConfig: 呼叫转移配置
+        :type ForwardingConfig: :class:`tencentcloud.ccc.v20200210.models.ForwardingConfig`
         """
         self._SdkAppId = None
         self._Email = None
@@ -12997,6 +12999,7 @@ class ModifyStaffRequest(AbstractModel):
         self._UseMobileCallOut = None
         self._UseMobileAccept = None
         self._ExtensionNumber = None
+        self._ForwardingConfig = None
 
     @property
     def SdkAppId(self):
@@ -13108,6 +13111,17 @@ class ModifyStaffRequest(AbstractModel):
     def ExtensionNumber(self, ExtensionNumber):
         self._ExtensionNumber = ExtensionNumber
 
+    @property
+    def ForwardingConfig(self):
+        """呼叫转移配置
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ForwardingConfig`
+        """
+        return self._ForwardingConfig
+
+    @ForwardingConfig.setter
+    def ForwardingConfig(self, ForwardingConfig):
+        self._ForwardingConfig = ForwardingConfig
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -13120,6 +13134,9 @@ class ModifyStaffRequest(AbstractModel):
         self._UseMobileCallOut = params.get("UseMobileCallOut")
         self._UseMobileAccept = params.get("UseMobileAccept")
         self._ExtensionNumber = params.get("ExtensionNumber")
+        if params.get("ForwardingConfig") is not None:
+            self._ForwardingConfig = ForwardingConfig()
+            self._ForwardingConfig._deserialize(params.get("ForwardingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

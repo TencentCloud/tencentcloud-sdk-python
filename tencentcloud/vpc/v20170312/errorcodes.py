@@ -107,6 +107,9 @@ INVALIDPARAMETER_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = 'InvalidParameter.Duplica
 # 指定过滤条件不存在。
 INVALIDPARAMETER_FILTERINVALIDKEY = 'InvalidParameter.FilterInvalidKey'
 
+# 指定过滤选项缺失
+INVALIDPARAMETER_FILTERMISSPARAMETER = 'InvalidParameter.FilterMissParameter'
+
 # 指定过滤条件不是键值对。
 INVALIDPARAMETER_FILTERNOTDICT = 'InvalidParameter.FilterNotDict'
 
@@ -1231,6 +1234,9 @@ UNSUPPORTEDOPERATION_RESOURCEISINVALIDSTATE = 'UnsupportedOperation.ResourceIsIn
 
 # 输入的资源ID与IP绑定的资源不匹配，请检查。
 UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
+
+# 资源正在操作中，请稍后重试。
+UNSUPPORTEDOPERATION_RESOURCEPROCESSING = 'UnsupportedOperation.ResourceProcessing'
 
 # 未找到相关角色，请确认角色是否授权。
 UNSUPPORTEDOPERATION_ROLENOTFOUND = 'UnsupportedOperation.RoleNotFound'

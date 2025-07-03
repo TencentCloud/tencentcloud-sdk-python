@@ -3410,6 +3410,192 @@ class AssetInstanceTypeMap(AbstractModel):
         
 
 
+class AssetProcessItem(AbstractModel):
+    """主机进程内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudAccountID: 云账号ID
+        :type CloudAccountID: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _AppID: 租户ID
+        :type AppID: int
+        :param _CloudAccountName: 云账号名称
+        :type CloudAccountName: str
+        :param _InstanceID: 实例ID
+        :type InstanceID: str
+        :param _PublicIp: 公网IP
+        :type PublicIp: str
+        :param _PrivateIp: 内网IP
+        :type PrivateIp: str
+        :param _ProcessID: 进程ID
+        :type ProcessID: str
+        :param _ProcessName: 进程名称
+        :type ProcessName: str
+        :param _CmdLine: 命令行
+        :type CmdLine: str
+        :param _Port: 监听端口列表
+        :type Port: str
+        """
+        self._CloudAccountID = None
+        self._InstanceName = None
+        self._AppID = None
+        self._CloudAccountName = None
+        self._InstanceID = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._ProcessID = None
+        self._ProcessName = None
+        self._CmdLine = None
+        self._Port = None
+
+    @property
+    def CloudAccountID(self):
+        """云账号ID
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AppID(self):
+        """租户ID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def CloudAccountName(self):
+        """云账号名称
+        :rtype: str
+        """
+        return self._CloudAccountName
+
+    @CloudAccountName.setter
+    def CloudAccountName(self, CloudAccountName):
+        self._CloudAccountName = CloudAccountName
+
+    @property
+    def InstanceID(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def PublicIp(self):
+        """公网IP
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        """内网IP
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def ProcessID(self):
+        """进程ID
+        :rtype: str
+        """
+        return self._ProcessID
+
+    @ProcessID.setter
+    def ProcessID(self, ProcessID):
+        self._ProcessID = ProcessID
+
+    @property
+    def ProcessName(self):
+        """进程名称
+        :rtype: str
+        """
+        return self._ProcessName
+
+    @ProcessName.setter
+    def ProcessName(self, ProcessName):
+        self._ProcessName = ProcessName
+
+    @property
+    def CmdLine(self):
+        """命令行
+        :rtype: str
+        """
+        return self._CmdLine
+
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
+
+    @property
+    def Port(self):
+        """监听端口列表
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._InstanceName = params.get("InstanceName")
+        self._AppID = params.get("AppID")
+        self._CloudAccountName = params.get("CloudAccountName")
+        self._InstanceID = params.get("InstanceID")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._ProcessID = params.get("ProcessID")
+        self._ProcessName = params.get("ProcessName")
+        self._CmdLine = params.get("CmdLine")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetRiskItem(AbstractModel):
     """资产视角风险项
 
@@ -9981,6 +10167,200 @@ class DescribeAlertListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAssetProcessListRequest(AbstractModel):
+    """DescribeAssetProcessList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filters: 过滤内容
+        :type Filters: list of Filters
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Order: 排序类型
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        :param _Provider: 云厂商
+        :type Provider: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._Provider = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        """过滤内容
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        """排序类型
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Provider(self):
+        """云厂商
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._Provider = params.get("Provider")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetProcessListResponse(AbstractModel):
+    """DescribeAssetProcessList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 进程数量
+        :type TotalCount: int
+        :param _AssetProcessList: 进程列表
+        :type AssetProcessList: list of AssetProcessItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AssetProcessList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """进程数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AssetProcessList(self):
+        """进程列表
+        :rtype: list of AssetProcessItem
+        """
+        return self._AssetProcessList
+
+    @AssetProcessList.setter
+    def AssetProcessList(self, AssetProcessList):
+        self._AssetProcessList = AssetProcessList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AssetProcessList") is not None:
+            self._AssetProcessList = []
+            for item in params.get("AssetProcessList"):
+                obj = AssetProcessItem()
+                obj._deserialize(item)
+                self._AssetProcessList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAssetRiskListRequest(AbstractModel):
     """DescribeAssetRiskList请求参数结构体
 
@@ -12352,7 +12732,7 @@ class DescribeExposeAssetCategoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExposeAssetTypeList: 暴露资产分类列表
+        :param _ExposeAssetTypeList: 云边界分析资产分类列表
         :type ExposeAssetTypeList: list of ExposeAssetTypeItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12362,7 +12742,7 @@ class DescribeExposeAssetCategoryResponse(AbstractModel):
 
     @property
     def ExposeAssetTypeList(self):
-        """暴露资产分类列表
+        """云边界分析资产分类列表
         :rtype: list of ExposeAssetTypeItem
         """
         return self._ExposeAssetTypeList
@@ -12496,7 +12876,7 @@ class DescribeExposePathResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Content: 暴露路径节点内容
+        :param _Content: 云边界分析路径节点内容
         :type Content: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12506,7 +12886,7 @@ class DescribeExposePathResponse(AbstractModel):
 
     @property
     def Content(self):
-        """暴露路径节点内容
+        """云边界分析路径节点内容
         :rtype: str
         """
         return self._Content
@@ -12655,9 +13035,9 @@ class DescribeExposuresResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 互联网暴露资产数量
+        :param _TotalCount: 云边界分析资产数量
         :type TotalCount: int
-        :param _ExposeList: 互联网暴露资产列表
+        :param _ExposeList: 云边界分析资产列表
         :type ExposeList: list of ExposesItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12668,7 +13048,7 @@ class DescribeExposuresResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """互联网暴露资产数量
+        """云边界分析资产数量
         :rtype: int
         """
         return self._TotalCount
@@ -12679,7 +13059,7 @@ class DescribeExposuresResponse(AbstractModel):
 
     @property
     def ExposeList(self):
-        """互联网暴露资产列表
+        """云边界分析资产列表
         :rtype: list of ExposesItem
         """
         return self._ExposeList
@@ -12904,6 +13284,215 @@ class DescribeGatewayAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._AppIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHighBaseLineRiskListRequest(AbstractModel):
+    """DescribeHighBaseLineRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filters: 过滤内容
+        :type Filters: list of Filters
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Order: 排序类型
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        :param _CloudAccountID: 云账号ID
+        :type CloudAccountID: str
+        :param _Provider: 云厂商
+        :type Provider: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._CloudAccountID = None
+        self._Provider = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        """过滤内容
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        """排序类型
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def CloudAccountID(self):
+        """云账号ID
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def Provider(self):
+        """云厂商
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._Provider = params.get("Provider")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHighBaseLineRiskListResponse(AbstractModel):
+    """DescribeHighBaseLineRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 高危基线风险数量
+        :type TotalCount: int
+        :param _HighBaseLineRiskList: 高危基线风险列表
+        :type HighBaseLineRiskList: list of HighBaseLineRiskItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._HighBaseLineRiskList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """高危基线风险数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def HighBaseLineRiskList(self):
+        """高危基线风险列表
+        :rtype: list of HighBaseLineRiskItem
+        """
+        return self._HighBaseLineRiskList
+
+    @HighBaseLineRiskList.setter
+    def HighBaseLineRiskList(self, HighBaseLineRiskList):
+        self._HighBaseLineRiskList = HighBaseLineRiskList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("HighBaseLineRiskList") is not None:
+            self._HighBaseLineRiskList = []
+            for item in params.get("HighBaseLineRiskList"):
+                obj = HighBaseLineRiskItem()
+                obj._deserialize(item)
+                self._HighBaseLineRiskList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13565,22 +14154,16 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Data: 资产总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DBAssetVO
         :param _RegionList: 地域枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionList: list of FilterDataObject
         :param _AssetTypeList: 资产类型枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetTypeList: list of FilterDataObject
         :param _VpcList: Vpc枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcList: list of FilterDataObject
         :param _AppIdList: Appid枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppIdList: list of FilterDataObject
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13596,7 +14179,6 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -13608,7 +14190,6 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
     @property
     def Data(self):
         """资产总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DBAssetVO
         """
         return self._Data
@@ -13620,7 +14201,6 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
     @property
     def RegionList(self):
         """地域枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FilterDataObject
         """
         return self._RegionList
@@ -13632,7 +14212,6 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
     @property
     def AssetTypeList(self):
         """资产类型枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FilterDataObject
         """
         return self._AssetTypeList
@@ -13644,7 +14223,6 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
     @property
     def VpcList(self):
         """Vpc枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FilterDataObject
         """
         return self._VpcList
@@ -13656,7 +14234,6 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
     @property
     def AppIdList(self):
         """Appid枚举
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FilterDataObject
         """
         return self._AppIdList
@@ -14029,7 +14606,6 @@ class DescribeRepositoryImageAssetsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 仓库镜像列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of RepositoryImageVO
         :param _Total: 总数
         :type Total: int
@@ -14046,7 +14622,6 @@ class DescribeRepositoryImageAssetsResponse(AbstractModel):
     @property
     def Data(self):
         """仓库镜像列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RepositoryImageVO
         """
         return self._Data
@@ -18995,6 +19570,215 @@ class DescribeVpcAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVulRiskListRequest(AbstractModel):
+    """DescribeVulRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filters: 过滤内容
+        :type Filters: list of Filters
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Order: 排序类型
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        :param _CloudAccountID: 云账号ID
+        :type CloudAccountID: str
+        :param _Provider: 云厂商
+        :type Provider: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._CloudAccountID = None
+        self._Provider = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        """过滤内容
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        """排序类型
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def CloudAccountID(self):
+        """云账号ID
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def Provider(self):
+        """云厂商
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._Provider = params.get("Provider")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulRiskListResponse(AbstractModel):
+    """DescribeVulRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 漏洞数量
+        :type TotalCount: int
+        :param _VulRiskList: 漏洞列表
+        :type VulRiskList: list of VulRiskItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._VulRiskList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """漏洞数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VulRiskList(self):
+        """漏洞列表
+        :rtype: list of VulRiskItem
+        """
+        return self._VulRiskList
+
+    @VulRiskList.setter
+    def VulRiskList(self, VulRiskList):
+        self._VulRiskList = VulRiskList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("VulRiskList") is not None:
+            self._VulRiskList = []
+            for item in params.get("VulRiskList"):
+                obj = VulRiskItem()
+                obj._deserialize(item)
+                self._VulRiskList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVulViewVulRiskListRequest(AbstractModel):
     """DescribeVulViewVulRiskList请求参数结构体
 
@@ -20599,10 +21383,10 @@ class Filters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 无
+        :param _Name: 实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Values: 无
+        :param _Values: 实例ID内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
         :param _ExactMatch: 模糊匹配
@@ -20615,7 +21399,7 @@ class Filters(AbstractModel):
 
     @property
     def Name(self):
-        """无
+        """实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20627,7 +21411,7 @@ class Filters(AbstractModel):
 
     @property
     def Values(self):
-        """无
+        """实例ID内容
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -21115,6 +21899,267 @@ class GateWayAsset(AbstractModel):
         self._IsNewAsset = params.get("IsNewAsset")
         self._Status = params.get("Status")
         self._EngineRegion = params.get("EngineRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HighBaseLineRiskItem(AbstractModel):
+    """高危基线风险内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudAccountID: 云账号ID
+        :type CloudAccountID: str
+        :param _AssetID: 实例ID
+        :type AssetID: str
+        :param _InstanceStatus: 实例状态
+        :type InstanceStatus: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _RiskName: 风险名称
+        :type RiskName: str
+        :param _RiskCategory: 风险分类
+        :type RiskCategory: str
+        :param _RiskLevel: 风险等级
+        :type RiskLevel: str
+        :param _RiskDesc: 风险描述
+        :type RiskDesc: str
+        :param _RiskResult: 风险结果
+        :type RiskResult: str
+        :param _FixAdvice: 修复建议
+        :type FixAdvice: str
+        :param _RiskCategoryName: Linux漏洞
+        :type RiskCategoryName: str
+        :param _RiskLevelName: 风险等级名称
+        :type RiskLevelName: str
+        :param _InstanceStatusName: 实例状态
+        :type InstanceStatusName: str
+        :param _CreateTime: 首次发现时间
+        :type CreateTime: str
+        :param _UpdateTime: 最近发现时间
+        :type UpdateTime: str
+        :param _AppID: 租户ID
+        :type AppID: int
+        """
+        self._CloudAccountID = None
+        self._AssetID = None
+        self._InstanceStatus = None
+        self._InstanceName = None
+        self._RiskName = None
+        self._RiskCategory = None
+        self._RiskLevel = None
+        self._RiskDesc = None
+        self._RiskResult = None
+        self._FixAdvice = None
+        self._RiskCategoryName = None
+        self._RiskLevelName = None
+        self._InstanceStatusName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AppID = None
+
+    @property
+    def CloudAccountID(self):
+        """云账号ID
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def AssetID(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._AssetID
+
+    @AssetID.setter
+    def AssetID(self, AssetID):
+        self._AssetID = AssetID
+
+    @property
+    def InstanceStatus(self):
+        """实例状态
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def RiskName(self):
+        """风险名称
+        :rtype: str
+        """
+        return self._RiskName
+
+    @RiskName.setter
+    def RiskName(self, RiskName):
+        self._RiskName = RiskName
+
+    @property
+    def RiskCategory(self):
+        """风险分类
+        :rtype: str
+        """
+        return self._RiskCategory
+
+    @RiskCategory.setter
+    def RiskCategory(self, RiskCategory):
+        self._RiskCategory = RiskCategory
+
+    @property
+    def RiskLevel(self):
+        """风险等级
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def RiskDesc(self):
+        """风险描述
+        :rtype: str
+        """
+        return self._RiskDesc
+
+    @RiskDesc.setter
+    def RiskDesc(self, RiskDesc):
+        self._RiskDesc = RiskDesc
+
+    @property
+    def RiskResult(self):
+        """风险结果
+        :rtype: str
+        """
+        return self._RiskResult
+
+    @RiskResult.setter
+    def RiskResult(self, RiskResult):
+        self._RiskResult = RiskResult
+
+    @property
+    def FixAdvice(self):
+        """修复建议
+        :rtype: str
+        """
+        return self._FixAdvice
+
+    @FixAdvice.setter
+    def FixAdvice(self, FixAdvice):
+        self._FixAdvice = FixAdvice
+
+    @property
+    def RiskCategoryName(self):
+        """Linux漏洞
+        :rtype: str
+        """
+        return self._RiskCategoryName
+
+    @RiskCategoryName.setter
+    def RiskCategoryName(self, RiskCategoryName):
+        self._RiskCategoryName = RiskCategoryName
+
+    @property
+    def RiskLevelName(self):
+        """风险等级名称
+        :rtype: str
+        """
+        return self._RiskLevelName
+
+    @RiskLevelName.setter
+    def RiskLevelName(self, RiskLevelName):
+        self._RiskLevelName = RiskLevelName
+
+    @property
+    def InstanceStatusName(self):
+        """实例状态
+        :rtype: str
+        """
+        return self._InstanceStatusName
+
+    @InstanceStatusName.setter
+    def InstanceStatusName(self, InstanceStatusName):
+        self._InstanceStatusName = InstanceStatusName
+
+    @property
+    def CreateTime(self):
+        """首次发现时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """最近发现时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AppID(self):
+        """租户ID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+
+    def _deserialize(self, params):
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._AssetID = params.get("AssetID")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceName = params.get("InstanceName")
+        self._RiskName = params.get("RiskName")
+        self._RiskCategory = params.get("RiskCategory")
+        self._RiskLevel = params.get("RiskLevel")
+        self._RiskDesc = params.get("RiskDesc")
+        self._RiskResult = params.get("RiskResult")
+        self._FixAdvice = params.get("FixAdvice")
+        self._RiskCategoryName = params.get("RiskCategoryName")
+        self._RiskLevelName = params.get("RiskLevelName")
+        self._InstanceStatusName = params.get("InstanceStatusName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AppID = params.get("AppID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24348,61 +25393,42 @@ class RepositoryImageVO(AbstractModel):
     def __init__(self):
         r"""
         :param _AppId: 用户appid
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _Uin: 用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _NickName: 昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NickName: str
         :param _InstanceId: 镜像id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceName: 镜像名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _InstanceCreateTime: 镜像创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCreateTime: str
         :param _InstanceSize: 镜像大小带单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceSize: str
         :param _BuildCount: 构建次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildCount: int
         :param _InstanceType: 镜像类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _AuthStatus: 授权状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthStatus: int
         :param _InstanceVersion: 镜像版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: str
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _RepositoryUrl: 仓库地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepositoryUrl: str
         :param _RepositoryName: 仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepositoryName: str
         :param _IsCore: 是否核心
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCore: int
         :param _VulRisk: 漏洞风险
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulRisk: int
         :param _CheckCount: 检查任务
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckCount: int
         :param _CheckTime: 体检时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckTime: str
         :param _IsNewAsset: 是否新资产 1新
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsNewAsset: int
         """
         self._AppId = None
@@ -24428,7 +25454,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def AppId(self):
         """用户appid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -24440,7 +25465,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def Uin(self):
         """用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -24452,7 +25476,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def NickName(self):
         """昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NickName
@@ -24464,7 +25487,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def InstanceId(self):
         """镜像id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -24476,7 +25498,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def InstanceName(self):
         """镜像名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -24488,7 +25509,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def InstanceCreateTime(self):
         """镜像创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceCreateTime
@@ -24500,7 +25520,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def InstanceSize(self):
         """镜像大小带单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceSize
@@ -24512,7 +25531,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def BuildCount(self):
         """构建次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BuildCount
@@ -24524,7 +25542,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def InstanceType(self):
         """镜像类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -24536,7 +25553,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def AuthStatus(self):
         """授权状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthStatus
@@ -24548,7 +25564,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def InstanceVersion(self):
         """镜像版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceVersion
@@ -24560,7 +25575,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def Region(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -24572,7 +25586,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def RepositoryUrl(self):
         """仓库地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepositoryUrl
@@ -24584,7 +25597,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def RepositoryName(self):
         """仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepositoryName
@@ -24596,7 +25608,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def IsCore(self):
         """是否核心
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsCore
@@ -24608,7 +25619,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def VulRisk(self):
         """漏洞风险
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VulRisk
@@ -24620,7 +25630,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def CheckCount(self):
         """检查任务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckCount
@@ -24632,7 +25641,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def CheckTime(self):
         """体检时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckTime
@@ -24644,7 +25652,6 @@ class RepositoryImageVO(AbstractModel):
     @property
     def IsNewAsset(self):
         """是否新资产 1新
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsNewAsset
@@ -31312,6 +32319,282 @@ class VulImpactComponentInfo(AbstractModel):
     def _deserialize(self, params):
         self._Component = params.get("Component")
         self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulRiskItem(AbstractModel):
+    """主机漏洞风险内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudAccountID: 云账号ID
+        :type CloudAccountID: str
+        :param _AssetID: 实例ID
+        :type AssetID: str
+        :param _InstanceStatus: 实例状态
+        :type InstanceStatus: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _VulName: 漏洞名称
+        :type VulName: str
+        :param _VulCategory: 漏洞类型
+        :type VulCategory: str
+        :param _VulLevel: 漏洞等级
+        :type VulLevel: str
+        :param _CveID: CVE编号
+        :type CveID: str
+        :param _Description: 漏洞描述
+        :type Description: str
+        :param _ContainerID: 容器ID
+        :type ContainerID: str
+        :param _Fix: 漏洞风险修复建议
+        :type Fix: str
+        :param _VulCategoryName: Linux漏洞
+        :type VulCategoryName: str
+        :param _VulLevelName: 漏洞等级名称
+        :type VulLevelName: str
+        :param _InstanceStatusName: 实例状态中文信息
+        :type InstanceStatusName: str
+        :param _AppID: 租户ID
+        :type AppID: int
+        """
+        self._CloudAccountID = None
+        self._AssetID = None
+        self._InstanceStatus = None
+        self._InstanceName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._VulName = None
+        self._VulCategory = None
+        self._VulLevel = None
+        self._CveID = None
+        self._Description = None
+        self._ContainerID = None
+        self._Fix = None
+        self._VulCategoryName = None
+        self._VulLevelName = None
+        self._InstanceStatusName = None
+        self._AppID = None
+
+    @property
+    def CloudAccountID(self):
+        """云账号ID
+        :rtype: str
+        """
+        return self._CloudAccountID
+
+    @CloudAccountID.setter
+    def CloudAccountID(self, CloudAccountID):
+        self._CloudAccountID = CloudAccountID
+
+    @property
+    def AssetID(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._AssetID
+
+    @AssetID.setter
+    def AssetID(self, AssetID):
+        self._AssetID = AssetID
+
+    @property
+    def InstanceStatus(self):
+        """实例状态
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def VulName(self):
+        """漏洞名称
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def VulCategory(self):
+        """漏洞类型
+        :rtype: str
+        """
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
+    @property
+    def VulLevel(self):
+        """漏洞等级
+        :rtype: str
+        """
+        return self._VulLevel
+
+    @VulLevel.setter
+    def VulLevel(self, VulLevel):
+        self._VulLevel = VulLevel
+
+    @property
+    def CveID(self):
+        """CVE编号
+        :rtype: str
+        """
+        return self._CveID
+
+    @CveID.setter
+    def CveID(self, CveID):
+        self._CveID = CveID
+
+    @property
+    def Description(self):
+        """漏洞描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ContainerID(self):
+        """容器ID
+        :rtype: str
+        """
+        return self._ContainerID
+
+    @ContainerID.setter
+    def ContainerID(self, ContainerID):
+        self._ContainerID = ContainerID
+
+    @property
+    def Fix(self):
+        """漏洞风险修复建议
+        :rtype: str
+        """
+        return self._Fix
+
+    @Fix.setter
+    def Fix(self, Fix):
+        self._Fix = Fix
+
+    @property
+    def VulCategoryName(self):
+        """Linux漏洞
+        :rtype: str
+        """
+        return self._VulCategoryName
+
+    @VulCategoryName.setter
+    def VulCategoryName(self, VulCategoryName):
+        self._VulCategoryName = VulCategoryName
+
+    @property
+    def VulLevelName(self):
+        """漏洞等级名称
+        :rtype: str
+        """
+        return self._VulLevelName
+
+    @VulLevelName.setter
+    def VulLevelName(self, VulLevelName):
+        self._VulLevelName = VulLevelName
+
+    @property
+    def InstanceStatusName(self):
+        """实例状态中文信息
+        :rtype: str
+        """
+        return self._InstanceStatusName
+
+    @InstanceStatusName.setter
+    def InstanceStatusName(self, InstanceStatusName):
+        self._InstanceStatusName = InstanceStatusName
+
+    @property
+    def AppID(self):
+        """租户ID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+
+    def _deserialize(self, params):
+        self._CloudAccountID = params.get("CloudAccountID")
+        self._AssetID = params.get("AssetID")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceName = params.get("InstanceName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._VulName = params.get("VulName")
+        self._VulCategory = params.get("VulCategory")
+        self._VulLevel = params.get("VulLevel")
+        self._CveID = params.get("CveID")
+        self._Description = params.get("Description")
+        self._ContainerID = params.get("ContainerID")
+        self._Fix = params.get("Fix")
+        self._VulCategoryName = params.get("VulCategoryName")
+        self._VulLevelName = params.get("VulLevelName")
+        self._InstanceStatusName = params.get("InstanceStatusName")
+        self._AppID = params.get("AppID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

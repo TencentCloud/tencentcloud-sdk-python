@@ -379,6 +379,29 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeJobMonitorData(self, request):
+        """查询作业任务实例的资源使用监控信息。当前只支持查询弹性节点任务并且Job未删除；暂不支持计算环境类任务；该接口只支持查询作业实例时间范围之内的资源使用情况。
+
+        :param request: Request instance for DescribeJobMonitorData.
+        :type request: :class:`tencentcloud.batch.v20170312.models.DescribeJobMonitorDataRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.DescribeJobMonitorDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobMonitorData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobMonitorDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeJobSubmitInfo(self, request):
         """用于查询指定作业的提交信息，其返回内容包括 JobId 和 SubmitJob 接口中作为输入参数的作业提交信息
 

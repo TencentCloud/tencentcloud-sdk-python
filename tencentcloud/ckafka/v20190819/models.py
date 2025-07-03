@@ -7246,7 +7246,7 @@ class CreateTopicRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例Id
         :type InstanceId: str
-        :param _TopicName: 主题名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _TopicName: 只能包含字母、数字、下划线、“-”、“.”
         :type TopicName: str
         :param _PartitionNum: Partition个数，大于0
         :type PartitionNum: int
@@ -7310,7 +7310,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        """只能包含字母、数字、下划线、“-”、“.”
         :rtype: str
         """
         return self._TopicName
@@ -12277,6 +12277,10 @@ class DescribeDatahubTaskRes(AbstractModel):
         :type ErrorMessage: str
         :param _Tags: 任务标签列表
         :type Tags: list of Tag
+        :param _Description: 任务描述信息	
+        :type Description: str
+        :param _IsolateStatus: 1:正常 2:隔离中
+        :type IsolateStatus: int
         """
         self._TaskId = None
         self._TaskName = None
@@ -12293,6 +12297,8 @@ class DescribeDatahubTaskRes(AbstractModel):
         self._TransformsParam = None
         self._ErrorMessage = None
         self._Tags = None
+        self._Description = None
+        self._IsolateStatus = None
 
     @property
     def TaskId(self):
@@ -12461,6 +12467,28 @@ class DescribeDatahubTaskRes(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def Description(self):
+        """任务描述信息	
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IsolateStatus(self):
+        """1:正常 2:隔离中
+        :rtype: int
+        """
+        return self._IsolateStatus
+
+    @IsolateStatus.setter
+    def IsolateStatus(self, IsolateStatus):
+        self._IsolateStatus = IsolateStatus
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -12496,6 +12524,8 @@ class DescribeDatahubTaskRes(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._Description = params.get("Description")
+        self._IsolateStatus = params.get("IsolateStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

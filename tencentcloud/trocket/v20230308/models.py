@@ -543,7 +543,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         :param _MaxRetryTimes: 最大重试次数，取值范围0～1000
         :type MaxRetryTimes: int
@@ -552,7 +552,7 @@ class CreateConsumerGroupRequest(AbstractModel):
         :param _ConsumeMessageOrderly: 顺序投递：true
 并发投递：false
         :type ConsumeMessageOrderly: bool
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         :param _Remark: 备注信息，最多 128 个字符
         :type Remark: str
@@ -569,7 +569,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -614,7 +614,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -746,7 +746,7 @@ class CreateInstanceRequest(AbstractModel):
         :type InstanceType: str
         :param _Name: 集群名称，不能为空， 3-64个字符，只能包含数字、字母、“-”和“_”
         :type Name: str
-        :param _SkuCode: 商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参获得。
+        :param _SkuCode: 商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
         :type SkuCode: str
         :param _Remark: 备注信息
         :type Remark: str
@@ -762,7 +762,7 @@ class CreateInstanceRequest(AbstractModel):
         :type Bandwidth: int
         :param _IpRules: 公网访问白名单，不填表示拒绝所有 IP 访问
         :type IpRules: list of IpRule
-        :param _MessageRetention: 消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        :param _MessageRetention: 消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值：DefaultRetention 参数
 - 最小值：RetentionLowerLimit 参数
@@ -774,12 +774,12 @@ class CreateInstanceRequest(AbstractModel):
         :type RenewFlag: int
         :param _TimeSpan: 预付费集群的购买时长（单位：月），取值范围为1～60，默认值为1
         :type TimeSpan: int
-        :param _MaxTopicNum: 最大可创建主题数，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        :param _MaxTopicNum: 最大可创建主题数，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值和最小值：TopicNumLimit 参数
 - 最大值：TopicNumUpperLimit 参数
         :type MaxTopicNum: int
-        :param _ZoneIds: 部署可用区列表，从 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口获得。
+        :param _ZoneIds: 部署可用区列表，从 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构中获得。
         :type ZoneIds: list of int
         """
         self._InstanceType = None
@@ -831,7 +831,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def SkuCode(self):
-        """商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参获得。
+        """商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
         :rtype: str
         """
         return self._SkuCode
@@ -919,7 +919,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def MessageRetention(self):
-        """消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        """消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值：DefaultRetention 参数
 - 最小值：RetentionLowerLimit 参数
@@ -967,7 +967,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def MaxTopicNum(self):
-        """最大可创建主题数，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        """最大可创建主题数，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值和最小值：TopicNumLimit 参数
 - 最大值：TopicNumUpperLimit 参数
@@ -981,7 +981,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """部署可用区列表，从 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口获得。
+        """部署可用区列表，从 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构中获得。
         :rtype: list of int
         """
         return self._ZoneIds
@@ -1699,9 +1699,9 @@ class CreateRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Role: 角色名称
+        :param _Role: 角色名称，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
         :type Role: str
         :param _PermWrite: 是否开启生产权限
         :type PermWrite: bool
@@ -1724,7 +1724,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1735,7 +1735,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称
+        """角色名称，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
         :rtype: str
         """
         return self._Role
@@ -1873,20 +1873,20 @@ class CreateTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
-        :param _TopicType: 主题类型
-UNSPECIFIED:未指定,
-NORMAL:普通消息,
-FIFO:顺序消息,
-DELAY:延时消息,
-TRANSACTION:事务消息
+        :param _TopicType: 主题类型，枚举值如下：
+
+- NORMAL: 普通消息
+- FIFO: 顺序消息
+- DELAY: 延时消息
+- TRANSACTION: 事务消息
         :type TopicType: str
         :param _QueueNum: 队列数量，取值范围3～16
         :type QueueNum: int
-        :param _Remark: 备注，最多 128 字符
+        :param _Remark: 备注信息，最多 128 个字符
         :type Remark: str
         :param _MsgTTL: 消息保留时长（单位：小时）
         :type MsgTTL: int
@@ -1903,7 +1903,7 @@ TRANSACTION:事务消息
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -1914,7 +1914,7 @@ TRANSACTION:事务消息
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -1925,12 +1925,12 @@ TRANSACTION:事务消息
 
     @property
     def TopicType(self):
-        """主题类型
-UNSPECIFIED:未指定,
-NORMAL:普通消息,
-FIFO:顺序消息,
-DELAY:延时消息,
-TRANSACTION:事务消息
+        """主题类型，枚举值如下：
+
+- NORMAL: 普通消息
+- FIFO: 顺序消息
+- DELAY: 延时消息
+- TRANSACTION: 事务消息
         :rtype: str
         """
         return self._TopicType
@@ -1952,7 +1952,7 @@ TRANSACTION:事务消息
 
     @property
     def Remark(self):
-        """备注，最多 128 字符
+        """备注信息，最多 128 个字符
         :rtype: str
         """
         return self._Remark
@@ -2127,9 +2127,9 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
@@ -2137,7 +2137,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2148,7 +2148,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -2206,14 +2206,14 @@ class DeleteInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2556,9 +2556,9 @@ class DeleteRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Role: 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
+        :param _Role: 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口响应中的 [RoleItem](https://cloud.tencent.com/document/api/1493/96031#RoleItem) 或控制台获得。
         :type Role: str
         """
         self._InstanceId = None
@@ -2566,7 +2566,7 @@ class DeleteRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2577,7 +2577,7 @@ class DeleteRoleRequest(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
+        """角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口响应中的 [RoleItem](https://cloud.tencent.com/document/api/1493/96031#RoleItem) 或控制台获得。
         :rtype: str
         """
         return self._Role
@@ -2701,9 +2701,9 @@ class DeleteTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
         """
         self._InstanceId = None
@@ -2711,7 +2711,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2722,7 +2722,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -2780,9 +2780,9 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
@@ -2799,7 +2799,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -2810,7 +2810,7 @@ class DescribeConsumerClientListRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -2944,7 +2944,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         :param _ClientId: 客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
         :type ClientId: str
@@ -2954,7 +2954,7 @@ class DescribeConsumerClientRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
@@ -2966,7 +2966,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3021,7 +3021,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -3129,7 +3129,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
@@ -3148,7 +3148,7 @@ class DescribeConsumerGroupListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3293,9 +3293,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
@@ -3303,7 +3303,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3314,7 +3314,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -3536,13 +3536,13 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
-        :param _Namespace: 命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口或控制台获得。
+        :param _Namespace: 命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口返回的 [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace) 或控制台获得。
         :type Namespace: str
-        :param _SubscribeTopic: 订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        :param _SubscribeTopic: 订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type SubscribeTopic: str
         """
         self._InstanceId = None
@@ -3552,7 +3552,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3563,7 +3563,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -3574,7 +3574,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口或控制台获得。
+        """命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口返回的 [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace) 或控制台获得。
         :rtype: str
         """
         return self._Namespace
@@ -3585,7 +3585,7 @@ class DescribeConsumerLagRequest(AbstractModel):
 
     @property
     def SubscribeTopic(self):
-        """订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        """订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._SubscribeTopic
@@ -3968,14 +3968,14 @@ class DescribeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -4089,7 +4089,7 @@ PLATINUM 铂金版
         :param _TopicNumUpperLimit: 最大可设置的topic个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicNumUpperLimit: int
-        :param _ZoneIds: 所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口。
+        :param _ZoneIds: 所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构。
         :type ZoneIds: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4484,7 +4484,7 @@ PLATINUM 铂金版
 
     @property
     def ZoneIds(self):
-        """所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口。
+        """所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构。
         :rtype: list of int
         """
         return self._ZoneIds
@@ -6499,9 +6499,9 @@ class DescribeMessageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
         :param _StartTime: 要查询消息的开始时间，**Unix时间戳（毫秒）**
         :type StartTime: int
@@ -6513,17 +6513,17 @@ class DescribeMessageListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
-        :param _MsgId: 消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
+        :param _MsgId: 消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :type MsgId: str
-        :param _MsgKey: 消息 Key，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
+        :param _MsgKey: 消息 Key，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :type MsgKey: str
         :param _RecentMessageNum: 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
         :type RecentMessageNum: int
         :param _QueryDeadLetterMessage: 是否查询死信消息，默认为false
         :type QueryDeadLetterMessage: bool
-        :param _Tag: 消息 Tag，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
+        :param _Tag: 消息 Tag，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :type Tag: str
         """
         self._InstanceId = None
@@ -6542,7 +6542,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -6553,7 +6553,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -6619,7 +6619,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -6630,7 +6630,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def MsgId(self):
-        """消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
+        """消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :rtype: str
         """
         return self._MsgId
@@ -6641,7 +6641,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def MsgKey(self):
-        """消息 Key，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
+        """消息 Key，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :rtype: str
         """
         return self._MsgKey
@@ -6674,7 +6674,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """消息 Tag，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
+        """消息 Tag，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :rtype: str
         """
         return self._Tag
@@ -6797,9 +6797,9 @@ class DescribeMessageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
         :param _MsgId: 消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
         :type MsgId: str
@@ -6822,7 +6822,7 @@ class DescribeMessageRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -6833,7 +6833,7 @@ class DescribeMessageRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -7082,11 +7082,11 @@ class DescribeMessageTraceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
-        :param _MsgId: 消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
+        :param _MsgId: 消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :type MsgId: str
         :param _QueryDeadLetterMessage: 是否是死信消息，默认为false
         :type QueryDeadLetterMessage: bool
@@ -7101,7 +7101,7 @@ class DescribeMessageTraceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -7112,7 +7112,7 @@ class DescribeMessageTraceRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -7123,7 +7123,7 @@ class DescribeMessageTraceRequest(AbstractModel):
 
     @property
     def MsgId(self):
-        """消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口或业务日志中获得。
+        """消息 ID，从 [DescribeMessageList](https://cloud.tencent.com/document/api/1493/114593) 接口返回的 [MessageItem](https://cloud.tencent.com/document/api/1493/96031#MessageItem) 或业务日志中获得。
         :rtype: str
         """
         return self._MsgId
@@ -7910,7 +7910,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         :param _Offset: 查询起始位置，默认为0。
         :type Offset: int
@@ -7926,7 +7926,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8346,13 +8346,13 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         :param _Offset: 查询起始位置，默认为0。
         :type Offset: int
         :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
@@ -8365,7 +8365,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8398,7 +8398,7 @@ class DescribeTopicListByGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -8510,7 +8510,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
@@ -8526,7 +8526,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8659,9 +8659,9 @@ class DescribeTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
         :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
@@ -8678,7 +8678,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8689,7 +8689,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -8773,15 +8773,15 @@ TRANSACTION:事务消息
         :type TopicType: str
         :param _Remark: 备注
         :type Remark: str
-        :param _CreatedTime: 创建时间，秒为单位
+        :param _CreatedTime: 创建时间，**Unix时间戳（毫秒）**
         :type CreatedTime: int
-        :param _LastUpdateTime: 最后写入时间，秒为单位
+        :param _LastUpdateTime: 最后写入时间，**Unix时间戳（毫秒）**
         :type LastUpdateTime: int
         :param _SubscriptionCount: 订阅数量
         :type SubscriptionCount: int
         :param _SubscriptionData: 订阅关系列表
         :type SubscriptionData: list of SubscriptionData
-        :param _MsgTTL: 消息保留时长
+        :param _MsgTTL: 消息保留时长，单位：小时
         :type MsgTTL: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8848,7 +8848,7 @@ TRANSACTION:事务消息
 
     @property
     def CreatedTime(self):
-        """创建时间，秒为单位
+        """创建时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._CreatedTime
@@ -8859,7 +8859,7 @@ TRANSACTION:事务消息
 
     @property
     def LastUpdateTime(self):
-        """最后写入时间，秒为单位
+        """最后写入时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._LastUpdateTime
@@ -8892,7 +8892,7 @@ TRANSACTION:事务消息
 
     @property
     def MsgTTL(self):
-        """消息保留时长
+        """消息保留时长，单位：小时
         :rtype: int
         """
         return self._MsgTTL
@@ -8939,8 +8939,8 @@ class DetailedRolePerm(AbstractModel):
     def __init__(self):
         r"""
         :param _Resource: 权限对应的资源
-可以是主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
-可以是消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+可以是主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+可以是消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type Resource: str
         :param _PermWrite: 是否开启生产权限
         :type PermWrite: bool
@@ -8960,8 +8960,8 @@ class DetailedRolePerm(AbstractModel):
     @property
     def Resource(self):
         """权限对应的资源
-可以是主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
-可以是消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+可以是主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+可以是消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._Resource
@@ -9541,7 +9541,7 @@ DELETING，删除中
         :param _DestroyTime: 预销毁时间，**Unix时间戳（毫秒）**
 注意：此字段可能返回 null，表示取不到有效值。
         :type DestroyTime: int
-        :param _ZoneIds: 所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口。
+        :param _ZoneIds: 所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIds: list of int
         :param _EnableDeletionProtection: 是否开启删除保护
@@ -9831,7 +9831,7 @@ DELETING，删除中
 
     @property
     def ZoneIds(self):
-        """所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口。
+        """所属可用区列表，参考 [DescribeZones](https://cloud.tencent.com/document/product/1596/77929) 接口返回中的 [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo) 数据结构。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -12271,9 +12271,9 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         :param _ConsumeEnable: 是否开启消费
         :type ConsumeEnable: bool
@@ -12294,7 +12294,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -12305,7 +12305,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -12412,7 +12412,7 @@ class ModifyInstanceEndpointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         :param _Type: 接入点类型，
 PUBLIC 公网
@@ -12432,7 +12432,7 @@ PUBLIC 公网
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -12543,7 +12543,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         :param _Name: 实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”
         :type Name: str
@@ -12553,7 +12553,7 @@ class ModifyInstanceRequest(AbstractModel):
         :type SendReceiveRatio: float
         :param _SkuCode: 商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参获得。
         :type SkuCode: str
-        :param _MessageRetention: 消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        :param _MessageRetention: 消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值：DefaultRetention 参数
 - 最小值：RetentionLowerLimit 参数
@@ -12563,12 +12563,12 @@ class ModifyInstanceRequest(AbstractModel):
         :type ScaledTpsEnabled: bool
         :param _AclEnabled: 是否开启ACL
         :type AclEnabled: bool
-        :param _MaxTopicNum: 最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        :param _MaxTopicNum: 最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 最小值和默认值：TopicNumLimit 参数
 - 最大值：TopicNumUpperLimit 参数
         :type MaxTopicNum: int
-        :param _ExtraTopicNum: 免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参中的 TopicNumLimit 参数。
+        :param _ExtraTopicNum: 免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参中的 TopicNumLimit 参数。
         :type ExtraTopicNum: str
         :param _EnableDeletionProtection: 是否开启删除保护
         :type EnableDeletionProtection: bool
@@ -12587,7 +12587,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -12642,7 +12642,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def MessageRetention(self):
-        """消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        """消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值：DefaultRetention 参数
 - 最小值：RetentionLowerLimit 参数
@@ -12679,7 +12679,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def MaxTopicNum(self):
-        """最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        """最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 最小值和默认值：TopicNumLimit 参数
 - 最大值：TopicNumUpperLimit 参数
@@ -12693,7 +12693,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def ExtraTopicNum(self):
-        """免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参中的 TopicNumLimit 参数。
+        """免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参中的 TopicNumLimit 参数。
         :rtype: str
         """
         return self._ExtraTopicNum
@@ -13276,9 +13276,9 @@ class ModifyRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Role: 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
+        :param _Role: 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口中返回的 [RoleItem](https://cloud.tencent.com/document/api/1493/96031#RoleItem) 或控制台获得。
         :type Role: str
         :param _PermRead: 是否开启消费
         :type PermRead: bool
@@ -13301,7 +13301,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -13312,7 +13312,7 @@ class ModifyRoleRequest(AbstractModel):
 
     @property
     def Role(self):
-        """角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
+        """角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口中返回的 [RoleItem](https://cloud.tencent.com/document/api/1493/96031#RoleItem) 或控制台获得。
         :rtype: str
         """
         return self._Role
@@ -13435,9 +13435,9 @@ class ModifyTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
         :param _QueueNum: 队列数量，取值范围3～16
         :type QueueNum: int
@@ -13454,7 +13454,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -13465,7 +13465,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -14081,11 +14081,11 @@ class ResendDeadLetterMessageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
         :param _MessageIds: 死信消息ID列表
         :type MessageIds: list of str
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
@@ -14094,7 +14094,7 @@ class ResendDeadLetterMessageRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群ID
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -14116,7 +14116,7 @@ class ResendDeadLetterMessageRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -14192,13 +14192,13 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
         :param _ResetTimestamp: 重置位点的时间戳（单位：毫秒），指定为 -1 时表示重置到最新位点
         :type ResetTimestamp: int
-        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
@@ -14208,7 +14208,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -14219,7 +14219,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :rtype: str
         """
         return self._Topic
@@ -14241,7 +14241,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
+        """消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :rtype: str
         """
         return self._ConsumerGroup
@@ -15253,7 +15253,7 @@ class SubscriptionData(AbstractModel):
         :param _ConsumerLag: 消费堆积
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerLag: int
-        :param _LastUpdateTime: 最后消费进度更新时间，秒为单位
+        :param _LastUpdateTime: 最后消费进度更新时间，**Unix时间戳（毫秒）**
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: int
         :param _MaxRetryTimes: 最大重试次数
@@ -15429,7 +15429,7 @@ CLUSTERING 集群模式;
 
     @property
     def LastUpdateTime(self):
-        """最后消费进度更新时间，秒为单位
+        """最后消费进度更新时间，**Unix时间戳（毫秒）**
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15639,10 +15639,11 @@ class TopicConsumeStats(AbstractModel):
         :type Topic: str
         :param _TopicType: 主题类型，枚举值如下：
 
-- NORMAL：普通消息主题
-- FIFO：顺序消息主题
-- DELAY：延迟消息主题
-- TRANSACTION：事务消息主题
+- UNSPECIFIED：未指定
+- NORMAL：普通消息
+- FIFO：顺序消息
+- DELAY：延时消息
+- TRANSACTION：事务消息
         :type TopicType: str
         :param _QueueNum: 单节点主题队列数量
         :type QueueNum: int
@@ -15675,10 +15676,11 @@ class TopicConsumeStats(AbstractModel):
     def TopicType(self):
         """主题类型，枚举值如下：
 
-- NORMAL：普通消息主题
-- FIFO：顺序消息主题
-- DELAY：延迟消息主题
-- TRANSACTION：事务消息主题
+- UNSPECIFIED：未指定
+- NORMAL：普通消息
+- FIFO：顺序消息
+- DELAY：延时消息
+- TRANSACTION：事务消息
         :rtype: str
         """
         return self._TopicType

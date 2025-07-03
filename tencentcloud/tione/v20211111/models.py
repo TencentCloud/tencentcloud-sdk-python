@@ -18,6 +18,95 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Attribute(AbstractModel):
+    """镜像属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 为‘List’时属性值取Values 否则取Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Key: 属性key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 属性值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Values: 属性值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Type = None
+        self._Key = None
+        self._Value = None
+        self._Values = None
+
+    @property
+    def Type(self):
+        """为‘List’时属性值取Values 否则取Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Key(self):
+        """属性key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """属性值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Values(self):
+        """属性值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthToken(AbstractModel):
     """在线服务的 AuthToken 数据
 
@@ -9113,6 +9202,140 @@ class DescribeNotebooksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePlatformImagesRequest(AbstractModel):
+    """DescribePlatformImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤器,  Name支持ImageId/ImageName/SupportDataPipeline/AllowSaveAllContent/ImageRange，其中ImageRange支持枚举值Train,Inference,Notebook
+        :type Filters: list of Filter
+        :param _Offset: 偏移信息
+        :type Offset: int
+        :param _Limit: 返回数量, 默认100
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        """过滤器,  Name支持ImageId/ImageName/SupportDataPipeline/AllowSaveAllContent/ImageRange，其中ImageRange支持枚举值Train,Inference,Notebook
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """偏移信息
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量, 默认100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlatformImagesResponse(AbstractModel):
+    """DescribePlatformImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数量
+        :type TotalCount: int
+        :param _PlatformImageInfos: 镜像列表
+        :type PlatformImageInfos: list of PlatformImageInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PlatformImageInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PlatformImageInfos(self):
+        """镜像列表
+        :rtype: list of PlatformImageInfo
+        """
+        return self._PlatformImageInfos
+
+    @PlatformImageInfos.setter
+    def PlatformImageInfos(self, PlatformImageInfos):
+        self._PlatformImageInfos = PlatformImageInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PlatformImageInfos") is not None:
+            self._PlatformImageInfos = []
+            for item in params.get("PlatformImageInfos"):
+                obj = PlatformImageInfo()
+                obj._deserialize(item)
+                self._PlatformImageInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTrainingModelVersionRequest(AbstractModel):
     """DescribeTrainingModelVersion请求参数结构体
 
@@ -11482,9 +11705,10 @@ class Instance(AbstractModel):
 DEPLOYING: 部署中
 RUNNING: 运行中 
 DEPLOY_FAILED: 部署失败
- RELEASING 释放中 
+RELEASING 释放中 
 RELEASED：已释放 
 EXCEPTION：异常
+DEBT_OR_EXPIRED: 欠费过期
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatus: str
         :param _SubUin: 创建人
@@ -11579,9 +11803,10 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
 DEPLOYING: 部署中
 RUNNING: 运行中 
 DEPLOY_FAILED: 部署失败
- RELEASING 释放中 
+RELEASING 释放中 
 RELEASED：已释放 
 EXCEPTION：异常
+DEBT_OR_EXPIRED: 欠费过期
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15980,6 +16205,270 @@ class Option(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatformImageInfo(AbstractModel):
+    """平台镜像信息详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Framework: 框架名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Framework: str
+        :param _ImageType: 镜像类型: ccr or tcr
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageType: str
+        :param _ImageUrl: 镜像地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
+        :param _RegistryRegion: TCR镜像示例所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryRegion: str
+        :param _RegistryId: TCR镜像所属实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryId: str
+        :param _ImageName: 镜像名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageName: str
+        :param _ImageId: 镜像Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
+        :param _FrameworkVersion: 框架版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameworkVersion: str
+        :param _SupportGpuList: 支持的gpu列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportGpuList: list of str
+        :param _Description: 描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ExtraAttributes: 业务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraAttributes: list of Attribute
+        :param _ImageRange: 镜像适用场景Train/Inference/Notebook
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageRange: list of str
+        :param _SupportDistributedDeploy: 是否支持分布式部署
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportDistributedDeploy: bool
+        :param _RegionScope: 支持的地域 all(所有地域)/autonomous(自动驾驶地域)/general(通用地域)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionScope: str
+        """
+        self._Framework = None
+        self._ImageType = None
+        self._ImageUrl = None
+        self._RegistryRegion = None
+        self._RegistryId = None
+        self._ImageName = None
+        self._ImageId = None
+        self._FrameworkVersion = None
+        self._SupportGpuList = None
+        self._Description = None
+        self._ExtraAttributes = None
+        self._ImageRange = None
+        self._SupportDistributedDeploy = None
+        self._RegionScope = None
+
+    @property
+    def Framework(self):
+        """框架名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Framework
+
+    @Framework.setter
+    def Framework(self, Framework):
+        self._Framework = Framework
+
+    @property
+    def ImageType(self):
+        """镜像类型: ccr or tcr
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def ImageUrl(self):
+        """镜像地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def RegistryRegion(self):
+        """TCR镜像示例所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegistryRegion
+
+    @RegistryRegion.setter
+    def RegistryRegion(self, RegistryRegion):
+        self._RegistryRegion = RegistryRegion
+
+    @property
+    def RegistryId(self):
+        """TCR镜像所属实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def ImageName(self):
+        """镜像名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageId(self):
+        """镜像Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def FrameworkVersion(self):
+        """框架版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FrameworkVersion
+
+    @FrameworkVersion.setter
+    def FrameworkVersion(self, FrameworkVersion):
+        self._FrameworkVersion = FrameworkVersion
+
+    @property
+    def SupportGpuList(self):
+        """支持的gpu列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SupportGpuList
+
+    @SupportGpuList.setter
+    def SupportGpuList(self, SupportGpuList):
+        self._SupportGpuList = SupportGpuList
+
+    @property
+    def Description(self):
+        """描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ExtraAttributes(self):
+        """业务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Attribute
+        """
+        return self._ExtraAttributes
+
+    @ExtraAttributes.setter
+    def ExtraAttributes(self, ExtraAttributes):
+        self._ExtraAttributes = ExtraAttributes
+
+    @property
+    def ImageRange(self):
+        """镜像适用场景Train/Inference/Notebook
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ImageRange
+
+    @ImageRange.setter
+    def ImageRange(self, ImageRange):
+        self._ImageRange = ImageRange
+
+    @property
+    def SupportDistributedDeploy(self):
+        """是否支持分布式部署
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SupportDistributedDeploy
+
+    @SupportDistributedDeploy.setter
+    def SupportDistributedDeploy(self, SupportDistributedDeploy):
+        self._SupportDistributedDeploy = SupportDistributedDeploy
+
+    @property
+    def RegionScope(self):
+        """支持的地域 all(所有地域)/autonomous(自动驾驶地域)/general(通用地域)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegionScope
+
+    @RegionScope.setter
+    def RegionScope(self, RegionScope):
+        self._RegionScope = RegionScope
+
+
+    def _deserialize(self, params):
+        self._Framework = params.get("Framework")
+        self._ImageType = params.get("ImageType")
+        self._ImageUrl = params.get("ImageUrl")
+        self._RegistryRegion = params.get("RegistryRegion")
+        self._RegistryId = params.get("RegistryId")
+        self._ImageName = params.get("ImageName")
+        self._ImageId = params.get("ImageId")
+        self._FrameworkVersion = params.get("FrameworkVersion")
+        self._SupportGpuList = params.get("SupportGpuList")
+        self._Description = params.get("Description")
+        if params.get("ExtraAttributes") is not None:
+            self._ExtraAttributes = []
+            for item in params.get("ExtraAttributes"):
+                obj = Attribute()
+                obj._deserialize(item)
+                self._ExtraAttributes.append(obj)
+        self._ImageRange = params.get("ImageRange")
+        self._SupportDistributedDeploy = params.get("SupportDistributedDeploy")
+        self._RegionScope = params.get("RegionScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

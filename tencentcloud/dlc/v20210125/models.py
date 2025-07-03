@@ -8233,6 +8233,57 @@ class CrontabResumeSuspendStrategy(AbstractModel):
         
 
 
+class CustomConfig(AbstractModel):
+    """自定义参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigKey: 自定义参数名
+        :type ConfigKey: str
+        :param _ConfigValue: 自定义参数值
+        :type ConfigValue: str
+        """
+        self._ConfigKey = None
+        self._ConfigValue = None
+
+    @property
+    def ConfigKey(self):
+        """自定义参数名
+        :rtype: str
+        """
+        return self._ConfigKey
+
+    @ConfigKey.setter
+    def ConfigKey(self, ConfigKey):
+        self._ConfigKey = ConfigKey
+
+    @property
+    def ConfigValue(self):
+        """自定义参数值
+        :rtype: str
+        """
+        return self._ConfigValue
+
+    @ConfigValue.setter
+    def ConfigValue(self, ConfigValue):
+        self._ConfigValue = ConfigValue
+
+
+    def _deserialize(self, params):
+        self._ConfigKey = params.get("ConfigKey")
+        self._ConfigValue = params.get("ConfigValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DLCCatalogAccess(AbstractModel):
     """DLC 数据目录访问权限
 
@@ -12008,6 +12059,10 @@ class DatasourceConnectionInfo(AbstractModel):
         :type ConnectivityState: int
         :param _ConnectivityTips: 连通性测试提示信息
         :type ConnectivityTips: str
+        :param _CustomConfig: 自定义参数
+        :type CustomConfig: list of CustomConfig
+        :param _AllowRollback: 是否允许回退
+        :type AllowRollback: bool
         """
         self._Id = None
         self._DatasourceConnectionId = None
@@ -12026,6 +12081,8 @@ class DatasourceConnectionInfo(AbstractModel):
         self._NetworkConnectionSet = None
         self._ConnectivityState = None
         self._ConnectivityTips = None
+        self._CustomConfig = None
+        self._AllowRollback = None
 
     @property
     def Id(self):
@@ -12217,6 +12274,28 @@ class DatasourceConnectionInfo(AbstractModel):
     def ConnectivityTips(self, ConnectivityTips):
         self._ConnectivityTips = ConnectivityTips
 
+    @property
+    def CustomConfig(self):
+        """自定义参数
+        :rtype: list of CustomConfig
+        """
+        return self._CustomConfig
+
+    @CustomConfig.setter
+    def CustomConfig(self, CustomConfig):
+        self._CustomConfig = CustomConfig
+
+    @property
+    def AllowRollback(self):
+        """是否允许回退
+        :rtype: bool
+        """
+        return self._AllowRollback
+
+    @AllowRollback.setter
+    def AllowRollback(self, AllowRollback):
+        self._AllowRollback = AllowRollback
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12248,6 +12327,13 @@ class DatasourceConnectionInfo(AbstractModel):
                 self._NetworkConnectionSet.append(obj)
         self._ConnectivityState = params.get("ConnectivityState")
         self._ConnectivityTips = params.get("ConnectivityTips")
+        if params.get("CustomConfig") is not None:
+            self._CustomConfig = []
+            for item in params.get("CustomConfig"):
+                obj = CustomConfig()
+                obj._deserialize(item)
+                self._CustomConfig.append(obj)
+        self._AllowRollback = params.get("AllowRollback")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26696,6 +26782,8 @@ class NetworkConnection(AbstractModel):
         :param _DatasourceConnectionSubnetCidrBlock: 数据源SubnetCidrBlock
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceConnectionSubnetCidrBlock: str
+        :param _EGSupport: 支持 eg
+        :type EGSupport: int
         """
         self._Id = None
         self._AssociateId = None
@@ -26715,6 +26803,7 @@ class NetworkConnection(AbstractModel):
         self._DatasourceConnectionSubnetId = None
         self._DatasourceConnectionCidrBlock = None
         self._DatasourceConnectionSubnetCidrBlock = None
+        self._EGSupport = None
 
     @property
     def Id(self):
@@ -26925,6 +27014,17 @@ class NetworkConnection(AbstractModel):
     def DatasourceConnectionSubnetCidrBlock(self, DatasourceConnectionSubnetCidrBlock):
         self._DatasourceConnectionSubnetCidrBlock = DatasourceConnectionSubnetCidrBlock
 
+    @property
+    def EGSupport(self):
+        """支持 eg
+        :rtype: int
+        """
+        return self._EGSupport
+
+    @EGSupport.setter
+    def EGSupport(self, EGSupport):
+        self._EGSupport = EGSupport
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -26945,6 +27045,7 @@ class NetworkConnection(AbstractModel):
         self._DatasourceConnectionSubnetId = params.get("DatasourceConnectionSubnetId")
         self._DatasourceConnectionCidrBlock = params.get("DatasourceConnectionCidrBlock")
         self._DatasourceConnectionSubnetCidrBlock = params.get("DatasourceConnectionSubnetCidrBlock")
+        self._EGSupport = params.get("EGSupport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

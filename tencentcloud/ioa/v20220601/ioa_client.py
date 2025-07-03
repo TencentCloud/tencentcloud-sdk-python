@@ -323,3 +323,49 @@ class IoaClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVirtualDevices(self, request):
+        """展示自定义分组终端列表，私有化调用path为：/capi/Assets/DescribeVirtualDevices
+
+        :param request: Request instance for DescribeVirtualDevices.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeVirtualDevicesRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeVirtualDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirtualDevices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVirtualDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyVirtualDeviceGroups(self, request):
+        """终端自定义分组增减终端，私有化调用path为：/capi/Assets/Device/ModifyVirtualDeviceGroups
+
+        :param request: Request instance for ModifyVirtualDeviceGroups.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.ModifyVirtualDeviceGroupsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ModifyVirtualDeviceGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVirtualDeviceGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVirtualDeviceGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

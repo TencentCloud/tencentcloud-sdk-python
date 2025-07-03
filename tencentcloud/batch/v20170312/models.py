@@ -1855,6 +1855,61 @@ class DataDisk(AbstractModel):
         
 
 
+class DataPointView(AbstractModel):
+    """监控采集的数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamps: 监控数据采集的时间
+
+        :type Timestamps: list of int
+        :param _Values: 监控指标数据; 如果涉及到多个实例的监控数据的间隙时间，取值会为null
+
+        :type Values: list of float
+        """
+        self._Timestamps = None
+        self._Values = None
+
+    @property
+    def Timestamps(self):
+        """监控数据采集的时间
+
+        :rtype: list of int
+        """
+        return self._Timestamps
+
+    @Timestamps.setter
+    def Timestamps(self, Timestamps):
+        self._Timestamps = Timestamps
+
+    @property
+    def Values(self):
+        """监控指标数据; 如果涉及到多个实例的监控数据的间隙时间，取值会为null
+
+        :rtype: list of float
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Timestamps = params.get("Timestamps")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteComputeEnvRequest(AbstractModel):
     """DeleteComputeEnv请求参数结构体
 
@@ -3301,6 +3356,187 @@ class DescribeInstanceCategoriesResponse(AbstractModel):
                 obj = InstanceCategoryItem()
                 obj._deserialize(item)
                 self._InstanceCategorySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJobMonitorDataRequest(AbstractModel):
+    """DescribeJobMonitorData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
+        :type JobId: str
+        :param _TaskName: 作业的Task名称，详见[作业详情](https://cloud.tencent.com/document/product/599/15904)。
+        :type TaskName: str
+        :param _TaskInstanceIndex: 作业任务实例的序号，详见[任务详情](https://cloud.tencent.com/document/product/599/15905)
+        :type TaskInstanceIndex: int
+        :param _MetricName: 支持查询的指标；当前支持查询的任务指标；
+
+- CpuUsage：cpu利用率，单位：%
+- MemUsage：内存利用率，单位：%
+- LanOuttraffic：内网出带宽，单位：Bytes/s
+- LanIntraffic：内网入带宽，单位：Bytes/s
+        :type MetricName: str
+        :param _StartTime: 查询任务实例的起始时间；如果未传入查询起始时间或传入的时间小于任务实例的创建时间（任务实例创建时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），会自动将查询时间调整到任务实例的创建时间。传入时间格式只支持零时区格式。
+        :type StartTime: str
+        :param _EndTime: 查询任务实例的终止时间；如果未传入查询终止时间或传入的时间大于任务实例的终止时间（任务实例终止时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），并且任务实例已经结束，会自动将查询终止时间调整到任务实例的终止时间；如果任务实例未结束，会自动将查询终止时间调整到当前时间。传入时间格式只支持零时区格式。
+        :type EndTime: str
+        """
+        self._JobId = None
+        self._TaskName = None
+        self._TaskInstanceIndex = None
+        self._MetricName = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def JobId(self):
+        """作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def TaskName(self):
+        """作业的Task名称，详见[作业详情](https://cloud.tencent.com/document/product/599/15904)。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskInstanceIndex(self):
+        """作业任务实例的序号，详见[任务详情](https://cloud.tencent.com/document/product/599/15905)
+        :rtype: int
+        """
+        return self._TaskInstanceIndex
+
+    @TaskInstanceIndex.setter
+    def TaskInstanceIndex(self, TaskInstanceIndex):
+        self._TaskInstanceIndex = TaskInstanceIndex
+
+    @property
+    def MetricName(self):
+        """支持查询的指标；当前支持查询的任务指标；
+
+- CpuUsage：cpu利用率，单位：%
+- MemUsage：内存利用率，单位：%
+- LanOuttraffic：内网出带宽，单位：Bytes/s
+- LanIntraffic：内网入带宽，单位：Bytes/s
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def StartTime(self):
+        """查询任务实例的起始时间；如果未传入查询起始时间或传入的时间小于任务实例的创建时间（任务实例创建时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），会自动将查询时间调整到任务实例的创建时间。传入时间格式只支持零时区格式。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """查询任务实例的终止时间；如果未传入查询终止时间或传入的时间大于任务实例的终止时间（任务实例终止时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），并且任务实例已经结束，会自动将查询终止时间调整到任务实例的终止时间；如果任务实例未结束，会自动将查询终止时间调整到当前时间。传入时间格式只支持零时区格式。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._TaskName = params.get("TaskName")
+        self._TaskInstanceIndex = params.get("TaskInstanceIndex")
+        self._MetricName = params.get("MetricName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobMonitorDataResponse(AbstractModel):
+    """DescribeJobMonitorData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 监控数据粒度，单位:秒；时间粒度随着查询的时间范围变化，查询时间范围越小，时间粒度越小。
+        :type Period: int
+        :param _DataPoints: 监控采集的数据。时间戳和对应的值一一对应；如果查询的任务重试，采集时间段涉及多个实例的话，某些时间段内的值为null, 表示对应时间点没有实例存在，也不存在对应的监控数据；相邻监控时间段之间的空值数量最多为10。
+        :type DataPoints: :class:`tencentcloud.batch.v20170312.models.DataPointView`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Period = None
+        self._DataPoints = None
+        self._RequestId = None
+
+    @property
+    def Period(self):
+        """监控数据粒度，单位:秒；时间粒度随着查询的时间范围变化，查询时间范围越小，时间粒度越小。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def DataPoints(self):
+        """监控采集的数据。时间戳和对应的值一一对应；如果查询的任务重试，采集时间段涉及多个实例的话，某些时间段内的值为null, 表示对应时间点没有实例存在，也不存在对应的监控数据；相邻监控时间段之间的空值数量最多为10。
+        :rtype: :class:`tencentcloud.batch.v20170312.models.DataPointView`
+        """
+        return self._DataPoints
+
+    @DataPoints.setter
+    def DataPoints(self, DataPoints):
+        self._DataPoints = DataPoints
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        if params.get("DataPoints") is not None:
+            self._DataPoints = DataPointView()
+            self._DataPoints._deserialize(params.get("DataPoints"))
         self._RequestId = params.get("RequestId")
 
 

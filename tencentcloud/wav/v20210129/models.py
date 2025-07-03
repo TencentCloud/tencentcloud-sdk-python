@@ -6843,7 +6843,7 @@ class QueryCrmStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+        :param _NextCursor: 分页游标，在下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
         :param _PageData: CRM统计响应数据
@@ -6858,7 +6858,7 @@ class QueryCrmStatisticsResponse(AbstractModel):
 
     @property
     def NextCursor(self):
-        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+        """分页游标，在下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6991,7 +6991,7 @@ class QueryCustomerEventDetailStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+        :param _NextCursor: 分页游标，在下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
         :param _PageData: 外部联系人SaaS使用明细统计响应数据
@@ -7006,7 +7006,7 @@ class QueryCustomerEventDetailStatisticsResponse(AbstractModel):
 
     @property
     def NextCursor(self):
-        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+        """分页游标，在下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8571,7 +8571,7 @@ class QueryStaffEventDetailStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+        :param _NextCursor: 分页游标，在下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
         :param _PageData: 企业成员SaaS使用明细统计响应数据
@@ -8586,7 +8586,7 @@ class QueryStaffEventDetailStatisticsResponse(AbstractModel):
 
     @property
     def NextCursor(self):
-        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+        """分页游标，在下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

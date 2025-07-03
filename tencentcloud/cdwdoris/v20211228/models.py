@@ -9012,7 +9012,7 @@ Modify 集群变更中；
         :type MasterSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         :param _CoreSummary: zookeeper节点描述信息
         :type CoreSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
-        :param _HA: 高可用，“true" "false"
+        :param _HA: 高可用，"true" "false"
         :type HA: str
         :param _HaType: 高可用类型：
 0：非高可用
@@ -9097,6 +9097,10 @@ Modify 集群变更中；
         :type CNSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         :param _ComputeGroupCount: 计算组个数
         :type ComputeGroupCount: int
+        :param _CosStorageSize: 存算分离cos存储数据
+        :type CosStorageSize: float
+        :param _IsMasterNonVM: 存算分离的指标 当是true 不支持新建计算组
+        :type IsMasterNonVM: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -9151,6 +9155,8 @@ Modify 集群变更中；
         self._MonitorMode = None
         self._CNSummary = None
         self._ComputeGroupCount = None
+        self._CosStorageSize = None
+        self._IsMasterNonVM = None
 
     @property
     def InstanceId(self):
@@ -9300,7 +9306,7 @@ Modify 集群变更中；
 
     @property
     def HA(self):
-        """高可用，“true" "false"
+        """高可用，"true" "false"
         :rtype: str
         """
         return self._HA
@@ -9747,6 +9753,28 @@ Modify 集群变更中；
     def ComputeGroupCount(self, ComputeGroupCount):
         self._ComputeGroupCount = ComputeGroupCount
 
+    @property
+    def CosStorageSize(self):
+        """存算分离cos存储数据
+        :rtype: float
+        """
+        return self._CosStorageSize
+
+    @CosStorageSize.setter
+    def CosStorageSize(self, CosStorageSize):
+        self._CosStorageSize = CosStorageSize
+
+    @property
+    def IsMasterNonVM(self):
+        """存算分离的指标 当是true 不支持新建计算组
+        :rtype: bool
+        """
+        return self._IsMasterNonVM
+
+    @IsMasterNonVM.setter
+    def IsMasterNonVM(self, IsMasterNonVM):
+        self._IsMasterNonVM = IsMasterNonVM
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9815,6 +9843,8 @@ Modify 集群变更中；
             self._CNSummary = NodesSummary()
             self._CNSummary._deserialize(params.get("CNSummary"))
         self._ComputeGroupCount = params.get("ComputeGroupCount")
+        self._CosStorageSize = params.get("CosStorageSize")
+        self._IsMasterNonVM = params.get("IsMasterNonVM")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14531,6 +14561,8 @@ class ScheduleInfo(AbstractModel):
 Day-天
 Week-周
 Month-月
+Quarter-季度
+Year-年
 Once-单次
 
         :type ScheduleType: str
@@ -14574,6 +14606,8 @@ Table-按表
 Day-天
 Week-周
 Month-月
+Quarter-季度
+Year-年
 Once-单次
 
         :rtype: str

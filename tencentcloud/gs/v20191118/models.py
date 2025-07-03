@@ -41,6 +41,8 @@ class AndroidApp(AbstractModel):
         :type AppMode: str
         :param _UpdateState: 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
         :type UpdateState: str
+        :param _PackageName: 安卓应用包名
+        :type PackageName: str
         """
         self._AndroidAppId = None
         self._Name = None
@@ -50,6 +52,7 @@ class AndroidApp(AbstractModel):
         self._UserId = None
         self._AppMode = None
         self._UpdateState = None
+        self._PackageName = None
 
     @property
     def AndroidAppId(self):
@@ -139,6 +142,17 @@ class AndroidApp(AbstractModel):
     def UpdateState(self, UpdateState):
         self._UpdateState = UpdateState
 
+    @property
+    def PackageName(self):
+        """安卓应用包名
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
@@ -154,6 +168,7 @@ class AndroidApp(AbstractModel):
         self._UserId = params.get("UserId")
         self._AppMode = params.get("AppMode")
         self._UpdateState = params.get("UpdateState")
+        self._PackageName = params.get("PackageName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -236,8 +251,12 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         :type UninstallCommand: str
         :param _CleanupMode: 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
         :type CleanupMode: str
-        :param _AndroidAppVersionName: 安卓应用版本名称
+        :param _AndroidAppVersionName: 安卓应用版本名称（版本描述、备注）
         :type AndroidAppVersionName: str
+        :param _Activity: 安卓应用启动页
+        :type Activity: str
+        :param _VersionName: 应用版本号（Version Name）
+        :type VersionName: str
         """
         self._AndroidAppVersion = None
         self._State = None
@@ -246,6 +265,8 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         self._UninstallCommand = None
         self._CleanupMode = None
         self._AndroidAppVersionName = None
+        self._Activity = None
+        self._VersionName = None
 
     @property
     def AndroidAppVersion(self):
@@ -317,7 +338,7 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
 
     @property
     def AndroidAppVersionName(self):
-        """安卓应用版本名称
+        """安卓应用版本名称（版本描述、备注）
         :rtype: str
         """
         return self._AndroidAppVersionName
@@ -325,6 +346,28 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
     @AndroidAppVersionName.setter
     def AndroidAppVersionName(self, AndroidAppVersionName):
         self._AndroidAppVersionName = AndroidAppVersionName
+
+    @property
+    def Activity(self):
+        """安卓应用启动页
+        :rtype: str
+        """
+        return self._Activity
+
+    @Activity.setter
+    def Activity(self, Activity):
+        self._Activity = Activity
+
+    @property
+    def VersionName(self):
+        """应用版本号（Version Name）
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
 
 
     def _deserialize(self, params):
@@ -335,6 +378,8 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         self._UninstallCommand = params.get("UninstallCommand")
         self._CleanupMode = params.get("CleanupMode")
         self._AndroidAppVersionName = params.get("AndroidAppVersionName")
+        self._Activity = params.get("Activity")
+        self._VersionName = params.get("VersionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4891,10 +4936,13 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
         :type Limit: int
         :param _AndroidAppIds: 应用 ID 列表。通过应用 ID 做集合查询
         :type AndroidAppIds: list of str
+        :param _Filters: 字段过滤器。Filter 的 Name 有以下值： AndroidInstanceId：实例 ID
+        :type Filters: list of Filter
         """
         self._Offset = None
         self._Limit = None
         self._AndroidAppIds = None
+        self._Filters = None
 
     @property
     def Offset(self):
@@ -4929,11 +4977,28 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
     def AndroidAppIds(self, AndroidAppIds):
         self._AndroidAppIds = AndroidAppIds
 
+    @property
+    def Filters(self):
+        """字段过滤器。Filter 的 Name 有以下值： AndroidInstanceId：实例 ID
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._AndroidAppIds = params.get("AndroidAppIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

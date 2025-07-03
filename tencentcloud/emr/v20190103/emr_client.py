@@ -119,6 +119,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConvertPreToPostCluster(self, request):
+        """包月集群转按量集群（不含cdb）
+
+        :param request: Request instance for ConvertPreToPostCluster.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ConvertPreToPostClusterRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ConvertPreToPostClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConvertPreToPostCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConvertPreToPostClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudInstance(self, request):
         """创建EMR容器集群实例
 
@@ -903,6 +926,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNodeSpec(self, request):
+        """查询节点规格
+
+        :param request: Request instance for DescribeNodeSpec.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeNodeSpecRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeNodeSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodeSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNodeSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourceSchedule(self, request):
         """查询YARN资源调度数据信息。已废弃，请使用`DescribeYarnQueue`去查询队列信息。
 
@@ -986,6 +1032,29 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeSLInstanceList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSLInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeServiceConfGroupInfos(self, request):
+        """描述服务配置组信息
+
+        :param request: Request instance for DescribeServiceConfGroupInfos.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeServiceConfGroupInfosRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeServiceConfGroupInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServiceConfGroupInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServiceConfGroupInfosResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

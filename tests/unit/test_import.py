@@ -704,6 +704,11 @@ def test_import_ig():
     from tencentcloud.ig.v20210518 import models
 
 
+def test_import_igtm():
+    from tencentcloud.igtm.v20231024 import igtm_client
+    from tencentcloud.igtm.v20231024 import models
+
+
 def test_import_iir():
     from tencentcloud.iir.v20200417 import iir_client
     from tencentcloud.iir.v20200417 import models
@@ -1002,6 +1007,11 @@ def test_import_rum():
 def test_import_scf():
     from tencentcloud.scf.v20180416 import scf_client
     from tencentcloud.scf.v20180416 import models
+
+
+def test_import_securitylake():
+    from tencentcloud.securitylake.v20240117 import securitylake_client
+    from tencentcloud.securitylake.v20240117 import models
 
 
 def test_import_ses():

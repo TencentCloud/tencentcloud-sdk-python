@@ -2695,6 +2695,8 @@ class ServerBaseConfig(AbstractModel):
         :param _SessionAffinity: 会话亲和性开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionAffinity: str
+        :param _VpcConf: Vpc 配置参数
+        :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
         """
         self._EnvId = None
         self._ServerName = None
@@ -2724,6 +2726,7 @@ class ServerBaseConfig(AbstractModel):
         self._EntryPoint = None
         self._Cmd = None
         self._SessionAffinity = None
+        self._VpcConf = None
 
     @property
     def EnvId(self):
@@ -3034,6 +3037,17 @@ class ServerBaseConfig(AbstractModel):
     def SessionAffinity(self, SessionAffinity):
         self._SessionAffinity = SessionAffinity
 
+    @property
+    def VpcConf(self):
+        """Vpc 配置参数
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
+        """
+        return self._VpcConf
+
+    @VpcConf.setter
+    def VpcConf(self, VpcConf):
+        self._VpcConf = VpcConf
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3074,6 +3088,9 @@ class ServerBaseConfig(AbstractModel):
         self._EntryPoint = params.get("EntryPoint")
         self._Cmd = params.get("Cmd")
         self._SessionAffinity = params.get("SessionAffinity")
+        if params.get("VpcConf") is not None:
+            self._VpcConf = VpcConf()
+            self._VpcConf._deserialize(params.get("VpcConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3979,11 +3996,14 @@ class UpdateCloudRunServerRequest(AbstractModel):
         :type DeployInfo: :class:`tencentcloud.tcbr.v20220217.models.DeployParam`
         :param _ServerConfig: 服务配置信息
         :type ServerConfig: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
+        :param _Business: 业务类型，默认tcr
+        :type Business: str
         """
         self._EnvId = None
         self._ServerName = None
         self._DeployInfo = None
         self._ServerConfig = None
+        self._Business = None
 
     @property
     def EnvId(self):
@@ -4029,6 +4049,17 @@ class UpdateCloudRunServerRequest(AbstractModel):
     def ServerConfig(self, ServerConfig):
         self._ServerConfig = ServerConfig
 
+    @property
+    def Business(self):
+        """业务类型，默认tcr
+        :rtype: str
+        """
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -4039,6 +4070,7 @@ class UpdateCloudRunServerRequest(AbstractModel):
         if params.get("ServerConfig") is not None:
             self._ServerConfig = ServerBaseConfig()
             self._ServerConfig._deserialize(params.get("ServerConfig"))
+        self._Business = params.get("Business")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4195,6 +4227,87 @@ class VersionFlowInfo(AbstractModel):
             self._UrlParam = ObjectKV()
             self._UrlParam._deserialize(params.get("UrlParam"))
         self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcConf(AbstractModel):
+    """云托管服务 Vpc 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: vpc id
+        :type VpcId: str
+        :param _VpcCIDR: vpc 网段
+        :type VpcCIDR: str
+        :param _SubnetId: subnet id
+        :type SubnetId: str
+        :param _SubnetCIDR: subnet 网段
+        :type SubnetCIDR: str
+        """
+        self._VpcId = None
+        self._VpcCIDR = None
+        self._SubnetId = None
+        self._SubnetCIDR = None
+
+    @property
+    def VpcId(self):
+        """vpc id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcCIDR(self):
+        """vpc 网段
+        :rtype: str
+        """
+        return self._VpcCIDR
+
+    @VpcCIDR.setter
+    def VpcCIDR(self, VpcCIDR):
+        self._VpcCIDR = VpcCIDR
+
+    @property
+    def SubnetId(self):
+        """subnet id
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetCIDR(self):
+        """subnet 网段
+        :rtype: str
+        """
+        return self._SubnetCIDR
+
+    @SubnetCIDR.setter
+    def SubnetCIDR(self, SubnetCIDR):
+        self._SubnetCIDR = SubnetCIDR
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._VpcCIDR = params.get("VpcCIDR")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetCIDR = params.get("SubnetCIDR")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

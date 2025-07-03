@@ -1226,6 +1226,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type ResourceTags: list of Tag
         :param _TaskStatus: 任务状态：1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
         :type TaskStatus: list of int
+        :param _Networks: 根据实例vip搜索实例
+        :type Networks: list of str
         """
         self._InstanceIds = None
         self._InstanceNames = None
@@ -1242,6 +1244,7 @@ class DescribeInstancesRequest(AbstractModel):
         self._Limit = None
         self._ResourceTags = None
         self._TaskStatus = None
+        self._Networks = None
 
     @property
     def InstanceIds(self):
@@ -1416,6 +1419,17 @@ class DescribeInstancesRequest(AbstractModel):
     def TaskStatus(self, TaskStatus):
         self._TaskStatus = TaskStatus
 
+    @property
+    def Networks(self):
+        """根据实例vip搜索实例
+        :rtype: list of str
+        """
+        return self._Networks
+
+    @Networks.setter
+    def Networks(self, Networks):
+        self._Networks = Networks
+
 
     def _deserialize(self, params):
         self._InstanceIds = params.get("InstanceIds")
@@ -1438,6 +1452,7 @@ class DescribeInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
         self._TaskStatus = params.get("TaskStatus")
+        self._Networks = params.get("Networks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1855,6 +1870,12 @@ class InstanceInfo(AbstractModel):
         :type ExpiredAt: str
         :param _IsNoExpired: 是否不过期(永久)。
         :type IsNoExpired: bool
+        :param _ProductType: 产品版本，0-标准版，1-容量增强版
+        :type ProductType: int
+        :param _InstanceType: 实例类型
+        :type InstanceType: str
+        :param _NodeType: 节点类型
+        :type NodeType: str
         :param _WanAddress: 外网地址。
         :type WanAddress: str
         :param _IsolateAt: 隔离时间
@@ -1863,6 +1884,8 @@ class InstanceInfo(AbstractModel):
         :type AutoRenew: int
         :param _TaskStatus: 任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
         :type TaskStatus: int
+        :param _SecurityGroupIds: 绑定的安全组id
+        :type SecurityGroupIds: list of str
         """
         self._InstanceId = None
         self._Name = None
@@ -1889,10 +1912,14 @@ class InstanceInfo(AbstractModel):
         self._Extend = None
         self._ExpiredAt = None
         self._IsNoExpired = None
+        self._ProductType = None
+        self._InstanceType = None
+        self._NodeType = None
         self._WanAddress = None
         self._IsolateAt = None
         self._AutoRenew = None
         self._TaskStatus = None
+        self._SecurityGroupIds = None
 
     @property
     def InstanceId(self):
@@ -2185,6 +2212,39 @@ class InstanceInfo(AbstractModel):
         self._IsNoExpired = IsNoExpired
 
     @property
+    def ProductType(self):
+        """产品版本，0-标准版，1-容量增强版
+        :rtype: int
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+    @property
+    def InstanceType(self):
+        """实例类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def NodeType(self):
+        """节点类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
     def WanAddress(self):
         """外网地址。
         :rtype: str
@@ -2228,6 +2288,17 @@ class InstanceInfo(AbstractModel):
     def TaskStatus(self, TaskStatus):
         self._TaskStatus = TaskStatus
 
+    @property
+    def SecurityGroupIds(self):
+        """绑定的安全组id
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2265,10 +2336,14 @@ class InstanceInfo(AbstractModel):
         self._Extend = params.get("Extend")
         self._ExpiredAt = params.get("ExpiredAt")
         self._IsNoExpired = params.get("IsNoExpired")
+        self._ProductType = params.get("ProductType")
+        self._InstanceType = params.get("InstanceType")
+        self._NodeType = params.get("NodeType")
         self._WanAddress = params.get("WanAddress")
         self._IsolateAt = params.get("IsolateAt")
         self._AutoRenew = params.get("AutoRenew")
         self._TaskStatus = params.get("TaskStatus")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

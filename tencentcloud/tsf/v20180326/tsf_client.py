@@ -1455,6 +1455,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeployContainerApplication(self, request):
+        """部署容器应用-更新
+
+        :param request: Request instance for DeployContainerApplication.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeployContainerApplicationRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeployContainerApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployContainerApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployContainerApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeployContainerGroup(self, request):
         """部署容器应用-更新
 

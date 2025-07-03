@@ -372,7 +372,7 @@ class TrocketClient(AbstractClient):
 
 
     def DeleteRole(self, request):
-        """删除角色
+        """删除角色。请确保该角色相关信息不在当前代码中被使用。删除角色后，原先使用该角色进行生产或消费消息的密钥（AccessKey 和 SecretKey）将立即失效。
 
         :param request: Request instance for DeleteRole.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteRoleRequest`
@@ -512,8 +512,13 @@ class TrocketClient(AbstractClient):
     def DescribeConsumerGroupList(self, request):
         """获取消费组列表，Filter参数使用说明如下：
 
-        1. ConsumerGroupName，名称模糊查询
-        2. ConsumeMessageOrderly，投递顺序性。"true":顺序投递；"false":并发投递
+        - ConsumerGroupName 消费组名称，支持模糊查询，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+        - ConsumeMessageOrderly，投递顺序性，枚举值如下：
+            - true 顺序投递
+            - false 并发投递
+
+        Filters示例：
+        [{ "Name": "ConsumeMessageOrderly", "Values": ["true"] }]
 
         :param request: Request instance for DescribeConsumerGroupList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerGroupListRequest`
@@ -560,10 +565,16 @@ class TrocketClient(AbstractClient):
 
     def DescribeFusionInstanceList(self, request):
         """查询集群列表，支持 4.x 和 5.x 集群，其中 Filters 参数使用说明如下：
-        1. InstanceName, 名称模糊查询
-        2. InstanceId，集群ID查询
-        3. InstanceType, 集群类型查询，支持多选
-        4. Version，集群版本查询
+
+        - InstanceName 集群名称，支持模糊查询，从本接口返回值或控制台获得
+        - InstanceId 集群ID，精确查询，从当前接口或控制台获得
+        - InstanceType 集群类型，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
+        - Version 集群版本，枚举值如下：
+            - 4 RocketMQ 4.x 集群
+            - 5 RocketMQ 5.x 集群
+
+        Filters示例：
+         [{ "Name": "InstanceId", "Values": ["rmq-72mo3a9o"] }]
 
         :param request: Request instance for DescribeFusionInstanceList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeFusionInstanceListRequest`
@@ -610,12 +621,17 @@ class TrocketClient(AbstractClient):
 
     def DescribeInstanceList(self, request):
         """查询集群列表，仅支持 5.x 集群。Filters参数使用说明如下：
-        1. InstanceName, 名称模糊查询
-        2. InstanceId，集群ID查询
-        3. InstanceType, 集群类型查询，支持多选
-        3. InstanceStatus，集群状态查询，支持多选
 
-        当使用TagFilters查询时，Filters参数失效。
+        - InstanceName 集群名称，支持模糊搜索
+        - InstanceId 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得
+        - InstanceType 集群类型，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
+        - InstanceStatus 集群状态，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
+
+        Filters示例：
+        [{
+            "Name": "InstanceId",
+            "Values": ["rmq-72mo3a9o"]
+        }]
 
         :param request: Request instance for DescribeInstanceList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeInstanceListRequest`
@@ -1126,8 +1142,11 @@ class TrocketClient(AbstractClient):
     def DescribeRoleList(self, request):
         """查询角色列表，Filter参数使用说明如下：
 
-        1. RoleName，角色名称模糊搜索
-        2. AccessKey，AccessKey模糊搜索
+        - RoleName 角色名称，支持模糊搜索，从本接口返回值或控制台获得
+        - AccessKey AccessKey，支持模糊搜索，从本接口返回值或控制台获得
+
+        Filters示例：
+        [{ "Name": "RoleName", "Values": ["test_role"] }]
 
         :param request: Request instance for DescribeRoleList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeRoleListRequest`
@@ -1222,7 +1241,10 @@ class TrocketClient(AbstractClient):
     def DescribeTopic(self, request):
         """查询主题详情，Offset和Limit参数是指订阅该主题的消费组查询分页参数，Filter参数使用说明如下：
 
-        ConsumerGroup，消费组名称过滤
+        - ConsumerGroup 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+
+        Filters示例：
+        [{ "Name": "ConsumerGroup", "Values": ["test_group"] }]
 
         :param request: Request instance for DescribeTopic.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicRequest`
@@ -1247,8 +1269,11 @@ class TrocketClient(AbstractClient):
     def DescribeTopicList(self, request):
         """获取主题列表，Filter参数使用说明如下：
 
-        1. TopicName，主题名称模糊搜索
-        2. TopicType，主题类型查询，支持多选，可选值：Normal,Order,Transaction,DelayScheduled
+        - TopicName 主题名称，支持模糊搜索，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得
+        - TopicType 主题类型查询，支持多选，参考 [DescribeTopic](https://cloud.tencent.com/document/api/1493/97945) 接口 TopicType 字段
+
+        Filters示例：
+         [{ "Name": "TopicName", "Values": ["test_topic"] }]
 
         :param request: Request instance for DescribeTopicList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicListRequest`
@@ -1273,7 +1298,10 @@ class TrocketClient(AbstractClient):
     def DescribeTopicListByGroup(self, request):
         """根据消费组获取主题列表，Filter参数使用说明如下：
 
-        TopicName，主题名称过滤
+        - TopicName 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+
+        Filters示例：
+        [{ "Name": "TopicName", "Values": ["test_topic"] }]
 
         :param request: Request instance for DescribeTopicListByGroup.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicListByGroupRequest`

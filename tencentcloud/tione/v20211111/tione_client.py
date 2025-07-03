@@ -836,6 +836,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePlatformImages(self, request):
+        """查询平台镜像信息
+
+        :param request: Request instance for DescribePlatformImages.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribePlatformImagesRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribePlatformImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlatformImages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlatformImagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTrainingModelVersion(self, request):
         """查询模型版本
 

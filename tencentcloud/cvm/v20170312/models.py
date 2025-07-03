@@ -10478,8 +10478,7 @@ class Image(AbstractModel):
 CREATING-创建中
 NORMAL-正常
 CREATEFAILED-创建失败
-USING-使用中
-SYNCING-同步中
+SYNCING-复制中
 IMPORTING-导入中
 IMPORTFAILED-导入失败
         :type ImageState: str
@@ -10634,8 +10633,7 @@ IMPORTFAILED-导入失败
 CREATING-创建中
 NORMAL-正常
 CREATEFAILED-创建失败
-USING-使用中
-SYNCING-同步中
+SYNCING-复制中
 IMPORTING-导入中
 IMPORTFAILED-导入失败
         :rtype: str
@@ -21320,6 +21318,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type ChcIds: list of str
         :param _DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>true：表示开启实例保护，不允许通过api接口删除实例</li><br><li>false：表示关闭实例保护，允许通过api接口删除实例</li><br><br>默认取值：false。
         :type DisableApiTermination: bool
+        :param _EnableJumboFrame: 实例是否开启巨型帧，取值范围：<br><li/> true：表示实例开启巨型帧，只有支持巨型帧的机型可设置为true。<br><li/>false：表示实例关闭巨型帧，只有支持巨型帧的机型可设置为false。<br> 支持巨型帧的实例规格： [实例规格](https://cloud.tencent.com/document/product/213/11518)
+        :type EnableJumboFrame: bool
         """
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
@@ -21351,6 +21351,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._DedicatedClusterId = None
         self._ChcIds = None
         self._DisableApiTermination = None
+        self._EnableJumboFrame = None
 
     @property
     def InstanceChargeType(self):
@@ -21691,6 +21692,17 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     def DisableApiTermination(self, DisableApiTermination):
         self._DisableApiTermination = DisableApiTermination
 
+    @property
+    def EnableJumboFrame(self):
+        """实例是否开启巨型帧，取值范围：<br><li/> true：表示实例开启巨型帧，只有支持巨型帧的机型可设置为true。<br><li/>false：表示实例关闭巨型帧，只有支持巨型帧的机型可设置为false。<br> 支持巨型帧的实例规格： [实例规格](https://cloud.tencent.com/document/product/213/11518)
+        :rtype: bool
+        """
+        return self._EnableJumboFrame
+
+    @EnableJumboFrame.setter
+    def EnableJumboFrame(self, EnableJumboFrame):
+        self._EnableJumboFrame = EnableJumboFrame
+
 
     def _deserialize(self, params):
         self._InstanceChargeType = params.get("InstanceChargeType")
@@ -21757,6 +21769,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._ChcIds = params.get("ChcIds")
         self._DisableApiTermination = params.get("DisableApiTermination")
+        self._EnableJumboFrame = params.get("EnableJumboFrame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

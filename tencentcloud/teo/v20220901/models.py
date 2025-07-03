@@ -15498,7 +15498,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
         r"""
         :param _StartTime: 开始时间。
         :type StartTime: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :type EndTime: str
         :param _MetricNames: 统计指标列表，取值有：
 <li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
@@ -15506,7 +15506,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 <li>ddos_attackBandwidth：攻击带宽曲线；</li>
 <li>ddos_attackPackageRate：攻击包速率曲线。</li>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点集合，此参数必填。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :type ZoneIds: list of str
         :param _PolicyIds: DDoS策略组ID列表，不填默认选择全部策略ID。
         :type PolicyIds: list of int
@@ -15543,7 +15543,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。
+        """结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :rtype: str
         """
         return self._EndTime
@@ -15569,7 +15569,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """站点集合，此参数必填。
+        """站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15711,11 +15711,11 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
         r"""
         :param _StartTime: 开始时间，时间范围为 30 天。
         :type StartTime: str
-        :param _EndTime: 结束时间，时间范围为 30 天。
+        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :type EndTime: str
         :param _PolicyIds: ddos策略组集合，不填默认选择全部策略。
         :type PolicyIds: list of int
-        :param _ZoneIds: 站点集合，此参数必填。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :type ZoneIds: list of str
         :param _Limit: 分页查询的限制数目，默认值为20，最大查询条目为1000。
         :type Limit: int
@@ -15761,7 +15761,7 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间，时间范围为 30 天。
+        """结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :rtype: str
         """
         return self._EndTime
@@ -15783,7 +15783,7 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """站点集合，此参数必填。
+        """站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15961,7 +15961,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
         r"""
         :param _StartTime: 开始时间。
         :type StartTime: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :type EndTime: str
         :param _MetricName: 查询的统计指标，取值有：
 <li>ddos_attackFlux_protocol：按各协议的攻击流量排行；</li>
@@ -15971,7 +15971,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 <li>ddos_attackFlux_sip：按攻击源IP的攻击数量排行；</li>
 <li>ddos_attackFlux_sregion：按攻击源地区的攻击数量排行。</li>
         :type MetricName: str
-        :param _ZoneIds: 站点ID集合，此参数必填。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :type ZoneIds: list of str
         :param _PolicyIds: DDoS策略组ID集合，不填默认选择全部策略ID。
         :type PolicyIds: list of int
@@ -16018,7 +16018,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。
+        """结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :rtype: str
         """
         return self._EndTime
@@ -16046,7 +16046,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """站点ID集合，此参数必填。
+        """站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :rtype: list of str
         """
         return self._ZoneIds
@@ -20362,7 +20362,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
         r"""
         :param _StartTime: 开始时间。
         :type StartTime: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :type EndTime: str
         :param _MetricNames: 查询指标，取值有：
 <li>l4Flow_connections: 访问并发连接数；</li>
@@ -20372,7 +20372,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 <li>l4Flow_inBandwidth: 访问入向带宽峰值；</li>
 <li>l4Flow_outBandwidth: 访问出向带宽峰值。</li>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点 ID 集合，此参数必填。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :type ZoneIds: list of str
         :param _ProxyIds: 四层实例列表, 不填表示选择全部实例。
         :type ProxyIds: list of str
@@ -20411,7 +20411,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。
+        """结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :rtype: str
         """
         return self._EndTime
@@ -20439,7 +20439,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """站点 ID 集合，此参数必填。
+        """站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :rtype: list of str
         """
         return self._ZoneIds
@@ -20597,7 +20597,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
         r"""
         :param _StartTime: 开始时间。
         :type StartTime: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :type EndTime: str
         :param _MetricNames: 指标列表，取值有:
 <li>l7Flow_outFlux: L7 EdgeOne 响应流量，单位：Byte；</li>
@@ -20610,7 +20610,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_avgResponseTime: L7 访问平均响应耗时，单位：ms；</li>
 <li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms。</li>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点 ID 集合，此参数必填。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :type ZoneIds: list of str
         :param _Interval: 查询时间粒度，取值有：
 <li>min: 1分钟；</li>
@@ -20662,7 +20662,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。
+        """结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :rtype: str
         """
         return self._EndTime
@@ -20693,7 +20693,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """站点 ID 集合，此参数必填。
+        """站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :rtype: list of str
         """
         return self._ZoneIds
@@ -21085,7 +21085,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         r"""
         :param _StartTime: 开始时间。
         :type StartTime: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :type EndTime: str
         :param _MetricName: 查询的指标，取值有：
 <li> l7Flow_outFlux_country：按国家/地区维度统计 L7 EdgeOne 响应流量指标；</li>
@@ -21115,7 +21115,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
 
         :type MetricName: str
-        :param _ZoneIds: 站点 ID 集合，此参数必填。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :type ZoneIds: list of str
         :param _Limit: 查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。
         :type Limit: int
@@ -21170,7 +21170,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。
+        """结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :rtype: str
         """
         return self._EndTime
@@ -21218,7 +21218,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """站点 ID 集合，此参数必填。
+        """站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :rtype: list of str
         """
         return self._ZoneIds
@@ -23717,21 +23717,19 @@ class EnableOriginACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
+        :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _L7EnableMode: 七层加速域名开启回源白名单的模式。
-<li>all：为站点下的所有七层加速域名开启回源白名单。</li>
-<li>specific：为站点下指定的七层加速域名开启回源白名单。</li>
-当参数为空时，默认为specific。
+        :param _L7EnableMode: 七层加速域名开启源站防护的模式。
+<li>all：针对站点下的所有七层加速域名开启。</li>
+<li>specific：针对站点下指定的七层加速域名开启。</li>当参数为空时，默认为 specific。
         :type L7EnableMode: str
-        :param _L7Hosts: 开启回源白名单的七层加速域名列表，当请求参数 L7EnableMode 为 all 时必须为空。
+        :param _L7Hosts: 开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。L7EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 200 个七层加速域名。
         :type L7Hosts: list of str
-        :param _L4EnableMode: 四层代理 ID 开启回源白名单的模式。
-<li>all：为站点下的所有四层代理开启回源白名单。</li>
-<li>specific：为站点下指定的四层代理 ID 开启回源白名单。</li>
-当参数为空时，默认为specific。
+        :param _L4EnableMode: 四层代理实例开启源站防护的模式。
+<li>all：针对站点下的所有四层代理实例开启。</li>
+<li>specific：针对站点下指定的四层代理实例开启。</li>当参数为空时，默认为 specific。
         :type L4EnableMode: str
-        :param _L4ProxyIds: 开启回源白名单的四层代理 ID 列表，当请求参数 L4EnableMode 为 all 时必须为空。单次最多支持 200 个实例。
+        :param _L4ProxyIds: 开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。L4EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 100 个四层代理实例。
         :type L4ProxyIds: list of str
         """
         self._ZoneId = None
@@ -23742,7 +23740,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """站点ID。
+        """站点 ID。
         :rtype: str
         """
         return self._ZoneId
@@ -23753,10 +23751,9 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L7EnableMode(self):
-        """七层加速域名开启回源白名单的模式。
-<li>all：为站点下的所有七层加速域名开启回源白名单。</li>
-<li>specific：为站点下指定的七层加速域名开启回源白名单。</li>
-当参数为空时，默认为specific。
+        """七层加速域名开启源站防护的模式。
+<li>all：针对站点下的所有七层加速域名开启。</li>
+<li>specific：针对站点下指定的七层加速域名开启。</li>当参数为空时，默认为 specific。
         :rtype: str
         """
         return self._L7EnableMode
@@ -23767,7 +23764,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L7Hosts(self):
-        """开启回源白名单的七层加速域名列表，当请求参数 L7EnableMode 为 all 时必须为空。
+        """开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。L7EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 200 个七层加速域名。
         :rtype: list of str
         """
         return self._L7Hosts
@@ -23778,10 +23775,9 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L4EnableMode(self):
-        """四层代理 ID 开启回源白名单的模式。
-<li>all：为站点下的所有四层代理开启回源白名单。</li>
-<li>specific：为站点下指定的四层代理 ID 开启回源白名单。</li>
-当参数为空时，默认为specific。
+        """四层代理实例开启源站防护的模式。
+<li>all：针对站点下的所有四层代理实例开启。</li>
+<li>specific：针对站点下指定的四层代理实例开启。</li>当参数为空时，默认为 specific。
         :rtype: str
         """
         return self._L4EnableMode
@@ -23792,7 +23788,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L4ProxyIds(self):
-        """开启回源白名单的四层代理 ID 列表，当请求参数 L4EnableMode 为 all 时必须为空。单次最多支持 200 个实例。
+        """开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。L4EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 100 个四层代理实例。
         :rtype: list of str
         """
         return self._L4ProxyIds
@@ -37273,9 +37269,13 @@ class Plan(AbstractModel):
         :type PlanId: str
         :param _Area: 服务区域，取值有：
 <li>mainland: 中国大陆；</li>
-<li>overseas: 全球（不包括中国大陆)；</li>
-<li>global: 全球（包括中国大陆)。</li>
+<li>overseas: 全球（不包括中国大陆）；</li>
+<li>global: 全球（包括中国大陆）。</li>
         :type Area: str
+        :param _AutoRenewal: 自动续费开关。取值有：
+<li>true: 已开启自动续费；</li>
+<li>false: 未开启自动续费。</li>
+        :type AutoRenewal: bool
         :param _Status: 套餐状态，取值有：
 <li>normal：正常状态；</li>
 <li>expiring-soon：即将到期状态；</li>
@@ -37321,6 +37321,7 @@ class Plan(AbstractModel):
         self._PlanType = None
         self._PlanId = None
         self._Area = None
+        self._AutoRenewal = None
         self._Status = None
         self._PayMode = None
         self._ZonesInfo = None
@@ -37371,8 +37372,8 @@ class Plan(AbstractModel):
     def Area(self):
         """服务区域，取值有：
 <li>mainland: 中国大陆；</li>
-<li>overseas: 全球（不包括中国大陆)；</li>
-<li>global: 全球（包括中国大陆)。</li>
+<li>overseas: 全球（不包括中国大陆）；</li>
+<li>global: 全球（包括中国大陆）。</li>
         :rtype: str
         """
         return self._Area
@@ -37380,6 +37381,19 @@ class Plan(AbstractModel):
     @Area.setter
     def Area(self, Area):
         self._Area = Area
+
+    @property
+    def AutoRenewal(self):
+        """自动续费开关。取值有：
+<li>true: 已开启自动续费；</li>
+<li>false: 未开启自动续费。</li>
+        :rtype: bool
+        """
+        return self._AutoRenewal
+
+    @AutoRenewal.setter
+    def AutoRenewal(self, AutoRenewal):
+        self._AutoRenewal = AutoRenewal
 
     @property
     def Status(self):
@@ -37571,6 +37585,7 @@ class Plan(AbstractModel):
         self._PlanType = params.get("PlanType")
         self._PlanId = params.get("PlanId")
         self._Area = params.get("Area")
+        self._AutoRenewal = params.get("AutoRenewal")
         self._Status = params.get("Status")
         self._PayMode = params.get("PayMode")
         if params.get("ZonesInfo") is not None:

@@ -3053,7 +3053,9 @@ class ClusterBasicSettings(AbstractModel):
         :type OsCustomizeType: str
         :param _NeedWorkSecurityGroup: 是否开启节点的默认安全组(默认: 否，Alpha特性)
         :type NeedWorkSecurityGroup: bool
-        :param _SubnetId: 当选择Cilium Overlay网络插件时，TKE会从该子网获取2个IP用来创建内网负载均衡
+        :param _SubnetId: 控制面子网信息，仅在以下场景使用时要求必填。
+- 容器网络插件为CiliumOverlay时，TKE会从该子网获取2个IP用来创建内网负载均衡。
+- 创建支持CDC的托管集群，且网络插件为VPC-CNI时，要求预留至少12个IP。
         :type SubnetId: str
         :param _ClusterLevel: 集群等级，针对托管集群生效
         :type ClusterLevel: str
@@ -3174,7 +3176,9 @@ class ClusterBasicSettings(AbstractModel):
 
     @property
     def SubnetId(self):
-        """当选择Cilium Overlay网络插件时，TKE会从该子网获取2个IP用来创建内网负载均衡
+        """控制面子网信息，仅在以下场景使用时要求必填。
+- 容器网络插件为CiliumOverlay时，TKE会从该子网获取2个IP用来创建内网负载均衡。
+- 创建支持CDC的托管集群，且网络插件为VPC-CNI时，要求预留至少12个IP。
         :rtype: str
         """
         return self._SubnetId
@@ -6350,6 +6354,8 @@ class CreateClusterRequest(AbstractModel):
         :type ExtensionAddons: list of ExtensionAddon
         :param _CdcId: 本地专用集群Id
         :type CdcId: str
+        :param _DisableAddons: 屏蔽安装指定Addon组件，填写相应的AddonName
+        :type DisableAddons: list of str
         """
         self._ClusterType = None
         self._ClusterCIDRSettings = None
@@ -6361,6 +6367,7 @@ class CreateClusterRequest(AbstractModel):
         self._InstanceDataDiskMountSettings = None
         self._ExtensionAddons = None
         self._CdcId = None
+        self._DisableAddons = None
 
     @property
     def ClusterType(self):
@@ -6472,6 +6479,17 @@ class CreateClusterRequest(AbstractModel):
     def CdcId(self, CdcId):
         self._CdcId = CdcId
 
+    @property
+    def DisableAddons(self):
+        """屏蔽安装指定Addon组件，填写相应的AddonName
+        :rtype: list of str
+        """
+        return self._DisableAddons
+
+    @DisableAddons.setter
+    def DisableAddons(self, DisableAddons):
+        self._DisableAddons = DisableAddons
+
 
     def _deserialize(self, params):
         self._ClusterType = params.get("ClusterType")
@@ -6512,6 +6530,7 @@ class CreateClusterRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ExtensionAddons.append(obj)
         self._CdcId = params.get("CdcId")
+        self._DisableAddons = params.get("DisableAddons")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6775,13 +6794,13 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群Id
+        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
         :type ClusterId: str
         :param _Name: 节点池名称
         :type Name: str
         :param _SubnetIds: 子网ID列表
         :type SubnetIds: list of str
-        :param _SecurityGroupIds: 安全组ID列表
+        :param _SecurityGroupIds: 安全组ID列表，必选参数
         :type SecurityGroupIds: list of str
         :param _Labels: 虚拟节点label
         :type Labels: list of Label
@@ -6789,7 +6808,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
         :type Taints: list of Taint
         :param _VirtualNodes: 节点列表
         :type VirtualNodes: list of VirtualNodeSpec
-        :param _DeletionProtection: 删除保护开关
+        :param _DeletionProtection: 删除保护开关，默认关闭
         :type DeletionProtection: bool
         :param _OS: 节点池操作系统：
 - linux（默认）
@@ -6808,7 +6827,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群Id
+        """集群ID，通过DescribeClusters接口获取
         :rtype: str
         """
         return self._ClusterId
@@ -6841,7 +6860,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """安全组ID列表
+        """安全组ID列表，必选参数
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -6885,7 +6904,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        """删除保护开关
+        """删除保护开关，默认关闭
         :rtype: bool
         """
         return self._DeletionProtection
@@ -6993,15 +7012,15 @@ class CreateClusterVirtualNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
         :type ClusterId: str
-        :param _NodePoolId: 虚拟节点所属节点池
+        :param _NodePoolId: 虚拟节点所属节点池，通过DescribeNodePools接口获取
         :type NodePoolId: str
-        :param _SubnetId: 虚拟节点所属子网
+        :param _SubnetId: 虚拟节点所属子网，SubnetId、SubnetIds、VirtualNodes必选一个。
         :type SubnetId: str
-        :param _SubnetIds: 虚拟节点子网ID列表，和参数SubnetId互斥
+        :param _SubnetIds: 虚拟节点子网ID列表，SubnetId、SubnetIds、VirtualNodes必选一个。
         :type SubnetIds: list of str
-        :param _VirtualNodes: 虚拟节点列表
+        :param _VirtualNodes: 虚拟节点列表，SubnetId、SubnetIds、VirtualNodes必选一个。
         :type VirtualNodes: list of VirtualNodeSpec
         """
         self._ClusterId = None
@@ -7012,7 +7031,7 @@ class CreateClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，通过DescribeClusters接口获取
         :rtype: str
         """
         return self._ClusterId
@@ -7023,7 +7042,7 @@ class CreateClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def NodePoolId(self):
-        """虚拟节点所属节点池
+        """虚拟节点所属节点池，通过DescribeNodePools接口获取
         :rtype: str
         """
         return self._NodePoolId
@@ -7034,7 +7053,7 @@ class CreateClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """虚拟节点所属子网
+        """虚拟节点所属子网，SubnetId、SubnetIds、VirtualNodes必选一个。
         :rtype: str
         """
         return self._SubnetId
@@ -7045,7 +7064,7 @@ class CreateClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        """虚拟节点子网ID列表，和参数SubnetId互斥
+        """虚拟节点子网ID列表，SubnetId、SubnetIds、VirtualNodes必选一个。
         :rtype: list of str
         """
         return self._SubnetIds
@@ -7056,7 +7075,7 @@ class CreateClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def VirtualNodes(self):
-        """虚拟节点列表
+        """虚拟节点列表，SubnetId、SubnetIds、VirtualNodes必选一个。
         :rtype: list of VirtualNodeSpec
         """
         return self._VirtualNodes
@@ -11183,9 +11202,9 @@ class DeleteClusterVirtualNodePoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
         :type ClusterId: str
-        :param _NodePoolIds: 超级节点池ID列表
+        :param _NodePoolIds: 节点池ID，通过DescribeNodePools接口获取
         :type NodePoolIds: list of str
         :param _Force: 是否强制删除，在超级节点上有pod的情况下，如果选择非强制删除，则删除会失败
         :type Force: bool
@@ -11196,7 +11215,7 @@ class DeleteClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，通过DescribeClusters接口获取
         :rtype: str
         """
         return self._ClusterId
@@ -11207,7 +11226,7 @@ class DeleteClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def NodePoolIds(self):
-        """超级节点池ID列表
+        """节点池ID，通过DescribeNodePools接口获取
         :rtype: list of str
         """
         return self._NodePoolIds
@@ -11277,9 +11296,9 @@ class DeleteClusterVirtualNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
         :type ClusterId: str
-        :param _NodeNames: 虚拟节点列表
+        :param _NodeNames: 虚拟节点ID列表
         :type NodeNames: list of str
         :param _Force: 是否强制删除：如果虚拟节点上有运行中Pod，则非强制删除状态下不会进行删除
         :type Force: bool
@@ -11290,7 +11309,7 @@ class DeleteClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，通过DescribeClusters接口获取
         :rtype: str
         """
         return self._ClusterId
@@ -11301,7 +11320,7 @@ class DeleteClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def NodeNames(self):
-        """虚拟节点列表
+        """虚拟节点ID列表
         :rtype: list of str
         """
         return self._NodeNames
@@ -16609,14 +16628,14 @@ class DescribeClusterVirtualNodePoolsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，通过DescribeClusters接口获取
         :rtype: str
         """
         return self._ClusterId
@@ -16708,11 +16727,11 @@ class DescribeClusterVirtualNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
         :type ClusterId: str
-        :param _NodePoolId: 节点池ID
+        :param _NodePoolId: 节点池ID，通过DescribeNodePools接口获取
         :type NodePoolId: str
-        :param _NodeNames: 节点名称
+        :param _NodeNames: 节点名称，可搜索DescribeClusterVirtualNode接口节点
         :type NodeNames: list of str
         """
         self._ClusterId = None
@@ -16721,7 +16740,7 @@ class DescribeClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，通过DescribeClusters接口获取
         :rtype: str
         """
         return self._ClusterId
@@ -16732,7 +16751,7 @@ class DescribeClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def NodePoolId(self):
-        """节点池ID
+        """节点池ID，通过DescribeNodePools接口获取
         :rtype: str
         """
         return self._NodePoolId
@@ -16743,7 +16762,7 @@ class DescribeClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def NodeNames(self):
-        """节点名称
+        """节点名称，可搜索DescribeClusterVirtualNode接口节点
         :rtype: list of str
         """
         return self._NodeNames
@@ -25855,9 +25874,9 @@ class DrainClusterVirtualNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
         :type ClusterId: str
-        :param _NodeName: 节点名
+        :param _NodeName: 节点ID
         :type NodeName: str
         """
         self._ClusterId = None
@@ -25865,7 +25884,7 @@ class DrainClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，通过DescribeClusters接口获取
         :rtype: str
         """
         return self._ClusterId
@@ -25876,7 +25895,7 @@ class DrainClusterVirtualNodeRequest(AbstractModel):
 
     @property
     def NodeName(self):
-        """节点名
+        """节点ID
         :rtype: str
         """
         return self._NodeName
@@ -34463,19 +34482,19 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
         :type ClusterId: str
-        :param _NodePoolId: 节点池ID
+        :param _NodePoolId: 节点池ID，通过DescribeNodePools接口获取
         :type NodePoolId: str
-        :param _Name: 节点池名称
+        :param _Name: 节点池名称，必须修改至少一个参数
         :type Name: str
-        :param _SecurityGroupIds: 安全组ID列表
+        :param _SecurityGroupIds: 安全组ID列表，必须修改至少一个参数
         :type SecurityGroupIds: list of str
-        :param _Labels: 虚拟节点label
+        :param _Labels: 虚拟节点label，必须修改至少一个参数
         :type Labels: list of Label
-        :param _Taints: 虚拟节点taint
+        :param _Taints: 虚拟节点taint，必须修改至少一个参数
         :type Taints: list of Taint
-        :param _DeletionProtection: 删除保护开关
+        :param _DeletionProtection: 删除保护开关，必须修改至少一个参数
         :type DeletionProtection: bool
         """
         self._ClusterId = None
@@ -34488,7 +34507,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，通过DescribeClusters接口获取
         :rtype: str
         """
         return self._ClusterId
@@ -34499,7 +34518,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def NodePoolId(self):
-        """节点池ID
+        """节点池ID，通过DescribeNodePools接口获取
         :rtype: str
         """
         return self._NodePoolId
@@ -34510,7 +34529,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        """节点池名称
+        """节点池名称，必须修改至少一个参数
         :rtype: str
         """
         return self._Name
@@ -34521,7 +34540,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """安全组ID列表
+        """安全组ID列表，必须修改至少一个参数
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -34532,7 +34551,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        """虚拟节点label
+        """虚拟节点label，必须修改至少一个参数
         :rtype: list of Label
         """
         return self._Labels
@@ -34543,7 +34562,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        """虚拟节点taint
+        """虚拟节点taint，必须修改至少一个参数
         :rtype: list of Taint
         """
         return self._Taints
@@ -34554,7 +34573,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        """删除保护开关
+        """删除保护开关，必须修改至少一个参数
         :rtype: bool
         """
         return self._DeletionProtection
@@ -48291,6 +48310,9 @@ class VirtualNodePool(AbstractModel):
         :param _Name: 节点池名称
         :type Name: str
         :param _LifeState: 节点池生命周期
+- creating：创建中
+- normal：正常
+- updating：更新中
         :type LifeState: str
         :param _Labels: 虚拟节点label
 注意：此字段可能返回 null，表示取不到有效值。
@@ -48343,6 +48365,9 @@ class VirtualNodePool(AbstractModel):
     @property
     def LifeState(self):
         """节点池生命周期
+- creating：创建中
+- normal：正常
+- updating：更新中
         :rtype: str
         """
         return self._LifeState
@@ -48410,7 +48435,7 @@ class VirtualNodeSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisplayName: 节点展示名称
+        :param _DisplayName: 节点展示名称，建议不超过20个字符
         :type DisplayName: str
         :param _SubnetId: 子网ID
         :type SubnetId: str
@@ -48423,7 +48448,7 @@ class VirtualNodeSpec(AbstractModel):
 
     @property
     def DisplayName(self):
-        """节点展示名称
+        """节点展示名称，建议不超过20个字符
         :rtype: str
         """
         return self._DisplayName

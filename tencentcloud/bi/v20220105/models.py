@@ -2252,10 +2252,13 @@ class CreateUserRoleRequest(AbstractModel):
         :type UserList: list of UserIdAndUserName
         :param _UserInfoList: 用户列表（新）
         :type UserInfoList: list of UserInfo
+        :param _UserGroups: 用户组id列表
+        :type UserGroups: list of int non-negative
         """
         self._RoleIdList = None
         self._UserList = None
         self._UserInfoList = None
+        self._UserGroups = None
 
     @property
     def RoleIdList(self):
@@ -2294,6 +2297,17 @@ class CreateUserRoleRequest(AbstractModel):
     def UserInfoList(self, UserInfoList):
         self._UserInfoList = UserInfoList
 
+    @property
+    def UserGroups(self):
+        """用户组id列表
+        :rtype: list of int non-negative
+        """
+        return self._UserGroups
+
+    @UserGroups.setter
+    def UserGroups(self, UserGroups):
+        self._UserGroups = UserGroups
+
 
     def _deserialize(self, params):
         self._RoleIdList = params.get("RoleIdList")
@@ -2309,6 +2323,7 @@ class CreateUserRoleRequest(AbstractModel):
                 obj = UserInfo()
                 obj._deserialize(item)
                 self._UserInfoList.append(obj)
+        self._UserGroups = params.get("UserGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

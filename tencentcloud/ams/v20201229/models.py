@@ -465,7 +465,6 @@ class AudioResultDetailMoanResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 该字段用于返回检测结果需要检测的内容类型，此处固定为**Moan**（呻吟）以调用呻吟检测功能。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Score: 该字段用于返回呻吟检测的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于呻吟内容。
         :type Score: int
@@ -476,7 +475,6 @@ class AudioResultDetailMoanResult(AbstractModel):
         :param _SubLabelCode: *内测中，敬请期待*
         :type SubLabelCode: str
         :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         :param _Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :type Suggestion: str
@@ -492,7 +490,6 @@ class AudioResultDetailMoanResult(AbstractModel):
     @property
     def Label(self):
         """该字段用于返回检测结果需要检测的内容类型，此处固定为**Moan**（呻吟）以调用呻吟检测功能。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -552,7 +549,6 @@ class AudioResultDetailMoanResult(AbstractModel):
     @property
     def SubLabel(self):
         """该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabel
@@ -599,16 +595,12 @@ class AudioResultDetailSpeakerResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 该字段用于返回检测结果需要检测的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Score: 该字段用于返回呻吟检测的置信度，取值范围：0（置信度最低）-100（置信度最高），越高代表音频越有可能属于说话人声纹。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _StartTime: 该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
         :param _EndTime: 该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
         """
         self._Label = None
@@ -619,7 +611,6 @@ class AudioResultDetailSpeakerResult(AbstractModel):
     @property
     def Label(self):
         """该字段用于返回检测结果需要检测的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -631,7 +622,6 @@ class AudioResultDetailSpeakerResult(AbstractModel):
     @property
     def Score(self):
         """该字段用于返回呻吟检测的置信度，取值范围：0（置信度最低）-100（置信度最高），越高代表音频越有可能属于说话人声纹。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -643,7 +633,6 @@ class AudioResultDetailSpeakerResult(AbstractModel):
     @property
     def StartTime(self):
         """该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._StartTime
@@ -655,7 +644,6 @@ class AudioResultDetailSpeakerResult(AbstractModel):
     @property
     def EndTime(self):
         """该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._EndTime
@@ -2330,7 +2318,7 @@ class LabelResults(AbstractModel):
         r"""
         :param _Scene: 场景
         :type Scene: str
-        :param _Suggestion: 建议
+        :param _Suggestion: 建议值
         :type Suggestion: int
         :param _Label: 标签
         :type Label: str
@@ -2364,7 +2352,7 @@ class LabelResults(AbstractModel):
 
     @property
     def Suggestion(self):
-        """建议
+        """建议值
         :rtype: int
         """
         return self._Suggestion

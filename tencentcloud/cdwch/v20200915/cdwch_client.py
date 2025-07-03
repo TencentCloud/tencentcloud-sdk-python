@@ -210,6 +210,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCNInstances(self, request):
+        """获取云原生实例列表
+
+        :param request: Request instance for DescribeCNInstances.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeCNInstancesRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeCNInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCNInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCNInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCkSqlApis(self, request):
         """查询集群用户、集群表，数据库等相关信息
 

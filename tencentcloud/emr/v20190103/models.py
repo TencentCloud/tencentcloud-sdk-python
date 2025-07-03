@@ -846,6 +846,10 @@ ALIGN_DEADLINE：自动对其到期时间
         :type DeleteWithInstance: bool
         :param _SelectiveConfServices: 新挂磁盘时可支持配置的服务名称列表
         :type SelectiveConfServices: list of str
+        :param _ChargeType: 磁盘计费类型（1包月、3包销）
+        :type ChargeType: int
+        :param _UnderWriteDuration: 磁盘包销购买时长（仅支持12、24、36、48、60）
+        :type UnderWriteDuration: int
         """
         self._InstanceId = None
         self._DiskIds = None
@@ -855,6 +859,8 @@ ALIGN_DEADLINE：自动对其到期时间
         self._DiskSpec = None
         self._DeleteWithInstance = None
         self._SelectiveConfServices = None
+        self._ChargeType = None
+        self._UnderWriteDuration = None
 
     @property
     def InstanceId(self):
@@ -946,6 +952,28 @@ ALIGN_DEADLINE：自动对其到期时间
     def SelectiveConfServices(self, SelectiveConfServices):
         self._SelectiveConfServices = SelectiveConfServices
 
+    @property
+    def ChargeType(self):
+        """磁盘计费类型（1包月、3包销）
+        :rtype: int
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def UnderWriteDuration(self):
+        """磁盘包销购买时长（仅支持12、24、36、48、60）
+        :rtype: int
+        """
+        return self._UnderWriteDuration
+
+    @UnderWriteDuration.setter
+    def UnderWriteDuration(self, UnderWriteDuration):
+        self._UnderWriteDuration = UnderWriteDuration
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -958,6 +986,8 @@ ALIGN_DEADLINE：自动对其到期时间
             self._DiskSpec._deserialize(params.get("DiskSpec"))
         self._DeleteWithInstance = params.get("DeleteWithInstance")
         self._SelectiveConfServices = params.get("SelectiveConfServices")
+        self._ChargeType = params.get("ChargeType")
+        self._UnderWriteDuration = params.get("UnderWriteDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1685,6 +1715,8 @@ class CBSInstance(AbstractModel):
         :type Shareable: bool
         :param _EmrResourceId: emr节点ID
         :type EmrResourceId: str
+        :param _UnderwriteExpiredTime: 包销到期时间
+        :type UnderwriteExpiredTime: str
         """
         self._DiskId = None
         self._DiskUsage = None
@@ -1702,6 +1734,7 @@ class CBSInstance(AbstractModel):
         self._InstanceId = None
         self._Shareable = None
         self._EmrResourceId = None
+        self._UnderwriteExpiredTime = None
 
     @property
     def DiskId(self):
@@ -1880,6 +1913,17 @@ class CBSInstance(AbstractModel):
     def EmrResourceId(self, EmrResourceId):
         self._EmrResourceId = EmrResourceId
 
+    @property
+    def UnderwriteExpiredTime(self):
+        """包销到期时间
+        :rtype: str
+        """
+        return self._UnderwriteExpiredTime
+
+    @UnderwriteExpiredTime.setter
+    def UnderwriteExpiredTime(self, UnderwriteExpiredTime):
+        self._UnderwriteExpiredTime = UnderwriteExpiredTime
+
 
     def _deserialize(self, params):
         self._DiskId = params.get("DiskId")
@@ -1898,6 +1942,7 @@ class CBSInstance(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._Shareable = params.get("Shareable")
         self._EmrResourceId = params.get("EmrResourceId")
+        self._UnderwriteExpiredTime = params.get("UnderwriteExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2807,6 +2852,8 @@ class ClusterInstancesInfo(AbstractModel):
         :param _ClusterRelationInfoList: rss集群的绑定列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterRelationInfoList: list of ClusterRelationMeta
+        :param _RedisId: Redis信息
+        :type RedisId: str
         """
         self._Id = None
         self._ClusterId = None
@@ -2854,6 +2901,7 @@ class ClusterInstancesInfo(AbstractModel):
         self._ConfigDetail = None
         self._BindFileSystemNum = None
         self._ClusterRelationInfoList = None
+        self._RedisId = None
 
     @property
     def Id(self):
@@ -3403,6 +3451,17 @@ class ClusterInstancesInfo(AbstractModel):
     def ClusterRelationInfoList(self, ClusterRelationInfoList):
         self._ClusterRelationInfoList = ClusterRelationInfoList
 
+    @property
+    def RedisId(self):
+        """Redis信息
+        :rtype: str
+        """
+        return self._RedisId
+
+    @RedisId.setter
+    def RedisId(self, RedisId):
+        self._RedisId = RedisId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3475,6 +3534,7 @@ class ClusterInstancesInfo(AbstractModel):
                 obj = ClusterRelationMeta()
                 obj._deserialize(item)
                 self._ClusterRelationInfoList.append(obj)
+        self._RedisId = params.get("RedisId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4333,6 +4393,151 @@ class Configuration(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ConfigurationItem(AbstractModel):
+    """配置项（配置管理页）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 配置项名称
+        :type Name: str
+        :param _Value: 配置项值
+        :type Value: str
+        :param _InFile: 所在的配置文件名
+        :type InFile: str
+        """
+        self._Name = None
+        self._Value = None
+        self._InFile = None
+
+    @property
+    def Name(self):
+        """配置项名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """配置项值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def InFile(self):
+        """所在的配置文件名
+        :rtype: str
+        """
+        return self._InFile
+
+    @InFile.setter
+    def InFile(self, InFile):
+        self._InFile = InFile
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._InFile = params.get("InFile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConvertPreToPostClusterRequest(AbstractModel):
+    """ConvertPreToPostCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例ID。
+        :type InstanceId: str
+        :param _ClientToken: 5min内不可重入标识，订单标识
+        :type ClientToken: str
+        """
+        self._InstanceId = None
+        self._ClientToken = None
+
+    @property
+    def InstanceId(self):
+        """集群实例ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClientToken(self):
+        """5min内不可重入标识，订单标识
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConvertPreToPostClusterResponse(AbstractModel):
+    """ConvertPreToPostCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCloudInstanceRequest(AbstractModel):
@@ -5367,6 +5572,8 @@ Hadoop-Hbase
         :type CosBucket: str
         :param _NodeMarks: 节点标识信息，目前只提供给tf平台使用
         :type NodeMarks: list of NodeMark
+        :param _LoadBalancerId: CLB id
+        :type LoadBalancerId: str
         """
         self._ProductId = None
         self._Software = None
@@ -5402,6 +5609,7 @@ Hadoop-Hbase
         self._MultiZoneSettings = None
         self._CosBucket = None
         self._NodeMarks = None
+        self._LoadBalancerId = None
 
     @property
     def ProductId(self):
@@ -5816,6 +6024,17 @@ Hadoop-Hbase
     def NodeMarks(self, NodeMarks):
         self._NodeMarks = NodeMarks
 
+    @property
+    def LoadBalancerId(self):
+        """CLB id
+        :rtype: str
+        """
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -5889,6 +6108,7 @@ Hadoop-Hbase
                 obj = NodeMark()
                 obj._deserialize(item)
                 self._NodeMarks.append(obj)
+        self._LoadBalancerId = params.get("LoadBalancerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11445,6 +11665,402 @@ class DescribeNodeResourceConfigFastResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNodeSpec(AbstractModel):
+    """节点规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeType: 节点类型
+        :type NodeType: str
+        :param _NodeName: 节点类型名称
+        :type NodeName: str
+        :param _Types: Types数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Types: list of NodeSpecType
+        :param _CmnTypes: 云托管节点机型规格列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CmnTypes: list of NodeSpecType
+        """
+        self._NodeType = None
+        self._NodeName = None
+        self._Types = None
+        self._CmnTypes = None
+
+    @property
+    def NodeType(self):
+        """节点类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeName(self):
+        """节点类型名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Types(self):
+        """Types数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSpecType
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def CmnTypes(self):
+        """云托管节点机型规格列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSpecType
+        """
+        return self._CmnTypes
+
+    @CmnTypes.setter
+    def CmnTypes(self, CmnTypes):
+        self._CmnTypes = CmnTypes
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._NodeName = params.get("NodeName")
+        if params.get("Types") is not None:
+            self._Types = []
+            for item in params.get("Types"):
+                obj = NodeSpecType()
+                obj._deserialize(item)
+                self._Types.append(obj)
+        if params.get("CmnTypes") is not None:
+            self._CmnTypes = []
+            for item in params.get("CmnTypes"):
+                obj = NodeSpecType()
+                obj._deserialize(item)
+                self._CmnTypes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodeSpecRequest(AbstractModel):
+    """DescribeNodeSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息
+        :type ZoneId: int
+        :param _CvmPayMode: 0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息
+        :type CvmPayMode: int
+        :param _NodeType: 节点类型,Master,Core,Task,Router,All
+        :type NodeType: str
+        :param _TradeType: 0:旧计费页面,1:新计费页面。 错填，默认为旧计费
+        :type TradeType: int
+        :param _ProductId: 产品Id，不填为0，则表示所有productId，前台使用必填
+
+44	EMR	V3.5.0
+43	EMR	V3.4.0.tlinux
+42	EMR	V2.7.0.tlinux
+41	DRUID	V1.1.0
+67	STARROCKS	V2.2.0
+45	DRUID	V1.1.0.tlinux
+40	EMRCLOUD	v3.2.0
+47	EMR	V4.0.0
+48	STARROCKS	V1.2.0
+49	STARROCKS	V1.3.0
+50	KAFKA	V2.0.0
+51	STARROCKS	V1.4.0
+52	EMR-TKE	V1.0.0
+53	EMR	V3.6.0
+54	STARROCKS	V2.0.0
+55	EMR-TKE	V1.0.1
+56	EMR-TKE	DLCV1.0.0
+57	EMR	V2.8.0
+58	EMR	V3.6.1
+59	SERVERLESS	V1.0.0
+60	EMR-TKE	V1.1.0
+62	STARROCKS	V2.1.1
+63	STARROCKS	V2.1.1.tlinux
+64	EMR-TKE	TCCV1.0.0
+65	EMR-TKE-AI	V1.0.0
+66	RSS	V1.0.0
+24	EMR	TianQiong-V1.0.0
+3	EMR	V2.0.1.tlinux
+4	EMR	V2.1.0
+7	EMR	V3.0.0
+8	EMR	V3.0.0.tlinux
+9	EMR	V2.2.0
+11	CLICKHOUSE	V1.0.0
+12	CLICKHOUSE	V1.0.0.tlinux
+16	EMR	V2.3.0
+17	CLICKHOUSE	V1.1.0
+18	CLICKHOUSE	V1.1.0.tlinux
+19	EMR	V2.4.0
+20	EMR	V2.5.0
+21	USERCUSTOM	V1.0.0
+22	CLICKHOUSE	V1.2.0
+39	STARROCKS	V1.1.0
+25	EMR	V3.1.0
+26	DORIS	V1.0.0
+27	KAFKA	V1.0.0
+28	EMR	V3.2.0
+29	EMR	V2.5.1
+30	EMR	V2.6.0
+32	DORIS	V1.1.0
+33	EMR	V3.2.1
+34	EMR	V3.3.0
+35	DORIS	V1.2.0
+36	STARROCKS	V1.0.0
+37	EMR	V3.4.0
+38	EMR	V2.7.0
+        :type ProductId: int
+        :param _SceneName: 场景名
+        :type SceneName: str
+        :param _ResourceBaseType: 类型为ComputeResource和EMR以及默认，默认为EMR
+        :type ResourceBaseType: str
+        :param _ComputeResourceId: 计算资源id
+        :type ComputeResourceId: str
+        """
+        self._ZoneId = None
+        self._CvmPayMode = None
+        self._NodeType = None
+        self._TradeType = None
+        self._ProductId = None
+        self._SceneName = None
+        self._ResourceBaseType = None
+        self._ComputeResourceId = None
+
+    @property
+    def ZoneId(self):
+        """可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CvmPayMode(self):
+        """0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息
+        :rtype: int
+        """
+        return self._CvmPayMode
+
+    @CvmPayMode.setter
+    def CvmPayMode(self, CvmPayMode):
+        self._CvmPayMode = CvmPayMode
+
+    @property
+    def NodeType(self):
+        """节点类型,Master,Core,Task,Router,All
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def TradeType(self):
+        """0:旧计费页面,1:新计费页面。 错填，默认为旧计费
+        :rtype: int
+        """
+        return self._TradeType
+
+    @TradeType.setter
+    def TradeType(self, TradeType):
+        self._TradeType = TradeType
+
+    @property
+    def ProductId(self):
+        """产品Id，不填为0，则表示所有productId，前台使用必填
+
+44	EMR	V3.5.0
+43	EMR	V3.4.0.tlinux
+42	EMR	V2.7.0.tlinux
+41	DRUID	V1.1.0
+67	STARROCKS	V2.2.0
+45	DRUID	V1.1.0.tlinux
+40	EMRCLOUD	v3.2.0
+47	EMR	V4.0.0
+48	STARROCKS	V1.2.0
+49	STARROCKS	V1.3.0
+50	KAFKA	V2.0.0
+51	STARROCKS	V1.4.0
+52	EMR-TKE	V1.0.0
+53	EMR	V3.6.0
+54	STARROCKS	V2.0.0
+55	EMR-TKE	V1.0.1
+56	EMR-TKE	DLCV1.0.0
+57	EMR	V2.8.0
+58	EMR	V3.6.1
+59	SERVERLESS	V1.0.0
+60	EMR-TKE	V1.1.0
+62	STARROCKS	V2.1.1
+63	STARROCKS	V2.1.1.tlinux
+64	EMR-TKE	TCCV1.0.0
+65	EMR-TKE-AI	V1.0.0
+66	RSS	V1.0.0
+24	EMR	TianQiong-V1.0.0
+3	EMR	V2.0.1.tlinux
+4	EMR	V2.1.0
+7	EMR	V3.0.0
+8	EMR	V3.0.0.tlinux
+9	EMR	V2.2.0
+11	CLICKHOUSE	V1.0.0
+12	CLICKHOUSE	V1.0.0.tlinux
+16	EMR	V2.3.0
+17	CLICKHOUSE	V1.1.0
+18	CLICKHOUSE	V1.1.0.tlinux
+19	EMR	V2.4.0
+20	EMR	V2.5.0
+21	USERCUSTOM	V1.0.0
+22	CLICKHOUSE	V1.2.0
+39	STARROCKS	V1.1.0
+25	EMR	V3.1.0
+26	DORIS	V1.0.0
+27	KAFKA	V1.0.0
+28	EMR	V3.2.0
+29	EMR	V2.5.1
+30	EMR	V2.6.0
+32	DORIS	V1.1.0
+33	EMR	V3.2.1
+34	EMR	V3.3.0
+35	DORIS	V1.2.0
+36	STARROCKS	V1.0.0
+37	EMR	V3.4.0
+38	EMR	V2.7.0
+        :rtype: int
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def SceneName(self):
+        """场景名
+        :rtype: str
+        """
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def ResourceBaseType(self):
+        """类型为ComputeResource和EMR以及默认，默认为EMR
+        :rtype: str
+        """
+        return self._ResourceBaseType
+
+    @ResourceBaseType.setter
+    def ResourceBaseType(self, ResourceBaseType):
+        self._ResourceBaseType = ResourceBaseType
+
+    @property
+    def ComputeResourceId(self):
+        """计算资源id
+        :rtype: str
+        """
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._CvmPayMode = params.get("CvmPayMode")
+        self._NodeType = params.get("NodeType")
+        self._TradeType = params.get("TradeType")
+        self._ProductId = params.get("ProductId")
+        self._SceneName = params.get("SceneName")
+        self._ResourceBaseType = params.get("ResourceBaseType")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodeSpecResponse(AbstractModel):
+    """DescribeNodeSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeSpecs: 节点规格类型
+        :type NodeSpecs: list of DescribeNodeSpec
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodeSpecs = None
+        self._RequestId = None
+
+    @property
+    def NodeSpecs(self):
+        """节点规格类型
+        :rtype: list of DescribeNodeSpec
+        """
+        return self._NodeSpecs
+
+    @NodeSpecs.setter
+    def NodeSpecs(self, NodeSpecs):
+        self._NodeSpecs = NodeSpecs
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NodeSpecs") is not None:
+            self._NodeSpecs = []
+            for item in params.get("NodeSpecs"):
+                obj = DescribeNodeSpec()
+                obj._deserialize(item)
+                self._NodeSpecs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResourceConfig(AbstractModel):
     """DescribeResourceConfig接口出参
 
@@ -12233,6 +12849,165 @@ class DescribeSLInstanceResponse(AbstractModel):
         self._Status = params.get("Status")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._NodeNum = params.get("NodeNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeServiceConfGroupInfosRequest(AbstractModel):
+    """DescribeServiceConfGroupInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _ServiceName: 组件名
+        :type ServiceName: str
+        :param _ConfGroupName: 配置组名称
+        :type ConfGroupName: str
+        :param _PageNo: 页码，从1开始
+        :type PageNo: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        """
+        self._InstanceId = None
+        self._ServiceName = None
+        self._ConfGroupName = None
+        self._PageNo = None
+        self._PageSize = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceName(self):
+        """组件名
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ConfGroupName(self):
+        """配置组名称
+        :rtype: str
+        """
+        return self._ConfGroupName
+
+    @ConfGroupName.setter
+    def ConfGroupName(self, ConfGroupName):
+        self._ConfGroupName = ConfGroupName
+
+    @property
+    def PageNo(self):
+        """页码，从1开始
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        """页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceName = params.get("ServiceName")
+        self._ConfGroupName = params.get("ConfGroupName")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceConfGroupInfosResponse(AbstractModel):
+    """DescribeServiceConfGroupInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 列表大小
+        :type TotalCount: int
+        :param _ConfItemKVList: 配置项key value列表
+        :type ConfItemKVList: list of ConfigurationItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ConfItemKVList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """列表大小
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConfItemKVList(self):
+        """配置项key value列表
+        :rtype: list of ConfigurationItem
+        """
+        return self._ConfItemKVList
+
+    @ConfItemKVList.setter
+    def ConfItemKVList(self, ConfItemKVList):
+        self._ConfItemKVList = ConfItemKVList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConfItemKVList") is not None:
+            self._ConfItemKVList = []
+            for item in params.get("ConfItemKVList"):
+                obj = ConfigurationItem()
+                obj._deserialize(item)
+                self._ConfItemKVList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -20695,8 +21470,12 @@ class LoadMetricsConditions(AbstractModel):
         :param _LoadMetrics: 触发规则条件
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadMetrics: list of LoadMetricsCondition
+        :param _Match: 0:所有条件满足
+1：满足任意一个
+        :type Match: int
         """
         self._LoadMetrics = None
+        self._Match = None
 
     @property
     def LoadMetrics(self):
@@ -20710,6 +21489,18 @@ class LoadMetricsConditions(AbstractModel):
     def LoadMetrics(self, LoadMetrics):
         self._LoadMetrics = LoadMetrics
 
+    @property
+    def Match(self):
+        """0:所有条件满足
+1：满足任意一个
+        :rtype: int
+        """
+        return self._Match
+
+    @Match.setter
+    def Match(self, Match):
+        self._Match = Match
+
 
     def _deserialize(self, params):
         if params.get("LoadMetrics") is not None:
@@ -20718,6 +21509,7 @@ class LoadMetricsConditions(AbstractModel):
                 obj = LoadMetricsCondition()
                 obj._deserialize(item)
                 self._LoadMetrics.append(obj)
+        self._Match = params.get("Match")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24040,6 +24832,10 @@ class NodeHardwareInfo(AbstractModel):
         :type ConfigurableServices: list of str
         :param _NodeMark: 节点标注信息，目前只提供给tf平台使用
         :type NodeMark: str
+        :param _UnderwriteSetAutoRenew: 包销资源是否支持设置自动续费
+        :type UnderwriteSetAutoRenew: bool
+        :param _GpuDesc: Gpu信息
+        :type GpuDesc: str
         """
         self._AppId = None
         self._SerialNo = None
@@ -24099,6 +24895,8 @@ class NodeHardwareInfo(AbstractModel):
         self._TkeClusterId = None
         self._ConfigurableServices = None
         self._NodeMark = None
+        self._UnderwriteSetAutoRenew = None
+        self._GpuDesc = None
 
     @property
     def AppId(self):
@@ -24745,6 +25543,28 @@ class NodeHardwareInfo(AbstractModel):
     def NodeMark(self, NodeMark):
         self._NodeMark = NodeMark
 
+    @property
+    def UnderwriteSetAutoRenew(self):
+        """包销资源是否支持设置自动续费
+        :rtype: bool
+        """
+        return self._UnderwriteSetAutoRenew
+
+    @UnderwriteSetAutoRenew.setter
+    def UnderwriteSetAutoRenew(self, UnderwriteSetAutoRenew):
+        self._UnderwriteSetAutoRenew = UnderwriteSetAutoRenew
+
+    @property
+    def GpuDesc(self):
+        """Gpu信息
+        :rtype: str
+        """
+        return self._GpuDesc
+
+    @GpuDesc.setter
+    def GpuDesc(self, GpuDesc):
+        self._GpuDesc = GpuDesc
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -24819,6 +25639,8 @@ class NodeHardwareInfo(AbstractModel):
         self._TkeClusterId = params.get("TkeClusterId")
         self._ConfigurableServices = params.get("ConfigurableServices")
         self._NodeMark = params.get("NodeMark")
+        self._UnderwriteSetAutoRenew = params.get("UnderwriteSetAutoRenew")
+        self._GpuDesc = params.get("GpuDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25451,6 +26273,87 @@ class NodeSelectorTerm(AbstractModel):
         
 
 
+class NodeSpecDisk(AbstractModel):
+    """节点磁盘类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 数量
+        :type Count: int
+        :param _Name: 名字
+        :type Name: str
+        :param _DiskType: 磁盘类型
+        :type DiskType: str
+        :param _DefaultDiskSize: 指定磁盘大小
+        :type DefaultDiskSize: int
+        """
+        self._Count = None
+        self._Name = None
+        self._DiskType = None
+        self._DefaultDiskSize = None
+
+    @property
+    def Count(self):
+        """数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Name(self):
+        """名字
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DiskType(self):
+        """磁盘类型
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DefaultDiskSize(self):
+        """指定磁盘大小
+        :rtype: int
+        """
+        return self._DefaultDiskSize
+
+    @DefaultDiskSize.setter
+    def DefaultDiskSize(self, DefaultDiskSize):
+        self._DefaultDiskSize = DefaultDiskSize
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._Name = params.get("Name")
+        self._DiskType = params.get("DiskType")
+        self._DefaultDiskSize = params.get("DefaultDiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodeSpecDiskV2(AbstractModel):
     """节点磁盘类型
 
@@ -25522,6 +26425,541 @@ class NodeSpecDiskV2(AbstractModel):
         self._Name = params.get("Name")
         self._DiskType = params.get("DiskType")
         self._DefaultDiskSize = params.get("DefaultDiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeSpecFamily(AbstractModel):
+    """节点机型列族
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceFamily: 机型
+        :type InstanceFamily: str
+        :param _FamilyName: 机型名称
+        :type FamilyName: str
+        :param _Order: 排序
+        :type Order: int
+        :param _InstanceTypes: InstanceType的列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTypes: list of NodeSpecInstanceType
+        """
+        self._InstanceFamily = None
+        self._FamilyName = None
+        self._Order = None
+        self._InstanceTypes = None
+
+    @property
+    def InstanceFamily(self):
+        """机型
+        :rtype: str
+        """
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
+
+    @property
+    def FamilyName(self):
+        """机型名称
+        :rtype: str
+        """
+        return self._FamilyName
+
+    @FamilyName.setter
+    def FamilyName(self, FamilyName):
+        self._FamilyName = FamilyName
+
+    @property
+    def Order(self):
+        """排序
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def InstanceTypes(self):
+        """InstanceType的列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSpecInstanceType
+        """
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+
+    def _deserialize(self, params):
+        self._InstanceFamily = params.get("InstanceFamily")
+        self._FamilyName = params.get("FamilyName")
+        self._Order = params.get("Order")
+        if params.get("InstanceTypes") is not None:
+            self._InstanceTypes = []
+            for item in params.get("InstanceTypes"):
+                obj = NodeSpecInstanceType()
+                obj._deserialize(item)
+                self._InstanceTypes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeSpecInstanceType(AbstractModel):
+    """节点规格类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 规格
+        :type InstanceType: str
+        :param _Cpu: 4
+        :type Cpu: int
+        :param _Memory: 8，单位G
+        :type Memory: int
+        :param _Order: 排序，越小排的越前
+        :type Order: int
+        :param _Num: 数量
+        :type Num: int
+        :param _SellOutReason: 售罄原因
+        :type SellOutReason: str
+        :param _SystemDisk: 系统盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemDisk: list of NodeSpecDisk
+        :param _DataDisk: 数据盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDisk: list of NodeSpecDisk
+        :param _LocalDataDisk: 本地数据盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalDataDisk: list of NodeSpecDisk
+        :param _SoldOutReason: 售罄原因
+        :type SoldOutReason: str
+        :param _InstanceFamily: 机型类别
+        :type InstanceFamily: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _NodeType: 节点类型
+        :type NodeType: str
+        :param _Type: 类别
+        :type Type: str
+        :param _TypeName: 类别名称
+        :type TypeName: str
+        :param _FamilyName: 类别分类
+        :type FamilyName: str
+        :param _CpuType: cpu类型
+        :type CpuType: str
+        :param _Remark: 售罄 RunOut、库存少 Less、充足 Enough
+        :type Remark: str
+        :param _OriginPrice: 原价
+        :type OriginPrice: float
+        :param _PrepaidUnderwritePeriods: 包销计费机型支持的购买时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrepaidUnderwritePeriods: list of int
+        :param _GpuDesc: GPU信息
+        :type GpuDesc: str
+        """
+        self._InstanceType = None
+        self._Cpu = None
+        self._Memory = None
+        self._Order = None
+        self._Num = None
+        self._SellOutReason = None
+        self._SystemDisk = None
+        self._DataDisk = None
+        self._LocalDataDisk = None
+        self._SoldOutReason = None
+        self._InstanceFamily = None
+        self._NodeName = None
+        self._NodeType = None
+        self._Type = None
+        self._TypeName = None
+        self._FamilyName = None
+        self._CpuType = None
+        self._Remark = None
+        self._OriginPrice = None
+        self._PrepaidUnderwritePeriods = None
+        self._GpuDesc = None
+
+    @property
+    def InstanceType(self):
+        """规格
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Cpu(self):
+        """4
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        """8，单位G
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Order(self):
+        """排序，越小排的越前
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Num(self):
+        """数量
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def SellOutReason(self):
+        """售罄原因
+        :rtype: str
+        """
+        return self._SellOutReason
+
+    @SellOutReason.setter
+    def SellOutReason(self, SellOutReason):
+        self._SellOutReason = SellOutReason
+
+    @property
+    def SystemDisk(self):
+        """系统盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSpecDisk
+        """
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisk(self):
+        """数据盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSpecDisk
+        """
+        return self._DataDisk
+
+    @DataDisk.setter
+    def DataDisk(self, DataDisk):
+        self._DataDisk = DataDisk
+
+    @property
+    def LocalDataDisk(self):
+        """本地数据盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSpecDisk
+        """
+        return self._LocalDataDisk
+
+    @LocalDataDisk.setter
+    def LocalDataDisk(self, LocalDataDisk):
+        self._LocalDataDisk = LocalDataDisk
+
+    @property
+    def SoldOutReason(self):
+        """售罄原因
+        :rtype: str
+        """
+        return self._SoldOutReason
+
+    @SoldOutReason.setter
+    def SoldOutReason(self, SoldOutReason):
+        self._SoldOutReason = SoldOutReason
+
+    @property
+    def InstanceFamily(self):
+        """机型类别
+        :rtype: str
+        """
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
+
+    @property
+    def NodeName(self):
+        """节点名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeType(self):
+        """节点类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def Type(self):
+        """类别
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TypeName(self):
+        """类别名称
+        :rtype: str
+        """
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def FamilyName(self):
+        """类别分类
+        :rtype: str
+        """
+        return self._FamilyName
+
+    @FamilyName.setter
+    def FamilyName(self, FamilyName):
+        self._FamilyName = FamilyName
+
+    @property
+    def CpuType(self):
+        """cpu类型
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
+    def Remark(self):
+        """售罄 RunOut、库存少 Less、充足 Enough
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def OriginPrice(self):
+        """原价
+        :rtype: float
+        """
+        return self._OriginPrice
+
+    @OriginPrice.setter
+    def OriginPrice(self, OriginPrice):
+        self._OriginPrice = OriginPrice
+
+    @property
+    def PrepaidUnderwritePeriods(self):
+        """包销计费机型支持的购买时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._PrepaidUnderwritePeriods
+
+    @PrepaidUnderwritePeriods.setter
+    def PrepaidUnderwritePeriods(self, PrepaidUnderwritePeriods):
+        self._PrepaidUnderwritePeriods = PrepaidUnderwritePeriods
+
+    @property
+    def GpuDesc(self):
+        """GPU信息
+        :rtype: str
+        """
+        return self._GpuDesc
+
+    @GpuDesc.setter
+    def GpuDesc(self, GpuDesc):
+        self._GpuDesc = GpuDesc
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Order = params.get("Order")
+        self._Num = params.get("Num")
+        self._SellOutReason = params.get("SellOutReason")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = []
+            for item in params.get("SystemDisk"):
+                obj = NodeSpecDisk()
+                obj._deserialize(item)
+                self._SystemDisk.append(obj)
+        if params.get("DataDisk") is not None:
+            self._DataDisk = []
+            for item in params.get("DataDisk"):
+                obj = NodeSpecDisk()
+                obj._deserialize(item)
+                self._DataDisk.append(obj)
+        if params.get("LocalDataDisk") is not None:
+            self._LocalDataDisk = []
+            for item in params.get("LocalDataDisk"):
+                obj = NodeSpecDisk()
+                obj._deserialize(item)
+                self._LocalDataDisk.append(obj)
+        self._SoldOutReason = params.get("SoldOutReason")
+        self._InstanceFamily = params.get("InstanceFamily")
+        self._NodeName = params.get("NodeName")
+        self._NodeType = params.get("NodeType")
+        self._Type = params.get("Type")
+        self._TypeName = params.get("TypeName")
+        self._FamilyName = params.get("FamilyName")
+        self._CpuType = params.get("CpuType")
+        self._Remark = params.get("Remark")
+        self._OriginPrice = params.get("OriginPrice")
+        self._PrepaidUnderwritePeriods = params.get("PrepaidUnderwritePeriods")
+        self._GpuDesc = params.get("GpuDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeSpecType(AbstractModel):
+    """节点机型类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 机型序列
+        :type Type: str
+        :param _TypeName: 机型序列名字
+        :type TypeName: str
+        :param _Order: 排序
+        :type Order: int
+        :param _InstanceFamilies: InstanceFamily数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceFamilies: list of NodeSpecFamily
+        """
+        self._Type = None
+        self._TypeName = None
+        self._Order = None
+        self._InstanceFamilies = None
+
+    @property
+    def Type(self):
+        """机型序列
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TypeName(self):
+        """机型序列名字
+        :rtype: str
+        """
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def Order(self):
+        """排序
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def InstanceFamilies(self):
+        """InstanceFamily数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSpecFamily
+        """
+        return self._InstanceFamilies
+
+    @InstanceFamilies.setter
+    def InstanceFamilies(self, InstanceFamilies):
+        self._InstanceFamilies = InstanceFamilies
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._TypeName = params.get("TypeName")
+        self._Order = params.get("Order")
+        if params.get("InstanceFamilies") is not None:
+            self._InstanceFamilies = []
+            for item in params.get("InstanceFamilies"):
+                obj = NodeSpecFamily()
+                obj._deserialize(item)
+                self._InstanceFamilies.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
