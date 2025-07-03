@@ -11,10 +11,9 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 
 try:
     # 实例化一个认证对象，入参需要传入腾讯云账户secretId，secretKey
-    cred = credential.Credential("", "")
-    # cred = credential.Credential(
-    #     os.environ.get("TENCENTCLOUD_SECRET_ID"),
-    #     os.environ.get("TENCENTCLOUD_SECRET_KEY"))
+    cred = credential.Credential(
+        os.environ.get("TENCENTCLOUD_SECRET_ID"),
+        os.environ.get("TENCENTCLOUD_SECRET_KEY"))
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     httpProfile = HttpProfile()
