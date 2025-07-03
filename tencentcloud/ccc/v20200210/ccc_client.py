@@ -141,6 +141,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ControlAIConversation(self, request):
+        """提供服务端控制机器人的功能
+
+        :param request: Request instance for ControlAIConversation.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ControlAIConversationRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ControlAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ControlAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ControlAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAIAgentCall(self, request):
         """用于调用AI模型发起外呼通话，仅限自有电话号码使用，目前开通高级版座席**限时**免费体验。
 

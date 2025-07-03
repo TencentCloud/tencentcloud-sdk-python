@@ -18,6 +18,458 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AKInfo(AbstractModel):
+    """AK简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: ak对应id
+        :type ID: int
+        :param _Name: ak具体值
+临时密钥时返回临时密钥
+        :type Name: str
+        :param _User: 所属账号
+        :type User: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._ID = None
+        self._Name = None
+        self._User = None
+        self._Remark = None
+
+    @property
+    def ID(self):
+        """ak对应id
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        """ak具体值
+临时密钥时返回临时密钥
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def User(self):
+        """所属账号
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._User = params.get("User")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyAlarmInfo(AbstractModel):
+    """访问密钥资产告警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 告警类型/风险类型
+告警类型：
+0异常调用
+1泄漏检测
+2自定义
+
+风险类型：
+0：配置风险
+1: 自定义风险
+        :type Type: int
+        :param _Count: 告警数量/风险数量
+        :type Count: int
+        """
+        self._Type = None
+        self._Count = None
+
+    @property
+    def Type(self):
+        """告警类型/风险类型
+告警类型：
+0异常调用
+1泄漏检测
+2自定义
+
+风险类型：
+0：配置风险
+1: 自定义风险
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Count(self):
+        """告警数量/风险数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyAsset(AbstractModel):
+    """访问密钥资产信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: AK 的id
+        :type ID: int
+        :param _Name: AK名称
+        :type Name: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _AppID: 账号所属APPID
+        :type AppID: int
+        :param _Uin: 所属主账号Uin
+        :type Uin: str
+        :param _Nickname: 主账号昵称
+        :type Nickname: str
+        :param _SubUin: 所属子账号Uin
+        :type SubUin: str
+        :param _SubNickname: 所属子账号昵称
+        :type SubNickname: str
+        :param _Type: 0 主账号AK
+1 子账号AK
+2 临时密钥
+        :type Type: int
+        :param _Advice: 安全建议 枚举
+0 正常
+1 立即处理
+2 建议加固
+        :type Advice: int
+        :param _AccessKeyAlarmList: 告警信息列表
+        :type AccessKeyAlarmList: list of AccessKeyAlarmInfo
+        :param _AccessKeyRiskList: 风险信息列表
+        :type AccessKeyRiskList: list of AccessKeyAlarmInfo
+        :param _IPCount: 源IP数量
+        :type IPCount: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _LastAccessTime: 最近访问时间
+        :type LastAccessTime: str
+        :param _Status: AK状态 
+0:禁用
+1:已启用
+        :type Status: int
+        :param _CheckStatus: 0 表示已检测
+1 表示检测中
+        :type CheckStatus: int
+        """
+        self._ID = None
+        self._Name = None
+        self._Remark = None
+        self._AppID = None
+        self._Uin = None
+        self._Nickname = None
+        self._SubUin = None
+        self._SubNickname = None
+        self._Type = None
+        self._Advice = None
+        self._AccessKeyAlarmList = None
+        self._AccessKeyRiskList = None
+        self._IPCount = None
+        self._CreateTime = None
+        self._LastAccessTime = None
+        self._Status = None
+        self._CheckStatus = None
+
+    @property
+    def ID(self):
+        """AK 的id
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        """AK名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AppID(self):
+        """账号所属APPID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Uin(self):
+        """所属主账号Uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Nickname(self):
+        """主账号昵称
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def SubUin(self):
+        """所属子账号Uin
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def SubNickname(self):
+        """所属子账号昵称
+        :rtype: str
+        """
+        return self._SubNickname
+
+    @SubNickname.setter
+    def SubNickname(self, SubNickname):
+        self._SubNickname = SubNickname
+
+    @property
+    def Type(self):
+        """0 主账号AK
+1 子账号AK
+2 临时密钥
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Advice(self):
+        """安全建议 枚举
+0 正常
+1 立即处理
+2 建议加固
+        :rtype: int
+        """
+        return self._Advice
+
+    @Advice.setter
+    def Advice(self, Advice):
+        self._Advice = Advice
+
+    @property
+    def AccessKeyAlarmList(self):
+        """告警信息列表
+        :rtype: list of AccessKeyAlarmInfo
+        """
+        return self._AccessKeyAlarmList
+
+    @AccessKeyAlarmList.setter
+    def AccessKeyAlarmList(self, AccessKeyAlarmList):
+        self._AccessKeyAlarmList = AccessKeyAlarmList
+
+    @property
+    def AccessKeyRiskList(self):
+        """风险信息列表
+        :rtype: list of AccessKeyAlarmInfo
+        """
+        return self._AccessKeyRiskList
+
+    @AccessKeyRiskList.setter
+    def AccessKeyRiskList(self, AccessKeyRiskList):
+        self._AccessKeyRiskList = AccessKeyRiskList
+
+    @property
+    def IPCount(self):
+        """源IP数量
+        :rtype: int
+        """
+        return self._IPCount
+
+    @IPCount.setter
+    def IPCount(self, IPCount):
+        self._IPCount = IPCount
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastAccessTime(self):
+        """最近访问时间
+        :rtype: str
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+    @property
+    def Status(self):
+        """AK状态 
+0:禁用
+1:已启用
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CheckStatus(self):
+        """0 表示已检测
+1 表示检测中
+        :rtype: int
+        """
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._AppID = params.get("AppID")
+        self._Uin = params.get("Uin")
+        self._Nickname = params.get("Nickname")
+        self._SubUin = params.get("SubUin")
+        self._SubNickname = params.get("SubNickname")
+        self._Type = params.get("Type")
+        self._Advice = params.get("Advice")
+        if params.get("AccessKeyAlarmList") is not None:
+            self._AccessKeyAlarmList = []
+            for item in params.get("AccessKeyAlarmList"):
+                obj = AccessKeyAlarmInfo()
+                obj._deserialize(item)
+                self._AccessKeyAlarmList.append(obj)
+        if params.get("AccessKeyRiskList") is not None:
+            self._AccessKeyRiskList = []
+            for item in params.get("AccessKeyRiskList"):
+                obj = AccessKeyAlarmInfo()
+                obj._deserialize(item)
+                self._AccessKeyRiskList.append(obj)
+        self._IPCount = params.get("IPCount")
+        self._CreateTime = params.get("CreateTime")
+        self._LastAccessTime = params.get("LastAccessTime")
+        self._Status = params.get("Status")
+        self._CheckStatus = params.get("CheckStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddNewBindRoleUserRequest(AbstractModel):
     """AddNewBindRoleUser请求参数结构体
 
@@ -7783,6 +8235,397 @@ class CVMAssetVO(AbstractModel):
         
 
 
+class CallRecord(AbstractModel):
+    """调用记录详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallID: 调用记录ID
+        :type CallID: str
+        :param _AccessKey: 访问密钥
+        :type AccessKey: str
+        :param _AccessKeyRemark: 访问密钥备注
+        :type AccessKeyRemark: str
+        :param _AccessKeyID: 访问密钥ID
+        :type AccessKeyID: int
+        :param _SourceIP: 调用源IP
+        :type SourceIP: str
+        :param _SourceIPRemark: 调用源IP备注
+        :type SourceIPRemark: str
+        :param _Region: 调用源IP地域
+        :type Region: str
+        :param _IPType: IP类型 0:账号内（未备注） 1:账号外（未备注） 2:账号内 (已备注) 3:账号外 (已备注)
+        :type IPType: int
+        :param _EventName: 调用接口名称
+        :type EventName: str
+        :param _ProductName: 调用产品名称
+        :type ProductName: str
+        :param _EventType: 调用类型
+0:控制台调用
+1:API
+        :type EventType: int
+        :param _UserType: 用户类型
+CAMUser/root/AssumedRole
+
+        :type UserType: str
+        :param _UserName: 用户/角色名称
+        :type UserName: str
+        :param _PolicySet: 策略列表
+        :type PolicySet: list of str
+        :param _CallCount: 调用次数
+        :type CallCount: int
+        :param _Code: 调用错误码
+0表示成功
+        :type Code: int
+        :param _FirstCallTime: 首次调用时间
+        :type FirstCallTime: str
+        :param _LastCallTime: 最后调用时间
+        :type LastCallTime: str
+        :param _InstanceID: IP关联资产ID，如果为空字符串，表示没有关联
+        :type InstanceID: str
+        :param _InstanceName: IP关联资产名称
+        :type InstanceName: str
+        :param _Date: 聚合日期
+        :type Date: str
+        :param _AppID: appid
+        :type AppID: int
+        :param _ShowStatus: 展示状态
+        :type ShowStatus: bool
+        :param _ISP: 运营商
+        :type ISP: str
+        """
+        self._CallID = None
+        self._AccessKey = None
+        self._AccessKeyRemark = None
+        self._AccessKeyID = None
+        self._SourceIP = None
+        self._SourceIPRemark = None
+        self._Region = None
+        self._IPType = None
+        self._EventName = None
+        self._ProductName = None
+        self._EventType = None
+        self._UserType = None
+        self._UserName = None
+        self._PolicySet = None
+        self._CallCount = None
+        self._Code = None
+        self._FirstCallTime = None
+        self._LastCallTime = None
+        self._InstanceID = None
+        self._InstanceName = None
+        self._Date = None
+        self._AppID = None
+        self._ShowStatus = None
+        self._ISP = None
+
+    @property
+    def CallID(self):
+        """调用记录ID
+        :rtype: str
+        """
+        return self._CallID
+
+    @CallID.setter
+    def CallID(self, CallID):
+        self._CallID = CallID
+
+    @property
+    def AccessKey(self):
+        """访问密钥
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def AccessKeyRemark(self):
+        """访问密钥备注
+        :rtype: str
+        """
+        return self._AccessKeyRemark
+
+    @AccessKeyRemark.setter
+    def AccessKeyRemark(self, AccessKeyRemark):
+        self._AccessKeyRemark = AccessKeyRemark
+
+    @property
+    def AccessKeyID(self):
+        """访问密钥ID
+        :rtype: int
+        """
+        return self._AccessKeyID
+
+    @AccessKeyID.setter
+    def AccessKeyID(self, AccessKeyID):
+        self._AccessKeyID = AccessKeyID
+
+    @property
+    def SourceIP(self):
+        """调用源IP
+        :rtype: str
+        """
+        return self._SourceIP
+
+    @SourceIP.setter
+    def SourceIP(self, SourceIP):
+        self._SourceIP = SourceIP
+
+    @property
+    def SourceIPRemark(self):
+        """调用源IP备注
+        :rtype: str
+        """
+        return self._SourceIPRemark
+
+    @SourceIPRemark.setter
+    def SourceIPRemark(self, SourceIPRemark):
+        self._SourceIPRemark = SourceIPRemark
+
+    @property
+    def Region(self):
+        """调用源IP地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def IPType(self):
+        """IP类型 0:账号内（未备注） 1:账号外（未备注） 2:账号内 (已备注) 3:账号外 (已备注)
+        :rtype: int
+        """
+        return self._IPType
+
+    @IPType.setter
+    def IPType(self, IPType):
+        self._IPType = IPType
+
+    @property
+    def EventName(self):
+        """调用接口名称
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def ProductName(self):
+        """调用产品名称
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def EventType(self):
+        """调用类型
+0:控制台调用
+1:API
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def UserType(self):
+        """用户类型
+CAMUser/root/AssumedRole
+
+        :rtype: str
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def UserName(self):
+        """用户/角色名称
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PolicySet(self):
+        """策略列表
+        :rtype: list of str
+        """
+        return self._PolicySet
+
+    @PolicySet.setter
+    def PolicySet(self, PolicySet):
+        self._PolicySet = PolicySet
+
+    @property
+    def CallCount(self):
+        """调用次数
+        :rtype: int
+        """
+        return self._CallCount
+
+    @CallCount.setter
+    def CallCount(self, CallCount):
+        self._CallCount = CallCount
+
+    @property
+    def Code(self):
+        """调用错误码
+0表示成功
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def FirstCallTime(self):
+        """首次调用时间
+        :rtype: str
+        """
+        return self._FirstCallTime
+
+    @FirstCallTime.setter
+    def FirstCallTime(self, FirstCallTime):
+        self._FirstCallTime = FirstCallTime
+
+    @property
+    def LastCallTime(self):
+        """最后调用时间
+        :rtype: str
+        """
+        return self._LastCallTime
+
+    @LastCallTime.setter
+    def LastCallTime(self, LastCallTime):
+        self._LastCallTime = LastCallTime
+
+    @property
+    def InstanceID(self):
+        """IP关联资产ID，如果为空字符串，表示没有关联
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def InstanceName(self):
+        """IP关联资产名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Date(self):
+        """聚合日期
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def AppID(self):
+        """appid
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def ShowStatus(self):
+        """展示状态
+        :rtype: bool
+        """
+        return self._ShowStatus
+
+    @ShowStatus.setter
+    def ShowStatus(self, ShowStatus):
+        self._ShowStatus = ShowStatus
+
+    @property
+    def ISP(self):
+        """运营商
+        :rtype: str
+        """
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+
+    def _deserialize(self, params):
+        self._CallID = params.get("CallID")
+        self._AccessKey = params.get("AccessKey")
+        self._AccessKeyRemark = params.get("AccessKeyRemark")
+        self._AccessKeyID = params.get("AccessKeyID")
+        self._SourceIP = params.get("SourceIP")
+        self._SourceIPRemark = params.get("SourceIPRemark")
+        self._Region = params.get("Region")
+        self._IPType = params.get("IPType")
+        self._EventName = params.get("EventName")
+        self._ProductName = params.get("ProductName")
+        self._EventType = params.get("EventType")
+        self._UserType = params.get("UserType")
+        self._UserName = params.get("UserName")
+        self._PolicySet = params.get("PolicySet")
+        self._CallCount = params.get("CallCount")
+        self._Code = params.get("Code")
+        self._FirstCallTime = params.get("FirstCallTime")
+        self._LastCallTime = params.get("LastCallTime")
+        self._InstanceID = params.get("InstanceID")
+        self._InstanceName = params.get("InstanceName")
+        self._Date = params.get("Date")
+        self._AppID = params.get("AppID")
+        self._ShowStatus = params.get("ShowStatus")
+        self._ISP = params.get("ISP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckViewRiskItem(AbstractModel):
     """检查项视角风险
 
@@ -9971,6 +10814,122 @@ class DeleteRiskScanTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAccessKeyAssetRequest(AbstractModel):
+    """DescribeAccessKeyAsset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        """过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessKeyAssetResponse(AbstractModel):
+    """DescribeAccessKeyAsset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 访问密钥资产列表
+        :type Data: list of AccessKeyAsset
+        :param _Total: 全部数量
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """访问密钥资产列表
+        :rtype: list of AccessKeyAsset
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        """全部数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AccessKeyAsset()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAlertListRequest(AbstractModel):
     """DescribeAlertList请求参数结构体
 
@@ -11527,6 +12486,152 @@ class DescribeCVMAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._ProtectStatusList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCallRecordRequest(AbstractModel):
+    """DescribeCallRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _AccessKeyID: 访问密钥的ID
+        :type AccessKeyID: int
+        :param _SourceIPID: 调用源IP的ID
+        :type SourceIPID: int
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._AccessKeyID = None
+        self._SourceIPID = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AccessKeyID(self):
+        """访问密钥的ID
+        :rtype: int
+        """
+        return self._AccessKeyID
+
+    @AccessKeyID.setter
+    def AccessKeyID(self, AccessKeyID):
+        self._AccessKeyID = AccessKeyID
+
+    @property
+    def SourceIPID(self):
+        """调用源IP的ID
+        :rtype: int
+        """
+        return self._SourceIPID
+
+    @SourceIPID.setter
+    def SourceIPID(self, SourceIPID):
+        self._SourceIPID = SourceIPID
+
+    @property
+    def Filter(self):
+        """过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._AccessKeyID = params.get("AccessKeyID")
+        self._SourceIPID = params.get("SourceIPID")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCallRecordResponse(AbstractModel):
+    """DescribeCallRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 调用记录列表
+        :type Data: list of CallRecord
+        :param _Total: 调用记录总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """调用记录列表
+        :rtype: list of CallRecord
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        """调用记录总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CallRecord()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -17816,6 +18921,122 @@ class DescribeSearchBugInfoResponse(AbstractModel):
             self._Data._deserialize(params.get("Data"))
         self._ReturnCode = params.get("ReturnCode")
         self._ReturnMsg = params.get("ReturnMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSourceIPAssetRequest(AbstractModel):
+    """DescribeSourceIPAsset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        """过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSourceIPAssetResponse(AbstractModel):
+    """DescribeSourceIPAsset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 访问密钥资产列表
+        :type Data: list of SourceIPAsset
+        :param _Total: 全部数量
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """访问密钥资产列表
+        :rtype: list of SourceIPAsset
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        """全部数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SourceIPAsset()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -27887,6 +29108,304 @@ class ServiceSupport(AbstractModel):
         self._SupportHandledCount = params.get("SupportHandledCount")
         self._SupportTotalCount = params.get("SupportTotalCount")
         self._IsSupport = params.get("IsSupport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceIPAsset(AbstractModel):
+    """访问密钥资产信息（源IP角度）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 源IP id
+        :type ID: int
+        :param _SourceIP: 源IP
+        :type SourceIP: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _AppID: 账号所属APPID
+        :type AppID: int
+        :param _Region: IP地域
+        :type Region: str
+        :param _EventType: 调用方式
+0:控制台调用
+1:API
+        :type EventType: int
+        :param _IPType: IP类型
+0:账号内（未备注）
+1:账号外（未备注）
+2:账号内   (已备注)
+3:账号外   (已备注)
+        :type IPType: int
+        :param _AccessKeyAlarmList: 告警信息列表
+        :type AccessKeyAlarmList: list of AccessKeyAlarmInfo
+        :param _AKInfo: ak信息列表
+        :type AKInfo: list of AKInfo
+        :param _ActionCount: 调用接口数量
+        :type ActionCount: int
+        :param _LastAccessTime: 最近访问时间
+        :type LastAccessTime: str
+        :param _InstanceID: IP关联实例ID，如果为空字符串，代表非账号内资产
+        :type InstanceID: str
+        :param _InstanceName: IP关联实例名称
+        :type InstanceName: str
+        :param _Uin: 账号所属Uin
+        :type Uin: str
+        :param _Nickname: 昵称
+        :type Nickname: str
+        :param _ShowStatus: 展示状态
+        :type ShowStatus: bool
+        :param _ISP: 运营商字段
+        :type ISP: str
+        """
+        self._ID = None
+        self._SourceIP = None
+        self._Remark = None
+        self._AppID = None
+        self._Region = None
+        self._EventType = None
+        self._IPType = None
+        self._AccessKeyAlarmList = None
+        self._AKInfo = None
+        self._ActionCount = None
+        self._LastAccessTime = None
+        self._InstanceID = None
+        self._InstanceName = None
+        self._Uin = None
+        self._Nickname = None
+        self._ShowStatus = None
+        self._ISP = None
+
+    @property
+    def ID(self):
+        """源IP id
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def SourceIP(self):
+        """源IP
+        :rtype: str
+        """
+        return self._SourceIP
+
+    @SourceIP.setter
+    def SourceIP(self, SourceIP):
+        self._SourceIP = SourceIP
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AppID(self):
+        """账号所属APPID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Region(self):
+        """IP地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def EventType(self):
+        """调用方式
+0:控制台调用
+1:API
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def IPType(self):
+        """IP类型
+0:账号内（未备注）
+1:账号外（未备注）
+2:账号内   (已备注)
+3:账号外   (已备注)
+        :rtype: int
+        """
+        return self._IPType
+
+    @IPType.setter
+    def IPType(self, IPType):
+        self._IPType = IPType
+
+    @property
+    def AccessKeyAlarmList(self):
+        """告警信息列表
+        :rtype: list of AccessKeyAlarmInfo
+        """
+        return self._AccessKeyAlarmList
+
+    @AccessKeyAlarmList.setter
+    def AccessKeyAlarmList(self, AccessKeyAlarmList):
+        self._AccessKeyAlarmList = AccessKeyAlarmList
+
+    @property
+    def AKInfo(self):
+        """ak信息列表
+        :rtype: list of AKInfo
+        """
+        return self._AKInfo
+
+    @AKInfo.setter
+    def AKInfo(self, AKInfo):
+        self._AKInfo = AKInfo
+
+    @property
+    def ActionCount(self):
+        """调用接口数量
+        :rtype: int
+        """
+        return self._ActionCount
+
+    @ActionCount.setter
+    def ActionCount(self, ActionCount):
+        self._ActionCount = ActionCount
+
+    @property
+    def LastAccessTime(self):
+        """最近访问时间
+        :rtype: str
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+    @property
+    def InstanceID(self):
+        """IP关联实例ID，如果为空字符串，代表非账号内资产
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def InstanceName(self):
+        """IP关联实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Uin(self):
+        """账号所属Uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Nickname(self):
+        """昵称
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def ShowStatus(self):
+        """展示状态
+        :rtype: bool
+        """
+        return self._ShowStatus
+
+    @ShowStatus.setter
+    def ShowStatus(self, ShowStatus):
+        self._ShowStatus = ShowStatus
+
+    @property
+    def ISP(self):
+        """运营商字段
+        :rtype: str
+        """
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._SourceIP = params.get("SourceIP")
+        self._Remark = params.get("Remark")
+        self._AppID = params.get("AppID")
+        self._Region = params.get("Region")
+        self._EventType = params.get("EventType")
+        self._IPType = params.get("IPType")
+        if params.get("AccessKeyAlarmList") is not None:
+            self._AccessKeyAlarmList = []
+            for item in params.get("AccessKeyAlarmList"):
+                obj = AccessKeyAlarmInfo()
+                obj._deserialize(item)
+                self._AccessKeyAlarmList.append(obj)
+        if params.get("AKInfo") is not None:
+            self._AKInfo = []
+            for item in params.get("AKInfo"):
+                obj = AKInfo()
+                obj._deserialize(item)
+                self._AKInfo.append(obj)
+        self._ActionCount = params.get("ActionCount")
+        self._LastAccessTime = params.get("LastAccessTime")
+        self._InstanceID = params.get("InstanceID")
+        self._InstanceName = params.get("InstanceName")
+        self._Uin = params.get("Uin")
+        self._Nickname = params.get("Nickname")
+        self._ShowStatus = params.get("ShowStatus")
+        self._ISP = params.get("ISP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

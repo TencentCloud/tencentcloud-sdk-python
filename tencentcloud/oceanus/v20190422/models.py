@@ -440,6 +440,9 @@ class Cluster(AbstractModel):
         :param _Setats: setats集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type Setats: :class:`tencentcloud.oceanus.v20190422.models.Setats`
+        :param _Yarns: []
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Yarns: list of HadoopYarnItem
         """
         self._ClusterId = None
         self._Name = None
@@ -494,6 +497,7 @@ class Cluster(AbstractModel):
         self._RunningCpu = None
         self._RunningMem = None
         self._Setats = None
+        self._Yarns = None
 
     @property
     def ClusterId(self):
@@ -1109,6 +1113,18 @@ class Cluster(AbstractModel):
     def Setats(self, Setats):
         self._Setats = Setats
 
+    @property
+    def Yarns(self):
+        """[]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HadoopYarnItem
+        """
+        return self._Yarns
+
+    @Yarns.setter
+    def Yarns(self, Yarns):
+        self._Yarns = Yarns
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1200,6 +1216,12 @@ class Cluster(AbstractModel):
         if params.get("Setats") is not None:
             self._Setats = Setats()
             self._Setats._deserialize(params.get("Setats"))
+        if params.get("Yarns") is not None:
+            self._Yarns = []
+            for item in params.get("Yarns"):
+                obj = HadoopYarnItem()
+                obj._deserialize(item)
+                self._Yarns.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2654,6 +2676,12 @@ class CreateJobConfigRequest(AbstractModel):
         :type TaskManagerCpu: float
         :param _TaskManagerMem: TaskManager 内存
         :type TaskManagerMem: float
+        :param _UseOldSystemConnector: 0=默认使用老的 1=使用新的
+        :type UseOldSystemConnector: int
+        :param _ProgramArgsAfterGzip: 压缩参数
+        :type ProgramArgsAfterGzip: str
+        :param _CheckpointTimeoutSecond: checkpoint 超时时间
+        :type CheckpointTimeoutSecond: int
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -2688,6 +2716,9 @@ class CreateJobConfigRequest(AbstractModel):
         self._JobManagerMem = None
         self._TaskManagerCpu = None
         self._TaskManagerMem = None
+        self._UseOldSystemConnector = None
+        self._ProgramArgsAfterGzip = None
+        self._CheckpointTimeoutSecond = None
 
     @property
     def JobId(self):
@@ -3052,6 +3083,39 @@ class CreateJobConfigRequest(AbstractModel):
     def TaskManagerMem(self, TaskManagerMem):
         self._TaskManagerMem = TaskManagerMem
 
+    @property
+    def UseOldSystemConnector(self):
+        """0=默认使用老的 1=使用新的
+        :rtype: int
+        """
+        return self._UseOldSystemConnector
+
+    @UseOldSystemConnector.setter
+    def UseOldSystemConnector(self, UseOldSystemConnector):
+        self._UseOldSystemConnector = UseOldSystemConnector
+
+    @property
+    def ProgramArgsAfterGzip(self):
+        """压缩参数
+        :rtype: str
+        """
+        return self._ProgramArgsAfterGzip
+
+    @ProgramArgsAfterGzip.setter
+    def ProgramArgsAfterGzip(self, ProgramArgsAfterGzip):
+        self._ProgramArgsAfterGzip = ProgramArgsAfterGzip
+
+    @property
+    def CheckpointTimeoutSecond(self):
+        """checkpoint 超时时间
+        :rtype: int
+        """
+        return self._CheckpointTimeoutSecond
+
+    @CheckpointTimeoutSecond.setter
+    def CheckpointTimeoutSecond(self, CheckpointTimeoutSecond):
+        self._CheckpointTimeoutSecond = CheckpointTimeoutSecond
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -3108,6 +3172,9 @@ class CreateJobConfigRequest(AbstractModel):
         self._JobManagerMem = params.get("JobManagerMem")
         self._TaskManagerCpu = params.get("TaskManagerCpu")
         self._TaskManagerMem = params.get("TaskManagerMem")
+        self._UseOldSystemConnector = params.get("UseOldSystemConnector")
+        self._ProgramArgsAfterGzip = params.get("ProgramArgsAfterGzip")
+        self._CheckpointTimeoutSecond = params.get("CheckpointTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8249,6 +8316,151 @@ Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBT
         self._RequestId = params.get("RequestId")
 
 
+class HadoopYarnItem(AbstractModel):
+    """hadoopYarn资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterGroupSerialId: ClusterGroupSerialId
+        :type ClusterGroupSerialId: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Cpu: cpu
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: float
+        :param _Mem: mem
+        :type Mem: float
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _Config: 配置文件内容
+        :type Config: str
+        :param _CreatorUin: CreatorUin
+        :type CreatorUin: str
+        """
+        self._ClusterGroupSerialId = None
+        self._Status = None
+        self._Cpu = None
+        self._Mem = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Config = None
+        self._CreatorUin = None
+
+    @property
+    def ClusterGroupSerialId(self):
+        """ClusterGroupSerialId
+        :rtype: str
+        """
+        return self._ClusterGroupSerialId
+
+    @ClusterGroupSerialId.setter
+    def ClusterGroupSerialId(self, ClusterGroupSerialId):
+        self._ClusterGroupSerialId = ClusterGroupSerialId
+
+    @property
+    def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Cpu(self):
+        """cpu
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        """mem
+        :rtype: float
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Config(self):
+        """配置文件内容
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def CreatorUin(self):
+        """CreatorUin
+        :rtype: str
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+
+    def _deserialize(self, params):
+        self._ClusterGroupSerialId = params.get("ClusterGroupSerialId")
+        self._Status = params.get("Status")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Config = params.get("Config")
+        self._CreatorUin = params.get("CreatorUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JobConfig(AbstractModel):
     """作业配置详情
 
@@ -8367,6 +8579,8 @@ class JobConfig(AbstractModel):
         :param _JobConfigItem: 运行中配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobConfigItem: :class:`tencentcloud.oceanus.v20190422.models.JobConfig`
+        :param _CheckpointTimeoutSecond: checkpoint 超时时间
+        :type CheckpointTimeoutSecond: int
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -8406,6 +8620,7 @@ class JobConfig(AbstractModel):
         self._TaskManagerCpu = None
         self._TaskManagerMem = None
         self._JobConfigItem = None
+        self._CheckpointTimeoutSecond = None
 
     @property
     def JobId(self):
@@ -8860,6 +9075,17 @@ class JobConfig(AbstractModel):
     def JobConfigItem(self, JobConfigItem):
         self._JobConfigItem = JobConfigItem
 
+    @property
+    def CheckpointTimeoutSecond(self):
+        """checkpoint 超时时间
+        :rtype: int
+        """
+        return self._CheckpointTimeoutSecond
+
+    @CheckpointTimeoutSecond.setter
+    def CheckpointTimeoutSecond(self, CheckpointTimeoutSecond):
+        self._CheckpointTimeoutSecond = CheckpointTimeoutSecond
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -8923,6 +9149,7 @@ class JobConfig(AbstractModel):
         if params.get("JobConfigItem") is not None:
             self._JobConfigItem = JobConfig()
             self._JobConfigItem._deserialize(params.get("JobConfigItem"))
+        self._CheckpointTimeoutSecond = params.get("CheckpointTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9543,6 +9770,8 @@ class JobV1(AbstractModel):
         :param _ProgressDesc: 操作中描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressDesc: str
+        :param _ContinueAlarm: 停止持续告警
+        :type ContinueAlarm: int
         """
         self._JobId = None
         self._Region = None
@@ -9583,6 +9812,7 @@ class JobV1(AbstractModel):
         self._RunningMem = None
         self._OpenJobDefaultAlarm = None
         self._ProgressDesc = None
+        self._ContinueAlarm = None
 
     @property
     def JobId(self):
@@ -10053,6 +10283,17 @@ class JobV1(AbstractModel):
     def ProgressDesc(self, ProgressDesc):
         self._ProgressDesc = ProgressDesc
 
+    @property
+    def ContinueAlarm(self):
+        """停止持续告警
+        :rtype: int
+        """
+        return self._ContinueAlarm
+
+    @ContinueAlarm.setter
+    def ContinueAlarm(self, ContinueAlarm):
+        self._ContinueAlarm = ContinueAlarm
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -10101,6 +10342,7 @@ class JobV1(AbstractModel):
         self._RunningMem = params.get("RunningMem")
         self._OpenJobDefaultAlarm = params.get("OpenJobDefaultAlarm")
         self._ProgressDesc = params.get("ProgressDesc")
+        self._ContinueAlarm = params.get("ContinueAlarm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10445,6 +10687,8 @@ class ModifyJobRequest(AbstractModel):
         :type WorkSpaceId: str
         :param _Description: 作业描述
         :type Description: str
+        :param _ContinueAlarm: 停止持续告警
+        :type ContinueAlarm: int
         """
         self._JobId = None
         self._Name = None
@@ -10452,6 +10696,7 @@ class ModifyJobRequest(AbstractModel):
         self._TargetFolderId = None
         self._WorkSpaceId = None
         self._Description = None
+        self._ContinueAlarm = None
 
     @property
     def JobId(self):
@@ -10519,6 +10764,17 @@ class ModifyJobRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ContinueAlarm(self):
+        """停止持续告警
+        :rtype: int
+        """
+        return self._ContinueAlarm
+
+    @ContinueAlarm.setter
+    def ContinueAlarm(self, ContinueAlarm):
+        self._ContinueAlarm = ContinueAlarm
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -10527,6 +10783,7 @@ class ModifyJobRequest(AbstractModel):
         self._TargetFolderId = params.get("TargetFolderId")
         self._WorkSpaceId = params.get("WorkSpaceId")
         self._Description = params.get("Description")
+        self._ContinueAlarm = params.get("ContinueAlarm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

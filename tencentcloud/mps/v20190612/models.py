@@ -41426,7 +41426,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
         :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _Path: 转动图的文件路径。
         :type Path: str
-        :param _Definition: 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/862/37042#.E9.A2.84.E7.BD.AE.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :param _Definition: 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/862/77168#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(id.3Amove))。
         :type Definition: int
         :param _Container: 动图格式，如 gif。
         :type Container: str
@@ -41481,7 +41481,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Definition(self):
-        """转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/862/37042#.E9.A2.84.E7.BD.AE.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        """转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/862/77168#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(id.3Amove))。
         :rtype: int
         """
         return self._Definition
@@ -54083,8 +54083,11 @@ class RawWatermarkParameter(AbstractModel):
         :param _Type: 水印类型，可选值：
 <li>image：图片水印。</li>
         :type Type: str
-        :param _CoordinateOrigin: 原点位置，目前仅支持：
+        :param _CoordinateOrigin: 原点位置，可选值：
 <li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角。</li>
+<li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
 默认值：TopLeft。
         :type CoordinateOrigin: str
         :param _XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
@@ -54120,8 +54123,11 @@ class RawWatermarkParameter(AbstractModel):
 
     @property
     def CoordinateOrigin(self):
-        """原点位置，目前仅支持：
+        """原点位置，可选值：
 <li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角。</li>
+<li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
 默认值：TopLeft。
         :rtype: str
         """

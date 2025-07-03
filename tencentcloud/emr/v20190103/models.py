@@ -29577,6 +29577,8 @@ class PriceResource(AbstractModel):
         :type DiskNum: int
         :param _LocalDiskNum: 本地盘的数量
         :type LocalDiskNum: int
+        :param _GpuDesc: GPU信息
+        :type GpuDesc: str
         """
         self._Spec = None
         self._StorageType = None
@@ -29591,6 +29593,7 @@ class PriceResource(AbstractModel):
         self._Tags = None
         self._DiskNum = None
         self._LocalDiskNum = None
+        self._GpuDesc = None
 
     @property
     def Spec(self):
@@ -29737,6 +29740,17 @@ class PriceResource(AbstractModel):
     def LocalDiskNum(self, LocalDiskNum):
         self._LocalDiskNum = LocalDiskNum
 
+    @property
+    def GpuDesc(self):
+        """GPU信息
+        :rtype: str
+        """
+        return self._GpuDesc
+
+    @GpuDesc.setter
+    def GpuDesc(self, GpuDesc):
+        self._GpuDesc = GpuDesc
+
 
     def _deserialize(self, params):
         self._Spec = params.get("Spec")
@@ -29762,6 +29776,7 @@ class PriceResource(AbstractModel):
                 self._Tags.append(obj)
         self._DiskNum = params.get("DiskNum")
         self._LocalDiskNum = params.get("LocalDiskNum")
+        self._GpuDesc = params.get("GpuDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30621,6 +30636,8 @@ class Resource(AbstractModel):
         :type LocalDiskNum: int
         :param _DiskNum: 本地盘数量，如2
         :type DiskNum: int
+        :param _GpuDesc: GPU信息
+        :type GpuDesc: str
         """
         self._Spec = None
         self._StorageType = None
@@ -30634,6 +30651,7 @@ class Resource(AbstractModel):
         self._InstanceType = None
         self._LocalDiskNum = None
         self._DiskNum = None
+        self._GpuDesc = None
 
     @property
     def Spec(self):
@@ -30779,6 +30797,17 @@ class Resource(AbstractModel):
     def DiskNum(self, DiskNum):
         self._DiskNum = DiskNum
 
+    @property
+    def GpuDesc(self):
+        """GPU信息
+        :rtype: str
+        """
+        return self._GpuDesc
+
+    @GpuDesc.setter
+    def GpuDesc(self, GpuDesc):
+        self._GpuDesc = GpuDesc
+
 
     def _deserialize(self, params):
         self._Spec = params.get("Spec")
@@ -30803,6 +30832,7 @@ class Resource(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._LocalDiskNum = params.get("LocalDiskNum")
         self._DiskNum = params.get("DiskNum")
+        self._GpuDesc = params.get("GpuDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

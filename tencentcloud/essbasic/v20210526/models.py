@@ -23145,6 +23145,7 @@ class FlowDetailInfo(AbstractModel):
         :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :type FlowName: str
         :param _FlowType: 合同流程的类别分类（如销售合同/入职合同等）。
+该字段将被废弃，不建议使用。	请使用 UserFlowType
         :type FlowType: str
         :param _FlowStatus: 合同流程当前的签署状态, 会存在下列的状态值
 <ul><li> **INIT** :合同创建</li>
@@ -23173,6 +23174,13 @@ class FlowDetailInfo(AbstractModel):
 <ul><li>当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程</li>
 <li>当NeedCreateReview为false，不需要发起前审核的合同</li></ul>
         :type NeedCreateReview: bool
+        :param _UserFlowType: 用户合同的自定义分类。
+
+自定义合同类型的位置，在下图所示地方:
+![image](https://qcloudimg.tencent-cloud.cn/raw/37138cc5f3c38e6f788f4b82f695cebf.png)
+        :type UserFlowType: :class:`tencentcloud.essbasic.v20210526.models.UserFlowType`
+        :param _TemplateId: 发起模板时,使用的模板Id
+        :type TemplateId: str
         """
         self._FlowId = None
         self._FlowName = None
@@ -23185,6 +23193,8 @@ class FlowDetailInfo(AbstractModel):
         self._FlowApproverInfos = None
         self._CcInfos = None
         self._NeedCreateReview = None
+        self._UserFlowType = None
+        self._TemplateId = None
 
     @property
     def FlowId(self):
@@ -23211,6 +23221,7 @@ class FlowDetailInfo(AbstractModel):
     @property
     def FlowType(self):
         """合同流程的类别分类（如销售合同/入职合同等）。
+该字段将被废弃，不建议使用。	请使用 UserFlowType
         :rtype: str
         """
         return self._FlowType
@@ -23318,6 +23329,31 @@ class FlowDetailInfo(AbstractModel):
     def NeedCreateReview(self, NeedCreateReview):
         self._NeedCreateReview = NeedCreateReview
 
+    @property
+    def UserFlowType(self):
+        """用户合同的自定义分类。
+
+自定义合同类型的位置，在下图所示地方:
+![image](https://qcloudimg.tencent-cloud.cn/raw/37138cc5f3c38e6f788f4b82f695cebf.png)
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserFlowType`
+        """
+        return self._UserFlowType
+
+    @UserFlowType.setter
+    def UserFlowType(self, UserFlowType):
+        self._UserFlowType = UserFlowType
+
+    @property
+    def TemplateId(self):
+        """发起模板时,使用的模板Id
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -23341,6 +23377,10 @@ class FlowDetailInfo(AbstractModel):
                 obj._deserialize(item)
                 self._CcInfos.append(obj)
         self._NeedCreateReview = params.get("NeedCreateReview")
+        if params.get("UserFlowType") is not None:
+            self._UserFlowType = UserFlowType()
+            self._UserFlowType._deserialize(params.get("UserFlowType"))
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

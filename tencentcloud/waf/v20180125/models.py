@@ -28039,6 +28039,8 @@ class InstanceInfo(AbstractModel):
         :type MajorEventsProPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsProPkg`
         :param _BasicFlag: 1是基础2025版本；0不是
         :type BasicFlag: int
+        :param _NetworkConfig: 实例的网络配置
+        :type NetworkConfig: :class:`tencentcloud.waf.v20180125.models.NetworkConfig`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -28085,6 +28087,7 @@ class InstanceInfo(AbstractModel):
         self._Last3MaxBandwidth = None
         self._MajorEventsProPkg = None
         self._BasicFlag = None
+        self._NetworkConfig = None
 
     @property
     def InstanceId(self):
@@ -28591,6 +28594,17 @@ class InstanceInfo(AbstractModel):
     def BasicFlag(self, BasicFlag):
         self._BasicFlag = BasicFlag
 
+    @property
+    def NetworkConfig(self):
+        """实例的网络配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.NetworkConfig`
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -28660,6 +28674,9 @@ class InstanceInfo(AbstractModel):
             self._MajorEventsProPkg = MajorEventsProPkg()
             self._MajorEventsProPkg._deserialize(params.get("MajorEventsProPkg"))
         self._BasicFlag = params.get("BasicFlag")
+        if params.get("NetworkConfig") is not None:
+            self._NetworkConfig = NetworkConfig()
+            self._NetworkConfig._deserialize(params.get("NetworkConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36719,6 +36736,80 @@ class ModifyWebshellStatusResponse(AbstractModel):
             self._Success = ResponseCode()
             self._Success._deserialize(params.get("Success"))
         self._RequestId = params.get("RequestId")
+
+
+class NetworkConfig(AbstractModel):
+    """实例的网络配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AntiDDosEip: 高防EIP地址
+        :type AntiDDosEip: str
+        :param _AntiDDosEipStatus: 高防EIP绑定状态。
+0：解绑
+1：绑定
+        :type AntiDDosEipStatus: int
+        :param _VipStatus: WAF原生VIP绑定状态。
+0：解绑
+1：绑定
+        :type VipStatus: int
+        """
+        self._AntiDDosEip = None
+        self._AntiDDosEipStatus = None
+        self._VipStatus = None
+
+    @property
+    def AntiDDosEip(self):
+        """高防EIP地址
+        :rtype: str
+        """
+        return self._AntiDDosEip
+
+    @AntiDDosEip.setter
+    def AntiDDosEip(self, AntiDDosEip):
+        self._AntiDDosEip = AntiDDosEip
+
+    @property
+    def AntiDDosEipStatus(self):
+        """高防EIP绑定状态。
+0：解绑
+1：绑定
+        :rtype: int
+        """
+        return self._AntiDDosEipStatus
+
+    @AntiDDosEipStatus.setter
+    def AntiDDosEipStatus(self, AntiDDosEipStatus):
+        self._AntiDDosEipStatus = AntiDDosEipStatus
+
+    @property
+    def VipStatus(self):
+        """WAF原生VIP绑定状态。
+0：解绑
+1：绑定
+        :rtype: int
+        """
+        return self._VipStatus
+
+    @VipStatus.setter
+    def VipStatus(self, VipStatus):
+        self._VipStatus = VipStatus
+
+
+    def _deserialize(self, params):
+        self._AntiDDosEip = params.get("AntiDDosEip")
+        self._AntiDDosEipStatus = params.get("AntiDDosEipStatus")
+        self._VipStatus = params.get("VipStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ParamCompareList(AbstractModel):

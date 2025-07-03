@@ -141,6 +141,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccessKeyAsset(self, request):
+        """获取用户访问密钥资产列表
+
+        :param request: Request instance for DescribeAccessKeyAsset.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyAssetRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessKeyAsset", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessKeyAssetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAlertList(self, request):
         """告警中心全量告警列表接口
 
@@ -316,6 +339,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeCVMAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCVMAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCallRecord(self, request):
+        """获取调用记录列表
+
+        :param request: Request instance for DescribeCallRecord.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCallRecordRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCallRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCallRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCallRecordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1098,6 +1144,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeSearchBugInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSearchBugInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSourceIPAsset(self, request):
+        """获取用户访问密钥资产列表（源IP视角）
+
+        :param request: Request instance for DescribeSourceIPAsset.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSourceIPAssetRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSourceIPAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSourceIPAsset", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSourceIPAssetResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

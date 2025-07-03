@@ -762,6 +762,30 @@ class ApmInstanceDetail(AbstractModel):
         :type LogIndexType: int
         :param _LogTraceIdKey: traceId的索引key: 当CLS索引类型为键值索引时生效
         :type LogTraceIdKey: str
+        :param _IsDeleteAnyFileAnalysis: 是否开启删除任意文件检测（0-关闭，1-开启）
+        :type IsDeleteAnyFileAnalysis: int
+        :param _IsReadAnyFileAnalysis: 是否开启读取任意文件检测（0-关闭，1-开启）
+        :type IsReadAnyFileAnalysis: int
+        :param _IsUploadAnyFileAnalysis: 是否开启上传任意文件检测（0-关闭，1-开启）
+        :type IsUploadAnyFileAnalysis: int
+        :param _IsIncludeAnyFileAnalysis: 是否开启包含任意文件检测（0-关闭，1-开启）
+        :type IsIncludeAnyFileAnalysis: int
+        :param _IsDirectoryTraversalAnalysis: 是否开启目录遍历检测（0-关闭，1-开启）
+        :type IsDirectoryTraversalAnalysis: int
+        :param _IsTemplateEngineInjectionAnalysis: 是否开启模板引擎注入检测（0-关闭，1-开启）
+        :type IsTemplateEngineInjectionAnalysis: int
+        :param _IsScriptEngineInjectionAnalysis: 是否开启脚本引擎注入检测（0-关闭，1-开启）
+        :type IsScriptEngineInjectionAnalysis: int
+        :param _IsExpressionInjectionAnalysis: 是否开启表达式注入检测（0-关闭，1-开启）
+        :type IsExpressionInjectionAnalysis: int
+        :param _IsJNDIInjectionAnalysis: 是否开启JNDI注入检测（0-关闭，1-开启）
+        :type IsJNDIInjectionAnalysis: int
+        :param _IsJNIInjectionAnalysis: 是否开启JNI注入检测（0-关闭，1-开启）
+        :type IsJNIInjectionAnalysis: int
+        :param _IsWebshellBackdoorAnalysis: 是否开启Webshell后门检测（0-关闭，1-开启）
+        :type IsWebshellBackdoorAnalysis: int
+        :param _IsDeserializationAnalysis: 是否开启反序列化检测（0-关闭，1-开启）
+        :type IsDeserializationAnalysis: int
         :param _Token: 业务系统鉴权 token
         :type Token: str
         """
@@ -806,6 +830,18 @@ class ApmInstanceDetail(AbstractModel):
         self._IsMemoryHijackingAnalysis = None
         self._LogIndexType = None
         self._LogTraceIdKey = None
+        self._IsDeleteAnyFileAnalysis = None
+        self._IsReadAnyFileAnalysis = None
+        self._IsUploadAnyFileAnalysis = None
+        self._IsIncludeAnyFileAnalysis = None
+        self._IsDirectoryTraversalAnalysis = None
+        self._IsTemplateEngineInjectionAnalysis = None
+        self._IsScriptEngineInjectionAnalysis = None
+        self._IsExpressionInjectionAnalysis = None
+        self._IsJNDIInjectionAnalysis = None
+        self._IsJNIInjectionAnalysis = None
+        self._IsWebshellBackdoorAnalysis = None
+        self._IsDeserializationAnalysis = None
         self._Token = None
 
     @property
@@ -1266,6 +1302,138 @@ class ApmInstanceDetail(AbstractModel):
         self._LogTraceIdKey = LogTraceIdKey
 
     @property
+    def IsDeleteAnyFileAnalysis(self):
+        """是否开启删除任意文件检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsDeleteAnyFileAnalysis
+
+    @IsDeleteAnyFileAnalysis.setter
+    def IsDeleteAnyFileAnalysis(self, IsDeleteAnyFileAnalysis):
+        self._IsDeleteAnyFileAnalysis = IsDeleteAnyFileAnalysis
+
+    @property
+    def IsReadAnyFileAnalysis(self):
+        """是否开启读取任意文件检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsReadAnyFileAnalysis
+
+    @IsReadAnyFileAnalysis.setter
+    def IsReadAnyFileAnalysis(self, IsReadAnyFileAnalysis):
+        self._IsReadAnyFileAnalysis = IsReadAnyFileAnalysis
+
+    @property
+    def IsUploadAnyFileAnalysis(self):
+        """是否开启上传任意文件检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsUploadAnyFileAnalysis
+
+    @IsUploadAnyFileAnalysis.setter
+    def IsUploadAnyFileAnalysis(self, IsUploadAnyFileAnalysis):
+        self._IsUploadAnyFileAnalysis = IsUploadAnyFileAnalysis
+
+    @property
+    def IsIncludeAnyFileAnalysis(self):
+        """是否开启包含任意文件检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsIncludeAnyFileAnalysis
+
+    @IsIncludeAnyFileAnalysis.setter
+    def IsIncludeAnyFileAnalysis(self, IsIncludeAnyFileAnalysis):
+        self._IsIncludeAnyFileAnalysis = IsIncludeAnyFileAnalysis
+
+    @property
+    def IsDirectoryTraversalAnalysis(self):
+        """是否开启目录遍历检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsDirectoryTraversalAnalysis
+
+    @IsDirectoryTraversalAnalysis.setter
+    def IsDirectoryTraversalAnalysis(self, IsDirectoryTraversalAnalysis):
+        self._IsDirectoryTraversalAnalysis = IsDirectoryTraversalAnalysis
+
+    @property
+    def IsTemplateEngineInjectionAnalysis(self):
+        """是否开启模板引擎注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsTemplateEngineInjectionAnalysis
+
+    @IsTemplateEngineInjectionAnalysis.setter
+    def IsTemplateEngineInjectionAnalysis(self, IsTemplateEngineInjectionAnalysis):
+        self._IsTemplateEngineInjectionAnalysis = IsTemplateEngineInjectionAnalysis
+
+    @property
+    def IsScriptEngineInjectionAnalysis(self):
+        """是否开启脚本引擎注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsScriptEngineInjectionAnalysis
+
+    @IsScriptEngineInjectionAnalysis.setter
+    def IsScriptEngineInjectionAnalysis(self, IsScriptEngineInjectionAnalysis):
+        self._IsScriptEngineInjectionAnalysis = IsScriptEngineInjectionAnalysis
+
+    @property
+    def IsExpressionInjectionAnalysis(self):
+        """是否开启表达式注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsExpressionInjectionAnalysis
+
+    @IsExpressionInjectionAnalysis.setter
+    def IsExpressionInjectionAnalysis(self, IsExpressionInjectionAnalysis):
+        self._IsExpressionInjectionAnalysis = IsExpressionInjectionAnalysis
+
+    @property
+    def IsJNDIInjectionAnalysis(self):
+        """是否开启JNDI注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsJNDIInjectionAnalysis
+
+    @IsJNDIInjectionAnalysis.setter
+    def IsJNDIInjectionAnalysis(self, IsJNDIInjectionAnalysis):
+        self._IsJNDIInjectionAnalysis = IsJNDIInjectionAnalysis
+
+    @property
+    def IsJNIInjectionAnalysis(self):
+        """是否开启JNI注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsJNIInjectionAnalysis
+
+    @IsJNIInjectionAnalysis.setter
+    def IsJNIInjectionAnalysis(self, IsJNIInjectionAnalysis):
+        self._IsJNIInjectionAnalysis = IsJNIInjectionAnalysis
+
+    @property
+    def IsWebshellBackdoorAnalysis(self):
+        """是否开启Webshell后门检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsWebshellBackdoorAnalysis
+
+    @IsWebshellBackdoorAnalysis.setter
+    def IsWebshellBackdoorAnalysis(self, IsWebshellBackdoorAnalysis):
+        self._IsWebshellBackdoorAnalysis = IsWebshellBackdoorAnalysis
+
+    @property
+    def IsDeserializationAnalysis(self):
+        """是否开启反序列化检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsDeserializationAnalysis
+
+    @IsDeserializationAnalysis.setter
+    def IsDeserializationAnalysis(self, IsDeserializationAnalysis):
+        self._IsDeserializationAnalysis = IsDeserializationAnalysis
+
+    @property
     def Token(self):
         """业务系统鉴权 token
         :rtype: str
@@ -1324,6 +1492,18 @@ class ApmInstanceDetail(AbstractModel):
         self._IsMemoryHijackingAnalysis = params.get("IsMemoryHijackingAnalysis")
         self._LogIndexType = params.get("LogIndexType")
         self._LogTraceIdKey = params.get("LogTraceIdKey")
+        self._IsDeleteAnyFileAnalysis = params.get("IsDeleteAnyFileAnalysis")
+        self._IsReadAnyFileAnalysis = params.get("IsReadAnyFileAnalysis")
+        self._IsUploadAnyFileAnalysis = params.get("IsUploadAnyFileAnalysis")
+        self._IsIncludeAnyFileAnalysis = params.get("IsIncludeAnyFileAnalysis")
+        self._IsDirectoryTraversalAnalysis = params.get("IsDirectoryTraversalAnalysis")
+        self._IsTemplateEngineInjectionAnalysis = params.get("IsTemplateEngineInjectionAnalysis")
+        self._IsScriptEngineInjectionAnalysis = params.get("IsScriptEngineInjectionAnalysis")
+        self._IsExpressionInjectionAnalysis = params.get("IsExpressionInjectionAnalysis")
+        self._IsJNDIInjectionAnalysis = params.get("IsJNDIInjectionAnalysis")
+        self._IsJNIInjectionAnalysis = params.get("IsJNIInjectionAnalysis")
+        self._IsWebshellBackdoorAnalysis = params.get("IsWebshellBackdoorAnalysis")
+        self._IsDeserializationAnalysis = params.get("IsDeserializationAnalysis")
         self._Token = params.get("Token")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3994,6 +4174,30 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type LogIndexType: int
         :param _LogTraceIdKey: traceId的索引key: 当CLS索引类型为键值索引时生效
         :type LogTraceIdKey: str
+        :param _IsDeleteAnyFileAnalysis: 是否开启删除任意文件检测（0-关闭，1-开启）
+        :type IsDeleteAnyFileAnalysis: int
+        :param _IsReadAnyFileAnalysis: 是否开启读取任意文件检测（0-关闭，1-开启）
+        :type IsReadAnyFileAnalysis: int
+        :param _IsUploadAnyFileAnalysis: 是否开启上传任意文件检测（0-关闭，1-开启）
+        :type IsUploadAnyFileAnalysis: int
+        :param _IsIncludeAnyFileAnalysis: 是否开启包含任意文件检测（0-关闭，1-开启）
+        :type IsIncludeAnyFileAnalysis: int
+        :param _IsDirectoryTraversalAnalysis: 是否开启目录遍历检测（0-关闭，1-开启）
+        :type IsDirectoryTraversalAnalysis: int
+        :param _IsTemplateEngineInjectionAnalysis: 是否开启模板引擎注入检测（0-关闭，1-开启）
+        :type IsTemplateEngineInjectionAnalysis: int
+        :param _IsScriptEngineInjectionAnalysis: 是否开启脚本引擎注入检测（0-关闭，1-开启）
+        :type IsScriptEngineInjectionAnalysis: int
+        :param _IsExpressionInjectionAnalysis: 是否开启表达式注入检测（0-关闭，1-开启）
+        :type IsExpressionInjectionAnalysis: int
+        :param _IsJNDIInjectionAnalysis: 是否开启JNDI注入检测（0-关闭，1-开启）
+        :type IsJNDIInjectionAnalysis: int
+        :param _IsJNIInjectionAnalysis: 是否开启JNI注入检测（0-关闭，1-开启）
+        :type IsJNIInjectionAnalysis: int
+        :param _IsWebshellBackdoorAnalysis: 是否开启Webshell后门检测（0-关闭，1-开启）
+        :type IsWebshellBackdoorAnalysis: int
+        :param _IsDeserializationAnalysis: 是否开启反序列化检测（0-关闭，1-开启）
+        :type IsDeserializationAnalysis: int
         """
         self._InstanceId = None
         self._Name = None
@@ -4023,6 +4227,18 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsMemoryHijackingAnalysis = None
         self._LogIndexType = None
         self._LogTraceIdKey = None
+        self._IsDeleteAnyFileAnalysis = None
+        self._IsReadAnyFileAnalysis = None
+        self._IsUploadAnyFileAnalysis = None
+        self._IsIncludeAnyFileAnalysis = None
+        self._IsDirectoryTraversalAnalysis = None
+        self._IsTemplateEngineInjectionAnalysis = None
+        self._IsScriptEngineInjectionAnalysis = None
+        self._IsExpressionInjectionAnalysis = None
+        self._IsJNDIInjectionAnalysis = None
+        self._IsJNIInjectionAnalysis = None
+        self._IsWebshellBackdoorAnalysis = None
+        self._IsDeserializationAnalysis = None
 
     @property
     def InstanceId(self):
@@ -4332,6 +4548,138 @@ class ModifyApmInstanceRequest(AbstractModel):
     def LogTraceIdKey(self, LogTraceIdKey):
         self._LogTraceIdKey = LogTraceIdKey
 
+    @property
+    def IsDeleteAnyFileAnalysis(self):
+        """是否开启删除任意文件检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsDeleteAnyFileAnalysis
+
+    @IsDeleteAnyFileAnalysis.setter
+    def IsDeleteAnyFileAnalysis(self, IsDeleteAnyFileAnalysis):
+        self._IsDeleteAnyFileAnalysis = IsDeleteAnyFileAnalysis
+
+    @property
+    def IsReadAnyFileAnalysis(self):
+        """是否开启读取任意文件检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsReadAnyFileAnalysis
+
+    @IsReadAnyFileAnalysis.setter
+    def IsReadAnyFileAnalysis(self, IsReadAnyFileAnalysis):
+        self._IsReadAnyFileAnalysis = IsReadAnyFileAnalysis
+
+    @property
+    def IsUploadAnyFileAnalysis(self):
+        """是否开启上传任意文件检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsUploadAnyFileAnalysis
+
+    @IsUploadAnyFileAnalysis.setter
+    def IsUploadAnyFileAnalysis(self, IsUploadAnyFileAnalysis):
+        self._IsUploadAnyFileAnalysis = IsUploadAnyFileAnalysis
+
+    @property
+    def IsIncludeAnyFileAnalysis(self):
+        """是否开启包含任意文件检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsIncludeAnyFileAnalysis
+
+    @IsIncludeAnyFileAnalysis.setter
+    def IsIncludeAnyFileAnalysis(self, IsIncludeAnyFileAnalysis):
+        self._IsIncludeAnyFileAnalysis = IsIncludeAnyFileAnalysis
+
+    @property
+    def IsDirectoryTraversalAnalysis(self):
+        """是否开启目录遍历检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsDirectoryTraversalAnalysis
+
+    @IsDirectoryTraversalAnalysis.setter
+    def IsDirectoryTraversalAnalysis(self, IsDirectoryTraversalAnalysis):
+        self._IsDirectoryTraversalAnalysis = IsDirectoryTraversalAnalysis
+
+    @property
+    def IsTemplateEngineInjectionAnalysis(self):
+        """是否开启模板引擎注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsTemplateEngineInjectionAnalysis
+
+    @IsTemplateEngineInjectionAnalysis.setter
+    def IsTemplateEngineInjectionAnalysis(self, IsTemplateEngineInjectionAnalysis):
+        self._IsTemplateEngineInjectionAnalysis = IsTemplateEngineInjectionAnalysis
+
+    @property
+    def IsScriptEngineInjectionAnalysis(self):
+        """是否开启脚本引擎注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsScriptEngineInjectionAnalysis
+
+    @IsScriptEngineInjectionAnalysis.setter
+    def IsScriptEngineInjectionAnalysis(self, IsScriptEngineInjectionAnalysis):
+        self._IsScriptEngineInjectionAnalysis = IsScriptEngineInjectionAnalysis
+
+    @property
+    def IsExpressionInjectionAnalysis(self):
+        """是否开启表达式注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsExpressionInjectionAnalysis
+
+    @IsExpressionInjectionAnalysis.setter
+    def IsExpressionInjectionAnalysis(self, IsExpressionInjectionAnalysis):
+        self._IsExpressionInjectionAnalysis = IsExpressionInjectionAnalysis
+
+    @property
+    def IsJNDIInjectionAnalysis(self):
+        """是否开启JNDI注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsJNDIInjectionAnalysis
+
+    @IsJNDIInjectionAnalysis.setter
+    def IsJNDIInjectionAnalysis(self, IsJNDIInjectionAnalysis):
+        self._IsJNDIInjectionAnalysis = IsJNDIInjectionAnalysis
+
+    @property
+    def IsJNIInjectionAnalysis(self):
+        """是否开启JNI注入检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsJNIInjectionAnalysis
+
+    @IsJNIInjectionAnalysis.setter
+    def IsJNIInjectionAnalysis(self, IsJNIInjectionAnalysis):
+        self._IsJNIInjectionAnalysis = IsJNIInjectionAnalysis
+
+    @property
+    def IsWebshellBackdoorAnalysis(self):
+        """是否开启Webshell后门检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsWebshellBackdoorAnalysis
+
+    @IsWebshellBackdoorAnalysis.setter
+    def IsWebshellBackdoorAnalysis(self, IsWebshellBackdoorAnalysis):
+        self._IsWebshellBackdoorAnalysis = IsWebshellBackdoorAnalysis
+
+    @property
+    def IsDeserializationAnalysis(self):
+        """是否开启反序列化检测（0-关闭，1-开启）
+        :rtype: int
+        """
+        return self._IsDeserializationAnalysis
+
+    @IsDeserializationAnalysis.setter
+    def IsDeserializationAnalysis(self, IsDeserializationAnalysis):
+        self._IsDeserializationAnalysis = IsDeserializationAnalysis
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4367,6 +4715,18 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsMemoryHijackingAnalysis = params.get("IsMemoryHijackingAnalysis")
         self._LogIndexType = params.get("LogIndexType")
         self._LogTraceIdKey = params.get("LogTraceIdKey")
+        self._IsDeleteAnyFileAnalysis = params.get("IsDeleteAnyFileAnalysis")
+        self._IsReadAnyFileAnalysis = params.get("IsReadAnyFileAnalysis")
+        self._IsUploadAnyFileAnalysis = params.get("IsUploadAnyFileAnalysis")
+        self._IsIncludeAnyFileAnalysis = params.get("IsIncludeAnyFileAnalysis")
+        self._IsDirectoryTraversalAnalysis = params.get("IsDirectoryTraversalAnalysis")
+        self._IsTemplateEngineInjectionAnalysis = params.get("IsTemplateEngineInjectionAnalysis")
+        self._IsScriptEngineInjectionAnalysis = params.get("IsScriptEngineInjectionAnalysis")
+        self._IsExpressionInjectionAnalysis = params.get("IsExpressionInjectionAnalysis")
+        self._IsJNDIInjectionAnalysis = params.get("IsJNDIInjectionAnalysis")
+        self._IsJNIInjectionAnalysis = params.get("IsJNIInjectionAnalysis")
+        self._IsWebshellBackdoorAnalysis = params.get("IsWebshellBackdoorAnalysis")
+        self._IsDeserializationAnalysis = params.get("IsDeserializationAnalysis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2685,6 +2685,121 @@ class CompanyStateInfo(AbstractModel):
         
 
 
+class ControlAIConversationRequest(AbstractModel):
+    """ControlAIConversation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: 会话 ID
+        :type SessionId: str
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _Command: 控制命令，目前支持命令如下：
+
+- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+        :type Command: str
+        :param _ServerPushText: 服务端发送播报文本命令，当Command为ServerPushText时必填
+        :type ServerPushText: :class:`tencentcloud.ccc.v20200210.models.ServerPushText`
+        """
+        self._SessionId = None
+        self._SdkAppId = None
+        self._Command = None
+        self._ServerPushText = None
+
+    @property
+    def SessionId(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Command(self):
+        """控制命令，目前支持命令如下：
+
+- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def ServerPushText(self):
+        """服务端发送播报文本命令，当Command为ServerPushText时必填
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ServerPushText`
+        """
+        return self._ServerPushText
+
+    @ServerPushText.setter
+    def ServerPushText(self, ServerPushText):
+        self._ServerPushText = ServerPushText
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._SdkAppId = params.get("SdkAppId")
+        self._Command = params.get("Command")
+        if params.get("ServerPushText") is not None:
+            self._ServerPushText = ServerPushText()
+            self._ServerPushText._deserialize(params.get("ServerPushText"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlAIConversationResponse(AbstractModel):
+    """ControlAIConversation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAIAgentCallRequest(AbstractModel):
     """CreateAIAgentCall请求参数结构体
 
@@ -14924,6 +15039,139 @@ class ServeParticipant(AbstractModel):
         self._StartTimestamp = params.get("StartTimestamp")
         self._SkillGroupName = params.get("SkillGroupName")
         self._CustomRecordURL = params.get("CustomRecordURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerPushText(AbstractModel):
+    """服务端控制AI对话机器人播报指定文本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 服务端推送播报文本
+        :type Text: str
+        :param _Interrupt: 是否允许该文本打断机器人说话
+        :type Interrupt: bool
+        :param _StopAfterPlay: 播报完文本后，是否自动关闭对话任务
+        :type StopAfterPlay: bool
+        :param _Audio: 服务端推送播报音频
+    格式说明：音频必须为单声道，采样率必须跟对应TTS的采样率保持一致，编码为Base64字符串。
+    输入规则：当提供Audio字段时，将不接受Text字段的输入。系统将直接播放Audio字段中的音频内容。
+        :type Audio: str
+        :param _DropMode: 默认为0，仅在Interrupt为false时有效
+- 0表示当前有交互发生时，会丢弃Interrupt为false的消息
+- 1表示当前有交互发生时，不会丢弃Interrupt为false的消息，而是缓存下来，等待当前交互结束后，再去处理
+
+注意：DropMode为1时，允许缓存多个消息，如果后续出现了打断，缓存的消息会被清空
+        :type DropMode: int
+        :param _Priority: ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。**目前仅支持传入0，如果需要传入1，请提工单联系我们添加权限。**
+注意：在接收到Priority=1的消息后，后续其他任何消息都会被忽略（包括Priority=1的消息），直到Priority=1的消息处理结束。该字段可与Interrupt、DropMode字段配合使用。
+例子：
+- Priority=1、Interrupt=true，会打断现有交互，立刻播报，播报过程中不会被打断
+- Priority=1、Interrupt=false、DropMode=1，会等待当前交互结束，再进行播报，播报过程中不会被打断
+
+        :type Priority: int
+        """
+        self._Text = None
+        self._Interrupt = None
+        self._StopAfterPlay = None
+        self._Audio = None
+        self._DropMode = None
+        self._Priority = None
+
+    @property
+    def Text(self):
+        """服务端推送播报文本
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Interrupt(self):
+        """是否允许该文本打断机器人说话
+        :rtype: bool
+        """
+        return self._Interrupt
+
+    @Interrupt.setter
+    def Interrupt(self, Interrupt):
+        self._Interrupt = Interrupt
+
+    @property
+    def StopAfterPlay(self):
+        """播报完文本后，是否自动关闭对话任务
+        :rtype: bool
+        """
+        return self._StopAfterPlay
+
+    @StopAfterPlay.setter
+    def StopAfterPlay(self, StopAfterPlay):
+        self._StopAfterPlay = StopAfterPlay
+
+    @property
+    def Audio(self):
+        """服务端推送播报音频
+    格式说明：音频必须为单声道，采样率必须跟对应TTS的采样率保持一致，编码为Base64字符串。
+    输入规则：当提供Audio字段时，将不接受Text字段的输入。系统将直接播放Audio字段中的音频内容。
+        :rtype: str
+        """
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def DropMode(self):
+        """默认为0，仅在Interrupt为false时有效
+- 0表示当前有交互发生时，会丢弃Interrupt为false的消息
+- 1表示当前有交互发生时，不会丢弃Interrupt为false的消息，而是缓存下来，等待当前交互结束后，再去处理
+
+注意：DropMode为1时，允许缓存多个消息，如果后续出现了打断，缓存的消息会被清空
+        :rtype: int
+        """
+        return self._DropMode
+
+    @DropMode.setter
+    def DropMode(self, DropMode):
+        self._DropMode = DropMode
+
+    @property
+    def Priority(self):
+        """ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。**目前仅支持传入0，如果需要传入1，请提工单联系我们添加权限。**
+注意：在接收到Priority=1的消息后，后续其他任何消息都会被忽略（包括Priority=1的消息），直到Priority=1的消息处理结束。该字段可与Interrupt、DropMode字段配合使用。
+例子：
+- Priority=1、Interrupt=true，会打断现有交互，立刻播报，播报过程中不会被打断
+- Priority=1、Interrupt=false、DropMode=1，会等待当前交互结束，再进行播报，播报过程中不会被打断
+
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Interrupt = params.get("Interrupt")
+        self._StopAfterPlay = params.get("StopAfterPlay")
+        self._Audio = params.get("Audio")
+        self._DropMode = params.get("DropMode")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

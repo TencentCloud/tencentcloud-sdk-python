@@ -25489,6 +25489,7 @@ class FlowBrief(AbstractModel):
         :param _FlowDescription: 合同流程描述信息。
         :type FlowDescription: str
         :param _FlowType: 合同流程的类别分类（如销售合同/入职合同等）。
+该字段将被废弃，不建议使用。	请使用 UserFlowType。
         :type FlowType: str
         :param _FlowStatus: 合同流程当前的签署状态, 会存在下列的状态值
 <ul><li> **0** : 未开启流程(合同中不存在填写环节)</li>
@@ -25512,6 +25513,13 @@ class FlowBrief(AbstractModel):
         :type Creator: str
         :param _Deadline: 合同流程的签署截止时间，格式为Unix标准时间戳（秒）。
         :type Deadline: int
+        :param _UserFlowType: 用户合同的自定义分类。
+
+自定义合同类型的位置，在下图所示地方:
+![image](https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png)
+        :type UserFlowType: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
+        :param _TemplateId: 发起模板时,使用的模板Id
+        :type TemplateId: str
         """
         self._FlowId = None
         self._FlowName = None
@@ -25522,6 +25530,8 @@ class FlowBrief(AbstractModel):
         self._FlowMessage = None
         self._Creator = None
         self._Deadline = None
+        self._UserFlowType = None
+        self._TemplateId = None
 
     @property
     def FlowId(self):
@@ -25559,6 +25569,7 @@ class FlowBrief(AbstractModel):
     @property
     def FlowType(self):
         """合同流程的类别分类（如销售合同/入职合同等）。
+该字段将被废弃，不建议使用。	请使用 UserFlowType。
         :rtype: str
         """
         return self._FlowType
@@ -25634,6 +25645,31 @@ class FlowBrief(AbstractModel):
     def Deadline(self, Deadline):
         self._Deadline = Deadline
 
+    @property
+    def UserFlowType(self):
+        """用户合同的自定义分类。
+
+自定义合同类型的位置，在下图所示地方:
+![image](https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png)
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
+        """
+        return self._UserFlowType
+
+    @UserFlowType.setter
+    def UserFlowType(self, UserFlowType):
+        self._UserFlowType = UserFlowType
+
+    @property
+    def TemplateId(self):
+        """发起模板时,使用的模板Id
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -25645,6 +25681,10 @@ class FlowBrief(AbstractModel):
         self._FlowMessage = params.get("FlowMessage")
         self._Creator = params.get("Creator")
         self._Deadline = params.get("Deadline")
+        if params.get("UserFlowType") is not None:
+            self._UserFlowType = UserFlowType()
+            self._UserFlowType._deserialize(params.get("UserFlowType"))
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26394,7 +26434,8 @@ class FlowDetailInfo(AbstractModel):
         :type FlowId: str
         :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :type FlowName: str
-        :param _FlowType: 合同流程的类别分类（如销售合同/入职合同等）。	
+        :param _FlowType: 合同流程的类别分类（如销售合同/入职合同等）。
+该字段将被废弃，不建议使用。	
         :type FlowType: str
         :param _FlowStatus: 合同流程当前的签署状态, 会存在下列的状态值 <ul><li> **0** : 未开启流程(合同中不存在填写环节)</li> <li> **1** : 待签署</li> <li> **2** : 部分签署</li> <li> **3** : 已拒签</li> <li> **4** : 已签署</li> <li> **5** : 已过期</li> <li> **6** : 已撤销</li> <li> **7** : 未开启流程(合同中存在填写环节)</li> <li> **8** : 等待填写</li> <li> **9** : 部分填写</li> <li> **10** : 已拒填</li> <li> **16** : 已失效（可能因为参与方修改姓名等原因）</li> <li> **21** : 已解除</li></ul>	
         :type FlowStatus: int
@@ -26410,6 +26451,13 @@ class FlowDetailInfo(AbstractModel):
         :type CcInfos: list of FlowApproverDetail
         :param _Creator: 合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。	
         :type Creator: str
+        :param _UserFlowType: 用户合同的自定义分类。
+
+自定义合同类型的位置，在下图所示地方:
+![image](https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png)
+        :type UserFlowType: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
+        :param _TemplateId: 发起模板时,使用的模板Id
+        :type TemplateId: str
         """
         self._FlowId = None
         self._FlowName = None
@@ -26421,6 +26469,8 @@ class FlowDetailInfo(AbstractModel):
         self._FlowApproverInfos = None
         self._CcInfos = None
         self._Creator = None
+        self._UserFlowType = None
+        self._TemplateId = None
 
     @property
     def FlowId(self):
@@ -26446,7 +26496,8 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowType(self):
-        """合同流程的类别分类（如销售合同/入职合同等）。	
+        """合同流程的类别分类（如销售合同/入职合同等）。
+该字段将被废弃，不建议使用。	
         :rtype: str
         """
         return self._FlowType
@@ -26532,6 +26583,31 @@ class FlowDetailInfo(AbstractModel):
     def Creator(self, Creator):
         self._Creator = Creator
 
+    @property
+    def UserFlowType(self):
+        """用户合同的自定义分类。
+
+自定义合同类型的位置，在下图所示地方:
+![image](https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png)
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
+        """
+        return self._UserFlowType
+
+    @UserFlowType.setter
+    def UserFlowType(self, UserFlowType):
+        self._UserFlowType = UserFlowType
+
+    @property
+    def TemplateId(self):
+        """发起模板时,使用的模板Id
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -26554,6 +26630,10 @@ class FlowDetailInfo(AbstractModel):
                 obj._deserialize(item)
                 self._CcInfos.append(obj)
         self._Creator = params.get("Creator")
+        if params.get("UserFlowType") is not None:
+            self._UserFlowType = UserFlowType()
+            self._UserFlowType._deserialize(params.get("UserFlowType"))
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

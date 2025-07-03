@@ -11354,12 +11354,15 @@ class STTConfig(AbstractModel):
         :type VadSilenceTime: int
         :param _HotWordList: 热词表：该参数用于提升识别准确率。 单个热词限制："热词|权重"，单个热词不超过30个字符（最多10个汉字），权重[1-11]或者100，如：“腾讯云|5” 或 “ASR|11”； 热词表限制：多个热词用英文逗号分割，最多支持128个热词，如：“腾讯云|10,语音识别|5,ASR|11”；
         :type HotWordList: str
+        :param _VadLevel: vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :type VadLevel: int
         """
         self._Language = None
         self._AlternativeLanguage = None
         self._CustomParam = None
         self._VadSilenceTime = None
         self._HotWordList = None
+        self._VadLevel = None
 
     @property
     def Language(self):
@@ -11464,6 +11467,17 @@ class STTConfig(AbstractModel):
     def HotWordList(self, HotWordList):
         self._HotWordList = HotWordList
 
+    @property
+    def VadLevel(self):
+        """vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :rtype: int
+        """
+        return self._VadLevel
+
+    @VadLevel.setter
+    def VadLevel(self, VadLevel):
+        self._VadLevel = VadLevel
+
 
     def _deserialize(self, params):
         self._Language = params.get("Language")
@@ -11471,6 +11485,7 @@ class STTConfig(AbstractModel):
         self._CustomParam = params.get("CustomParam")
         self._VadSilenceTime = params.get("VadSilenceTime")
         self._HotWordList = params.get("HotWordList")
+        self._VadLevel = params.get("VadLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11875,6 +11890,8 @@ class ServerPushText(AbstractModel):
 - Priority=1、Interrupt=false、DropMode=1，会等待当前交互结束，再进行播报，播报过程中不会被打断
 
         :type Priority: int
+        :param _AddHistory: 是否将文本加入到llm历史上下文中
+        :type AddHistory: bool
         """
         self._Text = None
         self._Interrupt = None
@@ -11882,6 +11899,7 @@ class ServerPushText(AbstractModel):
         self._Audio = None
         self._DropMode = None
         self._Priority = None
+        self._AddHistory = None
 
     @property
     def Text(self):
@@ -11960,6 +11978,17 @@ class ServerPushText(AbstractModel):
     def Priority(self, Priority):
         self._Priority = Priority
 
+    @property
+    def AddHistory(self):
+        """是否将文本加入到llm历史上下文中
+        :rtype: bool
+        """
+        return self._AddHistory
+
+    @AddHistory.setter
+    def AddHistory(self, AddHistory):
+        self._AddHistory = AddHistory
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -11968,6 +11997,7 @@ class ServerPushText(AbstractModel):
         self._Audio = params.get("Audio")
         self._DropMode = params.get("DropMode")
         self._Priority = params.get("Priority")
+        self._AddHistory = params.get("AddHistory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14765,6 +14795,8 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         :param _TargetUserIdList: 机器人订阅的用户列表
 仅 TranscriptionMode 为 1或者 TranscriptionMode 为无限上麦模式支持传入多个用户列表
         :type TargetUserIdList: list of str
+        :param _VoicePrint: 声纹配置
+        :type VoicePrint: :class:`tencentcloud.trtc.v20190722.models.VoicePrint`
         """
         self._UserId = None
         self._UserSig = None
@@ -14774,6 +14806,7 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         self._TranscriptionMode = None
         self._TargetUserId = None
         self._TargetUserIdList = None
+        self._VoicePrint = None
 
     @property
     def UserId(self):
@@ -14873,6 +14906,17 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
     def TargetUserIdList(self, TargetUserIdList):
         self._TargetUserIdList = TargetUserIdList
 
+    @property
+    def VoicePrint(self):
+        """声纹配置
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoicePrint`
+        """
+        return self._VoicePrint
+
+    @VoicePrint.setter
+    def VoicePrint(self, VoicePrint):
+        self._VoicePrint = VoicePrint
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -14883,6 +14927,9 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         self._TranscriptionMode = params.get("TranscriptionMode")
         self._TargetUserId = params.get("TargetUserId")
         self._TargetUserIdList = params.get("TargetUserIdList")
+        if params.get("VoicePrint") is not None:
+            self._VoicePrint = VoicePrint()
+            self._VoicePrint._deserialize(params.get("VoicePrint"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

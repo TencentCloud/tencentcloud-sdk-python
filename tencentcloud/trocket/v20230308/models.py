@@ -12551,9 +12551,9 @@ class ModifyInstanceRequest(AbstractModel):
         :type Remark: str
         :param _SendReceiveRatio: 消息发送和接收的比例
         :type SendReceiveRatio: float
-        :param _SkuCode: 商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参获得。
+        :param _SkuCode: 商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
         :type SkuCode: str
-        :param _MessageRetention: 消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        :param _MessageRetention: 消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值：DefaultRetention 参数
 - 最小值：RetentionLowerLimit 参数
@@ -12563,12 +12563,12 @@ class ModifyInstanceRequest(AbstractModel):
         :type ScaledTpsEnabled: bool
         :param _AclEnabled: 是否开启ACL
         :type AclEnabled: bool
-        :param _MaxTopicNum: 最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        :param _MaxTopicNum: 最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 最小值和默认值：TopicNumLimit 参数
 - 最大值：TopicNumUpperLimit 参数
         :type MaxTopicNum: int
-        :param _ExtraTopicNum: 免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参中的 TopicNumLimit 参数。
+        :param _ExtraTopicNum: 免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参中的 TopicNumLimit 参数。
         :type ExtraTopicNum: str
         :param _EnableDeletionProtection: 是否开启删除保护
         :type EnableDeletionProtection: bool
@@ -12631,7 +12631,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def SkuCode(self):
-        """商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参获得。
+        """商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
         :rtype: str
         """
         return self._SkuCode
@@ -12642,7 +12642,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def MessageRetention(self):
-        """消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        """消息保留时长（单位：小时），取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 默认值：DefaultRetention 参数
 - 最小值：RetentionLowerLimit 参数
@@ -12679,7 +12679,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def MaxTopicNum(self):
-        """最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参：
+        """最大可创建主题数，取值范围参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参：
 
 - 最小值和默认值：TopicNumLimit 参数
 - 最大值：TopicNumUpperLimit 参数
@@ -12693,7 +12693,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def ExtraTopicNum(self):
-        """免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/107676) 出参中的 TopicNumLimit 参数。
+        """免费额度之外的主题个数，免费额度参考 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参中的 TopicNumLimit 参数。
         :rtype: str
         """
         return self._ExtraTopicNum
@@ -15639,10 +15639,11 @@ class TopicConsumeStats(AbstractModel):
         :type Topic: str
         :param _TopicType: 主题类型，枚举值如下：
 
-- NORMAL：普通消息主题
-- FIFO：顺序消息主题
-- DELAY：延迟消息主题
-- TRANSACTION：事务消息主题
+- UNSPECIFIED：未指定
+- NORMAL：普通消息
+- FIFO：顺序消息
+- DELAY：延时消息
+- TRANSACTION：事务消息
         :type TopicType: str
         :param _QueueNum: 单节点主题队列数量
         :type QueueNum: int
@@ -15675,10 +15676,11 @@ class TopicConsumeStats(AbstractModel):
     def TopicType(self):
         """主题类型，枚举值如下：
 
-- NORMAL：普通消息主题
-- FIFO：顺序消息主题
-- DELAY：延迟消息主题
-- TRANSACTION：事务消息主题
+- UNSPECIFIED：未指定
+- NORMAL：普通消息
+- FIFO：顺序消息
+- DELAY：延时消息
+- TRANSACTION：事务消息
         :rtype: str
         """
         return self._TopicType

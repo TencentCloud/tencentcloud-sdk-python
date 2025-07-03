@@ -23717,21 +23717,19 @@ class EnableOriginACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
+        :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _L7EnableMode: 七层加速域名开启回源白名单的模式。
-<li>all：为站点下的所有七层加速域名开启回源白名单。</li>
-<li>specific：为站点下指定的七层加速域名开启回源白名单。</li>
-当参数为空时，默认为specific。
+        :param _L7EnableMode: 七层加速域名开启源站防护的模式。
+<li>all：针对站点下的所有七层加速域名开启。</li>
+<li>specific：针对站点下指定的七层加速域名开启。</li>当参数为空时，默认为 specific。
         :type L7EnableMode: str
-        :param _L7Hosts: 开启回源白名单的七层加速域名列表，当请求参数 L7EnableMode 为 all 时必须为空。
+        :param _L7Hosts: 开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。L7EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 200 个七层加速域名。
         :type L7Hosts: list of str
-        :param _L4EnableMode: 四层代理 ID 开启回源白名单的模式。
-<li>all：为站点下的所有四层代理开启回源白名单。</li>
-<li>specific：为站点下指定的四层代理 ID 开启回源白名单。</li>
-当参数为空时，默认为specific。
+        :param _L4EnableMode: 四层代理实例开启源站防护的模式。
+<li>all：针对站点下的所有四层代理实例开启。</li>
+<li>specific：针对站点下指定的四层代理实例开启。</li>当参数为空时，默认为 specific。
         :type L4EnableMode: str
-        :param _L4ProxyIds: 开启回源白名单的四层代理 ID 列表，当请求参数 L4EnableMode 为 all 时必须为空。单次最多支持 200 个实例。
+        :param _L4ProxyIds: 开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。L4EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 100 个四层代理实例。
         :type L4ProxyIds: list of str
         """
         self._ZoneId = None
@@ -23742,7 +23740,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """站点ID。
+        """站点 ID。
         :rtype: str
         """
         return self._ZoneId
@@ -23753,10 +23751,9 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L7EnableMode(self):
-        """七层加速域名开启回源白名单的模式。
-<li>all：为站点下的所有七层加速域名开启回源白名单。</li>
-<li>specific：为站点下指定的七层加速域名开启回源白名单。</li>
-当参数为空时，默认为specific。
+        """七层加速域名开启源站防护的模式。
+<li>all：针对站点下的所有七层加速域名开启。</li>
+<li>specific：针对站点下指定的七层加速域名开启。</li>当参数为空时，默认为 specific。
         :rtype: str
         """
         return self._L7EnableMode
@@ -23767,7 +23764,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L7Hosts(self):
-        """开启回源白名单的七层加速域名列表，当请求参数 L7EnableMode 为 all 时必须为空。
+        """开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。L7EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 200 个七层加速域名。
         :rtype: list of str
         """
         return self._L7Hosts
@@ -23778,10 +23775,9 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L4EnableMode(self):
-        """四层代理 ID 开启回源白名单的模式。
-<li>all：为站点下的所有四层代理开启回源白名单。</li>
-<li>specific：为站点下指定的四层代理 ID 开启回源白名单。</li>
-当参数为空时，默认为specific。
+        """四层代理实例开启源站防护的模式。
+<li>all：针对站点下的所有四层代理实例开启。</li>
+<li>specific：针对站点下指定的四层代理实例开启。</li>当参数为空时，默认为 specific。
         :rtype: str
         """
         return self._L4EnableMode
@@ -23792,7 +23788,7 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L4ProxyIds(self):
-        """开启回源白名单的四层代理 ID 列表，当请求参数 L4EnableMode 为 all 时必须为空。单次最多支持 200 个实例。
+        """开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。L4EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 100 个四层代理实例。
         :rtype: list of str
         """
         return self._L4ProxyIds

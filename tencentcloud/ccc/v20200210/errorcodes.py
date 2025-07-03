@@ -44,6 +44,9 @@ FAILEDOPERATION_CALLOUTRULEMAXCALLCOUNTCALLEEPERDAYAPPID = 'FailedOperation.Call
 # 触发默认外呼规则，不在可外呼时间
 FAILEDOPERATION_CALLOUTRULENOTWORKTIME = 'FailedOperation.CalloutRuleNotWorkTime'
 
+# ControlAIConversation错误信息
+FAILEDOPERATION_CONTROLAICONVERSATION = 'FailedOperation.ControlAIConversation'
+
 # 当前号码状态不能被修改。
 FAILEDOPERATION_CURSTATENOTALLOWMODIFY = 'FailedOperation.CurStateNotAllowModify'
 
@@ -61,6 +64,9 @@ FAILEDOPERATION_SEATSTATUSBUSY = 'FailedOperation.SeatStatusBusy'
 
 # 会话不存在
 FAILEDOPERATION_SESSIONNOTEXISTS = 'FailedOperation.SessionNotExists'
+
+# 会话不在可控制状态
+FAILEDOPERATION_SESSIONNOTINCONTROLSTATE = 'FailedOperation.SessionNotInControlState'
 
 # 上传文件个数超过限制
 FAILEDOPERATION_UPLOADFILEOVERFLOW = 'FailedOperation.UploadFileOverflow'

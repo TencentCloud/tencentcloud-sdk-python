@@ -529,6 +529,54 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TextToImageLite(self, request):
+        """混元文生图接口，基于混元大模型，根据输入的文本描述智能生成图片
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+
+        :param request: Request instance for TextToImageLite.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.TextToImageLiteRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.TextToImageLiteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToImageLite", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToImageLiteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TextToImageRapid(self, request):
+        """混元文生图接口，基于混元大模型，根据输入的文本描述智能生成图片
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+
+        :param request: Request instance for TextToImageRapid.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.TextToImageRapidRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.TextToImageRapidResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToImageRapid", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToImageRapidResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UploadTrainPortraitImages(self, request):
         """AI 写真分为上传训练图片、训练写真模型（可选跳过）、生成写真图片3个环节，需要依次调用对应接口。
         本接口用于上传人像图片并指定对应的写真模型 ID。上传的图片要求是同一个人，建议上传单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的图片。

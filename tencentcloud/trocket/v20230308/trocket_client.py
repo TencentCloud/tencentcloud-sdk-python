@@ -566,7 +566,7 @@ class TrocketClient(AbstractClient):
     def DescribeFusionInstanceList(self, request):
         """查询集群列表，支持 4.x 和 5.x 集群，其中 Filters 参数使用说明如下：
 
-        - InstanceName 集群名称，支持模糊查询，从 [DescribeInstance](https://cloud.tencent.com/document/api/1493/97866) 接口或控制台获得
+        - InstanceName 集群名称，支持模糊查询，从本接口返回值或控制台获得
         - InstanceId 集群ID，精确查询，从当前接口或控制台获得
         - InstanceType 集群类型，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
         - Version 集群版本，枚举值如下：

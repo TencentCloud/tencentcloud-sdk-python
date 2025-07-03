@@ -15866,11 +15866,14 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
         :type TimePeriod: str
         :param _AutoBackupType: 自动备份类型。目前仅能配置为：1 ，指定时备份。
         :type AutoBackupType: int
+        :param _BackupStorageDays: 全量备份文件保存天数。单位：天。
+        :type BackupStorageDays: int
         """
         self._InstanceId = None
         self._WeekDays = None
         self._TimePeriod = None
         self._AutoBackupType = None
+        self._BackupStorageDays = None
 
     @property
     def InstanceId(self):
@@ -15917,12 +15920,24 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
     def AutoBackupType(self, AutoBackupType):
         self._AutoBackupType = AutoBackupType
 
+    @property
+    def BackupStorageDays(self):
+        """全量备份文件保存天数。单位：天。
+        :rtype: int
+        """
+        return self._BackupStorageDays
+
+    @BackupStorageDays.setter
+    def BackupStorageDays(self, BackupStorageDays):
+        self._BackupStorageDays = BackupStorageDays
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._WeekDays = params.get("WeekDays")
         self._TimePeriod = params.get("TimePeriod")
         self._AutoBackupType = params.get("AutoBackupType")
+        self._BackupStorageDays = params.get("BackupStorageDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
