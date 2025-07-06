@@ -1377,9 +1377,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组 ID。
+        :param _SecurityGroupId: 安全组 ID。可通过 [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/236/15854) 接口获取。
         :type SecurityGroupId: str
-        :param _InstanceIds: 实例 ID 列表，一个或者多个实例 ID 组成的数组。
+        :param _InstanceIds: 实例 ID 列表，一个或者多个实例 ID 组成的数组。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceIds: list of str
         :param _ForReadonlyInstance: 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
         :type ForReadonlyInstance: bool
@@ -1390,7 +1390,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """安全组 ID。
+        """安全组 ID。可通过 [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/236/15854) 接口获取。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -1401,7 +1401,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例 ID 列表，一个或者多个实例 ID 组成的数组。
+        """实例 ID 列表，一个或者多个实例 ID 组成的数组。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -8448,9 +8448,10 @@ class CreateDBInstanceHourRequest(AbstractModel):
 说明：创建非集群版实例时，请根据需要指定实例版本（推荐5.7或8.0），若此参数不填，则默认值为5.6；若创建的是集群版实例，则此参数仅能指定为5.7或8.0。
         :type EngineVersion: str
         :param _UniqVpcId: 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
-说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
+说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。若此项不填，则系统会选择默认的 VPC。
         :type UniqVpcId: str
         :param _UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+说明：若此项不填，则系统会选择默认 VPC 下的默认子网。
         :type UniqSubnetId: str
         :param _ProjectId: 项目 ID，不填为默认项目。
         :type ProjectId: int
@@ -8460,11 +8461,12 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :param _MasterInstanceId: 实例 ID，购买只读实例或者灾备实例时必填，该字段表示只读实例或者灾备实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
         :type MasterInstanceId: str
         :param _InstanceRole: 实例类型，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
-说明：必填项。
+说明：请选择实例类型，不填会默认选择 master。
         :type InstanceRole: str
         :param _MasterRegion: 主实例地域信息，购买灾备、RO实例时，该字段必填。
         :type MasterRegion: str
-        :param _Port: 自定义端口，端口支持范围：[ 1024-65535 ] 。
+        :param _Port: 自定义端口，端口支持范围：[1024 - 65535]。
+说明：不填则默认为3306。
         :type Port: int
         :param _Password: 设置 root 账号密码，密码规则：8 - 64 个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义。
         :type Password: str
@@ -8622,7 +8624,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
     @property
     def UniqVpcId(self):
         """私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
-说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
+说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。若此项不填，则系统会选择默认的 VPC。
         :rtype: str
         """
         return self._UniqVpcId
@@ -8634,6 +8636,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
     @property
     def UniqSubnetId(self):
         """私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+说明：若此项不填，则系统会选择默认 VPC 下的默认子网。
         :rtype: str
         """
         return self._UniqSubnetId
@@ -8679,7 +8682,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
     @property
     def InstanceRole(self):
         """实例类型，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
-说明：必填项。
+说明：请选择实例类型，不填会默认选择 master。
         :rtype: str
         """
         return self._InstanceRole
@@ -8701,7 +8704,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Port(self):
-        """自定义端口，端口支持范围：[ 1024-65535 ] 。
+        """自定义端口，端口支持范围：[1024 - 65535]。
+说明：不填则默认为3306。
         :rtype: int
         """
         return self._Port
@@ -9180,18 +9184,20 @@ class CreateDBInstanceRequest(AbstractModel):
 说明：若您创建单节点、双节点、三节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建集群版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。
         :type Zone: str
         :param _UniqVpcId: 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
-说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
+说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。若此项不填，则系统会选择默认的 VPC。
         :type UniqVpcId: str
         :param _UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+说明：若此项不填，则系统会选择默认 VPC 下的默认子网。
         :type UniqSubnetId: str
         :param _ProjectId: 项目 ID，不填为默认项目。购买只读实例和灾备实例时，项目 ID 默认和主实例保持一致。
         :type ProjectId: int
         :param _Port: 自定义端口，端口支持范围：[ 1024-65535 ]。
+说明：若此项不填，则默认为3306。
         :type Port: int
         :param _InstanceRole: 实例类型，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
-说明：必填项。
+说明：请选择实例类型，不填会默认选择 master。
         :type InstanceRole: str
-        :param _MasterInstanceId: 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
+        :param _MasterInstanceId: 实例 ID，购买只读实例或灾备实例时必填，该字段表示只读实例或灾备实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
         :type MasterInstanceId: str
         :param _EngineVersion: MySQL 版本，值包括：5.5、5.6、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
 说明：创建非集群版实例时，请根据需要指定实例版本（推荐5.7或8.0），若此参数不填，则默认值为5.6；若创建的是集群版实例，则此参数仅能指定为5.7或8.0。
@@ -9210,7 +9216,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ParamList: list of ParamInfo
         :param _BackupZone: 备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数。
         :type BackupZone: str
-        :param _AutoRenewFlag: 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。
+        :param _AutoRenewFlag: 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。默认为0。
         :type AutoRenewFlag: int
         :param _MasterRegion: 主实例地域信息，购买灾备、RO实例时，该字段必填。
         :type MasterRegion: str
@@ -9364,7 +9370,7 @@ class CreateDBInstanceRequest(AbstractModel):
     @property
     def UniqVpcId(self):
         """私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
-说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
+说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。若此项不填，则系统会选择默认的 VPC。
         :rtype: str
         """
         return self._UniqVpcId
@@ -9376,6 +9382,7 @@ class CreateDBInstanceRequest(AbstractModel):
     @property
     def UniqSubnetId(self):
         """私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+说明：若此项不填，则系统会选择默认 VPC 下的默认子网。
         :rtype: str
         """
         return self._UniqSubnetId
@@ -9398,6 +9405,7 @@ class CreateDBInstanceRequest(AbstractModel):
     @property
     def Port(self):
         """自定义端口，端口支持范围：[ 1024-65535 ]。
+说明：若此项不填，则默认为3306。
         :rtype: int
         """
         return self._Port
@@ -9409,7 +9417,7 @@ class CreateDBInstanceRequest(AbstractModel):
     @property
     def InstanceRole(self):
         """实例类型，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
-说明：必填项。
+说明：请选择实例类型，不填会默认选择 master。
         :rtype: str
         """
         return self._InstanceRole
@@ -9420,7 +9428,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MasterInstanceId(self):
-        """实例 ID，购买只读实例时必填，该字段表示只读实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
+        """实例 ID，购买只读实例或灾备实例时必填，该字段表示只读实例或灾备实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
         :rtype: str
         """
         return self._MasterInstanceId
@@ -9511,7 +9519,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。
+        """自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。默认为0。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -10551,7 +10559,7 @@ class CustomConfig(AbstractModel):
         :type Type: str
         :param _DeviceType: 设备类型
         :type DeviceType: str
-        :param _Memory: 内存
+        :param _Memory: 内存，单位为MB
         :type Memory: int
         :param _Cpu: 核数
         :type Cpu: int
@@ -10597,7 +10605,7 @@ class CustomConfig(AbstractModel):
 
     @property
     def Memory(self):
-        """内存
+        """内存，单位为MB
         :rtype: int
         """
         return self._Memory
@@ -15181,9 +15189,9 @@ class DescribeCdbProxyInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
-        :param _ProxyGroupId: 代理组ID
+        :param _ProxyGroupId: 代理组 ID。
         :type ProxyGroupId: str
         """
         self._InstanceId = None
@@ -15191,7 +15199,7 @@ class DescribeCdbProxyInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -15202,7 +15210,7 @@ class DescribeCdbProxyInfoRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        """代理组ID
+        """代理组 ID。
         :rtype: str
         """
         return self._ProxyGroupId
@@ -16512,14 +16520,16 @@ class DescribeDBInstanceInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+说明：仅主实例支持查询，此项仅支持输入主实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+说明：仅主实例支持查询，此项仅支持输入主实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -20446,7 +20456,7 @@ class DescribeProxyCustomConfRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
         :param _Offset: 分页
         :type Offset: int
@@ -20459,7 +20469,7 @@ class DescribeProxyCustomConfRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -21408,11 +21418,11 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
-说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
         :type InstanceId: str
-        :param _RoGroupId: 只读组 ID。
-说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
+        :param _RoGroupId: 只读组 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
+说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
         :type RoGroupId: str
         """
         self._InstanceId = None
@@ -21420,8 +21430,8 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID。
-说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
         :rtype: str
         """
         return self._InstanceId
@@ -21432,8 +21442,8 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     @property
     def RoGroupId(self):
-        """只读组 ID。
-说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
+        """只读组 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
+说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
         :rtype: str
         """
         return self._RoGroupId

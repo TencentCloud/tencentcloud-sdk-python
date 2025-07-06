@@ -13329,6 +13329,8 @@ class BashEventsInfoNew(AbstractModel):
         :type MachineType: int
         :param _DetectBy: 检测来源 0:bash日志 1:实时监控
         :type DetectBy: int
+        :param _BashCmdDecoded: 执行命令(解码后)
+        :type BashCmdDecoded: str
         """
         self._Id = None
         self._Uuid = None
@@ -13357,6 +13359,7 @@ class BashEventsInfoNew(AbstractModel):
         self._Pid = None
         self._MachineType = None
         self._DetectBy = None
+        self._BashCmdDecoded = None
 
     @property
     def Id(self):
@@ -13655,6 +13658,17 @@ class BashEventsInfoNew(AbstractModel):
     def DetectBy(self, DetectBy):
         self._DetectBy = DetectBy
 
+    @property
+    def BashCmdDecoded(self):
+        """执行命令(解码后)
+        :rtype: str
+        """
+        return self._BashCmdDecoded
+
+    @BashCmdDecoded.setter
+    def BashCmdDecoded(self, BashCmdDecoded):
+        self._BashCmdDecoded = BashCmdDecoded
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -13684,6 +13698,7 @@ class BashEventsInfoNew(AbstractModel):
         self._Pid = params.get("Pid")
         self._MachineType = params.get("MachineType")
         self._DetectBy = params.get("DetectBy")
+        self._BashCmdDecoded = params.get("BashCmdDecoded")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46269,6 +46284,12 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type ProtectMode: int
         :param _ProtectFileScope: 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
         :type ProtectFileScope: int
+        :param _DoClean: 执行清理开关 0未开启 1开启
+        :type DoClean: int
+        :param _QuaraUuids: 自选的隔离主机集合
+        :type QuaraUuids: list of str
+        :param _QuaraScope: 用户选择的隔离范围，0：默认全隔离 1：用户自选
+        :type QuaraScope: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -46290,6 +46311,9 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._EnableMemShellScan = None
         self._ProtectMode = None
         self._ProtectFileScope = None
+        self._DoClean = None
+        self._QuaraUuids = None
+        self._QuaraScope = None
         self._RequestId = None
 
     @property
@@ -46491,6 +46515,39 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._ProtectFileScope = ProtectFileScope
 
     @property
+    def DoClean(self):
+        """执行清理开关 0未开启 1开启
+        :rtype: int
+        """
+        return self._DoClean
+
+    @DoClean.setter
+    def DoClean(self, DoClean):
+        self._DoClean = DoClean
+
+    @property
+    def QuaraUuids(self):
+        """自选的隔离主机集合
+        :rtype: list of str
+        """
+        return self._QuaraUuids
+
+    @QuaraUuids.setter
+    def QuaraUuids(self, QuaraUuids):
+        self._QuaraUuids = QuaraUuids
+
+    @property
+    def QuaraScope(self):
+        """用户选择的隔离范围，0：默认全隔离 1：用户自选
+        :rtype: int
+        """
+        return self._QuaraScope
+
+    @QuaraScope.setter
+    def QuaraScope(self, QuaraScope):
+        self._QuaraScope = QuaraScope
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -46521,6 +46578,9 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._EnableMemShellScan = params.get("EnableMemShellScan")
         self._ProtectMode = params.get("ProtectMode")
         self._ProtectFileScope = params.get("ProtectFileScope")
+        self._DoClean = params.get("DoClean")
+        self._QuaraUuids = params.get("QuaraUuids")
+        self._QuaraScope = params.get("QuaraScope")
         self._RequestId = params.get("RequestId")
 
 
@@ -78620,6 +78680,10 @@ class MalWareList(AbstractModel):
         :type MD5: str
         :param _MachineExtraInfo: 附加信息
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param _DoClean: 是否可以清理
+        :type DoClean: bool
+        :param _FirstDetectionMethod: 首次检出方式 0扫描；1实时监控
+        :type FirstDetectionMethod: int
         """
         self._HostIp = None
         self._Uuid = None
@@ -78640,6 +78704,8 @@ class MalWareList(AbstractModel):
         self._Quuid = None
         self._MD5 = None
         self._MachineExtraInfo = None
+        self._DoClean = None
+        self._FirstDetectionMethod = None
 
     @property
     def HostIp(self):
@@ -78850,6 +78916,28 @@ class MalWareList(AbstractModel):
     def MachineExtraInfo(self, MachineExtraInfo):
         self._MachineExtraInfo = MachineExtraInfo
 
+    @property
+    def DoClean(self):
+        """是否可以清理
+        :rtype: bool
+        """
+        return self._DoClean
+
+    @DoClean.setter
+    def DoClean(self, DoClean):
+        self._DoClean = DoClean
+
+    @property
+    def FirstDetectionMethod(self):
+        """首次检出方式 0扫描；1实时监控
+        :rtype: int
+        """
+        return self._FirstDetectionMethod
+
+    @FirstDetectionMethod.setter
+    def FirstDetectionMethod(self, FirstDetectionMethod):
+        self._FirstDetectionMethod = FirstDetectionMethod
+
 
     def _deserialize(self, params):
         self._HostIp = params.get("HostIp")
@@ -78873,6 +78961,8 @@ class MalWareList(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._DoClean = params.get("DoClean")
+        self._FirstDetectionMethod = params.get("FirstDetectionMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79052,6 +79142,8 @@ class MalwareInfo(AbstractModel):
         :type FileExists: bool
         :param _ProcessExists: 木马进程是否存在
         :type ProcessExists: bool
+        :param _FirstDetectionMethod: 首次检出方式0扫描;1实时监控
+        :type FirstDetectionMethod: int
         """
         self._VirusName = None
         self._FileSize = None
@@ -79086,6 +79178,7 @@ class MalwareInfo(AbstractModel):
         self._References = None
         self._FileExists = None
         self._ProcessExists = None
+        self._FirstDetectionMethod = None
 
     @property
     def VirusName(self):
@@ -79450,6 +79543,17 @@ class MalwareInfo(AbstractModel):
     def ProcessExists(self, ProcessExists):
         self._ProcessExists = ProcessExists
 
+    @property
+    def FirstDetectionMethod(self):
+        """首次检出方式0扫描;1实时监控
+        :rtype: int
+        """
+        return self._FirstDetectionMethod
+
+    @FirstDetectionMethod.setter
+    def FirstDetectionMethod(self, FirstDetectionMethod):
+        self._FirstDetectionMethod = FirstDetectionMethod
+
 
     def _deserialize(self, params):
         self._VirusName = params.get("VirusName")
@@ -79487,6 +79591,7 @@ class MalwareInfo(AbstractModel):
         self._References = params.get("References")
         self._FileExists = params.get("FileExists")
         self._ProcessExists = params.get("ProcessExists")
+        self._FirstDetectionMethod = params.get("FirstDetectionMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -83498,6 +83603,10 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type ProtectMode: int
         :param _ProtectFileScope: 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
         :type ProtectFileScope: int
+        :param _QuaraUuids: 自选的隔离主机集合
+        :type QuaraUuids: list of str
+        :param _QuaraScope: 用户选择的隔离范围，0：默认全隔离 1：用户自选
+        :type QuaraScope: int
         """
         self._CheckPattern = None
         self._StartTime = None
@@ -83516,6 +83625,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._EnableMemShellScan = None
         self._ProtectMode = None
         self._ProtectFileScope = None
+        self._QuaraUuids = None
+        self._QuaraScope = None
 
     @property
     def CheckPattern(self):
@@ -83705,6 +83816,28 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
     def ProtectFileScope(self, ProtectFileScope):
         self._ProtectFileScope = ProtectFileScope
 
+    @property
+    def QuaraUuids(self):
+        """自选的隔离主机集合
+        :rtype: list of str
+        """
+        return self._QuaraUuids
+
+    @QuaraUuids.setter
+    def QuaraUuids(self, QuaraUuids):
+        self._QuaraUuids = QuaraUuids
+
+    @property
+    def QuaraScope(self):
+        """用户选择的隔离范围，0：默认全隔离 1：用户自选
+        :rtype: int
+        """
+        return self._QuaraScope
+
+    @QuaraScope.setter
+    def QuaraScope(self, QuaraScope):
+        self._QuaraScope = QuaraScope
+
 
     def _deserialize(self, params):
         self._CheckPattern = params.get("CheckPattern")
@@ -83724,6 +83857,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._EnableMemShellScan = params.get("EnableMemShellScan")
         self._ProtectMode = params.get("ProtectMode")
         self._ProtectFileScope = params.get("ProtectFileScope")
+        self._QuaraUuids = params.get("QuaraUuids")
+        self._QuaraScope = params.get("QuaraScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -95246,6 +95381,8 @@ class RiskProcessEvent(AbstractModel):
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         :param _Uuid: 主机uuid
         :type Uuid: str
+        :param _FirstDetectionMethod: 首次检出方式 0扫描;1实时监控
+        :type FirstDetectionMethod: int
         """
         self._EventId = None
         self._HostName = None
@@ -95266,6 +95403,7 @@ class RiskProcessEvent(AbstractModel):
         self._OnlineStatus = None
         self._MachineExtraInfo = None
         self._Uuid = None
+        self._FirstDetectionMethod = None
 
     @property
     def EventId(self):
@@ -95476,6 +95614,17 @@ class RiskProcessEvent(AbstractModel):
     def Uuid(self, Uuid):
         self._Uuid = Uuid
 
+    @property
+    def FirstDetectionMethod(self):
+        """首次检出方式 0扫描;1实时监控
+        :rtype: int
+        """
+        return self._FirstDetectionMethod
+
+    @FirstDetectionMethod.setter
+    def FirstDetectionMethod(self, FirstDetectionMethod):
+        self._FirstDetectionMethod = FirstDetectionMethod
+
 
     def _deserialize(self, params):
         self._EventId = params.get("EventId")
@@ -95499,6 +95648,7 @@ class RiskProcessEvent(AbstractModel):
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._Uuid = params.get("Uuid")
+        self._FirstDetectionMethod = params.get("FirstDetectionMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -96430,10 +96580,16 @@ class ScanVulResponse(AbstractModel):
         r"""
         :param _TaskId: 任务id
         :type TaskId: int
+        :param _BasicVersionCount: 自选主机里面包含基础版个数
+        :type BasicVersionCount: int
+        :param _SuccessCount: 创建扫描任务机器个数
+        :type SuccessCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
+        self._BasicVersionCount = None
+        self._SuccessCount = None
         self._RequestId = None
 
     @property
@@ -96446,6 +96602,28 @@ class ScanVulResponse(AbstractModel):
     @TaskId.setter
     def TaskId(self, TaskId):
         self._TaskId = TaskId
+
+    @property
+    def BasicVersionCount(self):
+        """自选主机里面包含基础版个数
+        :rtype: int
+        """
+        return self._BasicVersionCount
+
+    @BasicVersionCount.setter
+    def BasicVersionCount(self, BasicVersionCount):
+        self._BasicVersionCount = BasicVersionCount
+
+    @property
+    def SuccessCount(self):
+        """创建扫描任务机器个数
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
 
     @property
     def RequestId(self):
@@ -96461,6 +96639,8 @@ class ScanVulResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._BasicVersionCount = params.get("BasicVersionCount")
+        self._SuccessCount = params.get("SuccessCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -105957,7 +106137,7 @@ class WarningObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高位命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线，14：恶意请求，15: 网络攻击，16：Windows系统漏洞，17：Linux软件漏洞
+        :param _Type: 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高危命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线，14：恶意请求，15: 网络攻击，16：Windows系统漏洞，17：Linux软件漏洞
         :type Type: int
         :param _DisablePhoneWarning: 1: 关闭告警 0: 开启告警
         :type DisablePhoneWarning: int
@@ -105969,6 +106149,8 @@ class WarningObject(AbstractModel):
         :type ControlBits: str
         :param _HostRange: 告警主机范围类型，0:全部主机，1:按所属项目选，2:按腾讯云标签选，3:按主机安全标签选，4:自选主机
         :type HostRange: int
+        :param _Unit: 单位
+        :type Unit: str
         """
         self._Type = None
         self._DisablePhoneWarning = None
@@ -105976,10 +106158,11 @@ class WarningObject(AbstractModel):
         self._EndTime = None
         self._ControlBits = None
         self._HostRange = None
+        self._Unit = None
 
     @property
     def Type(self):
-        """事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高位命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线，14：恶意请求，15: 网络攻击，16：Windows系统漏洞，17：Linux软件漏洞
+        """事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高危命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线，14：恶意请求，15: 网络攻击，16：Windows系统漏洞，17：Linux软件漏洞
         :rtype: int
         """
         return self._Type
@@ -106043,6 +106226,17 @@ class WarningObject(AbstractModel):
     def HostRange(self, HostRange):
         self._HostRange = HostRange
 
+    @property
+    def Unit(self):
+        """单位
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -106051,6 +106245,7 @@ class WarningObject(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._ControlBits = params.get("ControlBits")
         self._HostRange = params.get("HostRange")
+        self._Unit = params.get("Unit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

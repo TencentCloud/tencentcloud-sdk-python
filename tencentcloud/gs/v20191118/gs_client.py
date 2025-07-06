@@ -675,7 +675,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstancesByApps(self, request):
-        """查询安装指定应用的安卓实例
+        """批量查询安装指定应用的安卓实例
 
         :param request: Request instance for DescribeAndroidInstancesByApps.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstancesByAppsRequest`

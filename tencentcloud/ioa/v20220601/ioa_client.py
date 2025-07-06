@@ -210,6 +210,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceVirtualGroups(self, request):
+        """查询终端自定义分组列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceVirtualGroups
+
+        :param request: Request instance for DescribeDeviceVirtualGroups.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceVirtualGroupsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceVirtualGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceVirtualGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceVirtualGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDevices(self, request):
         """查询满足条件的终端数据详情，私有化调用path为：/capi/Assets/Device/DescribeDevices
 

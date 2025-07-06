@@ -7242,6 +7242,9 @@ class BizCatalogsInfo(AbstractModel):
         :param _Position: 类目顺序
 注意：此字段可能返回 null，表示取不到有效值。
         :type Position: int
+        :param _NameEn: 类目名称英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameEn: str
         """
         self._AppId = None
         self._Id = None
@@ -7249,6 +7252,7 @@ class BizCatalogsInfo(AbstractModel):
         self._Name = None
         self._ParentId = None
         self._Position = None
+        self._NameEn = None
 
     @property
     def AppId(self):
@@ -7322,6 +7326,18 @@ class BizCatalogsInfo(AbstractModel):
     def Position(self, Position):
         self._Position = Position
 
+    @property
+    def NameEn(self):
+        """类目名称英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NameEn
+
+    @NameEn.setter
+    def NameEn(self, NameEn):
+        self._NameEn = NameEn
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -7330,6 +7346,7 @@ class BizCatalogsInfo(AbstractModel):
         self._Name = params.get("Name")
         self._ParentId = params.get("ParentId")
         self._Position = params.get("Position")
+        self._NameEn = params.get("NameEn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

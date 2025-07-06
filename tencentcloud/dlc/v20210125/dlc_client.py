@@ -348,6 +348,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelTasks(self, request):
+        """批量取消任务
+
+        :param request: Request instance for CancelTasks.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CancelTasksRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CancelTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckDataEngineConfigPairsValidity(self, request):
         """本接口（CheckDataEngineConfigPairsValidity）用于检查引擎用户自定义参数的有效性
 

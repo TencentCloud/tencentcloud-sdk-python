@@ -4959,6 +4959,8 @@ class CreateClusterRequest(AbstractModel):
         :type CosBucket: str
         :param _NodeMarks: 节点标识信息，目前只提供给tf平台使用
         :type NodeMarks: list of NodeMark
+        :param _LoadBalancerId: clb id
+        :type LoadBalancerId: str
         """
         self._ProductVersion = None
         self._EnableSupportHAFlag = None
@@ -4982,6 +4984,7 @@ class CreateClusterRequest(AbstractModel):
         self._ZoneResourceConfiguration = None
         self._CosBucket = None
         self._NodeMarks = None
+        self._LoadBalancerId = None
 
     @property
     def ProductVersion(self):
@@ -5244,6 +5247,17 @@ class CreateClusterRequest(AbstractModel):
     def NodeMarks(self, NodeMarks):
         self._NodeMarks = NodeMarks
 
+    @property
+    def LoadBalancerId(self):
+        """clb id
+        :rtype: str
+        """
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
 
     def _deserialize(self, params):
         self._ProductVersion = params.get("ProductVersion")
@@ -5301,6 +5315,7 @@ class CreateClusterRequest(AbstractModel):
                 obj = NodeMark()
                 obj._deserialize(item)
                 self._NodeMarks.append(obj)
+        self._LoadBalancerId = params.get("LoadBalancerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10545,12 +10560,15 @@ class DescribeInstanceRenewNodesResponse(AbstractModel):
         :param _MetaInfo: 用户所有的标签键列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaInfo: list of str
+        :param _RedisInfo: 集群依赖的Redis实例Id
+        :type RedisInfo: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCnt = None
         self._NodeList = None
         self._MetaInfo = None
+        self._RedisInfo = None
         self._RequestId = None
 
     @property
@@ -10589,6 +10607,17 @@ class DescribeInstanceRenewNodesResponse(AbstractModel):
         self._MetaInfo = MetaInfo
 
     @property
+    def RedisInfo(self):
+        """集群依赖的Redis实例Id
+        :rtype: list of str
+        """
+        return self._RedisInfo
+
+    @RedisInfo.setter
+    def RedisInfo(self, RedisInfo):
+        self._RedisInfo = RedisInfo
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10609,6 +10638,7 @@ class DescribeInstanceRenewNodesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._NodeList.append(obj)
         self._MetaInfo = params.get("MetaInfo")
+        self._RedisInfo = params.get("RedisInfo")
         self._RequestId = params.get("RequestId")
 
 

@@ -728,6 +728,8 @@ class AndroidInstanceAppInfo(AbstractModel):
         :type PackageVersion: str
         :param _PackageLabel: 应用包标签
         :type PackageLabel: str
+        :param _VersionName: 应用包版本号
+        :type VersionName: str
         """
         self._AndroidAppId = None
         self._Name = None
@@ -735,6 +737,7 @@ class AndroidInstanceAppInfo(AbstractModel):
         self._PackageName = None
         self._PackageVersion = None
         self._PackageLabel = None
+        self._VersionName = None
 
     @property
     def AndroidAppId(self):
@@ -782,6 +785,8 @@ class AndroidInstanceAppInfo(AbstractModel):
 
     @property
     def PackageVersion(self):
+        warnings.warn("parameter `PackageVersion` is deprecated", DeprecationWarning) 
+
         """应用包版本
         :rtype: str
         """
@@ -789,6 +794,8 @@ class AndroidInstanceAppInfo(AbstractModel):
 
     @PackageVersion.setter
     def PackageVersion(self, PackageVersion):
+        warnings.warn("parameter `PackageVersion` is deprecated", DeprecationWarning) 
+
         self._PackageVersion = PackageVersion
 
     @property
@@ -802,6 +809,17 @@ class AndroidInstanceAppInfo(AbstractModel):
     def PackageLabel(self, PackageLabel):
         self._PackageLabel = PackageLabel
 
+    @property
+    def VersionName(self):
+        """应用包版本号
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
@@ -810,6 +828,7 @@ class AndroidInstanceAppInfo(AbstractModel):
         self._PackageName = params.get("PackageName")
         self._PackageVersion = params.get("PackageVersion")
         self._PackageLabel = params.get("PackageLabel")
+        self._VersionName = params.get("VersionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1112,6 +1131,74 @@ class AndroidInstanceLabel(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AndroidInstanceLabelDetail(AbstractModel):
+    """安卓实例标签详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 标签
+        :type Label: :class:`tencentcloud.gs.v20191118.models.AndroidInstanceLabel`
+        :param _Description: 标签描述
+        :type Description: str
+        :param _CreateTime: 标签创建时间
+        :type CreateTime: str
+        """
+        self._Label = None
+        self._Description = None
+        self._CreateTime = None
+
+    @property
+    def Label(self):
+        """标签
+        :rtype: :class:`tencentcloud.gs.v20191118.models.AndroidInstanceLabel`
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Description(self):
+        """标签描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        """标签创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        if params.get("Label") is not None:
+            self._Label = AndroidInstanceLabel()
+            self._Label._deserialize(params.get("Label"))
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2462,11 +2549,14 @@ class CreateAndroidInstanceLabelRequest(AbstractModel):
         r"""
         :param _Key: 标签键
         :type Key: str
-        :param _Value: 标签值
+        :param _Value: 标签值。普通场景下，该值不需要填写；高级场景下，需要两个层级进行分组时才填写。
         :type Value: str
+        :param _Description: 标签描述
+        :type Description: str
         """
         self._Key = None
         self._Value = None
+        self._Description = None
 
     @property
     def Key(self):
@@ -2481,7 +2571,7 @@ class CreateAndroidInstanceLabelRequest(AbstractModel):
 
     @property
     def Value(self):
-        """标签值
+        """标签值。普通场景下，该值不需要填写；高级场景下，需要两个层级进行分组时才填写。
         :rtype: str
         """
         return self._Value
@@ -2490,10 +2580,22 @@ class CreateAndroidInstanceLabelRequest(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
+    @property
+    def Description(self):
+        """标签描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2967,12 +3069,15 @@ A6：六开
         :type HostSerialNumbers: list of str
         :param _ImageId: 镜像 ID。如果不填，将使用默认的系统镜像
         :type ImageId: str
+        :param _Labels: 安卓实例标签列表
+        :type Labels: list of AndroidInstanceLabel
         """
         self._Zone = None
         self._Type = None
         self._Number = None
         self._HostSerialNumbers = None
         self._ImageId = None
+        self._Labels = None
 
     @property
     def Zone(self):
@@ -3040,6 +3145,17 @@ A6：六开
     def ImageId(self, ImageId):
         self._ImageId = ImageId
 
+    @property
+    def Labels(self):
+        """安卓实例标签列表
+        :rtype: list of AndroidInstanceLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3047,6 +3163,12 @@ A6：六开
         self._Number = params.get("Number")
         self._HostSerialNumbers = params.get("HostSerialNumbers")
         self._ImageId = params.get("ImageId")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = AndroidInstanceLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4636,11 +4758,14 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
         :type Total: int
         :param _Labels: 安卓实例标签列表
         :type Labels: list of AndroidInstanceLabel
+        :param _AndroidInstanceLabels: 安卓实例标签详情列表
+        :type AndroidInstanceLabels: list of AndroidInstanceLabelDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
         self._Labels = None
+        self._AndroidInstanceLabels = None
         self._RequestId = None
 
     @property
@@ -4656,6 +4781,8 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
 
     @property
     def Labels(self):
+        warnings.warn("parameter `Labels` is deprecated", DeprecationWarning) 
+
         """安卓实例标签列表
         :rtype: list of AndroidInstanceLabel
         """
@@ -4663,7 +4790,20 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
 
     @Labels.setter
     def Labels(self, Labels):
+        warnings.warn("parameter `Labels` is deprecated", DeprecationWarning) 
+
         self._Labels = Labels
+
+    @property
+    def AndroidInstanceLabels(self):
+        """安卓实例标签详情列表
+        :rtype: list of AndroidInstanceLabelDetail
+        """
+        return self._AndroidInstanceLabels
+
+    @AndroidInstanceLabels.setter
+    def AndroidInstanceLabels(self, AndroidInstanceLabels):
+        self._AndroidInstanceLabels = AndroidInstanceLabels
 
     @property
     def RequestId(self):
@@ -4685,6 +4825,12 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
                 obj = AndroidInstanceLabel()
                 obj._deserialize(item)
                 self._Labels.append(obj)
+        if params.get("AndroidInstanceLabels") is not None:
+            self._AndroidInstanceLabels = []
+            for item in params.get("AndroidInstanceLabels"):
+                obj = AndroidInstanceLabelDetail()
+                obj._deserialize(item)
+                self._AndroidInstanceLabels.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4932,11 +5078,11 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
         r"""
         :param _Offset: 偏移量，默认为 0	
         :type Offset: int
-        :param _Limit: 限制量，默认为20，最大值为100	
+        :param _Limit: 限制量，默认为 20，最大值为 500	
         :type Limit: int
-        :param _AndroidAppIds: 应用 ID 列表。通过应用 ID 做集合查询
+        :param _AndroidAppIds: 应用 ID 列表。当 AndroidIds 为多条数据时（例如 app1, app2），返回的实例列表为：安装了 app1 应用的实例和安装了 app2 应用的实例集合（并集）。
         :type AndroidAppIds: list of str
-        :param _Filters: 字段过滤器。Filter 的 Name 有以下值： AndroidInstanceId：实例 ID
+        :param _Filters: 字段过滤器，Filter 的 Name 有以下值： AndroidInstanceId：实例 Id
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -4957,7 +5103,7 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制量，默认为20，最大值为100	
+        """限制量，默认为 20，最大值为 500	
         :rtype: int
         """
         return self._Limit
@@ -4968,7 +5114,7 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
 
     @property
     def AndroidAppIds(self):
-        """应用 ID 列表。通过应用 ID 做集合查询
+        """应用 ID 列表。当 AndroidIds 为多条数据时（例如 app1, app2），返回的实例列表为：安装了 app1 应用的实例和安装了 app2 应用的实例集合（并集）。
         :rtype: list of str
         """
         return self._AndroidAppIds
@@ -4979,7 +5125,7 @@ class DescribeAndroidInstancesByAppsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """字段过滤器。Filter 的 Name 有以下值： AndroidInstanceId：实例 ID
+        """字段过滤器，Filter 的 Name 有以下值： AndroidInstanceId：实例 Id
         :rtype: list of Filter
         """
         return self._Filters
@@ -7315,14 +7461,14 @@ class ModifyAndroidInstancesLabelsRequest(AbstractModel):
         r"""
         :param _AndroidInstanceIds: 安卓实例 ID 列表
         :type AndroidInstanceIds: list of str
-        :param _AndroidInstanceLabels: 安卓实例标签列表
-        :type AndroidInstanceLabels: list of AndroidInstanceLabel
         :param _Operation: 操作类型。ADD：标签键不存在的添加新标签，标签键存在的将覆盖原有标签REMOVE：根据标签键删除标签REPLACE：使用请求标签列表替换原来所有标签CLEAR：清除所有标签
         :type Operation: str
+        :param _AndroidInstanceLabels: 安卓实例标签列表
+        :type AndroidInstanceLabels: list of AndroidInstanceLabel
         """
         self._AndroidInstanceIds = None
-        self._AndroidInstanceLabels = None
         self._Operation = None
+        self._AndroidInstanceLabels = None
 
     @property
     def AndroidInstanceIds(self):
@@ -7336,17 +7482,6 @@ class ModifyAndroidInstancesLabelsRequest(AbstractModel):
         self._AndroidInstanceIds = AndroidInstanceIds
 
     @property
-    def AndroidInstanceLabels(self):
-        """安卓实例标签列表
-        :rtype: list of AndroidInstanceLabel
-        """
-        return self._AndroidInstanceLabels
-
-    @AndroidInstanceLabels.setter
-    def AndroidInstanceLabels(self, AndroidInstanceLabels):
-        self._AndroidInstanceLabels = AndroidInstanceLabels
-
-    @property
     def Operation(self):
         """操作类型。ADD：标签键不存在的添加新标签，标签键存在的将覆盖原有标签REMOVE：根据标签键删除标签REPLACE：使用请求标签列表替换原来所有标签CLEAR：清除所有标签
         :rtype: str
@@ -7357,16 +7492,27 @@ class ModifyAndroidInstancesLabelsRequest(AbstractModel):
     def Operation(self, Operation):
         self._Operation = Operation
 
+    @property
+    def AndroidInstanceLabels(self):
+        """安卓实例标签列表
+        :rtype: list of AndroidInstanceLabel
+        """
+        return self._AndroidInstanceLabels
+
+    @AndroidInstanceLabels.setter
+    def AndroidInstanceLabels(self, AndroidInstanceLabels):
+        self._AndroidInstanceLabels = AndroidInstanceLabels
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._Operation = params.get("Operation")
         if params.get("AndroidInstanceLabels") is not None:
             self._AndroidInstanceLabels = []
             for item in params.get("AndroidInstanceLabels"):
                 obj = AndroidInstanceLabel()
                 obj._deserialize(item)
                 self._AndroidInstanceLabels.append(obj)
-        self._Operation = params.get("Operation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

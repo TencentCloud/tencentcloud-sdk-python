@@ -15650,6 +15650,12 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type VoucherIds: list of str
         :param _Zones: 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
         :type Zones: list of str
+        :param _SwitchStartTime: 切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+        :type SwitchStartTime: str
+        :param _SwitchEndTime: 切换结束时间, 格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+        :type SwitchEndTime: str
+        :param _SwitchAutoRetry: 是否自动重试。 0：不自动重试 1：自动重试
+        :type SwitchAutoRetry: int
         """
         self._InstanceId = None
         self._Memory = None
@@ -15657,6 +15663,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._AutoVoucher = None
         self._VoucherIds = None
         self._Zones = None
+        self._SwitchStartTime = None
+        self._SwitchEndTime = None
+        self._SwitchAutoRetry = None
 
     @property
     def InstanceId(self):
@@ -15726,6 +15735,39 @@ class UpgradeDBInstanceRequest(AbstractModel):
     def Zones(self, Zones):
         self._Zones = Zones
 
+    @property
+    def SwitchStartTime(self):
+        """切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+        :rtype: str
+        """
+        return self._SwitchStartTime
+
+    @SwitchStartTime.setter
+    def SwitchStartTime(self, SwitchStartTime):
+        self._SwitchStartTime = SwitchStartTime
+
+    @property
+    def SwitchEndTime(self):
+        """切换结束时间, 格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+        :rtype: str
+        """
+        return self._SwitchEndTime
+
+    @SwitchEndTime.setter
+    def SwitchEndTime(self, SwitchEndTime):
+        self._SwitchEndTime = SwitchEndTime
+
+    @property
+    def SwitchAutoRetry(self):
+        """是否自动重试。 0：不自动重试 1：自动重试
+        :rtype: int
+        """
+        return self._SwitchAutoRetry
+
+    @SwitchAutoRetry.setter
+    def SwitchAutoRetry(self, SwitchAutoRetry):
+        self._SwitchAutoRetry = SwitchAutoRetry
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -15734,6 +15776,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._AutoVoucher = params.get("AutoVoucher")
         self._VoucherIds = params.get("VoucherIds")
         self._Zones = params.get("Zones")
+        self._SwitchStartTime = params.get("SwitchStartTime")
+        self._SwitchEndTime = params.get("SwitchEndTime")
+        self._SwitchAutoRetry = params.get("SwitchAutoRetry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

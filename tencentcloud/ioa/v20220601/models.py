@@ -2095,6 +2095,192 @@ class DescribeDeviceInfoRspData(AbstractModel):
         
 
 
+class DescribeDeviceVirtualGroupsPageRsp(AbstractModel):
+    """查询返回终端自定义分组的Data数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 分页公共对象
+        :type Page: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        :param _Items: 终端自定义分组列表数据
+        :type Items: list of DeviceVirtualDeviceGroupsDetail
+        """
+        self._Page = None
+        self._Items = None
+
+    @property
+    def Page(self):
+        """分页公共对象
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Items(self):
+        """终端自定义分组列表数据
+        :rtype: list of DeviceVirtualDeviceGroupsDetail
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Page") is not None:
+            self._Page = Paging()
+            self._Page._deserialize(params.get("Page"))
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DeviceVirtualDeviceGroupsDetail()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceVirtualGroupsRequest(AbstractModel):
+    """DescribeDeviceVirtualGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        :param _Condition: 滤条件、分页参数 <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li> <li>DeviceVirtualGroupName - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li>
+        :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        :param _OsType: 必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        :type OsType: int
+        :param _VirtualGroupIds: 非必填，自定义分组ids
+        :type VirtualGroupIds: list of int
+        """
+        self._DomainInstanceId = None
+        self._Condition = None
+        self._OsType = None
+        self._VirtualGroupIds = None
+
+    @property
+    def DomainInstanceId(self):
+        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
+    def Condition(self):
+        """滤条件、分页参数 <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li> <li>DeviceVirtualGroupName - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def OsType(self):
+        """必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def VirtualGroupIds(self):
+        """非必填，自定义分组ids
+        :rtype: list of int
+        """
+        return self._VirtualGroupIds
+
+    @VirtualGroupIds.setter
+    def VirtualGroupIds(self, VirtualGroupIds):
+        self._VirtualGroupIds = VirtualGroupIds
+
+
+    def _deserialize(self, params):
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        if params.get("Condition") is not None:
+            self._Condition = Condition()
+            self._Condition._deserialize(params.get("Condition"))
+        self._OsType = params.get("OsType")
+        self._VirtualGroupIds = params.get("VirtualGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceVirtualGroupsResponse(AbstractModel):
+    """DescribeDeviceVirtualGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询终端自定义分组的Data数据
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceVirtualGroupsPageRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """查询终端自定义分组的Data数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceVirtualGroupsPageRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeDeviceVirtualGroupsPageRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDevicesPageRsp(AbstractModel):
     """分页的data数据
 
@@ -5041,6 +5227,117 @@ class DeviceServiceInfo(AbstractModel):
         self._StartType = params.get("StartType")
         self._State = params.get("State")
         self._User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceVirtualDeviceGroupsDetail(AbstractModel):
+    """终端自定义分组列表数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 终端自定义分组id
+        :type Id: int
+        :param _DeviceVirtualGroupName: 自定义分组名称
+        :type DeviceVirtualGroupName: str
+        :param _DeviceCount: 设备数
+        :type DeviceCount: int
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
+        :type OsType: int
+        :param _Itime: 创建时间
+        :type Itime: str
+        :param _Utime: 更新时间
+        :type Utime: str
+        """
+        self._Id = None
+        self._DeviceVirtualGroupName = None
+        self._DeviceCount = None
+        self._OsType = None
+        self._Itime = None
+        self._Utime = None
+
+    @property
+    def Id(self):
+        """终端自定义分组id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DeviceVirtualGroupName(self):
+        """自定义分组名称
+        :rtype: str
+        """
+        return self._DeviceVirtualGroupName
+
+    @DeviceVirtualGroupName.setter
+    def DeviceVirtualGroupName(self, DeviceVirtualGroupName):
+        self._DeviceVirtualGroupName = DeviceVirtualGroupName
+
+    @property
+    def DeviceCount(self):
+        """设备数
+        :rtype: int
+        """
+        return self._DeviceCount
+
+    @DeviceCount.setter
+    def DeviceCount(self, DeviceCount):
+        self._DeviceCount = DeviceCount
+
+    @property
+    def OsType(self):
+        """系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def Itime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._Itime
+
+    @Itime.setter
+    def Itime(self, Itime):
+        self._Itime = Itime
+
+    @property
+    def Utime(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._Utime
+
+    @Utime.setter
+    def Utime(self, Utime):
+        self._Utime = Utime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DeviceVirtualGroupName = params.get("DeviceVirtualGroupName")
+        self._DeviceCount = params.get("DeviceCount")
+        self._OsType = params.get("OsType")
+        self._Itime = params.get("Itime")
+        self._Utime = params.get("Utime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

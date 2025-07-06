@@ -15079,6 +15079,8 @@ class ServerPushText(AbstractModel):
 - Priority=1、Interrupt=false、DropMode=1，会等待当前交互结束，再进行播报，播报过程中不会被打断
 
         :type Priority: int
+        :param _AddHistory: 是否将文本加入到llm历史上下文中
+        :type AddHistory: bool
         """
         self._Text = None
         self._Interrupt = None
@@ -15086,6 +15088,7 @@ class ServerPushText(AbstractModel):
         self._Audio = None
         self._DropMode = None
         self._Priority = None
+        self._AddHistory = None
 
     @property
     def Text(self):
@@ -15164,6 +15167,17 @@ class ServerPushText(AbstractModel):
     def Priority(self, Priority):
         self._Priority = Priority
 
+    @property
+    def AddHistory(self):
+        """是否将文本加入到llm历史上下文中
+        :rtype: bool
+        """
+        return self._AddHistory
+
+    @AddHistory.setter
+    def AddHistory(self, AddHistory):
+        self._AddHistory = AddHistory
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -15172,6 +15186,7 @@ class ServerPushText(AbstractModel):
         self._Audio = params.get("Audio")
         self._DropMode = params.get("DropMode")
         self._Priority = params.get("Priority")
+        self._AddHistory = params.get("AddHistory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
