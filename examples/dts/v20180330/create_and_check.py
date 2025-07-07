@@ -109,13 +109,13 @@ if __name__ == '__main__':
         print("ERR:%s" % ret)
         exit(1)
 
-    print "created dts job:" + ret.JobId
+    print("created dts job:" + ret.JobId)
     jobId = ret.JobId
     errcode, ret = DTSCreateMigrateCheckJob(client, jobId)
     if errcode is not None:
         print("ERR:%s" % ret)
         exit(1)
-    print "check job:" + jobId
+    print("check job:" + jobId)
 
     time.sleep(10)
     isCheckPass = False
