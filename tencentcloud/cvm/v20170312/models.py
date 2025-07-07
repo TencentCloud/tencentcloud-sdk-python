@@ -13142,6 +13142,8 @@ class Instance(AbstractModel):
         :param _LatestOperationErrorMsg: 实例的最新操作错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationErrorMsg: str
+        :param _PublicIPv6Addresses: 实例绑定的公网IPv6地址。
+        :type PublicIPv6Addresses: list of str
         """
         self._Placement = None
         self._InstanceId = None
@@ -13184,6 +13186,7 @@ class Instance(AbstractModel):
         self._DefaultLoginUser = None
         self._DefaultLoginPort = None
         self._LatestOperationErrorMsg = None
+        self._PublicIPv6Addresses = None
 
     @property
     def Placement(self):
@@ -13646,6 +13649,17 @@ class Instance(AbstractModel):
     def LatestOperationErrorMsg(self, LatestOperationErrorMsg):
         self._LatestOperationErrorMsg = LatestOperationErrorMsg
 
+    @property
+    def PublicIPv6Addresses(self):
+        """实例绑定的公网IPv6地址。
+        :rtype: list of str
+        """
+        return self._PublicIPv6Addresses
+
+    @PublicIPv6Addresses.setter
+    def PublicIPv6Addresses(self, PublicIPv6Addresses):
+        self._PublicIPv6Addresses = PublicIPv6Addresses
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -13711,6 +13725,7 @@ class Instance(AbstractModel):
         self._DefaultLoginUser = params.get("DefaultLoginUser")
         self._DefaultLoginPort = params.get("DefaultLoginPort")
         self._LatestOperationErrorMsg = params.get("LatestOperationErrorMsg")
+        self._PublicIPv6Addresses = params.get("PublicIPv6Addresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14648,11 +14663,53 @@ class InternetAccessible(AbstractModel):
         :type PublicIpAssigned: bool
         :param _BandwidthPackageId: 带宽包ID。可通过[ DescribeBandwidthPackages ](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
         :type BandwidthPackageId: str
+        :param _InternetServiceProvider: 线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+
+- BGP：常规 BGP 线路
+
+已开通静态单线IP白名单的用户，可选值：
+
+ - CMCC：中国移动
+ - CTCC：中国电信
+ - CUCC：中国联通
+
+注意：仅部分地域支持静态单线IP。
+示例值：BGP
+        :type InternetServiceProvider: str
+        :param _IPv4AddressType: 公网 IP 类型。
+
+- WanIP：普通公网IP。
+- HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。
+- AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。
+
+如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
+
+示例值：WanIP
+
+此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+        :type IPv4AddressType: str
+        :param _IPv6AddressType: 弹性公网 IPv6 类型。
+- EIPv6：弹性公网 IPv6。
+- HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。
+
+如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
+示例值：EIPv6
+
+此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+        :type IPv6AddressType: str
+        :param _AntiDDoSPackageId: 高防包唯一ID，申请高防IP时，该字段必传。
+示例值：bgp-12345678
+
+        :type AntiDDoSPackageId: str
         """
         self._InternetChargeType = None
         self._InternetMaxBandwidthOut = None
         self._PublicIpAssigned = None
         self._BandwidthPackageId = None
+        self._InternetServiceProvider = None
+        self._IPv4AddressType = None
+        self._IPv6AddressType = None
+        self._AntiDDoSPackageId = None
 
     @property
     def InternetChargeType(self):
@@ -14698,12 +14755,90 @@ class InternetAccessible(AbstractModel):
     def BandwidthPackageId(self, BandwidthPackageId):
         self._BandwidthPackageId = BandwidthPackageId
 
+    @property
+    def InternetServiceProvider(self):
+        """线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+
+- BGP：常规 BGP 线路
+
+已开通静态单线IP白名单的用户，可选值：
+
+ - CMCC：中国移动
+ - CTCC：中国电信
+ - CUCC：中国联通
+
+注意：仅部分地域支持静态单线IP。
+示例值：BGP
+        :rtype: str
+        """
+        return self._InternetServiceProvider
+
+    @InternetServiceProvider.setter
+    def InternetServiceProvider(self, InternetServiceProvider):
+        self._InternetServiceProvider = InternetServiceProvider
+
+    @property
+    def IPv4AddressType(self):
+        """公网 IP 类型。
+
+- WanIP：普通公网IP。
+- HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。
+- AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。
+
+如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
+
+示例值：WanIP
+
+此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+        :rtype: str
+        """
+        return self._IPv4AddressType
+
+    @IPv4AddressType.setter
+    def IPv4AddressType(self, IPv4AddressType):
+        self._IPv4AddressType = IPv4AddressType
+
+    @property
+    def IPv6AddressType(self):
+        """弹性公网 IPv6 类型。
+- EIPv6：弹性公网 IPv6。
+- HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。
+
+如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
+示例值：EIPv6
+
+此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+        :rtype: str
+        """
+        return self._IPv6AddressType
+
+    @IPv6AddressType.setter
+    def IPv6AddressType(self, IPv6AddressType):
+        self._IPv6AddressType = IPv6AddressType
+
+    @property
+    def AntiDDoSPackageId(self):
+        """高防包唯一ID，申请高防IP时，该字段必传。
+示例值：bgp-12345678
+
+        :rtype: str
+        """
+        return self._AntiDDoSPackageId
+
+    @AntiDDoSPackageId.setter
+    def AntiDDoSPackageId(self, AntiDDoSPackageId):
+        self._AntiDDoSPackageId = AntiDDoSPackageId
+
 
     def _deserialize(self, params):
         self._InternetChargeType = params.get("InternetChargeType")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._PublicIpAssigned = params.get("PublicIpAssigned")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
+        self._InternetServiceProvider = params.get("InternetServiceProvider")
+        self._IPv4AddressType = params.get("IPv4AddressType")
+        self._IPv6AddressType = params.get("IPv6AddressType")
+        self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22923,11 +23058,17 @@ class TerminateInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
         :type InstanceIds: list of str
+        :param _ReleaseAddress: 释放弹性IP。EIP2.0下，仅提供主网卡下首个EIP，EIP类型限定在HighQualityEIP、AntiDDoSEIP、EIPv6、HighQualityEIPv6这几种类型。默认行为不释放。
+
+示例值：true
+默认值：false
+        :type ReleaseAddress: bool
         :param _ReleasePrepaidDataDisks: 释放实例挂载的包年包月数据盘。true表示销毁实例同时释放包年包月数据盘，false表示只销毁实例。
 默认值：false
         :type ReleasePrepaidDataDisks: bool
         """
         self._InstanceIds = None
+        self._ReleaseAddress = None
         self._ReleasePrepaidDataDisks = None
 
     @property
@@ -22940,6 +23081,20 @@ class TerminateInstancesRequest(AbstractModel):
     @InstanceIds.setter
     def InstanceIds(self, InstanceIds):
         self._InstanceIds = InstanceIds
+
+    @property
+    def ReleaseAddress(self):
+        """释放弹性IP。EIP2.0下，仅提供主网卡下首个EIP，EIP类型限定在HighQualityEIP、AntiDDoSEIP、EIPv6、HighQualityEIPv6这几种类型。默认行为不释放。
+
+示例值：true
+默认值：false
+        :rtype: bool
+        """
+        return self._ReleaseAddress
+
+    @ReleaseAddress.setter
+    def ReleaseAddress(self, ReleaseAddress):
+        self._ReleaseAddress = ReleaseAddress
 
     @property
     def ReleasePrepaidDataDisks(self):
@@ -22956,6 +23111,7 @@ class TerminateInstancesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceIds = params.get("InstanceIds")
+        self._ReleaseAddress = params.get("ReleaseAddress")
         self._ReleasePrepaidDataDisks = params.get("ReleasePrepaidDataDisks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

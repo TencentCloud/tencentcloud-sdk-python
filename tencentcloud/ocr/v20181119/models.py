@@ -3499,12 +3499,20 @@ class CardWarnInfo(AbstractModel):
 0：正常
 1：有PS
         :type PSCheck: int
+        :param _BlurCheck: 是否模糊：
+0:正常
+1:模糊
+        :type BlurCheck: int
+        :param _BlurScore: 模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
+        :type BlurScore: float
         """
         self._BorderCheck = None
         self._OcclusionCheck = None
         self._CopyCheck = None
         self._ReshootCheck = None
         self._PSCheck = None
+        self._BlurCheck = None
+        self._BlurScore = None
 
     @property
     def BorderCheck(self):
@@ -3571,6 +3579,30 @@ class CardWarnInfo(AbstractModel):
     def PSCheck(self, PSCheck):
         self._PSCheck = PSCheck
 
+    @property
+    def BlurCheck(self):
+        """是否模糊：
+0:正常
+1:模糊
+        :rtype: int
+        """
+        return self._BlurCheck
+
+    @BlurCheck.setter
+    def BlurCheck(self, BlurCheck):
+        self._BlurCheck = BlurCheck
+
+    @property
+    def BlurScore(self):
+        """模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
+        :rtype: float
+        """
+        return self._BlurScore
+
+    @BlurScore.setter
+    def BlurScore(self, BlurScore):
+        self._BlurScore = BlurScore
+
 
     def _deserialize(self, params):
         self._BorderCheck = params.get("BorderCheck")
@@ -3578,6 +3610,8 @@ class CardWarnInfo(AbstractModel):
         self._CopyCheck = params.get("CopyCheck")
         self._ReshootCheck = params.get("ReshootCheck")
         self._PSCheck = params.get("PSCheck")
+        self._BlurCheck = params.get("BlurCheck")
+        self._BlurScore = params.get("BlurScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8481,6 +8515,9 @@ AirWayBill -- 航空运单识别模板
 Table -- 表格模版
 SteelLabel -- 实物标签识别模板
 CarInsurance -- 车辆保险单识别模板
+MultiRealEstateCertificate -- 房产材料识别模板
+MultiRealEstateMaterial -- 房产证明识别模板
+HongKongUtilityBill -- 香港水电煤单识别模板
         :type ConfigId: str
         :param _EnableCoord: 是否开启全文字段坐标值的识别
         :type EnableCoord: bool
@@ -8585,6 +8622,9 @@ AirWayBill -- 航空运单识别模板
 Table -- 表格模版
 SteelLabel -- 实物标签识别模板
 CarInsurance -- 车辆保险单识别模板
+MultiRealEstateCertificate -- 房产材料识别模板
+MultiRealEstateMaterial -- 房产证明识别模板
+HongKongUtilityBill -- 香港水电煤单识别模板
         :rtype: str
         """
         return self._ConfigId
@@ -26844,6 +26884,8 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
         :type EnablePSCheck: bool
         :param _EnableWordCheck: 默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效
         :type EnableWordCheck: bool
+        :param _EnableQualityCheck: 默认值为false，打开返回证件是否模糊。
+        :type EnableQualityCheck: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -26856,6 +26898,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
         self._EnableReshootCheck = None
         self._EnablePSCheck = None
         self._EnableWordCheck = None
+        self._EnableQualityCheck = None
 
     @property
     def ImageBase64(self):
@@ -26991,6 +27034,17 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
     def EnableWordCheck(self, EnableWordCheck):
         self._EnableWordCheck = EnableWordCheck
 
+    @property
+    def EnableQualityCheck(self):
+        """默认值为false，打开返回证件是否模糊。
+        :rtype: bool
+        """
+        return self._EnableQualityCheck
+
+    @EnableQualityCheck.setter
+    def EnableQualityCheck(self, EnableQualityCheck):
+        self._EnableQualityCheck = EnableQualityCheck
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -27004,6 +27058,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
         self._EnableReshootCheck = params.get("EnableReshootCheck")
         self._EnablePSCheck = params.get("EnablePSCheck")
         self._EnableWordCheck = params.get("EnableWordCheck")
+        self._EnableQualityCheck = params.get("EnableQualityCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
