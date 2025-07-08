@@ -20,3 +20,27 @@ def test_describe_instances():
     req = models.DescribeInstancesRequest()
     resp = client.DescribeInstances(req)
     assert resp.TotalCount >= 0
+
+
+def test_describe_instances_with_empty_token():
+    cred = credential.Credential(
+        os.environ.get("TENCENTCLOUD_SECRET_ID"),
+        os.environ.get("TENCENTCLOUD_SECRET_KEY"),
+        "")
+
+    client = cvm_client.CvmClient(cred, "ap-guangzhou")
+    req = models.DescribeInstancesRequest()
+    resp = client.DescribeInstances(req)
+    assert resp.TotalCount >= 0
+
+
+def test_describe_instances_with_null_token():
+    cred = credential.Credential(
+        os.environ.get("TENCENTCLOUD_SECRET_ID"),
+        os.environ.get("TENCENTCLOUD_SECRET_KEY"),
+        None)
+
+    client = cvm_client.CvmClient(cred, "ap-guangzhou")
+    req = models.DescribeInstancesRequest()
+    resp = client.DescribeInstances(req)
+    assert resp.TotalCount >= 0
