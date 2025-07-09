@@ -20567,7 +20567,7 @@ blacklist：黑名单
 最多可填充 200 个白名单或 200 个黑名单；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Filters: list of str
-        :param _FilterRules: IP 黑白名单分路径配置，白名单功能
+        :param _FilterRules: IP 黑白名单分路径配置，白名单功能。黑白名单 IP 总数不能超过 1000 个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterRules: list of IpFilterPathRule
         :param _ReturnCode: IP 黑白名单验证失败时返回的 code <br><font color=red>已下线，参数失效，不支持自定义状态码，固定返回514</font>
@@ -20623,7 +20623,7 @@ blacklist：黑名单
 
     @property
     def FilterRules(self):
-        """IP 黑白名单分路径配置，白名单功能
+        """IP 黑白名单分路径配置，白名单功能。黑白名单 IP 总数不能超过 1000 个。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IpFilterPathRule
         """
@@ -20681,7 +20681,7 @@ blacklist：黑名单
         :type FilterType: str
         :param _Filters: IP 黑白名单列表
 支持 X.X.X.X 格式IPV4地址 或X:X:X:X:X:X:X:X 格式IPV6地址， 或网段格式/X（IPV4:1≤X≤32；IPV6:1≤X≤128）
-最多可填充 200 个白名单或 500 个黑名单；
+最多可填充 500 个白名单或 200 个黑名单；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Filters: list of str
         :param _RuleType: 规则类型：
@@ -20725,7 +20725,7 @@ blacklist：黑名单
     def Filters(self):
         """IP 黑白名单列表
 支持 X.X.X.X 格式IPV4地址 或X:X:X:X:X:X:X:X 格式IPV6地址， 或网段格式/X（IPV4:1≤X≤32；IPV6:1≤X≤128）
-最多可填充 200 个白名单或 500 个黑名单；
+最多可填充 500 个白名单或 200 个黑名单；
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

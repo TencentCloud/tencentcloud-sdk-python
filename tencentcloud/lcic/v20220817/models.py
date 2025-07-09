@@ -7394,6 +7394,105 @@ class DescribeSupervisorsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserDetailRequest(AbstractModel):
+    """DescribeUserDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
+        :type UserId: str
+        :param _OriginId: 用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
+        :type OriginId: str
+        """
+        self._UserId = None
+        self._OriginId = None
+
+    @property
+    def UserId(self):
+        """用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def OriginId(self):
+        """用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
+        :rtype: str
+        """
+        return self._OriginId
+
+    @OriginId.setter
+    def OriginId(self, OriginId):
+        self._OriginId = OriginId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._OriginId = params.get("OriginId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserDetailResponse(AbstractModel):
+    """DescribeUserDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Users: 当前获取用户信息数组列表
+        :type Users: list of UserInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Users = None
+        self._RequestId = None
+
+    @property
+    def Users(self):
+        """当前获取用户信息数组列表
+        :rtype: list of UserInfo
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = UserInfo()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserRequest(AbstractModel):
     """DescribeUser请求参数结构体
 

@@ -1083,6 +1083,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserDetail(self, request):
+        """获取用户信息
+
+        :param request: Request instance for DescribeUserDetail.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeUserDetailRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeUserDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeWhiteBoardSnapshot(self, request):
         """查询白板板书截图
 

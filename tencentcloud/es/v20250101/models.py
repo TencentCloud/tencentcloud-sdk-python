@@ -765,11 +765,17 @@ class Document(AbstractModel):
         :type FileContent: str
         :param _FileName: 文件名称，当使用 base64上传的时候使用。
         :type FileName: str
+        :param _FileStartPageNumber: 文档的起始页码
+        :type FileStartPageNumber: int
+        :param _FileEndPageNumber: 文档的结束页码
+        :type FileEndPageNumber: int
         """
         self._FileType = None
         self._FileUrl = None
         self._FileContent = None
         self._FileName = None
+        self._FileStartPageNumber = None
+        self._FileEndPageNumber = None
 
     @property
     def FileType(self):
@@ -822,12 +828,36 @@ class Document(AbstractModel):
     def FileName(self, FileName):
         self._FileName = FileName
 
+    @property
+    def FileStartPageNumber(self):
+        """文档的起始页码
+        :rtype: int
+        """
+        return self._FileStartPageNumber
+
+    @FileStartPageNumber.setter
+    def FileStartPageNumber(self, FileStartPageNumber):
+        self._FileStartPageNumber = FileStartPageNumber
+
+    @property
+    def FileEndPageNumber(self):
+        """文档的结束页码
+        :rtype: int
+        """
+        return self._FileEndPageNumber
+
+    @FileEndPageNumber.setter
+    def FileEndPageNumber(self, FileEndPageNumber):
+        self._FileEndPageNumber = FileEndPageNumber
+
 
     def _deserialize(self, params):
         self._FileType = params.get("FileType")
         self._FileUrl = params.get("FileUrl")
         self._FileContent = params.get("FileContent")
         self._FileName = params.get("FileName")
+        self._FileStartPageNumber = params.get("FileStartPageNumber")
+        self._FileEndPageNumber = params.get("FileEndPageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

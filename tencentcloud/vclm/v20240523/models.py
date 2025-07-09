@@ -1409,20 +1409,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Template: 特效模板名称。
-枚举值：
-hug ：拥抱
-kiss ：亲吻
-heart ： 比心
-fuzzy ： 毛茸茸
-befigure：变手办风
-longhair：金色长发
-morphlab：膨胀
-bloom：万物生花
-pinch：捏捏
-balloonfly：飞走了
-dragme：被拽走了
-
+        :param _Template: 特效模板名称。请在 [视频特效模版列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
         :type Template: str
         :param _Images: 参考图像，最多输入2张图。
 - 支持传入图片Base64编码或图片URL（确保可访问）
@@ -1447,20 +1434,7 @@ dragme：被拽走了
 
     @property
     def Template(self):
-        """特效模板名称。
-枚举值：
-hug ：拥抱
-kiss ：亲吻
-heart ： 比心
-fuzzy ： 毛茸茸
-befigure：变手办风
-longhair：金色长发
-morphlab：膨胀
-bloom：万物生花
-pinch：捏捏
-balloonfly：飞走了
-dragme：被拽走了
-
+        """特效模板名称。请在 [视频特效模版列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
         :rtype: str
         """
         return self._Template

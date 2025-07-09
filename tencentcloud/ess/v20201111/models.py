@@ -12389,6 +12389,10 @@ p.s. 如果上传授权书 ，需遵循以下条件
 1.  超管的信息（超管姓名，超管手机号）必须为必填参数。
 2.  认证方式AuthorizationTypes必须只能是上传授权书方式 
         :type PowerOfAttorneys: list of str
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 4096长度。
+
+在. 企业引导企业实名认证后回调中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_staffs" target="_blank">回调通知</a>模块。
+        :type UserData: str
         """
         self._Operator = None
         self._AuthorizationTypes = None
@@ -12411,6 +12415,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
         self._Endpoint = None
         self._Initialization = None
         self._PowerOfAttorneys = None
+        self._UserData = None
 
     @property
     def Operator(self):
@@ -12690,6 +12695,19 @@ p.s. 如果上传授权书 ，需遵循以下条件
     def PowerOfAttorneys(self, PowerOfAttorneys):
         self._PowerOfAttorneys = PowerOfAttorneys
 
+    @property
+    def UserData(self):
+        """调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 4096长度。
+
+在. 企业引导企业实名认证后回调中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_staffs" target="_blank">回调通知</a>模块。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -12715,6 +12733,7 @@ p.s. 如果上传授权书 ，需遵循以下条件
         self._Endpoint = params.get("Endpoint")
         self._Initialization = params.get("Initialization")
         self._PowerOfAttorneys = params.get("PowerOfAttorneys")
+        self._UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

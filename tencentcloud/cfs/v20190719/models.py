@@ -2038,35 +2038,35 @@ class CreateMigrationTaskRequest(AbstractModel):
         r"""
         :param _TaskName: 迁移任务名称
         :type TaskName: str
-        :param _MigrationType: 迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+        :param _MigrationType: 迁移方式标志位，默认为0。0：桶迁移；1：清单迁移
         :type MigrationType: int
         :param _MigrationMode: 迁移模式，默认为0。0: 全量迁移
         :type MigrationMode: int
-        :param _SrcSecretId: 数据源账号的SecretId
+        :param _SrcSecretId: 数据源账号的 SecretId
         :type SrcSecretId: str
-        :param _SrcSecretKey: 数据源账号的SecretKey
+        :param _SrcSecretKey: 数据源账号的 SecretKey
         :type SrcSecretKey: str
-        :param _FileSystemId: 文件系统实例Id
+        :param _FileSystemId: 文件系统实例 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
         :type FileSystemId: str
         :param _FsPath: 文件系统路径
         :type FsPath: str
         :param _CoverType: 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
         :type CoverType: int
-        :param _SrcService: 数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+        :param _SrcService: 数据源服务商。COS：腾讯云COS，OSS：阿里云OSS，OBS：华为云OBS
         :type SrcService: str
-        :param _BucketName: 数据源桶名称，名称和地址至少有一个
+        :param _BucketName: 数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
         :type BucketName: str
         :param _BucketRegion: 数据源桶地域
         :type BucketRegion: str
-        :param _BucketAddress: 数据源桶地址，名称和地址至少有一个
+        :param _BucketAddress: 数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
         :type BucketAddress: str
         :param _ListAddress: 清单地址，迁移方式为清单迁移时必填
         :type ListAddress: str
         :param _FsName: 目标文件系统名称
         :type FsName: str
-        :param _BucketPath: 源桶路径，默认为/
+        :param _BucketPath: 源桶路径，默认为 /
         :type BucketPath: str
-        :param _Direction: 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+        :param _Direction: 迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0
         :type Direction: int
         """
         self._TaskName = None
@@ -2099,7 +2099,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def MigrationType(self):
-        """迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+        """迁移方式标志位，默认为0。0：桶迁移；1：清单迁移
         :rtype: int
         """
         return self._MigrationType
@@ -2121,7 +2121,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcSecretId(self):
-        """数据源账号的SecretId
+        """数据源账号的 SecretId
         :rtype: str
         """
         return self._SrcSecretId
@@ -2132,7 +2132,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcSecretKey(self):
-        """数据源账号的SecretKey
+        """数据源账号的 SecretKey
         :rtype: str
         """
         return self._SrcSecretKey
@@ -2143,7 +2143,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统实例Id
+        """文件系统实例 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
         :rtype: str
         """
         return self._FileSystemId
@@ -2176,7 +2176,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcService(self):
-        """数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+        """数据源服务商。COS：腾讯云COS，OSS：阿里云OSS，OBS：华为云OBS
         :rtype: str
         """
         return self._SrcService
@@ -2187,7 +2187,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        """数据源桶名称，名称和地址至少有一个
+        """数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
         :rtype: str
         """
         return self._BucketName
@@ -2209,7 +2209,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketAddress(self):
-        """数据源桶地址，名称和地址至少有一个
+        """数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
         :rtype: str
         """
         return self._BucketAddress
@@ -2242,7 +2242,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketPath(self):
-        """源桶路径，默认为/
+        """源桶路径，默认为 /
         :rtype: str
         """
         return self._BucketPath
@@ -2253,7 +2253,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+        """迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0
         :rtype: int
         """
         return self._Direction
@@ -2297,7 +2297,7 @@ class CreateMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 迁移任务Id
+        :param _TaskId: 迁移任务 ID
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2307,7 +2307,7 @@ class CreateMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """迁移任务Id
+        """迁移任务 ID
         :rtype: str
         """
         return self._TaskId

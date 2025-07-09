@@ -2370,7 +2370,7 @@ class CreateInstancesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TypeId: 实例类型。
-<ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li>说明：CKV 版本当前有存量用户使用，暂时保留。</ul>
+<ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li><li>200：Memcached 1.6 内存版（集群架构）。</li>说明：CKV 版本当前有存量用户使用，暂时保留。</ul>
         :type TypeId: int
         :param _MemSize: 内存容量，单位为MB， 数值需为1024的整数倍。具体规格，请通过 [DescribeProductInfo](https://cloud.tencent.com/document/api/239/30600) 接口查询全地域的售卖规格。
 - **TypeId**为标准架构时，**MemSize**是实例总内存容量；
@@ -2487,7 +2487,7 @@ class CreateInstancesRequest(AbstractModel):
     @property
     def TypeId(self):
         """实例类型。
-<ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li>说明：CKV 版本当前有存量用户使用，暂时保留。</ul>
+<ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li><li>200：Memcached 1.6 内存版（集群架构）。</li>说明：CKV 版本当前有存量用户使用，暂时保留。</ul>
         :rtype: int
         """
         return self._TypeId
@@ -7800,6 +7800,7 @@ class DescribeInstancesRequest(AbstractModel):
 - 16：Redis 6.2 内存版（集群架构）。
 - 17：Redis 7.0 内存版（标准架构）。
 - 18：Redis 7.0 内存版（集群架构）。
+- 200:Memcached 1.6 内存版（集群架构）。
         :type Type: int
         :param _SearchKeys: 该参数为数组类型，支持配置实例名称、实例 ID、IP地址，其中实例名称为模糊匹配，实例 ID 和 IP 地址精确匹配。
 
@@ -8088,6 +8089,7 @@ class DescribeInstancesRequest(AbstractModel):
 - 16：Redis 6.2 内存版（集群架构）。
 - 17：Redis 7.0 内存版（标准架构）。
 - 18：Redis 7.0 内存版（集群架构）。
+- 200:Memcached 1.6 内存版（集群架构）。
         :rtype: int
         """
         return self._Type
@@ -11931,6 +11933,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 - 16：Redis 6.2 内存版（集群架构）。
 - 17：Redis 7.0 内存版（标准架构）。
 - 18：Redis 7.0 内存版（集群架构）。
+- 200:Memcached 1.6 内存版（集群架构）。
         :type TypeId: int
         :param _MemSize: 内存容量，单位为MB， 数值需为1024的整数倍，具体规格以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
 TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架构时，MemSize是单分片内存容量。
@@ -11985,6 +11988,7 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
 - 16：Redis 6.2 内存版（集群架构）。
 - 17：Redis 7.0 内存版（标准架构）。
 - 18：Redis 7.0 内存版（集群架构）。
+- 200:Memcached 1.6 内存版（集群架构）。
         :rtype: int
         """
         return self._TypeId
@@ -13836,6 +13840,7 @@ class InstanceSet(AbstractModel):
 - 16：Redis 6.2 内存版（集群架构）。
 - 17：Redis 7.0 内存版（标准架构）。
 - 18：Redis 7.0 内存版（集群架构）。
+- 200:Memcached 1.6 内存版（集群架构）。
         :type Type: int
         :param _AutoRenewFlag: 实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>
         :type AutoRenewFlag: int
@@ -13906,6 +13911,7 @@ class InstanceSet(AbstractModel):
         :param _ClientLimitMax: 客户端最大连接数可设置的最大值。
         :type ClientLimitMax: int
         :param _NodeSet: 实例的节点详细信息。
+只有多可用区实例会返回。
         :type NodeSet: list of RedisNodeInfo
         :param _Region: 实例所在的地域信息，比如ap-guangzhou。
         :type Region: str
@@ -14165,6 +14171,7 @@ class InstanceSet(AbstractModel):
 - 16：Redis 6.2 内存版（集群架构）。
 - 17：Redis 7.0 内存版（标准架构）。
 - 18：Redis 7.0 内存版（集群架构）。
+- 200:Memcached 1.6 内存版（集群架构）。
         :rtype: int
         """
         return self._Type
@@ -14541,6 +14548,7 @@ class InstanceSet(AbstractModel):
     @property
     def NodeSet(self):
         """实例的节点详细信息。
+只有多可用区实例会返回。
         :rtype: list of RedisNodeInfo
         """
         return self._NodeSet
@@ -21897,7 +21905,7 @@ class TaskInfoDetail(AbstractModel):
 - FLOW_AUTOBACKUP："017"，自动备份实例。
 - FLOW_MIGRATECHECK： "022"，迁移参数校验。
 - FLOW_MIGRATETASK："023"，数据迁移中。
-- FLOW_CLEANDB："025"，清空某个数据库。
+- FLOW_CLEANDB："025"，清空数据库。
 - FLOW_CLONEBACKUP："026"，克隆备份。
 - FLOW_CHANGEVIP： "027"，改变vip地址。
 - FLOW_EXPORSHR ："028"，扩缩容。
@@ -21907,7 +21915,7 @@ class TaskInfoDetail(AbstractModel):
 - FLOW_MODIFYINSTANCEPARAMS："034"，修改实例参数。
 - FLOW_MODIFYINSTANCEPASSWORDFREE："035"，设置免密。
 - FLOW_SWITCHINSTANCEVIP："036"，实例VIP切换。
-- FLOW_MODIFYINSTANCEACCOUNT："037"，实例帐号变更。
+- FLOW_MODIFYINSTANCEACCOUNT："037"，实例账号变更。
 - FLOW_MODIFYINSTANCEBANDWIDTH："038"，实例带宽变更。
 - FLOW_ENABLEINSTANCE_REPLICATE："039"，开启副本只读。
 - FLOW_DISABLEINSTANCE_REPLICATE："040"，关闭副本只读。
@@ -21922,16 +21930,16 @@ class TaskInfoDetail(AbstractModel):
 - FLOW_CHANGE_REPLICA_TO_MASTER："049"，手动提主。
 - FLOW_CODE_ADD_REPLICATION_INSTANCE："050"，新增复制组。
 - FLOW_OPEN_WAN："052"，开通外网。
-- FLOW_CLOSE_WAN："053"，关闭外网FLOW_UPDATE_WAN："054"，更新外网。
+- FLOW_CLOSE_WAN："053"，关闭外网
 - FLOW_CODE_DELETE_REPLICATION_INSTANCE："055"，解绑复制组。
 - FLOW_CODE_CHANGE_MASTER_INSTANCE："056"，复制组实例切主。
 - FLOW_CODE_CHANGE_INSTANCE_ROLE： "057"，更改复制组实例角色。
 - FLOW_MIGRATE_NODE："058"，迁移节点。
 - FLOW_SWITCH_NODE："059"，切换节点。
-- FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redi s版本。
+- FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redis版本。
 - FLOW_UPGRADE_PROXY_VERSION："061"，升级 Proxy 版本。
 - FLOW_MODIFY_INSTANCE_NETWORK： "062"，实例修改网络。
-- FLOW_MIGRATE_PROXY_NODE："063"，迁移proxy节点。
+- FLOW_MIGRATE_PROXY_NODE："063"，迁移 proxy节点。
 - FLOW_MIGRATION_INSTANCE_ZONE："066"，实例可用区迁移中。
 - FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY： "067"，实例版本升级中。
 - FLOW_MODIFY_PROXY_NUM："069"，加（减）Proxy 节点。
@@ -22006,7 +22014,7 @@ class TaskInfoDetail(AbstractModel):
 - FLOW_AUTOBACKUP："017"，自动备份实例。
 - FLOW_MIGRATECHECK： "022"，迁移参数校验。
 - FLOW_MIGRATETASK："023"，数据迁移中。
-- FLOW_CLEANDB："025"，清空某个数据库。
+- FLOW_CLEANDB："025"，清空数据库。
 - FLOW_CLONEBACKUP："026"，克隆备份。
 - FLOW_CHANGEVIP： "027"，改变vip地址。
 - FLOW_EXPORSHR ："028"，扩缩容。
@@ -22016,7 +22024,7 @@ class TaskInfoDetail(AbstractModel):
 - FLOW_MODIFYINSTANCEPARAMS："034"，修改实例参数。
 - FLOW_MODIFYINSTANCEPASSWORDFREE："035"，设置免密。
 - FLOW_SWITCHINSTANCEVIP："036"，实例VIP切换。
-- FLOW_MODIFYINSTANCEACCOUNT："037"，实例帐号变更。
+- FLOW_MODIFYINSTANCEACCOUNT："037"，实例账号变更。
 - FLOW_MODIFYINSTANCEBANDWIDTH："038"，实例带宽变更。
 - FLOW_ENABLEINSTANCE_REPLICATE："039"，开启副本只读。
 - FLOW_DISABLEINSTANCE_REPLICATE："040"，关闭副本只读。
@@ -22031,16 +22039,16 @@ class TaskInfoDetail(AbstractModel):
 - FLOW_CHANGE_REPLICA_TO_MASTER："049"，手动提主。
 - FLOW_CODE_ADD_REPLICATION_INSTANCE："050"，新增复制组。
 - FLOW_OPEN_WAN："052"，开通外网。
-- FLOW_CLOSE_WAN："053"，关闭外网FLOW_UPDATE_WAN："054"，更新外网。
+- FLOW_CLOSE_WAN："053"，关闭外网
 - FLOW_CODE_DELETE_REPLICATION_INSTANCE："055"，解绑复制组。
 - FLOW_CODE_CHANGE_MASTER_INSTANCE："056"，复制组实例切主。
 - FLOW_CODE_CHANGE_INSTANCE_ROLE： "057"，更改复制组实例角色。
 - FLOW_MIGRATE_NODE："058"，迁移节点。
 - FLOW_SWITCH_NODE："059"，切换节点。
-- FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redi s版本。
+- FLOW_UPGRADE_SMALL_VERSION："060"，升级 Redis版本。
 - FLOW_UPGRADE_PROXY_VERSION："061"，升级 Proxy 版本。
 - FLOW_MODIFY_INSTANCE_NETWORK： "062"，实例修改网络。
-- FLOW_MIGRATE_PROXY_NODE："063"，迁移proxy节点。
+- FLOW_MIGRATE_PROXY_NODE："063"，迁移 proxy节点。
 - FLOW_MIGRATION_INSTANCE_ZONE："066"，实例可用区迁移中。
 - FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY： "067"，实例版本升级中。
 - FLOW_MODIFY_PROXY_NUM："069"，加（减）Proxy 节点。

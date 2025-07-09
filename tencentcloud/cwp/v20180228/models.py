@@ -59024,8 +59024,11 @@ class DescribeVulInfoCvssRequest(AbstractModel):
         r"""
         :param _VulId: 漏洞id
         :type VulId: int
+        :param _Source: 兼容应用防护漏洞防御容器视角告警里漏洞详情，默认是主机视角，可选字段，Source=tcss则为容器视角漏洞详情，后端会把VulId转为主机vul_vuls里的VulId
+        :type Source: str
         """
         self._VulId = None
+        self._Source = None
 
     @property
     def VulId(self):
@@ -59038,9 +59041,21 @@ class DescribeVulInfoCvssRequest(AbstractModel):
     def VulId(self, VulId):
         self._VulId = VulId
 
+    @property
+    def Source(self):
+        """兼容应用防护漏洞防御容器视角告警里漏洞详情，默认是主机视角，可选字段，Source=tcss则为容器视角漏洞详情，后端会把VulId转为主机vul_vuls里的VulId
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
 
     def _deserialize(self, params):
         self._VulId = params.get("VulId")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

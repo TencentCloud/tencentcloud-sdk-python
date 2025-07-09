@@ -4083,6 +4083,345 @@ class CertInfo(AbstractModel):
         
 
 
+class ChildTemplateInfo(AbstractModel):
+    """自适应码率转码模板，子模板，出入参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 自适应码率转码模板，子模板Id。
+入参时候，填写此字段，表示更新子模板，否则是新增子模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: int
+        :param _TemplateName: 子模板名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateName: str
+        :param _Vcodec: 视频编码：h264/h265/origin，默认origin。
+
+origin: 保持原始编码格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vcodec: str
+        :param _VideoBitrate: 视频码率。范围：0kbps - 8000kbps。
+0为保持原始码率。
+注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoBitrate: int
+        :param _Width: 宽，默认0。
+范围[0-3000]。
+数值必须是2的倍数，0是原始宽度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param _Height: 高，默认0。
+范围[0-3000]
+数值必须是2的倍数，0是原始高度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        :param _Fps: 帧率，默认0。
+范围0-60fps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fps: int
+        :param _Gop: 关键帧间隔，单位：秒。
+默认原始的间隔。
+范围2-6。
+同一个父模板下面的所有子模板，gop必须相等且存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gop: int
+        :param _NeedVideo: 是否保留视频，0：否，1：是。默认1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedVideo: int
+        :param _NeedAudio: 是否保留音频，0：否，1：是。默认1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedAudio: int
+        :param _BitrateToOrig: 当设置的码率>原始码率时，是否以原始码率为准。
+0：否， 1：是
+默认 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BitrateToOrig: int
+        :param _HeightToOrig: 当设置的高度>原始高度时，是否以原始高度为准。
+0：否， 1：是
+默认 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeightToOrig: int
+        :param _FpsToOrig: 当设置的帧率>原始帧率时，是否以原始帧率为准。
+0：否， 1：是
+默认 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FpsToOrig: int
+        :param _ShortEdgeAsHeight: 是否以短边作为高度，0：否，1：是。默认0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShortEdgeAsHeight: int
+        :param _HlsContainerFormat: HLS 分片类型。
+可选值：ts、fmp4。
+注：编码方式为 H.265 时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HlsContainerFormat: str
+        :param _HlsMp4VideoCodecTag: 编码标签。
+可选值：hvc1、hev1。
+注：HLS 分片类型选择 fmp4 时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HlsMp4VideoCodecTag: str
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Vcodec = None
+        self._VideoBitrate = None
+        self._Width = None
+        self._Height = None
+        self._Fps = None
+        self._Gop = None
+        self._NeedVideo = None
+        self._NeedAudio = None
+        self._BitrateToOrig = None
+        self._HeightToOrig = None
+        self._FpsToOrig = None
+        self._ShortEdgeAsHeight = None
+        self._HlsContainerFormat = None
+        self._HlsMp4VideoCodecTag = None
+
+    @property
+    def TemplateId(self):
+        """自适应码率转码模板，子模板Id。
+入参时候，填写此字段，表示更新子模板，否则是新增子模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        """子模板名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Vcodec(self):
+        """视频编码：h264/h265/origin，默认origin。
+
+origin: 保持原始编码格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Vcodec
+
+    @Vcodec.setter
+    def Vcodec(self, Vcodec):
+        self._Vcodec = Vcodec
+
+    @property
+    def VideoBitrate(self):
+        """视频码率。范围：0kbps - 8000kbps。
+0为保持原始码率。
+注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._VideoBitrate
+
+    @VideoBitrate.setter
+    def VideoBitrate(self, VideoBitrate):
+        self._VideoBitrate = VideoBitrate
+
+    @property
+    def Width(self):
+        """宽，默认0。
+范围[0-3000]。
+数值必须是2的倍数，0是原始宽度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """高，默认0。
+范围[0-3000]
+数值必须是2的倍数，0是原始高度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Fps(self):
+        """帧率，默认0。
+范围0-60fps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Gop(self):
+        """关键帧间隔，单位：秒。
+默认原始的间隔。
+范围2-6。
+同一个父模板下面的所有子模板，gop必须相等且存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Gop
+
+    @Gop.setter
+    def Gop(self, Gop):
+        self._Gop = Gop
+
+    @property
+    def NeedVideo(self):
+        """是否保留视频，0：否，1：是。默认1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NeedVideo
+
+    @NeedVideo.setter
+    def NeedVideo(self, NeedVideo):
+        self._NeedVideo = NeedVideo
+
+    @property
+    def NeedAudio(self):
+        """是否保留音频，0：否，1：是。默认1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NeedAudio
+
+    @NeedAudio.setter
+    def NeedAudio(self, NeedAudio):
+        self._NeedAudio = NeedAudio
+
+    @property
+    def BitrateToOrig(self):
+        """当设置的码率>原始码率时，是否以原始码率为准。
+0：否， 1：是
+默认 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BitrateToOrig
+
+    @BitrateToOrig.setter
+    def BitrateToOrig(self, BitrateToOrig):
+        self._BitrateToOrig = BitrateToOrig
+
+    @property
+    def HeightToOrig(self):
+        """当设置的高度>原始高度时，是否以原始高度为准。
+0：否， 1：是
+默认 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._HeightToOrig
+
+    @HeightToOrig.setter
+    def HeightToOrig(self, HeightToOrig):
+        self._HeightToOrig = HeightToOrig
+
+    @property
+    def FpsToOrig(self):
+        """当设置的帧率>原始帧率时，是否以原始帧率为准。
+0：否， 1：是
+默认 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FpsToOrig
+
+    @FpsToOrig.setter
+    def FpsToOrig(self, FpsToOrig):
+        self._FpsToOrig = FpsToOrig
+
+    @property
+    def ShortEdgeAsHeight(self):
+        """是否以短边作为高度，0：否，1：是。默认0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ShortEdgeAsHeight
+
+    @ShortEdgeAsHeight.setter
+    def ShortEdgeAsHeight(self, ShortEdgeAsHeight):
+        self._ShortEdgeAsHeight = ShortEdgeAsHeight
+
+    @property
+    def HlsContainerFormat(self):
+        """HLS 分片类型。
+可选值：ts、fmp4。
+注：编码方式为 H.265 时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HlsContainerFormat
+
+    @HlsContainerFormat.setter
+    def HlsContainerFormat(self, HlsContainerFormat):
+        self._HlsContainerFormat = HlsContainerFormat
+
+    @property
+    def HlsMp4VideoCodecTag(self):
+        """编码标签。
+可选值：hvc1、hev1。
+注：HLS 分片类型选择 fmp4 时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HlsMp4VideoCodecTag
+
+    @HlsMp4VideoCodecTag.setter
+    def HlsMp4VideoCodecTag(self, HlsMp4VideoCodecTag):
+        self._HlsMp4VideoCodecTag = HlsMp4VideoCodecTag
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Vcodec = params.get("Vcodec")
+        self._VideoBitrate = params.get("VideoBitrate")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Fps = params.get("Fps")
+        self._Gop = params.get("Gop")
+        self._NeedVideo = params.get("NeedVideo")
+        self._NeedAudio = params.get("NeedAudio")
+        self._BitrateToOrig = params.get("BitrateToOrig")
+        self._HeightToOrig = params.get("HeightToOrig")
+        self._FpsToOrig = params.get("FpsToOrig")
+        self._ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self._HlsContainerFormat = params.get("HlsContainerFormat")
+        self._HlsMp4VideoCodecTag = params.get("HlsMp4VideoCodecTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientIpPlaySumInfo(AbstractModel):
     """客户端ip播放汇总信息。
 
@@ -38160,6 +38499,14 @@ baseline/main/high。默认baseline
         :param _DRMTracks: DRM 加密项，多个用|分割，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DRMTracks: str
+        :param _IsAdaptiveBitRate: 是否创建自适应码率，默认值 0。
+0：否。
+1：是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAdaptiveBitRate: int
+        :param _AdaptiveChildren: 自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdaptiveChildren: list of ChildTemplateInfo
         """
         self._Vcodec = None
         self._VideoBitrate = None
@@ -38184,6 +38531,8 @@ baseline/main/high。默认baseline
         self._ShortEdgeAsHeight = None
         self._DRMType = None
         self._DRMTracks = None
+        self._IsAdaptiveBitRate = None
+        self._AdaptiveChildren = None
 
     @property
     def Vcodec(self):
@@ -38465,6 +38814,32 @@ baseline/main/high。默认baseline
     def DRMTracks(self, DRMTracks):
         self._DRMTracks = DRMTracks
 
+    @property
+    def IsAdaptiveBitRate(self):
+        """是否创建自适应码率，默认值 0。
+0：否。
+1：是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsAdaptiveBitRate
+
+    @IsAdaptiveBitRate.setter
+    def IsAdaptiveBitRate(self, IsAdaptiveBitRate):
+        self._IsAdaptiveBitRate = IsAdaptiveBitRate
+
+    @property
+    def AdaptiveChildren(self):
+        """自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChildTemplateInfo
+        """
+        return self._AdaptiveChildren
+
+    @AdaptiveChildren.setter
+    def AdaptiveChildren(self, AdaptiveChildren):
+        self._AdaptiveChildren = AdaptiveChildren
+
 
     def _deserialize(self, params):
         self._Vcodec = params.get("Vcodec")
@@ -38490,6 +38865,13 @@ baseline/main/high。默认baseline
         self._ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
         self._DRMType = params.get("DRMType")
         self._DRMTracks = params.get("DRMTracks")
+        self._IsAdaptiveBitRate = params.get("IsAdaptiveBitRate")
+        if params.get("AdaptiveChildren") is not None:
+            self._AdaptiveChildren = []
+            for item in params.get("AdaptiveChildren"):
+                obj = ChildTemplateInfo()
+                obj._deserialize(item)
+                self._AdaptiveChildren.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

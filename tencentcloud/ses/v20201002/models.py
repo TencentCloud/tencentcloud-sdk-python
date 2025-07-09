@@ -4694,6 +4694,8 @@ class SendEmailStatus(AbstractModel):
         :type UserUnsubscribed: bool
         :param _UserComplainted: 用户是否举报该发送者
         :type UserComplainted: bool
+        :param _UserComplained: 用户是否举报该发送者
+        :type UserComplained: bool
         """
         self._MessageId = None
         self._ToEmailAddress = None
@@ -4707,6 +4709,7 @@ class SendEmailStatus(AbstractModel):
         self._UserClicked = None
         self._UserUnsubscribed = None
         self._UserComplainted = None
+        self._UserComplained = None
 
     @property
     def MessageId(self):
@@ -4860,6 +4863,8 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserComplainted(self):
+        warnings.warn("parameter `UserComplainted` is deprecated", DeprecationWarning) 
+
         """用户是否举报该发送者
         :rtype: bool
         """
@@ -4867,7 +4872,20 @@ class SendEmailStatus(AbstractModel):
 
     @UserComplainted.setter
     def UserComplainted(self, UserComplainted):
+        warnings.warn("parameter `UserComplainted` is deprecated", DeprecationWarning) 
+
         self._UserComplainted = UserComplainted
+
+    @property
+    def UserComplained(self):
+        """用户是否举报该发送者
+        :rtype: bool
+        """
+        return self._UserComplained
+
+    @UserComplained.setter
+    def UserComplained(self, UserComplained):
+        self._UserComplained = UserComplained
 
 
     def _deserialize(self, params):
@@ -4883,6 +4901,7 @@ class SendEmailStatus(AbstractModel):
         self._UserClicked = params.get("UserClicked")
         self._UserUnsubscribed = params.get("UserUnsubscribed")
         self._UserComplainted = params.get("UserComplainted")
+        self._UserComplained = params.get("UserComplained")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

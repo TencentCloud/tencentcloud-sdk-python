@@ -2142,6 +2142,57 @@ class AliasDomain(AbstractModel):
         
 
 
+class AllowActionParameters(AbstractModel):
+    """Web 安全 Allow 的附加参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinDelayTime: 最小延迟响应时间，当配置为 0s 时，表示不延迟直接响应。支持的单位有：<li>s：秒，取值范围 0～5。</li>
+        :type MinDelayTime: str
+        :param _MaxDelayTime: 最大延迟响应时间，支持的单位有：<li>s：秒，取值范围 5～10。</li>
+        :type MaxDelayTime: str
+        """
+        self._MinDelayTime = None
+        self._MaxDelayTime = None
+
+    @property
+    def MinDelayTime(self):
+        """最小延迟响应时间，当配置为 0s 时，表示不延迟直接响应。支持的单位有：<li>s：秒，取值范围 0～5。</li>
+        :rtype: str
+        """
+        return self._MinDelayTime
+
+    @MinDelayTime.setter
+    def MinDelayTime(self, MinDelayTime):
+        self._MinDelayTime = MinDelayTime
+
+    @property
+    def MaxDelayTime(self):
+        """最大延迟响应时间，支持的单位有：<li>s：秒，取值范围 5～10。</li>
+        :rtype: str
+        """
+        return self._MaxDelayTime
+
+    @MaxDelayTime.setter
+    def MaxDelayTime(self, MaxDelayTime):
+        self._MaxDelayTime = MaxDelayTime
+
+
+    def _deserialize(self, params):
+        self._MinDelayTime = params.get("MinDelayTime")
+        self._MaxDelayTime = params.get("MaxDelayTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplicationProxy(AbstractModel):
     """应用代理实例
 
@@ -3834,6 +3885,44 @@ class BotManagedRule(AbstractModel):
         self._CapManagedIds = params.get("CapManagedIds")
         self._MonManagedIds = params.get("MonManagedIds")
         self._DropManagedIds = params.get("DropManagedIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotManagement(AbstractModel):
+    """Web 安全的 BOT 规则结构。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientAttestationRules: 客户端认证规则的定义列表。该功能内测中，如需使用，请提工单或联系智能客服。
+        :type ClientAttestationRules: :class:`tencentcloud.teo.v20220901.models.ClientAttestationRules`
+        """
+        self._ClientAttestationRules = None
+
+    @property
+    def ClientAttestationRules(self):
+        """客户端认证规则的定义列表。该功能内测中，如需使用，请提工单或联系智能客服。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientAttestationRules`
+        """
+        return self._ClientAttestationRules
+
+    @ClientAttestationRules.setter
+    def ClientAttestationRules(self, ClientAttestationRules):
+        self._ClientAttestationRules = ClientAttestationRules
+
+
+    def _deserialize(self, params):
+        if params.get("ClientAttestationRules") is not None:
+            self._ClientAttestationRules = ClientAttestationRules()
+            self._ClientAttestationRules._deserialize(params.get("ClientAttestationRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5798,6 +5887,195 @@ class CheckRegionHealthStatus(AbstractModel):
                 obj = OriginHealthStatus()
                 obj._deserialize(item)
                 self._OriginHealthStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClientAttestationRule(AbstractModel):
+    """客户端认证规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 客户端认证规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li> <b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li> <b>删除</b>已有规则：BotManagement 参数中，ClientAttestationRule 列表中未包含的已有规则将被删除。</li>
+        :type Id: str
+        :param _Name: 客户端认证规则的名称。
+        :type Name: str
+        :param _Enabled: 规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :type Enabled: str
+        :param _Priority: 规则的优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。
+        :type Priority: int
+        :param _Condition: 规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :type Condition: str
+        :param _AttesterId: 客户端认证选项 ID。
+        :type AttesterId: str
+        :param _DeviceProfiles: 客户端设备配置。若 ClientAttestationRules 参数中，未指定 DeviceProfiles 参数值：保持已有客户端设备配置，不做修改。
+        :type DeviceProfiles: list of DeviceProfile
+        :param _InvalidAttestationAction: 客户端认证未通过的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        :type InvalidAttestationAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._Id = None
+        self._Name = None
+        self._Enabled = None
+        self._Priority = None
+        self._Condition = None
+        self._AttesterId = None
+        self._DeviceProfiles = None
+        self._InvalidAttestationAction = None
+
+    @property
+    def Id(self):
+        """客户端认证规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li> <b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li> <b>删除</b>已有规则：BotManagement 参数中，ClientAttestationRule 列表中未包含的已有规则将被删除。</li>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """客户端认证规则的名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Enabled(self):
+        """规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Priority(self):
+        """规则的优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Condition(self):
+        """规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def AttesterId(self):
+        """客户端认证选项 ID。
+        :rtype: str
+        """
+        return self._AttesterId
+
+    @AttesterId.setter
+    def AttesterId(self, AttesterId):
+        self._AttesterId = AttesterId
+
+    @property
+    def DeviceProfiles(self):
+        """客户端设备配置。若 ClientAttestationRules 参数中，未指定 DeviceProfiles 参数值：保持已有客户端设备配置，不做修改。
+        :rtype: list of DeviceProfile
+        """
+        return self._DeviceProfiles
+
+    @DeviceProfiles.setter
+    def DeviceProfiles(self, DeviceProfiles):
+        self._DeviceProfiles = DeviceProfiles
+
+    @property
+    def InvalidAttestationAction(self):
+        """客户端认证未通过的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._InvalidAttestationAction
+
+    @InvalidAttestationAction.setter
+    def InvalidAttestationAction(self, InvalidAttestationAction):
+        self._InvalidAttestationAction = InvalidAttestationAction
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Enabled = params.get("Enabled")
+        self._Priority = params.get("Priority")
+        self._Condition = params.get("Condition")
+        self._AttesterId = params.get("AttesterId")
+        if params.get("DeviceProfiles") is not None:
+            self._DeviceProfiles = []
+            for item in params.get("DeviceProfiles"):
+                obj = DeviceProfile()
+                obj._deserialize(item)
+                self._DeviceProfiles.append(obj)
+        if params.get("InvalidAttestationAction") is not None:
+            self._InvalidAttestationAction = SecurityAction()
+            self._InvalidAttestationAction._deserialize(params.get("InvalidAttestationAction"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClientAttestationRules(AbstractModel):
+    """客户端认证的配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 客户端认证的列表。使用 ModifySecurityPolicy 修改 Web 防护配置时：<li>  若未指定 SecurityPolicy.BotManagement.ClientAttestationRules 中的 Rules 参数，或 Rules 参数长度为零：清空所有客户端认证规则配置。</li> <li> 若 SecurityPolicy.BotManagement 参数中，未指定 ClientAttestationRules 参数值：保持已有客户端认证规则配置，不做修改。</li>
+        :type Rules: list of ClientAttestationRule
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        """客户端认证的列表。使用 ModifySecurityPolicy 修改 Web 防护配置时：<li>  若未指定 SecurityPolicy.BotManagement.ClientAttestationRules 中的 Rules 参数，或 Rules 参数长度为零：清空所有客户端认证规则配置。</li> <li> 若 SecurityPolicy.BotManagement 参数中，未指定 ClientAttestationRules 参数值：保持已有客户端认证规则配置，不做修改。</li>
+        :rtype: list of ClientAttestationRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = ClientAttestationRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20073,7 +20351,7 @@ class DescribeSecurityIPGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPGroups: 安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称、 IP / 网段列表信息和过期时间信息。
+        :param _IPGroups: 安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称、IP / 网段总数量、 IP / 网段列表信息和过期时间信息。
         :type IPGroups: list of IPGroup
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20083,7 +20361,7 @@ class DescribeSecurityIPGroupResponse(AbstractModel):
 
     @property
     def IPGroups(self):
-        """安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称、 IP / 网段列表信息和过期时间信息。
+        """安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称、IP / 网段总数量、 IP / 网段列表信息和过期时间信息。
         :rtype: list of IPGroup
         """
         return self._IPGroups
@@ -22740,6 +23018,106 @@ class DetectLengthLimitRule(AbstractModel):
                 obj._deserialize(item)
                 self._Conditions.append(obj)
         self._Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceProfile(AbstractModel):
+    """客户端设备配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientType: 客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView。</li>
+        :type ClientType: str
+        :param _HighRiskMinScore: 判定请求为高风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 50，对应含义 51～100 为高风险。
+        :type HighRiskMinScore: int
+        :param _HighRiskRequestAction: 高风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        :type HighRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _MediumRiskMinScore: 判定请求为中风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 15，对应含义 16～50 为中风险。
+        :type MediumRiskMinScore: int
+        :param _MediumRiskRequestAction: 中风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        :type MediumRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._ClientType = None
+        self._HighRiskMinScore = None
+        self._HighRiskRequestAction = None
+        self._MediumRiskMinScore = None
+        self._MediumRiskRequestAction = None
+
+    @property
+    def ClientType(self):
+        """客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView。</li>
+        :rtype: str
+        """
+        return self._ClientType
+
+    @ClientType.setter
+    def ClientType(self, ClientType):
+        self._ClientType = ClientType
+
+    @property
+    def HighRiskMinScore(self):
+        """判定请求为高风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 50，对应含义 51～100 为高风险。
+        :rtype: int
+        """
+        return self._HighRiskMinScore
+
+    @HighRiskMinScore.setter
+    def HighRiskMinScore(self, HighRiskMinScore):
+        self._HighRiskMinScore = HighRiskMinScore
+
+    @property
+    def HighRiskRequestAction(self):
+        """高风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._HighRiskRequestAction
+
+    @HighRiskRequestAction.setter
+    def HighRiskRequestAction(self, HighRiskRequestAction):
+        self._HighRiskRequestAction = HighRiskRequestAction
+
+    @property
+    def MediumRiskMinScore(self):
+        """判定请求为中风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 15，对应含义 16～50 为中风险。
+        :rtype: int
+        """
+        return self._MediumRiskMinScore
+
+    @MediumRiskMinScore.setter
+    def MediumRiskMinScore(self, MediumRiskMinScore):
+        self._MediumRiskMinScore = MediumRiskMinScore
+
+    @property
+    def MediumRiskRequestAction(self):
+        """中风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._MediumRiskRequestAction
+
+    @MediumRiskRequestAction.setter
+    def MediumRiskRequestAction(self, MediumRiskRequestAction):
+        self._MediumRiskRequestAction = MediumRiskRequestAction
+
+
+    def _deserialize(self, params):
+        self._ClientType = params.get("ClientType")
+        self._HighRiskMinScore = params.get("HighRiskMinScore")
+        if params.get("HighRiskRequestAction") is not None:
+            self._HighRiskRequestAction = SecurityAction()
+            self._HighRiskRequestAction._deserialize(params.get("HighRiskRequestAction"))
+        self._MediumRiskMinScore = params.get("MediumRiskMinScore")
+        if params.get("MediumRiskRequestAction") is not None:
+            self._MediumRiskRequestAction = SecurityAction()
+            self._MediumRiskRequestAction._deserialize(params.get("MediumRiskRequestAction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27127,8 +27505,10 @@ class IPGroup(AbstractModel):
         :type Name: str
         :param _Content: IP 组内容，仅支持 IP 及 IP 网段。
         :type Content: list of str
+        :param _IPTotalCount: IP 组中正在生效的 IP 或网段个数。作为出参时有效，作为入参时无需填写该字段。
+        :type IPTotalCount: int
         :param _IPExpireInfo: IP 定时过期信息。
-作为入参：用于为指定的 IP 地址或网段配置定时过期时间。
+作为入参，用于为指定的 IP 地址或网段配置定时过期时间。
 作为出参，包含以下两类信息：
 <li>当前未到期的定时过期信息：尚未触发的过期配置。</li>
 <li>一周内已到期的定时过期信息：已触发的过期配置。</li>
@@ -27137,6 +27517,7 @@ class IPGroup(AbstractModel):
         self._GroupId = None
         self._Name = None
         self._Content = None
+        self._IPTotalCount = None
         self._IPExpireInfo = None
 
     @property
@@ -27173,9 +27554,20 @@ class IPGroup(AbstractModel):
         self._Content = Content
 
     @property
+    def IPTotalCount(self):
+        """IP 组中正在生效的 IP 或网段个数。作为出参时有效，作为入参时无需填写该字段。
+        :rtype: int
+        """
+        return self._IPTotalCount
+
+    @IPTotalCount.setter
+    def IPTotalCount(self, IPTotalCount):
+        self._IPTotalCount = IPTotalCount
+
+    @property
     def IPExpireInfo(self):
         """IP 定时过期信息。
-作为入参：用于为指定的 IP 地址或网段配置定时过期时间。
+作为入参，用于为指定的 IP 地址或网段配置定时过期时间。
 作为出参，包含以下两类信息：
 <li>当前未到期的定时过期信息：尚未触发的过期配置。</li>
 <li>一周内已到期的定时过期信息：已触发的过期配置。</li>
@@ -27192,6 +27584,7 @@ class IPGroup(AbstractModel):
         self._GroupId = params.get("GroupId")
         self._Name = params.get("Name")
         self._Content = params.get("Content")
+        self._IPTotalCount = params.get("IPTotalCount")
         if params.get("IPExpireInfo") is not None:
             self._IPExpireInfo = []
             for item in params.get("IPExpireInfo"):
@@ -37204,7 +37597,9 @@ class PartialModule(AbstractModel):
     def __init__(self):
         r"""
         :param _Module: 模块名称，取值为：
-<li>waf：托管规则。</li>
+<li>managed-rule：托管规则 Id；</li>
+<li>managed-group：托管规则组；</li>
+<li>waf：待废弃，托管规则。</li>
         :type Module: str
         :param _Include: 模块下的需要例外的具体规则ID列表。
         :type Include: list of int
@@ -37215,7 +37610,9 @@ class PartialModule(AbstractModel):
     @property
     def Module(self):
         """模块名称，取值为：
-<li>waf：托管规则。</li>
+<li>managed-rule：托管规则 Id；</li>
+<li>managed-group：托管规则组；</li>
+<li>waf：待废弃，托管规则。</li>
         :rtype: str
         """
         return self._Module
@@ -42819,6 +43216,8 @@ class SecurityAction(AbstractModel):
         :type DenyActionParameters: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
         :param _RedirectActionParameters: 当 Name 为 Redirect 时的附加参数。
         :type RedirectActionParameters: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
+        :param _AllowActionParameters: 当 Name 为 Allow 时的附加参数。
+        :type AllowActionParameters: :class:`tencentcloud.teo.v20220901.models.AllowActionParameters`
         :param _ChallengeActionParameters: 当 Name 为 Challenge 时的附加参数。
         :type ChallengeActionParameters: :class:`tencentcloud.teo.v20220901.models.ChallengeActionParameters`
         :param _BlockIPActionParameters: 待废弃，当 Name 为 BlockIP 时的附加参数。
@@ -42829,6 +43228,7 @@ class SecurityAction(AbstractModel):
         self._Name = None
         self._DenyActionParameters = None
         self._RedirectActionParameters = None
+        self._AllowActionParameters = None
         self._ChallengeActionParameters = None
         self._BlockIPActionParameters = None
         self._ReturnCustomPageActionParameters = None
@@ -42877,6 +43277,17 @@ class SecurityAction(AbstractModel):
         self._RedirectActionParameters = RedirectActionParameters
 
     @property
+    def AllowActionParameters(self):
+        """当 Name 为 Allow 时的附加参数。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AllowActionParameters`
+        """
+        return self._AllowActionParameters
+
+    @AllowActionParameters.setter
+    def AllowActionParameters(self, AllowActionParameters):
+        self._AllowActionParameters = AllowActionParameters
+
+    @property
     def ChallengeActionParameters(self):
         """当 Name 为 Challenge 时的附加参数。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ChallengeActionParameters`
@@ -42918,6 +43329,9 @@ class SecurityAction(AbstractModel):
         if params.get("RedirectActionParameters") is not None:
             self._RedirectActionParameters = RedirectActionParameters()
             self._RedirectActionParameters._deserialize(params.get("RedirectActionParameters"))
+        if params.get("AllowActionParameters") is not None:
+            self._AllowActionParameters = AllowActionParameters()
+            self._AllowActionParameters._deserialize(params.get("AllowActionParameters"))
         if params.get("ChallengeActionParameters") is not None:
             self._ChallengeActionParameters = ChallengeActionParameters()
             self._ChallengeActionParameters._deserialize(params.get("ChallengeActionParameters"))
@@ -43156,18 +43570,21 @@ class SecurityPolicy(AbstractModel):
         :type CustomRules: :class:`tencentcloud.teo.v20220901.models.CustomRules`
         :param _ManagedRules: 托管规则配置。
         :type ManagedRules: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
-        :param _HttpDDoSProtection: HTTP DDOS防护配置。
+        :param _HttpDDoSProtection: HTTP DDOS 防护配置。
         :type HttpDDoSProtection: :class:`tencentcloud.teo.v20220901.models.HttpDDoSProtection`
         :param _RateLimitingRules: 速率限制规则配置。
         :type RateLimitingRules: :class:`tencentcloud.teo.v20220901.models.RateLimitingRules`
         :param _ExceptionRules: 例外规则配置。
         :type ExceptionRules: :class:`tencentcloud.teo.v20220901.models.ExceptionRules`
+        :param _BotManagement: Bot 管理配置。
+        :type BotManagement: :class:`tencentcloud.teo.v20220901.models.BotManagement`
         """
         self._CustomRules = None
         self._ManagedRules = None
         self._HttpDDoSProtection = None
         self._RateLimitingRules = None
         self._ExceptionRules = None
+        self._BotManagement = None
 
     @property
     def CustomRules(self):
@@ -43193,7 +43610,7 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def HttpDDoSProtection(self):
-        """HTTP DDOS防护配置。
+        """HTTP DDOS 防护配置。
         :rtype: :class:`tencentcloud.teo.v20220901.models.HttpDDoSProtection`
         """
         return self._HttpDDoSProtection
@@ -43224,6 +43641,17 @@ class SecurityPolicy(AbstractModel):
     def ExceptionRules(self, ExceptionRules):
         self._ExceptionRules = ExceptionRules
 
+    @property
+    def BotManagement(self):
+        """Bot 管理配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BotManagement`
+        """
+        return self._BotManagement
+
+    @BotManagement.setter
+    def BotManagement(self, BotManagement):
+        self._BotManagement = BotManagement
+
 
     def _deserialize(self, params):
         if params.get("CustomRules") is not None:
@@ -43241,6 +43669,9 @@ class SecurityPolicy(AbstractModel):
         if params.get("ExceptionRules") is not None:
             self._ExceptionRules = ExceptionRules()
             self._ExceptionRules._deserialize(params.get("ExceptionRules"))
+        if params.get("BotManagement") is not None:
+            self._BotManagement = BotManagement()
+            self._BotManagement._deserialize(params.get("BotManagement"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

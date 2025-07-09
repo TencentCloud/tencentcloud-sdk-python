@@ -1159,6 +1159,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLogStorageStatistic(self, request):
+        """租户日志存储统计
+
+        :param request: Request instance for DescribeLogStorageStatistic.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeLogStorageStatisticRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeLogStorageStatisticResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogStorageStatistic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogStorageStatisticResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLogs(self, request):
         """日志审计日志查询
 

@@ -49,6 +49,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAccessKeyCheckTask(self, request):
+        """检测AK 异步任务
+
+        :param request: Request instance for CreateAccessKeyCheckTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateAccessKeyCheckTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateAccessKeyCheckTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccessKeyCheckTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAccessKeyCheckTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAccessKeySyncTask(self, request):
+        """发起AK资产同步任务
+
+        :param request: Request instance for CreateAccessKeySyncTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateAccessKeySyncTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateAccessKeySyncTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccessKeySyncTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAccessKeySyncTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDomainAndIp(self, request):
         """创建域名、ip相关信息
 
@@ -141,6 +187,75 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAbnormalCallRecord(self, request):
+        """获取调用记录列表
+
+        :param request: Request instance for DescribeAbnormalCallRecord.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAbnormalCallRecordRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAbnormalCallRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAbnormalCallRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAbnormalCallRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessKeyAlarm(self, request):
+        """访问密钥告警记录列表
+
+        :param request: Request instance for DescribeAccessKeyAlarm.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyAlarmRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyAlarmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessKeyAlarm", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessKeyAlarmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessKeyAlarmDetail(self, request):
+        """访问密钥告警记录详情
+
+        :param request: Request instance for DescribeAccessKeyAlarmDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyAlarmDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyAlarmDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessKeyAlarmDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessKeyAlarmDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccessKeyAsset(self, request):
         """获取用户访问密钥资产列表
 
@@ -155,6 +270,98 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeAccessKeyAsset", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccessKeyAssetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessKeyRisk(self, request):
+        """访问密钥风险记录列表
+
+        :param request: Request instance for DescribeAccessKeyRisk.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyRiskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyRiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessKeyRisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessKeyRiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessKeyRiskDetail(self, request):
+        """访问密钥风险记录详情
+
+        :param request: Request instance for DescribeAccessKeyRiskDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyRiskDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyRiskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessKeyRiskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessKeyRiskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessKeyUserDetail(self, request):
+        """查询用户的账号详情
+
+        :param request: Request instance for DescribeAccessKeyUserDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyUserDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyUserDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessKeyUserDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessKeyUserDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessKeyUserList(self, request):
+        """查询用户的账号列表
+
+        :param request: Request instance for DescribeAccessKeyUserList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyUserListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyUserListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessKeyUserList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessKeyUserListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -785,6 +992,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRiskCallRecord(self, request):
+        """获取风险调用记录列表
+
+        :param request: Request instance for DescribeRiskCallRecord.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCallRecordRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCallRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskCallRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskCallRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRiskCenterAssetViewCFGRiskList(self, request):
         """获取资产视角的配置风险列表
 
@@ -1314,6 +1544,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserCallRecord(self, request):
+        """获取账号调用记录列表
+
+        :param request: Request instance for DescribeUserCallRecord.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeUserCallRecordRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeUserCallRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserCallRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserCallRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVULList(self, request):
         """新安全中心风险中心-漏洞列表
 
@@ -1558,6 +1811,52 @@ class CsipClient(AbstractClient):
             body = self.call("StopRiskCenterTask", params, headers=headers)
             response = json.loads(body)
             model = models.StopRiskCenterTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAccessKeyAlarmStatus(self, request):
+        """标记风险或者告警为 已处置/已忽略
+
+        :param request: Request instance for UpdateAccessKeyAlarmStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.UpdateAccessKeyAlarmStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.UpdateAccessKeyAlarmStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAccessKeyAlarmStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAccessKeyAlarmStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAccessKeyRemark(self, request):
+        """编辑访问密钥/源IP备注
+
+        :param request: Request instance for UpdateAccessKeyRemark.
+        :type request: :class:`tencentcloud.csip.v20221121.models.UpdateAccessKeyRemarkRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.UpdateAccessKeyRemarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAccessKeyRemark", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAccessKeyRemarkResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

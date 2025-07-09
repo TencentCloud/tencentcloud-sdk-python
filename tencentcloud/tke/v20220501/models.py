@@ -5908,6 +5908,100 @@ class RuntimeConfig(AbstractModel):
         
 
 
+class SetMachineLoginRequest(AbstractModel):
+    """SetMachineLogin请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _MachineName: 节点名称
+        :type MachineName: str
+        :param _KeyIds: 密钥 ID 列表
+        :type KeyIds: list of str
+        """
+        self._ClusterId = None
+        self._MachineName = None
+        self._KeyIds = None
+
+    @property
+    def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MachineName(self):
+        """节点名称
+        :rtype: str
+        """
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def KeyIds(self):
+        """密钥 ID 列表
+        :rtype: list of str
+        """
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._MachineName = params.get("MachineName")
+        self._KeyIds = params.get("KeyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetMachineLoginResponse(AbstractModel):
+    """SetMachineLogin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SortBy(AbstractModel):
     """排序信息
 

@@ -1974,11 +1974,14 @@ class BizLicenseOCRRequest(AbstractModel):
         :type EnableCopyWarn: bool
         :param _EnablePeriodComplete: 是否返回自动拼接的有效期，默认为true
         :type EnablePeriodComplete: bool
+        :param _EnableBusinessCertificate: 是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
+        :type EnableBusinessCertificate: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
         self._EnableCopyWarn = None
         self._EnablePeriodComplete = None
+        self._EnableBusinessCertificate = None
 
     @property
     def ImageBase64(self):
@@ -2031,12 +2034,24 @@ class BizLicenseOCRRequest(AbstractModel):
     def EnablePeriodComplete(self, EnablePeriodComplete):
         self._EnablePeriodComplete = EnablePeriodComplete
 
+    @property
+    def EnableBusinessCertificate(self):
+        """是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
+        :rtype: bool
+        """
+        return self._EnableBusinessCertificate
+
+    @EnableBusinessCertificate.setter
+    def EnableBusinessCertificate(self, EnableBusinessCertificate):
+        self._EnableBusinessCertificate = EnableBusinessCertificate
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
         self._EnableCopyWarn = params.get("EnableCopyWarn")
         self._EnablePeriodComplete = params.get("EnablePeriodComplete")
+        self._EnableBusinessCertificate = params.get("EnableBusinessCertificate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2104,6 +2119,8 @@ WARN_RESHOOT_CARD翻拍件告警
         :type RegistrationAuthority: str
         :param _Electronic: 是否是电子营业执照。false为没有，true为有。
         :type Electronic: bool
+        :param _BusinessCertificate: 非营业执照的营业类证件识别结果，将以结构化形式呈现。
+        :type BusinessCertificate: list of BusinessCertificateInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2129,6 +2146,7 @@ WARN_RESHOOT_CARD翻拍件告警
         self._SerialNumber = None
         self._RegistrationAuthority = None
         self._Electronic = None
+        self._BusinessCertificate = None
         self._RequestId = None
 
     @property
@@ -2380,6 +2398,17 @@ WARN_RESHOOT_CARD翻拍件告警
         self._Electronic = Electronic
 
     @property
+    def BusinessCertificate(self):
+        """非营业执照的营业类证件识别结果，将以结构化形式呈现。
+        :rtype: list of BusinessCertificateInfo
+        """
+        return self._BusinessCertificate
+
+    @BusinessCertificate.setter
+    def BusinessCertificate(self, BusinessCertificate):
+        self._BusinessCertificate = BusinessCertificate
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2414,6 +2443,12 @@ WARN_RESHOOT_CARD翻拍件告警
         self._SerialNumber = params.get("SerialNumber")
         self._RegistrationAuthority = params.get("RegistrationAuthority")
         self._Electronic = params.get("Electronic")
+        if params.get("BusinessCertificate") is not None:
+            self._BusinessCertificate = []
+            for item in params.get("BusinessCertificate"):
+                obj = BusinessCertificateInfo()
+                obj._deserialize(item)
+                self._BusinessCertificate.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3209,6 +3244,74 @@ class BusinessCardOCRResponse(AbstractModel):
         self._RetImageBase64 = params.get("RetImageBase64")
         self._Angle = params.get("Angle")
         self._RequestId = params.get("RequestId")
+
+
+class BusinessCertificateInfo(AbstractModel):
+    """非营业执照的营业类证件识别结果，将以结构化形式呈现。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 识别出的名称
+        :type Name: str
+        :param _Value: 识别出的字段名称对应的值
+        :type Value: str
+        :param _Rect: 坐标
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        self._Name = None
+        self._Value = None
+        self._Rect = None
+
+    @property
+    def Name(self):
+        """识别出的名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """识别出的字段名称对应的值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Rect(self):
+        """坐标
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        return self._Rect
+
+    @Rect.setter
+    def Rect(self, Rect):
+        self._Rect = Rect
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self._Rect = Rect()
+            self._Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CandWord(AbstractModel):

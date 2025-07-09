@@ -10631,6 +10631,257 @@ class DescribeIdsWhiteRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLogStorageStatisticRequest(AbstractModel):
+    """DescribeLogStorageStatistic请求参数结构体
+
+    """
+
+
+class DescribeLogStorageStatisticResponse(AbstractModel):
+    """DescribeLogStorageStatistic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: 返回状态码 0 成功 非0不成功
+        :type ReturnCode: int
+        :param _ReturnMsg: 返回信息  success 成功 其他 不成功
+        :type ReturnMsg: str
+        :param _UsedSize: 已使用存储量，单位B
+        :type UsedSize: int
+        :param _TotalSize: 配额存储总量，单位B
+        :type TotalSize: int
+        :param _StorageDay: 存储天数
+        :type StorageDay: int
+        :param _AclSize: 访问控制日志存储量，单位B
+        :type AclSize: int
+        :param _IdsSize: 入侵防御日志存储量，单位B
+        :type IdsSize: int
+        :param _NetFlowSize: 流量日志存储量，单位B
+        :type NetFlowSize: int
+        :param _OperateSize: 操作日志存储量，单位B
+        :type OperateSize: int
+        :param _LeftSize: 剩余存储量，单位B
+        :type LeftSize: int
+        :param _PayMode: 计费模式，0后付费，1预付费
+        :type PayMode: int
+        :param _TimeHistogram: 每日增加日志存储量柱状图
+        :type TimeHistogram: list of StorageHistogram
+        :param _TimeHistogramShow: 柱形图格式数据
+        :type TimeHistogramShow: :class:`tencentcloud.cfw.v20190904.models.StorageHistogramShow`
+        :param _ArrearsStopWriting: 后付费模式存储状态，0正常，1欠费停止写入
+        :type ArrearsStopWriting: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._UsedSize = None
+        self._TotalSize = None
+        self._StorageDay = None
+        self._AclSize = None
+        self._IdsSize = None
+        self._NetFlowSize = None
+        self._OperateSize = None
+        self._LeftSize = None
+        self._PayMode = None
+        self._TimeHistogram = None
+        self._TimeHistogramShow = None
+        self._ArrearsStopWriting = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        """返回状态码 0 成功 非0不成功
+        :rtype: int
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        """返回信息  success 成功 其他 不成功
+        :rtype: str
+        """
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def UsedSize(self):
+        """已使用存储量，单位B
+        :rtype: int
+        """
+        return self._UsedSize
+
+    @UsedSize.setter
+    def UsedSize(self, UsedSize):
+        self._UsedSize = UsedSize
+
+    @property
+    def TotalSize(self):
+        """配额存储总量，单位B
+        :rtype: int
+        """
+        return self._TotalSize
+
+    @TotalSize.setter
+    def TotalSize(self, TotalSize):
+        self._TotalSize = TotalSize
+
+    @property
+    def StorageDay(self):
+        """存储天数
+        :rtype: int
+        """
+        return self._StorageDay
+
+    @StorageDay.setter
+    def StorageDay(self, StorageDay):
+        self._StorageDay = StorageDay
+
+    @property
+    def AclSize(self):
+        """访问控制日志存储量，单位B
+        :rtype: int
+        """
+        return self._AclSize
+
+    @AclSize.setter
+    def AclSize(self, AclSize):
+        self._AclSize = AclSize
+
+    @property
+    def IdsSize(self):
+        """入侵防御日志存储量，单位B
+        :rtype: int
+        """
+        return self._IdsSize
+
+    @IdsSize.setter
+    def IdsSize(self, IdsSize):
+        self._IdsSize = IdsSize
+
+    @property
+    def NetFlowSize(self):
+        """流量日志存储量，单位B
+        :rtype: int
+        """
+        return self._NetFlowSize
+
+    @NetFlowSize.setter
+    def NetFlowSize(self, NetFlowSize):
+        self._NetFlowSize = NetFlowSize
+
+    @property
+    def OperateSize(self):
+        """操作日志存储量，单位B
+        :rtype: int
+        """
+        return self._OperateSize
+
+    @OperateSize.setter
+    def OperateSize(self, OperateSize):
+        self._OperateSize = OperateSize
+
+    @property
+    def LeftSize(self):
+        """剩余存储量，单位B
+        :rtype: int
+        """
+        return self._LeftSize
+
+    @LeftSize.setter
+    def LeftSize(self, LeftSize):
+        self._LeftSize = LeftSize
+
+    @property
+    def PayMode(self):
+        """计费模式，0后付费，1预付费
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def TimeHistogram(self):
+        """每日增加日志存储量柱状图
+        :rtype: list of StorageHistogram
+        """
+        return self._TimeHistogram
+
+    @TimeHistogram.setter
+    def TimeHistogram(self, TimeHistogram):
+        self._TimeHistogram = TimeHistogram
+
+    @property
+    def TimeHistogramShow(self):
+        """柱形图格式数据
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.StorageHistogramShow`
+        """
+        return self._TimeHistogramShow
+
+    @TimeHistogramShow.setter
+    def TimeHistogramShow(self, TimeHistogramShow):
+        self._TimeHistogramShow = TimeHistogramShow
+
+    @property
+    def ArrearsStopWriting(self):
+        """后付费模式存储状态，0正常，1欠费停止写入
+        :rtype: int
+        """
+        return self._ArrearsStopWriting
+
+    @ArrearsStopWriting.setter
+    def ArrearsStopWriting(self, ArrearsStopWriting):
+        self._ArrearsStopWriting = ArrearsStopWriting
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._UsedSize = params.get("UsedSize")
+        self._TotalSize = params.get("TotalSize")
+        self._StorageDay = params.get("StorageDay")
+        self._AclSize = params.get("AclSize")
+        self._IdsSize = params.get("IdsSize")
+        self._NetFlowSize = params.get("NetFlowSize")
+        self._OperateSize = params.get("OperateSize")
+        self._LeftSize = params.get("LeftSize")
+        self._PayMode = params.get("PayMode")
+        if params.get("TimeHistogram") is not None:
+            self._TimeHistogram = []
+            for item in params.get("TimeHistogram"):
+                obj = StorageHistogram()
+                obj._deserialize(item)
+                self._TimeHistogram.append(obj)
+        if params.get("TimeHistogramShow") is not None:
+            self._TimeHistogramShow = StorageHistogramShow()
+            self._TimeHistogramShow._deserialize(params.get("TimeHistogramShow"))
+        self._ArrearsStopWriting = params.get("ArrearsStopWriting")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLogsRequest(AbstractModel):
     """DescribeLogs请求参数结构体
 
@@ -16205,6 +16456,44 @@ class InstanceInfo(AbstractModel):
         self._SubnetId = params.get("SubnetId")
         self._VPCName = params.get("VPCName")
         self._VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntArray(AbstractModel):
+    """用于构造二维数组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of int
+        """
+        self._List = None
+
+    @property
+    def List(self):
+        """数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._List = params.get("List")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24914,6 +25203,189 @@ class StopSecurityGroupRuleDispatchResponse(AbstractModel):
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
+
+
+class StorageHistogram(AbstractModel):
+    """日志存储统计柱形图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AclSize: 访问控制日志存储量，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclSize: int
+        :param _IdsSize: 入侵防御日志存储量，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdsSize: int
+        :param _NetFlowSize: 流量日志存储量，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetFlowSize: int
+        :param _OperateSize: 操作日志存储量，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateSize: int
+        :param _Time: 统计时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: str
+        """
+        self._AclSize = None
+        self._IdsSize = None
+        self._NetFlowSize = None
+        self._OperateSize = None
+        self._Time = None
+
+    @property
+    def AclSize(self):
+        """访问控制日志存储量，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AclSize
+
+    @AclSize.setter
+    def AclSize(self, AclSize):
+        self._AclSize = AclSize
+
+    @property
+    def IdsSize(self):
+        """入侵防御日志存储量，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IdsSize
+
+    @IdsSize.setter
+    def IdsSize(self, IdsSize):
+        self._IdsSize = IdsSize
+
+    @property
+    def NetFlowSize(self):
+        """流量日志存储量，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NetFlowSize
+
+    @NetFlowSize.setter
+    def NetFlowSize(self, NetFlowSize):
+        self._NetFlowSize = NetFlowSize
+
+    @property
+    def OperateSize(self):
+        """操作日志存储量，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OperateSize
+
+    @OperateSize.setter
+    def OperateSize(self, OperateSize):
+        self._OperateSize = OperateSize
+
+    @property
+    def Time(self):
+        """统计时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+
+    def _deserialize(self, params):
+        self._AclSize = params.get("AclSize")
+        self._IdsSize = params.get("IdsSize")
+        self._NetFlowSize = params.get("NetFlowSize")
+        self._OperateSize = params.get("OperateSize")
+        self._Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageHistogramShow(AbstractModel):
+    """前端图表使用日志存储统计柱形图数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageType: 存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: list of str
+        :param _Dates: 日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dates: list of str
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of IntArray
+        """
+        self._StorageType = None
+        self._Dates = None
+        self._Data = None
+
+    @property
+    def StorageType(self):
+        """存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def Dates(self):
+        """日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Dates
+
+    @Dates.setter
+    def Dates(self, Dates):
+        self._Dates = Dates
+
+    @property
+    def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IntArray
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._StorageType = params.get("StorageType")
+        self._Dates = params.get("Dates")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = IntArray()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SwitchListsData(AbstractModel):

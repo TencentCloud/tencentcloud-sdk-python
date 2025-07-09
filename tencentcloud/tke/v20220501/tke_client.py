@@ -325,6 +325,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SetMachineLogin(self, request):
+        """设置是否开启节点登录
+
+        :param request: Request instance for SetMachineLogin.
+        :type request: :class:`tencentcloud.tke.v20220501.models.SetMachineLoginRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.SetMachineLoginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetMachineLogin", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetMachineLoginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartMachines(self, request):
         """本接口 (StartMachines) 用于启动一个或多个原生节点实例。
 
