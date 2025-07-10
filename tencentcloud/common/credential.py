@@ -233,10 +233,9 @@ class STSAssumeRoleCredential(object):
         return self._token
 
     def _need_refresh(self):
-        if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
-            with self._lock:
-                if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
-                    self.get_sts_tmp_role_arn()
+        with self._lock:
+            if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
+                self.get_sts_tmp_role_arn()
 
     def get_sts_tmp_role_arn(self):
         cred = Credential(self._long_secret_id, self._long_secret_key)
@@ -333,13 +332,13 @@ class DefaultCredentialProvider(object):
 
     def __init__(self):
         self.cred = None
-        self.lock = threading.Lock()
+        self._lock = threading.Lock()
 
     def get_credential(self):
         return self.get_credentials()
 
     def get_credentials(self):
-        with self.lock:
+        with self._lock:
             if self.cred is not None:
                 return self.cred
 
@@ -440,10 +439,9 @@ class OIDCRoleArnCredential(object):
         return self._token
 
     def _keep_fresh(self):
-        if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
-            with self._lock:
-                if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
-                    self.refresh()
+        with self._lock:
+            if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
+                self.refresh()
 
     def refresh(self):
         if self._is_tke:
