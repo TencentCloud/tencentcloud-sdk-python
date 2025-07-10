@@ -12563,6 +12563,8 @@ class IndicatorItem(AbstractModel):
         :type InferNormal: str
         :param _Sample: 标本
         :type Sample: str
+        :param _Method: 检测方法
+        :type Method: str
         """
         self._Code = None
         self._Scode = None
@@ -12578,6 +12580,7 @@ class IndicatorItem(AbstractModel):
         self._Coords = None
         self._InferNormal = None
         self._Sample = None
+        self._Method = None
 
     @property
     def Code(self):
@@ -12733,6 +12736,17 @@ class IndicatorItem(AbstractModel):
     def Sample(self, Sample):
         self._Sample = Sample
 
+    @property
+    def Method(self):
+        """检测方法
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
 
     def _deserialize(self, params):
         self._Code = params.get("Code")
@@ -12751,6 +12765,7 @@ class IndicatorItem(AbstractModel):
             self._Coords._deserialize(params.get("Coords"))
         self._InferNormal = params.get("InferNormal")
         self._Sample = params.get("Sample")
+        self._Method = params.get("Method")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

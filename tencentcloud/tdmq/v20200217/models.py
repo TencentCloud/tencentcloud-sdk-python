@@ -11957,6 +11957,8 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         :type Bundle: str
         :param _OwnerBroker: bundle 所属的 broker IP 地址，支持模糊查询
         :type OwnerBroker: str
+        :param _Tenant: 租户(如果没有自定义租户名称，和 tenantId 相同；如果有配置自定义租户名称，则为自定义租户名 user_tenant)
+        :type Tenant: str
         """
         self._ClusterName = None
         self._TenantId = None
@@ -11966,6 +11968,7 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         self._Offset = None
         self._Bundle = None
         self._OwnerBroker = None
+        self._Tenant = None
 
     @property
     def ClusterName(self):
@@ -12055,6 +12058,17 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
     def OwnerBroker(self, OwnerBroker):
         self._OwnerBroker = OwnerBroker
 
+    @property
+    def Tenant(self):
+        """租户(如果没有自定义租户名称，和 tenantId 相同；如果有配置自定义租户名称，则为自定义租户名 user_tenant)
+        :rtype: str
+        """
+        return self._Tenant
+
+    @Tenant.setter
+    def Tenant(self, Tenant):
+        self._Tenant = Tenant
+
 
     def _deserialize(self, params):
         self._ClusterName = params.get("ClusterName")
@@ -12065,6 +12079,7 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Bundle = params.get("Bundle")
         self._OwnerBroker = params.get("OwnerBroker")
+        self._Tenant = params.get("Tenant")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

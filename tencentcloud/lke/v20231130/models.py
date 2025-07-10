@@ -500,6 +500,127 @@ class AgentInputUserInputValue(AbstractModel):
         
 
 
+class AgentKnowledge(AbstractModel):
+    """Agent 知识库检索插件支持多知识库搜索
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBizId: 知识库id
+        :type KnowledgeBizId: str
+        :param _KnowledgeType: 0-应用内知识库
+1-共享知识库
+        :type KnowledgeType: int
+        :param _Filter: 0-全部知识
+1-按文档和问答
+2-按标签
+        :type Filter: int
+        :param _DocBizIds: 文档id
+        :type DocBizIds: list of str
+        :param _AllQa: true:包含所有问答
+false:不包含问答
+        :type AllQa: bool
+        :param _Tag: 文档标签过滤器
+        :type Tag: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilterTag`
+        """
+        self._KnowledgeBizId = None
+        self._KnowledgeType = None
+        self._Filter = None
+        self._DocBizIds = None
+        self._AllQa = None
+        self._Tag = None
+
+    @property
+    def KnowledgeBizId(self):
+        """知识库id
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def KnowledgeType(self):
+        """0-应用内知识库
+1-共享知识库
+        :rtype: int
+        """
+        return self._KnowledgeType
+
+    @KnowledgeType.setter
+    def KnowledgeType(self, KnowledgeType):
+        self._KnowledgeType = KnowledgeType
+
+    @property
+    def Filter(self):
+        """0-全部知识
+1-按文档和问答
+2-按标签
+        :rtype: int
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def DocBizIds(self):
+        """文档id
+        :rtype: list of str
+        """
+        return self._DocBizIds
+
+    @DocBizIds.setter
+    def DocBizIds(self, DocBizIds):
+        self._DocBizIds = DocBizIds
+
+    @property
+    def AllQa(self):
+        """true:包含所有问答
+false:不包含问答
+        :rtype: bool
+        """
+        return self._AllQa
+
+    @AllQa.setter
+    def AllQa(self, AllQa):
+        self._AllQa = AllQa
+
+    @property
+    def Tag(self):
+        """文档标签过滤器
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilterTag`
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        self._KnowledgeType = params.get("KnowledgeType")
+        self._Filter = params.get("Filter")
+        self._DocBizIds = params.get("DocBizIds")
+        self._AllQa = params.get("AllQa")
+        if params.get("Tag") is not None:
+            self._Tag = AgentKnowledgeFilterTag()
+            self._Tag._deserialize(params.get("Tag"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentKnowledgeAttrLabel(AbstractModel):
     """标签过滤器
 
@@ -569,10 +690,16 @@ class AgentKnowledgeFilter(AbstractModel):
         :type DocAndAnswer: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilterDocAndAnswer`
         :param _Tag: 标签过滤器
         :type Tag: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeFilterTag`
+        :param _KnowledgeList: 知识库列表
+        :type KnowledgeList: list of AgentKnowledge
+        :param _AllKnowledge: 是否检索全部知识
+        :type AllKnowledge: bool
         """
         self._FilterType = None
         self._DocAndAnswer = None
         self._Tag = None
+        self._KnowledgeList = None
+        self._AllKnowledge = None
 
     @property
     def FilterType(self):
@@ -607,6 +734,28 @@ class AgentKnowledgeFilter(AbstractModel):
     def Tag(self, Tag):
         self._Tag = Tag
 
+    @property
+    def KnowledgeList(self):
+        """知识库列表
+        :rtype: list of AgentKnowledge
+        """
+        return self._KnowledgeList
+
+    @KnowledgeList.setter
+    def KnowledgeList(self, KnowledgeList):
+        self._KnowledgeList = KnowledgeList
+
+    @property
+    def AllKnowledge(self):
+        """是否检索全部知识
+        :rtype: bool
+        """
+        return self._AllKnowledge
+
+    @AllKnowledge.setter
+    def AllKnowledge(self, AllKnowledge):
+        self._AllKnowledge = AllKnowledge
+
 
     def _deserialize(self, params):
         self._FilterType = params.get("FilterType")
@@ -616,6 +765,13 @@ class AgentKnowledgeFilter(AbstractModel):
         if params.get("Tag") is not None:
             self._Tag = AgentKnowledgeFilterTag()
             self._Tag._deserialize(params.get("Tag"))
+        if params.get("KnowledgeList") is not None:
+            self._KnowledgeList = []
+            for item in params.get("KnowledgeList"):
+                obj = AgentKnowledge()
+                obj._deserialize(item)
+                self._KnowledgeList.append(obj)
+        self._AllKnowledge = params.get("AllKnowledge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -880,6 +1036,8 @@ class AgentModelInfo(AbstractModel):
         :type ModelContextWordsLimit: str
         :param _InstructionsWordsLimit: 指令长度字符限制
         :type InstructionsWordsLimit: int
+        :param _MaxReasoningRound: 单次会话最大推理轮数
+        :type MaxReasoningRound: int
         """
         self._ModelName = None
         self._ModelAliasName = None
@@ -889,6 +1047,7 @@ class AgentModelInfo(AbstractModel):
         self._HistoryLimit = None
         self._ModelContextWordsLimit = None
         self._InstructionsWordsLimit = None
+        self._MaxReasoningRound = None
 
     @property
     def ModelName(self):
@@ -978,6 +1137,17 @@ class AgentModelInfo(AbstractModel):
     def InstructionsWordsLimit(self, InstructionsWordsLimit):
         self._InstructionsWordsLimit = InstructionsWordsLimit
 
+    @property
+    def MaxReasoningRound(self):
+        """单次会话最大推理轮数
+        :rtype: int
+        """
+        return self._MaxReasoningRound
+
+    @MaxReasoningRound.setter
+    def MaxReasoningRound(self, MaxReasoningRound):
+        self._MaxReasoningRound = MaxReasoningRound
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -988,6 +1158,7 @@ class AgentModelInfo(AbstractModel):
         self._HistoryLimit = params.get("HistoryLimit")
         self._ModelContextWordsLimit = params.get("ModelContextWordsLimit")
         self._InstructionsWordsLimit = params.get("InstructionsWordsLimit")
+        self._MaxReasoningRound = params.get("MaxReasoningRound")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3756,6 +3927,102 @@ class AttributeLabelRefByWorkflow(AbstractModel):
         
 
 
+class BackgroundImageConfig(AbstractModel):
+    """背景图相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LandscapeImageUrl: 横图(pc)
+        :type LandscapeImageUrl: str
+        :param _OriginalImageUrl: 原始图
+        :type OriginalImageUrl: str
+        :param _PortraitImageUrl: 长图(手机)
+        :type PortraitImageUrl: str
+        :param _ThemeColor: 主题色
+        :type ThemeColor: str
+        :param _Brightness: 亮度值
+        :type Brightness: int
+        """
+        self._LandscapeImageUrl = None
+        self._OriginalImageUrl = None
+        self._PortraitImageUrl = None
+        self._ThemeColor = None
+        self._Brightness = None
+
+    @property
+    def LandscapeImageUrl(self):
+        """横图(pc)
+        :rtype: str
+        """
+        return self._LandscapeImageUrl
+
+    @LandscapeImageUrl.setter
+    def LandscapeImageUrl(self, LandscapeImageUrl):
+        self._LandscapeImageUrl = LandscapeImageUrl
+
+    @property
+    def OriginalImageUrl(self):
+        """原始图
+        :rtype: str
+        """
+        return self._OriginalImageUrl
+
+    @OriginalImageUrl.setter
+    def OriginalImageUrl(self, OriginalImageUrl):
+        self._OriginalImageUrl = OriginalImageUrl
+
+    @property
+    def PortraitImageUrl(self):
+        """长图(手机)
+        :rtype: str
+        """
+        return self._PortraitImageUrl
+
+    @PortraitImageUrl.setter
+    def PortraitImageUrl(self, PortraitImageUrl):
+        self._PortraitImageUrl = PortraitImageUrl
+
+    @property
+    def ThemeColor(self):
+        """主题色
+        :rtype: str
+        """
+        return self._ThemeColor
+
+    @ThemeColor.setter
+    def ThemeColor(self, ThemeColor):
+        self._ThemeColor = ThemeColor
+
+    @property
+    def Brightness(self):
+        """亮度值
+        :rtype: int
+        """
+        return self._Brightness
+
+    @Brightness.setter
+    def Brightness(self, Brightness):
+        self._Brightness = Brightness
+
+
+    def _deserialize(self, params):
+        self._LandscapeImageUrl = params.get("LandscapeImageUrl")
+        self._OriginalImageUrl = params.get("OriginalImageUrl")
+        self._PortraitImageUrl = params.get("PortraitImageUrl")
+        self._ThemeColor = params.get("ThemeColor")
+        self._Brightness = params.get("Brightness")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BaseConfig(AbstractModel):
     """应用基础配置
 
@@ -6222,9 +6489,12 @@ class CreateReleaseRequest(AbstractModel):
         :type BotBizId: str
         :param _Desc: 发布描述
         :type Desc: str
+        :param _ChannelBizIds: 渠道业务ID
+        :type ChannelBizIds: list of str
         """
         self._BotBizId = None
         self._Desc = None
+        self._ChannelBizIds = None
 
     @property
     def BotBizId(self):
@@ -6248,10 +6518,22 @@ class CreateReleaseRequest(AbstractModel):
     def Desc(self, Desc):
         self._Desc = Desc
 
+    @property
+    def ChannelBizIds(self):
+        """渠道业务ID
+        :rtype: list of str
+        """
+        return self._ChannelBizIds
+
+    @ChannelBizIds.setter
+    def ChannelBizIds(self, ChannelBizIds):
+        self._ChannelBizIds = ChannelBizIds
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
         self._Desc = params.get("Desc")
+        self._ChannelBizIds = params.get("ChannelBizIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7958,6 +8240,8 @@ class DescribeAppResponse(AbstractModel):
         :type AppStatusDesc: str
         :param _IsCopying: 应用是否在复制中
         :type IsCopying: bool
+        :param _AgentType: 智能体类型 dialogue 对话式智能体，wechat 公众号智能体
+        :type AgentType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7975,6 +8259,7 @@ class DescribeAppResponse(AbstractModel):
         self._AppStatus = None
         self._AppStatusDesc = None
         self._IsCopying = None
+        self._AgentType = None
         self._RequestId = None
 
     @property
@@ -8132,6 +8417,17 @@ class DescribeAppResponse(AbstractModel):
         self._IsCopying = IsCopying
 
     @property
+    def AgentType(self):
+        """智能体类型 dialogue 对话式智能体，wechat 公众号智能体
+        :rtype: str
+        """
+        return self._AgentType
+
+    @AgentType.setter
+    def AgentType(self, AgentType):
+        self._AgentType = AgentType
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8162,6 +8458,7 @@ class DescribeAppResponse(AbstractModel):
         self._AppStatus = params.get("AppStatus")
         self._AppStatusDesc = params.get("AppStatusDesc")
         self._IsCopying = params.get("IsCopying")
+        self._AgentType = params.get("AgentType")
         self._RequestId = params.get("RequestId")
 
 
@@ -12519,6 +12816,8 @@ class DocSegment(AbstractModel):
         :type DocUrl: str
         :param _WebUrl: 文档的自定义链接
         :type WebUrl: str
+        :param _PageInfos: 页码信息
+        :type PageInfos: list of int non-negative
         """
         self._Id = None
         self._BusinessId = None
@@ -12531,6 +12830,7 @@ class DocSegment(AbstractModel):
         self._DocBizId = None
         self._DocUrl = None
         self._WebUrl = None
+        self._PageInfos = None
 
     @property
     def Id(self):
@@ -12663,6 +12963,17 @@ class DocSegment(AbstractModel):
     def WebUrl(self, WebUrl):
         self._WebUrl = WebUrl
 
+    @property
+    def PageInfos(self):
+        """页码信息
+        :rtype: list of int non-negative
+        """
+        return self._PageInfos
+
+    @PageInfos.setter
+    def PageInfos(self, PageInfos):
+        self._PageInfos = PageInfos
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12676,6 +12987,7 @@ class DocSegment(AbstractModel):
         self._DocBizId = params.get("DocBizId")
         self._DocUrl = params.get("DocUrl")
         self._WebUrl = params.get("WebUrl")
+        self._PageInfos = params.get("PageInfos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15346,6 +15658,8 @@ class GetVarListRequest(AbstractModel):
         :type Limit: int
         :param _VarType: 按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
         :type VarType: str
+        :param _NeedInternalVar: 是否需要内部变量(默认false)
+        :type NeedInternalVar: bool
         """
         self._AppBizId = None
         self._VarIds = None
@@ -15353,6 +15667,7 @@ class GetVarListRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._VarType = None
+        self._NeedInternalVar = None
 
     @property
     def AppBizId(self):
@@ -15420,6 +15735,17 @@ class GetVarListRequest(AbstractModel):
     def VarType(self, VarType):
         self._VarType = VarType
 
+    @property
+    def NeedInternalVar(self):
+        """是否需要内部变量(默认false)
+        :rtype: bool
+        """
+        return self._NeedInternalVar
+
+    @NeedInternalVar.setter
+    def NeedInternalVar(self, NeedInternalVar):
+        self._NeedInternalVar = NeedInternalVar
+
 
     def _deserialize(self, params):
         self._AppBizId = params.get("AppBizId")
@@ -15428,6 +15754,7 @@ class GetVarListRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._VarType = params.get("VarType")
+        self._NeedInternalVar = params.get("NeedInternalVar")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16968,6 +17295,12 @@ class KnowledgeQaConfig(AbstractModel):
         :type AiCall: :class:`tencentcloud.lke.v20231130.models.AICallConfig`
         :param _ShareKnowledgeBases: 共享知识库关联配置
         :type ShareKnowledgeBases: list of ShareKnowledgeBase
+        :param _BackgroundImage: 背景图相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackgroundImage: :class:`tencentcloud.lke.v20231130.models.BackgroundImageConfig`
+        :param _OpeningQuestions: 开场问题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpeningQuestions: list of str
         """
         self._Greeting = None
         self._RoleDescription = None
@@ -16985,6 +17318,8 @@ class KnowledgeQaConfig(AbstractModel):
         self._ImageTextRetrieval = None
         self._AiCall = None
         self._ShareKnowledgeBases = None
+        self._BackgroundImage = None
+        self._OpeningQuestions = None
 
     @property
     def Greeting(self):
@@ -17189,6 +17524,30 @@ class KnowledgeQaConfig(AbstractModel):
     def ShareKnowledgeBases(self, ShareKnowledgeBases):
         self._ShareKnowledgeBases = ShareKnowledgeBases
 
+    @property
+    def BackgroundImage(self):
+        """背景图相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.BackgroundImageConfig`
+        """
+        return self._BackgroundImage
+
+    @BackgroundImage.setter
+    def BackgroundImage(self, BackgroundImage):
+        self._BackgroundImage = BackgroundImage
+
+    @property
+    def OpeningQuestions(self):
+        """开场问题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._OpeningQuestions
+
+    @OpeningQuestions.setter
+    def OpeningQuestions(self, OpeningQuestions):
+        self._OpeningQuestions = OpeningQuestions
+
 
     def _deserialize(self, params):
         self._Greeting = params.get("Greeting")
@@ -17243,6 +17602,10 @@ class KnowledgeQaConfig(AbstractModel):
                 obj = ShareKnowledgeBase()
                 obj._deserialize(item)
                 self._ShareKnowledgeBases.append(obj)
+        if params.get("BackgroundImage") is not None:
+            self._BackgroundImage = BackgroundImageConfig()
+            self._BackgroundImage._deserialize(params.get("BackgroundImage"))
+        self._OpeningQuestions = params.get("OpeningQuestions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18875,6 +19238,8 @@ class ListDocItem(AbstractModel):
         :type AttributeFlags: list of int non-negative
         :param _IsDisabled: false:未停用，ture:已停用
         :type IsDisabled: bool
+        :param _StaffName: 员工名称
+        :type StaffName: str
         """
         self._DocBizId = None
         self._FileName = None
@@ -18911,6 +19276,7 @@ class ListDocItem(AbstractModel):
         self._CustomerKnowledgeId = None
         self._AttributeFlags = None
         self._IsDisabled = None
+        self._StaffName = None
 
     @property
     def DocBizId(self):
@@ -19328,6 +19694,17 @@ class ListDocItem(AbstractModel):
     def IsDisabled(self, IsDisabled):
         self._IsDisabled = IsDisabled
 
+    @property
+    def StaffName(self):
+        """员工名称
+        :rtype: str
+        """
+        return self._StaffName
+
+    @StaffName.setter
+    def StaffName(self, StaffName):
+        self._StaffName = StaffName
+
 
     def _deserialize(self, params):
         self._DocBizId = params.get("DocBizId")
@@ -19370,6 +19747,7 @@ class ListDocItem(AbstractModel):
         self._CustomerKnowledgeId = params.get("CustomerKnowledgeId")
         self._AttributeFlags = params.get("AttributeFlags")
         self._IsDisabled = params.get("IsDisabled")
+        self._StaffName = params.get("StaffName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20247,6 +20625,8 @@ class ListQaItem(AbstractModel):
         :type SimilarQuestionTips: str
         :param _IsDisabled: 问答是否停用，false:未停用，ture:已停用
         :type IsDisabled: bool
+        :param _StaffName: 员工名称
+        :type StaffName: str
         """
         self._QaBizId = None
         self._Question = None
@@ -20271,6 +20651,7 @@ class ListQaItem(AbstractModel):
         self._SimilarQuestionNum = None
         self._SimilarQuestionTips = None
         self._IsDisabled = None
+        self._StaffName = None
 
     @property
     def QaBizId(self):
@@ -20525,6 +20906,17 @@ class ListQaItem(AbstractModel):
     def IsDisabled(self, IsDisabled):
         self._IsDisabled = IsDisabled
 
+    @property
+    def StaffName(self):
+        """员工名称
+        :rtype: str
+        """
+        return self._StaffName
+
+    @StaffName.setter
+    def StaffName(self, StaffName):
+        self._StaffName = StaffName
+
 
     def _deserialize(self, params):
         self._QaBizId = params.get("QaBizId")
@@ -20555,6 +20947,7 @@ class ListQaItem(AbstractModel):
         self._SimilarQuestionNum = params.get("SimilarQuestionNum")
         self._SimilarQuestionTips = params.get("SimilarQuestionTips")
         self._IsDisabled = params.get("IsDisabled")
+        self._StaffName = params.get("StaffName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23389,7 +23782,7 @@ class ModifyAppRequest(AbstractModel):
         r"""
         :param _AppBizId: 应用 ID
         :type AppBizId: str
-        :param _AppType: 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+        :param _AppType: 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classify-知识标签提取
         :type AppType: str
         :param _BaseConfig: 应用基础配置
         :type BaseConfig: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
@@ -23417,7 +23810,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+        """应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classify-知识标签提取
         :rtype: str
         """
         return self._AppType

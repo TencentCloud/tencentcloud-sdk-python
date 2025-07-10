@@ -167,6 +167,9 @@ FAILEDOPERATION_CERTIFICATESYNCTASKIDINVALID = 'FailedOperation.CertificateSyncT
 # 无法查到当前证书类型详情。
 FAILEDOPERATION_CERTIFICATETYPEINFONOTFOUND = 'FailedOperation.CertificateTypeInfoNotFound'
 
+# 当前为白名单功能，非白名单用户无法使用该功能，请联系SSL证书特殊处理。
+FAILEDOPERATION_CERTIFICATEWHITEFUNCERROR = 'FailedOperation.CertificateWhiteFuncError'
+
 # 证书确认函文件过大（需小于1.4M）。
 FAILEDOPERATION_CONFIRMLETTERTOOLARGE = 'FailedOperation.ConfirmLetterTooLarge'
 
@@ -187,6 +190,9 @@ FAILEDOPERATION_FILETOOLARGE = 'FailedOperation.FileTooLarge'
 
 # 文件尺寸太小，请上传清晰图片。
 FAILEDOPERATION_FILETOOSMALL = 'FailedOperation.FileTooSmall'
+
+# 生产CSR失败
+FAILEDOPERATION_GENCSRFAIL = 'FailedOperation.GenCSRFail'
 
 # 公司管理人状态错误。
 FAILEDOPERATION_ILLEGALMANAGERSTATUS = 'FailedOperation.IllegalManagerStatus'
