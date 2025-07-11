@@ -16,3 +16,9 @@
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
+
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

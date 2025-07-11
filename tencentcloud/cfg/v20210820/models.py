@@ -6344,6 +6344,10 @@ class Template(AbstractModel):
         :type AlarmPolicy: list of str
         :param _PolicyDealType: 护栏处理方式，1--顺序回滚，2--演练暂停
         :type PolicyDealType: int
+        :param _TemplateScenario: 演练场景
+        :type TemplateScenario: list of TaskTarget
+        :param _TemplatePurpose: 演练目的
+        :type TemplatePurpose: list of TaskTarget
         """
         self._TemplateId = None
         self._TemplateTitle = None
@@ -6364,6 +6368,8 @@ class Template(AbstractModel):
         self._ApmServiceList = None
         self._AlarmPolicy = None
         self._PolicyDealType = None
+        self._TemplateScenario = None
+        self._TemplatePurpose = None
 
     @property
     def TemplateId(self):
@@ -6575,6 +6581,28 @@ class Template(AbstractModel):
     def PolicyDealType(self, PolicyDealType):
         self._PolicyDealType = PolicyDealType
 
+    @property
+    def TemplateScenario(self):
+        """演练场景
+        :rtype: list of TaskTarget
+        """
+        return self._TemplateScenario
+
+    @TemplateScenario.setter
+    def TemplateScenario(self, TemplateScenario):
+        self._TemplateScenario = TemplateScenario
+
+    @property
+    def TemplatePurpose(self):
+        """演练目的
+        :rtype: list of TaskTarget
+        """
+        return self._TemplatePurpose
+
+    @TemplatePurpose.setter
+    def TemplatePurpose(self, TemplatePurpose):
+        self._TemplatePurpose = TemplatePurpose
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -6618,6 +6646,18 @@ class Template(AbstractModel):
                 self._ApmServiceList.append(obj)
         self._AlarmPolicy = params.get("AlarmPolicy")
         self._PolicyDealType = params.get("PolicyDealType")
+        if params.get("TemplateScenario") is not None:
+            self._TemplateScenario = []
+            for item in params.get("TemplateScenario"):
+                obj = TaskTarget()
+                obj._deserialize(item)
+                self._TemplateScenario.append(obj)
+        if params.get("TemplatePurpose") is not None:
+            self._TemplatePurpose = []
+            for item in params.get("TemplatePurpose"):
+                obj = TaskTarget()
+                obj._deserialize(item)
+                self._TemplatePurpose.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

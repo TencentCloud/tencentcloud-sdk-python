@@ -11123,14 +11123,14 @@ class DeleteAuditRuleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateIds: 审计规则模板ID,可通过[DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811)接口获取，单次允许最多删除5个规则模板。
+        :param _RuleTemplateIds: 审计规则模板 ID，可通过 [DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811) 接口获取，单次允许最多删除5个规则模板。
         :type RuleTemplateIds: list of str
         """
         self._RuleTemplateIds = None
 
     @property
     def RuleTemplateIds(self):
-        """审计规则模板ID,可通过[DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811)接口获取，单次允许最多删除5个规则模板。
+        """审计规则模板 ID，可通过 [DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811) 接口获取，单次允许最多删除5个规则模板。
         :rtype: list of str
         """
         return self._RuleTemplateIds
@@ -29846,11 +29846,11 @@ class ModifyInstanceTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
-        :param _ReplaceTags: 要增加或修改的标签。
+        :param _ReplaceTags: 要增加或修改的标签。ReplaceTags 和 DeleteTags 必填一个。
         :type ReplaceTags: list of TagInfo
-        :param _DeleteTags: 要删除的标签。
+        :param _DeleteTags: 要删除的标签。ReplaceTags 和 DeleteTags 必填一个。
         :type DeleteTags: list of TagInfo
         """
         self._InstanceId = None
@@ -29859,7 +29859,7 @@ class ModifyInstanceTagRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -29870,7 +29870,7 @@ class ModifyInstanceTagRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
-        """要增加或修改的标签。
+        """要增加或修改的标签。ReplaceTags 和 DeleteTags 必填一个。
         :rtype: list of TagInfo
         """
         return self._ReplaceTags
@@ -29881,7 +29881,7 @@ class ModifyInstanceTagRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
-        """要删除的标签。
+        """要删除的标签。ReplaceTags 和 DeleteTags 必填一个。
         :rtype: list of TagInfo
         """
         return self._DeleteTags

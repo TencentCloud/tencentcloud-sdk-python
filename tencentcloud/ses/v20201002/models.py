@@ -913,9 +913,12 @@ class CreateEmailIdentityRequest(AbstractModel):
         :type EmailIdentity: str
         :param _DKIMOption: 生成的dkim密钥长度。0:1024，1:2048
         :type DKIMOption: int
+        :param _TagList: tag 标签
+        :type TagList: list of TagList
         """
         self._EmailIdentity = None
         self._DKIMOption = None
+        self._TagList = None
 
     @property
     def EmailIdentity(self):
@@ -939,10 +942,27 @@ class CreateEmailIdentityRequest(AbstractModel):
     def DKIMOption(self, DKIMOption):
         self._DKIMOption = DKIMOption
 
+    @property
+    def TagList(self):
+        """tag 标签
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._EmailIdentity = params.get("EmailIdentity")
         self._DKIMOption = params.get("DKIMOption")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2163,6 +2183,8 @@ class EmailIdentity(AbstractModel):
         :type DailyQuota: int
         :param _SendIp: 域名配置的独立ip
         :type SendIp: list of str
+        :param _TagList: tag 标签
+        :type TagList: list of TagList
         """
         self._IdentityName = None
         self._IdentityType = None
@@ -2170,6 +2192,7 @@ class EmailIdentity(AbstractModel):
         self._CurrentReputationLevel = None
         self._DailyQuota = None
         self._SendIp = None
+        self._TagList = None
 
     @property
     def IdentityName(self):
@@ -2237,6 +2260,17 @@ class EmailIdentity(AbstractModel):
     def SendIp(self, SendIp):
         self._SendIp = SendIp
 
+    @property
+    def TagList(self):
+        """tag 标签
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._IdentityName = params.get("IdentityName")
@@ -2245,6 +2279,12 @@ class EmailIdentity(AbstractModel):
         self._CurrentReputationLevel = params.get("CurrentReputationLevel")
         self._DailyQuota = params.get("DailyQuota")
         self._SendIp = params.get("SendIp")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3342,6 +3382,71 @@ class ListEmailIdentitiesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TagList: tag 标签
+        :type TagList: list of TagList
+        :param _Limit: 分页 limit
+        :type Limit: int
+        :param _Offset: 分页 offset
+        :type Offset: int
+        """
+        self._TagList = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def TagList(self):
+        """tag 标签
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def Limit(self):
+        """分页 limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页 offset
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ListEmailIdentitiesResponse(AbstractModel):
     """ListEmailIdentities返回参数结构体
@@ -3356,12 +3461,15 @@ class ListEmailIdentitiesResponse(AbstractModel):
         :type MaxReputationLevel: int
         :param _MaxDailyQuota: 单域名最高日发送量
         :type MaxDailyQuota: int
+        :param _Total: 总数
+        :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EmailIdentities = None
         self._MaxReputationLevel = None
         self._MaxDailyQuota = None
+        self._Total = None
         self._RequestId = None
 
     @property
@@ -3398,6 +3506,17 @@ class ListEmailIdentitiesResponse(AbstractModel):
         self._MaxDailyQuota = MaxDailyQuota
 
     @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3418,6 +3537,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
                 self._EmailIdentities.append(obj)
         self._MaxReputationLevel = params.get("MaxReputationLevel")
         self._MaxDailyQuota = params.get("MaxDailyQuota")
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -5224,6 +5344,57 @@ class Simple(AbstractModel):
     def _deserialize(self, params):
         self._Html = params.get("Html")
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagList(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 产品
+        :type TagKey: str
+        :param _TagValue: ses
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        """产品
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        """ses
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

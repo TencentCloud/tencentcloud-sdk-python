@@ -702,6 +702,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWebSecurityTemplate(self, request):
+        """创建安全策略配置模板
+
+        :param request: Request instance for CreateWebSecurityTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateWebSecurityTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateWebSecurityTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWebSecurityTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWebSecurityTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateZone(self, request):
         """EdgeOne 为您提供 CNAME、NS 和无域名接入三种接入方式，您需要先通过此接口完成站点创建。CNAME 和 NS 接入站点的场景可参考 [从零开始快速接入 EdgeOne](https://cloud.tencent.com/document/product/1552/87601); 无域名接入的场景可参考 [快速启用四层代理服务](https://cloud.tencent.com/document/product/1552/96051)。
 
@@ -1135,6 +1158,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteSharedCNAME", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSharedCNAMEResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWebSecurityTemplate(self, request):
+        """删除安全策略配置模板
+
+        :param request: Request instance for DeleteWebSecurityTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteWebSecurityTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteWebSecurityTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWebSecurityTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWebSecurityTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2301,6 +2347,52 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWebSecurityTemplate(self, request):
+        """查询安全策略配置模板详情
+
+        :param request: Request instance for DescribeWebSecurityTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWebSecurityTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWebSecurityTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWebSecurityTemplates(self, request):
+        """查询安全策略配置模板列表
+
+        :param request: Request instance for DescribeWebSecurityTemplates.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplatesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWebSecurityTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWebSecurityTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeZoneConfigImportResult(self, request):
         """查询站点配置项导入结果接口，本接口用于站点配置导入接口（ImportZoneConfig）的结果查询。该功能仅支持标准版或企业版套餐的站点使用。
 
@@ -3325,6 +3417,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifySecurityPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyWebSecurityTemplate(self, request):
+        """修改安全策略配置模板
+
+        :param request: Request instance for ModifyWebSecurityTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyWebSecurityTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyWebSecurityTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWebSecurityTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWebSecurityTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

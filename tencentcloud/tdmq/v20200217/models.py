@@ -26949,6 +26949,8 @@ true就是开启了，false是关闭
         :param _Tenant: 用户自定义的租户别名，如果没有，会复用专业集群 ID
 
         :type Tenant: str
+        :param _DeleteProtection: 删除保护开关标识
+        :type DeleteProtection: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -26964,6 +26966,7 @@ true就是开启了，false是关闭
         self._AutoCreateTopicStatus = None
         self._DefaultPartitionNumber = None
         self._Tenant = None
+        self._DeleteProtection = None
 
     @property
     def ClusterId(self):
@@ -27127,6 +27130,17 @@ true就是开启了，false是关闭
     def Tenant(self, Tenant):
         self._Tenant = Tenant
 
+    @property
+    def DeleteProtection(self):
+        """删除保护开关标识
+        :rtype: int
+        """
+        return self._DeleteProtection
+
+    @DeleteProtection.setter
+    def DeleteProtection(self, DeleteProtection):
+        self._DeleteProtection = DeleteProtection
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -27148,6 +27162,7 @@ true就是开启了，false是关闭
         self._AutoCreateTopicStatus = params.get("AutoCreateTopicStatus")
         self._DefaultPartitionNumber = params.get("DefaultPartitionNumber")
         self._Tenant = params.get("Tenant")
+        self._DeleteProtection = params.get("DeleteProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

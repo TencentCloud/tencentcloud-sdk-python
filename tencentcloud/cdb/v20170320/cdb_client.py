@@ -807,7 +807,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteAuditRuleTemplates(self, request):
-        """删除审计规则模板
+        """本接口（DeleteAuditRuleTemplates）用于删除审计规则模板。
 
         :param request: Request instance for DeleteAuditRuleTemplates.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditRuleTemplatesRequest`

@@ -165,7 +165,9 @@ class IotexplorerClient(AbstractClient):
 
 
     def CancelAssignTWeCallLicense(self, request):
-        """取消分配
+        """业务已下线
+
+        取消分配
 
         :param request: Request instance for CancelAssignTWeCallLicense.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CancelAssignTWeCallLicenseRequest`

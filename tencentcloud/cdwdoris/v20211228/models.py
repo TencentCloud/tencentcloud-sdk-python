@@ -275,6 +275,8 @@ class BackUpJobDisplay(AbstractModel):
         :type IsUserDefineBucket: bool
         :param _ErrorReason: 错误原因
         :type ErrorReason: str
+        :param _SnapshotRemainPolicy: 快照保留策略
+        :type SnapshotRemainPolicy: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
         """
         self._JobId = None
         self._Snapshot = None
@@ -290,6 +292,7 @@ class BackUpJobDisplay(AbstractModel):
         self._BackupCosInfo = None
         self._IsUserDefineBucket = None
         self._ErrorReason = None
+        self._SnapshotRemainPolicy = None
 
     @property
     def JobId(self):
@@ -445,6 +448,17 @@ class BackUpJobDisplay(AbstractModel):
     def ErrorReason(self, ErrorReason):
         self._ErrorReason = ErrorReason
 
+    @property
+    def SnapshotRemainPolicy(self):
+        """快照保留策略
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
+        """
+        return self._SnapshotRemainPolicy
+
+    @SnapshotRemainPolicy.setter
+    def SnapshotRemainPolicy(self, SnapshotRemainPolicy):
+        self._SnapshotRemainPolicy = SnapshotRemainPolicy
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -465,6 +479,9 @@ class BackUpJobDisplay(AbstractModel):
             self._BackupCosInfo._deserialize(params.get("BackupCosInfo"))
         self._IsUserDefineBucket = params.get("IsUserDefineBucket")
         self._ErrorReason = params.get("ErrorReason")
+        if params.get("SnapshotRemainPolicy") is not None:
+            self._SnapshotRemainPolicy = SnapshotRemainPolicy()
+            self._SnapshotRemainPolicy._deserialize(params.get("SnapshotRemainPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -488,10 +505,13 @@ class BackupCosInfo(AbstractModel):
         :type CosPath: str
         :param _SnapShotPath: 备份文件名称
         :type SnapShotPath: str
+        :param _Region: cos桶所在地域
+        :type Region: str
         """
         self._CosBucket = None
         self._CosPath = None
         self._SnapShotPath = None
+        self._Region = None
 
     @property
     def CosBucket(self):
@@ -526,11 +546,23 @@ class BackupCosInfo(AbstractModel):
     def SnapShotPath(self, SnapShotPath):
         self._SnapShotPath = SnapShotPath
 
+    @property
+    def Region(self):
+        """cos桶所在地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
 
     def _deserialize(self, params):
         self._CosBucket = params.get("CosBucket")
         self._CosPath = params.get("CosPath")
         self._SnapShotPath = params.get("SnapShotPath")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2022,7 +2054,7 @@ class CreateBackUpScheduleRequest(AbstractModel):
         :type BackupType: int
         :param _DorisSourceInfo: 远端doris集群的连接信息
         :type DorisSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
-        :param _BackupTimeType: 0为默认。1时是一次性备份。2时是远端备份
+        :param _BackupTimeType: 0为周期备份。1时是立即备份。3时是定时备份。
         :type BackupTimeType: int
         :param _RestoreType: 0为默认。1时是备份完成后立即恢复
         :type RestoreType: int
@@ -2041,6 +2073,10 @@ class CreateBackUpScheduleRequest(AbstractModel):
         :type UpdateStatus: int
         :param _CosBucket: 当前任务的cos桶信息
         :type CosBucket: str
+        :param _SnapshotRemainPolicy: 快照保留策略
+        :type SnapshotRemainPolicy: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
+        :param _DataRemoteRegion: 备份数据所在地域，当前地域应该为空
+        :type DataRemoteRegion: str
         """
         self._InstanceId = None
         self._OperationType = None
@@ -2058,6 +2094,8 @@ class CreateBackUpScheduleRequest(AbstractModel):
         self._ScheduleInfo = None
         self._UpdateStatus = None
         self._CosBucket = None
+        self._SnapshotRemainPolicy = None
+        self._DataRemoteRegion = None
 
     @property
     def InstanceId(self):
@@ -2137,6 +2175,8 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     @property
     def BackupType(self):
+        warnings.warn("parameter `BackupType` is deprecated", DeprecationWarning) 
+
         """0为默认。1时是对远端的doris进行备份，不周期，一次性
         :rtype: int
         """
@@ -2144,10 +2184,14 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     @BackupType.setter
     def BackupType(self, BackupType):
+        warnings.warn("parameter `BackupType` is deprecated", DeprecationWarning) 
+
         self._BackupType = BackupType
 
     @property
     def DorisSourceInfo(self):
+        warnings.warn("parameter `DorisSourceInfo` is deprecated", DeprecationWarning) 
+
         """远端doris集群的连接信息
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
         """
@@ -2155,11 +2199,13 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     @DorisSourceInfo.setter
     def DorisSourceInfo(self, DorisSourceInfo):
+        warnings.warn("parameter `DorisSourceInfo` is deprecated", DeprecationWarning) 
+
         self._DorisSourceInfo = DorisSourceInfo
 
     @property
     def BackupTimeType(self):
-        """0为默认。1时是一次性备份。2时是远端备份
+        """0为周期备份。1时是立即备份。3时是定时备份。
         :rtype: int
         """
         return self._BackupTimeType
@@ -2170,6 +2216,8 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     @property
     def RestoreType(self):
+        warnings.warn("parameter `RestoreType` is deprecated", DeprecationWarning) 
+
         """0为默认。1时是备份完成后立即恢复
         :rtype: int
         """
@@ -2177,10 +2225,14 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     @RestoreType.setter
     def RestoreType(self, RestoreType):
+        warnings.warn("parameter `RestoreType` is deprecated", DeprecationWarning) 
+
         self._RestoreType = RestoreType
 
     @property
     def AuthType(self):
+        warnings.warn("parameter `AuthType` is deprecated", DeprecationWarning) 
+
         """0为默认。1时是提供自定义的secret连接cos
         :rtype: int
         """
@@ -2188,10 +2240,14 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     @AuthType.setter
     def AuthType(self, AuthType):
+        warnings.warn("parameter `AuthType` is deprecated", DeprecationWarning) 
+
         self._AuthType = AuthType
 
     @property
     def CosSourceInfo(self):
+        warnings.warn("parameter `CosSourceInfo` is deprecated", DeprecationWarning) 
+
         """cos认证的信息
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
         """
@@ -2199,6 +2255,8 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     @CosSourceInfo.setter
     def CosSourceInfo(self, CosSourceInfo):
+        warnings.warn("parameter `CosSourceInfo` is deprecated", DeprecationWarning) 
+
         self._CosSourceInfo = CosSourceInfo
 
     @property
@@ -2248,6 +2306,28 @@ class CreateBackUpScheduleRequest(AbstractModel):
     def CosBucket(self, CosBucket):
         self._CosBucket = CosBucket
 
+    @property
+    def SnapshotRemainPolicy(self):
+        """快照保留策略
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
+        """
+        return self._SnapshotRemainPolicy
+
+    @SnapshotRemainPolicy.setter
+    def SnapshotRemainPolicy(self, SnapshotRemainPolicy):
+        self._SnapshotRemainPolicy = SnapshotRemainPolicy
+
+    @property
+    def DataRemoteRegion(self):
+        """备份数据所在地域，当前地域应该为空
+        :rtype: str
+        """
+        return self._DataRemoteRegion
+
+    @DataRemoteRegion.setter
+    def DataRemoteRegion(self, DataRemoteRegion):
+        self._DataRemoteRegion = DataRemoteRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2277,6 +2357,10 @@ class CreateBackUpScheduleRequest(AbstractModel):
             self._ScheduleInfo._deserialize(params.get("ScheduleInfo"))
         self._UpdateStatus = params.get("UpdateStatus")
         self._CosBucket = params.get("CosBucket")
+        if params.get("SnapshotRemainPolicy") is not None:
+            self._SnapshotRemainPolicy = SnapshotRemainPolicy()
+            self._SnapshotRemainPolicy._deserialize(params.get("SnapshotRemainPolicy"))
+        self._DataRemoteRegion = params.get("DataRemoteRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7989,6 +8073,8 @@ GetCatalog：获取Catalog列表；
         :type DatabaseName: str
         :param _TableName: 表名
         :type TableName: str
+        :param _UserNames: 用户名列表
+        :type UserNames: list of str
         """
         self._InstanceId = None
         self._ApiType = None
@@ -7998,6 +8084,7 @@ GetCatalog：获取Catalog列表；
         self._Catalogs = None
         self._DatabaseName = None
         self._TableName = None
+        self._UserNames = None
 
     @property
     def InstanceId(self):
@@ -8092,6 +8179,17 @@ GetCatalog：获取Catalog列表；
     def TableName(self, TableName):
         self._TableName = TableName
 
+    @property
+    def UserNames(self):
+        """用户名列表
+        :rtype: list of str
+        """
+        return self._UserNames
+
+    @UserNames.setter
+    def UserNames(self, UserNames):
+        self._UserNames = UserNames
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8102,6 +8200,7 @@ GetCatalog：获取Catalog列表；
         self._Catalogs = params.get("Catalogs")
         self._DatabaseName = params.get("DatabaseName")
         self._TableName = params.get("TableName")
+        self._UserNames = params.get("UserNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9886,6 +9985,8 @@ class InstanceNode(AbstractModel):
         :type UUID: str
         :param _Zone: 可用区
         :type Zone: str
+        :param _VirtualZone: 虚拟可用区
+        :type VirtualZone: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _ComputeGroupId: 计算组ID
@@ -9903,6 +10004,7 @@ class InstanceNode(AbstractModel):
         self._FeRole = None
         self._UUID = None
         self._Zone = None
+        self._VirtualZone = None
         self._CreateTime = None
         self._ComputeGroupId = None
 
@@ -10039,6 +10141,17 @@ class InstanceNode(AbstractModel):
         self._Zone = Zone
 
     @property
+    def VirtualZone(self):
+        """虚拟可用区
+        :rtype: str
+        """
+        return self._VirtualZone
+
+    @VirtualZone.setter
+    def VirtualZone(self, VirtualZone):
+        self._VirtualZone = VirtualZone
+
+    @property
     def CreateTime(self):
         """创建时间
         :rtype: str
@@ -10074,6 +10187,7 @@ class InstanceNode(AbstractModel):
         self._FeRole = params.get("FeRole")
         self._UUID = params.get("UUID")
         self._Zone = params.get("Zone")
+        self._VirtualZone = params.get("VirtualZone")
         self._CreateTime = params.get("CreateTime")
         self._ComputeGroupId = params.get("ComputeGroupId")
         memeber_set = set(params.keys())
@@ -11252,10 +11366,12 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
         :type UserPrivileges: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateUserPrivileges`
         :param _WhiteHost: 用户链接来自的 IP	
         :type WhiteHost: str
-        :param _UpdateType: 更新类型，默认0，1为更新绑定计算组
+        :param _UpdateType: 更新类型，默认0，1为更新绑定计算组，2为更新默认计算组
         :type UpdateType: int
         :param _UpdateComputeGroups: 需绑定计算组列表
         :type UpdateComputeGroups: list of str
+        :param _DefaultComputeGroup: 默认计算组
+        :type DefaultComputeGroup: str
         """
         self._InstanceId = None
         self._UserName = None
@@ -11263,6 +11379,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
         self._WhiteHost = None
         self._UpdateType = None
         self._UpdateComputeGroups = None
+        self._DefaultComputeGroup = None
 
     @property
     def InstanceId(self):
@@ -11310,7 +11427,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
 
     @property
     def UpdateType(self):
-        """更新类型，默认0，1为更新绑定计算组
+        """更新类型，默认0，1为更新绑定计算组，2为更新默认计算组
         :rtype: int
         """
         return self._UpdateType
@@ -11330,6 +11447,17 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
     def UpdateComputeGroups(self, UpdateComputeGroups):
         self._UpdateComputeGroups = UpdateComputeGroups
 
+    @property
+    def DefaultComputeGroup(self):
+        """默认计算组
+        :rtype: str
+        """
+        return self._DefaultComputeGroup
+
+    @DefaultComputeGroup.setter
+    def DefaultComputeGroup(self, DefaultComputeGroup):
+        self._DefaultComputeGroup = DefaultComputeGroup
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11340,6 +11468,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
         self._WhiteHost = params.get("WhiteHost")
         self._UpdateType = params.get("UpdateType")
         self._UpdateComputeGroups = params.get("UpdateComputeGroups")
+        self._DefaultComputeGroup = params.get("DefaultComputeGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11693,6 +11822,8 @@ class NodeInfo(AbstractModel):
         :type ComputeGroupId: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
+        :param _VirtualZone: 虚拟可用区
+        :type VirtualZone: str
         """
         self._Ip = None
         self._Status = None
@@ -11705,6 +11836,7 @@ class NodeInfo(AbstractModel):
         self._RIp = None
         self._ComputeGroupId = None
         self._CreateTime = None
+        self._VirtualZone = None
 
     @property
     def Ip(self):
@@ -11827,6 +11959,17 @@ class NodeInfo(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def VirtualZone(self):
+        """虚拟可用区
+        :rtype: str
+        """
+        return self._VirtualZone
+
+    @VirtualZone.setter
+    def VirtualZone(self, VirtualZone):
+        self._VirtualZone = VirtualZone
+
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
@@ -11840,6 +11983,7 @@ class NodeInfo(AbstractModel):
         self._RIp = params.get("RIp")
         self._ComputeGroupId = params.get("ComputeGroupId")
         self._CreateTime = params.get("CreateTime")
+        self._VirtualZone = params.get("VirtualZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11879,6 +12023,8 @@ class NodeInfos(AbstractModel):
         :type ComputeGroupId: str
         :param _RIp: rip
         :type RIp: str
+        :param _VirtualZone: 虚拟可用区
+        :type VirtualZone: str
         """
         self._NodeName = None
         self._Status = None
@@ -11891,6 +12037,7 @@ class NodeInfos(AbstractModel):
         self._CreateTime = None
         self._ComputeGroupId = None
         self._RIp = None
+        self._VirtualZone = None
 
     @property
     def NodeName(self):
@@ -12013,6 +12160,17 @@ class NodeInfos(AbstractModel):
     def RIp(self, RIp):
         self._RIp = RIp
 
+    @property
+    def VirtualZone(self):
+        """虚拟可用区
+        :rtype: str
+        """
+        return self._VirtualZone
+
+    @VirtualZone.setter
+    def VirtualZone(self, VirtualZone):
+        self._VirtualZone = VirtualZone
+
 
     def _deserialize(self, params):
         self._NodeName = params.get("NodeName")
@@ -12026,6 +12184,7 @@ class NodeInfos(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ComputeGroupId = params.get("ComputeGroupId")
         self._RIp = params.get("RIp")
+        self._VirtualZone = params.get("VirtualZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13897,6 +14056,8 @@ class RestoreStatus(AbstractModel):
         :type BackupJobId: int
         :param _TaskId: 实例对应snapshot的id
         :type TaskId: int
+        :param _ID: 恢复任务id
+        :type ID: int
         """
         self._JobId = None
         self._Label = None
@@ -13921,6 +14082,7 @@ class RestoreStatus(AbstractModel):
         self._ReserveDynamicPartitionEnable = None
         self._BackupJobId = None
         self._TaskId = None
+        self._ID = None
 
     @property
     def JobId(self):
@@ -14175,6 +14337,17 @@ class RestoreStatus(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def ID(self):
+        """恢复任务id
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -14200,6 +14373,7 @@ class RestoreStatus(AbstractModel):
         self._ReserveDynamicPartitionEnable = params.get("ReserveDynamicPartitionEnable")
         self._BackupJobId = params.get("BackupJobId")
         self._TaskId = params.get("TaskId")
+        self._ID = params.get("ID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15058,6 +15232,72 @@ class SlowQueryRecord(AbstractModel):
         self._CatalogName = params.get("CatalogName")
         self._CpuTimeMs = params.get("CpuTimeMs")
         self._ComputeGroup = params.get("ComputeGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotRemainPolicy(AbstractModel):
+    """备份快照保留策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 0-不主动删除；1-超过指定时间周期自动删除；2-保留指定数据快照
+        :type Type: int
+        :param _RemainDays: 保留快照的时间
+        :type RemainDays: int
+        :param _RemainLatestNum: 保留最新快照的数量
+        :type RemainLatestNum: int
+        """
+        self._Type = None
+        self._RemainDays = None
+        self._RemainLatestNum = None
+
+    @property
+    def Type(self):
+        """0-不主动删除；1-超过指定时间周期自动删除；2-保留指定数据快照
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RemainDays(self):
+        """保留快照的时间
+        :rtype: int
+        """
+        return self._RemainDays
+
+    @RemainDays.setter
+    def RemainDays(self, RemainDays):
+        self._RemainDays = RemainDays
+
+    @property
+    def RemainLatestNum(self):
+        """保留最新快照的数量
+        :rtype: int
+        """
+        return self._RemainLatestNum
+
+    @RemainLatestNum.setter
+    def RemainLatestNum(self, RemainLatestNum):
+        self._RemainLatestNum = RemainLatestNum
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._RemainDays = params.get("RemainDays")
+        self._RemainLatestNum = params.get("RemainLatestNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
