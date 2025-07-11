@@ -165,7 +165,9 @@ class IotexplorerClient(AbstractClient):
 
 
     def CancelAssignTWeCallLicense(self, request):
-        """取消分配
+        """业务已下线
+
+        取消分配
 
         :param request: Request instance for CancelAssignTWeCallLicense.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CancelAssignTWeCallLicenseRequest`
@@ -441,7 +443,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateFreeCloudStorage(self, request):
-        """开通免费云存服务
+        """开通云存卡服务
 
         :param request: Request instance for CreateFreeCloudStorage.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateFreeCloudStorageRequest`

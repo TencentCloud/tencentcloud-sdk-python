@@ -347,12 +347,18 @@ class ClusterOption(AbstractModel):
         :type ResourceQuota: :class:`tencentcloud.omics.v20221128.models.ResourceQuota`
         :param _LimitRange: 限制范围。
         :type LimitRange: :class:`tencentcloud.omics.v20221128.models.LimitRange`
+        :param _SystemNodeInstanceType: 系统节点池实例规格。
+        :type SystemNodeInstanceType: str
+        :param _SystemNodeCount: 系统节点池实例数量。
+        :type SystemNodeCount: int
         """
         self._Zone = None
         self._Type = None
         self._ServiceCidr = None
         self._ResourceQuota = None
         self._LimitRange = None
+        self._SystemNodeInstanceType = None
+        self._SystemNodeCount = None
 
     @property
     def Zone(self):
@@ -410,6 +416,28 @@ class ClusterOption(AbstractModel):
     def LimitRange(self, LimitRange):
         self._LimitRange = LimitRange
 
+    @property
+    def SystemNodeInstanceType(self):
+        """系统节点池实例规格。
+        :rtype: str
+        """
+        return self._SystemNodeInstanceType
+
+    @SystemNodeInstanceType.setter
+    def SystemNodeInstanceType(self, SystemNodeInstanceType):
+        self._SystemNodeInstanceType = SystemNodeInstanceType
+
+    @property
+    def SystemNodeCount(self):
+        """系统节点池实例数量。
+        :rtype: int
+        """
+        return self._SystemNodeCount
+
+    @SystemNodeCount.setter
+    def SystemNodeCount(self, SystemNodeCount):
+        self._SystemNodeCount = SystemNodeCount
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -421,6 +449,8 @@ class ClusterOption(AbstractModel):
         if params.get("LimitRange") is not None:
             self._LimitRange = LimitRange()
             self._LimitRange._deserialize(params.get("LimitRange"))
+        self._SystemNodeInstanceType = params.get("SystemNodeInstanceType")
+        self._SystemNodeCount = params.get("SystemNodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3389,6 +3419,10 @@ class ResourceIds(AbstractModel):
         :type CVMId: str
         :param _EKSId: 弹性容器集群ID。
         :type EKSId: str
+        :param _TKEId: TKE容器集群ID。
+        :type TKEId: str
+        :param _TKESystemNodePoolId: TKE系统节点池ID。
+        :type TKESystemNodePoolId: str
         """
         self._VPCId = None
         self._SubnetId = None
@@ -3398,6 +3432,8 @@ class ResourceIds(AbstractModel):
         self._CFSStorageType = None
         self._CVMId = None
         self._EKSId = None
+        self._TKEId = None
+        self._TKESystemNodePoolId = None
 
     @property
     def VPCId(self):
@@ -3491,6 +3527,28 @@ class ResourceIds(AbstractModel):
     def EKSId(self, EKSId):
         self._EKSId = EKSId
 
+    @property
+    def TKEId(self):
+        """TKE容器集群ID。
+        :rtype: str
+        """
+        return self._TKEId
+
+    @TKEId.setter
+    def TKEId(self, TKEId):
+        self._TKEId = TKEId
+
+    @property
+    def TKESystemNodePoolId(self):
+        """TKE系统节点池ID。
+        :rtype: str
+        """
+        return self._TKESystemNodePoolId
+
+    @TKESystemNodePoolId.setter
+    def TKESystemNodePoolId(self, TKESystemNodePoolId):
+        self._TKESystemNodePoolId = TKESystemNodePoolId
+
 
     def _deserialize(self, params):
         self._VPCId = params.get("VPCId")
@@ -3501,6 +3559,8 @@ class ResourceIds(AbstractModel):
         self._CFSStorageType = params.get("CFSStorageType")
         self._CVMId = params.get("CVMId")
         self._EKSId = params.get("EKSId")
+        self._TKEId = params.get("TKEId")
+        self._TKESystemNodePoolId = params.get("TKESystemNodePoolId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

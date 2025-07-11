@@ -7171,7 +7171,7 @@ https://cloud.tencent.com/document/product/267/56208
 1. 该自定义 ID 为可选参数，如果传入，请确保该账号下传入的 ID 唯一。
 2. 该自定义 ID 用于防止重复发起请求时产生重复任务。后面也可以用 SpecifyTaskId 来修改或删除任务。
         :type SpecifyTaskId: str
-        :param _Comment: 任务描述，限制 512 字节。
+        :param _Comment: 任务描述，限制 512 字节。不可以使用特殊字符，如Unicode的特殊字符集。
         :type Comment: str
         :param _ToUrl: 完整目标 URL 地址。
 用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空字符串，任务将会使用该 ToUrl 参数指定的目标地址。
@@ -7466,7 +7466,7 @@ https://cloud.tencent.com/document/product/267/56208
 
     @property
     def Comment(self):
-        """任务描述，限制 512 字节。
+        """任务描述，限制 512 字节。不可以使用特殊字符，如Unicode的特殊字符集。
         :rtype: str
         """
         return self._Comment

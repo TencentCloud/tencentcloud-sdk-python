@@ -624,6 +624,57 @@ class AddressPoolDetail(AbstractModel):
         
 
 
+class CostItem(AbstractModel):
+    """计费项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CostName: 计费项名称
+        :type CostName: str
+        :param _CostValue: 计费项值
+        :type CostValue: int
+        """
+        self._CostName = None
+        self._CostValue = None
+
+    @property
+    def CostName(self):
+        """计费项名称
+        :rtype: str
+        """
+        return self._CostName
+
+    @CostName.setter
+    def CostName(self, CostName):
+        self._CostName = CostName
+
+    @property
+    def CostValue(self):
+        """计费项值
+        :rtype: int
+        """
+        return self._CostValue
+
+    @CostValue.setter
+    def CostValue(self, CostValue):
+        self._CostValue = CostValue
+
+
+    def _deserialize(self, params):
+        self._CostName = params.get("CostName")
+        self._CostValue = params.get("CostValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAddressPoolRequest(AbstractModel):
     """CreateAddressPool请求参数结构体
 
@@ -2039,6 +2090,359 @@ class DescribeAddressPoolListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDetectPackageDetailRequest(AbstractModel):
+    """DescribeDetectPackageDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDetectPackageDetailResponse(AbstractModel):
+    """DescribeDetectPackageDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _ResourceType: 资源类型 TASK 探测任务
+        :type ResourceType: str
+        :param _Quota: 额度
+        :type Quota: int
+        :param _CurrentDeadline: 过期时间
+        :type CurrentDeadline: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _IsExpire: 是否过期
+        :type IsExpire: int
+        :param _Status: 状态 ENABLED: 正常 ISOLATED: 隔离 DESTROYED：销毁 REFUNDED：已退款
+        :type Status: str
+        :param _AutoRenewFlag: 是否自动续费0不1是
+        :type AutoRenewFlag: int
+        :param _Remark: 备注
+        :type Remark: str
+        :param _CostItemList: 计费项
+        :type CostItemList: list of CostItem
+        :param _UsedNum: 使用数量
+        :type UsedNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceId = None
+        self._ResourceType = None
+        self._Quota = None
+        self._CurrentDeadline = None
+        self._CreateTime = None
+        self._IsExpire = None
+        self._Status = None
+        self._AutoRenewFlag = None
+        self._Remark = None
+        self._CostItemList = None
+        self._UsedNum = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        """资源类型 TASK 探测任务
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Quota(self):
+        """额度
+        :rtype: int
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+    @property
+    def CurrentDeadline(self):
+        """过期时间
+        :rtype: str
+        """
+        return self._CurrentDeadline
+
+    @CurrentDeadline.setter
+    def CurrentDeadline(self, CurrentDeadline):
+        self._CurrentDeadline = CurrentDeadline
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsExpire(self):
+        """是否过期
+        :rtype: int
+        """
+        return self._IsExpire
+
+    @IsExpire.setter
+    def IsExpire(self, IsExpire):
+        self._IsExpire = IsExpire
+
+    @property
+    def Status(self):
+        """状态 ENABLED: 正常 ISOLATED: 隔离 DESTROYED：销毁 REFUNDED：已退款
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AutoRenewFlag(self):
+        """是否自动续费0不1是
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CostItemList(self):
+        """计费项
+        :rtype: list of CostItem
+        """
+        return self._CostItemList
+
+    @CostItemList.setter
+    def CostItemList(self, CostItemList):
+        self._CostItemList = CostItemList
+
+    @property
+    def UsedNum(self):
+        """使用数量
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._Quota = params.get("Quota")
+        self._CurrentDeadline = params.get("CurrentDeadline")
+        self._CreateTime = params.get("CreateTime")
+        self._IsExpire = params.get("IsExpire")
+        self._Status = params.get("Status")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Remark = params.get("Remark")
+        if params.get("CostItemList") is not None:
+            self._CostItemList = []
+            for item in params.get("CostItemList"):
+                obj = CostItem()
+                obj._deserialize(item)
+                self._CostItemList.append(obj)
+        self._UsedNum = params.get("UsedNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDetectTaskPackageListRequest(AbstractModel):
+    """DescribeDetectTaskPackageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 每页条数
+        :type Limit: int
+        :param _Filters: 探测任务过滤条件：ResourceId 探测任务的资源id，PeriodStart 最小过期时间,PeriodEnd 最大过期时间
+        :type Filters: list of ResourceFilter
+        """
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        """每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """探测任务过滤条件：ResourceId 探测任务的资源id，PeriodStart 最小过期时间,PeriodEnd 最大过期时间
+        :rtype: list of ResourceFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ResourceFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDetectTaskPackageListResponse(AbstractModel):
+    """DescribeDetectTaskPackageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _TaskPackageSet: 探测任务套餐列表
+        :type TaskPackageSet: list of DetectTaskPackage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TaskPackageSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskPackageSet(self):
+        """探测任务套餐列表
+        :rtype: list of DetectTaskPackage
+        """
+        return self._TaskPackageSet
+
+    @TaskPackageSet.setter
+    def TaskPackageSet(self, TaskPackageSet):
+        self._TaskPackageSet = TaskPackageSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TaskPackageSet") is not None:
+            self._TaskPackageSet = []
+            for item in params.get("TaskPackageSet"):
+                obj = DetectTaskPackage()
+                obj._deserialize(item)
+                self._TaskPackageSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDetectorsRequest(AbstractModel):
     """DescribeDetectors请求参数结构体
 
@@ -2380,6 +2784,140 @@ class DescribeInstanceListResponse(AbstractModel):
                 self._InstanceSet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._SystemAccessEnabled = params.get("SystemAccessEnabled")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstancePackageListRequest(AbstractModel):
+    """DescribeInstancePackageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 每页条数
+        :type Limit: int
+        :param _Filters: InstanceId实例Id，InstanceName实例名称，ResourceId套餐Id，PackageType套餐类型 
+        :type Filters: list of ResourceFilter
+        :param _IsUsed: 是否使用：0未使用1已使用
+        :type IsUsed: int
+        """
+        self._Limit = None
+        self._Filters = None
+        self._IsUsed = None
+
+    @property
+    def Limit(self):
+        """每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """InstanceId实例Id，InstanceName实例名称，ResourceId套餐Id，PackageType套餐类型 
+        :rtype: list of ResourceFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def IsUsed(self):
+        """是否使用：0未使用1已使用
+        :rtype: int
+        """
+        return self._IsUsed
+
+    @IsUsed.setter
+    def IsUsed(self, IsUsed):
+        self._IsUsed = IsUsed
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ResourceFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._IsUsed = params.get("IsUsed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancePackageListResponse(AbstractModel):
+    """DescribeInstancePackageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _InstanceSet: 实例套餐列表
+        :type InstanceSet: list of InstancePackage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstanceSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceSet(self):
+        """实例套餐列表
+        :rtype: list of InstancePackage
+        """
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = InstancePackage()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2927,6 +3465,209 @@ class DescribeStrategyListResponse(AbstractModel):
                 self._StrategySet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
+
+
+class DetectTaskPackage(AbstractModel):
+    """探测任务套餐
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _ResourceType: 资源类型
+TASK 探测任务
+        :type ResourceType: str
+        :param _Quota: 额度
+        :type Quota: int
+        :param _CurrentDeadline: 套餐过期时间
+        :type CurrentDeadline: str
+        :param _CreateTime: 套餐创建时间
+        :type CreateTime: str
+        :param _IsExpire: 是否过期0否1是
+        :type IsExpire: int
+        :param _Status: 状态
+ENABLED: 正常
+ISOLATED: 隔离
+DESTROYED：销毁
+REFUNDED：已退款
+        :type Status: str
+        :param _AutoRenewFlag: 是否自动续费0不1是
+        :type AutoRenewFlag: int
+        :param _Remark: 备注
+        :type Remark: str
+        :param _CostItemList: 计费项
+        :type CostItemList: list of CostItem
+        :param _Group: 探测任务类型：100系统设定；200计费；300管理系统；110D监控迁移的免费任务；120容灾切换任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: int
+        """
+        self._ResourceId = None
+        self._ResourceType = None
+        self._Quota = None
+        self._CurrentDeadline = None
+        self._CreateTime = None
+        self._IsExpire = None
+        self._Status = None
+        self._AutoRenewFlag = None
+        self._Remark = None
+        self._CostItemList = None
+        self._Group = None
+
+    @property
+    def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        """资源类型
+TASK 探测任务
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Quota(self):
+        """额度
+        :rtype: int
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+    @property
+    def CurrentDeadline(self):
+        """套餐过期时间
+        :rtype: str
+        """
+        return self._CurrentDeadline
+
+    @CurrentDeadline.setter
+    def CurrentDeadline(self, CurrentDeadline):
+        self._CurrentDeadline = CurrentDeadline
+
+    @property
+    def CreateTime(self):
+        """套餐创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsExpire(self):
+        """是否过期0否1是
+        :rtype: int
+        """
+        return self._IsExpire
+
+    @IsExpire.setter
+    def IsExpire(self, IsExpire):
+        self._IsExpire = IsExpire
+
+    @property
+    def Status(self):
+        """状态
+ENABLED: 正常
+ISOLATED: 隔离
+DESTROYED：销毁
+REFUNDED：已退款
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AutoRenewFlag(self):
+        """是否自动续费0不1是
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CostItemList(self):
+        """计费项
+        :rtype: list of CostItem
+        """
+        return self._CostItemList
+
+    @CostItemList.setter
+    def CostItemList(self, CostItemList):
+        self._CostItemList = CostItemList
+
+    @property
+    def Group(self):
+        """探测任务类型：100系统设定；200计费；300管理系统；110D监控迁移的免费任务；120容灾切换任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._Quota = params.get("Quota")
+        self._CurrentDeadline = params.get("CurrentDeadline")
+        self._CreateTime = params.get("CreateTime")
+        self._IsExpire = params.get("IsExpire")
+        self._Status = params.get("Status")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Remark = params.get("Remark")
+        if params.get("CostItemList") is not None:
+            self._CostItemList = []
+            for item in params.get("CostItemList"):
+                obj = CostItem()
+                obj._deserialize(item)
+                self._CostItemList.append(obj)
+        self._Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DetectorGroup(AbstractModel):
@@ -4058,6 +4799,269 @@ class InstanceInfo(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstancePackage(AbstractModel):
+    """实例套餐
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 实例套餐资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _PackageType: 套餐类型
+FREE: 免费版
+STANDARD：标准版
+ULTIMATE：旗舰版
+        :type PackageType: str
+        :param _CurrentDeadline: 套餐过期时间
+        :type CurrentDeadline: str
+        :param _CreateTime: 套餐创建时间
+        :type CreateTime: str
+        :param _IsExpire: 是否过期0否1是
+        :type IsExpire: int
+        :param _Status: 实例状态
+ENABLED: 正常
+DISABLED: 禁用
+        :type Status: str
+        :param _AutoRenewFlag: 是否自动续费0不1是
+        :type AutoRenewFlag: int
+        :param _Remark: 备注
+        :type Remark: str
+        :param _CostItemList: 计费项
+        :type CostItemList: list of CostItem
+        :param _MinCheckInterval: 最小检查间隔时间s
+        :type MinCheckInterval: int
+        :param _MinGlobalTtl: 最小TTL s
+        :type MinGlobalTtl: int
+        :param _TrafficStrategy: 流量策略类型：ALL返回全部，WEIGHT权重
+        :type TrafficStrategy: list of str
+        :param _ScheduleStrategy: 策略类型：LOCATION按地理位置调度，DELAY按延迟调度
+        :type ScheduleStrategy: list of str
+        """
+        self._ResourceId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._PackageType = None
+        self._CurrentDeadline = None
+        self._CreateTime = None
+        self._IsExpire = None
+        self._Status = None
+        self._AutoRenewFlag = None
+        self._Remark = None
+        self._CostItemList = None
+        self._MinCheckInterval = None
+        self._MinGlobalTtl = None
+        self._TrafficStrategy = None
+        self._ScheduleStrategy = None
+
+    @property
+    def ResourceId(self):
+        """实例套餐资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        """实例名
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PackageType(self):
+        """套餐类型
+FREE: 免费版
+STANDARD：标准版
+ULTIMATE：旗舰版
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def CurrentDeadline(self):
+        """套餐过期时间
+        :rtype: str
+        """
+        return self._CurrentDeadline
+
+    @CurrentDeadline.setter
+    def CurrentDeadline(self, CurrentDeadline):
+        self._CurrentDeadline = CurrentDeadline
+
+    @property
+    def CreateTime(self):
+        """套餐创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsExpire(self):
+        """是否过期0否1是
+        :rtype: int
+        """
+        return self._IsExpire
+
+    @IsExpire.setter
+    def IsExpire(self, IsExpire):
+        self._IsExpire = IsExpire
+
+    @property
+    def Status(self):
+        """实例状态
+ENABLED: 正常
+DISABLED: 禁用
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AutoRenewFlag(self):
+        """是否自动续费0不1是
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CostItemList(self):
+        """计费项
+        :rtype: list of CostItem
+        """
+        return self._CostItemList
+
+    @CostItemList.setter
+    def CostItemList(self, CostItemList):
+        self._CostItemList = CostItemList
+
+    @property
+    def MinCheckInterval(self):
+        """最小检查间隔时间s
+        :rtype: int
+        """
+        return self._MinCheckInterval
+
+    @MinCheckInterval.setter
+    def MinCheckInterval(self, MinCheckInterval):
+        self._MinCheckInterval = MinCheckInterval
+
+    @property
+    def MinGlobalTtl(self):
+        """最小TTL s
+        :rtype: int
+        """
+        return self._MinGlobalTtl
+
+    @MinGlobalTtl.setter
+    def MinGlobalTtl(self, MinGlobalTtl):
+        self._MinGlobalTtl = MinGlobalTtl
+
+    @property
+    def TrafficStrategy(self):
+        """流量策略类型：ALL返回全部，WEIGHT权重
+        :rtype: list of str
+        """
+        return self._TrafficStrategy
+
+    @TrafficStrategy.setter
+    def TrafficStrategy(self, TrafficStrategy):
+        self._TrafficStrategy = TrafficStrategy
+
+    @property
+    def ScheduleStrategy(self):
+        """策略类型：LOCATION按地理位置调度，DELAY按延迟调度
+        :rtype: list of str
+        """
+        return self._ScheduleStrategy
+
+    @ScheduleStrategy.setter
+    def ScheduleStrategy(self, ScheduleStrategy):
+        self._ScheduleStrategy = ScheduleStrategy
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._PackageType = params.get("PackageType")
+        self._CurrentDeadline = params.get("CurrentDeadline")
+        self._CreateTime = params.get("CreateTime")
+        self._IsExpire = params.get("IsExpire")
+        self._Status = params.get("Status")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Remark = params.get("Remark")
+        if params.get("CostItemList") is not None:
+            self._CostItemList = []
+            for item in params.get("CostItemList"):
+                obj = CostItem()
+                obj._deserialize(item)
+                self._CostItemList.append(obj)
+        self._MinCheckInterval = params.get("MinCheckInterval")
+        self._MinGlobalTtl = params.get("MinGlobalTtl")
+        self._TrafficStrategy = params.get("TrafficStrategy")
+        self._ScheduleStrategy = params.get("ScheduleStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -13234,7 +13234,7 @@ class CdnLogInfo(AbstractModel):
         :param _Date: 日志所属日期， 格式为：yyyy-MM-dd ，如2018-03-01。
         :type Date: str
         :param _Name: 日志名称，格式为：日期小时-域名
-如 2018120101-test.vod2.mqcloud.com。
+如 example.com。
         :type Name: str
         :param _Url: 日志下载链接，24小时内下载有效。
         :type Url: str
@@ -13263,7 +13263,7 @@ class CdnLogInfo(AbstractModel):
     @property
     def Name(self):
         """日志名称，格式为：日期小时-域名
-如 2018120101-test.vod2.mqcloud.com。
+如 example.com。
         :rtype: str
         """
         return self._Name
@@ -75106,7 +75106,9 @@ class WeChatMiniProgramPublishRequest(AbstractModel):
         :type FileId: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
-        :param _SourceDefinition: 发布视频所对应的转码模板 ID，为0代表原始视频。
+        :param _SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。支持的视频格式：
+<li>当 SourceDefinition 为 0 时，视频格式支持 MP4、3GP 格式；</li>
+<li>当 SourceDefinition 大于 0 时，视频格式支持 MP4、3GP 及 M3U8 格式。</li>不填默认值为 0。
         :type SourceDefinition: int
         """
         self._FileId = None
@@ -75137,7 +75139,9 @@ class WeChatMiniProgramPublishRequest(AbstractModel):
 
     @property
     def SourceDefinition(self):
-        """发布视频所对应的转码模板 ID，为0代表原始视频。
+        """发布视频所对应的转码模板 ID，为 0 代表原始视频。支持的视频格式：
+<li>当 SourceDefinition 为 0 时，视频格式支持 MP4、3GP 格式；</li>
+<li>当 SourceDefinition 大于 0 时，视频格式支持 MP4、3GP 及 M3U8 格式。</li>不填默认值为 0。
         :rtype: int
         """
         return self._SourceDefinition

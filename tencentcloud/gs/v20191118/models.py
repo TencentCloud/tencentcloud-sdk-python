@@ -958,14 +958,20 @@ class AndroidInstanceImage(AbstractModel):
         :type AndroidInstanceImageState: str
         :param _AndroidInstanceImageZone: 镜像可用区
         :type AndroidInstanceImageZone: str
+        :param _AndroidInstanceImageDescription: 镜像描述
+        :type AndroidInstanceImageDescription: str
         :param _AndroidVersion: 安卓10
         :type AndroidVersion: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
         """
         self._AndroidInstanceImageId = None
         self._AndroidInstanceImageName = None
         self._AndroidInstanceImageState = None
         self._AndroidInstanceImageZone = None
+        self._AndroidInstanceImageDescription = None
         self._AndroidVersion = None
+        self._CreateTime = None
 
     @property
     def AndroidInstanceImageId(self):
@@ -1012,6 +1018,17 @@ class AndroidInstanceImage(AbstractModel):
         self._AndroidInstanceImageZone = AndroidInstanceImageZone
 
     @property
+    def AndroidInstanceImageDescription(self):
+        """镜像描述
+        :rtype: str
+        """
+        return self._AndroidInstanceImageDescription
+
+    @AndroidInstanceImageDescription.setter
+    def AndroidInstanceImageDescription(self, AndroidInstanceImageDescription):
+        self._AndroidInstanceImageDescription = AndroidInstanceImageDescription
+
+    @property
     def AndroidVersion(self):
         """安卓10
         :rtype: str
@@ -1022,13 +1039,26 @@ class AndroidInstanceImage(AbstractModel):
     def AndroidVersion(self, AndroidVersion):
         self._AndroidVersion = AndroidVersion
 
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._AndroidInstanceImageId = params.get("AndroidInstanceImageId")
         self._AndroidInstanceImageName = params.get("AndroidInstanceImageName")
         self._AndroidInstanceImageState = params.get("AndroidInstanceImageState")
         self._AndroidInstanceImageZone = params.get("AndroidInstanceImageZone")
+        self._AndroidInstanceImageDescription = params.get("AndroidInstanceImageDescription")
         self._AndroidVersion = params.get("AndroidVersion")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2457,9 +2487,12 @@ class CreateAndroidInstanceImageRequest(AbstractModel):
         :type AndroidInstanceImageName: str
         :param _AndroidInstanceId: 安卓实例 ID
         :type AndroidInstanceId: str
+        :param _AndroidInstanceImageDescription: 安卓实例镜像描述
+        :type AndroidInstanceImageDescription: str
         """
         self._AndroidInstanceImageName = None
         self._AndroidInstanceId = None
+        self._AndroidInstanceImageDescription = None
 
     @property
     def AndroidInstanceImageName(self):
@@ -2483,10 +2516,22 @@ class CreateAndroidInstanceImageRequest(AbstractModel):
     def AndroidInstanceId(self, AndroidInstanceId):
         self._AndroidInstanceId = AndroidInstanceId
 
+    @property
+    def AndroidInstanceImageDescription(self):
+        """安卓实例镜像描述
+        :rtype: str
+        """
+        return self._AndroidInstanceImageDescription
+
+    @AndroidInstanceImageDescription.setter
+    def AndroidInstanceImageDescription(self, AndroidInstanceImageDescription):
+        self._AndroidInstanceImageDescription = AndroidInstanceImageDescription
+
 
     def _deserialize(self, params):
         self._AndroidInstanceImageName = params.get("AndroidInstanceImageName")
         self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._AndroidInstanceImageDescription = params.get("AndroidInstanceImageDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4537,11 +4582,17 @@ class DescribeAndroidInstanceImagesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 限制量，默认为20，最大值为100
         :type Limit: int
+        :param _Filters: 字段过滤器。Filter 的 Name 有以下值：
+ImageName：镜像名称
+ImageState：镜像状态
+AndroidVersion：安卓版本
+        :type Filters: list of Filter
         """
         self._AndroidInstanceImageIds = None
         self._AndroidInstanceImageZones = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def AndroidInstanceImageIds(self):
@@ -4587,12 +4638,32 @@ class DescribeAndroidInstanceImagesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        """字段过滤器。Filter 的 Name 有以下值：
+ImageName：镜像名称
+ImageState：镜像状态
+AndroidVersion：安卓版本
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._AndroidInstanceImageIds = params.get("AndroidInstanceImageIds")
         self._AndroidInstanceImageZones = params.get("AndroidInstanceImageZones")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

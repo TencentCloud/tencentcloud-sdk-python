@@ -13409,6 +13409,8 @@ class ModelInfo(AbstractModel):
         :type IsPrivateModel: bool
         :param _ModelCategory: 模型的类别 多模态MultiModal, 文本大模型 LLM
         :type ModelCategory: str
+        :param _PublicDataSource: 数据源的配置
+        :type PublicDataSource: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
         """
         self._ModelVersionId = None
         self._ModelId = None
@@ -13422,6 +13424,7 @@ class ModelInfo(AbstractModel):
         self._ModelFormat = None
         self._IsPrivateModel = None
         self._ModelCategory = None
+        self._PublicDataSource = None
 
     @property
     def ModelVersionId(self):
@@ -13560,6 +13563,17 @@ class ModelInfo(AbstractModel):
     def ModelCategory(self, ModelCategory):
         self._ModelCategory = ModelCategory
 
+    @property
+    def PublicDataSource(self):
+        """数据源的配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
+        """
+        return self._PublicDataSource
+
+    @PublicDataSource.setter
+    def PublicDataSource(self, PublicDataSource):
+        self._PublicDataSource = PublicDataSource
+
 
     def _deserialize(self, params):
         self._ModelVersionId = params.get("ModelVersionId")
@@ -13578,6 +13592,9 @@ class ModelInfo(AbstractModel):
         self._ModelFormat = params.get("ModelFormat")
         self._IsPrivateModel = params.get("IsPrivateModel")
         self._ModelCategory = params.get("ModelCategory")
+        if params.get("PublicDataSource") is not None:
+            self._PublicDataSource = PublicDataSourceFS()
+            self._PublicDataSource._deserialize(params.get("PublicDataSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17187,6 +17204,12 @@ class ProbeAction(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PublicDataSourceFS(AbstractModel):
+    """公有云数据源结构
+
+    """
 
 
 class PushTrainingMetricsRequest(AbstractModel):

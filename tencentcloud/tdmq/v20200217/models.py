@@ -11957,6 +11957,8 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         :type Bundle: str
         :param _OwnerBroker: bundle 所属的 broker IP 地址，支持模糊查询
         :type OwnerBroker: str
+        :param _Tenant: 租户(如果没有自定义租户名称，和 tenantId 相同；如果有配置自定义租户名称，则为自定义租户名 user_tenant)
+        :type Tenant: str
         """
         self._ClusterName = None
         self._TenantId = None
@@ -11966,6 +11968,7 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         self._Offset = None
         self._Bundle = None
         self._OwnerBroker = None
+        self._Tenant = None
 
     @property
     def ClusterName(self):
@@ -12055,6 +12058,17 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
     def OwnerBroker(self, OwnerBroker):
         self._OwnerBroker = OwnerBroker
 
+    @property
+    def Tenant(self):
+        """租户(如果没有自定义租户名称，和 tenantId 相同；如果有配置自定义租户名称，则为自定义租户名 user_tenant)
+        :rtype: str
+        """
+        return self._Tenant
+
+    @Tenant.setter
+    def Tenant(self, Tenant):
+        self._Tenant = Tenant
+
 
     def _deserialize(self, params):
         self._ClusterName = params.get("ClusterName")
@@ -12065,6 +12079,7 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Bundle = params.get("Bundle")
         self._OwnerBroker = params.get("OwnerBroker")
+        self._Tenant = params.get("Tenant")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26934,6 +26949,8 @@ true就是开启了，false是关闭
         :param _Tenant: 用户自定义的租户别名，如果没有，会复用专业集群 ID
 
         :type Tenant: str
+        :param _DeleteProtection: 删除保护开关标识
+        :type DeleteProtection: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -26949,6 +26966,7 @@ true就是开启了，false是关闭
         self._AutoCreateTopicStatus = None
         self._DefaultPartitionNumber = None
         self._Tenant = None
+        self._DeleteProtection = None
 
     @property
     def ClusterId(self):
@@ -27112,6 +27130,17 @@ true就是开启了，false是关闭
     def Tenant(self, Tenant):
         self._Tenant = Tenant
 
+    @property
+    def DeleteProtection(self):
+        """删除保护开关标识
+        :rtype: int
+        """
+        return self._DeleteProtection
+
+    @DeleteProtection.setter
+    def DeleteProtection(self, DeleteProtection):
+        self._DeleteProtection = DeleteProtection
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -27133,6 +27162,7 @@ true就是开启了，false是关闭
         self._AutoCreateTopicStatus = params.get("AutoCreateTopicStatus")
         self._DefaultPartitionNumber = params.get("DefaultPartitionNumber")
         self._Tenant = params.get("Tenant")
+        self._DeleteProtection = params.get("DeleteProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

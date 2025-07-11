@@ -19283,6 +19283,8 @@ class DeployContainerGroupRequest(AbstractModel):
 
     @property
     def VolumeInfos(self):
+        warnings.warn("parameter `VolumeInfos` is deprecated", DeprecationWarning) 
+
         """数据卷信息-废弃，请用VolumeInfoList参数
         :rtype: :class:`tencentcloud.tsf.v20180326.models.VolumeInfo`
         """
@@ -19290,10 +19292,14 @@ class DeployContainerGroupRequest(AbstractModel):
 
     @VolumeInfos.setter
     def VolumeInfos(self, VolumeInfos):
+        warnings.warn("parameter `VolumeInfos` is deprecated", DeprecationWarning) 
+
         self._VolumeInfos = VolumeInfos
 
     @property
     def VolumeMountInfos(self):
+        warnings.warn("parameter `VolumeMountInfos` is deprecated", DeprecationWarning) 
+
         """数据卷挂载点信息-废弃，请用VolumeMountInfoList参数
         :rtype: :class:`tencentcloud.tsf.v20180326.models.VolumeMountInfo`
         """
@@ -19301,6 +19307,8 @@ class DeployContainerGroupRequest(AbstractModel):
 
     @VolumeMountInfos.setter
     def VolumeMountInfos(self, VolumeMountInfos):
+        warnings.warn("parameter `VolumeMountInfos` is deprecated", DeprecationWarning) 
+
         self._VolumeMountInfos = VolumeMountInfos
 
     @property
@@ -37639,6 +37647,8 @@ class ImageRepository(AbstractModel):
 
     @property
     def ApplicationName(self):
+        warnings.warn("parameter `ApplicationName` is deprecated", DeprecationWarning) 
+
         """ApplicationName值（废弃）
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ScalableRule`
         """
@@ -37646,6 +37656,8 @@ class ImageRepository(AbstractModel):
 
     @ApplicationName.setter
     def ApplicationName(self, ApplicationName):
+        warnings.warn("parameter `ApplicationName` is deprecated", DeprecationWarning) 
+
         self._ApplicationName = ApplicationName
 
     @property
@@ -52586,6 +52598,8 @@ class ThreadPicture(AbstractModel):
 
     @property
     def DeamonThreadCount(self):
+        warnings.warn("parameter `DeamonThreadCount` is deprecated", DeprecationWarning) 
+
         """守护线程数 拼写错误，废弃
         :rtype: list of CurvePoint
         """
@@ -52593,6 +52607,8 @@ class ThreadPicture(AbstractModel):
 
     @DeamonThreadCount.setter
     def DeamonThreadCount(self, DeamonThreadCount):
+        warnings.warn("parameter `DeamonThreadCount` is deprecated", DeprecationWarning) 
+
         self._DeamonThreadCount = DeamonThreadCount
 
     @property

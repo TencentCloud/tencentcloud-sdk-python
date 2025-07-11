@@ -329,11 +329,6 @@ def test_import_cim():
     from tencentcloud.cim.v20190318 import models
 
 
-def test_import_cis():
-    from tencentcloud.cis.v20180408 import cis_client
-    from tencentcloud.cis.v20180408 import models
-
-
 def test_import_ckafka():
     from tencentcloud.ckafka.v20190819 import ckafka_client
     from tencentcloud.ckafka.v20190819 import models
@@ -439,11 +434,6 @@ def test_import_dasb():
     from tencentcloud.dasb.v20191018 import models
 
 
-def test_import_dataintegration():
-    from tencentcloud.dataintegration.v20220613 import dataintegration_client
-    from tencentcloud.dataintegration.v20220613 import models
-
-
 def test_import_dayu():
     from tencentcloud.dayu.v20180709 import dayu_client
     from tencentcloud.dayu.v20180709 import models
@@ -502,11 +492,6 @@ def test_import_ds():
 def test_import_dsgc():
     from tencentcloud.dsgc.v20190723 import dsgc_client
     from tencentcloud.dsgc.v20190723 import models
-
-
-def test_import_dtf():
-    from tencentcloud.dtf.v20200506 import dtf_client
-    from tencentcloud.dtf.v20200506 import models
 
 
 def test_import_dts():
@@ -624,19 +609,9 @@ def test_import_goosefs():
     from tencentcloud.goosefs.v20220519 import models
 
 
-def test_import_gpm():
-    from tencentcloud.gpm.v20200820 import gpm_client
-    from tencentcloud.gpm.v20200820 import models
-
-
 def test_import_gs():
     from tencentcloud.gs.v20191118 import gs_client
     from tencentcloud.gs.v20191118 import models
-
-
-def test_import_gse():
-    from tencentcloud.gse.v20191112 import gse_client
-    from tencentcloud.gse.v20191112 import models
 
 
 def test_import_gwlb():
@@ -699,11 +674,6 @@ def test_import_ie():
     from tencentcloud.ie.v20200304 import models
 
 
-def test_import_iecp():
-    from tencentcloud.iecp.v20210914 import iecp_client
-    from tencentcloud.iecp.v20210914 import models
-
-
 def test_import_ig():
     from tencentcloud.ig.v20210518 import ig_client
     from tencentcloud.ig.v20210518 import models
@@ -712,11 +682,6 @@ def test_import_ig():
 def test_import_igtm():
     from tencentcloud.igtm.v20231024 import igtm_client
     from tencentcloud.igtm.v20231024 import models
-
-
-def test_import_iir():
-    from tencentcloud.iir.v20200417 import iir_client
-    from tencentcloud.iir.v20200417 import models
 
 
 def test_import_ims():
@@ -752,11 +717,6 @@ def test_import_iotcloud():
 def test_import_iotexplorer():
     from tencentcloud.iotexplorer.v20190423 import iotexplorer_client
     from tencentcloud.iotexplorer.v20190423 import models
-
-
-def test_import_iottid():
-    from tencentcloud.iottid.v20190411 import iottid_client
-    from tencentcloud.iottid.v20190411 import models
 
 
 def test_import_iotvideo():
@@ -859,16 +819,6 @@ def test_import_memcached():
     from tencentcloud.memcached.v20190318 import models
 
 
-def test_import_mgobe():
-    from tencentcloud.mgobe.v20190929 import mgobe_client
-    from tencentcloud.mgobe.v20190929 import models
-
-
-def test_import_mgobe():
-    from tencentcloud.mgobe.v20201014 import mgobe_client
-    from tencentcloud.mgobe.v20201014 import models
-
-
 def test_import_mmps():
     from tencentcloud.mmps.v20200710 import mmps_client
     from tencentcloud.mmps.v20200710 import models
@@ -924,11 +874,6 @@ def test_import_msp():
     from tencentcloud.msp.v20180319 import models
 
 
-def test_import_mvj():
-    from tencentcloud.mvj.v20190926 import mvj_client
-    from tencentcloud.mvj.v20190926 import models
-
-
 def test_import_nlp():
     from tencentcloud.nlp.v20190408 import nlp_client
     from tencentcloud.nlp.v20190408 import models
@@ -967,11 +912,6 @@ def test_import_organization():
 def test_import_partners():
     from tencentcloud.partners.v20180321 import partners_client
     from tencentcloud.partners.v20180321 import models
-
-
-def test_import_pds():
-    from tencentcloud.pds.v20210701 import pds_client
-    from tencentcloud.pds.v20210701 import models
 
 
 def test_import_postgres():
@@ -1034,11 +974,6 @@ def test_import_smop():
     from tencentcloud.smop.v20201203 import models
 
 
-def test_import_smpn():
-    from tencentcloud.smpn.v20190822 import smpn_client
-    from tencentcloud.smpn.v20190822 import models
-
-
 def test_import_sms():
     from tencentcloud.sms.v20190711 import sms_client
     from tencentcloud.sms.v20190711 import models
@@ -1052,11 +987,6 @@ def test_import_sms():
 def test_import_soe():
     from tencentcloud.soe.v20180724 import soe_client
     from tencentcloud.soe.v20180724 import models
-
-
-def test_import_solar():
-    from tencentcloud.solar.v20181011 import solar_client
-    from tencentcloud.solar.v20181011 import models
 
 
 def test_import_sqlserver():
@@ -1104,29 +1034,14 @@ def test_import_tag():
     from tencentcloud.tag.v20180813 import models
 
 
-def test_import_tan():
-    from tencentcloud.tan.v20220420 import tan_client
-    from tencentcloud.tan.v20220420 import models
-
-
 def test_import_tat():
     from tencentcloud.tat.v20201028 import tat_client
     from tencentcloud.tat.v20201028 import models
 
 
-def test_import_tav():
-    from tencentcloud.tav.v20190118 import tav_client
-    from tencentcloud.tav.v20190118 import models
-
-
 def test_import_tbaas():
     from tencentcloud.tbaas.v20180416 import tbaas_client
     from tencentcloud.tbaas.v20180416 import models
-
-
-def test_import_tbm():
-    from tencentcloud.tbm.v20180129 import tbm_client
-    from tencentcloud.tbm.v20180129 import models
 
 
 def test_import_tbp():
@@ -1159,19 +1074,9 @@ def test_import_tccatalog():
     from tencentcloud.tccatalog.v20241024 import models
 
 
-def test_import_tcex():
-    from tencentcloud.tcex.v20200727 import tcex_client
-    from tencentcloud.tcex.v20200727 import models
-
-
 def test_import_tchd():
     from tencentcloud.tchd.v20230306 import tchd_client
     from tencentcloud.tchd.v20230306 import models
-
-
-def test_import_tci():
-    from tencentcloud.tci.v20190318 import tci_client
-    from tencentcloud.tci.v20190318 import models
 
 
 def test_import_tcm():
@@ -1249,26 +1154,6 @@ def test_import_tia():
     from tencentcloud.tia.v20180226 import models
 
 
-def test_import_tic():
-    from tencentcloud.tic.v20201117 import tic_client
-    from tencentcloud.tic.v20201117 import models
-
-
-def test_import_ticm():
-    from tencentcloud.ticm.v20181127 import ticm_client
-    from tencentcloud.ticm.v20181127 import models
-
-
-def test_import_tics():
-    from tencentcloud.tics.v20181115 import tics_client
-    from tencentcloud.tics.v20181115 import models
-
-
-def test_import_tiems():
-    from tencentcloud.tiems.v20190416 import tiems_client
-    from tencentcloud.tiems.v20190416 import models
-
-
 def test_import_tiia():
     from tencentcloud.tiia.v20190529 import tiia_client
     from tencentcloud.tiia.v20190529 import models
@@ -1329,11 +1214,6 @@ def test_import_trabbit():
     from tencentcloud.trabbit.v20230418 import models
 
 
-def test_import_trdp():
-    from tencentcloud.trdp.v20220726 import trdp_client
-    from tencentcloud.trdp.v20220726 import models
-
-
 def test_import_trocket():
     from tencentcloud.trocket.v20230308 import trocket_client
     from tencentcloud.trocket.v20230308 import models
@@ -1382,11 +1262,6 @@ def test_import_tsw():
 def test_import_tts():
     from tencentcloud.tts.v20190823 import tts_client
     from tencentcloud.tts.v20190823 import models
-
-
-def test_import_ump():
-    from tencentcloud.ump.v20200918 import ump_client
-    from tencentcloud.ump.v20200918 import models
 
 
 def test_import_vcg():
@@ -1482,11 +1357,6 @@ def test_import_wss():
 def test_import_yinsuda():
     from tencentcloud.yinsuda.v20220527 import yinsuda_client
     from tencentcloud.yinsuda.v20220527 import models
-
-
-def test_import_youmall():
-    from tencentcloud.youmall.v20180228 import youmall_client
-    from tencentcloud.youmall.v20180228 import models
 
 
 def test_import_yunjing():
