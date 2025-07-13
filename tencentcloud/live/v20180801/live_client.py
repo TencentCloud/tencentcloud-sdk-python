@@ -281,6 +281,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAuditKeywords(self, request):
+        """创建关键词，并关联到关键词库。
+
+        :param request: Request instance for CreateAuditKeywords.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateAuditKeywordsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateAuditKeywordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditKeywords", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditKeywordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCaster(self, request):
         """该接口用来创建新的导播台
 
@@ -903,6 +926,29 @@ class LiveClient(AbstractClient):
             body = self.call("CreateScreenshotTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateScreenshotTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAuditKeywords(self, request):
+        """删除关键词信息。
+
+        :param request: Request instance for DeleteAuditKeywords.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteAuditKeywordsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteAuditKeywordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditKeywords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditKeywordsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1577,6 +1623,29 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeAreaBillBandwidthAndFluxList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAreaBillBandwidthAndFluxListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditKeywords(self, request):
+        """获取关键词信息。
+
+        :param request: Request instance for DescribeAuditKeywords.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAuditKeywordsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAuditKeywordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditKeywords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditKeywordsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1898,17 +1898,18 @@ class DetectAIFakeFacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaceInput: 传入需要进行检测的带有人脸的图片或视频（当前仅支持单人脸检测），使用base64编码的形式。
+        :param _FaceInput: 传入需要检测的人脸图片或人脸视频（当前仅支持单人脸检测），使用base64编码的形式，如您的场景视频和图片都有，我们更建议您使用视频进行检测，为了提供更好的检测效果，请您注意以下输入数据的限制与建议：
+
 - 图片的Base64值：
-建议整体图像480x640的分辨率，脸部 大小 100X100 以上。
+建议整体图像480x640的分辨率，脸部大小在 100X100 以上，由手机前置摄像头拍摄。
 Base64编码后的图片数据大小建议不超过3M、最大不可超过10M，仅支持jpg、png格式。
 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 
 - 视频的Base64值：
-Base64编码后的大小建议不超过8M、最大不可超过10M，支持mp4、avi、flv格式。
+Base64编码后的大小建议在8M以内、最大不可超过10M，支持mp4、avi、flv格式，由手机前置摄像头拍摄。
+视频建议时长为2～5s，最大不可超过20s。
+视频分辨率建议为480x640（最大支持720p），帧率在25fps~30fps之间。
 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-视频时长最大支持20s，建议时长2～5s。
-建议视频分辨率为480x640，帧率在25fps~30fps之间。
 
 示例值：/9j/4AAQSkZJRg.....s97n//2Q==
         :type FaceInput: str
@@ -1933,17 +1934,18 @@ Base64编码后的大小建议不超过8M、最大不可超过10M，支持mp4、
 
     @property
     def FaceInput(self):
-        """传入需要进行检测的带有人脸的图片或视频（当前仅支持单人脸检测），使用base64编码的形式。
+        """传入需要检测的人脸图片或人脸视频（当前仅支持单人脸检测），使用base64编码的形式，如您的场景视频和图片都有，我们更建议您使用视频进行检测，为了提供更好的检测效果，请您注意以下输入数据的限制与建议：
+
 - 图片的Base64值：
-建议整体图像480x640的分辨率，脸部 大小 100X100 以上。
+建议整体图像480x640的分辨率，脸部大小在 100X100 以上，由手机前置摄像头拍摄。
 Base64编码后的图片数据大小建议不超过3M、最大不可超过10M，仅支持jpg、png格式。
 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 
 - 视频的Base64值：
-Base64编码后的大小建议不超过8M、最大不可超过10M，支持mp4、avi、flv格式。
+Base64编码后的大小建议在8M以内、最大不可超过10M，支持mp4、avi、flv格式，由手机前置摄像头拍摄。
+视频建议时长为2～5s，最大不可超过20s。
+视频分辨率建议为480x640（最大支持720p），帧率在25fps~30fps之间。
 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-视频时长最大支持20s，建议时长2～5s。
-建议视频分辨率为480x640，帧率在25fps~30fps之间。
 
 示例值：/9j/4AAQSkZJRg.....s97n//2Q==
         :rtype: str
@@ -2019,12 +2021,14 @@ class DetectAIFakeFacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AttackRiskLevel: 检测到的图片是否存在攻击。
-- Low：无攻击风险。
+        :param _AttackRiskLevel: 对于输入图片/视频的检测结果，检测是否存在人脸攻击。
+- Low：低攻击风险。
 - Mid：中度疑似攻击。
 - High：高度疑似攻击。
+
+建议返回值为High时判断为拦截，Mid和Low判断为通过，以更好平衡安全性和通过率。
         :type AttackRiskLevel: str
-        :param _AttackRiskDetailList: 检测到疑似的攻击痕迹列表。
+        :param _AttackRiskDetailList: 检测到的疑似攻击痕迹列表，仅当AttackRiskLevel为High或Mid时返回。
 - 说明：未检测到攻击痕迹时，返回空数组。
 - 此出参仅作为结果判断的参考，实际应用仍建议使用AttackRiskLevel的结果。
         :type AttackRiskDetailList: list of AttackRiskDetail
@@ -2040,10 +2044,12 @@ class DetectAIFakeFacesResponse(AbstractModel):
 
     @property
     def AttackRiskLevel(self):
-        """检测到的图片是否存在攻击。
-- Low：无攻击风险。
+        """对于输入图片/视频的检测结果，检测是否存在人脸攻击。
+- Low：低攻击风险。
 - Mid：中度疑似攻击。
 - High：高度疑似攻击。
+
+建议返回值为High时判断为拦截，Mid和Low判断为通过，以更好平衡安全性和通过率。
         :rtype: str
         """
         return self._AttackRiskLevel
@@ -2054,7 +2060,7 @@ class DetectAIFakeFacesResponse(AbstractModel):
 
     @property
     def AttackRiskDetailList(self):
-        """检测到疑似的攻击痕迹列表。
+        """检测到的疑似攻击痕迹列表，仅当AttackRiskLevel为High或Mid时返回。
 - 说明：未检测到攻击痕迹时，返回空数组。
 - 此出参仅作为结果判断的参考，实际应用仍建议使用AttackRiskLevel的结果。
         :rtype: list of AttackRiskDetail

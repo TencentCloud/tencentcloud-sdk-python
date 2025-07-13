@@ -30667,19 +30667,44 @@ class Resource(AbstractModel):
         r"""
         :param _Spec: 节点规格描述，如CVM.SA2。
         :type Spec: str
-        :param _StorageType: 存储类型
-取值范围：
-<li>4：表示云SSD。</li>
-<li>5：表示高效云盘。</li>
-<li>6：表示增强型SSD云硬盘。</li>
-<li>11：表示吞吐型云硬盘。</li>
-<li>12：表示极速型SSD云硬盘。</li>：创建时该类型无效，会根据数据盘类型和节点类型自动判断
+        :param _StorageType: 取值范围:
+"LOCAL_SSD"   3     //本地SSD 
+"CLOUD_SSD"   4     //云SSD 
+"CLOUD_PREMIUM"  5  //高效云盘
+"CLOUD_HSSD"   6    //增强型SSD云硬盘 
+"CLOUD_THROUGHPUT" 11//吞吐型云硬盘 
+"CLOUD_TSSD"  12     //极速型SSD云硬盘 
+"CLOUD_BSSD"    13   //通用型SSD云硬盘 
+"CLOUD_BIGDATA" 14   //大数据型云硬盘
+"CLOUD_HIGHIO"  15   //高IO型云硬盘 
+
+该类型字段为无效字段，实际系统盘类型会根据数据盘类型和节点类型判断，如果节点支持所选的数据盘类型，系统盘类型会跟数据盘保持一致，建议使用CreateCluster接口
         :type StorageType: int
-        :param _DiskType: 磁盘类型
-取值范围：
-<li>CLOUD_SSD：表示云SSD。</li>
-<li>CLOUD_PREMIUM：表示高效云盘。</li>
-<li>CLOUD_BASIC：表示云硬盘。</li>
+        :param _DiskType: 数据盘类型 取值范围：
+
+CLOUD_SSD：表示云SSD。
+
+CLOUD_PREMIUM：表示高效云盘。
+
+CLOUD_BASIC：表示云硬盘。
+
+LOCAL_BASIC：表示本地盘。
+
+LOCAL_SSD：表示本地SSD。
+
+CLOUD_HSSD：表示增强型SSD云硬盘。
+
+CLOUD_THROUGHPUT：表示吞吐型云硬盘。
+
+CLOUD_TSSD：表示极速型SSD云硬盘。
+
+CLOUD_BIGDATA：表示大数据型云硬盘。
+
+CLOUD_HIGHIO：表示高IO型云硬盘。
+
+CLOUD_BSSD：表示通用型SSD云硬盘。
+
+REMOTE_SSD：表示远端SSD盘。
         :type DiskType: str
         :param _MemSize: 内存容量,单位为M
         :type MemSize: int
@@ -30731,13 +30756,18 @@ class Resource(AbstractModel):
 
     @property
     def StorageType(self):
-        """存储类型
-取值范围：
-<li>4：表示云SSD。</li>
-<li>5：表示高效云盘。</li>
-<li>6：表示增强型SSD云硬盘。</li>
-<li>11：表示吞吐型云硬盘。</li>
-<li>12：表示极速型SSD云硬盘。</li>：创建时该类型无效，会根据数据盘类型和节点类型自动判断
+        """取值范围:
+"LOCAL_SSD"   3     //本地SSD 
+"CLOUD_SSD"   4     //云SSD 
+"CLOUD_PREMIUM"  5  //高效云盘
+"CLOUD_HSSD"   6    //增强型SSD云硬盘 
+"CLOUD_THROUGHPUT" 11//吞吐型云硬盘 
+"CLOUD_TSSD"  12     //极速型SSD云硬盘 
+"CLOUD_BSSD"    13   //通用型SSD云硬盘 
+"CLOUD_BIGDATA" 14   //大数据型云硬盘
+"CLOUD_HIGHIO"  15   //高IO型云硬盘 
+
+该类型字段为无效字段，实际系统盘类型会根据数据盘类型和节点类型判断，如果节点支持所选的数据盘类型，系统盘类型会跟数据盘保持一致，建议使用CreateCluster接口
         :rtype: int
         """
         return self._StorageType
@@ -30748,11 +30778,31 @@ class Resource(AbstractModel):
 
     @property
     def DiskType(self):
-        """磁盘类型
-取值范围：
-<li>CLOUD_SSD：表示云SSD。</li>
-<li>CLOUD_PREMIUM：表示高效云盘。</li>
-<li>CLOUD_BASIC：表示云硬盘。</li>
+        """数据盘类型 取值范围：
+
+CLOUD_SSD：表示云SSD。
+
+CLOUD_PREMIUM：表示高效云盘。
+
+CLOUD_BASIC：表示云硬盘。
+
+LOCAL_BASIC：表示本地盘。
+
+LOCAL_SSD：表示本地SSD。
+
+CLOUD_HSSD：表示增强型SSD云硬盘。
+
+CLOUD_THROUGHPUT：表示吞吐型云硬盘。
+
+CLOUD_TSSD：表示极速型SSD云硬盘。
+
+CLOUD_BIGDATA：表示大数据型云硬盘。
+
+CLOUD_HIGHIO：表示高IO型云硬盘。
+
+CLOUD_BSSD：表示通用型SSD云硬盘。
+
+REMOTE_SSD：表示远端SSD盘。
         :rtype: str
         """
         return self._DiskType

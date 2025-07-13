@@ -5475,6 +5475,40 @@ class CopyCasterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAuditKeywordsRequest(AbstractModel):
+    """CreateAuditKeywords请求参数结构体
+
+    """
+
+
+class CreateAuditKeywordsResponse(AbstractModel):
+    """CreateAuditKeywords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCasterInputPushUrlRequest(AbstractModel):
     """CreateCasterInputPushUrl请求参数结构体
 
@@ -10791,6 +10825,40 @@ class DelayInfo(AbstractModel):
         
 
 
+class DeleteAuditKeywordsRequest(AbstractModel):
+    """DeleteAuditKeywords请求参数结构体
+
+    """
+
+
+class DeleteAuditKeywordsResponse(AbstractModel):
+    """DeleteAuditKeywords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCasterInputInfoRequest(AbstractModel):
     """DeleteCasterInputInfo请求参数结构体
 
@@ -13156,6 +13224,40 @@ class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
                 obj = BillAreaInfo()
                 obj._deserialize(item)
                 self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditKeywordsRequest(AbstractModel):
+    """DescribeAuditKeywords请求参数结构体
+
+    """
+
+
+class DescribeAuditKeywordsResponse(AbstractModel):
+    """DescribeAuditKeywords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

@@ -325,29 +325,6 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateInstancePost(self, request):
-        """由于出参需要更新，建议用户迁移使用 CreatePostPaidInstance 接口。创建按量计费实例。通常用于 SDK 或云 API 控制台调用接口，创建后付费 CKafka 实例。调用接口与在 CKafka 控制台购买按量付费实例效果相同。
-
-        :param request: Request instance for CreateInstancePost.
-        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostRequest`
-        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateInstancePost", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateInstancePostResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateInstancePre(self, request):
         """创建实例(预付费包年包月),  仅支持创建专业版实例
 

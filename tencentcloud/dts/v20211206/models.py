@@ -8926,6 +8926,8 @@ class DifferenceItem(AbstractModel):
         r"""
         :param _Db: 数据库名
         :type Db: str
+        :param _Schema: schema
+        :type Schema: str
         :param _Table: 表名
         :type Table: str
         :param _Chunk: 分块号
@@ -8946,6 +8948,7 @@ class DifferenceItem(AbstractModel):
         :type FinishedAt: str
         """
         self._Db = None
+        self._Schema = None
         self._Table = None
         self._Chunk = None
         self._SrcItem = None
@@ -8966,6 +8969,17 @@ class DifferenceItem(AbstractModel):
     @Db.setter
     def Db(self, Db):
         self._Db = Db
+
+    @property
+    def Schema(self):
+        """schema
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
 
     @property
     def Table(self):
@@ -9069,6 +9083,7 @@ class DifferenceItem(AbstractModel):
 
     def _deserialize(self, params):
         self._Db = params.get("Db")
+        self._Schema = params.get("Schema")
         self._Table = params.get("Table")
         self._Chunk = params.get("Chunk")
         self._SrcItem = params.get("SrcItem")
@@ -15326,12 +15341,15 @@ class SkippedItem(AbstractModel):
         r"""
         :param _Db: 数据库名
         :type Db: str
+        :param _Schema: schema名
+        :type Schema: str
         :param _Table: 表名
         :type Table: str
         :param _Reason: 未发起检查的原因
         :type Reason: str
         """
         self._Db = None
+        self._Schema = None
         self._Table = None
         self._Reason = None
 
@@ -15345,6 +15363,17 @@ class SkippedItem(AbstractModel):
     @Db.setter
     def Db(self, Db):
         self._Db = Db
+
+    @property
+    def Schema(self):
+        """schema名
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
 
     @property
     def Table(self):
@@ -15371,6 +15400,7 @@ class SkippedItem(AbstractModel):
 
     def _deserialize(self, params):
         self._Db = params.get("Db")
+        self._Schema = params.get("Schema")
         self._Table = params.get("Table")
         self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
@@ -17220,7 +17250,7 @@ class SyncDetailInfo(AbstractModel):
         :param _StepInfos: 详细步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfos: list of StepInfo
-        :param _CauseOfCompareDisable: 不能发起一致性校验的原因
+        :param _CauseOfCompareDisable: 不能发起内置校验的原因
         :type CauseOfCompareDisable: str
         :param _ErrInfo: 任务的错误和解决方案信息
         :type ErrInfo: :class:`tencentcloud.dts.v20211206.models.ErrInfo`
@@ -17327,7 +17357,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def CauseOfCompareDisable(self):
-        """不能发起一致性校验的原因
+        """不能发起内置校验的原因
         :rtype: str
         """
         return self._CauseOfCompareDisable

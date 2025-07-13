@@ -4783,7 +4783,7 @@ Modify 集群变更中；
         :type MasterSummary: :class:`tencentcloud.cdwch.v20200915.models.NodesSummary`
         :param _CommonSummary: zookeeper节点描述信息
         :type CommonSummary: :class:`tencentcloud.cdwch.v20200915.models.NodesSummary`
-        :param _HA: 高可用，“true" "false"
+        :param _HA: 高可用,"true" "false"
         :type HA: str
         :param _AccessInfo: 访问地址，例如 "10.0.0.1:9000"
         :type AccessInfo: str
@@ -4863,6 +4863,8 @@ Modify 集群变更中；
         :type BindSGs: list of str
         :param _HasPublicCloudClb: 是否开启公网clb
         :type HasPublicCloudClb: bool
+        :param _UpgradeZkVersions: 可升级的zk版本
+        :type UpgradeZkVersions: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -4917,6 +4919,7 @@ Modify 集群变更中；
         self._IsWhiteSGs = None
         self._BindSGs = None
         self._HasPublicCloudClb = None
+        self._UpgradeZkVersions = None
 
     @property
     def InstanceId(self):
@@ -5066,7 +5069,7 @@ Modify 集群变更中；
 
     @property
     def HA(self):
-        """高可用，“true" "false"
+        """高可用,"true" "false"
         :rtype: str
         """
         return self._HA
@@ -5504,6 +5507,17 @@ Modify 集群变更中；
     def HasPublicCloudClb(self, HasPublicCloudClb):
         self._HasPublicCloudClb = HasPublicCloudClb
 
+    @property
+    def UpgradeZkVersions(self):
+        """可升级的zk版本
+        :rtype: str
+        """
+        return self._UpgradeZkVersions
+
+    @UpgradeZkVersions.setter
+    def UpgradeZkVersions(self, UpgradeZkVersions):
+        self._UpgradeZkVersions = UpgradeZkVersions
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5577,6 +5591,7 @@ Modify 集群变更中；
         self._IsWhiteSGs = params.get("IsWhiteSGs")
         self._BindSGs = params.get("BindSGs")
         self._HasPublicCloudClb = params.get("HasPublicCloudClb")
+        self._UpgradeZkVersions = params.get("UpgradeZkVersions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

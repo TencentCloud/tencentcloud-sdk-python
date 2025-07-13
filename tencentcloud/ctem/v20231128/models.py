@@ -9442,6 +9442,10 @@ class DisplayWeakPassword(AbstractModel):
         :type IsHoneypot: bool
         :param _ScreenshotUrl: 截图
         :type ScreenshotUrl: str
+        :param _Status: 状态：unrepaired:未修复，repaired:已修复, offline:资产已下线, ignore:已忽略, checking:复测中
+        :type Status: str
+        :param _LastCheckTime: 上次复测时间
+        :type LastCheckTime: str
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -9453,6 +9457,8 @@ class DisplayWeakPassword(AbstractModel):
         self._Password = None
         self._IsHoneypot = None
         self._ScreenshotUrl = None
+        self._Status = None
+        self._LastCheckTime = None
 
     @property
     def Id(self):
@@ -9564,6 +9570,28 @@ class DisplayWeakPassword(AbstractModel):
     def ScreenshotUrl(self, ScreenshotUrl):
         self._ScreenshotUrl = ScreenshotUrl
 
+    @property
+    def Status(self):
+        """状态：unrepaired:未修复，repaired:已修复, offline:资产已下线, ignore:已忽略, checking:复测中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LastCheckTime(self):
+        """上次复测时间
+        :rtype: str
+        """
+        return self._LastCheckTime
+
+    @LastCheckTime.setter
+    def LastCheckTime(self, LastCheckTime):
+        self._LastCheckTime = LastCheckTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9578,6 +9606,8 @@ class DisplayWeakPassword(AbstractModel):
         self._Password = params.get("Password")
         self._IsHoneypot = params.get("IsHoneypot")
         self._ScreenshotUrl = params.get("ScreenshotUrl")
+        self._Status = params.get("Status")
+        self._LastCheckTime = params.get("LastCheckTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

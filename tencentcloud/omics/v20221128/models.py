@@ -4415,7 +4415,7 @@ class RunGroup(AbstractModel):
         :type InputType: str
         :param _InputCosUri: 输入COS地址。
         :type InputCosUri: str
-        :param _InputTemplateId: 输入模版ID。
+        :param _InputTemplateId: 输入模板ID。
         :type InputTemplateId: str
         :param _Option: WDL运行选项。
         :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
@@ -4693,7 +4693,7 @@ class RunGroup(AbstractModel):
 
     @property
     def InputTemplateId(self):
-        """输入模版ID。
+        """输入模板ID。
         :rtype: str
         """
         return self._InputTemplateId

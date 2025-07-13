@@ -14686,7 +14686,7 @@ class InternetAccessible(AbstractModel):
 
 示例值：WanIP
 
-此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :type IPv4AddressType: str
         :param _IPv6AddressType: 弹性公网 IPv6 类型。
 - EIPv6：弹性公网 IPv6。
@@ -14695,7 +14695,7 @@ class InternetAccessible(AbstractModel):
 如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
 示例值：EIPv6
 
-此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :type IPv6AddressType: str
         :param _AntiDDoSPackageId: 高防包唯一ID，申请高防IP时，该字段必传。
 示例值：bgp-12345678
@@ -14789,7 +14789,7 @@ class InternetAccessible(AbstractModel):
 
 示例值：WanIP
 
-此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :rtype: str
         """
         return self._IPv4AddressType
@@ -14807,7 +14807,7 @@ class InternetAccessible(AbstractModel):
 如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
 示例值：EIPv6
 
-此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :rtype: str
         """
         return self._IPv6AddressType
