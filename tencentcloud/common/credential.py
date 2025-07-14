@@ -16,6 +16,7 @@
 import json
 import os
 import time
+import threading
 
 try:
     # py3
@@ -91,6 +92,7 @@ class CVMRoleCredential(object):
         self._secret_key = None
         self._token = None
         self._expired_ts = 0
+        self._lock = threading.Lock()
 
     @property
     def secretId(self):
@@ -134,30 +136,35 @@ class CVMRoleCredential(object):
             return False
 
     def update_credential(self):
-        if not self._need_refresh():
-            return
-        role = self.get_role_name()
-        try:
-            # TODO: what if role has special characters such as space and unicode?
-            resp = urlopen(self._role_endpoint + role)
-            # py3 requires it to be string rather than byte
-            data = resp.read().decode("utf8")
-            j = json.loads(data)
-            if j.get("Code") != "Success":
-                raise Exception("CVM role token data failed: %s" % data)
-            self._secret_id = j["TmpSecretId"]
-            self._secret_key = j["TmpSecretKey"]
-            self._token = j["Token"]
-            self._expired_ts = j["ExpiredTime"]
-        except Exception as e:
-            # we shoud log it
-            # maybe we should validate token to None as well
-            pass
+        with self._lock:
+            if not self._need_refresh():
+                return
+            role = self.get_role_name()
+            try:
+                # TODO: what if role has special characters such as space and unicode?
+                resp = urlopen(self._role_endpoint + role)
+                # py3 requires it to be string rather than byte
+                data = resp.read().decode("utf8")
+                j = json.loads(data)
+                if j.get("Code") != "Success":
+                    raise Exception("CVM role token data failed: %s" % data)
+                self._secret_id = j["TmpSecretId"]
+                self._secret_key = j["TmpSecretKey"]
+                self._token = j["Token"]
+                self._expired_ts = j["ExpiredTime"]
+            except Exception as e:
+                # we shoud log it
+                # maybe we should validate token to None as well
+                pass
 
     def get_credential(self):
         if not self.secret_id or not self.secret_key or not self.token:
             return None
         return self
+
+    def get_tmp_credential_info(self):
+        self.update_credential()
+        return self._secret_id, self._secret_key, self._token
 
 
 class STSAssumeRoleCredential(object):
@@ -200,6 +207,7 @@ class STSAssumeRoleCredential(object):
         self._tmp_credential = None
         if endpoint:
             self._endpoint = endpoint
+        self._lock = threading.Lock()
 
     @property
     def secretId(self):
@@ -225,10 +233,15 @@ class STSAssumeRoleCredential(object):
     def token(self):
         self._need_refresh()
         return self._token
+    
+    def get_tmp_credential_info(self):
+        self._need_refresh()
+        return self._tmp_secret_id, self._tmp_secret_key, self._token
 
     def _need_refresh(self):
-        if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
-            self.get_sts_tmp_role_arn()
+        with self._lock:
+            if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
+                self.get_sts_tmp_role_arn()
 
     def get_sts_tmp_role_arn(self):
         cred = Credential(self._long_secret_id, self._long_secret_key)
@@ -402,6 +415,7 @@ class OIDCRoleArnCredential(object):
         self._tmp_secret_key = None
         self._expired_time = 0
         self._is_tke = False
+        self._lock = threading.Lock()
 
     @property
     def secretId(self):
@@ -427,10 +441,15 @@ class OIDCRoleArnCredential(object):
     def token(self):
         self._keep_fresh()
         return self._token
+    
+    def get_tmp_credential_info(self):
+        self._keep_fresh()
+        return self._tmp_secret_id, self._tmp_secret_key, self._token
 
     def _keep_fresh(self):
-        if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
-            self.refresh()
+        with self._lock:
+            if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
+                self.refresh()
 
     def refresh(self):
         if self._is_tke:
