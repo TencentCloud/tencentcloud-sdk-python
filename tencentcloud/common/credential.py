@@ -120,16 +120,13 @@ class CVMRoleCredential(object):
     def get_role_name(self):
         if self.role:
             return self.role
-        with self._lock:
-            if self.role:
-                return self.role
-            try:
-                resp = urlopen(self._role_endpoint)
-                self.role = resp.read().decode("utf8")
-            except Exception as e:
-                raise TencentCloudSDKException("ClientError.MetadataError", str(e))
-            finally:
-                return self.role
+        try:
+            resp = urlopen(self._role_endpoint)
+            self.role = resp.read().decode("utf8")
+        except Exception as e:
+            raise TencentCloudSDKException("ClientError.MetadataError", str(e))
+        finally:
+            return self.role
 
     def _need_refresh(self):
         ts_remain = self._expired_ts - int(time.time())
@@ -139,8 +136,6 @@ class CVMRoleCredential(object):
             return False
 
     def update_credential(self):
-        if not self._need_refresh():
-            return
         with self._lock:
             if not self._need_refresh():
                 return
