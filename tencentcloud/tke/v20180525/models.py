@@ -9606,7 +9606,7 @@ class CreateReservedInstancesRequest(AbstractModel):
         :type InstanceCount: int
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20180525.models.InstanceChargePrepaid`
-        :param _InstanceName: 预留券名称。
+        :param _InstanceName: 预留券名称，名称不得超过60个字符。
         :type InstanceName: str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
@@ -9652,7 +9652,7 @@ class CreateReservedInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """预留券名称。
+        """预留券名称，名称不得超过60个字符。
         :rtype: str
         """
         return self._InstanceName
@@ -12744,14 +12744,14 @@ class DeleteReservedInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReservedInstanceIds: 预留券实例ID。
+        :param _ReservedInstanceIds: 预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取。
         :type ReservedInstanceIds: list of str
         """
         self._ReservedInstanceIds = None
 
     @property
     def ReservedInstanceIds(self):
-        """预留券实例ID。
+        """预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取。
         :rtype: list of str
         """
         return self._ReservedInstanceIds
@@ -20347,13 +20347,13 @@ class DescribePodChargeInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群 ID。TKE 集群可通过 [DescribeClusters](https://cloud.tencent.com/document/api/457/31862) 接口返回值中的ClusterId获取。
         :type ClusterId: str
         :param _Namespace: 命名空间
         :type Namespace: str
         :param _Name: Pod名称
         :type Name: str
-        :param _Uids: Pod的Uid
+        :param _Uids: Pod的Uid，可以通过Uids 来批量查询，也可以通过 Namespace 和 Name 来查询某个 Pod 的计费信息。Uids 不传时，Namespace 和 Name 必须同时传。
         :type Uids: list of str
         """
         self._ClusterId = None
@@ -20363,7 +20363,7 @@ class DescribePodChargeInfoRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群 ID。TKE 集群可通过 [DescribeClusters](https://cloud.tencent.com/document/api/457/31862) 接口返回值中的ClusterId获取。
         :rtype: str
         """
         return self._ClusterId
@@ -20396,7 +20396,7 @@ class DescribePodChargeInfoRequest(AbstractModel):
 
     @property
     def Uids(self):
-        """Pod的Uid
+        """Pod的Uid，可以通过Uids 来批量查询，也可以通过 Namespace 和 Name 来查询某个 Pod 的计费信息。Uids 不传时，Namespace 和 Name 必须同时传。
         :rtype: list of str
         """
         return self._Uids
@@ -20480,7 +20480,7 @@ class DescribePodDeductionRateRequest(AbstractModel):
         :type Zone: str
         :param _ClusterId: 集群 ID
         :type ClusterId: str
-        :param _NodeName:  节点名称
+        :param _NodeName: 节点 ID
         :type NodeName: str
         """
         self._Zone = None
@@ -20511,7 +20511,7 @@ class DescribePodDeductionRateRequest(AbstractModel):
 
     @property
     def NodeName(self):
-        """ 节点名称
+        """节点 ID
         :rtype: str
         """
         return self._NodeName
@@ -20592,15 +20592,15 @@ class DescribePodsBySpecRequest(AbstractModel):
         r"""
         :param _Cpu: 核数
         :type Cpu: float
-        :param _Memory: 内存
+        :param _Memory: 内存，单位：GiB
         :type Memory: float
-        :param _GpuNum: 卡数，有0.25、0.5、1、2、4等
+        :param _GpuNum: 卡数，有0.25、0.5、1、2、4和8
         :type GpuNum: str
         :param _Zone: 可用区
         :type Zone: str
         :param _ClusterId: 集群 ID
         :type ClusterId: str
-        :param _NodeName: 节点名称
+        :param _NodeName: 节点 ID
         :type NodeName: str
         :param _Offset: 偏移量，默认0。
         :type Offset: int
@@ -20643,7 +20643,7 @@ pod-not-deduct
 
     @property
     def Memory(self):
-        """内存
+        """内存，单位：GiB
         :rtype: float
         """
         return self._Memory
@@ -20654,7 +20654,7 @@ pod-not-deduct
 
     @property
     def GpuNum(self):
-        """卡数，有0.25、0.5、1、2、4等
+        """卡数，有0.25、0.5、1、2、4和8
         :rtype: str
         """
         return self._GpuNum
@@ -20687,7 +20687,7 @@ pod-not-deduct
 
     @property
     def NodeName(self):
-        """节点名称
+        """节点 ID
         :rtype: str
         """
         return self._NodeName
@@ -23791,7 +23791,7 @@ class DescribeReservedInstanceUtilizationRateRequest(AbstractModel):
         :type Zone: str
         :param _ClusterId: 集群 ID
         :type ClusterId: str
-        :param _NodeName:  节点名称
+        :param _NodeName: 节点 ID
         :type NodeName: str
         """
         self._Zone = None
@@ -23822,7 +23822,7 @@ class DescribeReservedInstanceUtilizationRateRequest(AbstractModel):
 
     @property
     def NodeName(self):
-        """ 节点名称
+        """节点 ID
         :rtype: str
         """
         return self._NodeName
@@ -23936,7 +23936,7 @@ class DescribeReservedInstancesRequest(AbstractModel):
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         :param _Filters: status
-按照**【状态**】进行过滤。状态：Creating、Active、Expired、Refunded。
+按照**【状态**】进行过滤。状态：Creating：创建中、Active：生效中、Expired：已过期、Refunded：已退还。
 类型：String
 必选：否
 
@@ -24029,7 +24029,7 @@ reserved-instance-not-deduct
     @property
     def Filters(self):
         """status
-按照**【状态**】进行过滤。状态：Creating、Active、Expired、Refunded。
+按照**【状态**】进行过滤。状态：Creating：创建中、Active：生效中、Expired：已过期、Refunded：已退还。
 类型：String
 必选：否
 
@@ -31265,7 +31265,7 @@ class InstanceChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+        :param _Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
         :param _RenewFlag: 自动续费标识。取值范围：
 NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
@@ -31280,7 +31280,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 
     @property
     def Period(self):
-        """购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+        """购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :rtype: int
         """
         return self._Period
@@ -35814,7 +35814,7 @@ class ModifyReservedInstanceScopeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReservedInstanceIds: 预留券唯一 ID
+        :param _ReservedInstanceIds: 预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取。
         :type ReservedInstanceIds: list of str
         :param _ReservedInstanceScope: 预留券抵扣范围信息
         :type ReservedInstanceScope: :class:`tencentcloud.tke.v20180525.models.ReservedInstanceScope`
@@ -35824,7 +35824,7 @@ class ModifyReservedInstanceScopeRequest(AbstractModel):
 
     @property
     def ReservedInstanceIds(self):
-        """预留券唯一 ID
+        """预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取。
         :rtype: list of str
         """
         return self._ReservedInstanceIds
@@ -37550,9 +37550,9 @@ class PodDeductionRate(AbstractModel):
         r"""
         :param _Cpu: Pod的 CPU
         :type Cpu: float
-        :param _Memory: Pod 的内存
+        :param _Memory: Pod 的内存，单位：GiB
         :type Memory: float
-        :param _Type:  Pod 的类型
+        :param _Type:  Pod 的类型， intel，amd，windows-common，windows-amd，sa4，sa5，s7，s8，t4，v100，l20，l40，a10\*gnv4，a10\*gnv4v，a10\*pnv4
         :type Type: str
         :param _GpuNum:  Pod 的 GPU 卡数，Pod 类型为 GPU 时有效。
         :type GpuNum: str
@@ -37581,7 +37581,7 @@ class PodDeductionRate(AbstractModel):
 
     @property
     def Memory(self):
-        """Pod 的内存
+        """Pod 的内存，单位：GiB
         :rtype: float
         """
         return self._Memory
@@ -37592,7 +37592,7 @@ class PodDeductionRate(AbstractModel):
 
     @property
     def Type(self):
-        """ Pod 的类型
+        """ Pod 的类型， intel，amd，windows-common，windows-amd，sa4，sa5，s7，s8，t4，v100，l20，l40，a10\*gnv4，a10\*gnv4v，a10\*pnv4
         :rtype: str
         """
         return self._Type
@@ -37825,7 +37825,7 @@ class PodNodeInfo(AbstractModel):
         r"""
         :param _ClusterId: 集群 ID
         :type ClusterId: str
-        :param _NodeName:  节点名称
+        :param _NodeName: 节点 ID
         :type NodeName: str
         :param _Zone: 可用区
         :type Zone: str
@@ -37853,7 +37853,7 @@ class PodNodeInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        """ 节点名称
+        """节点 ID
         :rtype: str
         """
         return self._NodeName
@@ -41642,7 +41642,7 @@ class RIUtilizationDetail(AbstractModel):
         :type Name: str
         :param _Namespace: Pod的命名空间
         :type Namespace: str
-        :param _Kind: 工作负载类型
+        :param _Kind: 工作负载类型，如 deployment、statefulset和pod等。
         :type Kind: str
         :param _KindName: 工作负载名称
         :type KindName: str
@@ -41724,7 +41724,7 @@ class RIUtilizationDetail(AbstractModel):
 
     @property
     def Kind(self):
-        """工作负载类型
+        """工作负载类型，如 deployment、statefulset和pod等。
         :rtype: str
         """
         return self._Kind
@@ -42662,7 +42662,7 @@ class RenewReservedInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReservedInstanceIds: 预留券实例ID，每次请求实例的上限为100。
+        :param _ReservedInstanceIds: 预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取，每次请求实例的上限为100。
         :type ReservedInstanceIds: list of str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20180525.models.InstanceChargePrepaid`
@@ -42675,7 +42675,7 @@ class RenewReservedInstancesRequest(AbstractModel):
 
     @property
     def ReservedInstanceIds(self):
-        """预留券实例ID，每次请求实例的上限为100。
+        """预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取，每次请求实例的上限为100。
         :rtype: list of str
         """
         return self._ReservedInstanceIds
@@ -42788,7 +42788,7 @@ class ReservedInstance(AbstractModel):
         :type ClusterId: str
         :param _NodeName: 节点名称
         :type NodeName: str
-        :param _DeductStatus:  上个周期预留券的抵扣状态，Deduct、NotDeduct
+        :param _DeductStatus:  上个周期预留券的抵扣状态，Deduct：已抵扣、NotDeduct：未抵扣
         :type DeductStatus: str
         """
         self._ReservedInstanceId = None
@@ -42975,7 +42975,7 @@ class ReservedInstance(AbstractModel):
 
     @property
     def DeductStatus(self):
-        """ 上个周期预留券的抵扣状态，Deduct、NotDeduct
+        """ 上个周期预留券的抵扣状态，Deduct：已抵扣、NotDeduct：未抵扣
         :rtype: str
         """
         return self._DeductStatus
@@ -43025,7 +43025,7 @@ class ReservedInstanceScope(AbstractModel):
         :type Zone: str
         :param _ClusterId: 集群 ID
         :type ClusterId: str
-        :param _NodeName:  节点名称
+        :param _NodeName: 节点 ID
         :type NodeName: str
         """
         self._Scope = None
@@ -43068,7 +43068,7 @@ class ReservedInstanceScope(AbstractModel):
 
     @property
     def NodeName(self):
-        """ 节点名称
+        """节点 ID
         :rtype: str
         """
         return self._NodeName
@@ -43104,7 +43104,7 @@ class ReservedInstanceSpec(AbstractModel):
         :type Type: str
         :param _Cpu: 核数
         :type Cpu: float
-        :param _Memory: 内存
+        :param _Memory: 内存，单位：GiB
         :type Memory: float
         :param _Gpu: GPU卡数，当Type为GPU类型时设置。
         :type Gpu: float
@@ -43138,7 +43138,7 @@ class ReservedInstanceSpec(AbstractModel):
 
     @property
     def Memory(self):
-        """内存
+        """内存，单位：GiB
         :rtype: float
         """
         return self._Memory
@@ -43187,9 +43187,9 @@ class ReservedInstanceUtilizationRate(AbstractModel):
         :type Num: int
         :param _CPU: 核数
         :type CPU: float
-        :param _Memory: 内存
+        :param _Memory: 内存，单位：GiB
         :type Memory: float
-        :param _Type:  预留券类型
+        :param _Type:  预留券类型, common：CPU通用，amd：AMD专用，windows-common: Windows容器 CPU通用，windows-amd：Windows容器 AMD专用，sa4，sa5，s7，s8，t4，v100，l20，l40，a10\*gnv4，a10\*gnv4v，a10\*pnv4
         :type Type: str
         :param _GpuNum: GPU 卡数
         :type GpuNum: str
@@ -43197,7 +43197,7 @@ class ReservedInstanceUtilizationRate(AbstractModel):
         :type Zone: str
         :param _ClusterId: 集群 ID
         :type ClusterId: str
-        :param _NodeName: 节点名称
+        :param _NodeName: 节点 ID
         :type NodeName: str
         :param _PodNum: Pod 数量
         :type PodNum: int
@@ -43248,7 +43248,7 @@ class ReservedInstanceUtilizationRate(AbstractModel):
 
     @property
     def Memory(self):
-        """内存
+        """内存，单位：GiB
         :rtype: float
         """
         return self._Memory
@@ -43259,7 +43259,7 @@ class ReservedInstanceUtilizationRate(AbstractModel):
 
     @property
     def Type(self):
-        """ 预留券类型
+        """ 预留券类型, common：CPU通用，amd：AMD专用，windows-common: Windows容器 CPU通用，windows-amd：Windows容器 AMD专用，sa4，sa5，s7，s8，t4，v100，l20，l40，a10\*gnv4，a10\*gnv4v，a10\*pnv4
         :rtype: str
         """
         return self._Type
@@ -43303,7 +43303,7 @@ class ReservedInstanceUtilizationRate(AbstractModel):
 
     @property
     def NodeName(self):
-        """节点名称
+        """节点 ID
         :rtype: str
         """
         return self._NodeName

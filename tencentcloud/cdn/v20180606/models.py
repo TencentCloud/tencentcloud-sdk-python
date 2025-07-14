@@ -35396,7 +35396,7 @@ on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
-        :param _FilterRules: UA黑白名单生效规则列表
+        :param _FilterRules: UA黑白名单生效规则列表，不能超过10条规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterRules: list of UserAgentFilterRule
         """
@@ -35419,7 +35419,7 @@ off：关闭
 
     @property
     def FilterRules(self):
-        """UA黑白名单生效规则列表
+        """UA黑白名单生效规则列表，不能超过10条规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserAgentFilterRule
         """
@@ -35465,7 +35465,7 @@ path: 根据完整访问路径生效
         :param _RulePaths: 访问路径生效内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type RulePaths: list of str
-        :param _UserAgents: UserAgent列表
+        :param _UserAgents: UserAgent列表，UserAgent 个数不能超过 10个
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserAgents: list of str
         :param _FilterType: 黑名单或白名单，blacklist或whitelist
@@ -35507,7 +35507,7 @@ path: 根据完整访问路径生效
 
     @property
     def UserAgents(self):
-        """UserAgent列表
+        """UserAgent列表，UserAgent 个数不能超过 10个
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

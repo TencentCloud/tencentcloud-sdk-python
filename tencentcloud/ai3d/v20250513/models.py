@@ -25,7 +25,7 @@ class File3D(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 3D文件的格式。取值范围：OBJ
+        :param _Type: 文件格式
         :type Type: str
         :param _Url: 文件的Url（有效期24小时）
         :type Url: str
@@ -38,7 +38,7 @@ class File3D(AbstractModel):
 
     @property
     def Type(self):
-        """3D文件的格式。取值范围：OBJ
+        """文件格式
         :rtype: str
         """
         return self._Type

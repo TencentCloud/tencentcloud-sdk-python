@@ -12195,9 +12195,12 @@ class RefreshSettings(AbstractModel):
         :type RollingUpdateSettings: :class:`tencentcloud.autoscaling.v20180419.models.RollingUpdateSettings`
         :param _CheckInstanceTargetHealth: 实例后端服务健康状态检查，默认为 FALSE。仅针对绑定应用型负载均衡器的伸缩组生效，开启该检查后，如刷新后实例未通过检查，负载均衡器端口权重始终为 0，且标记为刷新失败。取值范围如下：<li>TRUE：开启检查</li><li>FALSE：不开启检查</li>
         :type CheckInstanceTargetHealth: bool
+        :param _CheckInstanceTargetHealthTimeout: 实例后端服务健康状态检查的超时时间，单位为秒，取值范围[60,7200]，默认时间1800秒。仅在CheckInstanceTargetHealth参数开启后生效，若实例健康检查超时，则标记为刷新失败。
+        :type CheckInstanceTargetHealthTimeout: int
         """
         self._RollingUpdateSettings = None
         self._CheckInstanceTargetHealth = None
+        self._CheckInstanceTargetHealthTimeout = None
 
     @property
     def RollingUpdateSettings(self):
@@ -12221,12 +12224,24 @@ class RefreshSettings(AbstractModel):
     def CheckInstanceTargetHealth(self, CheckInstanceTargetHealth):
         self._CheckInstanceTargetHealth = CheckInstanceTargetHealth
 
+    @property
+    def CheckInstanceTargetHealthTimeout(self):
+        """实例后端服务健康状态检查的超时时间，单位为秒，取值范围[60,7200]，默认时间1800秒。仅在CheckInstanceTargetHealth参数开启后生效，若实例健康检查超时，则标记为刷新失败。
+        :rtype: int
+        """
+        return self._CheckInstanceTargetHealthTimeout
+
+    @CheckInstanceTargetHealthTimeout.setter
+    def CheckInstanceTargetHealthTimeout(self, CheckInstanceTargetHealthTimeout):
+        self._CheckInstanceTargetHealthTimeout = CheckInstanceTargetHealthTimeout
+
 
     def _deserialize(self, params):
         if params.get("RollingUpdateSettings") is not None:
             self._RollingUpdateSettings = RollingUpdateSettings()
             self._RollingUpdateSettings._deserialize(params.get("RollingUpdateSettings"))
         self._CheckInstanceTargetHealth = params.get("CheckInstanceTargetHealth")
+        self._CheckInstanceTargetHealthTimeout = params.get("CheckInstanceTargetHealthTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

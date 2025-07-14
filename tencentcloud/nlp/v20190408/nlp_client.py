@@ -95,29 +95,6 @@ class NlpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ComposePoetry(self, request):
-        """诗词生成接口利用现代的自然语言处理和深度学习技术，模仿了古代著名诗人的风格，为用户产生独特的诗词。用户只需输入的命题关键词，接口就能自动生成一首七言律诗或五言律诗。
-
-        :param request: Request instance for ComposePoetry.
-        :type request: :class:`tencentcloud.nlp.v20190408.models.ComposePoetryRequest`
-        :rtype: :class:`tencentcloud.nlp.v20190408.models.ComposePoetryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ComposePoetry", params, headers=headers)
-            response = json.loads(body)
-            model = models.ComposePoetryResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def EvaluateSentenceSimilarity(self, request):
         """通过计算句子间的语义相似性，帮助您快速找到文本中重复或相似的句子，用于文本聚类、相似问题检索等应用场景。
 
@@ -132,52 +109,6 @@ class NlpClient(AbstractClient):
             body = self.call("EvaluateSentenceSimilarity", params, headers=headers)
             response = json.loads(body)
             model = models.EvaluateSentenceSimilarityResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def EvaluateWordSimilarity(self, request):
-        """评估两个词语在语义空间的相似程度，为您的场景应用提供有力支持，如关键词过滤、热门话题挖掘等。（目前仅支持中文）
-
-        :param request: Request instance for EvaluateWordSimilarity.
-        :type request: :class:`tencentcloud.nlp.v20190408.models.EvaluateWordSimilarityRequest`
-        :rtype: :class:`tencentcloud.nlp.v20190408.models.EvaluateWordSimilarityResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("EvaluateWordSimilarity", params, headers=headers)
-            response = json.loads(body)
-            model = models.EvaluateWordSimilarityResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GenerateKeywordSentence(self, request):
-        """根据提供的关键词，生成简洁明了的关键句子，便于用户快速获取核心观点。
-
-        :param request: Request instance for GenerateKeywordSentence.
-        :type request: :class:`tencentcloud.nlp.v20190408.models.GenerateKeywordSentenceRequest`
-        :rtype: :class:`tencentcloud.nlp.v20190408.models.GenerateKeywordSentenceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GenerateKeywordSentence", params, headers=headers)
-            response = json.loads(body)
-            model = models.GenerateKeywordSentenceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -210,29 +141,6 @@ class NlpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RetrieveSimilarWords(self, request):
-        """基于大数据和深度学习技术，可以快速地找到与给定词语高度相似的其他词语，有助于提高搜索和推荐的准确性。（目前仅支持中文）
-
-        :param request: Request instance for RetrieveSimilarWords.
-        :type request: :class:`tencentcloud.nlp.v20190408.models.RetrieveSimilarWordsRequest`
-        :rtype: :class:`tencentcloud.nlp.v20190408.models.RetrieveSimilarWordsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RetrieveSimilarWords", params, headers=headers)
-            response = json.loads(body)
-            model = models.RetrieveSimilarWordsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def SentenceCorrection(self, request):
         """智能识别并纠正句子中的语法、拼写、用词等错误，确保文本的准确性和可读性。
 
@@ -247,52 +155,6 @@ class NlpClient(AbstractClient):
             body = self.call("SentenceCorrection", params, headers=headers)
             response = json.loads(body)
             model = models.SentenceCorrectionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def TextEmbellish(self, request):
-        """运用先进的自然语言处理技术，对原始文本进行优化润色，提升文本的通顺性、表达力和语言质量。
-
-        :param request: Request instance for TextEmbellish.
-        :type request: :class:`tencentcloud.nlp.v20190408.models.TextEmbellishRequest`
-        :rtype: :class:`tencentcloud.nlp.v20190408.models.TextEmbellishResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("TextEmbellish", params, headers=headers)
-            response = json.loads(body)
-            model = models.TextEmbellishResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def TextWriting(self, request):
-        """通过自动补全文本片段，帮助用户快速生成高质量、连贯的完整文本，提高创作效率。
-
-        :param request: Request instance for TextWriting.
-        :type request: :class:`tencentcloud.nlp.v20190408.models.TextWritingRequest`
-        :rtype: :class:`tencentcloud.nlp.v20190408.models.TextWritingResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("TextWriting", params, headers=headers)
-            response = json.loads(body)
-            model = models.TextWritingResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

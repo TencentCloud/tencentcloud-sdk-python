@@ -3138,6 +3138,78 @@ class BillingDataFilter(AbstractModel):
         
 
 
+class BindDomainInfo(AbstractModel):
+    """策略模板绑定的域名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名。
+        :type Domain: str
+        :param _ZoneId: 域名所属的站点 ID。
+        :type ZoneId: str
+        :param _Status: 绑定状态，取值有: 
+<li>process：绑定中；</li>
+<li>online：绑定成功；</li>
+<li>fail：绑定失败。</li>
+        :type Status: str
+        """
+        self._Domain = None
+        self._ZoneId = None
+        self._Status = None
+
+    @property
+    def Domain(self):
+        """域名。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def ZoneId(self):
+        """域名所属的站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Status(self):
+        """绑定状态，取值有: 
+<li>process：绑定中；</li>
+<li>online：绑定成功；</li>
+<li>fail：绑定失败。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._ZoneId = params.get("ZoneId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindSecurityTemplateToEntityRequest(AbstractModel):
     """BindSecurityTemplateToEntity请求参数结构体
 
@@ -10792,6 +10864,117 @@ class CreateSharedCNAMEResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateWebSecurityTemplateRequest(AbstractModel):
+    """CreateWebSecurityTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。该参数明确策略模板在访问权限上归属的站点。
+        :type ZoneId: str
+        :param _TemplateName: 策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过 32 个字符。
+        :type TemplateName: str
+        :param _SecurityPolicy: 安全策略模板配置内容，字段为空时生成默认配置。目前支持 Web 防护模块中的例外规则、自定义规则、速率限制规则和托管规则配置，通过表达式语法对安全策略进行配置。 Bot 管理规则配置暂不支持，正在开发中。
+        :type SecurityPolicy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        self._ZoneId = None
+        self._TemplateName = None
+        self._SecurityPolicy = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。该参数明确策略模板在访问权限上归属的站点。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateName(self):
+        """策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过 32 个字符。
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def SecurityPolicy(self):
+        """安全策略模板配置内容，字段为空时生成默认配置。目前支持 Web 防护模块中的例外规则、自定义规则、速率限制规则和托管规则配置，通过表达式语法对安全策略进行配置。 Bot 管理规则配置暂不支持，正在开发中。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        return self._SecurityPolicy
+
+    @SecurityPolicy.setter
+    def SecurityPolicy(self, SecurityPolicy):
+        self._SecurityPolicy = SecurityPolicy
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateName = params.get("TemplateName")
+        if params.get("SecurityPolicy") is not None:
+            self._SecurityPolicy = SecurityPolicy()
+            self._SecurityPolicy._deserialize(params.get("SecurityPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWebSecurityTemplateResponse(AbstractModel):
+    """CreateWebSecurityTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 策略模板 ID。
+        :type TemplateId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        """策略模板 ID。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateZoneRequest(AbstractModel):
     """CreateZone请求参数结构体
 
@@ -10812,7 +10995,10 @@ class CreateZoneRequest(AbstractModel):
 <li> mainland: 中国大陆可用区；</li>
 <li> overseas: 全球可用区（不含中国大陆）。</li>
         :type Area: str
-        :param _PlanId: 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
+        :param _PlanId: 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，可通过 [CreatePlan](https://cloud.tencent.com/document/product/1552/105771) 购买套餐。
+注意：如果不填写此参数，将创建一个处于“init”状态的站点，该站点为未激活状态，并不会显示在控制台上。您可以通过访问 [BindZoneToPlan](https://cloud.tencent.com/document/product/1552/83042) 来绑定套餐并激活站点，激活后站点可以正常提供服务。
+
+
         :type PlanId: str
         :param _AliasZoneName: 同名站点标识。限制输入数字、英文、"." 、"-" 和 "_"，长度 200 个字符以内。详情参考 [同名站点标识](https://cloud.tencent.com/document/product/1552/70202)，无此使用场景时，该字段保留为空即可。
         :type AliasZoneName: str
@@ -10876,7 +11062,10 @@ class CreateZoneRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
+        """待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，可通过 [CreatePlan](https://cloud.tencent.com/document/product/1552/105771) 购买套餐。
+注意：如果不填写此参数，将创建一个处于“init”状态的站点，该站点为未激活状态，并不会显示在控制台上。您可以通过访问 [BindZoneToPlan](https://cloud.tencent.com/document/product/1552/83042) 来绑定套餐并激活站点，激活后站点可以正常提供服务。
+
+
         :rtype: str
         """
         return self._PlanId
@@ -13764,6 +13953,85 @@ class DeleteSharedCNAMERequest(AbstractModel):
 
 class DeleteSharedCNAMEResponse(AbstractModel):
     """DeleteSharedCNAME返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteWebSecurityTemplateRequest(AbstractModel):
+    """DeleteWebSecurityTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+        :type ZoneId: str
+        :param _TemplateId: 策略模板 ID。
+        :type TemplateId: str
+        """
+        self._ZoneId = None
+        self._TemplateId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateId(self):
+        """策略模板 ID。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWebSecurityTemplateResponse(AbstractModel):
+    """DeleteWebSecurityTemplate返回参数结构体
 
     """
 
@@ -21905,6 +22173,201 @@ class DescribeTopL7CacheDataResponse(AbstractModel):
                 obj = TopDataRecord()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWebSecurityTemplateRequest(AbstractModel):
+    """DescribeWebSecurityTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+        :type ZoneId: str
+        :param _TemplateId: 策略模板 ID。
+        :type TemplateId: str
+        """
+        self._ZoneId = None
+        self._TemplateId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateId(self):
+        """策略模板 ID。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWebSecurityTemplateResponse(AbstractModel):
+    """DescribeWebSecurityTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecurityPolicy: 安全策略模板配置内容，Bot 配置暂不支持，正在开发中。
+        :type SecurityPolicy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecurityPolicy = None
+        self._RequestId = None
+
+    @property
+    def SecurityPolicy(self):
+        """安全策略模板配置内容，Bot 配置暂不支持，正在开发中。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        return self._SecurityPolicy
+
+    @SecurityPolicy.setter
+    def SecurityPolicy(self, SecurityPolicy):
+        self._SecurityPolicy = SecurityPolicy
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityPolicy") is not None:
+            self._SecurityPolicy = SecurityPolicy()
+            self._SecurityPolicy._deserialize(params.get("SecurityPolicy"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWebSecurityTemplatesRequest(AbstractModel):
+    """DescribeWebSecurityTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneIds: 站点 ID 列表。单次查询最多传入 100 个站点。
+        :type ZoneIds: list of str
+        """
+        self._ZoneIds = None
+
+    @property
+    def ZoneIds(self):
+        """站点 ID 列表。单次查询最多传入 100 个站点。
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+
+    def _deserialize(self, params):
+        self._ZoneIds = params.get("ZoneIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWebSecurityTemplatesResponse(AbstractModel):
+    """DescribeWebSecurityTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 策略模板总数。
+        :type TotalCount: int
+        :param _SecurityPolicyTemplates: 策略模板列表。
+        :type SecurityPolicyTemplates: list of SecurityPolicyTemplateInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SecurityPolicyTemplates = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """策略模板总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SecurityPolicyTemplates(self):
+        """策略模板列表。
+        :rtype: list of SecurityPolicyTemplateInfo
+        """
+        return self._SecurityPolicyTemplates
+
+    @SecurityPolicyTemplates.setter
+    def SecurityPolicyTemplates(self, SecurityPolicyTemplates):
+        self._SecurityPolicyTemplates = SecurityPolicyTemplates
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SecurityPolicyTemplates") is not None:
+            self._SecurityPolicyTemplates = []
+            for item in params.get("SecurityPolicyTemplates"):
+                obj = SecurityPolicyTemplateInfo()
+                obj._deserialize(item)
+                self._SecurityPolicyTemplates.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -34680,6 +35143,119 @@ class ModifySecurityPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyWebSecurityTemplateRequest(AbstractModel):
+    """ModifyWebSecurityTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+        :type ZoneId: str
+        :param _TemplateId: 策略模板 ID。
+        :type TemplateId: str
+        :param _TemplateName: 修改后的策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过32个字符。字段为空时则不修改。
+        :type TemplateName: str
+        :param _SecurityPolicy: 安全策略模板配置内容。值为空时不修改；没有传入的子模块结构不会被修改。目前支持 Web 防护模块中的例外规则、自定义规则、速率限制规则和托管规则配置，通过表达式语法对安全策略进行配置。 Bot 管理规则配置暂不支持，正在开发中。
+特别说明：当入参某个子模块结构时，请确保携带所有需要保留的规则内容，未传入规则内容视为删除。
+        :type SecurityPolicy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        self._ZoneId = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._SecurityPolicy = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateId(self):
+        """策略模板 ID。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        """修改后的策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过32个字符。字段为空时则不修改。
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def SecurityPolicy(self):
+        """安全策略模板配置内容。值为空时不修改；没有传入的子模块结构不会被修改。目前支持 Web 防护模块中的例外规则、自定义规则、速率限制规则和托管规则配置，通过表达式语法对安全策略进行配置。 Bot 管理规则配置暂不支持，正在开发中。
+特别说明：当入参某个子模块结构时，请确保携带所有需要保留的规则内容，未传入规则内容视为删除。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        return self._SecurityPolicy
+
+    @SecurityPolicy.setter
+    def SecurityPolicy(self, SecurityPolicy):
+        self._SecurityPolicy = SecurityPolicy
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        if params.get("SecurityPolicy") is not None:
+            self._SecurityPolicy = SecurityPolicy()
+            self._SecurityPolicy._deserialize(params.get("SecurityPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWebSecurityTemplateResponse(AbstractModel):
+    """ModifyWebSecurityTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyZoneRequest(AbstractModel):
     """ModifyZone请求参数结构体
 
@@ -43672,6 +44248,92 @@ class SecurityPolicy(AbstractModel):
         if params.get("BotManagement") is not None:
             self._BotManagement = BotManagement()
             self._BotManagement._deserialize(params.get("BotManagement"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityPolicyTemplateInfo(AbstractModel):
+    """策略模板信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 策略模板所属的站点 ID。
+        :type ZoneId: str
+        :param _TemplateId: 策略模板 ID。
+        :type TemplateId: str
+        :param _TemplateName: 策略模板名称。
+        :type TemplateName: str
+        :param _BindDomains: 策略模板绑定的域名信息。
+        :type BindDomains: list of BindDomainInfo
+        """
+        self._ZoneId = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._BindDomains = None
+
+    @property
+    def ZoneId(self):
+        """策略模板所属的站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateId(self):
+        """策略模板 ID。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        """策略模板名称。
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def BindDomains(self):
+        """策略模板绑定的域名信息。
+        :rtype: list of BindDomainInfo
+        """
+        return self._BindDomains
+
+    @BindDomains.setter
+    def BindDomains(self, BindDomains):
+        self._BindDomains = BindDomains
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        if params.get("BindDomains") is not None:
+            self._BindDomains = []
+            for item in params.get("BindDomains"):
+                obj = BindDomainInfo()
+                obj._deserialize(item)
+                self._BindDomains.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

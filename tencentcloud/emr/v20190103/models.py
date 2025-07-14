@@ -6186,9 +6186,9 @@ class CreateSLInstanceRequest(AbstractModel):
         r"""
         :param _InstanceName: 实例名称。
         :type InstanceName: str
-        :param _PayMode: 实例计费模式，0表示后付费，即按量计费。
+        :param _PayMode: 实例计费模式，0表示后付费，即按量计费，1表示预付费，即包年包月。
         :type PayMode: int
-        :param _DiskType: 实例存储类型，填写CLOUD_HSSD，表示性能云存储。
+        :param _DiskType: 实例存储类型，CLOUD_HSSD表示性能云存储， CLOUD_BSSD表示标准云存储。
         :type DiskType: str
         :param _DiskSize: 实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于250*CPU核心数，容量调整步长为100。
         :type DiskSize: int
@@ -6202,6 +6202,8 @@ class CreateSLInstanceRequest(AbstractModel):
         :type PrePaySetting: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
         :param _ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
         :type ClientToken: str
+        :param _DeploymentMode: 部署模式
+        :type DeploymentMode: str
         """
         self._InstanceName = None
         self._PayMode = None
@@ -6212,6 +6214,7 @@ class CreateSLInstanceRequest(AbstractModel):
         self._Tags = None
         self._PrePaySetting = None
         self._ClientToken = None
+        self._DeploymentMode = None
 
     @property
     def InstanceName(self):
@@ -6226,7 +6229,7 @@ class CreateSLInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """实例计费模式，0表示后付费，即按量计费。
+        """实例计费模式，0表示后付费，即按量计费，1表示预付费，即包年包月。
         :rtype: int
         """
         return self._PayMode
@@ -6237,7 +6240,7 @@ class CreateSLInstanceRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        """实例存储类型，填写CLOUD_HSSD，表示性能云存储。
+        """实例存储类型，CLOUD_HSSD表示性能云存储， CLOUD_BSSD表示标准云存储。
         :rtype: str
         """
         return self._DiskType
@@ -6312,6 +6315,17 @@ class CreateSLInstanceRequest(AbstractModel):
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
+    @property
+    def DeploymentMode(self):
+        """部署模式
+        :rtype: str
+        """
+        return self._DeploymentMode
+
+    @DeploymentMode.setter
+    def DeploymentMode(self, DeploymentMode):
+        self._DeploymentMode = DeploymentMode
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -6335,6 +6349,7 @@ class CreateSLInstanceRequest(AbstractModel):
             self._PrePaySetting = PrePaySetting()
             self._PrePaySetting._deserialize(params.get("PrePaySetting"))
         self._ClientToken = params.get("ClientToken")
+        self._DeploymentMode = params.get("DeploymentMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12629,6 +12644,8 @@ class DescribeSLInstanceResponse(AbstractModel):
         :type AutoRenewFlag: int
         :param _NodeNum: 实例节点总数。
         :type NodeNum: int
+        :param _SLInstance: Serverless Instance infomation
+        :type SLInstance: list of SLInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12649,6 +12666,7 @@ class DescribeSLInstanceResponse(AbstractModel):
         self._Status = None
         self._AutoRenewFlag = None
         self._NodeNum = None
+        self._SLInstance = None
         self._RequestId = None
 
     @property
@@ -12840,6 +12858,17 @@ class DescribeSLInstanceResponse(AbstractModel):
         self._NodeNum = NodeNum
 
     @property
+    def SLInstance(self):
+        """Serverless Instance infomation
+        :rtype: list of SLInstance
+        """
+        return self._SLInstance
+
+    @SLInstance.setter
+    def SLInstance(self, SLInstance):
+        self._SLInstance = SLInstance
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12879,6 +12908,12 @@ class DescribeSLInstanceResponse(AbstractModel):
         self._Status = params.get("Status")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._NodeNum = params.get("NodeNum")
+        if params.get("SLInstance") is not None:
+            self._SLInstance = []
+            for item in params.get("SLInstance"):
+                obj = SLInstance()
+                obj._deserialize(item)
+                self._SLInstance.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -31494,6 +31529,307 @@ class RunJobFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SLInstance(AbstractModel):
+    """Serverless Instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: EMR Instance Id
+        :type InstanceId: str
+        :param _ClusterId: EMR Numeric Instance Id
+        :type ClusterId: int
+        :param _InstanceName: Instance Name
+        :type InstanceName: str
+        :param _RegionId: Region id
+        :type RegionId: int
+        :param _Zone: Zone Name
+        :type Zone: str
+        :param _PayMode: Pay Mode
+        :type PayMode: int
+        :param _DiskType: Disk Type
+        :type DiskType: str
+        :param _DiskSize: Disk Size
+        :type DiskSize: int
+        :param _NodeType: Node Type
+        :type NodeType: str
+        :param _NodeNum: Node Number
+        :type NodeNum: int
+        :param _ExpireTime: Expire Time
+        :type ExpireTime: str
+        :param _IsolateTime: Isolate Time
+        :type IsolateTime: str
+        :param _CreateTime: Create Time
+        :type CreateTime: str
+        :param _AutoRenewFlag: Auto Renew Flag
+        :type AutoRenewFlag: int
+        :param _Status: EMR Numeric Instance Status
+        :type Status: int
+        :param _ZoneSettings: Zone Setting
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: Bound Tags
+        :type Tags: list of Tag
+        :param _DeployRole: Deploy Role
+        :type DeployRole: str
+        """
+        self._InstanceId = None
+        self._ClusterId = None
+        self._InstanceName = None
+        self._RegionId = None
+        self._Zone = None
+        self._PayMode = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._NodeType = None
+        self._NodeNum = None
+        self._ExpireTime = None
+        self._IsolateTime = None
+        self._CreateTime = None
+        self._AutoRenewFlag = None
+        self._Status = None
+        self._ZoneSettings = None
+        self._Tags = None
+        self._DeployRole = None
+
+    @property
+    def InstanceId(self):
+        """EMR Instance Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterId(self):
+        """EMR Numeric Instance Id
+        :rtype: int
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceName(self):
+        """Instance Name
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def RegionId(self):
+        """Region id
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Zone(self):
+        """Zone Name
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def PayMode(self):
+        """Pay Mode
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def DiskType(self):
+        """Disk Type
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        """Disk Size
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def NodeType(self):
+        """Node Type
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeNum(self):
+        """Node Number
+        :rtype: int
+        """
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def ExpireTime(self):
+        """Expire Time
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def IsolateTime(self):
+        """Isolate Time
+        :rtype: str
+        """
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def CreateTime(self):
+        """Create Time
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AutoRenewFlag(self):
+        """Auto Renew Flag
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Status(self):
+        """EMR Numeric Instance Status
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ZoneSettings(self):
+        """Zone Setting
+        :rtype: list of ZoneSetting
+        """
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        """Bound Tags
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DeployRole(self):
+        """Deploy Role
+        :rtype: str
+        """
+        return self._DeployRole
+
+    @DeployRole.setter
+    def DeployRole(self, DeployRole):
+        self._DeployRole = DeployRole
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceName = params.get("InstanceName")
+        self._RegionId = params.get("RegionId")
+        self._Zone = params.get("Zone")
+        self._PayMode = params.get("PayMode")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._NodeType = params.get("NodeType")
+        self._NodeNum = params.get("NodeNum")
+        self._ExpireTime = params.get("ExpireTime")
+        self._IsolateTime = params.get("IsolateTime")
+        self._CreateTime = params.get("CreateTime")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Status = params.get("Status")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DeployRole = params.get("DeployRole")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SLInstanceInfo(AbstractModel):
     """Serverless HBase实例信息
 
@@ -31541,6 +31877,8 @@ class SLInstanceInfo(AbstractModel):
         :type IsolateTime: str
         :param _ExpireTime: 过期时间，后付费返回0000-00-00 00:00:00
         :type ExpireTime: str
+        :param _DeployRole: 主备部署角色
+        :type DeployRole: str
         """
         self._ClusterId = None
         self._Id = None
@@ -31561,6 +31899,7 @@ class SLInstanceInfo(AbstractModel):
         self._AutoRenewFlag = None
         self._IsolateTime = None
         self._ExpireTime = None
+        self._DeployRole = None
 
     @property
     def ClusterId(self):
@@ -31773,6 +32112,17 @@ class SLInstanceInfo(AbstractModel):
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
 
+    @property
+    def DeployRole(self):
+        """主备部署角色
+        :rtype: str
+        """
+        return self._DeployRole
+
+    @DeployRole.setter
+    def DeployRole(self, DeployRole):
+        self._DeployRole = DeployRole
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -31804,6 +32154,7 @@ class SLInstanceInfo(AbstractModel):
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._IsolateTime = params.get("IsolateTime")
         self._ExpireTime = params.get("ExpireTime")
+        self._DeployRole = params.get("DeployRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

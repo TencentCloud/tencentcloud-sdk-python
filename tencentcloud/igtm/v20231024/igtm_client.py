@@ -256,6 +256,52 @@ class IgtmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDetectPackageDetail(self, request):
+        """探测任务包详情
+
+        :param request: Request instance for DescribeDetectPackageDetail.
+        :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeDetectPackageDetailRequest`
+        :rtype: :class:`tencentcloud.igtm.v20231024.models.DescribeDetectPackageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDetectPackageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDetectPackageDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDetectTaskPackageList(self, request):
+        """探测任务套餐列表
+
+        :param request: Request instance for DescribeDetectTaskPackageList.
+        :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeDetectTaskPackageListRequest`
+        :rtype: :class:`tencentcloud.igtm.v20231024.models.DescribeDetectTaskPackageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDetectTaskPackageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDetectTaskPackageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDetectors(self, request):
         """获取探测节点列表接口
 
@@ -339,6 +385,29 @@ class IgtmClient(AbstractClient):
             body = self.call("DescribeInstanceList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstancePackageList(self, request):
+        """实例套餐列表
+
+        :param request: Request instance for DescribeInstancePackageList.
+        :type request: :class:`tencentcloud.igtm.v20231024.models.DescribeInstancePackageListRequest`
+        :rtype: :class:`tencentcloud.igtm.v20231024.models.DescribeInstancePackageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancePackageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancePackageListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
