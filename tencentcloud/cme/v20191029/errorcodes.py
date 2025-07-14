@@ -158,6 +158,9 @@ INVALIDPARAMETERVALUE_PREPROCESSDEFINITION = 'InvalidParameterValue.PreProcessDe
 # 项目不存在。
 INVALIDPARAMETERVALUE_PROJECTID = 'InvalidParameterValue.ProjectId'
 
+# 项目 ID 对应的项目信息异常。
+INVALIDPARAMETERVALUE_PROJECTINFOERROR = 'InvalidParameterValue.ProjectInfoError'
+
 # 轨道素材替换类型无效或不匹配。
 INVALIDPARAMETERVALUE_REPLACEMENTTYPE = 'InvalidParameterValue.ReplacementType'
 

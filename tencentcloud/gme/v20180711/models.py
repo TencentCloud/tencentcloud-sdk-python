@@ -338,6 +338,14 @@ class ApplicationDataStatistics(AbstractModel):
         :type PcuDataOversea: list of StatisticsItem
         :param _PcuDataSum: 大陆和海外地区Pcu统计数据汇总，单位人
         :type PcuDataSum: list of StatisticsItem
+        :param _MiniGameDataNum: 小游戏时长统计项数目
+        :type MiniGameDataNum: int
+        :param _MiniGameDataMainland: 大陆地区小游戏时长统计数据，单位分钟
+        :type MiniGameDataMainland: list of StatisticsItem
+        :param _MiniGameDataOversea: 海外地区小游戏时长统计数据，单位分钟
+        :type MiniGameDataOversea: list of StatisticsItem
+        :param _MiniGameDataSum: 大陆和海外地区小游戏时长统计数据汇总，单位分钟
+        :type MiniGameDataSum: list of StatisticsItem
         """
         self._BizId = None
         self._DauDataNum = None
@@ -352,6 +360,10 @@ class ApplicationDataStatistics(AbstractModel):
         self._PcuDataMainland = None
         self._PcuDataOversea = None
         self._PcuDataSum = None
+        self._MiniGameDataNum = None
+        self._MiniGameDataMainland = None
+        self._MiniGameDataOversea = None
+        self._MiniGameDataSum = None
 
     @property
     def BizId(self):
@@ -496,6 +508,50 @@ class ApplicationDataStatistics(AbstractModel):
     def PcuDataSum(self, PcuDataSum):
         self._PcuDataSum = PcuDataSum
 
+    @property
+    def MiniGameDataNum(self):
+        """小游戏时长统计项数目
+        :rtype: int
+        """
+        return self._MiniGameDataNum
+
+    @MiniGameDataNum.setter
+    def MiniGameDataNum(self, MiniGameDataNum):
+        self._MiniGameDataNum = MiniGameDataNum
+
+    @property
+    def MiniGameDataMainland(self):
+        """大陆地区小游戏时长统计数据，单位分钟
+        :rtype: list of StatisticsItem
+        """
+        return self._MiniGameDataMainland
+
+    @MiniGameDataMainland.setter
+    def MiniGameDataMainland(self, MiniGameDataMainland):
+        self._MiniGameDataMainland = MiniGameDataMainland
+
+    @property
+    def MiniGameDataOversea(self):
+        """海外地区小游戏时长统计数据，单位分钟
+        :rtype: list of StatisticsItem
+        """
+        return self._MiniGameDataOversea
+
+    @MiniGameDataOversea.setter
+    def MiniGameDataOversea(self, MiniGameDataOversea):
+        self._MiniGameDataOversea = MiniGameDataOversea
+
+    @property
+    def MiniGameDataSum(self):
+        """大陆和海外地区小游戏时长统计数据汇总，单位分钟
+        :rtype: list of StatisticsItem
+        """
+        return self._MiniGameDataSum
+
+    @MiniGameDataSum.setter
+    def MiniGameDataSum(self, MiniGameDataSum):
+        self._MiniGameDataSum = MiniGameDataSum
+
 
     def _deserialize(self, params):
         self._BizId = params.get("BizId")
@@ -556,6 +612,25 @@ class ApplicationDataStatistics(AbstractModel):
                 obj = StatisticsItem()
                 obj._deserialize(item)
                 self._PcuDataSum.append(obj)
+        self._MiniGameDataNum = params.get("MiniGameDataNum")
+        if params.get("MiniGameDataMainland") is not None:
+            self._MiniGameDataMainland = []
+            for item in params.get("MiniGameDataMainland"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self._MiniGameDataMainland.append(obj)
+        if params.get("MiniGameDataOversea") is not None:
+            self._MiniGameDataOversea = []
+            for item in params.get("MiniGameDataOversea"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self._MiniGameDataOversea.append(obj)
+        if params.get("MiniGameDataSum") is not None:
+            self._MiniGameDataSum = []
+            for item in params.get("MiniGameDataSum"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self._MiniGameDataSum.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

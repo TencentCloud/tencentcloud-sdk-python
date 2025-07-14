@@ -6532,6 +6532,8 @@ class DeployRecord(AbstractModel):
         :type Status: int
         :param _CreateTime: 托管资源创建时间
         :type CreateTime: str
+        :param _PendingTotalCount: 待部署总数
+        :type PendingTotalCount: int
         """
         self._TotalCount = None
         self._SuccessTotalCount = None
@@ -6541,6 +6543,7 @@ class DeployRecord(AbstractModel):
         self._RecordDetailList = None
         self._Status = None
         self._CreateTime = None
+        self._PendingTotalCount = None
 
     @property
     def TotalCount(self):
@@ -6630,6 +6633,17 @@ class DeployRecord(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def PendingTotalCount(self):
+        """待部署总数
+        :rtype: int
+        """
+        return self._PendingTotalCount
+
+    @PendingTotalCount.setter
+    def PendingTotalCount(self, PendingTotalCount):
+        self._PendingTotalCount = PendingTotalCount
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -6645,6 +6659,7 @@ class DeployRecord(AbstractModel):
                 self._RecordDetailList.append(obj)
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
+        self._PendingTotalCount = params.get("PendingTotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12164,6 +12179,8 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         :type FailedTotalCount: int
         :param _RunningTotalCount: 部署中总数
         :type RunningTotalCount: int
+        :param _PendingTotalCount: 带部署总数
+        :type PendingTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12172,6 +12189,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         self._SuccessTotalCount = None
         self._FailedTotalCount = None
         self._RunningTotalCount = None
+        self._PendingTotalCount = None
         self._RequestId = None
 
     @property
@@ -12230,6 +12248,17 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         self._RunningTotalCount = RunningTotalCount
 
     @property
+    def PendingTotalCount(self):
+        """带部署总数
+        :rtype: int
+        """
+        return self._PendingTotalCount
+
+    @PendingTotalCount.setter
+    def PendingTotalCount(self, PendingTotalCount):
+        self._PendingTotalCount = PendingTotalCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12252,6 +12281,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         self._SuccessTotalCount = params.get("SuccessTotalCount")
         self._FailedTotalCount = params.get("FailedTotalCount")
         self._RunningTotalCount = params.get("RunningTotalCount")
+        self._PendingTotalCount = params.get("PendingTotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -13240,6 +13270,8 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
         :type FailedTotalCount: int
         :param _RunningTotalCount: 部署中总数,如果取不到返回0
         :type RunningTotalCount: int
+        :param _PendingTotalCount: 待部署总数
+        :type PendingTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -13248,6 +13280,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
         self._SuccessTotalCount = None
         self._FailedTotalCount = None
         self._RunningTotalCount = None
+        self._PendingTotalCount = None
         self._RequestId = None
 
     @property
@@ -13306,6 +13339,17 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
         self._RunningTotalCount = RunningTotalCount
 
     @property
+    def PendingTotalCount(self):
+        """待部署总数
+        :rtype: int
+        """
+        return self._PendingTotalCount
+
+    @PendingTotalCount.setter
+    def PendingTotalCount(self, PendingTotalCount):
+        self._PendingTotalCount = PendingTotalCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -13328,6 +13372,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
         self._SuccessTotalCount = params.get("SuccessTotalCount")
         self._FailedTotalCount = params.get("FailedTotalCount")
         self._RunningTotalCount = params.get("RunningTotalCount")
+        self._PendingTotalCount = params.get("PendingTotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -21854,7 +21899,7 @@ class UploadCertificateResponse(AbstractModel):
         r"""
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
-        :param _RepeatCertId: 重复证书的ID
+        :param _RepeatCertId: 当入参Repeatable为false的时候 返回的重复证书的ID，注意当用户上传相同的证书超过5000张的时候，当前接口会无视入参Repeatable，直接返回重复证书的ID。
         :type RepeatCertId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21876,7 +21921,7 @@ class UploadCertificateResponse(AbstractModel):
 
     @property
     def RepeatCertId(self):
-        """重复证书的ID
+        """当入参Repeatable为false的时候 返回的重复证书的ID，注意当用户上传相同的证书超过5000张的时候，当前接口会无视入参Repeatable，直接返回重复证书的ID。
         :rtype: str
         """
         return self._RepeatCertId

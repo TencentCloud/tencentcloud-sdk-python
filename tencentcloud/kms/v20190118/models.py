@@ -1219,6 +1219,20 @@ class DataKeyMetadata(AbstractModel):
         :type HsmClusterId: str
         :param _ResourceId: 资源ID，格式：creatorUin/$creatorUin/$dataKeyId
         :type ResourceId: str
+        :param _IsSyncReplica: 密钥是否是主副本。0:主本，1:同步副本。
+        :type IsSyncReplica: int
+        :param _SourceRegion: 同步的原始地域
+        :type SourceRegion: str
+        :param _SyncStatus: 密钥同步的状态，0:未同步，1:同步成功，2:同步失败，3:同步中。
+        :type SyncStatus: int
+        :param _SyncMessages: 同步的结果描述
+        :type SyncMessages: str
+        :param _SyncStartTime: 同步的开始时间
+        :type SyncStartTime: int
+        :param _SyncEndTime: 同步的结束时间
+        :type SyncEndTime: int
+        :param _SourceHsmClusterId: 同步的原始集群，如果为空，是公有云公共集群
+        :type SourceHsmClusterId: str
         """
         self._DataKeyId = None
         self._KeyId = None
@@ -1233,6 +1247,13 @@ class DataKeyMetadata(AbstractModel):
         self._Origin = None
         self._HsmClusterId = None
         self._ResourceId = None
+        self._IsSyncReplica = None
+        self._SourceRegion = None
+        self._SyncStatus = None
+        self._SyncMessages = None
+        self._SyncStartTime = None
+        self._SyncEndTime = None
+        self._SourceHsmClusterId = None
 
     @property
     def DataKeyId(self):
@@ -1377,6 +1398,83 @@ class DataKeyMetadata(AbstractModel):
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def IsSyncReplica(self):
+        """密钥是否是主副本。0:主本，1:同步副本。
+        :rtype: int
+        """
+        return self._IsSyncReplica
+
+    @IsSyncReplica.setter
+    def IsSyncReplica(self, IsSyncReplica):
+        self._IsSyncReplica = IsSyncReplica
+
+    @property
+    def SourceRegion(self):
+        """同步的原始地域
+        :rtype: str
+        """
+        return self._SourceRegion
+
+    @SourceRegion.setter
+    def SourceRegion(self, SourceRegion):
+        self._SourceRegion = SourceRegion
+
+    @property
+    def SyncStatus(self):
+        """密钥同步的状态，0:未同步，1:同步成功，2:同步失败，3:同步中。
+        :rtype: int
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SyncMessages(self):
+        """同步的结果描述
+        :rtype: str
+        """
+        return self._SyncMessages
+
+    @SyncMessages.setter
+    def SyncMessages(self, SyncMessages):
+        self._SyncMessages = SyncMessages
+
+    @property
+    def SyncStartTime(self):
+        """同步的开始时间
+        :rtype: int
+        """
+        return self._SyncStartTime
+
+    @SyncStartTime.setter
+    def SyncStartTime(self, SyncStartTime):
+        self._SyncStartTime = SyncStartTime
+
+    @property
+    def SyncEndTime(self):
+        """同步的结束时间
+        :rtype: int
+        """
+        return self._SyncEndTime
+
+    @SyncEndTime.setter
+    def SyncEndTime(self, SyncEndTime):
+        self._SyncEndTime = SyncEndTime
+
+    @property
+    def SourceHsmClusterId(self):
+        """同步的原始集群，如果为空，是公有云公共集群
+        :rtype: str
+        """
+        return self._SourceHsmClusterId
+
+    @SourceHsmClusterId.setter
+    def SourceHsmClusterId(self, SourceHsmClusterId):
+        self._SourceHsmClusterId = SourceHsmClusterId
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
@@ -1392,6 +1490,13 @@ class DataKeyMetadata(AbstractModel):
         self._Origin = params.get("Origin")
         self._HsmClusterId = params.get("HsmClusterId")
         self._ResourceId = params.get("ResourceId")
+        self._IsSyncReplica = params.get("IsSyncReplica")
+        self._SourceRegion = params.get("SourceRegion")
+        self._SyncStatus = params.get("SyncStatus")
+        self._SyncMessages = params.get("SyncMessages")
+        self._SyncStartTime = params.get("SyncStartTime")
+        self._SyncEndTime = params.get("SyncEndTime")
+        self._SourceHsmClusterId = params.get("SourceHsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2441,6 +2546,57 @@ class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self._ServiceEnabled = params.get("ServiceEnabled")
         self._RequestId = params.get("RequestId")
+
+
+class DestinationSyncConfig(AbstractModel):
+    """同步任务的目标地域列表，包括地域和集群信息。如果集群为空，表示公有云共享集群，如果集群不为空，表示独享集群。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DestinationRegion: 同步任务的目标地域
+        :type DestinationRegion: str
+        :param _HsmClusterId: HsmClusterId为空表示公有云共享版，如果不为空表示地域下独享版集群。
+        :type HsmClusterId: str
+        """
+        self._DestinationRegion = None
+        self._HsmClusterId = None
+
+    @property
+    def DestinationRegion(self):
+        """同步任务的目标地域
+        :rtype: str
+        """
+        return self._DestinationRegion
+
+    @DestinationRegion.setter
+    def DestinationRegion(self, DestinationRegion):
+        self._DestinationRegion = DestinationRegion
+
+    @property
+    def HsmClusterId(self):
+        """HsmClusterId为空表示公有云共享版，如果不为空表示地域下独享版集群。
+        :rtype: str
+        """
+        return self._HsmClusterId
+
+    @HsmClusterId.setter
+    def HsmClusterId(self, HsmClusterId):
+        self._HsmClusterId = HsmClusterId
+
+
+    def _deserialize(self, params):
+        self._DestinationRegion = params.get("DestinationRegion")
+        self._HsmClusterId = params.get("HsmClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeviceFingerprint(AbstractModel):
@@ -4668,6 +4824,10 @@ class GetServiceStatusResponse(AbstractModel):
         :type FreeDataKeyLimit: int
         :param _DataKeyUsedCount: IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。
         :type DataKeyUsedCount: int
+        :param _SyncTaskList: 同步任务的目标地域信息
+        :type SyncTaskList: list of DestinationSyncConfig
+        :param _IsAllowedSync: 是否支持同步任务。true:支持，false:不支持。
+        :type IsAllowedSync: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4687,6 +4847,8 @@ class GetServiceStatusResponse(AbstractModel):
         self._DataKeyLimit = None
         self._FreeDataKeyLimit = None
         self._DataKeyUsedCount = None
+        self._SyncTaskList = None
+        self._IsAllowedSync = None
         self._RequestId = None
 
     @property
@@ -4866,6 +5028,28 @@ class GetServiceStatusResponse(AbstractModel):
         self._DataKeyUsedCount = DataKeyUsedCount
 
     @property
+    def SyncTaskList(self):
+        """同步任务的目标地域信息
+        :rtype: list of DestinationSyncConfig
+        """
+        return self._SyncTaskList
+
+    @SyncTaskList.setter
+    def SyncTaskList(self, SyncTaskList):
+        self._SyncTaskList = SyncTaskList
+
+    @property
+    def IsAllowedSync(self):
+        """是否支持同步任务。true:支持，false:不支持。
+        :rtype: bool
+        """
+        return self._IsAllowedSync
+
+    @IsAllowedSync.setter
+    def IsAllowedSync(self, IsAllowedSync):
+        self._IsAllowedSync = IsAllowedSync
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4899,6 +5083,13 @@ class GetServiceStatusResponse(AbstractModel):
         self._DataKeyLimit = params.get("DataKeyLimit")
         self._FreeDataKeyLimit = params.get("FreeDataKeyLimit")
         self._DataKeyUsedCount = params.get("DataKeyUsedCount")
+        if params.get("SyncTaskList") is not None:
+            self._SyncTaskList = []
+            for item in params.get("SyncTaskList"):
+                obj = DestinationSyncConfig()
+                obj._deserialize(item)
+                self._SyncTaskList.append(obj)
+        self._IsAllowedSync = params.get("IsAllowedSync")
         self._RequestId = params.get("RequestId")
 
 
@@ -5261,6 +5452,20 @@ class KeyMetadata(AbstractModel):
         :type RotateDays: int
         :param _LastRotateTime: 上次乱转时间（Unix timestamp）
         :type LastRotateTime: int
+        :param _IsSyncReplica:  密钥是否是主副本。0:主本，1:同步副本。
+        :type IsSyncReplica: int
+        :param _SourceRegion: 同步的原始地域
+        :type SourceRegion: str
+        :param _SyncStatus: 密钥同步的状态，0:未同步,1:同步成功,2:同步失败,3:同步中。
+        :type SyncStatus: int
+        :param _SyncMessages: 同步的结果描述
+        :type SyncMessages: str
+        :param _SyncStartTime: 同步的开始时间
+        :type SyncStartTime: int
+        :param _SyncEndTime: 同步的结束时间
+        :type SyncEndTime: int
+        :param _SourceHsmClusterId: 同步的原始集群，如果为空，是公有云公共集群
+        :type SourceHsmClusterId: str
         """
         self._KeyId = None
         self._Alias = None
@@ -5280,6 +5485,13 @@ class KeyMetadata(AbstractModel):
         self._HsmClusterId = None
         self._RotateDays = None
         self._LastRotateTime = None
+        self._IsSyncReplica = None
+        self._SourceRegion = None
+        self._SyncStatus = None
+        self._SyncMessages = None
+        self._SyncStartTime = None
+        self._SyncEndTime = None
+        self._SourceHsmClusterId = None
 
     @property
     def KeyId(self):
@@ -5479,6 +5691,83 @@ class KeyMetadata(AbstractModel):
     def LastRotateTime(self, LastRotateTime):
         self._LastRotateTime = LastRotateTime
 
+    @property
+    def IsSyncReplica(self):
+        """ 密钥是否是主副本。0:主本，1:同步副本。
+        :rtype: int
+        """
+        return self._IsSyncReplica
+
+    @IsSyncReplica.setter
+    def IsSyncReplica(self, IsSyncReplica):
+        self._IsSyncReplica = IsSyncReplica
+
+    @property
+    def SourceRegion(self):
+        """同步的原始地域
+        :rtype: str
+        """
+        return self._SourceRegion
+
+    @SourceRegion.setter
+    def SourceRegion(self, SourceRegion):
+        self._SourceRegion = SourceRegion
+
+    @property
+    def SyncStatus(self):
+        """密钥同步的状态，0:未同步,1:同步成功,2:同步失败,3:同步中。
+        :rtype: int
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SyncMessages(self):
+        """同步的结果描述
+        :rtype: str
+        """
+        return self._SyncMessages
+
+    @SyncMessages.setter
+    def SyncMessages(self, SyncMessages):
+        self._SyncMessages = SyncMessages
+
+    @property
+    def SyncStartTime(self):
+        """同步的开始时间
+        :rtype: int
+        """
+        return self._SyncStartTime
+
+    @SyncStartTime.setter
+    def SyncStartTime(self, SyncStartTime):
+        self._SyncStartTime = SyncStartTime
+
+    @property
+    def SyncEndTime(self):
+        """同步的结束时间
+        :rtype: int
+        """
+        return self._SyncEndTime
+
+    @SyncEndTime.setter
+    def SyncEndTime(self, SyncEndTime):
+        self._SyncEndTime = SyncEndTime
+
+    @property
+    def SourceHsmClusterId(self):
+        """同步的原始集群，如果为空，是公有云公共集群
+        :rtype: str
+        """
+        return self._SourceHsmClusterId
+
+    @SourceHsmClusterId.setter
+    def SourceHsmClusterId(self, SourceHsmClusterId):
+        self._SourceHsmClusterId = SourceHsmClusterId
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -5499,6 +5788,13 @@ class KeyMetadata(AbstractModel):
         self._HsmClusterId = params.get("HsmClusterId")
         self._RotateDays = params.get("RotateDays")
         self._LastRotateTime = params.get("LastRotateTime")
+        self._IsSyncReplica = params.get("IsSyncReplica")
+        self._SourceRegion = params.get("SourceRegion")
+        self._SyncStatus = params.get("SyncStatus")
+        self._SyncMessages = params.get("SyncMessages")
+        self._SyncStartTime = params.get("SyncStartTime")
+        self._SyncEndTime = params.get("SyncEndTime")
+        self._SourceHsmClusterId = params.get("SourceHsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

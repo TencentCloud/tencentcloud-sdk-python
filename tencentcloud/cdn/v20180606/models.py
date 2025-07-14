@@ -19579,7 +19579,7 @@ add：增加。增加指定的头部参数，默认允许重复添加，即重�
         :param _HeaderName: http 头部名称，最多可设置 100 个字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderName: str
-        :param _HeaderValue: http 头部值，最多可设置 1000 个字符
+        :param _HeaderValue: http 头部值，最多可设置 2000 个字符
 Mode 为 del 时非必填
 Mode 为 add/set 时必填
 注意：此字段可能返回 null，表示取不到有效值。
@@ -19634,7 +19634,7 @@ add：增加。增加指定的头部参数，默认允许重复添加，即重�
 
     @property
     def HeaderValue(self):
-        """http 头部值，最多可设置 1000 个字符
+        """http 头部值，最多可设置 2000 个字符
 Mode 为 del 时非必填
 Mode 为 add/set 时必填
 注意：此字段可能返回 null，表示取不到有效值。

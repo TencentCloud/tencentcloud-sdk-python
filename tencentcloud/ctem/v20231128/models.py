@@ -3498,6 +3498,864 @@ class DescribeJobRecordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLeakageCodesRequest(AbstractModel):
+    """DescribeLeakageCodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsAggregation: 是否聚合数据
+        :type IsAggregation: bool
+        :param _IsNew: 是否新增数据
+        :type IsNew: bool
+        :param _CustomerId: 企业ID
+        :type CustomerId: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _EnterpriseUidList: 子公司ID列表
+        :type EnterpriseUidList: list of str
+        :param _Format: 数据输出格式：json、file，默认不填为json
+        :type Format: str
+        :param _CreateAtStart: 创建时间-开始
+        :type CreateAtStart: str
+        :param _CreateAtEnd: 创建时间-结束
+        :type CreateAtEnd: str
+        :param _UpdateAtStart: 更新时间-开始
+        :type UpdateAtStart: str
+        :param _UpdateAtEnd: 更新时间-结束
+        :type UpdateAtEnd: str
+        :param _Filters: 查询数组
+        :type Filters: list of Filter
+        :param _Ignored: 是否显示被忽略的数据
+        :type Ignored: bool
+        """
+        self._IsAggregation = None
+        self._IsNew = None
+        self._CustomerId = None
+        self._Limit = None
+        self._Offset = None
+        self._EnterpriseUidList = None
+        self._Format = None
+        self._CreateAtStart = None
+        self._CreateAtEnd = None
+        self._UpdateAtStart = None
+        self._UpdateAtEnd = None
+        self._Filters = None
+        self._Ignored = None
+
+    @property
+    def IsAggregation(self):
+        """是否聚合数据
+        :rtype: bool
+        """
+        return self._IsAggregation
+
+    @IsAggregation.setter
+    def IsAggregation(self, IsAggregation):
+        self._IsAggregation = IsAggregation
+
+    @property
+    def IsNew(self):
+        """是否新增数据
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def CustomerId(self):
+        """企业ID
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EnterpriseUidList(self):
+        """子公司ID列表
+        :rtype: list of str
+        """
+        return self._EnterpriseUidList
+
+    @EnterpriseUidList.setter
+    def EnterpriseUidList(self, EnterpriseUidList):
+        self._EnterpriseUidList = EnterpriseUidList
+
+    @property
+    def Format(self):
+        """数据输出格式：json、file，默认不填为json
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def CreateAtStart(self):
+        """创建时间-开始
+        :rtype: str
+        """
+        return self._CreateAtStart
+
+    @CreateAtStart.setter
+    def CreateAtStart(self, CreateAtStart):
+        self._CreateAtStart = CreateAtStart
+
+    @property
+    def CreateAtEnd(self):
+        """创建时间-结束
+        :rtype: str
+        """
+        return self._CreateAtEnd
+
+    @CreateAtEnd.setter
+    def CreateAtEnd(self, CreateAtEnd):
+        self._CreateAtEnd = CreateAtEnd
+
+    @property
+    def UpdateAtStart(self):
+        """更新时间-开始
+        :rtype: str
+        """
+        return self._UpdateAtStart
+
+    @UpdateAtStart.setter
+    def UpdateAtStart(self, UpdateAtStart):
+        self._UpdateAtStart = UpdateAtStart
+
+    @property
+    def UpdateAtEnd(self):
+        """更新时间-结束
+        :rtype: str
+        """
+        return self._UpdateAtEnd
+
+    @UpdateAtEnd.setter
+    def UpdateAtEnd(self, UpdateAtEnd):
+        self._UpdateAtEnd = UpdateAtEnd
+
+    @property
+    def Filters(self):
+        """查询数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Ignored(self):
+        """是否显示被忽略的数据
+        :rtype: bool
+        """
+        return self._Ignored
+
+    @Ignored.setter
+    def Ignored(self, Ignored):
+        self._Ignored = Ignored
+
+
+    def _deserialize(self, params):
+        self._IsAggregation = params.get("IsAggregation")
+        self._IsNew = params.get("IsNew")
+        self._CustomerId = params.get("CustomerId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EnterpriseUidList = params.get("EnterpriseUidList")
+        self._Format = params.get("Format")
+        self._CreateAtStart = params.get("CreateAtStart")
+        self._CreateAtEnd = params.get("CreateAtEnd")
+        self._UpdateAtStart = params.get("UpdateAtStart")
+        self._UpdateAtEnd = params.get("UpdateAtEnd")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Ignored = params.get("Ignored")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLeakageCodesResponse(AbstractModel):
+    """DescribeLeakageCodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _List: 数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DisplayLeakageCode
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DisplayLeakageCode
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DisplayLeakageCode()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLeakageDatasRequest(AbstractModel):
+    """DescribeLeakageDatas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsAggregation: 是否聚合数据
+        :type IsAggregation: bool
+        :param _IsNew: 是否新增数据
+        :type IsNew: bool
+        :param _CustomerId: 企业ID
+        :type CustomerId: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _EnterpriseUidList: 子公司ID列表
+        :type EnterpriseUidList: list of str
+        :param _Format: 数据输出格式：json、file，默认不填为json
+        :type Format: str
+        :param _CreateAtStart: 创建时间-开始
+        :type CreateAtStart: str
+        :param _CreateAtEnd: 创建时间-结束
+        :type CreateAtEnd: str
+        :param _UpdateAtStart: 更新时间-开始
+        :type UpdateAtStart: str
+        :param _UpdateAtEnd: 更新时间-结束
+        :type UpdateAtEnd: str
+        :param _Filters: 查询数组
+        :type Filters: list of Filter
+        :param _Ignored: 是否显示被忽略的数据
+        :type Ignored: bool
+        """
+        self._IsAggregation = None
+        self._IsNew = None
+        self._CustomerId = None
+        self._Limit = None
+        self._Offset = None
+        self._EnterpriseUidList = None
+        self._Format = None
+        self._CreateAtStart = None
+        self._CreateAtEnd = None
+        self._UpdateAtStart = None
+        self._UpdateAtEnd = None
+        self._Filters = None
+        self._Ignored = None
+
+    @property
+    def IsAggregation(self):
+        """是否聚合数据
+        :rtype: bool
+        """
+        return self._IsAggregation
+
+    @IsAggregation.setter
+    def IsAggregation(self, IsAggregation):
+        self._IsAggregation = IsAggregation
+
+    @property
+    def IsNew(self):
+        """是否新增数据
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def CustomerId(self):
+        """企业ID
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EnterpriseUidList(self):
+        """子公司ID列表
+        :rtype: list of str
+        """
+        return self._EnterpriseUidList
+
+    @EnterpriseUidList.setter
+    def EnterpriseUidList(self, EnterpriseUidList):
+        self._EnterpriseUidList = EnterpriseUidList
+
+    @property
+    def Format(self):
+        """数据输出格式：json、file，默认不填为json
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def CreateAtStart(self):
+        """创建时间-开始
+        :rtype: str
+        """
+        return self._CreateAtStart
+
+    @CreateAtStart.setter
+    def CreateAtStart(self, CreateAtStart):
+        self._CreateAtStart = CreateAtStart
+
+    @property
+    def CreateAtEnd(self):
+        """创建时间-结束
+        :rtype: str
+        """
+        return self._CreateAtEnd
+
+    @CreateAtEnd.setter
+    def CreateAtEnd(self, CreateAtEnd):
+        self._CreateAtEnd = CreateAtEnd
+
+    @property
+    def UpdateAtStart(self):
+        """更新时间-开始
+        :rtype: str
+        """
+        return self._UpdateAtStart
+
+    @UpdateAtStart.setter
+    def UpdateAtStart(self, UpdateAtStart):
+        self._UpdateAtStart = UpdateAtStart
+
+    @property
+    def UpdateAtEnd(self):
+        """更新时间-结束
+        :rtype: str
+        """
+        return self._UpdateAtEnd
+
+    @UpdateAtEnd.setter
+    def UpdateAtEnd(self, UpdateAtEnd):
+        self._UpdateAtEnd = UpdateAtEnd
+
+    @property
+    def Filters(self):
+        """查询数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Ignored(self):
+        """是否显示被忽略的数据
+        :rtype: bool
+        """
+        return self._Ignored
+
+    @Ignored.setter
+    def Ignored(self, Ignored):
+        self._Ignored = Ignored
+
+
+    def _deserialize(self, params):
+        self._IsAggregation = params.get("IsAggregation")
+        self._IsNew = params.get("IsNew")
+        self._CustomerId = params.get("CustomerId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EnterpriseUidList = params.get("EnterpriseUidList")
+        self._Format = params.get("Format")
+        self._CreateAtStart = params.get("CreateAtStart")
+        self._CreateAtEnd = params.get("CreateAtEnd")
+        self._UpdateAtStart = params.get("UpdateAtStart")
+        self._UpdateAtEnd = params.get("UpdateAtEnd")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Ignored = params.get("Ignored")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLeakageDatasResponse(AbstractModel):
+    """DescribeLeakageDatas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _List: 数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DisplayLeakageData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DisplayLeakageData
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DisplayLeakageData()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLeakageEmailsRequest(AbstractModel):
+    """DescribeLeakageEmails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsAggregation: 是否聚合数据
+        :type IsAggregation: bool
+        :param _IsNew: 是否新增数据
+        :type IsNew: bool
+        :param _CustomerId: 企业ID
+        :type CustomerId: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _EnterpriseUidList: 子公司ID列表
+        :type EnterpriseUidList: list of str
+        :param _Format: 数据输出格式：json、file，默认不填为json
+        :type Format: str
+        :param _CreateAtStart: 创建时间-开始
+        :type CreateAtStart: str
+        :param _CreateAtEnd: 创建时间-结束
+        :type CreateAtEnd: str
+        :param _UpdateAtStart: 更新时间-开始
+        :type UpdateAtStart: str
+        :param _UpdateAtEnd: 更新时间-结束
+        :type UpdateAtEnd: str
+        :param _Filters: 查询数组
+        :type Filters: list of Filter
+        :param _Ignored: 是否显示被忽略的数据
+        :type Ignored: bool
+        """
+        self._IsAggregation = None
+        self._IsNew = None
+        self._CustomerId = None
+        self._Limit = None
+        self._Offset = None
+        self._EnterpriseUidList = None
+        self._Format = None
+        self._CreateAtStart = None
+        self._CreateAtEnd = None
+        self._UpdateAtStart = None
+        self._UpdateAtEnd = None
+        self._Filters = None
+        self._Ignored = None
+
+    @property
+    def IsAggregation(self):
+        """是否聚合数据
+        :rtype: bool
+        """
+        return self._IsAggregation
+
+    @IsAggregation.setter
+    def IsAggregation(self, IsAggregation):
+        self._IsAggregation = IsAggregation
+
+    @property
+    def IsNew(self):
+        """是否新增数据
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def CustomerId(self):
+        """企业ID
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EnterpriseUidList(self):
+        """子公司ID列表
+        :rtype: list of str
+        """
+        return self._EnterpriseUidList
+
+    @EnterpriseUidList.setter
+    def EnterpriseUidList(self, EnterpriseUidList):
+        self._EnterpriseUidList = EnterpriseUidList
+
+    @property
+    def Format(self):
+        """数据输出格式：json、file，默认不填为json
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def CreateAtStart(self):
+        """创建时间-开始
+        :rtype: str
+        """
+        return self._CreateAtStart
+
+    @CreateAtStart.setter
+    def CreateAtStart(self, CreateAtStart):
+        self._CreateAtStart = CreateAtStart
+
+    @property
+    def CreateAtEnd(self):
+        """创建时间-结束
+        :rtype: str
+        """
+        return self._CreateAtEnd
+
+    @CreateAtEnd.setter
+    def CreateAtEnd(self, CreateAtEnd):
+        self._CreateAtEnd = CreateAtEnd
+
+    @property
+    def UpdateAtStart(self):
+        """更新时间-开始
+        :rtype: str
+        """
+        return self._UpdateAtStart
+
+    @UpdateAtStart.setter
+    def UpdateAtStart(self, UpdateAtStart):
+        self._UpdateAtStart = UpdateAtStart
+
+    @property
+    def UpdateAtEnd(self):
+        """更新时间-结束
+        :rtype: str
+        """
+        return self._UpdateAtEnd
+
+    @UpdateAtEnd.setter
+    def UpdateAtEnd(self, UpdateAtEnd):
+        self._UpdateAtEnd = UpdateAtEnd
+
+    @property
+    def Filters(self):
+        """查询数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Ignored(self):
+        """是否显示被忽略的数据
+        :rtype: bool
+        """
+        return self._Ignored
+
+    @Ignored.setter
+    def Ignored(self, Ignored):
+        self._Ignored = Ignored
+
+
+    def _deserialize(self, params):
+        self._IsAggregation = params.get("IsAggregation")
+        self._IsNew = params.get("IsNew")
+        self._CustomerId = params.get("CustomerId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EnterpriseUidList = params.get("EnterpriseUidList")
+        self._Format = params.get("Format")
+        self._CreateAtStart = params.get("CreateAtStart")
+        self._CreateAtEnd = params.get("CreateAtEnd")
+        self._UpdateAtStart = params.get("UpdateAtStart")
+        self._UpdateAtEnd = params.get("UpdateAtEnd")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Ignored = params.get("Ignored")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLeakageEmailsResponse(AbstractModel):
+    """DescribeLeakageEmails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _List: 数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DisplayLeakageEmail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DisplayLeakageEmail
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DisplayLeakageEmail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeManagesRequest(AbstractModel):
     """DescribeManages请求参数结构体
 
@@ -7961,6 +8819,159 @@ class DisplayJobRecordDetail(AbstractModel):
                 obj = IdndValue()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisplayLeakageCode(AbstractModel):
+    """代码泄露详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 主键ID
+        :type Id: int
+        :param _Url: 链接
+        :type Url: str
+        """
+        self._Id = None
+        self._Url = None
+
+    @property
+    def Id(self):
+        """主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Url(self):
+        """链接
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisplayLeakageData(AbstractModel):
+    """数据泄露详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 主键ID
+        :type Id: int
+        :param _Url: 链接
+        :type Url: str
+        """
+        self._Id = None
+        self._Url = None
+
+    @property
+    def Id(self):
+        """主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Url(self):
+        """链接
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisplayLeakageEmail(AbstractModel):
+    """邮箱泄露详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 主键ID
+        :type Id: int
+        :param _Email: 邮箱
+        :type Email: str
+        """
+        self._Id = None
+        self._Email = None
+
+    @property
+    def Id(self):
+        """主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Email(self):
+        """邮箱
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Email = params.get("Email")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
