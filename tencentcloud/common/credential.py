@@ -388,14 +388,17 @@ class OIDCRoleArnCredential(object):
     _service = "sts"
     _action = 'AssumeRoleWithWebIdentity'
     _default_session_name = 'tencentcloud-python-sdk-'
+    _endpoint = "sts.tencentcloudapi.com"
 
-    def __init__(self, region, provider_id, web_identity_token, role_arn, role_session_name, duration_seconds=7200):
+    def __init__(self, region, provider_id, web_identity_token, role_arn, role_session_name, duration_seconds=7200, endpoint=None):
         self._region = region
         self._provider_id = provider_id
         self._web_identity_token = web_identity_token
         self._role_arn = role_arn
         self._role_session_name = role_session_name
         self._duration_seconds = duration_seconds
+        if endpoint:
+            self._endpoint = endpoint
 
         self._token = None
         self._tmp_secret_id = None
@@ -435,7 +438,14 @@ class OIDCRoleArnCredential(object):
     def refresh(self):
         if self._is_tke:
             self._init_from_tke()
-        common_client = CommonClient(credential=None, region=self._region, version=self._version, service=self._service)
+            
+        http_profile = HttpProfile()
+        http_profile.endpoint = self._endpoint
+        client_profile = ClientProfile()
+        client_profile.httpProfile = http_profile
+        
+        common_client = CommonClient(credential=None, region=self._region, version=self._version, 
+                                     service=self._service, profile=client_profile)
         params = {
             "ProviderId": self._provider_id,
             "WebIdentityToken": self._web_identity_token,
