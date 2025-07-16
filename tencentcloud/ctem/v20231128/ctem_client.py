@@ -233,6 +233,98 @@ class CtemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFakeApps(self, request):
+        """查询仿冒应用
+
+        :param request: Request instance for DescribeFakeApps.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeAppsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeAppsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFakeApps", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFakeAppsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFakeMiniPrograms(self, request):
+        """查询仿冒小程序
+
+        :param request: Request instance for DescribeFakeMiniPrograms.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeMiniProgramsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeMiniProgramsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFakeMiniPrograms", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFakeMiniProgramsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFakeWebsites(self, request):
+        """查询仿冒网站
+
+        :param request: Request instance for DescribeFakeWebsites.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeWebsitesRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeWebsitesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFakeWebsites", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFakeWebsitesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFakeWechatOfficials(self, request):
+        """查询仿冒公众号
+
+        :param request: Request instance for DescribeFakeWechatOfficials.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeWechatOfficialsRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DescribeFakeWechatOfficialsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFakeWechatOfficials", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFakeWechatOfficialsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGithubs(self, request):
         """查看Github泄露数据
 

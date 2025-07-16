@@ -6788,7 +6788,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         r"""
         :param _Zone: 实例所属区域及可用区信息。格式：ap-guangzhou-2。
         :type Zone: str
-        :param _NodeNum: - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+        :param _NodeNum: - 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :type NodeNum: int
         :param _Memory: 实例内存大小。
@@ -6871,7 +6871,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def NodeNum(self):
-        """- 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+        """- 创建副本集实例，指每个副本集内主从节点数量。每个副本集所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
 - 创建分片集群实例，指每个分片的主从节点数量。每个分片所支持的最大节点数与最小节点数，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :rtype: int
         """
@@ -9374,6 +9374,7 @@ class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
         :param _InstanceId: 实例 ID。例如：cmgo-7pje****。
         :type InstanceId: str
         :param _SecurityGroupIds: 目标安全组 ID。请通过接口[DescribeSecurityGroup](https://cloud.tencent.com/document/product/240/55675)查看具体的安全组 ID。
+**注意**：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :type SecurityGroupIds: list of str
         """
         self._InstanceId = None
@@ -9393,6 +9394,7 @@ class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
     @property
     def SecurityGroupIds(self):
         """目标安全组 ID。请通过接口[DescribeSecurityGroup](https://cloud.tencent.com/document/product/240/55675)查看具体的安全组 ID。
+**注意**：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :rtype: list of str
         """
         return self._SecurityGroupIds

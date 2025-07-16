@@ -32,6 +32,9 @@ FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 # 暂不支持解析该文件
 FAILEDOPERATION_NONSUPPORTPARSE = 'FailedOperation.NonsupportParse'
 
+# FailedOperation.OcrFailed
+FAILEDOPERATION_OCRFAILED = 'FailedOperation.OcrFailed'
+
 # 内部未知错误。
 FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnKnowError'
 

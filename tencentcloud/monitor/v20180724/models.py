@@ -6738,7 +6738,7 @@ class CreatePrometheusAlertGroupRequest(AbstractModel):
 不为空时会覆盖 `Rules`字段下所有告警规则状态
 
         :type GroupState: int
-        :param _AMPReceivers: 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+        :param _AMPReceivers: 腾讯云可观测平台告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
         :type AMPReceivers: list of str
         :param _CustomReceiver: 自定义告警通知模板
         :type CustomReceiver: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
@@ -6794,7 +6794,7 @@ class CreatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def AMPReceivers(self):
-        """云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+        """腾讯云可观测平台告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
         :rtype: list of str
         """
         return self._AMPReceivers
@@ -29502,14 +29502,22 @@ class ModifyConditionsTemplateRequestEventCondition(AbstractModel):
         :type EventID: str
         :param _RuleID: 规则ID
         :type RuleID: int
+        :param _MetricName: 重构后的eventType
+        :type MetricName: str
+        :param _Description: 事件描述信息
+        :type Description: str
         """
         self._AlarmNotifyPeriod = None
         self._AlarmNotifyType = None
         self._EventID = None
         self._RuleID = None
+        self._MetricName = None
+        self._Description = None
 
     @property
     def AlarmNotifyPeriod(self):
+        warnings.warn("parameter `AlarmNotifyPeriod` is deprecated", DeprecationWarning) 
+
         """告警通知周期
         :rtype: str
         """
@@ -29517,10 +29525,14 @@ class ModifyConditionsTemplateRequestEventCondition(AbstractModel):
 
     @AlarmNotifyPeriod.setter
     def AlarmNotifyPeriod(self, AlarmNotifyPeriod):
+        warnings.warn("parameter `AlarmNotifyPeriod` is deprecated", DeprecationWarning) 
+
         self._AlarmNotifyPeriod = AlarmNotifyPeriod
 
     @property
     def AlarmNotifyType(self):
+        warnings.warn("parameter `AlarmNotifyType` is deprecated", DeprecationWarning) 
+
         """告警通知方式
         :rtype: str
         """
@@ -29528,10 +29540,14 @@ class ModifyConditionsTemplateRequestEventCondition(AbstractModel):
 
     @AlarmNotifyType.setter
     def AlarmNotifyType(self, AlarmNotifyType):
+        warnings.warn("parameter `AlarmNotifyType` is deprecated", DeprecationWarning) 
+
         self._AlarmNotifyType = AlarmNotifyType
 
     @property
     def EventID(self):
+        warnings.warn("parameter `EventID` is deprecated", DeprecationWarning) 
+
         """事件ID
         :rtype: str
         """
@@ -29539,10 +29555,14 @@ class ModifyConditionsTemplateRequestEventCondition(AbstractModel):
 
     @EventID.setter
     def EventID(self, EventID):
+        warnings.warn("parameter `EventID` is deprecated", DeprecationWarning) 
+
         self._EventID = EventID
 
     @property
     def RuleID(self):
+        warnings.warn("parameter `RuleID` is deprecated", DeprecationWarning) 
+
         """规则ID
         :rtype: int
         """
@@ -29550,7 +29570,31 @@ class ModifyConditionsTemplateRequestEventCondition(AbstractModel):
 
     @RuleID.setter
     def RuleID(self, RuleID):
+        warnings.warn("parameter `RuleID` is deprecated", DeprecationWarning) 
+
         self._RuleID = RuleID
+
+    @property
+    def MetricName(self):
+        """重构后的eventType
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Description(self):
+        """事件描述信息
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
@@ -29558,6 +29602,8 @@ class ModifyConditionsTemplateRequestEventCondition(AbstractModel):
         self._AlarmNotifyType = params.get("AlarmNotifyType")
         self._EventID = params.get("EventID")
         self._RuleID = params.get("RuleID")
+        self._MetricName = params.get("MetricName")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32608,7 +32654,7 @@ class PrometheusAlertGroupSet(AbstractModel):
         :param _GroupName: 告警分组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
-        :param _AMPReceivers: 云监控告警模板ID ，返回告警模板转换后的notice ID。
+        :param _AMPReceivers: 腾讯云可观测平台告警模板ID ，返回告警模板转换后的notice ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AMPReceivers: list of str
         :param _CustomReceiver: 自定义告警模板
@@ -32666,7 +32712,7 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def AMPReceivers(self):
-        """云监控告警模板ID ，返回告警模板转换后的notice ID。
+        """腾讯云可观测平台告警模板ID ，返回告警模板转换后的notice ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -40152,7 +40198,7 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 3 -- 禁用
 不为空时会覆盖 `Rules`字段下所有告警规则状态
         :type GroupState: int
-        :param _AMPReceivers: 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+        :param _AMPReceivers: 腾讯云可观测平台告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
         :type AMPReceivers: list of str
         :param _CustomReceiver: 自定义告警通知模板
         :type CustomReceiver: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
@@ -40219,7 +40265,7 @@ class UpdatePrometheusAlertGroupRequest(AbstractModel):
 
     @property
     def AMPReceivers(self):
-        """云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+        """腾讯云可观测平台告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
         :rtype: list of str
         """
         return self._AMPReceivers

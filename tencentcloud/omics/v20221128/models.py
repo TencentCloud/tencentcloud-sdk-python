@@ -351,6 +351,8 @@ class ClusterOption(AbstractModel):
         :type SystemNodeInstanceType: str
         :param _SystemNodeCount: 系统节点池实例数量。
         :type SystemNodeCount: int
+        :param _AutoUpgradeClusterLevel: 纳管环境自动升配
+        :type AutoUpgradeClusterLevel: bool
         """
         self._Zone = None
         self._Type = None
@@ -359,6 +361,7 @@ class ClusterOption(AbstractModel):
         self._LimitRange = None
         self._SystemNodeInstanceType = None
         self._SystemNodeCount = None
+        self._AutoUpgradeClusterLevel = None
 
     @property
     def Zone(self):
@@ -438,6 +441,17 @@ class ClusterOption(AbstractModel):
     def SystemNodeCount(self, SystemNodeCount):
         self._SystemNodeCount = SystemNodeCount
 
+    @property
+    def AutoUpgradeClusterLevel(self):
+        """纳管环境自动升配
+        :rtype: bool
+        """
+        return self._AutoUpgradeClusterLevel
+
+    @AutoUpgradeClusterLevel.setter
+    def AutoUpgradeClusterLevel(self, AutoUpgradeClusterLevel):
+        self._AutoUpgradeClusterLevel = AutoUpgradeClusterLevel
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -451,6 +465,7 @@ class ClusterOption(AbstractModel):
             self._LimitRange._deserialize(params.get("LimitRange"))
         self._SystemNodeInstanceType = params.get("SystemNodeInstanceType")
         self._SystemNodeCount = params.get("SystemNodeCount")
+        self._AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

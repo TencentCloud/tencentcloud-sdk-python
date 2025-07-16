@@ -15072,7 +15072,7 @@ class ServerPushText(AbstractModel):
 
 注意：DropMode为1时，允许缓存多个消息，如果后续出现了打断，缓存的消息会被清空
         :type DropMode: int
-        :param _Priority: ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。**目前仅支持传入0，如果需要传入1，请提工单联系我们添加权限。**
+        :param _Priority: ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。
 注意：在接收到Priority=1的消息后，后续其他任何消息都会被忽略（包括Priority=1的消息），直到Priority=1的消息处理结束。该字段可与Interrupt、DropMode字段配合使用。
 例子：
 - Priority=1、Interrupt=true，会打断现有交互，立刻播报，播报过程中不会被打断
@@ -15153,7 +15153,7 @@ class ServerPushText(AbstractModel):
 
     @property
     def Priority(self):
-        """ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。**目前仅支持传入0，如果需要传入1，请提工单联系我们添加权限。**
+        """ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。
 注意：在接收到Priority=1的消息后，后续其他任何消息都会被忽略（包括Priority=1的消息），直到Priority=1的消息处理结束。该字段可与Interrupt、DropMode字段配合使用。
 例子：
 - Priority=1、Interrupt=true，会打断现有交互，立刻播报，播报过程中不会被打断

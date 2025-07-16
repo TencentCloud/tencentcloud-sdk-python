@@ -496,10 +496,8 @@ class Activity(AbstractModel):
 
 
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityType: str
         :param _ReardriveIndex: 后驱节点索引数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReardriveIndex: list of int
         :param _ActivityPara: 原子任务参数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -528,7 +526,6 @@ class Activity(AbstractModel):
 
 
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActivityType
@@ -540,7 +537,6 @@ class Activity(AbstractModel):
     @property
     def ReardriveIndex(self):
         """后驱节点索引数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._ReardriveIndex
@@ -1227,12 +1223,10 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddOnSubtitles: list of AddOnSubtitle
         :param _DrmInfo: Drm信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         :param _DefinitionType: 自适应转码模板类型：
 Common：音视频类型
 PureAudio：纯音频类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefinitionType: str
         """
         self._Definition = None
@@ -1334,7 +1328,6 @@ PureAudio：纯音频类型
     @property
     def DrmInfo(self):
         """Drm信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         return self._DrmInfo
@@ -1348,7 +1341,6 @@ PureAudio：纯音频类型
         """自适应转码模板类型：
 Common：音视频类型
 PureAudio：纯音频类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefinitionType
@@ -2591,10 +2583,8 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :param _OutputStorage: 擦除后文件的存储位置。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OriginSubtitlePath: 基于画面提取的字幕文件路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginSubtitlePath: str
         :param _TranslateSubtitlePath: 基于画面提取的字幕翻译文件路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranslateSubtitlePath: str
         """
         self._Path = None
@@ -2627,7 +2617,6 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
     @property
     def OriginSubtitlePath(self):
         """基于画面提取的字幕文件路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriginSubtitlePath
@@ -2639,7 +2628,6 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
     @property
     def TranslateSubtitlePath(self):
         """基于画面提取的字幕翻译文件路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranslateSubtitlePath
@@ -5722,35 +5710,26 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
         :param _Gender: 人物性别：
 <li>Male：男性；</li>
 <li>Female：女性。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gender: str
         :param _Birthday: 人物出生日期。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Birthday: str
         :param _Profession: 人物职业或者职务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Profession: str
         :param _SchoolOfGraduation: 人物毕业院校。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SchoolOfGraduation: str
         :param _Abstract: 人物简介。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Abstract: str
         :param _PlaceOfBirth: 人物出生地或者籍贯。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlaceOfBirth: str
         :param _PersonType: 人物类型：
 <li>Politician：官员；</li>
 <li>Artist：艺人。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type PersonType: str
         :param _Remark: 敏感度标注：
 <li>Normal：正常；</li>
 <li>Sensitive：敏感。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _Url: 截图链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self._Id = None
@@ -5818,7 +5797,6 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
         """人物性别：
 <li>Male：男性；</li>
 <li>Female：女性。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Gender
@@ -5830,7 +5808,6 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
     @property
     def Birthday(self):
         """人物出生日期。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Birthday
@@ -5842,7 +5819,6 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
     @property
     def Profession(self):
         """人物职业或者职务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Profession
@@ -5854,7 +5830,6 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
     @property
     def SchoolOfGraduation(self):
         """人物毕业院校。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchoolOfGraduation
@@ -5866,7 +5841,6 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
     @property
     def Abstract(self):
         """人物简介。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Abstract
@@ -5878,7 +5852,6 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
     @property
     def PlaceOfBirth(self):
         """人物出生地或者籍贯。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PlaceOfBirth
@@ -5892,7 +5865,6 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
         """人物类型：
 <li>Politician：官员；</li>
 <li>Artist：艺人。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PersonType
@@ -5906,7 +5878,6 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
         """敏感度标注：
 <li>Normal：正常；</li>
 <li>Sensitive：敏感。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -5918,7 +5889,6 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
     @property
     def Url(self):
         """截图链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -14186,7 +14156,7 @@ class ComposeSubtitleItem(AbstractModel):
         r"""
         :param _StyleId: 字幕样式，Styles 列表中对应的 Subtitle样式的 ID。
         :type StyleId: str
-        :param _Text: 字幕文本。
+        :param _Text: 字幕文本。<br/>注：长文本可能超出画面范围，建议使用 \n 进行换行。
         :type Text: str
         :param _TrackTime: 元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。	
         :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
@@ -14208,7 +14178,7 @@ class ComposeSubtitleItem(AbstractModel):
 
     @property
     def Text(self):
-        """字幕文本。
+        """字幕文本。<br/>注：长文本可能超出画面范围，建议使用 \n 进行换行。
         :rtype: str
         """
         return self._Text
@@ -18043,6 +18013,198 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMediaEvaluationRequest(AbstractModel):
+    """CreateMediaEvaluation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: 评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _EvaluationTask: 评测任务参数。
+        :type EvaluationTask: :class:`tencentcloud.mps.v20190612.models.EvaluationTaskInput`
+        :param _OutputStorage: 评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputDir: 评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。
+        :type OutputDir: str
+        :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param _TasksPriority: 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        :type TasksPriority: int
+        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self._InputInfo = None
+        self._EvaluationTask = None
+        self._OutputStorage = None
+        self._OutputDir = None
+        self._TaskNotifyConfig = None
+        self._TasksPriority = None
+        self._SessionId = None
+        self._SessionContext = None
+
+    @property
+    def InputInfo(self):
+        """评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def EvaluationTask(self):
+        """评测任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EvaluationTaskInput`
+        """
+        return self._EvaluationTask
+
+    @EvaluationTask.setter
+    def EvaluationTask(self, EvaluationTask):
+        self._EvaluationTask = EvaluationTask
+
+    @property
+    def OutputStorage(self):
+        """评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputDir(self):
+        """评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。
+        :rtype: str
+        """
+        return self._OutputDir
+
+    @OutputDir.setter
+    def OutputDir(self, OutputDir):
+        self._OutputDir = OutputDir
+
+    @property
+    def TaskNotifyConfig(self):
+        """任务的事件通知信息，不填代表不获取事件通知。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+    @property
+    def TasksPriority(self):
+        """任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def SessionId(self):
+        """用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        """来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("EvaluationTask") is not None:
+            self._EvaluationTask = EvaluationTaskInput()
+            self._EvaluationTask._deserialize(params.get("EvaluationTask"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputDir = params.get("OutputDir")
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = TaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self._TasksPriority = params.get("TasksPriority")
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMediaEvaluationResponse(AbstractModel):
+    """CreateMediaEvaluation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -24061,41 +24223,31 @@ class DescribeAsrHotwordsResponse(AbstractModel):
         :param _HotwordsId: 需要查询的热词库 id
         :type HotwordsId: str
         :param _Status: 当前热词库 id 状态，为 0 表示查询的时刻，没有模板绑定这个热词库，可以删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Name: 热词库的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 临时热词库为 0，返回创建时候的字符串
 文件热词库为 1，返回创建是上传的文件内容
 
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _FileName: 热词文件上传时的文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _HotWords: 查询返回的热词库列表
         :type HotWords: list of AsrHotwordsSetItem
         :param _Content: 热词库文本，根据 Type 区分
 如果 Type 为 0，是热词库字符串
 如果 Type 是 1，是热词库文本文件的文件内容 base64 编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _WordCount: 当前热词库包含的词语数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type WordCount: int
         :param _Offset: 分页偏移量，默认值：0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
         :param _Limit: 返回记录条数，默认值：10，最大值：100。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
         :param _CreateTime: 热词库创建时间 ISOUTC 格式 "2006-01-02T15:04:05Z"
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 热词库修改时间 ISOUTC 格式 "2006-01-02T15:04:05Z"
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24128,7 +24280,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
     @property
     def Status(self):
         """当前热词库 id 状态，为 0 表示查询的时刻，没有模板绑定这个热词库，可以删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -24140,7 +24291,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
     @property
     def Name(self):
         """热词库的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -24155,7 +24305,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
 文件热词库为 1，返回创建是上传的文件内容
 
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -24167,7 +24316,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
     @property
     def FileName(self):
         """热词文件上传时的文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileName
@@ -24192,7 +24340,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
         """热词库文本，根据 Type 区分
 如果 Type 为 0，是热词库字符串
 如果 Type 是 1，是热词库文本文件的文件内容 base64 编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -24204,7 +24351,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
     @property
     def WordCount(self):
         """当前热词库包含的词语数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WordCount
@@ -24216,7 +24362,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
     @property
     def Offset(self):
         """分页偏移量，默认值：0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offset
@@ -24228,7 +24373,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
     @property
     def Limit(self):
         """返回记录条数，默认值：10，最大值：100。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Limit
@@ -24240,7 +24384,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
     @property
     def CreateTime(self):
         """热词库创建时间 ISOUTC 格式 "2006-01-02T15:04:05Z"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -24252,7 +24395,6 @@ class DescribeAsrHotwordsResponse(AbstractModel):
     @property
     def UpdateTime(self):
         """热词库修改时间 ISOUTC 格式 "2006-01-02T15:04:05Z"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -24354,7 +24496,6 @@ class DescribeBatchTaskDetailResponse(AbstractModel):
         :param _TaskId: 媒体处理任务 ID。
         :type TaskId: str
         :param _BatchTaskResult: 视频处理任务信息，仅当 TaskType 为 BatchTask，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchTaskResult: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
         :param _TaskNotifyConfig: 任务的事件通知信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -24457,7 +24598,6 @@ class DescribeBatchTaskDetailResponse(AbstractModel):
     @property
     def BatchTaskResult(self):
         """视频处理任务信息，仅当 TaskType 为 BatchTask，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
         """
         return self._BatchTaskResult
@@ -31795,7 +31935,6 @@ class DescribeWordSamplesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 符合条件的记录总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _WordSet: 关键词信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -31810,7 +31949,6 @@ class DescribeWordSamplesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的记录总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -32467,16 +32605,30 @@ class DrmInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 加密类型：
-<li> simpleaes: aes-128 加密</li>
-<li> widevine</li>
-<li> fairplay：Dash不支持fairplay加密</li>  
-<li> playready</li>
-注意：此字段可能返回 null，表示取不到有效值。
+
+- simpleaes
+只能用于HLS，切片格式支持ts和mp4
+只能使用切片模式，不能使用singlefile模式
+
+- fairplay：
+只能用于HLS，切片格式只能是mp4
+可以使用切片模式或singlefile模式
+
+- widevine：
+可以用于HLS和DASH，切片格式只能是mp4
+输出HLS：可以使用切片模式或singlefile模式
+输出DASH：只能singlefile模式
+
+- playready：
+可以用于HLS和DASH，切片格式只能是mp4
+输出HLS：可以使用切片模式或singlefile模式
+输出DASH：只能singlefile模式
+
         :type Type: str
         :param _SimpleAesDrm: SimpleAes 加密信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SimpleAesDrm: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
-        :param _SpekeDrm: FairPlay, WideVine， PlayReady 加密信息。
+        :param _SpekeDrm: FairPlay，WideVine，PlayReady 加密信息。
         :type SpekeDrm: :class:`tencentcloud.mps.v20190612.models.SpekeDrm`
         """
         self._Type = None
@@ -32486,11 +32638,25 @@ class DrmInfo(AbstractModel):
     @property
     def Type(self):
         """加密类型：
-<li> simpleaes: aes-128 加密</li>
-<li> widevine</li>
-<li> fairplay：Dash不支持fairplay加密</li>  
-<li> playready</li>
-注意：此字段可能返回 null，表示取不到有效值。
+
+- simpleaes
+只能用于HLS，切片格式支持ts和mp4
+只能使用切片模式，不能使用singlefile模式
+
+- fairplay：
+只能用于HLS，切片格式只能是mp4
+可以使用切片模式或singlefile模式
+
+- widevine：
+可以用于HLS和DASH，切片格式只能是mp4
+输出HLS：可以使用切片模式或singlefile模式
+输出DASH：只能singlefile模式
+
+- playready：
+可以用于HLS和DASH，切片格式只能是mp4
+输出HLS：可以使用切片模式或singlefile模式
+输出DASH：只能singlefile模式
+
         :rtype: str
         """
         return self._Type
@@ -32513,7 +32679,7 @@ class DrmInfo(AbstractModel):
 
     @property
     def SpekeDrm(self):
-        """FairPlay, WideVine， PlayReady 加密信息。
+        """FairPlay，WideVine，PlayReady 加密信息。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SpekeDrm`
         """
         return self._SpekeDrm
@@ -33328,6 +33494,338 @@ class EnhanceConfig(AbstractModel):
         if params.get("AudioEnhance") is not None:
             self._AudioEnhance = AudioEnhanceConfig()
             self._AudioEnhance._deserialize(params.get("AudioEnhance"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EvaluationMediaInputInfo(AbstractModel):
+    """视频评测任务的视频来源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceId: 对比视频的来源 ID，当评测任务的类型为 BD_RATE 且对比视频来自用户输入时有效；当对比视频来自转码模版时为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceId: str
+        :param _InputInfo: 对比视频的输入信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        self._SourceId = None
+        self._InputInfo = None
+
+    @property
+    def SourceId(self):
+        """对比视频的来源 ID，当评测任务的类型为 BD_RATE 且对比视频来自用户输入时有效；当对比视频来自转码模版时为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def InputInfo(self):
+        """对比视频的输入信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+
+    def _deserialize(self, params):
+        self._SourceId = params.get("SourceId")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EvaluationTaskInput(AbstractModel):
+    """评测任务输入参数类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: 评测任务类型，可选 NORMAL、BD_RATE
+        :type TaskType: str
+        :param _EvaluationTypeSet: 评测类型，可选 PSNR、SSIM、VMAF、VMAF_NEG
+        :type EvaluationTypeSet: list of str
+        :param _EvaluationRangeType: 评测范围类型，可选 ALL（全部时长）、TIME（指定时长范围）、FRAME（指定帧数范围）
+        :type EvaluationRangeType: str
+        :param _ContrastInfoSet: 对比视频信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContrastInfoSet: list of MediaInputInfo
+        :param _ContrastMediaSet: 对比视频信息。
+        :type ContrastMediaSet: list of EvaluationMediaInputInfo
+        :param _ContrastTemplateSet: 对比转码模板信息。
+        :type ContrastTemplateSet: list of EvaluationTemplateInputInfo
+        :param _StartTime: 开始评测时间，单位秒，当 EvaluationRangeType 为 TIME 时有效。
+        :type StartTime: int
+        :param _EndTime: 结束评测时间，单位秒，当 EvaluationRangeType 为 TIME 时有效。
+        :type EndTime: int
+        :param _StartFrameIndex: 评测开始帧，默认从0开始，当 EvaluationRangeType 为FRAME 时有效。
+        :type StartFrameIndex: int
+        :param _EndFrameIndex: 评测结束帧，默认为视频中可以参与评测的最后一帧，当 EvaluationRangeType 为 FRAME 时有效。
+        :type EndFrameIndex: int
+        :param _ResolutionAlignmentMode: 分辨率对齐模式，默认对齐到低分辨率的视频，可选 ALIGN_HIGH_RESOLUTION、ALIGN_LOW_RESOLUTION
+        :type ResolutionAlignmentMode: str
+        :param _BitrateSet: 指定码率评测，当评测任务类型为 BD_RATE 有效。
+        :type BitrateSet: list of int
+        :param _VCRFSet: 指定 vcrf 评测，当评测任务类型为 BD_RATE 有效。
+        :type VCRFSet: list of int
+        """
+        self._TaskType = None
+        self._EvaluationTypeSet = None
+        self._EvaluationRangeType = None
+        self._ContrastInfoSet = None
+        self._ContrastMediaSet = None
+        self._ContrastTemplateSet = None
+        self._StartTime = None
+        self._EndTime = None
+        self._StartFrameIndex = None
+        self._EndFrameIndex = None
+        self._ResolutionAlignmentMode = None
+        self._BitrateSet = None
+        self._VCRFSet = None
+
+    @property
+    def TaskType(self):
+        """评测任务类型，可选 NORMAL、BD_RATE
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def EvaluationTypeSet(self):
+        """评测类型，可选 PSNR、SSIM、VMAF、VMAF_NEG
+        :rtype: list of str
+        """
+        return self._EvaluationTypeSet
+
+    @EvaluationTypeSet.setter
+    def EvaluationTypeSet(self, EvaluationTypeSet):
+        self._EvaluationTypeSet = EvaluationTypeSet
+
+    @property
+    def EvaluationRangeType(self):
+        """评测范围类型，可选 ALL（全部时长）、TIME（指定时长范围）、FRAME（指定帧数范围）
+        :rtype: str
+        """
+        return self._EvaluationRangeType
+
+    @EvaluationRangeType.setter
+    def EvaluationRangeType(self, EvaluationRangeType):
+        self._EvaluationRangeType = EvaluationRangeType
+
+    @property
+    def ContrastInfoSet(self):
+        warnings.warn("parameter `ContrastInfoSet` is deprecated", DeprecationWarning) 
+
+        """对比视频信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MediaInputInfo
+        """
+        return self._ContrastInfoSet
+
+    @ContrastInfoSet.setter
+    def ContrastInfoSet(self, ContrastInfoSet):
+        warnings.warn("parameter `ContrastInfoSet` is deprecated", DeprecationWarning) 
+
+        self._ContrastInfoSet = ContrastInfoSet
+
+    @property
+    def ContrastMediaSet(self):
+        """对比视频信息。
+        :rtype: list of EvaluationMediaInputInfo
+        """
+        return self._ContrastMediaSet
+
+    @ContrastMediaSet.setter
+    def ContrastMediaSet(self, ContrastMediaSet):
+        self._ContrastMediaSet = ContrastMediaSet
+
+    @property
+    def ContrastTemplateSet(self):
+        """对比转码模板信息。
+        :rtype: list of EvaluationTemplateInputInfo
+        """
+        return self._ContrastTemplateSet
+
+    @ContrastTemplateSet.setter
+    def ContrastTemplateSet(self, ContrastTemplateSet):
+        self._ContrastTemplateSet = ContrastTemplateSet
+
+    @property
+    def StartTime(self):
+        """开始评测时间，单位秒，当 EvaluationRangeType 为 TIME 时有效。
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束评测时间，单位秒，当 EvaluationRangeType 为 TIME 时有效。
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StartFrameIndex(self):
+        """评测开始帧，默认从0开始，当 EvaluationRangeType 为FRAME 时有效。
+        :rtype: int
+        """
+        return self._StartFrameIndex
+
+    @StartFrameIndex.setter
+    def StartFrameIndex(self, StartFrameIndex):
+        self._StartFrameIndex = StartFrameIndex
+
+    @property
+    def EndFrameIndex(self):
+        """评测结束帧，默认为视频中可以参与评测的最后一帧，当 EvaluationRangeType 为 FRAME 时有效。
+        :rtype: int
+        """
+        return self._EndFrameIndex
+
+    @EndFrameIndex.setter
+    def EndFrameIndex(self, EndFrameIndex):
+        self._EndFrameIndex = EndFrameIndex
+
+    @property
+    def ResolutionAlignmentMode(self):
+        """分辨率对齐模式，默认对齐到低分辨率的视频，可选 ALIGN_HIGH_RESOLUTION、ALIGN_LOW_RESOLUTION
+        :rtype: str
+        """
+        return self._ResolutionAlignmentMode
+
+    @ResolutionAlignmentMode.setter
+    def ResolutionAlignmentMode(self, ResolutionAlignmentMode):
+        self._ResolutionAlignmentMode = ResolutionAlignmentMode
+
+    @property
+    def BitrateSet(self):
+        """指定码率评测，当评测任务类型为 BD_RATE 有效。
+        :rtype: list of int
+        """
+        return self._BitrateSet
+
+    @BitrateSet.setter
+    def BitrateSet(self, BitrateSet):
+        self._BitrateSet = BitrateSet
+
+    @property
+    def VCRFSet(self):
+        """指定 vcrf 评测，当评测任务类型为 BD_RATE 有效。
+        :rtype: list of int
+        """
+        return self._VCRFSet
+
+    @VCRFSet.setter
+    def VCRFSet(self, VCRFSet):
+        self._VCRFSet = VCRFSet
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._EvaluationTypeSet = params.get("EvaluationTypeSet")
+        self._EvaluationRangeType = params.get("EvaluationRangeType")
+        if params.get("ContrastInfoSet") is not None:
+            self._ContrastInfoSet = []
+            for item in params.get("ContrastInfoSet"):
+                obj = MediaInputInfo()
+                obj._deserialize(item)
+                self._ContrastInfoSet.append(obj)
+        if params.get("ContrastMediaSet") is not None:
+            self._ContrastMediaSet = []
+            for item in params.get("ContrastMediaSet"):
+                obj = EvaluationMediaInputInfo()
+                obj._deserialize(item)
+                self._ContrastMediaSet.append(obj)
+        if params.get("ContrastTemplateSet") is not None:
+            self._ContrastTemplateSet = []
+            for item in params.get("ContrastTemplateSet"):
+                obj = EvaluationTemplateInputInfo()
+                obj._deserialize(item)
+                self._ContrastTemplateSet.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._StartFrameIndex = params.get("StartFrameIndex")
+        self._EndFrameIndex = params.get("EndFrameIndex")
+        self._ResolutionAlignmentMode = params.get("ResolutionAlignmentMode")
+        self._BitrateSet = params.get("BitrateSet")
+        self._VCRFSet = params.get("VCRFSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EvaluationTemplateInputInfo(AbstractModel):
+    """在评测中使用的转码模版的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 转码模版的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        """转码模版的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43056,13 +43554,10 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :param _Input: 对视频截雪碧图任务的输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
         :param _Output: 对视频截雪碧图任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginProcessTime: str
         :param _FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
         """
         self._Status = None
@@ -43132,7 +43627,6 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
     @property
     def Output(self):
         """对视频截雪碧图任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         """
         return self._Output
@@ -43144,7 +43638,6 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
     @property
     def BeginProcessTime(self):
         """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginProcessTime
@@ -43156,7 +43649,6 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
     @property
     def FinishTime(self):
         """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishTime
@@ -43512,13 +44004,10 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         :param _Input: 对视频做采样截图任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
         :param _Output: 对视频做采样截图任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginProcessTime: str
         :param _FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
         """
         self._Status = None
@@ -43588,7 +44077,6 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
     @property
     def Output(self):
         """对视频做采样截图任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         """
         return self._Output
@@ -43600,7 +44088,6 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
     @property
     def BeginProcessTime(self):
         """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginProcessTime
@@ -43612,7 +44099,6 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
     @property
     def FinishTime(self):
         """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishTime
@@ -43663,13 +44149,10 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :param _Input: 对视频按指定时间点截图任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
         :param _Output: 对视频按指定时间点截图任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginProcessTime: str
         :param _FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
         """
         self._Status = None
@@ -43739,7 +44222,6 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
     @property
     def Output(self):
         """对视频按指定时间点截图任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         """
         return self._Output
@@ -43751,7 +44233,6 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
     @property
     def BeginProcessTime(self):
         """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginProcessTime
@@ -43763,7 +44244,6 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
     @property
     def FinishTime(self):
         """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishTime
@@ -43817,7 +44297,6 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
         :param _Progress: 转码进度，取值范围 [0-100]
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
         """
         self._Status = None
@@ -43898,7 +44377,6 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
     @property
     def Progress(self):
         """转码进度，取值范围 [0-100]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Progress
@@ -46834,7 +47312,6 @@ class ModifyPersonSampleResponse(AbstractModel):
         :param _Person: 素材信息。
         :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
         :param _FailFaceInfoSet: 处理失败的五官信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46857,7 +47334,6 @@ class ModifyPersonSampleResponse(AbstractModel):
     @property
     def FailFaceInfoSet(self):
         """处理失败的五官信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AiSampleFailFaceInfo
         """
         return self._FailFaceInfoSet
@@ -49565,16 +50041,12 @@ class OverrideTranscodeParameter(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         :param _SubtitleTemplate: 字幕流配置参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         :param _AddonAudioStream: 外挂音轨参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddonAudioStream: list of MediaInputInfo
         :param _StdExtInfo: 转码扩展字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StdExtInfo: str
         :param _AddOnSubtitles: 要插入的字幕文件。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddOnSubtitles: list of AddOnSubtitle
         """
         self._Container = None
@@ -49662,7 +50134,6 @@ class OverrideTranscodeParameter(AbstractModel):
     @property
     def SubtitleTemplate(self):
         """字幕流配置参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         return self._SubtitleTemplate
@@ -49674,7 +50145,6 @@ class OverrideTranscodeParameter(AbstractModel):
     @property
     def AddonAudioStream(self):
         """外挂音轨参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MediaInputInfo
         """
         return self._AddonAudioStream
@@ -49686,7 +50156,6 @@ class OverrideTranscodeParameter(AbstractModel):
     @property
     def StdExtInfo(self):
         """转码扩展字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StdExtInfo
@@ -49698,7 +50167,6 @@ class OverrideTranscodeParameter(AbstractModel):
     @property
     def AddOnSubtitles(self):
         """要插入的字幕文件。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AddOnSubtitle
         """
         return self._AddOnSubtitles
@@ -49822,10 +50290,8 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
         :type SessionContext: str
         :param _Timestamp: - 过期时间，事件通知签名过期 UNIX 时间戳。 - 来自媒体处理的消息通知默认过期时间是10分钟，如果一条消息通知中的 Timestamp 值所指定的时间已经过期，则可以判定这条通知无效，进而可以防止网络重放攻击。 - Timestamp 的格式为十进制 UNIX 时间戳，即从1970年01月01日（UTC/GMT 的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
         :param _Sign: 事件通知安全签名 Sign = MD5（Timestamp + NotifyKey）。说明：媒体处理把Timestamp 和 TaskNotifyConfig 里面的NotifyKey 进行字符串拼接后通过 MD5 计算得出 Sign 值，并将其放在通知消息里，您的后台服务器在收到通知消息后可以根据同样的算法确认 Sign 是否正确，进而确认消息是否确实来自媒体处理后台。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sign: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -49968,7 +50434,6 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
     @property
     def Timestamp(self):
         """- 过期时间，事件通知签名过期 UNIX 时间戳。 - 来自媒体处理的消息通知默认过期时间是10分钟，如果一条消息通知中的 Timestamp 值所指定的时间已经过期，则可以判定这条通知无效，进而可以防止网络重放攻击。 - Timestamp 的格式为十进制 UNIX 时间戳，即从1970年01月01日（UTC/GMT 的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timestamp
@@ -49980,7 +50445,6 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
     @property
     def Sign(self):
         """事件通知安全签名 Sign = MD5（Timestamp + NotifyKey）。说明：媒体处理把Timestamp 和 TaskNotifyConfig 里面的NotifyKey 进行字符串拼接后通过 MD5 计算得出 Sign 值，并将其放在通知消息里，您的后台服务器在收到通知消息后可以根据同样的算法确认 Sign 是否正确，进而确认消息是否确实来自媒体处理后台。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Sign
@@ -53934,7 +54398,6 @@ class RawTranscodeParameter(AbstractModel):
         :param _TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         :param _StdExtInfo: 扩展参数，序列化的 json 字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StdExtInfo: str
         :param _EnhanceConfig: 音视频增强配置
 注意：此字段可能返回 null，表示取不到有效值。
@@ -54024,7 +54487,6 @@ class RawTranscodeParameter(AbstractModel):
     @property
     def StdExtInfo(self):
         """扩展参数，序列化的 json 字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StdExtInfo
@@ -55835,13 +56297,10 @@ class ScheduleRecognitionTaskResult(AbstractModel):
         :param _Input: 识别任务的输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param _Output: 识别任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: list of AiRecognitionResult
         :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginProcessTime: str
         :param _FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
         """
         self._Status = None
@@ -55911,7 +56370,6 @@ class ScheduleRecognitionTaskResult(AbstractModel):
     @property
     def Output(self):
         """识别任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AiRecognitionResult
         """
         return self._Output
@@ -55923,7 +56381,6 @@ class ScheduleRecognitionTaskResult(AbstractModel):
     @property
     def BeginProcessTime(self):
         """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginProcessTime
@@ -55935,7 +56392,6 @@ class ScheduleRecognitionTaskResult(AbstractModel):
     @property
     def FinishTime(self):
         """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishTime
@@ -56141,16 +56597,12 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
         :param _Message: 错误信息。
         :type Message: str
         :param _Input: 识别任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         :param _Output: 识别任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: list of SmartSubtitlesResult
         :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginProcessTime: str
         :param _FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
         """
         self._Status = None
@@ -56209,7 +56661,6 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
     @property
     def Input(self):
         """识别任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         """
         return self._Input
@@ -56221,7 +56672,6 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
     @property
     def Output(self):
         """识别任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SmartSubtitlesResult
         """
         return self._Output
@@ -56233,7 +56683,6 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
     @property
     def BeginProcessTime(self):
         """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginProcessTime
@@ -56245,7 +56694,6 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
     @property
     def FinishTime(self):
         """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishTime
@@ -56968,24 +57416,18 @@ class SegmentRecognitionItem(AbstractModel):
         :param _EndTimeOffset: 片段结束时间偏移。
         :type EndTimeOffset: float
         :param _SegmentUrl: 拆条片段URL。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentUrl: str
         :param _CovImgUrl: 拆条片段封面。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CovImgUrl: str
         :param _Title: 分段标题。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Title: str
         :param _Summary: 分段概要。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Summary: str
         :param _Keywords: 分段关键词。
         :type Keywords: list of str
         :param _BeginTime: 直播切片对应直播起始时间点，采用 ISO 日期格式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 直播切片对应直播结束时间点，采用 ISO 日期格式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _AudioUrl: 直播拆条用，音频url。
         :type AudioUrl: str
@@ -57050,7 +57492,6 @@ class SegmentRecognitionItem(AbstractModel):
     @property
     def SegmentUrl(self):
         """拆条片段URL。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SegmentUrl
@@ -57062,7 +57503,6 @@ class SegmentRecognitionItem(AbstractModel):
     @property
     def CovImgUrl(self):
         """拆条片段封面。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CovImgUrl
@@ -57074,7 +57514,6 @@ class SegmentRecognitionItem(AbstractModel):
     @property
     def Title(self):
         """分段标题。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Title
@@ -57086,7 +57525,6 @@ class SegmentRecognitionItem(AbstractModel):
     @property
     def Summary(self):
         """分段概要。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Summary
@@ -57109,7 +57547,6 @@ class SegmentRecognitionItem(AbstractModel):
     @property
     def BeginTime(self):
         """直播切片对应直播起始时间点，采用 ISO 日期格式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginTime
@@ -57121,7 +57558,6 @@ class SegmentRecognitionItem(AbstractModel):
     @property
     def EndTime(self):
         """直播切片对应直播结束时间点，采用 ISO 日期格式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -59457,8 +59893,9 @@ class SubtitleTemplate(AbstractModel):
         :param _Path: 要压制到视频中的字幕文件地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param _StreamIndex: 指定要压制到视频中的字幕轨道，Path 和 StreamIndex 至少指定一个；如果指定了Path，则优先使用Path。
-Streamindex的取值须与源文件中的字幕轨索引一致。例如，源文件中的字幕轨为stream#0:3，则StreamIndex应为3，否则可能导致任务处理失败。
+        :param _StreamIndex: 指定要压制到视频中的字幕轨道，Streamindex的取值从0开始，0表示使用源视频中的第一条字幕轨。如果指定了Path，则优先使用Path。Path 和 StreamIndex 至少指定一个。
+
+- 注意：StreamIndex必须与源文件中的字幕轨索引一致。例如，源文件中的字幕轨为stream#0:3，则StreamIndex应为3，否则可能导致任务处理失败。
 
 
 注意：此字段可能返回 null，表示取不到有效值。
@@ -59481,7 +59918,7 @@ Streamindex的取值须与源文件中的字幕轨索引一致。例如，源文
 <li>korean.ttf：韩语</li>
 <li>japanese.ttf：日语</li>
 <li>thai.ttf：泰语</li>
-默认：hei.ttf 黑体。
+默认：hei.ttf 黑体。注意：楷体推荐使用kai.ttf
 注意：此字段可能返回 null，表示取不到有效值。
         :type FontType: str
         :param _FontSize: 字体大小，格式：Npx，N 为数值，不指定则以字幕文件中为准。
@@ -59566,8 +60003,9 @@ Streamindex的取值须与源文件中的字幕轨索引一致。例如，源文
 
     @property
     def StreamIndex(self):
-        """指定要压制到视频中的字幕轨道，Path 和 StreamIndex 至少指定一个；如果指定了Path，则优先使用Path。
-Streamindex的取值须与源文件中的字幕轨索引一致。例如，源文件中的字幕轨为stream#0:3，则StreamIndex应为3，否则可能导致任务处理失败。
+        """指定要压制到视频中的字幕轨道，Streamindex的取值从0开始，0表示使用源视频中的第一条字幕轨。如果指定了Path，则优先使用Path。Path 和 StreamIndex 至少指定一个。
+
+- 注意：StreamIndex必须与源文件中的字幕轨索引一致。例如，源文件中的字幕轨为stream#0:3，则StreamIndex应为3，否则可能导致任务处理失败。
 
 
 注意：此字段可能返回 null，表示取不到有效值。
@@ -59599,7 +60037,7 @@ Streamindex的取值须与源文件中的字幕轨索引一致。例如，源文
 <li>korean.ttf：韩语</li>
 <li>japanese.ttf：日语</li>
 <li>thai.ttf：泰语</li>
-默认：hei.ttf 黑体。
+默认：hei.ttf 黑体。注意：楷体推荐使用kai.ttf
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -60233,7 +60671,7 @@ class TaskNotifyConfig(AbstractModel):
 <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
 <li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
 <li>AWS-SQS：AWS 队列，只适用于 AWS 任务，且要求同区域</li>
-<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
+<font color="red"> 注：不填或为空时默认 TDMQ-CMQ，如需采用其他类型需填写对应类型值；如果使用TDMQ-CMQ消息队列，任务回包过大可能会写入队列失败 </font>
         :type NotifyType: str
         :param _NotifyMode: 工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
         :type NotifyMode: str
@@ -60252,7 +60690,6 @@ class TaskNotifyConfig(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         :param _NotifyKey: 用于生成回调签名的key。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotifyKey: str
         """
         self._NotifyType = None
@@ -60273,7 +60710,7 @@ class TaskNotifyConfig(AbstractModel):
 <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
 <li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
 <li>AWS-SQS：AWS 队列，只适用于 AWS 任务，且要求同区域</li>
-<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
+<font color="red"> 注：不填或为空时默认 TDMQ-CMQ，如需采用其他类型需填写对应类型值；如果使用TDMQ-CMQ消息队列，任务回包过大可能会写入队列失败 </font>
         :rtype: str
         """
         return self._NotifyType
@@ -60364,7 +60801,6 @@ class TaskNotifyConfig(AbstractModel):
     @property
     def NotifyKey(self):
         """用于生成回调签名的key。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NotifyKey
@@ -61341,7 +61777,6 @@ class TranscodeTaskInput(AbstractModel):
         :type Definition: int
         :param _RawParameter: 视频转码自定义参数，当 Definition 填 0 时有效。
 该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
         :param _OverrideParameter: 视频转码自定义参数，当 Definition 不填 0 时有效。
 当填写了该结构中的部分转码参数时，将使用填写的参数覆盖转码模板中的参数。
@@ -61349,7 +61784,6 @@ class TranscodeTaskInput(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
         :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         :param _MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput
@@ -61413,7 +61847,6 @@ class TranscodeTaskInput(AbstractModel):
     def RawParameter(self):
         """视频转码自定义参数，当 Definition 填 0 时有效。
 该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
         """
         return self._RawParameter
@@ -61439,7 +61872,6 @@ class TranscodeTaskInput(AbstractModel):
     @property
     def WatermarkSet(self):
         """水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WatermarkInput
         """
         return self._WatermarkSet

@@ -9374,6 +9374,403 @@ class CreateLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMultiPathGatewayLineRequest(AbstractModel):
+    """CreateMultiPathGatewayLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID 。
+        :type ZoneId: str
+        :param _GatewayId: 多通道安全网关 ID 。
+        :type GatewayId: str
+        :param _LineType: 线路类型，取值有：
+ <li>direct ：直连线路，不支持修改和删除。</li> <li>proxy ：EdgeOne 四层代理线路，支持修改实例 ID 和规则 ID，不支持删除。</li> <li>custom ：自定义线路，支持修改、删除实例 ID 和规则 ID。</li>
+        :type LineType: str
+        :param _LineAddress: 线路地址，格式为 ip:port。
+        :type LineAddress: str
+        :param _ProxyId: 四层代理实例 ID，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可由接口 [DescribeL4Proxy](https://cloud.tencent.com/document/api/1552/103413) 获取。
+        :type ProxyId: str
+        :param _RuleId: 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可以从接口 [DescribeL4ProxyRules](https://cloud.tencent.com/document/api/1552/103412) 获取。
+        :type RuleId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._LineType = None
+        self._LineAddress = None
+        self._ProxyId = None
+        self._RuleId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID 。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """多通道安全网关 ID 。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def LineType(self):
+        """线路类型，取值有：
+ <li>direct ：直连线路，不支持修改和删除。</li> <li>proxy ：EdgeOne 四层代理线路，支持修改实例 ID 和规则 ID，不支持删除。</li> <li>custom ：自定义线路，支持修改、删除实例 ID 和规则 ID。</li>
+        :rtype: str
+        """
+        return self._LineType
+
+    @LineType.setter
+    def LineType(self, LineType):
+        self._LineType = LineType
+
+    @property
+    def LineAddress(self):
+        """线路地址，格式为 ip:port。
+        :rtype: str
+        """
+        return self._LineAddress
+
+    @LineAddress.setter
+    def LineAddress(self, LineAddress):
+        self._LineAddress = LineAddress
+
+    @property
+    def ProxyId(self):
+        """四层代理实例 ID，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可由接口 [DescribeL4Proxy](https://cloud.tencent.com/document/api/1552/103413) 获取。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RuleId(self):
+        """转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可以从接口 [DescribeL4ProxyRules](https://cloud.tencent.com/document/api/1552/103412) 获取。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._LineType = params.get("LineType")
+        self._LineAddress = params.get("LineAddress")
+        self._ProxyId = params.get("ProxyId")
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMultiPathGatewayLineResponse(AbstractModel):
+    """CreateMultiPathGatewayLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LineId: 线路 ID ， 取值有:
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :type LineId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LineId = None
+        self._RequestId = None
+
+    @property
+    def LineId(self):
+        """线路 ID ， 取值有:
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LineId = params.get("LineId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMultiPathGatewayRequest(AbstractModel):
+    """CreateMultiPathGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayType: 网关类型，取值有：
+<li> cloud：云上网关，腾讯云创建和管理的网关；</li>
+<li> private：自有网关，用户部署的私有网关。</li>
+        :type GatewayType: str
+        :param _GatewayName: 网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+        :type GatewayName: str
+        :param _GatewayPort: 网关端口，范围 1～65535（除去 8888 ）。
+        :type GatewayPort: int
+        :param _RegionId: 网关地域，GatewayType 取值为 cloud（云上网关）必填。可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+        :type RegionId: str
+        :param _GatewayIP: 网关地址，GatewayType 取值为 private（自有网关）必填，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+        :type GatewayIP: str
+        """
+        self._ZoneId = None
+        self._GatewayType = None
+        self._GatewayName = None
+        self._GatewayPort = None
+        self._RegionId = None
+        self._GatewayIP = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayType(self):
+        """网关类型，取值有：
+<li> cloud：云上网关，腾讯云创建和管理的网关；</li>
+<li> private：自有网关，用户部署的私有网关。</li>
+        :rtype: str
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def GatewayName(self):
+        """网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def GatewayPort(self):
+        """网关端口，范围 1～65535（除去 8888 ）。
+        :rtype: int
+        """
+        return self._GatewayPort
+
+    @GatewayPort.setter
+    def GatewayPort(self, GatewayPort):
+        self._GatewayPort = GatewayPort
+
+    @property
+    def RegionId(self):
+        """网关地域，GatewayType 取值为 cloud（云上网关）必填。可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def GatewayIP(self):
+        """网关地址，GatewayType 取值为 private（自有网关）必填，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+        :rtype: str
+        """
+        return self._GatewayIP
+
+    @GatewayIP.setter
+    def GatewayIP(self, GatewayIP):
+        self._GatewayIP = GatewayIP
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayType = params.get("GatewayType")
+        self._GatewayName = params.get("GatewayName")
+        self._GatewayPort = params.get("GatewayPort")
+        self._RegionId = params.get("RegionId")
+        self._GatewayIP = params.get("GatewayIP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMultiPathGatewayResponse(AbstractModel):
+    """CreateMultiPathGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GatewayId = None
+        self._RequestId = None
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMultiPathGatewaySecretKeyRequest(AbstractModel):
+    """CreateMultiPathGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _SecretKey: 多通道安全加速网关接入密钥，base64字符串，编码前字符串长度为 32-48 个字符，非必填，不填系统自动生成，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+        :type SecretKey: str
+        """
+        self._ZoneId = None
+        self._SecretKey = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SecretKey(self):
+        """多通道安全加速网关接入密钥，base64字符串，编码前字符串长度为 32-48 个字符，非必填，不填系统自动生成，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMultiPathGatewaySecretKeyResponse(AbstractModel):
+    """CreateMultiPathGatewaySecretKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOriginGroupRequest(AbstractModel):
     """CreateOriginGroup请求参数结构体
 
@@ -13558,6 +13955,179 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
 class DeleteLoadBalancerResponse(AbstractModel):
     """DeleteLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteMultiPathGatewayLineRequest(AbstractModel):
+    """DeleteMultiPathGatewayLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _LineId: 线路 ID。
+        :type LineId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._LineId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def LineId(self):
+        """线路 ID。
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._LineId = params.get("LineId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMultiPathGatewayLineResponse(AbstractModel):
+    """DeleteMultiPathGatewayLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteMultiPathGatewayRequest(AbstractModel):
+    """DeleteMultiPathGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMultiPathGatewayResponse(AbstractModel):
+    """DeleteMultiPathGateway返回参数结构体
 
     """
 
@@ -18799,6 +19369,529 @@ class DescribeLoadBalancerListResponse(AbstractModel):
                 obj = LoadBalancer()
                 obj._deserialize(item)
                 self._LoadBalancerList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewayLineRequest(AbstractModel):
+    """DescribeMultiPathGatewayLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _LineId: 线路 ID。
+        :type LineId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._LineId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def LineId(self):
+        """线路 ID。
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._LineId = params.get("LineId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewayLineResponse(AbstractModel):
+    """DescribeMultiPathGatewayLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Line: 线路信息。
+        :type Line: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayLine`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Line = None
+        self._RequestId = None
+
+    @property
+    def Line(self):
+        """线路信息。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayLine`
+        """
+        return self._Line
+
+    @Line.setter
+    def Line(self, Line):
+        self._Line = Line
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Line") is not None:
+            self._Line = MultiPathGatewayLine()
+            self._Line._deserialize(params.get("Line"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewayRegionsRequest(AbstractModel):
+    """DescribeMultiPathGatewayRegions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewayRegionsResponse(AbstractModel):
+    """DescribeMultiPathGatewayRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayRegions: 网关可用地域列表。
+        :type GatewayRegions: list of GatewayRegion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GatewayRegions = None
+        self._RequestId = None
+
+    @property
+    def GatewayRegions(self):
+        """网关可用地域列表。
+        :rtype: list of GatewayRegion
+        """
+        return self._GatewayRegions
+
+    @GatewayRegions.setter
+    def GatewayRegions(self, GatewayRegions):
+        self._GatewayRegions = GatewayRegions
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GatewayRegions") is not None:
+            self._GatewayRegions = []
+            for item in params.get("GatewayRegions"):
+                obj = GatewayRegion()
+                obj._deserialize(item)
+                self._GatewayRegions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewayRequest(AbstractModel):
+    """DescribeMultiPathGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewayResponse(AbstractModel):
+    """DescribeMultiPathGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayDetail: 网关详情。
+        :type GatewayDetail: :class:`tencentcloud.teo.v20220901.models.MultiPathGateway`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GatewayDetail = None
+        self._RequestId = None
+
+    @property
+    def GatewayDetail(self):
+        """网关详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MultiPathGateway`
+        """
+        return self._GatewayDetail
+
+    @GatewayDetail.setter
+    def GatewayDetail(self, GatewayDetail):
+        self._GatewayDetail = GatewayDetail
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GatewayDetail") is not None:
+            self._GatewayDetail = MultiPathGateway()
+            self._GatewayDetail._deserialize(params.get("GatewayDetail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewaySecretKeyRequest(AbstractModel):
+    """DescribeMultiPathGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewaySecretKeyResponse(AbstractModel):
+    """DescribeMultiPathGatewaySecretKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretKey: 接入密钥。
+        :type SecretKey: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecretKey = None
+        self._RequestId = None
+
+    @property
+    def SecretKey(self):
+        """接入密钥。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SecretKey = params.get("SecretKey")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewaysRequest(AbstractModel):
+    """DescribeMultiPathGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：1000。
+        :type Limit: int
+        :param _Filters: 网关列表的过滤字段，该参数不填写时，返回当前 appid 下所有网关信息，详细的过滤条件如下：
+<li> gateway-type：按照网关类型进行过滤，支持取值 cloud 和 private，分别代表过滤云上网关和自由网关；</li>
+<li> keyword：按照网关名的关键字进行过滤。</li>
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """网关列表的过滤字段，该参数不填写时，返回当前 appid 下所有网关信息，详细的过滤条件如下：
+<li> gateway-type：按照网关类型进行过滤，支持取值 cloud 和 private，分别代表过滤云上网关和自由网关；</li>
+<li> keyword：按照网关名的关键字进行过滤。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewaysResponse(AbstractModel):
+    """DescribeMultiPathGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Gateways: 网关详情。
+        :type Gateways: list of MultiPathGateway
+        :param _TotalCount: 总条数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Gateways = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Gateways(self):
+        """网关详情。
+        :rtype: list of MultiPathGateway
+        """
+        return self._Gateways
+
+    @Gateways.setter
+    def Gateways(self, Gateways):
+        self._Gateways = Gateways
+
+    @property
+    def TotalCount(self):
+        """总条数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Gateways") is not None:
+            self._Gateways = []
+            for item in params.get("Gateways"):
+                obj = MultiPathGateway()
+                obj._deserialize(item)
+                self._Gateways.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -26663,6 +27756,72 @@ class FunctionRuleCondition(AbstractModel):
         
 
 
+class GatewayRegion(AbstractModel):
+    """多通道安全网关可用地域
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: 地域 ID 。
+        :type RegionId: str
+        :param _CNName: 中文地域名称。
+        :type CNName: str
+        :param _ENName: 英文地域名称。
+        :type ENName: str
+        """
+        self._RegionId = None
+        self._CNName = None
+        self._ENName = None
+
+    @property
+    def RegionId(self):
+        """地域 ID 。
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def CNName(self):
+        """中文地域名称。
+        :rtype: str
+        """
+        return self._CNName
+
+    @CNName.setter
+    def CNName(self, CNName):
+        self._CNName = CNName
+
+    @property
+    def ENName(self):
+        """英文地域名称。
+        :rtype: str
+        """
+        return self._ENName
+
+    @ENName.setter
+    def ENName(self, ENName):
+        self._ENName = ENName
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._CNName = params.get("CNName")
+        self._ENName = params.get("ENName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Grpc(AbstractModel):
     """Grpc配置项
 
@@ -33927,6 +35086,371 @@ class ModifyLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMultiPathGatewayLineRequest(AbstractModel):
+    """ModifyMultiPathGatewayLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 多通道安全加速网关 ID 。
+        :type GatewayId: str
+        :param _LineId: 线路 ID ， 取值有:
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :type LineId: str
+        :param _LineType: 线路类型，取值有： 
+<li>proxy ：EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li> 
+<li>custom ：自定义线路，支持编辑、删除实例和规则。</li>
+        :type LineType: str
+        :param _LineAddress: 线路地址，格式为 host:port，直连线路（ LineType 取值为 direct ）不允许修改，其余类型支持修改。
+        :type LineAddress: str
+        :param _ProxyId: 四层代理实例 ID  ，当线路类型 LineType  取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+        :type ProxyId: str
+        :param _RuleId: 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+        :type RuleId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._LineId = None
+        self._LineType = None
+        self._LineAddress = None
+        self._ProxyId = None
+        self._RuleId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """多通道安全加速网关 ID 。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def LineId(self):
+        """线路 ID ， 取值有:
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+    @property
+    def LineType(self):
+        """线路类型，取值有： 
+<li>proxy ：EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li> 
+<li>custom ：自定义线路，支持编辑、删除实例和规则。</li>
+        :rtype: str
+        """
+        return self._LineType
+
+    @LineType.setter
+    def LineType(self, LineType):
+        self._LineType = LineType
+
+    @property
+    def LineAddress(self):
+        """线路地址，格式为 host:port，直连线路（ LineType 取值为 direct ）不允许修改，其余类型支持修改。
+        :rtype: str
+        """
+        return self._LineAddress
+
+    @LineAddress.setter
+    def LineAddress(self, LineAddress):
+        self._LineAddress = LineAddress
+
+    @property
+    def ProxyId(self):
+        """四层代理实例 ID  ，当线路类型 LineType  取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RuleId(self):
+        """转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._LineId = params.get("LineId")
+        self._LineType = params.get("LineType")
+        self._LineAddress = params.get("LineAddress")
+        self._ProxyId = params.get("ProxyId")
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMultiPathGatewayLineResponse(AbstractModel):
+    """ModifyMultiPathGatewayLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMultiPathGatewayRequest(AbstractModel):
+    """ModifyMultiPathGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _GatewayName: 网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+        :type GatewayName: str
+        :param _GatewayIP: 网关地址，GatewayType 取值为 private（自有网关）可填入进行修改，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+        :type GatewayIP: str
+        :param _GatewayPort: 网关端口，范围 1～65535（除去 8888 ），只支持修改 GatewayType 取值为 private 的自有网关。
+        :type GatewayPort: int
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._GatewayName = None
+        self._GatewayIP = None
+        self._GatewayPort = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayName(self):
+        """网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def GatewayIP(self):
+        """网关地址，GatewayType 取值为 private（自有网关）可填入进行修改，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+        :rtype: str
+        """
+        return self._GatewayIP
+
+    @GatewayIP.setter
+    def GatewayIP(self, GatewayIP):
+        self._GatewayIP = GatewayIP
+
+    @property
+    def GatewayPort(self):
+        """网关端口，范围 1～65535（除去 8888 ），只支持修改 GatewayType 取值为 private 的自有网关。
+        :rtype: int
+        """
+        return self._GatewayPort
+
+    @GatewayPort.setter
+    def GatewayPort(self, GatewayPort):
+        self._GatewayPort = GatewayPort
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayName = params.get("GatewayName")
+        self._GatewayIP = params.get("GatewayIP")
+        self._GatewayPort = params.get("GatewayPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMultiPathGatewayResponse(AbstractModel):
+    """ModifyMultiPathGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMultiPathGatewaySecretKeyRequest(AbstractModel):
+    """ModifyMultiPathGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _SecretKey: 多通道安全加速网关接入密钥，base64 字符串，编码前字符串长度为 32-48 个字符。
+        :type SecretKey: str
+        """
+        self._ZoneId = None
+        self._SecretKey = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SecretKey(self):
+        """多通道安全加速网关接入密钥，base64 字符串，编码前字符串长度为 32-48 个字符。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMultiPathGatewaySecretKeyResponse(AbstractModel):
+    """ModifyMultiPathGatewaySecretKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOriginACLRequest(AbstractModel):
     """ModifyOriginACL请求参数结构体
 
@@ -35949,6 +37473,272 @@ class ModifyZoneStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class MultiPathGateway(AbstractModel):
+    """多通道安全网关详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _GatewayName: 网关名。
+        :type GatewayName: str
+        :param _GatewayType: 网关类型，取值有：
+<li> cloud：云上网关，腾讯云创建和管理的网关。</li>
+<li> private：自有网关，用户部署的私有网关。</li>
+        :type GatewayType: str
+        :param _GatewayPort: 网关端口，范围 1～65535（除去 8888 ）。
+        :type GatewayPort: int
+        :param _Status: 网关状态，取值有：
+<li> creating : 创建中；</li>
+<li> online : 在线；</li>
+<li> offline : 离线；</li>
+<li> disable : 已停用。</li>
+        :type Status: str
+        :param _GatewayIP: 网关 IP， 格式为 IPv4。
+        :type GatewayIP: str
+        :param _RegionId: 网关地域 Id，可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+        :type RegionId: str
+        :param _Lines: 线路信息，当查询网关信息详情 DescribeMultiPathGateway 的时候会返回，当查询网关列表 DescribeMultiPathGateways 的时候不会返回。
+        :type Lines: list of MultiPathGatewayLine
+        """
+        self._GatewayId = None
+        self._GatewayName = None
+        self._GatewayType = None
+        self._GatewayPort = None
+        self._Status = None
+        self._GatewayIP = None
+        self._RegionId = None
+        self._Lines = None
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayName(self):
+        """网关名。
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def GatewayType(self):
+        """网关类型，取值有：
+<li> cloud：云上网关，腾讯云创建和管理的网关。</li>
+<li> private：自有网关，用户部署的私有网关。</li>
+        :rtype: str
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def GatewayPort(self):
+        """网关端口，范围 1～65535（除去 8888 ）。
+        :rtype: int
+        """
+        return self._GatewayPort
+
+    @GatewayPort.setter
+    def GatewayPort(self, GatewayPort):
+        self._GatewayPort = GatewayPort
+
+    @property
+    def Status(self):
+        """网关状态，取值有：
+<li> creating : 创建中；</li>
+<li> online : 在线；</li>
+<li> offline : 离线；</li>
+<li> disable : 已停用。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def GatewayIP(self):
+        """网关 IP， 格式为 IPv4。
+        :rtype: str
+        """
+        return self._GatewayIP
+
+    @GatewayIP.setter
+    def GatewayIP(self, GatewayIP):
+        self._GatewayIP = GatewayIP
+
+    @property
+    def RegionId(self):
+        """网关地域 Id，可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Lines(self):
+        """线路信息，当查询网关信息详情 DescribeMultiPathGateway 的时候会返回，当查询网关列表 DescribeMultiPathGateways 的时候不会返回。
+        :rtype: list of MultiPathGatewayLine
+        """
+        return self._Lines
+
+    @Lines.setter
+    def Lines(self, Lines):
+        self._Lines = Lines
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayName = params.get("GatewayName")
+        self._GatewayType = params.get("GatewayType")
+        self._GatewayPort = params.get("GatewayPort")
+        self._Status = params.get("Status")
+        self._GatewayIP = params.get("GatewayIP")
+        self._RegionId = params.get("RegionId")
+        if params.get("Lines") is not None:
+            self._Lines = []
+            for item in params.get("Lines"):
+                obj = MultiPathGatewayLine()
+                obj._deserialize(item)
+                self._Lines.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultiPathGatewayLine(AbstractModel):
+    """多通道安全网关线路信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LineId: 线路 ID ， 其中 line-0 和 line-1 为系统内置线路 ID，取值有:
+<li> line-0：直连线路，不支持添加、编辑和删除；</li>
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :type LineId: str
+        :param _LineType: 线路类型，取值有：
+<li>direct ：直连线路，不支持编辑、不支持删除；</li>
+<li>proxy ：EdgeOne 四层代理线路，支持编辑修改实例和规则，不支持删除；</li>
+<li>custom ：自定义线路，支持编辑、支持删除。</li>
+        :type LineType: str
+        :param _LineAddress: 线路地址，格式为 host:port 。
+        :type LineAddress: str
+        :param _ProxyId: 四层代理实例 ID  ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+        :type ProxyId: str
+        :param _RuleId: 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+        :type RuleId: str
+        """
+        self._LineId = None
+        self._LineType = None
+        self._LineAddress = None
+        self._ProxyId = None
+        self._RuleId = None
+
+    @property
+    def LineId(self):
+        """线路 ID ， 其中 line-0 和 line-1 为系统内置线路 ID，取值有:
+<li> line-0：直连线路，不支持添加、编辑和删除；</li>
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+    @property
+    def LineType(self):
+        """线路类型，取值有：
+<li>direct ：直连线路，不支持编辑、不支持删除；</li>
+<li>proxy ：EdgeOne 四层代理线路，支持编辑修改实例和规则，不支持删除；</li>
+<li>custom ：自定义线路，支持编辑、支持删除。</li>
+        :rtype: str
+        """
+        return self._LineType
+
+    @LineType.setter
+    def LineType(self, LineType):
+        self._LineType = LineType
+
+    @property
+    def LineAddress(self):
+        """线路地址，格式为 host:port 。
+        :rtype: str
+        """
+        return self._LineAddress
+
+    @LineAddress.setter
+    def LineAddress(self, LineAddress):
+        self._LineAddress = LineAddress
+
+    @property
+    def ProxyId(self):
+        """四层代理实例 ID  ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RuleId(self):
+        """转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._LineId = params.get("LineId")
+        self._LineType = params.get("LineType")
+        self._LineAddress = params.get("LineAddress")
+        self._ProxyId = params.get("ProxyId")
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MutualTLS(AbstractModel):
@@ -40622,6 +42412,85 @@ class RedirectActionParameters(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RefreshMultiPathGatewaySecretKeyRequest(AbstractModel):
+    """RefreshMultiPathGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshMultiPathGatewaySecretKeyResponse(AbstractModel):
+    """RefreshMultiPathGatewaySecretKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretKey: 多通道安全加速网关接入密钥。
+        :type SecretKey: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecretKey = None
+        self._RequestId = None
+
+    @property
+    def SecretKey(self):
+        """多通道安全加速网关接入密钥。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SecretKey = params.get("SecretKey")
+        self._RequestId = params.get("RequestId")
 
 
 class RenewFlag(AbstractModel):

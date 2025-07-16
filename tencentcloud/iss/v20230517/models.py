@@ -602,7 +602,7 @@ class AddAITaskRequest(AbstractModel):
         :type Templates: list of AITemplates
         :param _Desc: AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
         :type Desc: str
-        :param _CallbackUrl: AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+        :param _CallbackUrl: AI 结果回调地址
         :type CallbackUrl: str
         :param _IsStartTheTask: 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
         :type IsStartTheTask: bool
@@ -660,7 +660,7 @@ class AddAITaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        """AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+        """AI 结果回调地址
         :rtype: str
         """
         return self._CallbackUrl
@@ -711,7 +711,6 @@ class AddAITaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: AI任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iss.v20230517.models.AITaskInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -722,7 +721,6 @@ class AddAITaskResponse(AbstractModel):
     @property
     def Data(self):
         """AI任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iss.v20230517.models.AITaskInfo`
         """
         return self._Data
@@ -17508,7 +17506,7 @@ class UpdateAITaskRequest(AbstractModel):
         :type Desc: str
         :param _ChannelList: 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
         :type ChannelList: list of str
-        :param _CallbackUrl: AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+        :param _CallbackUrl: AI 结果回调地址
         :type CallbackUrl: str
         :param _IsStartTheTask: 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
         :type IsStartTheTask: bool
@@ -17569,7 +17567,7 @@ class UpdateAITaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        """AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+        """AI 结果回调地址
         :rtype: str
         """
         return self._CallbackUrl
@@ -17632,7 +17630,6 @@ class UpdateAITaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: AI任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iss.v20230517.models.AITaskInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17643,7 +17640,6 @@ class UpdateAITaskResponse(AbstractModel):
     @property
     def Data(self):
         """AI任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iss.v20230517.models.AITaskInfo`
         """
         return self._Data

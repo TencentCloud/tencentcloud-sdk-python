@@ -77155,6 +77155,8 @@ class Machine(AbstractModel):
         :type InstanceId: str
         :param _Remark: 备注信息
         :type Remark: str
+        :param _AgentVersion: 主机安全agent版本
+        :type AgentVersion: str
         """
         self._MachineName = None
         self._MachineOs = None
@@ -77189,6 +77191,7 @@ class Machine(AbstractModel):
         self._MachineExtraInfo = None
         self._InstanceId = None
         self._Remark = None
+        self._AgentVersion = None
 
     @property
     def MachineName(self):
@@ -77560,6 +77563,17 @@ class Machine(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def AgentVersion(self):
+        """主机安全agent版本
+        :rtype: str
+        """
+        return self._AgentVersion
+
+    @AgentVersion.setter
+    def AgentVersion(self, AgentVersion):
+        self._AgentVersion = AgentVersion
+
 
     def _deserialize(self, params):
         self._MachineName = params.get("MachineName")
@@ -77609,6 +77623,7 @@ class Machine(AbstractModel):
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._InstanceId = params.get("InstanceId")
         self._Remark = params.get("Remark")
+        self._AgentVersion = params.get("AgentVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

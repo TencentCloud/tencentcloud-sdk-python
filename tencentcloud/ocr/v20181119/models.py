@@ -12079,15 +12079,9 @@ class HKIDCardOCRRequest(AbstractModel):
         :type ReturnHeadImage: bool
         :param _DetectFake: 是否鉴伪。
         :type DetectFake: bool
-        :param _ImageBase64: 图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
         """
         self._ReturnHeadImage = None
@@ -12123,9 +12117,7 @@ class HKIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
         :rtype: str
         """
         return self._ImageBase64
@@ -12136,11 +12128,7 @@ class HKIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        """图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -12201,12 +12189,14 @@ class HKIDCardOCRResponse(AbstractModel):
 2：真。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeDetectResult: int
-        :param _HeadImage: 人像照片Base64后的结果
+        :param _HeadImage: Base64编码的证件左侧人像大图
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeadImage: str
-        :param _WarningCode: 多重告警码，当身份证是翻拍、复印件时返回对应告警码。
--9102：证照复印件告警
--9103：证照翻拍告警
+        :param _SmallHeadImage: Base64编码的证件右侧人像小图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmallHeadImage: str
+        :param _WarningCode: 该字段已废弃， 将固定返回空数组，不建议使用。
+This field is deprecated and will always return an empty array. Usage is not recommended.
         :type WarningCode: list of int
         :param _WarnCardInfos: 告警码
 -9101 证件边框不完整告警
@@ -12217,6 +12207,8 @@ class HKIDCardOCRResponse(AbstractModel):
 -9108 证件模糊告警
 -9109 告警能力未开通
         :type WarnCardInfos: list of int
+        :param _WindowEmbeddedText: 证件透明视窗内的文本信息
+        :type WindowEmbeddedText: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12232,8 +12224,10 @@ class HKIDCardOCRResponse(AbstractModel):
         self._CurrentIssueDate = None
         self._FakeDetectResult = None
         self._HeadImage = None
+        self._SmallHeadImage = None
         self._WarningCode = None
         self._WarnCardInfos = None
+        self._WindowEmbeddedText = None
         self._RequestId = None
 
     @property
@@ -12370,7 +12364,7 @@ class HKIDCardOCRResponse(AbstractModel):
 
     @property
     def HeadImage(self):
-        """人像照片Base64后的结果
+        """Base64编码的证件左侧人像大图
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12381,12 +12375,23 @@ class HKIDCardOCRResponse(AbstractModel):
         self._HeadImage = HeadImage
 
     @property
+    def SmallHeadImage(self):
+        """Base64编码的证件右侧人像小图
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SmallHeadImage
+
+    @SmallHeadImage.setter
+    def SmallHeadImage(self, SmallHeadImage):
+        self._SmallHeadImage = SmallHeadImage
+
+    @property
     def WarningCode(self):
         warnings.warn("parameter `WarningCode` is deprecated", DeprecationWarning) 
 
-        """多重告警码，当身份证是翻拍、复印件时返回对应告警码。
--9102：证照复印件告警
--9103：证照翻拍告警
+        """该字段已废弃， 将固定返回空数组，不建议使用。
+This field is deprecated and will always return an empty array. Usage is not recommended.
         :rtype: list of int
         """
         return self._WarningCode
@@ -12416,6 +12421,17 @@ class HKIDCardOCRResponse(AbstractModel):
         self._WarnCardInfos = WarnCardInfos
 
     @property
+    def WindowEmbeddedText(self):
+        """证件透明视窗内的文本信息
+        :rtype: str
+        """
+        return self._WindowEmbeddedText
+
+    @WindowEmbeddedText.setter
+    def WindowEmbeddedText(self, WindowEmbeddedText):
+        self._WindowEmbeddedText = WindowEmbeddedText
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12440,8 +12456,10 @@ class HKIDCardOCRResponse(AbstractModel):
         self._CurrentIssueDate = params.get("CurrentIssueDate")
         self._FakeDetectResult = params.get("FakeDetectResult")
         self._HeadImage = params.get("HeadImage")
+        self._SmallHeadImage = params.get("SmallHeadImage")
         self._WarningCode = params.get("WarningCode")
         self._WarnCardInfos = params.get("WarnCardInfos")
+        self._WindowEmbeddedText = params.get("WindowEmbeddedText")
         self._RequestId = params.get("RequestId")
 
 

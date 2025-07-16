@@ -927,9 +927,12 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 4：返回全文MD + 每一页的MD，
 默认值为0
         :type ResultType: str
+        :param _IgnoreFailedPage: 是否忽略失败页，返回已成功的页数据。默认为true。
+        :type IgnoreFailedPage: bool
         """
         self._TableResultType = None
         self._ResultType = None
+        self._IgnoreFailedPage = None
 
     @property
     def TableResultType(self):
@@ -962,10 +965,22 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
     def ResultType(self, ResultType):
         self._ResultType = ResultType
 
+    @property
+    def IgnoreFailedPage(self):
+        """是否忽略失败页，返回已成功的页数据。默认为true。
+        :rtype: bool
+        """
+        return self._IgnoreFailedPage
+
+    @IgnoreFailedPage.setter
+    def IgnoreFailedPage(self, IgnoreFailedPage):
+        self._IgnoreFailedPage = IgnoreFailedPage
+
 
     def _deserialize(self, params):
         self._TableResultType = params.get("TableResultType")
         self._ResultType = params.get("ResultType")
+        self._IgnoreFailedPage = params.get("IgnoreFailedPage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -995,8 +1010,8 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
  - 其他 最大20M
 
         :type FileType: str
-        :param _FileUrl: 文件的 URL 地址。
-文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+        :param _FileUrl: 说明：文件的 URL 地址。
+备注：文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
         :type FileUrl: str
         :param _FileBase64: 文件的 Base64 值。
@@ -1005,13 +1020,17 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 支持的图片像素：单边介于20-10000px之间。
 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
         :type FileBase64: str
-        :param _FileStartPageNumber: 文档的起始页码。
-当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+        :param _FileStartPageNumber: 说明：文档的起始页码。
+备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+默认值：无
         :type FileStartPageNumber: int
-        :param _FileEndPageNumber: 文档的结束页码。
-当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+        :param _FileEndPageNumber: 说明：文档的结束页码。
+备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+默认值：无
         :type FileEndPageNumber: int
-        :param _Config: 创建文档解析任务配置信息。
+        :param _Config: 说明：创建文档解析任务配置信息。
+备注：可设置结果的返回格式
+默认值：无
         :type Config: :class:`tencentcloud.lkeap.v20240522.models.CreateReconstructDocumentFlowConfig`
         """
         self._FileType = None
@@ -1044,8 +1063,8 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """文件的 URL 地址。
-文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+        """说明：文件的 URL 地址。
+备注：文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
         :rtype: str
         """
@@ -1072,8 +1091,9 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        """文档的起始页码。
-当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+        """说明：文档的起始页码。
+备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+默认值：无
         :rtype: int
         """
         return self._FileStartPageNumber
@@ -1084,8 +1104,9 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        """文档的结束页码。
-当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+        """说明：文档的结束页码。
+备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+默认值：无
         :rtype: int
         """
         return self._FileEndPageNumber
@@ -1096,7 +1117,9 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def Config(self):
-        """创建文档解析任务配置信息。
+        """说明：创建文档解析任务配置信息。
+备注：可设置结果的返回格式
+默认值：无
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.CreateReconstructDocumentFlowConfig`
         """
         return self._Config
@@ -1194,11 +1217,14 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
         :type EnableMllm: bool
         :param _MaxChunkSize: 最大分片长度
         :type MaxChunkSize: int
+        :param _IgnoreFailedPage: 是否忽略返回失败页码
+        :type IgnoreFailedPage: bool
         """
         self._TableResultType = None
         self._ResultType = None
         self._EnableMllm = None
         self._MaxChunkSize = None
+        self._IgnoreFailedPage = None
 
     @property
     def TableResultType(self):
@@ -1263,12 +1289,24 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
     def MaxChunkSize(self, MaxChunkSize):
         self._MaxChunkSize = MaxChunkSize
 
+    @property
+    def IgnoreFailedPage(self):
+        """是否忽略返回失败页码
+        :rtype: bool
+        """
+        return self._IgnoreFailedPage
+
+    @IgnoreFailedPage.setter
+    def IgnoreFailedPage(self, IgnoreFailedPage):
+        self._IgnoreFailedPage = IgnoreFailedPage
+
 
     def _deserialize(self, params):
         self._TableResultType = params.get("TableResultType")
         self._ResultType = params.get("ResultType")
         self._EnableMllm = params.get("EnableMllm")
         self._MaxChunkSize = params.get("MaxChunkSize")
+        self._IgnoreFailedPage = params.get("IgnoreFailedPage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2182,12 +2220,18 @@ class DocumentUsage(AbstractModel):
         :type SplitTokens: int
         :param _MllmTokens: mllm消耗的token数
         :type MllmTokens: int
+        :param _SuccessPageNum: 解析成功页数
+        :type SuccessPageNum: int
+        :param _FailPageNum: 解析失败页数
+        :type FailPageNum: int
         """
         self._PageNumber = None
         self._TotalToken = None
         self._TotalTokens = None
         self._SplitTokens = None
         self._MllmTokens = None
+        self._SuccessPageNum = None
+        self._FailPageNum = None
 
     @property
     def PageNumber(self):
@@ -2248,6 +2292,28 @@ class DocumentUsage(AbstractModel):
     def MllmTokens(self, MllmTokens):
         self._MllmTokens = MllmTokens
 
+    @property
+    def SuccessPageNum(self):
+        """解析成功页数
+        :rtype: int
+        """
+        return self._SuccessPageNum
+
+    @SuccessPageNum.setter
+    def SuccessPageNum(self, SuccessPageNum):
+        self._SuccessPageNum = SuccessPageNum
+
+    @property
+    def FailPageNum(self):
+        """解析失败页数
+        :rtype: int
+        """
+        return self._FailPageNum
+
+    @FailPageNum.setter
+    def FailPageNum(self, FailPageNum):
+        self._FailPageNum = FailPageNum
+
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
@@ -2255,6 +2321,8 @@ class DocumentUsage(AbstractModel):
         self._TotalTokens = params.get("TotalTokens")
         self._SplitTokens = params.get("SplitTokens")
         self._MllmTokens = params.get("MllmTokens")
+        self._SuccessPageNum = params.get("SuccessPageNum")
+        self._FailPageNum = params.get("FailPageNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2492,14 +2560,16 @@ class GetReconstructDocumentResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 解析任务ID
+        :param _TaskId: 说明：解析任务ID
+备注：仅支持单个任务ID
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """解析任务ID
+        """说明：解析任务ID
+备注：仅支持单个任务ID
         :rtype: str
         """
         return self._TaskId
@@ -2539,12 +2609,15 @@ class GetReconstructDocumentResultResponse(AbstractModel):
         :type DocumentRecognizeResultUrl: str
         :param _FailedPages: 文档解析失败的页码
         :type FailedPages: list of ReconstructDocumentFailedPage
+        :param _Usage: 文档拆分任务的用量	
+        :type Usage: :class:`tencentcloud.lkeap.v20240522.models.DocumentUsage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._DocumentRecognizeResultUrl = None
         self._FailedPages = None
+        self._Usage = None
         self._RequestId = None
 
     @property
@@ -2586,6 +2659,17 @@ class GetReconstructDocumentResultResponse(AbstractModel):
         self._FailedPages = FailedPages
 
     @property
+    def Usage(self):
+        """文档拆分任务的用量	
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.DocumentUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2606,6 +2690,9 @@ class GetReconstructDocumentResultResponse(AbstractModel):
                 obj = ReconstructDocumentFailedPage()
                 obj._deserialize(item)
                 self._FailedPages.append(obj)
+        if params.get("Usage") is not None:
+            self._Usage = DocumentUsage()
+            self._Usage._deserialize(params.get("Usage"))
         self._RequestId = params.get("RequestId")
 
 
@@ -3974,11 +4061,14 @@ class ReconstructDocumentSSEConfig(AbstractModel):
         :type ReturnPageFormat: bool
         :param _PageFormat: 自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num>
         :type PageFormat: str
+        :param _IgnoreFailedPage: 是否忽略失败页，返回已成功的页数据
+        :type IgnoreFailedPage: bool
         """
         self._TableResultType = None
         self._MarkdownImageResponseType = None
         self._ReturnPageFormat = None
         self._PageFormat = None
+        self._IgnoreFailedPage = None
 
     @property
     def TableResultType(self):
@@ -4030,12 +4120,24 @@ class ReconstructDocumentSSEConfig(AbstractModel):
     def PageFormat(self, PageFormat):
         self._PageFormat = PageFormat
 
+    @property
+    def IgnoreFailedPage(self):
+        """是否忽略失败页，返回已成功的页数据
+        :rtype: bool
+        """
+        return self._IgnoreFailedPage
+
+    @IgnoreFailedPage.setter
+    def IgnoreFailedPage(self, IgnoreFailedPage):
+        self._IgnoreFailedPage = IgnoreFailedPage
+
 
     def _deserialize(self, params):
         self._TableResultType = params.get("TableResultType")
         self._MarkdownImageResponseType = params.get("MarkdownImageResponseType")
         self._ReturnPageFormat = params.get("ReturnPageFormat")
         self._PageFormat = params.get("PageFormat")
+        self._IgnoreFailedPage = params.get("IgnoreFailedPage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4053,7 +4155,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileType: 文件类型。
+        :param _FileType: 支持解析的文件类型。
 **支持的文件类型**：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
 **支持的文件大小**：
 - PDF、DOC、DOCX、PPT、PPTX 支持100M
@@ -4061,22 +4163,29 @@ class ReconstructDocumentSSERequest(AbstractModel):
 - 其他支持20M
 
         :type FileType: str
-        :param _FileUrl: 文件的 URL 地址。
-文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+        :param _FileUrl: 文件的 URL 地址。文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
+
+默认值：无
         :type FileUrl: str
-        :param _FileBase64: 文件的 Base64 值。
-支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
-支持的图片像素：单边介于20-10000px之间。
-文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
+        :param _FileBase64: 说明：文件的 Base64 值。
+备注：支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
+支持的图片像素：单边介于20-10000px之间。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
+
+默认值：无
         :type FileBase64: str
-        :param _FileStartPageNumber: 文档的起始页码。
-当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+        :param _FileStartPageNumber: 说明：文档的起始页码。
+备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+默认值：无
         :type FileStartPageNumber: int
-        :param _FileEndPageNumber: 文档的结束页码。
-当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+        :param _FileEndPageNumber: 说明：文档的结束页码。
+备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+默认值：无
         :type FileEndPageNumber: int
-        :param _Config: 文档解析配置信息	
+        :param _Config: 说明：文档解析配置信息	
+备注：可设置返回markdown结果的格式
+默认值：无
+
         :type Config: :class:`tencentcloud.lkeap.v20240522.models.ReconstructDocumentSSEConfig`
         """
         self._FileType = None
@@ -4088,7 +4197,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型。
+        """支持解析的文件类型。
 **支持的文件类型**：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
 **支持的文件大小**：
 - PDF、DOC、DOCX、PPT、PPTX 支持100M
@@ -4105,9 +4214,10 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """文件的 URL 地址。
-文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
+        """文件的 URL 地址。文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
+
+默认值：无
         :rtype: str
         """
         return self._FileUrl
@@ -4118,10 +4228,11 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileBase64(self):
-        """文件的 Base64 值。
-支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
-支持的图片像素：单边介于20-10000px之间。
-文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
+        """说明：文件的 Base64 值。
+备注：支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
+支持的图片像素：单边介于20-10000px之间。文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
+
+默认值：无
         :rtype: str
         """
         return self._FileBase64
@@ -4132,8 +4243,9 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        """文档的起始页码。
-当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+        """说明：文档的起始页码。
+备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的起始页码，识别的页码包含当前值。
+默认值：无
         :rtype: int
         """
         return self._FileStartPageNumber
@@ -4144,8 +4256,9 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        """文档的结束页码。
-当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+        """说明：文档的结束页码。
+备注：当传入文件是PDF、PDF、PPT、PPTX、DOC类型时，用来指定识别的结束页码，识别的页码包含当前值。
+默认值：无
         :rtype: int
         """
         return self._FileEndPageNumber
@@ -4156,7 +4269,10 @@ class ReconstructDocumentSSERequest(AbstractModel):
 
     @property
     def Config(self):
-        """文档解析配置信息	
+        """说明：文档解析配置信息	
+备注：可设置返回markdown结果的格式
+默认值：无
+
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.ReconstructDocumentSSEConfig`
         """
         return self._Config
@@ -4194,19 +4310,21 @@ class ReconstructDocumentSSEResponse(AbstractModel):
         r"""
         :param _TaskId: 任务ID。本次请求的唯一标识
         :type TaskId: str
-        :param _ResponseType: 响应类型。1：返回进度信息，2：返回解析结果
+        :param _ResponseType: 响应类型。1：返回进度信息， 2：返回解析结果
         :type ResponseType: str
         :param _Progress: 进度。0~100
         :type Progress: str
         :param _ProgressMessage: 进度信息。
         :type ProgressMessage: str
-        :param _DocumentRecognizeResultUrl: 文档解析结果的临时下载地址。
-文件类型为zip压缩包，下载链接有效期30分钟。
-压缩包内包含*.md、*.json以及images文件夹。
+        :param _DocumentRecognizeResultUrl: 文档解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟。压缩包内包含*.md、*.json以及images文件夹。
 
         :type DocumentRecognizeResultUrl: str
         :param _FailedPages: 文档解析失败的页码。
         :type FailedPages: list of ReconstructDocumentFailedPage
+        :param _FailPageNum: 文档解析失败页数
+        :type FailPageNum: int
+        :param _SuccessPageNum: 文档解析成功页数
+        :type SuccessPageNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
@@ -4216,6 +4334,8 @@ class ReconstructDocumentSSEResponse(AbstractModel):
         self._ProgressMessage = None
         self._DocumentRecognizeResultUrl = None
         self._FailedPages = None
+        self._FailPageNum = None
+        self._SuccessPageNum = None
         self._RequestId = None
 
     @property
@@ -4231,7 +4351,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def ResponseType(self):
-        """响应类型。1：返回进度信息，2：返回解析结果
+        """响应类型。1：返回进度信息， 2：返回解析结果
         :rtype: str
         """
         return self._ResponseType
@@ -4264,9 +4384,7 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        """文档解析结果的临时下载地址。
-文件类型为zip压缩包，下载链接有效期30分钟。
-压缩包内包含*.md、*.json以及images文件夹。
+        """文档解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟。压缩包内包含*.md、*.json以及images文件夹。
 
         :rtype: str
         """
@@ -4286,6 +4404,28 @@ class ReconstructDocumentSSEResponse(AbstractModel):
     @FailedPages.setter
     def FailedPages(self, FailedPages):
         self._FailedPages = FailedPages
+
+    @property
+    def FailPageNum(self):
+        """文档解析失败页数
+        :rtype: int
+        """
+        return self._FailPageNum
+
+    @FailPageNum.setter
+    def FailPageNum(self, FailPageNum):
+        self._FailPageNum = FailPageNum
+
+    @property
+    def SuccessPageNum(self):
+        """文档解析成功页数
+        :rtype: int
+        """
+        return self._SuccessPageNum
+
+    @SuccessPageNum.setter
+    def SuccessPageNum(self, SuccessPageNum):
+        self._SuccessPageNum = SuccessPageNum
 
     @property
     def RequestId(self):
@@ -4311,6 +4451,8 @@ class ReconstructDocumentSSEResponse(AbstractModel):
                 obj = ReconstructDocumentFailedPage()
                 obj._deserialize(item)
                 self._FailedPages.append(obj)
+        self._FailPageNum = params.get("FailPageNum")
+        self._SuccessPageNum = params.get("SuccessPageNum")
         self._RequestId = params.get("RequestId")
 
 

@@ -2652,6 +2652,1090 @@ class DescribeEnterprisesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFakeAppsRequest(AbstractModel):
+    """DescribeFakeApps请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsNew: 是否新增数据
+        :type IsNew: bool
+        :param _CustomerId: 企业ID
+        :type CustomerId: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _EnterpriseUidList: 子公司ID列表
+        :type EnterpriseUidList: list of str
+        :param _Format: 数据输出格式：json、file，默认不填为json
+        :type Format: str
+        :param _CreateAtStart: 创建时间-开始
+        :type CreateAtStart: str
+        :param _CreateAtEnd: 创建时间-结束
+        :type CreateAtEnd: str
+        :param _UpdateAtStart: 更新时间-开始
+        :type UpdateAtStart: str
+        :param _UpdateAtEnd: 更新时间-结束
+        :type UpdateAtEnd: str
+        :param _Filters: 查询数组
+        :type Filters: list of Filter
+        :param _Ignored: 是否显示被忽略的数据
+        :type Ignored: bool
+        """
+        self._IsNew = None
+        self._CustomerId = None
+        self._Limit = None
+        self._Offset = None
+        self._EnterpriseUidList = None
+        self._Format = None
+        self._CreateAtStart = None
+        self._CreateAtEnd = None
+        self._UpdateAtStart = None
+        self._UpdateAtEnd = None
+        self._Filters = None
+        self._Ignored = None
+
+    @property
+    def IsNew(self):
+        """是否新增数据
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def CustomerId(self):
+        """企业ID
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EnterpriseUidList(self):
+        """子公司ID列表
+        :rtype: list of str
+        """
+        return self._EnterpriseUidList
+
+    @EnterpriseUidList.setter
+    def EnterpriseUidList(self, EnterpriseUidList):
+        self._EnterpriseUidList = EnterpriseUidList
+
+    @property
+    def Format(self):
+        """数据输出格式：json、file，默认不填为json
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def CreateAtStart(self):
+        """创建时间-开始
+        :rtype: str
+        """
+        return self._CreateAtStart
+
+    @CreateAtStart.setter
+    def CreateAtStart(self, CreateAtStart):
+        self._CreateAtStart = CreateAtStart
+
+    @property
+    def CreateAtEnd(self):
+        """创建时间-结束
+        :rtype: str
+        """
+        return self._CreateAtEnd
+
+    @CreateAtEnd.setter
+    def CreateAtEnd(self, CreateAtEnd):
+        self._CreateAtEnd = CreateAtEnd
+
+    @property
+    def UpdateAtStart(self):
+        """更新时间-开始
+        :rtype: str
+        """
+        return self._UpdateAtStart
+
+    @UpdateAtStart.setter
+    def UpdateAtStart(self, UpdateAtStart):
+        self._UpdateAtStart = UpdateAtStart
+
+    @property
+    def UpdateAtEnd(self):
+        """更新时间-结束
+        :rtype: str
+        """
+        return self._UpdateAtEnd
+
+    @UpdateAtEnd.setter
+    def UpdateAtEnd(self, UpdateAtEnd):
+        self._UpdateAtEnd = UpdateAtEnd
+
+    @property
+    def Filters(self):
+        """查询数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Ignored(self):
+        """是否显示被忽略的数据
+        :rtype: bool
+        """
+        return self._Ignored
+
+    @Ignored.setter
+    def Ignored(self, Ignored):
+        self._Ignored = Ignored
+
+
+    def _deserialize(self, params):
+        self._IsNew = params.get("IsNew")
+        self._CustomerId = params.get("CustomerId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EnterpriseUidList = params.get("EnterpriseUidList")
+        self._Format = params.get("Format")
+        self._CreateAtStart = params.get("CreateAtStart")
+        self._CreateAtEnd = params.get("CreateAtEnd")
+        self._UpdateAtStart = params.get("UpdateAtStart")
+        self._UpdateAtEnd = params.get("UpdateAtEnd")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Ignored = params.get("Ignored")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFakeAppsResponse(AbstractModel):
+    """DescribeFakeApps返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _List: 仿冒应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DisplayFakeApp
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """仿冒应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DisplayFakeApp
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DisplayFakeApp()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFakeMiniProgramsRequest(AbstractModel):
+    """DescribeFakeMiniPrograms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsNew: 是否新增数据
+        :type IsNew: bool
+        :param _CustomerId: 企业ID
+        :type CustomerId: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _EnterpriseUidList: 子公司ID列表
+        :type EnterpriseUidList: list of str
+        :param _Format: 数据输出格式：json、file，默认不填为json
+        :type Format: str
+        :param _CreateAtStart: 创建时间-开始
+        :type CreateAtStart: str
+        :param _CreateAtEnd: 创建时间-结束
+        :type CreateAtEnd: str
+        :param _UpdateAtStart: 更新时间-开始
+        :type UpdateAtStart: str
+        :param _UpdateAtEnd: 更新时间-结束
+        :type UpdateAtEnd: str
+        :param _Filters: 查询数组
+        :type Filters: list of Filter
+        :param _Ignored: 是否显示被忽略的数据
+        :type Ignored: bool
+        """
+        self._IsNew = None
+        self._CustomerId = None
+        self._Limit = None
+        self._Offset = None
+        self._EnterpriseUidList = None
+        self._Format = None
+        self._CreateAtStart = None
+        self._CreateAtEnd = None
+        self._UpdateAtStart = None
+        self._UpdateAtEnd = None
+        self._Filters = None
+        self._Ignored = None
+
+    @property
+    def IsNew(self):
+        """是否新增数据
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def CustomerId(self):
+        """企业ID
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EnterpriseUidList(self):
+        """子公司ID列表
+        :rtype: list of str
+        """
+        return self._EnterpriseUidList
+
+    @EnterpriseUidList.setter
+    def EnterpriseUidList(self, EnterpriseUidList):
+        self._EnterpriseUidList = EnterpriseUidList
+
+    @property
+    def Format(self):
+        """数据输出格式：json、file，默认不填为json
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def CreateAtStart(self):
+        """创建时间-开始
+        :rtype: str
+        """
+        return self._CreateAtStart
+
+    @CreateAtStart.setter
+    def CreateAtStart(self, CreateAtStart):
+        self._CreateAtStart = CreateAtStart
+
+    @property
+    def CreateAtEnd(self):
+        """创建时间-结束
+        :rtype: str
+        """
+        return self._CreateAtEnd
+
+    @CreateAtEnd.setter
+    def CreateAtEnd(self, CreateAtEnd):
+        self._CreateAtEnd = CreateAtEnd
+
+    @property
+    def UpdateAtStart(self):
+        """更新时间-开始
+        :rtype: str
+        """
+        return self._UpdateAtStart
+
+    @UpdateAtStart.setter
+    def UpdateAtStart(self, UpdateAtStart):
+        self._UpdateAtStart = UpdateAtStart
+
+    @property
+    def UpdateAtEnd(self):
+        """更新时间-结束
+        :rtype: str
+        """
+        return self._UpdateAtEnd
+
+    @UpdateAtEnd.setter
+    def UpdateAtEnd(self, UpdateAtEnd):
+        self._UpdateAtEnd = UpdateAtEnd
+
+    @property
+    def Filters(self):
+        """查询数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Ignored(self):
+        """是否显示被忽略的数据
+        :rtype: bool
+        """
+        return self._Ignored
+
+    @Ignored.setter
+    def Ignored(self, Ignored):
+        self._Ignored = Ignored
+
+
+    def _deserialize(self, params):
+        self._IsNew = params.get("IsNew")
+        self._CustomerId = params.get("CustomerId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EnterpriseUidList = params.get("EnterpriseUidList")
+        self._Format = params.get("Format")
+        self._CreateAtStart = params.get("CreateAtStart")
+        self._CreateAtEnd = params.get("CreateAtEnd")
+        self._UpdateAtStart = params.get("UpdateAtStart")
+        self._UpdateAtEnd = params.get("UpdateAtEnd")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Ignored = params.get("Ignored")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFakeMiniProgramsResponse(AbstractModel):
+    """DescribeFakeMiniPrograms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _List: 仿冒小程序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DisplayFakeMiniProgram
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """仿冒小程序
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DisplayFakeMiniProgram
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DisplayFakeMiniProgram()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFakeWebsitesRequest(AbstractModel):
+    """DescribeFakeWebsites请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsNew: 是否新增数据
+        :type IsNew: bool
+        :param _CustomerId: 企业ID
+        :type CustomerId: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _EnterpriseUidList: 子公司ID列表
+        :type EnterpriseUidList: list of str
+        :param _Format: 数据输出格式：json、file，默认不填为json
+        :type Format: str
+        :param _CreateAtStart: 创建时间-开始
+        :type CreateAtStart: str
+        :param _CreateAtEnd: 创建时间-结束
+        :type CreateAtEnd: str
+        :param _UpdateAtStart: 更新时间-开始
+        :type UpdateAtStart: str
+        :param _UpdateAtEnd: 更新时间-结束
+        :type UpdateAtEnd: str
+        :param _Filters: 查询数组
+        :type Filters: list of Filter
+        :param _Ignored: 是否显示被忽略的数据
+        :type Ignored: bool
+        """
+        self._IsNew = None
+        self._CustomerId = None
+        self._Limit = None
+        self._Offset = None
+        self._EnterpriseUidList = None
+        self._Format = None
+        self._CreateAtStart = None
+        self._CreateAtEnd = None
+        self._UpdateAtStart = None
+        self._UpdateAtEnd = None
+        self._Filters = None
+        self._Ignored = None
+
+    @property
+    def IsNew(self):
+        """是否新增数据
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def CustomerId(self):
+        """企业ID
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EnterpriseUidList(self):
+        """子公司ID列表
+        :rtype: list of str
+        """
+        return self._EnterpriseUidList
+
+    @EnterpriseUidList.setter
+    def EnterpriseUidList(self, EnterpriseUidList):
+        self._EnterpriseUidList = EnterpriseUidList
+
+    @property
+    def Format(self):
+        """数据输出格式：json、file，默认不填为json
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def CreateAtStart(self):
+        """创建时间-开始
+        :rtype: str
+        """
+        return self._CreateAtStart
+
+    @CreateAtStart.setter
+    def CreateAtStart(self, CreateAtStart):
+        self._CreateAtStart = CreateAtStart
+
+    @property
+    def CreateAtEnd(self):
+        """创建时间-结束
+        :rtype: str
+        """
+        return self._CreateAtEnd
+
+    @CreateAtEnd.setter
+    def CreateAtEnd(self, CreateAtEnd):
+        self._CreateAtEnd = CreateAtEnd
+
+    @property
+    def UpdateAtStart(self):
+        """更新时间-开始
+        :rtype: str
+        """
+        return self._UpdateAtStart
+
+    @UpdateAtStart.setter
+    def UpdateAtStart(self, UpdateAtStart):
+        self._UpdateAtStart = UpdateAtStart
+
+    @property
+    def UpdateAtEnd(self):
+        """更新时间-结束
+        :rtype: str
+        """
+        return self._UpdateAtEnd
+
+    @UpdateAtEnd.setter
+    def UpdateAtEnd(self, UpdateAtEnd):
+        self._UpdateAtEnd = UpdateAtEnd
+
+    @property
+    def Filters(self):
+        """查询数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Ignored(self):
+        """是否显示被忽略的数据
+        :rtype: bool
+        """
+        return self._Ignored
+
+    @Ignored.setter
+    def Ignored(self, Ignored):
+        self._Ignored = Ignored
+
+
+    def _deserialize(self, params):
+        self._IsNew = params.get("IsNew")
+        self._CustomerId = params.get("CustomerId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EnterpriseUidList = params.get("EnterpriseUidList")
+        self._Format = params.get("Format")
+        self._CreateAtStart = params.get("CreateAtStart")
+        self._CreateAtEnd = params.get("CreateAtEnd")
+        self._UpdateAtStart = params.get("UpdateAtStart")
+        self._UpdateAtEnd = params.get("UpdateAtEnd")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Ignored = params.get("Ignored")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFakeWebsitesResponse(AbstractModel):
+    """DescribeFakeWebsites返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _List: 仿冒网站
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DisplayFakeWebsite
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """仿冒网站
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DisplayFakeWebsite
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DisplayFakeWebsite()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFakeWechatOfficialsRequest(AbstractModel):
+    """DescribeFakeWechatOfficials请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsNew: 是否新增数据
+        :type IsNew: bool
+        :param _CustomerId: 企业ID
+        :type CustomerId: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _EnterpriseUidList: 子公司ID列表
+        :type EnterpriseUidList: list of str
+        :param _Format: 数据输出格式：json、file，默认不填为json
+        :type Format: str
+        :param _CreateAtStart: 创建时间-开始
+        :type CreateAtStart: str
+        :param _CreateAtEnd: 创建时间-结束
+        :type CreateAtEnd: str
+        :param _UpdateAtStart: 更新时间-开始
+        :type UpdateAtStart: str
+        :param _UpdateAtEnd: 更新时间-结束
+        :type UpdateAtEnd: str
+        :param _Filters: 查询数组
+        :type Filters: list of Filter
+        :param _Ignored: 是否显示被忽略的数据
+        :type Ignored: bool
+        """
+        self._IsNew = None
+        self._CustomerId = None
+        self._Limit = None
+        self._Offset = None
+        self._EnterpriseUidList = None
+        self._Format = None
+        self._CreateAtStart = None
+        self._CreateAtEnd = None
+        self._UpdateAtStart = None
+        self._UpdateAtEnd = None
+        self._Filters = None
+        self._Ignored = None
+
+    @property
+    def IsNew(self):
+        """是否新增数据
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def CustomerId(self):
+        """企业ID
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EnterpriseUidList(self):
+        """子公司ID列表
+        :rtype: list of str
+        """
+        return self._EnterpriseUidList
+
+    @EnterpriseUidList.setter
+    def EnterpriseUidList(self, EnterpriseUidList):
+        self._EnterpriseUidList = EnterpriseUidList
+
+    @property
+    def Format(self):
+        """数据输出格式：json、file，默认不填为json
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def CreateAtStart(self):
+        """创建时间-开始
+        :rtype: str
+        """
+        return self._CreateAtStart
+
+    @CreateAtStart.setter
+    def CreateAtStart(self, CreateAtStart):
+        self._CreateAtStart = CreateAtStart
+
+    @property
+    def CreateAtEnd(self):
+        """创建时间-结束
+        :rtype: str
+        """
+        return self._CreateAtEnd
+
+    @CreateAtEnd.setter
+    def CreateAtEnd(self, CreateAtEnd):
+        self._CreateAtEnd = CreateAtEnd
+
+    @property
+    def UpdateAtStart(self):
+        """更新时间-开始
+        :rtype: str
+        """
+        return self._UpdateAtStart
+
+    @UpdateAtStart.setter
+    def UpdateAtStart(self, UpdateAtStart):
+        self._UpdateAtStart = UpdateAtStart
+
+    @property
+    def UpdateAtEnd(self):
+        """更新时间-结束
+        :rtype: str
+        """
+        return self._UpdateAtEnd
+
+    @UpdateAtEnd.setter
+    def UpdateAtEnd(self, UpdateAtEnd):
+        self._UpdateAtEnd = UpdateAtEnd
+
+    @property
+    def Filters(self):
+        """查询数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Ignored(self):
+        """是否显示被忽略的数据
+        :rtype: bool
+        """
+        return self._Ignored
+
+    @Ignored.setter
+    def Ignored(self, Ignored):
+        self._Ignored = Ignored
+
+
+    def _deserialize(self, params):
+        self._IsNew = params.get("IsNew")
+        self._CustomerId = params.get("CustomerId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EnterpriseUidList = params.get("EnterpriseUidList")
+        self._Format = params.get("Format")
+        self._CreateAtStart = params.get("CreateAtStart")
+        self._CreateAtEnd = params.get("CreateAtEnd")
+        self._UpdateAtStart = params.get("UpdateAtStart")
+        self._UpdateAtEnd = params.get("UpdateAtEnd")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Ignored = params.get("Ignored")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFakeWechatOfficialsResponse(AbstractModel):
+    """DescribeFakeWechatOfficials返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _List: 仿冒公众号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DisplayFakeWechatOfficial
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """仿冒公众号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DisplayFakeWechatOfficial
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DisplayFakeWechatOfficial()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGithubsRequest(AbstractModel):
     """DescribeGithubs请求参数结构体
 
@@ -8134,6 +9218,608 @@ class DisplayEnterprise(AbstractModel):
         self._SubDomainCount = params.get("SubDomainCount")
         self._HttpCount = params.get("HttpCount")
         self._VulCount = params.get("VulCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisplayFakeApp(AbstractModel):
+    """仿冒应用详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 主键ID
+        :type Id: int
+        :param _DisplayToolCommon: 公共字段
+        :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _AppName: 仿冒应用名称
+        :type AppName: str
+        :param _PackageName: 仿冒应用包名称
+        :type PackageName: str
+        :param _DownloadUrl: 下载链接
+        :type DownloadUrl: str
+        :param _HandlingStatus: 处置状态：0-待处理 1-处理中 2-已处理
+        :type HandlingStatus: int
+        :param _ShutdownStatus: 关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        :type ShutdownStatus: int
+        :param _ShutdownTime: 关停时间
+        :type ShutdownTime: str
+        """
+        self._Id = None
+        self._DisplayToolCommon = None
+        self._AppName = None
+        self._PackageName = None
+        self._DownloadUrl = None
+        self._HandlingStatus = None
+        self._ShutdownStatus = None
+        self._ShutdownTime = None
+
+    @property
+    def Id(self):
+        """主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DisplayToolCommon(self):
+        """公共字段
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        """
+        return self._DisplayToolCommon
+
+    @DisplayToolCommon.setter
+    def DisplayToolCommon(self, DisplayToolCommon):
+        self._DisplayToolCommon = DisplayToolCommon
+
+    @property
+    def AppName(self):
+        """仿冒应用名称
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PackageName(self):
+        """仿冒应用包名称
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+    @property
+    def DownloadUrl(self):
+        """下载链接
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def HandlingStatus(self):
+        """处置状态：0-待处理 1-处理中 2-已处理
+        :rtype: int
+        """
+        return self._HandlingStatus
+
+    @HandlingStatus.setter
+    def HandlingStatus(self, HandlingStatus):
+        self._HandlingStatus = HandlingStatus
+
+    @property
+    def ShutdownStatus(self):
+        """关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        :rtype: int
+        """
+        return self._ShutdownStatus
+
+    @ShutdownStatus.setter
+    def ShutdownStatus(self, ShutdownStatus):
+        self._ShutdownStatus = ShutdownStatus
+
+    @property
+    def ShutdownTime(self):
+        """关停时间
+        :rtype: str
+        """
+        return self._ShutdownTime
+
+    @ShutdownTime.setter
+    def ShutdownTime(self, ShutdownTime):
+        self._ShutdownTime = ShutdownTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("DisplayToolCommon") is not None:
+            self._DisplayToolCommon = DisplayToolCommon()
+            self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._AppName = params.get("AppName")
+        self._PackageName = params.get("PackageName")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._HandlingStatus = params.get("HandlingStatus")
+        self._ShutdownStatus = params.get("ShutdownStatus")
+        self._ShutdownTime = params.get("ShutdownTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisplayFakeMiniProgram(AbstractModel):
+    """仿冒小程序详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 主键ID
+        :type Id: int
+        :param _DisplayToolCommon: 公共字段
+        :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _ProgramName: 仿冒小程序名称
+        :type ProgramName: str
+        :param _ProgramId: 小程序ID
+        :type ProgramId: str
+        :param _Category: 类别
+        :type Category: str
+        :param _QrCode: 二维码
+        :type QrCode: str
+        :param _HandlingStatus: 处置状态：0-待处理 1-处理中 2-已处理
+        :type HandlingStatus: int
+        :param _ShutdownStatus: 关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        :type ShutdownStatus: int
+        :param _ShutdownTime: 关停时间
+        :type ShutdownTime: str
+        """
+        self._Id = None
+        self._DisplayToolCommon = None
+        self._ProgramName = None
+        self._ProgramId = None
+        self._Category = None
+        self._QrCode = None
+        self._HandlingStatus = None
+        self._ShutdownStatus = None
+        self._ShutdownTime = None
+
+    @property
+    def Id(self):
+        """主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DisplayToolCommon(self):
+        """公共字段
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        """
+        return self._DisplayToolCommon
+
+    @DisplayToolCommon.setter
+    def DisplayToolCommon(self, DisplayToolCommon):
+        self._DisplayToolCommon = DisplayToolCommon
+
+    @property
+    def ProgramName(self):
+        """仿冒小程序名称
+        :rtype: str
+        """
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def ProgramId(self):
+        """小程序ID
+        :rtype: str
+        """
+        return self._ProgramId
+
+    @ProgramId.setter
+    def ProgramId(self, ProgramId):
+        self._ProgramId = ProgramId
+
+    @property
+    def Category(self):
+        """类别
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def QrCode(self):
+        """二维码
+        :rtype: str
+        """
+        return self._QrCode
+
+    @QrCode.setter
+    def QrCode(self, QrCode):
+        self._QrCode = QrCode
+
+    @property
+    def HandlingStatus(self):
+        """处置状态：0-待处理 1-处理中 2-已处理
+        :rtype: int
+        """
+        return self._HandlingStatus
+
+    @HandlingStatus.setter
+    def HandlingStatus(self, HandlingStatus):
+        self._HandlingStatus = HandlingStatus
+
+    @property
+    def ShutdownStatus(self):
+        """关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        :rtype: int
+        """
+        return self._ShutdownStatus
+
+    @ShutdownStatus.setter
+    def ShutdownStatus(self, ShutdownStatus):
+        self._ShutdownStatus = ShutdownStatus
+
+    @property
+    def ShutdownTime(self):
+        """关停时间
+        :rtype: str
+        """
+        return self._ShutdownTime
+
+    @ShutdownTime.setter
+    def ShutdownTime(self, ShutdownTime):
+        self._ShutdownTime = ShutdownTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("DisplayToolCommon") is not None:
+            self._DisplayToolCommon = DisplayToolCommon()
+            self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._ProgramName = params.get("ProgramName")
+        self._ProgramId = params.get("ProgramId")
+        self._Category = params.get("Category")
+        self._QrCode = params.get("QrCode")
+        self._HandlingStatus = params.get("HandlingStatus")
+        self._ShutdownStatus = params.get("ShutdownStatus")
+        self._ShutdownTime = params.get("ShutdownTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisplayFakeWebsite(AbstractModel):
+    """仿冒网站详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 主键ID
+        :type Id: int
+        :param _DisplayToolCommon: 公共字段
+        :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _Website: 仿冒网站
+        :type Website: str
+        :param _IPLocation: ip位置
+        :type IPLocation: str
+        :param _Screenshot: 截图
+        :type Screenshot: str
+        :param _HandlingStatus: 处置状态：0-待处理 1-处理中 2-已处理
+        :type HandlingStatus: int
+        :param _ShutdownStatus: 关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        :type ShutdownStatus: int
+        :param _ShutdownTime: 关停时间
+        :type ShutdownTime: str
+        """
+        self._Id = None
+        self._DisplayToolCommon = None
+        self._Website = None
+        self._IPLocation = None
+        self._Screenshot = None
+        self._HandlingStatus = None
+        self._ShutdownStatus = None
+        self._ShutdownTime = None
+
+    @property
+    def Id(self):
+        """主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DisplayToolCommon(self):
+        """公共字段
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        """
+        return self._DisplayToolCommon
+
+    @DisplayToolCommon.setter
+    def DisplayToolCommon(self, DisplayToolCommon):
+        self._DisplayToolCommon = DisplayToolCommon
+
+    @property
+    def Website(self):
+        """仿冒网站
+        :rtype: str
+        """
+        return self._Website
+
+    @Website.setter
+    def Website(self, Website):
+        self._Website = Website
+
+    @property
+    def IPLocation(self):
+        """ip位置
+        :rtype: str
+        """
+        return self._IPLocation
+
+    @IPLocation.setter
+    def IPLocation(self, IPLocation):
+        self._IPLocation = IPLocation
+
+    @property
+    def Screenshot(self):
+        """截图
+        :rtype: str
+        """
+        return self._Screenshot
+
+    @Screenshot.setter
+    def Screenshot(self, Screenshot):
+        self._Screenshot = Screenshot
+
+    @property
+    def HandlingStatus(self):
+        """处置状态：0-待处理 1-处理中 2-已处理
+        :rtype: int
+        """
+        return self._HandlingStatus
+
+    @HandlingStatus.setter
+    def HandlingStatus(self, HandlingStatus):
+        self._HandlingStatus = HandlingStatus
+
+    @property
+    def ShutdownStatus(self):
+        """关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        :rtype: int
+        """
+        return self._ShutdownStatus
+
+    @ShutdownStatus.setter
+    def ShutdownStatus(self, ShutdownStatus):
+        self._ShutdownStatus = ShutdownStatus
+
+    @property
+    def ShutdownTime(self):
+        """关停时间
+        :rtype: str
+        """
+        return self._ShutdownTime
+
+    @ShutdownTime.setter
+    def ShutdownTime(self, ShutdownTime):
+        self._ShutdownTime = ShutdownTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("DisplayToolCommon") is not None:
+            self._DisplayToolCommon = DisplayToolCommon()
+            self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._Website = params.get("Website")
+        self._IPLocation = params.get("IPLocation")
+        self._Screenshot = params.get("Screenshot")
+        self._HandlingStatus = params.get("HandlingStatus")
+        self._ShutdownStatus = params.get("ShutdownStatus")
+        self._ShutdownTime = params.get("ShutdownTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisplayFakeWechatOfficial(AbstractModel):
+    """仿冒公众号详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 主键ID
+        :type Id: int
+        :param _DisplayToolCommon: 公共字段
+        :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _AccountName: 仿冒公众号名称
+        :type AccountName: str
+        :param _WechatId: 公众号ID
+        :type WechatId: str
+        :param _Avatar: 头像
+        :type Avatar: str
+        :param _QrCode: 二维码
+        :type QrCode: str
+        :param _HandlingStatus: 处置状态：0-待处理 1-处理中 2-已处理
+        :type HandlingStatus: int
+        :param _ShutdownStatus: 关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        :type ShutdownStatus: int
+        :param _ShutdownTime: 关停时间
+        :type ShutdownTime: str
+        """
+        self._Id = None
+        self._DisplayToolCommon = None
+        self._AccountName = None
+        self._WechatId = None
+        self._Avatar = None
+        self._QrCode = None
+        self._HandlingStatus = None
+        self._ShutdownStatus = None
+        self._ShutdownTime = None
+
+    @property
+    def Id(self):
+        """主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DisplayToolCommon(self):
+        """公共字段
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        """
+        return self._DisplayToolCommon
+
+    @DisplayToolCommon.setter
+    def DisplayToolCommon(self, DisplayToolCommon):
+        self._DisplayToolCommon = DisplayToolCommon
+
+    @property
+    def AccountName(self):
+        """仿冒公众号名称
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def WechatId(self):
+        """公众号ID
+        :rtype: str
+        """
+        return self._WechatId
+
+    @WechatId.setter
+    def WechatId(self, WechatId):
+        self._WechatId = WechatId
+
+    @property
+    def Avatar(self):
+        """头像
+        :rtype: str
+        """
+        return self._Avatar
+
+    @Avatar.setter
+    def Avatar(self, Avatar):
+        self._Avatar = Avatar
+
+    @property
+    def QrCode(self):
+        """二维码
+        :rtype: str
+        """
+        return self._QrCode
+
+    @QrCode.setter
+    def QrCode(self, QrCode):
+        self._QrCode = QrCode
+
+    @property
+    def HandlingStatus(self):
+        """处置状态：0-待处理 1-处理中 2-已处理
+        :rtype: int
+        """
+        return self._HandlingStatus
+
+    @HandlingStatus.setter
+    def HandlingStatus(self, HandlingStatus):
+        self._HandlingStatus = HandlingStatus
+
+    @property
+    def ShutdownStatus(self):
+        """关停状态：0-(默认状态) 1-关停审核中 2-已拦截 3-已拒绝 4-下线流程中 5-已下线 6-下线失败
+        :rtype: int
+        """
+        return self._ShutdownStatus
+
+    @ShutdownStatus.setter
+    def ShutdownStatus(self, ShutdownStatus):
+        self._ShutdownStatus = ShutdownStatus
+
+    @property
+    def ShutdownTime(self):
+        """关停时间
+        :rtype: str
+        """
+        return self._ShutdownTime
+
+    @ShutdownTime.setter
+    def ShutdownTime(self, ShutdownTime):
+        self._ShutdownTime = ShutdownTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("DisplayToolCommon") is not None:
+            self._DisplayToolCommon = DisplayToolCommon()
+            self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._AccountName = params.get("AccountName")
+        self._WechatId = params.get("WechatId")
+        self._Avatar = params.get("Avatar")
+        self._QrCode = params.get("QrCode")
+        self._HandlingStatus = params.get("HandlingStatus")
+        self._ShutdownStatus = params.get("ShutdownStatus")
+        self._ShutdownTime = params.get("ShutdownTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -490,6 +490,75 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMultiPathGateway(self, request):
+        """通过本接口创建多通道安全加速网关，包括云上网关（腾讯云创建和管理的网关）和自有网关（用户部署的私有网关），需要通过接口 DescribeMultiPathGateway，查询状态为 online 即创建成功。
+
+        :param request: Request instance for CreateMultiPathGateway.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMultiPathGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMultiPathGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMultiPathGatewayLine(self, request):
+        """通过本接口创建接入多通道安全加速网关的线路。包括 EdgeOne 四层代理线路、自定义线路。
+
+        :param request: Request instance for CreateMultiPathGatewayLine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayLineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayLineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMultiPathGatewayLine", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMultiPathGatewayLineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMultiPathGatewaySecretKey(self, request):
+        """通过本接口创建接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+
+        :param request: Request instance for CreateMultiPathGatewaySecretKey.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMultiPathGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMultiPathGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOriginGroup(self, request):
         """创建源站组，以源站组的方式管理业务源站。此处配置的源站组可于**添加加速域名**和**四层代理**等功能中引用。
 
@@ -1042,6 +1111,52 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteLoadBalancer", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteMultiPathGateway(self, request):
+        """通过本接口删除多通道安全加速网关，包括自有网关和云上网关。
+
+        :param request: Request instance for DeleteMultiPathGateway.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMultiPathGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMultiPathGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteMultiPathGatewayLine(self, request):
+        """通过本接口删除接入多通道安全加速网关的线路，仅自定义线路支持删除。
+
+        :param request: Request instance for DeleteMultiPathGatewayLine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayLineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayLineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMultiPathGatewayLine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMultiPathGatewayLineResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1872,6 +1987,121 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeLoadBalancerList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLoadBalancerListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMultiPathGateway(self, request):
+        """通过本接口查询多通道安全加速网关详情。如名称、网关 ID、IP、端口、类型等。
+
+        :param request: Request instance for DescribeMultiPathGateway.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMultiPathGatewayLine(self, request):
+        """通过本接口查询接入多通道安全加速网关的线路。包括直连、EdgeOne 四层代理线路、自定义线路。
+
+        :param request: Request instance for DescribeMultiPathGatewayLine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayLineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayLineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGatewayLine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewayLineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMultiPathGatewayRegions(self, request):
+        """通过本接口查询用户创建的多通道安全加速网关（云上网关）的可用地域列表。
+
+        :param request: Request instance for DescribeMultiPathGatewayRegions.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRegionsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGatewayRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewayRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMultiPathGatewaySecretKey(self, request):
+        """通过本接口查询接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。
+
+        :param request: Request instance for DescribeMultiPathGatewaySecretKey.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMultiPathGateways(self, request):
+        """通过本接口查询用户创建的多通道安全加速网关列表。支持翻页。
+
+        :param request: Request instance for DescribeMultiPathGateways.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaysRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGateways", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewaysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3264,6 +3494,75 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMultiPathGateway(self, request):
+        """通过本接口修改多通道安全加速网关信息，如名称、网关 ID、IP、端口等。
+
+        :param request: Request instance for ModifyMultiPathGateway.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMultiPathGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMultiPathGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMultiPathGatewayLine(self, request):
+        """通过本接口修改接入多通道安全加速网关的线路，包括 EdgeOne 四层代理线路、自定义线路。
+
+        :param request: Request instance for ModifyMultiPathGatewayLine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayLineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayLineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMultiPathGatewayLine", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMultiPathGatewayLineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMultiPathGatewaySecretKey(self, request):
+        """通过本接口修改接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关，修改后原密钥失效。
+
+        :param request: Request instance for ModifyMultiPathGatewaySecretKey.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMultiPathGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMultiPathGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyOriginACL(self, request):
         """本接口用于对七层加速域名/四层代理实例启用/关闭特定回源 IP 网段回源。单次支持提交的七层加速域名的数量最大为 200，四层代理实例的数量最大为 100，支持七层加速域名/四层代理实例混合提交，总实例个数最大为 200。如需变更超过 200 个实例，请通过本接口分批提交。
 
@@ -3509,6 +3808,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyZoneStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyZoneStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RefreshMultiPathGatewaySecretKey(self, request):
+        """通过本接口刷新多通道安全加速网关的密钥。客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，刷新密钥后，原始密钥会失效。
+
+        :param request: Request instance for RefreshMultiPathGatewaySecretKey.
+        :type request: :class:`tencentcloud.teo.v20220901.models.RefreshMultiPathGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RefreshMultiPathGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefreshMultiPathGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.RefreshMultiPathGatewaySecretKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

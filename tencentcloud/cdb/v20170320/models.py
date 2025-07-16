@@ -3051,9 +3051,9 @@ class AutoStrategy(AbstractModel):
         :param _ShrinkPeriod: 自动缩容观测周期，单位是分钟，可选值5、10、15、30。后台会按照配置的周期进行缩容判断。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShrinkPeriod: int
-        :param _ExpandSecondPeriod: 弹性扩容观测周期（秒级），可取值为：5，30，45，60，180，300，600，900，1800。
+        :param _ExpandSecondPeriod: 弹性扩容观测周期（秒级），可取值为：15，30，45，60，180，300，600，900，1800。
         :type ExpandSecondPeriod: int
-        :param _ShrinkSecondPeriod: 缩容观测周期（秒级），可取值为：300。
+        :param _ShrinkSecondPeriod: 缩容观测周期（秒级），可取值为：300、600、900、1800。
         :type ShrinkSecondPeriod: int
         """
         self._ExpandThreshold = None
@@ -3119,7 +3119,7 @@ class AutoStrategy(AbstractModel):
 
     @property
     def ExpandSecondPeriod(self):
-        """弹性扩容观测周期（秒级），可取值为：5，30，45，60，180，300，600，900，1800。
+        """弹性扩容观测周期（秒级），可取值为：15，30，45，60，180，300，600，900，1800。
         :rtype: int
         """
         return self._ExpandSecondPeriod
@@ -3130,7 +3130,7 @@ class AutoStrategy(AbstractModel):
 
     @property
     def ShrinkSecondPeriod(self):
-        """缩容观测周期（秒级），可取值为：300。
+        """缩容观测周期（秒级），可取值为：300、600、900、1800。
         :rtype: int
         """
         return self._ShrinkSecondPeriod

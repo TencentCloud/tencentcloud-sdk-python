@@ -213,6 +213,35 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBatchInformationExtractionTask(self, request):
+        """此接口（CreateBatchInformationExtractionTask）用来通过上传后的PDF资源编号来批量创建合同智能审查任务。<br/>
+
+        适用场景：根据合同关键词（字段名称）来提取PDF合同文件的字段结果信息。
+
+        注:
+        1. PDF格式限制大小为10M以下
+        2. 仅支持5个PDF文件批量发起
+
+        :param request: Request instance for CreateBatchInformationExtractionTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateBatchInformationExtractionTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateBatchInformationExtractionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchInformationExtractionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBatchInformationExtractionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBatchInitOrganizationUrl(self, request):
         """支持企业进行批量初始化操作：
 
@@ -2680,6 +2709,29 @@ class EssClient(AbstractClient):
             body = self.call("DescribeFlowTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFlowTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInformationExtractionTask(self, request):
+        """本接口（DescribeInformationExtractionTask）用于获取合同智能提取任务详情，包括任务的状态和提取的字段结果信息。
+
+        :param request: Request instance for DescribeInformationExtractionTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeInformationExtractionTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeInformationExtractionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInformationExtractionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInformationExtractionTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -428,10 +428,13 @@ class AddClusterSlaveZoneRequest(AbstractModel):
         :type SlaveZone: str
         :param _BinlogSyncWay: binlog同步方式。默认值：async。可选值：sync、semisync、async
         :type BinlogSyncWay: str
+        :param _SemiSyncTimeout: 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :type SemiSyncTimeout: int
         """
         self._ClusterId = None
         self._SlaveZone = None
         self._BinlogSyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def ClusterId(self):
@@ -466,11 +469,23 @@ class AddClusterSlaveZoneRequest(AbstractModel):
     def BinlogSyncWay(self, BinlogSyncWay):
         self._BinlogSyncWay = BinlogSyncWay
 
+    @property
+    def SemiSyncTimeout(self):
+        """半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._SlaveZone = params.get("SlaveZone")
         self._BinlogSyncWay = params.get("BinlogSyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27507,11 +27522,14 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
         :type NewSlaveZone: str
         :param _BinlogSyncWay: binlog同步方式。默认值：async。可选值：sync、semisync、async
         :type BinlogSyncWay: str
+        :param _SemiSyncTimeout: 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :type SemiSyncTimeout: int
         """
         self._ClusterId = None
         self._OldSlaveZone = None
         self._NewSlaveZone = None
         self._BinlogSyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def ClusterId(self):
@@ -27557,12 +27575,24 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
     def BinlogSyncWay(self, BinlogSyncWay):
         self._BinlogSyncWay = BinlogSyncWay
 
+    @property
+    def SemiSyncTimeout(self):
+        """半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._OldSlaveZone = params.get("OldSlaveZone")
         self._NewSlaveZone = params.get("NewSlaveZone")
         self._BinlogSyncWay = params.get("BinlogSyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38340,9 +38370,12 @@ class SlaveZoneAttrItem(AbstractModel):
         :type Zone: str
         :param _BinlogSyncWay: binlog同步方式
         :type BinlogSyncWay: str
+        :param _SemiSyncTimeout: 半同步超时时间，单位ms
+        :type SemiSyncTimeout: int
         """
         self._Zone = None
         self._BinlogSyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def Zone(self):
@@ -38366,10 +38399,22 @@ class SlaveZoneAttrItem(AbstractModel):
     def BinlogSyncWay(self, BinlogSyncWay):
         self._BinlogSyncWay = BinlogSyncWay
 
+    @property
+    def SemiSyncTimeout(self):
+        """半同步超时时间，单位ms
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._BinlogSyncWay = params.get("BinlogSyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -646,6 +646,9 @@ class LkeapClient(AbstractClient):
 
     def ReconstructDocumentSSE(self, request):
         """准实时文档解析接口，使用HTTP SSE 协议通信。
+        支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+        输入：pdf、ppt、docx、doc、jpg等
+        输出：正常阅读顺序的md文件、识别结果的json（可选）等
 
         :param request: Request instance for ReconstructDocumentSSE.
         :type request: :class:`tencentcloud.lkeap.v20240522.models.ReconstructDocumentSSERequest`

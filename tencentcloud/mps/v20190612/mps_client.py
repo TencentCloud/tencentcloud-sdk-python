@@ -303,6 +303,32 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMediaEvaluation(self, request):
+        """发起视频评测任务，功能包括：
+
+        1. 对一个原视频和多个转码后的视频进行评分。
+        2. 计算不同转码方式的 BD-Rate。
+
+        :param request: Request instance for CreateMediaEvaluation.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateMediaEvaluationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateMediaEvaluationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMediaEvaluation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMediaEvaluationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePersonSample(self, request):
         """该接口用于创建素材样本，用于通过五官定位等技术，进行内容识别、内容不适宜等视频处理。
 

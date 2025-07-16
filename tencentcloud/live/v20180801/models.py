@@ -954,6 +954,227 @@ class AddLiveWatermarkResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuditKeyword(AbstractModel):
+    """直播审核关键词信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 关键词内容。
+        :type Content: str
+        :param _Label: 关键词标签。
+可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。
+        :type Label: str
+        """
+        self._Content = None
+        self._Label = None
+
+    @property
+    def Content(self):
+        """关键词内容。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Label(self):
+        """关键词标签。
+可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditKeywordDeleteDetail(AbstractModel):
+    """直播审核删除关键词结果详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeywordId: 关键词 Id。
+        :type KeywordId: str
+        :param _Content: 关键词内容。
+        :type Content: str
+        :param _Deleted: 是否删除成功。
+        :type Deleted: bool
+        :param _Error: 如果删除失败，错误信息。
+        :type Error: str
+        """
+        self._KeywordId = None
+        self._Content = None
+        self._Deleted = None
+        self._Error = None
+
+    @property
+    def KeywordId(self):
+        """关键词 Id。
+        :rtype: str
+        """
+        return self._KeywordId
+
+    @KeywordId.setter
+    def KeywordId(self, KeywordId):
+        self._KeywordId = KeywordId
+
+    @property
+    def Content(self):
+        """关键词内容。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Deleted(self):
+        """是否删除成功。
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def Error(self):
+        """如果删除失败，错误信息。
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._KeywordId = params.get("KeywordId")
+        self._Content = params.get("Content")
+        self._Deleted = params.get("Deleted")
+        self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditKeywordInfo(AbstractModel):
+    """直播审核关键词查询信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeywordId: 关键词 Id。
+        :type KeywordId: str
+        :param _Content: 关键词内容。
+        :type Content: str
+        :param _Label: 关键词标签。
+可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。
+        :type Label: str
+        :param _CreateTime: 创建时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+注意：
+1. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示。
+        :type CreateTime: str
+        """
+        self._KeywordId = None
+        self._Content = None
+        self._Label = None
+        self._CreateTime = None
+
+    @property
+    def KeywordId(self):
+        """关键词 Id。
+        :rtype: str
+        """
+        return self._KeywordId
+
+    @KeywordId.setter
+    def KeywordId(self, KeywordId):
+        self._KeywordId = KeywordId
+
+    @property
+    def Content(self):
+        """关键词内容。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Label(self):
+        """关键词标签。
+可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def CreateTime(self):
+        """创建时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+注意：
+1. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._KeywordId = params.get("KeywordId")
+        self._Content = params.get("Content")
+        self._Label = params.get("Label")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthenticateDomainOwnerRequest(AbstractModel):
     """AuthenticateDomainOwner请求参数结构体
 
@@ -5480,6 +5701,56 @@ class CreateAuditKeywordsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Keywords: 关键词列表。
+        :type Keywords: list of AuditKeyword
+        :param _LibId: 直播审核词库Id。
+        :type LibId: str
+        """
+        self._Keywords = None
+        self._LibId = None
+
+    @property
+    def Keywords(self):
+        """关键词列表。
+        :rtype: list of AuditKeyword
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def LibId(self):
+        """直播审核词库Id。
+        :rtype: str
+        """
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+
+    def _deserialize(self, params):
+        if params.get("Keywords") is not None:
+            self._Keywords = []
+            for item in params.get("Keywords"):
+                obj = AuditKeyword()
+                obj._deserialize(item)
+                self._Keywords.append(obj)
+        self._LibId = params.get("LibId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateAuditKeywordsResponse(AbstractModel):
     """CreateAuditKeywords返回参数结构体
@@ -5488,10 +5759,38 @@ class CreateAuditKeywordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _KeywordIds: 添加成功的关键词 Id 列表。
+        :type KeywordIds: list of str
+        :param _DupInfos: 重复关键词列表。
+        :type DupInfos: list of AuditKeywordInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._KeywordIds = None
+        self._DupInfos = None
         self._RequestId = None
+
+    @property
+    def KeywordIds(self):
+        """添加成功的关键词 Id 列表。
+        :rtype: list of str
+        """
+        return self._KeywordIds
+
+    @KeywordIds.setter
+    def KeywordIds(self, KeywordIds):
+        self._KeywordIds = KeywordIds
+
+    @property
+    def DupInfos(self):
+        """重复关键词列表。
+        :rtype: list of AuditKeywordInfo
+        """
+        return self._DupInfos
+
+    @DupInfos.setter
+    def DupInfos(self, DupInfos):
+        self._DupInfos = DupInfos
 
     @property
     def RequestId(self):
@@ -5506,6 +5805,13 @@ class CreateAuditKeywordsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._KeywordIds = params.get("KeywordIds")
+        if params.get("DupInfos") is not None:
+            self._DupInfos = []
+            for item in params.get("DupInfos"):
+                obj = AuditKeywordInfo()
+                obj._deserialize(item)
+                self._DupInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9523,6 +9829,12 @@ baseline/main/high。默认baseline
         :param _DRMTracks: DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 不传递或者为空字符串，清空之前的DRM配置。
         :type DRMTracks: str
+        :param _IsAdaptiveBitRate: 是否创建自适应码率，默认值 0。
+0：否。
+1：是。
+        :type IsAdaptiveBitRate: int
+        :param _AdaptiveChildren: 自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+        :type AdaptiveChildren: list of ChildTemplateInfo
         """
         self._TemplateName = None
         self._VideoBitrate = None
@@ -9546,6 +9858,8 @@ baseline/main/high。默认baseline
         self._ShortEdgeAsHeight = None
         self._DRMType = None
         self._DRMTracks = None
+        self._IsAdaptiveBitRate = None
+        self._AdaptiveChildren = None
 
     @property
     def TemplateName(self):
@@ -9819,6 +10133,30 @@ baseline/main/high。默认baseline
     def DRMTracks(self, DRMTracks):
         self._DRMTracks = DRMTracks
 
+    @property
+    def IsAdaptiveBitRate(self):
+        """是否创建自适应码率，默认值 0。
+0：否。
+1：是。
+        :rtype: int
+        """
+        return self._IsAdaptiveBitRate
+
+    @IsAdaptiveBitRate.setter
+    def IsAdaptiveBitRate(self, IsAdaptiveBitRate):
+        self._IsAdaptiveBitRate = IsAdaptiveBitRate
+
+    @property
+    def AdaptiveChildren(self):
+        """自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+        :rtype: list of ChildTemplateInfo
+        """
+        return self._AdaptiveChildren
+
+    @AdaptiveChildren.setter
+    def AdaptiveChildren(self, AdaptiveChildren):
+        self._AdaptiveChildren = AdaptiveChildren
+
 
     def _deserialize(self, params):
         self._TemplateName = params.get("TemplateName")
@@ -9843,6 +10181,13 @@ baseline/main/high。默认baseline
         self._ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
         self._DRMType = params.get("DRMType")
         self._DRMTracks = params.get("DRMTracks")
+        self._IsAdaptiveBitRate = params.get("IsAdaptiveBitRate")
+        if params.get("AdaptiveChildren") is not None:
+            self._AdaptiveChildren = []
+            for item in params.get("AdaptiveChildren"):
+                obj = ChildTemplateInfo()
+                obj._deserialize(item)
+                self._AdaptiveChildren.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10830,6 +11175,51 @@ class DeleteAuditKeywordsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _KeywordIds: 要删除的关键词 Id 列表。
+        :type KeywordIds: list of str
+        :param _LibId: 关键词库 Id。
+        :type LibId: str
+        """
+        self._KeywordIds = None
+        self._LibId = None
+
+    @property
+    def KeywordIds(self):
+        """要删除的关键词 Id 列表。
+        :rtype: list of str
+        """
+        return self._KeywordIds
+
+    @KeywordIds.setter
+    def KeywordIds(self, KeywordIds):
+        self._KeywordIds = KeywordIds
+
+    @property
+    def LibId(self):
+        """关键词库 Id。
+        :rtype: str
+        """
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+
+    def _deserialize(self, params):
+        self._KeywordIds = params.get("KeywordIds")
+        self._LibId = params.get("LibId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteAuditKeywordsResponse(AbstractModel):
     """DeleteAuditKeywords返回参数结构体
@@ -10838,10 +11228,38 @@ class DeleteAuditKeywordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SuccessCount: 成功删除关键词的数量。
+        :type SuccessCount: int
+        :param _Infos: 关键词详情列表。
+        :type Infos: list of AuditKeywordDeleteDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._SuccessCount = None
+        self._Infos = None
         self._RequestId = None
+
+    @property
+    def SuccessCount(self):
+        """成功删除关键词的数量。
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def Infos(self):
+        """关键词详情列表。
+        :rtype: list of AuditKeywordDeleteDetail
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
 
     @property
     def RequestId(self):
@@ -10856,6 +11274,13 @@ class DeleteAuditKeywordsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = AuditKeywordDeleteDetail()
+                obj._deserialize(item)
+                self._Infos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13232,6 +13657,98 @@ class DescribeAuditKeywordsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Offset: 获取偏移量。
+        :type Offset: int
+        :param _Limit: 单页条数，最大为100条，超过则按100条返回。
+        :type Limit: int
+        :param _LibId: 关键词库 Id。
+        :type LibId: str
+        :param _Content: 关键词搜索字段。
+为空字符串时忽略。
+        :type Content: str
+        :param _Labels: 标签类别搜索。
+        :type Labels: list of int
+        """
+        self._Offset = None
+        self._Limit = None
+        self._LibId = None
+        self._Content = None
+        self._Labels = None
+
+    @property
+    def Offset(self):
+        """获取偏移量。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """单页条数，最大为100条，超过则按100条返回。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def LibId(self):
+        """关键词库 Id。
+        :rtype: str
+        """
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+    @property
+    def Content(self):
+        """关键词搜索字段。
+为空字符串时忽略。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Labels(self):
+        """标签类别搜索。
+        :rtype: list of int
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._LibId = params.get("LibId")
+        self._Content = params.get("Content")
+        self._Labels = params.get("Labels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAuditKeywordsResponse(AbstractModel):
     """DescribeAuditKeywords返回参数结构体
@@ -13240,10 +13757,38 @@ class DescribeAuditKeywordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Total: 关键词总条数。
+        :type Total: int
+        :param _Infos: 关键词详情列表。
+        :type Infos: list of AuditKeywordInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Total = None
+        self._Infos = None
         self._RequestId = None
+
+    @property
+    def Total(self):
+        """关键词总条数。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Infos(self):
+        """关键词详情列表。
+        :rtype: list of AuditKeywordInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
 
     @property
     def RequestId(self):
@@ -13258,6 +13803,13 @@ class DescribeAuditKeywordsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = AuditKeywordInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -31957,6 +32509,12 @@ baseline/main/high。
         :param _DRMTracks: DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 不传递或者为空字符串，清空之前的DRM配置。
         :type DRMTracks: str
+        :param _IsAdaptiveBitRate: 是否创建自适应码率，默认值 0。
+0：否。
+1：是。
+        :type IsAdaptiveBitRate: int
+        :param _AdaptiveChildren: 自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+        :type AdaptiveChildren: list of ChildTemplateInfo
         """
         self._TemplateId = None
         self._Vcodec = None
@@ -31979,6 +32537,8 @@ baseline/main/high。
         self._ShortEdgeAsHeight = None
         self._DRMType = None
         self._DRMTracks = None
+        self._IsAdaptiveBitRate = None
+        self._AdaptiveChildren = None
 
     @property
     def TemplateId(self):
@@ -32234,6 +32794,30 @@ baseline/main/high。
     def DRMTracks(self, DRMTracks):
         self._DRMTracks = DRMTracks
 
+    @property
+    def IsAdaptiveBitRate(self):
+        """是否创建自适应码率，默认值 0。
+0：否。
+1：是。
+        :rtype: int
+        """
+        return self._IsAdaptiveBitRate
+
+    @IsAdaptiveBitRate.setter
+    def IsAdaptiveBitRate(self, IsAdaptiveBitRate):
+        self._IsAdaptiveBitRate = IsAdaptiveBitRate
+
+    @property
+    def AdaptiveChildren(self):
+        """自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+        :rtype: list of ChildTemplateInfo
+        """
+        return self._AdaptiveChildren
+
+    @AdaptiveChildren.setter
+    def AdaptiveChildren(self, AdaptiveChildren):
+        self._AdaptiveChildren = AdaptiveChildren
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -32257,6 +32841,13 @@ baseline/main/high。
         self._ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
         self._DRMType = params.get("DRMType")
         self._DRMTracks = params.get("DRMTracks")
+        self._IsAdaptiveBitRate = params.get("IsAdaptiveBitRate")
+        if params.get("AdaptiveChildren") is not None:
+            self._AdaptiveChildren = []
+            for item in params.get("AdaptiveChildren"):
+                obj = ChildTemplateInfo()
+                obj._deserialize(item)
+                self._AdaptiveChildren.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

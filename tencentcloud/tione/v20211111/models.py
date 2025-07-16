@@ -14143,6 +14143,8 @@ HYBRID_PAID:
         :type RollingUpdate: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
         :param _Sidecar: sidecar配置
         :type Sidecar: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
+        :param _ResourceGroupId: 资源组 id
+        :type ResourceGroupId: str
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -14176,6 +14178,7 @@ HYBRID_PAID:
         self._HealthProbe = None
         self._RollingUpdate = None
         self._Sidecar = None
+        self._ResourceGroupId = None
 
     @property
     def ServiceId(self):
@@ -14552,6 +14555,17 @@ HYBRID_PAID:
     def Sidecar(self, Sidecar):
         self._Sidecar = Sidecar
 
+    @property
+    def ResourceGroupId(self):
+        """资源组 id
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -14620,6 +14634,7 @@ HYBRID_PAID:
         if params.get("Sidecar") is not None:
             self._Sidecar = SidecarSpec()
             self._Sidecar._deserialize(params.get("Sidecar"))
+        self._ResourceGroupId = params.get("ResourceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

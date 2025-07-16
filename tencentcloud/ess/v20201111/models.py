@@ -4170,6 +4170,174 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBatchInformationExtractionTaskRequest(AbstractModel):
+    """CreateBatchInformationExtractionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同智能提取的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ResourceIds: 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+        :type ResourceIds: list of str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _FieldTemplateId: 用户配置的合同智能提取字段模板ID，会基于此模板批量创建合同智能提取任务，为32位字符串。
+[点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/99008608577532423ea437c7fdbedca1.png)
+
+注:  `此配置优先级最高，设置了模板ID后Fields配置就会无效`
+        :type FieldTemplateId: str
+        :param _Fields: 用于合同智能提取的字段信息。
+
+注意：`字段模板优先级最高，如果设置了FieldTemplateId值，此配置就无效`
+        :type Fields: list of ExtractionField
+        """
+        self._Operator = None
+        self._ResourceIds = None
+        self._Agent = None
+        self._FieldTemplateId = None
+        self._Fields = None
+
+    @property
+    def Operator(self):
+        """执行合同智能提取的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ResourceIds(self):
+        """合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def FieldTemplateId(self):
+        """用户配置的合同智能提取字段模板ID，会基于此模板批量创建合同智能提取任务，为32位字符串。
+[点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/99008608577532423ea437c7fdbedca1.png)
+
+注:  `此配置优先级最高，设置了模板ID后Fields配置就会无效`
+        :rtype: str
+        """
+        return self._FieldTemplateId
+
+    @FieldTemplateId.setter
+    def FieldTemplateId(self, FieldTemplateId):
+        self._FieldTemplateId = FieldTemplateId
+
+    @property
+    def Fields(self):
+        """用于合同智能提取的字段信息。
+
+注意：`字段模板优先级最高，如果设置了FieldTemplateId值，此配置就无效`
+        :rtype: list of ExtractionField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ResourceIds = params.get("ResourceIds")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._FieldTemplateId = params.get("FieldTemplateId")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = ExtractionField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchInformationExtractionTaskResponse(AbstractModel):
+    """CreateBatchInformationExtractionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: 合同智能提取的任务ID列表，每个任务ID为32位字符串。
+建议开发者保存此任务ID，后续查询合同智能提取详情需要此任务ID。
+
+注意：`返回的索引和ResourceIds数组一致`
+        :type TaskIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskIds = None
+        self._RequestId = None
+
+    @property
+    def TaskIds(self):
+        """合同智能提取的任务ID列表，每个任务ID为32位字符串。
+建议开发者保存此任务ID，后续查询合同智能提取详情需要此任务ID。
+
+注意：`返回的索引和ResourceIds数组一致`
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBatchInitOrganizationUrlRequest(AbstractModel):
     """CreateBatchInitOrganizationUrl请求参数结构体
 
@@ -21174,6 +21342,178 @@ class DescribeFlowTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInformationExtractionTaskRequest(AbstractModel):
+    """DescribeInformationExtractionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _TaskId: 批量创建合同智能提取任务接口返回的合同智能提取任务ID。
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._Agent = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def TaskId(self):
+        """批量创建合同智能提取任务接口返回的合同智能提取任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInformationExtractionTaskResponse(AbstractModel):
+    """DescribeInformationExtractionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Fields: 信息提取任务结果
+        :type Fields: list of ExtractionField
+        :param _Status: 合同智能提取任务状态。
+状态如下：
+<ul>
+    <li>**0** - 任务创建成功（还未执行）</li> 
+    <li>**1** - 排队中（等待执行）</li>   
+    <li>**2** - 提取中（正在执行）</li>  
+    <li>**3** - 提取成功</li>   
+    <li>**4** - 提取失败</li>
+</ul>
+        :type Status: int
+        :param _Url: 合同智能提取结果下载，文件格式为`xlsx`。
+
+注意：`链接有效期为5分钟，过期后可重新获取`
+        :type Url: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Fields = None
+        self._Status = None
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Fields(self):
+        """信息提取任务结果
+        :rtype: list of ExtractionField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def Status(self):
+        """合同智能提取任务状态。
+状态如下：
+<ul>
+    <li>**0** - 任务创建成功（还未执行）</li> 
+    <li>**1** - 排队中（等待执行）</li>   
+    <li>**2** - 提取中（正在执行）</li>  
+    <li>**3** - 提取成功</li>   
+    <li>**4** - 提取失败</li>
+</ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Url(self):
+        """合同智能提取结果下载，文件格式为`xlsx`。
+
+注意：`链接有效期为5分钟，过期后可重新获取`
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = ExtractionField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        self._Status = params.get("Status")
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIntegrationDepartmentsRequest(AbstractModel):
     """DescribeIntegrationDepartments请求参数结构体
 
@@ -24090,6 +24430,111 @@ class ExtendScene(AbstractModel):
         self._GenerateType = params.get("GenerateType")
         self._GenerateTypeDesc = params.get("GenerateTypeDesc")
         self._GenerateTypeLogo = params.get("GenerateTypeLogo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractionField(AbstractModel):
+    """合同智能提取字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 用于合同智能提取的字段名称。
+
+注意: `长度不能超过30个字符`
+        :type Name: str
+        :param _Type: 指定合同智能提取的字段类型，目前仅支持`TEXT`、`DATE`、`NUMBER`、`OPTION`类型。
+
+类型支持如下：
+1、TEXT（文本）
+2、DATE（日期）
+3、NUMBER（数字）
+4、OPTION（选项值）
+        :type Type: str
+        :param _Description: 用于描述字段信息。
+
+注意：
+1、`如果Type值为OPTION时，需要在字段描述中填写选项值，用,分隔`
+2、描述字段不能超过100个字符
+        :type Description: str
+        :param _Values: 提取出合同中的字段信息。
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Type = None
+        self._Description = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        """用于合同智能提取的字段名称。
+
+注意: `长度不能超过30个字符`
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """指定合同智能提取的字段类型，目前仅支持`TEXT`、`DATE`、`NUMBER`、`OPTION`类型。
+
+类型支持如下：
+1、TEXT（文本）
+2、DATE（日期）
+3、NUMBER（数字）
+4、OPTION（选项值）
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        """用于描述字段信息。
+
+注意：
+1、`如果Type值为OPTION时，需要在字段描述中填写选项值，用,分隔`
+2、描述字段不能超过100个字符
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Values(self):
+        """提取出合同中的字段信息。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
