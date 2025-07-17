@@ -957,6 +957,276 @@ AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
         
 
 
+class CloudModerationStorage(AbstractModel):
+    """腾讯云对象存储COS以及第三方云存储的账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: 腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS S3
+2: 阿里云 OSS
+示例值：0
+        :type Vendor: int
+        :param _Region: 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+示例值：ap-southeast-3	
+        :type Region: str
+        :param _Bucket: 云存储桶名称。
+        :type Bucket: str
+        :param _AccessKey: 云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+示例值：test-accesskey
+        :type AccessKey: str
+        :param _SecretKey: 云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+示例值：test-secretkey
+        :type SecretKey: str
+        :param _FileNamePrefix: 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，切片文件xxx.mp3在 ["prefix1", "prefix2"]作用下，音频切片文件会变成prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC时间}.ogg，视频截帧会变成prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC时间}.png 
+        :type FileNamePrefix: list of str
+        """
+        self._Vendor = None
+        self._Region = None
+        self._Bucket = None
+        self._AccessKey = None
+        self._SecretKey = None
+        self._FileNamePrefix = None
+
+    @property
+    def Vendor(self):
+        """腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS S3
+2: 阿里云 OSS
+示例值：0
+        :rtype: int
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Region(self):
+        """腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+示例值：ap-southeast-3	
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        """云存储桶名称。
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def AccessKey(self):
+        """云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+示例值：test-accesskey
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        """云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+示例值：test-secretkey
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def FileNamePrefix(self):
+        """云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，切片文件xxx.mp3在 ["prefix1", "prefix2"]作用下，音频切片文件会变成prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC时间}.ogg，视频截帧会变成prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC时间}.png 
+        :rtype: list of str
+        """
+        return self._FileNamePrefix
+
+    @FileNamePrefix.setter
+    def FileNamePrefix(self, FileNamePrefix):
+        self._FileNamePrefix = FileNamePrefix
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
+        self._FileNamePrefix = params.get("FileNamePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudSliceStorage(AbstractModel):
+    """腾讯云对象存储COS以及第三方云存储的账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: 腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS S3
+2: 阿里云 OSS
+示例值：0
+        :type Vendor: int
+        :param _Region: 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+示例值：ap-southeast-3	
+        :type Region: str
+        :param _Bucket: 云存储桶名称。
+        :type Bucket: str
+        :param _AccessKey: 云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+示例值：test-accesskey
+        :type AccessKey: str
+        :param _SecretKey: 云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+示例值：test-secretkey
+        :type SecretKey: str
+        :param _FileNamePrefix: 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，切片文件xxx.mp3在 ["prefix1", "prefix2"]作用下，音频切片文件会变成prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC时间}.ogg，视频截帧会变成prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC时间}.png 
+        :type FileNamePrefix: list of str
+        """
+        self._Vendor = None
+        self._Region = None
+        self._Bucket = None
+        self._AccessKey = None
+        self._SecretKey = None
+        self._FileNamePrefix = None
+
+    @property
+    def Vendor(self):
+        """腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS S3
+2: 阿里云 OSS
+示例值：0
+        :rtype: int
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Region(self):
+        """腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+示例值：ap-southeast-3	
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        """云存储桶名称。
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def AccessKey(self):
+        """云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+示例值：test-accesskey
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        """云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+示例值：test-secretkey
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def FileNamePrefix(self):
+        """云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，切片文件xxx.mp3在 ["prefix1", "prefix2"]作用下，音频切片文件会变成prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC时间}.ogg，视频截帧会变成prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC时间}.png 
+        :rtype: list of str
+        """
+        return self._FileNamePrefix
+
+    @FileNamePrefix.setter
+    def FileNamePrefix(self, FileNamePrefix):
+        self._FileNamePrefix = FileNamePrefix
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
+        self._FileNamePrefix = params.get("FileNamePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudStorage(AbstractModel):
     """腾讯云对象存储COS以及第三方云存储的账号信息
 
@@ -1363,6 +1633,194 @@ class CreateBasicModerationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCloudModerationRequest(AbstractModel):
+    """CreateCloudModeration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+        :type SdkAppId: int
+        :param _RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+        :type RoomId: str
+        :param _UserId: 机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+        :type UserId: str
+        :param _UserSig: 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+        :type UserSig: str
+        :param _ModerationParams: 云端审核控制参数。
+        :type ModerationParams: :class:`tencentcloud.trtc.v20190722.models.ModerationParams`
+        :param _ModerationStorageParams: 云端审核文件上传到云存储的参数
+        :type ModerationStorageParams: :class:`tencentcloud.trtc.v20190722.models.ModerationStorageParams`
+        :param _RoomIdType: TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+        :type RoomIdType: int
+        :param _ResourceExpiredHour: 任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。
+        :type ResourceExpiredHour: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._UserId = None
+        self._UserSig = None
+        self._ModerationParams = None
+        self._ModerationStorageParams = None
+        self._RoomIdType = None
+        self._ResourceExpiredHour = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        """机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        """机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def ModerationParams(self):
+        """云端审核控制参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationParams`
+        """
+        return self._ModerationParams
+
+    @ModerationParams.setter
+    def ModerationParams(self, ModerationParams):
+        self._ModerationParams = ModerationParams
+
+    @property
+    def ModerationStorageParams(self):
+        """云端审核文件上传到云存储的参数
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationStorageParams`
+        """
+        return self._ModerationStorageParams
+
+    @ModerationStorageParams.setter
+    def ModerationStorageParams(self, ModerationStorageParams):
+        self._ModerationStorageParams = ModerationStorageParams
+
+    @property
+    def RoomIdType(self):
+        """TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def ResourceExpiredHour(self):
+        """任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。
+        :rtype: int
+        """
+        return self._ResourceExpiredHour
+
+    @ResourceExpiredHour.setter
+    def ResourceExpiredHour(self, ResourceExpiredHour):
+        self._ResourceExpiredHour = ResourceExpiredHour
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        if params.get("ModerationParams") is not None:
+            self._ModerationParams = ModerationParams()
+            self._ModerationParams._deserialize(params.get("ModerationParams"))
+        if params.get("ModerationStorageParams") is not None:
+            self._ModerationStorageParams = ModerationStorageParams()
+            self._ModerationStorageParams._deserialize(params.get("ModerationStorageParams"))
+        self._RoomIdType = params.get("RoomIdType")
+        self._ResourceExpiredHour = params.get("ResourceExpiredHour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudModerationResponse(AbstractModel):
+    """CreateCloudModeration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 云端审核服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """云端审核服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCloudRecordingRequest(AbstractModel):
     """CreateCloudRecording请求参数结构体
 
@@ -1587,6 +2045,209 @@ class CreateCloudRecordingResponse(AbstractModel):
     @property
     def TaskId(self):
         """云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。任务 ID需要业务保存下来，作为下次针对这个录制任务操作的参数。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudSliceTaskRequest(AbstractModel):
+    """CreateCloudSliceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+        :type SdkAppId: int
+        :param _RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+        :type RoomId: str
+        :param _UserId: 机器人的UserId，用于进房发起切片任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+        :type UserId: str
+        :param _UserSig: 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+        :type UserSig: str
+        :param _SliceParams: 云端切片控制参数。
+        :type SliceParams: :class:`tencentcloud.trtc.v20190722.models.SliceParams`
+        :param _SliceStorageParams: 云端切片文件上传到云存储的参数
+        :type SliceStorageParams: :class:`tencentcloud.trtc.v20190722.models.SliceStorageParams`
+        :param _RoomIdType: TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+        :type RoomIdType: int
+        :param _ResourceExpiredHour: 接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。 示例值：24
+        :type ResourceExpiredHour: int
+        :param _PrivateMapKey: TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。 示例值：eJw1jcEKgkAURX9FZlvY****fL9rfNX4_
+        :type PrivateMapKey: str
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._UserId = None
+        self._UserSig = None
+        self._SliceParams = None
+        self._SliceStorageParams = None
+        self._RoomIdType = None
+        self._ResourceExpiredHour = None
+        self._PrivateMapKey = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        """机器人的UserId，用于进房发起切片任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        """机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def SliceParams(self):
+        """云端切片控制参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SliceParams`
+        """
+        return self._SliceParams
+
+    @SliceParams.setter
+    def SliceParams(self, SliceParams):
+        self._SliceParams = SliceParams
+
+    @property
+    def SliceStorageParams(self):
+        """云端切片文件上传到云存储的参数
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SliceStorageParams`
+        """
+        return self._SliceStorageParams
+
+    @SliceStorageParams.setter
+    def SliceStorageParams(self, SliceStorageParams):
+        self._SliceStorageParams = SliceStorageParams
+
+    @property
+    def RoomIdType(self):
+        """TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def ResourceExpiredHour(self):
+        """接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。 示例值：24
+        :rtype: int
+        """
+        return self._ResourceExpiredHour
+
+    @ResourceExpiredHour.setter
+    def ResourceExpiredHour(self, ResourceExpiredHour):
+        self._ResourceExpiredHour = ResourceExpiredHour
+
+    @property
+    def PrivateMapKey(self):
+        """TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。 示例值：eJw1jcEKgkAURX9FZlvY****fL9rfNX4_
+        :rtype: str
+        """
+        return self._PrivateMapKey
+
+    @PrivateMapKey.setter
+    def PrivateMapKey(self, PrivateMapKey):
+        self._PrivateMapKey = PrivateMapKey
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        if params.get("SliceParams") is not None:
+            self._SliceParams = SliceParams()
+            self._SliceParams._deserialize(params.get("SliceParams"))
+        if params.get("SliceStorageParams") is not None:
+            self._SliceStorageParams = SliceStorageParams()
+            self._SliceStorageParams._deserialize(params.get("SliceStorageParams"))
+        self._RoomIdType = params.get("RoomIdType")
+        self._ResourceExpiredHour = params.get("ResourceExpiredHour")
+        self._PrivateMapKey = params.get("PrivateMapKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudSliceTaskResponse(AbstractModel):
+    """CreateCloudSliceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 云端切片服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """云端切片服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
         :rtype: str
         """
         return self._TaskId
@@ -1875,6 +2536,100 @@ class DeleteBasicModerationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCloudModerationRequest(AbstractModel):
+    """DeleteCloudModeration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param _TaskId: 审核任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """审核任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudModerationResponse(AbstractModel):
+    """DeleteCloudModeration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 审核任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """审核任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudRecordingRequest(AbstractModel):
     """DeleteCloudRecording请求参数结构体
 
@@ -1944,6 +2699,100 @@ class DeleteCloudRecordingResponse(AbstractModel):
     @property
     def TaskId(self):
         """云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudSliceTaskRequest(AbstractModel):
+    """DeleteCloudSliceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param _TaskId: 切片任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """切片任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudSliceTaskResponse(AbstractModel):
+    """DeleteCloudSliceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 切片任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """切片任务的唯一Id，在启动切片任务成功后会返回。
         :rtype: str
         """
         return self._TaskId
@@ -2704,6 +3553,132 @@ class DescribeCallDetailInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudModerationRequest(AbstractModel):
+    """DescribeCloudModeration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param _TaskId: 云端审核任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """云端审核任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudModerationResponse(AbstractModel):
+    """DescribeCloudModeration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 切片任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        :param _Status: 云端切片任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。
+        :type Status: str
+        :param _SubscribeStreamUserIds: 订阅黑白名单
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._SubscribeStreamUserIds = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """切片任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        """云端切片任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """订阅黑白名单
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeModerationUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudRecordingRequest(AbstractModel):
     """DescribeCloudRecording请求参数结构体
 
@@ -2866,6 +3841,115 @@ Exited：表示当前录制任务正在退出的过程中。
                 obj._deserialize(item)
                 self._StorageFileList.append(obj)
         self._RecorderKey = params.get("RecorderKey")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudSliceTaskRequest(AbstractModel):
+    """DescribeCloudSliceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param _TaskId: 切片任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """切片任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudSliceTaskResponse(AbstractModel):
+    """DescribeCloudSliceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 切片任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        :param _Status: 云端切片任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """切片任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        """云端切片任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -9450,6 +10534,419 @@ class MixUserInfo(AbstractModel):
         
 
 
+class ModerationParams(AbstractModel):
+    """云端审核的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModerationType: 审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核4:音频流式审核 5:音频流式+视频截帧审核  默认值1 （流式审核需要供应商支持才生效）
+        :type ModerationType: int
+        :param _MaxIdleTime: 房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30 
+        :type MaxIdleTime: int
+        :param _SliceAudio: 音频切片时长，默认15s 示例值：15
+        :type SliceAudio: int
+        :param _SliceVideo: 视频截帧间隔时长，默认5s
+        :type SliceVideo: int
+        :param _ModerationSupplier: 供应商枚举，
+tianyu : 天御内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+ace  : ACE内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+shumei : 数美审核（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+        :type ModerationSupplier: str
+        :param _ModerationSupplierParam: 第三方审核商送审需要配置信息
+        :type ModerationSupplierParam: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
+        :param _SaveModerationFile: 是否保存命中文件 0 默认不保存  1 保存命中文件
+        :type SaveModerationFile: int
+        :param _CallbackAllResults: 是否回调所有审核结果:0 默认回调所有结果 1 仅回调命中结果 
+        :type CallbackAllResults: int
+        :param _SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
+        """
+        self._ModerationType = None
+        self._MaxIdleTime = None
+        self._SliceAudio = None
+        self._SliceVideo = None
+        self._ModerationSupplier = None
+        self._ModerationSupplierParam = None
+        self._SaveModerationFile = None
+        self._CallbackAllResults = None
+        self._SubscribeStreamUserIds = None
+
+    @property
+    def ModerationType(self):
+        """审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核4:音频流式审核 5:音频流式+视频截帧审核  默认值1 （流式审核需要供应商支持才生效）
+        :rtype: int
+        """
+        return self._ModerationType
+
+    @ModerationType.setter
+    def ModerationType(self, ModerationType):
+        self._ModerationType = ModerationType
+
+    @property
+    def MaxIdleTime(self):
+        """房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30 
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def SliceAudio(self):
+        """音频切片时长，默认15s 示例值：15
+        :rtype: int
+        """
+        return self._SliceAudio
+
+    @SliceAudio.setter
+    def SliceAudio(self, SliceAudio):
+        self._SliceAudio = SliceAudio
+
+    @property
+    def SliceVideo(self):
+        """视频截帧间隔时长，默认5s
+        :rtype: int
+        """
+        return self._SliceVideo
+
+    @SliceVideo.setter
+    def SliceVideo(self, SliceVideo):
+        self._SliceVideo = SliceVideo
+
+    @property
+    def ModerationSupplier(self):
+        """供应商枚举，
+tianyu : 天御内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+ace  : ACE内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+shumei : 数美审核（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+        :rtype: str
+        """
+        return self._ModerationSupplier
+
+    @ModerationSupplier.setter
+    def ModerationSupplier(self, ModerationSupplier):
+        self._ModerationSupplier = ModerationSupplier
+
+    @property
+    def ModerationSupplierParam(self):
+        """第三方审核商送审需要配置信息
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
+        """
+        return self._ModerationSupplierParam
+
+    @ModerationSupplierParam.setter
+    def ModerationSupplierParam(self, ModerationSupplierParam):
+        self._ModerationSupplierParam = ModerationSupplierParam
+
+    @property
+    def SaveModerationFile(self):
+        """是否保存命中文件 0 默认不保存  1 保存命中文件
+        :rtype: int
+        """
+        return self._SaveModerationFile
+
+    @SaveModerationFile.setter
+    def SaveModerationFile(self, SaveModerationFile):
+        self._SaveModerationFile = SaveModerationFile
+
+    @property
+    def CallbackAllResults(self):
+        """是否回调所有审核结果:0 默认回调所有结果 1 仅回调命中结果 
+        :rtype: int
+        """
+        return self._CallbackAllResults
+
+    @CallbackAllResults.setter
+    def CallbackAllResults(self, CallbackAllResults):
+        self._CallbackAllResults = CallbackAllResults
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """指定订阅流白名单或者黑名单。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+
+    def _deserialize(self, params):
+        self._ModerationType = params.get("ModerationType")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._SliceAudio = params.get("SliceAudio")
+        self._SliceVideo = params.get("SliceVideo")
+        self._ModerationSupplier = params.get("ModerationSupplier")
+        if params.get("ModerationSupplierParam") is not None:
+            self._ModerationSupplierParam = ModerationSupplierParam()
+            self._ModerationSupplierParam._deserialize(params.get("ModerationSupplierParam"))
+        self._SaveModerationFile = params.get("SaveModerationFile")
+        self._CallbackAllResults = params.get("CallbackAllResults")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeModerationUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModerationStorageParams(AbstractModel):
+    """审核存储参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudModerationStorage: 腾讯云对象存储COS以及第三方云存储的账号信息
+        :type CloudModerationStorage: :class:`tencentcloud.trtc.v20190722.models.CloudModerationStorage`
+        """
+        self._CloudModerationStorage = None
+
+    @property
+    def CloudModerationStorage(self):
+        """腾讯云对象存储COS以及第三方云存储的账号信息
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudModerationStorage`
+        """
+        return self._CloudModerationStorage
+
+    @CloudModerationStorage.setter
+    def CloudModerationStorage(self, CloudModerationStorage):
+        self._CloudModerationStorage = CloudModerationStorage
+
+
+    def _deserialize(self, params):
+        if params.get("CloudModerationStorage") is not None:
+            self._CloudModerationStorage = CloudModerationStorage()
+            self._CloudModerationStorage._deserialize(params.get("CloudModerationStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModerationSupplierParam(AbstractModel):
+    """送审到第三方审核供应商需要参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppID: 供应审核商账号id，数美天御不为空，易盾为空
+        :type AppID: str
+        :param _SecretId: 供应审核商秘钥id
+        :type SecretId: str
+        :param _SecretKey: 供应审核商秘钥key
+        :type SecretKey: str
+        :param _AudioBizType: 音频场景，策略id或者businessId
+        :type AudioBizType: str
+        :param _ImageBizType: 图片场景，策略id或者businessId
+        :type ImageBizType: str
+        """
+        self._AppID = None
+        self._SecretId = None
+        self._SecretKey = None
+        self._AudioBizType = None
+        self._ImageBizType = None
+
+    @property
+    def AppID(self):
+        """供应审核商账号id，数美天御不为空，易盾为空
+        :rtype: str
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def SecretId(self):
+        """供应审核商秘钥id
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        """供应审核商秘钥key
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def AudioBizType(self):
+        """音频场景，策略id或者businessId
+        :rtype: str
+        """
+        return self._AudioBizType
+
+    @AudioBizType.setter
+    def AudioBizType(self, AudioBizType):
+        self._AudioBizType = AudioBizType
+
+    @property
+    def ImageBizType(self):
+        """图片场景，策略id或者businessId
+        :rtype: str
+        """
+        return self._ImageBizType
+
+    @ImageBizType.setter
+    def ImageBizType(self, ImageBizType):
+        self._ImageBizType = ImageBizType
+
+
+    def _deserialize(self, params):
+        self._AppID = params.get("AppID")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._AudioBizType = params.get("AudioBizType")
+        self._ImageBizType = params.get("ImageBizType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudModerationRequest(AbstractModel):
+    """ModifyCloudModeration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param _TaskId: 审核任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        :param _SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._SubscribeStreamUserIds = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """审核任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """指定订阅流白名单或者黑名单。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudModerationResponse(AbstractModel):
+    """ModifyCloudModeration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 审核任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """审核任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCloudRecordingRequest(AbstractModel):
     """ModifyCloudRecording请求参数结构体
 
@@ -9553,6 +11050,117 @@ class ModifyCloudRecordingResponse(AbstractModel):
     @property
     def TaskId(self):
         """云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCloudSliceTaskRequest(AbstractModel):
+    """ModifyCloudSliceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param _TaskId: 切片任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        :param _SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._SubscribeStreamUserIds = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """切片任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """指定订阅流白名单或者黑名单。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudSliceTaskResponse(AbstractModel):
+    """ModifyCloudSliceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 切片任务的唯一Id，在启动切片任务成功后会返回。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """切片任务的唯一Id，在启动切片任务成功后会返回。
         :rtype: str
         """
         return self._TaskId
@@ -12046,6 +13654,167 @@ class SingleSubscribeParams(AbstractModel):
         
 
 
+class SliceParams(AbstractModel):
+    """云端切片的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SliceType: 切片任务类型:
+1:音频切片；
+2:视频截帧；
+3:音视切片+视频截帧
+示例值：1 
+        :type SliceType: int
+        :param _MaxIdleTime: 房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+示例值：30
+        :type MaxIdleTime: int
+        :param _SliceAudio: 音频切片时长，默认15s 示例值：15
+        :type SliceAudio: int
+        :param _SliceVideo: 视频截帧间隔时长，默认5s， 示例值：5
+        :type SliceVideo: int
+        :param _SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        :param _SliceCallbackUrl: 已废弃，从控制台配置回调url
+        :type SliceCallbackUrl: str
+        """
+        self._SliceType = None
+        self._MaxIdleTime = None
+        self._SliceAudio = None
+        self._SliceVideo = None
+        self._SubscribeStreamUserIds = None
+        self._SliceCallbackUrl = None
+
+    @property
+    def SliceType(self):
+        """切片任务类型:
+1:音频切片；
+2:视频截帧；
+3:音视切片+视频截帧
+示例值：1 
+        :rtype: int
+        """
+        return self._SliceType
+
+    @SliceType.setter
+    def SliceType(self, SliceType):
+        self._SliceType = SliceType
+
+    @property
+    def MaxIdleTime(self):
+        """房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+示例值：30
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def SliceAudio(self):
+        """音频切片时长，默认15s 示例值：15
+        :rtype: int
+        """
+        return self._SliceAudio
+
+    @SliceAudio.setter
+    def SliceAudio(self, SliceAudio):
+        self._SliceAudio = SliceAudio
+
+    @property
+    def SliceVideo(self):
+        """视频截帧间隔时长，默认5s， 示例值：5
+        :rtype: int
+        """
+        return self._SliceVideo
+
+    @SliceVideo.setter
+    def SliceVideo(self, SliceVideo):
+        self._SliceVideo = SliceVideo
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """指定订阅流白名单或者黑名单。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+    @property
+    def SliceCallbackUrl(self):
+        """已废弃，从控制台配置回调url
+        :rtype: str
+        """
+        return self._SliceCallbackUrl
+
+    @SliceCallbackUrl.setter
+    def SliceCallbackUrl(self, SliceCallbackUrl):
+        self._SliceCallbackUrl = SliceCallbackUrl
+
+
+    def _deserialize(self, params):
+        self._SliceType = params.get("SliceType")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._SliceAudio = params.get("SliceAudio")
+        self._SliceVideo = params.get("SliceVideo")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        self._SliceCallbackUrl = params.get("SliceCallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SliceStorageParams(AbstractModel):
+    """切片存储参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudSliceStorage: 腾讯云对象存储COS以及第三方云存储的账号信息
+        :type CloudSliceStorage: :class:`tencentcloud.trtc.v20190722.models.CloudSliceStorage`
+        """
+        self._CloudSliceStorage = None
+
+    @property
+    def CloudSliceStorage(self):
+        """腾讯云对象存储COS以及第三方云存储的账号信息
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudSliceStorage`
+        """
+        return self._CloudSliceStorage
+
+    @CloudSliceStorage.setter
+    def CloudSliceStorage(self, CloudSliceStorage):
+        self._CloudSliceStorage = CloudSliceStorage
+
+
+    def _deserialize(self, params):
+        if params.get("CloudSliceStorage") is not None:
+            self._CloudSliceStorage = CloudSliceStorage()
+            self._CloudSliceStorage._deserialize(params.get("CloudSliceStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmallVideoLayoutParams(AbstractModel):
     """画中画模板中有效，代表小画面的布局参数
 
@@ -14314,6 +16083,95 @@ class StorageParams(AbstractModel):
         if params.get("CloudVod") is not None:
             self._CloudVod = CloudVod()
             self._CloudVod._deserialize(params.get("CloudVod"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeModerationUserIds(AbstractModel):
+    """指定订阅流白名单或者黑名单，音频的白名单和音频黑名单不能同时设置，视频亦然。同时实际并发订阅的媒体流路数最大支持25路流，混流场景下视频的多画面最大支持24画面。支持通过设置".*$"通配符，来前缀匹配黑白名单的UserId，注意房间里不能有和通配符规则相同的用户，否则将视为订阅具体用户，前缀规则会失效。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeAudioUserIds: 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流；["1.*$"], 代表订阅UserId前缀为1的音频流。默认不填订阅房间内所有的音频流，订阅列表用户数不超过32。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeAudioUserIds: list of str
+        :param _UnSubscribeAudioUserIds: 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流；["1.*$"], 代表不订阅UserId前缀为1的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过32。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnSubscribeAudioUserIds: list of str
+        :param _SubscribeVideoUserIds: 订阅视频流白名单，指定订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表订阅UserId  1，2，3的视频流；["1.*$"], 代表订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeVideoUserIds: list of str
+        :param _UnSubscribeVideoUserIds: 订阅视频流黑名单，指定不订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表不订阅UserId  1，2，3的视频流；["1.*$"], 代表不订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnSubscribeVideoUserIds: list of str
+        """
+        self._SubscribeAudioUserIds = None
+        self._UnSubscribeAudioUserIds = None
+        self._SubscribeVideoUserIds = None
+        self._UnSubscribeVideoUserIds = None
+
+    @property
+    def SubscribeAudioUserIds(self):
+        """订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流；["1.*$"], 代表订阅UserId前缀为1的音频流。默认不填订阅房间内所有的音频流，订阅列表用户数不超过32。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SubscribeAudioUserIds
+
+    @SubscribeAudioUserIds.setter
+    def SubscribeAudioUserIds(self, SubscribeAudioUserIds):
+        self._SubscribeAudioUserIds = SubscribeAudioUserIds
+
+    @property
+    def UnSubscribeAudioUserIds(self):
+        """订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流；["1.*$"], 代表不订阅UserId前缀为1的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过32。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._UnSubscribeAudioUserIds
+
+    @UnSubscribeAudioUserIds.setter
+    def UnSubscribeAudioUserIds(self, UnSubscribeAudioUserIds):
+        self._UnSubscribeAudioUserIds = UnSubscribeAudioUserIds
+
+    @property
+    def SubscribeVideoUserIds(self):
+        """订阅视频流白名单，指定订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表订阅UserId  1，2，3的视频流；["1.*$"], 代表订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SubscribeVideoUserIds
+
+    @SubscribeVideoUserIds.setter
+    def SubscribeVideoUserIds(self, SubscribeVideoUserIds):
+        self._SubscribeVideoUserIds = SubscribeVideoUserIds
+
+    @property
+    def UnSubscribeVideoUserIds(self):
+        """订阅视频流黑名单，指定不订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表不订阅UserId  1，2，3的视频流；["1.*$"], 代表不订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._UnSubscribeVideoUserIds
+
+    @UnSubscribeVideoUserIds.setter
+    def UnSubscribeVideoUserIds(self, UnSubscribeVideoUserIds):
+        self._UnSubscribeVideoUserIds = UnSubscribeVideoUserIds
+
+
+    def _deserialize(self, params):
+        self._SubscribeAudioUserIds = params.get("SubscribeAudioUserIds")
+        self._UnSubscribeAudioUserIds = params.get("UnSubscribeAudioUserIds")
+        self._SubscribeVideoUserIds = params.get("SubscribeVideoUserIds")
+        self._UnSubscribeVideoUserIds = params.get("UnSubscribeVideoUserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

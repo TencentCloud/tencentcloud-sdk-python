@@ -10186,11 +10186,14 @@ class CreateAccessKeyCheckTaskRequest(AbstractModel):
         :type AccessKeyList: list of str
         :param _SubUinList: 账号uin列表
         :type SubUinList: list of str
+        :param _RiskRuleIDList: 风险规则id列表
+        :type RiskRuleIDList: list of int
         """
         self._MemberId = None
         self._RiskIDList = None
         self._AccessKeyList = None
         self._SubUinList = None
+        self._RiskRuleIDList = None
 
     @property
     def MemberId(self):
@@ -10236,12 +10239,24 @@ class CreateAccessKeyCheckTaskRequest(AbstractModel):
     def SubUinList(self, SubUinList):
         self._SubUinList = SubUinList
 
+    @property
+    def RiskRuleIDList(self):
+        """风险规则id列表
+        :rtype: list of int
+        """
+        return self._RiskRuleIDList
+
+    @RiskRuleIDList.setter
+    def RiskRuleIDList(self, RiskRuleIDList):
+        self._RiskRuleIDList = RiskRuleIDList
+
 
     def _deserialize(self, params):
         self._MemberId = params.get("MemberId")
         self._RiskIDList = params.get("RiskIDList")
         self._AccessKeyList = params.get("AccessKeyList")
         self._SubUinList = params.get("SubUinList")
+        self._RiskRuleIDList = params.get("RiskRuleIDList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12030,7 +12045,7 @@ class DeleteRiskScanTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskIdList: 任务id 列表
+        :param _TaskIdList: 任务id 和目标AppID列表
         :type TaskIdList: list of TaskIdListKey
         :param _MemberId: 集团账号的成员id
         :type MemberId: list of str
@@ -12040,7 +12055,7 @@ class DeleteRiskScanTaskRequest(AbstractModel):
 
     @property
     def TaskIdList(self):
-        """任务id 列表
+        """任务id 和目标AppID列表
         :rtype: list of TaskIdListKey
         """
         return self._TaskIdList
@@ -33394,8 +33409,11 @@ class TaskIdListKey(AbstractModel):
         r"""
         :param _TaskId: 任务ID
         :type TaskId: str
+        :param _TargetAppId: APP ID
+        :type TargetAppId: str
         """
         self._TaskId = None
+        self._TargetAppId = None
 
     @property
     def TaskId(self):
@@ -33408,9 +33426,21 @@ class TaskIdListKey(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def TargetAppId(self):
+        """APP ID
+        :rtype: str
+        """
+        return self._TargetAppId
+
+    @TargetAppId.setter
+    def TargetAppId(self, TargetAppId):
+        self._TargetAppId = TargetAppId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._TargetAppId = params.get("TargetAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

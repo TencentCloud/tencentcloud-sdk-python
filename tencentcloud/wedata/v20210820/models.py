@@ -7217,6 +7217,130 @@ class BatchUpdateIntegrationTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BindProjectExecutorResourceRequest(AbstractModel):
+    """BindProjectExecutorResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutorGroupId: 执行资源组id
+        :type ExecutorGroupId: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _ExecutorResourcePackageIds: 需要绑定项目的资源包id集合，为空则绑定整个资源组
+        :type ExecutorResourcePackageIds: list of str
+        :param _ProjectIdList: 可选: 需要绑定的多个项目id, 若申明将带上ProjectId一起绑定
+        :type ProjectIdList: list of str
+        """
+        self._ExecutorGroupId = None
+        self._ProjectId = None
+        self._ExecutorResourcePackageIds = None
+        self._ProjectIdList = None
+
+    @property
+    def ExecutorGroupId(self):
+        """执行资源组id
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ExecutorResourcePackageIds(self):
+        """需要绑定项目的资源包id集合，为空则绑定整个资源组
+        :rtype: list of str
+        """
+        return self._ExecutorResourcePackageIds
+
+    @ExecutorResourcePackageIds.setter
+    def ExecutorResourcePackageIds(self, ExecutorResourcePackageIds):
+        self._ExecutorResourcePackageIds = ExecutorResourcePackageIds
+
+    @property
+    def ProjectIdList(self):
+        """可选: 需要绑定的多个项目id, 若申明将带上ProjectId一起绑定
+        :rtype: list of str
+        """
+        return self._ProjectIdList
+
+    @ProjectIdList.setter
+    def ProjectIdList(self, ProjectIdList):
+        self._ProjectIdList = ProjectIdList
+
+
+    def _deserialize(self, params):
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._ProjectId = params.get("ProjectId")
+        self._ExecutorResourcePackageIds = params.get("ExecutorResourcePackageIds")
+        self._ProjectIdList = params.get("ProjectIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindProjectExecutorResourceResponse(AbstractModel):
+    """BindProjectExecutorResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 绑定成功为true，其他为异常信息
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """绑定成功为true，其他为异常信息
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class BizCatalogsInfo(AbstractModel):
     """数据地图-数据类目信息
 
@@ -11566,6 +11690,40 @@ class CreateAndDDLSupport(AbstractModel):
         
 
 
+class CreateBaseProjectRequest(AbstractModel):
+    """CreateBaseProject请求参数结构体
+
+    """
+
+
+class CreateBaseProjectResponse(AbstractModel):
+    """CreateBaseProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCodeTemplateRequest(AbstractModel):
     """CreateCodeTemplate请求参数结构体
 
@@ -11583,8 +11741,10 @@ class CreateCodeTemplateRequest(AbstractModel):
         :type CodeTemplateDesc: str
         :param _FolderId: 文件夹ID
         :type FolderId: str
-        :param _Content: 指定脚本内容
+        :param _Content: Base64转化的脚本内容
         :type Content: str
+        :param _ProductName: 代码模板类型
+        :type ProductName: str
         """
         self._ProjectId = None
         self._CodeTemplateName = None
@@ -11592,6 +11752,7 @@ class CreateCodeTemplateRequest(AbstractModel):
         self._CodeTemplateDesc = None
         self._FolderId = None
         self._Content = None
+        self._ProductName = None
 
     @property
     def ProjectId(self):
@@ -11650,7 +11811,7 @@ class CreateCodeTemplateRequest(AbstractModel):
 
     @property
     def Content(self):
-        """指定脚本内容
+        """Base64转化的脚本内容
         :rtype: str
         """
         return self._Content
@@ -11658,6 +11819,17 @@ class CreateCodeTemplateRequest(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def ProductName(self):
+        """代码模板类型
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
 
 
     def _deserialize(self, params):
@@ -11667,6 +11839,7 @@ class CreateCodeTemplateRequest(AbstractModel):
         self._CodeTemplateDesc = params.get("CodeTemplateDesc")
         self._FolderId = params.get("FolderId")
         self._Content = params.get("Content")
+        self._ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21266,6 +21439,102 @@ class DeleteTaskDsResponse(AbstractModel):
     def Data(self):
         """是否删除成功
 注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTaskLineageRequest(AbstractModel):
+    """DeleteTaskLineage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Task: 任务信息
+        :type Task: :class:`tencentcloud.wedata.v20210820.models.LineageTask`
+        :param _ChannelType: wedata内部任务默认SQL
+        :type ChannelType: str
+        """
+        self._Task = None
+        self._ChannelType = None
+
+    @property
+    def Task(self):
+        """任务信息
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.LineageTask`
+        """
+        return self._Task
+
+    @Task.setter
+    def Task(self, Task):
+        self._Task = Task
+
+    @property
+    def ChannelType(self):
+        """wedata内部任务默认SQL
+        :rtype: str
+        """
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
+
+    def _deserialize(self, params):
+        if params.get("Task") is not None:
+            self._Task = LineageTask()
+            self._Task._deserialize(params.get("Task"))
+        self._ChannelType = params.get("ChannelType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTaskLineageResponse(AbstractModel):
+    """DeleteTaskLineage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 操作结果
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """操作结果
         :rtype: bool
         """
         return self._Data
@@ -46414,6 +46683,100 @@ class DimensionScoreInfo(AbstractModel):
         
 
 
+class DisableProjectRequest(AbstractModel):
+    """DisableProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _ModuleKey: 模块名称
+        :type ModuleKey: str
+        """
+        self._ProjectId = None
+        self._ModuleKey = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ModuleKey(self):
+        """模块名称
+        :rtype: str
+        """
+        return self._ModuleKey
+
+    @ModuleKey.setter
+    def ModuleKey(self, ModuleKey):
+        self._ModuleKey = ModuleKey
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ModuleKey = params.get("ModuleKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableProjectResponse(AbstractModel):
+    """DisableProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 无
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """无
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class DlcDataGovernPolicy(AbstractModel):
     """数据治理配置项
 
@@ -48243,6 +48606,100 @@ class DutyScheduleDetailsInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EnableProjectRequest(AbstractModel):
+    """EnableProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _ModuleKey: 模块名称
+        :type ModuleKey: str
+        """
+        self._ProjectId = None
+        self._ModuleKey = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ModuleKey(self):
+        """模块名称
+        :rtype: str
+        """
+        return self._ModuleKey
+
+    @ModuleKey.setter
+    def ModuleKey(self, ModuleKey):
+        self._ModuleKey = ModuleKey
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ModuleKey = params.get("ModuleKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableProjectResponse(AbstractModel):
+    """EnableProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 无
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """无
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
 
 
 class EngineTaskInfo(AbstractModel):
@@ -68408,6 +68865,177 @@ class ModifyMonitorStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyProjectRequest(AbstractModel):
+    """ModifyProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 目标修改的项目ID
+        :type ProjectId: str
+        :param _TaskSubmitApproval: true/false则修改，不带该参数不修改。
+        :type TaskSubmitApproval: bool
+        :param _ResourcePoolInfo: 资源池信息
+        :type ResourcePoolInfo: :class:`tencentcloud.wedata.v20210820.models.ResourcePoolInfo`
+        :param _ProjectManagers: 项目管理员
+        :type ProjectManagers: list of str
+        :param _TaskStrictMode: 调度任务严格模式
+        :type TaskStrictMode: bool
+        :param _ExtraOptions: 以后新增选项可以直接通过前端的json格式写入去实现
+        :type ExtraOptions: str
+        :param _Model: 项目类型，SIMPLE：简单模式 STANDARD：标准模式
+        :type Model: str
+        :param _ProjectOwner: 项目负责人
+        :type ProjectOwner: list of str
+        """
+        self._ProjectId = None
+        self._TaskSubmitApproval = None
+        self._ResourcePoolInfo = None
+        self._ProjectManagers = None
+        self._TaskStrictMode = None
+        self._ExtraOptions = None
+        self._Model = None
+        self._ProjectOwner = None
+
+    @property
+    def ProjectId(self):
+        """目标修改的项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskSubmitApproval(self):
+        """true/false则修改，不带该参数不修改。
+        :rtype: bool
+        """
+        return self._TaskSubmitApproval
+
+    @TaskSubmitApproval.setter
+    def TaskSubmitApproval(self, TaskSubmitApproval):
+        self._TaskSubmitApproval = TaskSubmitApproval
+
+    @property
+    def ResourcePoolInfo(self):
+        """资源池信息
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ResourcePoolInfo`
+        """
+        return self._ResourcePoolInfo
+
+    @ResourcePoolInfo.setter
+    def ResourcePoolInfo(self, ResourcePoolInfo):
+        self._ResourcePoolInfo = ResourcePoolInfo
+
+    @property
+    def ProjectManagers(self):
+        """项目管理员
+        :rtype: list of str
+        """
+        return self._ProjectManagers
+
+    @ProjectManagers.setter
+    def ProjectManagers(self, ProjectManagers):
+        self._ProjectManagers = ProjectManagers
+
+    @property
+    def TaskStrictMode(self):
+        """调度任务严格模式
+        :rtype: bool
+        """
+        return self._TaskStrictMode
+
+    @TaskStrictMode.setter
+    def TaskStrictMode(self, TaskStrictMode):
+        self._TaskStrictMode = TaskStrictMode
+
+    @property
+    def ExtraOptions(self):
+        """以后新增选项可以直接通过前端的json格式写入去实现
+        :rtype: str
+        """
+        return self._ExtraOptions
+
+    @ExtraOptions.setter
+    def ExtraOptions(self, ExtraOptions):
+        self._ExtraOptions = ExtraOptions
+
+    @property
+    def Model(self):
+        """项目类型，SIMPLE：简单模式 STANDARD：标准模式
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def ProjectOwner(self):
+        """项目负责人
+        :rtype: list of str
+        """
+        return self._ProjectOwner
+
+    @ProjectOwner.setter
+    def ProjectOwner(self, ProjectOwner):
+        self._ProjectOwner = ProjectOwner
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskSubmitApproval = params.get("TaskSubmitApproval")
+        if params.get("ResourcePoolInfo") is not None:
+            self._ResourcePoolInfo = ResourcePoolInfo()
+            self._ResourcePoolInfo._deserialize(params.get("ResourcePoolInfo"))
+        self._ProjectManagers = params.get("ProjectManagers")
+        self._TaskStrictMode = params.get("TaskStrictMode")
+        self._ExtraOptions = params.get("ExtraOptions")
+        self._Model = params.get("Model")
+        self._ProjectOwner = params.get("ProjectOwner")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProjectResponse(AbstractModel):
+    """ModifyProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRuleGroupSubscriptionRequest(AbstractModel):
     """ModifyRuleGroupSubscription请求参数结构体
 
@@ -79490,6 +80118,102 @@ class ResourcePathTree(AbstractModel):
         
 
 
+class ResourcePoolInfo(AbstractModel):
+    """资源池信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourcePools: 资源池id
+        :type ResourcePools: list of str
+        :param _StorageSize: 存储空间大小，单位 MB
+        :type StorageSize: int
+        :param _StorageFileNum: 存储文件数大小
+        :type StorageFileNum: int
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _StorageType: 存储类型，0 代表HDFS，1 代表OZONE
+        :type StorageType: str
+        """
+        self._ResourcePools = None
+        self._StorageSize = None
+        self._StorageFileNum = None
+        self._ClusterId = None
+        self._StorageType = None
+
+    @property
+    def ResourcePools(self):
+        """资源池id
+        :rtype: list of str
+        """
+        return self._ResourcePools
+
+    @ResourcePools.setter
+    def ResourcePools(self, ResourcePools):
+        self._ResourcePools = ResourcePools
+
+    @property
+    def StorageSize(self):
+        """存储空间大小，单位 MB
+        :rtype: int
+        """
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
+    def StorageFileNum(self):
+        """存储文件数大小
+        :rtype: int
+        """
+        return self._StorageFileNum
+
+    @StorageFileNum.setter
+    def StorageFileNum(self, StorageFileNum):
+        self._StorageFileNum = StorageFileNum
+
+    @property
+    def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def StorageType(self):
+        """存储类型，0 代表HDFS，1 代表OZONE
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+
+    def _deserialize(self, params):
+        self._ResourcePools = params.get("ResourcePools")
+        self._StorageSize = params.get("StorageSize")
+        self._StorageFileNum = params.get("StorageFileNum")
+        self._ClusterId = params.get("ClusterId")
+        self._StorageType = params.get("StorageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResumeIntegrationTaskRequest(AbstractModel):
     """ResumeIntegrationTask请求参数结构体
 
@@ -89798,6 +90522,8 @@ class SubmitTaskTestRunRequest(AbstractModel):
         :type ScriptContent: str
         :param _VersionId: 版本号
         :type VersionId: str
+        :param _SubmitTaskTestRunType: 提交任务测试运行类型
+        :type SubmitTaskTestRunType: str
         """
         self._TaskIds = None
         self._ProjectId = None
@@ -89808,6 +90534,7 @@ class SubmitTaskTestRunRequest(AbstractModel):
         self._RunParams = None
         self._ScriptContent = None
         self._VersionId = None
+        self._SubmitTaskTestRunType = None
 
     @property
     def TaskIds(self):
@@ -89908,6 +90635,17 @@ class SubmitTaskTestRunRequest(AbstractModel):
     def VersionId(self, VersionId):
         self._VersionId = VersionId
 
+    @property
+    def SubmitTaskTestRunType(self):
+        """提交任务测试运行类型
+        :rtype: str
+        """
+        return self._SubmitTaskTestRunType
+
+    @SubmitTaskTestRunType.setter
+    def SubmitTaskTestRunType(self, SubmitTaskTestRunType):
+        self._SubmitTaskTestRunType = SubmitTaskTestRunType
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
@@ -89924,6 +90662,7 @@ class SubmitTaskTestRunRequest(AbstractModel):
         self._RunParams = params.get("RunParams")
         self._ScriptContent = params.get("ScriptContent")
         self._VersionId = params.get("VersionId")
+        self._SubmitTaskTestRunType = params.get("SubmitTaskTestRunType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -104896,6 +105635,130 @@ class TriggerManualTasksResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = ManualTriggerRecordOpsDto()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UnboundProjectExecutorResourceRequest(AbstractModel):
+    """UnboundProjectExecutorResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutorGroupId: 执行资源组id
+        :type ExecutorGroupId: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _ProjectIdList: 可选: 需要绑定的多个项目id, 若申明将带上ProjectId一起绑定
+        :type ProjectIdList: list of str
+        :param _ExecutorResourcePackageIds: 需要绑定项目的资源包id集合，为空则绑定整个资源组
+        :type ExecutorResourcePackageIds: list of str
+        """
+        self._ExecutorGroupId = None
+        self._ProjectId = None
+        self._ProjectIdList = None
+        self._ExecutorResourcePackageIds = None
+
+    @property
+    def ExecutorGroupId(self):
+        """执行资源组id
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectIdList(self):
+        """可选: 需要绑定的多个项目id, 若申明将带上ProjectId一起绑定
+        :rtype: list of str
+        """
+        return self._ProjectIdList
+
+    @ProjectIdList.setter
+    def ProjectIdList(self, ProjectIdList):
+        self._ProjectIdList = ProjectIdList
+
+    @property
+    def ExecutorResourcePackageIds(self):
+        """需要绑定项目的资源包id集合，为空则绑定整个资源组
+        :rtype: list of str
+        """
+        return self._ExecutorResourcePackageIds
+
+    @ExecutorResourcePackageIds.setter
+    def ExecutorResourcePackageIds(self, ExecutorResourcePackageIds):
+        self._ExecutorResourcePackageIds = ExecutorResourcePackageIds
+
+
+    def _deserialize(self, params):
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectIdList = params.get("ProjectIdList")
+        self._ExecutorResourcePackageIds = params.get("ExecutorResourcePackageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnboundProjectExecutorResourceResponse(AbstractModel):
+    """UnboundProjectExecutorResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否绑定成功，失败返回异常
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """是否绑定成功，失败返回异常
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 

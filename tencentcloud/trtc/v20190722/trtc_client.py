@@ -73,6 +73,34 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudModeration(self, request):
+        """接口说明：
+        启动云端审核功能，完成房间内的音视频切片，视频截帧，或者录制音频流，送审到指定的审核商，完成审核。
+
+        您可以通过此接口实现如下目标：
+        * 指定审核参数（ModerationParams）来指定审核需要的详细参数。
+        * 指定存储参数（ModerationStorageParams）将命中的审核文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+
+        :param request: Request instance for CreateCloudModeration.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateCloudModerationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateCloudModerationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudModeration", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudModerationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudRecording(self, request):
         """接口说明：
         启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制又或者多路视频画面合流混成一路。
@@ -98,6 +126,34 @@ class TrtcClient(AbstractClient):
             body = self.call("CreateCloudRecording", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCloudSliceTask(self, request):
+        """接口说明：
+        启动云端切片功能，完成房间内的音视频切片，并上传到指定的云存储。
+
+        您可以通过此接口实现如下目标：
+        * 指定切片参数（SliceParams）来指定需要切片的主播的黑名单或者白名单。
+        * 指定存储参数（SliceStorageParams）来指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+
+        :param request: Request instance for CreateCloudSliceTask.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateCloudSliceTaskRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateCloudSliceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudSliceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudSliceTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -153,6 +209,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCloudModeration(self, request):
+        """成功开启云端审核任务后，可以使用此接口来停止送审。
+
+        :param request: Request instance for DeleteCloudModeration.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudModerationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudModerationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudModeration", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudModerationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudRecording(self, request):
         """成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
 
@@ -167,6 +246,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DeleteCloudRecording", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudSliceTask(self, request):
+        """成功开启切片任务后，可以使用此接口来停止任务。停止切片成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+
+        :param request: Request instance for DeleteCloudSliceTask.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudSliceTaskRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudSliceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudSliceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudSliceTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -296,6 +398,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudModeration(self, request):
+        """成功开启审核任务后，可以使用此接口来查询审核任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
+
+        :param request: Request instance for DescribeCloudModeration.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudModerationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudModerationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudModeration", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudModerationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudRecording(self, request):
         """成功开启录制后，可以使用此接口来查询录制状态。仅在录制任务进行时有效，录制退出后查询将会返回错误。
         录制文件上传到云点播VOD时，StorageFileList中不会返回录制文件信息，请订阅相关录制文件回调事件，获取录制文件信息。
@@ -311,6 +436,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeCloudRecording", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudSliceTask(self, request):
+        """成功开启切片后，可以使用此接口来查询切片任务状态。仅在任务进行时有效，任务退出后查询将会返回错误。
+
+        :param request: Request instance for DescribeCloudSliceTask.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudSliceTaskRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudSliceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudSliceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudSliceTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1014,6 +1162,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCloudModeration(self, request):
+        """成功开启云端审核任务后，可以使用此接口来更新订阅黑白名单。
+
+        :param request: Request instance for ModifyCloudModeration.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudModerationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudModerationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudModeration", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudModerationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCloudRecording(self, request):
         """成功开启录制后，可以使用此接口来更新录制任务。仅在录制任务进行时有效，录制退出后更新将会返回错误。更新操作是全量覆盖，并不是增量更新的模式，也就是说每次更新都需要携带全量的信息。
 
@@ -1028,6 +1199,29 @@ class TrtcClient(AbstractClient):
             body = self.call("ModifyCloudRecording", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloudSliceTask(self, request):
+        """成功开启切片任务后，可以使用此接口来更新任务。用于更新指定订阅流白名单或者黑名单。
+
+        :param request: Request instance for ModifyCloudSliceTask.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudSliceTaskRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudSliceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudSliceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudSliceTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

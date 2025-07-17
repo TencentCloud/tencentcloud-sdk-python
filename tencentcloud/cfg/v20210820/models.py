@@ -6231,11 +6231,14 @@ class TaskTarget(AbstractModel):
         :type Type: int
         :param _Source: 1:平台 2:用户个人
         :type Source: int
+        :param _TargetStatus: 目标标签是否已被删除
+        :type TargetStatus: int
         """
         self._TargetId = None
         self._TargetDesc = None
         self._Type = None
         self._Source = None
+        self._TargetStatus = None
 
     @property
     def TargetId(self):
@@ -6282,12 +6285,24 @@ class TaskTarget(AbstractModel):
     def Source(self, Source):
         self._Source = Source
 
+    @property
+    def TargetStatus(self):
+        """目标标签是否已被删除
+        :rtype: int
+        """
+        return self._TargetStatus
+
+    @TargetStatus.setter
+    def TargetStatus(self, TargetStatus):
+        self._TargetStatus = TargetStatus
+
 
     def _deserialize(self, params):
         self._TargetId = params.get("TargetId")
         self._TargetDesc = params.get("TargetDesc")
         self._Type = params.get("Type")
         self._Source = params.get("Source")
+        self._TargetStatus = params.get("TargetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

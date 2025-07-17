@@ -8460,6 +8460,8 @@ class CreateImageCacheRequest(AbstractModel):
         :param _ResolveConfig: 自定义制作镜像缓存过程中容器实例的宿主机上的 DNS。如：
 "nameserver 4.4.4.4\nnameserver 8.8.8.8"
         :type ResolveConfig: str
+        :param _Tags: 腾讯云标签
+        :type Tags: list of Tag
         """
         self._Images = None
         self._SubnetId = None
@@ -8475,6 +8477,7 @@ class CreateImageCacheRequest(AbstractModel):
         self._RegistrySkipVerifyList = None
         self._RegistryHttpEndPointList = None
         self._ResolveConfig = None
+        self._Tags = None
 
     @property
     def Images(self):
@@ -8632,6 +8635,17 @@ class CreateImageCacheRequest(AbstractModel):
     def ResolveConfig(self, ResolveConfig):
         self._ResolveConfig = ResolveConfig
 
+    @property
+    def Tags(self):
+        """腾讯云标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Images = params.get("Images")
@@ -8655,6 +8669,12 @@ class CreateImageCacheRequest(AbstractModel):
         self._RegistrySkipVerifyList = params.get("RegistrySkipVerifyList")
         self._RegistryHttpEndPointList = params.get("RegistryHttpEndPointList")
         self._ResolveConfig = params.get("ResolveConfig")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30148,6 +30168,12 @@ Updating：更新中
 UpdateFailed：更新失败
 只有状态为Ready时，才能正常使用镜像缓存
         :type Status: str
+        :param _RetentionDays: 镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
+        :type RetentionDays: int
+        :param _ImageRegistryCredentials: 镜像拉取凭证
+        :type ImageRegistryCredentials: list of ImageRegistryCredential
+        :param _Tags: 腾讯云标签
+        :type Tags: list of Tag
         """
         self._ImageCacheId = None
         self._ImageCacheName = None
@@ -30159,6 +30185,9 @@ UpdateFailed：更新失败
         self._LastMatchedTime = None
         self._SnapshotId = None
         self._Status = None
+        self._RetentionDays = None
+        self._ImageRegistryCredentials = None
+        self._Tags = None
 
     @property
     def ImageCacheId(self):
@@ -30276,6 +30305,39 @@ UpdateFailed：更新失败
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def RetentionDays(self):
+        """镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
+        :rtype: int
+        """
+        return self._RetentionDays
+
+    @RetentionDays.setter
+    def RetentionDays(self, RetentionDays):
+        self._RetentionDays = RetentionDays
+
+    @property
+    def ImageRegistryCredentials(self):
+        """镜像拉取凭证
+        :rtype: list of ImageRegistryCredential
+        """
+        return self._ImageRegistryCredentials
+
+    @ImageRegistryCredentials.setter
+    def ImageRegistryCredentials(self, ImageRegistryCredentials):
+        self._ImageRegistryCredentials = ImageRegistryCredentials
+
+    @property
+    def Tags(self):
+        """腾讯云标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ImageCacheId = params.get("ImageCacheId")
@@ -30293,6 +30355,19 @@ UpdateFailed：更新失败
         self._LastMatchedTime = params.get("LastMatchedTime")
         self._SnapshotId = params.get("SnapshotId")
         self._Status = params.get("Status")
+        self._RetentionDays = params.get("RetentionDays")
+        if params.get("ImageRegistryCredentials") is not None:
+            self._ImageRegistryCredentials = []
+            for item in params.get("ImageRegistryCredentials"):
+                obj = ImageRegistryCredential()
+                obj._deserialize(item)
+                self._ImageRegistryCredentials.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47148,6 +47223,8 @@ class UpdateImageCacheRequest(AbstractModel):
         :type RetentionDays: int
         :param _SecurityGroupIds: 安全组Id
         :type SecurityGroupIds: list of str
+        :param _Tags: 腾讯云标签
+        :type Tags: list of Tag
         """
         self._ImageCacheId = None
         self._ImageCacheName = None
@@ -47156,6 +47233,7 @@ class UpdateImageCacheRequest(AbstractModel):
         self._ImageCacheSize = None
         self._RetentionDays = None
         self._SecurityGroupIds = None
+        self._Tags = None
 
     @property
     def ImageCacheId(self):
@@ -47234,6 +47312,17 @@ class UpdateImageCacheRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Tags(self):
+        """腾讯云标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ImageCacheId = params.get("ImageCacheId")
@@ -47248,6 +47337,12 @@ class UpdateImageCacheRequest(AbstractModel):
         self._ImageCacheSize = params.get("ImageCacheSize")
         self._RetentionDays = params.get("RetentionDays")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

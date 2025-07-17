@@ -4673,6 +4673,57 @@ class DescribeUserQuotaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExstraPerformanceInfo(AbstractModel):
+    """购买完额外性能之后的值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: fixed: 最终值固定
+        :type Type: str
+        :param _Performance: 额外购买的CFS性能值，单位MB/s。
+        :type Performance: int
+        """
+        self._Type = None
+        self._Performance = None
+
+    @property
+    def Type(self):
+        """fixed: 最终值固定
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Performance(self):
+        """额外购买的CFS性能值，单位MB/s。
+        :rtype: int
+        """
+        return self._Performance
+
+    @Performance.setter
+    def Performance(self, Performance):
+        self._Performance = Performance
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Performance = params.get("Performance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileSystemByPolicy(AbstractModel):
     """绑定快照策略的文件系统信息
 
@@ -4978,6 +5029,12 @@ Available:可用
         :type AutoScaleUpRule: :class:`tencentcloud.cfs.v20190719.models.AutoScaleUpRule`
         :param _Version: 文件系统版本
         :type Version: str
+        :param _ExstraPerformanceInfo: 额外性能信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExstraPerformanceInfo: list of ExstraPerformanceInfo
+        :param _MetaType: basic：标准版元数据类型
+enhanced：增项版元数据类型
+        :type MetaType: str
         """
         self._CreationTime = None
         self._CreationToken = None
@@ -5005,6 +5062,8 @@ Available:可用
         self._TieringDetail = None
         self._AutoScaleUpRule = None
         self._Version = None
+        self._ExstraPerformanceInfo = None
+        self._MetaType = None
 
     @property
     def CreationTime(self):
@@ -5301,6 +5360,30 @@ Available:可用
     def Version(self, Version):
         self._Version = Version
 
+    @property
+    def ExstraPerformanceInfo(self):
+        """额外性能信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExstraPerformanceInfo
+        """
+        return self._ExstraPerformanceInfo
+
+    @ExstraPerformanceInfo.setter
+    def ExstraPerformanceInfo(self, ExstraPerformanceInfo):
+        self._ExstraPerformanceInfo = ExstraPerformanceInfo
+
+    @property
+    def MetaType(self):
+        """basic：标准版元数据类型
+enhanced：增项版元数据类型
+        :rtype: str
+        """
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
 
     def _deserialize(self, params):
         self._CreationTime = params.get("CreationTime")
@@ -5340,6 +5423,13 @@ Available:可用
             self._AutoScaleUpRule = AutoScaleUpRule()
             self._AutoScaleUpRule._deserialize(params.get("AutoScaleUpRule"))
         self._Version = params.get("Version")
+        if params.get("ExstraPerformanceInfo") is not None:
+            self._ExstraPerformanceInfo = []
+            for item in params.get("ExstraPerformanceInfo"):
+                obj = ExstraPerformanceInfo()
+                obj._deserialize(item)
+                self._ExstraPerformanceInfo.append(obj)
+        self._MetaType = params.get("MetaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

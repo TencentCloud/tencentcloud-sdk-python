@@ -1206,6 +1206,8 @@ class Bundle(AbstractModel):
 "NORMAL": 普通套餐
 "CAREFREE": 无忧套餐
         :type BundleDisplayLabel: str
+        :param _TrafficUnlimited: 流量是否无上限。
+        :type TrafficUnlimited: bool
         """
         self._BundleId = None
         self._Memory = None
@@ -1222,6 +1224,7 @@ class Bundle(AbstractModel):
         self._BundleType = None
         self._BundleTypeDescription = None
         self._BundleDisplayLabel = None
+        self._TrafficUnlimited = None
 
     @property
     def BundleId(self):
@@ -1403,6 +1406,17 @@ class Bundle(AbstractModel):
     def BundleDisplayLabel(self, BundleDisplayLabel):
         self._BundleDisplayLabel = BundleDisplayLabel
 
+    @property
+    def TrafficUnlimited(self):
+        """流量是否无上限。
+        :rtype: bool
+        """
+        return self._TrafficUnlimited
+
+    @TrafficUnlimited.setter
+    def TrafficUnlimited(self, TrafficUnlimited):
+        self._TrafficUnlimited = TrafficUnlimited
+
 
     def _deserialize(self, params):
         self._BundleId = params.get("BundleId")
@@ -1422,6 +1436,7 @@ class Bundle(AbstractModel):
         self._BundleType = params.get("BundleType")
         self._BundleTypeDescription = params.get("BundleTypeDescription")
         self._BundleDisplayLabel = params.get("BundleDisplayLabel")
+        self._TrafficUnlimited = params.get("TrafficUnlimited")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -152,6 +152,9 @@ INVALIDPARAMETERVALUE_REMOTESTORAGESCHEMETYPE = 'InvalidParameterValue.RemoteSto
 # 指定的ResourceType不合法。
 INVALIDPARAMETERVALUE_RESOURCETYPE = 'InvalidParameterValue.ResourceType'
 
+# 提交任务时指定的task实例副本参数不符合预期
+INVALIDPARAMETERVALUE_TASKINSTANCENUM = 'InvalidParameterValue.TaskInstanceNum'
+
 # Zone不可用。
 INVALIDPARAMETERVALUE_UNAVAILABLEZONE = 'InvalidParameterValue.UnavailableZone'
 

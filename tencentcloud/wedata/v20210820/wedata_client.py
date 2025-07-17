@@ -440,6 +440,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindProjectExecutorResource(self, request):
+        """商业化版本：执行资源组-资源包绑定项目
+
+        :param request: Request instance for BindProjectExecutorResource.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.BindProjectExecutorResourceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BindProjectExecutorResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindProjectExecutorResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindProjectExecutorResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckAlarmRegularNameExist(self, request):
         """判断告警规则重名
 
@@ -592,6 +615,29 @@ class WedataClient(AbstractClient):
             body = self.call("CountOpsInstanceState", params, headers=headers)
             response = json.loads(body)
             model = models.CountOpsInstanceStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateBaseProject(self, request):
+        """创建项目 仅项目本身，不包含集群等信息
+
+        :param request: Request instance for CreateBaseProject.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateBaseProjectRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateBaseProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBaseProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBaseProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1535,6 +1581,29 @@ class WedataClient(AbstractClient):
             body = self.call("DeleteTaskDs", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTaskDsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTaskLineage(self, request):
+        """删除任务血缘信息
+
+        :param request: Request instance for DeleteTaskLineage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteTaskLineageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteTaskLineageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTaskLineage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTaskLineageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4750,6 +4819,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableProject(self, request):
+        """禁用项目
+
+        :param request: Request instance for DisableProject.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DisableProjectRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DisableProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DownloadLogByLine(self, request):
         """按行下载日志信息
 
@@ -4787,6 +4879,29 @@ class WedataClient(AbstractClient):
             body = self.call("DryRunDIOfflineTask", params, headers=headers)
             response = json.loads(body)
             model = models.DryRunDIOfflineTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableProject(self, request):
+        """启用项目
+
+        :param request: Request instance for EnableProject.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.EnableProjectRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.EnableProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5408,6 +5523,29 @@ class WedataClient(AbstractClient):
             body = self.call("ModifyMonitorStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMonitorStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProject(self, request):
+        """修改项目基础信息。
+
+        :param request: Request instance for ModifyProject.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyProjectRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6336,6 +6474,29 @@ class WedataClient(AbstractClient):
             body = self.call("TriggerManualTasks", params, headers=headers)
             response = json.loads(body)
             model = models.TriggerManualTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnboundProjectExecutorResource(self, request):
+        """商业化版本：执行资源组/资源包解除绑定项目
+
+        :param request: Request instance for UnboundProjectExecutorResource.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.UnboundProjectExecutorResourceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.UnboundProjectExecutorResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnboundProjectExecutorResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnboundProjectExecutorResourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

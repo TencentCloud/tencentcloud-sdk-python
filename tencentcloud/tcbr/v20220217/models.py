@@ -3126,6 +3126,8 @@ class ServerBaseInfo(AbstractModel):
         :type ServerType: str
         :param _TrafficType: 流量类型，目前只有 FLOW
         :type TrafficType: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
         """
         self._ServerName = None
         self._DefaultDomainName = None
@@ -3136,6 +3138,7 @@ class ServerBaseInfo(AbstractModel):
         self._CustomDomainNames = None
         self._ServerType = None
         self._TrafficType = None
+        self._CreateTime = None
 
     @property
     def ServerName(self):
@@ -3236,6 +3239,17 @@ class ServerBaseInfo(AbstractModel):
     def TrafficType(self, TrafficType):
         self._TrafficType = TrafficType
 
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._ServerName = params.get("ServerName")
@@ -3247,6 +3261,7 @@ class ServerBaseInfo(AbstractModel):
         self._CustomDomainNames = params.get("CustomDomainNames")
         self._ServerType = params.get("ServerType")
         self._TrafficType = params.get("TrafficType")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
