@@ -2443,6 +2443,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserRegisterTime(self, request):
+        """该接口（DescribeUserRegisterTime）用于查询当前用户注册时间，并判断是否是老用户。
+
+        :param request: Request instance for DescribeUserRegisterTime.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserRegisterTimeRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUserRegisterTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserRegisterTime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserRegisterTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserRoles(self, request):
         """列举用户角色信息
 

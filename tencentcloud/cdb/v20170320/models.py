@@ -4668,6 +4668,10 @@ class CdbZoneSellConf(AbstractModel):
         :type IsSupportIpv6: bool
         :param _EngineType: 可支持的售卖数据库引擎类型
         :type EngineType: list of str
+        :param _CloudNativeClusterStatus: 集群版实例在当前可用区的售卖状态。可能的返回值为：1-上线；3-停售；4-不展示
+        :type CloudNativeClusterStatus: int
+        :param _DiskTypeConf: 集群版或者单节点基础型支持的磁盘类型。
+        :type DiskTypeConf: list of DiskTypeConfigItem
         """
         self._Status = None
         self._ZoneName = None
@@ -4691,6 +4695,8 @@ class CdbZoneSellConf(AbstractModel):
         self._ZoneId = None
         self._IsSupportIpv6 = None
         self._EngineType = None
+        self._CloudNativeClusterStatus = None
+        self._DiskTypeConf = None
 
     @property
     def Status(self):
@@ -4934,6 +4940,28 @@ class CdbZoneSellConf(AbstractModel):
     def EngineType(self, EngineType):
         self._EngineType = EngineType
 
+    @property
+    def CloudNativeClusterStatus(self):
+        """集群版实例在当前可用区的售卖状态。可能的返回值为：1-上线；3-停售；4-不展示
+        :rtype: int
+        """
+        return self._CloudNativeClusterStatus
+
+    @CloudNativeClusterStatus.setter
+    def CloudNativeClusterStatus(self, CloudNativeClusterStatus):
+        self._CloudNativeClusterStatus = CloudNativeClusterStatus
+
+    @property
+    def DiskTypeConf(self):
+        """集群版或者单节点基础型支持的磁盘类型。
+        :rtype: list of DiskTypeConfigItem
+        """
+        return self._DiskTypeConf
+
+    @DiskTypeConf.setter
+    def DiskTypeConf(self, DiskTypeConf):
+        self._DiskTypeConf = DiskTypeConf
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -4967,6 +4995,13 @@ class CdbZoneSellConf(AbstractModel):
         self._ZoneId = params.get("ZoneId")
         self._IsSupportIpv6 = params.get("IsSupportIpv6")
         self._EngineType = params.get("EngineType")
+        self._CloudNativeClusterStatus = params.get("CloudNativeClusterStatus")
+        if params.get("DiskTypeConf") is not None:
+            self._DiskTypeConf = []
+            for item in params.get("DiskTypeConf"):
+                obj = DiskTypeConfigItem()
+                obj._deserialize(item)
+                self._DiskTypeConf.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23468,6 +23503,57 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DiskTypeConfigItem(AbstractModel):
+    """磁盘售卖类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceType: 磁盘对应的实例类型。仅支持单节点基础型和集群版。
+        :type DeviceType: str
+        :param _DiskType: 可以选择的磁盘类型列表。
+        :type DiskType: list of str
+        """
+        self._DeviceType = None
+        self._DiskType = None
+
+    @property
+    def DeviceType(self):
+        """磁盘对应的实例类型。仅支持单节点基础型和集群版。
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def DiskType(self):
+        """可以选择的磁盘类型列表。
+        :rtype: list of str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+
+    def _deserialize(self, params):
+        self._DeviceType = params.get("DeviceType")
+        self._DiskType = params.get("DiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DrInfo(AbstractModel):
     """灾备实例信息
 
@@ -25864,15 +25950,15 @@ class IsolateDBInstanceResponse(AbstractModel):
 
 
 class LocalBinlogConfig(AbstractModel):
-    """本地binlog保留配置
+    """本地 binlog 保留配置
 
     """
 
     def __init__(self):
         r"""
-        :param _SaveHours: 本地binlog保留时长，可取值范围：[72,168]。
+        :param _SaveHours: 本地 binlog 保留时长，可取值范围：[6,168]。
         :type SaveHours: int
-        :param _MaxUsage: 本地binlog空间使用率，可取值范围：[30,50]。
+        :param _MaxUsage: 本地 binlog 空间使用率，可取值范围：[30,50]。
         :type MaxUsage: int
         """
         self._SaveHours = None
@@ -25880,7 +25966,7 @@ class LocalBinlogConfig(AbstractModel):
 
     @property
     def SaveHours(self):
-        """本地binlog保留时长，可取值范围：[72,168]。
+        """本地 binlog 保留时长，可取值范围：[6,168]。
         :rtype: int
         """
         return self._SaveHours
@@ -25891,7 +25977,7 @@ class LocalBinlogConfig(AbstractModel):
 
     @property
     def MaxUsage(self):
-        """本地binlog空间使用率，可取值范围：[30,50]。
+        """本地 binlog 空间使用率，可取值范围：[30,50]。
         :rtype: int
         """
         return self._MaxUsage
@@ -25915,15 +26001,15 @@ class LocalBinlogConfig(AbstractModel):
 
 
 class LocalBinlogConfigDefault(AbstractModel):
-    """本地binlog保留策略默认配置。
+    """本地 binlog 保留策略默认配置
 
     """
 
     def __init__(self):
         r"""
-        :param _SaveHours: 本地binlog保留时长，可取值范围：[72,168]。
+        :param _SaveHours: 本地 binlog 保留时长，可取值范围：[6,168]。
         :type SaveHours: int
-        :param _MaxUsage: 本地binlog空间使用率，可取值范围：[30,50]。
+        :param _MaxUsage: 本地 binlog 空间使用率，可取值范围：[30,50]。
         :type MaxUsage: int
         """
         self._SaveHours = None
@@ -25931,7 +26017,7 @@ class LocalBinlogConfigDefault(AbstractModel):
 
     @property
     def SaveHours(self):
-        """本地binlog保留时长，可取值范围：[72,168]。
+        """本地 binlog 保留时长，可取值范围：[6,168]。
         :rtype: int
         """
         return self._SaveHours
@@ -25942,7 +26028,7 @@ class LocalBinlogConfigDefault(AbstractModel):
 
     @property
     def MaxUsage(self):
-        """本地binlog空间使用率，可取值范围：[30,50]。
+        """本地 binlog 空间使用率，可取值范围：[30,50]。
         :rtype: int
         """
         return self._MaxUsage
@@ -35901,7 +35987,7 @@ class SlowLogInfo(AbstractModel):
         :type Name: str
         :param _Size: 备份文件大小，单位：Byte
         :type Size: int
-        :param _Date: 备份快照时间，时间格式：2016-03-17 02:10:37
+        :param _Date: 备份快照时间，时间格式：2016-03-17
         :type Date: str
         :param _IntranetUrl: 内网下载地址
         :type IntranetUrl: str
@@ -35941,7 +36027,7 @@ class SlowLogInfo(AbstractModel):
 
     @property
     def Date(self):
-        """备份快照时间，时间格式：2016-03-17 02:10:37
+        """备份快照时间，时间格式：2016-03-17
         :rtype: str
         """
         return self._Date

@@ -15222,6 +15222,8 @@ class SkillGroupInfoItem(AbstractModel):
         :type SkillGroupType: int
         :param _Alias: 技能组内线号码
         :type Alias: str
+        :param _RingAll: 是否同振
+        :type RingAll: bool
         """
         self._SkillGroupId = None
         self._SkillGroupName = None
@@ -15232,6 +15234,7 @@ class SkillGroupInfoItem(AbstractModel):
         self._LastModifyTimestamp = None
         self._SkillGroupType = None
         self._Alias = None
+        self._RingAll = None
 
     @property
     def SkillGroupId(self):
@@ -15332,6 +15335,17 @@ class SkillGroupInfoItem(AbstractModel):
     def Alias(self, Alias):
         self._Alias = Alias
 
+    @property
+    def RingAll(self):
+        """是否同振
+        :rtype: bool
+        """
+        return self._RingAll
+
+    @RingAll.setter
+    def RingAll(self, RingAll):
+        self._RingAll = RingAll
+
 
     def _deserialize(self, params):
         self._SkillGroupId = params.get("SkillGroupId")
@@ -15343,6 +15357,7 @@ class SkillGroupInfoItem(AbstractModel):
         self._LastModifyTimestamp = params.get("LastModifyTimestamp")
         self._SkillGroupType = params.get("SkillGroupType")
         self._Alias = params.get("Alias")
+        self._RingAll = params.get("RingAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

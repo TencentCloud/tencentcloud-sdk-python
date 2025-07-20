@@ -830,7 +830,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteBackup(self, request):
-        """本接口(DeleteBackup)用于删除数据库备份。本接口只支持删除手动发起的备份。
+        """本接口（DeleteBackup）用于删除数据库备份。本接口只支持删除手动发起的备份。
 
         :param request: Request instance for DeleteBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteBackupRequest`

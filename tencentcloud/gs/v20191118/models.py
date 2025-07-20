@@ -39,7 +39,7 @@ class AndroidApp(AbstractModel):
         :type UserId: str
         :param _AppMode: 应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
         :type AppMode: str
-        :param _UpdateState: 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
+        :param _UpdateState: 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
         :type UpdateState: str
         :param _PackageName: 安卓应用包名
         :type PackageName: str
@@ -133,7 +133,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def UpdateState(self):
-        """应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
+        """应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
         :rtype: str
         """
         return self._UpdateState
@@ -239,9 +239,7 @@ class AndroidAppVersionInfo(AbstractModel):
         r"""
         :param _AndroidAppVersion: 安卓应用版本
         :type AndroidAppVersion: str
-        :param _State: 安卓应用版本创建状态（NORMAL：无、UPLOADING：上传中、
-CREATING： 创建中、
-CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
+        :param _State: 安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
         :type State: str
         :param _CreateTime: 安卓应用版本创建时间
         :type CreateTime: str
@@ -257,6 +255,12 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         :type Activity: str
         :param _VersionName: 应用版本号（Version Name）
         :type VersionName: str
+        :param _MD5: 应用包 MD5
+        :type MD5: str
+        :param _FileSize: 应用包文件大小（字节）
+        :type FileSize: int
+        :param _PackageName: 安卓应用包名
+        :type PackageName: str
         """
         self._AndroidAppVersion = None
         self._State = None
@@ -267,6 +271,9 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         self._AndroidAppVersionName = None
         self._Activity = None
         self._VersionName = None
+        self._MD5 = None
+        self._FileSize = None
+        self._PackageName = None
 
     @property
     def AndroidAppVersion(self):
@@ -281,9 +288,7 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
 
     @property
     def State(self):
-        """安卓应用版本创建状态（NORMAL：无、UPLOADING：上传中、
-CREATING： 创建中、
-CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
+        """安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
         :rtype: str
         """
         return self._State
@@ -369,6 +374,39 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
     def VersionName(self, VersionName):
         self._VersionName = VersionName
 
+    @property
+    def MD5(self):
+        """应用包 MD5
+        :rtype: str
+        """
+        return self._MD5
+
+    @MD5.setter
+    def MD5(self, MD5):
+        self._MD5 = MD5
+
+    @property
+    def FileSize(self):
+        """应用包文件大小（字节）
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def PackageName(self):
+        """安卓应用包名
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
 
     def _deserialize(self, params):
         self._AndroidAppVersion = params.get("AndroidAppVersion")
@@ -380,6 +418,9 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         self._AndroidAppVersionName = params.get("AndroidAppVersionName")
         self._Activity = params.get("Activity")
         self._VersionName = params.get("VersionName")
+        self._MD5 = params.get("MD5")
+        self._FileSize = params.get("FileSize")
+        self._PackageName = params.get("PackageName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

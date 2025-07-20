@@ -37851,10 +37851,12 @@ class HandleCurrentPlaylistRequest(AbstractModel):
         :type SubAppId: int
         :param _RoundPlayId: 轮播播单唯一标识。
         :type RoundPlayId: str
-        :param _Operation: 操作类型，取值有：<li>Insert：向当前播放列表插入播放节目。</li> <li>InsertTemporary：向当前播放列表临时插入播放节目。只能插入到当前正在播放的节目后面，临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的播放节目。不能删除正在播放的节目。</li>
+        :param _Operation: 操作类型，取值有：<li>Insert：向当前播放列表插入节目。插入的节目在后续轮播过程仍然有效。</li> <li>InsertTemporary：向当前播放列表临时插入节目。临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的节目。不能删除正在播放的节目。</li>
         :type Operation: str
-        :param _ItemId: 播单节目 ID。当 Operation 为 Insert 时必填，表示插入的节目列表位于该播放节目之后。插入的位置必须在当前正在播放的节目之后。
+        :param _ItemId: 播单节目 ID。 <li>当 Operation 为 Insert 时，该字段必填，表示插入的节目列表位于该节目之后。</li> <li>当 Operation 为 InsertTemporary 时，该字段选填，不填时表示插入节目到最近的一个插入点上。当该字段填写时，如果同时填写 SegmentIndex，表示节目被插入到 ItemId 对应节目的第 SegmentIndex 分片后面，否则插入到该节目之后。</li> <li>当 Operation 为 Delete 时，该字段必填，表示删除该节目。不能删除正在播放的节目。</li>
         :type ItemId: str
+        :param _SegmentIndex: M3U8 文件分片的索引号。M3U8 文件第一个分片的 SegmentIndex 为0。当 Operation 为 InsertTemporary 且 ItemId 有值时该参数有效。
+        :type SegmentIndex: int
         :param _RoundPlaylist: 节目列表。当 Operation 为 Insert、InsertTemporary、Delete 时必填，表示要操作的节目列表。列表长度最大为10。
         :type RoundPlaylist: list of RoundPlayListItemInfo
         """
@@ -37862,6 +37864,7 @@ class HandleCurrentPlaylistRequest(AbstractModel):
         self._RoundPlayId = None
         self._Operation = None
         self._ItemId = None
+        self._SegmentIndex = None
         self._RoundPlaylist = None
 
     @property
@@ -37888,7 +37891,7 @@ class HandleCurrentPlaylistRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作类型，取值有：<li>Insert：向当前播放列表插入播放节目。</li> <li>InsertTemporary：向当前播放列表临时插入播放节目。只能插入到当前正在播放的节目后面，临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的播放节目。不能删除正在播放的节目。</li>
+        """操作类型，取值有：<li>Insert：向当前播放列表插入节目。插入的节目在后续轮播过程仍然有效。</li> <li>InsertTemporary：向当前播放列表临时插入节目。临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的节目。不能删除正在播放的节目。</li>
         :rtype: str
         """
         return self._Operation
@@ -37899,7 +37902,7 @@ class HandleCurrentPlaylistRequest(AbstractModel):
 
     @property
     def ItemId(self):
-        """播单节目 ID。当 Operation 为 Insert 时必填，表示插入的节目列表位于该播放节目之后。插入的位置必须在当前正在播放的节目之后。
+        """播单节目 ID。 <li>当 Operation 为 Insert 时，该字段必填，表示插入的节目列表位于该节目之后。</li> <li>当 Operation 为 InsertTemporary 时，该字段选填，不填时表示插入节目到最近的一个插入点上。当该字段填写时，如果同时填写 SegmentIndex，表示节目被插入到 ItemId 对应节目的第 SegmentIndex 分片后面，否则插入到该节目之后。</li> <li>当 Operation 为 Delete 时，该字段必填，表示删除该节目。不能删除正在播放的节目。</li>
         :rtype: str
         """
         return self._ItemId
@@ -37907,6 +37910,17 @@ class HandleCurrentPlaylistRequest(AbstractModel):
     @ItemId.setter
     def ItemId(self, ItemId):
         self._ItemId = ItemId
+
+    @property
+    def SegmentIndex(self):
+        """M3U8 文件分片的索引号。M3U8 文件第一个分片的 SegmentIndex 为0。当 Operation 为 InsertTemporary 且 ItemId 有值时该参数有效。
+        :rtype: int
+        """
+        return self._SegmentIndex
+
+    @SegmentIndex.setter
+    def SegmentIndex(self, SegmentIndex):
+        self._SegmentIndex = SegmentIndex
 
     @property
     def RoundPlaylist(self):
@@ -37925,6 +37939,7 @@ class HandleCurrentPlaylistRequest(AbstractModel):
         self._RoundPlayId = params.get("RoundPlayId")
         self._Operation = params.get("Operation")
         self._ItemId = params.get("ItemId")
+        self._SegmentIndex = params.get("SegmentIndex")
         if params.get("RoundPlaylist") is not None:
             self._RoundPlaylist = []
             for item in params.get("RoundPlaylist"):

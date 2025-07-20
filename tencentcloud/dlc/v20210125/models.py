@@ -21481,6 +21481,70 @@ class DescribeUserInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserRegisterTimeRequest(AbstractModel):
+    """DescribeUserRegisterTime请求参数结构体
+
+    """
+
+
+class DescribeUserRegisterTimeResponse(AbstractModel):
+    """DescribeUserRegisterTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterTime: 用户注册时间
+        :type RegisterTime: int
+        :param _IsOldUser: 是否时老用户
+        :type IsOldUser: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegisterTime = None
+        self._IsOldUser = None
+        self._RequestId = None
+
+    @property
+    def RegisterTime(self):
+        """用户注册时间
+        :rtype: int
+        """
+        return self._RegisterTime
+
+    @RegisterTime.setter
+    def RegisterTime(self, RegisterTime):
+        self._RegisterTime = RegisterTime
+
+    @property
+    def IsOldUser(self):
+        """是否时老用户
+        :rtype: bool
+        """
+        return self._IsOldUser
+
+    @IsOldUser.setter
+    def IsOldUser(self, IsOldUser):
+        self._IsOldUser = IsOldUser
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RegisterTime = params.get("RegisterTime")
+        self._IsOldUser = params.get("IsOldUser")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserRolesRequest(AbstractModel):
     """DescribeUserRoles请求参数结构体
 
