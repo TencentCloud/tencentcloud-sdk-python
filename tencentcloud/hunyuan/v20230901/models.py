@@ -4638,11 +4638,21 @@ class Multimedia(AbstractModel):
 说明：
 1. type 为 image 时，地址为图片的预览地址；其他类型时，地址为封面图地址。
         :type Url: str
+        :param _Width: 如果Url为图片地址，标识图片宽度。
+        :type Width: int
+        :param _Height: 如果Url为图片地址，标识图片高度。
+        :type Height: int
         :param _JumpUrl: 多媒体详情地址。
 说明：
 1. 仅 type 为 image 时，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type JumpUrl: str
+        :param _ThumbURL: 缩略图地址。
+        :type ThumbURL: str
+        :param _ThumbWidth: 缩略图宽度
+        :type ThumbWidth: int
+        :param _ThumbHeight: 缩略图高度
+        :type ThumbHeight: int
         :param _Title: 名称。
 说明：
 1. type 为 image 时，该字段为空。
@@ -4661,14 +4671,28 @@ class Multimedia(AbstractModel):
 1. 仅 type 为 music 时，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.hunyuan.v20230901.models.SongExt`
+        :param _PublishTime: 发布时间。
+        :type PublishTime: str
+        :param _SiteName: 站点名称
+        :type SiteName: str
+        :param _SiteIcon: 站点图标
+        :type SiteIcon: str
         """
         self._Type = None
         self._Url = None
+        self._Width = None
+        self._Height = None
         self._JumpUrl = None
+        self._ThumbURL = None
+        self._ThumbWidth = None
+        self._ThumbHeight = None
         self._Title = None
         self._Desc = None
         self._Singer = None
         self._Ext = None
+        self._PublishTime = None
+        self._SiteName = None
+        self._SiteIcon = None
 
     @property
     def Type(self):
@@ -4698,6 +4722,28 @@ class Multimedia(AbstractModel):
         self._Url = Url
 
     @property
+    def Width(self):
+        """如果Url为图片地址，标识图片宽度。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """如果Url为图片地址，标识图片高度。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
     def JumpUrl(self):
         """多媒体详情地址。
 说明：
@@ -4710,6 +4756,39 @@ class Multimedia(AbstractModel):
     @JumpUrl.setter
     def JumpUrl(self, JumpUrl):
         self._JumpUrl = JumpUrl
+
+    @property
+    def ThumbURL(self):
+        """缩略图地址。
+        :rtype: str
+        """
+        return self._ThumbURL
+
+    @ThumbURL.setter
+    def ThumbURL(self, ThumbURL):
+        self._ThumbURL = ThumbURL
+
+    @property
+    def ThumbWidth(self):
+        """缩略图宽度
+        :rtype: int
+        """
+        return self._ThumbWidth
+
+    @ThumbWidth.setter
+    def ThumbWidth(self, ThumbWidth):
+        self._ThumbWidth = ThumbWidth
+
+    @property
+    def ThumbHeight(self):
+        """缩略图高度
+        :rtype: int
+        """
+        return self._ThumbHeight
+
+    @ThumbHeight.setter
+    def ThumbHeight(self, ThumbHeight):
+        self._ThumbHeight = ThumbHeight
 
     @property
     def Title(self):
@@ -4765,17 +4844,58 @@ class Multimedia(AbstractModel):
     def Ext(self, Ext):
         self._Ext = Ext
 
+    @property
+    def PublishTime(self):
+        """发布时间。
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def SiteName(self):
+        """站点名称
+        :rtype: str
+        """
+        return self._SiteName
+
+    @SiteName.setter
+    def SiteName(self, SiteName):
+        self._SiteName = SiteName
+
+    @property
+    def SiteIcon(self):
+        """站点图标
+        :rtype: str
+        """
+        return self._SiteIcon
+
+    @SiteIcon.setter
+    def SiteIcon(self, SiteIcon):
+        self._SiteIcon = SiteIcon
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Url = params.get("Url")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         self._JumpUrl = params.get("JumpUrl")
+        self._ThumbURL = params.get("ThumbURL")
+        self._ThumbWidth = params.get("ThumbWidth")
+        self._ThumbHeight = params.get("ThumbHeight")
         self._Title = params.get("Title")
         self._Desc = params.get("Desc")
         self._Singer = params.get("Singer")
         if params.get("Ext") is not None:
             self._Ext = SongExt()
             self._Ext._deserialize(params.get("Ext"))
+        self._PublishTime = params.get("PublishTime")
+        self._SiteName = params.get("SiteName")
+        self._SiteIcon = params.get("SiteIcon")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

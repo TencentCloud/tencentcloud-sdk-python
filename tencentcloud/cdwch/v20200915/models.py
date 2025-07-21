@@ -486,45 +486,45 @@ class CNResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 无
+        :param _ID: 资源id
         :type ID: int
-        :param _InstanceID: 无
+        :param _InstanceID: 集群的id
         :type InstanceID: str
-        :param _AppID: 无
+        :param _AppID: 用户appid
         :type AppID: int
-        :param _Uin: 无
+        :param _Uin: 用户uin
         :type Uin: str
-        :param _Component: 无
+        :param _Component: 组件
         :type Component: str
-        :param _DeployMode: 无
+        :param _DeployMode: 部署模式
         :type DeployMode: int
-        :param _SpecName: 无
+        :param _SpecName: 规格名称
         :type SpecName: str
-        :param _ResourceID: 无
+        :param _ResourceID: 资源id
         :type ResourceID: str
-        :param _Status: 无
+        :param _Status: 资源的状态
         :type Status: int
-        :param _IP: 无
+        :param _IP: 私有网络ip
         :type IP: str
-        :param _CPU: 无
+        :param _CPU: 核数
         :type CPU: int
-        :param _Memory: 无
+        :param _Memory: 内存
         :type Memory: int
-        :param _Storage: 无
+        :param _Storage: 存储大小
         :type Storage: int
-        :param _UUID: 无
+        :param _UUID: 服务器ID
         :type UUID: str
-        :param _Region: 无
+        :param _Region: 地域
         :type Region: str
-        :param _Zone: 无
+        :param _Zone: 地区
         :type Zone: str
-        :param _Details: 无
+        :param _Details: 详细信息
         :type Details: str
-        :param _CreateTime: 无
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param _ModifyTime: 无
+        :param _ModifyTime: 修改时间
         :type ModifyTime: str
-        :param _ExpireTime: 无
+        :param _ExpireTime: 过期时间
         :type ExpireTime: str
         """
         self._ID = None
@@ -550,7 +550,7 @@ class CNResource(AbstractModel):
 
     @property
     def ID(self):
-        """无
+        """资源id
         :rtype: int
         """
         return self._ID
@@ -561,7 +561,7 @@ class CNResource(AbstractModel):
 
     @property
     def InstanceID(self):
-        """无
+        """集群的id
         :rtype: str
         """
         return self._InstanceID
@@ -572,7 +572,7 @@ class CNResource(AbstractModel):
 
     @property
     def AppID(self):
-        """无
+        """用户appid
         :rtype: int
         """
         return self._AppID
@@ -583,7 +583,7 @@ class CNResource(AbstractModel):
 
     @property
     def Uin(self):
-        """无
+        """用户uin
         :rtype: str
         """
         return self._Uin
@@ -594,7 +594,7 @@ class CNResource(AbstractModel):
 
     @property
     def Component(self):
-        """无
+        """组件
         :rtype: str
         """
         return self._Component
@@ -605,7 +605,7 @@ class CNResource(AbstractModel):
 
     @property
     def DeployMode(self):
-        """无
+        """部署模式
         :rtype: int
         """
         return self._DeployMode
@@ -616,7 +616,7 @@ class CNResource(AbstractModel):
 
     @property
     def SpecName(self):
-        """无
+        """规格名称
         :rtype: str
         """
         return self._SpecName
@@ -627,7 +627,7 @@ class CNResource(AbstractModel):
 
     @property
     def ResourceID(self):
-        """无
+        """资源id
         :rtype: str
         """
         return self._ResourceID
@@ -638,7 +638,7 @@ class CNResource(AbstractModel):
 
     @property
     def Status(self):
-        """无
+        """资源的状态
         :rtype: int
         """
         return self._Status
@@ -649,7 +649,7 @@ class CNResource(AbstractModel):
 
     @property
     def IP(self):
-        """无
+        """私有网络ip
         :rtype: str
         """
         return self._IP
@@ -660,7 +660,7 @@ class CNResource(AbstractModel):
 
     @property
     def CPU(self):
-        """无
+        """核数
         :rtype: int
         """
         return self._CPU
@@ -671,7 +671,7 @@ class CNResource(AbstractModel):
 
     @property
     def Memory(self):
-        """无
+        """内存
         :rtype: int
         """
         return self._Memory
@@ -682,7 +682,7 @@ class CNResource(AbstractModel):
 
     @property
     def Storage(self):
-        """无
+        """存储大小
         :rtype: int
         """
         return self._Storage
@@ -693,7 +693,7 @@ class CNResource(AbstractModel):
 
     @property
     def UUID(self):
-        """无
+        """服务器ID
         :rtype: str
         """
         return self._UUID
@@ -704,7 +704,7 @@ class CNResource(AbstractModel):
 
     @property
     def Region(self):
-        """无
+        """地域
         :rtype: str
         """
         return self._Region
@@ -715,7 +715,7 @@ class CNResource(AbstractModel):
 
     @property
     def Zone(self):
-        """无
+        """地区
         :rtype: str
         """
         return self._Zone
@@ -726,7 +726,7 @@ class CNResource(AbstractModel):
 
     @property
     def Details(self):
-        """无
+        """详细信息
         :rtype: str
         """
         return self._Details
@@ -737,7 +737,7 @@ class CNResource(AbstractModel):
 
     @property
     def CreateTime(self):
-        """无
+        """创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -748,7 +748,7 @@ class CNResource(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """无
+        """修改时间
         :rtype: str
         """
         return self._ModifyTime
@@ -759,7 +759,7 @@ class CNResource(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """无
+        """过期时间
         :rtype: str
         """
         return self._ExpireTime
@@ -1117,28 +1117,20 @@ class CnInstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ID: ID值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ID: int
         :param _InstanceType: cdwch-cn或者其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _InstanceName: cdwch-cn或者其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _Status: Running
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _StatusDesc: 运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param _InstanceStateInfo: 无
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStateInfo: :class:`tencentcloud.cdwch.v20200915.models.InstanceStateInfo`
         :param _InstanceID: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceID: str
         :param _Resources: 无
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: list of CNResource
         """
         self._ID = None
@@ -1153,7 +1145,6 @@ class CnInstanceInfo(AbstractModel):
     @property
     def ID(self):
         """ID值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ID
@@ -1165,7 +1156,6 @@ class CnInstanceInfo(AbstractModel):
     @property
     def InstanceType(self):
         """cdwch-cn或者其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -1177,7 +1167,6 @@ class CnInstanceInfo(AbstractModel):
     @property
     def InstanceName(self):
         """cdwch-cn或者其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -1189,7 +1178,6 @@ class CnInstanceInfo(AbstractModel):
     @property
     def Status(self):
         """Running
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1201,7 +1189,6 @@ class CnInstanceInfo(AbstractModel):
     @property
     def StatusDesc(self):
         """运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusDesc
@@ -1213,7 +1200,6 @@ class CnInstanceInfo(AbstractModel):
     @property
     def InstanceStateInfo(self):
         """无
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.InstanceStateInfo`
         """
         return self._InstanceStateInfo
@@ -1225,7 +1211,6 @@ class CnInstanceInfo(AbstractModel):
     @property
     def InstanceID(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceID
@@ -1237,7 +1222,6 @@ class CnInstanceInfo(AbstractModel):
     @property
     def Resources(self):
         """无
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CNResource
         """
         return self._Resources
@@ -2742,13 +2726,10 @@ class DescribeCNInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 实例总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _InstancesList: 实例数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancesList: list of CnInstanceInfo
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2761,7 +2742,6 @@ class DescribeCNInstancesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """实例总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -2773,7 +2753,6 @@ class DescribeCNInstancesResponse(AbstractModel):
     @property
     def InstancesList(self):
         """实例数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CnInstanceInfo
         """
         return self._InstancesList
@@ -2785,7 +2764,6 @@ class DescribeCNInstancesResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg

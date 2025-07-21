@@ -3212,6 +3212,12 @@ HoaiMy
 2.  dify-inputs-user 为dify的user值
 3.  dify-inputs-conversation_id 为dify的conversation_id值
         :type Variables: list of Variable
+        :param _TopP: 模型topP
+        :type TopP: float
+        :param _VadLevel: vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :type VadLevel: int
+        :param _ToneWord: 衔接语
+        :type ToneWord: :class:`tencentcloud.ccc.v20200210.models.ToneWordInfo`
         """
         self._SdkAppId = None
         self._Callee = None
@@ -3242,6 +3248,9 @@ HoaiMy
         self._ExtractConfig = None
         self._Temperature = None
         self._Variables = None
+        self._TopP = None
+        self._VadLevel = None
+        self._ToneWord = None
 
     @property
     def SdkAppId(self):
@@ -3737,6 +3746,39 @@ HoaiMy
     def Variables(self, Variables):
         self._Variables = Variables
 
+    @property
+    def TopP(self):
+        """模型topP
+        :rtype: float
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def VadLevel(self):
+        """vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :rtype: int
+        """
+        return self._VadLevel
+
+    @VadLevel.setter
+    def VadLevel(self, VadLevel):
+        self._VadLevel = VadLevel
+
+    @property
+    def ToneWord(self):
+        """衔接语
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ToneWordInfo`
+        """
+        return self._ToneWord
+
+    @ToneWord.setter
+    def ToneWord(self, ToneWord):
+        self._ToneWord = ToneWord
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3788,6 +3830,11 @@ HoaiMy
                 obj = Variable()
                 obj._deserialize(item)
                 self._Variables.append(obj)
+        self._TopP = params.get("TopP")
+        self._VadLevel = params.get("VadLevel")
+        if params.get("ToneWord") is not None:
+            self._ToneWord = ToneWordInfo()
+            self._ToneWord._deserialize(params.get("ToneWord"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17101,6 +17148,59 @@ class TimeRange(AbstractModel):
         
 
 
+class ToneWordInfo(AbstractModel):
+    """承接语气词信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FirstSentenceTimeout: 首句超时时间，单位秒
+        :type FirstSentenceTimeout: float
+        :param _ZHToneWords: 承接语气词
+        :type ZHToneWords: :class:`tencentcloud.ccc.v20200210.models.ZHToneWordsInfo`
+        """
+        self._FirstSentenceTimeout = None
+        self._ZHToneWords = None
+
+    @property
+    def FirstSentenceTimeout(self):
+        """首句超时时间，单位秒
+        :rtype: float
+        """
+        return self._FirstSentenceTimeout
+
+    @FirstSentenceTimeout.setter
+    def FirstSentenceTimeout(self, FirstSentenceTimeout):
+        self._FirstSentenceTimeout = FirstSentenceTimeout
+
+    @property
+    def ZHToneWords(self):
+        """承接语气词
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ZHToneWordsInfo`
+        """
+        return self._ZHToneWords
+
+    @ZHToneWords.setter
+    def ZHToneWords(self, ZHToneWords):
+        self._ZHToneWords = ZHToneWords
+
+
+    def _deserialize(self, params):
+        self._FirstSentenceTimeout = params.get("FirstSentenceTimeout")
+        if params.get("ZHToneWords") is not None:
+            self._ZHToneWords = ZHToneWordsInfo()
+            self._ZHToneWords._deserialize(params.get("ZHToneWords"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TransferToManualRequest(AbstractModel):
     """TransferToManual请求参数结构体
 
@@ -18088,6 +18188,72 @@ class Variable(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZHToneWordsInfo(AbstractModel):
+    """承接语气词
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Neutral: 中性词列表
+        :type Neutral: list of str
+        :param _Positive: 正面词列表
+        :type Positive: list of str
+        :param _Negative: 负面词列表
+        :type Negative: list of str
+        """
+        self._Neutral = None
+        self._Positive = None
+        self._Negative = None
+
+    @property
+    def Neutral(self):
+        """中性词列表
+        :rtype: list of str
+        """
+        return self._Neutral
+
+    @Neutral.setter
+    def Neutral(self, Neutral):
+        self._Neutral = Neutral
+
+    @property
+    def Positive(self):
+        """正面词列表
+        :rtype: list of str
+        """
+        return self._Positive
+
+    @Positive.setter
+    def Positive(self, Positive):
+        self._Positive = Positive
+
+    @property
+    def Negative(self):
+        """负面词列表
+        :rtype: list of str
+        """
+        return self._Negative
+
+    @Negative.setter
+    def Negative(self, Negative):
+        self._Negative = Negative
+
+
+    def _deserialize(self, params):
+        self._Neutral = params.get("Neutral")
+        self._Positive = params.get("Positive")
+        self._Negative = params.get("Negative")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

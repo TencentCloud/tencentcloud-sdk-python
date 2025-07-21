@@ -26472,7 +26472,10 @@ class RateMsgRecordRequest(AbstractModel):
         :type BotAppKey: str
         :param _RecordId: 消息ID 【大模型回复答案的RecordID】
         :type RecordId: str
-        :param _Score: 1: 点赞,  2: 点踩
+        :param _Score: 1: 点赞;  2: 点踩;   
+注：
+1) 评测端不支持点赞、点踩
+2) 消息回复类型为欢迎语、并发超限、实时文档，不支持点赞、点踩
         :type Score: int
         :param _Reasons: 原因，只有Score参数为2即点踩的时候才需要输入
         :type Reasons: list of str
@@ -26506,7 +26509,10 @@ class RateMsgRecordRequest(AbstractModel):
 
     @property
     def Score(self):
-        """1: 点赞,  2: 点踩
+        """1: 点赞;  2: 点踩;   
+注：
+1) 评测端不支持点赞、点踩
+2) 消息回复类型为欢迎语、并发超限、实时文档，不支持点赞、点踩
         :rtype: int
         """
         return self._Score

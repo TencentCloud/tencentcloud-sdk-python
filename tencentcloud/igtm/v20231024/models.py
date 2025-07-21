@@ -1230,7 +1230,6 @@ class CreateMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MonitorId: 监控器id
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1241,7 +1240,6 @@ class CreateMonitorResponse(AbstractModel):
     @property
     def MonitorId(self):
         """监控器id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorId
@@ -1416,7 +1414,6 @@ class CreateStrategyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _StrategyId: 新增策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1427,7 +1424,6 @@ class CreateStrategyResponse(AbstractModel):
     @property
     def StrategyId(self):
         """新增策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StrategyId
@@ -1497,7 +1493,6 @@ class DeleteAddressPoolResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1508,7 +1503,6 @@ class DeleteAddressPoolResponse(AbstractModel):
     @property
     def Msg(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -1578,7 +1572,6 @@ class DeleteMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 成功返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1589,7 +1582,6 @@ class DeleteMonitorResponse(AbstractModel):
     @property
     def Msg(self):
         """成功返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -1674,7 +1666,6 @@ class DeleteStrategyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1685,7 +1676,6 @@ class DeleteStrategyResponse(AbstractModel):
     @property
     def Msg(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -1755,7 +1745,6 @@ class DescribeAddressLocationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AddressLocation: 所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressLocation: list of AddressLocation
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1766,7 +1755,6 @@ class DescribeAddressLocationResponse(AbstractModel):
     @property
     def AddressLocation(self):
         """所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AddressLocation
         """
         return self._AddressLocation
@@ -1841,10 +1829,8 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AddressPool: 资源组详情描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressPool: :class:`tencentcloud.igtm.v20231024.models.AddressPoolDetail`
         :param _AddressSet: 资源组中的资源列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressSet: list of Address
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1856,7 +1842,6 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
     @property
     def AddressPool(self):
         """资源组详情描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.igtm.v20231024.models.AddressPoolDetail`
         """
         return self._AddressPool
@@ -1868,7 +1853,6 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
     @property
     def AddressSet(self):
         """资源组中的资源列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Address
         """
         return self._AddressSet
@@ -1981,10 +1965,8 @@ class DescribeAddressPoolListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AddressPoolSet: 资源组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressPoolSet: list of AddressPool
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1996,7 +1978,6 @@ class DescribeAddressPoolListResponse(AbstractModel):
     @property
     def AddressPoolSet(self):
         """资源组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AddressPool
         """
         return self._AddressPoolSet
@@ -2008,7 +1989,6 @@ class DescribeAddressPoolListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -2661,13 +2641,10 @@ class DescribeInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceSet: 实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceSet: list of Instance
         :param _TotalCount: 列表总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _SystemAccessEnabled: 是否支持系统域名接入：true支持；false不支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type SystemAccessEnabled: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2680,7 +2657,6 @@ class DescribeInstanceListResponse(AbstractModel):
     @property
     def InstanceSet(self):
         """实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Instance
         """
         return self._InstanceSet
@@ -2692,7 +2668,6 @@ class DescribeInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """列表总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -2704,7 +2679,6 @@ class DescribeInstanceListResponse(AbstractModel):
     @property
     def SystemAccessEnabled(self):
         """是否支持系统域名接入：true支持；false不支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SystemAccessEnabled
@@ -3026,7 +3000,6 @@ class DescribeMonitorsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MonitorDataSet: 监控器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorDataSet: list of MonitorDetail
         :param _TotalCount: 数量
         :type TotalCount: int
@@ -3040,7 +3013,6 @@ class DescribeMonitorsResponse(AbstractModel):
     @property
     def MonitorDataSet(self):
         """监控器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MonitorDetail
         """
         return self._MonitorDataSet
@@ -3354,10 +3326,8 @@ class DescribeStrategyListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _StrategySet: 策略列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategySet: list of Strategy
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3369,7 +3339,6 @@ class DescribeStrategyListResponse(AbstractModel):
     @property
     def StrategySet(self):
         """策略列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Strategy
         """
         return self._StrategySet
@@ -3381,7 +3350,6 @@ class DescribeStrategyListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -5110,7 +5078,7 @@ class ModifyAddressPoolRequest(AbstractModel):
         :type PoolId: int
         :param _PoolName: 地址池名称，不允许重复
         :type PoolName: str
-        :param _TrafficStrategy: 流量策略: WEIGHT负载均衡，ALl解析全部
+        :param _TrafficStrategy: 流量策略: WEIGHT负载均衡，ALL解析全部
         :type TrafficStrategy: str
         :param _MonitorId: 监控器id
         :type MonitorId: int
@@ -5147,7 +5115,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def TrafficStrategy(self):
-        """流量策略: WEIGHT负载均衡，ALl解析全部
+        """流量策略: WEIGHT负载均衡，ALL解析全部
         :rtype: str
         """
         return self._TrafficStrategy
@@ -5208,7 +5176,6 @@ class ModifyAddressPoolResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 是否修改成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5219,7 +5186,6 @@ class ModifyAddressPoolResponse(AbstractModel):
     @property
     def Msg(self):
         """是否修改成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -5627,7 +5593,6 @@ class ModifyMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: success 为修改成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5638,7 +5603,6 @@ class ModifyMonitorResponse(AbstractModel):
     @property
     def Msg(self):
         """success 为修改成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -5843,7 +5807,6 @@ class ModifyStrategyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5854,7 +5817,6 @@ class ModifyStrategyResponse(AbstractModel):
     @property
     def Msg(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg

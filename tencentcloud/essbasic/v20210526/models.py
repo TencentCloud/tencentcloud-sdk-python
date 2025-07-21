@@ -9691,8 +9691,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 </ul>
 注: `同名字的Key的过滤条件会冲突,  只能填写一个`
         :type Filters: list of Filter
-        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页。
-页码从 0 开始，即首页为 0，最大20000。
+        :param _Offset: 偏移量:从 0 开始，最大20000。
         :type Offset: int
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -9752,8 +9751,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """指定分页返回第几页的数据，如果不传默认返回第一页。
-页码从 0 开始，即首页为 0，最大20000。
+        """偏移量:从 0 开始，最大20000。
         :rtype: int
         """
         return self._Offset
@@ -12183,8 +12181,38 @@ class CommonApproverOption(AbstractModel):
         r"""
         :param _CanEditApprover: 是否允许修改签署人信息
         :type CanEditApprover: bool
+        :param _NoRefuse: 是否可以拒签 默认false-可以拒签 true-不可以拒签
+        :type NoRefuse: bool
+        :param _NoTransfer: 是否可以转发 默认false-可以转发 true-不可以转发
+        :type NoTransfer: bool
+        :param _HideOneKeySign: 当签署方有多个签署区时候，是否隐藏一键所有的签署区
+
+false：（默认）不隐藏
+true：隐藏，每个签署区要单独选择印章或者签名
+        :type HideOneKeySign: bool
+        :param _FlowReadLimit: 签署人阅读合同限制参数
+ <br/>取值：
+<ul>
+<li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
+<li> LimitReadTime，阅读合同仅限制阅读时长</li>
+<li> LimitBottom，阅读合同仅限制必须阅读到底</li>
+<li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
+</ul>
+        :type FlowReadLimit: str
+        :param _ForbidAddSignDate: 禁止在签署过程中添加签署日期控件
+ <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
+<ul>
+<li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
+<li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
+</ul>
+        :type ForbidAddSignDate: bool
         """
         self._CanEditApprover = None
+        self._NoRefuse = None
+        self._NoTransfer = None
+        self._HideOneKeySign = None
+        self._FlowReadLimit = None
+        self._ForbidAddSignDate = None
 
     @property
     def CanEditApprover(self):
@@ -12197,9 +12225,84 @@ class CommonApproverOption(AbstractModel):
     def CanEditApprover(self, CanEditApprover):
         self._CanEditApprover = CanEditApprover
 
+    @property
+    def NoRefuse(self):
+        """是否可以拒签 默认false-可以拒签 true-不可以拒签
+        :rtype: bool
+        """
+        return self._NoRefuse
+
+    @NoRefuse.setter
+    def NoRefuse(self, NoRefuse):
+        self._NoRefuse = NoRefuse
+
+    @property
+    def NoTransfer(self):
+        """是否可以转发 默认false-可以转发 true-不可以转发
+        :rtype: bool
+        """
+        return self._NoTransfer
+
+    @NoTransfer.setter
+    def NoTransfer(self, NoTransfer):
+        self._NoTransfer = NoTransfer
+
+    @property
+    def HideOneKeySign(self):
+        """当签署方有多个签署区时候，是否隐藏一键所有的签署区
+
+false：（默认）不隐藏
+true：隐藏，每个签署区要单独选择印章或者签名
+        :rtype: bool
+        """
+        return self._HideOneKeySign
+
+    @HideOneKeySign.setter
+    def HideOneKeySign(self, HideOneKeySign):
+        self._HideOneKeySign = HideOneKeySign
+
+    @property
+    def FlowReadLimit(self):
+        """签署人阅读合同限制参数
+ <br/>取值：
+<ul>
+<li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
+<li> LimitReadTime，阅读合同仅限制阅读时长</li>
+<li> LimitBottom，阅读合同仅限制必须阅读到底</li>
+<li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
+</ul>
+        :rtype: str
+        """
+        return self._FlowReadLimit
+
+    @FlowReadLimit.setter
+    def FlowReadLimit(self, FlowReadLimit):
+        self._FlowReadLimit = FlowReadLimit
+
+    @property
+    def ForbidAddSignDate(self):
+        """禁止在签署过程中添加签署日期控件
+ <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
+<ul>
+<li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
+<li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
+</ul>
+        :rtype: bool
+        """
+        return self._ForbidAddSignDate
+
+    @ForbidAddSignDate.setter
+    def ForbidAddSignDate(self, ForbidAddSignDate):
+        self._ForbidAddSignDate = ForbidAddSignDate
+
 
     def _deserialize(self, params):
         self._CanEditApprover = params.get("CanEditApprover")
+        self._NoRefuse = params.get("NoRefuse")
+        self._NoTransfer = params.get("NoTransfer")
+        self._HideOneKeySign = params.get("HideOneKeySign")
+        self._FlowReadLimit = params.get("FlowReadLimit")
+        self._ForbidAddSignDate = params.get("ForbidAddSignDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

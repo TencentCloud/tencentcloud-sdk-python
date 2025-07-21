@@ -6721,6 +6721,10 @@ class DeployRecordDetail(AbstractModel):
         :type Region: str
         :param _Url: 部署CLB监听器的Url
         :type Url: list of str
+        :param _Algorithm: 当前部署证书加密算法
+        :type Algorithm: str
+        :param _OldAlgorithm: 原证书加密算法
+        :type OldAlgorithm: str
         """
         self._Id = None
         self._CertId = None
@@ -6744,6 +6748,8 @@ class DeployRecordDetail(AbstractModel):
         self._TCBType = None
         self._Region = None
         self._Url = None
+        self._Algorithm = None
+        self._OldAlgorithm = None
 
     @property
     def Id(self):
@@ -6987,6 +6993,28 @@ class DeployRecordDetail(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def Algorithm(self):
+        """当前部署证书加密算法
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def OldAlgorithm(self):
+        """原证书加密算法
+        :rtype: str
+        """
+        return self._OldAlgorithm
+
+    @OldAlgorithm.setter
+    def OldAlgorithm(self, OldAlgorithm):
+        self._OldAlgorithm = OldAlgorithm
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7011,6 +7039,8 @@ class DeployRecordDetail(AbstractModel):
         self._TCBType = params.get("TCBType")
         self._Region = params.get("Region")
         self._Url = params.get("Url")
+        self._Algorithm = params.get("Algorithm")
+        self._OldAlgorithm = params.get("OldAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19911,11 +19941,14 @@ applying：申请中；
 failed：申请失败；
 issued：绑定失败。
         :type Status: str
+        :param _Algorithm: 证书加密算法
+        :type Algorithm: str
         """
         self._Host = None
         self._CertId = None
         self._ZoneId = None
         self._Status = None
+        self._Algorithm = None
 
     @property
     def Host(self):
@@ -19967,12 +20000,24 @@ issued：绑定失败。
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def Algorithm(self):
+        """证书加密算法
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
 
     def _deserialize(self, params):
         self._Host = params.get("Host")
         self._CertId = params.get("CertId")
         self._ZoneId = params.get("ZoneId")
         self._Status = params.get("Status")
+        self._Algorithm = params.get("Algorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20997,6 +21042,10 @@ class UpdateRecordDetail(AbstractModel):
         :type TCBType: str
         :param _Url: 监听器Url(clb专属)
         :type Url: str
+        :param _Algorithm: 新证书加密算法
+        :type Algorithm: str
+        :param _OldAlgorithm: 旧证书加密算法
+        :type OldAlgorithm: str
         """
         self._Id = None
         self._CertId = None
@@ -21021,6 +21070,8 @@ class UpdateRecordDetail(AbstractModel):
         self._EnvId = None
         self._TCBType = None
         self._Url = None
+        self._Algorithm = None
+        self._OldAlgorithm = None
 
     @property
     def Id(self):
@@ -21307,6 +21358,28 @@ class UpdateRecordDetail(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def Algorithm(self):
+        """新证书加密算法
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def OldAlgorithm(self):
+        """旧证书加密算法
+        :rtype: str
+        """
+        return self._OldAlgorithm
+
+    @OldAlgorithm.setter
+    def OldAlgorithm(self, OldAlgorithm):
+        self._OldAlgorithm = OldAlgorithm
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -21332,6 +21405,8 @@ class UpdateRecordDetail(AbstractModel):
         self._EnvId = params.get("EnvId")
         self._TCBType = params.get("TCBType")
         self._Url = params.get("Url")
+        self._Algorithm = params.get("Algorithm")
+        self._OldAlgorithm = params.get("OldAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

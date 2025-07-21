@@ -3037,23 +3037,35 @@ class BandwidthAbuseDefense(AbstractModel):
 
 
 class BillingData(AbstractModel):
-    """计费数据项
+    """计费数据项。
 
     """
 
     def __init__(self):
         r"""
-        :param _Time: 时间。
+        :param _Time: 数据时间戳。
         :type Time: str
         :param _Value: 数值。
         :type Value: int
+        :param _ZoneId: 数据点所属站点 ID。若使用内容标识符功能，则该项值为内容标识符。
+        :type ZoneId: str
+        :param _Host: 数据点所属域名。
+        :type Host: str
+        :param _ProxyId: 数据点所属四层代理实例 ID。
+        :type ProxyId: str
+        :param _RegionId: 数据点所属计费大区 ID。计费大区以实际服务用户客户端的 EdgeOne 节点所在区域为准。取值有：<li>CH：中国大陆境内</li><li>AF：非洲</li><li>AS1：亚太一区</li><li>AS2：亚太二区</li><li>AS3：亚太三区</li><li>EU：欧洲</li><li>MidEast：中东</li><li>NA：北美</li><li> SA：南美</li>
+        :type RegionId: str
         """
         self._Time = None
         self._Value = None
+        self._ZoneId = None
+        self._Host = None
+        self._ProxyId = None
+        self._RegionId = None
 
     @property
     def Time(self):
-        """时间。
+        """数据时间戳。
         :rtype: str
         """
         return self._Time
@@ -3073,10 +3085,58 @@ class BillingData(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
+    @property
+    def ZoneId(self):
+        """数据点所属站点 ID。若使用内容标识符功能，则该项值为内容标识符。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Host(self):
+        """数据点所属域名。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def ProxyId(self):
+        """数据点所属四层代理实例 ID。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RegionId(self):
+        """数据点所属计费大区 ID。计费大区以实际服务用户客户端的 EdgeOne 节点所在区域为准。取值有：<li>CH：中国大陆境内</li><li>AF：非洲</li><li>AS1：亚太一区</li><li>AS2：亚太二区</li><li>AS3：亚太三区</li><li>EU：欧洲</li><li>MidEast：中东</li><li>NA：北美</li><li> SA：南美</li>
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
         self._Value = params.get("Value")
+        self._ZoneId = params.get("ZoneId")
+        self._Host = params.get("Host")
+        self._ProxyId = params.get("ProxyId")
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15714,34 +15774,13 @@ class DescribeBillingDataRequest(AbstractModel):
         r"""
         :param _StartTime: 起始时间。
         :type StartTime: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :type EndTime: str
-        :param _ZoneIds: 站点 ID 集合，此参数必填。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :type ZoneIds: list of str
-        :param _MetricName: 指标列表，取值有：
-<li>acc_flux: 内容加速流量，单位为 Byte；</li>
-<li>smt_flux: 智能加速流量，单位为 Byte；</li>
-<li>l4_flux: 四层加速流量，单位为 Byte；</li>
-<li>sec_flux: 独立防护流量，单位为 Byte；</li>
-<li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte；</li>
-<li>acc_bandwidth: 内容加速带宽，单位为 bps；</li>
-<li>smt_bandwidth: 智能加速带宽，单位为 bps；</li>
-<li>l4_bandwidth: 四层加速带宽，单位为 bps；</li>
-<li>sec_bandwidth: 独立防护带宽，单位为 bps；</li>
-<li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps；</li>
-<li>sec_request_clean: HTTP/HTTPS 请求，单位为次；</li>
-<li>smt_request_clean: 智能加速请求，单位为次；</li>
-<li>quic_request: QUIC 请求，单位为次；</li>
-<li>bot_request_clean: Bot 请求，单位为次；</li>
-<li>cls_count: 实时日志推送条数，单位为条；</li>
-<li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps；</li>
-<li>total_transcode：所有规格音频，视频即时转码，转封装时长，单位为秒；</li>
-<li>remux：转封装时长，单位为秒；</li>
-<li>transcode_audio：音频转码时长，单位为秒；</li>
-<li>transcode_H264_SD：H.264 编码方式的标清视频（短边 <= 480 px）时长，单位为秒；</li>
-<li>transcode_H264_HD：H.264 编码方式的高清视频（短边 <= 720 px）时长，单位为秒；</li>
-<li>transcode_H264_FHD：H.264 编码方式的全高清视频（短边 <= 1080 px）时长，单位为秒；</li>
-<li>transcode_H264_2K：H.264 编码方式的 2K 视频（短边 <= 1440 px）时长，单位为秒。</li>
+        :param _MetricName: 指标列表，取值如下：
+<b>四/七层加速流量：</b><li>acc_flux: 内容加速流量，单位为 Byte；</li><li>smt_flux: 智能加速流量，单位为 Byte；</li><li>l4_flux: 四层加速流量，单位为 Byte；</li><li>sec_flux: 独立防护流量，单位为 Byte；</li><li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte。</li><br><b>四/七层加速带宽:</b><li>acc_bandwidth: 内容加速带宽，单位为 bps；</li><li>smt_bandwidth: 智能加速带宽，单位为 bps；</li><li>l4_bandwidth: 四层加速带宽，单位为 bps；</li><li>sec_bandwidth: 独立防护带宽，单位为 bps；</li><li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps。</li><br><b>HTTP/HTTPS 安全请求数：</b><li>sec_request_clean: HTTP/HTTPS 请求，单位为次。</li><b><br>增值服务用量：</b><li>smt_request_clean: 智能加速请求，单位为次；</li><li>quic_request: QUIC 请求，单位为次；</li><li>bot_request_clean: Bot 请求，单位为次；</li><li>cls_count: 实时日志推送条数，单位为条；</li><li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps。</li><br><b>边缘计算用量：</b><li>edgefunction_request：边缘函数请求数，单位为次；</li><li>edgefunction_cpu_time：边缘函数CPU处理时间，单位为毫秒。</li>
+<b>媒体处理用量：</b><li>total_transcode：所有规格音频，视频即时转码，转封装时长，单位为秒；</li><li>remux：转封装时长，单位为秒；</li><li>transcode_audio：音频转码时长，单位为秒；</li><li>transcode_H264_SD：H.264 编码方式的标清视频（短边 <= 480 px）时长，单位为秒；</li><li>transcode_H264_HD：H.264 编码方式的高清视频（短边 <= 720 px）时长，单位为秒；</li><li>transcode_H264_FHD：H.264 编码方式的全高清视频（短边 <= 1080 px）时长，单位为秒；</li><li>transcode_H264_2K：H.264 编码方式的 2K 视频（短边 <= 1440 px）时长，单位为秒。</li>
         :type MetricName: str
         :param _Interval: 查询时间粒度，取值有：
 <li>5min：5 分钟粒度；</li>
@@ -15752,7 +15791,10 @@ class DescribeBillingDataRequest(AbstractModel):
 <li>host：按照域名进行过滤。示例值：test.example.com。<br></li>
 <li>proxy-id：按照四层代理实例 ID 进行过滤。示例值：sid-2rugn89bkla9。<br></li>
 <li>region-id：按照计费大区进行过滤。可选项如下：<br>  CH：中国大陆境内<br>  AF：非洲<br>  AS1：亚太一区<br>  AS2：亚太二区<br>  AS3：亚太三区<br>  EU：欧洲<br>  MidEast：中东<br>  NA：北美<br>  SA：南美</li>
+说明：相同 `Type` 的 `BillingDataFilter` 之间为“或”关系，不同 `Type` 的 `BillingDataFilter` 之间为“且”关系。
         :type Filters: list of BillingDataFilter
+        :param _GroupBy: 分组聚合维度。最多允许同时按照两种维度进行分组。取值如下：  <li>zone-id：按照站点 ID 进行分组，若使用了内容标识符功能，则优先按照内容标识符分组；<br></li><li>host：按照域名进行分组；<br></li> <li>proxy-id：按照四层代理实例 ID 进行分组；<br></li> <li>region-id：按照计费大区进行分组。</li> 
+        :type GroupBy: list of str
         """
         self._StartTime = None
         self._EndTime = None
@@ -15760,6 +15802,7 @@ class DescribeBillingDataRequest(AbstractModel):
         self._MetricName = None
         self._Interval = None
         self._Filters = None
+        self._GroupBy = None
 
     @property
     def StartTime(self):
@@ -15774,7 +15817,7 @@ class DescribeBillingDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。
+        """结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :rtype: str
         """
         return self._EndTime
@@ -15785,7 +15828,7 @@ class DescribeBillingDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """站点 ID 集合，此参数必填。
+        """站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15796,30 +15839,9 @@ class DescribeBillingDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """指标列表，取值有：
-<li>acc_flux: 内容加速流量，单位为 Byte；</li>
-<li>smt_flux: 智能加速流量，单位为 Byte；</li>
-<li>l4_flux: 四层加速流量，单位为 Byte；</li>
-<li>sec_flux: 独立防护流量，单位为 Byte；</li>
-<li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte；</li>
-<li>acc_bandwidth: 内容加速带宽，单位为 bps；</li>
-<li>smt_bandwidth: 智能加速带宽，单位为 bps；</li>
-<li>l4_bandwidth: 四层加速带宽，单位为 bps；</li>
-<li>sec_bandwidth: 独立防护带宽，单位为 bps；</li>
-<li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps；</li>
-<li>sec_request_clean: HTTP/HTTPS 请求，单位为次；</li>
-<li>smt_request_clean: 智能加速请求，单位为次；</li>
-<li>quic_request: QUIC 请求，单位为次；</li>
-<li>bot_request_clean: Bot 请求，单位为次；</li>
-<li>cls_count: 实时日志推送条数，单位为条；</li>
-<li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps；</li>
-<li>total_transcode：所有规格音频，视频即时转码，转封装时长，单位为秒；</li>
-<li>remux：转封装时长，单位为秒；</li>
-<li>transcode_audio：音频转码时长，单位为秒；</li>
-<li>transcode_H264_SD：H.264 编码方式的标清视频（短边 <= 480 px）时长，单位为秒；</li>
-<li>transcode_H264_HD：H.264 编码方式的高清视频（短边 <= 720 px）时长，单位为秒；</li>
-<li>transcode_H264_FHD：H.264 编码方式的全高清视频（短边 <= 1080 px）时长，单位为秒；</li>
-<li>transcode_H264_2K：H.264 编码方式的 2K 视频（短边 <= 1440 px）时长，单位为秒。</li>
+        """指标列表，取值如下：
+<b>四/七层加速流量：</b><li>acc_flux: 内容加速流量，单位为 Byte；</li><li>smt_flux: 智能加速流量，单位为 Byte；</li><li>l4_flux: 四层加速流量，单位为 Byte；</li><li>sec_flux: 独立防护流量，单位为 Byte；</li><li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte。</li><br><b>四/七层加速带宽:</b><li>acc_bandwidth: 内容加速带宽，单位为 bps；</li><li>smt_bandwidth: 智能加速带宽，单位为 bps；</li><li>l4_bandwidth: 四层加速带宽，单位为 bps；</li><li>sec_bandwidth: 独立防护带宽，单位为 bps；</li><li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps。</li><br><b>HTTP/HTTPS 安全请求数：</b><li>sec_request_clean: HTTP/HTTPS 请求，单位为次。</li><b><br>增值服务用量：</b><li>smt_request_clean: 智能加速请求，单位为次；</li><li>quic_request: QUIC 请求，单位为次；</li><li>bot_request_clean: Bot 请求，单位为次；</li><li>cls_count: 实时日志推送条数，单位为条；</li><li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps。</li><br><b>边缘计算用量：</b><li>edgefunction_request：边缘函数请求数，单位为次；</li><li>edgefunction_cpu_time：边缘函数CPU处理时间，单位为毫秒。</li>
+<b>媒体处理用量：</b><li>total_transcode：所有规格音频，视频即时转码，转封装时长，单位为秒；</li><li>remux：转封装时长，单位为秒；</li><li>transcode_audio：音频转码时长，单位为秒；</li><li>transcode_H264_SD：H.264 编码方式的标清视频（短边 <= 480 px）时长，单位为秒；</li><li>transcode_H264_HD：H.264 编码方式的高清视频（短边 <= 720 px）时长，单位为秒；</li><li>transcode_H264_FHD：H.264 编码方式的全高清视频（短边 <= 1080 px）时长，单位为秒；</li><li>transcode_H264_2K：H.264 编码方式的 2K 视频（短边 <= 1440 px）时长，单位为秒。</li>
         :rtype: str
         """
         return self._MetricName
@@ -15848,6 +15870,7 @@ class DescribeBillingDataRequest(AbstractModel):
 <li>host：按照域名进行过滤。示例值：test.example.com。<br></li>
 <li>proxy-id：按照四层代理实例 ID 进行过滤。示例值：sid-2rugn89bkla9。<br></li>
 <li>region-id：按照计费大区进行过滤。可选项如下：<br>  CH：中国大陆境内<br>  AF：非洲<br>  AS1：亚太一区<br>  AS2：亚太二区<br>  AS3：亚太三区<br>  EU：欧洲<br>  MidEast：中东<br>  NA：北美<br>  SA：南美</li>
+说明：相同 `Type` 的 `BillingDataFilter` 之间为“或”关系，不同 `Type` 的 `BillingDataFilter` 之间为“且”关系。
         :rtype: list of BillingDataFilter
         """
         return self._Filters
@@ -15855,6 +15878,17 @@ class DescribeBillingDataRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def GroupBy(self):
+        """分组聚合维度。最多允许同时按照两种维度进行分组。取值如下：  <li>zone-id：按照站点 ID 进行分组，若使用了内容标识符功能，则优先按照内容标识符分组；<br></li><li>host：按照域名进行分组；<br></li> <li>proxy-id：按照四层代理实例 ID 进行分组；<br></li> <li>region-id：按照计费大区进行分组。</li> 
+        :rtype: list of str
+        """
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
 
 
     def _deserialize(self, params):
@@ -15869,6 +15903,7 @@ class DescribeBillingDataRequest(AbstractModel):
                 obj = BillingDataFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._GroupBy = params.get("GroupBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
