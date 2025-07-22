@@ -2818,7 +2818,7 @@ DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑
 GetUserOptionMessages:获取用户配置备注信息
 GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
         :type ApiType: str
-        :param _Cluster: 集群名称，GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 必填
+        :param _Cluster: 集群名称，当ApiType取值为GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 时，此参数必填
         :type Cluster: str
         :param _UserName: 用户名称，api与user相关的必填
         :type UserName: str
@@ -2866,7 +2866,7 @@ GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
 
     @property
     def Cluster(self):
-        """集群名称，GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 必填
+        """集群名称，当ApiType取值为GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 时，此参数必填
         :rtype: str
         """
         return self._Cluster

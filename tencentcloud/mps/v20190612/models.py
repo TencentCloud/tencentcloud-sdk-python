@@ -1228,6 +1228,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 Common：音视频类型
 PureAudio：纯音频类型
         :type DefinitionType: str
+        :param _SubtitleTemplate: 字幕参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1238,6 +1241,7 @@ PureAudio：纯音频类型
         self._AddOnSubtitles = None
         self._DrmInfo = None
         self._DefinitionType = None
+        self._SubtitleTemplate = None
 
     @property
     def Definition(self):
@@ -1349,6 +1353,18 @@ PureAudio：纯音频类型
     def DefinitionType(self, DefinitionType):
         self._DefinitionType = DefinitionType
 
+    @property
+    def SubtitleTemplate(self):
+        """字幕参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
+        """
+        return self._SubtitleTemplate
+
+    @SubtitleTemplate.setter
+    def SubtitleTemplate(self, SubtitleTemplate):
+        self._SubtitleTemplate = SubtitleTemplate
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1374,6 +1390,9 @@ PureAudio：纯音频类型
             self._DrmInfo = DrmInfo()
             self._DrmInfo._deserialize(params.get("DrmInfo"))
         self._DefinitionType = params.get("DefinitionType")
+        if params.get("SubtitleTemplate") is not None:
+            self._SubtitleTemplate = SubtitleTemplate()
+            self._SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

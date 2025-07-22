@@ -29646,11 +29646,11 @@ class ModifyInstanceParamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例短 ID 列表。
+        :param _InstanceIds: 实例 ID 列表。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceIds: list of str
         :param _ParamList: 要修改的参数列表。每一个元素是 Name 和 CurrentValue 的组合。Name 是参数名，CurrentValue 是要修改成的值。
         :type ParamList: list of Parameter
-        :param _TemplateId: 模板id，ParamList和TemplateId必须至少传其中之一
+        :param _TemplateId: 模板 ID，ParamList 和 TemplateId 必须至少传其中之一。可通过 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/236/32660) 接口获取。
         :type TemplateId: int
         :param _WaitSwitch: 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行；当该值为 1 时，每次只能传一个实例（InstanceIds数量为1）
         :type WaitSwitch: int
@@ -29668,7 +29668,7 @@ class ModifyInstanceParamRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例短 ID 列表。
+        """实例 ID 列表。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -29690,7 +29690,7 @@ class ModifyInstanceParamRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板id，ParamList和TemplateId必须至少传其中之一
+        """模板 ID，ParamList 和 TemplateId 必须至少传其中之一。可通过 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/236/32660) 接口获取。
         :rtype: int
         """
         return self._TemplateId
@@ -29805,19 +29805,19 @@ class ModifyInstancePasswordComplexityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 要修改密码复杂度的实例 ID。
+        :param _InstanceIds: 要修改密码复杂度的实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 说明：支持输入多个实例 ID 进行修改。
         :type InstanceIds: list of str
         :param _ParamList: 要修改的密码复杂度的选项。每一个选项是以组合形式写入的，一个组合包括 Name 和 CurrentValue，其中 Name 表示对应选项的参数名，CurrentValue 表示参数值。例如：[{"Name": "validate_password.length", "CurrentValue": "10"}]，表示将密码的最小字符数修改为10。
 说明：不同数据库版本的实例，支持修改的密码复杂度的选项如下。
 1. MySQL 8.0：
-选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。
 选项 validate_password.length，表示密码总长度的最小字符数。
 选项 validate_password.mixed_case_count，表示小写和大写字母的最小字符数。
 选项 validate_password.number_count，表示数字的最小字符数。
 选项 validate_password.special_char_count，表示特殊字符的最小字符数。
 2. MySQL 5.6、MySQL 5.7：
-选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。
 选项 validate_password_length，表示密码总长度的最小字符数。
 选项 validate_password_mixed_case_count，表示小写和大写字母的最小字符数。
 选项 validate_password_number_count，表示数字的最小字符数。
@@ -29829,7 +29829,7 @@ class ModifyInstancePasswordComplexityRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """要修改密码复杂度的实例 ID。
+        """要修改密码复杂度的实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 说明：支持输入多个实例 ID 进行修改。
         :rtype: list of str
         """
@@ -29844,13 +29844,13 @@ class ModifyInstancePasswordComplexityRequest(AbstractModel):
         """要修改的密码复杂度的选项。每一个选项是以组合形式写入的，一个组合包括 Name 和 CurrentValue，其中 Name 表示对应选项的参数名，CurrentValue 表示参数值。例如：[{"Name": "validate_password.length", "CurrentValue": "10"}]，表示将密码的最小字符数修改为10。
 说明：不同数据库版本的实例，支持修改的密码复杂度的选项如下。
 1. MySQL 8.0：
-选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。
 选项 validate_password.length，表示密码总长度的最小字符数。
 选项 validate_password.mixed_case_count，表示小写和大写字母的最小字符数。
 选项 validate_password.number_count，表示数字的最小字符数。
 选项 validate_password.special_char_count，表示特殊字符的最小字符数。
 2. MySQL 5.6、MySQL 5.7：
-选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。
 选项 validate_password_length，表示密码总长度的最小字符数。
 选项 validate_password_mixed_case_count，表示小写和大写字母的最小字符数。
 选项 validate_password_number_count，表示数字的最小字符数。
@@ -30681,6 +30681,100 @@ class ModifyRoGroupInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRoGroupVipVportRequest(AbstractModel):
+    """ModifyRoGroupVipVport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UGroupId: RO组的ID。
+        :type UGroupId: str
+        :param _DstIp: 目标IP。
+        :type DstIp: str
+        :param _DstPort: 目标Port。
+        :type DstPort: int
+        """
+        self._UGroupId = None
+        self._DstIp = None
+        self._DstPort = None
+
+    @property
+    def UGroupId(self):
+        """RO组的ID。
+        :rtype: str
+        """
+        return self._UGroupId
+
+    @UGroupId.setter
+    def UGroupId(self, UGroupId):
+        self._UGroupId = UGroupId
+
+    @property
+    def DstIp(self):
+        """目标IP。
+        :rtype: str
+        """
+        return self._DstIp
+
+    @DstIp.setter
+    def DstIp(self, DstIp):
+        self._DstIp = DstIp
+
+    @property
+    def DstPort(self):
+        """目标Port。
+        :rtype: int
+        """
+        return self._DstPort
+
+    @DstPort.setter
+    def DstPort(self, DstPort):
+        self._DstPort = DstPort
+
+
+    def _deserialize(self, params):
+        self._UGroupId = params.get("UGroupId")
+        self._DstIp = params.get("DstIp")
+        self._DstPort = params.get("DstPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoGroupVipVportResponse(AbstractModel):
+    """ModifyRoGroupVipVport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

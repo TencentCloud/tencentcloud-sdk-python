@@ -2913,7 +2913,7 @@ class BindingPolicyObjectRequest(AbstractModel):
         :type PolicyId: str
         :param _InstanceGroupId: 实例分组ID
         :type InstanceGroupId: int
-        :param _Dimensions: 需要绑定的对象维度信息
+        :param _Dimensions: 需要绑定的对象维度信息，当为实例绑定渠道时，此处为必填信息
         :type Dimensions: list of BindingPolicyObjectDimension
         :param _EbSubject: 事件配置的告警
         :type EbSubject: str
@@ -2974,7 +2974,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def Dimensions(self):
-        """需要绑定的对象维度信息
+        """需要绑定的对象维度信息，当为实例绑定渠道时，此处为必填信息
         :rtype: list of BindingPolicyObjectDimension
         """
         return self._Dimensions

@@ -3375,6 +3375,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRoGroupVipVport(self, request):
+        """该接口（ModifyRoGroupVipVport）用于修改Ro组的vip和vport。
+
+        :param request: Request instance for ModifyRoGroupVipVport.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupVipVportRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupVipVportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRoGroupVipVport", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRoGroupVipVportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyTimeWindow(self, request):
         """本接口(ModifyTimeWindow)用于更新云数据库实例的维护时间窗口。
 

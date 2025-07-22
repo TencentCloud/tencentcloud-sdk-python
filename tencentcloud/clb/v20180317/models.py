@@ -4459,7 +4459,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type SlaveZoneId: str
         :param _EipAddressId: EIP 的唯一 ID，可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP。
         :type EipAddressId: str
-        :param _LoadBalancerPassToTarget: Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+        :param _LoadBalancerPassToTarget: Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。IPv6 CLB安全组默认放通，不需要传此参数。
         :type LoadBalancerPassToTarget: bool
         :param _DynamicVip: 创建域名化负载均衡。
         :type DynamicVip: bool
@@ -4775,7 +4775,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def LoadBalancerPassToTarget(self):
-        """Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+        """Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。IPv6 CLB安全组默认放通，不需要传此参数。
         :rtype: bool
         """
         return self._LoadBalancerPassToTarget

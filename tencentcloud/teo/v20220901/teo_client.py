@@ -1651,6 +1651,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDDoSProtection(self, request):
+        """获取站点的独立 DDoS 防护信息。
+
+        :param request: Request instance for DescribeDDoSProtection.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSProtectionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDDoSProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDDoSProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDefaultCertificates(self, request):
         """查询默认证书列表
 
@@ -3161,6 +3184,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyCustomErrorPage", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCustomErrorPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDDoSProtection(self, request):
+        """修改站点的独立 DDoS 防护。
+
+        :param request: Request instance for ModifyDDoSProtection.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDDoSProtectionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyDDoSProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDDoSProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDDoSProtectionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -4961,11 +4961,14 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 限制量，默认为20，最大值为100
         :type Limit: int
+        :param _RecentDays: 时间范围限制，以天数为单位
+        :type RecentDays: int
         """
         self._TaskIds = None
         self._Filter = None
         self._Offset = None
         self._Limit = None
+        self._RecentDays = None
 
     @property
     def TaskIds(self):
@@ -5011,6 +5014,17 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def RecentDays(self):
+        """时间范围限制，以天数为单位
+        :rtype: int
+        """
+        return self._RecentDays
+
+    @RecentDays.setter
+    def RecentDays(self, RecentDays):
+        self._RecentDays = RecentDays
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
@@ -5022,6 +5036,7 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
                 self._Filter.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._RecentDays = params.get("RecentDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

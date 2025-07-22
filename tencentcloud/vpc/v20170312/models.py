@@ -44258,11 +44258,11 @@ class IKEOptionsSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PropoEncryAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
+        :param _PropoEncryAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
         :type PropoEncryAlgorithm: str
-        :param _PropoAuthenAlgorithm: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为MD5
+        :param _PropoAuthenAlgorithm: 认证算法：可选值：'MD5'，'SHA'，'SHA-256'，'SHA-512'， 默认为SHA。
         :type PropoAuthenAlgorithm: str
-        :param _ExchangeMode: 协商模式：可选值：'AGGRESSIVE', 'MAIN'，默认为MAIN
+        :param _ExchangeMode: 协商模式：可选值：'AGGRESSIVE'， 'MAIN'，默认为MAIN。
         :type ExchangeMode: str
         :param _LocalIdentity: 本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
         :type LocalIdentity: str
@@ -44276,7 +44276,7 @@ class IKEOptionsSpecification(AbstractModel):
         :type LocalFqdnName: str
         :param _RemoteFqdnName: 对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
         :type RemoteFqdnName: str
-        :param _DhGroupName: DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，
+        :param _DhGroupName: DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，默认是GROUP1。
         :type DhGroupName: str
         :param _IKESaLifetimeSeconds: IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
         :type IKESaLifetimeSeconds: int
@@ -44298,7 +44298,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def PropoEncryAlgorithm(self):
-        """加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
+        """加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
         :rtype: str
         """
         return self._PropoEncryAlgorithm
@@ -44309,7 +44309,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def PropoAuthenAlgorithm(self):
-        """认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为MD5
+        """认证算法：可选值：'MD5'，'SHA'，'SHA-256'，'SHA-512'， 默认为SHA。
         :rtype: str
         """
         return self._PropoAuthenAlgorithm
@@ -44320,7 +44320,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def ExchangeMode(self):
-        """协商模式：可选值：'AGGRESSIVE', 'MAIN'，默认为MAIN
+        """协商模式：可选值：'AGGRESSIVE'， 'MAIN'，默认为MAIN。
         :rtype: str
         """
         return self._ExchangeMode
@@ -44397,7 +44397,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def DhGroupName(self):
-        """DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，
+        """DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，默认是GROUP1。
         :rtype: str
         """
         return self._DhGroupName

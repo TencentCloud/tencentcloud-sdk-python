@@ -12711,6 +12711,90 @@ class DDoSBlockData(AbstractModel):
         
 
 
+class DDoSProtection(AbstractModel):
+    """独立 DDoS 防护配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProtectionOption: 指定独立 DDoS 的防护范围。取值为：
+<li> protect_all_domains：独立 DDoS 防护对站点内全部域名生效，新接入域名自动开启独立 DDoS 防护，入参为 protect_all_domains 时，入参 DomainDDoSProtections 不作处理；</li>
+<li> protect_specified_domains：仅对指定域名生效，具体范围可通过 DomainDDoSProtection 参数指定。</li>
+        :type ProtectionOption: str
+        :param _DomainDDoSProtections: 域名的独立 DDoS 防护配置。在入参场景中：
+<li> 当 ProtectionOption 保持为 protect_specified_domains 时：未填写的域名维持原有独立 DDoS 防护配置不变，显式指定的域名​按传入参数更新；</li>
+<li> 当 ProtectionOption 由 protect_all_domains 切换为 protect_specified_domains 时：若 DomainDDoSProtections 传空，停用站点下全部域名的独立 DDoS 防护；若 DomainDDoSProtections 不为空，参数中指定的域名停用或保持独立 DDoS 防护，其余未列出的域名统一停用独立 DDoS 防护。</li>
+        :type DomainDDoSProtections: list of DomainDDoSProtection
+        :param _SharedCNAMEDDoSProtections: 共享 CNAME 的独立 DDoS 防护配置。仅作为出参使用。
+        :type SharedCNAMEDDoSProtections: list of DomainDDoSProtection
+        """
+        self._ProtectionOption = None
+        self._DomainDDoSProtections = None
+        self._SharedCNAMEDDoSProtections = None
+
+    @property
+    def ProtectionOption(self):
+        """指定独立 DDoS 的防护范围。取值为：
+<li> protect_all_domains：独立 DDoS 防护对站点内全部域名生效，新接入域名自动开启独立 DDoS 防护，入参为 protect_all_domains 时，入参 DomainDDoSProtections 不作处理；</li>
+<li> protect_specified_domains：仅对指定域名生效，具体范围可通过 DomainDDoSProtection 参数指定。</li>
+        :rtype: str
+        """
+        return self._ProtectionOption
+
+    @ProtectionOption.setter
+    def ProtectionOption(self, ProtectionOption):
+        self._ProtectionOption = ProtectionOption
+
+    @property
+    def DomainDDoSProtections(self):
+        """域名的独立 DDoS 防护配置。在入参场景中：
+<li> 当 ProtectionOption 保持为 protect_specified_domains 时：未填写的域名维持原有独立 DDoS 防护配置不变，显式指定的域名​按传入参数更新；</li>
+<li> 当 ProtectionOption 由 protect_all_domains 切换为 protect_specified_domains 时：若 DomainDDoSProtections 传空，停用站点下全部域名的独立 DDoS 防护；若 DomainDDoSProtections 不为空，参数中指定的域名停用或保持独立 DDoS 防护，其余未列出的域名统一停用独立 DDoS 防护。</li>
+        :rtype: list of DomainDDoSProtection
+        """
+        return self._DomainDDoSProtections
+
+    @DomainDDoSProtections.setter
+    def DomainDDoSProtections(self, DomainDDoSProtections):
+        self._DomainDDoSProtections = DomainDDoSProtections
+
+    @property
+    def SharedCNAMEDDoSProtections(self):
+        """共享 CNAME 的独立 DDoS 防护配置。仅作为出参使用。
+        :rtype: list of DomainDDoSProtection
+        """
+        return self._SharedCNAMEDDoSProtections
+
+    @SharedCNAMEDDoSProtections.setter
+    def SharedCNAMEDDoSProtections(self, SharedCNAMEDDoSProtections):
+        self._SharedCNAMEDDoSProtections = SharedCNAMEDDoSProtections
+
+
+    def _deserialize(self, params):
+        self._ProtectionOption = params.get("ProtectionOption")
+        if params.get("DomainDDoSProtections") is not None:
+            self._DomainDDoSProtections = []
+            for item in params.get("DomainDDoSProtections"):
+                obj = DomainDDoSProtection()
+                obj._deserialize(item)
+                self._DomainDDoSProtections.append(obj)
+        if params.get("SharedCNAMEDDoSProtections") is not None:
+            self._SharedCNAMEDDoSProtections = []
+            for item in params.get("SharedCNAMEDDoSProtections"):
+                obj = DomainDDoSProtection()
+                obj._deserialize(item)
+                self._SharedCNAMEDDoSProtections.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DDosProtectionConfig(AbstractModel):
     """适用于四层代理或 Web 站点服务的独立 DDoS 防护规格配置。
 
@@ -17364,6 +17448,87 @@ class DescribeDDoSAttackTopDataResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDDoSProtectionRequest(AbstractModel):
+    """DescribeDDoSProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSProtectionResponse(AbstractModel):
+    """DescribeDDoSProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DDoSProtection: 独立 DDoS 防护配置。用于控制独立 DDoS 防护的生效范围。
+        :type DDoSProtection: :class:`tencentcloud.teo.v20220901.models.DDoSProtection`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DDoSProtection = None
+        self._RequestId = None
+
+    @property
+    def DDoSProtection(self):
+        """独立 DDoS 防护配置。用于控制独立 DDoS 防护的生效范围。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DDoSProtection`
+        """
+        return self._DDoSProtection
+
+    @DDoSProtection.setter
+    def DDoSProtection(self, DDoSProtection):
+        self._DDoSProtection = DDoSProtection
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DDoSProtection") is not None:
+            self._DDoSProtection = DDoSProtection()
+            self._DDoSProtection._deserialize(params.get("DDoSProtection"))
         self._RequestId = params.get("RequestId")
 
 
@@ -25145,6 +25310,61 @@ class DnsVerification(AbstractModel):
         self._Subdomain = params.get("Subdomain")
         self._RecordType = params.get("RecordType")
         self._RecordValue = params.get("RecordValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DomainDDoSProtection(AbstractModel):
+    """域名的独立 DDoS 防护信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名。
+        :type Domain: str
+        :param _Switch: 域名的独立 DDoS 开关，取值为：
+<li> on：已开启；</li>
+<li> off：已关闭。</li>
+        :type Switch: str
+        """
+        self._Domain = None
+        self._Switch = None
+
+    @property
+    def Domain(self):
+        """域名。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Switch(self):
+        """域名的独立 DDoS 开关，取值为：
+<li> on：已开启；</li>
+<li> off：已关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33593,6 +33813,87 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
 class ModifyCustomErrorPageResponse(AbstractModel):
     """ModifyCustomErrorPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDDoSProtectionRequest(AbstractModel):
+    """ModifyDDoSProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _DDoSProtection: 独立 DDoS 防护配置。
+        :type DDoSProtection: :class:`tencentcloud.teo.v20220901.models.DDoSProtection`
+        """
+        self._ZoneId = None
+        self._DDoSProtection = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def DDoSProtection(self):
+        """独立 DDoS 防护配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DDoSProtection`
+        """
+        return self._DDoSProtection
+
+    @DDoSProtection.setter
+    def DDoSProtection(self, DDoSProtection):
+        self._DDoSProtection = DDoSProtection
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("DDoSProtection") is not None:
+            self._DDoSProtection = DDoSProtection()
+            self._DDoSProtection._deserialize(params.get("DDoSProtection"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDDoSProtectionResponse(AbstractModel):
+    """ModifyDDoSProtection返回参数结构体
 
     """
 

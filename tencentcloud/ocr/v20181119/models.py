@@ -8628,6 +8628,9 @@ HongKongUtilityBill -- 香港水电煤单识别模板
         :type OutputParentKey: bool
         :param _ConfigAdvanced: 模版的单个属性配置
         :type ConfigAdvanced: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
+        :param _OutputLanguage: cn时，添加的key为中文  
+en时，添加的key为英语
+        :type OutputLanguage: str
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -8639,6 +8642,7 @@ HongKongUtilityBill -- 香港水电煤单识别模板
         self._EnableCoord = None
         self._OutputParentKey = None
         self._ConfigAdvanced = None
+        self._OutputLanguage = None
 
     @property
     def ImageUrl(self):
@@ -8769,6 +8773,18 @@ HongKongUtilityBill -- 香港水电煤单识别模板
     def ConfigAdvanced(self, ConfigAdvanced):
         self._ConfigAdvanced = ConfigAdvanced
 
+    @property
+    def OutputLanguage(self):
+        """cn时，添加的key为中文  
+en时，添加的key为英语
+        :rtype: str
+        """
+        return self._OutputLanguage
+
+    @OutputLanguage.setter
+    def OutputLanguage(self, OutputLanguage):
+        self._OutputLanguage = OutputLanguage
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -8783,6 +8799,7 @@ HongKongUtilityBill -- 香港水电煤单识别模板
         if params.get("ConfigAdvanced") is not None:
             self._ConfigAdvanced = ConfigAdvanced()
             self._ConfigAdvanced._deserialize(params.get("ConfigAdvanced"))
+        self._OutputLanguage = params.get("OutputLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
