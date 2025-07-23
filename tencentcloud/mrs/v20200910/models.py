@@ -6486,12 +6486,15 @@ class DiseaseMedicalHistory(AbstractModel):
         :type OperationHistory: str
         :param _TransfusionHistory: 输血史
         :type TransfusionHistory: str
+        :param _DiseasePresent: 现病史
+        :type DiseasePresent: str
         """
         self._MainDiseaseHistory = None
         self._AllergyHistory = None
         self._InfectHistory = None
         self._OperationHistory = None
         self._TransfusionHistory = None
+        self._DiseasePresent = None
 
     @property
     def MainDiseaseHistory(self):
@@ -6548,6 +6551,17 @@ class DiseaseMedicalHistory(AbstractModel):
     def TransfusionHistory(self, TransfusionHistory):
         self._TransfusionHistory = TransfusionHistory
 
+    @property
+    def DiseasePresent(self):
+        """现病史
+        :rtype: str
+        """
+        return self._DiseasePresent
+
+    @DiseasePresent.setter
+    def DiseasePresent(self, DiseasePresent):
+        self._DiseasePresent = DiseasePresent
+
 
     def _deserialize(self, params):
         self._MainDiseaseHistory = params.get("MainDiseaseHistory")
@@ -6555,6 +6569,7 @@ class DiseaseMedicalHistory(AbstractModel):
         self._InfectHistory = params.get("InfectHistory")
         self._OperationHistory = params.get("OperationHistory")
         self._TransfusionHistory = params.get("TransfusionHistory")
+        self._DiseasePresent = params.get("DiseasePresent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26419,6 +26434,8 @@ class TreatmentRecord(AbstractModel):
 
     @property
     def DiseasePresent(self):
+        warnings.warn("parameter `DiseasePresent` is deprecated", DeprecationWarning) 
+
         """现病史
         :rtype: str
         """
@@ -26426,6 +26443,8 @@ class TreatmentRecord(AbstractModel):
 
     @DiseasePresent.setter
     def DiseasePresent(self, DiseasePresent):
+        warnings.warn("parameter `DiseasePresent` is deprecated", DeprecationWarning) 
+
         self._DiseasePresent = DiseasePresent
 
     @property

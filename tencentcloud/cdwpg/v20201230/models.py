@@ -786,6 +786,8 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @property
     def Tags(self):
+        warnings.warn("parameter `Tags` is deprecated", DeprecationWarning) 
+
         """废弃，用TagItems
         :rtype: :class:`tencentcloud.cdwpg.v20201230.models.Tag`
         """
@@ -793,6 +795,8 @@ class CreateInstanceByApiRequest(AbstractModel):
 
     @Tags.setter
     def Tags(self, Tags):
+        warnings.warn("parameter `Tags` is deprecated", DeprecationWarning) 
+
         self._Tags = Tags
 
     @property

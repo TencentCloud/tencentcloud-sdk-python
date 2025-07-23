@@ -10776,10 +10776,16 @@ class HorizontalPodAutoscaler(AbstractModel):
 "concurrency-util":单个实例请求数量值。范围{1,100000}
 注意：此字段可能返回 null，表示取不到有效值。
         :type HpaMetrics: list of Option
+        :param _ScaleUpStabilizationWindowSeconds: 扩容观察期，单位秒
+        :type ScaleUpStabilizationWindowSeconds: int
+        :param _ScaleDownStabilizationWindowSeconds: 缩容观察期，单位秒
+        :type ScaleDownStabilizationWindowSeconds: int
         """
         self._MinReplicas = None
         self._MaxReplicas = None
         self._HpaMetrics = None
+        self._ScaleUpStabilizationWindowSeconds = None
+        self._ScaleDownStabilizationWindowSeconds = None
 
     @property
     def MinReplicas(self):
@@ -10819,6 +10825,28 @@ class HorizontalPodAutoscaler(AbstractModel):
     def HpaMetrics(self, HpaMetrics):
         self._HpaMetrics = HpaMetrics
 
+    @property
+    def ScaleUpStabilizationWindowSeconds(self):
+        """扩容观察期，单位秒
+        :rtype: int
+        """
+        return self._ScaleUpStabilizationWindowSeconds
+
+    @ScaleUpStabilizationWindowSeconds.setter
+    def ScaleUpStabilizationWindowSeconds(self, ScaleUpStabilizationWindowSeconds):
+        self._ScaleUpStabilizationWindowSeconds = ScaleUpStabilizationWindowSeconds
+
+    @property
+    def ScaleDownStabilizationWindowSeconds(self):
+        """缩容观察期，单位秒
+        :rtype: int
+        """
+        return self._ScaleDownStabilizationWindowSeconds
+
+    @ScaleDownStabilizationWindowSeconds.setter
+    def ScaleDownStabilizationWindowSeconds(self, ScaleDownStabilizationWindowSeconds):
+        self._ScaleDownStabilizationWindowSeconds = ScaleDownStabilizationWindowSeconds
+
 
     def _deserialize(self, params):
         self._MinReplicas = params.get("MinReplicas")
@@ -10829,6 +10857,8 @@ class HorizontalPodAutoscaler(AbstractModel):
                 obj = Option()
                 obj._deserialize(item)
                 self._HpaMetrics.append(obj)
+        self._ScaleUpStabilizationWindowSeconds = params.get("ScaleUpStabilizationWindowSeconds")
+        self._ScaleDownStabilizationWindowSeconds = params.get("ScaleDownStabilizationWindowSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

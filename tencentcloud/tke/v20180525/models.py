@@ -45248,10 +45248,10 @@ class Switch(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
-        :type ClusterId: str
         :param _Audit: 审计开关的详细信息
         :type Audit: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
         :param _Event: 事件开关的详细信息
         :type Event: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         :param _Log: 普通日志的详细信息
@@ -45259,22 +45259,11 @@ class Switch(AbstractModel):
         :param _MasterLog: master 日志详细信息
         :type MasterLog: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         """
-        self._ClusterId = None
         self._Audit = None
+        self._ClusterId = None
         self._Event = None
         self._Log = None
         self._MasterLog = None
-
-    @property
-    def ClusterId(self):
-        """集群ID
-        :rtype: str
-        """
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
 
     @property
     def Audit(self):
@@ -45286,6 +45275,17 @@ class Switch(AbstractModel):
     @Audit.setter
     def Audit(self, Audit):
         self._Audit = Audit
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
     @property
     def Event(self):
@@ -45322,10 +45322,10 @@ class Switch(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._ClusterId = params.get("ClusterId")
         if params.get("Audit") is not None:
             self._Audit = SwitchInfo()
             self._Audit._deserialize(params.get("Audit"))
+        self._ClusterId = params.get("ClusterId")
         if params.get("Event") is not None:
             self._Event = SwitchInfo()
             self._Event._deserialize(params.get("Event"))
@@ -45354,23 +45354,29 @@ class SwitchInfo(AbstractModel):
         r"""
         :param _Enable: 开启标识符 true代表开启
         :type Enable: bool
+        :param _ErrorMsg: 获取日志状态失败时，返回错误信息
+        :type ErrorMsg: str
         :param _LogsetId: CLS日志集ID
         :type LogsetId: str
+        :param _Status: 日志主题状态，opened表示已开启，opening开启中，closed表示已关闭，closing 表示关闭中
+        :type Status: str
         :param _TopicId: CLS日志主题ID
         :type TopicId: str
-        :param _Version: 当前log-agent版本
-        :type Version: str
-        :param _UpgradeAble: 是否可升级
-        :type UpgradeAble: bool
         :param _TopicRegion: CLS日志主题所属region
         :type TopicRegion: str
+        :param _UpgradeAble: 是否可升级
+        :type UpgradeAble: bool
+        :param _Version: 当前log-agent版本
+        :type Version: str
         """
         self._Enable = None
+        self._ErrorMsg = None
         self._LogsetId = None
+        self._Status = None
         self._TopicId = None
-        self._Version = None
-        self._UpgradeAble = None
         self._TopicRegion = None
+        self._UpgradeAble = None
+        self._Version = None
 
     @property
     def Enable(self):
@@ -45384,6 +45390,17 @@ class SwitchInfo(AbstractModel):
         self._Enable = Enable
 
     @property
+    def ErrorMsg(self):
+        """获取日志状态失败时，返回错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
     def LogsetId(self):
         """CLS日志集ID
         :rtype: str
@@ -45393,6 +45410,17 @@ class SwitchInfo(AbstractModel):
     @LogsetId.setter
     def LogsetId(self, LogsetId):
         self._LogsetId = LogsetId
+
+    @property
+    def Status(self):
+        """日志主题状态，opened表示已开启，opening开启中，closed表示已关闭，closing 表示关闭中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def TopicId(self):
@@ -45406,15 +45434,15 @@ class SwitchInfo(AbstractModel):
         self._TopicId = TopicId
 
     @property
-    def Version(self):
-        """当前log-agent版本
+    def TopicRegion(self):
+        """CLS日志主题所属region
         :rtype: str
         """
-        return self._Version
+        return self._TopicRegion
 
-    @Version.setter
-    def Version(self, Version):
-        self._Version = Version
+    @TopicRegion.setter
+    def TopicRegion(self, TopicRegion):
+        self._TopicRegion = TopicRegion
 
     @property
     def UpgradeAble(self):
@@ -45428,24 +45456,26 @@ class SwitchInfo(AbstractModel):
         self._UpgradeAble = UpgradeAble
 
     @property
-    def TopicRegion(self):
-        """CLS日志主题所属region
+    def Version(self):
+        """当前log-agent版本
         :rtype: str
         """
-        return self._TopicRegion
+        return self._Version
 
-    @TopicRegion.setter
-    def TopicRegion(self, TopicRegion):
-        self._TopicRegion = TopicRegion
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._LogsetId = params.get("LogsetId")
+        self._Status = params.get("Status")
         self._TopicId = params.get("TopicId")
-        self._Version = params.get("Version")
-        self._UpgradeAble = params.get("UpgradeAble")
         self._TopicRegion = params.get("TopicRegion")
+        self._UpgradeAble = params.get("UpgradeAble")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

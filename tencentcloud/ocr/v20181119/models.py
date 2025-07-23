@@ -15890,19 +15890,13 @@ class MLIDCardOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
         :type ImageBase64: str
-        :param _BackImageBase64: 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _BackImageBase64: 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type BackImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。( 中国地区之外不支持这个字段 )
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: 图片的 Url 地址。( 中国地区之外不支持这个字段 )支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
-        :param _BackImageUrl: 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _BackImageUrl: 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type BackImageUrl: str
         :param _RetImage: 是否返回图片，默认false
         :type RetImage: bool
@@ -15915,9 +15909,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+        """图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
         :rtype: str
         """
         return self._ImageBase64
@@ -15928,7 +15920,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageBase64(self):
-        """卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        """卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._BackImageBase64
@@ -15939,11 +15931,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。( 中国地区之外不支持这个字段 )
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        """图片的 Url 地址。( 中国地区之外不支持这个字段 )支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -15954,7 +15942,7 @@ class MLIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageUrl(self):
-        """卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        """卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._BackImageUrl
@@ -16006,21 +15994,11 @@ class MLIDCardOCRResponse(AbstractModel):
         :type Address: str
         :param _Sex: 性别
         :type Sex: str
-        :param _Warn: 告警码
--9103	证照翻拍告警
--9102	证照复印件告警
--9106       证件遮挡告警
--9107       模糊图片告警
+        :param _Warn: 该字段已废弃， 将固定返回空数组，不建议使用。
         :type Warn: list of int
         :param _Image: 证件图片
         :type Image: str
-        :param _AdvancedInfo: 此字段为扩展字段。
-返回字段识别结果的置信度，格式如下
-{
-  字段名:{
-    Confidence:0.9999
-  }
-}
+        :param _AdvancedInfo: 该字段已废弃， 将固定返回"1"，不建议使用。
         :type AdvancedInfo: str
         :param _Type: 证件类型
 MyKad  身份证
@@ -16108,11 +16086,7 @@ MyKid 儿童卡
     def Warn(self):
         warnings.warn("parameter `Warn` is deprecated", DeprecationWarning) 
 
-        """告警码
--9103	证照翻拍告警
--9102	证照复印件告警
--9106       证件遮挡告警
--9107       模糊图片告警
+        """该字段已废弃， 将固定返回空数组，不建议使用。
         :rtype: list of int
         """
         return self._Warn
@@ -16136,19 +16110,17 @@ MyKid 儿童卡
 
     @property
     def AdvancedInfo(self):
-        """此字段为扩展字段。
-返回字段识别结果的置信度，格式如下
-{
-  字段名:{
-    Confidence:0.9999
-  }
-}
+        warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
+
+        """该字段已废弃， 将固定返回"1"，不建议使用。
         :rtype: str
         """
         return self._AdvancedInfo
 
     @AdvancedInfo.setter
     def AdvancedInfo(self, AdvancedInfo):
+        warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
+
         self._AdvancedInfo = AdvancedInfo
 
     @property
@@ -16243,11 +16215,11 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
+        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
         :type ImageBase64: str
         :param _RetImage: 是否返回图片，默认false
         :type RetImage: bool
-        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :type ImageUrl: str
         """
         self._ImageBase64 = None
@@ -16256,7 +16228,7 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
+        """图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
         :rtype: str
         """
         return self._ImageBase64
@@ -16278,7 +16250,7 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        """图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -16323,22 +16295,13 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type IssuingCountry: str
         :param _Nationality: 国家地区代码（机读码区的解析结果）
         :type Nationality: str
-        :param _Warn: 告警码：
--9103	证照翻拍告警
--9102	证照复印件告警（包括黑白复印件、彩色复印件）
--9106       证件遮挡告警
+        :param _Warn: 该字段已废弃， 将固定返回空数组，不建议使用。
+
         :type Warn: list of int
         :param _Image: 证件中的人像图片base64
         :type Image: str
-        :param _AdvancedInfo: 扩展字段:
-{
-    ID:{
-        Confidence:0.9999
-    },
-    Name:{
-        Confidence:0.9996
-    }
-}
+        :param _AdvancedInfo: 该字段已废弃， 将固定返回"1"，不建议使用。
+
         :type AdvancedInfo: str
         :param _CodeSet: 最下方第一行 MRZ Code 序列
         :type CodeSet: str
@@ -16464,16 +16427,18 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def Warn(self):
-        """告警码：
--9103	证照翻拍告警
--9102	证照复印件告警（包括黑白复印件、彩色复印件）
--9106       证件遮挡告警
+        warnings.warn("parameter `Warn` is deprecated", DeprecationWarning) 
+
+        """该字段已废弃， 将固定返回空数组，不建议使用。
+
         :rtype: list of int
         """
         return self._Warn
 
     @Warn.setter
     def Warn(self, Warn):
+        warnings.warn("parameter `Warn` is deprecated", DeprecationWarning) 
+
         self._Warn = Warn
 
     @property
@@ -16489,21 +16454,18 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """扩展字段:
-{
-    ID:{
-        Confidence:0.9999
-    },
-    Name:{
-        Confidence:0.9996
-    }
-}
+        warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
+
+        """该字段已废弃， 将固定返回"1"，不建议使用。
+
         :rtype: str
         """
         return self._AdvancedInfo
 
     @AdvancedInfo.setter
     def AdvancedInfo(self, AdvancedInfo):
+        warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
+
         self._AdvancedInfo = AdvancedInfo
 
     @property
@@ -26546,15 +26508,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 -9108 证件模糊告警
 -9109 告警能力未开通
         :type WarnCardInfos: list of int
-        :param _AdvancedInfo: 字段置信度：
-{
-    "ID": {
-        "Confidence": 0.9999
-    },
-    "ThaiName": {
-        "Confidence": 0.9996
-    }
-}
+        :param _AdvancedInfo: 该字段已废弃， 将固定返回"1"，不建议使用。 
         :type AdvancedInfo: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26762,21 +26716,17 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """字段置信度：
-{
-    "ID": {
-        "Confidence": 0.9999
-    },
-    "ThaiName": {
-        "Confidence": 0.9996
-    }
-}
+        warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
+
+        """该字段已废弃， 将固定返回"1"，不建议使用。 
         :rtype: str
         """
         return self._AdvancedInfo
 
     @AdvancedInfo.setter
     def AdvancedInfo(self, AdvancedInfo):
+        warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
+
         self._AdvancedInfo = AdvancedInfo
 
     @property
