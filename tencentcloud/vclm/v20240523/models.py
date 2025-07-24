@@ -1426,11 +1426,14 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
         :param _LogoParam: 标识内容设置。
 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        :param _Resolution: 视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
+        :type Resolution: str
         """
         self._Template = None
         self._Images = None
         self._LogoAdd = None
         self._LogoParam = None
+        self._Resolution = None
 
     @property
     def Template(self):
@@ -1485,6 +1488,17 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
     def LogoParam(self, LogoParam):
         self._LogoParam = LogoParam
 
+    @property
+    def Resolution(self):
+        """视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
 
     def _deserialize(self, params):
         self._Template = params.get("Template")
@@ -1498,6 +1512,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
         if params.get("LogoParam") is not None:
             self._LogoParam = LogoParam()
             self._LogoParam._deserialize(params.get("LogoParam"))
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3986,7 +3986,7 @@ class CreateListenerRequest(AbstractModel):
         :type KeepaliveEnable: int
         :param _EndPort: 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
         :type EndPort: int
-        :param _DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+        :param _DeregisterTargetRst: 解绑后端目标时，是否发RST给两端（客户端和服务器），此参数仅适用于TCP监听器。
         :type DeregisterTargetRst: bool
         :param _MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：
 <li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li>
@@ -4189,7 +4189,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def DeregisterTargetRst(self):
-        """解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+        """解绑后端目标时，是否发RST给两端（客户端和服务器），此参数仅适用于TCP监听器。
         :rtype: bool
         """
         return self._DeregisterTargetRst

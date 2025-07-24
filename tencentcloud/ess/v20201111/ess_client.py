@@ -1446,6 +1446,48 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMiniAppPrepareFlow(self, request):
+        """创建小程序发起流程链接，在小程序页面上完成签署人等信息的编辑与确认后，可快速发起流程。
+         <br/>
+        适用场景：如果需要签署人在自己的APP、小程序、H5应用中发起合同，可在收集合同信息，签署人等信息后（非必选），通过此接口获取跳转腾讯电子签小程序的合同发起跳转链接，跳转到腾讯电子签小程序继续合同的发起。
+
+        跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+
+        注：
+        <ul>
+        <li>1. 签署链接的有效期为<font color="red">90天</font>，超过有效期链接不可用</li>
+        <li>2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li>
+         <li>3. 调用接口后，<font color="red">流程不会立即发起，需使用链接跳转到小程序上继续发起流程操作</font>。</li>
+        <li>4. <font color="red">使用链接成功发起一份合同后，链接立即失效</font></li>
+        </ul>
+
+        其中小程序的原始Id如下，或者查看小程序信息自助获取。
+
+        | 小程序 | AppID | 原始ID |
+        | ------------ | ------------ | ------------ |
+        | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+        | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+
+        :param request: Request instance for CreateMiniAppPrepareFlow.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateMiniAppPrepareFlowRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateMiniAppPrepareFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMiniAppPrepareFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMiniAppPrepareFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateModifyAdminAuthorizationUrl(self, request):
         """本接口（CreateModifyAdminAuthorizationUrl）用于重新上传超管授权书。
 

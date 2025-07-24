@@ -213,6 +213,10 @@ class AgentConfig(AbstractModel):
         :type VoicePrint: :class:`tencentcloud.trtc.v20190722.models.VoicePrint`
         :param _TurnDetection: 语义断句检测
         :type TurnDetection: :class:`tencentcloud.trtc.v20190722.models.TurnDetection`
+        :param _SubtitleMode: 机器人字幕显示模式。
+- 0表示尽快显示，不会和音频播放进行同步。此时字幕全量下发，后面的字幕会包含前面的字幕。
+- 1表示句子级别的实时显示，会和音频播放进行同步，只有当前句子对应的音频播放完后，下一条字幕才会下发。此时字幕增量下发，端上需要把前后的字幕进行拼接才是完整字幕。
+        :type SubtitleMode: int
         """
         self._UserId = None
         self._UserSig = None
@@ -228,6 +232,7 @@ class AgentConfig(AbstractModel):
         self._AmbientSound = None
         self._VoicePrint = None
         self._TurnDetection = None
+        self._SubtitleMode = None
 
     @property
     def UserId(self):
@@ -391,6 +396,19 @@ class AgentConfig(AbstractModel):
     def TurnDetection(self, TurnDetection):
         self._TurnDetection = TurnDetection
 
+    @property
+    def SubtitleMode(self):
+        """机器人字幕显示模式。
+- 0表示尽快显示，不会和音频播放进行同步。此时字幕全量下发，后面的字幕会包含前面的字幕。
+- 1表示句子级别的实时显示，会和音频播放进行同步，只有当前句子对应的音频播放完后，下一条字幕才会下发。此时字幕增量下发，端上需要把前后的字幕进行拼接才是完整字幕。
+        :rtype: int
+        """
+        return self._SubtitleMode
+
+    @SubtitleMode.setter
+    def SubtitleMode(self, SubtitleMode):
+        self._SubtitleMode = SubtitleMode
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -413,6 +431,7 @@ class AgentConfig(AbstractModel):
         if params.get("TurnDetection") is not None:
             self._TurnDetection = TurnDetection()
             self._TurnDetection._deserialize(params.get("TurnDetection"))
+        self._SubtitleMode = params.get("SubtitleMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

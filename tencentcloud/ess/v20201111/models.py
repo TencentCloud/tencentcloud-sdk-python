@@ -11844,6 +11844,423 @@ class CreateLegalSealQrCodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMiniAppPrepareFlowRequest(AbstractModel):
+    """CreateMiniAppPrepareFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+支持填入集团子公司经办人 userId 代发合同。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ResourceType: 资源类型，取值有：
+<ul><li> **1**：模板</li>
+<li> **2**：文件 </li></ul>
+        :type ResourceType: int
+        :param _ResourceId: 资源id，与ResourceType相对应，取值范围：
+<ul>
+<li>文件Id（通过UploadFiles获取文件资源Id）</li>
+<li>模板Id（通过控制台创建模板后获取模板Id）</li>
+</ul>
+注意：需要同时设置 ResourceType 参数指定资源类型
+        :type ResourceId: str
+        :param _FlowName: 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
+
+该名称还将用于合同签署完成后文件下载的默认文件名称。
+        :type FlowName: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Approvers: 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息。
+        :type Approvers: list of MiniAppCreateApproverInfo
+        :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+
+**注：暂不支持通过NotifyType参数控制抄送人通知方式**
+        :type CcInfos: list of CcInfo
+        :param _Unordered: 合同流程的签署顺序类型：
+<ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+<li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+
+**注：仅在文件发起模式下设置有效，模板发起以模板配置为准**
+        :type Unordered: bool
+        :param _DeadlineAfterStartDays: 合同发起后经过多少天截止（1-30天可选），默认7天
+        :type DeadlineAfterStartDays: int
+        :param _UserFlowTypeId: 用户自定义合同类型Id  该id为电子签企业内的合同类型id， 可以在控制台-合同-自定义合同类型处获取
+        :type UserFlowTypeId: str
+        :param _FlowOption: 发起合同个性化参数
+用于满足小程序合同创建的个性化要求
+具体定制化内容详见数据接口说明
+        :type FlowOption: :class:`tencentcloud.ess.v20201111.models.MiniAppCreateFlowOption`
+        :param _PageOption: 发起合同小程序页面个性化参数 
+用于满足小程序合同创建页面的个性化要求 具体定制化内容详见数据接口说明
+        :type PageOption: :class:`tencentcloud.ess.v20201111.models.MiniAppCreateFlowPageOption`
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000 长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        :type UserData: str
+        """
+        self._Operator = None
+        self._ResourceType = None
+        self._ResourceId = None
+        self._FlowName = None
+        self._Agent = None
+        self._Approvers = None
+        self._CcInfos = None
+        self._Unordered = None
+        self._DeadlineAfterStartDays = None
+        self._UserFlowTypeId = None
+        self._FlowOption = None
+        self._PageOption = None
+        self._UserData = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。使用此接口时，必须填写userId。
+支持填入集团子公司经办人 userId 代发合同。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ResourceType(self):
+        """资源类型，取值有：
+<ul><li> **1**：模板</li>
+<li> **2**：文件 </li></ul>
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        """资源id，与ResourceType相对应，取值范围：
+<ul>
+<li>文件Id（通过UploadFiles获取文件资源Id）</li>
+<li>模板Id（通过控制台创建模板后获取模板Id）</li>
+</ul>
+注意：需要同时设置 ResourceType 参数指定资源类型
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def FlowName(self):
+        """自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
+
+该名称还将用于合同签署完成后文件下载的默认文件名称。
+        :rtype: str
+        """
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Approvers(self):
+        """合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息。
+        :rtype: list of MiniAppCreateApproverInfo
+        """
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def CcInfos(self):
+        """合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+
+**注：暂不支持通过NotifyType参数控制抄送人通知方式**
+        :rtype: list of CcInfo
+        """
+        return self._CcInfos
+
+    @CcInfos.setter
+    def CcInfos(self, CcInfos):
+        self._CcInfos = CcInfos
+
+    @property
+    def Unordered(self):
+        """合同流程的签署顺序类型：
+<ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+<li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+
+**注：仅在文件发起模式下设置有效，模板发起以模板配置为准**
+        :rtype: bool
+        """
+        return self._Unordered
+
+    @Unordered.setter
+    def Unordered(self, Unordered):
+        self._Unordered = Unordered
+
+    @property
+    def DeadlineAfterStartDays(self):
+        """合同发起后经过多少天截止（1-30天可选），默认7天
+        :rtype: int
+        """
+        return self._DeadlineAfterStartDays
+
+    @DeadlineAfterStartDays.setter
+    def DeadlineAfterStartDays(self, DeadlineAfterStartDays):
+        self._DeadlineAfterStartDays = DeadlineAfterStartDays
+
+    @property
+    def UserFlowTypeId(self):
+        """用户自定义合同类型Id  该id为电子签企业内的合同类型id， 可以在控制台-合同-自定义合同类型处获取
+        :rtype: str
+        """
+        return self._UserFlowTypeId
+
+    @UserFlowTypeId.setter
+    def UserFlowTypeId(self, UserFlowTypeId):
+        self._UserFlowTypeId = UserFlowTypeId
+
+    @property
+    def FlowOption(self):
+        """发起合同个性化参数
+用于满足小程序合同创建的个性化要求
+具体定制化内容详见数据接口说明
+        :rtype: :class:`tencentcloud.ess.v20201111.models.MiniAppCreateFlowOption`
+        """
+        return self._FlowOption
+
+    @FlowOption.setter
+    def FlowOption(self, FlowOption):
+        self._FlowOption = FlowOption
+
+    @property
+    def PageOption(self):
+        """发起合同小程序页面个性化参数 
+用于满足小程序合同创建页面的个性化要求 具体定制化内容详见数据接口说明
+        :rtype: :class:`tencentcloud.ess.v20201111.models.MiniAppCreateFlowPageOption`
+        """
+        return self._PageOption
+
+    @PageOption.setter
+    def PageOption(self, PageOption):
+        self._PageOption = PageOption
+
+    @property
+    def UserData(self):
+        """调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000 长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._FlowName = params.get("FlowName")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = MiniAppCreateApproverInfo()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
+        if params.get("CcInfos") is not None:
+            self._CcInfos = []
+            for item in params.get("CcInfos"):
+                obj = CcInfo()
+                obj._deserialize(item)
+                self._CcInfos.append(obj)
+        self._Unordered = params.get("Unordered")
+        self._DeadlineAfterStartDays = params.get("DeadlineAfterStartDays")
+        self._UserFlowTypeId = params.get("UserFlowTypeId")
+        if params.get("FlowOption") is not None:
+            self._FlowOption = MiniAppCreateFlowOption()
+            self._FlowOption._deserialize(params.get("FlowOption"))
+        if params.get("PageOption") is not None:
+            self._PageOption = MiniAppCreateFlowPageOption()
+            self._PageOption._deserialize(params.get("PageOption"))
+        self._UserData = params.get("UserData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMiniAppPrepareFlowResponse(AbstractModel):
+    """CreateMiniAppPrepareFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LongUrl: H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :type LongUrl: str
+        :param _ShortUrl: H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :type ShortUrl: str
+        :param _MiniAppPath: APP或小程序跳转电子签小程序链接, 一般用于客户小程序或者APP跳转过来, 打开后进入腾讯电子签小程序
+        :type MiniAppPath: str
+        :param _FlowId: 创建的合同id（还未实际发起，也未扣费），每次调用会生成新的id，用户可以记录此字段对应后续在小程序发起的合同，若在小程序上未成功发起，则此字段无效。
+        :type FlowId: str
+        :param _QrcodeUrl: 跳转至电子签小程序的二维码链接
+        :type QrcodeUrl: str
+        :param _WeixinQrcodeUrl: 直接跳转至电子签小程序的二维码链接，无需通过中转页。需要自行将其转换为二维码，使用微信扫码后可直接进入。
+        :type WeixinQrcodeUrl: str
+        :param _ExpiredOn: 链接过期时间，精确到秒，若在此过期时间前未使用，则链接失效。
+
+        :type ExpiredOn: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LongUrl = None
+        self._ShortUrl = None
+        self._MiniAppPath = None
+        self._FlowId = None
+        self._QrcodeUrl = None
+        self._WeixinQrcodeUrl = None
+        self._ExpiredOn = None
+        self._RequestId = None
+
+    @property
+    def LongUrl(self):
+        """H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :rtype: str
+        """
+        return self._LongUrl
+
+    @LongUrl.setter
+    def LongUrl(self, LongUrl):
+        self._LongUrl = LongUrl
+
+    @property
+    def ShortUrl(self):
+        """H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :rtype: str
+        """
+        return self._ShortUrl
+
+    @ShortUrl.setter
+    def ShortUrl(self, ShortUrl):
+        self._ShortUrl = ShortUrl
+
+    @property
+    def MiniAppPath(self):
+        """APP或小程序跳转电子签小程序链接, 一般用于客户小程序或者APP跳转过来, 打开后进入腾讯电子签小程序
+        :rtype: str
+        """
+        return self._MiniAppPath
+
+    @MiniAppPath.setter
+    def MiniAppPath(self, MiniAppPath):
+        self._MiniAppPath = MiniAppPath
+
+    @property
+    def FlowId(self):
+        """创建的合同id（还未实际发起，也未扣费），每次调用会生成新的id，用户可以记录此字段对应后续在小程序发起的合同，若在小程序上未成功发起，则此字段无效。
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def QrcodeUrl(self):
+        """跳转至电子签小程序的二维码链接
+        :rtype: str
+        """
+        return self._QrcodeUrl
+
+    @QrcodeUrl.setter
+    def QrcodeUrl(self, QrcodeUrl):
+        self._QrcodeUrl = QrcodeUrl
+
+    @property
+    def WeixinQrcodeUrl(self):
+        """直接跳转至电子签小程序的二维码链接，无需通过中转页。需要自行将其转换为二维码，使用微信扫码后可直接进入。
+        :rtype: str
+        """
+        return self._WeixinQrcodeUrl
+
+    @WeixinQrcodeUrl.setter
+    def WeixinQrcodeUrl(self, WeixinQrcodeUrl):
+        self._WeixinQrcodeUrl = WeixinQrcodeUrl
+
+    @property
+    def ExpiredOn(self):
+        """链接过期时间，精确到秒，若在此过期时间前未使用，则链接失效。
+
+        :rtype: int
+        """
+        return self._ExpiredOn
+
+    @ExpiredOn.setter
+    def ExpiredOn(self, ExpiredOn):
+        self._ExpiredOn = ExpiredOn
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LongUrl = params.get("LongUrl")
+        self._ShortUrl = params.get("ShortUrl")
+        self._MiniAppPath = params.get("MiniAppPath")
+        self._FlowId = params.get("FlowId")
+        self._QrcodeUrl = params.get("QrcodeUrl")
+        self._WeixinQrcodeUrl = params.get("WeixinQrcodeUrl")
+        self._ExpiredOn = params.get("ExpiredOn")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateModifyAdminAuthorizationUrlRequest(AbstractModel):
     """CreateModifyAdminAuthorizationUrl请求参数结构体
 
@@ -29505,6 +29922,290 @@ class IntentionQuestionResult(AbstractModel):
         self._Video = params.get("Video")
         self._ResultCode = params.get("ResultCode")
         self._AsrResult = params.get("AsrResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MiniAppCreateApproverInfo(AbstractModel):
+    """创建流程的签署方信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApproverType: 在指定签署方时，可以选择企业B端或个人C端等不同的参与者类型，可选类型如下：
+
+<ul><li> <b>0</b> :企业B端。</li>
+<li> <b>1</b> :个人C端。</li>
+<li> <b>3</b> :企业B端静默（自动）签署，无需签署人参与，自动签署可以参考<a href="https://qian.tencent.com/developers/company/autosign_guide" target="_blank" rel="noopener noreferrer">自动签署使用说明</a>文档。</li>
+<li> <b>7</b> :个人C端自动签署，适用于个人自动签场景。注: <b>个人自动签场景为白名单功能，使用前请联系对接的客户经理沟通。</b> </li></ul>
+        :type ApproverType: int
+        :param _OrganizationName: 组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+
+注: `当approverType=0(企业签署方) 或 approverType=3(企业静默签署)时，必须指定`
+
+
+        :type OrganizationName: str
+        :param _ApproverName: 签署方经办人的姓名。
+经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+
+在未指定签署人电子签UserId情况下，为必填参数
+        :type ApproverName: str
+        :param _ApproverMobile: 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 此手机号用于通知和用户的实名认证等环境，请确认手机号所有方为此合同签署方。
+
+注：`在未指定签署人电子签UserId情况下，为必填参数`
+
+        :type ApproverMobile: str
+        :param _ApproverIdCardType: 证件类型，支持以下类型
+<ul><li><b>ID_CARD</b>: 居民身份证 (默认值)</li>
+<li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
+<li><b>HONGKONG_MACAO_AND_TAIWAN</b> : 港澳台居民居住证(格式同居民身份证)</li></ul>
+        :type ApproverIdCardType: str
+        :param _ApproverIdCardNumber: 证件号码，应符合以下规则
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :type ApproverIdCardNumber: str
+        :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+
+<b>模板发起合同时，该参数为必填项，可以通过[查询模板信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
+<b>文件发起合同时，该参数无需传值。</b>
+
+如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
+        :type RecipientId: str
+        """
+        self._ApproverType = None
+        self._OrganizationName = None
+        self._ApproverName = None
+        self._ApproverMobile = None
+        self._ApproverIdCardType = None
+        self._ApproverIdCardNumber = None
+        self._RecipientId = None
+
+    @property
+    def ApproverType(self):
+        """在指定签署方时，可以选择企业B端或个人C端等不同的参与者类型，可选类型如下：
+
+<ul><li> <b>0</b> :企业B端。</li>
+<li> <b>1</b> :个人C端。</li>
+<li> <b>3</b> :企业B端静默（自动）签署，无需签署人参与，自动签署可以参考<a href="https://qian.tencent.com/developers/company/autosign_guide" target="_blank" rel="noopener noreferrer">自动签署使用说明</a>文档。</li>
+<li> <b>7</b> :个人C端自动签署，适用于个人自动签场景。注: <b>个人自动签场景为白名单功能，使用前请联系对接的客户经理沟通。</b> </li></ul>
+        :rtype: int
+        """
+        return self._ApproverType
+
+    @ApproverType.setter
+    def ApproverType(self, ApproverType):
+        self._ApproverType = ApproverType
+
+    @property
+    def OrganizationName(self):
+        """组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+
+注: `当approverType=0(企业签署方) 或 approverType=3(企业静默签署)时，必须指定`
+
+
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def ApproverName(self):
+        """签署方经办人的姓名。
+经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+
+在未指定签署人电子签UserId情况下，为必填参数
+        :rtype: str
+        """
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproverMobile(self):
+        """签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 此手机号用于通知和用户的实名认证等环境，请确认手机号所有方为此合同签署方。
+
+注：`在未指定签署人电子签UserId情况下，为必填参数`
+
+        :rtype: str
+        """
+        return self._ApproverMobile
+
+    @ApproverMobile.setter
+    def ApproverMobile(self, ApproverMobile):
+        self._ApproverMobile = ApproverMobile
+
+    @property
+    def ApproverIdCardType(self):
+        """证件类型，支持以下类型
+<ul><li><b>ID_CARD</b>: 居民身份证 (默认值)</li>
+<li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
+<li><b>HONGKONG_MACAO_AND_TAIWAN</b> : 港澳台居民居住证(格式同居民身份证)</li></ul>
+        :rtype: str
+        """
+        return self._ApproverIdCardType
+
+    @ApproverIdCardType.setter
+    def ApproverIdCardType(self, ApproverIdCardType):
+        self._ApproverIdCardType = ApproverIdCardType
+
+    @property
+    def ApproverIdCardNumber(self):
+        """证件号码，应符合以下规则
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :rtype: str
+        """
+        return self._ApproverIdCardNumber
+
+    @ApproverIdCardNumber.setter
+    def ApproverIdCardNumber(self, ApproverIdCardNumber):
+        self._ApproverIdCardNumber = ApproverIdCardNumber
+
+    @property
+    def RecipientId(self):
+        """签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+
+<b>模板发起合同时，该参数为必填项，可以通过[查询模板信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
+<b>文件发起合同时，该参数无需传值。</b>
+
+如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
+        :rtype: str
+        """
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+
+    def _deserialize(self, params):
+        self._ApproverType = params.get("ApproverType")
+        self._OrganizationName = params.get("OrganizationName")
+        self._ApproverName = params.get("ApproverName")
+        self._ApproverMobile = params.get("ApproverMobile")
+        self._ApproverIdCardType = params.get("ApproverIdCardType")
+        self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
+        self._RecipientId = params.get("RecipientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MiniAppCreateFlowOption(AbstractModel):
+    """小程序发起合同可选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RemindedOn: 到期提醒日（linux时间戳） 精确到天
+        :type RemindedOn: int
+        :param _NeedCreateReview: 是否需要发起前进行审批
+        :type NeedCreateReview: bool
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
+        """
+        self._RemindedOn = None
+        self._NeedCreateReview = None
+        self._FlowDisplayType = None
+
+    @property
+    def RemindedOn(self):
+        """到期提醒日（linux时间戳） 精确到天
+        :rtype: int
+        """
+        return self._RemindedOn
+
+    @RemindedOn.setter
+    def RemindedOn(self, RemindedOn):
+        self._RemindedOn = RemindedOn
+
+    @property
+    def NeedCreateReview(self):
+        """是否需要发起前进行审批
+        :rtype: bool
+        """
+        return self._NeedCreateReview
+
+    @NeedCreateReview.setter
+    def NeedCreateReview(self, NeedCreateReview):
+        self._NeedCreateReview = NeedCreateReview
+
+    @property
+    def FlowDisplayType(self):
+        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :rtype: int
+        """
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
+
+    def _deserialize(self, params):
+        self._RemindedOn = params.get("RemindedOn")
+        self._NeedCreateReview = params.get("NeedCreateReview")
+        self._FlowDisplayType = params.get("FlowDisplayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MiniAppCreateFlowPageOption(AbstractModel):
+    """小程序发起页面个性化配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HideSignCodeAfterStart: 发起后隐藏签署码
+        :type HideSignCodeAfterStart: bool
+        """
+        self._HideSignCodeAfterStart = None
+
+    @property
+    def HideSignCodeAfterStart(self):
+        """发起后隐藏签署码
+        :rtype: bool
+        """
+        return self._HideSignCodeAfterStart
+
+    @HideSignCodeAfterStart.setter
+    def HideSignCodeAfterStart(self, HideSignCodeAfterStart):
+        self._HideSignCodeAfterStart = HideSignCodeAfterStart
+
+
+    def _deserialize(self, params):
+        self._HideSignCodeAfterStart = params.get("HideSignCodeAfterStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

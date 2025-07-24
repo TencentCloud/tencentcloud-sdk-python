@@ -739,6 +739,29 @@ class CtemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyLabel(self, request):
+        """修改标签
+
+        :param request: Request instance for ModifyLabel.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.ModifyLabelRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.ModifyLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopJobRecord(self, request):
         """停止扫描
 

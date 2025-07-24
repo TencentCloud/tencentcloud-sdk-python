@@ -9551,6 +9551,187 @@ class DescribeRecordTypeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeResolveCountRequest(AbstractModel):
+    """DescribeResolveCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 要查询解析量的域名
+        :type Domain: str
+        :param _StartDate: 查询的开始时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+        :type StartDate: str
+        :param _EndDate: 查询的结束时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+        :type EndDate: str
+        :param _DnsFormat: 数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+        :type DnsFormat: str
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._StartDate = None
+        self._EndDate = None
+        self._DnsFormat = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        """要查询解析量的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def StartDate(self):
+        """查询的开始时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        """查询的结束时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def DnsFormat(self):
+        """数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+        :rtype: str
+        """
+        return self._DnsFormat
+
+    @DnsFormat.setter
+    def DnsFormat(self, DnsFormat):
+        self._DnsFormat = DnsFormat
+
+    @property
+    def DomainId(self):
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :rtype: int
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._DnsFormat = params.get("DnsFormat")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResolveCountResponse(AbstractModel):
+    """DescribeResolveCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 解析量明细
+        :type Data: list of ResolveCountDataItem
+        :param _Info: 解析量统计信息
+        :type Info: :class:`tencentcloud.dnspod.v20210323.models.ResolveCountInfo`
+        :param _AliasData: 别名解析量明细
+        :type AliasData: list of ResolveCountAliasItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Info = None
+        self._AliasData = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """解析量明细
+        :rtype: list of ResolveCountDataItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Info(self):
+        """解析量统计信息
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ResolveCountInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def AliasData(self):
+        """别名解析量明细
+        :rtype: list of ResolveCountAliasItem
+        """
+        return self._AliasData
+
+    @AliasData.setter
+    def AliasData(self, AliasData):
+        self._AliasData = AliasData
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ResolveCountDataItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("Info") is not None:
+            self._Info = ResolveCountInfo()
+            self._Info._deserialize(params.get("Info"))
+        if params.get("AliasData") is not None:
+            self._AliasData = []
+            for item in params.get("AliasData"):
+                obj = ResolveCountAliasItem()
+                obj._deserialize(item)
+                self._AliasData.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSnapshotConfigRequest(AbstractModel):
     """DescribeSnapshotConfig请求参数结构体
 
@@ -17669,6 +17850,226 @@ class RecordListItem(AbstractModel):
         self._TTL = params.get("TTL")
         self._MX = params.get("MX")
         self._DefaultNS = params.get("DefaultNS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResolveCountAliasItem(AbstractModel):
+    """域名别名解析量统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: 域名解析量统计信息
+        :type Info: :class:`tencentcloud.dnspod.v20210323.models.ResolveCountInfo`
+        :param _Data: 解析量明细
+        :type Data: list of ResolveCountDataItem
+        """
+        self._Info = None
+        self._Data = None
+
+    @property
+    def Info(self):
+        """域名解析量统计信息
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ResolveCountInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def Data(self):
+        """解析量明细
+        :rtype: list of ResolveCountDataItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = ResolveCountInfo()
+            self._Info._deserialize(params.get("Info"))
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ResolveCountDataItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResolveCountDataItem(AbstractModel):
+    """解析量小计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Num: 解析量
+        :type Num: int
+        :param _DateKey: 统计的时间点
+        :type DateKey: str
+        """
+        self._Num = None
+        self._DateKey = None
+
+    @property
+    def Num(self):
+        """解析量
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def DateKey(self):
+        """统计的时间点
+        :rtype: str
+        """
+        return self._DateKey
+
+    @DateKey.setter
+    def DateKey(self, DateKey):
+        self._DateKey = DateKey
+
+
+    def _deserialize(self, params):
+        self._Num = params.get("Num")
+        self._DateKey = params.get("DateKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResolveCountInfo(AbstractModel):
+    """域名解析量统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DnsTotal: 当前统计周期解析量总计
+        :type DnsTotal: int
+        :param _Domain: 当前查询的域名
+        :type Domain: str
+        :param _StartDate: 当前统计周期开始时间
+        :type StartDate: str
+        :param _EndDate: 当前统计周期结束时间
+        :type EndDate: str
+        :param _SubDomain: 当前统计的子域名
+        :type SubDomain: str
+        :param _DnsFormat: 数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+        :type DnsFormat: str
+        """
+        self._DnsTotal = None
+        self._Domain = None
+        self._StartDate = None
+        self._EndDate = None
+        self._SubDomain = None
+        self._DnsFormat = None
+
+    @property
+    def DnsTotal(self):
+        """当前统计周期解析量总计
+        :rtype: int
+        """
+        return self._DnsTotal
+
+    @DnsTotal.setter
+    def DnsTotal(self, DnsTotal):
+        self._DnsTotal = DnsTotal
+
+    @property
+    def Domain(self):
+        """当前查询的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def StartDate(self):
+        """当前统计周期开始时间
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        """当前统计周期结束时间
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def SubDomain(self):
+        """当前统计的子域名
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def DnsFormat(self):
+        """数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+        :rtype: str
+        """
+        return self._DnsFormat
+
+    @DnsFormat.setter
+    def DnsFormat(self, DnsFormat):
+        self._DnsFormat = DnsFormat
+
+
+    def _deserialize(self, params):
+        self._DnsTotal = params.get("DnsTotal")
+        self._Domain = params.get("Domain")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._SubDomain = params.get("SubDomain")
+        self._DnsFormat = params.get("DnsFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

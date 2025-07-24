@@ -781,7 +781,7 @@ ULTIMATE：旗舰版
         :type AccessSubDomain: str
         :param _Remark: 备注
         :type Remark: str
-        :param _ResourceId: 套餐资源id，必填
+        :param _ResourceId: 套餐资源id
         :type ResourceId: str
         """
         self._Domain = None
@@ -888,7 +888,7 @@ ULTIMATE：旗舰版
 
     @property
     def ResourceId(self):
-        """套餐资源id，必填
+        """套餐资源id
         :rtype: str
         """
         return self._ResourceId

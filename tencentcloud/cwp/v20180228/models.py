@@ -41689,12 +41689,15 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
         :type Professional: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         :param _PrattWhitney: 轻量版 配置信息
         :type PrattWhitney: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
+        :param _RASP: 重保授权包 配置信息
+        :type RASP: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlagShip = None
         self._Professional = None
         self._PrattWhitney = None
+        self._RASP = None
         self._RequestId = None
 
     @property
@@ -41731,6 +41734,17 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
         self._PrattWhitney = PrattWhitney
 
     @property
+    def RASP(self):
+        """重保授权包 配置信息
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
+        """
+        return self._RASP
+
+    @RASP.setter
+    def RASP(self, RASP):
+        self._RASP = RASP
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -41752,6 +41766,9 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
         if params.get("PrattWhitney") is not None:
             self._PrattWhitney = VersionWhiteConfig()
             self._PrattWhitney._deserialize(params.get("PrattWhitney"))
+        if params.get("RASP") is not None:
+            self._RASP = VersionWhiteConfig()
+            self._RASP._deserialize(params.get("RASP"))
         self._RequestId = params.get("RequestId")
 
 

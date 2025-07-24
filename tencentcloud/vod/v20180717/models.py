@@ -19109,7 +19109,9 @@ class CreateProcedureTemplateRequest(AbstractModel):
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param _AiAnalysisTask: AI 内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTask: AI 内容识别类型任务参数。
+        :param _AiRecognitionTaskSet: AI 内容识别类型任务参数。
+        :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
+        :param _AiRecognitionTask: 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         :param _ReviewAudioVideoTask: 音视频审核类型任务参数。
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
@@ -19120,6 +19122,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         self._MediaProcessTask = None
         self._AiContentReviewTask = None
         self._AiAnalysisTask = None
+        self._AiRecognitionTaskSet = None
         self._AiRecognitionTask = None
         self._ReviewAudioVideoTask = None
 
@@ -19191,14 +19194,29 @@ class CreateProcedureTemplateRequest(AbstractModel):
         self._AiAnalysisTask = AiAnalysisTask
 
     @property
-    def AiRecognitionTask(self):
+    def AiRecognitionTaskSet(self):
         """AI 内容识别类型任务参数。
+        :rtype: list of AiRecognitionTaskInput
+        """
+        return self._AiRecognitionTaskSet
+
+    @AiRecognitionTaskSet.setter
+    def AiRecognitionTaskSet(self, AiRecognitionTaskSet):
+        self._AiRecognitionTaskSet = AiRecognitionTaskSet
+
+    @property
+    def AiRecognitionTask(self):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
+        """该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
     def AiRecognitionTask(self, AiRecognitionTask):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
         self._AiRecognitionTask = AiRecognitionTask
 
     @property
@@ -19226,6 +19244,12 @@ class CreateProcedureTemplateRequest(AbstractModel):
         if params.get("AiAnalysisTask") is not None:
             self._AiAnalysisTask = AiAnalysisTaskInput()
             self._AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTaskSet") is not None:
+            self._AiRecognitionTaskSet = []
+            for item in params.get("AiRecognitionTaskSet"):
+                obj = AiRecognitionTaskInput()
+                obj._deserialize(item)
+                self._AiRecognitionTaskSet.append(obj)
         if params.get("AiRecognitionTask") is not None:
             self._AiRecognitionTask = AiRecognitionTaskInput()
             self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
@@ -55669,7 +55693,9 @@ class ProcedureTemplate(AbstractModel):
         :param _AiAnalysisTask: AI 智能内容分析类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTask: AI 内容识别类型任务参数。
+        :param _AiRecognitionTaskSet: AI 内容识别类型任务参数。
+        :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
+        :param _AiRecognitionTask: 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         :param _MiniProgramPublishTask: 微信小程序发布任务参数。
@@ -55689,6 +55715,7 @@ class ProcedureTemplate(AbstractModel):
         self._MediaProcessTask = None
         self._AiContentReviewTask = None
         self._AiAnalysisTask = None
+        self._AiRecognitionTaskSet = None
         self._AiRecognitionTask = None
         self._MiniProgramPublishTask = None
         self._ReviewAudioVideoTask = None
@@ -55768,8 +55795,21 @@ class ProcedureTemplate(AbstractModel):
         self._AiAnalysisTask = AiAnalysisTask
 
     @property
-    def AiRecognitionTask(self):
+    def AiRecognitionTaskSet(self):
         """AI 内容识别类型任务参数。
+        :rtype: list of AiRecognitionTaskInput
+        """
+        return self._AiRecognitionTaskSet
+
+    @AiRecognitionTaskSet.setter
+    def AiRecognitionTaskSet(self, AiRecognitionTaskSet):
+        self._AiRecognitionTaskSet = AiRecognitionTaskSet
+
+    @property
+    def AiRecognitionTask(self):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
+        """该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         """
@@ -55777,6 +55817,8 @@ class ProcedureTemplate(AbstractModel):
 
     @AiRecognitionTask.setter
     def AiRecognitionTask(self, AiRecognitionTask):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
         self._AiRecognitionTask = AiRecognitionTask
 
     @property
@@ -55839,6 +55881,12 @@ class ProcedureTemplate(AbstractModel):
         if params.get("AiAnalysisTask") is not None:
             self._AiAnalysisTask = AiAnalysisTaskInput()
             self._AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTaskSet") is not None:
+            self._AiRecognitionTaskSet = []
+            for item in params.get("AiRecognitionTaskSet"):
+                obj = AiRecognitionTaskInput()
+                obj._deserialize(item)
+                self._AiRecognitionTaskSet.append(obj)
         if params.get("AiRecognitionTask") is not None:
             self._AiRecognitionTask = AiRecognitionTaskInput()
             self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
@@ -63118,7 +63166,9 @@ class ResetProcedureTemplateRequest(AbstractModel):
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param _AiAnalysisTask: AI 智能内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTask: AI 内容识别类型任务参数。
+        :param _AiRecognitionTaskSet: AI 内容识别类型任务参数。
+        :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
+        :param _AiRecognitionTask: 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         :param _ReviewAudioVideoTask: 音视频审核类型任务参数。
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
@@ -63129,6 +63179,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
         self._MediaProcessTask = None
         self._AiContentReviewTask = None
         self._AiAnalysisTask = None
+        self._AiRecognitionTaskSet = None
         self._AiRecognitionTask = None
         self._ReviewAudioVideoTask = None
 
@@ -63200,14 +63251,29 @@ class ResetProcedureTemplateRequest(AbstractModel):
         self._AiAnalysisTask = AiAnalysisTask
 
     @property
-    def AiRecognitionTask(self):
+    def AiRecognitionTaskSet(self):
         """AI 内容识别类型任务参数。
+        :rtype: list of AiRecognitionTaskInput
+        """
+        return self._AiRecognitionTaskSet
+
+    @AiRecognitionTaskSet.setter
+    def AiRecognitionTaskSet(self, AiRecognitionTaskSet):
+        self._AiRecognitionTaskSet = AiRecognitionTaskSet
+
+    @property
+    def AiRecognitionTask(self):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
+        """该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
     def AiRecognitionTask(self, AiRecognitionTask):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
         self._AiRecognitionTask = AiRecognitionTask
 
     @property
@@ -63235,6 +63301,12 @@ class ResetProcedureTemplateRequest(AbstractModel):
         if params.get("AiAnalysisTask") is not None:
             self._AiAnalysisTask = AiAnalysisTaskInput()
             self._AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTaskSet") is not None:
+            self._AiRecognitionTaskSet = []
+            for item in params.get("AiRecognitionTaskSet"):
+                obj = AiRecognitionTaskInput()
+                obj._deserialize(item)
+                self._AiRecognitionTaskSet.append(obj)
         if params.get("AiRecognitionTask") is not None:
             self._AiRecognitionTask = AiRecognitionTaskInput()
             self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))

@@ -35134,6 +35134,8 @@ class StageInfoDetail(AbstractModel):
         :type FailedReason: str
         :param _TimeConsuming: 步骤耗时
         :type TimeConsuming: str
+        :param _Id: id，前端用
+        :type Id: int
         """
         self._Stage = None
         self._Name = None
@@ -35150,6 +35152,7 @@ class StageInfoDetail(AbstractModel):
         self._LanguageKey = None
         self._FailedReason = None
         self._TimeConsuming = None
+        self._Id = None
 
     @property
     def Stage(self):
@@ -35318,6 +35321,17 @@ class StageInfoDetail(AbstractModel):
     def TimeConsuming(self, TimeConsuming):
         self._TimeConsuming = TimeConsuming
 
+    @property
+    def Id(self):
+        """id，前端用
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._Stage = params.get("Stage")
@@ -35335,6 +35349,7 @@ class StageInfoDetail(AbstractModel):
         self._LanguageKey = params.get("LanguageKey")
         self._FailedReason = params.get("FailedReason")
         self._TimeConsuming = params.get("TimeConsuming")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
