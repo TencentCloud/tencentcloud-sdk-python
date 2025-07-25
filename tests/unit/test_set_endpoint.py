@@ -2,10 +2,12 @@
 from contextlib import contextmanager
 from urllib.parse import urlparse
 
+import os
 import requests
+import tempfile
 
 from tencentcloud.common.exception import TencentCloudSDKException
-from tencentcloud.common.credential import OIDCRoleArnCredential, STSAssumeRoleCredential
+from tencentcloud.common.credential import STSAssumeRoleCredential, OIDCRoleArnCredential, DefaultTkeOIDCRoleArnProvider
 
 
 @contextmanager
@@ -29,7 +31,7 @@ def parse_host(url):
     return urlparse(url).hostname
 
 
-def test_sts_endpoint_with_default_override():
+def test_sts_credential_with_default_endpoint():
     expected_host = "sts.tencentcloudapi.com"
 
     cred = STSAssumeRoleCredential(
@@ -49,7 +51,7 @@ def test_sts_endpoint_with_default_override():
         assert parse_host(req_args["url"]) == expected_host
 
 
-def test_sts_endpoint_with_set_override():
+def test_sts_credential_with_set_endpoint():
     expected_host = "sts.internal.tencentcloudapi.com"
 
     cred = STSAssumeRoleCredential(
@@ -70,7 +72,7 @@ def test_sts_endpoint_with_set_override():
         assert parse_host(req_args["url"]) == expected_host
 
 
-def test_oidc_endpoint_with_deault_override():
+def test_oidc_credential_with_deault_endpoint():
     expected_host = "sts.tencentcloudapi.com"
 
     cred = OIDCRoleArnCredential(
@@ -90,7 +92,7 @@ def test_oidc_endpoint_with_deault_override():
         assert parse_host(req_args["url"]) == expected_host
 
 
-def test_oidc_endpoint_with_set_override():
+def test_oidc_credential_with_set_endpoint():
     expected_host = "sts.internal.tencentcloudapi.com"
 
     cred = OIDCRoleArnCredential(
@@ -110,3 +112,35 @@ def test_oidc_endpoint_with_set_override():
 
         assert parse_host(req_args["url"]) == expected_host
 
+
+def test_tke_oidc_credential_with_default_endpoint():
+    expected_host = "sts.tencentcloudapi.com"
+
+    with tempfile.NamedTemporaryFile(mode="w+") as f:
+        os.environ["TKE_WEB_IDENTITY_TOKEN_FILE"] = f.name
+        cred = DefaultTkeOIDCRoleArnProvider().get_credential()
+
+        with mock_requests() as req_args:
+            try:
+                cred.refresh()
+            except TencentCloudSDKException:
+                pass
+
+            assert parse_host(req_args["url"]) == expected_host
+
+
+def test_tke_oidc_credential_with_set_endpoint():
+    expected_host = "sts.internal.tencentcloudapi.com"
+
+    with tempfile.NamedTemporaryFile(mode="w+") as f:
+        os.environ["TKE_WEB_IDENTITY_TOKEN_FILE"] = f.name
+        cred = DefaultTkeOIDCRoleArnProvider().get_credential()
+        cred.endpoint = "sts.internal.tencentcloudapi.com"
+
+        with mock_requests() as req_args:
+            try:
+                cred.refresh()
+            except TencentCloudSDKException:
+                pass
+
+            assert parse_host(req_args["url"]) == expected_host

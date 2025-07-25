@@ -431,6 +431,14 @@ class OIDCRoleArnCredential(object):
         self._keep_fresh()
         return self._token
 
+    @property
+    def endpoint(self):
+        return self._endpoint
+    
+    @endpoint.setter
+    def endpoint(self, endpoint):
+        self._endpoint = endpoint
+
     def _keep_fresh(self):
         if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
             self.refresh()
