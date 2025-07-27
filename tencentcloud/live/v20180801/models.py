@@ -4767,6 +4767,15 @@ class CloudEffectInfo(AbstractModel):
         :type Prompt: str
         :param _Flag: 云端特效标签。
         :type Flag: str
+        :param _Status: 云端特效生成状态。
+生成中 - GENERATING。
+处理中 - PROCESSING。
+生成失败 - FAILED。
+已完成 - FINISH。
+
+        :type Status: str
+        :param _Message: 特效信息，生成失败时，此处返回失败原因。
+        :type Message: str
         :param _PreviewImageUrl: 云端特效预览图片。
         :type PreviewImageUrl: str
         :param _Type: 云端特效类型。
@@ -4782,6 +4791,8 @@ UGC : 用户上传特效。
         self._Id = None
         self._Prompt = None
         self._Flag = None
+        self._Status = None
+        self._Message = None
         self._PreviewImageUrl = None
         self._Type = None
         self._CreateTime = None
@@ -4819,6 +4830,33 @@ UGC : 用户上传特效。
     @Flag.setter
     def Flag(self, Flag):
         self._Flag = Flag
+
+    @property
+    def Status(self):
+        """云端特效生成状态。
+生成中 - GENERATING。
+处理中 - PROCESSING。
+生成失败 - FAILED。
+已完成 - FINISH。
+
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        """特效信息，生成失败时，此处返回失败原因。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
     @property
     def PreviewImageUrl(self):
@@ -4872,6 +4910,8 @@ UGC : 用户上传特效。
         self._Id = params.get("Id")
         self._Prompt = params.get("Prompt")
         self._Flag = params.get("Flag")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
         self._PreviewImageUrl = params.get("PreviewImageUrl")
         self._Type = params.get("Type")
         self._CreateTime = params.get("CreateTime")
@@ -16477,10 +16517,16 @@ class DescribeLiveCloudEffectListResponse(AbstractModel):
         r"""
         :param _InfoList: 云端特效信息列表。
         :type InfoList: list of CloudEffectInfo
+        :param _EnableCreateNum: 允许创建的云端特效个数。
+        :type EnableCreateNum: int
+        :param _TotalNum: 当前已有的特效总个数。
+        :type TotalNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InfoList = None
+        self._EnableCreateNum = None
+        self._TotalNum = None
         self._RequestId = None
 
     @property
@@ -16493,6 +16539,28 @@ class DescribeLiveCloudEffectListResponse(AbstractModel):
     @InfoList.setter
     def InfoList(self, InfoList):
         self._InfoList = InfoList
+
+    @property
+    def EnableCreateNum(self):
+        """允许创建的云端特效个数。
+        :rtype: int
+        """
+        return self._EnableCreateNum
+
+    @EnableCreateNum.setter
+    def EnableCreateNum(self, EnableCreateNum):
+        self._EnableCreateNum = EnableCreateNum
+
+    @property
+    def TotalNum(self):
+        """当前已有的特效总个数。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
 
     @property
     def RequestId(self):
@@ -16513,6 +16581,8 @@ class DescribeLiveCloudEffectListResponse(AbstractModel):
                 obj = CloudEffectInfo()
                 obj._deserialize(item)
                 self._InfoList.append(obj)
+        self._EnableCreateNum = params.get("EnableCreateNum")
+        self._TotalNum = params.get("TotalNum")
         self._RequestId = params.get("RequestId")
 
 

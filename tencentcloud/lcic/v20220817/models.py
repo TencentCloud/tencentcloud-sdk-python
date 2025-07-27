@@ -3616,14 +3616,14 @@ class DeleteWhiteBoardSnapshotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间ID
+        :param _RoomId: 课堂ID
         :type RoomId: int
         """
         self._RoomId = None
 
     @property
     def RoomId(self):
-        """房间ID
+        """课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -8114,14 +8114,14 @@ class EndRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间ID。
+        :param _RoomId: 课堂ID
         :type RoomId: int
         """
         self._RoomId = None
 
     @property
     def RoomId(self):
-        """房间ID。
+        """课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -8428,7 +8428,7 @@ class ForbidSendMsgRequest(AbstractModel):
         r"""
         :param _SdkAppId: 低代码互动课堂的SdkAppId。
         :type SdkAppId: int
-        :param _RoomId: 房间ID。
+        :param _RoomId: 课堂ID
         :type RoomId: int
         :param _MembersAccount: 需要禁言的用户账号，最多支持500个账号
         :type MembersAccount: list of str
@@ -8453,7 +8453,7 @@ class ForbidSendMsgRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID。
+        """课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -13708,14 +13708,14 @@ class StartRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间ID。
+        :param _RoomId: 课堂ID
         :type RoomId: int
         """
         self._RoomId = None
 
     @property
     def RoomId(self):
-        """房间ID。
+        """课堂ID
         :rtype: int
         """
         return self._RoomId
@@ -13774,7 +13774,7 @@ class StopRecordRequest(AbstractModel):
         r"""
         :param _SdkAppId: 学校ID
         :type SdkAppId: int
-        :param _RoomId: 房间ID
+        :param _RoomId: 课堂ID
         :type RoomId: int
         :param _TaskId: 任务ID
         :type TaskId: str
@@ -13796,7 +13796,7 @@ class StopRecordRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间ID
+        """课堂ID
         :rtype: int
         """
         return self._RoomId

@@ -7133,9 +7133,9 @@ class CreateBackupRequest(AbstractModel):
         :param _BackupDBTableList: 需要备份的库表信息，如果不设置该参数，则默认整实例备份。在 BackupMethod=logical 逻辑备份中才可设置该参数。指定的库表必须存在，否则可能导致备份失败。
 例：如果需要备份 db1 库的 tb1、tb2 表 和 db2 库。则该参数设置为 [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"}]。
         :type BackupDBTableList: list of BackupItem
-        :param _ManualBackupName: 手动备份别名
+        :param _ManualBackupName: 手动备份别名，输入长度请在60个字符内。
         :type ManualBackupName: str
-        :param _EncryptionFlag: 是否需要加密物理备份， 当BackupMethod为physical 时，该值才有意义。 不指定则使用实例备份默认加密策略。
+        :param _EncryptionFlag: 是否需要加密物理备份，可选值为：on - 是，off - 否。当 BackupMethod 为 physical 时，该值才有意义。不指定则使用实例备份默认加密策略，这里的默认加密策略指通过 [DescribeBackupEncryptionStatus](https://cloud.tencent.com/document/product/236/86508) 接口查询出的实例当前加密策略。
         :type EncryptionFlag: str
         """
         self._InstanceId = None
@@ -7180,7 +7180,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def ManualBackupName(self):
-        """手动备份别名
+        """手动备份别名，输入长度请在60个字符内。
         :rtype: str
         """
         return self._ManualBackupName
@@ -7191,7 +7191,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def EncryptionFlag(self):
-        """是否需要加密物理备份， 当BackupMethod为physical 时，该值才有意义。 不指定则使用实例备份默认加密策略。
+        """是否需要加密物理备份，可选值为：on - 是，off - 否。当 BackupMethod 为 physical 时，该值才有意义。不指定则使用实例备份默认加密策略，这里的默认加密策略指通过 [DescribeBackupEncryptionStatus](https://cloud.tencent.com/document/product/236/86508) 接口查询出的实例当前加密策略。
         :rtype: str
         """
         return self._EncryptionFlag
@@ -7854,7 +7854,7 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 克隆源实例Id。
+        :param _InstanceId: 克隆源实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取。
         :type InstanceId: str
         :param _SpecifiedRollbackTime: 如果需要克隆实例回档到指定时间，则指定该值。时间格式为：yyyy-mm-dd hh:mm:ss。
 说明：此参数和 SpecifiedBackupId 参数需要2选1进行设置。
@@ -7870,7 +7870,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type Memory: int
         :param _Volume: 实例硬盘大小，单位：GB，需要不低于克隆源实例，默认和源实例相同。
         :type Volume: int
-        :param _InstanceName: 新产生的克隆实例名称。
+        :param _InstanceName: 新产生的克隆实例名称。支持输入最大60个字符。
         :type InstanceName: str
         :param _SecurityGroup: 安全组参数，可使用 [查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850) 接口查询某个项目的安全组详情。
         :type SecurityGroup: list of str
@@ -7938,7 +7938,7 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """克隆源实例Id。
+        """克隆源实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -8017,7 +8017,7 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """新产生的克隆实例名称。
+        """新产生的克隆实例名称。支持输入最大60个字符。
         :rtype: str
         """
         return self._InstanceName
@@ -10176,19 +10176,20 @@ class CreateParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 参数模板名称。
+        :param _Name: 参数模板名称。支持输入最大60个字符。
         :type Name: str
         :param _Description: 参数模板描述。
         :type Description: str
-        :param _EngineVersion: MySQL 版本号。
+        :param _EngineVersion: MySQL 版本号。可选值：5.6、5.7、8.0。
         :type EngineVersion: str
-        :param _TemplateId: 源参数模板 ID。
+        :param _TemplateId: 源参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
         :type TemplateId: int
         :param _ParamList: 参数列表。
         :type ParamList: list of Parameter
         :param _TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
         :type TemplateType: str
         :param _EngineType: 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+说明：数据库版本 MySQL 5.7、MySQL 8.0才支持 RocksDB。
         :type EngineType: str
         """
         self._Name = None
@@ -10201,7 +10202,7 @@ class CreateParamTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        """参数模板名称。
+        """参数模板名称。支持输入最大60个字符。
         :rtype: str
         """
         return self._Name
@@ -10223,7 +10224,7 @@ class CreateParamTemplateRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        """MySQL 版本号。
+        """MySQL 版本号。可选值：5.6、5.7、8.0。
         :rtype: str
         """
         return self._EngineVersion
@@ -10234,7 +10235,7 @@ class CreateParamTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """源参数模板 ID。
+        """源参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
         :rtype: int
         """
         return self._TemplateId
@@ -10268,6 +10269,7 @@ class CreateParamTemplateRequest(AbstractModel):
     @property
     def EngineType(self):
         """实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+说明：数据库版本 MySQL 5.7、MySQL 8.0才支持 RocksDB。
         :rtype: str
         """
         return self._EngineType
@@ -11444,14 +11446,14 @@ class DeleteParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 参数模板ID。
+        :param _TemplateId: 参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
         :type TemplateId: int
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        """参数模板ID。
+        """参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
         :rtype: int
         """
         return self._TemplateId
@@ -13954,11 +13956,11 @@ class DescribeBackupDecryptionKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: 实例 ID，格式如：cdb-fybaegd8。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param _BackupId: 实例的备份ID，可通过DescribeBackups接口查询备份的ID。
+        :param _BackupId: 实例的备份 ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/api/236/15842) 接口查询备份的 ID。
         :type BackupId: int
-        :param _BackupType: 备份类型 data: 数据备份 binlog:日志备份，默认为data
+        :param _BackupType: 备份类型。data-数据备份，binlog-日志备份，默认为 data。
         :type BackupType: str
         """
         self._InstanceId = None
@@ -13967,7 +13969,7 @@ class DescribeBackupDecryptionKeyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+        """实例 ID，格式如：cdb-fybaegd8。与云数据库控制台页面中显示的实例 ID 相同。
         :rtype: str
         """
         return self._InstanceId
@@ -13978,7 +13980,7 @@ class DescribeBackupDecryptionKeyRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        """实例的备份ID，可通过DescribeBackups接口查询备份的ID。
+        """实例的备份 ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/api/236/15842) 接口查询备份的 ID。
         :rtype: int
         """
         return self._BackupId
@@ -13989,7 +13991,7 @@ class DescribeBackupDecryptionKeyRequest(AbstractModel):
 
     @property
     def BackupType(self):
-        """备份类型 data: 数据备份 binlog:日志备份，默认为data
+        """备份类型。data-数据备份，binlog-日志备份，默认为 data。
         :rtype: str
         """
         return self._BackupType
@@ -14256,14 +14258,14 @@ class DescribeBackupOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        :param _Product: 需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
         :type Product: str
         """
         self._Product = None
 
     @property
     def Product(self):
-        """需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        """需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
         :rtype: str
         """
         return self._Product
@@ -14425,7 +14427,7 @@ class DescribeBackupSummariesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        :param _Product: 需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
         :type Product: str
         :param _Offset: 分页查询数据的偏移量，默认为0。
         :type Offset: int
@@ -14444,7 +14446,7 @@ class DescribeBackupSummariesRequest(AbstractModel):
 
     @property
     def Product(self):
-        """需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        """需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
         :rtype: str
         """
         return self._Product
@@ -14713,14 +14715,14 @@ class DescribeBinlogBackupOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        :param _Product: 需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
         :type Product: str
         """
         self._Product = None
 
     @property
     def Product(self):
-        """需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        """需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
         :rtype: str
         """
         return self._Product
@@ -15389,11 +15391,11 @@ class DescribeCloneListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 查询指定源实例的克隆任务列表。
+        :param _InstanceId: 查询指定源实例的克隆任务列表。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取实例 ID。
         :type InstanceId: str
         :param _Offset: 分页查询时的偏移量，默认值为0。
         :type Offset: int
-        :param _Limit: 分页查询时的每页条目数，默认值为20。
+        :param _Limit: 分页查询时的每页条目数，默认值为20，建议最大取值100。
         :type Limit: int
         """
         self._InstanceId = None
@@ -15402,7 +15404,7 @@ class DescribeCloneListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """查询指定源实例的克隆任务列表。
+        """查询指定源实例的克隆任务列表。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -15424,7 +15426,7 @@ class DescribeCloneListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询时的每页条目数，默认值为20。
+        """分页查询时的每页条目数，默认值为20，建议最大取值100。
         :rtype: int
         """
         return self._Limit
@@ -16711,7 +16713,7 @@ class DescribeDBInstanceLogToCLSRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
         :param _ClsRegion: CLS服务所在地域
         :type ClsRegion: str
@@ -16721,7 +16723,7 @@ class DescribeDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -18113,14 +18115,14 @@ class DescribeDataBackupOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        :param _Product: 需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
         :type Product: str
         """
         self._Product = None
 
     @property
     def Product(self):
-        """需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        """需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
         :rtype: str
         """
         return self._Product
@@ -18361,7 +18363,7 @@ class DescribeDatabasesRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: 偏移量，最小值为0。
         :type Offset: int
-        :param _Limit: 单次请求数量，默认值为20，最小值为1，最大值为100。
+        :param _Limit: 单次请求数量，默认值为20，最小值为1，最大值为5000。
         :type Limit: int
         :param _DatabaseRegexp: 匹配数据库库名的正则表达式。
         :type DatabaseRegexp: str
@@ -18395,7 +18397,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次请求数量，默认值为20，最小值为1，最大值为100。
+        """单次请求数量，默认值为20，最小值为1，最大值为5000。
         :rtype: int
         """
         return self._Limit
@@ -18440,7 +18442,7 @@ class DescribeDatabasesResponse(AbstractModel):
         r"""
         :param _TotalCount: 符合查询条件的实例总数。
         :type TotalCount: int
-        :param _Items: 返回的实例信息。
+        :param _Items: 实例中的数据库名称列表。
         :type Items: list of str
         :param _DatabaseList: 数据库名以及字符集
         :type DatabaseList: list of DatabasesWithCharacterLists
@@ -18465,7 +18467,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """返回的实例信息。
+        """实例中的数据库名称列表。
         :rtype: list of str
         """
         return self._Items
@@ -18516,11 +18518,12 @@ class DescribeDefaultParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EngineVersion: 引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]
+        :param _EngineVersion: 引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]。
+说明：引擎版本为必填。
         :type EngineVersion: str
-        :param _TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+        :param _TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。默认值为：HIGH_STABILITY。
         :type TemplateType: str
-        :param _EngineType: 参数模板引擎，默认值：InnoDB
+        :param _EngineType: 参数模板引擎，默认值：InnoDB，可取值：InnoDB、RocksDB。
         :type EngineType: str
         """
         self._EngineVersion = None
@@ -18529,7 +18532,8 @@ class DescribeDefaultParamsRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        """引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]
+        """引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]。
+说明：引擎版本为必填。
         :rtype: str
         """
         return self._EngineVersion
@@ -18540,7 +18544,7 @@ class DescribeDefaultParamsRequest(AbstractModel):
 
     @property
     def TemplateType(self):
-        """默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+        """默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。默认值为：HIGH_STABILITY。
         :rtype: str
         """
         return self._TemplateType
@@ -18551,7 +18555,7 @@ class DescribeDefaultParamsRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        """参数模板引擎，默认值：InnoDB
+        """参数模板引擎，默认值：InnoDB，可取值：InnoDB、RocksDB。
         :rtype: str
         """
         return self._EngineType
@@ -19348,7 +19352,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: 分页偏移量，默认值：0。
         :type Offset: int
-        :param _Limit: 分页大小，默认值：20。
+        :param _Limit: 分页大小，默认值：20，最大值为100。
         :type Limit: int
         """
         self._InstanceId = None
@@ -19379,7 +19383,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小，默认值：20。
+        """分页大小，默认值：20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -21313,7 +21317,7 @@ class DescribeRollbackTaskDetailRequest(AbstractModel):
         :type InstanceId: str
         :param _AsyncRequestId: 异步任务 ID。
         :type AsyncRequestId: str
-        :param _Limit: 分页参数，每次请求返回的记录数。默认值为 20，最大值为 100。
+        :param _Limit: 分页参数，每次请求返回的记录数。默认值为20，建议最大取值为100。
         :type Limit: int
         :param _Offset: 分页偏移量。默认为 0。
         :type Offset: int
@@ -21347,7 +21351,7 @@ class DescribeRollbackTaskDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页参数，每次请求返回的记录数。默认值为 20，最大值为 100。
+        """分页参数，每次请求返回的记录数。默认值为20，建议最大取值为100。
         :rtype: int
         """
         return self._Limit
@@ -22087,9 +22091,9 @@ class DescribeTableColumnsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
-        :param _Database: 数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/236/17493)接口获得。
+        :param _Database: 数据库名称，可使用 [查询数据库](https://cloud.tencent.com/document/api/236/17493) 接口获得。
         :type Database: str
         :param _Table: 数据库中的表的名称。
         :type Table: str
@@ -22100,7 +22104,7 @@ class DescribeTableColumnsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        """实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :rtype: str
         """
         return self._InstanceId
@@ -22111,7 +22115,7 @@ class DescribeTableColumnsRequest(AbstractModel):
 
     @property
     def Database(self):
-        """数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/236/17493)接口获得。
+        """数据库名称，可使用 [查询数据库](https://cloud.tencent.com/document/api/236/17493) 接口获得。
         :rtype: str
         """
         return self._Database
@@ -22217,7 +22221,7 @@ class DescribeTablesRequest(AbstractModel):
         :type Database: str
         :param _Offset: 记录偏移量，默认值为0。
         :type Offset: int
-        :param _Limit: 单次请求返回的数量，默认值为20，最大值为2000。
+        :param _Limit: 单次请求返回的数量，默认值为20，最大值为5000。
         :type Limit: int
         :param _TableRegexp: 匹配数据库表名的正则表达式，规则同 MySQL 官网
         :type TableRegexp: str
@@ -22263,7 +22267,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次请求返回的数量，默认值为20，最大值为2000。
+        """单次请求返回的数量，默认值为20，最大值为5000。
         :rtype: int
         """
         return self._Limit
@@ -23697,7 +23701,7 @@ class ErrlogItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: 错误发生时间。
+        :param _Timestamp: 错误发生时间。时间戳，秒级
         :type Timestamp: int
         :param _Content: 错误详情
         :type Content: str
@@ -23707,7 +23711,7 @@ class ErrlogItem(AbstractModel):
 
     @property
     def Timestamp(self):
-        """错误发生时间。
+        """错误发生时间。时间戳，秒级
         :rtype: int
         """
         return self._Timestamp
@@ -28011,19 +28015,23 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param _ExpireDays: 备份文件的保留时间，单位为天。最小值为7天，最大值为1830天。
+        :param _ExpireDays: 数据备份文件的保留时间，单位为天。
+1. MySQL 双节点、三节点、云盘版数据备份文件可以保留7天 - 1830天。
+2. MySQL 单节点（云盘）数据备份文件可以保留7天 - 30天。
         :type ExpireDays: int
         :param _StartTime: (将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
         :type StartTime: str
         :param _BackupMethod: 自动备份方式，仅支持：physical - 物理冷备
         :type BackupMethod: str
-        :param _BinlogExpireDays: binlog的保留时间，单位为天。最小值为7天，最大值为1830天。该值的设置不能大于备份文件的保留时间。
+        :param _BinlogExpireDays: binlog 的保留时间，单位为天。
+1. MySQL 双节点、三节点、云盘版日志备份文件可以保留7天 - 3650天。
+2. MySQL 单节点（云盘）日志备份文件可以保留7天 - 30天。
         :type BinlogExpireDays: int
         :param _BackupTimeWindow: 备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
-        :param _EnableBackupPeriodSave: 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。首次开启定期保留策略时，BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount，StartBackupPeriodSaveDate参数为必填项，否则定期保留策略不会生效
+        :param _EnableBackupPeriodSave: 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。
         :type EnableBackupPeriodSave: str
         :param _EnableBackupPeriodLongTermSave: 长期保留开关,该字段功能暂未上线，可忽略。off - 不开启长期保留策略，on - 开启长期保留策略，默认为off，如果开启，则BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount参数无效
         :type EnableBackupPeriodLongTermSave: str
@@ -28075,7 +28083,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+        """实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :rtype: str
         """
         return self._InstanceId
@@ -28086,7 +28094,9 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def ExpireDays(self):
-        """备份文件的保留时间，单位为天。最小值为7天，最大值为1830天。
+        """数据备份文件的保留时间，单位为天。
+1. MySQL 双节点、三节点、云盘版数据备份文件可以保留7天 - 1830天。
+2. MySQL 单节点（云盘）数据备份文件可以保留7天 - 30天。
         :rtype: int
         """
         return self._ExpireDays
@@ -28119,7 +28129,9 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BinlogExpireDays(self):
-        """binlog的保留时间，单位为天。最小值为7天，最大值为1830天。该值的设置不能大于备份文件的保留时间。
+        """binlog 的保留时间，单位为天。
+1. MySQL 双节点、三节点、云盘版日志备份文件可以保留7天 - 3650天。
+2. MySQL 单节点（云盘）日志备份文件可以保留7天 - 30天。
         :rtype: int
         """
         return self._BinlogExpireDays
@@ -28141,7 +28153,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBackupPeriodSave(self):
-        """定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。首次开启定期保留策略时，BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount，StartBackupPeriodSaveDate参数为必填项，否则定期保留策略不会生效
+        """定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。
         :rtype: str
         """
         return self._EnableBackupPeriodSave
@@ -28914,25 +28926,27 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID，可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
-        :param _LogType: 日志类型：error/slowlog
+        :param _LogType: 日志类型。error：错误日志，slowlog：慢日志。
         :type LogType: str
-        :param _Status: 投递状态：ON/OFF
+        :param _Status: 投递状态。ON：开启，OFF：关闭。
         :type Status: str
-        :param _CreateLogset: 是否需要创建日志集
+        :param _CreateLogset: 是否需要创建日志集。默认为 false。
         :type CreateLogset: bool
-        :param _Logset: 需要创建日志集时为日志集名称；选择已有日志集时，为日志集ID
+        :param _Logset: 需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。
+说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
         :type Logset: str
-        :param _CreateLogTopic: 是否需要创建日志主题
+        :param _CreateLogTopic: 是否需要创建日志主题。默认为 false。
         :type CreateLogTopic: bool
-        :param _LogTopic: 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题ID
+        :param _LogTopic: 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。
+说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
         :type LogTopic: str
-        :param _Period: 日志主题有效期，不填写时，默认30天
+        :param _Period: 日志主题有效期，不填写时，默认30天，最大值3600。
         :type Period: int
-        :param _CreateIndex: 创建日志主题时，是否创建索引
+        :param _CreateIndex: 创建日志主题时，是否创建索引，默认为 false。
         :type CreateIndex: bool
-        :param _ClsRegion: CLS所在地域
+        :param _ClsRegion: CLS 所在地域，不填择默认为 Region 的参数值。
         :type ClsRegion: str
         """
         self._InstanceId = None
@@ -28948,7 +28962,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例 ID，可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -28959,7 +28973,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def LogType(self):
-        """日志类型：error/slowlog
+        """日志类型。error：错误日志，slowlog：慢日志。
         :rtype: str
         """
         return self._LogType
@@ -28970,7 +28984,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def Status(self):
-        """投递状态：ON/OFF
+        """投递状态。ON：开启，OFF：关闭。
         :rtype: str
         """
         return self._Status
@@ -28981,7 +28995,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def CreateLogset(self):
-        """是否需要创建日志集
+        """是否需要创建日志集。默认为 false。
         :rtype: bool
         """
         return self._CreateLogset
@@ -28992,7 +29006,8 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def Logset(self):
-        """需要创建日志集时为日志集名称；选择已有日志集时，为日志集ID
+        """需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。
+说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
         :rtype: str
         """
         return self._Logset
@@ -29003,7 +29018,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def CreateLogTopic(self):
-        """是否需要创建日志主题
+        """是否需要创建日志主题。默认为 false。
         :rtype: bool
         """
         return self._CreateLogTopic
@@ -29014,7 +29029,8 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def LogTopic(self):
-        """需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题ID
+        """需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。
+说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
         :rtype: str
         """
         return self._LogTopic
@@ -29025,7 +29041,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def Period(self):
-        """日志主题有效期，不填写时，默认30天
+        """日志主题有效期，不填写时，默认30天，最大值3600。
         :rtype: int
         """
         return self._Period
@@ -29036,7 +29052,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def CreateIndex(self):
-        """创建日志主题时，是否创建索引
+        """创建日志主题时，是否创建索引，默认为 false。
         :rtype: bool
         """
         return self._CreateIndex
@@ -29047,7 +29063,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def ClsRegion(self):
-        """CLS所在地域
+        """CLS 所在地域，不填择默认为 Region 的参数值。
         :rtype: str
         """
         return self._ClsRegion
@@ -30036,11 +30052,15 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param _SaveHours: 本地binlog保留时长，可取值范围：[72,168]，当实例存在灾备实例时，可取值范围：[120,168]。
+        :param _SaveHours: 本地 binlog 保留时长。不同实例的可取值如下：
+1. 云盘版实例、双节点实例、三节点实例的本地 binlog 保留时长（小时）默认为120，范围：6 - 168。
+2. 灾备实例的本地 binlog 保留时长（小时）默认为120，范围：120 - 168。
+3. 单节点云盘实例的本地 binlog 保留时长（小时）默认为120，范围：0 - 168。
+4. 若双节点实例、三节点实例下无灾备实例，则该主实例的本地 binlog 保留时长（小时）范围是：6 - 168；若双节点实例、三节点实例下有灾备实例，或者要为双节点实例、三节点实例添加灾备实例，为避免同步异常，该主实例的本地 binlog 保留时长（小时）不能设置低于120小时，范围是：120 - 168。
         :type SaveHours: int
-        :param _MaxUsage: 本地binlog空间使用率，可取值范围：[30,50]。
+        :param _MaxUsage: 本地 binlog 空间使用率，可取值范围：[30,50]。
         :type MaxUsage: int
         """
         self._InstanceId = None
@@ -30049,7 +30069,7 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+        """实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :rtype: str
         """
         return self._InstanceId
@@ -30060,7 +30080,11 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
 
     @property
     def SaveHours(self):
-        """本地binlog保留时长，可取值范围：[72,168]，当实例存在灾备实例时，可取值范围：[120,168]。
+        """本地 binlog 保留时长。不同实例的可取值如下：
+1. 云盘版实例、双节点实例、三节点实例的本地 binlog 保留时长（小时）默认为120，范围：6 - 168。
+2. 灾备实例的本地 binlog 保留时长（小时）默认为120，范围：120 - 168。
+3. 单节点云盘实例的本地 binlog 保留时长（小时）默认为120，范围：0 - 168。
+4. 若双节点实例、三节点实例下无灾备实例，则该主实例的本地 binlog 保留时长（小时）范围是：6 - 168；若双节点实例、三节点实例下有灾备实例，或者要为双节点实例、三节点实例添加灾备实例，为避免同步异常，该主实例的本地 binlog 保留时长（小时）不能设置低于120小时，范围是：120 - 168。
         :rtype: int
         """
         return self._SaveHours
@@ -30071,7 +30095,7 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
 
     @property
     def MaxUsage(self):
-        """本地binlog空间使用率，可取值范围：[30,50]。
+        """本地 binlog 空间使用率，可取值范围：[30,50]。
         :rtype: int
         """
         return self._MaxUsage
@@ -30224,9 +30248,9 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板 ID。
+        :param _TemplateId: 模板 ID。可通过 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/236/32660) 接口获取。
         :type TemplateId: int
-        :param _Name: 模板名称，长度不超过64。
+        :param _Name: 模板名称，仅支持数字、英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@,且长度不能超过60。
         :type Name: str
         :param _Description: 模板描述，长度不超过255。
         :type Description: str
@@ -30240,7 +30264,7 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板 ID。
+        """模板 ID。可通过 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/236/32660) 接口获取。
         :rtype: int
         """
         return self._TemplateId
@@ -30251,7 +30275,7 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        """模板名称，长度不超过64。
+        """模板名称，仅支持数字、英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@,且长度不能超过60。
         :rtype: str
         """
         return self._Name
@@ -35026,15 +35050,15 @@ class RollbackInstancesInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 云数据库实例ID
+        :param _InstanceId: 云数据库实例 ID。
         :type InstanceId: str
-        :param _Strategy: 回档策略。可选值为：table、db、full；默认值为full。table - 极速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和binlog，速度较慢。
+        :param _Strategy: 回档策略。可选值为：table、db、full。table - 极速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和 binlog，速度较慢。
         :type Strategy: str
-        :param _RollbackTime: 数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss
+        :param _RollbackTime: 数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss。
         :type RollbackTime: str
-        :param _Databases: 待回档的数据库信息，表示整库回档
+        :param _Databases: 待回档的数据库信息，表示整库回档。
         :type Databases: list of RollbackDBName
-        :param _Tables: 待回档的数据库表信息，表示按表回档
+        :param _Tables: 待回档的数据库表信息，表示按表回档。
         :type Tables: list of RollbackTables
         """
         self._InstanceId = None
@@ -35045,7 +35069,7 @@ class RollbackInstancesInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """云数据库实例ID
+        """云数据库实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -35056,7 +35080,7 @@ class RollbackInstancesInfo(AbstractModel):
 
     @property
     def Strategy(self):
-        """回档策略。可选值为：table、db、full；默认值为full。table - 极速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和binlog，速度较慢。
+        """回档策略。可选值为：table、db、full。table - 极速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和 binlog，速度较慢。
         :rtype: str
         """
         return self._Strategy
@@ -35067,7 +35091,7 @@ class RollbackInstancesInfo(AbstractModel):
 
     @property
     def RollbackTime(self):
-        """数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss
+        """数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss。
         :rtype: str
         """
         return self._RollbackTime
@@ -35078,7 +35102,7 @@ class RollbackInstancesInfo(AbstractModel):
 
     @property
     def Databases(self):
-        """待回档的数据库信息，表示整库回档
+        """待回档的数据库信息，表示整库回档。
         :rtype: list of RollbackDBName
         """
         return self._Databases
@@ -35089,7 +35113,7 @@ class RollbackInstancesInfo(AbstractModel):
 
     @property
     def Tables(self):
-        """待回档的数据库表信息，表示按表回档
+        """待回档的数据库表信息，表示按表回档。
         :rtype: list of RollbackTables
         """
         return self._Tables
@@ -36188,7 +36212,7 @@ class SlowLogItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: Sql的执行时间。
+        :param _Timestamp: Sql的执行时间。秒级时间戳。
         :type Timestamp: int
         :param _QueryTime: Sql的执行时长（秒）。
         :type QueryTime: float
@@ -36225,7 +36249,7 @@ class SlowLogItem(AbstractModel):
 
     @property
     def Timestamp(self):
-        """Sql的执行时间。
+        """Sql的执行时间。秒级时间戳。
         :rtype: int
         """
         return self._Timestamp

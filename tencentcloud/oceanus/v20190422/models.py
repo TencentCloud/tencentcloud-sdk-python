@@ -6867,7 +6867,7 @@ class DescribeTreeJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 筛选条件字段
+        :param _Filters: 筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录
         :type Filters: list of Filter
         :param _WorkSpaceId: 工作空间 Serialid
         :type WorkSpaceId: str
@@ -6877,7 +6877,7 @@ class DescribeTreeJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """筛选条件字段
+        """筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录
         :rtype: list of Filter
         """
         return self._Filters
@@ -7064,6 +7064,12 @@ class DescribeTreeJobsRsp(AbstractModel):
         :param _RequestId: 请求ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestId: str
+        :param _PageAttach: attach-000
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageAttach: str
+        :param _HasMore: bool
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasMore: bool
         """
         self._ParentId = None
         self._Id = None
@@ -7071,6 +7077,8 @@ class DescribeTreeJobsRsp(AbstractModel):
         self._JobSet = None
         self._Children = None
         self._RequestId = None
+        self._PageAttach = None
+        self._HasMore = None
 
     @property
     def ParentId(self):
@@ -7144,6 +7152,30 @@ class DescribeTreeJobsRsp(AbstractModel):
     def RequestId(self, RequestId):
         self._RequestId = RequestId
 
+    @property
+    def PageAttach(self):
+        """attach-000
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PageAttach
+
+    @PageAttach.setter
+    def PageAttach(self, PageAttach):
+        self._PageAttach = PageAttach
+
+    @property
+    def HasMore(self):
+        """bool
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
 
     def _deserialize(self, params):
         self._ParentId = params.get("ParentId")
@@ -7162,6 +7194,8 @@ class DescribeTreeJobsRsp(AbstractModel):
                 obj._deserialize(item)
                 self._Children.append(obj)
         self._RequestId = params.get("RequestId")
+        self._PageAttach = params.get("PageAttach")
+        self._HasMore = params.get("HasMore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

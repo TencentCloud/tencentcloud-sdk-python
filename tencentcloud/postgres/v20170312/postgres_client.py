@@ -165,7 +165,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateDBInstanceNetworkAccess(self, request):
-        """本接口（CreateDBInstanceNetworkAccess）用于创建实例网络。
+        """本接口（CreateDBInstanceNetworkAccess）用于创建实例网络。单个实例允许创建的网络配置最多为2套，最少为1套。
 
         :param request: Request instance for CreateDBInstanceNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstanceNetworkAccessRequest`
@@ -305,7 +305,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateReadOnlyGroupNetworkAccess(self, request):
-        """本接口（CreateReadOnlyGroupNetworkAccess）用于创建RO组的网络。
+        """本接口（CreateReadOnlyGroupNetworkAccess）用于创建RO组的网络。创建网络的数量最多为2个。
 
         :param request: Request instance for CreateReadOnlyGroupNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateReadOnlyGroupNetworkAccessRequest`
@@ -353,7 +353,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteAccount(self, request):
-        """此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。
+        """此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。注：该接口可重入，如果账号已经不存在，调用此接口进行删除时不会报错。
 
         :param request: Request instance for DeleteAccount.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteAccountRequest`
@@ -1810,8 +1810,8 @@ class PostgresClient(AbstractClient):
 
     def ModifyDBInstanceHAConfig(self, request):
         """本接口（ModifyDBInstanceHAConfig）用于修改实例HA配置信息。其中HA配置信息包括：
-        <li>允许备节点切换为主节点的条件配置
-        <li>半同步实例使用同步复制或异步复制的条件配置
+        <li>允许备节点切换为主节点的条件配置</li>
+        <li>半同步实例使用同步复制或异步复制的条件配置</li>
 
         :param request: Request instance for ModifyDBInstanceHAConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceHAConfigRequest`
@@ -1949,7 +1949,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceSpec(self, request):
-        """本接口（ModifyDBInstanceSpec）用于修改实例规格，包括内存、磁盘。
+        """本接口（ModifyDBInstanceSpec）用于修改实例规格，包括内存、磁盘、Cpu。
 
         :param request: Request instance for ModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSpecRequest`
@@ -2318,9 +2318,9 @@ class PostgresClient(AbstractClient):
 
     def SwitchDBInstancePrimary(self, request):
         """本接口（SwitchDBInstancePrimary）用于切换实例主备关系。
-        <li>通过主动发起切换，可以验证业务能否正确处理实例主备切换的场景
-        <li>通过使用强制切换，可以在备节点延迟不满足切换条件时，强制发起主从切换
-        <li>只有主实例可以执行该操作
+        <li>通过主动发起切换，可以验证业务能否正确处理实例主备切换的场景</li>
+        <li>通过使用强制切换，可以在备节点延迟不满足切换条件时，强制发起主从切换</li>
+        <li>只有主实例可以执行该操作</li>
 
         :param request: Request instance for SwitchDBInstancePrimary.
         :type request: :class:`tencentcloud.postgres.v20170312.models.SwitchDBInstancePrimaryRequest`

@@ -1538,6 +1538,8 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         :type Type: int
         :param _CaType: 只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
         :type CaType: str
+        :param _SignAlgo: 签名算法
+        :type SignAlgo: str
         """
         self._CertId = None
         self._GenCsrType = None
@@ -1579,6 +1581,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         self._TechTitle = None
         self._Type = None
         self._CaType = None
+        self._SignAlgo = None
 
     @property
     def CertId(self):
@@ -2045,6 +2048,17 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
     def CaType(self, CaType):
         self._CaType = CaType
 
+    @property
+    def SignAlgo(self):
+        """签名算法
+        :rtype: str
+        """
+        return self._SignAlgo
+
+    @SignAlgo.setter
+    def SignAlgo(self, SignAlgo):
+        self._SignAlgo = SignAlgo
+
 
     def _deserialize(self, params):
         self._CertId = params.get("CertId")
@@ -2087,6 +2101,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         self._TechTitle = params.get("TechTitle")
         self._Type = params.get("Type")
         self._CaType = params.get("CaType")
+        self._SignAlgo = params.get("SignAlgo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17455,7 +17470,7 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CertificateId: str
         :param _ValidType: 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
         :type ValidType: str
-        :param _CsrType: 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
+        :param _CsrType: 类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
         :type CsrType: str
         :param _CsrContent: CSR 内容，手动上传的时候需要。
         :type CsrContent: str
@@ -17468,6 +17483,8 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CertCSREncryptAlgo: str
         :param _CertCSRKeyParameter: CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
         :type CertCSRKeyParameter: str
+        :param _SignAlgo: 签名算法
+        :type SignAlgo: str
         """
         self._CertificateId = None
         self._ValidType = None
@@ -17477,6 +17494,7 @@ class ReplaceCertificateRequest(AbstractModel):
         self._Reason = None
         self._CertCSREncryptAlgo = None
         self._CertCSRKeyParameter = None
+        self._SignAlgo = None
 
     @property
     def CertificateId(self):
@@ -17502,7 +17520,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CsrType(self):
-        """类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
+        """类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
         :rtype: str
         """
         return self._CsrType
@@ -17567,6 +17585,17 @@ class ReplaceCertificateRequest(AbstractModel):
     def CertCSRKeyParameter(self, CertCSRKeyParameter):
         self._CertCSRKeyParameter = CertCSRKeyParameter
 
+    @property
+    def SignAlgo(self):
+        """签名算法
+        :rtype: str
+        """
+        return self._SignAlgo
+
+    @SignAlgo.setter
+    def SignAlgo(self, SignAlgo):
+        self._SignAlgo = SignAlgo
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
@@ -17577,6 +17606,7 @@ class ReplaceCertificateRequest(AbstractModel):
         self._Reason = params.get("Reason")
         self._CertCSREncryptAlgo = params.get("CertCSREncryptAlgo")
         self._CertCSRKeyParameter = params.get("CertCSRKeyParameter")
+        self._SignAlgo = params.get("SignAlgo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

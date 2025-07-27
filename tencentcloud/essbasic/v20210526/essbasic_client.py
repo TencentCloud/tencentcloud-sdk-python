@@ -1717,7 +1717,7 @@ class EssbasicClient(AbstractClient):
 
     def CreateBatchOrganizationRegistrationTasks(self, request):
         """该接口用于批量创建企业认证链接， 可以支持PC浏览器，H5和小程序三种途径。
-        此接口为异步提交任务接口，需要与[查询子企业批量认证链接](https://qcloudimg.tencent-cloud.cn/raw/1d3737991b2a3be78002bd78a47d6917.png)配合使用，整体流程如下图。
+        此接口为异步提交任务接口，需要与[查询子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationTasks)配合使用，整体流程如下图。
         ![image](https://qcloudimg.tencent-cloud.cn/raw/654aa2a72ab7d42f06464ea33c50c3bb.png)
 
 

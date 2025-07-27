@@ -3399,17 +3399,20 @@ class CreateCosCredentialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CosType: Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+        :param _CosType: Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
         :type CosType: str
-        :param _AndroidAppCosInfo: 云手机 Cos 数据
+        :param _AndroidAppCosInfo: 云手机应用管理 Cos 数据
         :type AndroidAppCosInfo: :class:`tencentcloud.gs.v20191118.models.AndroidAppCosInfo`
+        :param _AndroidAppFileCosInfo: 云手机文件管理 Cos 数据
+        :type AndroidAppFileCosInfo: :class:`tencentcloud.gs.v20191118.models.FileCosInfo`
         """
         self._CosType = None
         self._AndroidAppCosInfo = None
+        self._AndroidAppFileCosInfo = None
 
     @property
     def CosType(self):
-        """Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+        """Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
         :rtype: str
         """
         return self._CosType
@@ -3420,7 +3423,7 @@ class CreateCosCredentialRequest(AbstractModel):
 
     @property
     def AndroidAppCosInfo(self):
-        """云手机 Cos 数据
+        """云手机应用管理 Cos 数据
         :rtype: :class:`tencentcloud.gs.v20191118.models.AndroidAppCosInfo`
         """
         return self._AndroidAppCosInfo
@@ -3429,12 +3432,26 @@ class CreateCosCredentialRequest(AbstractModel):
     def AndroidAppCosInfo(self, AndroidAppCosInfo):
         self._AndroidAppCosInfo = AndroidAppCosInfo
 
+    @property
+    def AndroidAppFileCosInfo(self):
+        """云手机文件管理 Cos 数据
+        :rtype: :class:`tencentcloud.gs.v20191118.models.FileCosInfo`
+        """
+        return self._AndroidAppFileCosInfo
+
+    @AndroidAppFileCosInfo.setter
+    def AndroidAppFileCosInfo(self, AndroidAppFileCosInfo):
+        self._AndroidAppFileCosInfo = AndroidAppFileCosInfo
+
 
     def _deserialize(self, params):
         self._CosType = params.get("CosType")
         if params.get("AndroidAppCosInfo") is not None:
             self._AndroidAppCosInfo = AndroidAppCosInfo()
             self._AndroidAppCosInfo._deserialize(params.get("AndroidAppCosInfo"))
+        if params.get("AndroidAppFileCosInfo") is not None:
+            self._AndroidAppFileCosInfo = FileCosInfo()
+            self._AndroidAppFileCosInfo._deserialize(params.get("AndroidAppFileCosInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6457,6 +6474,42 @@ class FetchAndroidInstancesLogsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class FileCosInfo(AbstractModel):
+    """应用文件 Cos 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 文件 Id
+        :type FileId: str
+        """
+        self._FileId = None
+
+    @property
+    def FileId(self):
+        """文件 Id
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Filter(AbstractModel):

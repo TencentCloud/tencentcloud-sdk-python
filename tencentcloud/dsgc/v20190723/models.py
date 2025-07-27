@@ -5234,7 +5234,7 @@ selfbuilt-db 表示自建数据库
         :type Description: str
         :param _Condition: 用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，选择多个数据库，之间通过逗号分隔，若不选，则默认选择全部数据库
         :type Condition: str
-        :param _ComplianceGroupIds: 合规组ID列表，最多支持添加5个
+        :param _ComplianceGroupIds: 此参数必选。合规组ID列表，最多支持添加5个
         :type ComplianceGroupIds: list of int
         :param _TimingStartTime: 任务定时启动时间，格式如：2006-01-02 15:04:05
 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
@@ -5400,7 +5400,7 @@ selfbuilt-db 表示自建数据库
 
     @property
     def ComplianceGroupIds(self):
-        """合规组ID列表，最多支持添加5个
+        """此参数必选。合规组ID列表，最多支持添加5个
         :rtype: list of int
         """
         return self._ComplianceGroupIds
