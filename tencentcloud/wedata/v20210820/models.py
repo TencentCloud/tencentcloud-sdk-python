@@ -21945,15 +21945,27 @@ class DependencyStrategyDs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PollingNullStrategy: 等待（默认策略）或 执行
+        :param _PollingNullStrategy: 等待上游任务实例策略：EXECUTING（执行）；WAITING（等待）
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type PollingNullStrategy: str
+        :param _TaskDependencyExecutingStrategies: 仅当PollingNullStrategy为EXECUTING时才需要填本字段，List类型：NOT_EXIST（默认，在分钟依赖分钟/小时依赖小时的情况下，父实例不在下游实例调度时间范围内）；PARENT_EXPIRED（父实例失败）；PARENT_TIMEOUT（父实例超时）。以上场景满足任一条件即可通过该父任务实例依赖判断，除以上场景外均需等待父实例。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskDependencyExecutingStrategies: list of str
+        :param _TaskDependencyExecutingTimeoutValue: 仅当TaskDependencyExecutingStrategies中包含PARENT_TIMEOUT时才需要填本字段，下游任务依赖父实例执行超时时间，单位：分钟。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskDependencyExecutingTimeoutValue: int
         """
         self._PollingNullStrategy = None
+        self._TaskDependencyExecutingStrategies = None
+        self._TaskDependencyExecutingTimeoutValue = None
 
     @property
     def PollingNullStrategy(self):
-        """等待（默认策略）或 执行
+        """等待上游任务实例策略：EXECUTING（执行）；WAITING（等待）
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21963,9 +21975,37 @@ class DependencyStrategyDs(AbstractModel):
     def PollingNullStrategy(self, PollingNullStrategy):
         self._PollingNullStrategy = PollingNullStrategy
 
+    @property
+    def TaskDependencyExecutingStrategies(self):
+        """仅当PollingNullStrategy为EXECUTING时才需要填本字段，List类型：NOT_EXIST（默认，在分钟依赖分钟/小时依赖小时的情况下，父实例不在下游实例调度时间范围内）；PARENT_EXPIRED（父实例失败）；PARENT_TIMEOUT（父实例超时）。以上场景满足任一条件即可通过该父任务实例依赖判断，除以上场景外均需等待父实例。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._TaskDependencyExecutingStrategies
+
+    @TaskDependencyExecutingStrategies.setter
+    def TaskDependencyExecutingStrategies(self, TaskDependencyExecutingStrategies):
+        self._TaskDependencyExecutingStrategies = TaskDependencyExecutingStrategies
+
+    @property
+    def TaskDependencyExecutingTimeoutValue(self):
+        """仅当TaskDependencyExecutingStrategies中包含PARENT_TIMEOUT时才需要填本字段，下游任务依赖父实例执行超时时间，单位：分钟。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskDependencyExecutingTimeoutValue
+
+    @TaskDependencyExecutingTimeoutValue.setter
+    def TaskDependencyExecutingTimeoutValue(self, TaskDependencyExecutingTimeoutValue):
+        self._TaskDependencyExecutingTimeoutValue = TaskDependencyExecutingTimeoutValue
+
 
     def _deserialize(self, params):
         self._PollingNullStrategy = params.get("PollingNullStrategy")
+        self._TaskDependencyExecutingStrategies = params.get("TaskDependencyExecutingStrategies")
+        self._TaskDependencyExecutingTimeoutValue = params.get("TaskDependencyExecutingTimeoutValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33736,6 +33776,8 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         :type WorkflowTypeList: list of str
         :param _KeyWord: 工作流过滤keyword，支持工作流 id/name 模糊匹配， 多个用|分割
         :type KeyWord: str
+        :param _ScheduleTimeZone: **时区** timeZone, 默认UTC+8
+        :type ScheduleTimeZone: str
         """
         self._ProjectId = None
         self._ProductNameList = None
@@ -33753,6 +33795,7 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         self._ProjectIds = None
         self._WorkflowTypeList = None
         self._KeyWord = None
+        self._ScheduleTimeZone = None
 
     @property
     def ProjectId(self):
@@ -33930,6 +33973,17 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
     def KeyWord(self, KeyWord):
         self._KeyWord = KeyWord
 
+    @property
+    def ScheduleTimeZone(self):
+        """**时区** timeZone, 默认UTC+8
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -33948,6 +34002,7 @@ class DescribeOpsWorkflowsRequest(AbstractModel):
         self._ProjectIds = params.get("ProjectIds")
         self._WorkflowTypeList = params.get("WorkflowTypeList")
         self._KeyWord = params.get("KeyWord")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43767,6 +43822,105 @@ class DescribeTaskLockStatusResponse(AbstractModel):
         if params.get("TaskLockStatus") is not None:
             self._TaskLockStatus = TaskLockStatus()
             self._TaskLockStatus._deserialize(params.get("TaskLockStatus"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTaskParamDsRequest(AbstractModel):
+    """DescribeTaskParamDs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务id
+        :type TaskId: str
+        """
+        self._ProjectId = None
+        self._TaskId = None
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskParamDsResponse(AbstractModel):
+    """DescribeTaskParamDs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 结果集
+        :type Data: list of ParameterTaskDsDto
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """结果集
+        :rtype: list of ParameterTaskDsDto
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ParameterTaskDsDto()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -55409,6 +55563,145 @@ class GetIntegrationNodeColumnSchemaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetJobStatusRequest(AbstractModel):
+    """GetJobStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 异步任务id
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        """异步任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetJobStatusResponse(AbstractModel):
+    """GetJobStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 异步任务id
+        :type JobId: str
+        :param _Completed: 是否已完成
+        :type Completed: bool
+        :param _Status: 任务状态,Success:成功,Fail:失败,Cancel:取消,Running:运行中
+        :type Status: str
+        :param _CreateTime: 创建时间时间戳,单位毫秒
+        :type CreateTime: str
+        :param _ErrorMessage: 错误信息
+        :type ErrorMessage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._Completed = None
+        self._Status = None
+        self._CreateTime = None
+        self._ErrorMessage = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        """异步任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Completed(self):
+        """是否已完成
+        :rtype: bool
+        """
+        return self._Completed
+
+    @Completed.setter
+    def Completed(self, Completed):
+        self._Completed = Completed
+
+    @property
+    def Status(self):
+        """任务状态,Success:成功,Fail:失败,Cancel:取消,Running:运行中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """创建时间时间戳,单位毫秒
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ErrorMessage(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Completed = params.get("Completed")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._RequestId = params.get("RequestId")
+
+
 class GetOfflineDIInstanceListRequest(AbstractModel):
     """GetOfflineDIInstanceList请求参数结构体
 
@@ -57470,6 +57763,9 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         :param _TaskType: 任务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        :param _ResourceGroup: 资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroup: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -57488,6 +57784,7 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         self._InstanceRunType = None
         self._TotalLifeRound = None
         self._TaskType = None
+        self._ResourceGroup = None
 
     @property
     def TaskId(self):
@@ -57692,6 +57989,18 @@ class InstanceLifeCycleOpsDto(AbstractModel):
     def TaskType(self, TaskType):
         self._TaskType = TaskType
 
+    @property
+    def ResourceGroup(self):
+        """资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroup
+
+    @ResourceGroup.setter
+    def ResourceGroup(self, ResourceGroup):
+        self._ResourceGroup = ResourceGroup
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -57720,6 +58029,7 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         if params.get("TaskType") is not None:
             self._TaskType = TaskTypeOpsDto()
             self._TaskType._deserialize(params.get("TaskType"))
+        self._ResourceGroup = params.get("ResourceGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59840,6 +60150,8 @@ class InstanceOpsDto(AbstractModel):
         :param _ScheduleRunType: 调度运行方式, 0: 周期调度, 1: 空跑调度
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleRunType: int
+        :param _AllowRedoType: 允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+        :type AllowRedoType: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -59905,6 +60217,7 @@ class InstanceOpsDto(AbstractModel):
         self._CirculateInstanceList = None
         self._ConcurrentStrategy = None
         self._ScheduleRunType = None
+        self._AllowRedoType = None
 
     @property
     def TaskId(self):
@@ -60674,6 +60987,17 @@ class InstanceOpsDto(AbstractModel):
     def ScheduleRunType(self, ScheduleRunType):
         self._ScheduleRunType = ScheduleRunType
 
+    @property
+    def AllowRedoType(self):
+        """允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+        :rtype: str
+        """
+        return self._AllowRedoType
+
+    @AllowRedoType.setter
+    def AllowRedoType(self, AllowRedoType):
+        self._AllowRedoType = AllowRedoType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -60754,6 +61078,7 @@ class InstanceOpsDto(AbstractModel):
                 self._CirculateInstanceList.append(obj)
         self._ConcurrentStrategy = params.get("ConcurrentStrategy")
         self._ScheduleRunType = params.get("ScheduleRunType")
+        self._AllowRedoType = params.get("AllowRedoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61324,12 +61649,18 @@ class InstanceVO(AbstractModel):
         :param _SchedulerTime: 计划调度时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerTime: str
+        :param _LastUpdateTime: 实例最近更新时间, 时间格式为 yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
         :param _ExecutorGroupId: 执行资源组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupId: str
         :param _ExecutorGroupName: 资源组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
+        :param _JobErrorMsg: 简要的任务失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobErrorMsg: str
         """
         self._InstanceKey = None
         self._ProjectId = None
@@ -61352,8 +61683,10 @@ class InstanceVO(AbstractModel):
         self._EndTime = None
         self._CostTime = None
         self._SchedulerTime = None
+        self._LastUpdateTime = None
         self._ExecutorGroupId = None
         self._ExecutorGroupName = None
+        self._JobErrorMsg = None
 
     @property
     def InstanceKey(self):
@@ -61631,6 +61964,18 @@ class InstanceVO(AbstractModel):
         self._SchedulerTime = SchedulerTime
 
     @property
+    def LastUpdateTime(self):
+        """实例最近更新时间, 时间格式为 yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
     def ExecutorGroupId(self):
         """执行资源组ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -61653,6 +61998,18 @@ class InstanceVO(AbstractModel):
     @ExecutorGroupName.setter
     def ExecutorGroupName(self, ExecutorGroupName):
         self._ExecutorGroupName = ExecutorGroupName
+
+    @property
+    def JobErrorMsg(self):
+        """简要的任务失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JobErrorMsg
+
+    @JobErrorMsg.setter
+    def JobErrorMsg(self, JobErrorMsg):
+        self._JobErrorMsg = JobErrorMsg
 
 
     def _deserialize(self, params):
@@ -61679,8 +62036,10 @@ class InstanceVO(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._CostTime = params.get("CostTime")
         self._SchedulerTime = params.get("SchedulerTime")
+        self._LastUpdateTime = params.get("LastUpdateTime")
         self._ExecutorGroupId = params.get("ExecutorGroupId")
         self._ExecutorGroupName = params.get("ExecutorGroupName")
+        self._JobErrorMsg = params.get("JobErrorMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62655,6 +63014,61 @@ class IntegrationStatisticsTrendResult(AbstractModel):
         
 
 
+class IntegrationTag(AbstractModel):
+    """集成标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IntegrationTaskInfo(AbstractModel):
     """集成任务
 
@@ -62815,6 +63229,12 @@ class IntegrationTaskInfo(AbstractModel):
         :param _CurrentSyncPosition: 当前同步位点
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentSyncPosition: int
+        :param _TagList: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of IntegrationTag
+        :param _ErrorMessage: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
         """
         self._TaskName = None
         self._Description = None
@@ -62868,6 +63288,8 @@ class IntegrationTaskInfo(AbstractModel):
         self._TaskImportInfo = None
         self._BusinessLatency = None
         self._CurrentSyncPosition = None
+        self._TagList = None
+        self._ErrorMessage = None
 
     @property
     def TaskName(self):
@@ -63490,6 +63912,30 @@ class IntegrationTaskInfo(AbstractModel):
     def CurrentSyncPosition(self, CurrentSyncPosition):
         self._CurrentSyncPosition = CurrentSyncPosition
 
+    @property
+    def TagList(self):
+        """标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IntegrationTag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def ErrorMessage(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -63573,6 +64019,13 @@ class IntegrationTaskInfo(AbstractModel):
             self._TaskImportInfo._deserialize(params.get("TaskImportInfo"))
         self._BusinessLatency = params.get("BusinessLatency")
         self._CurrentSyncPosition = params.get("CurrentSyncPosition")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = IntegrationTag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65035,6 +65488,12 @@ class ListInstancesRequest(AbstractModel):
         :param _ScheduleTimeZone: **时区**
 timeZone, 默认UTC+8
         :type ScheduleTimeZone: str
+        :param _LastUpdateTimeFrom: **实例最近更新时间过滤条件**
+过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :type LastUpdateTimeFrom: str
+        :param _LastUpdateTimeTo: **实例最近更新时间过滤条件**
+过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :type LastUpdateTimeTo: str
         """
         self._ProjectId = None
         self._ScheduleTimeFrom = None
@@ -65055,6 +65514,8 @@ timeZone, 默认UTC+8
         self._StartTimeFrom = None
         self._StartTimeTo = None
         self._ScheduleTimeZone = None
+        self._LastUpdateTimeFrom = None
+        self._LastUpdateTimeTo = None
 
     @property
     def ProjectId(self):
@@ -65315,6 +65776,30 @@ timeZone, 默认UTC+8
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
 
+    @property
+    def LastUpdateTimeFrom(self):
+        """**实例最近更新时间过滤条件**
+过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
+        return self._LastUpdateTimeFrom
+
+    @LastUpdateTimeFrom.setter
+    def LastUpdateTimeFrom(self, LastUpdateTimeFrom):
+        self._LastUpdateTimeFrom = LastUpdateTimeFrom
+
+    @property
+    def LastUpdateTimeTo(self):
+        """**实例最近更新时间过滤条件**
+过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
+        return self._LastUpdateTimeTo
+
+    @LastUpdateTimeTo.setter
+    def LastUpdateTimeTo(self, LastUpdateTimeTo):
+        self._LastUpdateTimeTo = LastUpdateTimeTo
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -65336,6 +65821,8 @@ timeZone, 默认UTC+8
         self._StartTimeFrom = params.get("StartTimeFrom")
         self._StartTimeTo = params.get("StartTimeTo")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._LastUpdateTimeFrom = params.get("LastUpdateTimeFrom")
+        self._LastUpdateTimeTo = params.get("LastUpdateTimeTo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -78754,6 +79241,333 @@ class RelatedTask(AbstractModel):
         
 
 
+class RemoveDatabaseRequest(AbstractModel):
+    """RemoveDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: int
+        :param _DatabaseName: database名称
+        :type DatabaseName: str
+        """
+        self._DatasourceId = None
+        self._DatabaseName = None
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        """database名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+
+    def _deserialize(self, params):
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveDatabaseResponse(AbstractModel):
+    """RemoveDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 异步删除的任务id,用于查询执行状态
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        """异步删除的任务id,用于查询执行状态
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class RemoveSchemaRequest(AbstractModel):
+    """RemoveSchema请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: int
+        :param _DatabaseName: database名称
+        :type DatabaseName: str
+        :param _SchemaName: schema名称
+        :type SchemaName: str
+        """
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._SchemaName = None
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        """database名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        """schema名称
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+
+    def _deserialize(self, params):
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveSchemaResponse(AbstractModel):
+    """RemoveSchema返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 异步删除的任务id,用于查询执行状态
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        """异步删除的任务id,用于查询执行状态
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class RemoveTableRequest(AbstractModel):
+    """RemoveTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: int
+        :param _DatabaseName: database名称
+        :type DatabaseName: str
+        :param _SchemaName: schema名称
+        :type SchemaName: str
+        :param _TableName: 表名称
+        :type TableName: str
+        """
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._TableName = None
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        """database名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        """schema名称
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        """表名称
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveTableResponse(AbstractModel):
+    """RemoveTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 结果
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """结果
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class RemoveWorkflowDsRequest(AbstractModel):
     """RemoveWorkflowDs请求参数结构体
 
@@ -79401,6 +80215,614 @@ class RenewWorkflowSchedulerInfoDsResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = BatchResultDs()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ReportColumnInfo(AbstractModel):
+    """上报表元数据的字段结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 字段名称,字符长度128内
+        :type Name: str
+        :param _Type: 字段类型,字符长度128内
+        :type Type: str
+        :param _Position: 字段位置,1开始
+        :type Position: int
+        :param _Description: 字段描述,字符长度256内
+        :type Description: str
+        :param _CreateTime: 创建时间戳,毫秒,为空默认当前时间
+        :type CreateTime: str
+        :param _ModifiedTime: 修改时间戳,毫秒,为空默认当前时间
+        :type ModifiedTime: str
+        """
+        self._Name = None
+        self._Type = None
+        self._Position = None
+        self._Description = None
+        self._CreateTime = None
+        self._ModifiedTime = None
+
+    @property
+    def Name(self):
+        """字段名称,字符长度128内
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """字段类型,字符长度128内
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Position(self):
+        """字段位置,1开始
+        :rtype: int
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def Description(self):
+        """字段描述,字符长度256内
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        """创建时间戳,毫秒,为空默认当前时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifiedTime(self):
+        """修改时间戳,毫秒,为空默认当前时间
+        :rtype: str
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Position = params.get("Position")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportDatabaseRequest(AbstractModel):
+    """ReportDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: int
+        :param _DatabaseName: database名称,字符长度128内
+        :type DatabaseName: str
+        :param _Description: 描述,字符长度3000内
+        :type Description: str
+        :param _CreateTime: 创建时间戳,毫秒,为空默认当前时间
+        :type CreateTime: int
+        :param _ModifiedTime: 修改时间戳,毫秒,为空默认当前时间
+        :type ModifiedTime: int
+        """
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._Description = None
+        self._CreateTime = None
+        self._ModifiedTime = None
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        """database名称,字符长度128内
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def Description(self):
+        """描述,字符长度3000内
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        """创建时间戳,毫秒,为空默认当前时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifiedTime(self):
+        """修改时间戳,毫秒,为空默认当前时间
+        :rtype: int
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+
+    def _deserialize(self, params):
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportDatabaseResponse(AbstractModel):
+    """ReportDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Guid: 元数据唯一id
+        :type Guid: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Guid = None
+        self._RequestId = None
+
+    @property
+    def Guid(self):
+        """元数据唯一id
+        :rtype: str
+        """
+        return self._Guid
+
+    @Guid.setter
+    def Guid(self, Guid):
+        self._Guid = Guid
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Guid = params.get("Guid")
+        self._RequestId = params.get("RequestId")
+
+
+class ReportSchemaRequest(AbstractModel):
+    """ReportSchema请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: int
+        :param _DatabaseName: database名称,字符长度128内
+        :type DatabaseName: str
+        :param _SchemaName: schema名称,字符长度128内
+        :type SchemaName: str
+        :param _Description: 描述,字符长度3000内
+        :type Description: str
+        :param _CreateTime: 创建时间戳,毫秒,为空默认当前时间
+        :type CreateTime: int
+        :param _ModifiedTime: 修改时间戳,毫秒,为空默认当前时间
+        :type ModifiedTime: int
+        """
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._Description = None
+        self._CreateTime = None
+        self._ModifiedTime = None
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        """database名称,字符长度128内
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        """schema名称,字符长度128内
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def Description(self):
+        """描述,字符长度3000内
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        """创建时间戳,毫秒,为空默认当前时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifiedTime(self):
+        """修改时间戳,毫秒,为空默认当前时间
+        :rtype: int
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+
+    def _deserialize(self, params):
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportSchemaResponse(AbstractModel):
+    """ReportSchema返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Guid: 元数据唯一id
+        :type Guid: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Guid = None
+        self._RequestId = None
+
+    @property
+    def Guid(self):
+        """元数据唯一id
+        :rtype: str
+        """
+        return self._Guid
+
+    @Guid.setter
+    def Guid(self, Guid):
+        self._Guid = Guid
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Guid = params.get("Guid")
+        self._RequestId = params.get("RequestId")
+
+
+class ReportTableRequest(AbstractModel):
+    """ReportTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: int
+        :param _DatabaseName: database名称,字符长度128内
+        :type DatabaseName: str
+        :param _TableName: table名称,字符长度128内
+        :type TableName: str
+        :param _Type: 表类型,VIEW/TABLE
+        :type Type: str
+        :param _SchemaName: schema名称,字符长度128内
+        :type SchemaName: str
+        :param _Description: 描述,字符长度1000内
+        :type Description: str
+        :param _CreateTime: 创建时间戳,毫秒,为空默认当前时间
+        :type CreateTime: int
+        :param _ModifiedTime: 修改时间戳,毫秒,为空默认当前时间
+        :type ModifiedTime: int
+        :param _Columns: 字段信息
+        :type Columns: list of ReportColumnInfo
+        """
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._TableName = None
+        self._Type = None
+        self._SchemaName = None
+        self._Description = None
+        self._CreateTime = None
+        self._ModifiedTime = None
+        self._Columns = None
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        """database名称,字符长度128内
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        """table名称,字符长度128内
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Type(self):
+        """表类型,VIEW/TABLE
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SchemaName(self):
+        """schema名称,字符长度128内
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def Description(self):
+        """描述,字符长度1000内
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        """创建时间戳,毫秒,为空默认当前时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifiedTime(self):
+        """修改时间戳,毫秒,为空默认当前时间
+        :rtype: int
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def Columns(self):
+        """字段信息
+        :rtype: list of ReportColumnInfo
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+
+    def _deserialize(self, params):
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
+        self._Type = params.get("Type")
+        self._SchemaName = params.get("SchemaName")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = ReportColumnInfo()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportTableResponse(AbstractModel):
+    """ReportTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Guid: 元数据唯一id
+        :type Guid: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Guid = None
+        self._RequestId = None
+
+    @property
+    def Guid(self):
+        """元数据唯一id
+        :rtype: str
+        """
+        return self._Guid
+
+    @Guid.setter
+    def Guid(self, Guid):
+        self._Guid = Guid
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Guid = params.get("Guid")
         self._RequestId = params.get("RequestId")
 
 
@@ -84139,6 +85561,9 @@ class RuleGroupExecStrategy(AbstractModel):
         :type DatasourceId: str
         :param _Description: 任务描述
         :type Description: str
+        :param _ScheduleTimeZone: 时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTimeZone: str
         """
         self._RuleGroupId = None
         self._MonitorType = None
@@ -84164,6 +85589,7 @@ class RuleGroupExecStrategy(AbstractModel):
         self._TableName = None
         self._DatasourceId = None
         self._Description = None
+        self._ScheduleTimeZone = None
 
     @property
     def RuleGroupId(self):
@@ -84447,6 +85873,18 @@ class RuleGroupExecStrategy(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ScheduleTimeZone(self):
+        """时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -84478,6 +85916,7 @@ class RuleGroupExecStrategy(AbstractModel):
         self._TableName = params.get("TableName")
         self._DatasourceId = params.get("DatasourceId")
         self._Description = params.get("Description")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -97447,6 +98886,9 @@ class TaskDsDTO(AbstractModel):
         :param _TemplateId: 引用的代码模版id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
+        :param _AllowRedoType: 允许重跑类 ALL 无论实例成功或者失败，都允许重跑 FAILURE 只有失败的实例允许重跑，成功的实例不允许重跑 NONE 无论成功或者失败，都不允许重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowRedoType: str
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -97548,6 +98990,7 @@ class TaskDsDTO(AbstractModel):
         self._ConcurrentStrategy = None
         self._ScheduleTimeZone = None
         self._TemplateId = None
+        self._AllowRedoType = None
 
     @property
     def TaskId(self):
@@ -98753,6 +100196,18 @@ class TaskDsDTO(AbstractModel):
     def TemplateId(self, TemplateId):
         self._TemplateId = TemplateId
 
+    @property
+    def AllowRedoType(self):
+        """允许重跑类 ALL 无论实例成功或者失败，都允许重跑 FAILURE 只有失败的实例允许重跑，成功的实例不允许重跑 NONE 无论成功或者失败，都不允许重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AllowRedoType
+
+    @AllowRedoType.setter
+    def AllowRedoType(self, AllowRedoType):
+        self._AllowRedoType = AllowRedoType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -98904,6 +100359,7 @@ class TaskDsDTO(AbstractModel):
         self._ConcurrentStrategy = params.get("ConcurrentStrategy")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._TemplateId = params.get("TemplateId")
+        self._AllowRedoType = params.get("AllowRedoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -101128,6 +102584,8 @@ yes： 任务需满足自依赖
 no：任务无需满足自依赖
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfWorkFlowDependType: str
+        :param _AllowRedoType: 允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+        :type AllowRedoType: str
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -101219,6 +102677,7 @@ no：任务无需满足自依赖
         self._ExtResourceFlag = None
         self._NewParentTaskInfos = None
         self._SelfWorkFlowDependType = None
+        self._AllowRedoType = None
 
     @property
     def TaskId(self):
@@ -102302,6 +103761,17 @@ no：任务无需满足自依赖
     def SelfWorkFlowDependType(self, SelfWorkFlowDependType):
         self._SelfWorkFlowDependType = SelfWorkFlowDependType
 
+    @property
+    def AllowRedoType(self):
+        """允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+        :rtype: str
+        """
+        return self._AllowRedoType
+
+    @AllowRedoType.setter
+    def AllowRedoType(self, AllowRedoType):
+        self._AllowRedoType = AllowRedoType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -102416,6 +103886,7 @@ no：任务无需满足自依赖
                 obj._deserialize(item)
                 self._NewParentTaskInfos.append(obj)
         self._SelfWorkFlowDependType = params.get("SelfWorkFlowDependType")
+        self._AllowRedoType = params.get("AllowRedoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -108793,6 +110264,12 @@ class WorkflowDsDTO(AbstractModel):
 - manual 手动工作流
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowType: str
+        :param _UpdateUser: 最近更新人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUser: str
+        :param _UpdateUserId: 最近更新人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUserId: str
         """
         self._WorkflowId = None
         self._Owner = None
@@ -108808,6 +110285,8 @@ class WorkflowDsDTO(AbstractModel):
         self._Links = None
         self._Params = None
         self._WorkflowType = None
+        self._UpdateUser = None
+        self._UpdateUserId = None
 
     @property
     def WorkflowId(self):
@@ -108980,6 +110459,30 @@ class WorkflowDsDTO(AbstractModel):
     def WorkflowType(self, WorkflowType):
         self._WorkflowType = WorkflowType
 
+    @property
+    def UpdateUser(self):
+        """最近更新人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateUser
+
+    @UpdateUser.setter
+    def UpdateUser(self, UpdateUser):
+        self._UpdateUser = UpdateUser
+
+    @property
+    def UpdateUserId(self):
+        """最近更新人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateUserId
+
+    @UpdateUserId.setter
+    def UpdateUserId(self, UpdateUserId):
+        self._UpdateUserId = UpdateUserId
+
 
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
@@ -109011,6 +110514,8 @@ class WorkflowDsDTO(AbstractModel):
                 obj._deserialize(item)
                 self._Params.append(obj)
         self._WorkflowType = params.get("WorkflowType")
+        self._UpdateUser = params.get("UpdateUser")
+        self._UpdateUserId = params.get("UpdateUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -109070,6 +110575,9 @@ class WorkflowExtOpsDto(AbstractModel):
         :param _ModifyTime: 最近更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
+        :param _ModifyUser: 最近更新人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyUser: str
         :param _WorkflowType: 工作流类型，周期cycle，手动manual
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowType: str
@@ -109088,6 +110596,7 @@ class WorkflowExtOpsDto(AbstractModel):
         self._Status = None
         self._CreateTime = None
         self._ModifyTime = None
+        self._ModifyUser = None
         self._WorkflowType = None
 
     @property
@@ -109259,6 +110768,18 @@ class WorkflowExtOpsDto(AbstractModel):
         self._ModifyTime = ModifyTime
 
     @property
+    def ModifyUser(self):
+        """最近更新人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyUser
+
+    @ModifyUser.setter
+    def ModifyUser(self, ModifyUser):
+        self._ModifyUser = ModifyUser
+
+    @property
     def WorkflowType(self):
         """工作流类型，周期cycle，手动manual
 注意：此字段可能返回 null，表示取不到有效值。
@@ -109286,6 +110807,7 @@ class WorkflowExtOpsDto(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
+        self._ModifyUser = params.get("ModifyUser")
         self._WorkflowType = params.get("WorkflowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -21872,6 +21872,8 @@ class UploadCertificateRequest(AbstractModel):
         :type Tags: list of Tags
         :param _Repeatable: 相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
         :type Repeatable: bool
+        :param _KeyPassword: 私钥密码
+        :type KeyPassword: str
         """
         self._CertificatePublicKey = None
         self._CertificatePrivateKey = None
@@ -21881,6 +21883,7 @@ class UploadCertificateRequest(AbstractModel):
         self._CertificateUse = None
         self._Tags = None
         self._Repeatable = None
+        self._KeyPassword = None
 
     @property
     def CertificatePublicKey(self):
@@ -21970,6 +21973,17 @@ class UploadCertificateRequest(AbstractModel):
     def Repeatable(self, Repeatable):
         self._Repeatable = Repeatable
 
+    @property
+    def KeyPassword(self):
+        """私钥密码
+        :rtype: str
+        """
+        return self._KeyPassword
+
+    @KeyPassword.setter
+    def KeyPassword(self, KeyPassword):
+        self._KeyPassword = KeyPassword
+
 
     def _deserialize(self, params):
         self._CertificatePublicKey = params.get("CertificatePublicKey")
@@ -21985,6 +21999,7 @@ class UploadCertificateRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Repeatable = params.get("Repeatable")
+        self._KeyPassword = params.get("KeyPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

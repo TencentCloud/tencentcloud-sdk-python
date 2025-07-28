@@ -493,6 +493,7 @@ class Activity(AbstractModel):
 <li>action-adaptive-substream：自适应码流</li>
 <li>action-AIQualityControl：媒体质检</li>
 <li>action-SmartSubtitles：智能字幕</li>
+<li>action-exec-rules：判断规则</li>
 
 
 
@@ -523,6 +524,7 @@ class Activity(AbstractModel):
 <li>action-adaptive-substream：自适应码流</li>
 <li>action-AIQualityControl：媒体质检</li>
 <li>action-SmartSubtitles：智能字幕</li>
+<li>action-exec-rules：判断规则</li>
 
 
 
@@ -611,6 +613,9 @@ class ActivityPara(AbstractModel):
         :param _QualityControlTask: 媒体质检任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        :param _ExecRulesTask: 任务条件判断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecRulesTask: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
         :param _SmartSubtitlesTask: 智能字幕任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
@@ -625,6 +630,7 @@ class ActivityPara(AbstractModel):
         self._AiAnalysisTask = None
         self._AiRecognitionTask = None
         self._QualityControlTask = None
+        self._ExecRulesTask = None
         self._SmartSubtitlesTask = None
 
     @property
@@ -748,6 +754,18 @@ class ActivityPara(AbstractModel):
         self._QualityControlTask = QualityControlTask
 
     @property
+    def ExecRulesTask(self):
+        """任务条件判断
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
+        """
+        return self._ExecRulesTask
+
+    @ExecRulesTask.setter
+    def ExecRulesTask(self, ExecRulesTask):
+        self._ExecRulesTask = ExecRulesTask
+
+    @property
     def SmartSubtitlesTask(self):
         """智能字幕任务
 注意：此字段可能返回 null，表示取不到有效值。
@@ -791,6 +809,9 @@ class ActivityPara(AbstractModel):
         if params.get("QualityControlTask") is not None:
             self._QualityControlTask = AiQualityControlTaskInput()
             self._QualityControlTask._deserialize(params.get("QualityControlTask"))
+        if params.get("ExecRulesTask") is not None:
+            self._ExecRulesTask = ExecRulesTask()
+            self._ExecRulesTask._deserialize(params.get("ExecRulesTask"))
         if params.get("SmartSubtitlesTask") is not None:
             self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
             self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
@@ -841,6 +862,9 @@ class ActivityResItem(AbstractModel):
         :param _QualityControlTask: 媒体质检任务输出
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        :param _ExecRuleTask: 条件判断任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecRuleTask: :class:`tencentcloud.mps.v20190612.models.ScheduleExecRuleTaskResult`
         :param _SmartSubtitlesTask: 智能字幕任务输出
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
@@ -855,6 +879,7 @@ class ActivityResItem(AbstractModel):
         self._ReviewTask = None
         self._AnalysisTask = None
         self._QualityControlTask = None
+        self._ExecRuleTask = None
         self._SmartSubtitlesTask = None
 
     @property
@@ -978,6 +1003,18 @@ class ActivityResItem(AbstractModel):
         self._QualityControlTask = QualityControlTask
 
     @property
+    def ExecRuleTask(self):
+        """条件判断任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleExecRuleTaskResult`
+        """
+        return self._ExecRuleTask
+
+    @ExecRuleTask.setter
+    def ExecRuleTask(self, ExecRuleTask):
+        self._ExecRuleTask = ExecRuleTask
+
+    @property
     def SmartSubtitlesTask(self):
         """智能字幕任务输出
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1021,6 +1058,9 @@ class ActivityResItem(AbstractModel):
         if params.get("QualityControlTask") is not None:
             self._QualityControlTask = ScheduleQualityControlTaskResult()
             self._QualityControlTask._deserialize(params.get("QualityControlTask"))
+        if params.get("ExecRuleTask") is not None:
+            self._ExecRuleTask = ScheduleExecRuleTaskResult()
+            self._ExecRuleTask._deserialize(params.get("ExecRuleTask"))
         if params.get("SmartSubtitlesTask") is not None:
             self._SmartSubtitlesTask = ScheduleSmartSubtitleTaskResult()
             self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
@@ -1231,6 +1271,8 @@ PureAudio：纯音频类型
         :param _SubtitleTemplate: 字幕参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
+        :param _StdExtInfo: 转码参数扩展字段
+        :type StdExtInfo: str
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1242,6 +1284,7 @@ PureAudio：纯音频类型
         self._DrmInfo = None
         self._DefinitionType = None
         self._SubtitleTemplate = None
+        self._StdExtInfo = None
 
     @property
     def Definition(self):
@@ -1365,6 +1408,17 @@ PureAudio：纯音频类型
     def SubtitleTemplate(self, SubtitleTemplate):
         self._SubtitleTemplate = SubtitleTemplate
 
+    @property
+    def StdExtInfo(self):
+        """转码参数扩展字段
+        :rtype: str
+        """
+        return self._StdExtInfo
+
+    @StdExtInfo.setter
+    def StdExtInfo(self, StdExtInfo):
+        self._StdExtInfo = StdExtInfo
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1393,6 +1447,7 @@ PureAudio：纯音频类型
         if params.get("SubtitleTemplate") is not None:
             self._SubtitleTemplate = SubtitleTemplate()
             self._SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
+        self._StdExtInfo = params.get("StdExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2605,11 +2660,15 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :type OriginSubtitlePath: str
         :param _TranslateSubtitlePath: 基于画面提取的字幕翻译文件路径。
         :type TranslateSubtitlePath: str
+        :param _SubtitlePos: 擦除的字幕位置。**注意**：仅对字幕提取且开启返回字幕位置时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitlePos: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
         """
         self._Path = None
         self._OutputStorage = None
         self._OriginSubtitlePath = None
         self._TranslateSubtitlePath = None
+        self._SubtitlePos = None
 
     @property
     def Path(self):
@@ -2655,6 +2714,18 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
     def TranslateSubtitlePath(self, TranslateSubtitlePath):
         self._TranslateSubtitlePath = TranslateSubtitlePath
 
+    @property
+    def SubtitlePos(self):
+        """擦除的字幕位置。**注意**：仅对字幕提取且开启返回字幕位置时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
+        """
+        return self._SubtitlePos
+
+    @SubtitlePos.setter
+    def SubtitlePos(self, SubtitlePos):
+        self._SubtitlePos = SubtitlePos
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -2663,6 +2734,9 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._OriginSubtitlePath = params.get("OriginSubtitlePath")
         self._TranslateSubtitlePath = params.get("TranslateSubtitlePath")
+        if params.get("SubtitlePos") is not None:
+            self._SubtitlePos = SubtitlePosition()
+            self._SubtitlePos._deserialize(params.get("SubtitlePos"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31012,10 +31086,16 @@ class DescribeTasksRequest(AbstractModel):
         :type Limit: int
         :param _ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
         :type ScrollToken: str
+        :param _StartTime: 查询任务开始时间
+        :type StartTime: str
+        :param _EndTime: 查询任务结束时间。
+        :type EndTime: str
         """
         self._Status = None
         self._Limit = None
         self._ScrollToken = None
+        self._StartTime = None
+        self._EndTime = None
 
     @property
     def Status(self):
@@ -31050,11 +31130,35 @@ class DescribeTasksRequest(AbstractModel):
     def ScrollToken(self, ScrollToken):
         self._ScrollToken = ScrollToken
 
+    @property
+    def StartTime(self):
+        """查询任务开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """查询任务结束时间。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._Limit = params.get("Limit")
         self._ScrollToken = params.get("ScrollToken")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33855,6 +33959,85 @@ class EvaluationTemplateInputInfo(AbstractModel):
         
 
 
+class ExecRuleTaskData(AbstractModel):
+    """条件判断输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RearDriveIndex: 质检条件判断需要执行的节点索引。
+        :type RearDriveIndex: list of int
+        """
+        self._RearDriveIndex = None
+
+    @property
+    def RearDriveIndex(self):
+        """质检条件判断需要执行的节点索引。
+        :rtype: list of int
+        """
+        return self._RearDriveIndex
+
+    @RearDriveIndex.setter
+    def RearDriveIndex(self, RearDriveIndex):
+        self._RearDriveIndex = RearDriveIndex
+
+
+    def _deserialize(self, params):
+        self._RearDriveIndex = params.get("RearDriveIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecRulesTask(AbstractModel):
+    """任务判断条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 条件判断信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of Rules
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        """条件判断信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Rules
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = Rules()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExecuteFunctionRequest(AbstractModel):
     """ExecuteFunction请求参数结构体
 
@@ -36309,10 +36492,8 @@ class HighlightSegmentItem(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentTags: list of str
         :param _BeginTime: 直播切片对应直播起始时间点，采用 ISO 日期格式。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 直播切片对应直播结束时间点，采用 ISO 日期格式。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._Confidence = None
@@ -36370,7 +36551,6 @@ class HighlightSegmentItem(AbstractModel):
     @property
     def BeginTime(self):
         """直播切片对应直播起始时间点，采用 ISO 日期格式。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginTime
@@ -36382,7 +36562,6 @@ class HighlightSegmentItem(AbstractModel):
     @property
     def EndTime(self):
         """直播切片对应直播结束时间点，采用 ISO 日期格式。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -38021,7 +38200,6 @@ class LiveActivityResult(AbstractModel):
         :param _ActivityType: 原子任务类型。
 <li>LiveRecord：直播录制。</li>
 <li>AiQualityControl：媒体质检。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityType: str
         :param _LiveActivityResItem: 原子任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -38035,7 +38213,6 @@ class LiveActivityResult(AbstractModel):
         """原子任务类型。
 <li>LiveRecord：直播录制。</li>
 <li>AiQualityControl：媒体质检。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActivityType
@@ -38628,21 +38805,16 @@ class LiveScheduleTask(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 直播编排任务 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
 <li>FINISH：已完成。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _ErrCode: 源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param _Message: 源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Url: 直播流 URL。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _LiveActivityResultSet: 直播编排任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -38658,7 +38830,6 @@ class LiveScheduleTask(AbstractModel):
     @property
     def TaskId(self):
         """直播编排任务 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -38672,7 +38843,6 @@ class LiveScheduleTask(AbstractModel):
         """任务流状态，取值：
 <li>PROCESSING：处理中；</li>
 <li>FINISH：已完成。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -38684,7 +38854,6 @@ class LiveScheduleTask(AbstractModel):
     @property
     def ErrCode(self):
         """源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ErrCode
@@ -38696,7 +38865,6 @@ class LiveScheduleTask(AbstractModel):
     @property
     def Message(self):
         """源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -38708,7 +38876,6 @@ class LiveScheduleTask(AbstractModel):
     @property
     def Url(self):
         """直播流 URL。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -41892,9 +42059,12 @@ class MediaAiAnalysisTagItem(AbstractModel):
         :type Tag: str
         :param _Confidence: 标签的可信度，取值范围是 0 到 100。
         :type Confidence: float
+        :param _SpecialInfo: 根据不同类型决定
+        :type SpecialInfo: str
         """
         self._Tag = None
         self._Confidence = None
+        self._SpecialInfo = None
 
     @property
     def Tag(self):
@@ -41918,10 +42088,22 @@ class MediaAiAnalysisTagItem(AbstractModel):
     def Confidence(self, Confidence):
         self._Confidence = Confidence
 
+    @property
+    def SpecialInfo(self):
+        """根据不同类型决定
+        :rtype: str
+        """
+        return self._SpecialInfo
+
+    @SpecialInfo.setter
+    def SpecialInfo(self, SpecialInfo):
+        self._SpecialInfo = SpecialInfo
+
 
     def _deserialize(self, params):
         self._Tag = params.get("Tag")
         self._Confidence = params.get("Confidence")
+        self._SpecialInfo = params.get("SpecialInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43573,6 +43755,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :param _Input: 对视频截雪碧图任务的输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
         :param _Output: 对视频截雪碧图任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type BeginProcessTime: str
@@ -43646,6 +43829,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
     @property
     def Output(self):
         """对视频截雪碧图任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         """
         return self._Output
@@ -44023,6 +44207,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         :param _Input: 对视频做采样截图任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
         :param _Output: 对视频做采样截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type BeginProcessTime: str
@@ -44096,6 +44281,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
     @property
     def Output(self):
         """对视频做采样截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         """
         return self._Output
@@ -44168,6 +44354,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :param _Input: 对视频按指定时间点截图任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
         :param _Output: 对视频按指定时间点截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type BeginProcessTime: str
@@ -44241,6 +44428,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
     @property
     def Output(self):
         """对视频按指定时间点截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         """
         return self._Output
@@ -52436,6 +52624,8 @@ class ProcessMediaRequest(AbstractModel):
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param _AiQualityControlTask: 媒体质检类型任务参数。
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        :param _SmartSubtitlesTask: 智能字幕
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param _TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
@@ -52450,8 +52640,6 @@ class ProcessMediaRequest(AbstractModel):
         :type TaskType: str
         :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
         :type ResourceId: str
-        :param _SmartSubtitlesTask: 智能字幕
-        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         :param _SkipMateData: 是否跳过元信息获取，可选值： 
 0：表示不跳过 
 1：表示跳过 
@@ -52467,13 +52655,13 @@ class ProcessMediaRequest(AbstractModel):
         self._AiAnalysisTask = None
         self._AiRecognitionTask = None
         self._AiQualityControlTask = None
+        self._SmartSubtitlesTask = None
         self._TaskNotifyConfig = None
         self._TasksPriority = None
         self._SessionId = None
         self._SessionContext = None
         self._TaskType = None
         self._ResourceId = None
-        self._SmartSubtitlesTask = None
         self._SkipMateData = None
 
     @property
@@ -52585,6 +52773,17 @@ class ProcessMediaRequest(AbstractModel):
         self._AiQualityControlTask = AiQualityControlTask
 
     @property
+    def SmartSubtitlesTask(self):
+        """智能字幕
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
+    @property
     def TaskNotifyConfig(self):
         """任务的事件通知信息，不填代表不获取事件通知。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
@@ -52653,17 +52852,6 @@ class ProcessMediaRequest(AbstractModel):
         self._ResourceId = ResourceId
 
     @property
-    def SmartSubtitlesTask(self):
-        """智能字幕
-        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
-        """
-        return self._SmartSubtitlesTask
-
-    @SmartSubtitlesTask.setter
-    def SmartSubtitlesTask(self, SmartSubtitlesTask):
-        self._SmartSubtitlesTask = SmartSubtitlesTask
-
-    @property
     def SkipMateData(self):
         """是否跳过元信息获取，可选值： 
 0：表示不跳过 
@@ -52702,6 +52890,9 @@ class ProcessMediaRequest(AbstractModel):
         if params.get("AiQualityControlTask") is not None:
             self._AiQualityControlTask = AiQualityControlTaskInput()
             self._AiQualityControlTask._deserialize(params.get("AiQualityControlTask"))
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -52710,9 +52901,6 @@ class ProcessMediaRequest(AbstractModel):
         self._SessionContext = params.get("SessionContext")
         self._TaskType = params.get("TaskType")
         self._ResourceId = params.get("ResourceId")
-        if params.get("SmartSubtitlesTask") is not None:
-            self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
-            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
         self._SkipMateData = params.get("SkipMateData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -53169,22 +53357,16 @@ class QualityControlData(AbstractModel):
     def __init__(self):
         r"""
         :param _NoAudio: 为true时表示视频无音频轨。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoAudio: bool
         :param _NoVideo: 为true时表示视频无视频轨。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoVideo: bool
         :param _QualityEvaluationScore: 视频无参考质量评分，百分制。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QualityEvaluationScore: int
         :param _QualityEvaluationMeanOpinionScore: 视频无参考质量评分，MOS分数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QualityEvaluationMeanOpinionScore: float
         :param _QualityControlResultSet: 内容质检检出异常项。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlResultSet: list of QualityControlResult
-        :param _ContainerDiagnoseResultSet: 格式诊断检出异常项
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ContainerDiagnoseResultSet: 格式诊断检出异常项。
         :type ContainerDiagnoseResultSet: list of ContainerDiagnoseResultItem
         """
         self._NoAudio = None
@@ -53197,7 +53379,6 @@ class QualityControlData(AbstractModel):
     @property
     def NoAudio(self):
         """为true时表示视频无音频轨。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._NoAudio
@@ -53209,7 +53390,6 @@ class QualityControlData(AbstractModel):
     @property
     def NoVideo(self):
         """为true时表示视频无视频轨。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._NoVideo
@@ -53221,7 +53401,6 @@ class QualityControlData(AbstractModel):
     @property
     def QualityEvaluationScore(self):
         """视频无参考质量评分，百分制。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._QualityEvaluationScore
@@ -53233,7 +53412,6 @@ class QualityControlData(AbstractModel):
     @property
     def QualityEvaluationMeanOpinionScore(self):
         """视频无参考质量评分，MOS分数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._QualityEvaluationMeanOpinionScore
@@ -53245,7 +53423,6 @@ class QualityControlData(AbstractModel):
     @property
     def QualityControlResultSet(self):
         """内容质检检出异常项。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlResult
         """
         return self._QualityControlResultSet
@@ -53256,8 +53433,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def ContainerDiagnoseResultSet(self):
-        """格式诊断检出异常项
-注意：此字段可能返回 null，表示取不到有效值。
+        """格式诊断检出异常项。
         :rtype: list of ContainerDiagnoseResultItem
         """
         return self._ContainerDiagnoseResultSet
@@ -53720,6 +53896,61 @@ LowEvaluation：无参考打分低于阈值。
         
 
 
+class QualityControlStrategy(AbstractModel):
+    """媒体质检检测策略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyType: 策略类型。取值：
+- TimeSpotCheck
+        :type StrategyType: str
+        :param _TimeSpotCheck: 根据时间的抽检策略。
+        :type TimeSpotCheck: :class:`tencentcloud.mps.v20190612.models.TimeSpotCheck`
+        """
+        self._StrategyType = None
+        self._TimeSpotCheck = None
+
+    @property
+    def StrategyType(self):
+        """策略类型。取值：
+- TimeSpotCheck
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def TimeSpotCheck(self):
+        """根据时间的抽检策略。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TimeSpotCheck`
+        """
+        return self._TimeSpotCheck
+
+    @TimeSpotCheck.setter
+    def TimeSpotCheck(self, TimeSpotCheck):
+        self._TimeSpotCheck = TimeSpotCheck
+
+
+    def _deserialize(self, params):
+        self._StrategyType = params.get("StrategyType")
+        if params.get("TimeSpotCheck") is not None:
+            self._TimeSpotCheck = TimeSpotCheck()
+            self._TimeSpotCheck._deserialize(params.get("TimeSpotCheck"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityControlTemplate(AbstractModel):
     """媒体质检模板详情
 
@@ -53749,6 +53980,8 @@ class QualityControlTemplate(AbstractModel):
         :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _Strategy: 媒体质检的抽检策略。
+        :type Strategy: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
         """
         self._Definition = None
         self._Name = None
@@ -53757,6 +53990,7 @@ class QualityControlTemplate(AbstractModel):
         self._QualityControlItemSet = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Strategy = None
 
     @property
     def Definition(self):
@@ -53843,6 +54077,17 @@ class QualityControlTemplate(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Strategy(self):
+        """媒体质检的抽检策略。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -53857,6 +54102,9 @@ class QualityControlTemplate(AbstractModel):
                 self._QualityControlItemSet.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("Strategy") is not None:
+            self._Strategy = QualityControlStrategy()
+            self._Strategy._deserialize(params.get("Strategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55156,6 +55404,155 @@ class ResilientStreamConf(AbstractModel):
         
 
 
+class RuleConditionItem(AbstractModel):
+    """规则条件配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 质检项条件对应的Key。
+        :type Key: str
+        :param _Value: 条件对应的Value。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """质检项条件对应的Key。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """条件对应的Value。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Rules(AbstractModel):
+    """任务判断条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 判断条件id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Conditions: 判断条件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of RuleConditionItem
+        :param _Linker: 条件列表的链接符号，取值如下：
+
+- &&：逻辑与
+- ||：逻辑或
+        :type Linker: str
+        :param _RearDriveIndexs: 满足判断条件执行节点索引；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RearDriveIndexs: list of int
+        """
+        self._Id = None
+        self._Conditions = None
+        self._Linker = None
+        self._RearDriveIndexs = None
+
+    @property
+    def Id(self):
+        """判断条件id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Conditions(self):
+        """判断条件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleConditionItem
+        """
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+    @property
+    def Linker(self):
+        """条件列表的链接符号，取值如下：
+
+- &&：逻辑与
+- ||：逻辑或
+        :rtype: str
+        """
+        return self._Linker
+
+    @Linker.setter
+    def Linker(self, Linker):
+        self._Linker = Linker
+
+    @property
+    def RearDriveIndexs(self):
+        """满足判断条件执行节点索引；
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._RearDriveIndexs
+
+    @RearDriveIndexs.setter
+    def RearDriveIndexs(self, RearDriveIndexs):
+        self._RearDriveIndexs = RearDriveIndexs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = RuleConditionItem()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        self._Linker = params.get("Linker")
+        self._RearDriveIndexs = params.get("RearDriveIndexs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class S3InputInfo(AbstractModel):
     """AWS S3存储输入
 
@@ -56045,13 +56442,10 @@ class ScheduleAnalysisTaskResult(AbstractModel):
         :param _Input: 分析任务的输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param _Output: 分析任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: list of AiAnalysisResult
         :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginProcessTime: str
         :param _FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
         """
         self._Status = None
@@ -56121,7 +56515,6 @@ class ScheduleAnalysisTaskResult(AbstractModel):
     @property
     def Output(self):
         """分析任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AiAnalysisResult
         """
         return self._Output
@@ -56133,7 +56526,6 @@ class ScheduleAnalysisTaskResult(AbstractModel):
     @property
     def BeginProcessTime(self):
         """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginProcessTime
@@ -56145,7 +56537,6 @@ class ScheduleAnalysisTaskResult(AbstractModel):
     @property
     def FinishTime(self):
         """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishTime
@@ -56171,6 +56562,108 @@ class ScheduleAnalysisTaskResult(AbstractModel):
                 self._Output.append(obj)
         self._BeginProcessTime = params.get("BeginProcessTime")
         self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduleExecRuleTaskResult(AbstractModel):
+    """媒体质检任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 条件判断任务的输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
+        :param _Output: 条件判断任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.ExecRuleTaskData`
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        """错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """条件判断任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """条件判断任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExecRuleTaskData`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = ExecRulesTask()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = ExecRuleTaskData()
+            self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59023,8 +59516,8 @@ class SmartSubtitlesResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 任务的类型，取值范围：
-<li>AsrFullTextRecognition：语音全文识别，</li>
+        :param _Type: 任务的类型，取值范围： 
+<li>AsrFullTextRecognition：语音全文识别，</li> 
 <li>TransTextRecognition：语音翻译。</li>
         :type Type: str
         :param _AsrFullTextTask: 语音全文识别结果，当 Type 为
@@ -59043,8 +59536,8 @@ TransTextRecognition 时有效。
 
     @property
     def Type(self):
-        """任务的类型，取值范围：
-<li>AsrFullTextRecognition：语音全文识别，</li>
+        """任务的类型，取值范围： 
+<li>AsrFullTextRecognition：语音全文识别，</li> 
 <li>TransTextRecognition：语音翻译。</li>
         :rtype: str
         """
@@ -59114,10 +59607,28 @@ class SmartSubtitlesTaskInput(AbstractModel):
         :param _RawParameter: 智能字幕自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定智能字幕参数。	
 注意：此字段可能返回 null，表示取不到有效值。
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        :param _OutputStorage: 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。 
+**注意**：当InputInfo.Type为URL时，该参数是必填项。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputObjectPath: 生成字幕文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+
+相对路径示例:
+- 文件名_{变量名}.{format}
+- 文件名.{format}
+
+绝对路径示例：
+- /自定义路径/文件名_{变量名}.{format}
+
+如果不填，则默认为相对路径: `{inputName}_smartsubtitle_{definition}.{format}`。
+        :type OutputObjectPath: str
         """
         self._Definition = None
         self._UserExtPara = None
         self._RawParameter = None
+        self._OutputStorage = None
+        self._OutputObjectPath = None
 
     @property
     def Definition(self):
@@ -59153,6 +59664,40 @@ class SmartSubtitlesTaskInput(AbstractModel):
     def RawParameter(self, RawParameter):
         self._RawParameter = RawParameter
 
+    @property
+    def OutputStorage(self):
+        """媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。 
+**注意**：当InputInfo.Type为URL时，该参数是必填项。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputObjectPath(self):
+        """生成字幕文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+
+相对路径示例:
+- 文件名_{变量名}.{format}
+- 文件名.{format}
+
+绝对路径示例：
+- /自定义路径/文件名_{变量名}.{format}
+
+如果不填，则默认为相对路径: `{inputName}_smartsubtitle_{definition}.{format}`。
+        :rtype: str
+        """
+        return self._OutputObjectPath
+
+    @OutputObjectPath.setter
+    def OutputObjectPath(self, OutputObjectPath):
+        self._OutputObjectPath = OutputObjectPath
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -59160,6 +59705,10 @@ class SmartSubtitlesTaskInput(AbstractModel):
         if params.get("RawParameter") is not None:
             self._RawParameter = RawSmartSubtitleParameter()
             self._RawParameter._deserialize(params.get("RawParameter"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputObjectPath = params.get("OutputObjectPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59892,6 +60441,42 @@ class StreamUrlDetail(AbstractModel):
         self._Label = params.get("Label")
         self._Url = params.get("Url")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitlePosition(AbstractModel):
+    """字幕位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CenterY: 居中位置时Y的坐标值
+        :type CenterY: int
+        """
+        self._CenterY = None
+
+    @property
+    def CenterY(self):
+        """居中位置时Y的坐标值
+        :rtype: int
+        """
+        return self._CenterY
+
+    @CenterY.setter
+    def CenterY(self, CenterY):
+        self._CenterY = CenterY
+
+
+    def _deserialize(self, params):
+        self._CenterY = params.get("CenterY")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61700,6 +62285,95 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
         self._TextContent = params.get("TextContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeSpotCheck(AbstractModel):
+    """媒体质检的检测策略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckDuration: 抽检策略的每次循环检测的时长。取值范围（单位s）：
+
+- 最小值：10
+- 最大值：86400
+
+        :type CheckDuration: int
+        :param _CheckInterval: 抽检测略的检测间隔，表示在一次检测结束后，等待多长时间后，再次检测。
+        :type CheckInterval: int
+        :param _SkipDuration: 片头跳过时长。
+        :type SkipDuration: int
+        :param _CirclesNumber: 循环次数，该字段为空或 0 时，默认循环直至视频结束。
+        :type CirclesNumber: int
+        """
+        self._CheckDuration = None
+        self._CheckInterval = None
+        self._SkipDuration = None
+        self._CirclesNumber = None
+
+    @property
+    def CheckDuration(self):
+        """抽检策略的每次循环检测的时长。取值范围（单位s）：
+
+- 最小值：10
+- 最大值：86400
+
+        :rtype: int
+        """
+        return self._CheckDuration
+
+    @CheckDuration.setter
+    def CheckDuration(self, CheckDuration):
+        self._CheckDuration = CheckDuration
+
+    @property
+    def CheckInterval(self):
+        """抽检测略的检测间隔，表示在一次检测结束后，等待多长时间后，再次检测。
+        :rtype: int
+        """
+        return self._CheckInterval
+
+    @CheckInterval.setter
+    def CheckInterval(self, CheckInterval):
+        self._CheckInterval = CheckInterval
+
+    @property
+    def SkipDuration(self):
+        """片头跳过时长。
+        :rtype: int
+        """
+        return self._SkipDuration
+
+    @SkipDuration.setter
+    def SkipDuration(self, SkipDuration):
+        self._SkipDuration = SkipDuration
+
+    @property
+    def CirclesNumber(self):
+        """循环次数，该字段为空或 0 时，默认循环直至视频结束。
+        :rtype: int
+        """
+        return self._CirclesNumber
+
+    @CirclesNumber.setter
+    def CirclesNumber(self, CirclesNumber):
+        self._CirclesNumber = CirclesNumber
+
+
+    def _deserialize(self, params):
+        self._CheckDuration = params.get("CheckDuration")
+        self._CheckInterval = params.get("CheckInterval")
+        self._SkipDuration = params.get("SkipDuration")
+        self._CirclesNumber = params.get("CirclesNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -15021,8 +15021,6 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 <li>5：授权书+对公打款</li>
 </ul>
         :type AuthorizationTypes: list of int
-        :param _Operator: 暂未开放
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param _ProxyOperatorIdCardNumber: 子客经办人身份证
 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持中国大陆居民身份证类型`。
         :type ProxyOperatorIdCardNumber: str
@@ -15055,6 +15053,13 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :type PowerOfAttorneys: list of str
         :param _OrganizationAuthorizationOptions: 企业认证时个性化能力信息
         :type OrganizationAuthorizationOptions: :class:`tencentcloud.essbasic.v20210526.models.OrganizationAuthorizationOptions`
+        :param _BankAccountNumber: 组织机构对公打款 账号，账户名跟企业名称一致。
+
+p.s.
+只有认证方式是授权书+对公打款时才生效。
+        :type BankAccountNumber: str
+        :param _Operator: 无
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self._Agent = None
         self._ProxyOrganizationName = None
@@ -15067,7 +15072,6 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._Endpoint = None
         self._AutoJumpBackEvent = None
         self._AuthorizationTypes = None
-        self._Operator = None
         self._ProxyOperatorIdCardNumber = None
         self._AutoJumpUrl = None
         self._TopNavigationStatus = None
@@ -15077,6 +15081,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._ProxyLegalName = None
         self._PowerOfAttorneys = None
         self._OrganizationAuthorizationOptions = None
+        self._BankAccountNumber = None
+        self._Operator = None
 
     @property
     def Agent(self):
@@ -15249,21 +15255,6 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._AuthorizationTypes = AuthorizationTypes
 
     @property
-    def Operator(self):
-        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
-
-        """暂未开放
-        :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        """
-        return self._Operator
-
-    @Operator.setter
-    def Operator(self, Operator):
-        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
-
-        self._Operator = Operator
-
-    @property
     def ProxyOperatorIdCardNumber(self):
         """子客经办人身份证
 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持中国大陆居民身份证类型`。
@@ -15376,6 +15367,35 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
     def OrganizationAuthorizationOptions(self, OrganizationAuthorizationOptions):
         self._OrganizationAuthorizationOptions = OrganizationAuthorizationOptions
 
+    @property
+    def BankAccountNumber(self):
+        """组织机构对公打款 账号，账户名跟企业名称一致。
+
+p.s.
+只有认证方式是授权书+对公打款时才生效。
+        :rtype: str
+        """
+        return self._BankAccountNumber
+
+    @BankAccountNumber.setter
+    def BankAccountNumber(self, BankAccountNumber):
+        self._BankAccountNumber = BankAccountNumber
+
+    @property
+    def Operator(self):
+        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
+
+        """无
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
+
+        self._Operator = Operator
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -15391,9 +15411,6 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._Endpoint = params.get("Endpoint")
         self._AutoJumpBackEvent = params.get("AutoJumpBackEvent")
         self._AuthorizationTypes = params.get("AuthorizationTypes")
-        if params.get("Operator") is not None:
-            self._Operator = UserInfo()
-            self._Operator._deserialize(params.get("Operator"))
         self._ProxyOperatorIdCardNumber = params.get("ProxyOperatorIdCardNumber")
         self._AutoJumpUrl = params.get("AutoJumpUrl")
         self._TopNavigationStatus = params.get("TopNavigationStatus")
@@ -15405,6 +15422,10 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         if params.get("OrganizationAuthorizationOptions") is not None:
             self._OrganizationAuthorizationOptions = OrganizationAuthorizationOptions()
             self._OrganizationAuthorizationOptions._deserialize(params.get("OrganizationAuthorizationOptions"))
+        self._BankAccountNumber = params.get("BankAccountNumber")
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27126,7 +27147,7 @@ class OrganizationAuthUrl(AbstractModel):
 
 
 class OrganizationAuthorizationOptions(AbstractModel):
-    """企业认证可选项，其中包括 社会信用代码是否一致，企业名称是否一致，法人是否一致等信息。
+    """企业认证可选项，其中包括 社会信用代码是否一致，企业名称是否一致，法人是否一致， 对公打款账号是否一致等信息。
     代表生成链接的时候指定的这些信息不能被用户修改。
 
     p.s. 注意这些选项一旦传递，相关的信息也不会被上传的营业执照里面包含的信息所覆盖。
@@ -27141,10 +27162,13 @@ class OrganizationAuthorizationOptions(AbstractModel):
         :type OrganizationNameSame: bool
         :param _LegalNameSame: 对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
         :type LegalNameSame: bool
+        :param _BankAccountNumberSame: 对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效
+        :type BankAccountNumberSame: bool
         """
         self._UniformSocialCreditCodeSame = None
         self._OrganizationNameSame = None
         self._LegalNameSame = None
+        self._BankAccountNumberSame = None
 
     @property
     def UniformSocialCreditCodeSame(self):
@@ -27179,11 +27203,23 @@ class OrganizationAuthorizationOptions(AbstractModel):
     def LegalNameSame(self, LegalNameSame):
         self._LegalNameSame = LegalNameSame
 
+    @property
+    def BankAccountNumberSame(self):
+        """对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效
+        :rtype: bool
+        """
+        return self._BankAccountNumberSame
+
+    @BankAccountNumberSame.setter
+    def BankAccountNumberSame(self, BankAccountNumberSame):
+        self._BankAccountNumberSame = BankAccountNumberSame
+
 
     def _deserialize(self, params):
         self._UniformSocialCreditCodeSame = params.get("UniformSocialCreditCodeSame")
         self._OrganizationNameSame = params.get("OrganizationNameSame")
         self._LegalNameSame = params.get("LegalNameSame")
+        self._BankAccountNumberSame = params.get("BankAccountNumberSame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

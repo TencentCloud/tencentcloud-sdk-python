@@ -31500,7 +31500,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务。</li>
+        :param _TaskType: 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务。</li>
         :type TaskType: str
         :param _Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -31580,6 +31580,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _ComplexAdaptiveDynamicStreamingTask: 复杂自适应码流任务信息，仅当 TaskType 为 ComplexAdaptiveDynamicStreaming，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComplexAdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTask`
+        :param _ProcessMediaByMPSTask: MPS 视频处理任务信息，仅当 TaskType 为 ProcessMediaByMPS，该字段有值。
+        :type ProcessMediaByMPSTask: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -31610,11 +31612,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._QualityInspectTask = None
         self._QualityEnhanceTask = None
         self._ComplexAdaptiveDynamicStreamingTask = None
+        self._ProcessMediaByMPSTask = None
         self._RequestId = None
 
     @property
     def TaskType(self):
-        """任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务。</li>
+        """任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务。</li>
         :rtype: str
         """
         return self._TaskType
@@ -31936,6 +31939,17 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._ComplexAdaptiveDynamicStreamingTask = ComplexAdaptiveDynamicStreamingTask
 
     @property
+    def ProcessMediaByMPSTask(self):
+        """MPS 视频处理任务信息，仅当 TaskType 为 ProcessMediaByMPS，该字段有值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
+        """
+        return self._ProcessMediaByMPSTask
+
+    @ProcessMediaByMPSTask.setter
+    def ProcessMediaByMPSTask(self, ProcessMediaByMPSTask):
+        self._ProcessMediaByMPSTask = ProcessMediaByMPSTask
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -32019,6 +32033,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("ComplexAdaptiveDynamicStreamingTask") is not None:
             self._ComplexAdaptiveDynamicStreamingTask = ComplexAdaptiveDynamicStreamingTask()
             self._ComplexAdaptiveDynamicStreamingTask._deserialize(params.get("ComplexAdaptiveDynamicStreamingTask"))
+        if params.get("ProcessMediaByMPSTask") is not None:
+            self._ProcessMediaByMPSTask = ProcessMediaByMPS()
+            self._ProcessMediaByMPSTask._deserialize(params.get("ProcessMediaByMPSTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -40796,6 +40813,258 @@ class LowLightEnhanceInfo(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSOutputFile(AbstractModel):
+    """用于描述 MPS 视频处理任务中的返回文件结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: 文件类型。用于标识 MPS 视频处理任务执行结果中的特定返回文件。
+取值：<li>AiAnalysis.DeLogo.Video: 智能擦除任务中产生的擦除后视频文件；</li><li>AiAnalysis.DeLogo.OriginSubtitle: 智能擦除任务中基于画面提取的字幕文件；</li><li>AiAnalysis.DeLogo.TranslateSubtitle: 智能擦除任务中基于画面提取的字幕翻译文件。</li>
+        :type FileType: str
+        :param _StorageMode: 存储形式。用于表示该结果文件的存储形式，取值有：<li> Permanent：永久存储；</li><li> Temporary：临时存储。</li>
+        :type StorageMode: str
+        :param _FileId: 媒体文件 ID。当 Type 为 Permanent 时有效，表示该结果文件以视频媒资形式存储在点播平台中，字段值为视频媒资的 FileId。
+        :type FileId: str
+        :param _Url: 结果文件的可下载 Url。
+        :type Url: str
+        :param _ExpiredTime: 过期时间。当 StorageMode 为 Temporary 时有效，表示 Url 的过期时间，单位为秒。
+        :type ExpiredTime: int
+        """
+        self._FileType = None
+        self._StorageMode = None
+        self._FileId = None
+        self._Url = None
+        self._ExpiredTime = None
+
+    @property
+    def FileType(self):
+        """文件类型。用于标识 MPS 视频处理任务执行结果中的特定返回文件。
+取值：<li>AiAnalysis.DeLogo.Video: 智能擦除任务中产生的擦除后视频文件；</li><li>AiAnalysis.DeLogo.OriginSubtitle: 智能擦除任务中基于画面提取的字幕文件；</li><li>AiAnalysis.DeLogo.TranslateSubtitle: 智能擦除任务中基于画面提取的字幕翻译文件。</li>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def StorageMode(self):
+        """存储形式。用于表示该结果文件的存储形式，取值有：<li> Permanent：永久存储；</li><li> Temporary：临时存储。</li>
+        :rtype: str
+        """
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def FileId(self):
+        """媒体文件 ID。当 Type 为 Permanent 时有效，表示该结果文件以视频媒资形式存储在点播平台中，字段值为视频媒资的 FileId。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        """结果文件的可下载 Url。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExpiredTime(self):
+        """过期时间。当 StorageMode 为 Temporary 时有效，表示 Url 的过期时间，单位为秒。
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._StorageMode = params.get("StorageMode")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        self._ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSSubTaskResult(AbstractModel):
+    """MPS 具体子任务查询结果类型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: 任务类型。MPS 的 WorkflowTask 结构中的具体子任务类型。取值：<li>AiAnalysis.DeLogo：智能擦除任务。</li>
+        :type TaskType: str
+        :param _Status: 任务状态。有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCode: 错误码。返回0时成功，其他值为失败。
+        :type ErrCode: str
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: MPS 视频处理任务输入。该字段对应 MPS 任务返回中的 Input 结果，以 JSON 格式返回。
+        :type Input: str
+        :param _Output: MPS 视频处理任务输出。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.MPSTaskOutput`
+        """
+        self._TaskType = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def TaskType(self):
+        """任务类型。MPS 的 WorkflowTask 结构中的具体子任务类型。取值：<li>AiAnalysis.DeLogo：智能擦除任务。</li>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Status(self):
+        """任务状态。有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        """错误码。返回0时成功，其他值为失败。
+        :rtype: str
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """MPS 视频处理任务输入。该字段对应 MPS 任务返回中的 Input 结果，以 JSON 格式返回。
+        :rtype: str
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """MPS 视频处理任务输出。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSTaskOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._Input = params.get("Input")
+        if params.get("Output") is not None:
+            self._Output = MPSTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSTaskOutput(AbstractModel):
+    """MPS 子任务输出返回结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputFiles: 任务返回结果中的文件类型结果。如智能擦除中，擦除后的视频文件将被存入媒资，并在此字段中给出 FileId；基于画面提取的字幕文件 Url 将在此字段中给出。
+        :type OutputFiles: list of MPSOutputFile
+        """
+        self._OutputFiles = None
+
+    @property
+    def OutputFiles(self):
+        """任务返回结果中的文件类型结果。如智能擦除中，擦除后的视频文件将被存入媒资，并在此字段中给出 FileId；基于画面提取的字幕文件 Url 将在此字段中给出。
+        :rtype: list of MPSOutputFile
+        """
+        return self._OutputFiles
+
+    @OutputFiles.setter
+    def OutputFiles(self, OutputFiles):
+        self._OutputFiles = OutputFiles
+
+
+    def _deserialize(self, params):
+        if params.get("OutputFiles") is not None:
+            self._OutputFiles = []
+            for item in params.get("OutputFiles"):
+                obj = MPSOutputFile()
+                obj._deserialize(item)
+                self._OutputFiles.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56037,6 +56306,107 @@ class ProcessImageResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ContentReviewResultSet.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class ProcessMediaByMPS(AbstractModel):
+    """MPS 媒体处理任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _Status: 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        :type ErrCode: int
+        :param _Message: 错误信息。源异常时返回对应异常 Message，否则请使用各个具体任务的 Message。
+        :type Message: str
+        :param _SubTaskSet: MPS 视频处理任务。
+        :type SubTaskSet: list of MPSSubTaskResult
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._SubTaskSet = None
+
+    @property
+    def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        """任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        """错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """错误信息。源异常时返回对应异常 Message，否则请使用各个具体任务的 Message。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def SubTaskSet(self):
+        """MPS 视频处理任务。
+        :rtype: list of MPSSubTaskResult
+        """
+        return self._SubTaskSet
+
+    @SubTaskSet.setter
+    def SubTaskSet(self, SubTaskSet):
+        self._SubTaskSet = SubTaskSet
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("SubTaskSet") is not None:
+            self._SubTaskSet = []
+            for item in params.get("SubTaskSet"):
+                obj = MPSSubTaskResult()
+                obj._deserialize(item)
+                self._SubTaskSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProcessMediaByProcedureRequest(AbstractModel):

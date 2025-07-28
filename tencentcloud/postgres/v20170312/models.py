@@ -1838,7 +1838,7 @@ class CreateBackupPlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         :param _PlanName: 备份计划名称。
         :type PlanName: str
@@ -1850,7 +1850,8 @@ class CreateBackupPlanRequest(AbstractModel):
         :type MinBackupStartTime: str
         :param _MaxBackupStartTime: 备份结束时间，不传跟随默认计划。
         :type MaxBackupStartTime: str
-        :param _BaseBackupRetentionPeriod: 数据备份保留时长，week默认是7,month为30。
+        :param _BaseBackupRetentionPeriod: 数据备份保留时长，单位：天。取值范围为：[0,30000)
+BackupPeriodType为week时默认是7,为month时默认为31。
         :type BaseBackupRetentionPeriod: int
         """
         self._DBInstanceId = None
@@ -1863,7 +1864,7 @@ class CreateBackupPlanRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -1929,7 +1930,8 @@ class CreateBackupPlanRequest(AbstractModel):
 
     @property
     def BaseBackupRetentionPeriod(self):
-        """数据备份保留时长，week默认是7,month为30。
+        """数据备份保留时长，单位：天。取值范围为：[0,30000)
+BackupPeriodType为week时默认是7,为month时默认为31。
         :rtype: int
         """
         return self._BaseBackupRetentionPeriod
@@ -2007,14 +2009,14 @@ class CreateBaseBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -3045,7 +3047,7 @@ class CreateParameterTemplateRequest(AbstractModel):
         r"""
         :param _TemplateName: 模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
         :type TemplateName: str
-        :param _DBMajorVersion: 数据库大版本号，例如：11，12，13
+        :param _DBMajorVersion: 数据库大版本号，例如：11，12，13。可通过[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)接口获取
         :type DBMajorVersion: str
         :param _DBEngine: 数据库引擎，例如：postgresql，mssql_compatible
         :type DBEngine: str
@@ -3070,7 +3072,7 @@ class CreateParameterTemplateRequest(AbstractModel):
 
     @property
     def DBMajorVersion(self):
-        """数据库大版本号，例如：11，12，13
+        """数据库大版本号，例如：11，12，13。可通过[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)接口获取
         :rtype: str
         """
         return self._DBMajorVersion
@@ -5843,9 +5845,9 @@ class DeleteBackupPlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。	
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
-        :param _PlanId: 备份计划的ID。
+        :param _PlanId: 备份计划的ID。可通过[DescribeBackupPlans](https://cloud.tencent.com/document/api/409/68069)接口获取
         :type PlanId: str
         """
         self._DBInstanceId = None
@@ -5853,7 +5855,7 @@ class DeleteBackupPlanRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。	
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -5864,7 +5866,7 @@ class DeleteBackupPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        """备份计划的ID。
+        """备份计划的ID。可通过[DescribeBackupPlans](https://cloud.tencent.com/document/api/409/68069)接口获取
         :rtype: str
         """
         return self._PlanId
@@ -5922,9 +5924,9 @@ class DeleteBaseBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
-        :param _BaseBackupId: 数据备份ID。
+        :param _BaseBackupId: 数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。7天内自动备份集不允许删除。
         :type BaseBackupId: str
         """
         self._DBInstanceId = None
@@ -5932,7 +5934,7 @@ class DeleteBaseBackupRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -5943,7 +5945,7 @@ class DeleteBaseBackupRequest(AbstractModel):
 
     @property
     def BaseBackupId(self):
-        """数据备份ID。
+        """数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。7天内自动备份集不允许删除。
         :rtype: str
         """
         return self._BaseBackupId
@@ -6125,9 +6127,9 @@ class DeleteLogBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
-        :param _LogBackupId: 日志备份ID。
+        :param _LogBackupId: 日志备份ID。可通过[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)接口获取。注：7天内自动备份集不允许删除。
         :type LogBackupId: str
         """
         self._DBInstanceId = None
@@ -6135,7 +6137,7 @@ class DeleteLogBackupRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -6146,7 +6148,7 @@ class DeleteLogBackupRequest(AbstractModel):
 
     @property
     def LogBackupId(self):
-        """日志备份ID。
+        """日志备份ID。可通过[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)接口获取。注：7天内自动备份集不允许删除。
         :rtype: str
         """
         return self._LogBackupId
@@ -6952,13 +6954,13 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         :param _BackupType: 备份类型，目前支持：LogBackup，BaseBackup。
         :type BackupType: str
         :param _BackupId: 备份的唯一ID。
         :type BackupId: str
-        :param _URLExpireTime: 链接的有效时间，默认为12小时。
+        :param _URLExpireTime: 链接的有效时间，取值为[0,36]，默认为12小时。
         :type URLExpireTime: int
         :param _BackupDownloadRestriction: 备份下载限制
         :type BackupDownloadRestriction: :class:`tencentcloud.postgres.v20170312.models.BackupDownloadRestriction`
@@ -6971,7 +6973,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -7004,7 +7006,7 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
 
     @property
     def URLExpireTime(self):
-        """链接的有效时间，默认为12小时。
+        """链接的有效时间，取值为[0,36]，默认为12小时。
         :rtype: int
         """
         return self._URLExpireTime
@@ -7262,14 +7264,14 @@ class DescribeBackupPlansRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        """实例ID
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -7522,18 +7524,18 @@ class DescribeBaseBackupsRequest(AbstractModel):
         :type MaxFinishTime: str
         :param _Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string。
-db-instance-name：按照实例名过滤，类型为string。
+db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 base-backup-id：按照备份集ID过滤，类型为string。
-db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
+db-instance-status：按实例状态过滤，类型为string。取值参考[DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)结构的DBInstanceStatus字段。
         :type Filters: list of Filter
         :param _Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
         :type Limit: int
         :param _Offset: 数据偏移量，从0开始。
         :type Offset: int
-        :param _OrderBy: 排序字段，支持StartTime,FinishTime,Size。
+        :param _OrderBy: 排序字段，支持StartTime,FinishTime,Size。默认值：StartTime。
         :type OrderBy: str
-        :param _OrderByType: 排序方式，包括升序：asc，降序：desc。
+        :param _OrderByType: 排序方式，包括升序：asc，降序：desc。默认值：desc。
         :type OrderByType: str
         """
         self._MinFinishTime = None
@@ -7570,10 +7572,10 @@ db-instance-status：按实例状态过滤，类型为string。取值参考DBIns
     def Filters(self):
         """按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string。
-db-instance-name：按照实例名过滤，类型为string。
+db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 base-backup-id：按照备份集ID过滤，类型为string。
-db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
+db-instance-status：按实例状态过滤，类型为string。取值参考[DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)结构的DBInstanceStatus字段。
         :rtype: list of Filter
         """
         return self._Filters
@@ -7606,7 +7608,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考DBIns
 
     @property
     def OrderBy(self):
-        """排序字段，支持StartTime,FinishTime,Size。
+        """排序字段，支持StartTime,FinishTime,Size。默认值：StartTime。
         :rtype: str
         """
         return self._OrderBy
@@ -7617,7 +7619,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考DBIns
 
     @property
     def OrderByType(self):
-        """排序方式，包括升序：asc，降序：desc。
+        """排序方式，包括升序：asc，降序：desc。默认值：desc。
         :rtype: str
         """
         return self._OrderByType
@@ -7838,9 +7840,9 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
-        :param _BackupSetId: 基础备份集ID，此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+        :param _BackupSetId: 基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
         :type BackupSetId: str
         :param _RecoveryTargetTime: 恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
         :type RecoveryTargetTime: str
@@ -7851,7 +7853,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -7862,7 +7864,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def BackupSetId(self):
-        """基础备份集ID，此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+        """基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
         :rtype: str
         """
         return self._BackupSetId
@@ -10136,17 +10138,17 @@ class DescribeLogBackupsRequest(AbstractModel):
         :type MaxFinishTime: str
         :param _Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string。
-db-instance-name：按照实例名过滤，类型为string。
+db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
-db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
+db-instance-status：按实例状态过滤，类型为string。取值参考[DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)结构的DBInstanceStatus字段。
         :type Filters: list of Filter
         :param _Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
         :type Limit: int
         :param _Offset: 数据偏移量，从0开始。
         :type Offset: int
-        :param _OrderBy: 排序字段，支持StartTime,FinishTime,Size。
+        :param _OrderBy: 排序字段，支持StartTime,FinishTime,Size。默认值：StartTime
         :type OrderBy: str
-        :param _OrderByType: 排序方式，包括升序：asc，降序：desc。
+        :param _OrderByType: 排序方式，包括升序：asc，降序：desc。默认值：desc。
         :type OrderByType: str
         """
         self._MinFinishTime = None
@@ -10183,9 +10185,9 @@ db-instance-status：按实例状态过滤，类型为string。取值参考DBIns
     def Filters(self):
         """按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string。
-db-instance-name：按照实例名过滤，类型为string。
+db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
-db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
+db-instance-status：按实例状态过滤，类型为string。取值参考[DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)结构的DBInstanceStatus字段。
         :rtype: list of Filter
         """
         return self._Filters
@@ -10218,7 +10220,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考DBIns
 
     @property
     def OrderBy(self):
-        """排序字段，支持StartTime,FinishTime,Size。
+        """排序字段，支持StartTime,FinishTime,Size。默认值：StartTime
         :rtype: str
         """
         return self._OrderBy
@@ -10229,7 +10231,7 @@ db-instance-status：按实例状态过滤，类型为string。取值参考DBIns
 
     @property
     def OrderByType(self):
-        """排序方式，包括升序：asc，降序：desc。
+        """排序方式，包括升序：asc，降序：desc。默认值：desc。
         :rtype: str
         """
         return self._OrderByType
@@ -10555,14 +10557,14 @@ class DescribeParameterTemplateAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 参数模板ID
+        :param _TemplateId: 参数模板ID。可通过[DescribeParameterTemplates](https://tapd.woa.com/tapd_fe/20400322/story/detail/1020400322125673714)接口获取
         :type TemplateId: str
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        """参数模板ID
+        """参数模板ID。可通过[DescribeParameterTemplates](https://tapd.woa.com/tapd_fe/20400322/story/detail/1020400322125673714)接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -10731,15 +10733,15 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine
+        :param _Filters: 过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine。TemplateName不支持模糊匹配。
         :type Filters: list of Filter
         :param _Limit: 每页显示数量，[0，100]，默认 20
         :type Limit: int
         :param _Offset: 数据偏移量
         :type Offset: int
-        :param _OrderBy: 排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion
+        :param _OrderBy: 排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion。如果不指定该参数，默认将按照参数模板的编号倒序排列，也就是说最新添加的参数模板会排在最前面。
         :type OrderBy: str
-        :param _OrderByType: 排序方式，枚举值，支持：asc（升序） ，desc（降序）
+        :param _OrderByType: 排序方式，枚举值，支持：asc（升序） ，desc（降序）。默认值为asc。当未指定OrderBy时，该参数失效，此时排序方式为OrderBy参数描述中给出的默认排序方式。
         :type OrderByType: str
         """
         self._Filters = None
@@ -10750,7 +10752,7 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine
+        """过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine。TemplateName不支持模糊匹配。
         :rtype: list of Filter
         """
         return self._Filters
@@ -10783,7 +10785,7 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion
+        """排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion。如果不指定该参数，默认将按照参数模板的编号倒序排列，也就是说最新添加的参数模板会排在最前面。
         :rtype: str
         """
         return self._OrderBy
@@ -10794,7 +10796,7 @@ class DescribeParameterTemplatesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """排序方式，枚举值，支持：asc（升序） ，desc（降序）
+        """排序方式，枚举值，支持：asc（升序） ，desc（降序）。默认值为asc。当未指定OrderBy时，该参数失效，此时排序方式为OrderBy参数描述中给出的默认排序方式。
         :rtype: str
         """
         return self._OrderByType
@@ -14017,7 +14019,7 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RestrictionType: 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+        :param _RestrictionType: 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。当该参数取值为CUSTOMIZE时，Vpc限制和Ip限制需要至少填写一项。
         :type RestrictionType: str
         :param _VpcRestrictionEffect: vpc限制效力，ALLOW 允许；DENY 拒绝。
         :type VpcRestrictionEffect: str
@@ -14038,7 +14040,7 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
     @property
     def RestrictionType(self):
-        """备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+        """备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。当该参数取值为CUSTOMIZE时，Vpc限制和Ip限制需要至少填写一项。
         :rtype: str
         """
         return self._RestrictionType
@@ -14145,7 +14147,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         :param _MinBackupStartTime: 实例最早开始备份时间
         :type MinBackupStartTime: str
@@ -14153,7 +14155,7 @@ class ModifyBackupPlanRequest(AbstractModel):
         :type MaxBackupStartTime: str
         :param _BaseBackupRetentionPeriod: 实例备份保留时长，取值范围为7-1830，单位是天
         :type BaseBackupRetentionPeriod: int
-        :param _BackupPeriod: 实例备份周期，若是星期维度，格式为小写星期英文单词；若是按月维度，格式为数字字符，如["1","2"]。
+        :param _BackupPeriod: 实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
         :type BackupPeriod: list of str
         :param _LogBackupRetentionPeriod: 实例日志备份保留时长，取值范围为7-1830，单位是天
         :type LogBackupRetentionPeriod: int
@@ -14173,7 +14175,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -14217,7 +14219,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def BackupPeriod(self):
-        """实例备份周期，若是星期维度，格式为小写星期英文单词；若是按月维度，格式为数字字符，如["1","2"]。
+        """实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
         :rtype: list of str
         """
         return self._BackupPeriod
@@ -14314,9 +14316,9 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
-        :param _BaseBackupId: 数据备份ID。
+        :param _BaseBackupId: 数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
         :type BaseBackupId: str
         :param _NewExpireTime: 新过期时间。
         :type NewExpireTime: str
@@ -14327,7 +14329,7 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -14338,7 +14340,7 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
 
     @property
     def BaseBackupId(self):
-        """数据备份ID。
+        """数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
         :rtype: str
         """
         return self._BaseBackupId
@@ -15599,7 +15601,7 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
         r"""
         :param _DBInstanceIdSet: 实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时操作多个实例。
         :type DBInstanceIdSet: list of str
-        :param _ProjectId: 所属新项目的ID。可通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725)获取
+        :param _ProjectId: 所属新项目的ID。可通过[DescribeProjects](https://cloud.tencent.com/document/api/651/78725)获取
         :type ProjectId: str
         """
         self._DBInstanceIdSet = None
@@ -15618,7 +15620,7 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """所属新项目的ID。可通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725)获取
+        """所属新项目的ID。可通过[DescribeProjects](https://cloud.tencent.com/document/api/651/78725)获取
         :rtype: str
         """
         return self._ProjectId
@@ -15894,7 +15896,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 参数模板ID，用于唯一确认参数模板，不可修改
+        :param _TemplateId: 参数模板ID，用于唯一确认参数模板，不可修改。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
         :type TemplateId: str
         :param _TemplateName: 参数模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若该字段为空    ，则保持原参数模板名称
         :type TemplateName: str
@@ -15913,7 +15915,7 @@ class ModifyParameterTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """参数模板ID，用于唯一确认参数模板，不可修改
+        """参数模板ID，用于唯一确认参数模板，不可修改。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -16091,9 +16093,9 @@ class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
-        :param _ReadOnlyGroupId: 只读组ID
+        :param _ReadOnlyGroupId: 只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :type ReadOnlyGroupId: str
         :param _Weight: 只读实例在只读组中的流量权重(1-50)
         :type Weight: int
@@ -16104,7 +16106,7 @@ class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -16115,7 +16117,7 @@ class ModifyReadOnlyDBInstanceWeightRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID
+        """只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -18288,14 +18290,14 @@ class RebalanceReadOnlyGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReadOnlyGroupId: 只读组ID
+        :param _ReadOnlyGroupId: 只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :type ReadOnlyGroupId: str
         """
         self._ReadOnlyGroupId = None
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID
+        """只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -18863,11 +18865,11 @@ class RestoreDBInstanceObjectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         :param _RestoreObjects: 需要恢复的对象列表。假设需要恢复的对象名为user，则恢复后的名称为user_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
         :type RestoreObjects: list of str
-        :param _BackupSetId: 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。
+        :param _BackupSetId: 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
         :type BackupSetId: str
         :param _RestoreTargetTime: 恢复目标时间，北京时间。BackupSetId与RestoreTargetTime有且只能传一个。
         :type RestoreTargetTime: str
@@ -18879,7 +18881,7 @@ class RestoreDBInstanceObjectsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -18901,7 +18903,7 @@ class RestoreDBInstanceObjectsRequest(AbstractModel):
 
     @property
     def BackupSetId(self):
-        """恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。
+        """恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
         :rtype: str
         """
         return self._BackupSetId

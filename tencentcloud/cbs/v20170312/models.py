@@ -2224,12 +2224,15 @@ class CreateSnapshotRequest(AbstractModel):
         :type DiskBackupId: str
         :param _Tags: 快照绑定的标签。
         :type Tags: list of Tag
+        :param _DiskUsage: 快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。
+        :type DiskUsage: str
         """
         self._DiskId = None
         self._SnapshotName = None
         self._Deadline = None
         self._DiskBackupId = None
         self._Tags = None
+        self._DiskUsage = None
 
     @property
     def DiskId(self):
@@ -2286,6 +2289,17 @@ class CreateSnapshotRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def DiskUsage(self):
+        """快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。
+        :rtype: str
+        """
+        return self._DiskUsage
+
+    @DiskUsage.setter
+    def DiskUsage(self, DiskUsage):
+        self._DiskUsage = DiskUsage
+
 
     def _deserialize(self, params):
         self._DiskId = params.get("DiskId")
@@ -2298,6 +2312,7 @@ class CreateSnapshotRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._DiskUsage = params.get("DiskUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

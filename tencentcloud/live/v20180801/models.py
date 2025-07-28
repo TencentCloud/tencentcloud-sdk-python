@@ -23216,7 +23216,6 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 “FluxPerSecond”：平均流量
 “Flux”：流量
 “Request”：请求数
-“Online”：并发连接数
         :type StatType: str
         :param _PlayDomains: 播放域名列表。
         :type PlayDomains: list of str
@@ -23289,7 +23288,6 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 “FluxPerSecond”：平均流量
 “Flux”：流量
 “Request”：请求数
-“Online”：并发连接数
         :rtype: str
         """
         return self._StatType

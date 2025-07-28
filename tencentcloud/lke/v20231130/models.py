@@ -11824,6 +11824,10 @@ class DescribeTokenUsageResponse(AbstractModel):
         :type RagSearchUsage: float
         :param _InternetSearchUsage: 联网搜索次数
         :type InternetSearchUsage: float
+        :param _DosageTypeLimit: dosage配额限制
+        :type DosageTypeLimit: float
+        :param _DosageTypeCurr: dosage当前用量	
+        :type DosageTypeCurr: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11836,6 +11840,8 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._SplitTokenUsage = None
         self._RagSearchUsage = None
         self._InternetSearchUsage = None
+        self._DosageTypeLimit = None
+        self._DosageTypeCurr = None
         self._RequestId = None
 
     @property
@@ -11938,6 +11944,28 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._InternetSearchUsage = InternetSearchUsage
 
     @property
+    def DosageTypeLimit(self):
+        """dosage配额限制
+        :rtype: float
+        """
+        return self._DosageTypeLimit
+
+    @DosageTypeLimit.setter
+    def DosageTypeLimit(self, DosageTypeLimit):
+        self._DosageTypeLimit = DosageTypeLimit
+
+    @property
+    def DosageTypeCurr(self):
+        """dosage当前用量	
+        :rtype: float
+        """
+        return self._DosageTypeCurr
+
+    @DosageTypeCurr.setter
+    def DosageTypeCurr(self, DosageTypeCurr):
+        self._DosageTypeCurr = DosageTypeCurr
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -11959,6 +11987,8 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._SplitTokenUsage = params.get("SplitTokenUsage")
         self._RagSearchUsage = params.get("RagSearchUsage")
         self._InternetSearchUsage = params.get("InternetSearchUsage")
+        self._DosageTypeLimit = params.get("DosageTypeLimit")
+        self._DosageTypeCurr = params.get("DosageTypeCurr")
         self._RequestId = params.get("RequestId")
 
 
