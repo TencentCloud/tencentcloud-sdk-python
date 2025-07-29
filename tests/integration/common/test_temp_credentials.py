@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 import json
 import os
-import requests
-import tempfile
 
 import pytest
 
 from contextlib import contextmanager
-from urllib.parse import urlparse
-
 from tencentcloud.common import credential
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
@@ -89,24 +85,33 @@ def test_temp_credential_invalid():
             assert err.code == 'AuthFailure.TokenFailure'
 
 
+# patch requests.Session.request to get underlying request we send
 @contextmanager
 def mock_requests():
+    import requests
     real_request = requests.Session.request
+
     req_args = {}
 
     def interceptor(self, method, url, **kwargs):
+        req_args["self"] = self
         req_args["method"] = method
         req_args["url"] = url
+        req_args.update(kwargs)
         return real_request(self, method, url, **kwargs)
 
     requests.Session.request = interceptor
 
     yield req_args
-    
+
     requests.Session.request = real_request
 
 
 def parse_host(url):
+    try:
+        from urlparse import urlparse  # Python 2
+    except ImportError:
+        from urllib.parse import urlparse  # Python 3
     return urlparse(url).hostname
 
 
@@ -193,6 +198,8 @@ def test_oidc_credential_with_set_endpoint():
 
 
 def test_tke_oidc_credential_with_default_endpoint():
+    import tempfile
+
     expected_host = "sts.tencentcloudapi.com"
 
     os.environ["TKE_REGION"] = "test_tke"
@@ -213,6 +220,8 @@ def test_tke_oidc_credential_with_default_endpoint():
 
 
 def test_tke_oidc_credential_with_set_endpoint():
+    import tempfile
+
     expected_host = "sts.internal.tencentcloudapi.com"
 
     os.environ["TKE_REGION"] = "test_tke"
