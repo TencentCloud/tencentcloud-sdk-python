@@ -9495,8 +9495,7 @@ class CreateLiveTimeShiftTemplateRequest(AbstractModel):
 长度上限：255字节。
 仅支持中文、英文、数字、_、-。
         :type TemplateName: str
-        :param _Duration: 时移时长。
-单位：s。
+        :param _Duration: 时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。
         :type Duration: int
         :param _Description: 描述信息。
 仅支持中文、英文、数字、_、-。
@@ -9542,8 +9541,7 @@ Overseas：海外及港澳台地区。
 
     @property
     def Duration(self):
-        """时移时长。
-单位：s。
+        """时移时长。单位：s。取值范围：86400 259200 604800 1296000 2592000。
         :rtype: int
         """
         return self._Duration

@@ -314,6 +314,8 @@ class AssociationItem(AbstractModel):
         :type ListenerName: str
         :param _Weight: 关联目标组的权重， 该参数只有v2新版目标组生效。
         :type Weight: int
+        :param _RuleId: 高级路由规则ID
+        :type RuleId: str
         """
         self._LoadBalancerId = None
         self._ListenerId = None
@@ -325,6 +327,7 @@ class AssociationItem(AbstractModel):
         self._LoadBalancerName = None
         self._ListenerName = None
         self._Weight = None
+        self._RuleId = None
 
     @property
     def LoadBalancerId(self):
@@ -439,6 +442,17 @@ class AssociationItem(AbstractModel):
     def Weight(self, Weight):
         self._Weight = Weight
 
+    @property
+    def RuleId(self):
+        """高级路由规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -451,6 +465,7 @@ class AssociationItem(AbstractModel):
         self._LoadBalancerName = params.get("LoadBalancerName")
         self._ListenerName = params.get("ListenerName")
         self._Weight = params.get("Weight")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4471,6 +4486,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type LBChargeType: str
         :param _AccessLogTopicId: 七层访问日志主题ID
         :type AccessLogTopicId: str
+        :param _AdvancedRoute: 是否开启七层高级路由
+        :type AdvancedRoute: bool
         """
         self._LoadBalancerType = None
         self._Forward = None
@@ -4502,6 +4519,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._LBChargePrepaid = None
         self._LBChargeType = None
         self._AccessLogTopicId = None
+        self._AdvancedRoute = None
 
     @property
     def LoadBalancerType(self):
@@ -4839,6 +4857,17 @@ OPEN：公网属性， INTERNAL：内网属性。
     def AccessLogTopicId(self, AccessLogTopicId):
         self._AccessLogTopicId = AccessLogTopicId
 
+    @property
+    def AdvancedRoute(self):
+        """是否开启七层高级路由
+        :rtype: bool
+        """
+        return self._AdvancedRoute
+
+    @AdvancedRoute.setter
+    def AdvancedRoute(self, AdvancedRoute):
+        self._AdvancedRoute = AdvancedRoute
+
 
     def _deserialize(self, params):
         self._LoadBalancerType = params.get("LoadBalancerType")
@@ -4887,6 +4916,7 @@ OPEN：公网属性， INTERNAL：内网属性。
             self._LBChargePrepaid._deserialize(params.get("LBChargePrepaid"))
         self._LBChargeType = params.get("LBChargeType")
         self._AccessLogTopicId = params.get("AccessLogTopicId")
+        self._AdvancedRoute = params.get("AdvancedRoute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19710,12 +19740,15 @@ class RuleHealth(AbstractModel):
         :param _Url: 转发规则的Url
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
+        :param _RuleId: 高级路由规则ID
+        :type RuleId: str
         :param _Targets: 本规则上绑定的后端服务的健康检查状态
         :type Targets: list of TargetHealth
         """
         self._LocationId = None
         self._Domain = None
         self._Url = None
+        self._RuleId = None
         self._Targets = None
 
     @property
@@ -19754,6 +19787,17 @@ class RuleHealth(AbstractModel):
         self._Url = Url
 
     @property
+    def RuleId(self):
+        """高级路由规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
     def Targets(self):
         """本规则上绑定的后端服务的健康检查状态
         :rtype: list of TargetHealth
@@ -19769,6 +19813,7 @@ class RuleHealth(AbstractModel):
         self._LocationId = params.get("LocationId")
         self._Domain = params.get("Domain")
         self._Url = params.get("Url")
+        self._RuleId = params.get("RuleId")
         if params.get("Targets") is not None:
             self._Targets = []
             for item in params.get("Targets"):

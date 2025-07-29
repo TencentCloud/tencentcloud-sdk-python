@@ -56409,6 +56409,125 @@ class ProcessMediaByMPS(AbstractModel):
         
 
 
+class ProcessMediaByMPSRequest(AbstractModel):
+    """ProcessMediaByMPS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :type FileId: str
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _MPSProcessMediaParams: 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
+视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
+填写说明：
+1. 目前仅需要配置 MPS “发起媒体处理”接口中的 AiAnalysisTask 参数，其他参数无需填写，若包含其它参数，系统将自动忽略；
+2. 当前仅支持通过此方式发起智能擦除任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数。
+
+        :type MPSProcessMediaParams: str
+        """
+        self._FileId = None
+        self._SubAppId = None
+        self._MPSProcessMediaParams = None
+
+    @property
+    def FileId(self):
+        """媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def MPSProcessMediaParams(self):
+        """该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
+视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
+填写说明：
+1. 目前仅需要配置 MPS “发起媒体处理”接口中的 AiAnalysisTask 参数，其他参数无需填写，若包含其它参数，系统将自动忽略；
+2. 当前仅支持通过此方式发起智能擦除任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数。
+
+        :rtype: str
+        """
+        return self._MPSProcessMediaParams
+
+    @MPSProcessMediaParams.setter
+    def MPSProcessMediaParams(self, MPSProcessMediaParams):
+        self._MPSProcessMediaParams = MPSProcessMediaParams
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._SubAppId = params.get("SubAppId")
+        self._MPSProcessMediaParams = params.get("MPSProcessMediaParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessMediaByMPSResponse(AbstractModel):
+    """ProcessMediaByMPS返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ProcessMediaByProcedureRequest(AbstractModel):
     """ProcessMediaByProcedure请求参数结构体
 

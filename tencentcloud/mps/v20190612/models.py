@@ -17340,6 +17340,8 @@ class CreateInput(AbstractModel):
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRISTSettings`
         :param _InputRegion: 输入节点的地区
         :type InputRegion: str
+        :param _FailOverOption: 冷热备相关
+        :type FailOverOption: :class:`tencentcloud.mps.v20190612.models.FailOverOption`
         """
         self._InputName = None
         self._Protocol = None
@@ -17356,6 +17358,7 @@ class CreateInput(AbstractModel):
         self._Zones = None
         self._RISTSettings = None
         self._InputRegion = None
+        self._FailOverOption = None
 
     @property
     def InputName(self):
@@ -17522,6 +17525,17 @@ class CreateInput(AbstractModel):
     def InputRegion(self, InputRegion):
         self._InputRegion = InputRegion
 
+    @property
+    def FailOverOption(self):
+        """冷热备相关
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FailOverOption`
+        """
+        return self._FailOverOption
+
+    @FailOverOption.setter
+    def FailOverOption(self, FailOverOption):
+        self._FailOverOption = FailOverOption
+
 
     def _deserialize(self, params):
         self._InputName = params.get("InputName")
@@ -17553,6 +17567,9 @@ class CreateInput(AbstractModel):
             self._RISTSettings = CreateInputRISTSettings()
             self._RISTSettings._deserialize(params.get("RISTSettings"))
         self._InputRegion = params.get("InputRegion")
+        if params.get("FailOverOption") is not None:
+            self._FailOverOption = FailOverOption()
+            self._FailOverOption._deserialize(params.get("FailOverOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19272,11 +19289,14 @@ class CreateQualityControlTemplateRequest(AbstractModel):
         :param _RecordFormat: 录制文件格式。可选值：
 <li>PNG: PNG图片</li>
         :type RecordFormat: str
+        :param _Strategy: 媒体质检抽检策略。
+        :type Strategy: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
         """
         self._Name = None
         self._QualityControlItemSet = None
         self._Comment = None
         self._RecordFormat = None
+        self._Strategy = None
 
     @property
     def Name(self):
@@ -19323,6 +19343,17 @@ class CreateQualityControlTemplateRequest(AbstractModel):
     def RecordFormat(self, RecordFormat):
         self._RecordFormat = RecordFormat
 
+    @property
+    def Strategy(self):
+        """媒体质检抽检策略。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -19334,6 +19365,9 @@ class CreateQualityControlTemplateRequest(AbstractModel):
                 self._QualityControlItemSet.append(obj)
         self._Comment = params.get("Comment")
         self._RecordFormat = params.get("RecordFormat")
+        if params.get("Strategy") is not None:
+            self._Strategy = QualityControlStrategy()
+            self._Strategy._deserialize(params.get("Strategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28222,7 +28256,6 @@ class DescribeQualityControlTemplatesResponse(AbstractModel):
         :param _TotalCount: 符合过滤条件的记录总数。
         :type TotalCount: int
         :param _QualityControlTemplateSet: 媒体质检模板详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlTemplateSet: list of QualityControlTemplate
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28245,7 +28278,6 @@ class DescribeQualityControlTemplatesResponse(AbstractModel):
     @property
     def QualityControlTemplateSet(self):
         """媒体质检模板详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlTemplate
         """
         return self._QualityControlTemplateSet
@@ -34497,6 +34529,43 @@ class FaceEnhanceConfig(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FailOverOption(AbstractModel):
+    """type FailOverOption struct
+    { FailOverType string json:"FailOverType" // 新增 冷/热备 COLDSTANDBY、HOTSTANDBY }
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailOverType: 热备
+        :type FailOverType: str
+        """
+        self._FailOverType = None
+
+    @property
+    def FailOverType(self):
+        """热备
+        :rtype: str
+        """
+        return self._FailOverType
+
+    @FailOverType.setter
+    def FailOverType(self, FailOverType):
+        self._FailOverType = FailOverType
+
+
+    def _deserialize(self, params):
+        self._FailOverType = params.get("FailOverType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46766,6 +46835,8 @@ class ModifyInput(AbstractModel):
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRISTSettings`
         :param _InputRegion: 输入节点的地区
         :type InputRegion: str
+        :param _FailOverOption: 冷热备相关
+        :type FailOverOption: :class:`tencentcloud.mps.v20190612.models.FailOverOption`
         """
         self._InputId = None
         self._InputName = None
@@ -46783,6 +46854,7 @@ class ModifyInput(AbstractModel):
         self._Zones = None
         self._RISTSettings = None
         self._InputRegion = None
+        self._FailOverOption = None
 
     @property
     def InputId(self):
@@ -46960,6 +47032,17 @@ class ModifyInput(AbstractModel):
     def InputRegion(self, InputRegion):
         self._InputRegion = InputRegion
 
+    @property
+    def FailOverOption(self):
+        """冷热备相关
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FailOverOption`
+        """
+        return self._FailOverOption
+
+    @FailOverOption.setter
+    def FailOverOption(self, FailOverOption):
+        self._FailOverOption = FailOverOption
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -46992,6 +47075,9 @@ class ModifyInput(AbstractModel):
             self._RISTSettings = CreateInputRISTSettings()
             self._RISTSettings._deserialize(params.get("RISTSettings"))
         self._InputRegion = params.get("InputRegion")
+        if params.get("FailOverOption") is not None:
+            self._FailOverOption = FailOverOption()
+            self._FailOverOption._deserialize(params.get("FailOverOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47592,12 +47678,15 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
         :param _RecordFormat: 录制文件格式。可选值：
 <li>PNG: PNG图片</li>
         :type RecordFormat: str
+        :param _Strategy: 媒体质检抽检策略。
+        :type Strategy: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
         """
         self._Definition = None
         self._Name = None
         self._Comment = None
         self._QualityControlItemSet = None
         self._RecordFormat = None
+        self._Strategy = None
 
     @property
     def Definition(self):
@@ -47655,6 +47744,17 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
     def RecordFormat(self, RecordFormat):
         self._RecordFormat = RecordFormat
 
+    @property
+    def Strategy(self):
+        """媒体质检抽检策略。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -47667,6 +47767,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self._QualityControlItemSet.append(obj)
         self._RecordFormat = params.get("RecordFormat")
+        if params.get("Strategy") is not None:
+            self._Strategy = QualityControlStrategy()
+            self._Strategy._deserialize(params.get("Strategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

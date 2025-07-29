@@ -16326,6 +16326,8 @@ class MLIDPassportOCRResponse(AbstractModel):
 -9108 证件模糊告警
 -9109 告警能力未开通
         :type WarnCardInfos: list of int
+        :param _CardCount: 输入图片中的卡证数量（仅请求曼谷地域[ap-bangkok]返回）
+        :type CardCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16346,6 +16348,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._Type = None
         self._PassportRecognizeInfos = None
         self._WarnCardInfos = None
+        self._CardCount = None
         self._RequestId = None
 
     @property
@@ -16555,6 +16558,17 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._WarnCardInfos = WarnCardInfos
 
     @property
+    def CardCount(self):
+        """输入图片中的卡证数量（仅请求曼谷地域[ap-bangkok]返回）
+        :rtype: int
+        """
+        return self._CardCount
+
+    @CardCount.setter
+    def CardCount(self, CardCount):
+        self._CardCount = CardCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16586,6 +16600,7 @@ class MLIDPassportOCRResponse(AbstractModel):
             self._PassportRecognizeInfos = PassportRecognizeInfos()
             self._PassportRecognizeInfos._deserialize(params.get("PassportRecognizeInfos"))
         self._WarnCardInfos = params.get("WarnCardInfos")
+        self._CardCount = params.get("CardCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -26657,6 +26672,8 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type WarnCardInfos: list of int
         :param _AdvancedInfo: 该字段已废弃， 将固定返回"1"，不建议使用。 
         :type AdvancedInfo: str
+        :param _CardCount: 卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
+        :type CardCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -26677,6 +26694,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._PortraitImage = None
         self._WarnCardInfos = None
         self._AdvancedInfo = None
+        self._CardCount = None
         self._RequestId = None
 
     @property
@@ -26877,6 +26895,17 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._AdvancedInfo = AdvancedInfo
 
     @property
+    def CardCount(self):
+        """卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
+        :rtype: int
+        """
+        return self._CardCount
+
+    @CardCount.setter
+    def CardCount(self, CardCount):
+        self._CardCount = CardCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -26906,6 +26935,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._PortraitImage = params.get("PortraitImage")
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._AdvancedInfo = params.get("AdvancedInfo")
+        self._CardCount = params.get("CardCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -31500,9 +31530,12 @@ class TaxPayment(AbstractModel):
 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
 示例值：纳税人识别号
         :type Content: list of OtherInvoiceItem
+        :param _TableItems: 表格。
+        :type TableItems: list of OtherInvoiceList
         """
         self._Title = None
         self._Content = None
+        self._TableItems = None
 
     @property
     def Title(self):
@@ -31528,6 +31561,17 @@ class TaxPayment(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def TableItems(self):
+        """表格。
+        :rtype: list of OtherInvoiceList
+        """
+        return self._TableItems
+
+    @TableItems.setter
+    def TableItems(self, TableItems):
+        self._TableItems = TableItems
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -31537,6 +31581,12 @@ class TaxPayment(AbstractModel):
                 obj = OtherInvoiceItem()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        if params.get("TableItems") is not None:
+            self._TableItems = []
+            for item in params.get("TableItems"):
+                obj = OtherInvoiceList()
+                obj._deserialize(item)
+                self._TableItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

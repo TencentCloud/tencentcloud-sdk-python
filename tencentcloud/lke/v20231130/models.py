@@ -28217,9 +28217,9 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         :param _ReferUrlType: 外部引用链接类型 0：系统链接 1：自定义链接
 值为1时，WebUrl 字段不能为空，否则不生效。
         :type ReferUrlType: int
-        :param _ExpireStart: 有效开始时间，unix时间戳
+        :param _ExpireStart: 有效开始时间，unix秒级时间戳
         :type ExpireStart: str
-        :param _ExpireEnd: 有效结束时间，unix时间戳，0代表永久有效
+        :param _ExpireEnd: 有效结束时间，unix秒级时间戳，0代表永久有效
         :type ExpireEnd: str
         :param _IsRefer: 是否引用链接
         :type IsRefer: bool
@@ -28393,7 +28393,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def ExpireStart(self):
-        """有效开始时间，unix时间戳
+        """有效开始时间，unix秒级时间戳
         :rtype: str
         """
         return self._ExpireStart
@@ -28404,7 +28404,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def ExpireEnd(self):
-        """有效结束时间，unix时间戳，0代表永久有效
+        """有效结束时间，unix秒级时间戳，0代表永久有效
         :rtype: str
         """
         return self._ExpireEnd
