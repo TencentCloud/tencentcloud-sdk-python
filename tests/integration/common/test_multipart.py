@@ -54,4 +54,4 @@ def test_json_action_with_multipart():
         resp = client.DescribeZones(req)
         assert False, "unexpected success, should fail"
     except TencentCloudSDKException as err:
-        assert u'this action not support Content-Type=`multipart/form-data`' in err.message
+        assert u'not support Content-Type=`multipart/form-data`' in err.message
