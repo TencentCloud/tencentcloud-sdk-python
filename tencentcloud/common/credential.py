@@ -71,6 +71,9 @@ class Credential(object):
     @property
     def secretKey(self):
         return self.secret_key
+    
+    def get_credential_info(self):
+        return self.secret_id, self.secret_key, self.token
 
 
 class CVMRoleCredential(object):
@@ -100,8 +103,9 @@ class CVMRoleCredential(object):
 
     @property
     def secret_id(self):
-        self.update_credential()
-        return self._secret_id
+        with self._lock:
+            self.update_credential()
+            return self._secret_id
 
     @property
     def secretKey(self):
@@ -109,13 +113,15 @@ class CVMRoleCredential(object):
 
     @property
     def secret_key(self):
-        self.update_credential()
-        return self._secret_key
+        with self._lock:
+            self.update_credential()
+            return self._secret_key
 
     @property
     def token(self):
-        self.update_credential()
-        return self._token
+        with self._lock:
+            self.update_credential()
+            return self._token
 
     def get_role_name(self):
         if self.role:
@@ -136,35 +142,35 @@ class CVMRoleCredential(object):
             return False
 
     def update_credential(self):
-        with self._lock:
-            if not self._need_refresh():
-                return
-            role = self.get_role_name()
-            try:
-                # TODO: what if role has special characters such as space and unicode?
-                resp = urlopen(self._role_endpoint + role)
-                # py3 requires it to be string rather than byte
-                data = resp.read().decode("utf8")
-                j = json.loads(data)
-                if j.get("Code") != "Success":
-                    raise Exception("CVM role token data failed: %s" % data)
-                self._secret_id = j["TmpSecretId"]
-                self._secret_key = j["TmpSecretKey"]
-                self._token = j["Token"]
-                self._expired_ts = j["ExpiredTime"]
-            except Exception as e:
-                # we shoud log it
-                # maybe we should validate token to None as well
-                pass
+        if not self._need_refresh():
+            return
+        role = self.get_role_name()
+        try:
+            # TODO: what if role has special characters such as space and unicode?
+            resp = urlopen(self._role_endpoint + role)
+            # py3 requires it to be string rather than byte
+            data = resp.read().decode("utf8")
+            j = json.loads(data)
+            if j.get("Code") != "Success":
+                raise Exception("CVM role token data failed: %s" % data)
+            self._secret_id = j["TmpSecretId"]
+            self._secret_key = j["TmpSecretKey"]
+            self._token = j["Token"]
+            self._expired_ts = j["ExpiredTime"]
+        except Exception as e:
+            # we shoud log it
+            # maybe we should validate token to None as well
+            pass
 
     def get_credential(self):
         if not self.secret_id or not self.secret_key or not self.token:
             return None
         return self
 
-    def get_tmp_credential_info(self):
-        self.update_credential()
-        return self._secret_id, self._secret_key, self._token
+    def get_credential_info(self):
+        with self._lock:
+            self.update_credential()
+            return self._secret_id, self._secret_key, self._token
 
 
 class STSAssumeRoleCredential(object):
@@ -211,37 +217,42 @@ class STSAssumeRoleCredential(object):
 
     @property
     def secretId(self):
-        self._need_refresh()
-        return self._tmp_secret_id
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_id
 
     @property
     def secretKey(self):
-        self._need_refresh()
-        return self._tmp_secret_key
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_key
 
     @property
     def secret_id(self):
-        self._need_refresh()
-        return self._tmp_secret_id
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_id
 
     @property
     def secret_key(self):
-        self._need_refresh()
-        return self._tmp_secret_key
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_key
 
     @property
     def token(self):
-        self._need_refresh()
-        return self._token
+        with self._lock:
+            self._need_refresh()
+            return self._token
     
-    def get_tmp_credential_info(self):
-        self._need_refresh()
-        return self._tmp_secret_id, self._tmp_secret_key, self._token
+    def get_credential_info(self):
+        with self._lock:
+            self._need_refresh()
+            return self._tmp_secret_id, self._tmp_secret_key, self._token
 
     def _need_refresh(self):
-        with self._lock:
-            if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
-                self.get_sts_tmp_role_arn()
+        if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
+            self.get_sts_tmp_role_arn()
 
     def get_sts_tmp_role_arn(self):
         cred = Credential(self._long_secret_id, self._long_secret_key)
@@ -419,37 +430,42 @@ class OIDCRoleArnCredential(object):
 
     @property
     def secretId(self):
-        self._keep_fresh()
-        return self._tmp_secret_id
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_id
 
     @property
     def secretKey(self):
-        self._keep_fresh()
-        return self._tmp_secret_key
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_key
 
     @property
     def secret_id(self):
-        self._keep_fresh()
-        return self._tmp_secret_id
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_id
 
     @property
     def secret_key(self):
-        self._keep_fresh()
-        return self._tmp_secret_key
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_key
 
     @property
     def token(self):
-        self._keep_fresh()
-        return self._token
-    
-    def get_tmp_credential_info(self):
-        self._keep_fresh()
-        return self._tmp_secret_id, self._tmp_secret_key, self._token
+        with self._lock:
+            self._keep_fresh()
+            return self._token
+        
+    def get_credential_info(self):
+        with self._lock:
+            self._keep_fresh()
+            return self._tmp_secret_id, self._tmp_secret_key, self._token
 
     def _keep_fresh(self):
-        with self._lock:
-            if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
-                self.refresh()
+        if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
+            self.refresh()
 
     def refresh(self):
         if self._is_tke:
