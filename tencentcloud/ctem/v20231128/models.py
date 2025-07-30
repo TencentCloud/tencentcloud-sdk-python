@@ -836,6 +836,8 @@ class DescribeAppsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _EnterpriseUidList: 子公司ID列表
         :type EnterpriseUidList: list of str
         :param _IsNew: 是否新增数据
@@ -861,6 +863,7 @@ class DescribeAppsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._EnterpriseUidList = None
         self._IsNew = None
         self._CustomerId = None
@@ -873,6 +876,17 @@ class DescribeAppsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def EnterpriseUidList(self):
@@ -1008,6 +1022,7 @@ class DescribeAppsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._EnterpriseUidList = params.get("EnterpriseUidList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -1105,6 +1120,8 @@ class DescribeAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -1130,6 +1147,7 @@ class DescribeAssetsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -1142,6 +1160,17 @@ class DescribeAssetsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -1277,6 +1306,7 @@ class DescribeAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -1374,6 +1404,8 @@ class DescribeConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _IsNew: 是否新增数据
@@ -1401,6 +1433,7 @@ class DescribeConfigsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsAggregation = None
         self._IsNew = None
         self._CustomerId = None
@@ -1414,6 +1447,17 @@ class DescribeConfigsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsAggregation(self):
@@ -1560,6 +1604,7 @@ class DescribeConfigsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsAggregation = params.get("IsAggregation")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -1837,6 +1882,8 @@ class DescribeDarkWebsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -1862,6 +1909,7 @@ class DescribeDarkWebsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -1874,6 +1922,17 @@ class DescribeDarkWebsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -2009,6 +2068,7 @@ class DescribeDarkWebsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -2106,6 +2166,8 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -2131,6 +2193,7 @@ class DescribeDomainsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -2143,6 +2206,17 @@ class DescribeDomainsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -2278,6 +2352,7 @@ class DescribeDomainsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -2375,6 +2450,8 @@ class DescribeEnterprisesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -2402,6 +2479,7 @@ class DescribeEnterprisesRequest(AbstractModel):
         :param _IsShowStatistics: 是否展示统计数据
         :type IsShowStatistics: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -2415,6 +2493,17 @@ class DescribeEnterprisesRequest(AbstractModel):
         self._Filters = None
         self._Ignored = None
         self._IsShowStatistics = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -2561,6 +2650,7 @@ class DescribeEnterprisesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -2659,6 +2749,8 @@ class DescribeFakeAppsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -2684,6 +2776,7 @@ class DescribeFakeAppsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -2696,6 +2789,17 @@ class DescribeFakeAppsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -2831,6 +2935,7 @@ class DescribeFakeAppsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -2930,6 +3035,8 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -2955,6 +3062,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -2967,6 +3075,17 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -3102,6 +3221,7 @@ class DescribeFakeMiniProgramsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -3201,6 +3321,8 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -3226,6 +3348,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -3238,6 +3361,17 @@ class DescribeFakeWebsitesRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -3373,6 +3507,7 @@ class DescribeFakeWebsitesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -3472,6 +3607,8 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -3497,6 +3634,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -3509,6 +3647,17 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -3644,6 +3793,7 @@ class DescribeFakeWechatOfficialsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -4012,6 +4162,8 @@ class DescribeHttpsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _IsNew: 是否新增数据
@@ -4043,6 +4195,7 @@ class DescribeHttpsRequest(AbstractModel):
         :param _HasExpirationRisk: 是否仅显示过期风险资产
         :type HasExpirationRisk: bool
         """
+        self._CustomerIdList = None
         self._IsAggregation = None
         self._IsNew = None
         self._CustomerId = None
@@ -4058,6 +4211,17 @@ class DescribeHttpsRequest(AbstractModel):
         self._Ignored = None
         self._IsShowChange = None
         self._HasExpirationRisk = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsAggregation(self):
@@ -4226,6 +4390,7 @@ class DescribeHttpsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsAggregation = params.get("IsAggregation")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -4589,6 +4754,8 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _IsNew: 是否新增数据
@@ -4616,6 +4783,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsAggregation = None
         self._IsNew = None
         self._CustomerId = None
@@ -4629,6 +4797,17 @@ class DescribeLeakageCodesRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsAggregation(self):
@@ -4775,6 +4954,7 @@ class DescribeLeakageCodesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsAggregation = params.get("IsAggregation")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -4875,6 +5055,8 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _IsNew: 是否新增数据
@@ -4902,6 +5084,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsAggregation = None
         self._IsNew = None
         self._CustomerId = None
@@ -4915,6 +5098,17 @@ class DescribeLeakageDatasRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsAggregation(self):
@@ -5061,6 +5255,7 @@ class DescribeLeakageDatasRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsAggregation = params.get("IsAggregation")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -5161,6 +5356,8 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _IsNew: 是否新增数据
@@ -5188,6 +5385,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsAggregation = None
         self._IsNew = None
         self._CustomerId = None
@@ -5201,6 +5399,17 @@ class DescribeLeakageEmailsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsAggregation(self):
@@ -5347,6 +5556,7 @@ class DescribeLeakageEmailsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsAggregation = params.get("IsAggregation")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -5447,6 +5657,8 @@ class DescribeManagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _IsNew: 是否新增数据
@@ -5474,6 +5686,7 @@ class DescribeManagesRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsAggregation = None
         self._IsNew = None
         self._CustomerId = None
@@ -5487,6 +5700,17 @@ class DescribeManagesRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsAggregation(self):
@@ -5633,6 +5857,7 @@ class DescribeManagesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsAggregation = params.get("IsAggregation")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -5731,6 +5956,8 @@ class DescribeNetDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -5756,6 +5983,7 @@ class DescribeNetDisksRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -5768,6 +5996,17 @@ class DescribeNetDisksRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -5903,6 +6142,7 @@ class DescribeNetDisksRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -6000,6 +6240,8 @@ class DescribePortsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _IsNew: 是否新增数据
@@ -6027,6 +6269,7 @@ class DescribePortsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsAggregation = None
         self._IsNew = None
         self._CustomerId = None
@@ -6040,6 +6283,17 @@ class DescribePortsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsAggregation(self):
@@ -6186,6 +6440,7 @@ class DescribePortsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsAggregation = params.get("IsAggregation")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -6284,6 +6539,8 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _IsNew: 是否新增数据
@@ -6311,6 +6568,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsAggregation = None
         self._IsNew = None
         self._CustomerId = None
@@ -6324,6 +6582,17 @@ class DescribeSensitiveInfosRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsAggregation(self):
@@ -6470,6 +6739,7 @@ class DescribeSensitiveInfosRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsAggregation = params.get("IsAggregation")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -6568,6 +6838,8 @@ class DescribeSubDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -6595,6 +6867,7 @@ class DescribeSubDomainsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._IsAggregation = None
@@ -6608,6 +6881,17 @@ class DescribeSubDomainsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -6754,6 +7038,7 @@ class DescribeSubDomainsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._IsAggregation = params.get("IsAggregation")
@@ -6852,6 +7137,8 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _IsNew: 是否新增数据
@@ -6879,6 +7166,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsAggregation = None
         self._IsNew = None
         self._CustomerId = None
@@ -6892,6 +7180,17 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsAggregation(self):
@@ -7038,6 +7337,7 @@ class DescribeSuspiciousAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsAggregation = params.get("IsAggregation")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
@@ -7136,6 +7436,8 @@ class DescribeVulsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -7161,6 +7463,7 @@ class DescribeVulsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -7173,6 +7476,17 @@ class DescribeVulsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -7308,6 +7622,7 @@ class DescribeVulsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -7405,6 +7720,8 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -7430,6 +7747,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -7442,6 +7760,17 @@ class DescribeWeakPasswordsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -7577,6 +7906,7 @@ class DescribeWeakPasswordsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -7674,6 +8004,8 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _CustomerId: 企业ID
         :type CustomerId: int
         :param _IsNew: 是否新增数据
@@ -7699,6 +8031,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._CustomerId = None
         self._IsNew = None
         self._Limit = None
@@ -7711,6 +8044,17 @@ class DescribeWechatAppletsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def CustomerId(self):
@@ -7846,6 +8190,7 @@ class DescribeWechatAppletsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._CustomerId = params.get("CustomerId")
         self._IsNew = params.get("IsNew")
         self._Limit = params.get("Limit")
@@ -7943,6 +8288,8 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _IsNew: 是否新增数据
         :type IsNew: bool
         :param _CustomerId: 企业ID
@@ -7968,6 +8315,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
         """
+        self._CustomerIdList = None
         self._IsNew = None
         self._CustomerId = None
         self._Limit = None
@@ -7980,6 +8328,17 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def IsNew(self):
@@ -8115,6 +8474,7 @@ class DescribeWechatOfficialAccountsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CustomerIdList = params.get("CustomerIdList")
         self._IsNew = params.get("IsNew")
         self._CustomerId = params.get("CustomerId")
         self._Limit = params.get("Limit")
@@ -13114,22 +13474,50 @@ class ModifyLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Module: 模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
+        :type Module: str
+        :param _CustomerIdList: 企业ID列表，可多选
+        :type CustomerIdList: list of int
         :param _Id: 资产或风险主键ID
         :type Id: int
         :param _CustomerId: 企业ID，在企业管理页面查看
         :type CustomerId: int
-        :param _Module: 模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
-        :type Module: str
         :param _IsAggregation: 是否聚合数据
         :type IsAggregation: bool
         :param _Labels: 标签详情
         :type Labels: str
+        :param _Ids: 资产或风险主键ID列表
+        :type Ids: list of int
         """
+        self._Module = None
+        self._CustomerIdList = None
         self._Id = None
         self._CustomerId = None
-        self._Module = None
         self._IsAggregation = None
         self._Labels = None
+        self._Ids = None
+
+    @property
+    def Module(self):
+        """模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def CustomerIdList(self):
+        """企业ID列表，可多选
+        :rtype: list of int
+        """
+        return self._CustomerIdList
+
+    @CustomerIdList.setter
+    def CustomerIdList(self, CustomerIdList):
+        self._CustomerIdList = CustomerIdList
 
     @property
     def Id(self):
@@ -13154,17 +13542,6 @@ class ModifyLabelRequest(AbstractModel):
         self._CustomerId = CustomerId
 
     @property
-    def Module(self):
-        """模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
-        :rtype: str
-        """
-        return self._Module
-
-    @Module.setter
-    def Module(self, Module):
-        self._Module = Module
-
-    @property
     def IsAggregation(self):
         """是否聚合数据
         :rtype: bool
@@ -13186,13 +13563,26 @@ class ModifyLabelRequest(AbstractModel):
     def Labels(self, Labels):
         self._Labels = Labels
 
+    @property
+    def Ids(self):
+        """资产或风险主键ID列表
+        :rtype: list of int
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
 
     def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._CustomerIdList = params.get("CustomerIdList")
         self._Id = params.get("Id")
         self._CustomerId = params.get("CustomerId")
-        self._Module = params.get("Module")
         self._IsAggregation = params.get("IsAggregation")
         self._Labels = params.get("Labels")
+        self._Ids = params.get("Ids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

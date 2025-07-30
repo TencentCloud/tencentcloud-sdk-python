@@ -26,6 +26,29 @@ class CfsClient(AbstractClient):
     _service = 'cfs'
 
 
+    def ApplyPathLifecyclePolicy(self, request):
+        """配置生命周期策略关联到的目录列表
+
+        :param request: Request instance for ApplyPathLifecyclePolicy.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.ApplyPathLifecyclePolicyRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.ApplyPathLifecyclePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyPathLifecyclePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApplyPathLifecyclePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindAutoSnapshotPolicy(self, request):
         """文件系统绑定快照策略，可以同时绑定多个fs，一个fs 只能跟一个策略绑定
 
@@ -187,6 +210,98 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDataFlow(self, request):
+        """创建数据流动接口
+
+        :param request: Request instance for CreateDataFlow.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.CreateDataFlowRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateDataFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateLifecycleDataTask(self, request):
+        """支持主动沉降/预热接口
+
+        :param request: Request instance for CreateLifecycleDataTask.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.CreateLifecycleDataTaskRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateLifecycleDataTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLifecycleDataTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLifecycleDataTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateLifecyclePolicy(self, request):
+        """创建文件存储生命周期策略
+
+        :param request: Request instance for CreateLifecyclePolicy.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.CreateLifecyclePolicyRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateLifecyclePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLifecyclePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLifecyclePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateLifecyclePolicyDownloadTask(self, request):
+        """下载生命周期任务中文件列表
+
+        :param request: Request instance for CreateLifecyclePolicyDownloadTask.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.CreateLifecyclePolicyDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateLifecyclePolicyDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLifecyclePolicyDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLifecyclePolicyDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMigrationTask(self, request):
         """用于创建迁移任务。
 
@@ -316,6 +431,52 @@ class CfsClient(AbstractClient):
             body = self.call("DeleteCfsSnapshot", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCfsSnapshotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDataFlow(self, request):
+        """删除数据流动
+
+        :param request: Request instance for DeleteDataFlow.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteDataFlowRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteDataFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLifecyclePolicy(self, request):
+        """删除生命周期管理策略
+
+        :param request: Request instance for DeleteLifecyclePolicy.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteLifecyclePolicyRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteLifecyclePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLifecyclePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLifecyclePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -625,6 +786,75 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataFlow(self, request):
+        """查询数据流动信息接口
+
+        :param request: Request instance for DescribeDataFlow.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeDataFlowRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeDataFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLifecycleDataTask(self, request):
+        """查询生命周期任务的接口
+
+        :param request: Request instance for DescribeLifecycleDataTask.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeLifecycleDataTaskRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeLifecycleDataTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLifecycleDataTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLifecycleDataTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLifecyclePolicies(self, request):
+        """查询生命周期管理策略
+
+        :param request: Request instance for DescribeLifecyclePolicies.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeLifecyclePoliciesRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeLifecyclePoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLifecyclePolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLifecyclePoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMigrationTasks(self, request):
         """用于获取迁移任务列表。
         此接口需提交工单，开启白名单之后才能使用。
@@ -718,6 +948,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDataFlow(self, request):
+        """修改数据流动相关参数
+
+        :param request: Request instance for ModifyDataFlow.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyDataFlowRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.ModifyDataFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDataFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDataFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyFileSystemAutoScaleUpRule(self, request):
         """用来设置文件系统扩容策略，该接口只支持turbo文件系统
 
@@ -732,6 +985,29 @@ class CfsClient(AbstractClient):
             body = self.call("ModifyFileSystemAutoScaleUpRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyFileSystemAutoScaleUpRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLifecyclePolicy(self, request):
+        """更新文件存储生命周期策略
+
+        :param request: Request instance for ModifyLifecyclePolicy.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyLifecyclePolicyRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.ModifyLifecyclePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLifecyclePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLifecyclePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -801,6 +1077,29 @@ class CfsClient(AbstractClient):
             body = self.call("SignUpCfsService", params, headers=headers)
             response = json.loads(body)
             model = models.SignUpCfsServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopLifecycleDataTask(self, request):
+        """终止生命周期任务的接口
+
+        :param request: Request instance for StopLifecycleDataTask.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.StopLifecycleDataTaskRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.StopLifecycleDataTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopLifecycleDataTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopLifecycleDataTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

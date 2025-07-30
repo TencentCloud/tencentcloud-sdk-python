@@ -4010,6 +4010,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSuccessorTaskInfoList(self, request):
+        """获取下游任务信息批量
+
+        :param request: Request instance for DescribeSuccessorTaskInfoList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSuccessorTaskInfoListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeSuccessorTaskInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSuccessorTaskInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSuccessorTaskInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTableBasicInfo(self, request):
         """元数据模型-表基础信息查询接口
 

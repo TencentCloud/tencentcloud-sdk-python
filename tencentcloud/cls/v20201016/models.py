@@ -4561,7 +4561,9 @@ class CosRechargeInfo(AbstractModel):
         :type Name: str
         :param _Bucket: COS存储桶
         :type Bucket: str
-        :param _BucketRegion: COS存储桶所在地域
+        :param _BucketRegion: COS存储桶所在地域。
+
+- 通过[地域和访问域名](https://cloud.tencent.com/document/product/436/6224)获取地域信息。
         :type BucketRegion: str
         :param _Prefix: COS文件所在文件夹的前缀
         :type Prefix: str
@@ -4572,13 +4574,13 @@ class CosRechargeInfo(AbstractModel):
         :type Status: int
         :param _Enable: 是否启用:   0： 未启用  ， 1：启用
         :type Enable: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间。时间格式：YYYY-MM-DD HH:mm:ss
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间。时间格式：YYYY-MM-DD HH:mm:ss
         :type UpdateTime: str
         :param _Progress: 进度条百分值
         :type Progress: int
-        :param _Compress: supported: "", "gzip", "lzop", "snappy”; 默认空
+        :param _Compress: 压缩方式supported: "", "gzip", "lzop", "snappy”;  默认空不压缩
         :type Compress: str
         :param _ExtractRuleInfo: 见： ExtractRuleInfo 结构描述
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
@@ -4662,7 +4664,9 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def BucketRegion(self):
-        """COS存储桶所在地域
+        """COS存储桶所在地域。
+
+- 通过[地域和访问域名](https://cloud.tencent.com/document/product/436/6224)获取地域信息。
         :rtype: str
         """
         return self._BucketRegion
@@ -4718,7 +4722,7 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间。时间格式：YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -4729,7 +4733,7 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        """更新时间。时间格式：YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._UpdateTime
@@ -4751,7 +4755,7 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Compress(self):
-        """supported: "", "gzip", "lzop", "snappy”; 默认空
+        """压缩方式supported: "", "gzip", "lzop", "snappy”;  默认空不压缩
         :rtype: str
         """
         return self._Compress
@@ -6827,13 +6831,19 @@ class CreateCosRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题 ID
+        :param _TopicId: 日志主题Id。
+
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: 日志集Id。
+
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _Name: 投递任务名称
+        :param _Name: COS导入任务名称,最大支持128个字节。
         :type Name: str
-        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
         :type BucketRegion: str
@@ -6842,7 +6852,7 @@ class CreateCosRechargeRequest(AbstractModel):
         :type LogType: str
         :param _Prefix: COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
         :type Prefix: str
-        :param _Compress: supported: "", "gzip", "lzop", "snappy"; 默认空
+        :param _Compress: supported: "", "gzip", "lzop", "snappy"。默认空，不压缩。
         :type Compress: str
         :param _ExtractRuleInfo: 提取规则，如果设置了ExtractRule，则必须设置LogType
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
@@ -6865,7 +6875,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题 ID
+        """日志主题Id。
+
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -6876,7 +6888,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        """日志集Id。
+
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -6887,7 +6901,7 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """投递任务名称
+        """COS导入任务名称,最大支持128个字节。
         :rtype: str
         """
         return self._Name
@@ -6898,7 +6912,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -6943,7 +6959,7 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Compress(self):
-        """supported: "", "gzip", "lzop", "snappy"; 默认空
+        """supported: "", "gzip", "lzop", "snappy"。默认空，不压缩。
         :rtype: str
         """
         return self._Compress
@@ -8826,15 +8842,18 @@ class CreateShipperRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 创建的投递规则所属的日志主题ID
+        :param _TopicId: 创建的投递规则所属的日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _Prefix: 投递规则投递的新的目录前缀。
 - 仅支持0-9A-Za-z-_/
 - 最大支持256个字符
         :type Prefix: str
-        :param _ShipperName: 投递规则的名字
+        :param _ShipperName: 投递规则的名字。最大支持255个字符
         :type ShipperName: str
         :param _Interval: 投递的时间间隔，单位 秒，默认300，范围 300-900
         :type Interval: int
@@ -8856,15 +8875,17 @@ class CreateShipperRequest(AbstractModel):
         :param _EndTime: 投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。
 如果用户不填写，默认为持续投递，即无限。
         :type EndTime: int
-        :param _StorageType: cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+        :param _StorageType: 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
 
-1. STANDARD_IA：低频存储；
-2. ARCHIVE：归档存储；
-3. DEEP_ARCHIVE：深度归档存储；
-4. STANDARD：标准存储；
-5. MAZ_STANDARD：标准存储（多 AZ）；
-6. MAZ_STANDARD_IA：低频存储（多 AZ）；
-7. INTELLIGENT_TIERING：智能分层存储。
+- STANDARD：标准存储
+- STANDARD_IA：低频存储
+- ARCHIVE：归档存储
+- DEEP_ARCHIVE：深度归档存储
+- MAZ_STANDARD：标准存储（多 AZ）
+- MAZ_STANDARD_IA：低频存储（多 AZ）
+- INTELLIGENT_TIERING：智能分层存储
+- MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :type StorageType: str
         """
         self._TopicId = None
@@ -8884,7 +8905,8 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """创建的投递规则所属的日志主题ID
+        """创建的投递规则所属的日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -8895,7 +8917,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -8919,7 +8943,7 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def ShipperName(self):
-        """投递规则的名字
+        """投递规则的名字。最大支持255个字符
         :rtype: str
         """
         return self._ShipperName
@@ -9031,15 +9055,17 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        """cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+        """对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
 
-1. STANDARD_IA：低频存储；
-2. ARCHIVE：归档存储；
-3. DEEP_ARCHIVE：深度归档存储；
-4. STANDARD：标准存储；
-5. MAZ_STANDARD：标准存储（多 AZ）；
-6. MAZ_STANDARD_IA：低频存储（多 AZ）；
-7. INTELLIGENT_TIERING：智能分层存储。
+- STANDARD：标准存储
+- STANDARD_IA：低频存储
+- ARCHIVE：归档存储
+- DEEP_ARCHIVE：深度归档存储
+- MAZ_STANDARD：标准存储（多 AZ）
+- MAZ_STANDARD_IA：低频存储（多 AZ）
+- INTELLIGENT_TIERING：智能分层存储
+- MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :rtype: str
         """
         return self._StorageType
@@ -9664,7 +9690,7 @@ class DashboardInfo(AbstractModel):
         :type DashboardName: str
         :param _Data: 仪表盘数据
         :type Data: str
-        :param _CreateTime: 创建仪表盘的时间
+        :param _CreateTime: 创建仪表盘的时间。格式：YYYY-MM-DD HH:MM:SS
         :type CreateTime: str
         :param _AssumerUin: AssumerUin非空则表示创建该日志主题的服务方Uin
         :type AssumerUin: int
@@ -9676,7 +9702,7 @@ class DashboardInfo(AbstractModel):
         :type Tags: list of Tag
         :param _DashboardRegion: 仪表盘所在地域： 为了兼容老的地域。
         :type DashboardRegion: str
-        :param _UpdateTime: 修改仪表盘的时间
+        :param _UpdateTime: 修改仪表盘的时间。格式：YYYY-MM-DD HH:MM:SS
         :type UpdateTime: str
         :param _DashboardTopicInfos: 仪表盘对应的topic相关信息
         :type DashboardTopicInfos: list of DashboardTopicInfo
@@ -9728,7 +9754,7 @@ class DashboardInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建仪表盘的时间
+        """创建仪表盘的时间。格式：YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._CreateTime
@@ -9794,7 +9820,7 @@ class DashboardInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改仪表盘的时间
+        """修改仪表盘的时间。格式：YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._UpdateTime
@@ -10148,7 +10174,29 @@ class DashboardTopicInfo(AbstractModel):
         r"""
         :param _TopicId: 主题id
         :type TopicId: str
-        :param _Region: topic所在的地域
+        :param _Region: topic所在的地域。
+- 1:广州
+- 4:上海
+- 5:中国香港
+- 7:上海金融
+- 8:北京
+- 9:新加坡
+- 11:深圳金融
+- 15:硅谷
+- 16:成都
+- 17:法兰克福
+- 18:首尔
+- 19:重庆
+- 22:弗吉尼亚
+- 23:曼谷
+- 25:东京
+- 33:南京
+- 36:天津
+- 39:台北
+- 46:北京金融
+- 72:雅加达
+- 74:圣保罗
+- 78:上海自动驾驶云
         :type Region: str
         """
         self._TopicId = None
@@ -10167,7 +10215,29 @@ class DashboardTopicInfo(AbstractModel):
 
     @property
     def Region(self):
-        """topic所在的地域
+        """topic所在的地域。
+- 1:广州
+- 4:上海
+- 5:中国香港
+- 7:上海金融
+- 8:北京
+- 9:新加坡
+- 11:深圳金融
+- 15:硅谷
+- 16:成都
+- 17:法兰克福
+- 18:首尔
+- 19:重庆
+- 22:弗吉尼亚
+- 23:曼谷
+- 25:东京
+- 33:南京
+- 36:天津
+- 39:台北
+- 46:北京金融
+- 72:雅加达
+- 74:圣保罗
+- 78:上海自动驾驶云
         :rtype: str
         """
         return self._Region
@@ -11204,9 +11274,11 @@ class DeleteCosRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: COS导入配置Id
+        :param _Id: COS导入配置Id。
+- 通过[获取投递任务列表](https://cloud.tencent.com/document/api/614/58745)获取COS导入配置Id。
         :type Id: str
-        :param _TopicId: 日志主题Id
+        :param _TopicId: 日志主题Id。
+-  通过[获取日志主题列表](https://cloud.tencent.com/document/api/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._Id = None
@@ -11214,7 +11286,8 @@ class DeleteCosRechargeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """COS导入配置Id
+        """COS导入配置Id。
+- 通过[获取投递任务列表](https://cloud.tencent.com/document/api/614/58745)获取COS导入配置Id。
         :rtype: str
         """
         return self._Id
@@ -11225,7 +11298,8 @@ class DeleteCosRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题Id
+        """日志主题Id。
+-  通过[获取日志主题列表](https://cloud.tencent.com/document/api/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -11972,14 +12046,16 @@ class DeleteShipperRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShipperId: 投递规则ID
+        :param _ShipperId: 投递规则Id。
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :type ShipperId: str
         """
         self._ShipperId = None
 
     @property
     def ShipperId(self):
-        """投递规则ID
+        """投递规则Id。
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :rtype: str
         """
         return self._ShipperId
@@ -13713,7 +13789,8 @@ class DescribeCosRechargesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题 ID
+        :param _TopicId: 日志主题Id。
+-  通过[获取日志主题列表](https://cloud.tencent.com/document/api/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Status: 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
         :type Status: int
@@ -13726,7 +13803,8 @@ class DescribeCosRechargesRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题 ID
+        """日志主题Id。
+-  通过[获取日志主题列表](https://cloud.tencent.com/document/api/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -13932,13 +14010,40 @@ class DescribeDashboardsRequest(AbstractModel):
         :type Limit: int
         :param _Filters: - dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
 - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
-- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。
+- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。 [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)，例如：ap-guangzhou
 - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
 - tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
         :param _TopicIdRegionFilter: 按照topicId和regionId过滤。
+
+- topicId:日志主题Id。
+    -  通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+- regionId
+    - 1:广州
+    - 4:上海
+    - 5:中国香港
+    - 7:上海金融
+    - 8:北京
+    - 9:新加坡
+    - 11:深圳金融
+    - 15:硅谷
+    - 16:成都
+    - 17:法兰克福
+    - 18:首尔
+    - 19:重庆
+    - 22:弗吉尼亚
+    - 23:曼谷
+    - 25:东京
+    - 33:南京
+    - 36:天津
+    - 39:台北
+    - 46:北京金融
+    - 72:雅加达
+    - 74:圣保罗
+    - 78:上海自动驾驶云
+
         :type TopicIdRegionFilter: list of TopicIdAndRegion
         """
         self._Offset = None
@@ -13972,7 +14077,7 @@ class DescribeDashboardsRequest(AbstractModel):
     def Filters(self):
         """- dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
 - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
-- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。
+- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。 [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)，例如：ap-guangzhou
 - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
 - tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
 
@@ -13988,6 +14093,33 @@ class DescribeDashboardsRequest(AbstractModel):
     @property
     def TopicIdRegionFilter(self):
         """按照topicId和regionId过滤。
+
+- topicId:日志主题Id。
+    -  通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+- regionId
+    - 1:广州
+    - 4:上海
+    - 5:中国香港
+    - 7:上海金融
+    - 8:北京
+    - 9:新加坡
+    - 11:深圳金融
+    - 15:硅谷
+    - 16:成都
+    - 17:法兰克福
+    - 18:首尔
+    - 19:重庆
+    - 22:弗吉尼亚
+    - 23:曼谷
+    - 25:东京
+    - 33:南京
+    - 36:天津
+    - 39:台北
+    - 46:北京金融
+    - 72:雅加达
+    - 74:圣保罗
+    - 78:上海自动驾驶云
+
         :rtype: list of TopicIdAndRegion
         """
         return self._TopicIdRegionFilter
@@ -15751,34 +15883,36 @@ class DescribeMachinesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 查询的机器组ID
+        :param _GroupId: 查询的机器组ID。
+
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组ID。
         :type GroupId: str
         :param _Filters: ip
-- 按照【ip】进行过滤。
+- 按照ip进行过滤。
 - 类型：String
 - 必选：否
 
 instance
-- 按照【instance】进行过滤。
+- 按照实例id进行过滤。
 - 类型：String
 - 必选：否
 
 version
-- 按照【LogListener版本】进行过滤。
+- 按照LogListener版本进行过滤。
 - 类型：String
 - 必选：否
 
 status
-- 按照【状态】进行过滤。
+- 按照机器状态进行过滤。
 - 类型：String
 - 必选：否
 - 可选值：0：离线，1：正常
 
 offlineTime
-- 按照【机器离线时间】进行过滤。
+- 按照机器离线时间进行过滤。
 - 类型：String
 - 必选：否
-- - 可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
+- -可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
@@ -15794,7 +15928,9 @@ offlineTime
 
     @property
     def GroupId(self):
-        """查询的机器组ID
+        """查询的机器组ID。
+
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组ID。
         :rtype: str
         """
         return self._GroupId
@@ -15806,31 +15942,31 @@ offlineTime
     @property
     def Filters(self):
         """ip
-- 按照【ip】进行过滤。
+- 按照ip进行过滤。
 - 类型：String
 - 必选：否
 
 instance
-- 按照【instance】进行过滤。
+- 按照实例id进行过滤。
 - 类型：String
 - 必选：否
 
 version
-- 按照【LogListener版本】进行过滤。
+- 按照LogListener版本进行过滤。
 - 类型：String
 - 必选：否
 
 status
-- 按照【状态】进行过滤。
+- 按照机器状态进行过滤。
 - 类型：String
 - 必选：否
 - 可选值：0：离线，1：正常
 
 offlineTime
-- 按照【机器离线时间】进行过滤。
+- 按照机器离线时间进行过滤。
 - 类型：String
 - 必选：否
-- - 可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
+- -可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
@@ -16447,7 +16583,9 @@ class DescribeShipperTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShipperId: 投递规则ID
+        :param _ShipperId: 投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :type ShipperId: str
         :param _StartTime: 查询的开始时间戳，支持最近3天的查询， 毫秒。
 StartTime必须小于EndTime
@@ -16462,7 +16600,9 @@ StartTime必须小于EndTime
 
     @property
     def ShipperId(self):
-        """投递规则ID
+        """投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :rtype: str
         """
         return self._ShipperId
@@ -16576,10 +16716,9 @@ class DescribeShippersRequest(AbstractModel):
 - topicId：按照【日志主题】进行过滤。
     类型：String。
     必选：否
-- taskStatus
-按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
-类型：String
-必选：否
+- taskStatus：按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+    类型：String
+    必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为10。
         :type Filters: list of Filter
@@ -16606,10 +16745,9 @@ class DescribeShippersRequest(AbstractModel):
 - topicId：按照【日志主题】进行过滤。
     类型：String。
     必选：否
-- taskStatus
-按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
-类型：String
-必选：否
+- taskStatus：按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+    类型：String
+    必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为10。
         :rtype: list of Filter
@@ -20658,7 +20796,7 @@ class MachineInfo(AbstractModel):
         :type InstanceID: str
         :param _Status: 机器状态，0:异常，1:正常
         :type Status: int
-        :param _OfflineTime: 机器离线时间，空为正常，异常返回具体时间
+        :param _OfflineTime: 机器离线时间，空为正常，异常返回具体时间。时间格式：YYYY-MM-DD HH:mm:ss
         :type OfflineTime: str
         :param _AutoUpdate: 机器是否开启自动升级。0:关闭，1:开启
         :type AutoUpdate: int
@@ -20718,7 +20856,7 @@ class MachineInfo(AbstractModel):
 
     @property
     def OfflineTime(self):
-        """机器离线时间，空为正常，异常返回具体时间
+        """机器离线时间，空为正常，异常返回具体时间。时间格式：YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._OfflineTime
@@ -22843,15 +22981,21 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: COS导入配置Id
+        :param _Id: COS导入配置Id。
+
+- 通过[获取cos导入配置](https://cloud.tencent.com/document/product/614/88099)接口获取COS导入配置Id。
         :type Id: str
-        :param _TopicId: 日志主题Id
+        :param _TopicId: 日志主题Id。
+
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _Name: COS导入任务名称
+        :param _Name: COS导入任务名称,最大支持128个字节。
         :type Name: str
         :param _Enable: 任务状态   0： 停用 ， 1：启用
         :type Enable: int
         :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
         :type BucketRegion: str
@@ -22859,7 +23003,7 @@ class ModifyCosRechargeRequest(AbstractModel):
         :type Prefix: str
         :param _LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文； 默认为minimalist_log
         :type LogType: str
-        :param _Compress: 解析格式。supported: "", "gzip", "lzop", "snappy"; 默认空
+        :param _Compress: 解析格式。supported: "", "gzip", "lzop", "snappy"。空串表示不压缩。
         :type Compress: str
         :param _ExtractRuleInfo: 提取规则，如果设置了ExtractRule，则必须设置LogType
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
@@ -22883,7 +23027,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """COS导入配置Id
+        """COS导入配置Id。
+
+- 通过[获取cos导入配置](https://cloud.tencent.com/document/product/614/88099)接口获取COS导入配置Id。
         :rtype: str
         """
         return self._Id
@@ -22894,7 +23040,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题Id
+        """日志主题Id。
+
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -22905,7 +23053,7 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """COS导入任务名称
+        """COS导入任务名称,最大支持128个字节。
         :rtype: str
         """
         return self._Name
@@ -22928,6 +23076,8 @@ class ModifyCosRechargeRequest(AbstractModel):
     @property
     def Bucket(self):
         """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -22971,7 +23121,7 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Compress(self):
-        """解析格式。supported: "", "gzip", "lzop", "snappy"; 默认空
+        """解析格式。supported: "", "gzip", "lzop", "snappy"。空串表示不压缩。
         :rtype: str
         """
         return self._Compress
@@ -24467,9 +24617,13 @@ class ModifyShipperRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShipperId: 投递规则ID
+        :param _ShipperId: 投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :type ShipperId: str
-        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _Prefix: 投递规则投递的新的目录前缀。
 - 仅支持0-9A-Za-z-_/
@@ -24493,15 +24647,17 @@ class ModifyShipperRequest(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         :param _FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名。
         :type FilenameMode: int
-        :param _StorageType: cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+        :param _StorageType: 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
 
-1. STANDARD_IA：低频存储；
-2. ARCHIVE：归档存储；
-3. DEEP_ARCHIVE：深度归档存储；
-4. STANDARD：标准存储；
-5. MAZ_STANDARD：标准存储（多 AZ）；
-6. MAZ_STANDARD_IA：低频存储（多 AZ）；
-7. INTELLIGENT_TIERING：智能分层存储。
+- STANDARD：标准存储
+- STANDARD_IA：低频存储
+- ARCHIVE：归档存储
+- DEEP_ARCHIVE：深度归档存储
+- MAZ_STANDARD：标准存储（多 AZ）
+- MAZ_STANDARD_IA：低频存储（多 AZ）
+- INTELLIGENT_TIERING：智能分层存储
+- MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :type StorageType: str
         """
         self._ShipperId = None
@@ -24520,7 +24676,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def ShipperId(self):
-        """投递规则ID
+        """投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :rtype: str
         """
         return self._ShipperId
@@ -24531,7 +24689,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -24654,15 +24814,17 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        """cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+        """对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
 
-1. STANDARD_IA：低频存储；
-2. ARCHIVE：归档存储；
-3. DEEP_ARCHIVE：深度归档存储；
-4. STANDARD：标准存储；
-5. MAZ_STANDARD：标准存储（多 AZ）；
-6. MAZ_STANDARD_IA：低频存储（多 AZ）；
-7. INTELLIGENT_TIERING：智能分层存储。
+- STANDARD：标准存储
+- STANDARD_IA：低频存储
+- ARCHIVE：归档存储
+- DEEP_ARCHIVE：深度归档存储
+- MAZ_STANDARD：标准存储（多 AZ）
+- MAZ_STANDARD_IA：低频存储（多 AZ）
+- INTELLIGENT_TIERING：智能分层存储
+- MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :rtype: str
         """
         return self._StorageType
@@ -27032,9 +27194,13 @@ class RetryShipperTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShipperId: 投递规则ID
+        :param _ShipperId: 投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :type ShipperId: str
-        :param _TaskId: 投递任务ID
+        :param _TaskId: 投递任务Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745) 获取TaskId。
         :type TaskId: str
         """
         self._ShipperId = None
@@ -27042,7 +27208,9 @@ class RetryShipperTaskRequest(AbstractModel):
 
     @property
     def ShipperId(self):
-        """投递规则ID
+        """投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :rtype: str
         """
         return self._ShipperId
@@ -27053,7 +27221,9 @@ class RetryShipperTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """投递任务ID
+        """投递任务Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745) 获取TaskId。
         :rtype: str
         """
         return self._TaskId
@@ -27799,19 +27969,24 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题 ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: 日志集Id。
+
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _Name: 投递任务名称
+        :param _Name: COS导入任务名称,最大支持128个字节。
         :type Name: str
-        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
         :type BucketRegion: str
         :param _Prefix: COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
         :type Prefix: str
-        :param _Compress: 压缩模式:   "", "gzip", "lzop", "snappy";   默认""
+        :param _Compress: 压缩模式:   "", "gzip", "lzop", "snappy"。  默认："" 不压缩
         :type Compress: str
         """
         self._TopicId = None
@@ -27824,7 +27999,8 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题 ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -27835,7 +28011,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        """日志集Id。
+
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -27846,7 +28024,7 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Name(self):
-        """投递任务名称
+        """COS导入任务名称,最大支持128个字节。
         :rtype: str
         """
         return self._Name
@@ -27857,7 +28035,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -27890,7 +28070,7 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Compress(self):
-        """压缩模式:   "", "gzip", "lzop", "snappy";   默认""
+        """压缩模式:   "", "gzip", "lzop", "snappy"。  默认："" 不压缩
         :rtype: str
         """
         return self._Compress
@@ -27933,7 +28113,16 @@ class SearchCosRechargeInfoResponse(AbstractModel):
         :type Path: str
         :param _Msg: 预览获取数据失败原因
         :type Msg: str
-        :param _Status: 状态
+        :param _Status: 状态。
+- 0：成功
+- 10000：参数错误，请确认参数
+- 10001：授权失败，请确认授权
+- 10002：获取文件列表失败，请稍后再试。若无法解决，请联系智能客服或提交工单
+- 10003：桶内无相应前缀文件，请使用正确的桶、文件前缀和压缩方式
+- 10004：文件下载失败，请稍后再试。若无法解决，请联系智能客服或提交工单
+- 10005：文件解压缩失败，请选择正确的压缩方式然后再试
+- 10006：读取文件内容失败，请确认文件可读
+- 10007：文件预览失败，请稍后再试。若无法解决，请联系智能客服或提交工单
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27991,7 +28180,16 @@ class SearchCosRechargeInfoResponse(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        """状态。
+- 0：成功
+- 10000：参数错误，请确认参数
+- 10001：授权失败，请确认授权
+- 10002：获取文件列表失败，请稍后再试。若无法解决，请联系智能客服或提交工单
+- 10003：桶内无相应前缀文件，请使用正确的桶、文件前缀和压缩方式
+- 10004：文件下载失败，请稍后再试。若无法解决，请联系智能客服或提交工单
+- 10005：文件解压缩失败，请选择正确的压缩方式然后再试
+- 10006：读取文件内容失败，请确认文件可读
+- 10007：文件预览失败，请稍后再试。若无法解决，请联系智能客服或提交工单
         :rtype: int
         """
         return self._Status
@@ -28870,7 +29068,7 @@ class ShipperInfo(AbstractModel):
         :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
         :param _Content: 投递日志的内容格式配置
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
-        :param _CreateTime: 投递日志的创建时间
+        :param _CreateTime: 投递日志的创建时间。格式：YYYY-MM-DD HH:MM:SS
         :type CreateTime: str
         :param _FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
         :type FilenameMode: int
@@ -28889,7 +29087,16 @@ class ShipperInfo(AbstractModel):
 3：任务运行异常
 4：任务运行结束
         :type HistoryStatus: int
-        :param _StorageType: cos桶类型
+        :param _StorageType: 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
+STANDARD：标准存储
+STANDARD_IA：低频存储
+ARCHIVE：归档存储
+DEEP_ARCHIVE：深度归档存储
+MAZ_STANDARD：标准存储（多 AZ）
+MAZ_STANDARD_IA：低频存储（多 AZ）
+INTELLIGENT_TIERING：智能分层存储
+MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :type StorageType: str
         """
         self._ShipperId = None
@@ -29047,7 +29254,7 @@ class ShipperInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """投递日志的创建时间
+        """投递日志的创建时间。格式：YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._CreateTime
@@ -29129,7 +29336,16 @@ class ShipperInfo(AbstractModel):
 
     @property
     def StorageType(self):
-        """cos桶类型
+        """对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
+STANDARD：标准存储
+STANDARD_IA：低频存储
+ARCHIVE：归档存储
+DEEP_ARCHIVE：深度归档存储
+MAZ_STANDARD：标准存储（多 AZ）
+MAZ_STANDARD_IA：低频存储（多 AZ）
+INTELLIGENT_TIERING：智能分层存储
+MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :rtype: str
         """
         return self._StorageType

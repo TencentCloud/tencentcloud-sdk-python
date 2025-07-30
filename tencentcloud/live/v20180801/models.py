@@ -9832,7 +9832,7 @@ origin: 保持原始编码格式
         :type Fps: int
         :param _Gop: 关键帧间隔，单位：秒。
 默认原始的间隔
-范围2-6
+范围1-6
         :type Gop: int
         :param _Rotate: 旋转角度，默认0。
 可取值：0，90，180，270
@@ -10039,7 +10039,7 @@ origin: 保持原始编码格式
     def Gop(self):
         """关键帧间隔，单位：秒。
 默认原始的间隔
-范围2-6
+范围1-6
         :rtype: int
         """
         return self._Gop

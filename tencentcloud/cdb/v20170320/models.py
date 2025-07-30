@@ -3945,8 +3945,10 @@ class BinlogInfo(AbstractModel):
         :param _Date: 文件存储时间，时间格式：2016-03-17 02:10:37
         :type Date: str
         :param _IntranetUrl: 下载地址
+说明：此下载地址和参数 InternetUrl 的下载地址一样。
         :type IntranetUrl: str
         :param _InternetUrl: 下载地址
+说明：此下载地址和参数 IntranetUrl 的下载地址一样。
         :type InternetUrl: str
         :param _Type: 日志具体类型，可能的值有：binlog - 二进制日志
         :type Type: str
@@ -4015,6 +4017,7 @@ class BinlogInfo(AbstractModel):
     @property
     def IntranetUrl(self):
         """下载地址
+说明：此下载地址和参数 InternetUrl 的下载地址一样。
         :rtype: str
         """
         return self._IntranetUrl
@@ -4026,6 +4029,7 @@ class BinlogInfo(AbstractModel):
     @property
     def InternetUrl(self):
         """下载地址
+说明：此下载地址和参数 IntranetUrl 的下载地址一样。
         :rtype: str
         """
         return self._InternetUrl
@@ -4113,6 +4117,8 @@ class BinlogInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         """实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :rtype: str
         """
@@ -4120,6 +4126,8 @@ class BinlogInfo(AbstractModel):
 
     @InstanceId.setter
     def InstanceId(self, InstanceId):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         self._InstanceId = InstanceId
 
 
@@ -14586,11 +14594,11 @@ class DescribeBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
         :param _Offset: 偏移量，最小值为0。
         :type Offset: int
-        :param _Limit: 分页大小，默认值为20，最小值为1，最大值为100。
+        :param _Limit: 分页大小，默认值为20，最小值为1，最大值为1000。
         :type Limit: int
         """
         self._InstanceId = None
@@ -14599,7 +14607,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        """实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :rtype: str
         """
         return self._InstanceId
@@ -14621,7 +14629,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小，默认值为20，最小值为1，最大值为100。
+        """分页大小，默认值为20，最小值为1，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -14903,7 +14911,7 @@ class DescribeBinlogsRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: 偏移量，最小值为0。
         :type Offset: int
-        :param _Limit: 分页大小，默认值为20，最小值为1，最大值为100。
+        :param _Limit: 分页大小，默认值为20，最小值为1，最大值为1000。
         :type Limit: int
         :param _MinStartTime: binlog最早开始时间，时间格式：2016-03-17 02:10:37
         :type MinStartTime: str
@@ -14943,7 +14951,7 @@ class DescribeBinlogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小，默认值为20，最小值为1，最大值为100。
+        """分页大小，默认值为20，最小值为1，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -18940,13 +18948,13 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
-        :param _StartTime: 开始时间戳。例如 1585142640 。
+        :param _StartTime: 开始时间戳。例如1585142640，秒级。
         :type StartTime: int
-        :param _EndTime: 结束时间戳。例如 1585142640 。
+        :param _EndTime: 结束时间戳。例如1585142640，秒级。
         :type EndTime: int
-        :param _KeyWords: 要匹配的关键字列表，最多支持15个关键字。
+        :param _KeyWords: 要匹配的关键字列表，最多支持15个关键字，支持模糊匹配。
         :type KeyWords: list of str
         :param _Limit: 分页的返回数量，默认为100，最大为400。
         :type Limit: int
@@ -18965,7 +18973,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID 。
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -18976,7 +18984,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间戳。例如 1585142640 。
+        """开始时间戳。例如1585142640，秒级。
         :rtype: int
         """
         return self._StartTime
@@ -18987,7 +18995,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间戳。例如 1585142640 。
+        """结束时间戳。例如1585142640，秒级。
         :rtype: int
         """
         return self._EndTime
@@ -18998,7 +19006,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     @property
     def KeyWords(self):
-        """要匹配的关键字列表，最多支持15个关键字。
+        """要匹配的关键字列表，最多支持15个关键字，支持模糊匹配。
         :rtype: list of str
         """
         return self._KeyWords
@@ -20063,14 +20071,14 @@ class DescribeParamTemplateInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 参数模板 ID。
+        :param _TemplateId: 参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
         :type TemplateId: int
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        """参数模板 ID。
+        """参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
         :rtype: int
         """
         return self._TemplateId
@@ -20103,7 +20111,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type TemplateId: int
         :param _Name: 参数模板名称。
         :type Name: str
-        :param _EngineVersion: 参数模板对应实例版本
+        :param _EngineVersion: 参数模板对应实例版本，可取值：5.5、5.6、5.7、8.0。
         :type EngineVersion: str
         :param _TotalCount: 参数模板中的参数数量
         :type TotalCount: int
@@ -20152,7 +20160,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
 
     @property
     def EngineVersion(self):
-        """参数模板对应实例版本
+        """参数模板对应实例版本，可取值：5.5、5.6、5.7、8.0。
         :rtype: str
         """
         return self._EngineVersion
@@ -20252,13 +20260,13 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EngineVersions: 引擎版本，缺省则查询所有
+        :param _EngineVersions: 引擎版本，缺省则查询所有。可取值为：5.5、5.6、5.7、8.0。
         :type EngineVersions: list of str
-        :param _EngineTypes: 引擎类型，缺省则查询所有
+        :param _EngineTypes: 引擎类型，缺省则查询所有。可取值为：InnoDB、RocksDB，不区分大小写。
         :type EngineTypes: list of str
-        :param _TemplateNames: 模板名称，缺省则查询所有
+        :param _TemplateNames: 模板名称，缺省则查询所有。支持模糊匹配。
         :type TemplateNames: list of str
-        :param _TemplateIds: 模板id，缺省则查询所有
+        :param _TemplateIds: 模板 ID，缺省则查询所有。
         :type TemplateIds: list of int
         """
         self._EngineVersions = None
@@ -20268,7 +20276,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def EngineVersions(self):
-        """引擎版本，缺省则查询所有
+        """引擎版本，缺省则查询所有。可取值为：5.5、5.6、5.7、8.0。
         :rtype: list of str
         """
         return self._EngineVersions
@@ -20279,7 +20287,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def EngineTypes(self):
-        """引擎类型，缺省则查询所有
+        """引擎类型，缺省则查询所有。可取值为：InnoDB、RocksDB，不区分大小写。
         :rtype: list of str
         """
         return self._EngineTypes
@@ -20290,7 +20298,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def TemplateNames(self):
-        """模板名称，缺省则查询所有
+        """模板名称，缺省则查询所有。支持模糊匹配。
         :rtype: list of str
         """
         return self._TemplateNames
@@ -20301,7 +20309,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
-        """模板id，缺省则查询所有
+        """模板 ID，缺省则查询所有。
         :rtype: list of int
         """
         return self._TemplateIds
@@ -21570,7 +21578,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
         :param _StartTime: 开始时间戳。例如 1585142640。
 说明：此参数单位为秒的时间戳。
@@ -21584,13 +21592,18 @@ class DescribeSlowLogDataRequest(AbstractModel):
         :type UserNames: list of str
         :param _DataBases: 访问的 数据库 列表。
         :type DataBases: list of str
-        :param _SortBy: 排序字段。当前支持：Timestamp,QueryTime,LockTime,RowsExamined,RowsSent 。
+        :param _SortBy: 排序字段，当前支持字段及含义如下，默认值为 Timestamp。
+1. Timestamp：SQL 的执行时间
+2. QueryTime：SQL 的执行时长（秒）
+3. LockTime：锁时长（秒）
+4. RowsExamined：扫描行数
+5. RowsSent：结果集行数
         :type SortBy: str
-        :param _OrderBy: 升序还是降序排列。当前支持：ASC,DESC 。
+        :param _OrderBy: 升序还是降序排列。当前支持值为 ASC - 升序，DESC - 降序 ，默认值为 ASC。
         :type OrderBy: str
         :param _Offset: 偏移量，默认为0，最大为9999。
         :type Offset: int
-        :param _Limit: 一次性返回的记录数量，默认为100，最大为400。
+        :param _Limit: 一次性返回的记录数量，默认为100，最大为800。
         :type Limit: int
         :param _InstType: 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
         :type InstType: str
@@ -21612,7 +21625,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID。
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -21680,7 +21693,12 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        """排序字段。当前支持：Timestamp,QueryTime,LockTime,RowsExamined,RowsSent 。
+        """排序字段，当前支持字段及含义如下，默认值为 Timestamp。
+1. Timestamp：SQL 的执行时间
+2. QueryTime：SQL 的执行时长（秒）
+3. LockTime：锁时长（秒）
+4. RowsExamined：扫描行数
+5. RowsSent：结果集行数
         :rtype: str
         """
         return self._SortBy
@@ -21691,7 +21709,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """升序还是降序排列。当前支持：ASC,DESC 。
+        """升序还是降序排列。当前支持值为 ASC - 升序，DESC - 降序 ，默认值为 ASC。
         :rtype: str
         """
         return self._OrderBy
@@ -21713,7 +21731,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """一次性返回的记录数量，默认为100，最大为400。
+        """一次性返回的记录数量，默认为100，最大为800。
         :rtype: int
         """
         return self._Limit
@@ -21842,7 +21860,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: 偏移量，默认值为0，最小值为0。
         :type Offset: int
-        :param _Limit: 分页大小，默认值为20，最小值为1，最大值为100。
+        :param _Limit: 分页大小，默认值为20，最小值为1，最大值为1000。
         :type Limit: int
         """
         self._InstanceId = None
@@ -21873,7 +21891,7 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小，默认值为20，最小值为1，最大值为100。
+        """分页大小，默认值为20，最小值为1，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -31914,17 +31932,17 @@ class ParamTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 参数模板ID
+        :param _TemplateId: 参数模板 ID
         :type TemplateId: int
         :param _Name: 参数模板名称
         :type Name: str
         :param _Description: 参数模板描述
         :type Description: str
-        :param _EngineVersion: 实例引擎版本
+        :param _EngineVersion: 实例引擎版本，值为：5.5、5.6、5.7、8.0。
         :type EngineVersion: str
-        :param _TemplateType: 参数模板类型
+        :param _TemplateType: 参数模板类型，值为：HIGH_STABILITY、HIGH_PERFORMANCE。
         :type TemplateType: str
-        :param _EngineType: 参数模板引擎
+        :param _EngineType: 参数模板引擎，值为：InnoDB、RocksDB。
         :type EngineType: str
         """
         self._TemplateId = None
@@ -31936,7 +31954,7 @@ class ParamTemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """参数模板ID
+        """参数模板 ID
         :rtype: int
         """
         return self._TemplateId
@@ -31969,7 +31987,7 @@ class ParamTemplateInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
-        """实例引擎版本
+        """实例引擎版本，值为：5.5、5.6、5.7、8.0。
         :rtype: str
         """
         return self._EngineVersion
@@ -31980,7 +31998,7 @@ class ParamTemplateInfo(AbstractModel):
 
     @property
     def TemplateType(self):
-        """参数模板类型
+        """参数模板类型，值为：HIGH_STABILITY、HIGH_PERFORMANCE。
         :rtype: str
         """
         return self._TemplateType
@@ -31991,7 +32009,7 @@ class ParamTemplateInfo(AbstractModel):
 
     @property
     def EngineType(self):
-        """参数模板引擎
+        """参数模板引擎，值为：InnoDB、RocksDB。
         :rtype: str
         """
         return self._EngineType

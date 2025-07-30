@@ -2406,13 +2406,13 @@ null：用户上传证书（没有套餐类型），
         :type StatusMsg: str
         :param _VerifyType: 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
         :type VerifyType: str
-        :param _CertBeginTime: 证书生效时间。
+        :param _CertBeginTime: 证书生效时间。时区为GMT+8:00
         :type CertBeginTime: str
-        :param _CertEndTime: 证书过期时间。
+        :param _CertEndTime: 证书过期时间。时区为GMT+8:00
         :type CertEndTime: str
         :param _ValidityPeriod: 证书有效期，单位（月）。
         :type ValidityPeriod: str
-        :param _InsertTime: 创建时间。
+        :param _InsertTime: 创建时间。时区为GMT+8:00
         :type InsertTime: str
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
@@ -2468,9 +2468,9 @@ null：用户上传证书（没有套餐类型），
         :type ReplaceOriCertIsDelete: bool
         :param _IsExpiring: 是否即将过期， 证书即将到期的30天内为即将过期
         :type IsExpiring: bool
-        :param _DVAuthDeadline: DV证书添加验证截止时间
+        :param _DVAuthDeadline: DV证书添加验证截止时间，时区为GMT+8:00
         :type DVAuthDeadline: str
-        :param _ValidationPassedTime: 域名验证通过时间
+        :param _ValidationPassedTime: 域名验证通过时间，时区为GMT+8:00
         :type ValidationPassedTime: str
         :param _CertSANs: 证书关联的多域名
         :type CertSANs: list of str
@@ -2486,7 +2486,7 @@ null：用户上传证书（没有套餐类型），
         :type KeyPasswordCustomFlag: bool
         :param _SupportDownloadType: 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
         :type SupportDownloadType: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
-        :param _CertRevokedTime: 证书吊销完成时间
+        :param _CertRevokedTime: 证书吊销完成时间，时区为GMT+8:00
         :type CertRevokedTime: str
         :param _HostingResourceTypes: 托管资源类型列表
         :type HostingResourceTypes: list of str
@@ -2787,7 +2787,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。
+        """证书生效时间。时区为GMT+8:00
         :rtype: str
         """
         return self._CertBeginTime
@@ -2798,7 +2798,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        """证书过期时间。
+        """证书过期时间。时区为GMT+8:00
         :rtype: str
         """
         return self._CertEndTime
@@ -2820,7 +2820,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        """创建时间。
+        """创建时间。时区为GMT+8:00
         :rtype: str
         """
         return self._InsertTime
@@ -3128,7 +3128,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DVAuthDeadline(self):
-        """DV证书添加验证截止时间
+        """DV证书添加验证截止时间，时区为GMT+8:00
         :rtype: str
         """
         return self._DVAuthDeadline
@@ -3139,7 +3139,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ValidationPassedTime(self):
-        """域名验证通过时间
+        """域名验证通过时间，时区为GMT+8:00
         :rtype: str
         """
         return self._ValidationPassedTime
@@ -3227,7 +3227,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertRevokedTime(self):
-        """证书吊销完成时间
+        """证书吊销完成时间，时区为GMT+8:00
         :rtype: str
         """
         return self._CertRevokedTime
@@ -6740,6 +6740,8 @@ class DeployRecordDetail(AbstractModel):
         :type Algorithm: str
         :param _OldAlgorithm: 原证书加密算法
         :type OldAlgorithm: str
+        :param _InstanceStatus: 实例状态，不同云产品状态不一样
+        :type InstanceStatus: str
         """
         self._Id = None
         self._CertId = None
@@ -6765,6 +6767,7 @@ class DeployRecordDetail(AbstractModel):
         self._Url = None
         self._Algorithm = None
         self._OldAlgorithm = None
+        self._InstanceStatus = None
 
     @property
     def Id(self):
@@ -7030,6 +7033,17 @@ class DeployRecordDetail(AbstractModel):
     def OldAlgorithm(self, OldAlgorithm):
         self._OldAlgorithm = OldAlgorithm
 
+    @property
+    def InstanceStatus(self):
+        """实例状态，不同云产品状态不一样
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7056,6 +7070,7 @@ class DeployRecordDetail(AbstractModel):
         self._Url = params.get("Url")
         self._Algorithm = params.get("Algorithm")
         self._OldAlgorithm = params.get("OldAlgorithm")
+        self._InstanceStatus = params.get("InstanceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9520,16 +9535,16 @@ null：用户上传证书（没有套餐类型），
         :param _VulnerabilityStatus: 漏洞扫描状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityStatus: str
-        :param _CertBeginTime: 证书生效时间。
+        :param _CertBeginTime: 证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertBeginTime: str
-        :param _CertEndTime: 证书失效时间。
+        :param _CertEndTime: 证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
         :param _ValidityPeriod: 证书有效期：单位(月)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: str
-        :param _InsertTime: 申请时间。
+        :param _InsertTime: 申请时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
         :param _OrderId: 订单 ID。
@@ -9586,7 +9601,7 @@ null：用户上传证书（没有套餐类型），
         :param _CACommonNames: CA证书的所有通用名称。仅证书类型CertificateType为CA有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type CACommonNames: list of str
-        :param _CAEndTimes: CA证书所有的到期时间。仅证书类型CertificateType为CA有效
+        :param _CAEndTimes: CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CAEndTimes: list of str
         :param _DvRevokeAuthDetail: DV证书吊销验证值
@@ -9879,7 +9894,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。
+        """证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9891,7 +9906,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        """证书失效时间。
+        """证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9915,7 +9930,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        """申请时间。
+        """申请时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10143,7 +10158,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CAEndTimes(self):
-        """CA证书所有的到期时间。仅证书类型CertificateType为CA有效
+        """CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10799,7 +10814,7 @@ class DescribeDeployedResourcesRequest(AbstractModel):
         r"""
         :param _CertificateIds: 证书ID
         :type CertificateIds: list of str
-        :param _ResourceType: 资源类型:clb,cdn,live,waf,antiddos,teo
+        :param _ResourceType: 资源类型:clb,cdn,live,vod,waf,antiddos,teo
         :type ResourceType: str
         """
         self._CertificateIds = None
@@ -10818,7 +10833,7 @@ class DescribeDeployedResourcesRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型:clb,cdn,live,waf,antiddos,teo
+        """资源类型:clb,cdn,live,vod,waf,antiddos,teo
         :rtype: str
         """
         return self._ResourceType
@@ -12224,7 +12239,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         :type FailedTotalCount: int
         :param _RunningTotalCount: 部署中总数
         :type RunningTotalCount: int
-        :param _PendingTotalCount: 带部署总数
+        :param _PendingTotalCount: 待部署总数
         :type PendingTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12294,7 +12309,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def PendingTotalCount(self):
-        """带部署总数
+        """待部署总数
         :rtype: int
         """
         return self._PendingTotalCount

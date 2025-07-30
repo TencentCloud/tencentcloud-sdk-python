@@ -394,6 +394,29 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSubAccountLoginIpPolicy(self, request):
+        """增加子账号登录IP策略
+
+        :param request: Request instance for CreateSubAccountLoginIpPolicy.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateSubAccountLoginIpPolicyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateSubAccountLoginIpPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSubAccountLoginIpPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSubAccountLoginIpPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUserOIDCConfig(self, request):
         """创建用户OIDC配置。只能创建一个用户OIDC身份提供商，并且创建用户OIDC配置之后会自动关闭用户SAML SSO身份提供商。
 

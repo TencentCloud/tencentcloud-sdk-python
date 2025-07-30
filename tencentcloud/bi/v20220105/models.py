@@ -601,6 +601,10 @@ class CreateDatasourceCloudRequest(AbstractModel):
         :type DataOriginDatasourceId: str
         :param _ClusterId: 集群id
         :type ClusterId: str
+        :param _Schema: 数据库schema
+        :type Schema: str
+        :param _DbVersion: 数据库版本
+        :type DbVersion: str
         """
         self._ServiceType = None
         self._DbType = None
@@ -622,6 +626,8 @@ class CreateDatasourceCloudRequest(AbstractModel):
         self._DataOriginProjectId = None
         self._DataOriginDatasourceId = None
         self._ClusterId = None
+        self._Schema = None
+        self._DbVersion = None
 
     @property
     def ServiceType(self):
@@ -843,6 +849,28 @@ class CreateDatasourceCloudRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def Schema(self):
+        """数据库schema
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def DbVersion(self):
+        """数据库版本
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
 
     def _deserialize(self, params):
         self._ServiceType = params.get("ServiceType")
@@ -865,6 +893,8 @@ class CreateDatasourceCloudRequest(AbstractModel):
         self._DataOriginProjectId = params.get("DataOriginProjectId")
         self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
         self._ClusterId = params.get("ClusterId")
+        self._Schema = params.get("Schema")
+        self._DbVersion = params.get("DbVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1026,6 +1056,10 @@ class CreateDatasourceRequest(AbstractModel):
         :type UseVPC: bool
         :param _RegionId: 地域
         :type RegionId: str
+        :param _Schema: 数据库schema
+        :type Schema: str
+        :param _DbVersion: 数据库版本
+        :type DbVersion: str
         """
         self._DbHost = None
         self._DbPort = None
@@ -1049,6 +1083,8 @@ class CreateDatasourceRequest(AbstractModel):
         self._OperationAuthLimit = None
         self._UseVPC = None
         self._RegionId = None
+        self._Schema = None
+        self._DbVersion = None
 
     @property
     def DbHost(self):
@@ -1292,6 +1328,28 @@ class CreateDatasourceRequest(AbstractModel):
     def RegionId(self, RegionId):
         self._RegionId = RegionId
 
+    @property
+    def Schema(self):
+        """数据库schema
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def DbVersion(self):
+        """数据库版本
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
 
     def _deserialize(self, params):
         self._DbHost = params.get("DbHost")
@@ -1316,6 +1374,8 @@ class CreateDatasourceRequest(AbstractModel):
         self._OperationAuthLimit = params.get("OperationAuthLimit")
         self._UseVPC = params.get("UseVPC")
         self._RegionId = params.get("RegionId")
+        self._Schema = params.get("Schema")
+        self._DbVersion = params.get("DbVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2639,6 +2699,12 @@ class DatasourceInfo(AbstractModel):
         :param _OwnerName: 所属人名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerName: str
+        :param _Schema: 数据库schema
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Schema: str
+        :param _DbVersion: 数据库版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbVersion: str
         """
         self._Id = None
         self._DbName = None
@@ -2679,6 +2745,8 @@ class DatasourceInfo(AbstractModel):
         self._UseVPC = None
         self._Owner = None
         self._OwnerName = None
+        self._Schema = None
+        self._DbVersion = None
 
     @property
     def Id(self):
@@ -3138,6 +3206,30 @@ class DatasourceInfo(AbstractModel):
     def OwnerName(self, OwnerName):
         self._OwnerName = OwnerName
 
+    @property
+    def Schema(self):
+        """数据库schema
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def DbVersion(self):
+        """数据库版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3186,6 +3278,8 @@ class DatasourceInfo(AbstractModel):
         self._UseVPC = params.get("UseVPC")
         self._Owner = params.get("Owner")
         self._OwnerName = params.get("OwnerName")
+        self._Schema = params.get("Schema")
+        self._DbVersion = params.get("DbVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6166,6 +6260,10 @@ class ModifyDatasourceCloudRequest(AbstractModel):
         :type DataOriginDatasourceId: str
         :param _ClusterId: 集群id
         :type ClusterId: str
+        :param _Schema: 数据库schema
+        :type Schema: str
+        :param _DbVersion: 数据库版本
+        :type DbVersion: str
         """
         self._ServiceType = None
         self._DbType = None
@@ -6188,6 +6286,8 @@ class ModifyDatasourceCloudRequest(AbstractModel):
         self._DataOriginProjectId = None
         self._DataOriginDatasourceId = None
         self._ClusterId = None
+        self._Schema = None
+        self._DbVersion = None
 
     @property
     def ServiceType(self):
@@ -6420,6 +6520,28 @@ class ModifyDatasourceCloudRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def Schema(self):
+        """数据库schema
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def DbVersion(self):
+        """数据库版本
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
 
     def _deserialize(self, params):
         self._ServiceType = params.get("ServiceType")
@@ -6443,6 +6565,8 @@ class ModifyDatasourceCloudRequest(AbstractModel):
         self._DataOriginProjectId = params.get("DataOriginProjectId")
         self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
         self._ClusterId = params.get("ClusterId")
+        self._Schema = params.get("Schema")
+        self._DbVersion = params.get("DbVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6463,7 +6587,7 @@ class ModifyDatasourceCloudResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Data: 成功无
+        :param _Data: 无
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _Extra: 额外信息
@@ -6495,7 +6619,7 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     @property
     def Data(self):
-        """成功无
+        """无
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6602,6 +6726,10 @@ class ModifyDatasourceRequest(AbstractModel):
         :type UseVPC: bool
         :param _RegionId: 地域
         :type RegionId: str
+        :param _Schema: 数据库schema
+        :type Schema: str
+        :param _DbVersion: 数据库版本
+        :type DbVersion: str
         """
         self._DbHost = None
         self._DbPort = None
@@ -6625,6 +6753,8 @@ class ModifyDatasourceRequest(AbstractModel):
         self._VpcId = None
         self._UseVPC = None
         self._RegionId = None
+        self._Schema = None
+        self._DbVersion = None
 
     @property
     def DbHost(self):
@@ -6868,6 +6998,28 @@ class ModifyDatasourceRequest(AbstractModel):
     def RegionId(self, RegionId):
         self._RegionId = RegionId
 
+    @property
+    def Schema(self):
+        """数据库schema
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def DbVersion(self):
+        """数据库版本
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
 
     def _deserialize(self, params):
         self._DbHost = params.get("DbHost")
@@ -6892,6 +7044,8 @@ class ModifyDatasourceRequest(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._UseVPC = params.get("UseVPC")
         self._RegionId = params.get("RegionId")
+        self._Schema = params.get("Schema")
+        self._DbVersion = params.get("DbVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

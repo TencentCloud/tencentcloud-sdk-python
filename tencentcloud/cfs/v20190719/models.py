@@ -18,6 +18,112 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplyPathLifecyclePolicyRequest(AbstractModel):
+    """ApplyPathLifecyclePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :type LifecyclePolicyID: str
+        :param _Paths: 生命周期管理策略关联目录的绝对路径列表
+        :type Paths: list of PathInfo
+        """
+        self._LifecyclePolicyID = None
+        self._Paths = None
+
+    @property
+    def LifecyclePolicyID(self):
+        """生命周期管理策略ID
+        :rtype: str
+        """
+        return self._LifecyclePolicyID
+
+    @LifecyclePolicyID.setter
+    def LifecyclePolicyID(self, LifecyclePolicyID):
+        self._LifecyclePolicyID = LifecyclePolicyID
+
+    @property
+    def Paths(self):
+        """生命周期管理策略关联目录的绝对路径列表
+        :rtype: list of PathInfo
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+
+    def _deserialize(self, params):
+        self._LifecyclePolicyID = params.get("LifecyclePolicyID")
+        if params.get("Paths") is not None:
+            self._Paths = []
+            for item in params.get("Paths"):
+                obj = PathInfo()
+                obj._deserialize(item)
+                self._Paths.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyPathLifecyclePolicyResponse(AbstractModel):
+    """ApplyPathLifecyclePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckResults: 有规则冲突时返回的已有冲突规则信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckResults: list of CheckResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CheckResults = None
+        self._RequestId = None
+
+    @property
+    def CheckResults(self):
+        """有规则冲突时返回的已有冲突规则信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CheckResult
+        """
+        return self._CheckResults
+
+    @CheckResults.setter
+    def CheckResults(self, CheckResults):
+        self._CheckResults = CheckResults
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CheckResults") is not None:
+            self._CheckResults = []
+            for item in params.get("CheckResults"):
+                obj = CheckResult()
+                obj._deserialize(item)
+                self._CheckResults.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class AutoScaleUpRule(AbstractModel):
     """自动扩容规则
 
@@ -815,6 +921,107 @@ class BucketInfo(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckResult(AbstractModel):
+    """有规则冲突时返回的已有冲突规则信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :type LifecyclePolicyID: str
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param _Path: 目录绝对路径
+        :type Path: str
+        :param _LifecycleRules: 生命周期管理策略关联的管理规则列表
+        :type LifecycleRules: list of LifecycleRule
+        :param _TargetPath: 目标路径
+        :type TargetPath: str
+        """
+        self._LifecyclePolicyID = None
+        self._FileSystemId = None
+        self._Path = None
+        self._LifecycleRules = None
+        self._TargetPath = None
+
+    @property
+    def LifecyclePolicyID(self):
+        """生命周期管理策略ID
+        :rtype: str
+        """
+        return self._LifecyclePolicyID
+
+    @LifecyclePolicyID.setter
+    def LifecyclePolicyID(self, LifecyclePolicyID):
+        self._LifecyclePolicyID = LifecyclePolicyID
+
+    @property
+    def FileSystemId(self):
+        """文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Path(self):
+        """目录绝对路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def LifecycleRules(self):
+        """生命周期管理策略关联的管理规则列表
+        :rtype: list of LifecycleRule
+        """
+        return self._LifecycleRules
+
+    @LifecycleRules.setter
+    def LifecycleRules(self, LifecycleRules):
+        self._LifecycleRules = LifecycleRules
+
+    @property
+    def TargetPath(self):
+        """目标路径
+        :rtype: str
+        """
+        return self._TargetPath
+
+    @TargetPath.setter
+    def TargetPath(self, TargetPath):
+        self._TargetPath = TargetPath
+
+
+    def _deserialize(self, params):
+        self._LifecyclePolicyID = params.get("LifecyclePolicyID")
+        self._FileSystemId = params.get("FileSystemId")
+        self._Path = params.get("Path")
+        if params.get("LifecycleRules") is not None:
+            self._LifecycleRules = []
+            for item in params.get("LifecycleRules"):
+                obj = LifecycleRule()
+                obj._deserialize(item)
+                self._LifecycleRules.append(obj)
+        self._TargetPath = params.get("TargetPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2029,6 +2236,522 @@ class CreateCfsSnapshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDataFlowRequest(AbstractModel):
+    """CreateDataFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :type FileSystemId: str
+        :param _SourceStorageType: 源端数据类型；包含S3_COS，S3_L5 
+        :type SourceStorageType: str
+        :param _SourceStorageAddress: 源端存储地址
+        :type SourceStorageAddress: str
+        :param _SourcePath: 源端路径
+        :type SourcePath: str
+        :param _TargetPath: 文件系统内目标路径
+        :type TargetPath: str
+        :param _SecretId: 密钥 ID
+        :type SecretId: str
+        :param _SecretKey: 密钥 key
+        :type SecretKey: str
+        :param _DataFlowName: 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+        :type DataFlowName: str
+        """
+        self._FileSystemId = None
+        self._SourceStorageType = None
+        self._SourceStorageAddress = None
+        self._SourcePath = None
+        self._TargetPath = None
+        self._SecretId = None
+        self._SecretKey = None
+        self._DataFlowName = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def SourceStorageType(self):
+        """源端数据类型；包含S3_COS，S3_L5 
+        :rtype: str
+        """
+        return self._SourceStorageType
+
+    @SourceStorageType.setter
+    def SourceStorageType(self, SourceStorageType):
+        self._SourceStorageType = SourceStorageType
+
+    @property
+    def SourceStorageAddress(self):
+        """源端存储地址
+        :rtype: str
+        """
+        return self._SourceStorageAddress
+
+    @SourceStorageAddress.setter
+    def SourceStorageAddress(self, SourceStorageAddress):
+        self._SourceStorageAddress = SourceStorageAddress
+
+    @property
+    def SourcePath(self):
+        """源端路径
+        :rtype: str
+        """
+        return self._SourcePath
+
+    @SourcePath.setter
+    def SourcePath(self, SourcePath):
+        self._SourcePath = SourcePath
+
+    @property
+    def TargetPath(self):
+        """文件系统内目标路径
+        :rtype: str
+        """
+        return self._TargetPath
+
+    @TargetPath.setter
+    def TargetPath(self, TargetPath):
+        self._TargetPath = TargetPath
+
+    @property
+    def SecretId(self):
+        """密钥 ID
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        """密钥 key
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def DataFlowName(self):
+        """数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+        :rtype: str
+        """
+        return self._DataFlowName
+
+    @DataFlowName.setter
+    def DataFlowName(self, DataFlowName):
+        self._DataFlowName = DataFlowName
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._SourceStorageType = params.get("SourceStorageType")
+        self._SourceStorageAddress = params.get("SourceStorageAddress")
+        self._SourcePath = params.get("SourcePath")
+        self._TargetPath = params.get("TargetPath")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._DataFlowName = params.get("DataFlowName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataFlowResponse(AbstractModel):
+    """CreateDataFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataFlowId: 数据流动管理 ID
+        :type DataFlowId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataFlowId = None
+        self._RequestId = None
+
+    @property
+    def DataFlowId(self):
+        """数据流动管理 ID
+        :rtype: str
+        """
+        return self._DataFlowId
+
+    @DataFlowId.setter
+    def DataFlowId(self, DataFlowId):
+        self._DataFlowId = DataFlowId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataFlowId = params.get("DataFlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLifecycleDataTaskRequest(AbstractModel):
+    """CreateLifecycleDataTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统唯一 ID
+        :type FileSystemId: str
+        :param _Type: 生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载
+        :type Type: str
+        :param _TaskPath: 需要沉降的路径或文件，仅支持传入1个路径，不允许为空。
+        :type TaskPath: str
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _DataFlowId: 数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
+        :type DataFlowId: str
+        """
+        self._FileSystemId = None
+        self._Type = None
+        self._TaskPath = None
+        self._TaskName = None
+        self._DataFlowId = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统唯一 ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Type(self):
+        """生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TaskPath(self):
+        """需要沉降的路径或文件，仅支持传入1个路径，不允许为空。
+        :rtype: str
+        """
+        return self._TaskPath
+
+    @TaskPath.setter
+    def TaskPath(self, TaskPath):
+        self._TaskPath = TaskPath
+
+    @property
+    def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def DataFlowId(self):
+        """数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
+        :rtype: str
+        """
+        return self._DataFlowId
+
+    @DataFlowId.setter
+    def DataFlowId(self, DataFlowId):
+        self._DataFlowId = DataFlowId
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._Type = params.get("Type")
+        self._TaskPath = params.get("TaskPath")
+        self._TaskName = params.get("TaskName")
+        self._DataFlowId = params.get("DataFlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLifecycleDataTaskResponse(AbstractModel):
+    """CreateLifecycleDataTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLifecyclePolicyDownloadTaskRequest(AbstractModel):
+    """CreateLifecyclePolicyDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务Id
+        :type TaskId: str
+        :param _Type: 下载文件的类型，包含 FileSuccessList，FileTotalList，FileFailedList
+        :type Type: str
+        """
+        self._TaskId = None
+        self._Type = None
+
+    @property
+    def TaskId(self):
+        """任务Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Type(self):
+        """下载文件的类型，包含 FileSuccessList，FileTotalList，FileFailedList
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLifecyclePolicyDownloadTaskResponse(AbstractModel):
+    """CreateLifecyclePolicyDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadAddress: 下载路径
+        :type DownloadAddress: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DownloadAddress = None
+        self._RequestId = None
+
+    @property
+    def DownloadAddress(self):
+        """下载路径
+        :rtype: str
+        """
+        return self._DownloadAddress
+
+    @DownloadAddress.setter
+    def DownloadAddress(self, DownloadAddress):
+        self._DownloadAddress = DownloadAddress
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DownloadAddress = params.get("DownloadAddress")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLifecyclePolicyRequest(AbstractModel):
+    """CreateLifecyclePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecyclePolicyName: 生命周期管理策略名称，中文/英文/数字/下划线/中划线的组合，不超过64个字符
+        :type LifecyclePolicyName: str
+        :param _LifecycleRules: 生命周期管理策略关联的管理规则列表
+        :type LifecycleRules: list of LifecycleRule
+        """
+        self._LifecyclePolicyName = None
+        self._LifecycleRules = None
+
+    @property
+    def LifecyclePolicyName(self):
+        """生命周期管理策略名称，中文/英文/数字/下划线/中划线的组合，不超过64个字符
+        :rtype: str
+        """
+        return self._LifecyclePolicyName
+
+    @LifecyclePolicyName.setter
+    def LifecyclePolicyName(self, LifecyclePolicyName):
+        self._LifecyclePolicyName = LifecyclePolicyName
+
+    @property
+    def LifecycleRules(self):
+        """生命周期管理策略关联的管理规则列表
+        :rtype: list of LifecycleRule
+        """
+        return self._LifecycleRules
+
+    @LifecycleRules.setter
+    def LifecycleRules(self, LifecycleRules):
+        self._LifecycleRules = LifecycleRules
+
+
+    def _deserialize(self, params):
+        self._LifecyclePolicyName = params.get("LifecyclePolicyName")
+        if params.get("LifecycleRules") is not None:
+            self._LifecycleRules = []
+            for item in params.get("LifecycleRules"):
+                obj = LifecycleRule()
+                obj._deserialize(item)
+                self._LifecycleRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLifecyclePolicyResponse(AbstractModel):
+    """CreateLifecyclePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :type LifecyclePolicyID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LifecyclePolicyID = None
+        self._RequestId = None
+
+    @property
+    def LifecyclePolicyID(self):
+        """生命周期管理策略ID
+        :rtype: str
+        """
+        return self._LifecyclePolicyID
+
+    @LifecyclePolicyID.setter
+    def LifecyclePolicyID(self, LifecyclePolicyID):
+        self._LifecyclePolicyID = LifecyclePolicyID
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LifecyclePolicyID = params.get("LifecyclePolicyID")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateMigrationTaskRequest(AbstractModel):
     """CreateMigrationTask请求参数结构体
 
@@ -2331,6 +3054,168 @@ class CreateMigrationTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class DataFlowInfo(AbstractModel):
+    """数据流动信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataFlowId: 数据流动管理 ID
+        :type DataFlowId: str
+        :param _DataFlowName: 数据流动名称
+        :type DataFlowName: str
+        :param _SourceStorageType: 源端数据类型
+        :type SourceStorageType: str
+        :param _SourceStorageAddress: 源端存储地址
+        :type SourceStorageAddress: str
+        :param _SourcePath: 源端路径
+        :type SourcePath: str
+        :param _TargetPath: 目录路径
+        :type TargetPath: str
+        :param _Status: available：已生效
+pending：配置中
+unavailable：失效
+deleting：删除中
+        :type Status: str
+        :param _CreationTime: 创建时间
+        :type CreationTime: str
+        :param _FileSystemId: 文件系统 ID
+        :type FileSystemId: str
+        """
+        self._DataFlowId = None
+        self._DataFlowName = None
+        self._SourceStorageType = None
+        self._SourceStorageAddress = None
+        self._SourcePath = None
+        self._TargetPath = None
+        self._Status = None
+        self._CreationTime = None
+        self._FileSystemId = None
+
+    @property
+    def DataFlowId(self):
+        """数据流动管理 ID
+        :rtype: str
+        """
+        return self._DataFlowId
+
+    @DataFlowId.setter
+    def DataFlowId(self, DataFlowId):
+        self._DataFlowId = DataFlowId
+
+    @property
+    def DataFlowName(self):
+        """数据流动名称
+        :rtype: str
+        """
+        return self._DataFlowName
+
+    @DataFlowName.setter
+    def DataFlowName(self, DataFlowName):
+        self._DataFlowName = DataFlowName
+
+    @property
+    def SourceStorageType(self):
+        """源端数据类型
+        :rtype: str
+        """
+        return self._SourceStorageType
+
+    @SourceStorageType.setter
+    def SourceStorageType(self, SourceStorageType):
+        self._SourceStorageType = SourceStorageType
+
+    @property
+    def SourceStorageAddress(self):
+        """源端存储地址
+        :rtype: str
+        """
+        return self._SourceStorageAddress
+
+    @SourceStorageAddress.setter
+    def SourceStorageAddress(self, SourceStorageAddress):
+        self._SourceStorageAddress = SourceStorageAddress
+
+    @property
+    def SourcePath(self):
+        """源端路径
+        :rtype: str
+        """
+        return self._SourcePath
+
+    @SourcePath.setter
+    def SourcePath(self, SourcePath):
+        self._SourcePath = SourcePath
+
+    @property
+    def TargetPath(self):
+        """目录路径
+        :rtype: str
+        """
+        return self._TargetPath
+
+    @TargetPath.setter
+    def TargetPath(self, TargetPath):
+        self._TargetPath = TargetPath
+
+    @property
+    def Status(self):
+        """available：已生效
+pending：配置中
+unavailable：失效
+deleting：删除中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def FileSystemId(self):
+        """文件系统 ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+
+    def _deserialize(self, params):
+        self._DataFlowId = params.get("DataFlowId")
+        self._DataFlowName = params.get("DataFlowName")
+        self._SourceStorageType = params.get("SourceStorageType")
+        self._SourceStorageAddress = params.get("SourceStorageAddress")
+        self._SourcePath = params.get("SourcePath")
+        self._TargetPath = params.get("TargetPath")
+        self._Status = params.get("Status")
+        self._CreationTime = params.get("CreationTime")
+        self._FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteAutoSnapshotPolicyRequest(AbstractModel):
@@ -2772,6 +3657,149 @@ class DeleteCfsSnapshotResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._SnapshotId = params.get("SnapshotId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDataFlowRequest(AbstractModel):
+    """DeleteDataFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataFlowId: 数据流动管理 ID
+        :type DataFlowId: str
+        :param _FileSystemId: 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :type FileSystemId: str
+        """
+        self._DataFlowId = None
+        self._FileSystemId = None
+
+    @property
+    def DataFlowId(self):
+        """数据流动管理 ID
+        :rtype: str
+        """
+        return self._DataFlowId
+
+    @DataFlowId.setter
+    def DataFlowId(self, DataFlowId):
+        self._DataFlowId = DataFlowId
+
+    @property
+    def FileSystemId(self):
+        """文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+
+    def _deserialize(self, params):
+        self._DataFlowId = params.get("DataFlowId")
+        self._FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataFlowResponse(AbstractModel):
+    """DeleteDataFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLifecyclePolicyRequest(AbstractModel):
+    """DeleteLifecyclePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :type LifecyclePolicyID: str
+        """
+        self._LifecyclePolicyID = None
+
+    @property
+    def LifecyclePolicyID(self):
+        """生命周期管理策略ID
+        :rtype: str
+        """
+        return self._LifecyclePolicyID
+
+    @LifecyclePolicyID.setter
+    def LifecyclePolicyID(self, LifecyclePolicyID):
+        self._LifecyclePolicyID = LifecyclePolicyID
+
+
+    def _deserialize(self, params):
+        self._LifecyclePolicyID = params.get("LifecyclePolicyID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLifecyclePolicyResponse(AbstractModel):
+    """DeleteLifecyclePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -4158,6 +5186,533 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataFlowRequest(AbstractModel):
+    """DescribeDataFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :type FileSystemId: str
+        :param _DataFlowId: 数据流动 ID ，由创建数据流动返回
+        :type DataFlowId: str
+        :param _Limit: 每次查询返回值个数，默认20；最大100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _CfsVersion: 文件系统版本；版本号：v1.5，v3.0，v3.1，v4.0
+        :type CfsVersion: str
+        """
+        self._FileSystemId = None
+        self._DataFlowId = None
+        self._Limit = None
+        self._Offset = None
+        self._CfsVersion = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def DataFlowId(self):
+        """数据流动 ID ，由创建数据流动返回
+        :rtype: str
+        """
+        return self._DataFlowId
+
+    @DataFlowId.setter
+    def DataFlowId(self, DataFlowId):
+        self._DataFlowId = DataFlowId
+
+    @property
+    def Limit(self):
+        """每次查询返回值个数，默认20；最大100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def CfsVersion(self):
+        """文件系统版本；版本号：v1.5，v3.0，v3.1，v4.0
+        :rtype: str
+        """
+        return self._CfsVersion
+
+    @CfsVersion.setter
+    def CfsVersion(self, CfsVersion):
+        self._CfsVersion = CfsVersion
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._DataFlowId = params.get("DataFlowId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._CfsVersion = params.get("CfsVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataFlowResponse(AbstractModel):
+    """DescribeDataFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数量
+        :type TotalCount: int
+        :param _DataFlows: 无
+        :type DataFlows: list of DataFlowInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataFlows = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataFlows(self):
+        """无
+        :rtype: list of DataFlowInfo
+        """
+        return self._DataFlows
+
+    @DataFlows.setter
+    def DataFlows(self, DataFlows):
+        self._DataFlows = DataFlows
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataFlows") is not None:
+            self._DataFlows = []
+            for item in params.get("DataFlows"):
+                obj = DataFlowInfo()
+                obj._deserialize(item)
+                self._DataFlows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLifecycleDataTaskRequest(AbstractModel):
+    """DescribeLifecycleDataTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _TaskId: 	任务ID
+        :type TaskId: str
+        :param _Offset: Offset 分页码	
+        :type Offset: int
+        :param _Limit: Limit 页面大小	
+        :type Limit: int
+        :param _Filters: 过滤条件，TaskName，FileSystemId，Type
+        :type Filters: list of Filter
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskId(self):
+        """	任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Offset(self):
+        """Offset 分页码	
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Limit 页面大小	
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """过滤条件，TaskName，FileSystemId，Type
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskId = params.get("TaskId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLifecycleDataTaskResponse(AbstractModel):
+    """DescribeLifecycleDataTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecycleDataTask: 任务数组
+        :type LifecycleDataTask: list of LifecycleDataTaskInfo
+        :param _TotalCount: 查询结果总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LifecycleDataTask = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def LifecycleDataTask(self):
+        """任务数组
+        :rtype: list of LifecycleDataTaskInfo
+        """
+        return self._LifecycleDataTask
+
+    @LifecycleDataTask.setter
+    def LifecycleDataTask(self, LifecycleDataTask):
+        self._LifecycleDataTask = LifecycleDataTask
+
+    @property
+    def TotalCount(self):
+        """查询结果总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LifecycleDataTask") is not None:
+            self._LifecycleDataTask = []
+            for item in params.get("LifecycleDataTask"):
+                obj = LifecycleDataTaskInfo()
+                obj._deserialize(item)
+                self._LifecycleDataTask.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLifecyclePoliciesRequest(AbstractModel):
+    """DescribeLifecyclePolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecyclePolicyName: 生命周期管理策略名称
+        :type LifecyclePolicyName: str
+        :param _PageSize: 每个分页包含的生命周期管理策略个数
+        :type PageSize: int
+        :param _PageNumber: 列表的分页页码
+        :type PageNumber: int
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :type LifecyclePolicyID: str
+        """
+        self._LifecyclePolicyName = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._FileSystemId = None
+        self._LifecyclePolicyID = None
+
+    @property
+    def LifecyclePolicyName(self):
+        """生命周期管理策略名称
+        :rtype: str
+        """
+        return self._LifecyclePolicyName
+
+    @LifecyclePolicyName.setter
+    def LifecyclePolicyName(self, LifecyclePolicyName):
+        self._LifecyclePolicyName = LifecyclePolicyName
+
+    @property
+    def PageSize(self):
+        """每个分页包含的生命周期管理策略个数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        """列表的分页页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def FileSystemId(self):
+        """文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def LifecyclePolicyID(self):
+        """生命周期管理策略ID
+        :rtype: str
+        """
+        return self._LifecyclePolicyID
+
+    @LifecyclePolicyID.setter
+    def LifecyclePolicyID(self, LifecyclePolicyID):
+        self._LifecyclePolicyID = LifecyclePolicyID
+
+
+    def _deserialize(self, params):
+        self._LifecyclePolicyName = params.get("LifecyclePolicyName")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._FileSystemId = params.get("FileSystemId")
+        self._LifecyclePolicyID = params.get("LifecyclePolicyID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLifecyclePoliciesResponse(AbstractModel):
+    """DescribeLifecyclePolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 列表的分页页码
+        :type PageNumber: int
+        :param _PageSize: 每个分页包含的生命周期管理策略个数
+        :type PageSize: int
+        :param _TotalCount: 生命周期管理策略总数
+        :type TotalCount: int
+        :param _LifecyclePolicies: 生命周期管理策略列表
+        :type LifecyclePolicies: list of LifecyclePolicy
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._LifecyclePolicies = None
+        self._RequestId = None
+
+    @property
+    def PageNumber(self):
+        """列表的分页页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """每个分页包含的生命周期管理策略个数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        """生命周期管理策略总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def LifecyclePolicies(self):
+        """生命周期管理策略列表
+        :rtype: list of LifecyclePolicy
+        """
+        return self._LifecyclePolicies
+
+    @LifecyclePolicies.setter
+    def LifecyclePolicies(self, LifecyclePolicies):
+        self._LifecyclePolicies = LifecyclePolicies
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        if params.get("LifecyclePolicies") is not None:
+            self._LifecyclePolicies = []
+            for item in params.get("LifecyclePolicies"):
+                obj = LifecyclePolicy()
+                obj._deserialize(item)
+                self._LifecyclePolicies.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMigrationTasksRequest(AbstractModel):
     """DescribeMigrationTasks请求参数结构体
 
@@ -5491,6 +7046,544 @@ class Filter(AbstractModel):
         
 
 
+class LifecycleDataTaskInfo(AbstractModel):
+    """生命周期任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _TaskStatus: 任务状态.
+init：未执行
+running：执行中，finished：已完成
+,failed：失败
+,stopping：停止中,stopped：已停止
+        :type TaskStatus: str
+        :param _CreationTime: 任务创建时间
+        :type CreationTime: str
+        :param _FinishTime: 任务结束时间
+        :type FinishTime: str
+        :param _FileTotalCount: 文件总数
+        :type FileTotalCount: int
+        :param _FileSuccessedCount: 处理成功文件数量
+        :type FileSuccessedCount: int
+        :param _FileFailedCount: 当前已经失败的文件数
+        :type FileFailedCount: int
+        :param _FileTotalSize: 文件容量，单位Byte
+
+
+        :type FileTotalSize: int
+        :param _FileSuccessedSize: 已处理完成的文件容量，单位Byte
+
+
+        :type FileSuccessedSize: int
+        :param _FileFailedSize: 已处理失败文件容量，单位Byte
+
+        :type FileFailedSize: int
+        :param _FileTotalList: 总文件列表
+        :type FileTotalList: str
+        :param _FileSuccessedList: 成功的文件列表
+        :type FileSuccessedList: str
+        :param _FileFailedList: 失败文件的列表
+        :type FileFailedList: str
+        :param _FileSystemId: FileSystemId
+        :type FileSystemId: str
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _TaskPath: 任务路径
+        :type TaskPath: str
+        :param _Type: 任务类型,archive:表示沉降任务，restore：表示拉取任务
+        :type Type: str
+        :param _DataFlowId: 数据流动Id
+        :type DataFlowId: str
+        """
+        self._TaskId = None
+        self._TaskStatus = None
+        self._CreationTime = None
+        self._FinishTime = None
+        self._FileTotalCount = None
+        self._FileSuccessedCount = None
+        self._FileFailedCount = None
+        self._FileTotalSize = None
+        self._FileSuccessedSize = None
+        self._FileFailedSize = None
+        self._FileTotalList = None
+        self._FileSuccessedList = None
+        self._FileFailedList = None
+        self._FileSystemId = None
+        self._TaskName = None
+        self._TaskPath = None
+        self._Type = None
+        self._DataFlowId = None
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskStatus(self):
+        """任务状态.
+init：未执行
+running：执行中，finished：已完成
+,failed：失败
+,stopping：停止中,stopped：已停止
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def CreationTime(self):
+        """任务创建时间
+        :rtype: str
+        """
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def FinishTime(self):
+        """任务结束时间
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def FileTotalCount(self):
+        """文件总数
+        :rtype: int
+        """
+        return self._FileTotalCount
+
+    @FileTotalCount.setter
+    def FileTotalCount(self, FileTotalCount):
+        self._FileTotalCount = FileTotalCount
+
+    @property
+    def FileSuccessedCount(self):
+        """处理成功文件数量
+        :rtype: int
+        """
+        return self._FileSuccessedCount
+
+    @FileSuccessedCount.setter
+    def FileSuccessedCount(self, FileSuccessedCount):
+        self._FileSuccessedCount = FileSuccessedCount
+
+    @property
+    def FileFailedCount(self):
+        """当前已经失败的文件数
+        :rtype: int
+        """
+        return self._FileFailedCount
+
+    @FileFailedCount.setter
+    def FileFailedCount(self, FileFailedCount):
+        self._FileFailedCount = FileFailedCount
+
+    @property
+    def FileTotalSize(self):
+        """文件容量，单位Byte
+
+
+        :rtype: int
+        """
+        return self._FileTotalSize
+
+    @FileTotalSize.setter
+    def FileTotalSize(self, FileTotalSize):
+        self._FileTotalSize = FileTotalSize
+
+    @property
+    def FileSuccessedSize(self):
+        """已处理完成的文件容量，单位Byte
+
+
+        :rtype: int
+        """
+        return self._FileSuccessedSize
+
+    @FileSuccessedSize.setter
+    def FileSuccessedSize(self, FileSuccessedSize):
+        self._FileSuccessedSize = FileSuccessedSize
+
+    @property
+    def FileFailedSize(self):
+        """已处理失败文件容量，单位Byte
+
+        :rtype: int
+        """
+        return self._FileFailedSize
+
+    @FileFailedSize.setter
+    def FileFailedSize(self, FileFailedSize):
+        self._FileFailedSize = FileFailedSize
+
+    @property
+    def FileTotalList(self):
+        """总文件列表
+        :rtype: str
+        """
+        return self._FileTotalList
+
+    @FileTotalList.setter
+    def FileTotalList(self, FileTotalList):
+        self._FileTotalList = FileTotalList
+
+    @property
+    def FileSuccessedList(self):
+        """成功的文件列表
+        :rtype: str
+        """
+        return self._FileSuccessedList
+
+    @FileSuccessedList.setter
+    def FileSuccessedList(self, FileSuccessedList):
+        self._FileSuccessedList = FileSuccessedList
+
+    @property
+    def FileFailedList(self):
+        """失败文件的列表
+        :rtype: str
+        """
+        return self._FileFailedList
+
+    @FileFailedList.setter
+    def FileFailedList(self, FileFailedList):
+        self._FileFailedList = FileFailedList
+
+    @property
+    def FileSystemId(self):
+        """FileSystemId
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskPath(self):
+        """任务路径
+        :rtype: str
+        """
+        return self._TaskPath
+
+    @TaskPath.setter
+    def TaskPath(self, TaskPath):
+        self._TaskPath = TaskPath
+
+    @property
+    def Type(self):
+        """任务类型,archive:表示沉降任务，restore：表示拉取任务
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DataFlowId(self):
+        """数据流动Id
+        :rtype: str
+        """
+        return self._DataFlowId
+
+    @DataFlowId.setter
+    def DataFlowId(self, DataFlowId):
+        self._DataFlowId = DataFlowId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._CreationTime = params.get("CreationTime")
+        self._FinishTime = params.get("FinishTime")
+        self._FileTotalCount = params.get("FileTotalCount")
+        self._FileSuccessedCount = params.get("FileSuccessedCount")
+        self._FileFailedCount = params.get("FileFailedCount")
+        self._FileTotalSize = params.get("FileTotalSize")
+        self._FileSuccessedSize = params.get("FileSuccessedSize")
+        self._FileFailedSize = params.get("FileFailedSize")
+        self._FileTotalList = params.get("FileTotalList")
+        self._FileSuccessedList = params.get("FileSuccessedList")
+        self._FileFailedList = params.get("FileFailedList")
+        self._FileSystemId = params.get("FileSystemId")
+        self._TaskName = params.get("TaskName")
+        self._TaskPath = params.get("TaskPath")
+        self._Type = params.get("Type")
+        self._DataFlowId = params.get("DataFlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LifecyclePolicy(AbstractModel):
+    """生命周期管理策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: 生命周期管理策略创建的时间
+        :type CreateTime: str
+        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :type LifecyclePolicyID: str
+        :param _LifecyclePolicyName: 生命周期管理策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifecyclePolicyName: str
+        :param _LifecycleRules: 生命周期管理策略关联的管理规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifecycleRules: list of LifecycleRule
+        :param _Paths: 生命周期管理策略关联目录的绝对路径列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Paths: list of PathInfo
+        """
+        self._CreateTime = None
+        self._LifecyclePolicyID = None
+        self._LifecyclePolicyName = None
+        self._LifecycleRules = None
+        self._Paths = None
+
+    @property
+    def CreateTime(self):
+        """生命周期管理策略创建的时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LifecyclePolicyID(self):
+        """生命周期管理策略ID
+        :rtype: str
+        """
+        return self._LifecyclePolicyID
+
+    @LifecyclePolicyID.setter
+    def LifecyclePolicyID(self, LifecyclePolicyID):
+        self._LifecyclePolicyID = LifecyclePolicyID
+
+    @property
+    def LifecyclePolicyName(self):
+        """生命周期管理策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LifecyclePolicyName
+
+    @LifecyclePolicyName.setter
+    def LifecyclePolicyName(self, LifecyclePolicyName):
+        self._LifecyclePolicyName = LifecyclePolicyName
+
+    @property
+    def LifecycleRules(self):
+        """生命周期管理策略关联的管理规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LifecycleRule
+        """
+        return self._LifecycleRules
+
+    @LifecycleRules.setter
+    def LifecycleRules(self, LifecycleRules):
+        self._LifecycleRules = LifecycleRules
+
+    @property
+    def Paths(self):
+        """生命周期管理策略关联目录的绝对路径列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PathInfo
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        self._LifecyclePolicyID = params.get("LifecyclePolicyID")
+        self._LifecyclePolicyName = params.get("LifecyclePolicyName")
+        if params.get("LifecycleRules") is not None:
+            self._LifecycleRules = []
+            for item in params.get("LifecycleRules"):
+                obj = LifecycleRule()
+                obj._deserialize(item)
+                self._LifecycleRules.append(obj)
+        if params.get("Paths") is not None:
+            self._Paths = []
+            for item in params.get("Paths"):
+                obj = PathInfo()
+                obj._deserialize(item)
+                self._Paths.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LifecycleRule(AbstractModel):
+    """生命周期管理策略关联的管理规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageType: 数据转储后的存储类型
+        :type StorageType: str
+        :param _FileType: 数据转储文件类型
+        :type FileType: str
+        :param _Action: 数据转储行为
+        :type Action: str
+        :param _Interval: 数据转储触发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interval: str
+        :param _FileMaxSize: 数据转储文件最大规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileMaxSize: str
+        :param _FileMinSize: 数据转储文件最小规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileMinSize: str
+        """
+        self._StorageType = None
+        self._FileType = None
+        self._Action = None
+        self._Interval = None
+        self._FileMaxSize = None
+        self._FileMinSize = None
+
+    @property
+    def StorageType(self):
+        """数据转储后的存储类型
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def FileType(self):
+        """数据转储文件类型
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Action(self):
+        """数据转储行为
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Interval(self):
+        """数据转储触发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def FileMaxSize(self):
+        """数据转储文件最大规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileMaxSize
+
+    @FileMaxSize.setter
+    def FileMaxSize(self, FileMaxSize):
+        self._FileMaxSize = FileMaxSize
+
+    @property
+    def FileMinSize(self):
+        """数据转储文件最小规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileMinSize
+
+    @FileMinSize.setter
+    def FileMinSize(self, FileMinSize):
+        self._FileMinSize = FileMinSize
+
+
+    def _deserialize(self, params):
+        self._StorageType = params.get("StorageType")
+        self._FileType = params.get("FileType")
+        self._Action = params.get("Action")
+        self._Interval = params.get("Interval")
+        self._FileMaxSize = params.get("FileMaxSize")
+        self._FileMinSize = params.get("FileMinSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MigrationTaskInfo(AbstractModel):
     """CFS数据迁移任务信息
 
@@ -5902,6 +7995,145 @@ class MigrationTaskInfo(AbstractModel):
         
 
 
+class ModifyDataFlowRequest(AbstractModel):
+    """ModifyDataFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataFlowId: 数据流动管理 ID ，通过查询数据流动接口获取
+        :type DataFlowId: str
+        :param _FileSystemId: 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :type FileSystemId: str
+        :param _DataFlowName: 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+        :type DataFlowName: str
+        :param _SecretId: 密钥 ID
+        :type SecretId: str
+        :param _SecretKey: 密钥 key
+        :type SecretKey: str
+        """
+        self._DataFlowId = None
+        self._FileSystemId = None
+        self._DataFlowName = None
+        self._SecretId = None
+        self._SecretKey = None
+
+    @property
+    def DataFlowId(self):
+        """数据流动管理 ID ，通过查询数据流动接口获取
+        :rtype: str
+        """
+        return self._DataFlowId
+
+    @DataFlowId.setter
+    def DataFlowId(self, DataFlowId):
+        self._DataFlowId = DataFlowId
+
+    @property
+    def FileSystemId(self):
+        """文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def DataFlowName(self):
+        """数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+        :rtype: str
+        """
+        return self._DataFlowName
+
+    @DataFlowName.setter
+    def DataFlowName(self, DataFlowName):
+        self._DataFlowName = DataFlowName
+
+    @property
+    def SecretId(self):
+        """密钥 ID
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        """密钥 key
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._DataFlowId = params.get("DataFlowId")
+        self._FileSystemId = params.get("FileSystemId")
+        self._DataFlowName = params.get("DataFlowName")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDataFlowResponse(AbstractModel):
+    """ModifyDataFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataFlowId: 数据流动管理 ID
+        :type DataFlowId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataFlowId = None
+        self._RequestId = None
+
+    @property
+    def DataFlowId(self):
+        """数据流动管理 ID
+        :rtype: str
+        """
+        return self._DataFlowId
+
+    @DataFlowId.setter
+    def DataFlowId(self, DataFlowId):
+        self._DataFlowId = DataFlowId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataFlowId = params.get("DataFlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
     """ModifyFileSystemAutoScaleUpRule请求参数结构体
 
@@ -6068,6 +8300,120 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
         self._Status = params.get("Status")
         self._ScaleUpThreshold = params.get("ScaleUpThreshold")
         self._TargetThreshold = params.get("TargetThreshold")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLifecyclePolicyRequest(AbstractModel):
+    """ModifyLifecyclePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecyclePolicyName: 生命周期管理策略名称，中文/英文/数字/下划线/中划线的组合，不超过64个字符
+        :type LifecyclePolicyName: str
+        :param _LifecycleRules: 生命周期管理策略关联的管理规则列表
+        :type LifecycleRules: list of LifecycleRule
+        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :type LifecyclePolicyID: str
+        """
+        self._LifecyclePolicyName = None
+        self._LifecycleRules = None
+        self._LifecyclePolicyID = None
+
+    @property
+    def LifecyclePolicyName(self):
+        """生命周期管理策略名称，中文/英文/数字/下划线/中划线的组合，不超过64个字符
+        :rtype: str
+        """
+        return self._LifecyclePolicyName
+
+    @LifecyclePolicyName.setter
+    def LifecyclePolicyName(self, LifecyclePolicyName):
+        self._LifecyclePolicyName = LifecyclePolicyName
+
+    @property
+    def LifecycleRules(self):
+        """生命周期管理策略关联的管理规则列表
+        :rtype: list of LifecycleRule
+        """
+        return self._LifecycleRules
+
+    @LifecycleRules.setter
+    def LifecycleRules(self, LifecycleRules):
+        self._LifecycleRules = LifecycleRules
+
+    @property
+    def LifecyclePolicyID(self):
+        """生命周期管理策略ID
+        :rtype: str
+        """
+        return self._LifecyclePolicyID
+
+    @LifecyclePolicyID.setter
+    def LifecyclePolicyID(self, LifecyclePolicyID):
+        self._LifecyclePolicyID = LifecyclePolicyID
+
+
+    def _deserialize(self, params):
+        self._LifecyclePolicyName = params.get("LifecyclePolicyName")
+        if params.get("LifecycleRules") is not None:
+            self._LifecycleRules = []
+            for item in params.get("LifecycleRules"):
+                obj = LifecycleRule()
+                obj._deserialize(item)
+                self._LifecycleRules.append(obj)
+        self._LifecyclePolicyID = params.get("LifecyclePolicyID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLifecyclePolicyResponse(AbstractModel):
+    """ModifyLifecyclePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :type LifecyclePolicyID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LifecyclePolicyID = None
+        self._RequestId = None
+
+    @property
+    def LifecyclePolicyID(self):
+        """生命周期管理策略ID
+        :rtype: str
+        """
+        return self._LifecyclePolicyID
+
+    @LifecyclePolicyID.setter
+    def LifecyclePolicyID(self, LifecyclePolicyID):
+        self._LifecyclePolicyID = LifecyclePolicyID
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LifecyclePolicyID = params.get("LifecyclePolicyID")
         self._RequestId = params.get("RequestId")
 
 
@@ -6517,6 +8863,57 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
         self._RWPermission = params.get("RWPermission")
         self._UserPermission = params.get("UserPermission")
         self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PathInfo(AbstractModel):
+    """生命周期管理策略关联目录的绝对路径
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param _Path: 目录绝对路径
+        :type Path: str
+        """
+        self._FileSystemId = None
+        self._Path = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Path(self):
+        """目录绝对路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7270,6 +9667,70 @@ class SnapshotStatistics(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StopLifecycleDataTaskRequest(AbstractModel):
+    """StopLifecycleDataTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopLifecycleDataTaskResponse(AbstractModel):
+    """StopLifecycleDataTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class StopMigrationTaskRequest(AbstractModel):

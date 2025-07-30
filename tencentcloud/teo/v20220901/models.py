@@ -47936,7 +47936,7 @@ class Task(AbstractModel):
         :param _Status: 状态。取值有：
 <li>processing：处理中；</li>
 <li>success：成功；</li>
-<li> failed：失败；</li>
+<li>failed：失败；</li>
 <li>timeout：超时；</li>
 <li>canceled：已取消。</li>
         :type Status: str
@@ -47944,6 +47944,15 @@ class Task(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 任务完成时间。
         :type UpdateTime: str
+        :param _FailType: 刷新、预热失败类型。取值有：
+<li>taskFailed：任务失败；</li>
+<li>quotaExceeded：配额超限；</li>
+<li>downloadManifestFailed：下载描述文件失败；</li>
+<li>accessDenied：访问被拒绝。</li>
+<li>originPullFailed：回源失败。</li>
+        :type FailType: str
+        :param _FailMessage: 刷新、预热失败描述。
+        :type FailMessage: str
         """
         self._JobId = None
         self._Target = None
@@ -47952,6 +47961,8 @@ class Task(AbstractModel):
         self._Status = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._FailType = None
+        self._FailMessage = None
 
     @property
     def JobId(self):
@@ -48004,7 +48015,7 @@ class Task(AbstractModel):
         """状态。取值有：
 <li>processing：处理中；</li>
 <li>success：成功；</li>
-<li> failed：失败；</li>
+<li>failed：失败；</li>
 <li>timeout：超时；</li>
 <li>canceled：已取消。</li>
         :rtype: str
@@ -48037,6 +48048,33 @@ class Task(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def FailType(self):
+        """刷新、预热失败类型。取值有：
+<li>taskFailed：任务失败；</li>
+<li>quotaExceeded：配额超限；</li>
+<li>downloadManifestFailed：下载描述文件失败；</li>
+<li>accessDenied：访问被拒绝。</li>
+<li>originPullFailed：回源失败。</li>
+        :rtype: str
+        """
+        return self._FailType
+
+    @FailType.setter
+    def FailType(self, FailType):
+        self._FailType = FailType
+
+    @property
+    def FailMessage(self):
+        """刷新、预热失败描述。
+        :rtype: str
+        """
+        return self._FailMessage
+
+    @FailMessage.setter
+    def FailMessage(self, FailMessage):
+        self._FailMessage = FailMessage
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -48046,6 +48084,8 @@ class Task(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._FailType = params.get("FailType")
+        self._FailMessage = params.get("FailMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

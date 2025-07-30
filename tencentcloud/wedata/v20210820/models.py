@@ -36519,8 +36519,6 @@ class DescribeReportTaskListRequest(AbstractModel):
         :type PageNum: int
         :param _PageSize: 每页条数
         :type PageSize: int
-        :param _TenantId: 租户id
-        :type TenantId: str
         :param _ProjectId: 项目id
         :type ProjectId: str
         :param _TaskId: 任务id
@@ -36542,7 +36540,6 @@ class DescribeReportTaskListRequest(AbstractModel):
         """
         self._PageNum = None
         self._PageSize = None
-        self._TenantId = None
         self._ProjectId = None
         self._TaskId = None
         self._InstanceId = None
@@ -36574,17 +36571,6 @@ class DescribeReportTaskListRequest(AbstractModel):
     @PageSize.setter
     def PageSize(self, PageSize):
         self._PageSize = PageSize
-
-    @property
-    def TenantId(self):
-        """租户id
-        :rtype: str
-        """
-        return self._TenantId
-
-    @TenantId.setter
-    def TenantId(self, TenantId):
-        self._TenantId = TenantId
 
     @property
     def ProjectId(self):
@@ -36689,7 +36675,6 @@ class DescribeReportTaskListRequest(AbstractModel):
     def _deserialize(self, params):
         self._PageNum = params.get("PageNum")
         self._PageSize = params.get("PageSize")
-        self._TenantId = params.get("TenantId")
         self._ProjectId = params.get("ProjectId")
         self._TaskId = params.get("TaskId")
         self._InstanceId = params.get("InstanceId")
@@ -40839,6 +40824,105 @@ class DescribeSuccessorOpsTaskInfosResponse(AbstractModel):
             self._Data = []
             for item in params.get("Data"):
                 obj = TaskOpsDto()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSuccessorTaskInfoListRequest(AbstractModel):
+    """DescribeSuccessorTaskInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: 任务id集合
+        :type TaskIds: list of str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        """
+        self._TaskIds = None
+        self._ProjectId = None
+
+    @property
+    def TaskIds(self):
+        """任务id集合
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSuccessorTaskInfoListResponse(AbstractModel):
+    """DescribeSuccessorTaskInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 出参
+        :type Data: list of SuccessorTaskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """出参
+        :rtype: list of SuccessorTaskInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SuccessorTaskInfo()
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._RequestId = params.get("RequestId")
@@ -92515,6 +92599,228 @@ class SubscribeWebHook(AbstractModel):
     def _deserialize(self, params):
         self._HookType = params.get("HookType")
         self._HookAddress = params.get("HookAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SuccessorTaskInfo(AbstractModel):
+    """下游任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _WorkflowId: 所属工作流id
+        :type WorkflowId: str
+        :param _TaskName: 任务名
+        :type TaskName: str
+        :param _Layer: 层级，0表示当前任务
+        :type Layer: int
+        :param _Status: 任务状态
+        :type Status: str
+        :param _TaskTypeId: 任务类型，-1表示跨流任务
+        :type TaskTypeId: int
+        :param _InCharge: 责任人
+        :type InCharge: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _ProjectName: 项目名称
+        :type ProjectName: str
+        :param _WorkflowName: 所属工作流名称
+        :type WorkflowName: str
+        :param _CycleUnit: 周期单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleUnit: str
+        :param _ScheduleDesc: 调度计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleDesc: str
+        :param _TaskTypeDesc: 任务类型描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeDesc: str
+        """
+        self._TaskId = None
+        self._WorkflowId = None
+        self._TaskName = None
+        self._Layer = None
+        self._Status = None
+        self._TaskTypeId = None
+        self._InCharge = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._WorkflowName = None
+        self._CycleUnit = None
+        self._ScheduleDesc = None
+        self._TaskTypeDesc = None
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def WorkflowId(self):
+        """所属工作流id
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def TaskName(self):
+        """任务名
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Layer(self):
+        """层级，0表示当前任务
+        :rtype: int
+        """
+        return self._Layer
+
+    @Layer.setter
+    def Layer(self, Layer):
+        self._Layer = Layer
+
+    @property
+    def Status(self):
+        """任务状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskTypeId(self):
+        """任务类型，-1表示跨流任务
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def InCharge(self):
+        """责任人
+        :rtype: str
+        """
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        """项目名称
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def WorkflowName(self):
+        """所属工作流名称
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def CycleUnit(self):
+        """周期单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CycleUnit
+
+    @CycleUnit.setter
+    def CycleUnit(self, CycleUnit):
+        self._CycleUnit = CycleUnit
+
+    @property
+    def ScheduleDesc(self):
+        """调度计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleDesc
+
+    @ScheduleDesc.setter
+    def ScheduleDesc(self, ScheduleDesc):
+        self._ScheduleDesc = ScheduleDesc
+
+    @property
+    def TaskTypeDesc(self):
+        """任务类型描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskTypeDesc
+
+    @TaskTypeDesc.setter
+    def TaskTypeDesc(self, TaskTypeDesc):
+        self._TaskTypeDesc = TaskTypeDesc
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._TaskName = params.get("TaskName")
+        self._Layer = params.get("Layer")
+        self._Status = params.get("Status")
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._InCharge = params.get("InCharge")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._WorkflowName = params.get("WorkflowName")
+        self._CycleUnit = params.get("CycleUnit")
+        self._ScheduleDesc = params.get("ScheduleDesc")
+        self._TaskTypeDesc = params.get("TaskTypeDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
