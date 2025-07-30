@@ -34824,6 +34824,8 @@ class DescribeProjectUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
         :param _PageNumber: 分页号
         :type PageNumber: int
         :param _PageSize: 分页大小
@@ -34835,11 +34837,23 @@ class DescribeProjectUsersRequest(AbstractModel):
         :param _IsProjectAdmin: 是否项目管理员
         :type IsProjectAdmin: bool
         """
+        self._ProjectId = None
         self._PageNumber = None
         self._PageSize = None
         self._Filters = None
         self._OrderFields = None
         self._IsProjectAdmin = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
     @property
     def PageNumber(self):
@@ -34898,6 +34912,7 @@ class DescribeProjectUsersRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
         if params.get("Filters") is not None:
