@@ -62405,17 +62405,25 @@ class TimeSpotCheck(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CheckDuration: 抽检策略的每次循环检测的时长。取值范围（单位s）：
+        :param _CheckDuration: 每次循环检测的时长。取值范围（单位s）：
 
 - 最小值：10
 - 最大值：86400
 
         :type CheckDuration: int
-        :param _CheckInterval: 抽检测略的检测间隔，表示在一次检测结束后，等待多长时间后，再次检测。
+        :param _CheckInterval: 抽检间隔，表示在一次检测结束后，等待多长时间后，再次检测。取值范围（单位 s）：
+- 最小值：10
+- 最大值：3600
         :type CheckInterval: int
-        :param _SkipDuration: 片头跳过时长。
+        :param _SkipDuration: 片头跳过时长。取值范围（单位 s）：
+- 最小值：1
+- 最大值：1800
         :type SkipDuration: int
-        :param _CirclesNumber: 循环次数，该字段为空或 0 时，默认循环直至视频结束。
+        :param _CirclesNumber: 循环次数。取值范围:
+- 最小值：0
+- 最大值：1000
+
+取值为 0 或为空时，表示循环至视频结束。
         :type CirclesNumber: int
         """
         self._CheckDuration = None
@@ -62425,7 +62433,7 @@ class TimeSpotCheck(AbstractModel):
 
     @property
     def CheckDuration(self):
-        """抽检策略的每次循环检测的时长。取值范围（单位s）：
+        """每次循环检测的时长。取值范围（单位s）：
 
 - 最小值：10
 - 最大值：86400
@@ -62440,7 +62448,9 @@ class TimeSpotCheck(AbstractModel):
 
     @property
     def CheckInterval(self):
-        """抽检测略的检测间隔，表示在一次检测结束后，等待多长时间后，再次检测。
+        """抽检间隔，表示在一次检测结束后，等待多长时间后，再次检测。取值范围（单位 s）：
+- 最小值：10
+- 最大值：3600
         :rtype: int
         """
         return self._CheckInterval
@@ -62451,7 +62461,9 @@ class TimeSpotCheck(AbstractModel):
 
     @property
     def SkipDuration(self):
-        """片头跳过时长。
+        """片头跳过时长。取值范围（单位 s）：
+- 最小值：1
+- 最大值：1800
         :rtype: int
         """
         return self._SkipDuration
@@ -62462,7 +62474,11 @@ class TimeSpotCheck(AbstractModel):
 
     @property
     def CirclesNumber(self):
-        """循环次数，该字段为空或 0 时，默认循环直至视频结束。
+        """循环次数。取值范围:
+- 最小值：0
+- 最大值：1000
+
+取值为 0 或为空时，表示循环至视频结束。
         :rtype: int
         """
         return self._CirclesNumber

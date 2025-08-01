@@ -4744,6 +4744,12 @@ API：通过API手动注册
         :type AutoSubscriptionPolicyLimit: int
         :param _MaxTopicFilterPerAutoSubscriptionPolicy: 单条自动订阅规则TopicFilter数限制
         :type MaxTopicFilterPerAutoSubscriptionPolicy: int
+        :param _UseDefaultServerCert: 是否使用默认的服务端证书
+        :type UseDefaultServerCert: bool
+        :param _TrustedCaLimit: 服务端CA最大数量
+        :type TrustedCaLimit: int
+        :param _ServerCertLimit: 服务端证书最大数量
+        :type ServerCertLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4775,6 +4781,9 @@ API：通过API手动注册
         self._MaxTopicFilterPerSharedSubscriptionGroup = None
         self._AutoSubscriptionPolicyLimit = None
         self._MaxTopicFilterPerAutoSubscriptionPolicy = None
+        self._UseDefaultServerCert = None
+        self._TrustedCaLimit = None
+        self._ServerCertLimit = None
         self._RequestId = None
 
     @property
@@ -5091,6 +5100,39 @@ API：通过API手动注册
         self._MaxTopicFilterPerAutoSubscriptionPolicy = MaxTopicFilterPerAutoSubscriptionPolicy
 
     @property
+    def UseDefaultServerCert(self):
+        """是否使用默认的服务端证书
+        :rtype: bool
+        """
+        return self._UseDefaultServerCert
+
+    @UseDefaultServerCert.setter
+    def UseDefaultServerCert(self, UseDefaultServerCert):
+        self._UseDefaultServerCert = UseDefaultServerCert
+
+    @property
+    def TrustedCaLimit(self):
+        """服务端CA最大数量
+        :rtype: int
+        """
+        return self._TrustedCaLimit
+
+    @TrustedCaLimit.setter
+    def TrustedCaLimit(self, TrustedCaLimit):
+        self._TrustedCaLimit = TrustedCaLimit
+
+    @property
+    def ServerCertLimit(self):
+        """服务端证书最大数量
+        :rtype: int
+        """
+        return self._ServerCertLimit
+
+    @ServerCertLimit.setter
+    def ServerCertLimit(self, ServerCertLimit):
+        self._ServerCertLimit = ServerCertLimit
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5131,6 +5173,9 @@ API：通过API手动注册
         self._MaxTopicFilterPerSharedSubscriptionGroup = params.get("MaxTopicFilterPerSharedSubscriptionGroup")
         self._AutoSubscriptionPolicyLimit = params.get("AutoSubscriptionPolicyLimit")
         self._MaxTopicFilterPerAutoSubscriptionPolicy = params.get("MaxTopicFilterPerAutoSubscriptionPolicy")
+        self._UseDefaultServerCert = params.get("UseDefaultServerCert")
+        self._TrustedCaLimit = params.get("TrustedCaLimit")
+        self._ServerCertLimit = params.get("ServerCertLimit")
         self._RequestId = params.get("RequestId")
 
 
@@ -7050,11 +7095,14 @@ class MQTTClientSubscription(AbstractModel):
         :type Lag: int
         :param _Inflight: 投递未确认数量
         :type Inflight: int
+        :param _UserProperties: 用户属性
+        :type UserProperties: list of SubscriptionUserProperty
         """
         self._TopicFilter = None
         self._Qos = None
         self._Lag = None
         self._Inflight = None
+        self._UserProperties = None
 
     @property
     def TopicFilter(self):
@@ -7103,12 +7151,29 @@ class MQTTClientSubscription(AbstractModel):
     def Inflight(self, Inflight):
         self._Inflight = Inflight
 
+    @property
+    def UserProperties(self):
+        """用户属性
+        :rtype: list of SubscriptionUserProperty
+        """
+        return self._UserProperties
+
+    @UserProperties.setter
+    def UserProperties(self, UserProperties):
+        self._UserProperties = UserProperties
+
 
     def _deserialize(self, params):
         self._TopicFilter = params.get("TopicFilter")
         self._Qos = params.get("Qos")
         self._Lag = params.get("Lag")
         self._Inflight = params.get("Inflight")
+        if params.get("UserProperties") is not None:
+            self._UserProperties = []
+            for item in params.get("UserProperties"):
+                obj = SubscriptionUserProperty()
+                obj._deserialize(item)
+                self._UserProperties.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8854,6 +8919,12 @@ API：手动通过API注册
         :type AutomaticActivation: bool
         :param _AuthorizationPolicy: 授权策略开关
         :type AuthorizationPolicy: bool
+        :param _UseDefaultServerCert: 是否使用默认的服务端证书
+        :type UseDefaultServerCert: bool
+        :param _X509Mode: TLS：单向认证
+mTLS；双向认证
+BYOC：一机一证
+        :type X509Mode: str
         """
         self._InstanceId = None
         self._Name = None
@@ -8862,6 +8933,8 @@ API：手动通过API注册
         self._DeviceCertificateProvisionType = None
         self._AutomaticActivation = None
         self._AuthorizationPolicy = None
+        self._UseDefaultServerCert = None
+        self._X509Mode = None
 
     @property
     def InstanceId(self):
@@ -8951,6 +9024,30 @@ API：手动通过API注册
     def AuthorizationPolicy(self, AuthorizationPolicy):
         self._AuthorizationPolicy = AuthorizationPolicy
 
+    @property
+    def UseDefaultServerCert(self):
+        """是否使用默认的服务端证书
+        :rtype: bool
+        """
+        return self._UseDefaultServerCert
+
+    @UseDefaultServerCert.setter
+    def UseDefaultServerCert(self, UseDefaultServerCert):
+        self._UseDefaultServerCert = UseDefaultServerCert
+
+    @property
+    def X509Mode(self):
+        """TLS：单向认证
+mTLS；双向认证
+BYOC：一机一证
+        :rtype: str
+        """
+        return self._X509Mode
+
+    @X509Mode.setter
+    def X509Mode(self, X509Mode):
+        self._X509Mode = X509Mode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8960,6 +9057,8 @@ API：手动通过API注册
         self._DeviceCertificateProvisionType = params.get("DeviceCertificateProvisionType")
         self._AutomaticActivation = params.get("AutomaticActivation")
         self._AuthorizationPolicy = params.get("AuthorizationPolicy")
+        self._UseDefaultServerCert = params.get("UseDefaultServerCert")
+        self._X509Mode = params.get("X509Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10424,6 +10523,57 @@ class RevokedDeviceCertificateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SubscriptionUserProperty(AbstractModel):
+    """订阅的UserProperty结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 订阅的UserProperty键
+        :type Key: str
+        :param _Value: 订阅的UserProperty值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """订阅的UserProperty键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """订阅的UserProperty值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Tag(AbstractModel):

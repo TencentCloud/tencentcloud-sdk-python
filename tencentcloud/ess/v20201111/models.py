@@ -4170,6 +4170,196 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBatchContractReviewTaskRequest(AbstractModel):
+    """CreateBatchContractReviewTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ResourceIds: 合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+
+注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+        :type ResourceIds: list of str
+        :param _PolicyType: 合同审查的审查立场方。
+
+审查立场方如下：
+<ul>
+    <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+    <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+    <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+</ul>
+        :type PolicyType: int
+        :param _Role: 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+        :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
+        :param _ChecklistId: 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
+[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+        :type ChecklistId: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._ResourceIds = None
+        self._PolicyType = None
+        self._Role = None
+        self._ChecklistId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        """执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ResourceIds(self):
+        """合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+
+注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def PolicyType(self):
+        """合同审查的审查立场方。
+
+审查立场方如下：
+<ul>
+    <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+    <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+    <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+</ul>
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def Role(self):
+        """合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def ChecklistId(self):
+        """用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
+[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+        :rtype: str
+        """
+        return self._ChecklistId
+
+    @ChecklistId.setter
+    def ChecklistId(self, ChecklistId):
+        self._ChecklistId = ChecklistId
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ResourceIds = params.get("ResourceIds")
+        self._PolicyType = params.get("PolicyType")
+        if params.get("Role") is not None:
+            self._Role = RiskIdentificationRoleInfo()
+            self._Role._deserialize(params.get("Role"))
+        self._ChecklistId = params.get("ChecklistId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchContractReviewTaskResponse(AbstractModel):
+    """CreateBatchContractReviewTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: 合同审查的任务ID列表，每个任务ID为32位字符串。
+建议开发者保存此任务ID，后续[查询合同审查任务取详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask/)需要此任务ID。
+
+注意：`返回的索引和ResourceIds数组一致`
+        :type TaskIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskIds = None
+        self._RequestId = None
+
+    @property
+    def TaskIds(self):
+        """合同审查的任务ID列表，每个任务ID为32位字符串。
+建议开发者保存此任务ID，后续[查询合同审查任务取详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask/)需要此任务ID。
+
+注意：`返回的索引和ResourceIds数组一致`
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBatchInformationExtractionTaskRequest(AbstractModel):
     """CreateBatchInformationExtractionTask请求参数结构体
 
@@ -20148,6 +20338,284 @@ class DescribeContractDiffTaskWebUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeContractReviewTaskRequest(AbstractModel):
+    """DescribeContractReviewTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 合同审查任务ID，该参数通过调用接口[批量创建合同审查任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask)获取。
+        :type TaskId: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._TaskId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        """合同审查任务ID，该参数通过调用接口[批量创建合同审查任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask)获取。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContractReviewTaskResponse(AbstractModel):
+    """DescribeContractReviewTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChecklistId: 用于审查任务的审查清单ID。
+        :type ChecklistId: str
+        :param _CreatedOn: 合同审查任务创建时间。
+        :type CreatedOn: int
+        :param _FinishedOn: 合同审查任务完成时间。
+        :type FinishedOn: int
+        :param _PolicyType: 合同审查的审查立场方。
+
+审查立场方如下：
+<ul>
+    <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+    <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+    <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+</ul>
+        :type PolicyType: int
+        :param _ResourceId: 合同审查的PDF文件资源ID。
+        :type ResourceId: str
+        :param _Risks: 合同审查识别出的PDF文件风险信息，如果是空数组表示无风险。
+
+注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
+        :type Risks: list of OutputRisk
+        :param _Role: 合同审查中的角色信息。
+        :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
+        :param _Status: 合同审查任务状态。
+状态如下：
+<ul>
+    <li>**1** - 合同审查任务创建成功</li>   
+    <li>**2** - 合同审查任务排队中</li>  
+    <li>**3** - 合同审查任务执行中</li>   
+    <li>**4** - 合同审查任务执行成功</li>
+    <li>**4** - 合同审查任务执行失败</li>
+</ul>
+        :type Status: int
+        :param _TaskId: 合同审查任务ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChecklistId = None
+        self._CreatedOn = None
+        self._FinishedOn = None
+        self._PolicyType = None
+        self._ResourceId = None
+        self._Risks = None
+        self._Role = None
+        self._Status = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ChecklistId(self):
+        """用于审查任务的审查清单ID。
+        :rtype: str
+        """
+        return self._ChecklistId
+
+    @ChecklistId.setter
+    def ChecklistId(self, ChecklistId):
+        self._ChecklistId = ChecklistId
+
+    @property
+    def CreatedOn(self):
+        """合同审查任务创建时间。
+        :rtype: int
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def FinishedOn(self):
+        """合同审查任务完成时间。
+        :rtype: int
+        """
+        return self._FinishedOn
+
+    @FinishedOn.setter
+    def FinishedOn(self, FinishedOn):
+        self._FinishedOn = FinishedOn
+
+    @property
+    def PolicyType(self):
+        """合同审查的审查立场方。
+
+审查立场方如下：
+<ul>
+    <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+    <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+    <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+</ul>
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def ResourceId(self):
+        """合同审查的PDF文件资源ID。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Risks(self):
+        """合同审查识别出的PDF文件风险信息，如果是空数组表示无风险。
+
+注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
+        :rtype: list of OutputRisk
+        """
+        return self._Risks
+
+    @Risks.setter
+    def Risks(self, Risks):
+        self._Risks = Risks
+
+    @property
+    def Role(self):
+        """合同审查中的角色信息。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Status(self):
+        """合同审查任务状态。
+状态如下：
+<ul>
+    <li>**1** - 合同审查任务创建成功</li>   
+    <li>**2** - 合同审查任务排队中</li>  
+    <li>**3** - 合同审查任务执行中</li>   
+    <li>**4** - 合同审查任务执行成功</li>
+    <li>**4** - 合同审查任务执行失败</li>
+</ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        """合同审查任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChecklistId = params.get("ChecklistId")
+        self._CreatedOn = params.get("CreatedOn")
+        self._FinishedOn = params.get("FinishedOn")
+        self._PolicyType = params.get("PolicyType")
+        self._ResourceId = params.get("ResourceId")
+        if params.get("Risks") is not None:
+            self._Risks = []
+            for item in params.get("Risks"):
+                obj = OutputRisk()
+                obj._deserialize(item)
+                self._Risks.append(obj)
+        if params.get("Role") is not None:
+            self._Role = RiskIdentificationRoleInfo()
+            self._Role._deserialize(params.get("Role"))
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExtendedServiceAuthDetailRequest(AbstractModel):
     """DescribeExtendedServiceAuthDetail请求参数结构体
 
@@ -32454,6 +32922,159 @@ class OrganizationInfo(AbstractModel):
         
 
 
+class OutputRisk(AbstractModel):
+    """合同审查任务识别出的风险结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskId: 合同审查风险结果ID
+        :type RiskId: str
+        :param _RiskName: 风险名称
+        :type RiskName: str
+        :param _RiskDescription: 风险描述
+        :type RiskDescription: str
+        :param _RiskLevel: 风险等级。
+
+等级描述如下：
+<ul>
+    <li>**HIGH** - 高风险</li> 
+    <li>**NORMAL** - 风险</li>   
+</ul>
+        :type RiskLevel: str
+        :param _RiskAdvice: 风险建议
+        :type RiskAdvice: str
+        :param _RiskPresentation: 风险评估
+        :type RiskPresentation: list of str
+        :param _Content: PDF风险原文内容
+        :type Content: str
+        :param _RiskBasis: 审查依据
+        :type RiskBasis: str
+        """
+        self._RiskId = None
+        self._RiskName = None
+        self._RiskDescription = None
+        self._RiskLevel = None
+        self._RiskAdvice = None
+        self._RiskPresentation = None
+        self._Content = None
+        self._RiskBasis = None
+
+    @property
+    def RiskId(self):
+        """合同审查风险结果ID
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def RiskName(self):
+        """风险名称
+        :rtype: str
+        """
+        return self._RiskName
+
+    @RiskName.setter
+    def RiskName(self, RiskName):
+        self._RiskName = RiskName
+
+    @property
+    def RiskDescription(self):
+        """风险描述
+        :rtype: str
+        """
+        return self._RiskDescription
+
+    @RiskDescription.setter
+    def RiskDescription(self, RiskDescription):
+        self._RiskDescription = RiskDescription
+
+    @property
+    def RiskLevel(self):
+        """风险等级。
+
+等级描述如下：
+<ul>
+    <li>**HIGH** - 高风险</li> 
+    <li>**NORMAL** - 风险</li>   
+</ul>
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def RiskAdvice(self):
+        """风险建议
+        :rtype: str
+        """
+        return self._RiskAdvice
+
+    @RiskAdvice.setter
+    def RiskAdvice(self, RiskAdvice):
+        self._RiskAdvice = RiskAdvice
+
+    @property
+    def RiskPresentation(self):
+        """风险评估
+        :rtype: list of str
+        """
+        return self._RiskPresentation
+
+    @RiskPresentation.setter
+    def RiskPresentation(self, RiskPresentation):
+        self._RiskPresentation = RiskPresentation
+
+    @property
+    def Content(self):
+        """PDF风险原文内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RiskBasis(self):
+        """审查依据
+        :rtype: str
+        """
+        return self._RiskBasis
+
+    @RiskBasis.setter
+    def RiskBasis(self, RiskBasis):
+        self._RiskBasis = RiskBasis
+
+
+    def _deserialize(self, params):
+        self._RiskId = params.get("RiskId")
+        self._RiskName = params.get("RiskName")
+        self._RiskDescription = params.get("RiskDescription")
+        self._RiskLevel = params.get("RiskLevel")
+        self._RiskAdvice = params.get("RiskAdvice")
+        self._RiskPresentation = params.get("RiskPresentation")
+        self._Content = params.get("Content")
+        self._RiskBasis = params.get("RiskBasis")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PdfVerifyResult(AbstractModel):
     """合同文件验签单个结果结构体
 
@@ -34350,6 +34971,65 @@ class ReviewerInfo(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Mobile = params.get("Mobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RiskIdentificationRoleInfo(AbstractModel):
+    """用于定义合同风险识别角色信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 风险识别角色的名称。用于唯一标识和区分不同的风险识别角色。
+
+注意：`最大长度应不超过200个字符`
+        :type Name: str
+        :param _Description: 风险识别角色的详细说明。
+
+注意： `最大长度应不超过500个字符`
+        :type Description: str
+        """
+        self._Name = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        """风险识别角色的名称。用于唯一标识和区分不同的风险识别角色。
+
+注意：`最大长度应不超过200个字符`
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """风险识别角色的详细说明。
+
+注意： `最大长度应不超过500个字符`
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

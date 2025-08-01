@@ -1420,16 +1420,17 @@ class ControlAIConversationRequest(AbstractModel):
         r"""
         :param _TaskId: 任务唯一标识
         :type TaskId: str
-        :param _Command: 控制命令，目前支持命令如下：
-
-- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+        :param _Command: 控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话
         :type Command: str
         :param _ServerPushText: 服务端发送播报文本命令，当Command为ServerPushText时必填
         :type ServerPushText: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
+        :param _InvokeLLM: 服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+        :type InvokeLLM: :class:`tencentcloud.trtc.v20190722.models.InvokeLLM`
         """
         self._TaskId = None
         self._Command = None
         self._ServerPushText = None
+        self._InvokeLLM = None
 
     @property
     def TaskId(self):
@@ -1444,9 +1445,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def Command(self):
-        """控制命令，目前支持命令如下：
-
-- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+        """控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话
         :rtype: str
         """
         return self._Command
@@ -1466,6 +1465,17 @@ class ControlAIConversationRequest(AbstractModel):
     def ServerPushText(self, ServerPushText):
         self._ServerPushText = ServerPushText
 
+    @property
+    def InvokeLLM(self):
+        """服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.InvokeLLM`
+        """
+        return self._InvokeLLM
+
+    @InvokeLLM.setter
+    def InvokeLLM(self, InvokeLLM):
+        self._InvokeLLM = InvokeLLM
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -1473,6 +1483,9 @@ class ControlAIConversationRequest(AbstractModel):
         if params.get("ServerPushText") is not None:
             self._ServerPushText = ServerPushText()
             self._ServerPushText._deserialize(params.get("ServerPushText"))
+        if params.get("InvokeLLM") is not None:
+            self._InvokeLLM = InvokeLLM()
+            self._InvokeLLM._deserialize(params.get("InvokeLLM"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7824,6 +7837,57 @@ class EventMessage(AbstractModel):
         self._EventId = params.get("EventId")
         self._ParamOne = params.get("ParamOne")
         self._ParamTwo = params.get("ParamTwo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeLLM(AbstractModel):
+    """调用服务端主动发起请求到LLM
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 请求LLM的内容
+        :type Content: str
+        :param _Interrupt: 是否允许该文本打断机器人说话
+        :type Interrupt: bool
+        """
+        self._Content = None
+        self._Interrupt = None
+
+    @property
+    def Content(self):
+        """请求LLM的内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Interrupt(self):
+        """是否允许该文本打断机器人说话
+        :rtype: bool
+        """
+        return self._Interrupt
+
+    @Interrupt.setter
+    def Interrupt(self, Interrupt):
+        self._Interrupt = Interrupt
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Interrupt = params.get("Interrupt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

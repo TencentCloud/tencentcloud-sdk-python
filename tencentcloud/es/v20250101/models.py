@@ -1173,12 +1173,15 @@ class GetDocumentParseResultResponse(AbstractModel):
         :param _FailedPages: 失败的页码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedPages: list of int
+        :param _Usage: 消耗页数
+        :type Usage: :class:`tencentcloud.es.v20250101.models.PageUsage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._DocumentParseResultUrl = None
         self._FailedPages = None
+        self._Usage = None
         self._RequestId = None
 
     @property
@@ -1216,6 +1219,17 @@ class GetDocumentParseResultResponse(AbstractModel):
         self._FailedPages = FailedPages
 
     @property
+    def Usage(self):
+        """消耗页数
+        :rtype: :class:`tencentcloud.es.v20250101.models.PageUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1231,6 +1245,9 @@ class GetDocumentParseResultResponse(AbstractModel):
         self._Status = params.get("Status")
         self._DocumentParseResultUrl = params.get("DocumentParseResultUrl")
         self._FailedPages = params.get("FailedPages")
+        if params.get("Usage") is not None:
+            self._Usage = PageUsage()
+            self._Usage._deserialize(params.get("Usage"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1493,6 +1510,42 @@ class OutputMessage(AbstractModel):
         self._Role = params.get("Role")
         self._Content = params.get("Content")
         self._ReasoningContent = params.get("ReasoningContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PageUsage(AbstractModel):
+    """消耗页数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalPages: 消耗总页数
+        :type TotalPages: int
+        """
+        self._TotalPages = None
+
+    @property
+    def TotalPages(self):
+        """消耗总页数
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+
+    def _deserialize(self, params):
+        self._TotalPages = params.get("TotalPages")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1792,12 +1845,15 @@ class ParseDocumentResponse(AbstractModel):
         :type DocumentParseResultUrl: str
         :param _FailedPages: 失败页码。
         :type FailedPages: list of int
+        :param _Usage: 消耗页数
+        :type Usage: :class:`tencentcloud.es.v20250101.models.PageUsage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
         self._Progress = None
         self._DocumentParseResultUrl = None
         self._FailedPages = None
+        self._Usage = None
         self._RequestId = None
 
     @property
@@ -1834,6 +1890,17 @@ class ParseDocumentResponse(AbstractModel):
         self._FailedPages = FailedPages
 
     @property
+    def Usage(self):
+        """消耗页数
+        :rtype: :class:`tencentcloud.es.v20250101.models.PageUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
@@ -1849,6 +1916,9 @@ class ParseDocumentResponse(AbstractModel):
         self._Progress = params.get("Progress")
         self._DocumentParseResultUrl = params.get("DocumentParseResultUrl")
         self._FailedPages = params.get("FailedPages")
+        if params.get("Usage") is not None:
+            self._Usage = PageUsage()
+            self._Usage._deserialize(params.get("Usage"))
         self._RequestId = params.get("RequestId")
 
 

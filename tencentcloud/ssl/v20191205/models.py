@@ -8384,15 +8384,15 @@ null：用户上传证书（没有套餐类型），
         :type VerifyType: str
         :param _VulnerabilityStatus: 漏洞扫描状态。
         :type VulnerabilityStatus: str
-        :param _CertBeginTime: 证书生效时间。
+        :param _CertBeginTime: 证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertBeginTime: str
-        :param _CertEndTime: 证书失效时间。
+        :param _CertEndTime: 证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
         :param _ValidityPeriod: 证书有效期：单位（月）。
         :type ValidityPeriod: str
-        :param _InsertTime: 证书申请时间。
+        :param _InsertTime: 证书申请时间。时区为GMT+8:00
         :type InsertTime: str
         :param _OrderId: CA订单 ID。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8749,7 +8749,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。
+        """证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8761,7 +8761,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        """证书失效时间。
+        """证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8784,7 +8784,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        """证书申请时间。
+        """证书申请时间。时区为GMT+8:00
         :rtype: str
         """
         return self._InsertTime

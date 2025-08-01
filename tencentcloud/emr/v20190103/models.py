@@ -9440,7 +9440,7 @@ class DescribeHBaseTableOverviewRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _Offset: 分页查询编号偏移量，从0开始	
+        :param _Offset: 页码，第一页:0，第二页:1
         :type Offset: int
         :param _Limit: 分页查询时的分页大小，最小1，最大100
         :type Limit: int
@@ -9471,7 +9471,7 @@ class DescribeHBaseTableOverviewRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询编号偏移量，从0开始	
+        """页码，第一页:0，第二页:1
         :rtype: int
         """
         return self._Offset

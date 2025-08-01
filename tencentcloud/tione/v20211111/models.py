@@ -18495,6 +18495,8 @@ DEFAULT: 其他来源
         :param _MonitorSource: 用于监控查询的Source
 枚举值，部分情况下与CreateSource不同，通过该字段兼容
         :type MonitorSource: str
+        :param _SubUinName: 服务创建者的子账号名称
+        :type SubUinName: str
         """
         self._ServiceGroupId = None
         self._ServiceId = None
@@ -18530,6 +18532,7 @@ DEFAULT: 其他来源
         self._DeployType = None
         self._InstancePerReplicas = None
         self._MonitorSource = None
+        self._SubUinName = None
 
     @property
     def ServiceGroupId(self):
@@ -18954,6 +18957,17 @@ DEFAULT: 其他来源
     def MonitorSource(self, MonitorSource):
         self._MonitorSource = MonitorSource
 
+    @property
+    def SubUinName(self):
+        """服务创建者的子账号名称
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -19001,6 +19015,7 @@ DEFAULT: 其他来源
         self._DeployType = params.get("DeployType")
         self._InstancePerReplicas = params.get("InstancePerReplicas")
         self._MonitorSource = params.get("MonitorSource")
+        self._SubUinName = params.get("SubUinName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

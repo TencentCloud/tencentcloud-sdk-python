@@ -18,6 +18,183 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class APIResource(AbstractModel):
+    """API 资源。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 资源 ID。
+        :type Id: str
+        :param _Name: 资源名称。
+        :type Name: str
+        :param _APIServiceIds: API 资源关联的 API 服务 ID 列表。
+        :type APIServiceIds: list of str
+        :param _Path: 资源路径。
+        :type Path: str
+        :param _Methods: 请求方法列表。支持以下取值：GET, POST, PUT, HEAD, PATCH, OPTIONS, DELETE。
+        :type Methods: list of str
+        :param _RequestConstraint: 请求内容匹配规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :type RequestConstraint: str
+        """
+        self._Id = None
+        self._Name = None
+        self._APIServiceIds = None
+        self._Path = None
+        self._Methods = None
+        self._RequestConstraint = None
+
+    @property
+    def Id(self):
+        """资源 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """资源名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def APIServiceIds(self):
+        """API 资源关联的 API 服务 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIServiceIds
+
+    @APIServiceIds.setter
+    def APIServiceIds(self, APIServiceIds):
+        self._APIServiceIds = APIServiceIds
+
+    @property
+    def Path(self):
+        """资源路径。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Methods(self):
+        """请求方法列表。支持以下取值：GET, POST, PUT, HEAD, PATCH, OPTIONS, DELETE。
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def RequestConstraint(self):
+        """请求内容匹配规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :rtype: str
+        """
+        return self._RequestConstraint
+
+    @RequestConstraint.setter
+    def RequestConstraint(self, RequestConstraint):
+        self._RequestConstraint = RequestConstraint
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._APIServiceIds = params.get("APIServiceIds")
+        self._Path = params.get("Path")
+        self._Methods = params.get("Methods")
+        self._RequestConstraint = params.get("RequestConstraint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class APIService(AbstractModel):
+    """API 服务配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: API 服务 ID。
+        :type Id: str
+        :param _Name: API 服务名称。
+        :type Name: str
+        :param _BasePath: 基础路径。
+        :type BasePath: str
+        """
+        self._Id = None
+        self._Name = None
+        self._BasePath = None
+
+    @property
+    def Id(self):
+        """API 服务 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """API 服务名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BasePath(self):
+        """基础路径。
+        :rtype: str
+        """
+        return self._BasePath
+
+    @BasePath.setter
+    def BasePath(self, BasePath):
+        self._BasePath = BasePath
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._BasePath = params.get("BasePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccelerateMainland(AbstractModel):
     """中国大陆加速优化配置。
 
@@ -2827,6 +3004,59 @@ class AscriptionInfo(AbstractModel):
         self._Subdomain = params.get("Subdomain")
         self._RecordType = params.get("RecordType")
         self._RecordValue = params.get("RecordValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioTemplateInfo(AbstractModel):
+    """音频流配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Codec: 音频流的编码格式。可选值为：
+<li>libfdk_aac。</li>
+        :type Codec: str
+        :param _AudioChannel: 音频通道数，可选值：<li>2：双通道。</li>默认值：2。
+        :type AudioChannel: int
+        """
+        self._Codec = None
+        self._AudioChannel = None
+
+    @property
+    def Codec(self):
+        """音频流的编码格式。可选值为：
+<li>libfdk_aac。</li>
+        :rtype: str
+        """
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def AudioChannel(self):
+        """音频通道数，可选值：<li>2：双通道。</li>默认值：2。
+        :rtype: int
+        """
+        return self._AudioChannel
+
+    @AudioChannel.setter
+    def AudioChannel(self, AudioChannel):
+        self._AudioChannel = AudioChannel
+
+
+    def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._AudioChannel = params.get("AudioChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6218,6 +6448,154 @@ class ClientAttestationRules(AbstractModel):
         
 
 
+class ClientAttester(AbstractModel):
+    """认证选项配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 认证选项 ID。
+        :type Id: str
+        :param _Name: 认证选项名称。
+        :type Name: str
+        :param _Type: 认证规则类型。仅出参返回，取值有：
+<li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li>
+<li>CUSTOM: 用户自定义规则。</li>
+        :type Type: str
+        :param _AttesterSource: 认证方法。取值有：
+<li>TC-RCE: 使用全栈式风控引擎进行认证；</li>
+<li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
+        :type AttesterSource: str
+        :param _AttesterDuration: 认证有效时间。默认为 60s，支持的单位有：
+<li>s：秒，取值范围 60～43200；</li>
+<li>m：分，取值范围 1～720；</li>
+<li>h：小时，取值范围 1～12。</li>
+        :type AttesterDuration: str
+        :param _TCRCEOption: TC-RCE 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
+        :type TCRCEOption: :class:`tencentcloud.teo.v20220901.models.TCRCEOption`
+        :param _TCCaptchaOption: TC-CAPTCHA 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
+        :type TCCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
+        """
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._AttesterSource = None
+        self._AttesterDuration = None
+        self._TCRCEOption = None
+        self._TCCaptchaOption = None
+
+    @property
+    def Id(self):
+        """认证选项 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """认证选项名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """认证规则类型。仅出参返回，取值有：
+<li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li>
+<li>CUSTOM: 用户自定义规则。</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AttesterSource(self):
+        """认证方法。取值有：
+<li>TC-RCE: 使用全栈式风控引擎进行认证；</li>
+<li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
+        :rtype: str
+        """
+        return self._AttesterSource
+
+    @AttesterSource.setter
+    def AttesterSource(self, AttesterSource):
+        self._AttesterSource = AttesterSource
+
+    @property
+    def AttesterDuration(self):
+        """认证有效时间。默认为 60s，支持的单位有：
+<li>s：秒，取值范围 60～43200；</li>
+<li>m：分，取值范围 1～720；</li>
+<li>h：小时，取值范围 1～12。</li>
+        :rtype: str
+        """
+        return self._AttesterDuration
+
+    @AttesterDuration.setter
+    def AttesterDuration(self, AttesterDuration):
+        self._AttesterDuration = AttesterDuration
+
+    @property
+    def TCRCEOption(self):
+        """TC-RCE 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TCRCEOption`
+        """
+        return self._TCRCEOption
+
+    @TCRCEOption.setter
+    def TCRCEOption(self, TCRCEOption):
+        self._TCRCEOption = TCRCEOption
+
+    @property
+    def TCCaptchaOption(self):
+        """TC-CAPTCHA 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
+        """
+        return self._TCCaptchaOption
+
+    @TCCaptchaOption.setter
+    def TCCaptchaOption(self, TCCaptchaOption):
+        self._TCCaptchaOption = TCCaptchaOption
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._AttesterSource = params.get("AttesterSource")
+        self._AttesterDuration = params.get("AttesterDuration")
+        if params.get("TCRCEOption") is not None:
+            self._TCRCEOption = TCRCEOption()
+            self._TCRCEOption._deserialize(params.get("TCRCEOption"))
+        if params.get("TCCaptchaOption") is not None:
+            self._TCCaptchaOption = TCCaptchaOption()
+            self._TCCaptchaOption._deserialize(params.get("TCCaptchaOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientFiltering(AbstractModel):
     """智能客户端过滤
 
@@ -8834,6 +9212,187 @@ class CreateFunctionRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateJustInTimeTranscodeTemplateRequest(AbstractModel):
+    """CreateJustInTimeTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _TemplateName: 即时转码模板名称，长度限制：64 个字符。
+        :type TemplateName: str
+        :param _Comment: 模板描述信息，长度限制：256 个字符。默认为空。
+        :type Comment: str
+        :param _VideoStreamSwitch: 启用视频流开关，取值：
+<li>on：开启；</li>
+<li>off：关闭。</li>默认值：on。
+        :type VideoStreamSwitch: str
+        :param _AudioStreamSwitch: 启用音频流开关，取值：
+<li>on：开启；</li>
+<li>off：关闭。</li>默认值：on。
+        :type AudioStreamSwitch: str
+        :param _VideoTemplate: 视频流配置参数，当 VideoStreamSwitch 为 on，该字段必填。
+        :type VideoTemplate: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
+        :param _AudioTemplate: 音频流配置参数，当 AudioStreamSwitch 为 on，该字段必填。
+        :type AudioTemplate: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
+        """
+        self._ZoneId = None
+        self._TemplateName = None
+        self._Comment = None
+        self._VideoStreamSwitch = None
+        self._AudioStreamSwitch = None
+        self._VideoTemplate = None
+        self._AudioTemplate = None
+
+    @property
+    def ZoneId(self):
+        """站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateName(self):
+        """即时转码模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Comment(self):
+        """模板描述信息，长度限制：256 个字符。默认为空。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def VideoStreamSwitch(self):
+        """启用视频流开关，取值：
+<li>on：开启；</li>
+<li>off：关闭。</li>默认值：on。
+        :rtype: str
+        """
+        return self._VideoStreamSwitch
+
+    @VideoStreamSwitch.setter
+    def VideoStreamSwitch(self, VideoStreamSwitch):
+        self._VideoStreamSwitch = VideoStreamSwitch
+
+    @property
+    def AudioStreamSwitch(self):
+        """启用音频流开关，取值：
+<li>on：开启；</li>
+<li>off：关闭。</li>默认值：on。
+        :rtype: str
+        """
+        return self._AudioStreamSwitch
+
+    @AudioStreamSwitch.setter
+    def AudioStreamSwitch(self, AudioStreamSwitch):
+        self._AudioStreamSwitch = AudioStreamSwitch
+
+    @property
+    def VideoTemplate(self):
+        """视频流配置参数，当 VideoStreamSwitch 为 on，该字段必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
+        """
+        return self._VideoTemplate
+
+    @VideoTemplate.setter
+    def VideoTemplate(self, VideoTemplate):
+        self._VideoTemplate = VideoTemplate
+
+    @property
+    def AudioTemplate(self):
+        """音频流配置参数，当 AudioStreamSwitch 为 on，该字段必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
+        """
+        return self._AudioTemplate
+
+    @AudioTemplate.setter
+    def AudioTemplate(self, AudioTemplate):
+        self._AudioTemplate = AudioTemplate
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateName = params.get("TemplateName")
+        self._Comment = params.get("Comment")
+        self._VideoStreamSwitch = params.get("VideoStreamSwitch")
+        self._AudioStreamSwitch = params.get("AudioStreamSwitch")
+        if params.get("VideoTemplate") is not None:
+            self._VideoTemplate = VideoTemplateInfo()
+            self._VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self._AudioTemplate = AudioTemplateInfo()
+            self._AudioTemplate._deserialize(params.get("AudioTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
+    """CreateJustInTimeTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 即时转码模板唯一标识，用于即时转码 URL 拼接。
+        :type TemplateId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        """即时转码模板唯一标识，用于即时转码 URL 拼接。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateL4ProxyRequest(AbstractModel):
     """CreateL4Proxy请求参数结构体
 
@@ -11108,6 +11667,303 @@ class CreateRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSecurityAPIResourceRequest(AbstractModel):
+    """CreateSecurityAPIResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIResources:  API 资源列表。
+        :type APIResources: list of APIResource
+        """
+        self._ZoneId = None
+        self._APIResources = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIResources(self):
+        """ API 资源列表。
+        :rtype: list of APIResource
+        """
+        return self._APIResources
+
+    @APIResources.setter
+    def APIResources(self, APIResources):
+        self._APIResources = APIResources
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("APIResources") is not None:
+            self._APIResources = []
+            for item in params.get("APIResources"):
+                obj = APIResource()
+                obj._deserialize(item)
+                self._APIResources.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityAPIResourceResponse(AbstractModel):
+    """CreateSecurityAPIResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _APIResourceIds: API 资源 ID 列表。
+        :type APIResourceIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._APIResourceIds = None
+        self._RequestId = None
+
+    @property
+    def APIResourceIds(self):
+        """API 资源 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIResourceIds
+
+    @APIResourceIds.setter
+    def APIResourceIds(self, APIResourceIds):
+        self._APIResourceIds = APIResourceIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._APIResourceIds = params.get("APIResourceIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSecurityAPIServiceRequest(AbstractModel):
+    """CreateSecurityAPIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIServices:  API 服务列表。
+        :type APIServices: list of APIService
+        """
+        self._ZoneId = None
+        self._APIServices = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIServices(self):
+        """ API 服务列表。
+        :rtype: list of APIService
+        """
+        return self._APIServices
+
+    @APIServices.setter
+    def APIServices(self, APIServices):
+        self._APIServices = APIServices
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("APIServices") is not None:
+            self._APIServices = []
+            for item in params.get("APIServices"):
+                obj = APIService()
+                obj._deserialize(item)
+                self._APIServices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityAPIServiceResponse(AbstractModel):
+    """CreateSecurityAPIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _APIServiceIds: API 服务 ID 列表。
+        :type APIServiceIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._APIServiceIds = None
+        self._RequestId = None
+
+    @property
+    def APIServiceIds(self):
+        """API 服务 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIServiceIds
+
+    @APIServiceIds.setter
+    def APIServiceIds(self, APIServiceIds):
+        self._APIServiceIds = APIServiceIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._APIServiceIds = params.get("APIServiceIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSecurityClientAttesterRequest(AbstractModel):
+    """CreateSecurityClientAttester请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _ClientAttesters: 认证选项列表。
+        :type ClientAttesters: list of ClientAttester
+        """
+        self._ZoneId = None
+        self._ClientAttesters = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ClientAttesters(self):
+        """认证选项列表。
+        :rtype: list of ClientAttester
+        """
+        return self._ClientAttesters
+
+    @ClientAttesters.setter
+    def ClientAttesters(self, ClientAttesters):
+        self._ClientAttesters = ClientAttesters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("ClientAttesters") is not None:
+            self._ClientAttesters = []
+            for item in params.get("ClientAttesters"):
+                obj = ClientAttester()
+                obj._deserialize(item)
+                self._ClientAttesters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityClientAttesterResponse(AbstractModel):
+    """CreateSecurityClientAttester返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientAttesterIds: 认证选项 ID 列表。
+        :type ClientAttesterIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClientAttesterIds = None
+        self._RequestId = None
+
+    @property
+    def ClientAttesterIds(self):
+        """认证选项 ID 列表。
+        :rtype: list of str
+        """
+        return self._ClientAttesterIds
+
+    @ClientAttesterIds.setter
+    def ClientAttesterIds(self, ClientAttesterIds):
+        self._ClientAttesterIds = ClientAttesterIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClientAttesterIds = params.get("ClientAttesterIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSecurityIPGroupRequest(AbstractModel):
     """CreateSecurityIPGroup请求参数结构体
 
@@ -11201,6 +12057,105 @@ class CreateSecurityIPGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSecurityJSInjectionRuleRequest(AbstractModel):
+    """CreateSecurityJSInjectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _JSInjectionRules: JavaScript 注入规则列表。
+        :type JSInjectionRules: list of JSInjectionRule
+        """
+        self._ZoneId = None
+        self._JSInjectionRules = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def JSInjectionRules(self):
+        """JavaScript 注入规则列表。
+        :rtype: list of JSInjectionRule
+        """
+        return self._JSInjectionRules
+
+    @JSInjectionRules.setter
+    def JSInjectionRules(self, JSInjectionRules):
+        self._JSInjectionRules = JSInjectionRules
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("JSInjectionRules") is not None:
+            self._JSInjectionRules = []
+            for item in params.get("JSInjectionRules"):
+                obj = JSInjectionRule()
+                obj._deserialize(item)
+                self._JSInjectionRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityJSInjectionRuleResponse(AbstractModel):
+    """CreateSecurityJSInjectionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JSInjectionRuleIds: JavaScript 注入规则 ID 列表。
+        :type JSInjectionRuleIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JSInjectionRuleIds = None
+        self._RequestId = None
+
+    @property
+    def JSInjectionRuleIds(self):
+        """JavaScript 注入规则 ID 列表。
+        :rtype: list of str
+        """
+        return self._JSInjectionRuleIds
+
+    @JSInjectionRuleIds.setter
+    def JSInjectionRuleIds(self, JSInjectionRuleIds):
+        self._JSInjectionRuleIds = JSInjectionRuleIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JSInjectionRuleIds = params.get("JSInjectionRuleIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -13794,6 +14749,85 @@ class DeleteFunctionRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteJustInTimeTranscodeTemplatesRequest(AbstractModel):
+    """DeleteJustInTimeTranscodeTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _TemplateIds: 需删除的即时转码模板唯一标识数组，长度限制：100。
+        :type TemplateIds: list of str
+        """
+        self._ZoneId = None
+        self._TemplateIds = None
+
+    @property
+    def ZoneId(self):
+        """站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateIds(self):
+        """需删除的即时转码模板唯一标识数组，长度限制：100。
+        :rtype: list of str
+        """
+        return self._TemplateIds
+
+    @TemplateIds.setter
+    def TemplateIds(self, TemplateIds):
+        self._TemplateIds = TemplateIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateIds = params.get("TemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteJustInTimeTranscodeTemplatesResponse(AbstractModel):
+    """DeleteJustInTimeTranscodeTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteL4ProxyRequest(AbstractModel):
     """DeleteL4Proxy请求参数结构体
 
@@ -14535,6 +15569,243 @@ class DeleteRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteSecurityAPIResourceRequest(AbstractModel):
+    """DeleteSecurityAPIResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIResourceIds: 需要删除的 API 资源 ID 列表。
+        :type APIResourceIds: list of str
+        """
+        self._ZoneId = None
+        self._APIResourceIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIResourceIds(self):
+        """需要删除的 API 资源 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIResourceIds
+
+    @APIResourceIds.setter
+    def APIResourceIds(self, APIResourceIds):
+        self._APIResourceIds = APIResourceIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._APIResourceIds = params.get("APIResourceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityAPIResourceResponse(AbstractModel):
+    """DeleteSecurityAPIResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSecurityAPIServiceRequest(AbstractModel):
+    """DeleteSecurityAPIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIServiceIds: API 服务 ID 列表。
+        :type APIServiceIds: list of str
+        """
+        self._ZoneId = None
+        self._APIServiceIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIServiceIds(self):
+        """API 服务 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIServiceIds
+
+    @APIServiceIds.setter
+    def APIServiceIds(self, APIServiceIds):
+        self._APIServiceIds = APIServiceIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._APIServiceIds = params.get("APIServiceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityAPIServiceResponse(AbstractModel):
+    """DeleteSecurityAPIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSecurityClientAttesterRequest(AbstractModel):
+    """DeleteSecurityClientAttester请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _ClientAttesterIds: 客户端认证选项 ID。
+        :type ClientAttesterIds: list of str
+        """
+        self._ZoneId = None
+        self._ClientAttesterIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ClientAttesterIds(self):
+        """客户端认证选项 ID。
+        :rtype: list of str
+        """
+        return self._ClientAttesterIds
+
+    @ClientAttesterIds.setter
+    def ClientAttesterIds(self, ClientAttesterIds):
+        self._ClientAttesterIds = ClientAttesterIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ClientAttesterIds = params.get("ClientAttesterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityClientAttesterResponse(AbstractModel):
+    """DeleteSecurityClientAttester返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteSecurityIPGroupRequest(AbstractModel):
     """DeleteSecurityIPGroup请求参数结构体
 
@@ -14588,6 +15859,85 @@ class DeleteSecurityIPGroupRequest(AbstractModel):
 
 class DeleteSecurityIPGroupResponse(AbstractModel):
     """DeleteSecurityIPGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSecurityJSInjectionRuleRequest(AbstractModel):
+    """DeleteSecurityJSInjectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _JSInjectionRuleIds: JavaScript 注入规则 ID 列表。
+        :type JSInjectionRuleIds: list of str
+        """
+        self._ZoneId = None
+        self._JSInjectionRuleIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def JSInjectionRuleIds(self):
+        """JavaScript 注入规则 ID 列表。
+        :rtype: list of str
+        """
+        return self._JSInjectionRuleIds
+
+    @JSInjectionRuleIds.setter
+    def JSInjectionRuleIds(self, JSInjectionRuleIds):
+        self._JSInjectionRuleIds = JSInjectionRuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._JSInjectionRuleIds = params.get("JSInjectionRuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityJSInjectionRuleResponse(AbstractModel):
+    """DeleteSecurityJSInjectionRule返回参数结构体
 
     """
 
@@ -18860,6 +20210,185 @@ class DescribeIdentificationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeJustInTimeTranscodeTemplatesRequest(AbstractModel):
+    """DescribeJustInTimeTranscodeTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _Filters: 过滤条件，Filters 的上限为 20，Filters.Values 的上限为 20。该参数不填写时，默认返回当前 ZoneId 下有权限的即时转码模板。详细的过滤条件如下：<li>template-name：按照模版名批量进行过滤。例如：mytemplate；</li><li>template-type：按照模板类型批量进行过滤。例如：preset 或 custom。</li><li>template-id：按照模板 ID 批量进行过滤。例如：C1LZ7982VgTpYhJ7M。</li>默认为空。
+        :type Filters: list of Filter
+        :param _SortBy: 排序字段，取值有：<li>createTime：模板创建时间。</li>默认值为：createTime。
+        :type SortBy: str
+        :param _SortOrder: 排序方式，取值有：<li>asc：升序方式；</li><li>desc：降序方式。</li>默认值为：desc。
+        :type SortOrder: str
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：20，最大值：1000。
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        """站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        """过滤条件，Filters 的上限为 20，Filters.Values 的上限为 20。该参数不填写时，默认返回当前 ZoneId 下有权限的即时转码模板。详细的过滤条件如下：<li>template-name：按照模版名批量进行过滤。例如：mytemplate；</li><li>template-type：按照模板类型批量进行过滤。例如：preset 或 custom。</li><li>template-id：按照模板 ID 批量进行过滤。例如：C1LZ7982VgTpYhJ7M。</li>默认为空。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        """排序字段，取值有：<li>createTime：模板创建时间。</li>默认值为：createTime。
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        """排序方式，取值有：<li>asc：升序方式；</li><li>desc：降序方式。</li>默认值为：desc。
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回记录条数，默认值：20，最大值：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJustInTimeTranscodeTemplatesResponse(AbstractModel):
+    """DescribeJustInTimeTranscodeTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _TemplateSet: 模板详情列表。
+        :type TemplateSet: list of JustInTimeTranscodeTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TemplateSet(self):
+        """模板详情列表。
+        :rtype: list of JustInTimeTranscodeTemplate
+        """
+        return self._TemplateSet
+
+    @TemplateSet.setter
+    def TemplateSet(self, TemplateSet):
+        self._TemplateSet = TemplateSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TemplateSet") is not None:
+            self._TemplateSet = []
+            for item in params.get("TemplateSet"):
+                obj = JustInTimeTranscodeTemplate()
+                obj._deserialize(item)
+                self._TemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeL4ProxyRequest(AbstractModel):
     """DescribeL4Proxy请求参数结构体
 
@@ -21725,6 +23254,532 @@ class DescribeRulesSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecurityAPIResourceRequest(AbstractModel):
+    """DescribeSecurityAPIResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityAPIResourceResponse(AbstractModel):
+    """DescribeSecurityAPIResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: API 资源总数量。
+        :type TotalCount: int
+        :param _APIResources: API 资源列表。	
+        :type APIResources: list of APIResource
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._APIResources = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """API 资源总数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def APIResources(self):
+        """API 资源列表。	
+        :rtype: list of APIResource
+        """
+        return self._APIResources
+
+    @APIResources.setter
+    def APIResources(self, APIResources):
+        self._APIResources = APIResources
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("APIResources") is not None:
+            self._APIResources = []
+            for item in params.get("APIResources"):
+                obj = APIResource()
+                obj._deserialize(item)
+                self._APIResources.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSecurityAPIServiceRequest(AbstractModel):
+    """DescribeSecurityAPIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityAPIServiceResponse(AbstractModel):
+    """DescribeSecurityAPIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: API 服务总数量。	
+        :type TotalCount: int
+        :param _APIServices: API 服务列表。	
+        :type APIServices: list of APIService
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._APIServices = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """API 服务总数量。	
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def APIServices(self):
+        """API 服务列表。	
+        :rtype: list of APIService
+        """
+        return self._APIServices
+
+    @APIServices.setter
+    def APIServices(self, APIServices):
+        self._APIServices = APIServices
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("APIServices") is not None:
+            self._APIServices = []
+            for item in params.get("APIServices"):
+                obj = APIService()
+                obj._deserialize(item)
+                self._APIServices.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSecurityClientAttesterRequest(AbstractModel):
+    """DescribeSecurityClientAttester请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityClientAttesterResponse(AbstractModel):
+    """DescribeSecurityClientAttester返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 认证选项总数量。
+        :type TotalCount: int
+        :param _ClientAttesters: 认证选项列表。
+        :type ClientAttesters: list of ClientAttester
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ClientAttesters = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """认证选项总数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ClientAttesters(self):
+        """认证选项列表。
+        :rtype: list of ClientAttester
+        """
+        return self._ClientAttesters
+
+    @ClientAttesters.setter
+    def ClientAttesters(self, ClientAttesters):
+        self._ClientAttesters = ClientAttesters
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ClientAttesters") is not None:
+            self._ClientAttesters = []
+            for item in params.get("ClientAttesters"):
+                obj = ClientAttester()
+                obj._deserialize(item)
+                self._ClientAttesters.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSecurityIPGroupContentRequest(AbstractModel):
+    """DescribeSecurityIPGroupContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GroupId: IP 组 ID。
+        :type GroupId: int
+        :param _Limit: 分页查询限制数目。默认值：2000，最大值：100000。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        """IP 组 ID。
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：2000，最大值：100000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityIPGroupContentResponse(AbstractModel):
+    """DescribeSecurityIPGroupContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPTotalCount: IP 组中正在生效的 IP 或网段个数。
+        :type IPTotalCount: int
+        :param _IPList: 满足查询条件的 IP 或网段列表。受 Limit 和 Offset 参数限制。
+        :type IPList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IPTotalCount = None
+        self._IPList = None
+        self._RequestId = None
+
+    @property
+    def IPTotalCount(self):
+        """IP 组中正在生效的 IP 或网段个数。
+        :rtype: int
+        """
+        return self._IPTotalCount
+
+    @IPTotalCount.setter
+    def IPTotalCount(self, IPTotalCount):
+        self._IPTotalCount = IPTotalCount
+
+    @property
+    def IPList(self):
+        """满足查询条件的 IP 或网段列表。受 Limit 和 Offset 参数限制。
+        :rtype: list of str
+        """
+        return self._IPList
+
+    @IPList.setter
+    def IPList(self, IPList):
+        self._IPList = IPList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IPTotalCount = params.get("IPTotalCount")
+        self._IPList = params.get("IPList")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSecurityIPGroupInfoRequest(AbstractModel):
     """DescribeSecurityIPGroupInfo请求参数结构体
 
@@ -21950,6 +24005,135 @@ class DescribeSecurityIPGroupResponse(AbstractModel):
                 obj = IPGroup()
                 obj._deserialize(item)
                 self._IPGroups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSecurityJSInjectionRuleRequest(AbstractModel):
+    """DescribeSecurityJSInjectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityJSInjectionRuleResponse(AbstractModel):
+    """DescribeSecurityJSInjectionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: JavaScript 注入规则总数量。
+        :type TotalCount: int
+        :param _JSInjectionRules: JavaScript 注入规则列表。
+        :type JSInjectionRules: list of JSInjectionRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._JSInjectionRules = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """JavaScript 注入规则总数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def JSInjectionRules(self):
+        """JavaScript 注入规则列表。
+        :rtype: list of JSInjectionRule
+        """
+        return self._JSInjectionRules
+
+    @JSInjectionRules.setter
+    def JSInjectionRules(self, JSInjectionRules):
+        self._JSInjectionRules = JSInjectionRules
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("JSInjectionRules") is not None:
+            self._JSInjectionRules = []
+            for item in params.get("JSInjectionRules"):
+                obj = JSInjectionRule()
+                obj._deserialize(item)
+                self._JSInjectionRules.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -30565,6 +32749,283 @@ class JITVideoProcess(AbstractModel):
         
 
 
+class JSInjectionRule(AbstractModel):
+    """JavaScript 注入规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则 ID。
+        :type RuleId: str
+        :param _Name: 规则名称。
+        :type Name: str
+        :param _Priority: 规则优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。
+        :type Priority: int
+        :param _Condition: 匹配条件内容。需符合表达式语法，详细规范参见产品文档。
+        :type Condition: str
+        :param _InjectJS: JavaScript 注入选项。默认值为 run-attestations，取值有：
+<li> no-injection: 不注入 JavaScript;</li>
+<li> inject-sdk-only: 注入当前支持的所有认证方式的 SDK，当前支持：TC-RCE 和 TC-CAPTCHA。注意：若需执行认证检测，请配置挑战规则。</li>
+
+        :type InjectJS: str
+        """
+        self._RuleId = None
+        self._Name = None
+        self._Priority = None
+        self._Condition = None
+        self._InjectJS = None
+
+    @property
+    def RuleId(self):
+        """规则 ID。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        """规则名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Priority(self):
+        """规则优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Condition(self):
+        """匹配条件内容。需符合表达式语法，详细规范参见产品文档。
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def InjectJS(self):
+        """JavaScript 注入选项。默认值为 run-attestations，取值有：
+<li> no-injection: 不注入 JavaScript;</li>
+<li> inject-sdk-only: 注入当前支持的所有认证方式的 SDK，当前支持：TC-RCE 和 TC-CAPTCHA。注意：若需执行认证检测，请配置挑战规则。</li>
+
+        :rtype: str
+        """
+        return self._InjectJS
+
+    @InjectJS.setter
+    def InjectJS(self, InjectJS):
+        self._InjectJS = InjectJS
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._Priority = params.get("Priority")
+        self._Condition = params.get("Condition")
+        self._InjectJS = params.get("InjectJS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JustInTimeTranscodeTemplate(AbstractModel):
+    """即时转码模板详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 即时转码模板唯一标识。
+        :type TemplateId: str
+        :param _TemplateName: 转码模板名称。
+        :type TemplateName: str
+        :param _Comment: 模板描述信息。
+        :type Comment: str
+        :param _Type: 模板类型，取值：<li>preset：系统预置模板；</li><li>custom：用户自定义模板。</li>
+        :type Type: str
+        :param _VideoStreamSwitch: 启用视频流开关，取值：<li>on：开启；</li><li>off：关闭。</li>
+        :type VideoStreamSwitch: str
+        :param _AudioStreamSwitch: 启用音频流开关，取值：<li>on：开启；</li><li>off：关闭。</li>
+        :type AudioStreamSwitch: str
+        :param _VideoTemplate: 视频流配置参数，仅当 VideoStreamSwitch 为 on，该字段有效。
+        :type VideoTemplate: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
+        :param _AudioTemplate: 音频流配置参数，仅当 AudioStreamSwitch 为 on，该字段有效。
+        :type AudioTemplate: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
+        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Comment = None
+        self._Type = None
+        self._VideoStreamSwitch = None
+        self._AudioStreamSwitch = None
+        self._VideoTemplate = None
+        self._AudioTemplate = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TemplateId(self):
+        """即时转码模板唯一标识。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        """转码模板名称。
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Comment(self):
+        """模板描述信息。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        """模板类型，取值：<li>preset：系统预置模板；</li><li>custom：用户自定义模板。</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def VideoStreamSwitch(self):
+        """启用视频流开关，取值：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._VideoStreamSwitch
+
+    @VideoStreamSwitch.setter
+    def VideoStreamSwitch(self, VideoStreamSwitch):
+        self._VideoStreamSwitch = VideoStreamSwitch
+
+    @property
+    def AudioStreamSwitch(self):
+        """启用音频流开关，取值：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._AudioStreamSwitch
+
+    @AudioStreamSwitch.setter
+    def AudioStreamSwitch(self, AudioStreamSwitch):
+        self._AudioStreamSwitch = AudioStreamSwitch
+
+    @property
+    def VideoTemplate(self):
+        """视频流配置参数，仅当 VideoStreamSwitch 为 on，该字段有效。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
+        """
+        return self._VideoTemplate
+
+    @VideoTemplate.setter
+    def VideoTemplate(self, VideoTemplate):
+        self._VideoTemplate = VideoTemplate
+
+    @property
+    def AudioTemplate(self):
+        """音频流配置参数，仅当 AudioStreamSwitch 为 on，该字段有效。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
+        """
+        return self._AudioTemplate
+
+    @AudioTemplate.setter
+    def AudioTemplate(self, AudioTemplate):
+        self._AudioTemplate = AudioTemplate
+
+    @property
+    def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        self._VideoStreamSwitch = params.get("VideoStreamSwitch")
+        self._AudioStreamSwitch = params.get("AudioStreamSwitch")
+        if params.get("VideoTemplate") is not None:
+            self._VideoTemplate = VideoTemplateInfo()
+            self._VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self._AudioTemplate = AudioTemplateInfo()
+            self._AudioTemplate._deserialize(params.get("AudioTemplate"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class L4OfflineLog(AbstractModel):
     """离线日志详细信息
 
@@ -36764,6 +39225,258 @@ class ModifyRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySecurityAPIResourceRequest(AbstractModel):
+    """ModifySecurityAPIResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIResources: API 资源列表。
+        :type APIResources: list of APIResource
+        """
+        self._ZoneId = None
+        self._APIResources = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIResources(self):
+        """API 资源列表。
+        :rtype: list of APIResource
+        """
+        return self._APIResources
+
+    @APIResources.setter
+    def APIResources(self, APIResources):
+        self._APIResources = APIResources
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("APIResources") is not None:
+            self._APIResources = []
+            for item in params.get("APIResources"):
+                obj = APIResource()
+                obj._deserialize(item)
+                self._APIResources.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityAPIResourceResponse(AbstractModel):
+    """ModifySecurityAPIResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySecurityAPIServiceRequest(AbstractModel):
+    """ModifySecurityAPIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIServices: API 服务列表。
+        :type APIServices: list of APIService
+        """
+        self._ZoneId = None
+        self._APIServices = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIServices(self):
+        """API 服务列表。
+        :rtype: list of APIService
+        """
+        return self._APIServices
+
+    @APIServices.setter
+    def APIServices(self, APIServices):
+        self._APIServices = APIServices
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("APIServices") is not None:
+            self._APIServices = []
+            for item in params.get("APIServices"):
+                obj = APIService()
+                obj._deserialize(item)
+                self._APIServices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityAPIServiceResponse(AbstractModel):
+    """ModifySecurityAPIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySecurityClientAttesterRequest(AbstractModel):
+    """ModifySecurityClientAttester请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _ClientAttesters: 认证选项列表。
+        :type ClientAttesters: list of ClientAttester
+        """
+        self._ZoneId = None
+        self._ClientAttesters = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ClientAttesters(self):
+        """认证选项列表。
+        :rtype: list of ClientAttester
+        """
+        return self._ClientAttesters
+
+    @ClientAttesters.setter
+    def ClientAttesters(self, ClientAttesters):
+        self._ClientAttesters = ClientAttesters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("ClientAttesters") is not None:
+            self._ClientAttesters = []
+            for item in params.get("ClientAttesters"):
+                obj = ClientAttester()
+                obj._deserialize(item)
+                self._ClientAttesters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityClientAttesterResponse(AbstractModel):
+    """ModifySecurityClientAttester返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySecurityIPGroupRequest(AbstractModel):
     """ModifySecurityIPGroup请求参数结构体
 
@@ -36834,6 +39547,90 @@ class ModifySecurityIPGroupRequest(AbstractModel):
 
 class ModifySecurityIPGroupResponse(AbstractModel):
     """ModifySecurityIPGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySecurityJSInjectionRuleRequest(AbstractModel):
+    """ModifySecurityJSInjectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _JSInjectionRules: JavaScript 注入规则列表。
+        :type JSInjectionRules: list of JSInjectionRule
+        """
+        self._ZoneId = None
+        self._JSInjectionRules = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def JSInjectionRules(self):
+        """JavaScript 注入规则列表。
+        :rtype: list of JSInjectionRule
+        """
+        return self._JSInjectionRules
+
+    @JSInjectionRules.setter
+    def JSInjectionRules(self, JSInjectionRules):
+        self._JSInjectionRules = JSInjectionRules
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("JSInjectionRules") is not None:
+            self._JSInjectionRules = []
+            for item in params.get("JSInjectionRules"):
+                obj = JSInjectionRule()
+                obj._deserialize(item)
+                self._JSInjectionRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityJSInjectionRuleResponse(AbstractModel):
+    """ModifySecurityJSInjectionRule返回参数结构体
 
     """
 
@@ -47810,6 +50607,93 @@ class SwitchConfig(AbstractModel):
         
 
 
+class TCCaptchaOption(AbstractModel):
+    """验证码认证实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaptchaAppId: CaptchaAppId 信息。
+        :type CaptchaAppId: str
+        :param _AppSecretKey: AppSecretKey 信息。
+        :type AppSecretKey: str
+        """
+        self._CaptchaAppId = None
+        self._AppSecretKey = None
+
+    @property
+    def CaptchaAppId(self):
+        """CaptchaAppId 信息。
+        :rtype: str
+        """
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def AppSecretKey(self):
+        """AppSecretKey 信息。
+        :rtype: str
+        """
+        return self._AppSecretKey
+
+    @AppSecretKey.setter
+    def AppSecretKey(self, AppSecretKey):
+        self._AppSecretKey = AppSecretKey
+
+
+    def _deserialize(self, params):
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._AppSecretKey = params.get("AppSecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCRCEOption(AbstractModel):
+    """RCE 认证选项实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Channel: Channel 信息。
+        :type Channel: str
+        """
+        self._Channel = None
+
+    @property
+    def Channel(self):
+        """Channel 信息。
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+
+    def _deserialize(self, params):
+        self._Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TLSConfigParameters(AbstractModel):
     """SSL/TLS 安全配置参数。
 
@@ -49541,6 +52425,140 @@ class VerifyOwnershipResponse(AbstractModel):
         self._Status = params.get("Status")
         self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
+
+
+class VideoTemplateInfo(AbstractModel):
+    """视频流配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Codec: 视频流的编码格式，可选值：<li>H.264: 使用 H.264 编码；</li><li>H.265: 使用 H.265 编码。</li>
+        :type Codec: str
+        :param _Fps: 视频帧率，取值范围：[0, 30]，单位：Hz。
+取值为 0，表示帧率和原始视频保持一致，但最大不超过 30。
+默认值：0。
+        :type Fps: float
+        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
+取值为 0，表示自动根据视频画面和质量选择视频码率。
+默认值：0。
+        :type Bitrate: int
+        :param _ResolutionAdaptive: 分辨率自适应，可选值：<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
+        :type ResolutionAdaptive: str
+        :param _Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 1920]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :type Width: int
+        :param _Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 1080]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :type Height: int
+        :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁”或者“拉长”。</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>默认值：black 。
+        :type FillType: str
+        """
+        self._Codec = None
+        self._Fps = None
+        self._Bitrate = None
+        self._ResolutionAdaptive = None
+        self._Width = None
+        self._Height = None
+        self._FillType = None
+
+    @property
+    def Codec(self):
+        """视频流的编码格式，可选值：<li>H.264: 使用 H.264 编码；</li><li>H.265: 使用 H.265 编码。</li>
+        :rtype: str
+        """
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def Fps(self):
+        """视频帧率，取值范围：[0, 30]，单位：Hz。
+取值为 0，表示帧率和原始视频保持一致，但最大不超过 30。
+默认值：0。
+        :rtype: float
+        """
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Bitrate(self):
+        """视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
+取值为 0，表示自动根据视频画面和质量选择视频码率。
+默认值：0。
+        :rtype: int
+        """
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+    @property
+    def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
+        :rtype: str
+        """
+        return self._ResolutionAdaptive
+
+    @ResolutionAdaptive.setter
+    def ResolutionAdaptive(self, ResolutionAdaptive):
+        self._ResolutionAdaptive = ResolutionAdaptive
+
+    @property
+    def Width(self):
+        """视频流宽度（或长边）的最大值，取值范围：0 和 [128, 1920]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """视频流高度（或短边）的最大值，取值范围：0 和 [128, 1080]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁”或者“拉长”。</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>默认值：black 。
+        :rtype: str
+        """
+        return self._FillType
+
+    @FillType.setter
+    def FillType(self, FillType):
+        self._FillType = FillType
+
+
+    def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._Fps = params.get("Fps")
+        self._Bitrate = params.get("Bitrate")
+        self._ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Waf(AbstractModel):

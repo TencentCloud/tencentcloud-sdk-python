@@ -4968,9 +4968,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统ID
+        :param _FileSystemId: 文件系统 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
         :type FileSystemId: str
-        :param _SnapshotId: 快照ID
+        :param _SnapshotId: 快照 ID
         :type SnapshotId: str
         :param _Offset: 分页起始位置，默认为0
         :type Offset: int
@@ -4981,14 +4981,13 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 <br>SnapshotName - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。
 <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
-<br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-(creating：创建中 | available：运行中| deleting: 删除中 | rollbacking_new：由快照创建新文件系统中| create-failed 创建失败）
+<br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。状态分类：creating：创建中 | available：运行中 | deleting：删除中 | rollbacking_new：由快照创建新文件系统中 | create-failed：创建失败。
 <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
-<br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+<br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key 使用具体的标签键进行替换。
         :type Filters: list of Filter
         :param _OrderField: 按创建时间排序取值
         :type OrderField: str
-        :param _Order: 排序 升序或者降序
+        :param _Order: 排序；升序或者降序
         :type Order: str
         """
         self._FileSystemId = None
@@ -5001,7 +5000,7 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID
+        """文件系统 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
         :rtype: str
         """
         return self._FileSystemId
@@ -5012,7 +5011,7 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """快照ID
+        """快照 ID
         :rtype: str
         """
         return self._SnapshotId
@@ -5050,10 +5049,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 <br>SnapshotName - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。
 <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
-<br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-(creating：创建中 | available：运行中| deleting: 删除中 | rollbacking_new：由快照创建新文件系统中| create-failed 创建失败）
+<br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。状态分类：creating：创建中 | available：运行中 | deleting：删除中 | rollbacking_new：由快照创建新文件系统中 | create-failed：创建失败。
 <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
-<br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+<br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key 使用具体的标签键进行替换。
         :rtype: list of Filter
         """
         return self._Filters
@@ -5075,7 +5073,7 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序 升序或者降序
+        """排序；升序或者降序
         :rtype: str
         """
         return self._Order
@@ -9249,7 +9247,7 @@ class SnapshotInfo(AbstractModel):
         :type SnapshotName: str
         :param _SnapshotId: 快照ID
         :type SnapshotId: str
-        :param _Status: 快照状态，createing-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
+        :param _Status: 快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
         :type Status: str
         :param _RegionName: 地域名称
         :type RegionName: str
@@ -9269,10 +9267,10 @@ class SnapshotInfo(AbstractModel):
         :type FsName: str
         :param _Tags: 快照标签
         :type Tags: list of TagInfo
-        :param _SnapshotType: 快照类型, general为通用系列快照，turbo为Turbo系列快照
+        :param _SnapshotType: 快照类型，general为通用系列快照，turbo为Turbo系列快照
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotType: str
-        :param _SnapshotTime: 实际快照时间，反应快照对应文件系统某个时刻的数据。
+        :param _SnapshotTime: 实际快照时间，反映快照对应文件系统某个时刻的数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotTime: str
         """
@@ -9327,7 +9325,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def Status(self):
-        """快照状态，createing-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
+        """快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
         :rtype: str
         """
         return self._Status
@@ -9437,7 +9435,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotType(self):
-        """快照类型, general为通用系列快照，turbo为Turbo系列快照
+        """快照类型，general为通用系列快照，turbo为Turbo系列快照
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9449,7 +9447,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotTime(self):
-        """实际快照时间，反应快照对应文件系统某个时刻的数据。
+        """实际快照时间，反映快照对应文件系统某个时刻的数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

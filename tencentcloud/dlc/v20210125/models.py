@@ -1655,6 +1655,147 @@ class AssignMangedTablePropertiesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AssociateDatasourceHouseRequest(AbstractModel):
+    """AssociateDatasourceHouse请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceConnectionName: 网络配置名称
+        :type DatasourceConnectionName: str
+        :param _DatasourceConnectionType: 数据源类型
+        :type DatasourceConnectionType: str
+        :param _DatasourceConnectionConfig: 数据源网络配置
+        :type DatasourceConnectionConfig: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionConfig`
+        :param _DataEngineNames: 引擎名称，只允许绑定一个引擎
+        :type DataEngineNames: list of str
+        :param _NetworkConnectionType: 网络类型，2-跨源型，4-增强型
+        :type NetworkConnectionType: int
+        :param _NetworkConnectionDesc: 网络配置描述
+        :type NetworkConnectionDesc: str
+        """
+        self._DatasourceConnectionName = None
+        self._DatasourceConnectionType = None
+        self._DatasourceConnectionConfig = None
+        self._DataEngineNames = None
+        self._NetworkConnectionType = None
+        self._NetworkConnectionDesc = None
+
+    @property
+    def DatasourceConnectionName(self):
+        """网络配置名称
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
+    @property
+    def DatasourceConnectionType(self):
+        """数据源类型
+        :rtype: str
+        """
+        return self._DatasourceConnectionType
+
+    @DatasourceConnectionType.setter
+    def DatasourceConnectionType(self, DatasourceConnectionType):
+        self._DatasourceConnectionType = DatasourceConnectionType
+
+    @property
+    def DatasourceConnectionConfig(self):
+        """数据源网络配置
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionConfig`
+        """
+        return self._DatasourceConnectionConfig
+
+    @DatasourceConnectionConfig.setter
+    def DatasourceConnectionConfig(self, DatasourceConnectionConfig):
+        self._DatasourceConnectionConfig = DatasourceConnectionConfig
+
+    @property
+    def DataEngineNames(self):
+        """引擎名称，只允许绑定一个引擎
+        :rtype: list of str
+        """
+        return self._DataEngineNames
+
+    @DataEngineNames.setter
+    def DataEngineNames(self, DataEngineNames):
+        self._DataEngineNames = DataEngineNames
+
+    @property
+    def NetworkConnectionType(self):
+        """网络类型，2-跨源型，4-增强型
+        :rtype: int
+        """
+        return self._NetworkConnectionType
+
+    @NetworkConnectionType.setter
+    def NetworkConnectionType(self, NetworkConnectionType):
+        self._NetworkConnectionType = NetworkConnectionType
+
+    @property
+    def NetworkConnectionDesc(self):
+        """网络配置描述
+        :rtype: str
+        """
+        return self._NetworkConnectionDesc
+
+    @NetworkConnectionDesc.setter
+    def NetworkConnectionDesc(self, NetworkConnectionDesc):
+        self._NetworkConnectionDesc = NetworkConnectionDesc
+
+
+    def _deserialize(self, params):
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self._DatasourceConnectionType = params.get("DatasourceConnectionType")
+        if params.get("DatasourceConnectionConfig") is not None:
+            self._DatasourceConnectionConfig = DatasourceConnectionConfig()
+            self._DatasourceConnectionConfig._deserialize(params.get("DatasourceConnectionConfig"))
+        self._DataEngineNames = params.get("DataEngineNames")
+        self._NetworkConnectionType = params.get("NetworkConnectionType")
+        self._NetworkConnectionDesc = params.get("NetworkConnectionDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateDatasourceHouseResponse(AbstractModel):
+    """AssociateDatasourceHouse返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AttachUserPolicyRequest(AbstractModel):
     """AttachUserPolicy请求参数结构体
 
@@ -7353,6 +7494,459 @@ class CreateSparkSubmitTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateStandardEngineResourceGroupRequest(AbstractModel):
+    """CreateStandardEngineResourceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupName: 标准引擎资源组名称
+        :type EngineResourceGroupName: str
+        :param _DataEngineName: 标准引擎名称
+        :type DataEngineName: str
+        :param _AutoLaunch: 自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+        :type AutoLaunch: int
+        :param _AutoPause: 自动挂起资源组。0-自动挂起，1-不自动挂起
+        :type AutoPause: int
+        :param _DriverCuSpec: driver的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :type DriverCuSpec: str
+        :param _ExecutorCuSpec: executor的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :type ExecutorCuSpec: str
+        :param _MinExecutorNums: executor最小数量，
+        :type MinExecutorNums: int
+        :param _MaxExecutorNums: executor最大数量
+        :type MaxExecutorNums: int
+        :param _IsLaunchNow: 创建资源组后是否直接拉起，0-拉起，1-不拉起
+        :type IsLaunchNow: int
+        :param _AutoPauseTime: 自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+        :type AutoPauseTime: int
+        :param _StaticConfigPairs: 资源组静态参数，需要重启资源组生效
+        :type StaticConfigPairs: list of EngineResourceGroupConfigPair
+        :param _DynamicConfigPairs: 资源组动态参数，下一个任务生效。
+        :type DynamicConfigPairs: list of EngineResourceGroupConfigPair
+        :param _MaxConcurrency: 任务并发数，默人是5个
+        :type MaxConcurrency: int
+        :param _NetworkConfigNames: 网络配置名称
+        :type NetworkConfigNames: list of str
+        :param _PublicDomain: 自定义镜像域名
+        :type PublicDomain: str
+        :param _RegistryId: 自定义镜像实例id
+        :type RegistryId: str
+        :param _FrameType: AI类型资源组的框架类型，machine-learning，python，spark-ml，不填默认为machine-learning
+        :type FrameType: str
+        :param _ImageType: 镜像类型，bulit-in：内置，custom：自定义，不填默认为bulit-in
+        :type ImageType: str
+        :param _ImageName: 镜像名称
+        :type ImageName: str
+        :param _ImageVersion: 镜像id
+        :type ImageVersion: str
+        :param _Size: AI资源组有效，资源组可用资源上限，该值需要小于引擎资源上限
+        :type Size: int
+        :param _ResourceGroupScene: 资源组场景
+        :type ResourceGroupScene: str
+        :param _RegionName: 自定义镜像所在地域
+        :type RegionName: str
+        :param _PythonCuSpec: python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+        :type PythonCuSpec: str
+        :param _SparkSpecMode: 仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+        :type SparkSpecMode: str
+        :param _SparkSize: 仅SQL资源组资源上限，仅用于快速模块
+        :type SparkSize: int
+        """
+        self._EngineResourceGroupName = None
+        self._DataEngineName = None
+        self._AutoLaunch = None
+        self._AutoPause = None
+        self._DriverCuSpec = None
+        self._ExecutorCuSpec = None
+        self._MinExecutorNums = None
+        self._MaxExecutorNums = None
+        self._IsLaunchNow = None
+        self._AutoPauseTime = None
+        self._StaticConfigPairs = None
+        self._DynamicConfigPairs = None
+        self._MaxConcurrency = None
+        self._NetworkConfigNames = None
+        self._PublicDomain = None
+        self._RegistryId = None
+        self._FrameType = None
+        self._ImageType = None
+        self._ImageName = None
+        self._ImageVersion = None
+        self._Size = None
+        self._ResourceGroupScene = None
+        self._RegionName = None
+        self._PythonCuSpec = None
+        self._SparkSpecMode = None
+        self._SparkSize = None
+
+    @property
+    def EngineResourceGroupName(self):
+        """标准引擎资源组名称
+        :rtype: str
+        """
+        return self._EngineResourceGroupName
+
+    @EngineResourceGroupName.setter
+    def EngineResourceGroupName(self, EngineResourceGroupName):
+        self._EngineResourceGroupName = EngineResourceGroupName
+
+    @property
+    def DataEngineName(self):
+        """标准引擎名称
+        :rtype: str
+        """
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def AutoLaunch(self):
+        """自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+        :rtype: int
+        """
+        return self._AutoLaunch
+
+    @AutoLaunch.setter
+    def AutoLaunch(self, AutoLaunch):
+        self._AutoLaunch = AutoLaunch
+
+    @property
+    def AutoPause(self):
+        """自动挂起资源组。0-自动挂起，1-不自动挂起
+        :rtype: int
+        """
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def DriverCuSpec(self):
+        """driver的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :rtype: str
+        """
+        return self._DriverCuSpec
+
+    @DriverCuSpec.setter
+    def DriverCuSpec(self, DriverCuSpec):
+        self._DriverCuSpec = DriverCuSpec
+
+    @property
+    def ExecutorCuSpec(self):
+        """executor的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :rtype: str
+        """
+        return self._ExecutorCuSpec
+
+    @ExecutorCuSpec.setter
+    def ExecutorCuSpec(self, ExecutorCuSpec):
+        self._ExecutorCuSpec = ExecutorCuSpec
+
+    @property
+    def MinExecutorNums(self):
+        """executor最小数量，
+        :rtype: int
+        """
+        return self._MinExecutorNums
+
+    @MinExecutorNums.setter
+    def MinExecutorNums(self, MinExecutorNums):
+        self._MinExecutorNums = MinExecutorNums
+
+    @property
+    def MaxExecutorNums(self):
+        """executor最大数量
+        :rtype: int
+        """
+        return self._MaxExecutorNums
+
+    @MaxExecutorNums.setter
+    def MaxExecutorNums(self, MaxExecutorNums):
+        self._MaxExecutorNums = MaxExecutorNums
+
+    @property
+    def IsLaunchNow(self):
+        """创建资源组后是否直接拉起，0-拉起，1-不拉起
+        :rtype: int
+        """
+        return self._IsLaunchNow
+
+    @IsLaunchNow.setter
+    def IsLaunchNow(self, IsLaunchNow):
+        self._IsLaunchNow = IsLaunchNow
+
+    @property
+    def AutoPauseTime(self):
+        """自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+        :rtype: int
+        """
+        return self._AutoPauseTime
+
+    @AutoPauseTime.setter
+    def AutoPauseTime(self, AutoPauseTime):
+        self._AutoPauseTime = AutoPauseTime
+
+    @property
+    def StaticConfigPairs(self):
+        """资源组静态参数，需要重启资源组生效
+        :rtype: list of EngineResourceGroupConfigPair
+        """
+        return self._StaticConfigPairs
+
+    @StaticConfigPairs.setter
+    def StaticConfigPairs(self, StaticConfigPairs):
+        self._StaticConfigPairs = StaticConfigPairs
+
+    @property
+    def DynamicConfigPairs(self):
+        """资源组动态参数，下一个任务生效。
+        :rtype: list of EngineResourceGroupConfigPair
+        """
+        return self._DynamicConfigPairs
+
+    @DynamicConfigPairs.setter
+    def DynamicConfigPairs(self, DynamicConfigPairs):
+        self._DynamicConfigPairs = DynamicConfigPairs
+
+    @property
+    def MaxConcurrency(self):
+        """任务并发数，默人是5个
+        :rtype: int
+        """
+        return self._MaxConcurrency
+
+    @MaxConcurrency.setter
+    def MaxConcurrency(self, MaxConcurrency):
+        self._MaxConcurrency = MaxConcurrency
+
+    @property
+    def NetworkConfigNames(self):
+        """网络配置名称
+        :rtype: list of str
+        """
+        return self._NetworkConfigNames
+
+    @NetworkConfigNames.setter
+    def NetworkConfigNames(self, NetworkConfigNames):
+        self._NetworkConfigNames = NetworkConfigNames
+
+    @property
+    def PublicDomain(self):
+        """自定义镜像域名
+        :rtype: str
+        """
+        return self._PublicDomain
+
+    @PublicDomain.setter
+    def PublicDomain(self, PublicDomain):
+        self._PublicDomain = PublicDomain
+
+    @property
+    def RegistryId(self):
+        """自定义镜像实例id
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def FrameType(self):
+        """AI类型资源组的框架类型，machine-learning，python，spark-ml，不填默认为machine-learning
+        :rtype: str
+        """
+        return self._FrameType
+
+    @FrameType.setter
+    def FrameType(self, FrameType):
+        self._FrameType = FrameType
+
+    @property
+    def ImageType(self):
+        """镜像类型，bulit-in：内置，custom：自定义，不填默认为bulit-in
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def ImageName(self):
+        """镜像名称
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageVersion(self):
+        """镜像id
+        :rtype: str
+        """
+        return self._ImageVersion
+
+    @ImageVersion.setter
+    def ImageVersion(self, ImageVersion):
+        self._ImageVersion = ImageVersion
+
+    @property
+    def Size(self):
+        """AI资源组有效，资源组可用资源上限，该值需要小于引擎资源上限
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def ResourceGroupScene(self):
+        """资源组场景
+        :rtype: str
+        """
+        return self._ResourceGroupScene
+
+    @ResourceGroupScene.setter
+    def ResourceGroupScene(self, ResourceGroupScene):
+        self._ResourceGroupScene = ResourceGroupScene
+
+    @property
+    def RegionName(self):
+        """自定义镜像所在地域
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def PythonCuSpec(self):
+        """python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+        :rtype: str
+        """
+        return self._PythonCuSpec
+
+    @PythonCuSpec.setter
+    def PythonCuSpec(self, PythonCuSpec):
+        self._PythonCuSpec = PythonCuSpec
+
+    @property
+    def SparkSpecMode(self):
+        """仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+        :rtype: str
+        """
+        return self._SparkSpecMode
+
+    @SparkSpecMode.setter
+    def SparkSpecMode(self, SparkSpecMode):
+        self._SparkSpecMode = SparkSpecMode
+
+    @property
+    def SparkSize(self):
+        """仅SQL资源组资源上限，仅用于快速模块
+        :rtype: int
+        """
+        return self._SparkSize
+
+    @SparkSize.setter
+    def SparkSize(self, SparkSize):
+        self._SparkSize = SparkSize
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupName = params.get("EngineResourceGroupName")
+        self._DataEngineName = params.get("DataEngineName")
+        self._AutoLaunch = params.get("AutoLaunch")
+        self._AutoPause = params.get("AutoPause")
+        self._DriverCuSpec = params.get("DriverCuSpec")
+        self._ExecutorCuSpec = params.get("ExecutorCuSpec")
+        self._MinExecutorNums = params.get("MinExecutorNums")
+        self._MaxExecutorNums = params.get("MaxExecutorNums")
+        self._IsLaunchNow = params.get("IsLaunchNow")
+        self._AutoPauseTime = params.get("AutoPauseTime")
+        if params.get("StaticConfigPairs") is not None:
+            self._StaticConfigPairs = []
+            for item in params.get("StaticConfigPairs"):
+                obj = EngineResourceGroupConfigPair()
+                obj._deserialize(item)
+                self._StaticConfigPairs.append(obj)
+        if params.get("DynamicConfigPairs") is not None:
+            self._DynamicConfigPairs = []
+            for item in params.get("DynamicConfigPairs"):
+                obj = EngineResourceGroupConfigPair()
+                obj._deserialize(item)
+                self._DynamicConfigPairs.append(obj)
+        self._MaxConcurrency = params.get("MaxConcurrency")
+        self._NetworkConfigNames = params.get("NetworkConfigNames")
+        self._PublicDomain = params.get("PublicDomain")
+        self._RegistryId = params.get("RegistryId")
+        self._FrameType = params.get("FrameType")
+        self._ImageType = params.get("ImageType")
+        self._ImageName = params.get("ImageName")
+        self._ImageVersion = params.get("ImageVersion")
+        self._Size = params.get("Size")
+        self._ResourceGroupScene = params.get("ResourceGroupScene")
+        self._RegionName = params.get("RegionName")
+        self._PythonCuSpec = params.get("PythonCuSpec")
+        self._SparkSpecMode = params.get("SparkSpecMode")
+        self._SparkSize = params.get("SparkSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStandardEngineResourceGroupResponse(AbstractModel):
+    """CreateStandardEngineResourceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateStoreLocationRequest(AbstractModel):
     """CreateStoreLocation请求参数结构体
 
@@ -8096,6 +8690,130 @@ class CreateUserRequest(AbstractModel):
 
 class CreateUserResponse(AbstractModel):
     """CreateUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateUserVpcConnectionRequest(AbstractModel):
+    """CreateUserVpcConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserVpcId: 用户vpcid
+        :type UserVpcId: str
+        :param _UserSubnetId: 用户子网
+        :type UserSubnetId: str
+        :param _UserVpcEndpointName: 用户终端节点名称
+        :type UserVpcEndpointName: str
+        :param _EngineNetworkId: 引擎网络ID
+        :type EngineNetworkId: str
+        :param _UserVpcEndpointVip: 手动指定vip，不填自动分配子网下的一个ip
+        :type UserVpcEndpointVip: str
+        """
+        self._UserVpcId = None
+        self._UserSubnetId = None
+        self._UserVpcEndpointName = None
+        self._EngineNetworkId = None
+        self._UserVpcEndpointVip = None
+
+    @property
+    def UserVpcId(self):
+        """用户vpcid
+        :rtype: str
+        """
+        return self._UserVpcId
+
+    @UserVpcId.setter
+    def UserVpcId(self, UserVpcId):
+        self._UserVpcId = UserVpcId
+
+    @property
+    def UserSubnetId(self):
+        """用户子网
+        :rtype: str
+        """
+        return self._UserSubnetId
+
+    @UserSubnetId.setter
+    def UserSubnetId(self, UserSubnetId):
+        self._UserSubnetId = UserSubnetId
+
+    @property
+    def UserVpcEndpointName(self):
+        """用户终端节点名称
+        :rtype: str
+        """
+        return self._UserVpcEndpointName
+
+    @UserVpcEndpointName.setter
+    def UserVpcEndpointName(self, UserVpcEndpointName):
+        self._UserVpcEndpointName = UserVpcEndpointName
+
+    @property
+    def EngineNetworkId(self):
+        """引擎网络ID
+        :rtype: str
+        """
+        return self._EngineNetworkId
+
+    @EngineNetworkId.setter
+    def EngineNetworkId(self, EngineNetworkId):
+        self._EngineNetworkId = EngineNetworkId
+
+    @property
+    def UserVpcEndpointVip(self):
+        """手动指定vip，不填自动分配子网下的一个ip
+        :rtype: str
+        """
+        return self._UserVpcEndpointVip
+
+    @UserVpcEndpointVip.setter
+    def UserVpcEndpointVip(self, UserVpcEndpointVip):
+        self._UserVpcEndpointVip = UserVpcEndpointVip
+
+
+    def _deserialize(self, params):
+        self._UserVpcId = params.get("UserVpcId")
+        self._UserSubnetId = params.get("UserSubnetId")
+        self._UserVpcEndpointName = params.get("UserVpcEndpointName")
+        self._EngineNetworkId = params.get("EngineNetworkId")
+        self._UserVpcEndpointVip = params.get("UserVpcEndpointVip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserVpcConnectionResponse(AbstractModel):
+    """CreateUserVpcConnection返回参数结构体
 
     """
 
@@ -9829,6 +10547,262 @@ class DataEngineConfigPair(AbstractModel):
     def _deserialize(self, params):
         self._ConfigItem = params.get("ConfigItem")
         self._ConfigValue = params.get("ConfigValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataEngineImageSessionParameter(AbstractModel):
+    """集群Session配置信息.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParameterId: 配置id
+        :type ParameterId: str
+        :param _ChildImageVersionId: 小版本镜像ID
+        :type ChildImageVersionId: str
+        :param _EngineType: 集群类型：SparkSQL/PrestoSQL/SparkBatch
+        :type EngineType: str
+        :param _KeyName: 参数key
+        :type KeyName: str
+        :param _KeyDescription: Key描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyDescription: str
+        :param _ValueType: value类型
+        :type ValueType: str
+        :param _ValueLengthLimit: value长度限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueLengthLimit: str
+        :param _ValueRegexpLimit: value正则限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueRegexpLimit: str
+        :param _ValueDefault: value默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueDefault: str
+        :param _IsPublic: 是否为公共版本：1：公共；2：私有
+        :type IsPublic: int
+        :param _ParameterType: 配置类型：1：session配置（默认）；2：common配置；3：cluster配置
+        :type ParameterType: int
+        :param _SubmitMethod: 提交方式：User(用户)、BackGround（后台）
+        :type SubmitMethod: str
+        :param _Operator: 操作者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _InsertTime: 插入时间
+        :type InsertTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self._ParameterId = None
+        self._ChildImageVersionId = None
+        self._EngineType = None
+        self._KeyName = None
+        self._KeyDescription = None
+        self._ValueType = None
+        self._ValueLengthLimit = None
+        self._ValueRegexpLimit = None
+        self._ValueDefault = None
+        self._IsPublic = None
+        self._ParameterType = None
+        self._SubmitMethod = None
+        self._Operator = None
+        self._InsertTime = None
+        self._UpdateTime = None
+
+    @property
+    def ParameterId(self):
+        """配置id
+        :rtype: str
+        """
+        return self._ParameterId
+
+    @ParameterId.setter
+    def ParameterId(self, ParameterId):
+        self._ParameterId = ParameterId
+
+    @property
+    def ChildImageVersionId(self):
+        """小版本镜像ID
+        :rtype: str
+        """
+        return self._ChildImageVersionId
+
+    @ChildImageVersionId.setter
+    def ChildImageVersionId(self, ChildImageVersionId):
+        self._ChildImageVersionId = ChildImageVersionId
+
+    @property
+    def EngineType(self):
+        """集群类型：SparkSQL/PrestoSQL/SparkBatch
+        :rtype: str
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def KeyName(self):
+        """参数key
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def KeyDescription(self):
+        """Key描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KeyDescription
+
+    @KeyDescription.setter
+    def KeyDescription(self, KeyDescription):
+        self._KeyDescription = KeyDescription
+
+    @property
+    def ValueType(self):
+        """value类型
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def ValueLengthLimit(self):
+        """value长度限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ValueLengthLimit
+
+    @ValueLengthLimit.setter
+    def ValueLengthLimit(self, ValueLengthLimit):
+        self._ValueLengthLimit = ValueLengthLimit
+
+    @property
+    def ValueRegexpLimit(self):
+        """value正则限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ValueRegexpLimit
+
+    @ValueRegexpLimit.setter
+    def ValueRegexpLimit(self, ValueRegexpLimit):
+        self._ValueRegexpLimit = ValueRegexpLimit
+
+    @property
+    def ValueDefault(self):
+        """value默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ValueDefault
+
+    @ValueDefault.setter
+    def ValueDefault(self, ValueDefault):
+        self._ValueDefault = ValueDefault
+
+    @property
+    def IsPublic(self):
+        """是否为公共版本：1：公共；2：私有
+        :rtype: int
+        """
+        return self._IsPublic
+
+    @IsPublic.setter
+    def IsPublic(self, IsPublic):
+        self._IsPublic = IsPublic
+
+    @property
+    def ParameterType(self):
+        """配置类型：1：session配置（默认）；2：common配置；3：cluster配置
+        :rtype: int
+        """
+        return self._ParameterType
+
+    @ParameterType.setter
+    def ParameterType(self, ParameterType):
+        self._ParameterType = ParameterType
+
+    @property
+    def SubmitMethod(self):
+        """提交方式：User(用户)、BackGround（后台）
+        :rtype: str
+        """
+        return self._SubmitMethod
+
+    @SubmitMethod.setter
+    def SubmitMethod(self, SubmitMethod):
+        self._SubmitMethod = SubmitMethod
+
+    @property
+    def Operator(self):
+        """操作者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def InsertTime(self):
+        """插入时间
+        :rtype: str
+        """
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ParameterId = params.get("ParameterId")
+        self._ChildImageVersionId = params.get("ChildImageVersionId")
+        self._EngineType = params.get("EngineType")
+        self._KeyName = params.get("KeyName")
+        self._KeyDescription = params.get("KeyDescription")
+        self._ValueType = params.get("ValueType")
+        self._ValueLengthLimit = params.get("ValueLengthLimit")
+        self._ValueRegexpLimit = params.get("ValueRegexpLimit")
+        self._ValueDefault = params.get("ValueDefault")
+        self._IsPublic = params.get("IsPublic")
+        self._ParameterType = params.get("ParameterType")
+        self._SubmitMethod = params.get("SubmitMethod")
+        self._Operator = params.get("Operator")
+        self._InsertTime = params.get("InsertTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12702,6 +13676,100 @@ class DeleteDataEngineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteNativeSparkSessionRequest(AbstractModel):
+    """DeleteNativeSparkSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎id
+        :type DataEngineId: str
+        :param _ResourceGroupId: 资源组id
+        :type ResourceGroupId: str
+        :param _EngineSessionName: spark session名称
+        :type EngineSessionName: str
+        """
+        self._DataEngineId = None
+        self._ResourceGroupId = None
+        self._EngineSessionName = None
+
+    @property
+    def DataEngineId(self):
+        """引擎id
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def ResourceGroupId(self):
+        """资源组id
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def EngineSessionName(self):
+        """spark session名称
+        :rtype: str
+        """
+        return self._EngineSessionName
+
+    @EngineSessionName.setter
+    def EngineSessionName(self, EngineSessionName):
+        self._EngineSessionName = EngineSessionName
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._EngineSessionName = params.get("EngineSessionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNativeSparkSessionResponse(AbstractModel):
+    """DeleteNativeSparkSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteNotebookSessionRequest(AbstractModel):
     """DeleteNotebookSession请求参数结构体
 
@@ -12909,6 +13977,70 @@ class DeleteSparkAppResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteStandardEngineResourceGroupRequest(AbstractModel):
+    """DeleteStandardEngineResourceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupName: 标准引擎资源组名称
+        :type EngineResourceGroupName: str
+        """
+        self._EngineResourceGroupName = None
+
+    @property
+    def EngineResourceGroupName(self):
+        """标准引擎资源组名称
+        :rtype: str
+        """
+        return self._EngineResourceGroupName
+
+    @EngineResourceGroupName.setter
+    def EngineResourceGroupName(self, EngineResourceGroupName):
+        self._EngineResourceGroupName = EngineResourceGroupName
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupName = params.get("EngineResourceGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStandardEngineResourceGroupResponse(AbstractModel):
+    """DeleteStandardEngineResourceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteTableRequest(AbstractModel):
     """DeleteTable请求参数结构体
 
@@ -13047,6 +14179,85 @@ class DeleteUserRequest(AbstractModel):
 
 class DeleteUserResponse(AbstractModel):
     """DeleteUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteUserVpcConnectionRequest(AbstractModel):
+    """DeleteUserVpcConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineNetworkId: 引擎网络ID
+        :type EngineNetworkId: str
+        :param _UserVpcEndpointId: 终端节点ID
+        :type UserVpcEndpointId: str
+        """
+        self._EngineNetworkId = None
+        self._UserVpcEndpointId = None
+
+    @property
+    def EngineNetworkId(self):
+        """引擎网络ID
+        :rtype: str
+        """
+        return self._EngineNetworkId
+
+    @EngineNetworkId.setter
+    def EngineNetworkId(self, EngineNetworkId):
+        self._EngineNetworkId = EngineNetworkId
+
+    @property
+    def UserVpcEndpointId(self):
+        """终端节点ID
+        :rtype: str
+        """
+        return self._UserVpcEndpointId
+
+    @UserVpcEndpointId.setter
+    def UserVpcEndpointId(self, UserVpcEndpointId):
+        self._UserVpcEndpointId = UserVpcEndpointId
+
+
+    def _deserialize(self, params):
+        self._EngineNetworkId = params.get("EngineNetworkId")
+        self._UserVpcEndpointId = params.get("UserVpcEndpointId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserVpcConnectionResponse(AbstractModel):
+    """DeleteUserVpcConnection返回参数结构体
 
     """
 
@@ -15419,6 +16630,105 @@ class DescribeDataEngineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataEngineSessionParametersRequest(AbstractModel):
+    """DescribeDataEngineSessionParameters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎id
+        :type DataEngineId: str
+        :param _DataEngineName: 引擎名称，当指定引擎名称后优先使用名称获取配置
+        :type DataEngineName: str
+        """
+        self._DataEngineId = None
+        self._DataEngineName = None
+
+    @property
+    def DataEngineId(self):
+        """引擎id
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def DataEngineName(self):
+        """引擎名称，当指定引擎名称后优先使用名称获取配置
+        :rtype: str
+        """
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        self._DataEngineName = params.get("DataEngineName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataEngineSessionParametersResponse(AbstractModel):
+    """DescribeDataEngineSessionParameters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineParameters: 集群Session配置列表
+        :type DataEngineParameters: list of DataEngineImageSessionParameter
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataEngineParameters = None
+        self._RequestId = None
+
+    @property
+    def DataEngineParameters(self):
+        """集群Session配置列表
+        :rtype: list of DataEngineImageSessionParameter
+        """
+        return self._DataEngineParameters
+
+    @DataEngineParameters.setter
+    def DataEngineParameters(self, DataEngineParameters):
+        self._DataEngineParameters = DataEngineParameters
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataEngineParameters") is not None:
+            self._DataEngineParameters = []
+            for item in params.get("DataEngineParameters"):
+                obj = DataEngineImageSessionParameter()
+                obj._deserialize(item)
+                self._DataEngineParameters.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataEnginesRequest(AbstractModel):
     """DescribeDataEngines请求参数结构体
 
@@ -16268,6 +17578,278 @@ class DescribeDatasourceConnectionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEngineNetworksRequest(AbstractModel):
+    """DescribeEngineNetworks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SortBy: 排序字段
+        :type SortBy: str
+        :param _Sorting: 升序，降序
+        :type Sorting: str
+        :param _Filters: 过滤条件可选，engine-network-id--引擎网络ID，engine-network-state--引擎网络状态
+        :type Filters: list of Filter
+        :param _Limit: 数据条数
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        """
+        self._SortBy = None
+        self._Sorting = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def SortBy(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        """升序，降序
+        :rtype: str
+        """
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+    @property
+    def Filters(self):
+        """过滤条件可选，engine-network-id--引擎网络ID，engine-network-state--引擎网络状态
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """数据条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEngineNetworksResponse(AbstractModel):
+    """DescribeEngineNetworks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineNetworkInfos: 引擎网络信息
+        :type EngineNetworkInfos: list of EngineNetworkInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EngineNetworkInfos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def EngineNetworkInfos(self):
+        """引擎网络信息
+        :rtype: list of EngineNetworkInfo
+        """
+        return self._EngineNetworkInfos
+
+    @EngineNetworkInfos.setter
+    def EngineNetworkInfos(self, EngineNetworkInfos):
+        self._EngineNetworkInfos = EngineNetworkInfos
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EngineNetworkInfos") is not None:
+            self._EngineNetworkInfos = []
+            for item in params.get("EngineNetworkInfos"):
+                obj = EngineNetworkInfo()
+                obj._deserialize(item)
+                self._EngineNetworkInfos.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEngineNodeSpecRequest(AbstractModel):
+    """DescribeEngineNodeSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineName: 引擎名称
+        :type DataEngineName: str
+        """
+        self._DataEngineName = None
+
+    @property
+    def DataEngineName(self):
+        """引擎名称
+        :rtype: str
+        """
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+
+    def _deserialize(self, params):
+        self._DataEngineName = params.get("DataEngineName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEngineNodeSpecResponse(AbstractModel):
+    """DescribeEngineNodeSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DriverSpec: driver可用的规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DriverSpec: list of SpecInfo
+        :param _ExecutorSpec: executor可用的规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorSpec: list of SpecInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DriverSpec = None
+        self._ExecutorSpec = None
+        self._RequestId = None
+
+    @property
+    def DriverSpec(self):
+        """driver可用的规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SpecInfo
+        """
+        return self._DriverSpec
+
+    @DriverSpec.setter
+    def DriverSpec(self, DriverSpec):
+        self._DriverSpec = DriverSpec
+
+    @property
+    def ExecutorSpec(self):
+        """executor可用的规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SpecInfo
+        """
+        return self._ExecutorSpec
+
+    @ExecutorSpec.setter
+    def ExecutorSpec(self, ExecutorSpec):
+        self._ExecutorSpec = ExecutorSpec
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DriverSpec") is not None:
+            self._DriverSpec = []
+            for item in params.get("DriverSpec"):
+                obj = SpecInfo()
+                obj._deserialize(item)
+                self._DriverSpec.append(obj)
+        if params.get("ExecutorSpec") is not None:
+            self._ExecutorSpec = []
+            for item in params.get("ExecutorSpec"):
+                obj = SpecInfo()
+                obj._deserialize(item)
+                self._ExecutorSpec.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEngineUsageInfoRequest(AbstractModel):
     """DescribeEngineUsageInfo请求参数结构体
 
@@ -16579,6 +18161,279 @@ class DescribeLakeFsTaskResultResponse(AbstractModel):
         if params.get("AccessToken") is not None:
             self._AccessToken = LakeFileSystemToken()
             self._AccessToken._deserialize(params.get("AccessToken"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNativeSparkSessionsRequest(AbstractModel):
+    """DescribeNativeSparkSessions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎ID
+        :type DataEngineId: str
+        :param _ResourceGroupId: 资源组ID
+        :type ResourceGroupId: str
+        """
+        self._DataEngineId = None
+        self._ResourceGroupId = None
+
+    @property
+    def DataEngineId(self):
+        """引擎ID
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def ResourceGroupId(self):
+        """资源组ID
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNativeSparkSessionsResponse(AbstractModel):
+    """DescribeNativeSparkSessions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SparkSessionsList: spark session列表
+        :type SparkSessionsList: list of SparkSessionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SparkSessionsList = None
+        self._RequestId = None
+
+    @property
+    def SparkSessionsList(self):
+        """spark session列表
+        :rtype: list of SparkSessionInfo
+        """
+        return self._SparkSessionsList
+
+    @SparkSessionsList.setter
+    def SparkSessionsList(self, SparkSessionsList):
+        self._SparkSessionsList = SparkSessionsList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SparkSessionsList") is not None:
+            self._SparkSessionsList = []
+            for item in params.get("SparkSessionsList"):
+                obj = SparkSessionInfo()
+                obj._deserialize(item)
+                self._SparkSessionsList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNetworkConnectionsRequest(AbstractModel):
+    """DescribeNetworkConnections请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkConnectionType: 网络配置类型
+        :type NetworkConnectionType: int
+        :param _DataEngineName: 计算引擎名称
+        :type DataEngineName: str
+        :param _DatasourceConnectionVpcId: 数据源vpcid
+        :type DatasourceConnectionVpcId: str
+        :param _Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _NetworkConnectionName: 网络配置名称
+        :type NetworkConnectionName: str
+        """
+        self._NetworkConnectionType = None
+        self._DataEngineName = None
+        self._DatasourceConnectionVpcId = None
+        self._Limit = None
+        self._Offset = None
+        self._NetworkConnectionName = None
+
+    @property
+    def NetworkConnectionType(self):
+        """网络配置类型
+        :rtype: int
+        """
+        return self._NetworkConnectionType
+
+    @NetworkConnectionType.setter
+    def NetworkConnectionType(self, NetworkConnectionType):
+        self._NetworkConnectionType = NetworkConnectionType
+
+    @property
+    def DataEngineName(self):
+        """计算引擎名称
+        :rtype: str
+        """
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def DatasourceConnectionVpcId(self):
+        """数据源vpcid
+        :rtype: str
+        """
+        return self._DatasourceConnectionVpcId
+
+    @DatasourceConnectionVpcId.setter
+    def DatasourceConnectionVpcId(self, DatasourceConnectionVpcId):
+        self._DatasourceConnectionVpcId = DatasourceConnectionVpcId
+
+    @property
+    def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def NetworkConnectionName(self):
+        """网络配置名称
+        :rtype: str
+        """
+        return self._NetworkConnectionName
+
+    @NetworkConnectionName.setter
+    def NetworkConnectionName(self, NetworkConnectionName):
+        self._NetworkConnectionName = NetworkConnectionName
+
+
+    def _deserialize(self, params):
+        self._NetworkConnectionType = params.get("NetworkConnectionType")
+        self._DataEngineName = params.get("DataEngineName")
+        self._DatasourceConnectionVpcId = params.get("DatasourceConnectionVpcId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._NetworkConnectionName = params.get("NetworkConnectionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkConnectionsResponse(AbstractModel):
+    """DescribeNetworkConnections返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _NetworkConnectionSet: 网络配置列表
+        :type NetworkConnectionSet: list of NetworkConnection
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._NetworkConnectionSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NetworkConnectionSet(self):
+        """网络配置列表
+        :rtype: list of NetworkConnection
+        """
+        return self._NetworkConnectionSet
+
+    @NetworkConnectionSet.setter
+    def NetworkConnectionSet(self, NetworkConnectionSet):
+        self._NetworkConnectionSet = NetworkConnectionSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("NetworkConnectionSet") is not None:
+            self._NetworkConnectionSet = []
+            for item in params.get("NetworkConnectionSet"):
+                obj = NetworkConnection()
+                obj._deserialize(item)
+                self._NetworkConnectionSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17935,6 +19790,107 @@ class DescribeScriptsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSessionImageVersionRequest(AbstractModel):
+    """DescribeSessionImageVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎Id
+        :type DataEngineId: str
+        :param _FrameworkType: 框架类型：machine-learning、python、spark-ml
+        :type FrameworkType: str
+        """
+        self._DataEngineId = None
+        self._FrameworkType = None
+
+    @property
+    def DataEngineId(self):
+        """引擎Id
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def FrameworkType(self):
+        """框架类型：machine-learning、python、spark-ml
+        :rtype: str
+        """
+        return self._FrameworkType
+
+    @FrameworkType.setter
+    def FrameworkType(self, FrameworkType):
+        self._FrameworkType = FrameworkType
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        self._FrameworkType = params.get("FrameworkType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSessionImageVersionResponse(AbstractModel):
+    """DescribeSessionImageVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineSessionImages: 扩展镜像列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineSessionImages: list of EngineSessionImage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EngineSessionImages = None
+        self._RequestId = None
+
+    @property
+    def EngineSessionImages(self):
+        """扩展镜像列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EngineSessionImage
+        """
+        return self._EngineSessionImages
+
+    @EngineSessionImages.setter
+    def EngineSessionImages(self, EngineSessionImages):
+        self._EngineSessionImages = EngineSessionImages
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EngineSessionImages") is not None:
+            self._EngineSessionImages = []
+            for item in params.get("EngineSessionImages"):
+                obj = EngineSessionImage()
+                obj._deserialize(item)
+                self._EngineSessionImages.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSparkAppJobRequest(AbstractModel):
     """DescribeSparkAppJob请求参数结构体
 
@@ -18787,6 +20743,334 @@ class DescribeSparkSessionBatchSqlLogResponse(AbstractModel):
                 obj = SparkSessionBatchLog()
                 obj._deserialize(item)
                 self._LogSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
+    """DescribeStandardEngineResourceGroupConfigInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SortBy: 排序字段
+        :type SortBy: str
+        :param _Sorting: 升序，降序
+        :type Sorting: str
+        :param _Filters: 过滤条件可选，engine-resource-group-id--引擎资源组ID，engine-id---引擎ID
+        :type Filters: list of Filter
+        :param _Limit: 数据条数，默认10
+        :type Limit: int
+        :param _Offset: 偏移量，默认0
+        :type Offset: int
+        """
+        self._SortBy = None
+        self._Sorting = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def SortBy(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        """升序，降序
+        :rtype: str
+        """
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+    @property
+    def Filters(self):
+        """过滤条件可选，engine-resource-group-id--引擎资源组ID，engine-id---引擎ID
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """数据条数，默认10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
+    """DescribeStandardEngineResourceGroupConfigInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _StandardEngineResourceGroupConfigInfos: 标准引擎资源组，配置相关信息
+        :type StandardEngineResourceGroupConfigInfos: list of StandardEngineResourceGroupConfigInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._StandardEngineResourceGroupConfigInfos = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def StandardEngineResourceGroupConfigInfos(self):
+        """标准引擎资源组，配置相关信息
+        :rtype: list of StandardEngineResourceGroupConfigInfo
+        """
+        return self._StandardEngineResourceGroupConfigInfos
+
+    @StandardEngineResourceGroupConfigInfos.setter
+    def StandardEngineResourceGroupConfigInfos(self, StandardEngineResourceGroupConfigInfos):
+        self._StandardEngineResourceGroupConfigInfos = StandardEngineResourceGroupConfigInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("StandardEngineResourceGroupConfigInfos") is not None:
+            self._StandardEngineResourceGroupConfigInfos = []
+            for item in params.get("StandardEngineResourceGroupConfigInfos"):
+                obj = StandardEngineResourceGroupConfigInfo()
+                obj._deserialize(item)
+                self._StandardEngineResourceGroupConfigInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStandardEngineResourceGroupsRequest(AbstractModel):
+    """DescribeStandardEngineResourceGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SortBy: 排序字段
+        :type SortBy: str
+        :param _Sorting: 升序，降序
+        :type Sorting: str
+        :param _Filters: 过滤条件可选，app-id--用户appID，engine-resource-group-id--引擎资源组ID，data-engine-name--引擎名称，engine-resource-group-name---引擎资源组名称（模糊查询），engine-resource-group-state---引擎资源组状态engine-resource-group-name-unique --引擎资源组名称（完全匹配）
+        :type Filters: list of Filter
+        :param _Limit: 数据条数，默认10
+        :type Limit: int
+        :param _Offset: 偏移量，默认0
+        :type Offset: int
+        """
+        self._SortBy = None
+        self._Sorting = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def SortBy(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        """升序，降序
+        :rtype: str
+        """
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+    @property
+    def Filters(self):
+        """过滤条件可选，app-id--用户appID，engine-resource-group-id--引擎资源组ID，data-engine-name--引擎名称，engine-resource-group-name---引擎资源组名称（模糊查询），engine-resource-group-state---引擎资源组状态engine-resource-group-name-unique --引擎资源组名称（完全匹配）
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """数据条数，默认10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStandardEngineResourceGroupsResponse(AbstractModel):
+    """DescribeStandardEngineResourceGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserEngineResourceGroupInfos: 标准引擎资源组信息
+        :type UserEngineResourceGroupInfos: list of StandardEngineResourceGroupInfo
+        :param _Total: 资源组总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserEngineResourceGroupInfos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def UserEngineResourceGroupInfos(self):
+        """标准引擎资源组信息
+        :rtype: list of StandardEngineResourceGroupInfo
+        """
+        return self._UserEngineResourceGroupInfos
+
+    @UserEngineResourceGroupInfos.setter
+    def UserEngineResourceGroupInfos(self, UserEngineResourceGroupInfos):
+        self._UserEngineResourceGroupInfos = UserEngineResourceGroupInfos
+
+    @property
+    def Total(self):
+        """资源组总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UserEngineResourceGroupInfos") is not None:
+            self._UserEngineResourceGroupInfos = []
+            for item in params.get("UserEngineResourceGroupInfos"):
+                obj = StandardEngineResourceGroupInfo()
+                obj._deserialize(item)
+                self._UserEngineResourceGroupInfos.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -21798,6 +24082,107 @@ class DescribeUserTypeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserVpcConnectionRequest(AbstractModel):
+    """DescribeUserVpcConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineNetworkId: 引擎网络ID
+        :type EngineNetworkId: str
+        :param _DataEngineIds: 引擎ID集合
+        :type DataEngineIds: list of str
+        """
+        self._EngineNetworkId = None
+        self._DataEngineIds = None
+
+    @property
+    def EngineNetworkId(self):
+        """引擎网络ID
+        :rtype: str
+        """
+        return self._EngineNetworkId
+
+    @EngineNetworkId.setter
+    def EngineNetworkId(self, EngineNetworkId):
+        self._EngineNetworkId = EngineNetworkId
+
+    @property
+    def DataEngineIds(self):
+        """引擎ID集合
+        :rtype: list of str
+        """
+        return self._DataEngineIds
+
+    @DataEngineIds.setter
+    def DataEngineIds(self, DataEngineIds):
+        self._DataEngineIds = DataEngineIds
+
+
+    def _deserialize(self, params):
+        self._EngineNetworkId = params.get("EngineNetworkId")
+        self._DataEngineIds = params.get("DataEngineIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserVpcConnectionResponse(AbstractModel):
+    """DescribeUserVpcConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserVpcConnectionInfos: 用户vpc连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserVpcConnectionInfos: list of UserVpcConnectionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserVpcConnectionInfos = None
+        self._RequestId = None
+
+    @property
+    def UserVpcConnectionInfos(self):
+        """用户vpc连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserVpcConnectionInfo
+        """
+        return self._UserVpcConnectionInfos
+
+    @UserVpcConnectionInfos.setter
+    def UserVpcConnectionInfos(self, UserVpcConnectionInfos):
+        self._UserVpcConnectionInfos = UserVpcConnectionInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UserVpcConnectionInfos") is not None:
+            self._UserVpcConnectionInfos = []
+            for item in params.get("UserVpcConnectionInfos"):
+                obj = UserVpcConnectionInfo()
+                obj._deserialize(item)
+                self._UserVpcConnectionInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUsersRequest(AbstractModel):
     """DescribeUsers请求参数结构体
 
@@ -23346,6 +25731,331 @@ class ElasticsearchInfo(AbstractModel):
         
 
 
+class EngineNetworkInfo(AbstractModel):
+    """引擎网络信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineNetworkName: 引擎网络名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineNetworkName: str
+        :param _EngineNetworkState: 引擎网络状态，0--初始化，2--可用，-1--已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineNetworkState: int
+        :param _EngineNetworkCidr: 引擎网络cidr
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineNetworkCidr: str
+        :param _EngineNetworkId: 引擎网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineNetworkId: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param _PrivateLinkNumber: 私有连接个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateLinkNumber: int
+        :param _EngineNumber: 计算引擎个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineNumber: int
+        :param _GateWayInfo: 网关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GateWayInfo: list of GatewayInfo
+        """
+        self._EngineNetworkName = None
+        self._EngineNetworkState = None
+        self._EngineNetworkCidr = None
+        self._EngineNetworkId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._PrivateLinkNumber = None
+        self._EngineNumber = None
+        self._GateWayInfo = None
+
+    @property
+    def EngineNetworkName(self):
+        """引擎网络名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineNetworkName
+
+    @EngineNetworkName.setter
+    def EngineNetworkName(self, EngineNetworkName):
+        self._EngineNetworkName = EngineNetworkName
+
+    @property
+    def EngineNetworkState(self):
+        """引擎网络状态，0--初始化，2--可用，-1--已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EngineNetworkState
+
+    @EngineNetworkState.setter
+    def EngineNetworkState(self, EngineNetworkState):
+        self._EngineNetworkState = EngineNetworkState
+
+    @property
+    def EngineNetworkCidr(self):
+        """引擎网络cidr
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineNetworkCidr
+
+    @EngineNetworkCidr.setter
+    def EngineNetworkCidr(self, EngineNetworkCidr):
+        self._EngineNetworkCidr = EngineNetworkCidr
+
+    @property
+    def EngineNetworkId(self):
+        """引擎网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineNetworkId
+
+    @EngineNetworkId.setter
+    def EngineNetworkId(self, EngineNetworkId):
+        self._EngineNetworkId = EngineNetworkId
+
+    @property
+    def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def PrivateLinkNumber(self):
+        """私有连接个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PrivateLinkNumber
+
+    @PrivateLinkNumber.setter
+    def PrivateLinkNumber(self, PrivateLinkNumber):
+        self._PrivateLinkNumber = PrivateLinkNumber
+
+    @property
+    def EngineNumber(self):
+        """计算引擎个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EngineNumber
+
+    @EngineNumber.setter
+    def EngineNumber(self, EngineNumber):
+        self._EngineNumber = EngineNumber
+
+    @property
+    def GateWayInfo(self):
+        """网关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GatewayInfo
+        """
+        return self._GateWayInfo
+
+    @GateWayInfo.setter
+    def GateWayInfo(self, GateWayInfo):
+        self._GateWayInfo = GateWayInfo
+
+
+    def _deserialize(self, params):
+        self._EngineNetworkName = params.get("EngineNetworkName")
+        self._EngineNetworkState = params.get("EngineNetworkState")
+        self._EngineNetworkCidr = params.get("EngineNetworkCidr")
+        self._EngineNetworkId = params.get("EngineNetworkId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._PrivateLinkNumber = params.get("PrivateLinkNumber")
+        self._EngineNumber = params.get("EngineNumber")
+        if params.get("GateWayInfo") is not None:
+            self._GateWayInfo = []
+            for item in params.get("GateWayInfo"):
+                obj = GatewayInfo()
+                obj._deserialize(item)
+                self._GateWayInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EngineResourceGroupConfigPair(AbstractModel):
+    """引擎资源组参数 配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigItem: 配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigItem: str
+        :param _ConfigValue: 配置项的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigValue: str
+        """
+        self._ConfigItem = None
+        self._ConfigValue = None
+
+    @property
+    def ConfigItem(self):
+        """配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigItem
+
+    @ConfigItem.setter
+    def ConfigItem(self, ConfigItem):
+        self._ConfigItem = ConfigItem
+
+    @property
+    def ConfigValue(self):
+        """配置项的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigValue
+
+    @ConfigValue.setter
+    def ConfigValue(self, ConfigValue):
+        self._ConfigValue = ConfigValue
+
+
+    def _deserialize(self, params):
+        self._ConfigItem = params.get("ConfigItem")
+        self._ConfigValue = params.get("ConfigValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EngineSessionImage(AbstractModel):
+    """TensorFlow、Pytorch、SK-learn镜像信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SparkImageId: Spark镜像唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkImageId: str
+        :param _SparkImageVersion: Spark镜像版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkImageVersion: str
+        :param _SparkImageType: 小版本镜像类型.1:TensorFlow、2:Pytorch、3:SK-learn
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkImageType: int
+        :param _SparkImageTag: 镜像地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkImageTag: str
+        """
+        self._SparkImageId = None
+        self._SparkImageVersion = None
+        self._SparkImageType = None
+        self._SparkImageTag = None
+
+    @property
+    def SparkImageId(self):
+        """Spark镜像唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SparkImageId
+
+    @SparkImageId.setter
+    def SparkImageId(self, SparkImageId):
+        self._SparkImageId = SparkImageId
+
+    @property
+    def SparkImageVersion(self):
+        """Spark镜像版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SparkImageVersion
+
+    @SparkImageVersion.setter
+    def SparkImageVersion(self, SparkImageVersion):
+        self._SparkImageVersion = SparkImageVersion
+
+    @property
+    def SparkImageType(self):
+        """小版本镜像类型.1:TensorFlow、2:Pytorch、3:SK-learn
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SparkImageType
+
+    @SparkImageType.setter
+    def SparkImageType(self, SparkImageType):
+        self._SparkImageType = SparkImageType
+
+    @property
+    def SparkImageTag(self):
+        """镜像地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SparkImageTag
+
+    @SparkImageTag.setter
+    def SparkImageTag(self, SparkImageTag):
+        self._SparkImageTag = SparkImageTag
+
+
+    def _deserialize(self, params):
+        self._SparkImageId = params.get("SparkImageId")
+        self._SparkImageVersion = params.get("SparkImageVersion")
+        self._SparkImageType = params.get("SparkImageType")
+        self._SparkImageTag = params.get("SparkImageTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Execution(AbstractModel):
     """SQL语句对象
 
@@ -23504,6 +26214,129 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GatewayInfo(AbstractModel):
+    """网关基础信息，包括id，名称，规格和状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _GatewayName: 网关名称，全局唯一
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayName: str
+        :param _Size: 网关的规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param _State: -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中 5挂起中 6启动中 7隔离中 8隔离 9续费中 10变配中 11冲正中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param _PayMode: 计费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: int
+        :param _Mode: 模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: int
+        """
+        self._GatewayId = None
+        self._GatewayName = None
+        self._Size = None
+        self._State = None
+        self._PayMode = None
+        self._Mode = None
+
+    @property
+    def GatewayId(self):
+        """网关ID，
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayName(self):
+        """网关名称，全局唯一
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def Size(self):
+        """网关的规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def State(self):
+        """-2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中 5挂起中 6启动中 7隔离中 8隔离 9续费中 10变配中 11冲正中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def PayMode(self):
+        """计费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Mode(self):
+        """模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayName = params.get("GatewayName")
+        self._Size = params.get("Size")
+        self._State = params.get("State")
+        self._PayMode = params.get("PayMode")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24800,6 +27633,92 @@ class LakeFsInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class LaunchStandardEngineResourceGroupsRequest(AbstractModel):
+    """LaunchStandardEngineResourceGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupNames: 标准引擎资源组名称
+        :type EngineResourceGroupNames: list of str
+        """
+        self._EngineResourceGroupNames = None
+
+    @property
+    def EngineResourceGroupNames(self):
+        """标准引擎资源组名称
+        :rtype: list of str
+        """
+        return self._EngineResourceGroupNames
+
+    @EngineResourceGroupNames.setter
+    def EngineResourceGroupNames(self, EngineResourceGroupNames):
+        self._EngineResourceGroupNames = EngineResourceGroupNames
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupNames = params.get("EngineResourceGroupNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LaunchStandardEngineResourceGroupsResponse(AbstractModel):
+    """LaunchStandardEngineResourceGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperateEngineResourceGroupFailMessages: 批量操作资源组时，操作失败的资源组相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateEngineResourceGroupFailMessages: list of OperateEngineResourceGroupFailMessage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OperateEngineResourceGroupFailMessages = None
+        self._RequestId = None
+
+    @property
+    def OperateEngineResourceGroupFailMessages(self):
+        """批量操作资源组时，操作失败的资源组相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OperateEngineResourceGroupFailMessage
+        """
+        return self._OperateEngineResourceGroupFailMessages
+
+    @OperateEngineResourceGroupFailMessages.setter
+    def OperateEngineResourceGroupFailMessages(self, OperateEngineResourceGroupFailMessages):
+        self._OperateEngineResourceGroupFailMessages = OperateEngineResourceGroupFailMessages
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OperateEngineResourceGroupFailMessages") is not None:
+            self._OperateEngineResourceGroupFailMessages = []
+            for item in params.get("OperateEngineResourceGroupFailMessages"):
+                obj = OperateEngineResourceGroupFailMessage()
+                obj._deserialize(item)
+                self._OperateEngineResourceGroupFailMessages.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListTaskJobLogDetailRequest(AbstractModel):
@@ -28214,6 +31133,57 @@ class OpendThirdAccessUserInfo(AbstractModel):
         
 
 
+class OperateEngineResourceGroupFailMessage(AbstractModel):
+    """操作资源组，返回的操作失败信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupName: 引擎资源组名称
+        :type EngineResourceGroupName: str
+        :param _FailMessage: 操作失败的提示信息
+        :type FailMessage: str
+        """
+        self._EngineResourceGroupName = None
+        self._FailMessage = None
+
+    @property
+    def EngineResourceGroupName(self):
+        """引擎资源组名称
+        :rtype: str
+        """
+        return self._EngineResourceGroupName
+
+    @EngineResourceGroupName.setter
+    def EngineResourceGroupName(self, EngineResourceGroupName):
+        self._EngineResourceGroupName = EngineResourceGroupName
+
+    @property
+    def FailMessage(self):
+        """操作失败的提示信息
+        :rtype: str
+        """
+        return self._FailMessage
+
+    @FailMessage.setter
+    def FailMessage(self, FailMessage):
+        self._FailMessage = FailMessage
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupName = params.get("EngineResourceGroupName")
+        self._FailMessage = params.get("FailMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OptimizerEngineInfo(AbstractModel):
     """数据优化引擎信息
 
@@ -28442,6 +31412,72 @@ class OtherDatasourceConnection(AbstractModel):
         
 
 
+class Param(AbstractModel):
+    """对指定参数的更新、增加、删除
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigItem: 参数key，例如：
+        :type ConfigItem: str
+        :param _ConfigValue: 参数值
+        :type ConfigValue: str
+        :param _Operate: 下发操作，支持：ADD、DELETE、MODIFY
+        :type Operate: str
+        """
+        self._ConfigItem = None
+        self._ConfigValue = None
+        self._Operate = None
+
+    @property
+    def ConfigItem(self):
+        """参数key，例如：
+        :rtype: str
+        """
+        return self._ConfigItem
+
+    @ConfigItem.setter
+    def ConfigItem(self, ConfigItem):
+        self._ConfigItem = ConfigItem
+
+    @property
+    def ConfigValue(self):
+        """参数值
+        :rtype: str
+        """
+        return self._ConfigValue
+
+    @ConfigValue.setter
+    def ConfigValue(self, ConfigValue):
+        self._ConfigValue = ConfigValue
+
+    @property
+    def Operate(self):
+        """下发操作，支持：ADD、DELETE、MODIFY
+        :rtype: str
+        """
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+
+    def _deserialize(self, params):
+        self._ConfigItem = params.get("ConfigItem")
+        self._ConfigValue = params.get("ConfigValue")
+        self._Operate = params.get("Operate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Partition(AbstractModel):
     """数据表分块信息。
 
@@ -28553,6 +31589,92 @@ class Partition(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PauseStandardEngineResourceGroupsRequest(AbstractModel):
+    """PauseStandardEngineResourceGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupNames: 标准引擎资源组名称
+        :type EngineResourceGroupNames: list of str
+        """
+        self._EngineResourceGroupNames = None
+
+    @property
+    def EngineResourceGroupNames(self):
+        """标准引擎资源组名称
+        :rtype: list of str
+        """
+        return self._EngineResourceGroupNames
+
+    @EngineResourceGroupNames.setter
+    def EngineResourceGroupNames(self, EngineResourceGroupNames):
+        self._EngineResourceGroupNames = EngineResourceGroupNames
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupNames = params.get("EngineResourceGroupNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseStandardEngineResourceGroupsResponse(AbstractModel):
+    """PauseStandardEngineResourceGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperateEngineResourceGroupFailMessages: 批量操作资源组时，操作失败的资源组相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateEngineResourceGroupFailMessages: list of OperateEngineResourceGroupFailMessage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OperateEngineResourceGroupFailMessages = None
+        self._RequestId = None
+
+    @property
+    def OperateEngineResourceGroupFailMessages(self):
+        """批量操作资源组时，操作失败的资源组相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OperateEngineResourceGroupFailMessage
+        """
+        return self._OperateEngineResourceGroupFailMessages
+
+    @OperateEngineResourceGroupFailMessages.setter
+    def OperateEngineResourceGroupFailMessages(self, OperateEngineResourceGroupFailMessages):
+        self._OperateEngineResourceGroupFailMessages = OperateEngineResourceGroupFailMessages
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OperateEngineResourceGroupFailMessages") is not None:
+            self._OperateEngineResourceGroupFailMessages = []
+            for item in params.get("OperateEngineResourceGroupFailMessages"):
+                obj = OperateEngineResourceGroupFailMessage()
+                obj._deserialize(item)
+                self._OperateEngineResourceGroupFailMessages.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class Policy(AbstractModel):
@@ -31864,6 +34986,1005 @@ class SparkSessionBatchLogOperate(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self._Supplement.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparkSessionInfo(AbstractModel):
+    """spark session详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SparkSessionId: spark session id
+        :type SparkSessionId: str
+        :param _SparkSessionName: spark session名称
+        :type SparkSessionName: str
+        :param _ResourceGroupId: 资源组id
+        :type ResourceGroupId: str
+        :param _EngineSessionId: engine session id
+        :type EngineSessionId: str
+        :param _EngineSessionName: engine session   
+name
+        :type EngineSessionName: str
+        :param _IdleTimeoutMin: 自动销毁时间
+        :type IdleTimeoutMin: int
+        :param _DriverSpec: driver规格
+        :type DriverSpec: str
+        :param _ExecutorSpec: executor规格
+        :type ExecutorSpec: str
+        :param _ExecutorNumMin: executor最小数量
+        :type ExecutorNumMin: int
+        :param _ExecutorNumMax: executor最大数量
+        :type ExecutorNumMax: int
+        :param _TotalSpecMin: 总规格最小
+        :type TotalSpecMin: int
+        :param _TotalSpecMax: 总规格最大
+        :type TotalSpecMax: int
+        """
+        self._SparkSessionId = None
+        self._SparkSessionName = None
+        self._ResourceGroupId = None
+        self._EngineSessionId = None
+        self._EngineSessionName = None
+        self._IdleTimeoutMin = None
+        self._DriverSpec = None
+        self._ExecutorSpec = None
+        self._ExecutorNumMin = None
+        self._ExecutorNumMax = None
+        self._TotalSpecMin = None
+        self._TotalSpecMax = None
+
+    @property
+    def SparkSessionId(self):
+        """spark session id
+        :rtype: str
+        """
+        return self._SparkSessionId
+
+    @SparkSessionId.setter
+    def SparkSessionId(self, SparkSessionId):
+        self._SparkSessionId = SparkSessionId
+
+    @property
+    def SparkSessionName(self):
+        """spark session名称
+        :rtype: str
+        """
+        return self._SparkSessionName
+
+    @SparkSessionName.setter
+    def SparkSessionName(self, SparkSessionName):
+        self._SparkSessionName = SparkSessionName
+
+    @property
+    def ResourceGroupId(self):
+        """资源组id
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def EngineSessionId(self):
+        """engine session id
+        :rtype: str
+        """
+        return self._EngineSessionId
+
+    @EngineSessionId.setter
+    def EngineSessionId(self, EngineSessionId):
+        self._EngineSessionId = EngineSessionId
+
+    @property
+    def EngineSessionName(self):
+        """engine session   
+name
+        :rtype: str
+        """
+        return self._EngineSessionName
+
+    @EngineSessionName.setter
+    def EngineSessionName(self, EngineSessionName):
+        self._EngineSessionName = EngineSessionName
+
+    @property
+    def IdleTimeoutMin(self):
+        """自动销毁时间
+        :rtype: int
+        """
+        return self._IdleTimeoutMin
+
+    @IdleTimeoutMin.setter
+    def IdleTimeoutMin(self, IdleTimeoutMin):
+        self._IdleTimeoutMin = IdleTimeoutMin
+
+    @property
+    def DriverSpec(self):
+        """driver规格
+        :rtype: str
+        """
+        return self._DriverSpec
+
+    @DriverSpec.setter
+    def DriverSpec(self, DriverSpec):
+        self._DriverSpec = DriverSpec
+
+    @property
+    def ExecutorSpec(self):
+        """executor规格
+        :rtype: str
+        """
+        return self._ExecutorSpec
+
+    @ExecutorSpec.setter
+    def ExecutorSpec(self, ExecutorSpec):
+        self._ExecutorSpec = ExecutorSpec
+
+    @property
+    def ExecutorNumMin(self):
+        """executor最小数量
+        :rtype: int
+        """
+        return self._ExecutorNumMin
+
+    @ExecutorNumMin.setter
+    def ExecutorNumMin(self, ExecutorNumMin):
+        self._ExecutorNumMin = ExecutorNumMin
+
+    @property
+    def ExecutorNumMax(self):
+        """executor最大数量
+        :rtype: int
+        """
+        return self._ExecutorNumMax
+
+    @ExecutorNumMax.setter
+    def ExecutorNumMax(self, ExecutorNumMax):
+        self._ExecutorNumMax = ExecutorNumMax
+
+    @property
+    def TotalSpecMin(self):
+        """总规格最小
+        :rtype: int
+        """
+        return self._TotalSpecMin
+
+    @TotalSpecMin.setter
+    def TotalSpecMin(self, TotalSpecMin):
+        self._TotalSpecMin = TotalSpecMin
+
+    @property
+    def TotalSpecMax(self):
+        """总规格最大
+        :rtype: int
+        """
+        return self._TotalSpecMax
+
+    @TotalSpecMax.setter
+    def TotalSpecMax(self, TotalSpecMax):
+        self._TotalSpecMax = TotalSpecMax
+
+
+    def _deserialize(self, params):
+        self._SparkSessionId = params.get("SparkSessionId")
+        self._SparkSessionName = params.get("SparkSessionName")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._EngineSessionId = params.get("EngineSessionId")
+        self._EngineSessionName = params.get("EngineSessionName")
+        self._IdleTimeoutMin = params.get("IdleTimeoutMin")
+        self._DriverSpec = params.get("DriverSpec")
+        self._ExecutorSpec = params.get("ExecutorSpec")
+        self._ExecutorNumMin = params.get("ExecutorNumMin")
+        self._ExecutorNumMax = params.get("ExecutorNumMax")
+        self._TotalSpecMin = params.get("TotalSpecMin")
+        self._TotalSpecMax = params.get("TotalSpecMax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpecInfo(AbstractModel):
+    """节点规格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Cu: 当前规格的cu数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cu: int
+        :param _Cpu: 当前规格的cpu数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param _Memory: 当前规格的内存数，单位G
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: int
+        """
+        self._Name = None
+        self._Cu = None
+        self._Cpu = None
+        self._Memory = None
+
+    @property
+    def Name(self):
+        """规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cu(self):
+        """当前规格的cu数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Cu
+
+    @Cu.setter
+    def Cu(self, Cu):
+        self._Cu = Cu
+
+    @property
+    def Cpu(self):
+        """当前规格的cpu数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        """当前规格的内存数，单位G
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Cu = params.get("Cu")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandardEngineResourceGroupConfigInfo(AbstractModel):
+    """标准引擎资源组，配置相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroupId: 引擎资源组 ID
+        :type ResourceGroupId: str
+        :param _DataEngineId: 引擎ID
+        :type DataEngineId: str
+        :param _StaticConfigPairs: 资源组静态参数，需要重启资源组生效
+        :type StaticConfigPairs: list of EngineResourceGroupConfigPair
+        :param _DynamicConfigPairs: 资源组动态参数，下一个任务生效。
+        :type DynamicConfigPairs: list of EngineResourceGroupConfigPair
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        """
+        self._ResourceGroupId = None
+        self._DataEngineId = None
+        self._StaticConfigPairs = None
+        self._DynamicConfigPairs = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ResourceGroupId(self):
+        """引擎资源组 ID
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def DataEngineId(self):
+        """引擎ID
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def StaticConfigPairs(self):
+        """资源组静态参数，需要重启资源组生效
+        :rtype: list of EngineResourceGroupConfigPair
+        """
+        return self._StaticConfigPairs
+
+    @StaticConfigPairs.setter
+    def StaticConfigPairs(self, StaticConfigPairs):
+        self._StaticConfigPairs = StaticConfigPairs
+
+    @property
+    def DynamicConfigPairs(self):
+        """资源组动态参数，下一个任务生效。
+        :rtype: list of EngineResourceGroupConfigPair
+        """
+        return self._DynamicConfigPairs
+
+    @DynamicConfigPairs.setter
+    def DynamicConfigPairs(self, DynamicConfigPairs):
+        self._DynamicConfigPairs = DynamicConfigPairs
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._DataEngineId = params.get("DataEngineId")
+        if params.get("StaticConfigPairs") is not None:
+            self._StaticConfigPairs = []
+            for item in params.get("StaticConfigPairs"):
+                obj = EngineResourceGroupConfigPair()
+                obj._deserialize(item)
+                self._StaticConfigPairs.append(obj)
+        if params.get("DynamicConfigPairs") is not None:
+            self._DynamicConfigPairs = []
+            for item in params.get("DynamicConfigPairs"):
+                obj = EngineResourceGroupConfigPair()
+                obj._deserialize(item)
+                self._DynamicConfigPairs.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandardEngineResourceGroupInfo(AbstractModel):
+    """用户标准引擎资源组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupId: 标准引擎资源组ID
+        :type EngineResourceGroupId: str
+        :param _EngineResourceGroupName: 标准引擎资源组名称，支持1-50个英文、汉字、数字、连接线-或下划线_
+        :type EngineResourceGroupName: str
+        :param _Creator: 创建者
+        :type Creator: str
+        :param _ResourceGroupState: 资源组 状态，-1--删除、0--启动中、2--运行、3--暂停、4--暂停中、7--切换引擎中、8--配置修改中。9--资源组重启中，10--因为变配导致资源组启动、11--因为隔离导致资源组挂起、12- 资源配置下发中、 13-接入点隔离导致资源组挂起中
+        :type ResourceGroupState: int
+        :param _AutoLaunch: 自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+        :type AutoLaunch: int
+        :param _AutoPause: 自动挂起资源组。0-自动挂起，1-不自动挂起
+        :type AutoPause: int
+        :param _AutoPauseTime: 自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+        :type AutoPauseTime: int
+        :param _DriverCuSpec: driver的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :type DriverCuSpec: str
+        :param _ExecutorCuSpec: executor的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :type ExecutorCuSpec: str
+        :param _MaxConcurrency: 任务并发数
+        :type MaxConcurrency: int
+        :param _MinExecutorNums: executor最小数量，
+        :type MinExecutorNums: int
+        :param _MaxExecutorNums: executor最大数量，
+        :type MaxExecutorNums: int
+        :param _CreateTime: 创建时间戳
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间戳
+        :type UpdateTime: int
+        :param _NeedRestart: 是否待重启，作为有资源参数，静态参数修改未重启生效的标识；0-- 不需要重启、1--因为资源参数待重启、2--因静态参数重启、3--因资源和静态参数而待重启、4--因网络配置而待重启、5--因网络配置和资源配置而待重启、6--因网络配置和静态参数而待重启、7--因网络配置，资源参数和静态参数而待重启、
+        :type NeedRestart: int
+        :param _DataEngineName: 绑定的引擎名称
+        :type DataEngineName: str
+        :param _DataEngineId: 绑定的引擎ID
+        :type DataEngineId: str
+        :param _DataEngineState: 绑定的引擎状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineState: int
+        :param _AccessPointId: 接入点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessPointId: str
+        :param _AccessPointName: 接入点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessPointName: str
+        :param _AccessPointState: 接入点状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessPointState: int
+        :param _ResourceGroupType: 资源组类型，console/ default
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupType: str
+        :param _EngineNetworkId: 引擎网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineNetworkId: str
+        :param _NetworkConfigNames: 网络配置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkConfigNames: list of str
+        :param _FrameType: AI类型资源组的框架类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameType: str
+        :param _ImageType: AI类型资源组的镜像类型，内置：bulit-in，自定义：custom
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageType: str
+        :param _ImageName: 镜像名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageName: str
+        :param _ImageVersion: 镜像id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageVersion: str
+        :param _Size: AI资源组的可用资源上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param _IsDefault: 是否是默认资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: bool
+        :param _ResourceGroupScene: 资源组场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupScene: str
+        :param _PythonCuSpec: python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PythonCuSpec: str
+        :param _SparkSpecMode: Spark类型资源组资源配置模式，fast：快速模式，custom：自定义模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkSpecMode: str
+        :param _SparkSize: Spark类型资源组资源上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkSize: int
+        :param _SparkMinSize: Spark类型资源组资源最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkMinSize: int
+        """
+        self._EngineResourceGroupId = None
+        self._EngineResourceGroupName = None
+        self._Creator = None
+        self._ResourceGroupState = None
+        self._AutoLaunch = None
+        self._AutoPause = None
+        self._AutoPauseTime = None
+        self._DriverCuSpec = None
+        self._ExecutorCuSpec = None
+        self._MaxConcurrency = None
+        self._MinExecutorNums = None
+        self._MaxExecutorNums = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._NeedRestart = None
+        self._DataEngineName = None
+        self._DataEngineId = None
+        self._DataEngineState = None
+        self._AccessPointId = None
+        self._AccessPointName = None
+        self._AccessPointState = None
+        self._ResourceGroupType = None
+        self._EngineNetworkId = None
+        self._NetworkConfigNames = None
+        self._FrameType = None
+        self._ImageType = None
+        self._ImageName = None
+        self._ImageVersion = None
+        self._Size = None
+        self._IsDefault = None
+        self._ResourceGroupScene = None
+        self._PythonCuSpec = None
+        self._SparkSpecMode = None
+        self._SparkSize = None
+        self._SparkMinSize = None
+
+    @property
+    def EngineResourceGroupId(self):
+        """标准引擎资源组ID
+        :rtype: str
+        """
+        return self._EngineResourceGroupId
+
+    @EngineResourceGroupId.setter
+    def EngineResourceGroupId(self, EngineResourceGroupId):
+        self._EngineResourceGroupId = EngineResourceGroupId
+
+    @property
+    def EngineResourceGroupName(self):
+        """标准引擎资源组名称，支持1-50个英文、汉字、数字、连接线-或下划线_
+        :rtype: str
+        """
+        return self._EngineResourceGroupName
+
+    @EngineResourceGroupName.setter
+    def EngineResourceGroupName(self, EngineResourceGroupName):
+        self._EngineResourceGroupName = EngineResourceGroupName
+
+    @property
+    def Creator(self):
+        """创建者
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def ResourceGroupState(self):
+        """资源组 状态，-1--删除、0--启动中、2--运行、3--暂停、4--暂停中、7--切换引擎中、8--配置修改中。9--资源组重启中，10--因为变配导致资源组启动、11--因为隔离导致资源组挂起、12- 资源配置下发中、 13-接入点隔离导致资源组挂起中
+        :rtype: int
+        """
+        return self._ResourceGroupState
+
+    @ResourceGroupState.setter
+    def ResourceGroupState(self, ResourceGroupState):
+        self._ResourceGroupState = ResourceGroupState
+
+    @property
+    def AutoLaunch(self):
+        """自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+        :rtype: int
+        """
+        return self._AutoLaunch
+
+    @AutoLaunch.setter
+    def AutoLaunch(self, AutoLaunch):
+        self._AutoLaunch = AutoLaunch
+
+    @property
+    def AutoPause(self):
+        """自动挂起资源组。0-自动挂起，1-不自动挂起
+        :rtype: int
+        """
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def AutoPauseTime(self):
+        """自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+        :rtype: int
+        """
+        return self._AutoPauseTime
+
+    @AutoPauseTime.setter
+    def AutoPauseTime(self, AutoPauseTime):
+        self._AutoPauseTime = AutoPauseTime
+
+    @property
+    def DriverCuSpec(self):
+        """driver的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :rtype: str
+        """
+        return self._DriverCuSpec
+
+    @DriverCuSpec.setter
+    def DriverCuSpec(self, DriverCuSpec):
+        self._DriverCuSpec = DriverCuSpec
+
+    @property
+    def ExecutorCuSpec(self):
+        """executor的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :rtype: str
+        """
+        return self._ExecutorCuSpec
+
+    @ExecutorCuSpec.setter
+    def ExecutorCuSpec(self, ExecutorCuSpec):
+        self._ExecutorCuSpec = ExecutorCuSpec
+
+    @property
+    def MaxConcurrency(self):
+        """任务并发数
+        :rtype: int
+        """
+        return self._MaxConcurrency
+
+    @MaxConcurrency.setter
+    def MaxConcurrency(self, MaxConcurrency):
+        self._MaxConcurrency = MaxConcurrency
+
+    @property
+    def MinExecutorNums(self):
+        """executor最小数量，
+        :rtype: int
+        """
+        return self._MinExecutorNums
+
+    @MinExecutorNums.setter
+    def MinExecutorNums(self, MinExecutorNums):
+        self._MinExecutorNums = MinExecutorNums
+
+    @property
+    def MaxExecutorNums(self):
+        """executor最大数量，
+        :rtype: int
+        """
+        return self._MaxExecutorNums
+
+    @MaxExecutorNums.setter
+    def MaxExecutorNums(self, MaxExecutorNums):
+        self._MaxExecutorNums = MaxExecutorNums
+
+    @property
+    def CreateTime(self):
+        """创建时间戳
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间戳
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def NeedRestart(self):
+        """是否待重启，作为有资源参数，静态参数修改未重启生效的标识；0-- 不需要重启、1--因为资源参数待重启、2--因静态参数重启、3--因资源和静态参数而待重启、4--因网络配置而待重启、5--因网络配置和资源配置而待重启、6--因网络配置和静态参数而待重启、7--因网络配置，资源参数和静态参数而待重启、
+        :rtype: int
+        """
+        return self._NeedRestart
+
+    @NeedRestart.setter
+    def NeedRestart(self, NeedRestart):
+        self._NeedRestart = NeedRestart
+
+    @property
+    def DataEngineName(self):
+        """绑定的引擎名称
+        :rtype: str
+        """
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def DataEngineId(self):
+        """绑定的引擎ID
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def DataEngineState(self):
+        """绑定的引擎状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataEngineState
+
+    @DataEngineState.setter
+    def DataEngineState(self, DataEngineState):
+        self._DataEngineState = DataEngineState
+
+    @property
+    def AccessPointId(self):
+        """接入点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessPointId
+
+    @AccessPointId.setter
+    def AccessPointId(self, AccessPointId):
+        self._AccessPointId = AccessPointId
+
+    @property
+    def AccessPointName(self):
+        """接入点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessPointName
+
+    @AccessPointName.setter
+    def AccessPointName(self, AccessPointName):
+        self._AccessPointName = AccessPointName
+
+    @property
+    def AccessPointState(self):
+        """接入点状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AccessPointState
+
+    @AccessPointState.setter
+    def AccessPointState(self, AccessPointState):
+        self._AccessPointState = AccessPointState
+
+    @property
+    def ResourceGroupType(self):
+        """资源组类型，console/ default
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupType
+
+    @ResourceGroupType.setter
+    def ResourceGroupType(self, ResourceGroupType):
+        self._ResourceGroupType = ResourceGroupType
+
+    @property
+    def EngineNetworkId(self):
+        """引擎网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineNetworkId
+
+    @EngineNetworkId.setter
+    def EngineNetworkId(self, EngineNetworkId):
+        self._EngineNetworkId = EngineNetworkId
+
+    @property
+    def NetworkConfigNames(self):
+        """网络配置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._NetworkConfigNames
+
+    @NetworkConfigNames.setter
+    def NetworkConfigNames(self, NetworkConfigNames):
+        self._NetworkConfigNames = NetworkConfigNames
+
+    @property
+    def FrameType(self):
+        """AI类型资源组的框架类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FrameType
+
+    @FrameType.setter
+    def FrameType(self, FrameType):
+        self._FrameType = FrameType
+
+    @property
+    def ImageType(self):
+        """AI类型资源组的镜像类型，内置：bulit-in，自定义：custom
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def ImageName(self):
+        """镜像名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageVersion(self):
+        """镜像id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImageVersion
+
+    @ImageVersion.setter
+    def ImageVersion(self, ImageVersion):
+        self._ImageVersion = ImageVersion
+
+    @property
+    def Size(self):
+        """AI资源组的可用资源上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def IsDefault(self):
+        """是否是默认资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def ResourceGroupScene(self):
+        """资源组场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceGroupScene
+
+    @ResourceGroupScene.setter
+    def ResourceGroupScene(self, ResourceGroupScene):
+        self._ResourceGroupScene = ResourceGroupScene
+
+    @property
+    def PythonCuSpec(self):
+        """python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PythonCuSpec
+
+    @PythonCuSpec.setter
+    def PythonCuSpec(self, PythonCuSpec):
+        self._PythonCuSpec = PythonCuSpec
+
+    @property
+    def SparkSpecMode(self):
+        """Spark类型资源组资源配置模式，fast：快速模式，custom：自定义模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SparkSpecMode
+
+    @SparkSpecMode.setter
+    def SparkSpecMode(self, SparkSpecMode):
+        self._SparkSpecMode = SparkSpecMode
+
+    @property
+    def SparkSize(self):
+        """Spark类型资源组资源上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SparkSize
+
+    @SparkSize.setter
+    def SparkSize(self, SparkSize):
+        self._SparkSize = SparkSize
+
+    @property
+    def SparkMinSize(self):
+        """Spark类型资源组资源最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SparkMinSize
+
+    @SparkMinSize.setter
+    def SparkMinSize(self, SparkMinSize):
+        self._SparkMinSize = SparkMinSize
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupId = params.get("EngineResourceGroupId")
+        self._EngineResourceGroupName = params.get("EngineResourceGroupName")
+        self._Creator = params.get("Creator")
+        self._ResourceGroupState = params.get("ResourceGroupState")
+        self._AutoLaunch = params.get("AutoLaunch")
+        self._AutoPause = params.get("AutoPause")
+        self._AutoPauseTime = params.get("AutoPauseTime")
+        self._DriverCuSpec = params.get("DriverCuSpec")
+        self._ExecutorCuSpec = params.get("ExecutorCuSpec")
+        self._MaxConcurrency = params.get("MaxConcurrency")
+        self._MinExecutorNums = params.get("MinExecutorNums")
+        self._MaxExecutorNums = params.get("MaxExecutorNums")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._NeedRestart = params.get("NeedRestart")
+        self._DataEngineName = params.get("DataEngineName")
+        self._DataEngineId = params.get("DataEngineId")
+        self._DataEngineState = params.get("DataEngineState")
+        self._AccessPointId = params.get("AccessPointId")
+        self._AccessPointName = params.get("AccessPointName")
+        self._AccessPointState = params.get("AccessPointState")
+        self._ResourceGroupType = params.get("ResourceGroupType")
+        self._EngineNetworkId = params.get("EngineNetworkId")
+        self._NetworkConfigNames = params.get("NetworkConfigNames")
+        self._FrameType = params.get("FrameType")
+        self._ImageType = params.get("ImageType")
+        self._ImageName = params.get("ImageName")
+        self._ImageVersion = params.get("ImageVersion")
+        self._Size = params.get("Size")
+        self._IsDefault = params.get("IsDefault")
+        self._ResourceGroupScene = params.get("ResourceGroupScene")
+        self._PythonCuSpec = params.get("PythonCuSpec")
+        self._SparkSpecMode = params.get("SparkSpecMode")
+        self._SparkSize = params.get("SparkSize")
+        self._SparkMinSize = params.get("SparkMinSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35186,6 +39307,70 @@ class UnbindWorkGroupsFromUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UnboundDatasourceHouseRequest(AbstractModel):
+    """UnboundDatasourceHouse请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkConnectionName: 网络配置名称
+        :type NetworkConnectionName: str
+        """
+        self._NetworkConnectionName = None
+
+    @property
+    def NetworkConnectionName(self):
+        """网络配置名称
+        :rtype: str
+        """
+        return self._NetworkConnectionName
+
+    @NetworkConnectionName.setter
+    def NetworkConnectionName(self, NetworkConnectionName):
+        self._NetworkConnectionName = NetworkConnectionName
+
+
+    def _deserialize(self, params):
+        self._NetworkConnectionName = params.get("NetworkConnectionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnboundDatasourceHouseResponse(AbstractModel):
+    """UnboundDatasourceHouse返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UnlockMetaDataRequest(AbstractModel):
     """UnlockMetaData请求参数结构体
 
@@ -35263,6 +39448,62 @@ class UnlockMetaDataResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class UpdateConfContext(AbstractModel):
+    """配置下发参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigType: 参数类型，可选：StaticConfigType，DynamicConfigType
+        :type ConfigType: str
+        :param _Params: 参数的配置数组
+        :type Params: list of Param
+        """
+        self._ConfigType = None
+        self._Params = None
+
+    @property
+    def ConfigType(self):
+        """参数类型，可选：StaticConfigType，DynamicConfigType
+        :rtype: str
+        """
+        return self._ConfigType
+
+    @ConfigType.setter
+    def ConfigType(self, ConfigType):
+        self._ConfigType = ConfigType
+
+    @property
+    def Params(self):
+        """参数的配置数组
+        :rtype: list of Param
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._ConfigType = params.get("ConfigType")
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = Param()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpdateDataEngineConfigRequest(AbstractModel):
@@ -35652,6 +39893,179 @@ class UpdateDataEngineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateEngineResourceGroupNetworkConfigInfoRequest(AbstractModel):
+    """UpdateEngineResourceGroupNetworkConfigInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupId: 引擎资源组ID
+        :type EngineResourceGroupId: str
+        :param _IsEffectiveNow: 是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+        :type IsEffectiveNow: int
+        :param _NetworkConfigNames: 资源组绑定的网络配置名称集合
+        :type NetworkConfigNames: list of str
+        """
+        self._EngineResourceGroupId = None
+        self._IsEffectiveNow = None
+        self._NetworkConfigNames = None
+
+    @property
+    def EngineResourceGroupId(self):
+        """引擎资源组ID
+        :rtype: str
+        """
+        return self._EngineResourceGroupId
+
+    @EngineResourceGroupId.setter
+    def EngineResourceGroupId(self, EngineResourceGroupId):
+        self._EngineResourceGroupId = EngineResourceGroupId
+
+    @property
+    def IsEffectiveNow(self):
+        """是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+        :rtype: int
+        """
+        return self._IsEffectiveNow
+
+    @IsEffectiveNow.setter
+    def IsEffectiveNow(self, IsEffectiveNow):
+        self._IsEffectiveNow = IsEffectiveNow
+
+    @property
+    def NetworkConfigNames(self):
+        """资源组绑定的网络配置名称集合
+        :rtype: list of str
+        """
+        return self._NetworkConfigNames
+
+    @NetworkConfigNames.setter
+    def NetworkConfigNames(self, NetworkConfigNames):
+        self._NetworkConfigNames = NetworkConfigNames
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupId = params.get("EngineResourceGroupId")
+        self._IsEffectiveNow = params.get("IsEffectiveNow")
+        self._NetworkConfigNames = params.get("NetworkConfigNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateEngineResourceGroupNetworkConfigInfoResponse(AbstractModel):
+    """UpdateEngineResourceGroupNetworkConfigInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateNetworkConnectionRequest(AbstractModel):
+    """UpdateNetworkConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkConnectionDesc: 网络配置描述
+        :type NetworkConnectionDesc: str
+        :param _NetworkConnectionName: 网络配置名称
+        :type NetworkConnectionName: str
+        """
+        self._NetworkConnectionDesc = None
+        self._NetworkConnectionName = None
+
+    @property
+    def NetworkConnectionDesc(self):
+        """网络配置描述
+        :rtype: str
+        """
+        return self._NetworkConnectionDesc
+
+    @NetworkConnectionDesc.setter
+    def NetworkConnectionDesc(self, NetworkConnectionDesc):
+        self._NetworkConnectionDesc = NetworkConnectionDesc
+
+    @property
+    def NetworkConnectionName(self):
+        """网络配置名称
+        :rtype: str
+        """
+        return self._NetworkConnectionName
+
+    @NetworkConnectionName.setter
+    def NetworkConnectionName(self, NetworkConnectionName):
+        self._NetworkConnectionName = NetworkConnectionName
+
+
+    def _deserialize(self, params):
+        self._NetworkConnectionDesc = params.get("NetworkConnectionDesc")
+        self._NetworkConnectionName = params.get("NetworkConnectionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateNetworkConnectionResponse(AbstractModel):
+    """UpdateNetworkConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateRowFilterRequest(AbstractModel):
     """UpdateRowFilter请求参数结构体
 
@@ -35707,6 +40121,537 @@ class UpdateRowFilterRequest(AbstractModel):
 
 class UpdateRowFilterResponse(AbstractModel):
     """UpdateRowFilter返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateStandardEngineResourceGroupBaseInfoRequest(AbstractModel):
+    """UpdateStandardEngineResourceGroupBaseInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupName: 引擎资源组名称
+        :type EngineResourceGroupName: str
+        :param _AutoLaunch: 自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+        :type AutoLaunch: int
+        :param _AutoPause: 自动挂起资源组。0-自动挂起，1-不自动挂起
+        :type AutoPause: int
+        :param _AutoPauseTime: 自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+        :type AutoPauseTime: int
+        :param _MaxConcurrency: 任务并发数
+        :type MaxConcurrency: int
+        """
+        self._EngineResourceGroupName = None
+        self._AutoLaunch = None
+        self._AutoPause = None
+        self._AutoPauseTime = None
+        self._MaxConcurrency = None
+
+    @property
+    def EngineResourceGroupName(self):
+        """引擎资源组名称
+        :rtype: str
+        """
+        return self._EngineResourceGroupName
+
+    @EngineResourceGroupName.setter
+    def EngineResourceGroupName(self, EngineResourceGroupName):
+        self._EngineResourceGroupName = EngineResourceGroupName
+
+    @property
+    def AutoLaunch(self):
+        """自动启动，（任务提交自动拉起资源组）0-自动启动，1-不自动启动
+        :rtype: int
+        """
+        return self._AutoLaunch
+
+    @AutoLaunch.setter
+    def AutoLaunch(self, AutoLaunch):
+        self._AutoLaunch = AutoLaunch
+
+    @property
+    def AutoPause(self):
+        """自动挂起资源组。0-自动挂起，1-不自动挂起
+        :rtype: int
+        """
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def AutoPauseTime(self):
+        """自动挂起时间，单位分钟，取值范围在1-999（在无任务AutoPauseTime后，资源组自动挂起）
+        :rtype: int
+        """
+        return self._AutoPauseTime
+
+    @AutoPauseTime.setter
+    def AutoPauseTime(self, AutoPauseTime):
+        self._AutoPauseTime = AutoPauseTime
+
+    @property
+    def MaxConcurrency(self):
+        """任务并发数
+        :rtype: int
+        """
+        return self._MaxConcurrency
+
+    @MaxConcurrency.setter
+    def MaxConcurrency(self, MaxConcurrency):
+        self._MaxConcurrency = MaxConcurrency
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupName = params.get("EngineResourceGroupName")
+        self._AutoLaunch = params.get("AutoLaunch")
+        self._AutoPause = params.get("AutoPause")
+        self._AutoPauseTime = params.get("AutoPauseTime")
+        self._MaxConcurrency = params.get("MaxConcurrency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateStandardEngineResourceGroupBaseInfoResponse(AbstractModel):
+    """UpdateStandardEngineResourceGroupBaseInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateStandardEngineResourceGroupConfigInfoRequest(AbstractModel):
+    """UpdateStandardEngineResourceGroupConfigInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupName: 引擎资源组名称
+        :type EngineResourceGroupName: str
+        :param _UpdateConfContext: 需要更新的配置
+        :type UpdateConfContext: list of UpdateConfContext
+        :param _IsEffectiveNow: 是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+        :type IsEffectiveNow: int
+        """
+        self._EngineResourceGroupName = None
+        self._UpdateConfContext = None
+        self._IsEffectiveNow = None
+
+    @property
+    def EngineResourceGroupName(self):
+        """引擎资源组名称
+        :rtype: str
+        """
+        return self._EngineResourceGroupName
+
+    @EngineResourceGroupName.setter
+    def EngineResourceGroupName(self, EngineResourceGroupName):
+        self._EngineResourceGroupName = EngineResourceGroupName
+
+    @property
+    def UpdateConfContext(self):
+        """需要更新的配置
+        :rtype: list of UpdateConfContext
+        """
+        return self._UpdateConfContext
+
+    @UpdateConfContext.setter
+    def UpdateConfContext(self, UpdateConfContext):
+        self._UpdateConfContext = UpdateConfContext
+
+    @property
+    def IsEffectiveNow(self):
+        """是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+        :rtype: int
+        """
+        return self._IsEffectiveNow
+
+    @IsEffectiveNow.setter
+    def IsEffectiveNow(self, IsEffectiveNow):
+        self._IsEffectiveNow = IsEffectiveNow
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupName = params.get("EngineResourceGroupName")
+        if params.get("UpdateConfContext") is not None:
+            self._UpdateConfContext = []
+            for item in params.get("UpdateConfContext"):
+                obj = UpdateConfContext()
+                obj._deserialize(item)
+                self._UpdateConfContext.append(obj)
+        self._IsEffectiveNow = params.get("IsEffectiveNow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateStandardEngineResourceGroupConfigInfoResponse(AbstractModel):
+    """UpdateStandardEngineResourceGroupConfigInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateStandardEngineResourceGroupResourceInfoRequest(AbstractModel):
+    """UpdateStandardEngineResourceGroupResourceInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineResourceGroupName: 引擎资源组名称
+        :type EngineResourceGroupName: str
+        :param _DriverCuSpec: driver的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :type DriverCuSpec: str
+        :param _ExecutorCuSpec: executor的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :type ExecutorCuSpec: str
+        :param _MinExecutorNums: executor最小数量，
+        :type MinExecutorNums: int
+        :param _MaxExecutorNums: executor最大数量
+        :type MaxExecutorNums: int
+        :param _IsEffectiveNow: 是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+        :type IsEffectiveNow: int
+        :param _Size: AI资源组资源上限
+        :type Size: int
+        :param _ImageType: 镜像类型，内置镜像：built-in，自定义镜像：custom
+        :type ImageType: str
+        :param _ImageName: 镜像名称
+        :type ImageName: str
+        :param _ImageVersion: 镜像版本，镜像id
+        :type ImageVersion: str
+        :param _FrameType: 框架类型
+        :type FrameType: str
+        :param _PublicDomain: 自定义镜像域名
+        :type PublicDomain: str
+        :param _RegistryId: 自定义镜像实例id
+        :type RegistryId: str
+        :param _RegionName: 自定义镜像所属地域
+        :type RegionName: str
+        :param _PythonCuSpec: python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+        :type PythonCuSpec: str
+        :param _SparkSpecMode: 仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+        :type SparkSpecMode: str
+        :param _SparkSize: 仅SQL资源组资源上限，仅用于快速模式
+        :type SparkSize: int
+        """
+        self._EngineResourceGroupName = None
+        self._DriverCuSpec = None
+        self._ExecutorCuSpec = None
+        self._MinExecutorNums = None
+        self._MaxExecutorNums = None
+        self._IsEffectiveNow = None
+        self._Size = None
+        self._ImageType = None
+        self._ImageName = None
+        self._ImageVersion = None
+        self._FrameType = None
+        self._PublicDomain = None
+        self._RegistryId = None
+        self._RegionName = None
+        self._PythonCuSpec = None
+        self._SparkSpecMode = None
+        self._SparkSize = None
+
+    @property
+    def EngineResourceGroupName(self):
+        """引擎资源组名称
+        :rtype: str
+        """
+        return self._EngineResourceGroupName
+
+    @EngineResourceGroupName.setter
+    def EngineResourceGroupName(self, EngineResourceGroupName):
+        self._EngineResourceGroupName = EngineResourceGroupName
+
+    @property
+    def DriverCuSpec(self):
+        """driver的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :rtype: str
+        """
+        return self._DriverCuSpec
+
+    @DriverCuSpec.setter
+    def DriverCuSpec(self, DriverCuSpec):
+        self._DriverCuSpec = DriverCuSpec
+
+    @property
+    def ExecutorCuSpec(self):
+        """executor的cu规格：
+当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu），内存型cu为cpu：men=1:8，m.small（1cu内存型）、m.medium（2cu内存型）、m.large（4cu内存型）、m.xlarge（8cu内存型）
+        :rtype: str
+        """
+        return self._ExecutorCuSpec
+
+    @ExecutorCuSpec.setter
+    def ExecutorCuSpec(self, ExecutorCuSpec):
+        self._ExecutorCuSpec = ExecutorCuSpec
+
+    @property
+    def MinExecutorNums(self):
+        """executor最小数量，
+        :rtype: int
+        """
+        return self._MinExecutorNums
+
+    @MinExecutorNums.setter
+    def MinExecutorNums(self, MinExecutorNums):
+        self._MinExecutorNums = MinExecutorNums
+
+    @property
+    def MaxExecutorNums(self):
+        """executor最大数量
+        :rtype: int
+        """
+        return self._MaxExecutorNums
+
+    @MaxExecutorNums.setter
+    def MaxExecutorNums(self, MaxExecutorNums):
+        self._MaxExecutorNums = MaxExecutorNums
+
+    @property
+    def IsEffectiveNow(self):
+        """是否立即重启资源组生效，0--立即生效，1--只保持不重启生效
+        :rtype: int
+        """
+        return self._IsEffectiveNow
+
+    @IsEffectiveNow.setter
+    def IsEffectiveNow(self, IsEffectiveNow):
+        self._IsEffectiveNow = IsEffectiveNow
+
+    @property
+    def Size(self):
+        """AI资源组资源上限
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def ImageType(self):
+        """镜像类型，内置镜像：built-in，自定义镜像：custom
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def ImageName(self):
+        """镜像名称
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageVersion(self):
+        """镜像版本，镜像id
+        :rtype: str
+        """
+        return self._ImageVersion
+
+    @ImageVersion.setter
+    def ImageVersion(self, ImageVersion):
+        self._ImageVersion = ImageVersion
+
+    @property
+    def FrameType(self):
+        """框架类型
+        :rtype: str
+        """
+        return self._FrameType
+
+    @FrameType.setter
+    def FrameType(self, FrameType):
+        self._FrameType = FrameType
+
+    @property
+    def PublicDomain(self):
+        """自定义镜像域名
+        :rtype: str
+        """
+        return self._PublicDomain
+
+    @PublicDomain.setter
+    def PublicDomain(self, PublicDomain):
+        self._PublicDomain = PublicDomain
+
+    @property
+    def RegistryId(self):
+        """自定义镜像实例id
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RegionName(self):
+        """自定义镜像所属地域
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def PythonCuSpec(self):
+        """python类型资源组python单机节点资源上限，该值要小于资源组的资源上限.small:1cu medium:2cu large:4cu xlarge:8cu 4xlarge:16cu 8xlarge:32cu 16xlarge:64cu，如果是高内存型资源，在类型前面加上m.
+        :rtype: str
+        """
+        return self._PythonCuSpec
+
+    @PythonCuSpec.setter
+    def PythonCuSpec(self, PythonCuSpec):
+        self._PythonCuSpec = PythonCuSpec
+
+    @property
+    def SparkSpecMode(self):
+        """仅SQL资源组资源配置模式，fast：快速模式，custom：自定义模式
+        :rtype: str
+        """
+        return self._SparkSpecMode
+
+    @SparkSpecMode.setter
+    def SparkSpecMode(self, SparkSpecMode):
+        self._SparkSpecMode = SparkSpecMode
+
+    @property
+    def SparkSize(self):
+        """仅SQL资源组资源上限，仅用于快速模式
+        :rtype: int
+        """
+        return self._SparkSize
+
+    @SparkSize.setter
+    def SparkSize(self, SparkSize):
+        self._SparkSize = SparkSize
+
+
+    def _deserialize(self, params):
+        self._EngineResourceGroupName = params.get("EngineResourceGroupName")
+        self._DriverCuSpec = params.get("DriverCuSpec")
+        self._ExecutorCuSpec = params.get("ExecutorCuSpec")
+        self._MinExecutorNums = params.get("MinExecutorNums")
+        self._MaxExecutorNums = params.get("MaxExecutorNums")
+        self._IsEffectiveNow = params.get("IsEffectiveNow")
+        self._Size = params.get("Size")
+        self._ImageType = params.get("ImageType")
+        self._ImageName = params.get("ImageName")
+        self._ImageVersion = params.get("ImageVersion")
+        self._FrameType = params.get("FrameType")
+        self._PublicDomain = params.get("PublicDomain")
+        self._RegistryId = params.get("RegistryId")
+        self._RegionName = params.get("RegionName")
+        self._PythonCuSpec = params.get("PythonCuSpec")
+        self._SparkSpecMode = params.get("SparkSpecMode")
+        self._SparkSize = params.get("SparkSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateStandardEngineResourceGroupResourceInfoResponse(AbstractModel):
+    """UpdateStandardEngineResourceGroupResourceInfo返回参数结构体
 
     """
 
@@ -36619,6 +41564,112 @@ class UserRole(AbstractModel):
                 self._CosPermissionList.append(obj)
         self._PermissionJson = params.get("PermissionJson")
         self._IsDefault = params.get("IsDefault")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserVpcConnectionInfo(AbstractModel):
+    """用户vpc网络连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineNetworkId: 引擎网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineNetworkId: str
+        :param _UserVpcId: 用户vpcid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserVpcId: str
+        :param _UserVpcEndpointId: 用户终端节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserVpcEndpointId: str
+        :param _UserVpcEndpointName: 用户终端节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserVpcEndpointName: str
+        :param _AccessConnectionInfos: 接入点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessConnectionInfos: list of str
+        """
+        self._EngineNetworkId = None
+        self._UserVpcId = None
+        self._UserVpcEndpointId = None
+        self._UserVpcEndpointName = None
+        self._AccessConnectionInfos = None
+
+    @property
+    def EngineNetworkId(self):
+        """引擎网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineNetworkId
+
+    @EngineNetworkId.setter
+    def EngineNetworkId(self, EngineNetworkId):
+        self._EngineNetworkId = EngineNetworkId
+
+    @property
+    def UserVpcId(self):
+        """用户vpcid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserVpcId
+
+    @UserVpcId.setter
+    def UserVpcId(self, UserVpcId):
+        self._UserVpcId = UserVpcId
+
+    @property
+    def UserVpcEndpointId(self):
+        """用户终端节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserVpcEndpointId
+
+    @UserVpcEndpointId.setter
+    def UserVpcEndpointId(self, UserVpcEndpointId):
+        self._UserVpcEndpointId = UserVpcEndpointId
+
+    @property
+    def UserVpcEndpointName(self):
+        """用户终端节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserVpcEndpointName
+
+    @UserVpcEndpointName.setter
+    def UserVpcEndpointName(self, UserVpcEndpointName):
+        self._UserVpcEndpointName = UserVpcEndpointName
+
+    @property
+    def AccessConnectionInfos(self):
+        """接入点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._AccessConnectionInfos
+
+    @AccessConnectionInfos.setter
+    def AccessConnectionInfos(self, AccessConnectionInfos):
+        self._AccessConnectionInfos = AccessConnectionInfos
+
+
+    def _deserialize(self, params):
+        self._EngineNetworkId = params.get("EngineNetworkId")
+        self._UserVpcId = params.get("UserVpcId")
+        self._UserVpcEndpointId = params.get("UserVpcEndpointId")
+        self._UserVpcEndpointName = params.get("UserVpcEndpointName")
+        self._AccessConnectionInfos = params.get("AccessConnectionInfos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

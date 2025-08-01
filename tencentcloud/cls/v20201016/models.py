@@ -4458,7 +4458,7 @@ class ContentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Format: 内容格式，支持json、csv
+        :param _Format: 内容格式，支持json，csv，parquet
         :type Format: str
         :param _Csv: csv格式内容描述
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4477,7 +4477,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def Format(self):
-        """内容格式，支持json、csv
+        """内容格式，支持json，csv，parquet
         :rtype: str
         """
         return self._Format
@@ -19011,6 +19011,11 @@ class JsonInfo(AbstractModel):
         :param _EnableTag: 启用标志
         :type EnableTag: bool
         :param _MetaFields: 元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
+
+- __SOURCE__：日志采集的源 IP，示例：10.0.1.2
+- __FILENAME__：日志采集的文件名，示例：/data/log/nginx/access.log
+- __TIMESTAMP__：日志时间戳（毫秒级别 Unix 时间戳），按时间范围检索日志时，将自动使用该时间对日志进行检索，在控制台显示为“日志时间”，示例：1640005601188
+- __HOSTNAME__：日志来源机器名称，需使用2.7.4及以上版本的 Loglistener 才会采集该字段，示例：localhost
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaFields: list of str
         :param _JsonType: 投递Json格式，0：字符串方式投递；1:以结构化方式投递
@@ -19034,6 +19039,11 @@ class JsonInfo(AbstractModel):
     @property
     def MetaFields(self):
         """元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
+
+- __SOURCE__：日志采集的源 IP，示例：10.0.1.2
+- __FILENAME__：日志采集的文件名，示例：/data/log/nginx/access.log
+- __TIMESTAMP__：日志时间戳（毫秒级别 Unix 时间戳），按时间范围检索日志时，将自动使用该时间对日志进行检索，在控制台显示为“日志时间”，示例：1640005601188
+- __HOSTNAME__：日志来源机器名称，需使用2.7.4及以上版本的 Loglistener 才会采集该字段，示例：localhost
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -29416,7 +29426,11 @@ class ShipperTaskInfo(AbstractModel):
         :type StartTime: int
         :param _EndTime: 本次投递任务的结束时间戳， 毫秒
         :type EndTime: int
-        :param _Status: 本次投递的结果，"success","running","failed"
+        :param _Status: 本次投递的结果。"success"，"running"，"failed"
+
+- success：任务成功。
+- running：任务处理中。
+- failed：任务失败。
         :type Status: str
         :param _Message: 结果的详细信息
         :type Message: str
@@ -29510,7 +29524,11 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        """本次投递的结果，"success","running","failed"
+        """本次投递的结果。"success"，"running"，"failed"
+
+- success：任务成功。
+- running：任务处理中。
+- failed：任务失败。
         :rtype: str
         """
         return self._Status

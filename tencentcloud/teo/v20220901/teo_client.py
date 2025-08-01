@@ -398,6 +398,31 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateJustInTimeTranscodeTemplate(self, request):
+        """即时转码已经提供了预置转码模板，满足大部分的需求。如果有个性化的转码需求，可以通过本接口创建自定义的转码模板，最多可创建100个自定义转码模板。
+        为了确保即时转码效果的一致性，避免因 EO 缓存或 M3U8 分片处理过程中的模板变更导致视频输出异常，模板在创建后不可进行修改。
+        即时转码详细能力了解：[EdgeOne视频即时处理功能介绍](https://cloud.tencent.com/document/product/1552/111927)。
+
+        :param request: Request instance for CreateJustInTimeTranscodeTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateJustInTimeTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateJustInTimeTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateJustInTimeTranscodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateL4Proxy(self, request):
         """用于创建四层代理实例。
 
@@ -725,6 +750,75 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSecurityAPIResource(self, request):
+        """用于创建 API 资源。
+
+        :param request: Request instance for CreateSecurityAPIResource.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIResourceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSecurityAPIResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSecurityAPIResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSecurityAPIService(self, request):
+        """用于创建 API 服务。
+
+        :param request: Request instance for CreateSecurityAPIService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSecurityAPIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSecurityAPIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSecurityClientAttester(self, request):
+        """创建客户端认证选项。
+
+        :param request: Request instance for CreateSecurityClientAttester.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityClientAttesterRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateSecurityClientAttesterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSecurityClientAttester", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSecurityClientAttesterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSecurityIPGroup(self, request):
         """创建安全 IP 组
 
@@ -739,6 +833,29 @@ class TeoClient(AbstractClient):
             body = self.call("CreateSecurityIPGroup", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSecurityJSInjectionRule(self, request):
+        """创建 JavaScript 注入规则。
+
+        :param request: Request instance for CreateSecurityJSInjectionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityJSInjectionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateSecurityJSInjectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSecurityJSInjectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSecurityJSInjectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1028,6 +1145,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteJustInTimeTranscodeTemplates(self, request):
+        """根据站点 id 下唯一的模板标识，删除相应的即时转码模板。
+
+        :param request: Request instance for DeleteJustInTimeTranscodeTemplates.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteJustInTimeTranscodeTemplatesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteJustInTimeTranscodeTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteJustInTimeTranscodeTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteJustInTimeTranscodeTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteL4Proxy(self, request):
         """用于删除四层代理实例。
 
@@ -1236,6 +1376,75 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteSecurityAPIResource(self, request):
+        """用于删除 API 资源。
+
+        :param request: Request instance for DeleteSecurityAPIResource.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIResourceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSecurityAPIResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSecurityAPIResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSecurityAPIService(self, request):
+        """用于删除 API 服务。
+
+        :param request: Request instance for DeleteSecurityAPIService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSecurityAPIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSecurityAPIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSecurityClientAttester(self, request):
+        """删除客户端认证选项。
+
+        :param request: Request instance for DeleteSecurityClientAttester.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityClientAttesterRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityClientAttesterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSecurityClientAttester", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSecurityClientAttesterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSecurityIPGroup(self, request):
         """删除指定 IP 组，如果有规则引用了 IP 组情况，则不允许删除。
 
@@ -1250,6 +1459,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteSecurityIPGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSecurityJSInjectionRule(self, request):
+        """删除 JavaScript 注入规则。
+
+        :param request: Request instance for DeleteSecurityJSInjectionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityJSInjectionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityJSInjectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSecurityJSInjectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSecurityJSInjectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1904,6 +2136,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeJustInTimeTranscodeTemplates(self, request):
+        """根据即时转码模板名字、模板类型或唯一标识，获取即时转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及预置模板。
+
+        :param request: Request instance for DescribeJustInTimeTranscodeTemplates.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeJustInTimeTranscodeTemplatesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeJustInTimeTranscodeTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJustInTimeTranscodeTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJustInTimeTranscodeTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeL4Proxy(self, request):
         """用于查询四层代理实例列表。
 
@@ -2390,6 +2645,75 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecurityAPIResource(self, request):
+        """查询站点下的 API 资源。
+
+        :param request: Request instance for DescribeSecurityAPIResource.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIResourceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityAPIResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityAPIResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityAPIService(self, request):
+        """查询站点下的 API 服务。
+
+        :param request: Request instance for DescribeSecurityAPIService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityAPIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityAPIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityClientAttester(self, request):
+        """查询客户端认证选项配置。
+
+        :param request: Request instance for DescribeSecurityClientAttester.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityClientAttesterRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityClientAttesterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityClientAttester", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityClientAttesterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSecurityIPGroup(self, request):
         """查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。本接口的查询结果中，每个 IP 组最多只返回 2000 个 IP / 网段。如果存在超过 2000 个 IP / 网段的超大 IP 组，请调用 DescribeSecurityIPGroupContent 进行分页查询。
 
@@ -2404,6 +2728,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeSecurityIPGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityIPGroupContent(self, request):
+        """该接口用于分页查询指定 IP 组中的 IP 地址列表。当 IP 组中的 IP 地址数量超过 2000 个时，可以使用此接口进行分页查询，以获取完整的 IP 地址列表。
+
+        :param request: Request instance for DescribeSecurityIPGroupContent.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupContentRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityIPGroupContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityIPGroupContentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2430,6 +2777,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeSecurityIPGroupInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSecurityIPGroupInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityJSInjectionRule(self, request):
+        """查询 JavaScript 注入规则。
+
+        :param request: Request instance for DescribeSecurityJSInjectionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityJSInjectionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityJSInjectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityJSInjectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityJSInjectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3725,6 +4095,75 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifySecurityAPIResource(self, request):
+        """该接口用于修改 API 资源。
+
+        :param request: Request instance for ModifySecurityAPIResource.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIResourceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecurityAPIResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySecurityAPIResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySecurityAPIService(self, request):
+        """该接口用于修改 API 服务。
+
+        :param request: Request instance for ModifySecurityAPIService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecurityAPIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySecurityAPIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySecurityClientAttester(self, request):
+        """修改客户端认证选项。
+
+        :param request: Request instance for ModifySecurityClientAttester.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityClientAttesterRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifySecurityClientAttesterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecurityClientAttester", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySecurityClientAttesterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySecurityIPGroup(self, request):
         """修改安全 IP 组。
 
@@ -3739,6 +4178,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifySecurityIPGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySecurityJSInjectionRule(self, request):
+        """修改 JavaScript 注入规则。
+
+        :param request: Request instance for ModifySecurityJSInjectionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityJSInjectionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifySecurityJSInjectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecurityJSInjectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySecurityJSInjectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -9064,6 +9064,212 @@ class CreateIpAccessControlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOwaspWhiteRuleRequest(AbstractModel):
+    """CreateOwaspWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 规则名称
+        :type Name: str
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Strategies: 规则匹配策略列表
+        :type Strategies: list of Strategy
+        :param _Ids: 加白的规则ID列表
+        :type Ids: list of int non-negative
+        :param _Type: 加白的类型，0:按照特定规则ID加白, 1:按照规则类型加白
+        :type Type: int
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ExpireTime: 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :type ExpireTime: int
+        :param _Status: 规则状态，0：关闭、1：开启，默认为开启
+        :type Status: int
+        """
+        self._Name = None
+        self._Domain = None
+        self._Strategies = None
+        self._Ids = None
+        self._Type = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._ExpireTime = None
+        self._Status = None
+
+    @property
+    def Name(self):
+        """规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Strategies(self):
+        """规则匹配策略列表
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def Ids(self):
+        """加白的规则ID列表
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Type(self):
+        """加白的类型，0:按照特定规则ID加白, 1:按照规则类型加白
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def JobType(self):
+        """规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ExpireTime(self):
+        """如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Status(self):
+        """规则状态，0：关闭、1：开启，默认为开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Domain = params.get("Domain")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._Ids = params.get("Ids")
+        self._Type = params.get("Type")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ExpireTime = params.get("ExpireTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOwaspWhiteRuleResponse(AbstractModel):
+    """CreateOwaspWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则ID
+        :type RuleId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        """规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePostCKafkaFlowRequest(AbstractModel):
     """CreatePostCKafkaFlow请求参数结构体
 
@@ -10891,6 +11097,85 @@ class DeleteIpAccessControlV2Response(AbstractModel):
 
     def _deserialize(self, params):
         self._FailedCount = params.get("FailedCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOwaspWhiteRuleRequest(AbstractModel):
+    """DeleteOwaspWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: 规则白名单ID列表
+        :type Ids: list of int non-negative
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Ids = None
+        self._Domain = None
+
+    @property
+    def Ids(self):
+        """规则白名单ID列表
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOwaspWhiteRuleResponse(AbstractModel):
+    """DeleteOwaspWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -18962,6 +19247,185 @@ class DescribeObjectsResponse(AbstractModel):
                 obj = ClbObject()
                 obj._deserialize(item)
                 self._ClbObjects.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOwaspWhiteRulesRequest(AbstractModel):
+    """DescribeOwaspWhiteRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要查询的域名
+        :type Domain: str
+        :param _Offset: 分页分页，默认为0
+        :type Offset: int
+        :param _Limit: 每页容量，默认为10
+        :type Limit: int
+        :param _By: 排序的字段，支持CreateTime：新建时间、UpdateTime：修改时间
+        :type By: str
+        :param _Order: 排序方式，支持asc、desc
+        :type Order: str
+        :param _Filters: 筛选条件，支持RuleId：加白规则ID、 Name：规则名称、RuleType：加白的规则类型、Status：规则开关状态、ValidStatus：规则生效状态、TimerType：生效方式、ID：具体的加白id，根据RuleType来判断是规则id还是类型id
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        """需要查询的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        """分页分页，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页容量，默认为10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        """排序的字段，支持CreateTime：新建时间、UpdateTime：修改时间
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        """排序方式，支持asc、desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        """筛选条件，支持RuleId：加白规则ID、 Name：规则名称、RuleType：加白的规则类型、Status：规则开关状态、ValidStatus：规则生效状态、TimerType：生效方式、ID：具体的加白id，根据RuleType来判断是规则id还是类型id
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOwaspWhiteRulesResponse(AbstractModel):
+    """DescribeOwaspWhiteRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 规则总数
+        :type Total: int
+        :param _List: 规则白名单列表
+        :type List: list of OwaspWhiteRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """规则总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """规则白名单列表
+        :rtype: list of OwaspWhiteRule
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = OwaspWhiteRule()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -34994,6 +35458,212 @@ class ModifyObjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOwaspWhiteRuleRequest(AbstractModel):
+    """ModifyOwaspWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则ID
+        :type RuleId: int
+        :param _Name: 规则名称
+        :type Name: str
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Strategies: 规则匹配策略列表
+        :type Strategies: list of Strategy
+        :param _Ids: 加白的规则ID列表
+        :type Ids: list of int non-negative
+        :param _Type: 加白的类型，0:按照特定规则ID加白, 1:按照规则类型加白
+        :type Type: int
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ExpireTime: 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :type ExpireTime: int
+        :param _Status: 规则状态，0：关闭、1：开启，默认为开启
+        :type Status: int
+        """
+        self._RuleId = None
+        self._Name = None
+        self._Domain = None
+        self._Strategies = None
+        self._Ids = None
+        self._Type = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._ExpireTime = None
+        self._Status = None
+
+    @property
+    def RuleId(self):
+        """规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        """规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Strategies(self):
+        """规则匹配策略列表
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def Ids(self):
+        """加白的规则ID列表
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Type(self):
+        """加白的类型，0:按照特定规则ID加白, 1:按照规则类型加白
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def JobType(self):
+        """规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ExpireTime(self):
+        """如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Status(self):
+        """规则状态，0：关闭、1：开启，默认为开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._Domain = params.get("Domain")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._Ids = params.get("Ids")
+        self._Type = params.get("Type")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ExpireTime = params.get("ExpireTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspWhiteRuleResponse(AbstractModel):
+    """ModifyOwaspWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyProtectionStatusRequest(AbstractModel):
     """ModifyProtectionStatus请求参数结构体
 
@@ -36802,6 +37472,214 @@ class NetworkConfig(AbstractModel):
         self._AntiDDosEip = params.get("AntiDDosEip")
         self._AntiDDosEipStatus = params.get("AntiDDosEipStatus")
         self._VipStatus = params.get("VipStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwaspWhiteRule(AbstractModel):
+    """规则引擎白名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 白名单的规则ID
+        :type RuleId: int
+        :param _Name: 规则名
+        :type Name: str
+        :param _Ids: 加白的规则ID列表
+        :type Ids: list of int non-negative
+        :param _Status: 白名单规则的状态，0：关闭、1：开启
+        :type Status: int
+        :param _Type: 加白的类型，0:按照特定规则ID加白、1:按照规则类型加白
+        :type Type: int
+        :param _Strategies: 规则匹配策略列表
+        :type Strategies: list of Strategy
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 修改时间
+        :type UpdateTime: str
+        :param _JobType: 定时任务类型
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _CronType: 周期任务粒度
+        :type CronType: str
+        :param _ValidStatus: 当前是否有效
+        :type ValidStatus: bool
+        """
+        self._RuleId = None
+        self._Name = None
+        self._Ids = None
+        self._Status = None
+        self._Type = None
+        self._Strategies = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._CronType = None
+        self._ValidStatus = None
+
+    @property
+    def RuleId(self):
+        """白名单的规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        """规则名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Ids(self):
+        """加白的规则ID列表
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Status(self):
+        """白名单规则的状态，0：关闭、1：开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        """加白的类型，0:按照特定规则ID加白、1:按照规则类型加白
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Strategies(self):
+        """规则匹配策略列表
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """修改时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def JobType(self):
+        """定时任务类型
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def CronType(self):
+        """周期任务粒度
+        :rtype: str
+        """
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def ValidStatus(self):
+        """当前是否有效
+        :rtype: bool
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._Ids = params.get("Ids")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._CronType = params.get("CronType")
+        self._ValidStatus = params.get("ValidStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
