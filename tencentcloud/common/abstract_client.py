@@ -147,14 +147,16 @@ class AbstractClient(object):
         params['Timestamp'] = int(time.time())
         params['Version'] = self._apiVersion
 
+        cred_secret_id, cred_secret_key, cred_token = self.credential.get_credential_info()
+
         if self.region:
             params['Region'] = self.region
 
-        if self.credential.token:
-            params['Token'] = self.credential.token
+        if cred_token:
+            params['Token'] = cred_token
 
-        if self.credential.secret_id:
-            params['SecretId'] = self.credential.secret_id
+        if cred_secret_id:
+            params['SecretId'] = cred_secret_id
 
         if self.profile.signMethod:
             params['SignatureMethod'] = self.profile.signMethod
@@ -163,7 +165,7 @@ class AbstractClient(object):
             params['Language'] = self.profile.language
 
         signInParam = self._format_sign_string(params, options)
-        params['Signature'] = Sign.sign(str(self.credential.secret_key),
+        params['Signature'] = Sign.sign(str(cred_secret_key),
                                         str(signInParam),
                                         str(self.profile.signMethod))
 
@@ -189,6 +191,7 @@ class AbstractClient(object):
 
         endpoint = self._get_endpoint(options=options)
         timestamp = int(time.time())
+        cred_secret_id, cred_secret_key, cred_token = self.credential.get_credential_info()
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
         req.header["X-TC-RequestClient"] = self.request_client
@@ -198,8 +201,8 @@ class AbstractClient(object):
             req.header["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
         if self.region:
             req.header['X-TC-Region'] = self.region
-        if self.credential.token:
-            req.header['X-TC-Token'] = self.credential.token
+        if cred_token:
+            req.header['X-TC-Token'] = cred_token
         if self.profile.language:
             req.header['X-TC-Language'] = self.profile.language
 
@@ -215,13 +218,13 @@ class AbstractClient(object):
 
         service = self._service
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
-        signature = self._get_tc3_signature(params, req, date, service, options)
+        signature = self._get_tc3_signature(params, req, date, service, cred_secret_key, options)
 
         auth = "TC3-HMAC-SHA256 Credential=%s/%s/%s/tc3_request, SignedHeaders=content-type;host, Signature=%s" % (
-            self.credential.secret_id, date, service, signature)
+            cred_secret_id, date, service, signature)
         req.header["Authorization"] = auth
 
-    def _get_tc3_signature(self, params, req, date, service, options=None):
+    def _get_tc3_signature(self, params, req, date, service, secret_key, options=None):
         options = options or {}
         canonical_uri = req.uri
         canonical_querystring = ""
@@ -258,8 +261,7 @@ class AbstractClient(object):
                                           req.header["X-TC-Timestamp"],
                                           credential_scope,
                                           digest)
-
-        return Sign.sign_tc3(self.credential.secret_key, date, service, string2sign)
+        return Sign.sign_tc3(secret_key, date, service, string2sign)
 
     def _build_req_without_signature(self, action, params, req, options=None):
         content_type = self._default_content_type
