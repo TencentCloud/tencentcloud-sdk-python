@@ -12352,7 +12352,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceNameSet: list of str
         :param _VersionSet: 实例版本代号列表，格式如：2008R2，2012SP3等
         :type VersionSet: list of str
-        :param _Zone: 实例可用区，格式如：ap-guangzhou-2
+        :param _Zone: 实例可用区
         :type Zone: str
         :param _TagKeys: 实例标签列表
         :type TagKeys: list of str
@@ -12518,7 +12518,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """实例可用区，格式如：ap-guangzhou-2
+        """实例可用区
         :rtype: str
         """
         return self._Zone

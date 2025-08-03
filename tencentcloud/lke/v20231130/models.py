@@ -12577,6 +12577,57 @@ class DocSegment(AbstractModel):
         
 
 
+class DuplicateFileHandle(AbstractModel):
+    """重复文档处理方式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckType: 重复文档判断方式，1：按文档内容，即cos_hash字段判断是否重复
+        :type CheckType: int
+        :param _HandleType: 重复文档处理方式，1：返回报错，2：跳过，返回重复的文档业务ID
+        :type HandleType: int
+        """
+        self._CheckType = None
+        self._HandleType = None
+
+    @property
+    def CheckType(self):
+        """重复文档判断方式，1：按文档内容，即cos_hash字段判断是否重复
+        :rtype: int
+        """
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def HandleType(self):
+        """重复文档处理方式，1：返回报错，2：跳过，返回重复的文档业务ID
+        :rtype: int
+        """
+        return self._HandleType
+
+    @HandleType.setter
+    def HandleType(self, HandleType):
+        self._HandleType = HandleType
+
+
+    def _deserialize(self, params):
+        self._CheckType = params.get("CheckType")
+        self._HandleType = params.get("HandleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExportAttributeLabelRequest(AbstractModel):
     """ExportAttributeLabel请求参数结构体
 
@@ -28229,6 +28280,8 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         :type CateBizId: str
         :param _IsDownload: 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
         :type IsDownload: bool
+        :param _DuplicateFileHandles: 重复文档处理方式，按顺序匹配第一个满足条件的方式处理
+        :type DuplicateFileHandles: list of DuplicateFileHandle
         """
         self._BotBizId = None
         self._FileName = None
@@ -28248,6 +28301,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         self._Opt = None
         self._CateBizId = None
         self._IsDownload = None
+        self._DuplicateFileHandles = None
 
     @property
     def BotBizId(self):
@@ -28457,6 +28511,17 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
     def IsDownload(self, IsDownload):
         self._IsDownload = IsDownload
 
+    @property
+    def DuplicateFileHandles(self):
+        """重复文档处理方式，按顺序匹配第一个满足条件的方式处理
+        :rtype: list of DuplicateFileHandle
+        """
+        return self._DuplicateFileHandles
+
+    @DuplicateFileHandles.setter
+    def DuplicateFileHandles(self, DuplicateFileHandles):
+        self._DuplicateFileHandles = DuplicateFileHandles
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -28482,6 +28547,12 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         self._Opt = params.get("Opt")
         self._CateBizId = params.get("CateBizId")
         self._IsDownload = params.get("IsDownload")
+        if params.get("DuplicateFileHandles") is not None:
+            self._DuplicateFileHandles = []
+            for item in params.get("DuplicateFileHandles"):
+                obj = DuplicateFileHandle()
+                obj._deserialize(item)
+                self._DuplicateFileHandles.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28507,6 +28578,8 @@ class SaveDocResponse(AbstractModel):
         :type ErrorLink: str
         :param _ErrorLinkText: 错误链接文本
         :type ErrorLinkText: str
+        :param _DuplicateFileCheckType: 重复类型，0：未重复，其他取值请参考入参DuplicateFileHandle结构体的CheckType字段
+        :type DuplicateFileCheckType: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -28514,6 +28587,7 @@ class SaveDocResponse(AbstractModel):
         self._ErrorMsg = None
         self._ErrorLink = None
         self._ErrorLinkText = None
+        self._DuplicateFileCheckType = None
         self._RequestId = None
 
     @property
@@ -28561,6 +28635,17 @@ class SaveDocResponse(AbstractModel):
         self._ErrorLinkText = ErrorLinkText
 
     @property
+    def DuplicateFileCheckType(self):
+        """重复类型，0：未重复，其他取值请参考入参DuplicateFileHandle结构体的CheckType字段
+        :rtype: int
+        """
+        return self._DuplicateFileCheckType
+
+    @DuplicateFileCheckType.setter
+    def DuplicateFileCheckType(self, DuplicateFileCheckType):
+        self._DuplicateFileCheckType = DuplicateFileCheckType
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -28577,6 +28662,7 @@ class SaveDocResponse(AbstractModel):
         self._ErrorMsg = params.get("ErrorMsg")
         self._ErrorLink = params.get("ErrorLink")
         self._ErrorLinkText = params.get("ErrorLinkText")
+        self._DuplicateFileCheckType = params.get("DuplicateFileCheckType")
         self._RequestId = params.get("RequestId")
 
 

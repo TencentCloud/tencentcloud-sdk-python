@@ -11211,15 +11211,17 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :param _TaskType: 实时日志投递任务类型，取值有：
 <li>cls: 推送到腾讯云 CLS；</li>
 <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-<li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+<li>s3：推送到 AWS S3 兼容存储桶地址；</li>
         :type TaskType: str
-        :param _EntityList: 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-<li>七层域名：domain.example.com；</li>
-<li>四层代理实例：sid-2s69eb5wcms7。</li>
+        :param _EntityList: 实时日志投递任务对应的实体列表。取值示例如下：
+<li>七层域名：domain.example.com</li>
+<li>四层代理实例：sid-2s69eb5wcms7</li>
+<li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
         :type EntityList: list of str
         :param _LogType: 数据投递类型，取值有：
 <li>domain：站点加速日志；</li>
 <li>application：四层代理日志；</li>
+<li>function：边缘函数运行日志；</li>
 <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
 <li>web-attack：托管规则日志；</li>
 <li>web-rule：自定义规则日志；</li>
@@ -11229,7 +11231,10 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 <li>mainland：中国大陆境内；</li>
 <li>overseas：全球（不含中国大陆）。</li>
         :type Area: str
-        :param _Fields: 投递的预设字段列表。
+        :param _Fields: 投递的预设字段列表。取值参考：
+<li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
+<li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
+<li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
         :type Fields: list of str
         :param _CustomFields: 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
         :type CustomFields: list of CustomField
@@ -11290,7 +11295,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         """实时日志投递任务类型，取值有：
 <li>cls: 推送到腾讯云 CLS；</li>
 <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-<li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+<li>s3：推送到 AWS S3 兼容存储桶地址；</li>
         :rtype: str
         """
         return self._TaskType
@@ -11301,9 +11306,10 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def EntityList(self):
-        """实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-<li>七层域名：domain.example.com；</li>
-<li>四层代理实例：sid-2s69eb5wcms7。</li>
+        """实时日志投递任务对应的实体列表。取值示例如下：
+<li>七层域名：domain.example.com</li>
+<li>四层代理实例：sid-2s69eb5wcms7</li>
+<li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
         :rtype: list of str
         """
         return self._EntityList
@@ -11317,6 +11323,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         """数据投递类型，取值有：
 <li>domain：站点加速日志；</li>
 <li>application：四层代理日志；</li>
+<li>function：边缘函数运行日志；</li>
 <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
 <li>web-attack：托管规则日志；</li>
 <li>web-rule：自定义规则日志；</li>
@@ -11344,7 +11351,10 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Fields(self):
-        """投递的预设字段列表。
+        """投递的预设字段列表。取值参考：
+<li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
+<li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
+<li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
         :rtype: list of str
         """
         return self._Fields

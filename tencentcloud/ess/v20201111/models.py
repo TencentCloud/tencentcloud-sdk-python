@@ -4370,7 +4370,9 @@ class CreateBatchInformationExtractionTaskRequest(AbstractModel):
         :param _Operator: 执行合同智能提取的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _ResourceIds: 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+        :param _ResourceIds: 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
+
+ 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
         :type ResourceIds: list of str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -4405,7 +4407,9 @@ class CreateBatchInformationExtractionTaskRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。  注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+        """合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
+
+ 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
         :rtype: list of str
         """
         return self._ResourceIds
@@ -20449,7 +20453,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
     <li>**2** - 合同审查任务排队中</li>  
     <li>**3** - 合同审查任务执行中</li>   
     <li>**4** - 合同审查任务执行成功</li>
-    <li>**4** - 合同审查任务执行失败</li>
+    <li>**5** - 合同审查任务执行失败</li>
 </ul>
         :type Status: int
         :param _TaskId: 合同审查任务ID
@@ -20563,7 +20567,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
     <li>**2** - 合同审查任务排队中</li>  
     <li>**3** - 合同审查任务执行中</li>   
     <li>**4** - 合同审查任务执行成功</li>
-    <li>**4** - 合同审查任务执行失败</li>
+    <li>**5** - 合同审查任务执行失败</li>
 </ul>
         :rtype: int
         """

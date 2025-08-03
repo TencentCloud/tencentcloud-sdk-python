@@ -2148,7 +2148,7 @@ class CreateRepositoryPersonalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RepoName: 仓库名称
+        :param _RepoName: 仓库名称，格式为 {Namespace}/{lmageName}。
         :type RepoName: str
         :param _Public: 是否公共,1:公共,0:私有
         :type Public: int
@@ -2161,7 +2161,7 @@ class CreateRepositoryPersonalRequest(AbstractModel):
 
     @property
     def RepoName(self):
-        """仓库名称
+        """仓库名称，格式为 {Namespace}/{lmageName}。
         :rtype: str
         """
         return self._RepoName

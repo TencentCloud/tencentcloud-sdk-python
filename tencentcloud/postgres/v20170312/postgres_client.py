@@ -422,7 +422,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteDBInstanceNetworkAccess(self, request):
-        """可对实例进行网络的删除操作。
+        """可对实例进行网络的删除操作（实例内至少保留一个网络）。
 
         :param request: Request instance for DeleteDBInstanceNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteDBInstanceNetworkAccessRequest`
@@ -514,7 +514,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteReadOnlyGroupNetworkAccess(self, request):
-        """可对RO组进行网络的删除操作。
+        """可对RO组进行网络的删除操作（网络数量至少保留1个）。
 
         :param request: Request instance for DeleteReadOnlyGroupNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteReadOnlyGroupNetworkAccessRequest`

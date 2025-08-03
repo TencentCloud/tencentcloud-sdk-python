@@ -1131,7 +1131,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        """本接口(DescribeDBInstances)用于查询实例列表。
+        """本接口（DescribeDBInstances）用于查询实例列表。
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBInstancesRequest`

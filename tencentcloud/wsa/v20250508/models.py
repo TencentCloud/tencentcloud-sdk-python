@@ -27,7 +27,7 @@ class SearchProRequest(AbstractModel):
         r"""
         :param _Query: 搜索词
         :type Query: str
-        :param _Mode: 返回结果类型，0-自然检索结果(默认)，1-垂类VR结果，2-混合结果（垂类VR结果+自然检索结果）
+        :param _Mode: 返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）
         :type Mode: int
         :param _Site: 指定域名站内搜索（用于过滤自然检索结果）  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
         :type Site: str
@@ -55,7 +55,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """返回结果类型，0-自然检索结果(默认)，1-垂类VR结果，2-混合结果（垂类VR结果+自然检索结果）
+        """返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）
         :rtype: int
         """
         return self._Mode
@@ -123,7 +123,16 @@ class SearchProResponse(AbstractModel):
         r"""
         :param _Query: 原始查询语
         :type Query: str
-        :param _Pages: 搜索结果页面
+        :param _Pages: 搜索结果页面详情，格式为json字符串。
+title：结果标题
+date：内容发布时间
+url：内容发布源url
+passage：标准摘要
+content：动态摘要 （尊享版字段）
+site：网站名称，部分不知名站点结果可能为空
+score：相关性得分，取值0～1，越靠近1表示越相关
+images：图片列表
+favicon：网站图标链接，部分不知名站点结果可能为空
         :type Pages: list of str
         :param _Msg: 提示信息
         :type Msg: str
@@ -148,7 +157,16 @@ class SearchProResponse(AbstractModel):
 
     @property
     def Pages(self):
-        """搜索结果页面
+        """搜索结果页面详情，格式为json字符串。
+title：结果标题
+date：内容发布时间
+url：内容发布源url
+passage：标准摘要
+content：动态摘要 （尊享版字段）
+site：网站名称，部分不知名站点结果可能为空
+score：相关性得分，取值0～1，越靠近1表示越相关
+images：图片列表
+favicon：网站图标链接，部分不知名站点结果可能为空
         :rtype: list of str
         """
         return self._Pages

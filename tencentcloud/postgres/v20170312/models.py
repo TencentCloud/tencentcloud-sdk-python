@@ -1620,9 +1620,9 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID，形如postgres-6r233v55
+        :param _DBInstanceId: 实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。形如postgres-6r233v55
         :type DBInstanceId: str
-        :param _IsIpv6: 是否关闭Ipv6外网，1：是，0：否
+        :param _IsIpv6: 是否关闭Ipv6外网，1：是，0：否。默认值：0。
         :type IsIpv6: int
         """
         self._DBInstanceId = None
@@ -1630,7 +1630,7 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如postgres-6r233v55
+        """实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。形如postgres-6r233v55
         :rtype: str
         """
         return self._DBInstanceId
@@ -1641,7 +1641,7 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     @property
     def IsIpv6(self):
-        """是否关闭Ipv6外网，1：是，0：否
+        """是否关闭Ipv6外网，1：是，0：否。默认值：0。
         :rtype: int
         """
         return self._IsIpv6
@@ -6003,7 +6003,7 @@ class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID，形如：postgres-6bwgamo3。
+        :param _DBInstanceId: 实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
         :param _VpcId: 私有网络统一 ID，若是基础网络则传"0"。
         :type VpcId: str
@@ -6019,7 +6019,7 @@ class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，形如：postgres-6bwgamo3。
+        """实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -6270,7 +6270,7 @@ class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReadOnlyGroupId: RO组ID，形如：pgro-4t9c6g7k。
+        :param _ReadOnlyGroupId: RO组ID，形如：pgrogrp-4t9c6g7k。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :type ReadOnlyGroupId: str
         :param _VpcId: 私有网络统一 ID，若是基础网络则传"0"。
         :type VpcId: str
@@ -6286,7 +6286,7 @@ class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """RO组ID，形如：pgro-4t9c6g7k。
+        """RO组ID，形如：pgrogrp-4t9c6g7k。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -9677,13 +9677,14 @@ class DescribeDatabasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID
+        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/409/16773)接口获取
         :type DBInstanceId: str
         :param _Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：database-name：按照数据库名称过滤，类型为string。此处使用模糊匹配搜索符合条件的数据库。
         :type Filters: list of Filter
         :param _Offset: 数据偏移量，从0开始。	
         :type Offset: int
-        :param _Limit: 单次显示数量
+        :param _Limit: 单次显示数量。建议最大取值100。
+默认值：20
         :type Limit: int
         """
         self._DBInstanceId = None
@@ -9693,7 +9694,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID
+        """实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -9726,7 +9727,8 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """单次显示数量
+        """单次显示数量。建议最大取值100。
+默认值：20
         :rtype: int
         """
         return self._Limit
@@ -13213,9 +13215,10 @@ class InquiryPriceRenewDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID
+        :param _DBInstanceId: 实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)获取。
+（此接口仅支持预付费实例的查询）
         :type DBInstanceId: str
-        :param _Period: 续费周期，按月计算，最大不超过48
+        :param _Period: 续费周期，按月计算
         :type Period: int
         """
         self._DBInstanceId = None
@@ -13223,7 +13226,8 @@ class InquiryPriceRenewDBInstanceRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID
+        """实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)获取。
+（此接口仅支持预付费实例的查询）
         :rtype: str
         """
         return self._DBInstanceId
@@ -13234,7 +13238,7 @@ class InquiryPriceRenewDBInstanceRequest(AbstractModel):
 
     @property
     def Period(self):
-        """续费周期，按月计算，最大不超过48
+        """续费周期，按月计算
         :rtype: int
         """
         return self._Period
@@ -13826,9 +13830,9 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。	
+        :param _DBInstanceId: 实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :type DBInstanceId: str
-        :param _UserName: 修改此账号对某数据库对象的权限。
+        :param _UserName: 修改此账号对某数据库对象的权限。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
         :type UserName: str
         :param _ModifyPrivilegeSet: 修改的权限信息，支持批量修改，一次最高修改50条。
         :type ModifyPrivilegeSet: list of ModifyPrivilege
@@ -13839,7 +13843,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID。	
+        """实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
         :rtype: str
         """
         return self._DBInstanceId
@@ -13850,7 +13854,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """修改此账号对某数据库对象的权限。
+        """修改此账号对某数据库对象的权限。可通过[DescribeAccounts](https://cloud.tencent.com/document/api/409/18109)接口获取
         :rtype: str
         """
         return self._UserName
@@ -15262,9 +15266,9 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 安全组信息可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来查询。
 **注意：**该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :type SecurityGroupIdSet: list of str
-        :param _DBInstanceId: 实例ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId
+        :param _DBInstanceId: 实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId。
         :type DBInstanceId: str
-        :param _ReadOnlyGroupId: 只读组ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果要修改只读组关联的安全组，只传ReadOnlyGroupId
+        :param _ReadOnlyGroupId: 只读组ID，可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果要修改只读组关联的安全组，只传ReadOnlyGroupId
         :type ReadOnlyGroupId: str
         """
         self._SecurityGroupIdSet = None
@@ -15286,7 +15290,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        """实例ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId
+        """实例ID，可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId。
         :rtype: str
         """
         return self._DBInstanceId
@@ -15297,7 +15301,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """只读组ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果要修改只读组关联的安全组，只传ReadOnlyGroupId
+        """只读组ID，可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取。DBInstanceId和ReadOnlyGroupId至少传一个；如果要修改只读组关联的安全组，只传ReadOnlyGroupId
         :rtype: str
         """
         return self._ReadOnlyGroupId

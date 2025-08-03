@@ -11140,6 +11140,8 @@ class DataEngineInfo(AbstractModel):
         :param _IsAIEngine: 1:AI引擎，0:非AI引擎
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAIEngine: int
+        :param _ScheduleElasticityConf: 引擎资源弹性伸缩策略
+        :type ScheduleElasticityConf: :class:`tencentcloud.dlc.v20210125.models.ScheduleElasticityConf`
         """
         self._DataEngineName = None
         self._EngineType = None
@@ -11200,6 +11202,7 @@ class DataEngineInfo(AbstractModel):
         self._GatewayState = None
         self._IsAIGateway = None
         self._IsAIEngine = None
+        self._ScheduleElasticityConf = None
 
     @property
     def DataEngineName(self):
@@ -11896,6 +11899,17 @@ class DataEngineInfo(AbstractModel):
     def IsAIEngine(self, IsAIEngine):
         self._IsAIEngine = IsAIEngine
 
+    @property
+    def ScheduleElasticityConf(self):
+        """引擎资源弹性伸缩策略
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ScheduleElasticityConf`
+        """
+        return self._ScheduleElasticityConf
+
+    @ScheduleElasticityConf.setter
+    def ScheduleElasticityConf(self, ScheduleElasticityConf):
+        self._ScheduleElasticityConf = ScheduleElasticityConf
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -11976,6 +11990,9 @@ class DataEngineInfo(AbstractModel):
         self._GatewayState = params.get("GatewayState")
         self._IsAIGateway = params.get("IsAIGateway")
         self._IsAIEngine = params.get("IsAIEngine")
+        if params.get("ScheduleElasticityConf") is not None:
+            self._ScheduleElasticityConf = ScheduleElasticityConf()
+            self._ScheduleElasticityConf._deserialize(params.get("ScheduleElasticityConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16762,6 +16779,8 @@ class DescribeDataEnginesRequest(AbstractModel):
         :type EngineGeneration: str
         :param _EngineTypeDetail: 引擎类型，支持：SparkSQL、SparkBatch、PrestoSQL、Kyuubi
         :type EngineTypeDetail: str
+        :param _ListHasListener: 默认 false, 为 true 时仅列出具有洞察 listener 的引擎
+        :type ListHasListener: bool
         """
         self._Offset = None
         self._Filters = None
@@ -16776,6 +16795,7 @@ class DescribeDataEnginesRequest(AbstractModel):
         self._DatasourceConnectionNameSet = None
         self._EngineGeneration = None
         self._EngineTypeDetail = None
+        self._ListHasListener = None
 
     @property
     def Offset(self):
@@ -16920,6 +16940,17 @@ class DescribeDataEnginesRequest(AbstractModel):
     def EngineTypeDetail(self, EngineTypeDetail):
         self._EngineTypeDetail = EngineTypeDetail
 
+    @property
+    def ListHasListener(self):
+        """默认 false, 为 true 时仅列出具有洞察 listener 的引擎
+        :rtype: bool
+        """
+        return self._ListHasListener
+
+    @ListHasListener.setter
+    def ListHasListener(self, ListHasListener):
+        self._ListHasListener = ListHasListener
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -16940,6 +16971,7 @@ class DescribeDataEnginesRequest(AbstractModel):
         self._DatasourceConnectionNameSet = params.get("DatasourceConnectionNameSet")
         self._EngineGeneration = params.get("EngineGeneration")
         self._EngineTypeDetail = params.get("EngineTypeDetail")
+        self._ListHasListener = params.get("ListHasListener")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25584,6 +25616,102 @@ class DropDMSTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ElasticPlan(AbstractModel):
+    """引擎资源弹性伸缩计划
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinElasticClusters: 最小集群数
+        :type MinElasticClusters: int
+        :param _MaxElasticClusters: 最大集群数
+        :type MaxElasticClusters: int
+        :param _TolerableQueueTime: 最大排队时间
+        :type TolerableQueueTime: int
+        :param _StartTime: 开始时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
+        :type StartTime: str
+        :param _EndTime: 结束时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
+        :type EndTime: str
+        """
+        self._MinElasticClusters = None
+        self._MaxElasticClusters = None
+        self._TolerableQueueTime = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def MinElasticClusters(self):
+        """最小集群数
+        :rtype: int
+        """
+        return self._MinElasticClusters
+
+    @MinElasticClusters.setter
+    def MinElasticClusters(self, MinElasticClusters):
+        self._MinElasticClusters = MinElasticClusters
+
+    @property
+    def MaxElasticClusters(self):
+        """最大集群数
+        :rtype: int
+        """
+        return self._MaxElasticClusters
+
+    @MaxElasticClusters.setter
+    def MaxElasticClusters(self, MaxElasticClusters):
+        self._MaxElasticClusters = MaxElasticClusters
+
+    @property
+    def TolerableQueueTime(self):
+        """最大排队时间
+        :rtype: int
+        """
+        return self._TolerableQueueTime
+
+    @TolerableQueueTime.setter
+    def TolerableQueueTime(self, TolerableQueueTime):
+        self._TolerableQueueTime = TolerableQueueTime
+
+    @property
+    def StartTime(self):
+        """开始时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间，Once格式：yyyy-MM-dd HH:mm:ss; 非Once格式： HH:mm:ss
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._MinElasticClusters = params.get("MinElasticClusters")
+        self._MaxElasticClusters = params.get("MaxElasticClusters")
+        self._TolerableQueueTime = params.get("TolerableQueueTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ElasticsearchInfo(AbstractModel):
     """Elasticsearch数据源的详细信息
 
@@ -33367,6 +33495,107 @@ class SQLTask(AbstractModel):
         
 
 
+class ScheduleElasticityConf(AbstractModel):
+    """引擎资源弹性伸缩策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScheduledElasticityEnabled: 是否开启弹性伸缩：true/false
+        :type ScheduledElasticityEnabled: bool
+        :param _ScheduleType: 调度类型：ONCE（一次性调度），DAILY（每日调度），WEEKLY（每周调度），MONTHLY（每月调度）
+        :type ScheduleType: str
+        :param _ScheduleDays: 调度日期：WEEKLY传：1~7； MONTHLY传:1~31；其它类型不传
+        :type ScheduleDays: list of int
+        :param _TimeZone: 调度时区
+        :type TimeZone: str
+        :param _ElasticPlans: 弹性伸缩计划
+        :type ElasticPlans: list of ElasticPlan
+        """
+        self._ScheduledElasticityEnabled = None
+        self._ScheduleType = None
+        self._ScheduleDays = None
+        self._TimeZone = None
+        self._ElasticPlans = None
+
+    @property
+    def ScheduledElasticityEnabled(self):
+        """是否开启弹性伸缩：true/false
+        :rtype: bool
+        """
+        return self._ScheduledElasticityEnabled
+
+    @ScheduledElasticityEnabled.setter
+    def ScheduledElasticityEnabled(self, ScheduledElasticityEnabled):
+        self._ScheduledElasticityEnabled = ScheduledElasticityEnabled
+
+    @property
+    def ScheduleType(self):
+        """调度类型：ONCE（一次性调度），DAILY（每日调度），WEEKLY（每周调度），MONTHLY（每月调度）
+        :rtype: str
+        """
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def ScheduleDays(self):
+        """调度日期：WEEKLY传：1~7； MONTHLY传:1~31；其它类型不传
+        :rtype: list of int
+        """
+        return self._ScheduleDays
+
+    @ScheduleDays.setter
+    def ScheduleDays(self, ScheduleDays):
+        self._ScheduleDays = ScheduleDays
+
+    @property
+    def TimeZone(self):
+        """调度时区
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def ElasticPlans(self):
+        """弹性伸缩计划
+        :rtype: list of ElasticPlan
+        """
+        return self._ElasticPlans
+
+    @ElasticPlans.setter
+    def ElasticPlans(self, ElasticPlans):
+        self._ElasticPlans = ElasticPlans
+
+
+    def _deserialize(self, params):
+        self._ScheduledElasticityEnabled = params.get("ScheduledElasticityEnabled")
+        self._ScheduleType = params.get("ScheduleType")
+        self._ScheduleDays = params.get("ScheduleDays")
+        self._TimeZone = params.get("TimeZone")
+        if params.get("ElasticPlans") is not None:
+            self._ElasticPlans = []
+            for item in params.get("ElasticPlans"):
+                obj = ElasticPlan()
+                obj._deserialize(item)
+                self._ElasticPlans.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Script(AbstractModel):
     """script实例。
 
@@ -39652,6 +39881,8 @@ class UpdateDataEngineRequest(AbstractModel):
         :type ElasticLimit: int
         :param _SessionResourceTemplate: Spark批作业集群Session资源配置模板
         :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
+        :param _ScheduleElasticityConf: 引擎资源弹性伸缩策略
+        :type ScheduleElasticityConf: :class:`tencentcloud.dlc.v20210125.models.ScheduleElasticityConf`
         """
         self._Size = None
         self._MinClusters = None
@@ -39668,6 +39899,7 @@ class UpdateDataEngineRequest(AbstractModel):
         self._ElasticSwitch = None
         self._ElasticLimit = None
         self._SessionResourceTemplate = None
+        self._ScheduleElasticityConf = None
 
     @property
     def Size(self):
@@ -39834,6 +40066,17 @@ class UpdateDataEngineRequest(AbstractModel):
     def SessionResourceTemplate(self, SessionResourceTemplate):
         self._SessionResourceTemplate = SessionResourceTemplate
 
+    @property
+    def ScheduleElasticityConf(self):
+        """引擎资源弹性伸缩策略
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ScheduleElasticityConf`
+        """
+        return self._ScheduleElasticityConf
+
+    @ScheduleElasticityConf.setter
+    def ScheduleElasticityConf(self, ScheduleElasticityConf):
+        self._ScheduleElasticityConf = ScheduleElasticityConf
+
 
     def _deserialize(self, params):
         self._Size = params.get("Size")
@@ -39855,6 +40098,9 @@ class UpdateDataEngineRequest(AbstractModel):
         if params.get("SessionResourceTemplate") is not None:
             self._SessionResourceTemplate = SessionResourceTemplate()
             self._SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
+        if params.get("ScheduleElasticityConf") is not None:
+            self._ScheduleElasticityConf = ScheduleElasticityConf()
+            self._ScheduleElasticityConf._deserialize(params.get("ScheduleElasticityConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

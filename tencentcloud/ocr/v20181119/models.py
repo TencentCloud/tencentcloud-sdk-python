@@ -11899,11 +11899,14 @@ class GetOCRResultResponse(AbstractModel):
         :type Type: str
         :param _OCRResult: ocr结果
         :type OCRResult: :class:`tencentcloud.ocr.v20181119.models.OCRResult`
+        :param _RequestIdInfos: requestid 信息
+        :type RequestIdInfos: list of RequestIdInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Type = None
         self._OCRResult = None
+        self._RequestIdInfos = None
         self._RequestId = None
 
     @property
@@ -11929,6 +11932,17 @@ class GetOCRResultResponse(AbstractModel):
         self._OCRResult = OCRResult
 
     @property
+    def RequestIdInfos(self):
+        """requestid 信息
+        :rtype: list of RequestIdInfo
+        """
+        return self._RequestIdInfos
+
+    @RequestIdInfos.setter
+    def RequestIdInfos(self, RequestIdInfos):
+        self._RequestIdInfos = RequestIdInfos
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -11945,6 +11959,12 @@ class GetOCRResultResponse(AbstractModel):
         if params.get("OCRResult") is not None:
             self._OCRResult = OCRResult()
             self._OCRResult._deserialize(params.get("OCRResult"))
+        if params.get("RequestIdInfos") is not None:
+            self._RequestIdInfos = []
+            for item in params.get("RequestIdInfos"):
+                obj = RequestIdInfo()
+                obj._deserialize(item)
+                self._RequestIdInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -27574,6 +27594,72 @@ Others 其他位置
 
     def _deserialize(self, params):
         self._Position = params.get("Position")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RequestIdInfo(AbstractModel):
+    """请求 id 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiRequestId: 请求 api 的 requestid
+        :type ApiRequestId: str
+        :param _ApiErrorCode: 请求 api 的错误码
+        :type ApiErrorCode: str
+        :param _WarnCodes: 告警码
+        :type WarnCodes: list of int
+        """
+        self._ApiRequestId = None
+        self._ApiErrorCode = None
+        self._WarnCodes = None
+
+    @property
+    def ApiRequestId(self):
+        """请求 api 的 requestid
+        :rtype: str
+        """
+        return self._ApiRequestId
+
+    @ApiRequestId.setter
+    def ApiRequestId(self, ApiRequestId):
+        self._ApiRequestId = ApiRequestId
+
+    @property
+    def ApiErrorCode(self):
+        """请求 api 的错误码
+        :rtype: str
+        """
+        return self._ApiErrorCode
+
+    @ApiErrorCode.setter
+    def ApiErrorCode(self, ApiErrorCode):
+        self._ApiErrorCode = ApiErrorCode
+
+    @property
+    def WarnCodes(self):
+        """告警码
+        :rtype: list of int
+        """
+        return self._WarnCodes
+
+    @WarnCodes.setter
+    def WarnCodes(self, WarnCodes):
+        self._WarnCodes = WarnCodes
+
+
+    def _deserialize(self, params):
+        self._ApiRequestId = params.get("ApiRequestId")
+        self._ApiErrorCode = params.get("ApiErrorCode")
+        self._WarnCodes = params.get("WarnCodes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

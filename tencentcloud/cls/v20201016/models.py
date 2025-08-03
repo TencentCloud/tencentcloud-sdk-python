@@ -11357,14 +11357,14 @@ class DeleteDashboardSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 仪表盘订阅记录id。
+        :param _Id: 仪表盘订阅记录id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :type Id: int
         """
         self._Id = None
 
     @property
     def Id(self):
-        """仪表盘订阅记录id。
+        """仪表盘订阅记录id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :rtype: int
         """
         return self._Id
@@ -13905,7 +13905,11 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <br><li/> dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否<br><br><li/> 每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :param _Filters: dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
+
+- 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
         :param _Offset: 分页的偏移量，默认值为0。
         :type Offset: int
@@ -13918,7 +13922,11 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<br><li/> dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否<br><br><li/> 每次请求的Filters的上限为10，Filter.Values的上限为100。
+        """dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
+
+- 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
         """
         return self._Filters
@@ -23234,11 +23242,11 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 仪表盘订阅id。
+        :param _Id: 仪表盘订阅id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :type Id: int
-        :param _DashboardId: 仪表盘id。
+        :param _DashboardId: 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
         :type DashboardId: str
-        :param _Name: 仪表盘订阅名称。
+        :param _Name: 仪表盘订阅名称。最大支持128个字符，且不支持'|'字符。
         :type Name: str
         :param _Cron: 订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。
         :type Cron: str
@@ -23253,7 +23261,7 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """仪表盘订阅id。
+        """仪表盘订阅id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :rtype: int
         """
         return self._Id
@@ -23264,7 +23272,7 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
-        """仪表盘id。
+        """仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
         :rtype: str
         """
         return self._DashboardId
@@ -23275,7 +23283,7 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """仪表盘订阅名称。
+        """仪表盘订阅名称。最大支持128个字符，且不支持'|'字符。
         :rtype: str
         """
         return self._Name
@@ -28236,13 +28244,13 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DashboardId: 仪表盘id。
+        :param _DashboardId: 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
         :type DashboardId: str
         :param _SubscribeData: 仪表盘订阅数据。
         :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
-        :param _Id: 仪表盘订阅Id。
+        :param _Id: 仪表盘订阅Id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :type Id: int
-        :param _Name: 仪表盘订阅名称。
+        :param _Name: 仪表盘订阅名称。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Name。
         :type Name: str
         """
         self._DashboardId = None
@@ -28252,7 +28260,7 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
-        """仪表盘id。
+        """仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
         :rtype: str
         """
         return self._DashboardId
@@ -28274,7 +28282,7 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """仪表盘订阅Id。
+        """仪表盘订阅Id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :rtype: int
         """
         return self._Id
@@ -28285,7 +28293,7 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """仪表盘订阅名称。
+        """仪表盘订阅名称。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Name。
         :rtype: str
         """
         return self._Name
