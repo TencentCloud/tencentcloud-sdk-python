@@ -15606,6 +15606,8 @@ class CreateTaskNewRequest(AbstractModel):
         :type TaskName: str
         :param _TaskType: 26离线同步，30Python，31PySpark，32DLC，33Impala，34Hive SQL，35Shell，36Spark SQL，39Spark，40CDW PG，92MapReduce
         :type TaskType: int
+        :param _Content: （必填参数）指定脚本内容，base64编码
+        :type Content: str
         :param _TaskExt: 扩展属性
         :type TaskExt: list of TaskExtInfo
         :param _ProductName: 产品名称
@@ -15618,8 +15620,6 @@ class CreateTaskNewRequest(AbstractModel):
         :type TopCoordinate: float
         :param _TaskFolderId: 工作流目录ID
         :type TaskFolderId: str
-        :param _Content: （必填参数）指定脚本内容，base64编码
-        :type Content: str
         :param _CodeTemplateId: 代码模板ID
         :type CodeTemplateId: str
         """
@@ -15627,13 +15627,13 @@ class CreateTaskNewRequest(AbstractModel):
         self._WorkflowId = None
         self._TaskName = None
         self._TaskType = None
+        self._Content = None
         self._TaskExt = None
         self._ProductName = None
         self._InstanceInitStrategy = None
         self._LeftCoordinate = None
         self._TopCoordinate = None
         self._TaskFolderId = None
-        self._Content = None
         self._CodeTemplateId = None
 
     @property
@@ -15679,6 +15679,17 @@ class CreateTaskNewRequest(AbstractModel):
     @TaskType.setter
     def TaskType(self, TaskType):
         self._TaskType = TaskType
+
+    @property
+    def Content(self):
+        """（必填参数）指定脚本内容，base64编码
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
     @property
     def TaskExt(self):
@@ -15747,17 +15758,6 @@ class CreateTaskNewRequest(AbstractModel):
         self._TaskFolderId = TaskFolderId
 
     @property
-    def Content(self):
-        """（必填参数）指定脚本内容，base64编码
-        :rtype: str
-        """
-        return self._Content
-
-    @Content.setter
-    def Content(self, Content):
-        self._Content = Content
-
-    @property
     def CodeTemplateId(self):
         """代码模板ID
         :rtype: str
@@ -15774,6 +15774,7 @@ class CreateTaskNewRequest(AbstractModel):
         self._WorkflowId = params.get("WorkflowId")
         self._TaskName = params.get("TaskName")
         self._TaskType = params.get("TaskType")
+        self._Content = params.get("Content")
         if params.get("TaskExt") is not None:
             self._TaskExt = []
             for item in params.get("TaskExt"):
@@ -15785,7 +15786,6 @@ class CreateTaskNewRequest(AbstractModel):
         self._LeftCoordinate = params.get("LeftCoordinate")
         self._TopCoordinate = params.get("TopCoordinate")
         self._TaskFolderId = params.get("TaskFolderId")
-        self._Content = params.get("Content")
         self._CodeTemplateId = params.get("CodeTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

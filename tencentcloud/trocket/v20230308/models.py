@@ -264,6 +264,11 @@ class ConsumeGroupItem(AbstractModel):
         :param _FullNamespaceV4: 4.x的完整命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullNamespaceV4: str
+        :param _SubscribeTopicNum: 订阅的主题个数
+        :type SubscribeTopicNum: int
+        :param _CreateTime: 1753153590
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self._InstanceId = None
         self._ConsumerGroup = None
@@ -275,6 +280,8 @@ class ConsumeGroupItem(AbstractModel):
         self._NamespaceV4 = None
         self._ConsumerGroupV4 = None
         self._FullNamespaceV4 = None
+        self._SubscribeTopicNum = None
+        self._CreateTime = None
 
     @property
     def InstanceId(self):
@@ -391,6 +398,29 @@ class ConsumeGroupItem(AbstractModel):
     def FullNamespaceV4(self, FullNamespaceV4):
         self._FullNamespaceV4 = FullNamespaceV4
 
+    @property
+    def SubscribeTopicNum(self):
+        """订阅的主题个数
+        :rtype: int
+        """
+        return self._SubscribeTopicNum
+
+    @SubscribeTopicNum.setter
+    def SubscribeTopicNum(self, SubscribeTopicNum):
+        self._SubscribeTopicNum = SubscribeTopicNum
+
+    @property
+    def CreateTime(self):
+        """1753153590
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -403,6 +433,8 @@ class ConsumeGroupItem(AbstractModel):
         self._NamespaceV4 = params.get("NamespaceV4")
         self._ConsumerGroupV4 = params.get("ConsumerGroupV4")
         self._FullNamespaceV4 = params.get("FullNamespaceV4")
+        self._SubscribeTopicNum = params.get("SubscribeTopicNum")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3139,12 +3171,22 @@ class DescribeConsumerGroupListRequest(AbstractModel):
         :type Limit: int
         :param _FromTopic: 查询指定主题下的消费组
         :type FromTopic: str
+        :param _SortedBy: 按照指定字段排序，枚举值如下：
+- subscribeNum：订阅 Topic 个数
+        :type SortedBy: str
+        :param _SortOrder: 按升序或降序排列，枚举值如下：
+
+- asc：升序
+- desc：降序
+        :type SortOrder: str
         """
         self._InstanceId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._FromTopic = None
+        self._SortedBy = None
+        self._SortOrder = None
 
     @property
     def InstanceId(self):
@@ -3201,6 +3243,32 @@ class DescribeConsumerGroupListRequest(AbstractModel):
     def FromTopic(self, FromTopic):
         self._FromTopic = FromTopic
 
+    @property
+    def SortedBy(self):
+        """按照指定字段排序，枚举值如下：
+- subscribeNum：订阅 Topic 个数
+        :rtype: str
+        """
+        return self._SortedBy
+
+    @SortedBy.setter
+    def SortedBy(self, SortedBy):
+        self._SortedBy = SortedBy
+
+    @property
+    def SortOrder(self):
+        """按升序或降序排列，枚举值如下：
+
+- asc：升序
+- desc：降序
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3213,6 +3281,8 @@ class DescribeConsumerGroupListRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._FromTopic = params.get("FromTopic")
+        self._SortedBy = params.get("SortedBy")
+        self._SortOrder = params.get("SortOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

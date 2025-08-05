@@ -7748,7 +7748,8 @@ class CreateIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Rule: 索引规则
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
@@ -7772,7 +7773,8 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -8119,7 +8121,9 @@ class CreateLogsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetName: 日志集名字，不能重名
+        :param _LogsetName: 日志集名字。
+
+- 最大支持255个字符。不支持`|`字符。
         :type LogsetName: str
         :param _Tags: 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
         :type Tags: list of Tag
@@ -8132,7 +8136,9 @@ class CreateLogsetRequest(AbstractModel):
 
     @property
     def LogsetName(self):
-        """日志集名字，不能重名
+        """日志集名字。
+
+- 最大支持255个字符。不支持`|`字符。
         :rtype: str
         """
         return self._LogsetName
@@ -11549,14 +11555,16 @@ class DeleteIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -11692,14 +11700,14 @@ class DeleteLogsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
         """
         self._LogsetId = None
 
     @property
     def LogsetId(self):
-        """日志集ID
+        """日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -14579,14 +14587,16 @@ class DescribeIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -14615,14 +14625,15 @@ class DescribeIndexResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id
         :type TopicId: str
-        :param _Status: 是否生效
+        :param _Status: 索引状态。true：开启状态，false：关闭状态
+开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
         :type Status: bool
         :param _Rule: 索引配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
-        :param _ModifyTime: 索引修改时间，初始值为索引创建时间。
+        :param _ModifyTime: 索引修改时间，初始值为索引创建时间。格式 `YYYY-MM-DD HH:MM:SS`
         :type ModifyTime: str
         :param _IncludeInternalFields: 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
 * false:不包含
@@ -14646,7 +14657,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id
         :rtype: str
         """
         return self._TopicId
@@ -14657,7 +14668,8 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def Status(self):
-        """是否生效
+        """索引状态。true：开启状态，false：关闭状态
+开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
         :rtype: bool
         """
         return self._Status
@@ -14680,7 +14692,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """索引修改时间，初始值为索引创建时间。
+        """索引修改时间，初始值为索引创建时间。格式 `YYYY-MM-DD HH:MM:SS`
         :rtype: str
         """
         return self._ModifyTime
@@ -15451,11 +15463,12 @@ class DescribeLogsetsRequest(AbstractModel):
 - 按照【日志集名称】进行过滤。
 - 类型：String
 - 必选：否
-
+- 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集名称。
 logsetId
 - 按照【日志集ID】进行过滤。
 - 类型：String
 - 必选：否
+- 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 
 tagKey
 - 按照【标签键】进行过滤。
@@ -15484,11 +15497,12 @@ tag:tagKey
 - 按照【日志集名称】进行过滤。
 - 类型：String
 - 必选：否
-
+- 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集名称。
 logsetId
 - 按照【日志集ID】进行过滤。
 - 类型：String
 - 必选：否
+- 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 
 tagKey
 - 按照【标签键】进行过滤。
@@ -20413,7 +20427,7 @@ class LogsetInfo(AbstractModel):
         :type LogsetId: str
         :param _LogsetName: 日志集名称
         :type LogsetName: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间。格式 `YYYY-MM-DD HH:MM:SS`
         :type CreateTime: str
         :param _AssumerName: 云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
         :type AssumerName: str
@@ -20456,7 +20470,7 @@ class LogsetInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间。格式 `YYYY-MM-DD HH:MM:SS`
         :rtype: str
         """
         return self._CreateTime
@@ -23987,9 +24001,9 @@ class ModifyLogsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _LogsetName: 日志集名称
+        :param _LogsetName: 日志集名字。- 最大支持255个字符。不支持`|`字符。
         :type LogsetName: str
         :param _Tags: 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
         :type Tags: list of Tag
@@ -24000,7 +24014,7 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        """日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -24011,7 +24025,7 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def LogsetName(self):
-        """日志集名称
+        """日志集名字。- 最大支持255个字符。不支持`|`字符。
         :rtype: str
         """
         return self._LogsetName

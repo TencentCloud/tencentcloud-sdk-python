@@ -28467,8 +28467,9 @@ class DescribeLicenseUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
-        :param _LicenseType: License 类型，默认为 DRM 。目前支持的 License 类型包括：
-<li> DRM: DRM 加密播放 License</li>
+        :param _LicenseType: License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
+<li> CommercialDRMLicense: 商业级 DRM License</li>
+<li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
         :type LicenseType: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
@@ -28502,8 +28503,9 @@ class DescribeLicenseUsageDataRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        """License 类型，默认为 DRM 。目前支持的 License 类型包括：
-<li> DRM: DRM 加密播放 License</li>
+        """License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
+<li> CommercialDRMLicense: 商业级 DRM License</li>
+<li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
         :rtype: str
         """
         return self._LicenseType
@@ -28927,6 +28929,8 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
+<li>JITEncryption: 即时加密</li>
+
         :type Type: str
         """
         self._StartTime = None
@@ -28993,6 +28997,8 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
+<li>JITEncryption: 即时加密</li>
+
         :rtype: str
         """
         return self._Type
@@ -70680,6 +70686,7 @@ class TaskStatData(AbstractModel):
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
+<li>JITEncryption: 即时加密</li>
         :type TaskType: str
         :param _Summary: 任务数统计数据概览，用量单位为秒。
         :type Summary: list of TaskStatDataItem
@@ -70772,6 +70779,7 @@ class TaskStatData(AbstractModel):
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
+<li>JITEncryption: 即时加密</li>
         :rtype: str
         """
         return self._TaskType

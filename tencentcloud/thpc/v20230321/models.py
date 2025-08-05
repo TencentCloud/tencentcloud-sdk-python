@@ -573,6 +573,146 @@ class AddQueueResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Application(AbstractModel):
+    """任务的应用环境配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Commands: 待执行脚本命令。
+        :type Commands: list of CommandItem
+        :param _StorageMounts: 存储目录挂载配置。
+        :type StorageMounts: list of StorageMount
+        :param _EnvVars: 用户自定义环境变量。
+        :type EnvVars: list of EnvVar
+        :param _Docker: 容器配置信息。
+        :type Docker: :class:`tencentcloud.thpc.v20230321.models.Docker`
+        :param _OutputRedirect: 无
+        :type OutputRedirect: :class:`tencentcloud.thpc.v20230321.models.OutputRedirect`
+        :param _JobType: 表示所选训练框架，支持可选参数
+ 
+- PyTorch：表示提交PyTorch训练作业
+- Custom：表示用户自定义作业
+
+默认参数为：Custom
+        :type JobType: str
+        """
+        self._Commands = None
+        self._StorageMounts = None
+        self._EnvVars = None
+        self._Docker = None
+        self._OutputRedirect = None
+        self._JobType = None
+
+    @property
+    def Commands(self):
+        """待执行脚本命令。
+        :rtype: list of CommandItem
+        """
+        return self._Commands
+
+    @Commands.setter
+    def Commands(self, Commands):
+        self._Commands = Commands
+
+    @property
+    def StorageMounts(self):
+        """存储目录挂载配置。
+        :rtype: list of StorageMount
+        """
+        return self._StorageMounts
+
+    @StorageMounts.setter
+    def StorageMounts(self, StorageMounts):
+        self._StorageMounts = StorageMounts
+
+    @property
+    def EnvVars(self):
+        """用户自定义环境变量。
+        :rtype: list of EnvVar
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+    @property
+    def Docker(self):
+        """容器配置信息。
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.Docker`
+        """
+        return self._Docker
+
+    @Docker.setter
+    def Docker(self, Docker):
+        self._Docker = Docker
+
+    @property
+    def OutputRedirect(self):
+        """无
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.OutputRedirect`
+        """
+        return self._OutputRedirect
+
+    @OutputRedirect.setter
+    def OutputRedirect(self, OutputRedirect):
+        self._OutputRedirect = OutputRedirect
+
+    @property
+    def JobType(self):
+        """表示所选训练框架，支持可选参数
+ 
+- PyTorch：表示提交PyTorch训练作业
+- Custom：表示用户自定义作业
+
+默认参数为：Custom
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+
+    def _deserialize(self, params):
+        if params.get("Commands") is not None:
+            self._Commands = []
+            for item in params.get("Commands"):
+                obj = CommandItem()
+                obj._deserialize(item)
+                self._Commands.append(obj)
+        if params.get("StorageMounts") is not None:
+            self._StorageMounts = []
+            for item in params.get("StorageMounts"):
+                obj = StorageMount()
+                obj._deserialize(item)
+                self._StorageMounts.append(obj)
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        if params.get("Docker") is not None:
+            self._Docker = Docker()
+            self._Docker._deserialize(params.get("Docker"))
+        if params.get("OutputRedirect") is not None:
+            self._OutputRedirect = OutputRedirect()
+            self._OutputRedirect._deserialize(params.get("OutputRedirect"))
+        self._JobType = params.get("JobType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttachNodesRequest(AbstractModel):
     """AttachNodes请求参数结构体
 
@@ -1374,6 +1514,42 @@ class ClusterOverview(AbstractModel):
         self._AutoScalingType = params.get("AutoScalingType")
         self._VpcId = params.get("VpcId")
         self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommandItem(AbstractModel):
+    """任务执行命令脚本。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Command: 脚本命令
+        :type Command: str
+        """
+        self._Command = None
+
+    @property
+    def Command(self):
+        """脚本命令
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+
+    def _deserialize(self, params):
+        self._Command = params.get("Command")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2637,6 +2813,70 @@ class DeleteClusterStorageOptionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteJobRequest(AbstractModel):
+    """DeleteJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业任务ID
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        """作业任务ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteJobResponse(AbstractModel):
+    """DeleteJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteNodesRequest(AbstractModel):
     """DeleteNodes请求参数结构体
 
@@ -3381,6 +3621,300 @@ class DescribeInitNodeScriptsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeJobSubmitInfoRequest(AbstractModel):
+    """DescribeJobSubmitInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业ID
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        """作业ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobSubmitInfoResponse(AbstractModel):
+    """DescribeJobSubmitInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _QueueName: 队列名称
+        :type QueueName: str
+        :param _Job: 作业信息
+        :type Job: :class:`tencentcloud.thpc.v20230321.models.Job`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterId = None
+        self._QueueName = None
+        self._Job = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def QueueName(self):
+        """队列名称
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def Job(self):
+        """作业信息
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.Job`
+        """
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._QueueName = params.get("QueueName")
+        if params.get("Job") is not None:
+            self._Job = Job()
+            self._Job._deserialize(params.get("Job"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJobsOverviewRequest(AbstractModel):
+    """DescribeJobsOverview请求参数结构体
+
+    """
+
+
+class DescribeJobsOverviewResponse(AbstractModel):
+    """DescribeJobsOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJobsRequest(AbstractModel):
+    """DescribeJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobIds: 作业任务ID列表
+        :type JobIds: list of str
+        :param _Filters: 过滤列表
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，默认为0。 关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+        :type Limit: int
+        """
+        self._JobIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def JobIds(self):
+        """作业任务ID列表
+        :rtype: list of str
+        """
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
+
+    @property
+    def Filters(self):
+        """过滤列表
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。 关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。	
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._JobIds = params.get("JobIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobsResponse(AbstractModel):
+    """DescribeJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobSet: 作业任务概览列表
+        :type JobSet: list of JobView
+        :param _TotalCount: 符合条件的作业任务数量。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def JobSet(self):
+        """作业任务概览列表
+        :rtype: list of JobView
+        """
+        return self._JobSet
+
+    @JobSet.setter
+    def JobSet(self, JobSet):
+        self._JobSet = JobSet
+
+    @property
+    def TotalCount(self):
+        """符合条件的作业任务数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("JobSet") is not None:
+            self._JobSet = []
+            for item in params.get("JobSet"):
+                obj = JobView()
+                obj._deserialize(item)
+                self._JobSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNodesRequest(AbstractModel):
     """DescribeNodes请求参数结构体
 
@@ -3921,6 +4455,57 @@ class DetachNodesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Docker(AbstractModel):
+    """容器配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 容器镜像地址
+        :type Image: str
+        :param _RunArgs: 容器运行参数
+        :type RunArgs: list of str
+        """
+        self._Image = None
+        self._RunArgs = None
+
+    @property
+    def Image(self):
+        """容器镜像地址
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def RunArgs(self):
+        """容器运行参数
+        :rtype: list of str
+        """
+        return self._RunArgs
+
+    @RunArgs.setter
+    def RunArgs(self, RunArgs):
+        self._RunArgs = RunArgs
+
+
+    def _deserialize(self, params):
+        self._Image = params.get("Image")
+        self._RunArgs = params.get("RunArgs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnhancedService(AbstractModel):
     """描述了实例的增强服务启用情况与其设置，如云安全，腾讯云可观测平台等实例 Agent
 
@@ -3983,6 +4568,57 @@ class EnhancedService(AbstractModel):
         if params.get("AutomationService") is not None:
             self._AutomationService = RunAutomationServiceEnabled()
             self._AutomationService._deserialize(params.get("AutomationService"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvVar(AbstractModel):
+    """用户自定义环境变量。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: ENV
+        :type Name: str
+        :param _Value: test
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        """ENV
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """test
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4708,6 +5344,287 @@ BANDWIDTH_PACKAGE：带宽包用户
     def _deserialize(self, params):
         self._InternetChargeType = params.get("InternetChargeType")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Job(AbstractModel):
+    """提交Job作业信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: 任务配置信息。
+        :type Tasks: list of Task
+        :param _JobName: 作业名称。
+        :type JobName: str
+        :param _JobDescription: 作业描述。
+        :type JobDescription: str
+        :param _Priority: 作业优先级，数值越大，优先级越高，数值范围1～100。
+        :type Priority: int
+        :param _TaskDependencies: 描述任务的依赖关系，DAG有向无环图。
+        :type TaskDependencies: list of TaskDependence
+        """
+        self._Tasks = None
+        self._JobName = None
+        self._JobDescription = None
+        self._Priority = None
+        self._TaskDependencies = None
+
+    @property
+    def Tasks(self):
+        """任务配置信息。
+        :rtype: list of Task
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def JobName(self):
+        """作业名称。
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def JobDescription(self):
+        """作业描述。
+        :rtype: str
+        """
+        return self._JobDescription
+
+    @JobDescription.setter
+    def JobDescription(self, JobDescription):
+        self._JobDescription = JobDescription
+
+    @property
+    def Priority(self):
+        """作业优先级，数值越大，优先级越高，数值范围1～100。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def TaskDependencies(self):
+        """描述任务的依赖关系，DAG有向无环图。
+        :rtype: list of TaskDependence
+        """
+        return self._TaskDependencies
+
+    @TaskDependencies.setter
+    def TaskDependencies(self, TaskDependencies):
+        self._TaskDependencies = TaskDependencies
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = Task()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._JobName = params.get("JobName")
+        self._JobDescription = params.get("JobDescription")
+        self._Priority = params.get("Priority")
+        if params.get("TaskDependencies") is not None:
+            self._TaskDependencies = []
+            for item in params.get("TaskDependencies"):
+                obj = TaskDependence()
+                obj._deserialize(item)
+                self._TaskDependencies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobView(AbstractModel):
+    """作业概览信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业ID
+        :type JobId: str
+        :param _JobName: 作业名称
+        :type JobName: str
+        :param _JobDescription: 作业描述
+        :type JobDescription: str
+        :param _Priority: 作业优先级
+        :type Priority: int
+        :param _JobState: 作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS, 
+FAILED
+
+        :type JobState: str
+        :param _ClusterId: 作业所属集群ID
+        :type ClusterId: str
+        :param _QueueName: 作业所属队列名称
+        :type QueueName: str
+        :param _OccupyResources: 完成作业任务所需资源
+        :type OccupyResources: str
+        :param _CreateTime: 作业任务创建时间
+        :type CreateTime: str
+        :param _EndTime: 作业任务结束时间
+        :type EndTime: str
+        """
+        self._JobId = None
+        self._JobName = None
+        self._JobDescription = None
+        self._Priority = None
+        self._JobState = None
+        self._ClusterId = None
+        self._QueueName = None
+        self._OccupyResources = None
+        self._CreateTime = None
+        self._EndTime = None
+
+    @property
+    def JobId(self):
+        """作业ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        """作业名称
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def JobDescription(self):
+        """作业描述
+        :rtype: str
+        """
+        return self._JobDescription
+
+    @JobDescription.setter
+    def JobDescription(self, JobDescription):
+        self._JobDescription = JobDescription
+
+    @property
+    def Priority(self):
+        """作业优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def JobState(self):
+        """作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS, 
+FAILED
+
+        :rtype: str
+        """
+        return self._JobState
+
+    @JobState.setter
+    def JobState(self, JobState):
+        self._JobState = JobState
+
+    @property
+    def ClusterId(self):
+        """作业所属集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def QueueName(self):
+        """作业所属队列名称
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def OccupyResources(self):
+        """完成作业任务所需资源
+        :rtype: str
+        """
+        return self._OccupyResources
+
+    @OccupyResources.setter
+    def OccupyResources(self, OccupyResources):
+        self._OccupyResources = OccupyResources
+
+    @property
+    def CreateTime(self):
+        """作业任务创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EndTime(self):
+        """作业任务结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._JobDescription = params.get("JobDescription")
+        self._Priority = params.get("Priority")
+        self._JobState = params.get("JobState")
+        self._ClusterId = params.get("ClusterId")
+        self._QueueName = params.get("QueueName")
+        self._OccupyResources = params.get("OccupyResources")
+        self._CreateTime = params.get("CreateTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5757,6 +6674,57 @@ class NodeScript(AbstractModel):
     def _deserialize(self, params):
         self._ScriptPath = params.get("ScriptPath")
         self._Timeout = params.get("Timeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputRedirect(AbstractModel):
+    """输出重定向配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Driver: 输出driver类型
+        :type Driver: str
+        :param _Options: 重定向配置参数
+        :type Options: list of str
+        """
+        self._Driver = None
+        self._Options = None
+
+    @property
+    def Driver(self):
+        """输出driver类型
+        :rtype: str
+        """
+        return self._Driver
+
+    @Driver.setter
+    def Driver(self, Driver):
+        self._Driver = Driver
+
+    @property
+    def Options(self):
+        """重定向配置参数
+        :rtype: list of str
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+
+    def _deserialize(self, params):
+        self._Driver = params.get("Driver")
+        self._Options = params.get("Options")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7480,6 +8448,72 @@ class SpaceVirtualPrivateCloud(AbstractModel):
         
 
 
+class StorageMount(AbstractModel):
+    """存储目录挂载配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: 挂载源
+        :type Source: str
+        :param _Target: 目标挂载位置
+        :type Target: str
+        :param _StorageType: 挂载的存储类型，目前仅支持：local
+        :type StorageType: str
+        """
+        self._Source = None
+        self._Target = None
+        self._StorageType = None
+
+    @property
+    def Source(self):
+        """挂载源
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        """目标挂载位置
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def StorageType(self):
+        """挂载的存储类型，目前仅支持：local
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._StorageType = params.get("StorageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StorageOption(AbstractModel):
     """描述集群文件系统选项
 
@@ -7640,6 +8674,40 @@ class StorageOptionOverview(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SubmitJobRequest(AbstractModel):
+    """SubmitJob请求参数结构体
+
+    """
+
+
+class SubmitJobResponse(AbstractModel):
+    """SubmitJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class SystemDisk(AbstractModel):
@@ -7812,6 +8880,204 @@ class TagSpecification(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class Task(AbstractModel):
+    """作业任务配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Application: 作业任务的应用环境配置信息。
+        :type Application: :class:`tencentcloud.thpc.v20230321.models.Application`
+        :param _TaskName: 作业任务名称。
+        :type TaskName: str
+        :param _TaskInstanceNum: 作业任务所需的节点数/副本数。
+        :type TaskInstanceNum: int
+        :param _Timeout: 任务超时时间(单位：秒)。
+        :type Timeout: int
+        """
+        self._Application = None
+        self._TaskName = None
+        self._TaskInstanceNum = None
+        self._Timeout = None
+
+    @property
+    def Application(self):
+        """作业任务的应用环境配置信息。
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.Application`
+        """
+        return self._Application
+
+    @Application.setter
+    def Application(self, Application):
+        self._Application = Application
+
+    @property
+    def TaskName(self):
+        """作业任务名称。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskInstanceNum(self):
+        """作业任务所需的节点数/副本数。
+        :rtype: int
+        """
+        return self._TaskInstanceNum
+
+    @TaskInstanceNum.setter
+    def TaskInstanceNum(self, TaskInstanceNum):
+        self._TaskInstanceNum = TaskInstanceNum
+
+    @property
+    def Timeout(self):
+        """任务超时时间(单位：秒)。
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+
+    def _deserialize(self, params):
+        if params.get("Application") is not None:
+            self._Application = Application()
+            self._Application._deserialize(params.get("Application"))
+        self._TaskName = params.get("TaskName")
+        self._TaskInstanceNum = params.get("TaskInstanceNum")
+        self._Timeout = params.get("Timeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskDependence(AbstractModel):
+    """任务的依赖关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTask: 依赖关系的起点任务名称。
+        :type StartTask: str
+        :param _EndTask: 依赖关系的终点任务名称。
+        :type EndTask: str
+        """
+        self._StartTask = None
+        self._EndTask = None
+
+    @property
+    def StartTask(self):
+        """依赖关系的起点任务名称。
+        :rtype: str
+        """
+        return self._StartTask
+
+    @StartTask.setter
+    def StartTask(self, StartTask):
+        self._StartTask = StartTask
+
+    @property
+    def EndTask(self):
+        """依赖关系的终点任务名称。
+        :rtype: str
+        """
+        return self._EndTask
+
+    @EndTask.setter
+    def EndTask(self, EndTask):
+        self._EndTask = EndTask
+
+
+    def _deserialize(self, params):
+        self._StartTask = params.get("StartTask")
+        self._EndTask = params.get("EndTask")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateJobRequest(AbstractModel):
+    """TerminateJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业任务ID
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        """作业任务ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateJobResponse(AbstractModel):
+    """TerminateJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class TerminateWorkspacesRequest(AbstractModel):

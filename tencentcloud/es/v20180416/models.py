@@ -18,6 +18,146 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AutoScaleDiskInfo(AbstractModel):
+    """cvm 自动扩盘参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeType: 节点类型 hotData,warmData
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeType: str
+        :param _ScaleType: 0:百分比扩容;1:绝对值扩容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleType: int
+        :param _Threshold: 触发阈值,单位%,例如80%
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: int
+        :param _Duration: 触发持续时间,单位分钟,例如60
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param _PercentSize: 每次扩容比例,单位%,例如20%
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PercentSize: int
+        :param _FixSize: 绝对值扩容,单位GB,例如100GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixSize: int
+        :param _MaxSize: 扩容上限,单位GB,例如500GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxSize: int
+        """
+        self._NodeType = None
+        self._ScaleType = None
+        self._Threshold = None
+        self._Duration = None
+        self._PercentSize = None
+        self._FixSize = None
+        self._MaxSize = None
+
+    @property
+    def NodeType(self):
+        """节点类型 hotData,warmData
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ScaleType(self):
+        """0:百分比扩容;1:绝对值扩容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScaleType
+
+    @ScaleType.setter
+    def ScaleType(self, ScaleType):
+        self._ScaleType = ScaleType
+
+    @property
+    def Threshold(self):
+        """触发阈值,单位%,例如80%
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def Duration(self):
+        """触发持续时间,单位分钟,例如60
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def PercentSize(self):
+        """每次扩容比例,单位%,例如20%
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PercentSize
+
+    @PercentSize.setter
+    def PercentSize(self, PercentSize):
+        self._PercentSize = PercentSize
+
+    @property
+    def FixSize(self):
+        """绝对值扩容,单位GB,例如100GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FixSize
+
+    @FixSize.setter
+    def FixSize(self, FixSize):
+        self._FixSize = FixSize
+
+    @property
+    def MaxSize(self):
+        """扩容上限,单位GB,例如500GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxSize
+
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._ScaleType = params.get("ScaleType")
+        self._Threshold = params.get("Threshold")
+        self._Duration = params.get("Duration")
+        self._PercentSize = params.get("PercentSize")
+        self._FixSize = params.get("FixSize")
+        self._MaxSize = params.get("MaxSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackingIndexMetaField(AbstractModel):
     """后备索引元数据字段
 
@@ -1508,6 +1648,10 @@ class CreateInstanceRequest(AbstractModel):
         :type EnableScheduleRecoverGroup: bool
         :param _EnableScheduleOperationDuration: 置放群组开启异步任务的可维护时间段
         :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        :param _AutoScaleDiskInfoList: 自动扩盘参数列表
+        :type AutoScaleDiskInfoList: list of AutoScaleDiskInfo
+        :param _EnableKibanaPublicAccess: 是否开启kibana公网访问，不传默认开启
+        :type EnableKibanaPublicAccess: str
         """
         self._Zone = None
         self._EsVersion = None
@@ -1549,6 +1693,8 @@ class CreateInstanceRequest(AbstractModel):
         self._ReadWriteMode = None
         self._EnableScheduleRecoverGroup = None
         self._EnableScheduleOperationDuration = None
+        self._AutoScaleDiskInfoList = None
+        self._EnableKibanaPublicAccess = None
 
     @property
     def Zone(self):
@@ -1998,6 +2144,28 @@ class CreateInstanceRequest(AbstractModel):
     def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
         self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
 
+    @property
+    def AutoScaleDiskInfoList(self):
+        """自动扩盘参数列表
+        :rtype: list of AutoScaleDiskInfo
+        """
+        return self._AutoScaleDiskInfoList
+
+    @AutoScaleDiskInfoList.setter
+    def AutoScaleDiskInfoList(self, AutoScaleDiskInfoList):
+        self._AutoScaleDiskInfoList = AutoScaleDiskInfoList
+
+    @property
+    def EnableKibanaPublicAccess(self):
+        """是否开启kibana公网访问，不传默认开启
+        :rtype: str
+        """
+        return self._EnableKibanaPublicAccess
+
+    @EnableKibanaPublicAccess.setter
+    def EnableKibanaPublicAccess(self, EnableKibanaPublicAccess):
+        self._EnableKibanaPublicAccess = EnableKibanaPublicAccess
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2061,6 +2229,13 @@ class CreateInstanceRequest(AbstractModel):
         if params.get("EnableScheduleOperationDuration") is not None:
             self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
             self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
+        if params.get("AutoScaleDiskInfoList") is not None:
+            self._AutoScaleDiskInfoList = []
+            for item in params.get("AutoScaleDiskInfoList"):
+                obj = AutoScaleDiskInfo()
+                obj._deserialize(item)
+                self._AutoScaleDiskInfoList.append(obj)
+        self._EnableKibanaPublicAccess = params.get("EnableKibanaPublicAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14702,6 +14877,8 @@ class Operation(AbstractModel):
         :param _SubAccountUin: 操作者Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
+        :param _AutoScaleTag: 自动扩容标识：0-非自动，1-自动
+        :type AutoScaleTag: int
         """
         self._Id = None
         self._StartTime = None
@@ -14712,6 +14889,7 @@ class Operation(AbstractModel):
         self._Progress = None
         self._RollbackTag = None
         self._SubAccountUin = None
+        self._AutoScaleTag = None
 
     @property
     def Id(self):
@@ -14813,6 +14991,17 @@ class Operation(AbstractModel):
     def SubAccountUin(self, SubAccountUin):
         self._SubAccountUin = SubAccountUin
 
+    @property
+    def AutoScaleTag(self):
+        """自动扩容标识：0-非自动，1-自动
+        :rtype: int
+        """
+        return self._AutoScaleTag
+
+    @AutoScaleTag.setter
+    def AutoScaleTag(self, AutoScaleTag):
+        self._AutoScaleTag = AutoScaleTag
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -14831,6 +15020,7 @@ class Operation(AbstractModel):
         self._Progress = params.get("Progress")
         self._RollbackTag = params.get("RollbackTag")
         self._SubAccountUin = params.get("SubAccountUin")
+        self._AutoScaleTag = params.get("AutoScaleTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18707,6 +18897,10 @@ CLOSE 关闭
         :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
         :param _EnableDestroyProtection: 开启集群保护：OPEN-开启，CLOSE-关闭
         :type EnableDestroyProtection: str
+        :param _AutoScaleDiskInfoList: 自动扩盘参数
+        :type AutoScaleDiskInfoList: list of AutoScaleDiskInfo
+        :param _AutoScaleDiskDeleteNodeTypeList: 自动扩盘删除参数
+        :type AutoScaleDiskDeleteNodeTypeList: list of str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -18752,6 +18946,8 @@ CLOSE 关闭
         self._EnableScheduleRecoverGroup = None
         self._EnableScheduleOperationDuration = None
         self._EnableDestroyProtection = None
+        self._AutoScaleDiskInfoList = None
+        self._AutoScaleDiskDeleteNodeTypeList = None
 
     @property
     def InstanceId(self):
@@ -19258,6 +19454,28 @@ CLOSE 关闭
     def EnableDestroyProtection(self, EnableDestroyProtection):
         self._EnableDestroyProtection = EnableDestroyProtection
 
+    @property
+    def AutoScaleDiskInfoList(self):
+        """自动扩盘参数
+        :rtype: list of AutoScaleDiskInfo
+        """
+        return self._AutoScaleDiskInfoList
+
+    @AutoScaleDiskInfoList.setter
+    def AutoScaleDiskInfoList(self, AutoScaleDiskInfoList):
+        self._AutoScaleDiskInfoList = AutoScaleDiskInfoList
+
+    @property
+    def AutoScaleDiskDeleteNodeTypeList(self):
+        """自动扩盘删除参数
+        :rtype: list of str
+        """
+        return self._AutoScaleDiskDeleteNodeTypeList
+
+    @AutoScaleDiskDeleteNodeTypeList.setter
+    def AutoScaleDiskDeleteNodeTypeList(self, AutoScaleDiskDeleteNodeTypeList):
+        self._AutoScaleDiskDeleteNodeTypeList = AutoScaleDiskDeleteNodeTypeList
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -19333,6 +19551,13 @@ CLOSE 关闭
             self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
             self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
         self._EnableDestroyProtection = params.get("EnableDestroyProtection")
+        if params.get("AutoScaleDiskInfoList") is not None:
+            self._AutoScaleDiskInfoList = []
+            for item in params.get("AutoScaleDiskInfoList"):
+                obj = AutoScaleDiskInfo()
+                obj._deserialize(item)
+                self._AutoScaleDiskInfoList.append(obj)
+        self._AutoScaleDiskDeleteNodeTypeList = params.get("AutoScaleDiskDeleteNodeTypeList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

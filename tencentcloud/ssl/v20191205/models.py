@@ -14265,6 +14265,14 @@ class DescribeManagerDetailResponse(AbstractModel):
         :type ManagerId: int
         :param _StatusInfo: 审核状态详细信息
         :type StatusInfo: list of ManagerStatusInfo
+        :param _ManagerIdType: 管理员证件类型，SFZ代表身份证，HZ代表护照
+        :type ManagerIdType: str
+        :param _ManagerIdNumber: 管理员证件号码
+        :type ManagerIdNumber: str
+        :param _ContactIdType: 联系人证件类型，SFZ代表身份证，HZ代表护照
+        :type ContactIdType: str
+        :param _ContactIdNumber: 联系人证件号码
+        :type ContactIdNumber: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -14287,6 +14295,10 @@ class DescribeManagerDetailResponse(AbstractModel):
         self._CompanyId = None
         self._ManagerId = None
         self._StatusInfo = None
+        self._ManagerIdType = None
+        self._ManagerIdNumber = None
+        self._ContactIdType = None
+        self._ContactIdNumber = None
         self._RequestId = None
 
     @property
@@ -14505,6 +14517,50 @@ class DescribeManagerDetailResponse(AbstractModel):
         self._StatusInfo = StatusInfo
 
     @property
+    def ManagerIdType(self):
+        """管理员证件类型，SFZ代表身份证，HZ代表护照
+        :rtype: str
+        """
+        return self._ManagerIdType
+
+    @ManagerIdType.setter
+    def ManagerIdType(self, ManagerIdType):
+        self._ManagerIdType = ManagerIdType
+
+    @property
+    def ManagerIdNumber(self):
+        """管理员证件号码
+        :rtype: str
+        """
+        return self._ManagerIdNumber
+
+    @ManagerIdNumber.setter
+    def ManagerIdNumber(self, ManagerIdNumber):
+        self._ManagerIdNumber = ManagerIdNumber
+
+    @property
+    def ContactIdType(self):
+        """联系人证件类型，SFZ代表身份证，HZ代表护照
+        :rtype: str
+        """
+        return self._ContactIdType
+
+    @ContactIdType.setter
+    def ContactIdType(self, ContactIdType):
+        self._ContactIdType = ContactIdType
+
+    @property
+    def ContactIdNumber(self):
+        """联系人证件号码
+        :rtype: str
+        """
+        return self._ContactIdNumber
+
+    @ContactIdNumber.setter
+    def ContactIdNumber(self, ContactIdNumber):
+        self._ContactIdNumber = ContactIdNumber
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -14543,6 +14599,10 @@ class DescribeManagerDetailResponse(AbstractModel):
                 obj = ManagerStatusInfo()
                 obj._deserialize(item)
                 self._StatusInfo.append(obj)
+        self._ManagerIdType = params.get("ManagerIdType")
+        self._ManagerIdNumber = params.get("ManagerIdNumber")
+        self._ContactIdType = params.get("ContactIdType")
+        self._ContactIdNumber = params.get("ContactIdNumber")
         self._RequestId = params.get("RequestId")
 
 

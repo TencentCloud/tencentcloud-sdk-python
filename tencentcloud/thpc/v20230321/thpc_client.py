@@ -214,6 +214,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteJob(self, request):
+        """本接口 (DeleteJob) 用于删除一个作业任务。
+
+        :param request: Request instance for DeleteJob.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.DeleteJobRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.DeleteJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteNodes(self, request):
         """本接口(DeleteNodes)用于删除指定集群中一个或者多个计算节点或者登录节点。
 
@@ -369,6 +392,75 @@ class ThpcClient(AbstractClient):
             body = self.call("DescribeInitNodeScripts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInitNodeScriptsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobSubmitInfo(self, request):
+        """本接口用于查询作业的提交信息。
+
+        :param request: Request instance for DescribeJobSubmitInfo.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeJobSubmitInfoRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.DescribeJobSubmitInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobSubmitInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobSubmitInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobs(self, request):
+        """本接口 (DescribeJobs) 用于查询作业任务列表信息。
+
+        :param request: Request instance for DescribeJobs.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeJobsRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.DescribeJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobsOverview(self, request):
+        """本接口 (DescribeJobs) 用于查询作业任务列表信息。
+
+        :param request: Request instance for DescribeJobsOverview.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeJobsOverviewRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.DescribeJobsOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobsOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobsOverviewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -553,6 +645,52 @@ class ThpcClient(AbstractClient):
             body = self.call("SetAutoScalingConfiguration", params, headers=headers)
             response = json.loads(body)
             model = models.SetAutoScalingConfigurationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitJob(self, request):
+        """本接口 (SubmitJob) 用于提交一个作业任务。
+
+        :param request: Request instance for SubmitJob.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.SubmitJobRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.SubmitJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateJob(self, request):
+        """本接口 (TerminateJob) 用于终止一个作业任务。
+
+        :param request: Request instance for TerminateJob.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.TerminateJobRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.TerminateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
