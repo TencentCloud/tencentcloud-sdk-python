@@ -9686,7 +9686,9 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
         :param _Filters: 查询的关键字段，支持Key-Values查询。可选键值如下：
 <ul>
   <li>Key:**"Status"**，Values: **["IsVerified"]**, 查询已实名的员工</li>
+  <li>Key:**"Status"**，Values: **["NotVerified"]**, 查询未实名的员工</li>
   <li>Key:**"Status"**，Values: **["QuiteJob"]**, 查询离职员工</li>
+  <li>Key:**"ExcludeQuiteJob"**，Values: **["true"]**, 查询排除离职员工</li>
   <li>Key:**"StaffOpenId"**，Values: **["OpenId1","OpenId2",...]**, 根据第三方系统用户OpenId查询员工</li>
 </ul>
 注: `同名字的Key的过滤条件会冲突,  只能填写一个`
@@ -9737,7 +9739,9 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
         """查询的关键字段，支持Key-Values查询。可选键值如下：
 <ul>
   <li>Key:**"Status"**，Values: **["IsVerified"]**, 查询已实名的员工</li>
+  <li>Key:**"Status"**，Values: **["NotVerified"]**, 查询未实名的员工</li>
   <li>Key:**"Status"**，Values: **["QuiteJob"]**, 查询离职员工</li>
+  <li>Key:**"ExcludeQuiteJob"**，Values: **["true"]**, 查询排除离职员工</li>
   <li>Key:**"StaffOpenId"**，Values: **["OpenId1","OpenId2",...]**, 根据第三方系统用户OpenId查询员工</li>
 </ul>
 注: `同名字的Key的过滤条件会冲突,  只能填写一个`

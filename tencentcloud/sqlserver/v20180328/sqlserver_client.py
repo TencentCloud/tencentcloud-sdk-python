@@ -1683,7 +1683,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeProductConfig(self, request):
-        """本接口 (DescribeProductConfig) 用于查询售卖规格配置。
+        """本接口（DescribeProductConfig）用于查询售卖规格配置。
 
         :param request: Request instance for DescribeProductConfig.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeProductConfigRequest`
@@ -2120,7 +2120,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """本接口 (DescribeZones) 用于查询当前可售卖的可用区信息。
+        """本接口（DescribeZones）用于查询当前可售卖的可用区信息。
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeZonesRequest`

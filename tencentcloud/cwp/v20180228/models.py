@@ -22227,9 +22227,9 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 帐号统计列表记录总数。
+        :param _TotalCount: 账号统计列表记录总数。
         :type TotalCount: int
-        :param _AccountStatistics: 帐号统计列表。
+        :param _AccountStatistics: 账号统计列表。
         :type AccountStatistics: list of AccountStatistics
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22240,7 +22240,7 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """帐号统计列表记录总数。
+        """账号统计列表记录总数。
         :rtype: int
         """
         return self._TotalCount
@@ -22251,7 +22251,7 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def AccountStatistics(self):
-        """帐号统计列表。
+        """账号统计列表。
         :rtype: list of AccountStatistics
         """
         return self._AccountStatistics
@@ -39086,9 +39086,9 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 帐号变更历史列表记录总数。
+        :param _TotalCount: 账号变更历史列表记录总数。
         :type TotalCount: int
-        :param _HistoryAccounts: 帐号变更历史数据数组。
+        :param _HistoryAccounts: 账号变更历史数据数组。
         :type HistoryAccounts: list of HistoryAccount
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39099,7 +39099,7 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """帐号变更历史列表记录总数。
+        """账号变更历史列表记录总数。
         :rtype: int
         """
         return self._TotalCount
@@ -39110,7 +39110,7 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def HistoryAccounts(self):
-        """帐号变更历史数据数组。
+        """账号变更历史数据数组。
         :rtype: list of HistoryAccount
         """
         return self._HistoryAccounts

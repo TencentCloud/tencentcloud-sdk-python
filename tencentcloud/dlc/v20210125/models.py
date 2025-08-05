@@ -17931,12 +17931,15 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
         :type Used: int
         :param _Available: 剩余集群规格
         :type Available: int
+        :param _AvailPercent: 剩余集群规格百分比
+        :type AvailPercent: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
         self._Used = None
         self._Available = None
+        self._AvailPercent = None
         self._RequestId = None
 
     @property
@@ -17973,6 +17976,17 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
         self._Available = Available
 
     @property
+    def AvailPercent(self):
+        """剩余集群规格百分比
+        :rtype: int
+        """
+        return self._AvailPercent
+
+    @AvailPercent.setter
+    def AvailPercent(self, AvailPercent):
+        self._AvailPercent = AvailPercent
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -17988,6 +18002,7 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
         self._Total = params.get("Total")
         self._Used = params.get("Used")
         self._Available = params.get("Available")
+        self._AvailPercent = params.get("AvailPercent")
         self._RequestId = params.get("RequestId")
 
 
@@ -27856,8 +27871,6 @@ class ListTaskJobLogDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 列表返回的Id
-        :type TaskId: str
         :param _StartTime: 开始运行时间，unix时间戳（毫秒）
         :type StartTime: int
         :param _EndTime: 结束运行时间，unix时间戳（毫秒）
@@ -27866,32 +27879,29 @@ class ListTaskJobLogDetailRequest(AbstractModel):
         :type Limit: int
         :param _Context: 下一次分页参数，第一次传空
         :type Context: str
+        :param _TaskId: 列表返回的Id
+        :type TaskId: str
         :param _Asc: 最近1000条日志是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
         :type Asc: bool
         :param _Filters: 预览日志的通用过滤条件
         :type Filters: list of Filter
         :param _BatchId: SparkSQL任务唯一ID
         :type BatchId: str
+        :param _DataEngineId: 引擎id
+        :type DataEngineId: str
+        :param _ResourceGroupId: 资源组id
+        :type ResourceGroupId: str
         """
-        self._TaskId = None
         self._StartTime = None
         self._EndTime = None
         self._Limit = None
         self._Context = None
+        self._TaskId = None
         self._Asc = None
         self._Filters = None
         self._BatchId = None
-
-    @property
-    def TaskId(self):
-        """列表返回的Id
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
+        self._DataEngineId = None
+        self._ResourceGroupId = None
 
     @property
     def StartTime(self):
@@ -27938,6 +27948,17 @@ class ListTaskJobLogDetailRequest(AbstractModel):
         self._Context = Context
 
     @property
+    def TaskId(self):
+        """列表返回的Id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
     def Asc(self):
         """最近1000条日志是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
         :rtype: bool
@@ -27970,13 +27991,35 @@ class ListTaskJobLogDetailRequest(AbstractModel):
     def BatchId(self, BatchId):
         self._BatchId = BatchId
 
+    @property
+    def DataEngineId(self):
+        """引擎id
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def ResourceGroupId(self):
+        """资源组id
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
 
     def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Limit = params.get("Limit")
         self._Context = params.get("Context")
+        self._TaskId = params.get("TaskId")
         self._Asc = params.get("Asc")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -27985,6 +28028,8 @@ class ListTaskJobLogDetailRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._BatchId = params.get("BatchId")
+        self._DataEngineId = params.get("DataEngineId")
+        self._ResourceGroupId = params.get("ResourceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35735,6 +35780,14 @@ class StandardEngineResourceGroupInfo(AbstractModel):
         :param _SparkMinSize: Spark类型资源组资源最小值
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkMinSize: int
+        :param _PublicDomain: 自定义镜像容器镜像服务domain 名称
+        :type PublicDomain: str
+        :param _RegistryId: 自定义镜像容器镜像服务tcr实例id
+        :type RegistryId: str
+        :param _RegionName: 容器镜像服务tcr所在地域
+        :type RegionName: str
+        :param _LaunchTime: 资源组启动耗时
+        :type LaunchTime: str
         """
         self._EngineResourceGroupId = None
         self._EngineResourceGroupName = None
@@ -35771,6 +35824,10 @@ class StandardEngineResourceGroupInfo(AbstractModel):
         self._SparkSpecMode = None
         self._SparkSize = None
         self._SparkMinSize = None
+        self._PublicDomain = None
+        self._RegistryId = None
+        self._RegionName = None
+        self._LaunchTime = None
 
     @property
     def EngineResourceGroupId(self):
@@ -36177,6 +36234,50 @@ class StandardEngineResourceGroupInfo(AbstractModel):
     def SparkMinSize(self, SparkMinSize):
         self._SparkMinSize = SparkMinSize
 
+    @property
+    def PublicDomain(self):
+        """自定义镜像容器镜像服务domain 名称
+        :rtype: str
+        """
+        return self._PublicDomain
+
+    @PublicDomain.setter
+    def PublicDomain(self, PublicDomain):
+        self._PublicDomain = PublicDomain
+
+    @property
+    def RegistryId(self):
+        """自定义镜像容器镜像服务tcr实例id
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RegionName(self):
+        """容器镜像服务tcr所在地域
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def LaunchTime(self):
+        """资源组启动耗时
+        :rtype: str
+        """
+        return self._LaunchTime
+
+    @LaunchTime.setter
+    def LaunchTime(self, LaunchTime):
+        self._LaunchTime = LaunchTime
+
 
     def _deserialize(self, params):
         self._EngineResourceGroupId = params.get("EngineResourceGroupId")
@@ -36214,6 +36315,10 @@ class StandardEngineResourceGroupInfo(AbstractModel):
         self._SparkSpecMode = params.get("SparkSpecMode")
         self._SparkSize = params.get("SparkSize")
         self._SparkMinSize = params.get("SparkMinSize")
+        self._PublicDomain = params.get("PublicDomain")
+        self._RegistryId = params.get("RegistryId")
+        self._RegionName = params.get("RegionName")
+        self._LaunchTime = params.get("LaunchTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

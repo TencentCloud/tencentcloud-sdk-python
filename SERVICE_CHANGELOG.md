@@ -1,45 +1,66 @@
-# Release 3.0.1437
+# Release 3.0.1438
 
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
+## 应用性能监控(apm) 版本：2021-06-22
 
-### 第 131 次发布
+### 第 43 次发布
 
-发布时间：2025-08-04 01:37:59
+发布时间：2025-08-05 01:05:36
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [DescribeDataEngines](https://cloud.tencent.com/document/api/1342/86308)
-
-	* 新增入参：ListHasListener
-
-* [UpdateDataEngine](https://cloud.tencent.com/document/api/1342/99271)
-
-	* 新增入参：ScheduleElasticityConf
-
-
-新增数据结构：
-
-* [ElasticPlan](https://cloud.tencent.com/document/api/1342/53778#ElasticPlan)
-* [ScheduleElasticityConf](https://cloud.tencent.com/document/api/1342/53778#ScheduleElasticityConf)
 
 修改数据结构：
 
-* [DataEngineInfo](https://cloud.tencent.com/document/api/1342/53778#DataEngineInfo)
+* [APMKV](https://cloud.tencent.com/document/api/1463/64927#APMKV)
 
-	* 新增成员：ScheduleElasticityConf
+	* <font color="#dd0000">**修改成员**：</font>Key, Value
+
+* [ApmField](https://cloud.tencent.com/document/api/1463/64927#ApmField)
+
+	* 新增成员：NameCN
 
 
 
 
-## 腾讯云智能体开发平台(lke) 版本：2023-11-30
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 56 次发布
+### 第 84 次发布
 
-发布时间：2025-08-04 02:04:23
+发布时间：2025-08-04 15:32:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateIdsWhiteRule
+* DeleteIdsWhiteRule
+* DescribeIdsWhiteRule
+
+修改接口：
+
+* [ModifyAddressTemplate](https://cloud.tencent.com/document/api/1132/97919)
+
+	* 新增出参：RuleLimitNum
+
+* [ModifyAllRuleStatus](https://cloud.tencent.com/document/api/1132/49063)
+
+	* 新增出参：RuleLimitNum
+
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* IdsWhiteInfo
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 132 次发布
+
+发布时间：2025-08-05 01:33:09
 
 本次发布包含了以下内容：
 
@@ -47,24 +68,107 @@
 
 修改接口：
 
-* [SaveDoc](https://cloud.tencent.com/document/api/1759/105054)
+* [DescribeEngineUsageInfo](https://cloud.tencent.com/document/api/1342/87876)
 
-	* 新增入参：DuplicateFileHandles
+	* 新增出参：AvailPercent
 
-	* 新增出参：DuplicateFileCheckType
+* [ListTaskJobLogDetail](https://cloud.tencent.com/document/api/1342/75645)
+
+	* 新增入参：DataEngineId, ResourceGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>TaskId
+
+
+修改数据结构：
+
+* [StandardEngineResourceGroupInfo](https://cloud.tencent.com/document/api/1342/53778#StandardEngineResourceGroupInfo)
+
+	* 新增成员：PublicDomain, RegistryId, RegionName, LaunchTime
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 110 次发布
+
+发布时间：2025-08-04 15:33:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTWeSeeRecognitionTask](https://cloud.tencent.com/document/api/1081/118005)
+
+	* 新增入参：SummaryConfig
+
+* [InvokeTWeSeeRecognitionTask](https://cloud.tencent.com/document/api/1081/118004)
+
+	* 新增入参：SummaryConfig
+
+* [ModifyTWeSeeConfig](https://cloud.tencent.com/document/api/1081/118021)
+
+	* 新增入参：SummaryConfig
 
 
 新增数据结构：
 
-* [DuplicateFileHandle](https://cloud.tencent.com/document/api/1759/105104#DuplicateFileHandle)
+* [VisionSummaryConfig](https://cloud.tencent.com/document/api/1081/34988#VisionSummaryConfig)
+
+修改数据结构：
+
+* [VisionRecognitionResult](https://cloud.tencent.com/document/api/1081/34988#VisionRecognitionResult)
+
+	* 新增成员：ErrorCode
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
 
-### 第 207 次发布
+## TSF-应用管理&Consul(tsf) 版本：2018-03-26
 
-发布时间：2025-08-01 15:37:48
+### 第 128 次发布
+
+发布时间：2025-08-05 02:37:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLicenses](https://cloud.tencent.com/document/api/649/122280)
+* [DescribeLogCapacity](https://cloud.tencent.com/document/api/649/122279)
+* [DescribeResourceConfig](https://cloud.tencent.com/document/api/649/122278)
+
+新增数据结构：
+
+* [ContainerAdditionalResourceRequirement](https://cloud.tencent.com/document/api/649/36099#ContainerAdditionalResourceRequirement)
+* [ContainerAdditionalResourceRequirementMap](https://cloud.tencent.com/document/api/649/36099#ContainerAdditionalResourceRequirementMap)
+* [ContainerGroupResourceConfig](https://cloud.tencent.com/document/api/649/36099#ContainerGroupResourceConfig)
+* [ContainerInstanceResourceConfig](https://cloud.tencent.com/document/api/649/36099#ContainerInstanceResourceConfig)
+* [DescribeResourceConfigCluster](https://cloud.tencent.com/document/api/649/36099#DescribeResourceConfigCluster)
+* [DescribeResourceConfigClusterContainer](https://cloud.tencent.com/document/api/649/36099#DescribeResourceConfigClusterContainer)
+* [DescribeResourceConfigLicense](https://cloud.tencent.com/document/api/649/36099#DescribeResourceConfigLicense)
+* [DescribeResourceConfigLicenseFunction](https://cloud.tencent.com/document/api/649/36099#DescribeResourceConfigLicenseFunction)
+* [DescribeResourceConfigLicenseResource](https://cloud.tencent.com/document/api/649/36099#DescribeResourceConfigLicenseResource)
+* [DescribeResourceConfigResultV2](https://cloud.tencent.com/document/api/649/36099#DescribeResourceConfigResultV2)
+* [DescribeResourceConfigSts](https://cloud.tencent.com/document/api/649/36099#DescribeResourceConfigSts)
+* [GroupResourceConfig](https://cloud.tencent.com/document/api/649/36099#GroupResourceConfig)
+* [InstanceResourceConfig](https://cloud.tencent.com/document/api/649/36099#InstanceResourceConfig)
+* [LicenseTag](https://cloud.tencent.com/document/api/649/36099#LicenseTag)
+* [PackageConfig](https://cloud.tencent.com/document/api/649/36099#PackageConfig)
+* [TsfPageLicenseTag](https://cloud.tencent.com/document/api/649/36099#TsfPageLicenseTag)
+* [VmInstanceResourceConfig](https://cloud.tencent.com/document/api/649/36099#VmInstanceResourceConfig)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 166 次发布
+
+发布时间：2025-08-05 02:48:40
 
 本次发布包含了以下内容：
 
@@ -72,64 +176,25 @@
 
 修改接口：
 
-* [GetOCRResult](https://cloud.tencent.com/document/api/866/115234)
+* [CreateBaseProject](https://cloud.tencent.com/document/api/1267/121425)
 
-	* 新增出参：RequestIdInfos
+	* 新增入参：Project
+
+* [ModifyProject](https://cloud.tencent.com/document/api/1267/121422)
+
+	* 新增入参：DisplayName, Description, ModifyType
 
 
 新增数据结构：
 
-* [RequestIdInfo](https://cloud.tencent.com/document/api/866/33527#RequestIdInfo)
+* [BaseProject](https://cloud.tencent.com/document/api/1267/76336#BaseProject)
 
+修改数据结构：
 
+* [DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo)
 
-## SSL 证书(ssl) 版本：2019-12-05
+	* 新增成员：ForbidProbe
 
-### 第 92 次发布
-
-发布时间：2025-08-04 02:22:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeHostTeoInstanceList](https://cloud.tencent.com/document/api/400/91655)
-
-	* <font color="#dd0000">**修改入参**：</font>CertificateId
-
-
-
-
-## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
-
-### 第 20 次发布
-
-发布时间：2025-08-04 02:26:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCloudRunServer](https://cloud.tencent.com/document/api/1243/75712)
-
-	* 新增入参：Items
-
-	* <font color="#dd0000">**修改入参**：</font>ServerConfig
-
-* [UpdateCloudRunServer](https://cloud.tencent.com/document/api/1243/75709)
-
-	* 新增入参：Items
-
-	* <font color="#dd0000">**修改入参**：</font>ServerConfig
-
-
-新增数据结构：
-
-* [DiffConfigItem](https://cloud.tencent.com/document/api/1243/75713#DiffConfigItem)
 
 
 

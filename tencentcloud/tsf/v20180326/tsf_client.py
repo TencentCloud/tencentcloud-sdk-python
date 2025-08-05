@@ -2864,6 +2864,52 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLicenses(self, request):
+        """查询许可列表
+
+        :param request: Request instance for DescribeLicenses.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLicensesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeLicensesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLicenses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLicensesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogCapacity(self, request):
+        """获取用户日志使用量
+
+        :param request: Request instance for DescribeLogCapacity.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLogCapacityRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeLogCapacityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogCapacity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogCapacityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMicroservice(self, request):
         """查询微服务详情
 
@@ -3292,6 +3338,29 @@ class TsfClient(AbstractClient):
             body = self.call("DescribeRepository", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRepositoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceConfig(self, request):
+        """无
+
+        :param request: Request instance for DescribeResourceConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

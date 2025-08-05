@@ -3514,201 +3514,6 @@ class CreateDatabaseWhiteListRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CreateIdsWhiteRuleRequest(AbstractModel):
-    """CreateIdsWhiteRule请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IdsRuleId: 入侵防御规则ID
-        :type IdsRuleId: str
-        :param _WhiteRuleType: 白名单类型：
-src 针对源放通
-dst 针对目的放通
-srcdst 针对源和目的放通
-        :type WhiteRuleType: str
-        :param _FwType: 白名单生效防火墙范围：
-1 边界防火墙
-2 nat防火墙
-4 vpc防火墙
-7 = 1+2+4  所有防火墙
-        :type FwType: int
-        :param _SrcIp: 源IP
-        :type SrcIp: str
-        :param _DstIp: 目的IP
-        :type DstIp: str
-        """
-        self._IdsRuleId = None
-        self._WhiteRuleType = None
-        self._FwType = None
-        self._SrcIp = None
-        self._DstIp = None
-
-    @property
-    def IdsRuleId(self):
-        """入侵防御规则ID
-        :rtype: str
-        """
-        return self._IdsRuleId
-
-    @IdsRuleId.setter
-    def IdsRuleId(self, IdsRuleId):
-        self._IdsRuleId = IdsRuleId
-
-    @property
-    def WhiteRuleType(self):
-        """白名单类型：
-src 针对源放通
-dst 针对目的放通
-srcdst 针对源和目的放通
-        :rtype: str
-        """
-        return self._WhiteRuleType
-
-    @WhiteRuleType.setter
-    def WhiteRuleType(self, WhiteRuleType):
-        self._WhiteRuleType = WhiteRuleType
-
-    @property
-    def FwType(self):
-        """白名单生效防火墙范围：
-1 边界防火墙
-2 nat防火墙
-4 vpc防火墙
-7 = 1+2+4  所有防火墙
-        :rtype: int
-        """
-        return self._FwType
-
-    @FwType.setter
-    def FwType(self, FwType):
-        self._FwType = FwType
-
-    @property
-    def SrcIp(self):
-        """源IP
-        :rtype: str
-        """
-        return self._SrcIp
-
-    @SrcIp.setter
-    def SrcIp(self, SrcIp):
-        self._SrcIp = SrcIp
-
-    @property
-    def DstIp(self):
-        """目的IP
-        :rtype: str
-        """
-        return self._DstIp
-
-    @DstIp.setter
-    def DstIp(self, DstIp):
-        self._DstIp = DstIp
-
-
-    def _deserialize(self, params):
-        self._IdsRuleId = params.get("IdsRuleId")
-        self._WhiteRuleType = params.get("WhiteRuleType")
-        self._FwType = params.get("FwType")
-        self._SrcIp = params.get("SrcIp")
-        self._DstIp = params.get("DstIp")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateIdsWhiteRuleResponse(AbstractModel):
-    """CreateIdsWhiteRule返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ReturnCode: 返回状态码：
-0 成功
-非0 失败
-        :type ReturnCode: int
-        :param _ReturnMsg: 返回信息：
-success 成功
-其他
-        :type ReturnMsg: str
-        :param _Status: 返回状态码：
-0  处置成功
--1 通用错误，不用处理
-        :type Status: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ReturnCode = None
-        self._ReturnMsg = None
-        self._Status = None
-        self._RequestId = None
-
-    @property
-    def ReturnCode(self):
-        """返回状态码：
-0 成功
-非0 失败
-        :rtype: int
-        """
-        return self._ReturnCode
-
-    @ReturnCode.setter
-    def ReturnCode(self, ReturnCode):
-        self._ReturnCode = ReturnCode
-
-    @property
-    def ReturnMsg(self):
-        """返回信息：
-success 成功
-其他
-        :rtype: str
-        """
-        return self._ReturnMsg
-
-    @ReturnMsg.setter
-    def ReturnMsg(self, ReturnMsg):
-        self._ReturnMsg = ReturnMsg
-
-    @property
-    def Status(self):
-        """返回状态码：
-0  处置成功
--1 通用错误，不用处理
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._ReturnCode = params.get("ReturnCode")
-        self._ReturnMsg = params.get("ReturnMsg")
-        self._Status = params.get("Status")
-        self._RequestId = params.get("RequestId")
-
-
 class CreateNatFwInstanceRequest(AbstractModel):
     """CreateNatFwInstance请求参数结构体
 
@@ -5830,129 +5635,6 @@ class DeleteBlockIgnoreRuleNewResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class DeleteIdsWhiteRuleRequest(AbstractModel):
-    """DeleteIdsWhiteRule请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: 入侵防御白名单id
-参考DescribeIdsWhiteRule接口返回的Id字段
-        :type Id: int
-        """
-        self._Id = None
-
-    @property
-    def Id(self):
-        """入侵防御白名单id
-参考DescribeIdsWhiteRule接口返回的Id字段
-        :rtype: int
-        """
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteIdsWhiteRuleResponse(AbstractModel):
-    """DeleteIdsWhiteRule返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ReturnCode: 返回状态码：
-0 成功
-非0 失败
-        :type ReturnCode: int
-        :param _ReturnMsg: 返回信息：
-success 成功
-其他
-        :type ReturnMsg: str
-        :param _Status: 返回状态码：
-0  处置成功
--1 通用错误，不用处理
-        :type Status: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ReturnCode = None
-        self._ReturnMsg = None
-        self._Status = None
-        self._RequestId = None
-
-    @property
-    def ReturnCode(self):
-        """返回状态码：
-0 成功
-非0 失败
-        :rtype: int
-        """
-        return self._ReturnCode
-
-    @ReturnCode.setter
-    def ReturnCode(self, ReturnCode):
-        self._ReturnCode = ReturnCode
-
-    @property
-    def ReturnMsg(self):
-        """返回信息：
-success 成功
-其他
-        :rtype: str
-        """
-        return self._ReturnMsg
-
-    @ReturnMsg.setter
-    def ReturnMsg(self, ReturnMsg):
-        self._ReturnMsg = ReturnMsg
-
-    @property
-    def Status(self):
-        """返回状态码：
-0  处置成功
--1 通用错误，不用处理
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._ReturnCode = params.get("ReturnCode")
-        self._ReturnMsg = params.get("ReturnMsg")
-        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -10432,200 +10114,6 @@ class DescribeIPStatusListResponse(AbstractModel):
                 obj = IPDefendStatus()
                 obj._deserialize(item)
                 self._StatusList.append(obj)
-        self._ReturnCode = params.get("ReturnCode")
-        self._ReturnMsg = params.get("ReturnMsg")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeIdsWhiteRuleRequest(AbstractModel):
-    """DescribeIdsWhiteRule请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Limit: 每页条数
-        :type Limit: int
-        :param _Offset: 偏移值
-        :type Offset: int
-        :param _Filters: 过滤条件组合
-        :type Filters: list of CommonFilter
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
-        :type Order: str
-        :param _By: 排序所用到的字段
-        :type By: str
-        """
-        self._Limit = None
-        self._Offset = None
-        self._Filters = None
-        self._Order = None
-        self._By = None
-
-    @property
-    def Limit(self):
-        """每页条数
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        """偏移值
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Filters(self):
-        """过滤条件组合
-        :rtype: list of CommonFilter
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Order(self):
-        """desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
-        :rtype: str
-        """
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
-    @property
-    def By(self):
-        """排序所用到的字段
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
-
-    def _deserialize(self, params):
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = CommonFilter()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Order = params.get("Order")
-        self._By = params.get("By")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeIdsWhiteRuleResponse(AbstractModel):
-    """DescribeIdsWhiteRule返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Total: 总条数
-        :type Total: int
-        :param _Data: 规则详情
-        :type Data: list of IdsWhiteInfo
-        :param _ReturnCode: 返回状态码 0 成功 非0不成功
-        :type ReturnCode: int
-        :param _ReturnMsg: 返回信息  success 成功 其他 不成功
-        :type ReturnMsg: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Total = None
-        self._Data = None
-        self._ReturnCode = None
-        self._ReturnMsg = None
-        self._RequestId = None
-
-    @property
-    def Total(self):
-        """总条数
-        :rtype: int
-        """
-        return self._Total
-
-    @Total.setter
-    def Total(self, Total):
-        self._Total = Total
-
-    @property
-    def Data(self):
-        """规则详情
-        :rtype: list of IdsWhiteInfo
-        """
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def ReturnCode(self):
-        """返回状态码 0 成功 非0不成功
-        :rtype: int
-        """
-        return self._ReturnCode
-
-    @ReturnCode.setter
-    def ReturnCode(self, ReturnCode):
-        self._ReturnCode = ReturnCode
-
-    @property
-    def ReturnMsg(self):
-        """返回信息  success 成功 其他 不成功
-        :rtype: str
-        """
-        return self._ReturnMsg
-
-    @ReturnMsg.setter
-    def ReturnMsg(self, ReturnMsg):
-        self._ReturnMsg = ReturnMsg
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Total = params.get("Total")
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = IdsWhiteInfo()
-                obj._deserialize(item)
-                self._Data.append(obj)
         self._ReturnCode = params.get("ReturnCode")
         self._ReturnMsg = params.get("ReturnMsg")
         self._RequestId = params.get("RequestId")
@@ -16090,117 +15578,6 @@ class IPDefendStatus(AbstractModel):
         
 
 
-class IdsWhiteInfo(AbstractModel):
-    """入侵防御规则白名单详情
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: 白名单唯一ID
-        :type Id: int
-        :param _SrcIp: 源IP
-        :type SrcIp: str
-        :param _DstIp: 目的IP
-        :type DstIp: str
-        :param _WhiteRuleType: 规则类型
-        :type WhiteRuleType: str
-        :param _FwType: 白名单生效防火墙范围： 1 边界防火墙 2 nat防火墙 4 vpc防火墙 7 = 1+2+4 所有防火墙
-        :type FwType: int
-        :param _RuleId: 入侵防御规则ID
-        :type RuleId: str
-        """
-        self._Id = None
-        self._SrcIp = None
-        self._DstIp = None
-        self._WhiteRuleType = None
-        self._FwType = None
-        self._RuleId = None
-
-    @property
-    def Id(self):
-        """白名单唯一ID
-        :rtype: int
-        """
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def SrcIp(self):
-        """源IP
-        :rtype: str
-        """
-        return self._SrcIp
-
-    @SrcIp.setter
-    def SrcIp(self, SrcIp):
-        self._SrcIp = SrcIp
-
-    @property
-    def DstIp(self):
-        """目的IP
-        :rtype: str
-        """
-        return self._DstIp
-
-    @DstIp.setter
-    def DstIp(self, DstIp):
-        self._DstIp = DstIp
-
-    @property
-    def WhiteRuleType(self):
-        """规则类型
-        :rtype: str
-        """
-        return self._WhiteRuleType
-
-    @WhiteRuleType.setter
-    def WhiteRuleType(self, WhiteRuleType):
-        self._WhiteRuleType = WhiteRuleType
-
-    @property
-    def FwType(self):
-        """白名单生效防火墙范围： 1 边界防火墙 2 nat防火墙 4 vpc防火墙 7 = 1+2+4 所有防火墙
-        :rtype: int
-        """
-        return self._FwType
-
-    @FwType.setter
-    def FwType(self, FwType):
-        self._FwType = FwType
-
-    @property
-    def RuleId(self):
-        """入侵防御规则ID
-        :rtype: str
-        """
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        self._SrcIp = params.get("SrcIp")
-        self._DstIp = params.get("DstIp")
-        self._WhiteRuleType = params.get("WhiteRuleType")
-        self._FwType = params.get("FwType")
-        self._RuleId = params.get("RuleId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class InstanceInfo(AbstractModel):
     """实例详情结果
 
@@ -17262,8 +16639,7 @@ class ModifyAddressTemplateRequest(AbstractModel):
         :param _IpString: Type为1，ip模板eg：1.1.1.1,2.2.2.2；
 Type为5，域名模板eg：www.qq.com,www.tencent.com
         :type IpString: str
-        :param _Type: 1 ip模板
-5 域名模板
+        :param _Type: 1 ip模板  5 域名模板
         :type Type: int
         :param _ProtocolType: 协议端口模板，协议类型，4:4层协议，7:7层协议。Type=6时必填。
         :type ProtocolType: str
@@ -17322,8 +16698,7 @@ Type为5，域名模板eg：www.qq.com,www.tencent.com
 
     @property
     def Type(self):
-        """1 ip模板
-5 域名模板
+        """1 ip模板  5 域名模板
         :rtype: int
         """
         return self._Type
@@ -17372,11 +16747,14 @@ class ModifyAddressTemplateResponse(AbstractModel):
         :type Status: int
         :param _Uuid: 唯一Id
         :type Uuid: str
+        :param _RuleLimitNum: 规则数上限配置
+        :type RuleLimitNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._Uuid = None
+        self._RuleLimitNum = None
         self._RequestId = None
 
     @property
@@ -17402,6 +16780,17 @@ class ModifyAddressTemplateResponse(AbstractModel):
         self._Uuid = Uuid
 
     @property
+    def RuleLimitNum(self):
+        """规则数上限配置
+        :rtype: int
+        """
+        return self._RuleLimitNum
+
+    @RuleLimitNum.setter
+    def RuleLimitNum(self, RuleLimitNum):
+        self._RuleLimitNum = RuleLimitNum
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -17416,6 +16805,7 @@ class ModifyAddressTemplateResponse(AbstractModel):
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._Uuid = params.get("Uuid")
+        self._RuleLimitNum = params.get("RuleLimitNum")
         self._RequestId = params.get("RequestId")
 
 
@@ -17618,10 +17008,13 @@ class ModifyAllRuleStatusResponse(AbstractModel):
         r"""
         :param _Status: 0: 修改成功, 其他: 修改失败
         :type Status: int
+        :param _RuleLimitNum: 规则限制数量
+        :type RuleLimitNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
+        self._RuleLimitNum = None
         self._RequestId = None
 
     @property
@@ -17634,6 +17027,17 @@ class ModifyAllRuleStatusResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def RuleLimitNum(self):
+        """规则限制数量
+        :rtype: int
+        """
+        return self._RuleLimitNum
+
+    @RuleLimitNum.setter
+    def RuleLimitNum(self, RuleLimitNum):
+        self._RuleLimitNum = RuleLimitNum
 
     @property
     def RequestId(self):
@@ -17649,6 +17053,7 @@ class ModifyAllRuleStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._RuleLimitNum = params.get("RuleLimitNum")
         self._RequestId = params.get("RequestId")
 
 

@@ -12233,7 +12233,7 @@ class HKIDCardOCRResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmallHeadImage: str
         :param _WarningCode: 该字段已废弃， 将固定返回空数组，不建议使用。
-This field is deprecated and will always return an empty array. Usage is not recommended.
+
         :type WarningCode: list of int
         :param _WarnCardInfos: 告警码
 -9101 证件边框不完整告警
@@ -12428,7 +12428,7 @@ This field is deprecated and will always return an empty array. Usage is not rec
         warnings.warn("parameter `WarningCode` is deprecated", DeprecationWarning) 
 
         """该字段已废弃， 将固定返回空数组，不建议使用。
-This field is deprecated and will always return an empty array. Usage is not recommended.
+
         :rtype: list of int
         """
         return self._WarningCode

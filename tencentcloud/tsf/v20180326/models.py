@@ -6964,6 +6964,120 @@ class ContainGroupResult(AbstractModel):
         
 
 
+class ContainerAdditionalResourceRequirement(AbstractModel):
+    """应用使用容器部署时需要的额外资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: CPU 核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: str
+        :param _Mem: 内存 MiB 数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mem: str
+        """
+        self._Cpu = None
+        self._Mem = None
+
+    @property
+    def Cpu(self):
+        """CPU 核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        """内存 MiB 数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerAdditionalResourceRequirementMap(AbstractModel):
+    """不同类型的应用的容器部署组，部署时的额外资源要求
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _M: Mesh 应用部署时需要的额外资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type M: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirement`
+        :param _N: 普通应用部署时需要的额外资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type N: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirement`
+        """
+        self._M = None
+        self._N = None
+
+    @property
+    def M(self):
+        """Mesh 应用部署时需要的额外资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirement`
+        """
+        return self._M
+
+    @M.setter
+    def M(self, M):
+        self._M = M
+
+    @property
+    def N(self):
+        """普通应用部署时需要的额外资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirement`
+        """
+        return self._N
+
+    @N.setter
+    def N(self, N):
+        self._N = N
+
+
+    def _deserialize(self, params):
+        if params.get("M") is not None:
+            self._M = ContainerAdditionalResourceRequirement()
+            self._M._deserialize(params.get("M"))
+        if params.get("N") is not None:
+            self._N = ContainerAdditionalResourceRequirement()
+            self._N._deserialize(params.get("N"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerEvent(AbstractModel):
     """返回容器的事件，比如 k8s deployment 或者 pod 的 events
 
@@ -8810,6 +8924,46 @@ class ContainerGroupOther(AbstractModel):
         
 
 
+class ContainerGroupResourceConfig(AbstractModel):
+    """容器部署组相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AdditionalResourceRequirement: 不同类型的应用的容器部署组，部署时的额外资源要求
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdditionalResourceRequirement: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirementMap`
+        """
+        self._AdditionalResourceRequirement = None
+
+    @property
+    def AdditionalResourceRequirement(self):
+        """不同类型的应用的容器部署组，部署时的额外资源要求
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirementMap`
+        """
+        return self._AdditionalResourceRequirement
+
+    @AdditionalResourceRequirement.setter
+    def AdditionalResourceRequirement(self, AdditionalResourceRequirement):
+        self._AdditionalResourceRequirement = AdditionalResourceRequirement
+
+
+    def _deserialize(self, params):
+        if params.get("AdditionalResourceRequirement") is not None:
+            self._AdditionalResourceRequirement = ContainerAdditionalResourceRequirementMap()
+            self._AdditionalResourceRequirement._deserialize(params.get("AdditionalResourceRequirement"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerGroupServiceGovernanceConfig(AbstractModel):
     """服务治理相关配置项
 
@@ -9403,6 +9557,78 @@ class ContainerInfo(AbstractModel):
         self._RunCommand = params.get("RunCommand")
         self._RunArg = params.get("RunArg")
         self._ContainerName = params.get("ContainerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerInstanceResourceConfig(AbstractModel):
+    """容器实例相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImportMode: 实例导入方式，可多个，公有云为 ["R"]，独立版的取值有 "M" 脚本模式、"S" SSH 模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportMode: list of str
+        :param _MasterNumLimit: SSH 模式时，前端应该限制用户填这个数量的 master 主机信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterNumLimit: int
+        :param _NodeNumLimitPerSetup: SSH 模式时，前端应该限制用户填的最高数量的 node 主机信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeNumLimitPerSetup: int
+        """
+        self._ImportMode = None
+        self._MasterNumLimit = None
+        self._NodeNumLimitPerSetup = None
+
+    @property
+    def ImportMode(self):
+        """实例导入方式，可多个，公有云为 ["R"]，独立版的取值有 "M" 脚本模式、"S" SSH 模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ImportMode
+
+    @ImportMode.setter
+    def ImportMode(self, ImportMode):
+        self._ImportMode = ImportMode
+
+    @property
+    def MasterNumLimit(self):
+        """SSH 模式时，前端应该限制用户填这个数量的 master 主机信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MasterNumLimit
+
+    @MasterNumLimit.setter
+    def MasterNumLimit(self, MasterNumLimit):
+        self._MasterNumLimit = MasterNumLimit
+
+    @property
+    def NodeNumLimitPerSetup(self):
+        """SSH 模式时，前端应该限制用户填的最高数量的 node 主机信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NodeNumLimitPerSetup
+
+    @NodeNumLimitPerSetup.setter
+    def NodeNumLimitPerSetup(self, NodeNumLimitPerSetup):
+        self._NodeNumLimitPerSetup = NodeNumLimitPerSetup
+
+
+    def _deserialize(self, params):
+        self._ImportMode = params.get("ImportMode")
+        self._MasterNumLimit = params.get("MasterNumLimit")
+        self._NodeNumLimitPerSetup = params.get("NodeNumLimitPerSetup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27632,6 +27858,168 @@ class DescribeLanesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLicensesRequest(AbstractModel):
+    """DescribeLicenses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 每页条数
+        :type Limit: int
+        """
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLicensesResponse(AbstractModel):
+    """DescribeLicenses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 许可标签列表分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageLicenseTag`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """许可标签列表分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageLicenseTag`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = TsfPageLicenseTag()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLogCapacityRequest(AbstractModel):
+    """DescribeLogCapacity请求参数结构体
+
+    """
+
+
+class DescribeLogCapacityResponse(AbstractModel):
+    """DescribeLogCapacity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UsedSpace: 使用日志容量大小
+        :type UsedSpace: float
+        :param _Capacity: 日志总容量大小
+        :type Capacity: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UsedSpace = None
+        self._Capacity = None
+        self._RequestId = None
+
+    @property
+    def UsedSpace(self):
+        """使用日志容量大小
+        :rtype: float
+        """
+        return self._UsedSpace
+
+    @UsedSpace.setter
+    def UsedSpace(self, UsedSpace):
+        self._UsedSpace = UsedSpace
+
+    @property
+    def Capacity(self):
+        """日志总容量大小
+        :rtype: float
+        """
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UsedSpace = params.get("UsedSpace")
+        self._Capacity = params.get("Capacity")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMicroserviceRequest(AbstractModel):
     """DescribeMicroservice请求参数结构体
 
@@ -30137,6 +30525,534 @@ class DescribeRepositoryResponse(AbstractModel):
             self._Result = RepositoryInfo()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceConfigCluster(AbstractModel):
+    """返回给前端的控制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: 返回给前端的控制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Container: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigClusterContainer`
+        """
+        self._Container = None
+
+    @property
+    def Container(self):
+        """返回给前端的控制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigClusterContainer`
+        """
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+
+    def _deserialize(self, params):
+        if params.get("Container") is not None:
+            self._Container = DescribeResourceConfigClusterContainer()
+            self._Container._deserialize(params.get("Container"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigClusterContainer(AbstractModel):
+    """返回给前端的控制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NeedSubnetWhenCreatingCluster: 是否需要子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedSubnetWhenCreatingCluster: bool
+        """
+        self._NeedSubnetWhenCreatingCluster = None
+
+    @property
+    def NeedSubnetWhenCreatingCluster(self):
+        """是否需要子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._NeedSubnetWhenCreatingCluster
+
+    @NeedSubnetWhenCreatingCluster.setter
+    def NeedSubnetWhenCreatingCluster(self, NeedSubnetWhenCreatingCluster):
+        self._NeedSubnetWhenCreatingCluster = NeedSubnetWhenCreatingCluster
+
+
+    def _deserialize(self, params):
+        self._NeedSubnetWhenCreatingCluster = params.get("NeedSubnetWhenCreatingCluster")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigLicense(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Function: 功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Function: list of DescribeResourceConfigLicenseFunction
+        :param _Resource: 资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: list of DescribeResourceConfigLicenseResource
+        :param _ExpireTime: utc时间 单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param _Countdown: utc时间 单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Countdown: int
+        :param _Spec: 规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: str
+        """
+        self._Function = None
+        self._Resource = None
+        self._ExpireTime = None
+        self._Countdown = None
+        self._Spec = None
+
+    @property
+    def Function(self):
+        """功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeResourceConfigLicenseFunction
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+    @property
+    def Resource(self):
+        """资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeResourceConfigLicenseResource
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def ExpireTime(self):
+        """utc时间 单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Countdown(self):
+        """utc时间 单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Countdown
+
+    @Countdown.setter
+    def Countdown(self, Countdown):
+        self._Countdown = Countdown
+
+    @property
+    def Spec(self):
+        """规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+
+    def _deserialize(self, params):
+        if params.get("Function") is not None:
+            self._Function = []
+            for item in params.get("Function"):
+                obj = DescribeResourceConfigLicenseFunction()
+                obj._deserialize(item)
+                self._Function.append(obj)
+        if params.get("Resource") is not None:
+            self._Resource = []
+            for item in params.get("Resource"):
+                obj = DescribeResourceConfigLicenseResource()
+                obj._deserialize(item)
+                self._Resource.append(obj)
+        self._ExpireTime = params.get("ExpireTime")
+        self._Countdown = params.get("Countdown")
+        self._Spec = params.get("Spec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigLicenseFunction(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Enable: enable
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        """
+        self._Name = None
+        self._Enable = None
+
+    @property
+    def Name(self):
+        """name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Enable(self):
+        """enable
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigLicenseResource(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Quota: Quota
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quota: int
+        """
+        self._Name = None
+        self._Quota = None
+
+    @property
+    def Name(self):
+        """Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Quota(self):
+        """Quota
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Quota = params.get("Quota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigRequest(AbstractModel):
+    """DescribeResourceConfig请求参数结构体
+
+    """
+
+
+class DescribeResourceConfigResponse(AbstractModel):
+    """DescribeResourceConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 配置详情
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigResultV2`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """配置详情
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigResultV2`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeResourceConfigResultV2()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceConfigResultV2(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sts: STS参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sts: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigSts`
+        :param _License: 许可信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type License: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigLicense`
+        :param _Group: 部署组相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: :class:`tencentcloud.tsf.v20180326.models.GroupResourceConfig`
+        :param _Instance: 实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instance: :class:`tencentcloud.tsf.v20180326.models.InstanceResourceConfig`
+        :param _Cluster: Cluster相关配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cluster: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigCluster`
+        :param _Package: 程序包相关配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Package: :class:`tencentcloud.tsf.v20180326.models.PackageConfig`
+        """
+        self._Sts = None
+        self._License = None
+        self._Group = None
+        self._Instance = None
+        self._Cluster = None
+        self._Package = None
+
+    @property
+    def Sts(self):
+        """STS参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigSts`
+        """
+        return self._Sts
+
+    @Sts.setter
+    def Sts(self, Sts):
+        self._Sts = Sts
+
+    @property
+    def License(self):
+        """许可信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigLicense`
+        """
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def Group(self):
+        """部署组相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.GroupResourceConfig`
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Instance(self):
+        """实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.InstanceResourceConfig`
+        """
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+    @property
+    def Cluster(self):
+        """Cluster相关配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigCluster`
+        """
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def Package(self):
+        """程序包相关配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.PackageConfig`
+        """
+        return self._Package
+
+    @Package.setter
+    def Package(self, Package):
+        self._Package = Package
+
+
+    def _deserialize(self, params):
+        if params.get("Sts") is not None:
+            self._Sts = DescribeResourceConfigSts()
+            self._Sts._deserialize(params.get("Sts"))
+        if params.get("License") is not None:
+            self._License = DescribeResourceConfigLicense()
+            self._License._deserialize(params.get("License"))
+        if params.get("Group") is not None:
+            self._Group = GroupResourceConfig()
+            self._Group._deserialize(params.get("Group"))
+        if params.get("Instance") is not None:
+            self._Instance = InstanceResourceConfig()
+            self._Instance._deserialize(params.get("Instance"))
+        if params.get("Cluster") is not None:
+            self._Cluster = DescribeResourceConfigCluster()
+            self._Cluster._deserialize(params.get("Cluster"))
+        if params.get("Package") is not None:
+            self._Package = PackageConfig()
+            self._Package._deserialize(params.get("Package"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigSts(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        """
+        self._Uin = None
+
+    @property
+    def Uin(self):
+        """uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeResourceTaskStatusRequest(AbstractModel):
@@ -36723,6 +37639,46 @@ class GroupRelease(AbstractModel):
         
 
 
+class GroupResourceConfig(AbstractModel):
+    """部署组相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: 容器部署组相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Container: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupResourceConfig`
+        """
+        self._Container = None
+
+    @property
+    def Container(self):
+        """容器部署组相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupResourceConfig`
+        """
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+
+    def _deserialize(self, params):
+        if params.get("Container") is not None:
+            self._Container = ContainerGroupResourceConfig()
+            self._Container._deserialize(params.get("Container"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GroupUnitApiDailyUseStatistics(AbstractModel):
     """单元化API使用详情统计对象列表
 
@@ -39282,6 +40238,65 @@ class InstanceEnrichedInfoPage(AbstractModel):
         
 
 
+class InstanceResourceConfig(AbstractModel):
+    """实例相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: 容器实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Container: :class:`tencentcloud.tsf.v20180326.models.ContainerInstanceResourceConfig`
+        :param _Vm: 虚拟机实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vm: :class:`tencentcloud.tsf.v20180326.models.VmInstanceResourceConfig`
+        """
+        self._Container = None
+        self._Vm = None
+
+    @property
+    def Container(self):
+        """容器实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerInstanceResourceConfig`
+        """
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+    @property
+    def Vm(self):
+        """虚拟机实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.VmInstanceResourceConfig`
+        """
+        return self._Vm
+
+    @Vm.setter
+    def Vm(self, Vm):
+        self._Vm = Vm
+
+
+    def _deserialize(self, params):
+        if params.get("Container") is not None:
+            self._Container = ContainerInstanceResourceConfig()
+            self._Container._deserialize(params.get("Container"))
+        if params.get("Vm") is not None:
+            self._Vm = VmInstanceResourceConfig()
+            self._Vm._deserialize(params.get("Vm"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InvocationIndicator(AbstractModel):
     """服务调用监控指标
 
@@ -40870,6 +41885,66 @@ class LaneRules(AbstractModel):
                 obj = LaneRule()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LicenseTag(AbstractModel):
+    """许可标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LicenseId: 许可ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseId: str
+        :param _Tags: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self._LicenseId = None
+        self._Tags = None
+
+    @property
+    def LicenseId(self):
+        """许可ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LicenseId
+
+    @LicenseId.setter
+    def LicenseId(self, LicenseId):
+        self._LicenseId = LicenseId
+
+    @property
+    def Tags(self):
+        """标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._LicenseId = params.get("LicenseId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45046,6 +46121,44 @@ class OverviewBasicResourceUsage(AbstractModel):
         self._GroupCount = params.get("GroupCount")
         self._PackageSpaceUsed = params.get("PackageSpaceUsed")
         self._ConsulInstanceCount = params.get("ConsulInstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PackageConfig(AbstractModel):
+    """程序包相关配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceSize: 程序包存储空间大小，单位字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpaceSize: int
+        """
+        self._SpaceSize = None
+
+    @property
+    def SpaceSize(self):
+        """程序包存储空间大小，单位字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SpaceSize
+
+    @SpaceSize.setter
+    def SpaceSize(self, SpaceSize):
+        self._SpaceSize = SpaceSize
+
+
+    def _deserialize(self, params):
+        self._SpaceSize = params.get("SpaceSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53942,6 +55055,66 @@ class TsfPageInstance(AbstractModel):
         
 
 
+class TsfPageLicenseTag(AbstractModel):
+    """LicenseTag 翻页对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Content: 记录实体列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of LicenseTag
+        """
+        self._TotalCount = None
+        self._Content = None
+
+    @property
+    def TotalCount(self):
+        """记录总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Content(self):
+        """记录实体列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LicenseTag
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = LicenseTag()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TsfPageMicroservice(AbstractModel):
     """微服务列表信息
 
@@ -57692,6 +58865,44 @@ class VmGroupSimple(AbstractModel):
         self._UpdatedTime = params.get("UpdatedTime")
         self._DeployDesc = params.get("DeployDesc")
         self._Alias = params.get("Alias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VmInstanceResourceConfig(AbstractModel):
+    """虚拟机实例相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImportMode: 实例导入方式，可多个，公有云为 ["R", "M"]，独立版的取值仅有 "M" 脚本模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportMode: list of str
+        """
+        self._ImportMode = None
+
+    @property
+    def ImportMode(self):
+        """实例导入方式，可多个，公有云为 ["R", "M"]，独立版的取值仅有 "M" 脚本模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ImportMode
+
+    @ImportMode.setter
+    def ImportMode(self, ImportMode):
+        self._ImportMode = ImportMode
+
+
+    def _deserialize(self, params):
+        self._ImportMode = params.get("ImportMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

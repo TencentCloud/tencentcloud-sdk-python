@@ -4136,6 +4136,8 @@ on：开启全路径缓存（即关闭参数忽略）
 off：关闭全路径缓存（即开启参数忽略）
         :type FullUrlCache: str
         :param _IgnoreCase: 是否忽略大小写缓存
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCase: str
         :param _QueryString: CacheKey中包含请求参数
@@ -4182,6 +4184,8 @@ off：关闭全路径缓存（即开启参数忽略）
     @property
     def IgnoreCase(self):
         """是否忽略大小写缓存
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16182,6 +16186,8 @@ off：关闭全路径缓存（即开启参数忽略）
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullUrlCache: str
         :param _IgnoreCase: 是否忽略大小写缓存
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCase: str
         :param _QueryString: CacheKey中包含请求参数
@@ -16247,6 +16253,8 @@ off：关闭全路径缓存（即开启参数忽略）
     @property
     def IgnoreCase(self):
         """是否忽略大小写缓存
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

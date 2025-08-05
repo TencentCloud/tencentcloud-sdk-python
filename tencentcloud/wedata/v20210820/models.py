@@ -3471,6 +3471,180 @@ class BaseClusterInfo(AbstractModel):
         
 
 
+class BaseProject(AbstractModel):
+    """项目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectName: 项目标识，英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _DisplayName: 项目显示名称，可以为中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _TenantId: 项目的所在租户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Status: 项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Model: 项目类型，SIMPLE：简单模式 STANDARD：标准模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Model: str
+        """
+        self._ProjectName = None
+        self._DisplayName = None
+        self._Region = None
+        self._TenantId = None
+        self._ProjectId = None
+        self._Description = None
+        self._CreateTime = None
+        self._Status = None
+        self._Model = None
+
+    @property
+    def ProjectName(self):
+        """项目标识，英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def DisplayName(self):
+        """项目显示名称，可以为中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TenantId(self):
+        """项目的所在租户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def ProjectId(self):
+        """项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Description(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        """项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Model(self):
+        """项目类型，SIMPLE：简单模式 STANDARD：标准模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._ProjectName = params.get("ProjectName")
+        self._DisplayName = params.get("DisplayName")
+        self._Region = params.get("Region")
+        self._TenantId = params.get("TenantId")
+        self._ProjectId = params.get("ProjectId")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BaseRole(AbstractModel):
     """基础角色对象
 
@@ -11695,6 +11869,38 @@ class CreateBaseProjectRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Project: 项目信息
+        :type Project: :class:`tencentcloud.wedata.v20210820.models.BaseProject`
+        """
+        self._Project = None
+
+    @property
+    def Project(self):
+        """项目信息
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BaseProject`
+        """
+        return self._Project
+
+    @Project.setter
+    def Project(self, Project):
+        self._Project = Project
+
+
+    def _deserialize(self, params):
+        if params.get("Project") is not None:
+            self._Project = BaseProject()
+            self._Project._deserialize(params.get("Project"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateBaseProjectResponse(AbstractModel):
     """CreateBaseProject返回参数结构体
@@ -17458,6 +17664,8 @@ class DataSourceInfo(AbstractModel):
         :param _DataSourceEnvInfos:  数据源环境信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceEnvInfos: list of DataSourceEnvInfo
+        :param _ForbidProbe: 禁止数据探查
+        :type ForbidProbe: bool
         """
         self._DatabaseName = None
         self._Description = None
@@ -17499,6 +17707,7 @@ class DataSourceInfo(AbstractModel):
         self._DatasourceUrn = None
         self._Model = None
         self._DataSourceEnvInfos = None
+        self._ForbidProbe = None
 
     @property
     def DatabaseName(self):
@@ -17980,6 +18189,17 @@ class DataSourceInfo(AbstractModel):
     def DataSourceEnvInfos(self, DataSourceEnvInfos):
         self._DataSourceEnvInfos = DataSourceEnvInfos
 
+    @property
+    def ForbidProbe(self):
+        """禁止数据探查
+        :rtype: bool
+        """
+        return self._ForbidProbe
+
+    @ForbidProbe.setter
+    def ForbidProbe(self, ForbidProbe):
+        self._ForbidProbe = ForbidProbe
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -18029,6 +18249,7 @@ class DataSourceInfo(AbstractModel):
                 obj = DataSourceEnvInfo()
                 obj._deserialize(item)
                 self._DataSourceEnvInfos.append(obj)
+        self._ForbidProbe = params.get("ForbidProbe")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25451,7 +25672,7 @@ class DescribeDataSourceInfoListRequest(AbstractModel):
         :type Filters: :class:`tencentcloud.wedata.v20210820.models.Filter`
         :param _OrderFields: 排序配置
         :type OrderFields: :class:`tencentcloud.wedata.v20210820.models.OrderField`
-        :param _Type: 数据源类型，必选（如MYSQL、DLC等）
+        :param _Type: 数据源类型，MYSQL,TENCENT_MYSQL,TDSQL_MYSQL,HIVE,KAFKA,POSTGRE,CDW,ORACLE,SQLSERVER,FTP,HDFS,ICEBERG,HBASE,TDSQL,TDSQLC,SPARK,VIRTUAL,TBASE,DB2,DM,TDENGINE,GAUSSDB,GBASE,IMPALA,ES,TENCENT_ES,S3_DATAINSIGHT,GREENPLUM,PHOENIX,SAP_HANA,SFTP,OCEANBASE,CLICKHOUSE,TCHOUSE_C,KUDU,VERTICA,REDIS,COS,S3,DLC,DORIS,CKAFKA,TDMQ_PULSAR,MONGODB,TENCENT_MONGODB,FTP_FILE,HDFS_FILE,DTS_KAFKA,REST_API,FILE,TIDB,SYBASE,TCHOUSE_X,TDSQL_POSTGRE,TCHOUSE_P,TCHOUSE_D,STARROCKS,EMR_STARROCKS,TBDS_STARROCKS,TRINO,KYUUBI,GDB,INFLUXDB,BIG_QUERY,BLOB,FILESYSTEM,SHAREPOINT,KINGBASEES,HUDI等
         :type Type: str
         :param _DatasourceName: 数据源名称过滤
         :type DatasourceName: str
@@ -25521,7 +25742,7 @@ class DescribeDataSourceInfoListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """数据源类型，必选（如MYSQL、DLC等）
+        """数据源类型，MYSQL,TENCENT_MYSQL,TDSQL_MYSQL,HIVE,KAFKA,POSTGRE,CDW,ORACLE,SQLSERVER,FTP,HDFS,ICEBERG,HBASE,TDSQL,TDSQLC,SPARK,VIRTUAL,TBASE,DB2,DM,TDENGINE,GAUSSDB,GBASE,IMPALA,ES,TENCENT_ES,S3_DATAINSIGHT,GREENPLUM,PHOENIX,SAP_HANA,SFTP,OCEANBASE,CLICKHOUSE,TCHOUSE_C,KUDU,VERTICA,REDIS,COS,S3,DLC,DORIS,CKAFKA,TDMQ_PULSAR,MONGODB,TENCENT_MONGODB,FTP_FILE,HDFS_FILE,DTS_KAFKA,REST_API,FILE,TIDB,SYBASE,TCHOUSE_X,TDSQL_POSTGRE,TCHOUSE_P,TCHOUSE_D,STARROCKS,EMR_STARROCKS,TBDS_STARROCKS,TRINO,KYUUBI,GDB,INFLUXDB,BIG_QUERY,BLOB,FILESYSTEM,SHAREPOINT,KINGBASEES,HUDI等
         :rtype: str
         """
         return self._Type
@@ -69460,6 +69681,10 @@ class ModifyProjectRequest(AbstractModel):
         r"""
         :param _ProjectId: 目标修改的项目ID
         :type ProjectId: str
+        :param _DisplayName: 项目显示名称，可以为中文名,需要租户范围内唯一
+        :type DisplayName: str
+        :param _Description: 备注
+        :type Description: str
         :param _TaskSubmitApproval: true/false则修改，不带该参数不修改。
         :type TaskSubmitApproval: bool
         :param _ResourcePoolInfo: 资源池信息
@@ -69474,8 +69699,12 @@ class ModifyProjectRequest(AbstractModel):
         :type Model: str
         :param _ProjectOwner: 项目负责人
         :type ProjectOwner: list of str
+        :param _ModifyType: 更新类型
+        :type ModifyType: str
         """
         self._ProjectId = None
+        self._DisplayName = None
+        self._Description = None
         self._TaskSubmitApproval = None
         self._ResourcePoolInfo = None
         self._ProjectManagers = None
@@ -69483,6 +69712,7 @@ class ModifyProjectRequest(AbstractModel):
         self._ExtraOptions = None
         self._Model = None
         self._ProjectOwner = None
+        self._ModifyType = None
 
     @property
     def ProjectId(self):
@@ -69494,6 +69724,28 @@ class ModifyProjectRequest(AbstractModel):
     @ProjectId.setter
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
+
+    @property
+    def DisplayName(self):
+        """项目显示名称，可以为中文名,需要租户范围内唯一
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        """备注
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
     @property
     def TaskSubmitApproval(self):
@@ -69572,9 +69824,22 @@ class ModifyProjectRequest(AbstractModel):
     def ProjectOwner(self, ProjectOwner):
         self._ProjectOwner = ProjectOwner
 
+    @property
+    def ModifyType(self):
+        """更新类型
+        :rtype: str
+        """
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
         self._TaskSubmitApproval = params.get("TaskSubmitApproval")
         if params.get("ResourcePoolInfo") is not None:
             self._ResourcePoolInfo = ResourcePoolInfo()
@@ -69584,6 +69849,7 @@ class ModifyProjectRequest(AbstractModel):
         self._ExtraOptions = params.get("ExtraOptions")
         self._Model = params.get("Model")
         self._ProjectOwner = params.get("ProjectOwner")
+        self._ModifyType = params.get("ModifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72342,7 +72608,7 @@ class ModifyTaskScriptRequest(AbstractModel):
         :type ProjectId: str
         :param _TaskId: 任务ID
         :type TaskId: str
-        :param _ScriptContent: 必填，脚本内容 base64编码
+        :param _ScriptContent: 存在脚本的任务必填（shell任务、Hive任务、python任务等），脚本内容 base64编码
         :type ScriptContent: str
         :param _IntegrationNodeDetails: 集成任务脚本配置
         :type IntegrationNodeDetails: list of IntegrationNodeDetail
@@ -72376,7 +72642,7 @@ class ModifyTaskScriptRequest(AbstractModel):
 
     @property
     def ScriptContent(self):
-        """必填，脚本内容 base64编码
+        """存在脚本的任务必填（shell任务、Hive任务、python任务等），脚本内容 base64编码
         :rtype: str
         """
         return self._ScriptContent

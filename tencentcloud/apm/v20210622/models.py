@@ -563,6 +563,8 @@ class ApmField(AbstractModel):
         :type LastPeriodValue: list of APMKV
         :param _CompareVal: 同比指标值，已弃用，不建议使用
         :type CompareVal: str
+        :param _NameCN: 指标中文名
+        :type NameCN: str
         """
         self._Key = None
         self._Value = None
@@ -570,6 +572,7 @@ class ApmField(AbstractModel):
         self._CompareVals = None
         self._LastPeriodValue = None
         self._CompareVal = None
+        self._NameCN = None
 
     @property
     def Key(self):
@@ -639,6 +642,17 @@ class ApmField(AbstractModel):
     def CompareVal(self, CompareVal):
         self._CompareVal = CompareVal
 
+    @property
+    def NameCN(self):
+        """指标中文名
+        :rtype: str
+        """
+        return self._NameCN
+
+    @NameCN.setter
+    def NameCN(self, NameCN):
+        self._NameCN = NameCN
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
@@ -657,6 +671,7 @@ class ApmField(AbstractModel):
                 obj._deserialize(item)
                 self._LastPeriodValue.append(obj)
         self._CompareVal = params.get("CompareVal")
+        self._NameCN = params.get("NameCN")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

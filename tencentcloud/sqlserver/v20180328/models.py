@@ -16147,7 +16147,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区英文ID，形如ap-guangzhou-1
+        :param _Zone: 可用区英文 ID
         :type Zone: str
         :param _InstanceType: 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
         :type InstanceType: str
@@ -16157,7 +16157,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区英文ID，形如ap-guangzhou-1
+        """可用区英文 ID
         :rtype: str
         """
         return self._Zone
@@ -31863,9 +31863,9 @@ class ZoneStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 规格地域
+        :param _Zone: 规格可用区
         :type Zone: str
-        :param _Region: 规格可用区
+        :param _Region: 规格地域
         :type Region: str
         :param _Status: 规格在该可用区的售卖状态 1-正常 2-关闭售卖但是可以升级 3-完全关闭售卖
         :type Status: int
@@ -31876,7 +31876,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Zone(self):
-        """规格地域
+        """规格可用区
         :rtype: str
         """
         return self._Zone
@@ -31887,7 +31887,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Region(self):
-        """规格可用区
+        """规格地域
         :rtype: str
         """
         return self._Region
