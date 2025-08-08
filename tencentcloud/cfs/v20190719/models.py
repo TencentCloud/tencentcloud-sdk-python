@@ -6226,6 +6226,130 @@ class DescribeUserQuotaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DoDirectoryOperationRequest(AbstractModel):
+    """DoDirectoryOperation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统Id
+        :type FileSystemId: str
+        :param _OpetationType: create：创建目录  check：确认目录是否存在
+        :type OpetationType: str
+        :param _DirectoryPath: 目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
+        :type DirectoryPath: str
+        :param _Mode: 创建目录的权限，若不传，默认为0755  若Operation Type为check，此值无实际意义
+        :type Mode: str
+        """
+        self._FileSystemId = None
+        self._OpetationType = None
+        self._DirectoryPath = None
+        self._Mode = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统Id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def OpetationType(self):
+        """create：创建目录  check：确认目录是否存在
+        :rtype: str
+        """
+        return self._OpetationType
+
+    @OpetationType.setter
+    def OpetationType(self, OpetationType):
+        self._OpetationType = OpetationType
+
+    @property
+    def DirectoryPath(self):
+        """目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
+        :rtype: str
+        """
+        return self._DirectoryPath
+
+    @DirectoryPath.setter
+    def DirectoryPath(self, DirectoryPath):
+        self._DirectoryPath = DirectoryPath
+
+    @property
+    def Mode(self):
+        """创建目录的权限，若不传，默认为0755  若Operation Type为check，此值无实际意义
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._OpetationType = params.get("OpetationType")
+        self._DirectoryPath = params.get("DirectoryPath")
+        self._Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DoDirectoryOperationResponse(AbstractModel):
+    """DoDirectoryOperation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 1:成功  0:失败  创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。  说明：创建目录操作若目录已存在，也会返回创建成功。
+        :type Result: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """1:成功  0:失败  创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。  说明：创建目录操作若目录已存在，也会返回创建成功。
+        :rtype: int
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class ExstraPerformanceInfo(AbstractModel):
     """购买完额外性能之后的值
 

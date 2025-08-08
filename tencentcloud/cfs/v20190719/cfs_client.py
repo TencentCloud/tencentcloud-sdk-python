@@ -948,6 +948,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DoDirectoryOperation(self, request):
+        """文件系统目录操作接口
+
+        :param request: Request instance for DoDirectoryOperation.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DoDirectoryOperationRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DoDirectoryOperationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DoDirectoryOperation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DoDirectoryOperationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDataFlow(self, request):
         """修改数据流动相关参数
 

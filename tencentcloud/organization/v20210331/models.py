@@ -7532,6 +7532,184 @@ class DescribePolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeResourceToShareMemberRequest(AbstractModel):
+    """DescribeResourceToShareMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Area: 地域
+        :type Area: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 每页条数
+        :type Limit: int
+        :param _SearchKey: 搜索关键字，支持业务资源ID搜索
+        :type SearchKey: str
+        :param _Type: 资源类型
+        :type Type: str
+        :param _ProductResourceIds: 业务资源ID。最大50个
+        :type ProductResourceIds: list of str
+        """
+        self._Area = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchKey = None
+        self._Type = None
+        self._ProductResourceIds = None
+
+    @property
+    def Area(self):
+        """地域
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchKey(self):
+        """搜索关键字，支持业务资源ID搜索
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Type(self):
+        """资源类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ProductResourceIds(self):
+        """业务资源ID。最大50个
+        :rtype: list of str
+        """
+        return self._ProductResourceIds
+
+    @ProductResourceIds.setter
+    def ProductResourceIds(self, ProductResourceIds):
+        self._ProductResourceIds = ProductResourceIds
+
+
+    def _deserialize(self, params):
+        self._Area = params.get("Area")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchKey = params.get("SearchKey")
+        self._Type = params.get("Type")
+        self._ProductResourceIds = params.get("ProductResourceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceToShareMemberResponse(AbstractModel):
+    """DescribeResourceToShareMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Items: 详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ShareResourceToMember
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        """详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ShareResourceToMember
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ShareResourceToMember()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeShareAreasRequest(AbstractModel):
     """DescribeShareAreas请求参数结构体
 
@@ -18846,6 +19024,134 @@ class ShareResource(AbstractModel):
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
         self._ProductResourceId = params.get("ProductResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShareResourceToMember(AbstractModel):
+    """与我共享的资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源ID
+        :type ResourceId: str
+        :param _Type: 资源类型
+        :type Type: str
+        :param _UnitId: 共享单元ID
+        :type UnitId: str
+        :param _UnitName: 共享单元名
+        :type UnitName: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ProductResourceId: 业务资源ID
+        :type ProductResourceId: str
+        :param _ShareManagerUin: 共享管理员uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShareManagerUin: int
+        """
+        self._ResourceId = None
+        self._Type = None
+        self._UnitId = None
+        self._UnitName = None
+        self._CreateTime = None
+        self._ProductResourceId = None
+        self._ShareManagerUin = None
+
+    @property
+    def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Type(self):
+        """资源类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UnitId(self):
+        """共享单元ID
+        :rtype: str
+        """
+        return self._UnitId
+
+    @UnitId.setter
+    def UnitId(self, UnitId):
+        self._UnitId = UnitId
+
+    @property
+    def UnitName(self):
+        """共享单元名
+        :rtype: str
+        """
+        return self._UnitName
+
+    @UnitName.setter
+    def UnitName(self, UnitName):
+        self._UnitName = UnitName
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ProductResourceId(self):
+        """业务资源ID
+        :rtype: str
+        """
+        return self._ProductResourceId
+
+    @ProductResourceId.setter
+    def ProductResourceId(self, ProductResourceId):
+        self._ProductResourceId = ProductResourceId
+
+    @property
+    def ShareManagerUin(self):
+        """共享管理员uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ShareManagerUin
+
+    @ShareManagerUin.setter
+    def ShareManagerUin(self, ShareManagerUin):
+        self._ShareManagerUin = ShareManagerUin
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._Type = params.get("Type")
+        self._UnitId = params.get("UnitId")
+        self._UnitName = params.get("UnitName")
+        self._CreateTime = params.get("CreateTime")
+        self._ProductResourceId = params.get("ProductResourceId")
+        self._ShareManagerUin = params.get("ShareManagerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

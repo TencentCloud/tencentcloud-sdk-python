@@ -38299,6 +38299,8 @@ class TaskResponseInfo(AbstractModel):
         :type EngineTypeDetail: str
         :param _ResourceGroupName: spark引擎资源组名称
         :type ResourceGroupName: str
+        :param _JobTimeSum: 任务执行耗时
+        :type JobTimeSum: int
         """
         self._DatabaseName = None
         self._DataAmount = None
@@ -38343,6 +38345,7 @@ class TaskResponseInfo(AbstractModel):
         self._ResultFormat = None
         self._EngineTypeDetail = None
         self._ResourceGroupName = None
+        self._JobTimeSum = None
 
     @property
     def DatabaseName(self):
@@ -38820,6 +38823,17 @@ class TaskResponseInfo(AbstractModel):
     def ResourceGroupName(self, ResourceGroupName):
         self._ResourceGroupName = ResourceGroupName
 
+    @property
+    def JobTimeSum(self):
+        """任务执行耗时
+        :rtype: int
+        """
+        return self._JobTimeSum
+
+    @JobTimeSum.setter
+    def JobTimeSum(self, JobTimeSum):
+        self._JobTimeSum = JobTimeSum
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -38871,6 +38885,7 @@ class TaskResponseInfo(AbstractModel):
         self._ResultFormat = params.get("ResultFormat")
         self._EngineTypeDetail = params.get("EngineTypeDetail")
         self._ResourceGroupName = params.get("ResourceGroupName")
+        self._JobTimeSum = params.get("JobTimeSum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

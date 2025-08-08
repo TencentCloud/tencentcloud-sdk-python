@@ -8588,11 +8588,14 @@ class DescribeTopicListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
+        :param _FromGroup: 按照消费组查询订阅的主题
+        :type FromGroup: str
         """
         self._InstanceId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._FromGroup = None
 
     @property
     def InstanceId(self):
@@ -8638,6 +8641,17 @@ class DescribeTopicListRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def FromGroup(self):
+        """按照消费组查询订阅的主题
+        :rtype: str
+        """
+        return self._FromGroup
+
+    @FromGroup.setter
+    def FromGroup(self, FromGroup):
+        self._FromGroup = FromGroup
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8649,6 +8663,7 @@ class DescribeTopicListRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._FromGroup = params.get("FromGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

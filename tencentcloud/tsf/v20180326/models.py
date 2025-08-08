@@ -43094,7 +43094,7 @@ class ModifyContainerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID 必填项
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的项目列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的项目。
         :type GroupId: str
         :param _AccessType: 0:公网 1:集群内访问 2：NodePort
         :type AccessType: int
@@ -43104,7 +43104,7 @@ class ModifyContainerGroupRequest(AbstractModel):
         :type UpdateType: int
         :param _UpdateIvl: 更新间隔,单位秒
         :type UpdateIvl: int
-        :param _SubnetId: 子网ID
+        :param _SubnetId: 子网ID，可通过调用[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)查询已创建的项目列表或登录控制台进行查看；也可以调用[CreateSubnet](https://cloud.tencent.com/document/product/1108/43594)创建新的项目。
         :type SubnetId: str
         :param _Alias: 部署组备注
         :type Alias: str
@@ -43119,7 +43119,7 @@ class ModifyContainerGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID 必填项
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的项目列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的项目。
         :rtype: str
         """
         return self._GroupId
@@ -43174,7 +43174,7 @@ class ModifyContainerGroupRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID
+        """子网ID，可通过调用[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)查询已创建的项目列表或登录控制台进行查看；也可以调用[CreateSubnet](https://cloud.tencent.com/document/product/1108/43594)创建新的项目。
         :rtype: str
         """
         return self._SubnetId
