@@ -3378,11 +3378,19 @@ class DescribeJobMonitorDataRequest(AbstractModel):
 - MemUsage：内存利用率，单位：%
 - LanOuttraffic：内网出带宽，单位：Bytes/s
 - LanIntraffic：内网入带宽，单位：Bytes/s
+- MaxDiskUsage：所有磁盘中的使用率最高的磁盘使用率，单位：%
+- TargetDiskUsage：指定磁盘的使用率，单位：%；配合Dimensions参数使用
         :type MetricName: str
         :param _StartTime: 查询任务实例的起始时间；如果未传入查询起始时间或传入的时间小于任务实例的创建时间（任务实例创建时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），会自动将查询时间调整到任务实例的创建时间。传入时间格式只支持零时区格式。
         :type StartTime: str
         :param _EndTime: 查询任务实例的终止时间；如果未传入查询终止时间或传入的时间大于任务实例的终止时间（任务实例终止时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），并且任务实例已经结束，会自动将查询终止时间调整到任务实例的终止时间；如果任务实例未结束，会自动将查询终止时间调整到当前时间。传入时间格式只支持零时区格式。
         :type EndTime: str
+        :param _Dimensions: 查询指标的扩展参数；当前只支持TargetDiskUsage;
+
+- TargetDiskUsage
+    -支持的查询维度diskname, 维度值为磁盘挂载名，例如vdb；如果不传此参数，默认查询vdb磁盘的使用率。
+    样例：[{"Name":"diskname", "Value":"vdb"}]
+        :type Dimensions: list of Dimension
         """
         self._JobId = None
         self._TaskName = None
@@ -3390,6 +3398,7 @@ class DescribeJobMonitorDataRequest(AbstractModel):
         self._MetricName = None
         self._StartTime = None
         self._EndTime = None
+        self._Dimensions = None
 
     @property
     def JobId(self):
@@ -3432,6 +3441,8 @@ class DescribeJobMonitorDataRequest(AbstractModel):
 - MemUsage：内存利用率，单位：%
 - LanOuttraffic：内网出带宽，单位：Bytes/s
 - LanIntraffic：内网入带宽，单位：Bytes/s
+- MaxDiskUsage：所有磁盘中的使用率最高的磁盘使用率，单位：%
+- TargetDiskUsage：指定磁盘的使用率，单位：%；配合Dimensions参数使用
         :rtype: str
         """
         return self._MetricName
@@ -3462,6 +3473,21 @@ class DescribeJobMonitorDataRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def Dimensions(self):
+        """查询指标的扩展参数；当前只支持TargetDiskUsage;
+
+- TargetDiskUsage
+    -支持的查询维度diskname, 维度值为磁盘挂载名，例如vdb；如果不传此参数，默认查询vdb磁盘的使用率。
+    样例：[{"Name":"diskname", "Value":"vdb"}]
+        :rtype: list of Dimension
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -3470,6 +3496,12 @@ class DescribeJobMonitorDataRequest(AbstractModel):
         self._MetricName = params.get("MetricName")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        if params.get("Dimensions") is not None:
+            self._Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = Dimension()
+                obj._deserialize(item)
+                self._Dimensions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4877,6 +4909,57 @@ class DetachInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class Dimension(AbstractModel):
+    """Job资源监控查询维度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 查询指标的维度名称
+        :type Name: str
+        :param _Value: 查询指标的维度值
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        """查询指标的维度名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """查询指标的维度值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Docker(AbstractModel):

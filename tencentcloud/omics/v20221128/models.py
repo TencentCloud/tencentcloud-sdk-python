@@ -708,6 +708,10 @@ class CreateVolumeRequest(AbstractModel):
         :type Description: str
         :param _Capacity: 缓存卷大小（GB），Turbo系列需要指定。
         :type Capacity: int
+        :param _EnableAutoScaleUp: 是否开启默认扩容，仅turbo类型文件存储支持
+        :type EnableAutoScaleUp: bool
+        :param _MetaType: turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
+        :type MetaType: str
         """
         self._EnvironmentId = None
         self._Name = None
@@ -715,6 +719,8 @@ class CreateVolumeRequest(AbstractModel):
         self._Spec = None
         self._Description = None
         self._Capacity = None
+        self._EnableAutoScaleUp = None
+        self._MetaType = None
 
     @property
     def EnvironmentId(self):
@@ -788,6 +794,28 @@ class CreateVolumeRequest(AbstractModel):
     def Capacity(self, Capacity):
         self._Capacity = Capacity
 
+    @property
+    def EnableAutoScaleUp(self):
+        """是否开启默认扩容，仅turbo类型文件存储支持
+        :rtype: bool
+        """
+        return self._EnableAutoScaleUp
+
+    @EnableAutoScaleUp.setter
+    def EnableAutoScaleUp(self, EnableAutoScaleUp):
+        self._EnableAutoScaleUp = EnableAutoScaleUp
+
+    @property
+    def MetaType(self):
+        """turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
+        :rtype: str
+        """
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -796,6 +824,8 @@ class CreateVolumeRequest(AbstractModel):
         self._Spec = params.get("Spec")
         self._Description = params.get("Description")
         self._Capacity = params.get("Capacity")
+        self._EnableAutoScaleUp = params.get("EnableAutoScaleUp")
+        self._MetaType = params.get("MetaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5758,10 +5788,16 @@ class StorageOption(AbstractModel):
 - turbo标准型起售40TiB，即40960GiB；扩容步长20TiB，即20480 GiB。
 - turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。
         :type Capacity: int
+        :param _EnableAutoScaleUp: 是否开启默认扩容，仅turbo类型文件存储支持
+        :type EnableAutoScaleUp: bool
+        :param _MetaType: turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
+        :type MetaType: str
         """
         self._StorageType = None
         self._Zone = None
         self._Capacity = None
+        self._EnableAutoScaleUp = None
+        self._MetaType = None
 
     @property
     def StorageType(self):
@@ -5802,11 +5838,35 @@ class StorageOption(AbstractModel):
     def Capacity(self, Capacity):
         self._Capacity = Capacity
 
+    @property
+    def EnableAutoScaleUp(self):
+        """是否开启默认扩容，仅turbo类型文件存储支持
+        :rtype: bool
+        """
+        return self._EnableAutoScaleUp
+
+    @EnableAutoScaleUp.setter
+    def EnableAutoScaleUp(self, EnableAutoScaleUp):
+        self._EnableAutoScaleUp = EnableAutoScaleUp
+
+    @property
+    def MetaType(self):
+        """turbo文件系统元数据属性，basic：标准型元数据；enhanced：增强型元数据
+        :rtype: str
+        """
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
 
     def _deserialize(self, params):
         self._StorageType = params.get("StorageType")
         self._Zone = params.get("Zone")
         self._Capacity = params.get("Capacity")
+        self._EnableAutoScaleUp = params.get("EnableAutoScaleUp")
+        self._MetaType = params.get("MetaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6279,6 +6339,12 @@ class Volume(AbstractModel):
         :type IsDefault: bool
         :param _Status: 状态。
         :type Status: str
+        :param _AutoScaleUpRule: turbo自动扩容策略
+        :type AutoScaleUpRule: :class:`tencentcloud.omics.v20221128.models.VolumeAutoScaleUpRule`
+        :param _MetaType: turbo元数据属性
+        :type MetaType: str
+        :param _Zone: 可用区
+        :type Zone: str
         """
         self._VolumeId = None
         self._Name = None
@@ -6292,6 +6358,9 @@ class Volume(AbstractModel):
         self._DefaultMountPath = None
         self._IsDefault = None
         self._Status = None
+        self._AutoScaleUpRule = None
+        self._MetaType = None
+        self._Zone = None
 
     @property
     def VolumeId(self):
@@ -6431,6 +6500,39 @@ class Volume(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def AutoScaleUpRule(self):
+        """turbo自动扩容策略
+        :rtype: :class:`tencentcloud.omics.v20221128.models.VolumeAutoScaleUpRule`
+        """
+        return self._AutoScaleUpRule
+
+    @AutoScaleUpRule.setter
+    def AutoScaleUpRule(self, AutoScaleUpRule):
+        self._AutoScaleUpRule = AutoScaleUpRule
+
+    @property
+    def MetaType(self):
+        """turbo元数据属性
+        :rtype: str
+        """
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
+    @property
+    def Zone(self):
+        """可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._VolumeId = params.get("VolumeId")
@@ -6445,6 +6547,79 @@ class Volume(AbstractModel):
         self._DefaultMountPath = params.get("DefaultMountPath")
         self._IsDefault = params.get("IsDefault")
         self._Status = params.get("Status")
+        if params.get("AutoScaleUpRule") is not None:
+            self._AutoScaleUpRule = VolumeAutoScaleUpRule()
+            self._AutoScaleUpRule._deserialize(params.get("AutoScaleUpRule"))
+        self._MetaType = params.get("MetaType")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeAutoScaleUpRule(AbstractModel):
+    """缓存卷自动扩容策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 自动扩容策略开启，关闭
+示例值：open,close
+        :type Status: str
+        :param _ScaleThreshold: 集群用量占比，到达这个值后开始扩容,范围[10-90]
+        :type ScaleThreshold: int
+        :param _TargetThreshold: 扩容后使用量跟集群总量比例,范围[10-90]
+        :type TargetThreshold: int
+        """
+        self._Status = None
+        self._ScaleThreshold = None
+        self._TargetThreshold = None
+
+    @property
+    def Status(self):
+        """自动扩容策略开启，关闭
+示例值：open,close
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ScaleThreshold(self):
+        """集群用量占比，到达这个值后开始扩容,范围[10-90]
+        :rtype: int
+        """
+        return self._ScaleThreshold
+
+    @ScaleThreshold.setter
+    def ScaleThreshold(self, ScaleThreshold):
+        self._ScaleThreshold = ScaleThreshold
+
+    @property
+    def TargetThreshold(self):
+        """扩容后使用量跟集群总量比例,范围[10-90]
+        :rtype: int
+        """
+        return self._TargetThreshold
+
+    @TargetThreshold.setter
+    def TargetThreshold(self, TargetThreshold):
+        self._TargetThreshold = TargetThreshold
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ScaleThreshold = params.get("ScaleThreshold")
+        self._TargetThreshold = params.get("TargetThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

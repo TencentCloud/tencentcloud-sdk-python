@@ -6354,7 +6354,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 在 Resolution 的基础上按比例提高分辨率，例如1024:1024开启2倍超分后将得到2048:2048。
         :type Clarity: str
         :param _ContentImage: 用于引导内容的参考图。
-图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png。
         :type ContentImage: :class:`tencentcloud.hunyuan.v20230901.models.Image`
         :param _Revise: prompt 扩写开关。1为开启，0为关闭，不传默认开启。
 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
@@ -6468,7 +6468,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
     @property
     def ContentImage(self):
         """用于引导内容的参考图。
-图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Image`
         """
         return self._ContentImage

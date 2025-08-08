@@ -647,6 +647,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConfigCheckRules(self, request):
+        """云资源配置风险规则列表示例
+
+        :param request: Request instance for DescribeConfigCheckRules.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeConfigCheckRulesRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeConfigCheckRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigCheckRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigCheckRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDbAssetInfo(self, request):
         """db资产详情
 

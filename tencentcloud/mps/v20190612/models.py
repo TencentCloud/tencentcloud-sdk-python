@@ -39040,19 +39040,25 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
         r"""
         :param _Type: 结果的类型，取值范围：
 <li>SegmentRecognition：拆条。</li>
+<li>Highlight ：集锦。</li>
         :type Type: str
         :param _SegmentResultSet: 拆条结果，当 Type 为
 SegmentRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentResultSet: list of SegmentRecognitionItem
+        :param _HighlightResultSet: 集锦结果，当Type 为 Highlight 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighlightResultSet: list of MediaAiAnalysisHighlightItem
         """
         self._Type = None
         self._SegmentResultSet = None
+        self._HighlightResultSet = None
 
     @property
     def Type(self):
         """结果的类型，取值范围：
 <li>SegmentRecognition：拆条。</li>
+<li>Highlight ：集锦。</li>
         :rtype: str
         """
         return self._Type
@@ -39074,6 +39080,18 @@ SegmentRecognition 时有效。
     def SegmentResultSet(self, SegmentResultSet):
         self._SegmentResultSet = SegmentResultSet
 
+    @property
+    def HighlightResultSet(self):
+        """集锦结果，当Type 为 Highlight 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MediaAiAnalysisHighlightItem
+        """
+        return self._HighlightResultSet
+
+    @HighlightResultSet.setter
+    def HighlightResultSet(self, HighlightResultSet):
+        self._HighlightResultSet = HighlightResultSet
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -39083,6 +39101,12 @@ SegmentRecognition 时有效。
                 obj = SegmentRecognitionItem()
                 obj._deserialize(item)
                 self._SegmentResultSet.append(obj)
+        if params.get("HighlightResultSet") is not None:
+            self._HighlightResultSet = []
+            for item in params.get("HighlightResultSet"):
+                obj = MediaAiAnalysisHighlightItem()
+                obj._deserialize(item)
+                self._HighlightResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

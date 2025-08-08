@@ -1561,13 +1561,14 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
         :type MountDiskType: int
         :param _HAZk: 是否是ZK高可用
         :type HAZk: bool
-        :param _CommonSpec: ZK节点
-SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
+        :param _CommonSpec: ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取
         :type CommonSpec: :class:`tencentcloud.cdwch.v20200915.models.NodeSpec`
         :param _TagItems: 标签列表
         :type TagItems: list of Tag
-        :param _SecondaryZoneInfo: 副可用去信息
+        :param _SecondaryZoneInfo: 副可用区信息
         :type SecondaryZoneInfo: list of SecondaryZoneInfo
+        :param _CkDefaultUserPwd: default账号登陆实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符
+        :type CkDefaultUserPwd: str
         """
         self._Zone = None
         self._HaFlag = None
@@ -1585,6 +1586,7 @@ SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
         self._CommonSpec = None
         self._TagItems = None
         self._SecondaryZoneInfo = None
+        self._CkDefaultUserPwd = None
 
     @property
     def Zone(self):
@@ -1736,8 +1738,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def CommonSpec(self):
-        """ZK节点
-SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
+        """ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.NodeSpec`
         """
         return self._CommonSpec
@@ -1759,7 +1760,7 @@ SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
 
     @property
     def SecondaryZoneInfo(self):
-        """副可用去信息
+        """副可用区信息
         :rtype: list of SecondaryZoneInfo
         """
         return self._SecondaryZoneInfo
@@ -1767,6 +1768,17 @@ SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
     @SecondaryZoneInfo.setter
     def SecondaryZoneInfo(self, SecondaryZoneInfo):
         self._SecondaryZoneInfo = SecondaryZoneInfo
+
+    @property
+    def CkDefaultUserPwd(self):
+        """default账号登陆实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符
+        :rtype: str
+        """
+        return self._CkDefaultUserPwd
+
+    @CkDefaultUserPwd.setter
+    def CkDefaultUserPwd(self, CkDefaultUserPwd):
+        self._CkDefaultUserPwd = CkDefaultUserPwd
 
 
     def _deserialize(self, params):
@@ -1804,6 +1816,7 @@ SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
                 obj = SecondaryZoneInfo()
                 obj._deserialize(item)
                 self._SecondaryZoneInfo.append(obj)
+        self._CkDefaultUserPwd = params.get("CkDefaultUserPwd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

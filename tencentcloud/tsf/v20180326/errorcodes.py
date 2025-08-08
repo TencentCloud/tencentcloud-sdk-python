@@ -317,7 +317,7 @@ FAILEDOPERATION_TSFMSERROR = 'FailedOperation.TsfMsError'
 # 调用ms server失败。
 FAILEDOPERATION_TSFMSSERVERERROR = 'FailedOperation.TsfMsServerError'
 
-# TSF权限模块异常，请联系系统管理员。。
+# TSF权限模块异常，请联系系统管理员。
 FAILEDOPERATION_TSFPRIVILEGEERROR = 'FailedOperation.TsfPrivilegeError'
 
 # 未授权。
@@ -464,7 +464,7 @@ INTERNALERROR_TSFMONITORINTERNALERROR = 'InternalError.TsfMonitorInternalError'
 # TSF服务管理通用异常。
 INTERNALERROR_TSFMSERROR = 'InternalError.TsfMsError'
 
-# [%s]模块未处理异常。。
+# [%s]模块未处理异常。
 INTERNALERROR_UNHANDLEDEXCEPTION = 'InternalError.UnhandledException'
 
 # 参数错误。
@@ -473,7 +473,7 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 删除应用失败。
 INVALIDPARAMETER_APPLICATIONDELETEFAILED = 'InvalidParameter.ApplicationDeleteFailed'
 
-# [%s]模块接口[%s]请求不正确（400 BAD REQUEST）。。
+# [%s]模块接口[%s]请求不正确（400 BAD REQUEST）。
 INVALIDPARAMETER_BADREQUEST = 'InvalidParameter.BadRequest'
 
 # 配置模板名称不符合规范。
@@ -1016,7 +1016,7 @@ INVALIDPARAMETERVALUE_SERVICEDESCLENGTH = 'InvalidParameterValue.ServiceDescLeng
 # 服务名称重复。
 INVALIDPARAMETERVALUE_SERVICENAMEREPEATED = 'InvalidParameterValue.ServiceNameRepeated'
 
-# 服务不存在或权限不足。
+# 无法获取微服务列表或无访问权限。
 INVALIDPARAMETERVALUE_SERVICENOTEXISTSORPERMISSIONDENIED = 'InvalidParameterValue.ServiceNotExistsOrPermissionDenied'
 
 # 无效请求参数。
@@ -1112,13 +1112,13 @@ MISSINGPARAMETER_NAMESPACEIDREQUIRED = 'MissingParameter.NamespaceIdRequired'
 # 命名空间名称未填写。
 MISSINGPARAMETER_NAMESPACENAMEREQUIRED = 'MissingParameter.NamespaceNameRequired'
 
-# %s缺失。
+# [%s]参数缺失。
 MISSINGPARAMETER_REQUIREDPARAMETERMISSING = 'MissingParameter.RequiredParameterMissing'
 
 # 未填写服务Id。
 MISSINGPARAMETER_SERVICEIDREQUIRED = 'MissingParameter.ServiceIdRequired'
 
-# 未指定%s。。
+# 未指定%s。
 MISSINGPARAMETER_SYSTEMPARAMETERREQUIRED = 'MissingParameter.SystemParameterRequired'
 
 # 缺少必填参数。
@@ -1214,7 +1214,7 @@ RESOURCENOTFOUND_LICENSESERVERNOTFOUND = 'ResourceNotFound.LicenseServerNotFound
 # 目标微服务已离线[%s]。
 RESOURCENOTFOUND_MICROSERVICEOFFLINE = 'ResourceNotFound.MicroserviceOffline'
 
-# 无法获取命名空间。
+# 命名空间不存在,或相应权限不足。
 RESOURCENOTFOUND_NAMESPACENOTEXIST = 'ResourceNotFound.NamespaceNotExist'
 
 # 资源对象不存在。
@@ -1223,7 +1223,7 @@ RESOURCENOTFOUND_OBJECTNOEXIST = 'ResourceNotFound.ObjectNoExist'
 # 无法获取服务，无法执行该操作。
 RESOURCENOTFOUND_SERVICENOTEXIST = 'ResourceNotFound.ServiceNotExist'
 
-# 任务不存在。
+# 资源不存在。
 RESOURCENOTFOUND_TASKNOTFOUND = 'ResourceNotFound.TaskNotFound'
 
 # TKE 中不存在该集群。
@@ -1232,10 +1232,10 @@ RESOURCENOTFOUND_TKECLUSTERNOTEXISTS = 'ResourceNotFound.TkeClusterNotExists'
 # 访问 CAM 系统出错，%s。
 UNAUTHORIZEDOPERATION_CAMGENERALERROR = 'UnauthorizedOperation.CamGeneralError'
 
-# 协作者身份未授权，需要主账号授予协作者权限，参考 TSF 官网文档「快速入门/准备工作」。
+# 协作者身份未授权，需要主账号授予协作者权限，参考 TSF 官网文档[子账号获取访问授权](https://cloud.tencent.com/document/product/649/55570)。
 UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = 'UnauthorizedOperation.CamTsfRoleNoPermission'
 
-# 当前主账号未创建TSF_QCSRole或未对子账号授予预设策略QcloudCamSubaccountsAuthorizeRoleFullAccess。请参考产品文档主账号协作者使用说明。。
+# 当前主账号未创建TSF_QCSRole或未对子账号授予预设策略QcloudCamSubaccountsAuthorizeRoleFullAccess。请参考产品文档[主账号获取访问授权](https://cloud.tencent.com/document/product/649/16869)。
 UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = 'UnauthorizedOperation.CamTsfRoleNotExist'
 
 # License未激活。
@@ -1244,7 +1244,7 @@ UNAUTHORIZEDOPERATION_LICENSEINACTIVE = 'UnauthorizedOperation.LicenseInactive'
 # 您所购买的服务不支持该操作。
 UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = 'UnauthorizedOperation.LicenseUnauthorized'
 
-# 缺少License。。
+# 缺少License。
 UNAUTHORIZEDOPERATION_NOLICENSE = 'UnauthorizedOperation.NoLicense'
 
 # 用户无权限访问该接口。

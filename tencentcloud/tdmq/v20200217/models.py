@@ -16225,7 +16225,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
         :type FilterTopic: str
         :param _FilterGroup: 按消费组名称查询消费组，支持模糊查询
         :type FilterGroup: str
-        :param _SortedBy: 按照指定字段排序，可选值为tps，accumulative
+        :param _SortedBy: 按照指定字段排序，可选值为 subscribeNum: 订阅 Topic 个数
         :type SortedBy: str
         :param _SortOrder: 按升序或降序排列，可选值为asc，desc
         :type SortOrder: str
@@ -16313,7 +16313,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
 
     @property
     def SortedBy(self):
-        """按照指定字段排序，可选值为tps，accumulative
+        """按照指定字段排序，可选值为 subscribeNum: 订阅 Topic 个数
         :rtype: str
         """
         return self._SortedBy
@@ -31205,6 +31205,8 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         :type Topic: str
         :param _ResetTimestamp: 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
         :type ResetTimestamp: int
+        :param _RetryFlag: 重置的是否是retry topic
+        :type RetryFlag: bool
         """
         self._ClusterId = None
         self._NamespaceId = None
@@ -31212,6 +31214,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         self._Type = None
         self._Topic = None
         self._ResetTimestamp = None
+        self._RetryFlag = None
 
     @property
     def ClusterId(self):
@@ -31279,6 +31282,17 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
     def ResetTimestamp(self, ResetTimestamp):
         self._ResetTimestamp = ResetTimestamp
 
+    @property
+    def RetryFlag(self):
+        """重置的是否是retry topic
+        :rtype: bool
+        """
+        return self._RetryFlag
+
+    @RetryFlag.setter
+    def RetryFlag(self, RetryFlag):
+        self._RetryFlag = RetryFlag
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -31287,6 +31301,7 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         self._Type = params.get("Type")
         self._Topic = params.get("Topic")
         self._ResetTimestamp = params.get("ResetTimestamp")
+        self._RetryFlag = params.get("RetryFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

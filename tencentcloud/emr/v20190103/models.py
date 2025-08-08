@@ -10183,6 +10183,8 @@ class DescribeInsightListRequest(AbstractModel):
         :type Page: int
         :param _Type: 查询类型,支持HIVE,SPARK,DLC_SPARK,SPARK_SQL,SCHEDULE,MAPREDUCE,TRINO等类型,默认查询全部
         :type Type: str
+        :param _MustHasContext: 是否包含具体参数建议等信息
+        :type MustHasContext: bool
         """
         self._InstanceId = None
         self._StartTime = None
@@ -10190,6 +10192,7 @@ class DescribeInsightListRequest(AbstractModel):
         self._PageSize = None
         self._Page = None
         self._Type = None
+        self._MustHasContext = None
 
     @property
     def InstanceId(self):
@@ -10257,6 +10260,17 @@ class DescribeInsightListRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def MustHasContext(self):
+        """是否包含具体参数建议等信息
+        :rtype: bool
+        """
+        return self._MustHasContext
+
+    @MustHasContext.setter
+    def MustHasContext(self, MustHasContext):
+        self._MustHasContext = MustHasContext
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10265,6 +10279,7 @@ class DescribeInsightListRequest(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._Page = params.get("Page")
         self._Type = params.get("Type")
+        self._MustHasContext = params.get("MustHasContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

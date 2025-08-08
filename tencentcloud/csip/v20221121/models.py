@@ -9311,8 +9311,7 @@ class CallRecord(AbstractModel):
 0:控制台调用
 1:API
         :type EventType: int
-        :param _UserType: 用户类型
-CAMUser/root/AssumedRole
+        :param _UserType: 用户类型CAMUser/root/AssumedRole
 
         :type UserType: str
         :param _UserName: 用户/角色名称
@@ -9340,6 +9339,8 @@ CAMUser/root/AssumedRole
         :type ShowStatus: bool
         :param _ISP: 运营商
         :type ISP: str
+        :param _VpcInfo: 账号外vpc信息列表
+        :type VpcInfo: list of SourceIPVpcInfo
         """
         self._CallID = None
         self._AccessKey = None
@@ -9365,6 +9366,7 @@ CAMUser/root/AssumedRole
         self._AppID = None
         self._ShowStatus = None
         self._ISP = None
+        self._VpcInfo = None
 
     @property
     def CallID(self):
@@ -9491,8 +9493,7 @@ CAMUser/root/AssumedRole
 
     @property
     def UserType(self):
-        """用户类型
-CAMUser/root/AssumedRole
+        """用户类型CAMUser/root/AssumedRole
 
         :rtype: str
         """
@@ -9635,6 +9636,17 @@ CAMUser/root/AssumedRole
     def ISP(self, ISP):
         self._ISP = ISP
 
+    @property
+    def VpcInfo(self):
+        """账号外vpc信息列表
+        :rtype: list of SourceIPVpcInfo
+        """
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
 
     def _deserialize(self, params):
         self._CallID = params.get("CallID")
@@ -9661,6 +9673,12 @@ CAMUser/root/AssumedRole
         self._AppID = params.get("AppID")
         self._ShowStatus = params.get("ShowStatus")
         self._ISP = params.get("ISP")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = []
+            for item in params.get("VpcInfo"):
+                obj = SourceIPVpcInfo()
+                obj._deserialize(item)
+                self._VpcInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14822,12 +14840,15 @@ class DescribeCallRecordRequest(AbstractModel):
         :type AccessKeyID: int
         :param _SourceIPID: 调用源IP的ID
         :type SourceIPID: int
+        :param _AccUin: 访问账号uin
+        :type AccUin: str
         :param _Filter: 过滤器
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         self._MemberId = None
         self._AccessKeyID = None
         self._SourceIPID = None
+        self._AccUin = None
         self._Filter = None
 
     @property
@@ -14864,6 +14885,17 @@ class DescribeCallRecordRequest(AbstractModel):
         self._SourceIPID = SourceIPID
 
     @property
+    def AccUin(self):
+        """访问账号uin
+        :rtype: str
+        """
+        return self._AccUin
+
+    @AccUin.setter
+    def AccUin(self, AccUin):
+        self._AccUin = AccUin
+
+    @property
     def Filter(self):
         """过滤器
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -14879,6 +14911,7 @@ class DescribeCallRecordRequest(AbstractModel):
         self._MemberId = params.get("MemberId")
         self._AccessKeyID = params.get("AccessKeyID")
         self._SourceIPID = params.get("SourceIPID")
+        self._AccUin = params.get("AccUin")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -15583,6 +15616,265 @@ class DescribeClusterPodAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._AppIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigCheckRulesRequest(AbstractModel):
+    """DescribeConfigCheckRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filters: 过滤内容
+        :type Filters: list of Filters
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Order: 排序类型
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        """过滤内容
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        """排序类型
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigCheckRulesResponse(AbstractModel):
+    """DescribeConfigCheckRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 风险规则数量
+        :type TotalCount: int
+        :param _RuleList: 风险规则列表
+        :type RuleList: list of RiskRuleInfo
+        :param _ProviderList: 云厂商类型选项
+        :type ProviderList: list of AttributeOptionSet
+        :param _RiskLevelList: 风险等级类型选项
+        :type RiskLevelList: list of AttributeOptionSet
+        :param _DispositionTypeList: 处置分类选项
+        :type DispositionTypeList: list of AttributeOptionSet
+        :param _CheckTypeList: 检查类型选项
+        :type CheckTypeList: list of AttributeOptionSet
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RuleList = None
+        self._ProviderList = None
+        self._RiskLevelList = None
+        self._DispositionTypeList = None
+        self._CheckTypeList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """风险规则数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RuleList(self):
+        """风险规则列表
+        :rtype: list of RiskRuleInfo
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def ProviderList(self):
+        """云厂商类型选项
+        :rtype: list of AttributeOptionSet
+        """
+        return self._ProviderList
+
+    @ProviderList.setter
+    def ProviderList(self, ProviderList):
+        self._ProviderList = ProviderList
+
+    @property
+    def RiskLevelList(self):
+        """风险等级类型选项
+        :rtype: list of AttributeOptionSet
+        """
+        return self._RiskLevelList
+
+    @RiskLevelList.setter
+    def RiskLevelList(self, RiskLevelList):
+        self._RiskLevelList = RiskLevelList
+
+    @property
+    def DispositionTypeList(self):
+        """处置分类选项
+        :rtype: list of AttributeOptionSet
+        """
+        return self._DispositionTypeList
+
+    @DispositionTypeList.setter
+    def DispositionTypeList(self, DispositionTypeList):
+        self._DispositionTypeList = DispositionTypeList
+
+    @property
+    def CheckTypeList(self):
+        """检查类型选项
+        :rtype: list of AttributeOptionSet
+        """
+        return self._CheckTypeList
+
+    @CheckTypeList.setter
+    def CheckTypeList(self, CheckTypeList):
+        self._CheckTypeList = CheckTypeList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RuleList") is not None:
+            self._RuleList = []
+            for item in params.get("RuleList"):
+                obj = RiskRuleInfo()
+                obj._deserialize(item)
+                self._RuleList.append(obj)
+        if params.get("ProviderList") is not None:
+            self._ProviderList = []
+            for item in params.get("ProviderList"):
+                obj = AttributeOptionSet()
+                obj._deserialize(item)
+                self._ProviderList.append(obj)
+        if params.get("RiskLevelList") is not None:
+            self._RiskLevelList = []
+            for item in params.get("RiskLevelList"):
+                obj = AttributeOptionSet()
+                obj._deserialize(item)
+                self._RiskLevelList.append(obj)
+        if params.get("DispositionTypeList") is not None:
+            self._DispositionTypeList = []
+            for item in params.get("DispositionTypeList"):
+                obj = AttributeOptionSet()
+                obj._deserialize(item)
+                self._DispositionTypeList.append(obj)
+        if params.get("CheckTypeList") is not None:
+            self._CheckTypeList = []
+            for item in params.get("CheckTypeList"):
+                obj = AttributeOptionSet()
+                obj._deserialize(item)
+                self._CheckTypeList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -24606,6 +24898,12 @@ class ExposesItem(AbstractModel):
         :type AppId: int
         :param _AppIdStr: 租户ID字符串
         :type AppIdStr: str
+        :param _ExposureID: 记录ID
+        :type ExposureID: int
+        :param _PortDetectCount: 端口开放数量
+        :type PortDetectCount: int
+        :param _PortDetectResult: 端口开放结果
+        :type PortDetectResult: str
         """
         self._Provider = None
         self._CloudAccountName = None
@@ -24636,6 +24934,9 @@ class ExposesItem(AbstractModel):
         self._HasScan = None
         self._AppId = None
         self._AppIdStr = None
+        self._ExposureID = None
+        self._PortDetectCount = None
+        self._PortDetectResult = None
 
     @property
     def Provider(self):
@@ -24956,6 +25257,39 @@ class ExposesItem(AbstractModel):
     def AppIdStr(self, AppIdStr):
         self._AppIdStr = AppIdStr
 
+    @property
+    def ExposureID(self):
+        """记录ID
+        :rtype: int
+        """
+        return self._ExposureID
+
+    @ExposureID.setter
+    def ExposureID(self, ExposureID):
+        self._ExposureID = ExposureID
+
+    @property
+    def PortDetectCount(self):
+        """端口开放数量
+        :rtype: int
+        """
+        return self._PortDetectCount
+
+    @PortDetectCount.setter
+    def PortDetectCount(self, PortDetectCount):
+        self._PortDetectCount = PortDetectCount
+
+    @property
+    def PortDetectResult(self):
+        """端口开放结果
+        :rtype: str
+        """
+        return self._PortDetectResult
+
+    @PortDetectResult.setter
+    def PortDetectResult(self, PortDetectResult):
+        self._PortDetectResult = PortDetectResult
+
 
     def _deserialize(self, params):
         self._Provider = params.get("Provider")
@@ -24987,6 +25321,9 @@ class ExposesItem(AbstractModel):
         self._HasScan = params.get("HasScan")
         self._AppId = params.get("AppId")
         self._AppIdStr = params.get("AppIdStr")
+        self._ExposureID = params.get("ExposureID")
+        self._PortDetectCount = params.get("PortDetectCount")
+        self._PortDetectResult = params.get("PortDetectResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29902,6 +30239,162 @@ class RiskDetailItem(AbstractModel):
         
 
 
+class RiskRuleInfo(AbstractModel):
+    """风险规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: 风险检查项ID
+        :type RuleID: str
+        :param _Provider: 云厂商名称
+        :type Provider: str
+        :param _InstanceType: 实例类型
+        :type InstanceType: str
+        :param _RiskTitle: 风险名称
+        :type RiskTitle: str
+        :param _CheckType: 检查类型
+        :type CheckType: str
+        :param _RiskLevel: 风险等级
+        :type RiskLevel: str
+        :param _RiskInfluence: 风险危害
+        :type RiskInfluence: str
+        :param _RiskFixAdvance: 风险修复指引报告链接
+        :type RiskFixAdvance: str
+        :param _DispositionType: 边界管控
+        :type DispositionType: str
+        """
+        self._RuleID = None
+        self._Provider = None
+        self._InstanceType = None
+        self._RiskTitle = None
+        self._CheckType = None
+        self._RiskLevel = None
+        self._RiskInfluence = None
+        self._RiskFixAdvance = None
+        self._DispositionType = None
+
+    @property
+    def RuleID(self):
+        """风险检查项ID
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def Provider(self):
+        """云厂商名称
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def InstanceType(self):
+        """实例类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def RiskTitle(self):
+        """风险名称
+        :rtype: str
+        """
+        return self._RiskTitle
+
+    @RiskTitle.setter
+    def RiskTitle(self, RiskTitle):
+        self._RiskTitle = RiskTitle
+
+    @property
+    def CheckType(self):
+        """检查类型
+        :rtype: str
+        """
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def RiskLevel(self):
+        """风险等级
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def RiskInfluence(self):
+        """风险危害
+        :rtype: str
+        """
+        return self._RiskInfluence
+
+    @RiskInfluence.setter
+    def RiskInfluence(self, RiskInfluence):
+        self._RiskInfluence = RiskInfluence
+
+    @property
+    def RiskFixAdvance(self):
+        """风险修复指引报告链接
+        :rtype: str
+        """
+        return self._RiskFixAdvance
+
+    @RiskFixAdvance.setter
+    def RiskFixAdvance(self, RiskFixAdvance):
+        self._RiskFixAdvance = RiskFixAdvance
+
+    @property
+    def DispositionType(self):
+        """边界管控
+        :rtype: str
+        """
+        return self._DispositionType
+
+    @DispositionType.setter
+    def DispositionType(self, DispositionType):
+        self._DispositionType = DispositionType
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        self._Provider = params.get("Provider")
+        self._InstanceType = params.get("InstanceType")
+        self._RiskTitle = params.get("RiskTitle")
+        self._CheckType = params.get("CheckType")
+        self._RiskLevel = params.get("RiskLevel")
+        self._RiskInfluence = params.get("RiskInfluence")
+        self._RiskFixAdvance = params.get("RiskFixAdvance")
+        self._DispositionType = params.get("DispositionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RiskRuleItem(AbstractModel):
     """风险规则
 
@@ -32099,6 +32592,87 @@ class SourceIPAsset(AbstractModel):
         self._Nickname = params.get("Nickname")
         self._ShowStatus = params.get("ShowStatus")
         self._ISP = params.get("ISP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceIPVpcInfo(AbstractModel):
+    """调用源IP 外部账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 账号名称
+        :type Name: str
+        :param _AppID: vpc所属appid
+        :type AppID: int
+        :param _VpcID: vpc id
+        :type VpcID: str
+        :param _VpcName: vpc 名称
+        :type VpcName: str
+        """
+        self._Name = None
+        self._AppID = None
+        self._VpcID = None
+        self._VpcName = None
+
+    @property
+    def Name(self):
+        """账号名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AppID(self):
+        """vpc所属appid
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def VpcID(self):
+        """vpc id
+        :rtype: str
+        """
+        return self._VpcID
+
+    @VpcID.setter
+    def VpcID(self, VpcID):
+        self._VpcID = VpcID
+
+    @property
+    def VpcName(self):
+        """vpc 名称
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AppID = params.get("AppID")
+        self._VpcID = params.get("VpcID")
+        self._VpcName = params.get("VpcName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -130,6 +130,8 @@ class CreateInstanceRequest(AbstractModel):
         :type ResourceTags: list of Tag
         :param _Project: 指定实例所属项目 ID。
         :type Project: str
+        :param _ProductType: 产品版本，0-标准版，1-容量增强版
+        :type ProductType: int
         :param _InstanceType: 实例类型。
 - base：免费测试版。
 - single：单机版。
@@ -191,6 +193,7 @@ VPC或TCS
         self._Params = None
         self._ResourceTags = None
         self._Project = None
+        self._ProductType = None
         self._InstanceType = None
         self._Mode = None
         self._GoodsNum = None
@@ -330,6 +333,17 @@ VPC或TCS
         warnings.warn("parameter `Project` is deprecated", DeprecationWarning) 
 
         self._Project = Project
+
+    @property
+    def ProductType(self):
+        """产品版本，0-标准版，1-容量增强版
+        :rtype: int
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
 
     @property
     def InstanceType(self):
@@ -617,6 +631,7 @@ VPC或TCS
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
         self._Project = params.get("Project")
+        self._ProductType = params.get("ProductType")
         self._InstanceType = params.get("InstanceType")
         self._Mode = params.get("Mode")
         self._GoodsNum = params.get("GoodsNum")

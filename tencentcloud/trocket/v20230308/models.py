@@ -780,12 +780,12 @@ class CreateInstanceRequest(AbstractModel):
         :type Name: str
         :param _SkuCode: 商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
         :type SkuCode: str
+        :param _VpcList: 集群绑定的VPC信息
+        :type VpcList: list of VpcInfo
         :param _Remark: 备注信息
         :type Remark: str
         :param _TagList: 标签列表
         :type TagList: list of Tag
-        :param _VpcList: 集群绑定的VPC信息，必填
-        :type VpcList: list of VpcInfo
         :param _EnablePublic: 是否开启公网，默认值为false表示不开启
         :type EnablePublic: bool
         :param _BillingFlow: 公网是否按流量计费，默认值为false表示不按流量计费
@@ -817,9 +817,9 @@ class CreateInstanceRequest(AbstractModel):
         self._InstanceType = None
         self._Name = None
         self._SkuCode = None
+        self._VpcList = None
         self._Remark = None
         self._TagList = None
-        self._VpcList = None
         self._EnablePublic = None
         self._BillingFlow = None
         self._Bandwidth = None
@@ -873,6 +873,17 @@ class CreateInstanceRequest(AbstractModel):
         self._SkuCode = SkuCode
 
     @property
+    def VpcList(self):
+        """集群绑定的VPC信息
+        :rtype: list of VpcInfo
+        """
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+    @property
     def Remark(self):
         """备注信息
         :rtype: str
@@ -893,17 +904,6 @@ class CreateInstanceRequest(AbstractModel):
     @TagList.setter
     def TagList(self, TagList):
         self._TagList = TagList
-
-    @property
-    def VpcList(self):
-        """集群绑定的VPC信息，必填
-        :rtype: list of VpcInfo
-        """
-        return self._VpcList
-
-    @VpcList.setter
-    def VpcList(self, VpcList):
-        self._VpcList = VpcList
 
     @property
     def EnablePublic(self):
@@ -1027,6 +1027,12 @@ class CreateInstanceRequest(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._Name = params.get("Name")
         self._SkuCode = params.get("SkuCode")
+        if params.get("VpcList") is not None:
+            self._VpcList = []
+            for item in params.get("VpcList"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcList.append(obj)
         self._Remark = params.get("Remark")
         if params.get("TagList") is not None:
             self._TagList = []
@@ -1034,12 +1040,6 @@ class CreateInstanceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagList.append(obj)
-        if params.get("VpcList") is not None:
-            self._VpcList = []
-            for item in params.get("VpcList"):
-                obj = VpcInfo()
-                obj._deserialize(item)
-                self._VpcList.append(obj)
         self._EnablePublic = params.get("EnablePublic")
         self._BillingFlow = params.get("BillingFlow")
         self._Bandwidth = params.get("Bandwidth")

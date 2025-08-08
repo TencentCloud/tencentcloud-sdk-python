@@ -29727,6 +29727,119 @@ class ForceRedirectHTTPSParameters(AbstractModel):
         
 
 
+class FrequentScanningProtection(AbstractModel):
+    """高频扫描防护配置选项，当某一访客的请求频繁命中「配置为拦截」的托管规则时，在一段时间内封禁该访客所有请求。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 高频扫描防护规则是否开启。取值有：<li>on：开启，高频扫描防护规则生效；</li><li>off：关闭，高频扫描防护规则不生效。</li>	
+        :type Enabled: str
+        :param _Action: 高频扫描防护的处置动作。 当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>JSChallenge：JavaScript 挑战，响应 JavaScript 挑战页面。</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _CountBy: 请求统计的匹配方式，当 Enabled 为 on 时，此字段必填。取值有：<li>http.request.xff_header_ip：客户端 IP（优先匹配 XFF 头部）；</li><li>http.request.ip：客户端 IP。</li> 
+        :type CountBy: str
+        :param _BlockThreshold: 此参数指定高频扫描防护的阈值，即在 CountingPeriod 所设置时间范围内命中「配置为拦截」的托管规则时的累计拦截次数，取值范围 1 ~ 4294967294，例如 100，当超过此统计值时，后续请求将触发 Action 所设置的处置动作。当 Enabled 为 on 时，此字段必填。
+        :type BlockThreshold: int
+        :param _CountingPeriod: 此参数指定高频扫描防护所统计的时间窗口，即命中「配置为拦截」的托管规则的请求的统计时间窗口，取值 5 ~ 1800，单位仅支持秒（s），例如 5s。 当 Enabled 为 on 时，此字段必填。
+        :type CountingPeriod: str
+        :param _ActionDuration: 此参数指定高频扫描防护 Action 参数所设置处置动作的持续时长，取值范围 60 ~ 86400，单位仅支持秒（s），例如 60s。当 Enabled 为 on 时，此字段必填。
+        :type ActionDuration: str
+        """
+        self._Enabled = None
+        self._Action = None
+        self._CountBy = None
+        self._BlockThreshold = None
+        self._CountingPeriod = None
+        self._ActionDuration = None
+
+    @property
+    def Enabled(self):
+        """高频扫描防护规则是否开启。取值有：<li>on：开启，高频扫描防护规则生效；</li><li>off：关闭，高频扫描防护规则不生效。</li>	
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Action(self):
+        """高频扫描防护的处置动作。 当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>JSChallenge：JavaScript 挑战，响应 JavaScript 挑战页面。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def CountBy(self):
+        """请求统计的匹配方式，当 Enabled 为 on 时，此字段必填。取值有：<li>http.request.xff_header_ip：客户端 IP（优先匹配 XFF 头部）；</li><li>http.request.ip：客户端 IP。</li> 
+        :rtype: str
+        """
+        return self._CountBy
+
+    @CountBy.setter
+    def CountBy(self, CountBy):
+        self._CountBy = CountBy
+
+    @property
+    def BlockThreshold(self):
+        """此参数指定高频扫描防护的阈值，即在 CountingPeriod 所设置时间范围内命中「配置为拦截」的托管规则时的累计拦截次数，取值范围 1 ~ 4294967294，例如 100，当超过此统计值时，后续请求将触发 Action 所设置的处置动作。当 Enabled 为 on 时，此字段必填。
+        :rtype: int
+        """
+        return self._BlockThreshold
+
+    @BlockThreshold.setter
+    def BlockThreshold(self, BlockThreshold):
+        self._BlockThreshold = BlockThreshold
+
+    @property
+    def CountingPeriod(self):
+        """此参数指定高频扫描防护所统计的时间窗口，即命中「配置为拦截」的托管规则的请求的统计时间窗口，取值 5 ~ 1800，单位仅支持秒（s），例如 5s。 当 Enabled 为 on 时，此字段必填。
+        :rtype: str
+        """
+        return self._CountingPeriod
+
+    @CountingPeriod.setter
+    def CountingPeriod(self, CountingPeriod):
+        self._CountingPeriod = CountingPeriod
+
+    @property
+    def ActionDuration(self):
+        """此参数指定高频扫描防护 Action 参数所设置处置动作的持续时长，取值范围 60 ~ 86400，单位仅支持秒（s），例如 60s。当 Enabled 为 on 时，此字段必填。
+        :rtype: str
+        """
+        return self._ActionDuration
+
+    @ActionDuration.setter
+    def ActionDuration(self, ActionDuration):
+        self._ActionDuration = ActionDuration
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        self._CountBy = params.get("CountBy")
+        self._BlockThreshold = params.get("BlockThreshold")
+        self._CountingPeriod = params.get("CountingPeriod")
+        self._ActionDuration = params.get("ActionDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Function(AbstractModel):
     """边缘函数详情
 
@@ -34591,12 +34704,15 @@ class ManagedRules(AbstractModel):
         :type AutoUpdate: :class:`tencentcloud.teo.v20220901.models.ManagedRuleAutoUpdate`
         :param _ManagedRuleGroups: 托管规则组的配置。如果此结构传空数组或 GroupId 未包含在列表内将按照默认方式处理。
         :type ManagedRuleGroups: list of ManagedRuleGroup
+        :param _FrequentScanningProtection: 高频扫描防护配置选项，当某一访客的请求频繁命中「配置为拦截」的托管规则时，在一段时间内封禁该访客所有请求。
+        :type FrequentScanningProtection: :class:`tencentcloud.teo.v20220901.models.FrequentScanningProtection`
         """
         self._Enabled = None
         self._DetectionOnly = None
         self._SemanticAnalysis = None
         self._AutoUpdate = None
         self._ManagedRuleGroups = None
+        self._FrequentScanningProtection = None
 
     @property
     def Enabled(self):
@@ -34653,6 +34769,17 @@ class ManagedRules(AbstractModel):
     def ManagedRuleGroups(self, ManagedRuleGroups):
         self._ManagedRuleGroups = ManagedRuleGroups
 
+    @property
+    def FrequentScanningProtection(self):
+        """高频扫描防护配置选项，当某一访客的请求频繁命中「配置为拦截」的托管规则时，在一段时间内封禁该访客所有请求。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.FrequentScanningProtection`
+        """
+        return self._FrequentScanningProtection
+
+    @FrequentScanningProtection.setter
+    def FrequentScanningProtection(self, FrequentScanningProtection):
+        self._FrequentScanningProtection = FrequentScanningProtection
+
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
@@ -34667,6 +34794,9 @@ class ManagedRules(AbstractModel):
                 obj = ManagedRuleGroup()
                 obj._deserialize(item)
                 self._ManagedRuleGroups.append(obj)
+        if params.get("FrequentScanningProtection") is not None:
+            self._FrequentScanningProtection = FrequentScanningProtection()
+            self._FrequentScanningProtection._deserialize(params.get("FrequentScanningProtection"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
