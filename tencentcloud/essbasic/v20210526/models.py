@@ -25412,10 +25412,13 @@ class Intention(AbstractModel):
 
 注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
         :type IntentionActions: list of IntentionAction
+        :param _RuleIdConfig: 视频核身相关配置
+        :type RuleIdConfig: :class:`tencentcloud.essbasic.v20210526.models.RuleIdConfig`
         """
         self._IntentionType = None
         self._IntentionQuestions = None
         self._IntentionActions = None
+        self._RuleIdConfig = None
 
     @property
     def IntentionType(self):
@@ -25458,6 +25461,17 @@ class Intention(AbstractModel):
     def IntentionActions(self, IntentionActions):
         self._IntentionActions = IntentionActions
 
+    @property
+    def RuleIdConfig(self):
+        """视频核身相关配置
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.RuleIdConfig`
+        """
+        return self._RuleIdConfig
+
+    @RuleIdConfig.setter
+    def RuleIdConfig(self, RuleIdConfig):
+        self._RuleIdConfig = RuleIdConfig
+
 
     def _deserialize(self, params):
         self._IntentionType = params.get("IntentionType")
@@ -25473,6 +25487,9 @@ class Intention(AbstractModel):
                 obj = IntentionAction()
                 obj._deserialize(item)
                 self._IntentionActions.append(obj)
+        if params.get("RuleIdConfig") is not None:
+            self._RuleIdConfig = RuleIdConfig()
+            self._RuleIdConfig._deserialize(params.get("RuleIdConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29577,6 +29594,50 @@ class ResourceUrlInfo(AbstractModel):
         self._Url = params.get("Url")
         self._Name = params.get("Name")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleIdConfig(AbstractModel):
+    """视频核身相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Speed: 意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
+0-智能语速（根据播报文案的长度自动调整语音播报速度）
+1-固定1倍速
+2-固定1.2倍速
+3-固定1.5倍速
+        :type Speed: int
+        """
+        self._Speed = None
+
+    @property
+    def Speed(self):
+        """意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
+0-智能语速（根据播报文案的长度自动调整语音播报速度）
+1-固定1倍速
+2-固定1.2倍速
+3-固定1.5倍速
+        :rtype: int
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+
+    def _deserialize(self, params):
+        self._Speed = params.get("Speed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

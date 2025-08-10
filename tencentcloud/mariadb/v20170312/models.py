@@ -12154,7 +12154,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         :type Product: str
         :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param _SecurityGroupIds: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。<br>注意：改入参会全量替换存量已有安全组集合，并非增量更新。修改需传入全量的预期集合。
+        :param _SecurityGroupIds: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。<br>注意：该入参会全量替换存量已有安全组集合，并非增量更新。修改需传入全量的预期集合。
         :type SecurityGroupIds: list of str
         """
         self._Product = None
@@ -12185,7 +12185,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。<br>注意：改入参会全量替换存量已有安全组集合，并非增量更新。修改需传入全量的预期集合。
+        """要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。<br>注意：该入参会全量替换存量已有安全组集合，并非增量更新。修改需传入全量的预期集合。
         :rtype: list of str
         """
         return self._SecurityGroupIds
