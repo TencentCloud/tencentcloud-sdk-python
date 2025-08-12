@@ -10737,6 +10737,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _EnableDestroyProtection: 开启集群保护：OPEN-开启，CLOSE-关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableDestroyProtection: str
+        :param _ShowKibanaIpPort: kibana内网访问地址
+        :type ShowKibanaIpPort: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -10832,6 +10834,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._EnableScheduleRecoverGroup = None
         self._EnableScheduleOperationDuration = None
         self._EnableDestroyProtection = None
+        self._ShowKibanaIpPort = None
 
     @property
     def InstanceId(self):
@@ -11930,6 +11933,17 @@ RENEW_FLAG_DEFAULT：不自动续费
     def EnableDestroyProtection(self, EnableDestroyProtection):
         self._EnableDestroyProtection = EnableDestroyProtection
 
+    @property
+    def ShowKibanaIpPort(self):
+        """kibana内网访问地址
+        :rtype: str
+        """
+        return self._ShowKibanaIpPort
+
+    @ShowKibanaIpPort.setter
+    def ShowKibanaIpPort(self, ShowKibanaIpPort):
+        self._ShowKibanaIpPort = ShowKibanaIpPort
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12074,6 +12088,7 @@ RENEW_FLAG_DEFAULT：不自动续费
             self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
             self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
         self._EnableDestroyProtection = params.get("EnableDestroyProtection")
+        self._ShowKibanaIpPort = params.get("ShowKibanaIpPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15874,6 +15889,8 @@ class RestartNodesRequest(AbstractModel):
         :type EnableScheduleRecoverGroup: bool
         :param _EnableScheduleOperationDuration: 置放群组异步任务时间段
         :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
+        :param _EventTypeIds: 事件id列表
+        :type EventTypeIds: list of str
         """
         self._InstanceId = None
         self._NodeNames = None
@@ -15885,6 +15902,7 @@ class RestartNodesRequest(AbstractModel):
         self._ShardAllocationBytes = None
         self._EnableScheduleRecoverGroup = None
         self._EnableScheduleOperationDuration = None
+        self._EventTypeIds = None
 
     @property
     def InstanceId(self):
@@ -15996,6 +16014,17 @@ class RestartNodesRequest(AbstractModel):
     def EnableScheduleOperationDuration(self, EnableScheduleOperationDuration):
         self._EnableScheduleOperationDuration = EnableScheduleOperationDuration
 
+    @property
+    def EventTypeIds(self):
+        """事件id列表
+        :rtype: list of str
+        """
+        return self._EventTypeIds
+
+    @EventTypeIds.setter
+    def EventTypeIds(self, EventTypeIds):
+        self._EventTypeIds = EventTypeIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -16010,6 +16039,7 @@ class RestartNodesRequest(AbstractModel):
         if params.get("EnableScheduleOperationDuration") is not None:
             self._EnableScheduleOperationDuration = EnableScheduleOperationDuration()
             self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
+        self._EventTypeIds = params.get("EventTypeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

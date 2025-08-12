@@ -5392,9 +5392,9 @@ class CreateInstancePreRequest(AbstractModel):
         :type Period: str
         :param _InstanceType: 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
         :type InstanceType: int
-        :param _VpcId: 私有网络Id，必填
+        :param _VpcId: 私有网络Id
         :type VpcId: str
-        :param _SubnetId: 子网id，必填
+        :param _SubnetId: 子网id
         :type SubnetId: str
         :param _MsgRetentionTime: 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
         :type MsgRetentionTime: int
@@ -5498,7 +5498,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络Id，必填
+        """私有网络Id
         :rtype: str
         """
         return self._VpcId
@@ -5509,7 +5509,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网id，必填
+        """子网id
         :rtype: str
         """
         return self._SubnetId
@@ -5985,10 +5985,10 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _VpcId: 私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId
+        :type VpcId: str
         :param _InstanceName: ckafka集群实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :type InstanceName: str
-        :param _VpcId: 私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
-        :type VpcId: str
         :param _SubnetId: 子网id。创建实例默认接入点所在的子网对应的子网 id
         :type SubnetId: str
         :param _InstanceType: 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
@@ -6026,8 +6026,8 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :param _ElasticBandwidthSwitch: 弹性带宽开关 0不开启  1开启（0默认)
         :type ElasticBandwidthSwitch: int
         """
-        self._InstanceName = None
         self._VpcId = None
+        self._InstanceName = None
         self._SubnetId = None
         self._InstanceType = None
         self._MsgRetentionTime = None
@@ -6048,6 +6048,17 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._ElasticBandwidthSwitch = None
 
     @property
+    def VpcId(self):
+        """私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
     def InstanceName(self):
         """ckafka集群实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :rtype: str
@@ -6057,17 +6068,6 @@ class CreatePostPaidInstanceRequest(AbstractModel):
     @InstanceName.setter
     def InstanceName(self, InstanceName):
         self._InstanceName = InstanceName
-
-    @property
-    def VpcId(self):
-        """私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
-        :rtype: str
-        """
-        return self._VpcId
-
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
 
     @property
     def SubnetId(self):
@@ -6269,8 +6269,8 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._InstanceName = params.get("InstanceName")
         self._VpcId = params.get("VpcId")
+        self._InstanceName = params.get("InstanceName")
         self._SubnetId = params.get("SubnetId")
         self._InstanceType = params.get("InstanceType")
         self._MsgRetentionTime = params.get("MsgRetentionTime")
@@ -17475,7 +17475,7 @@ class FetchDatahubMessageByOffsetRequest(AbstractModel):
         :type Name: str
         :param _Partition: 分区id
         :type Partition: int
-        :param _Offset: 位点信息，必填
+        :param _Offset: 位点信息
         :type Offset: int
         """
         self._Name = None
@@ -17506,7 +17506,7 @@ class FetchDatahubMessageByOffsetRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """位点信息，必填
+        """位点信息
         :rtype: int
         """
         return self._Offset
@@ -17717,7 +17717,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
         :type Topic: str
         :param _Partition: 分区id
         :type Partition: int
-        :param _Offset: 位点信息，必填
+        :param _Offset: 位点信息
         :type Offset: int
         """
         self._InstanceId = None
@@ -17760,7 +17760,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """位点信息，必填
+        """位点信息
         :rtype: int
         """
         return self._Offset

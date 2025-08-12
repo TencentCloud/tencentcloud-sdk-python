@@ -6944,6 +6944,10 @@ zk专业版可以为：CLOUD_SSD,CLOUD_SSD_PLUS,CLOUD_PREMIUM
         :type StorageOption: list of StorageOption
         :param _AffinityConstraint: ZK引擎实例，可用区分布约束，STRICT:强约束，PERMISSIVE: 弱约束
         :type AffinityConstraint: str
+        :param _ZoneIds: 指定zone id列表
+        :type ZoneIds: list of int
+        :param _EngineRegionTag: 地域特殊标签，用于区分相同地域，不通的业务属性
+        :type EngineRegionTag: str
         """
         self._EngineType = None
         self._EngineVersion = None
@@ -6965,6 +6969,8 @@ zk专业版可以为：CLOUD_SSD,CLOUD_SSD_PLUS,CLOUD_PREMIUM
         self._StorageCapacity = None
         self._StorageOption = None
         self._AffinityConstraint = None
+        self._ZoneIds = None
+        self._EngineRegionTag = None
 
     @property
     def EngineType(self):
@@ -7250,6 +7256,28 @@ zk专业版可以为：CLOUD_SSD,CLOUD_SSD_PLUS,CLOUD_PREMIUM
     def AffinityConstraint(self, AffinityConstraint):
         self._AffinityConstraint = AffinityConstraint
 
+    @property
+    def ZoneIds(self):
+        """指定zone id列表
+        :rtype: list of int
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def EngineRegionTag(self):
+        """地域特殊标签，用于区分相同地域，不通的业务属性
+        :rtype: str
+        """
+        return self._EngineRegionTag
+
+    @EngineRegionTag.setter
+    def EngineRegionTag(self, EngineRegionTag):
+        self._EngineRegionTag = EngineRegionTag
+
 
     def _deserialize(self, params):
         self._EngineType = params.get("EngineType")
@@ -7294,6 +7322,8 @@ zk专业版可以为：CLOUD_SSD,CLOUD_SSD_PLUS,CLOUD_PREMIUM
                 obj._deserialize(item)
                 self._StorageOption.append(obj)
         self._AffinityConstraint = params.get("AffinityConstraint")
+        self._ZoneIds = params.get("ZoneIds")
+        self._EngineRegionTag = params.get("EngineRegionTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

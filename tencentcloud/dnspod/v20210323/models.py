@@ -13914,7 +13914,7 @@ class ModifyDomainOwnerRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _Account: 域名需要转入的账号，支持Uin或者邮箱格式
+        :param _Account: 域名需要转入的账号Uin
         :type Account: str
         :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
@@ -13936,7 +13936,7 @@ class ModifyDomainOwnerRequest(AbstractModel):
 
     @property
     def Account(self):
-        """域名需要转入的账号，支持Uin或者邮箱格式
+        """域名需要转入的账号Uin
         :rtype: str
         """
         return self._Account
@@ -20036,6 +20036,8 @@ class WhoisInfo(AbstractModel):
         :param _Dnssec: dnssec
 注意：此字段可能返回 null，表示取不到有效值。
         :type Dnssec: str
+        :param _RegistrarType: 腾讯注册商资质
+        :type RegistrarType: str
         """
         self._Contacts = None
         self._CreationDate = None
@@ -20048,6 +20050,7 @@ class WhoisInfo(AbstractModel):
         self._Status = None
         self._UpdatedDate = None
         self._Dnssec = None
+        self._RegistrarType = None
 
     @property
     def Contacts(self):
@@ -20181,6 +20184,17 @@ class WhoisInfo(AbstractModel):
     def Dnssec(self, Dnssec):
         self._Dnssec = Dnssec
 
+    @property
+    def RegistrarType(self):
+        """腾讯注册商资质
+        :rtype: str
+        """
+        return self._RegistrarType
+
+    @RegistrarType.setter
+    def RegistrarType(self, RegistrarType):
+        self._RegistrarType = RegistrarType
+
 
     def _deserialize(self, params):
         if params.get("Contacts") is not None:
@@ -20196,6 +20210,7 @@ class WhoisInfo(AbstractModel):
         self._Status = params.get("Status")
         self._UpdatedDate = params.get("UpdatedDate")
         self._Dnssec = params.get("Dnssec")
+        self._RegistrarType = params.get("RegistrarType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

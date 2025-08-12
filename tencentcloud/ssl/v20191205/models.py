@@ -10913,7 +10913,7 @@ class DescribeDownloadCertificateUrlRequest(AbstractModel):
         r"""
         :param _CertificateId: 证书ID
         :type CertificateId: str
-        :param _ServiceType: 必填选项，下载的服务类型: nginx tomcat apache iis jks other root
+        :param _ServiceType: 下载的服务类型: nginx tomcat apache iis jks other root， 不传则默认下载nginx格式
         :type ServiceType: str
         """
         self._CertificateId = None
@@ -10932,7 +10932,7 @@ class DescribeDownloadCertificateUrlRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """必填选项，下载的服务类型: nginx tomcat apache iis jks other root
+        """下载的服务类型: nginx tomcat apache iis jks other root， 不传则默认下载nginx格式
         :rtype: str
         """
         return self._ServiceType

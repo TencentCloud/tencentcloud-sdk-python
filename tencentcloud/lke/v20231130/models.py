@@ -5450,10 +5450,13 @@ class CreateAttributeLabelResponse(AbstractModel):
         r"""
         :param _AttrBizId: 标签ID
         :type AttrBizId: str
+        :param _Labels: 标签值ID与名称
+        :type Labels: list of AttributeLabel
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AttrBizId = None
+        self._Labels = None
         self._RequestId = None
 
     @property
@@ -5466,6 +5469,17 @@ class CreateAttributeLabelResponse(AbstractModel):
     @AttrBizId.setter
     def AttrBizId(self, AttrBizId):
         self._AttrBizId = AttrBizId
+
+    @property
+    def Labels(self):
+        """标签值ID与名称
+        :rtype: list of AttributeLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
 
     @property
     def RequestId(self):
@@ -5481,6 +5495,12 @@ class CreateAttributeLabelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AttrBizId = params.get("AttrBizId")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = AttributeLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17471,134 +17491,6 @@ class Label(AbstractModel):
         
 
 
-class ListAppCategoryRequest(AbstractModel):
-    """ListAppCategory请求参数结构体
-
-    """
-
-
-class ListAppCategoryResponse(AbstractModel):
-    """ListAppCategory返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _List: 应用类型列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type List: list of ListAppCategoryRspOption
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def List(self):
-        """应用类型列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of ListAppCategoryRspOption
-        """
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = ListAppCategoryRspOption()
-                obj._deserialize(item)
-                self._List.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class ListAppCategoryRspOption(AbstractModel):
-    """应用类型详情
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Text: 类型名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param _Value: 类型值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        :param _Logo: 类型log
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Logo: str
-        """
-        self._Text = None
-        self._Value = None
-        self._Logo = None
-
-    @property
-    def Text(self):
-        """类型名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Text
-
-    @Text.setter
-    def Text(self, Text):
-        self._Text = Text
-
-    @property
-    def Value(self):
-        """类型值
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Value
-
-    @Value.setter
-    def Value(self, Value):
-        self._Value = Value
-
-    @property
-    def Logo(self):
-        """类型log
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Logo
-
-    @Logo.setter
-    def Logo(self, Logo):
-        self._Logo = Logo
-
-
-    def _deserialize(self, params):
-        self._Text = params.get("Text")
-        self._Value = params.get("Value")
-        self._Logo = params.get("Logo")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ListAppKnowledgeDetailRequest(AbstractModel):
     """ListAppKnowledgeDetail请求参数结构体
 
@@ -23059,10 +22951,13 @@ class ModifyAttributeLabelResponse(AbstractModel):
         r"""
         :param _TaskId: 任务ID
         :type TaskId: str
+        :param _Labels: 标签ID与名称
+        :type Labels: list of AttributeLabel
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
+        self._Labels = None
         self._RequestId = None
 
     @property
@@ -23075,6 +22970,17 @@ class ModifyAttributeLabelResponse(AbstractModel):
     @TaskId.setter
     def TaskId(self, TaskId):
         self._TaskId = TaskId
+
+    @property
+    def Labels(self):
+        """标签ID与名称
+        :rtype: list of AttributeLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
 
     @property
     def RequestId(self):
@@ -23090,6 +22996,12 @@ class ModifyAttributeLabelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = AttributeLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
         self._RequestId = params.get("RequestId")
 
 

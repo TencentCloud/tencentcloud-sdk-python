@@ -13852,11 +13852,14 @@ class ComplexAdaptiveDynamicStreamingTaskAudioInput(AbstractModel):
 <li>NO：不设置为默认音频（默认值）。</li>
 
         :type Default: str
+        :param _AudioTrackIdx: 音轨序号，表示选择音频源中的第几个音轨，从0开始计数。默认值为0，表示选择最靠前的音轨。
+        :type AudioTrackIdx: int
         """
         self._FileId = None
         self._Name = None
         self._Language = None
         self._Default = None
+        self._AudioTrackIdx = None
 
     @property
     def FileId(self):
@@ -13905,12 +13908,24 @@ class ComplexAdaptiveDynamicStreamingTaskAudioInput(AbstractModel):
     def Default(self, Default):
         self._Default = Default
 
+    @property
+    def AudioTrackIdx(self):
+        """音轨序号，表示选择音频源中的第几个音轨，从0开始计数。默认值为0，表示选择最靠前的音轨。
+        :rtype: int
+        """
+        return self._AudioTrackIdx
+
+    @AudioTrackIdx.setter
+    def AudioTrackIdx(self, AudioTrackIdx):
+        self._AudioTrackIdx = AudioTrackIdx
+
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
         self._Name = params.get("Name")
         self._Language = params.get("Language")
         self._Default = params.get("Default")
+        self._AudioTrackIdx = params.get("AudioTrackIdx")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

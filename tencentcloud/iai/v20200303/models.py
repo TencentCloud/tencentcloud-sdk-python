@@ -719,6 +719,10 @@ class CompareFaceRequest(AbstractModel):
 - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
 - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :type NeedRotateDetection: int
+        :param _FaceMatchingStrategy: 若图片中包含多张人脸，指定选取策略，默认为0。
+- 0：选取其中置信度最高的人脸
+- 1：选取其中面积最大的人脸。
+        :type FaceMatchingStrategy: int
         """
         self._ImageA = None
         self._ImageB = None
@@ -727,6 +731,7 @@ class CompareFaceRequest(AbstractModel):
         self._FaceModelVersion = None
         self._QualityControl = None
         self._NeedRotateDetection = None
+        self._FaceMatchingStrategy = None
 
     @property
     def ImageA(self):
@@ -844,6 +849,19 @@ class CompareFaceRequest(AbstractModel):
     def NeedRotateDetection(self, NeedRotateDetection):
         self._NeedRotateDetection = NeedRotateDetection
 
+    @property
+    def FaceMatchingStrategy(self):
+        """若图片中包含多张人脸，指定选取策略，默认为0。
+- 0：选取其中置信度最高的人脸
+- 1：选取其中面积最大的人脸。
+        :rtype: int
+        """
+        return self._FaceMatchingStrategy
+
+    @FaceMatchingStrategy.setter
+    def FaceMatchingStrategy(self, FaceMatchingStrategy):
+        self._FaceMatchingStrategy = FaceMatchingStrategy
+
 
     def _deserialize(self, params):
         self._ImageA = params.get("ImageA")
@@ -853,6 +871,7 @@ class CompareFaceRequest(AbstractModel):
         self._FaceModelVersion = params.get("FaceModelVersion")
         self._QualityControl = params.get("QualityControl")
         self._NeedRotateDetection = params.get("NeedRotateDetection")
+        self._FaceMatchingStrategy = params.get("FaceMatchingStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

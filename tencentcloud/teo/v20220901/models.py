@@ -10399,21 +10399,21 @@ class CreateOriginGroupRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID
         :type ZoneId: str
+        :param _Records: 源站记录信息，此参数必填。
+        :type Records: list of OriginRecord
         :param _Name: 源站组名称，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。
         :type Name: str
         :param _Type: 源站组类型，此参数必填，取值有：
 <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡、HTTP 专用型负载均衡引用；</li>
 <li>HTTP： HTTP 专用型源站组，支持添加 IP/域名、对象存储源站作为源站，无法被四层代理引用，仅支持被添加加速域名、规则引擎-修改源站、HTTP 专用型负载均衡引用。</li>
         :type Type: str
-        :param _Records: 源站记录信息，此参数必填。
-        :type Records: list of OriginRecord
         :param _HostHeader: 回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
         :type HostHeader: str
         """
         self._ZoneId = None
+        self._Records = None
         self._Name = None
         self._Type = None
-        self._Records = None
         self._HostHeader = None
 
     @property
@@ -10426,6 +10426,17 @@ class CreateOriginGroupRequest(AbstractModel):
     @ZoneId.setter
     def ZoneId(self, ZoneId):
         self._ZoneId = ZoneId
+
+    @property
+    def Records(self):
+        """源站记录信息，此参数必填。
+        :rtype: list of OriginRecord
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
 
     @property
     def Name(self):
@@ -10452,17 +10463,6 @@ class CreateOriginGroupRequest(AbstractModel):
         self._Type = Type
 
     @property
-    def Records(self):
-        """源站记录信息，此参数必填。
-        :rtype: list of OriginRecord
-        """
-        return self._Records
-
-    @Records.setter
-    def Records(self, Records):
-        self._Records = Records
-
-    @property
     def HostHeader(self):
         """回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
         :rtype: str
@@ -10476,14 +10476,14 @@ class CreateOriginGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
-        self._Name = params.get("Name")
-        self._Type = params.get("Type")
         if params.get("Records") is not None:
             self._Records = []
             for item in params.get("Records"):
                 obj = OriginRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
         self._HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -42952,7 +42952,7 @@ class OriginRecord(AbstractModel):
         :type Type: str
         :param _RecordId: 源站记录ID。
         :type RecordId: str
-        :param _Weight: 源站权重，取值为0-100, 不填表示不设置权重，由系统自由调度，填0表示权重为0, 流量将不会调度到此源站。
+        :param _Weight: 【源站权重】：用于控制流量分配优先级的参数，取值范围：0-100（整数）：<li>空值：不设置权重，系统按默认策略调度；</li><li>0 值：明确设置权重为0，流量将不会分配到该源站，注意事项：必须确保至少有一个源站的权重值大于0；</li><li>正常值：数值越大分配流量越多 ；</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         :param _Private: 是否私有鉴权，当源站类型 RecordType=COS/AWS_S3 时生效，取值有：
@@ -43008,7 +43008,7 @@ class OriginRecord(AbstractModel):
 
     @property
     def Weight(self):
-        """源站权重，取值为0-100, 不填表示不设置权重，由系统自由调度，填0表示权重为0, 流量将不会调度到此源站。
+        """【源站权重】：用于控制流量分配优先级的参数，取值范围：0-100（整数）：<li>空值：不设置权重，系统按默认策略调度；</li><li>0 值：明确设置权重为0，流量将不会分配到该源站，注意事项：必须确保至少有一个源站的权重值大于0；</li><li>正常值：数值越大分配流量越多 ；</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

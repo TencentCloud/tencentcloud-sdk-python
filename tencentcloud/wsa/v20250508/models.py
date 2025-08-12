@@ -29,18 +29,27 @@ class SearchProRequest(AbstractModel):
         :type Query: str
         :param _Mode: 返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）
         :type Mode: int
-        :param _Site: 指定域名站内搜索（用于过滤自然检索结果）  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+        :param _Site: 指定域名站内搜索（用于过滤自然检索结果）
+注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
         :type Site: str
-        :param _FromTime: 起始时间（用于过滤自然检索结果），精确到秒时间戳格式  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+        :param _FromTime: 起始时间（用于过滤自然检索结果），精确到秒时间戳格式
+注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
         :type FromTime: int
-        :param _ToTime: 结束时间（用于过滤自然检索结果），精确到秒时间戳格式  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+        :param _ToTime: 结束时间（用于过滤自然检索结果），精确到秒时间戳格式
+注意：mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
         :type ToTime: int
+        :param _Cnt: cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
+        :type Cnt: int
+        :param _Industry: Industry=gov/news/acad，对应党政机关、新闻、学术，**仅限尊享版使用**
+        :type Industry: str
         """
         self._Query = None
         self._Mode = None
         self._Site = None
         self._FromTime = None
         self._ToTime = None
+        self._Cnt = None
+        self._Industry = None
 
     @property
     def Query(self):
@@ -66,7 +75,8 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Site(self):
-        """指定域名站内搜索（用于过滤自然检索结果）  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+        """指定域名站内搜索（用于过滤自然检索结果）
+注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
         :rtype: str
         """
         return self._Site
@@ -77,7 +87,8 @@ class SearchProRequest(AbstractModel):
 
     @property
     def FromTime(self):
-        """起始时间（用于过滤自然检索结果），精确到秒时间戳格式  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+        """起始时间（用于过滤自然检索结果），精确到秒时间戳格式
+注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
         :rtype: int
         """
         return self._FromTime
@@ -88,7 +99,8 @@ class SearchProRequest(AbstractModel):
 
     @property
     def ToTime(self):
-        """结束时间（用于过滤自然检索结果），精确到秒时间戳格式  注意：  mode=1模式下，参数无效 mode=0模式下对所有结果生效 mode=2模式下对输出的自然结果生效
+        """结束时间（用于过滤自然检索结果），精确到秒时间戳格式
+注意：mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
         :rtype: int
         """
         return self._ToTime
@@ -97,6 +109,28 @@ class SearchProRequest(AbstractModel):
     def ToTime(self, ToTime):
         self._ToTime = ToTime
 
+    @property
+    def Cnt(self):
+        """cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
+        :rtype: int
+        """
+        return self._Cnt
+
+    @Cnt.setter
+    def Cnt(self, Cnt):
+        self._Cnt = Cnt
+
+    @property
+    def Industry(self):
+        """Industry=gov/news/acad，对应党政机关、新闻、学术，**仅限尊享版使用**
+        :rtype: str
+        """
+        return self._Industry
+
+    @Industry.setter
+    def Industry(self, Industry):
+        self._Industry = Industry
+
 
     def _deserialize(self, params):
         self._Query = params.get("Query")
@@ -104,6 +138,8 @@ class SearchProRequest(AbstractModel):
         self._Site = params.get("Site")
         self._FromTime = params.get("FromTime")
         self._ToTime = params.get("ToTime")
+        self._Cnt = params.get("Cnt")
+        self._Industry = params.get("Industry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1706,6 +1706,47 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TextToSpeech(self, request):
+        """语音合成接口
+
+        :param request: Request instance for TextToSpeech.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.TextToSpeechRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TextToSpeechResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToSpeech", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToSpeechResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TextToSpeechSSE(self, request):
+        """SSE流式文本转语音
+
+        :param request: Request instance for TextToSpeechSSE.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.TextToSpeechSSERequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TextToSpeechSSEResponse`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("TextToSpeechSSE", params, models.TextToSpeechSSEResponse, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateAIConversation(self, request):
         """更新AIConversation参数
 
@@ -1791,6 +1832,29 @@ class TrtcClient(AbstractClient):
             body = self.call("UpdateVoicePrint", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateVoicePrintResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VoiceClone(self, request):
+        """声音克隆
+
+        :param request: Request instance for VoiceClone.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.VoiceCloneRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceCloneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VoiceClone", params, headers=headers)
+            response = json.loads(body)
+            model = models.VoiceCloneResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

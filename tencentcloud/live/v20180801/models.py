@@ -13953,11 +13953,7 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
         :type EndTime: str
         :param _PlayDomains: 直播播放域名，若不填，表示总体数据。
         :type PlayDomains: list of str
-        :param _MainlandOrOversea: 可选值：
-Mainland：查询国内数据，
-Oversea：则查询国外数据，
-默认：查询国内+国外的数据。
-注：LEB（快直播）只支持国内+国外数据查询。
+        :param _MainlandOrOversea: 可选值：Mainland：查询国内数据，Oversea：则查询国外数据，默认：查询国内+国外的数据。
         :type MainlandOrOversea: str
         :param _Granularity: 数据粒度，支持如下粒度：
 5：5分钟粒度，（跨度不支持超过1天），
@@ -14027,11 +14023,7 @@ Africa 非洲。
 
     @property
     def MainlandOrOversea(self):
-        """可选值：
-Mainland：查询国内数据，
-Oversea：则查询国外数据，
-默认：查询国内+国外的数据。
-注：LEB（快直播）只支持国内+国外数据查询。
+        """可选值：Mainland：查询国内数据，Oversea：则查询国外数据，默认：查询国内+国外的数据。
         :rtype: str
         """
         return self._MainlandOrOversea

@@ -725,6 +725,42 @@ class AudioEncodeParams(AbstractModel):
         
 
 
+class AudioFormat(AbstractModel):
+    """TTS音频输出的格式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: 生成的音频格式，默认pcm，目前支持的格式列表：[pcm]。
+        :type Format: str
+        """
+        self._Format = None
+
+    @property
+    def Format(self):
+        """生成的音频格式，默认pcm，目前支持的格式列表：[pcm]。
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioParams(AbstractModel):
     """录制音频转码参数。
 
@@ -16660,6 +16696,277 @@ class TencentVod(AbstractModel):
         
 
 
+class TextToSpeechRequest(AbstractModel):
+    """TextToSpeech请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 需要转语音的文字内容，长度范围：[1, 255]
+        :type Text: str
+        :param _Voice: 文本转语音的声音配置
+        :type Voice: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        :param _SdkAppId: TRTC的SdkAppId
+        :type SdkAppId: int
+        :param _AudioFormat: 文本转语音的输出音频的格式
+        :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        :param _APIKey: TTS的API密钥
+        :type APIKey: str
+        """
+        self._Text = None
+        self._Voice = None
+        self._SdkAppId = None
+        self._AudioFormat = None
+        self._APIKey = None
+
+    @property
+    def Text(self):
+        """需要转语音的文字内容，长度范围：[1, 255]
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Voice(self):
+        """文本转语音的声音配置
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def SdkAppId(self):
+        """TRTC的SdkAppId
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AudioFormat(self):
+        """文本转语音的输出音频的格式
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def APIKey(self):
+        """TTS的API密钥
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        if params.get("Voice") is not None:
+            self._Voice = Voice()
+            self._Voice._deserialize(params.get("Voice"))
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("AudioFormat") is not None:
+            self._AudioFormat = AudioFormat()
+            self._AudioFormat._deserialize(params.get("AudioFormat"))
+        self._APIKey = params.get("APIKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechResponse(AbstractModel):
+    """TextToSpeech返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Audio: Base64编码的音频数据
+        :type Audio: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Audio = None
+        self._RequestId = None
+
+    @property
+    def Audio(self):
+        """Base64编码的音频数据
+        :rtype: str
+        """
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Audio = params.get("Audio")
+        self._RequestId = params.get("RequestId")
+
+
+class TextToSpeechSSERequest(AbstractModel):
+    """TextToSpeechSSE请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 需要转语音的文字内容，长度范围：[1, 255]
+        :type Text: str
+        :param _Voice: 文本转语音的声音配置
+        :type Voice: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        :param _SdkAppId: TRTC的SdkAppId
+        :type SdkAppId: int
+        :param _AudioFormat: 文本转语音的输出音频的格式
+        :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        :param _APIKey: TTS的API密钥
+        :type APIKey: str
+        """
+        self._Text = None
+        self._Voice = None
+        self._SdkAppId = None
+        self._AudioFormat = None
+        self._APIKey = None
+
+    @property
+    def Text(self):
+        """需要转语音的文字内容，长度范围：[1, 255]
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Voice(self):
+        """文本转语音的声音配置
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def SdkAppId(self):
+        """TRTC的SdkAppId
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AudioFormat(self):
+        """文本转语音的输出音频的格式
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def APIKey(self):
+        """TTS的API密钥
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        if params.get("Voice") is not None:
+            self._Voice = Voice()
+            self._Voice._deserialize(params.get("Voice"))
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("AudioFormat") is not None:
+            self._AudioFormat = AudioFormat()
+            self._AudioFormat._deserialize(params.get("AudioFormat"))
+        self._APIKey = params.get("APIKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechSSEResponse(AbstractModel):
+    """TextToSpeechSSE返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class TimeValue(AbstractModel):
     """返回的质量数据，时间:值
 
@@ -18133,6 +18440,181 @@ class VideoParams(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class Voice(AbstractModel):
+    """TTS的声音参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: TTS的声音的ID
+        :type VoiceId: str
+        """
+        self._VoiceId = None
+
+    @property
+    def VoiceId(self):
+        """TTS的声音的ID
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceCloneRequest(AbstractModel):
+    """VoiceClone请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SdkAppId
+        :type SdkAppId: int
+        :param _APIKey: TTS的API密钥
+        :type APIKey: str
+        :param _VoiceName: 声音克隆的名字
+        :type VoiceName: str
+        :param _PromptAudio: 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+        :type PromptAudio: str
+        :param _PromptText: 声音克隆的参考文本，为参考音频对应的文字。
+        :type PromptText: str
+        """
+        self._SdkAppId = None
+        self._APIKey = None
+        self._VoiceName = None
+        self._PromptAudio = None
+        self._PromptText = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC的SdkAppId
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def APIKey(self):
+        """TTS的API密钥
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
+    @property
+    def VoiceName(self):
+        """声音克隆的名字
+        :rtype: str
+        """
+        return self._VoiceName
+
+    @VoiceName.setter
+    def VoiceName(self, VoiceName):
+        self._VoiceName = VoiceName
+
+    @property
+    def PromptAudio(self):
+        """声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在5秒～12秒之间
+        :rtype: str
+        """
+        return self._PromptAudio
+
+    @PromptAudio.setter
+    def PromptAudio(self, PromptAudio):
+        self._PromptAudio = PromptAudio
+
+    @property
+    def PromptText(self):
+        """声音克隆的参考文本，为参考音频对应的文字。
+        :rtype: str
+        """
+        return self._PromptText
+
+    @PromptText.setter
+    def PromptText(self, PromptText):
+        self._PromptText = PromptText
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._APIKey = params.get("APIKey")
+        self._VoiceName = params.get("VoiceName")
+        self._PromptAudio = params.get("PromptAudio")
+        self._PromptText = params.get("PromptText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceCloneResponse(AbstractModel):
+    """VoiceClone返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: 克隆出的音色ID，可以用此id进行语音合成
+        :type VoiceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VoiceId = None
+        self._RequestId = None
+
+    @property
+    def VoiceId(self):
+        """克隆出的音色ID，可以用此id进行语音合成
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._RequestId = params.get("RequestId")
 
 
 class VoicePrint(AbstractModel):

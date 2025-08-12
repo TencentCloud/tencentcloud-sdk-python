@@ -3645,6 +3645,41 @@ class AssociateHaVipInstanceRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _HaVipAssociationSet: HaVip绑定的子机或网卡。最多支持10个实例。
+        :type HaVipAssociationSet: list of HaVipAssociation
+        """
+        self._HaVipAssociationSet = None
+
+    @property
+    def HaVipAssociationSet(self):
+        """HaVip绑定的子机或网卡。最多支持10个实例。
+        :rtype: list of HaVipAssociation
+        """
+        return self._HaVipAssociationSet
+
+    @HaVipAssociationSet.setter
+    def HaVipAssociationSet(self, HaVipAssociationSet):
+        self._HaVipAssociationSet = HaVipAssociationSet
+
+
+    def _deserialize(self, params):
+        if params.get("HaVipAssociationSet") is not None:
+            self._HaVipAssociationSet = []
+            for item in params.get("HaVipAssociationSet"):
+                obj = HaVipAssociation()
+                obj._deserialize(item)
+                self._HaVipAssociationSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class AssociateHaVipInstanceResponse(AbstractModel):
     """AssociateHaVipInstance返回参数结构体

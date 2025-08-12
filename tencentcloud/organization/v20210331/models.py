@@ -7539,15 +7539,15 @@ class DescribeResourceToShareMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Area: 地域
+        :param _Area: 共享地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
         :type Area: str
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
         :type Offset: int
-        :param _Limit: 每页条数
+        :param _Limit: 限制数目。取值范围：1~50。
         :type Limit: int
-        :param _SearchKey: 搜索关键字，支持业务资源ID搜索
+        :param _SearchKey: 搜索关键字，支持业务资源ID搜索。
         :type SearchKey: str
-        :param _Type: 资源类型
+        :param _Type: 共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
         :type Type: str
         :param _ProductResourceIds: 业务资源ID。最大50个
         :type ProductResourceIds: list of str
@@ -7561,7 +7561,7 @@ class DescribeResourceToShareMemberRequest(AbstractModel):
 
     @property
     def Area(self):
-        """地域
+        """共享地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
         :rtype: str
         """
         return self._Area
@@ -7572,7 +7572,7 @@ class DescribeResourceToShareMemberRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量。取值是limit的整数倍。默认值 : 0。
         :rtype: int
         """
         return self._Offset
@@ -7583,7 +7583,7 @@ class DescribeResourceToShareMemberRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """限制数目。取值范围：1~50。
         :rtype: int
         """
         return self._Limit
@@ -7594,7 +7594,7 @@ class DescribeResourceToShareMemberRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """搜索关键字，支持业务资源ID搜索
+        """搜索关键字，支持业务资源ID搜索。
         :rtype: str
         """
         return self._SearchKey
@@ -7605,7 +7605,7 @@ class DescribeResourceToShareMemberRequest(AbstractModel):
 
     @property
     def Type(self):
-        """资源类型
+        """共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
         :rtype: str
         """
         return self._Type
@@ -19041,20 +19041,19 @@ class ShareResourceToMember(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID
+        :param _ResourceId: 共享单元资源ID。
         :type ResourceId: str
-        :param _Type: 资源类型
+        :param _Type: 资源类型。
         :type Type: str
-        :param _UnitId: 共享单元ID
+        :param _UnitId: 共享单元ID。
         :type UnitId: str
-        :param _UnitName: 共享单元名
+        :param _UnitName: 共享单元名称。
         :type UnitName: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间。
         :type CreateTime: str
-        :param _ProductResourceId: 业务资源ID
+        :param _ProductResourceId: 业务资源ID。
         :type ProductResourceId: str
-        :param _ShareManagerUin: 共享管理员uin
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ShareManagerUin: 共享账号Uin。
         :type ShareManagerUin: int
         """
         self._ResourceId = None
@@ -19067,7 +19066,7 @@ class ShareResourceToMember(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        """共享单元资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -19078,7 +19077,7 @@ class ShareResourceToMember(AbstractModel):
 
     @property
     def Type(self):
-        """资源类型
+        """资源类型。
         :rtype: str
         """
         return self._Type
@@ -19089,7 +19088,7 @@ class ShareResourceToMember(AbstractModel):
 
     @property
     def UnitId(self):
-        """共享单元ID
+        """共享单元ID。
         :rtype: str
         """
         return self._UnitId
@@ -19100,7 +19099,7 @@ class ShareResourceToMember(AbstractModel):
 
     @property
     def UnitName(self):
-        """共享单元名
+        """共享单元名称。
         :rtype: str
         """
         return self._UnitName
@@ -19111,7 +19110,7 @@ class ShareResourceToMember(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间。
         :rtype: str
         """
         return self._CreateTime
@@ -19122,7 +19121,7 @@ class ShareResourceToMember(AbstractModel):
 
     @property
     def ProductResourceId(self):
-        """业务资源ID
+        """业务资源ID。
         :rtype: str
         """
         return self._ProductResourceId
@@ -19133,8 +19132,7 @@ class ShareResourceToMember(AbstractModel):
 
     @property
     def ShareManagerUin(self):
-        """共享管理员uin
-注意：此字段可能返回 null，表示取不到有效值。
+        """共享账号Uin。
         :rtype: int
         """
         return self._ShareManagerUin

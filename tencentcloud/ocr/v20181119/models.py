@@ -3608,6 +3608,10 @@ class CardWarnInfo(AbstractModel):
         :type BlurCheck: int
         :param _BlurScore: 模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
         :type BlurScore: float
+        :param _ElectronCheck: 是否电子身份证
+0：否
+1：是电子身份证
+        :type ElectronCheck: int
         """
         self._BorderCheck = None
         self._OcclusionCheck = None
@@ -3616,6 +3620,7 @@ class CardWarnInfo(AbstractModel):
         self._PSCheck = None
         self._BlurCheck = None
         self._BlurScore = None
+        self._ElectronCheck = None
 
     @property
     def BorderCheck(self):
@@ -3706,6 +3711,19 @@ class CardWarnInfo(AbstractModel):
     def BlurScore(self, BlurScore):
         self._BlurScore = BlurScore
 
+    @property
+    def ElectronCheck(self):
+        """是否电子身份证
+0：否
+1：是电子身份证
+        :rtype: int
+        """
+        return self._ElectronCheck
+
+    @ElectronCheck.setter
+    def ElectronCheck(self, ElectronCheck):
+        self._ElectronCheck = ElectronCheck
+
 
     def _deserialize(self, params):
         self._BorderCheck = params.get("BorderCheck")
@@ -3715,6 +3733,7 @@ class CardWarnInfo(AbstractModel):
         self._PSCheck = params.get("PSCheck")
         self._BlurCheck = params.get("BlurCheck")
         self._BlurScore = params.get("BlurScore")
+        self._ElectronCheck = params.get("ElectronCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27157,6 +27176,8 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
         :type EnableWordCheck: bool
         :param _EnableQualityCheck: 默认值为false，打开返回证件是否模糊。
         :type EnableQualityCheck: bool
+        :param _EnableElectronCheck: 默认值为false，打开返回是否存在电子身份证判断。
+        :type EnableElectronCheck: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -27170,6 +27191,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
         self._EnablePSCheck = None
         self._EnableWordCheck = None
         self._EnableQualityCheck = None
+        self._EnableElectronCheck = None
 
     @property
     def ImageBase64(self):
@@ -27316,6 +27338,17 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
     def EnableQualityCheck(self, EnableQualityCheck):
         self._EnableQualityCheck = EnableQualityCheck
 
+    @property
+    def EnableElectronCheck(self):
+        """默认值为false，打开返回是否存在电子身份证判断。
+        :rtype: bool
+        """
+        return self._EnableElectronCheck
+
+    @EnableElectronCheck.setter
+    def EnableElectronCheck(self, EnableElectronCheck):
+        self._EnableElectronCheck = EnableElectronCheck
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -27330,6 +27363,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
         self._EnablePSCheck = params.get("EnablePSCheck")
         self._EnableWordCheck = params.get("EnableWordCheck")
         self._EnableQualityCheck = params.get("EnableQualityCheck")
+        self._EnableElectronCheck = params.get("EnableElectronCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1500,29 +1500,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ListAppCategory(self, request):
-        """应用类型列表
-
-        :param request: Request instance for ListAppCategory.
-        :type request: :class:`tencentcloud.lke.v20231130.models.ListAppCategoryRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.ListAppCategoryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListAppCategory", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListAppCategoryResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ListAppKnowledgeDetail(self, request):
         """列表查询知识库容量详情
 

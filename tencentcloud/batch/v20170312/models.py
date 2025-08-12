@@ -3874,14 +3874,14 @@ class DescribeJobSubmitInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        """作业ID
+        """作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :rtype: str
         """
         return self._JobId
@@ -4680,7 +4680,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskTemplateIds: 任务模板ID列表，与Filters参数不能同时指定。
+        :param _TaskTemplateIds: 任务模板ID列表，与Filters参数不能同时指定。模版ID最大限制100.
         :type TaskTemplateIds: list of str
         :param _Filters: 过滤条件
 <li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
@@ -4691,7 +4691,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Offset: 偏移量
         :type Offset: int
-        :param _Limit: 返回数量
+        :param _Limit: 返回数量; 可选范围[1-100]；默认值为20。
         :type Limit: int
         """
         self._TaskTemplateIds = None
@@ -4701,7 +4701,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     @property
     def TaskTemplateIds(self):
-        """任务模板ID列表，与Filters参数不能同时指定。
+        """任务模板ID列表，与Filters参数不能同时指定。模版ID最大限制100.
         :rtype: list of str
         """
         return self._TaskTemplateIds
@@ -4739,7 +4739,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量
+        """返回数量; 可选范围[1-100]；默认值为20。
         :rtype: int
         """
         return self._Limit
@@ -6525,42 +6525,32 @@ class InternetAccessible(AbstractModel):
         :type PublicIpAssigned: bool
         :param _BandwidthPackageId: 带宽包ID。可通过[ DescribeBandwidthPackages ](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
         :type BandwidthPackageId: str
-        :param _InternetServiceProvider: 线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
-
-- BGP：常规 BGP 线路
-
+        :param _InternetServiceProvider: 线路类型。各种线路类型及支持地区详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+<li>BGP：常规 BGP 线路</li>
 已开通静态单线IP白名单的用户，可选值：
-
- - CMCC：中国移动
- - CTCC：中国电信
- - CUCC：中国联通
-
+<li>CMCC：中国移动</li>
+<li>CTCC：中国电信</li>
+<li>CUCC：中国联通</li>
 注意：仅部分地域支持静态单线IP。
-示例值：BGP
+
         :type InternetServiceProvider: str
         :param _IPv4AddressType: 公网 IP 类型。
 
-- WanIP：普通公网IP。
-- HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。
-- AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。
-
+<li> WanIP：普通公网IP。</li>
+<li> HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
+<li> AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
 如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
-
-示例值：WanIP
 
 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :type IPv4AddressType: str
         :param _IPv6AddressType: 弹性公网 IPv6 类型。
-- EIPv6：弹性公网 IPv6。
-- HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。
-
+<li> EIPv6：弹性公网 IPv6。</li>
+<li> HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。</li>
 如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
-示例值：EIPv6
 
 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :type IPv6AddressType: str
         :param _AntiDDoSPackageId: 高防包唯一ID，申请高防IP时，该字段必传。
-示例值：bgp-12345678
 
         :type AntiDDoSPackageId: str
         """
@@ -6619,18 +6609,14 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetServiceProvider(self):
-        """线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
-
-- BGP：常规 BGP 线路
-
+        """线路类型。各种线路类型及支持地区详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+<li>BGP：常规 BGP 线路</li>
 已开通静态单线IP白名单的用户，可选值：
-
- - CMCC：中国移动
- - CTCC：中国电信
- - CUCC：中国联通
-
+<li>CMCC：中国移动</li>
+<li>CTCC：中国电信</li>
+<li>CUCC：中国联通</li>
 注意：仅部分地域支持静态单线IP。
-示例值：BGP
+
         :rtype: str
         """
         return self._InternetServiceProvider
@@ -6643,13 +6629,10 @@ class InternetAccessible(AbstractModel):
     def IPv4AddressType(self):
         """公网 IP 类型。
 
-- WanIP：普通公网IP。
-- HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。
-- AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。
-
+<li> WanIP：普通公网IP。</li>
+<li> HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
+<li> AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
 如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
-
-示例值：WanIP
 
 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :rtype: str
@@ -6663,11 +6646,9 @@ class InternetAccessible(AbstractModel):
     @property
     def IPv6AddressType(self):
         """弹性公网 IPv6 类型。
-- EIPv6：弹性公网 IPv6。
-- HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。
-
+<li> EIPv6：弹性公网 IPv6。</li>
+<li> HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。</li>
 如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
-示例值：EIPv6
 
 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :rtype: str
@@ -6681,7 +6662,6 @@ class InternetAccessible(AbstractModel):
     @property
     def AntiDDoSPackageId(self):
         """高防包唯一ID，申请高防IP时，该字段必传。
-示例值：bgp-12345678
 
         :rtype: str
         """

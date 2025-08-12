@@ -1584,7 +1584,9 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelRenewAutoSignLicense(self, request):
-        """给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
+        """已经不再使用
+
+        给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 
         注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
 
