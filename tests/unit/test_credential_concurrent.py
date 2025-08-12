@@ -54,10 +54,7 @@ def test_cvm_role_credential_concurrent():
     def worker(thread_id):
         nonlocal inconsistencies
         while not stop_event.is_set():
-            # sid, skey, token = cred.get_credential_info()
-            sid = cred._secret_id
-            skey = cred._secret_key
-            token = cred._token
+            sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
                     inconsistencies += 1
@@ -117,10 +114,7 @@ def test_role_arn_credential_concurrent():
     def worker(thread_id):
         nonlocal inconsistencies
         while not stop_event.is_set():
-            # sid, skey, token = cred.get_credential_info()
-            sid = cred._tmp_secret_id
-            skey = cred._tmp_secret_key
-            token = cred._token
+            sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
                     inconsistencies += 1
@@ -187,10 +181,7 @@ def test_oidc_role_arn_credential_concurrent():
     def worker(thread_id):
         nonlocal inconsistencies
         while not stop_event.is_set():
-            # sid, skey, token = cred.get_credential_info()
-            sid = cred._tmp_secret_id
-            skey = cred._tmp_secret_key
-            token = cred._tmp_token
+            sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
                     inconsistencies += 1
@@ -269,10 +260,7 @@ def test_tke_oidc_role_arn_credential_concurrent():
     def worker(thread_id):
         nonlocal inconsistencies
         while not stop_event.is_set():
-            # sid, skey, token = cred.get_credential_info()
-            sid = cred._tmp_secret_id
-            skey = cred._tmp_secret_key
-            token = cred._token
+            sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
                     inconsistencies += 1
