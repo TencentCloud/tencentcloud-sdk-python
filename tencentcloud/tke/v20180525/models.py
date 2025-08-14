@@ -2300,6 +2300,8 @@ class ClusterAdvancedSettings(AbstractModel):
         :type CiliumMode: str
         :param _ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
         :type ContainerRuntime: str
+        :param _DataPlaneV2: 是否启用 DataPlaneV2（cilium替代kube-proxy） 
+        :type DataPlaneV2: bool
         :param _DeletionProtection: 是否启用集群删除保护
         :type DeletionProtection: bool
         :param _EnableCustomizedPodCIDR: 是否开节点podCIDR大小的自定义模式
@@ -2322,7 +2324,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 1. 集群版本必须为1.14及以上；
 2. 系统镜像必须是: Tencent Linux 2.4；
         :type KubeProxyMode: str
-        :param _NetworkType: 集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
+        :param _NetworkType: 集群网络类型。包括GR（全局路由）和VPC-CNI两种模式，默认为GR。
         :type NetworkType: str
         :param _NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
         :type NodeNameType: str
@@ -2340,6 +2342,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._BasePodNumber = None
         self._CiliumMode = None
         self._ContainerRuntime = None
+        self._DataPlaneV2 = None
         self._DeletionProtection = None
         self._EnableCustomizedPodCIDR = None
         self._EtcdOverrideConfigs = None
@@ -2430,6 +2433,17 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
     @ContainerRuntime.setter
     def ContainerRuntime(self, ContainerRuntime):
         self._ContainerRuntime = ContainerRuntime
+
+    @property
+    def DataPlaneV2(self):
+        """是否启用 DataPlaneV2（cilium替代kube-proxy） 
+        :rtype: bool
+        """
+        return self._DataPlaneV2
+
+    @DataPlaneV2.setter
+    def DataPlaneV2(self, DataPlaneV2):
+        self._DataPlaneV2 = DataPlaneV2
 
     @property
     def DeletionProtection(self):
@@ -2527,7 +2541,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def NetworkType(self):
-        """集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
+        """集群网络类型。包括GR（全局路由）和VPC-CNI两种模式，默认为GR。
         :rtype: str
         """
         return self._NetworkType
@@ -2589,6 +2603,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._BasePodNumber = params.get("BasePodNumber")
         self._CiliumMode = params.get("CiliumMode")
         self._ContainerRuntime = params.get("ContainerRuntime")
+        self._DataPlaneV2 = params.get("DataPlaneV2")
         self._DeletionProtection = params.get("DeletionProtection")
         self._EnableCustomizedPodCIDR = params.get("EnableCustomizedPodCIDR")
         if params.get("EtcdOverrideConfigs") is not None:

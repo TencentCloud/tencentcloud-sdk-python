@@ -25,7 +25,8 @@ class AddMachineGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 机器组ID
+        :param _GroupId: 机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :type GroupId: str
         :param _MachineGroupType: 机器组类型
 目前type支持 ip 和 label
@@ -36,7 +37,8 @@ class AddMachineGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """机器组ID
+        """机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -308,7 +310,7 @@ class AlarmInfo(AbstractModel):
         :type AlarmTargets: list of AlarmTargetInfo
         :param _MonitorTime: 监控任务运行时间点。
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _Condition: 单触发条件。与MultiConditions参数互斥。
+        :param _Condition: 是否触发告警的单触发条件。与MultiConditions参数互斥。
         :type Condition: str
         :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
         :type TriggerCount: int
@@ -320,9 +322,9 @@ class AlarmInfo(AbstractModel):
         :type Status: bool
         :param _AlarmId: 告警策略ID。
         :type AlarmId: str
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。格式： YYYY-MM-DD HH:MM:SS
         :type CreateTime: str
-        :param _UpdateTime: 最近更新时间。
+        :param _UpdateTime: 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
         :type UpdateTime: str
         :param _MessageTemplate: 自定义通知模板
 注意：此字段可能返回 null，表示取不到有效值。
@@ -404,7 +406,7 @@ Condition互斥。
 
     @property
     def Condition(self):
-        """单触发条件。与MultiConditions参数互斥。
+        """是否触发告警的单触发条件。与MultiConditions参数互斥。
         :rtype: str
         """
         return self._Condition
@@ -470,7 +472,7 @@ Condition互斥。
 
     @property
     def CreateTime(self):
-        """创建时间。
+        """创建时间。格式： YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._CreateTime
@@ -481,7 +483,7 @@ Condition互斥。
 
     @property
     def UpdateTime(self):
-        """最近更新时间。
+        """最近更新时间。格式： YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._UpdateTime
@@ -696,9 +698,9 @@ class AlarmNotice(AbstractModel):
         :param _AlarmNoticeDeliverConfig: 投递相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmNoticeDeliverConfig: :class:`tencentcloud.cls.v20201016.models.AlarmNoticeDeliverConfig`
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。格式： YYYY-MM-DD HH:MM:SS
         :type CreateTime: str
-        :param _UpdateTime: 最近更新时间。
+        :param _UpdateTime: 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
         :type UpdateTime: str
         """
         self._Name = None
@@ -831,7 +833,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        """创建时间。格式： YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._CreateTime
@@ -842,7 +844,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """最近更新时间。
+        """最近更新时间。格式： YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._UpdateTime
@@ -1162,7 +1164,7 @@ class AlarmTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID。
+        :param _TopicId: 日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
         :type TopicId: str
         :param _Query: 查询语句。
         :type Query: str
@@ -1172,7 +1174,7 @@ class AlarmTarget(AbstractModel):
         :type StartTimeOffset: int
         :param _EndTimeOffset: 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
         :type EndTimeOffset: int
-        :param _LogsetId: 日志集ID。
+        :param _LogsetId: 日志集ID。通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志集ID
         :type LogsetId: str
         :param _SyntaxRule: 检索语法规则，默认值为0。
 0：Lucene语法，1：CQL语法。
@@ -1189,7 +1191,7 @@ class AlarmTarget(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID。
+        """日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -1244,7 +1246,7 @@ class AlarmTarget(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID。
+        """日志集ID。通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -1536,15 +1538,15 @@ class AlertHistoryRecord(AbstractModel):
         :type Trigger: str
         :param _TriggerCount: 持续周期，持续满足触发条件TriggerCount个周期后，再进行告警
         :type TriggerCount: int
-        :param _AlarmPeriod: 告警通知发送频率，单位为分钟
+        :param _AlarmPeriod: 告警通知发送频率，单位为分钟(min)
         :type AlarmPeriod: int
         :param _Notices: 通知渠道组
         :type Notices: list of AlertHistoryNotice
-        :param _Duration: 告警持续时间，单位为分钟
+        :param _Duration: 告警持续时间，单位为分钟(min)
         :type Duration: int
         :param _Status: 告警状态，0代表未恢复，1代表已恢复，2代表已失效
         :type Status: int
-        :param _CreateTime: 告警发生时间，毫秒级Unix时间戳
+        :param _CreateTime: 告警发生时间，毫秒级Unix时间戳(ms)
         :type CreateTime: int
         :param _GroupTriggerCondition: 告警分组触发时对应的分组信息
         :type GroupTriggerCondition: list of GroupTriggerConditionInfo
@@ -1661,7 +1663,7 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def AlarmPeriod(self):
-        """告警通知发送频率，单位为分钟
+        """告警通知发送频率，单位为分钟(min)
         :rtype: int
         """
         return self._AlarmPeriod
@@ -1683,7 +1685,7 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def Duration(self):
-        """告警持续时间，单位为分钟
+        """告警持续时间，单位为分钟(min)
         :rtype: int
         """
         return self._Duration
@@ -1705,7 +1707,7 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def CreateTime(self):
-        """告警发生时间，毫秒级Unix时间戳
+        """告警发生时间，毫秒级Unix时间戳(ms)
         :rtype: int
         """
         return self._CreateTime
@@ -1795,7 +1797,8 @@ class AnalysisDimensional(AbstractModel):
         r"""
         :param _Name: 分析名称
         :type Name: str
-        :param _Type: 分析类型：query，field ，original
+        :param _Type: 分析类型：query(自定义检索分析)，field(字段TOP5及占比统计) ，original(相关原始日志)
+
         :type Type: str
         :param _Content: 分析内容
         :type Content: str
@@ -1860,7 +1863,8 @@ class AnalysisDimensional(AbstractModel):
 
     @property
     def Type(self):
-        """分析类型：query，field ，original
+        """分析类型：query(自定义检索分析)，field(字段TOP5及占比统计) ，original(相关原始日志)
+
         :rtype: str
         """
         return self._Type
@@ -5104,7 +5108,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 通知渠道组名称。
+        :param _Name: 通知渠道组名称。最大支持255个字节。 不支持 '|'。
         :type Name: str
         :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持50个标签键值对，并且不能有重复的键值对。
         :type Tags: list of Tag
@@ -5150,7 +5154,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """通知渠道组名称。
+        """通知渠道组名称。最大支持255个字节。 不支持 '|'。
         :rtype: str
         """
         return self._Name
@@ -5364,7 +5368,7 @@ class CreateAlarmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 告警策略名称
+        :param _Name: 告警策略名称。最大支持255个字节。 不支持 '|'。
         :type Name: str
         :param _AlarmTargets: 监控对象列表。
         :type AlarmTargets: list of AlarmTarget
@@ -5374,9 +5378,9 @@ class CreateAlarmRequest(AbstractModel):
         :type TriggerCount: int
         :param _AlarmPeriod: 告警重复的周期，单位是分钟。取值范围是0~1440。
         :type AlarmPeriod: int
-        :param _AlarmNoticeIds: 关联的告警通知模板列表。
+        :param _AlarmNoticeIds: 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表
         :type AlarmNoticeIds: list of str
-        :param _Condition: 触发条件
+        :param _Condition: 告警发送通知的触发条件
  注意:  
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 
@@ -5447,7 +5451,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Name(self):
-        """告警策略名称
+        """告警策略名称。最大支持255个字节。 不支持 '|'。
         :rtype: str
         """
         return self._Name
@@ -5502,7 +5506,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmNoticeIds(self):
-        """关联的告警通知模板列表。
+        """关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表
         :rtype: list of str
         """
         return self._AlarmNoticeIds
@@ -5513,7 +5517,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Condition(self):
-        """触发条件
+        """告警发送通知的触发条件
  注意:  
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 
@@ -5790,11 +5794,11 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNoticeId: 通知渠道组id。
+        :param _AlarmNoticeId: 通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取通知渠道组id
         :type AlarmNoticeId: str
-        :param _StartTime: 屏蔽开始时间（秒级时间戳）。
+        :param _StartTime: 屏蔽规则开始时间，秒级(s)时间戳。
         :type StartTime: int
-        :param _EndTime: 屏蔽结束时间（秒级时间戳）。
+        :param _EndTime: 屏蔽规则结束时间，秒级(s)时间戳。结束时间需要大于当前时间
         :type EndTime: int
         :param _Type: 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
         :type Type: int
@@ -5812,7 +5816,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组id。
+        """通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取通知渠道组id
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -5823,7 +5827,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """屏蔽开始时间（秒级时间戳）。
+        """屏蔽规则开始时间，秒级(s)时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -5834,7 +5838,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """屏蔽结束时间（秒级时间戳）。
+        """屏蔽规则结束时间，秒级(s)时间戳。结束时间需要大于当前时间
         :rtype: int
         """
         return self._EndTime
@@ -8568,7 +8572,10 @@ class CreateMachineGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 机器组名字，不能重复
+        :param _GroupName: 机器组名字。
+输入限制：
+- 最大支持255个字符，不能为空字符串
+- 不能包含字符'|'
         :type GroupName: str
         :param _MachineGroupType: 创建机器组类型。取值如下：
 - Type：ip，Values中为ip字符串列表创建机器组
@@ -8579,12 +8586,16 @@ class CreateMachineGroupRequest(AbstractModel):
         :param _AutoUpdate: 是否开启机器组自动更新。默认false
         :type AutoUpdate: bool
         :param _UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :type UpdateStartTime: str
         :param _UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :type UpdateEndTime: str
         :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费。默认false
         :type ServiceLogging: bool
         :param _DelayCleanupTime: 机器组中机器离线清理时间。单位：天
+
+- 大于0时生效。
         :type DelayCleanupTime: int
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
@@ -8606,7 +8617,10 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """机器组名字，不能重复
+        """机器组名字。
+输入限制：
+- 最大支持255个字符，不能为空字符串
+- 不能包含字符'|'
         :rtype: str
         """
         return self._GroupName
@@ -8653,6 +8667,7 @@ class CreateMachineGroupRequest(AbstractModel):
     @property
     def UpdateStartTime(self):
         """升级开始时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :rtype: str
         """
         return self._UpdateStartTime
@@ -8664,6 +8679,7 @@ class CreateMachineGroupRequest(AbstractModel):
     @property
     def UpdateEndTime(self):
         """升级结束时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :rtype: str
         """
         return self._UpdateEndTime
@@ -8686,6 +8702,8 @@ class CreateMachineGroupRequest(AbstractModel):
     @property
     def DelayCleanupTime(self):
         """机器组中机器离线清理时间。单位：天
+
+- 大于0时生效。
         :rtype: int
         """
         return self._DelayCleanupTime
@@ -8802,7 +8820,7 @@ class CreateNoticeContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 模板名称。
+        :param _Name: 模板名称。最大支持255个字节
         :type Name: str
         :param _Type: 模板内容语言。0：中文1：英文
         :type Type: int
@@ -8815,7 +8833,7 @@ class CreateNoticeContentRequest(AbstractModel):
 
     @property
     def Name(self):
-        """模板名称。
+        """模板名称。最大支持255个字节
         :rtype: str
         """
         return self._Name
@@ -9786,7 +9804,7 @@ class CreateWebCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 通知内容名称。
+        :param _Name: 通知内容名称。最大支持255个字节
         :type Name: str
         :param _Type: 渠道类型。
 
@@ -9798,7 +9816,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
 
 当Type为Http时，必填。
         :type Method: str
-        :param _Key: 秘钥。
+        :param _Key: 秘钥。最大支持1024个字节
         :type Key: str
         """
         self._Name = None
@@ -9809,7 +9827,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
 
     @property
     def Name(self):
-        """通知内容名称。
+        """通知内容名称。最大支持255个字节
         :rtype: str
         """
         return self._Name
@@ -9857,7 +9875,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
 
     @property
     def Key(self):
-        """秘钥。
+        """秘钥。最大支持1024个字节
         :rtype: str
         """
         return self._Key
@@ -10935,14 +10953,14 @@ class DeleteAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNoticeId: 通知渠道组ID
+        :param _AlarmNoticeId: 通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
         :type AlarmNoticeId: str
         """
         self._AlarmNoticeId = None
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组ID
+        """通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -12288,14 +12306,14 @@ class DeleteNoticeContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeContentId: 通知内容模板ID
+        :param _NoticeContentId: 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
         :type NoticeContentId: str
         """
         self._NoticeContentId = None
 
     @property
     def NoticeContentId(self):
-        """通知内容模板ID
+        """通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
         :rtype: str
         """
         return self._NoticeContentId
@@ -12563,14 +12581,14 @@ class DeleteWebCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WebCallbackId: 告警渠道回调配置ID。
+        :param _WebCallbackId: 告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
         :type WebCallbackId: str
         """
         self._WebCallbackId = None
 
     @property
     def WebCallbackId(self):
-        """告警渠道回调配置ID。
+        """告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
         :rtype: str
         """
         return self._WebCallbackId
@@ -12637,7 +12655,7 @@ ap-nanjing 南京地域。
 
 https://cloud.tencent.com/document/product/614/18940
         :type Region: str
-        :param _TopicId: 日志主题ID。
+        :param _TopicId: 日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
         :type TopicId: str
         :param _Scope: 投递数据范围。
 
@@ -12671,7 +12689,7 @@ https://cloud.tencent.com/document/product/614/18940
 
     @property
     def TopicId(self):
-        """日志主题ID。
+        """日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -12720,18 +12738,22 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :param _Filters: <li> name
 按照【通知渠道组名称】进行过滤。
 类型：String
+示例："Filters":[{"Key":"name","Values":["test-notice"]}]
 必选：否</li>
 <li> alarmNoticeId
 按照【通知渠道组ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
 必选：否</li>
 <li> uid
 按照【接收用户ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "uid", Values: ["1137546"]}]
 必选：否</li>
 <li> groupId
 按照【接收用户组ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "groupId", Values: ["344098"]}]
 必选：否</li>
 
 <li> deliverFlag
@@ -12739,7 +12761,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 类型：String
 必选：否
 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
-
+示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
         :param _Offset: 分页的偏移量，默认值为0。
@@ -12756,18 +12778,22 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         """<li> name
 按照【通知渠道组名称】进行过滤。
 类型：String
+示例："Filters":[{"Key":"name","Values":["test-notice"]}]
 必选：否</li>
 <li> alarmNoticeId
 按照【通知渠道组ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
 必选：否</li>
 <li> uid
 按照【接收用户ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "uid", Values: ["1137546"]}]
 必选：否</li>
 <li> groupId
 按照【接收用户组ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "groupId", Values: ["344098"]}]
 必选：否</li>
 
 <li> deliverFlag
@@ -12775,7 +12801,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 类型：String
 必选：否
 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
-
+示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :rtype: list of Filter
         """
@@ -13054,22 +13080,26 @@ class DescribeAlarmsRequest(AbstractModel):
 - 按照【告警策略名称】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：test-alarm
 
 alarmId
 - 按照【告警策略ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：alarm-b60cf034-c3d6-4b01-xxxx-4e877ebb4751
 
 topicId
 - 按照【监控对象的日志主题ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：6766f83d-659e-xxxx-a8f7-9104a1012743
 
 enable
 - 按照【启用状态】进行过滤。
 - 类型：String
 - 备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
 - 必选：否
+- 示例：true
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
@@ -13088,22 +13118,26 @@ enable
 - 按照【告警策略名称】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：test-alarm
 
 alarmId
 - 按照【告警策略ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：alarm-b60cf034-c3d6-4b01-xxxx-4e877ebb4751
 
 topicId
 - 按照【监控对象的日志主题ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：6766f83d-659e-xxxx-a8f7-9104a1012743
 
 enable
 - 按照【启用状态】进行过滤。
 - 类型：String
 - 备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
 - 必选：否
+- 示例：true
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :rtype: list of Filter
@@ -13226,9 +13260,9 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _From: 查询时间范围启始时间，毫秒级unix时间戳
+        :param _From: 查询时间范围启始时间，毫秒级unix时间戳(ms)
         :type From: int
-        :param _To: 查询时间范围结束时间，毫秒级unix时间戳
+        :param _To: 查询时间范围结束时间，毫秒级unix时间戳(ms)
         :type To: int
         :param _Offset: 分页的偏移量，默认值为0。
         :type Offset: int
@@ -13250,7 +13284,7 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     @property
     def From(self):
-        """查询时间范围启始时间，毫秒级unix时间戳
+        """查询时间范围启始时间，毫秒级unix时间戳(ms)
         :rtype: int
         """
         return self._From
@@ -13261,7 +13295,7 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     @property
     def To(self):
-        """查询时间范围结束时间，毫秒级unix时间戳
+        """查询时间范围结束时间，毫秒级unix时间戳(ms)
         :rtype: int
         """
         return self._To
@@ -17551,7 +17585,7 @@ class DescribeWebCallbacksRequest(AbstractModel):
 按照【告警渠道回调配置渠道类型】进行过滤。
 类型：String
 必选：否
-
+枚举值：WeCom，DingTalk，Lark，Http
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
         :param _Offset: 分页的偏移量，默认值为0。
@@ -17579,7 +17613,7 @@ class DescribeWebCallbacksRequest(AbstractModel):
 按照【告警渠道回调配置渠道类型】进行过滤。
 类型：String
 必选：否
-
+枚举值：WeCom，DingTalk，Lark，Http
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
         """
@@ -21866,7 +21900,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNoticeId: 通知渠道组ID。
+        :param _AlarmNoticeId: 通知渠道组ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知渠道组ID
         :type AlarmNoticeId: str
         :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
         :type Tags: list of Tag
@@ -21921,7 +21955,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组ID。
+        """通知渠道组ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知渠道组ID
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -22138,13 +22172,13 @@ class ModifyAlarmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmId: 告警策略ID。
+        :param _AlarmId: 告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
         :type AlarmId: str
-        :param _Name: 告警策略名称
+        :param _Name: 告警策略名称。最大支持255个字节，不支持 '|'。
         :type Name: str
         :param _MonitorTime: 监控任务运行时间点。
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _Condition: 触发条件。
+        :param _Condition: 告警信息发送的触发条件。
 
 注意:  
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
@@ -22165,7 +22199,7 @@ class ModifyAlarmRequest(AbstractModel):
         :type TriggerCount: int
         :param _AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。
         :type AlarmPeriod: int
-        :param _AlarmNoticeIds: 关联的告警通知模板列表。
+        :param _AlarmNoticeIds: 关联的告警通知渠道列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取告警通知渠道列表
         :type AlarmNoticeIds: list of str
         :param _AlarmTargets: 监控对象列表。
         :type AlarmTargets: list of AlarmTarget
@@ -22218,7 +22252,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmId(self):
-        """告警策略ID。
+        """告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
         :rtype: str
         """
         return self._AlarmId
@@ -22229,7 +22263,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Name(self):
-        """告警策略名称
+        """告警策略名称。最大支持255个字节，不支持 '|'。
         :rtype: str
         """
         return self._Name
@@ -22251,7 +22285,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Condition(self):
-        """触发条件。
+        """告警信息发送的触发条件。
 
 注意:  
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
@@ -22317,7 +22351,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmNoticeIds(self):
-        """关联的告警通知模板列表。
+        """关联的告警通知渠道列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取告警通知渠道列表
         :rtype: list of str
         """
         return self._AlarmNoticeIds
@@ -22552,13 +22586,13 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 屏蔽规则ID。
+        :param _TaskId: 屏蔽规则ID。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取屏蔽规则ID
         :type TaskId: str
-        :param _AlarmNoticeId: 通知渠道组id。
+        :param _AlarmNoticeId: 通知渠道组id。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取通知渠道组id
         :type AlarmNoticeId: str
-        :param _StartTime: 屏蔽开始时间（秒级时间戳）。
+        :param _StartTime: 屏蔽开始时间，秒级(s)时间戳。
         :type StartTime: int
-        :param _EndTime: 屏蔽结束时间（秒级时间戳）。
+        :param _EndTime: 屏蔽结束时间，秒级(s)时间戳。
         :type EndTime: int
         :param _Type: 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
         :type Type: int
@@ -22567,6 +22601,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
         :param _Reason: 屏蔽原因。
         :type Reason: str
         :param _Status: 规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+枚举：0（未生效），1（生效中），2（已失效）
         :type Status: int
         """
         self._TaskId = None
@@ -22580,7 +22615,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """屏蔽规则ID。
+        """屏蔽规则ID。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取屏蔽规则ID
         :rtype: str
         """
         return self._TaskId
@@ -22591,7 +22626,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组id。
+        """通知渠道组id。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取通知渠道组id
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -22602,7 +22637,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """屏蔽开始时间（秒级时间戳）。
+        """屏蔽开始时间，秒级(s)时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -22613,7 +22648,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """屏蔽结束时间（秒级时间戳）。
+        """屏蔽结束时间，秒级(s)时间戳。
         :rtype: int
         """
         return self._EndTime
@@ -22658,6 +22693,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
     @property
     def Status(self):
         """规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+枚举：0（未生效），1（生效中），2（已失效）
         :rtype: int
         """
         return self._Status
@@ -25052,7 +25088,7 @@ class ModifyNoticeContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeContentId: 通知内容模板ID。
+        :param _NoticeContentId: 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
         :type NoticeContentId: str
         :param _Name: 通知内容模板名称。
         :type Name: str
@@ -25070,7 +25106,7 @@ class ModifyNoticeContentRequest(AbstractModel):
 
     @property
     def NoticeContentId(self):
-        """通知内容模板ID。
+        """通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
         :rtype: str
         """
         return self._NoticeContentId
@@ -25186,7 +25222,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
         :type ProcessTimeWindow: str
         :param _ProcessDelay: 执行延迟(秒)，0~120秒，默认60秒
         :type ProcessDelay: int
-        :param _SrcTopicRegion: 源topicId的地域信息,支持地域见(https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :param _SrcTopicRegion: 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
         :type SrcTopicRegion: str
         :param _Name: 任务名称，0~255字符
         :type Name: str
@@ -25295,7 +25331,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
-        """源topicId的地域信息,支持地域见(https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        """源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
         :rtype: str
         """
         return self._SrcTopicRegion
@@ -25952,9 +25988,9 @@ class ModifyWebCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WebCallbackId: 告警渠道回调配置ID。
+        :param _WebCallbackId: 告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
         :type WebCallbackId: str
-        :param _Name: 告警渠道回调配置名称。
+        :param _Name: 告警渠道回调配置名称。最大支持255个字节
         :type Name: str
         :param _Type: 渠道类型
 
@@ -25968,7 +26004,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
 注意：当Type为Http时，必填。
         :type Method: str
-        :param _Key: 秘钥信息。
+        :param _Key: 秘钥信息。最大支持1024个字节
         :type Key: str
         """
         self._WebCallbackId = None
@@ -25980,7 +26016,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def WebCallbackId(self):
-        """告警渠道回调配置ID。
+        """告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
         :rtype: str
         """
         return self._WebCallbackId
@@ -25991,7 +26027,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def Name(self):
-        """告警渠道回调配置名称。
+        """告警渠道回调配置名称。最大支持255个字节
         :rtype: str
         """
         return self._Name
@@ -26041,7 +26077,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def Key(self):
-        """秘钥信息。
+        """秘钥信息。最大支持1024个字节
         :rtype: str
         """
         return self._Key
@@ -26112,7 +26148,7 @@ class MonitorTime(AbstractModel):
         :param _Time: 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
 当type为`Period`,`Fixed`时，time字段生效。
         :type Time: int
-        :param _CronExpression: 执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field, Hours field,Day of month field,Month field,Day of week field， 不支持秒级别。
+        :param _CronExpression: 执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field(分钟), Hours field(小时),Day of month field(日期),Month field(月份),Day of week field(星期)， 不支持秒级别。
 当type为`Cron`时，CronExpression字段生效。
         :type CronExpression: str
         """
@@ -26149,7 +26185,7 @@ class MonitorTime(AbstractModel):
 
     @property
     def CronExpression(self):
-        """执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field, Hours field,Day of month field,Month field,Day of week field， 不支持秒级别。
+        """执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field(分钟), Hours field(小时),Day of month field(日期),Month field(月份),Day of week field(星期)， 不支持秒级别。
 当type为`Cron`时，CronExpression字段生效。
         :rtype: str
         """
@@ -26451,9 +26487,9 @@ class NoticeContentTemplate(AbstractModel):
         :type Uin: int
         :param _SubUin: 创建/修改者子账号。
         :type SubUin: int
-        :param _CreateTime: 创建时间 秒级时间戳。
+        :param _CreateTime: 创建时间 秒级(s)时间戳。
         :type CreateTime: int
-        :param _UpdateTime: 更新时间 秒级时间戳。
+        :param _UpdateTime: 更新时间 秒级(s)时间戳。
         :type UpdateTime: int
         """
         self._NoticeContentId = None
@@ -26551,7 +26587,7 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间 秒级时间戳。
+        """创建时间 秒级(s)时间戳。
         :rtype: int
         """
         return self._CreateTime
@@ -26562,7 +26598,7 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间 秒级时间戳。
+        """更新时间 秒级(s)时间戳。
         :rtype: int
         """
         return self._UpdateTime
@@ -26619,7 +26655,7 @@ class NoticeReceiver(AbstractModel):
 - WeChat - 微信
 - Phone - 电话
         :type ReceiverChannels: list of str
-        :param _NoticeContentId: 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+        :param _NoticeContentId: 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。-通过[获取通知内容模板](https://cloud.tencent.com/document/product/614/111714)获取通知内容模板ID
         :type NoticeContentId: str
         :param _StartTime: 允许接收信息的开始时间。格式：`15:04:05`。必填
         :type StartTime: str
@@ -26683,7 +26719,7 @@ class NoticeReceiver(AbstractModel):
 
     @property
     def NoticeContentId(self):
-        """通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+        """通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。-通过[获取通知内容模板](https://cloud.tencent.com/document/product/614/111714)获取通知内容模板ID
         :rtype: str
         """
         return self._NoticeContentId
@@ -31307,15 +31343,15 @@ class WebCallback(AbstractModel):
     def __init__(self):
         r"""
         :param _CallbackType: 回调的类型。可选值：
-- Http
-- WeCom
-- DingTalk
-- Lark
+- Http(自定义接口回调)
+- WeCom(企业微信)
+- DingTalk(钉钉)
+- Lark(飞书)
         :type CallbackType: str
         :param _Url: 回调地址，最大支持1024个字节。
 也可使用WebCallbackId引用集成配置中的URL，此时该字段请填写为空字符串。
         :type Url: str
-        :param _WebCallbackId: 集成配置ID。
+        :param _WebCallbackId: 集成配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/product/614/115229)获取集成配置ID
         :type WebCallbackId: str
         :param _Method: 回调方法。可选值：
 - POST（默认值）
@@ -31359,10 +31395,10 @@ class WebCallback(AbstractModel):
     @property
     def CallbackType(self):
         """回调的类型。可选值：
-- Http
-- WeCom
-- DingTalk
-- Lark
+- Http(自定义接口回调)
+- WeCom(企业微信)
+- DingTalk(钉钉)
+- Lark(飞书)
         :rtype: str
         """
         return self._CallbackType
@@ -31385,7 +31421,7 @@ class WebCallback(AbstractModel):
 
     @property
     def WebCallbackId(self):
-        """集成配置ID。
+        """集成配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/product/614/115229)获取集成配置ID
         :rtype: str
         """
         return self._WebCallbackId
@@ -31548,9 +31584,9 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
         :type Uin: int
         :param _SubUin: 子账号。
         :type SubUin: int
-        :param _CreateTime: 创建时间。秒级时间戳
+        :param _CreateTime: 创建时间。秒(s)级时间戳
         :type CreateTime: int
-        :param _UpdateTime: 更新时间。秒级时间戳
+        :param _UpdateTime: 更新时间。秒(s)级时间戳
         :type UpdateTime: int
         """
         self._WebCallbackId = None
@@ -31656,7 +31692,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def CreateTime(self):
-        """创建时间。秒级时间戳
+        """创建时间。秒(s)级时间戳
         :rtype: int
         """
         return self._CreateTime
@@ -31667,7 +31703,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def UpdateTime(self):
-        """更新时间。秒级时间戳
+        """更新时间。秒(s)级时间戳
         :rtype: int
         """
         return self._UpdateTime

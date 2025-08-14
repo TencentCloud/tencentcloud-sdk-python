@@ -88,7 +88,7 @@ class AssignProjectRequest(AbstractModel):
         r"""
         :param _InstanceIds: 实例 ID 列表，请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceIds: list of str
-        :param _ProjectId: 项目ID，用户已创建项目的唯一ID,非自定义
+        :param _ProjectId: 项目ID，用户已创建项目的唯一ID。请在控制台账号中心的项目管理中复制项目 ID。
         :type ProjectId: int
         """
         self._InstanceIds = None
@@ -107,7 +107,7 @@ class AssignProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目ID，用户已创建项目的唯一ID,非自定义
+        """项目ID，用户已创建项目的唯一ID。请在控制台账号中心的项目管理中复制项目 ID。
         :rtype: int
         """
         return self._ProjectId
@@ -137,7 +137,7 @@ class AssignProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowIds: 返回的异步任务ID列表
+        :param _FlowIds: 返回的异步任务ID列表。
         :type FlowIds: list of int non-negative
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -147,7 +147,7 @@ class AssignProjectResponse(AbstractModel):
 
     @property
     def FlowIds(self):
-        """返回的异步任务ID列表
+        """返回的异步任务ID列表。
         :rtype: list of int non-negative
         """
         return self._FlowIds

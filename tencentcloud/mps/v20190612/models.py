@@ -36564,6 +36564,10 @@ class HighlightSegmentItem(AbstractModel):
         :type BeginTime: str
         :param _EndTime: 直播切片对应直播结束时间点，采用 ISO 日期格式。	
         :type EndTime: str
+        :param _Title: 集锦标题。
+        :type Title: str
+        :param _Summary: 集锦概要。
+        :type Summary: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
@@ -36571,6 +36575,8 @@ class HighlightSegmentItem(AbstractModel):
         self._SegmentTags = None
         self._BeginTime = None
         self._EndTime = None
+        self._Title = None
+        self._Summary = None
 
     @property
     def Confidence(self):
@@ -36639,6 +36645,28 @@ class HighlightSegmentItem(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def Title(self):
+        """集锦标题。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Summary(self):
+        """集锦概要。
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -36647,6 +36675,8 @@ class HighlightSegmentItem(AbstractModel):
         self._SegmentTags = params.get("SegmentTags")
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
+        self._Title = params.get("Title")
+        self._Summary = params.get("Summary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42057,12 +42087,20 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
         :type Duration: float
         :param _SegmentSet: 智能精彩集锦子片段列表。
         :type SegmentSet: list of HighlightSegmentItem
+        :param _HighlightUrl: 智能精彩集锦地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighlightUrl: str
+        :param _CovImgUrl: 智能精彩集锦封面地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CovImgUrl: str
         """
         self._HighlightPath = None
         self._CovImgPath = None
         self._Confidence = None
         self._Duration = None
         self._SegmentSet = None
+        self._HighlightUrl = None
+        self._CovImgUrl = None
 
     @property
     def HighlightPath(self):
@@ -42119,6 +42157,30 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
     def SegmentSet(self, SegmentSet):
         self._SegmentSet = SegmentSet
 
+    @property
+    def HighlightUrl(self):
+        """智能精彩集锦地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HighlightUrl
+
+    @HighlightUrl.setter
+    def HighlightUrl(self, HighlightUrl):
+        self._HighlightUrl = HighlightUrl
+
+    @property
+    def CovImgUrl(self):
+        """智能精彩集锦封面地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CovImgUrl
+
+    @CovImgUrl.setter
+    def CovImgUrl(self, CovImgUrl):
+        self._CovImgUrl = CovImgUrl
+
 
     def _deserialize(self, params):
         self._HighlightPath = params.get("HighlightPath")
@@ -42131,6 +42193,8 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
                 obj = HighlightSegmentItem()
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
+        self._HighlightUrl = params.get("HighlightUrl")
+        self._CovImgUrl = params.get("CovImgUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

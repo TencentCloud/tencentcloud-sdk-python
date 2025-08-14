@@ -1116,6 +1116,31 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProducerList(self, request):
+        """查询主题关联的生产者列表信息，Filters支持以下筛选条件：
+        - ClientIP，客户端IP
+        - ClientID，客户端ID
+
+        :param request: Request instance for DescribeProducerList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeProducerListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeProducerListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProducerList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProducerListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProductSKUs(self, request):
         """查询产品售卖规格，针对 RocketMQ 5.x 集群。
 

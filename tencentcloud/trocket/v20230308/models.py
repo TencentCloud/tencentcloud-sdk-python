@@ -7917,6 +7917,170 @@ class DescribeMigrationTaskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProducerListRequest(AbstractModel):
+    """DescribeProducerList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :type Topic: str
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        :type Filters: list of Filter
+        :param _Limit: 查询结果限制数量，默认20。
+        :type Limit: int
+        :param _Offset: 查询起始位置，默认为0。
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Filters(self):
+        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """查询结果限制数量，默认20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """查询起始位置，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProducerListResponse(AbstractModel):
+    """DescribeProducerList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _ProducerList: 生产者信息列表
+        :type ProducerList: list of ProducerInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ProducerList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ProducerList(self):
+        """生产者信息列表
+        :rtype: list of ProducerInfo
+        """
+        return self._ProducerList
+
+    @ProducerList.setter
+    def ProducerList(self, ProducerList):
+        self._ProducerList = ProducerList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ProducerList") is not None:
+            self._ProducerList = []
+            for item in params.get("ProducerList"):
+                obj = ProducerInfo()
+                obj._deserialize(item)
+                self._ProducerList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProductSKUsRequest(AbstractModel):
     """DescribeProductSKUs请求参数结构体
 
@@ -13752,6 +13916,161 @@ class PriceTag(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Step = params.get("Step")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProducerInfo(AbstractModel):
+    """生产者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: 客户端ID	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientId: str
+        :param _ClientIp: 客户端IP	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIp: str
+        :param _Language: 客户端语言 
+- JAVA((byte) 0)
+- CPP((byte) 1) 
+- DOTNET((byte) 2) 
+- PYTHON((byte) 3)
+- DELPHI((byte) 4)
+- ERLANG((byte) 5)
+- RUBY((byte) 6)
+- OTHER((byte) 7)
+- HTTP((byte) 8)
+- GO((byte) 9)
+- PHP((byte) 10)
+- OMS((byte) 11)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Language: str
+        :param _Version: 客户端版本	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _LastUpdateTimestamp: 最后生产时间，**Unix时间戳（秒）**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTimestamp: int
+        :param _ChannelProtocol: 生产者客户端协议类型，枚举如下：
+
+- grpc：GRpc协议
+- remoting：Remoting协议
+- http：HTTP协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelProtocol: str
+        """
+        self._ClientId = None
+        self._ClientIp = None
+        self._Language = None
+        self._Version = None
+        self._LastUpdateTimestamp = None
+        self._ChannelProtocol = None
+
+    @property
+    def ClientId(self):
+        """客户端ID	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientIp(self):
+        """客户端IP	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def Language(self):
+        """客户端语言 
+- JAVA((byte) 0)
+- CPP((byte) 1) 
+- DOTNET((byte) 2) 
+- PYTHON((byte) 3)
+- DELPHI((byte) 4)
+- ERLANG((byte) 5)
+- RUBY((byte) 6)
+- OTHER((byte) 7)
+- HTTP((byte) 8)
+- GO((byte) 9)
+- PHP((byte) 10)
+- OMS((byte) 11)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Version(self):
+        """客户端版本	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def LastUpdateTimestamp(self):
+        """最后生产时间，**Unix时间戳（秒）**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastUpdateTimestamp
+
+    @LastUpdateTimestamp.setter
+    def LastUpdateTimestamp(self, LastUpdateTimestamp):
+        self._LastUpdateTimestamp = LastUpdateTimestamp
+
+    @property
+    def ChannelProtocol(self):
+        """生产者客户端协议类型，枚举如下：
+
+- grpc：GRpc协议
+- remoting：Remoting协议
+- http：HTTP协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChannelProtocol
+
+    @ChannelProtocol.setter
+    def ChannelProtocol(self, ChannelProtocol):
+        self._ChannelProtocol = ChannelProtocol
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientIp = params.get("ClientIp")
+        self._Language = params.get("Language")
+        self._Version = params.get("Version")
+        self._LastUpdateTimestamp = params.get("LastUpdateTimestamp")
+        self._ChannelProtocol = params.get("ChannelProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

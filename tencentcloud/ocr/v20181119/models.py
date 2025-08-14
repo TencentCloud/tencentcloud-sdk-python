@@ -8090,7 +8090,7 @@ RideHailingDriverLicense -- 网约车驾驶证
 RideHailingTransportLicense -- 网约车运输证
 WayBill -- 快递运单
 AccountOpeningPermit -- 银行开户许可证
-InvoiceEng -- 海外发票模版
+InvoiceEng -- 国际发票模板
 Coin --钱币识别模板
 OnboardingDocuments -- 入职材料识别
 PropertyOwnershipCertificate -- 房产证识别
@@ -8188,7 +8188,7 @@ RideHailingDriverLicense -- 网约车驾驶证
 RideHailingTransportLicense -- 网约车运输证
 WayBill -- 快递运单
 AccountOpeningPermit -- 银行开户许可证
-InvoiceEng -- 海外发票模版
+InvoiceEng -- 国际发票模板
 Coin --钱币识别模板
 OnboardingDocuments -- 入职材料识别
 PropertyOwnershipCertificate -- 房产证识别
@@ -8350,7 +8350,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
         :type EnableCoord: bool
         :param _OutputParentKey: 是否开启父子key识别，默认是
         :type OutputParentKey: bool
-        :param _ConfigAdvanced: 模版的单个属性配置
+        :param _ConfigAdvanced: 模板的单个属性配置
         :type ConfigAdvanced: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
         """
         self._ImageUrl = None
@@ -8470,7 +8470,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
 
     @property
     def ConfigAdvanced(self):
-        """模版的单个属性配置
+        """模板的单个属性配置
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
         """
         return self._ConfigAdvanced
@@ -8624,7 +8624,7 @@ flase：输出默认字段+自定义字段
         :type ReturnFullText: bool
         :param _ConfigId: 配置id支持：
 General -- 通用场景 
-InvoiceEng -- 国际invoice模版 
+InvoiceEng -- 国际invoice模板 
 WayBillEng --海运订单模板
 CustomsDeclaration -- 进出口报关单
 WeightNote -- 磅单
@@ -8634,18 +8634,18 @@ EntrustmentBook -- 海运托书
 Statement -- 对账单识别模板
 BookingConfirmation -- 配舱通知书识别模板
 AirWayBill -- 航空运单识别模板
-Table -- 表格模版
+Table -- 表格模板
 SteelLabel -- 实物标签识别模板
 CarInsurance -- 车辆保险单识别模板
 MultiRealEstateCertificate -- 房产材料识别模板
 MultiRealEstateMaterial -- 房产证明识别模板
-HongKongUtilityBill -- 香港水电煤单识别模板
+HongKongUtilityBill -- 中国香港水电煤单识别模板
         :type ConfigId: str
         :param _EnableCoord: 是否开启全文字段坐标值的识别
         :type EnableCoord: bool
         :param _OutputParentKey: 是否开启父子key识别，默认是
         :type OutputParentKey: bool
-        :param _ConfigAdvanced: 模版的单个属性配置
+        :param _ConfigAdvanced: 模板的单个属性配置
         :type ConfigAdvanced: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
         :param _OutputLanguage: cn时，添加的key为中文  
 en时，添加的key为英语
@@ -8735,7 +8735,7 @@ flase：输出默认字段+自定义字段
     def ConfigId(self):
         """配置id支持：
 General -- 通用场景 
-InvoiceEng -- 国际invoice模版 
+InvoiceEng -- 国际invoice模板 
 WayBillEng --海运订单模板
 CustomsDeclaration -- 进出口报关单
 WeightNote -- 磅单
@@ -8745,12 +8745,12 @@ EntrustmentBook -- 海运托书
 Statement -- 对账单识别模板
 BookingConfirmation -- 配舱通知书识别模板
 AirWayBill -- 航空运单识别模板
-Table -- 表格模版
+Table -- 表格模板
 SteelLabel -- 实物标签识别模板
 CarInsurance -- 车辆保险单识别模板
 MultiRealEstateCertificate -- 房产材料识别模板
 MultiRealEstateMaterial -- 房产证明识别模板
-HongKongUtilityBill -- 香港水电煤单识别模板
+HongKongUtilityBill -- 中国香港水电煤单识别模板
         :rtype: str
         """
         return self._ConfigId
@@ -8783,7 +8783,7 @@ HongKongUtilityBill -- 香港水电煤单识别模板
 
     @property
     def ConfigAdvanced(self):
-        """模版的单个属性配置
+        """模板的单个属性配置
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
         """
         return self._ConfigAdvanced
@@ -10596,6 +10596,8 @@ class GeneralAccurateOCRRequest(AbstractModel):
         :type PdfPageNumber: int
         :param _EnableDetectText: 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
         :type EnableDetectText: bool
+        :param _ConfigID: 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景 
+        :type ConfigID: str
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -10604,6 +10606,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
         self._IsPdf = None
         self._PdfPageNumber = None
         self._EnableDetectText = None
+        self._ConfigID = None
 
     @property
     def ImageBase64(self):
@@ -10682,6 +10685,17 @@ class GeneralAccurateOCRRequest(AbstractModel):
     def EnableDetectText(self, EnableDetectText):
         self._EnableDetectText = EnableDetectText
 
+    @property
+    def ConfigID(self):
+        """配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景 
+        :rtype: str
+        """
+        return self._ConfigID
+
+    @ConfigID.setter
+    def ConfigID(self, ConfigID):
+        self._ConfigID = ConfigID
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -10691,6 +10705,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
         self._IsPdf = params.get("IsPdf")
         self._PdfPageNumber = params.get("PdfPageNumber")
         self._EnableDetectText = params.get("EnableDetectText")
+        self._ConfigID = params.get("ConfigID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12533,10 +12548,10 @@ class HandwritingEssayOCRRequest(AbstractModel):
         :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
         :type PdfPageNumber: int
         :param _ConfigId: 配置id支持：
-ArticleRecognize -- 手写作文模版
+ArticleRecognize -- 手写作文模板
 默认：ArticleRecognize
         :type ConfigId: str
-        :param _Scene: 模版的单个属性配置
+        :param _Scene: 模板的单个属性配置
         :type Scene: str
         """
         self._ImageUrl = None
@@ -12581,7 +12596,7 @@ ArticleRecognize -- 手写作文模版
     @property
     def ConfigId(self):
         """配置id支持：
-ArticleRecognize -- 手写作文模版
+ArticleRecognize -- 手写作文模板
 默认：ArticleRecognize
         :rtype: str
         """
@@ -12593,7 +12608,7 @@ ArticleRecognize -- 手写作文模版
 
     @property
     def Scene(self):
-        """模版的单个属性配置
+        """模板的单个属性配置
         :rtype: str
         """
         return self._Scene

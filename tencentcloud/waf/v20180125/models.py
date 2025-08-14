@@ -11100,6 +11100,85 @@ class DeleteIpAccessControlV2Response(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteOwaspRuleStatusRequest(AbstractModel):
+    """DeleteOwaspRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _RuleIDs: 规则ID列表
+        :type RuleIDs: list of str
+        """
+        self._Domain = None
+        self._RuleIDs = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleIDs(self):
+        """规则ID列表
+        :rtype: list of str
+        """
+        return self._RuleIDs
+
+    @RuleIDs.setter
+    def RuleIDs(self, RuleIDs):
+        self._RuleIDs = RuleIDs
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleIDs = params.get("RuleIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOwaspRuleStatusResponse(AbstractModel):
+    """DeleteOwaspRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteOwaspWhiteRuleRequest(AbstractModel):
     """DeleteOwaspWhiteRule请求参数结构体
 
@@ -19247,6 +19326,334 @@ class DescribeObjectsResponse(AbstractModel):
                 obj = ClbObject()
                 obj._deserialize(item)
                 self._ClbObjects.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOwaspRuleTypesRequest(AbstractModel):
+    """DescribeOwaspRuleTypes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 查询域名
+        :type Domain: str
+        :param _Offset: 分页页数，默认为0
+        :type Offset: int
+        :param _Limit: 每页容量，默认为10
+        :type Limit: int
+        :param _Filters: 筛选条件，支持 RuleId：规则ID、CveID：CVE编号、Desc：描述
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        """查询域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        """分页页数，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页容量，默认为10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """筛选条件，支持 RuleId：规则ID、CveID：CVE编号、Desc：描述
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOwaspRuleTypesResponse(AbstractModel):
+    """DescribeOwaspRuleTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 规则类型数量
+        :type Total: int
+        :param _List: 规则类型列表及信息
+        :type List: list of OwaspRuleType
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """规则类型数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """规则类型列表及信息
+        :rtype: list of OwaspRuleType
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = OwaspRuleType()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOwaspRulesRequest(AbstractModel):
+    """DescribeOwaspRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要查询的域名
+        :type Domain: str
+        :param _Offset: 分页页数，默认为0
+        :type Offset: int
+        :param _Limit: 每页容量，默认为10
+        :type Limit: int
+        :param _By: 排序字段，支持 RuleId, UpdateTime
+        :type By: str
+        :param _Order: 排序方式，支持asc、desc
+        :type Order: str
+        :param _Filters: 筛选条件，支持 RuleId：规则ID、TypeId：规则类型、Desc：规则描述 、CveID：CVE编号、Status：规则状态、VulLevel：威胁等级
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        """需要查询的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        """分页页数，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页容量，默认为10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        """排序字段，支持 RuleId, UpdateTime
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        """排序方式，支持asc、desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        """筛选条件，支持 RuleId：规则ID、TypeId：规则类型、Desc：规则描述 、CveID：CVE编号、Status：规则状态、VulLevel：威胁等级
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOwaspRulesResponse(AbstractModel):
+    """DescribeOwaspRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 规则总数
+        :type Total: int
+        :param _List: 规则列表
+        :type List: list of OwaspRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """规则总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """规则列表
+        :rtype: list of OwaspRule
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = OwaspRule()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -35458,6 +35865,427 @@ class ModifyObjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOwaspRuleStatusRequest(AbstractModel):
+    """ModifyOwaspRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _RuleStatus: 规则开关，0：关闭、1：开启、2：只观察
+        :type RuleStatus: int
+        :param _SelectAll: 是否全选
+        :type SelectAll: bool
+        :param _RuleIDs: 规则ID列表
+        :type RuleIDs: list of str
+        :param _TypeId: 如果反转需要传入类型
+        :type TypeId: int
+        :param _Reason: 修改原因 0：无(兼容记录为空) 1：业务自身特性误报避免 2：规则误报上报 3：核心业务规则灰度 4：其它
+        :type Reason: int
+        """
+        self._Domain = None
+        self._RuleStatus = None
+        self._SelectAll = None
+        self._RuleIDs = None
+        self._TypeId = None
+        self._Reason = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleStatus(self):
+        """规则开关，0：关闭、1：开启、2：只观察
+        :rtype: int
+        """
+        return self._RuleStatus
+
+    @RuleStatus.setter
+    def RuleStatus(self, RuleStatus):
+        self._RuleStatus = RuleStatus
+
+    @property
+    def SelectAll(self):
+        """是否全选
+        :rtype: bool
+        """
+        return self._SelectAll
+
+    @SelectAll.setter
+    def SelectAll(self, SelectAll):
+        self._SelectAll = SelectAll
+
+    @property
+    def RuleIDs(self):
+        """规则ID列表
+        :rtype: list of str
+        """
+        return self._RuleIDs
+
+    @RuleIDs.setter
+    def RuleIDs(self, RuleIDs):
+        self._RuleIDs = RuleIDs
+
+    @property
+    def TypeId(self):
+        """如果反转需要传入类型
+        :rtype: int
+        """
+        return self._TypeId
+
+    @TypeId.setter
+    def TypeId(self, TypeId):
+        self._TypeId = TypeId
+
+    @property
+    def Reason(self):
+        """修改原因 0：无(兼容记录为空) 1：业务自身特性误报避免 2：规则误报上报 3：核心业务规则灰度 4：其它
+        :rtype: int
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleStatus = params.get("RuleStatus")
+        self._SelectAll = params.get("SelectAll")
+        self._RuleIDs = params.get("RuleIDs")
+        self._TypeId = params.get("TypeId")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspRuleStatusResponse(AbstractModel):
+    """ModifyOwaspRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyOwaspRuleTypeActionRequest(AbstractModel):
+    """ModifyOwaspRuleTypeAction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _TypeIDs: 规则类型ID列表
+        :type TypeIDs: list of str
+        :param _RuleTypeAction: 规则类型的防护模式，0：观察、1：拦截
+        :type RuleTypeAction: int
+        """
+        self._Domain = None
+        self._TypeIDs = None
+        self._RuleTypeAction = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TypeIDs(self):
+        """规则类型ID列表
+        :rtype: list of str
+        """
+        return self._TypeIDs
+
+    @TypeIDs.setter
+    def TypeIDs(self, TypeIDs):
+        self._TypeIDs = TypeIDs
+
+    @property
+    def RuleTypeAction(self):
+        """规则类型的防护模式，0：观察、1：拦截
+        :rtype: int
+        """
+        return self._RuleTypeAction
+
+    @RuleTypeAction.setter
+    def RuleTypeAction(self, RuleTypeAction):
+        self._RuleTypeAction = RuleTypeAction
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._TypeIDs = params.get("TypeIDs")
+        self._RuleTypeAction = params.get("RuleTypeAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspRuleTypeActionResponse(AbstractModel):
+    """ModifyOwaspRuleTypeAction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyOwaspRuleTypeLevelRequest(AbstractModel):
+    """ModifyOwaspRuleTypeLevel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _TypeIDs: 规则类型ID列表
+        :type TypeIDs: list of str
+        :param _RuleTypeLevel: 规则的防护等级，100：宽松、200：正常、300：严格、400：超严格
+        :type RuleTypeLevel: int
+        """
+        self._Domain = None
+        self._TypeIDs = None
+        self._RuleTypeLevel = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TypeIDs(self):
+        """规则类型ID列表
+        :rtype: list of str
+        """
+        return self._TypeIDs
+
+    @TypeIDs.setter
+    def TypeIDs(self, TypeIDs):
+        self._TypeIDs = TypeIDs
+
+    @property
+    def RuleTypeLevel(self):
+        """规则的防护等级，100：宽松、200：正常、300：严格、400：超严格
+        :rtype: int
+        """
+        return self._RuleTypeLevel
+
+    @RuleTypeLevel.setter
+    def RuleTypeLevel(self, RuleTypeLevel):
+        self._RuleTypeLevel = RuleTypeLevel
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._TypeIDs = params.get("TypeIDs")
+        self._RuleTypeLevel = params.get("RuleTypeLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspRuleTypeLevelResponse(AbstractModel):
+    """ModifyOwaspRuleTypeLevel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyOwaspRuleTypeStatusRequest(AbstractModel):
+    """ModifyOwaspRuleTypeStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _TypeIDs: 规则类型ID列表
+        :type TypeIDs: list of str
+        :param _RuleTypeStatus: 规则类型的开关状态，0：关闭、1：开启
+        :type RuleTypeStatus: int
+        """
+        self._Domain = None
+        self._TypeIDs = None
+        self._RuleTypeStatus = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TypeIDs(self):
+        """规则类型ID列表
+        :rtype: list of str
+        """
+        return self._TypeIDs
+
+    @TypeIDs.setter
+    def TypeIDs(self, TypeIDs):
+        self._TypeIDs = TypeIDs
+
+    @property
+    def RuleTypeStatus(self):
+        """规则类型的开关状态，0：关闭、1：开启
+        :rtype: int
+        """
+        return self._RuleTypeStatus
+
+    @RuleTypeStatus.setter
+    def RuleTypeStatus(self, RuleTypeStatus):
+        self._RuleTypeStatus = RuleTypeStatus
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._TypeIDs = params.get("TypeIDs")
+        self._RuleTypeStatus = params.get("RuleTypeStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspRuleTypeStatusResponse(AbstractModel):
+    """ModifyOwaspRuleTypeStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOwaspWhiteRuleRequest(AbstractModel):
     """ModifyOwaspWhiteRule请求参数结构体
 
@@ -37472,6 +38300,360 @@ class NetworkConfig(AbstractModel):
         self._AntiDDosEip = params.get("AntiDDosEip")
         self._AntiDDosEipStatus = params.get("AntiDDosEipStatus")
         self._VipStatus = params.get("VipStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwaspRule(AbstractModel):
+    """Owasp规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则ID
+        :type RuleId: int
+        :param _Description: 规则描述
+        :type Description: str
+        :param _Status: 规则开关，0：关闭、1：开启、2：只观察
+        :type Status: int
+        :param _Level: 规则的防护等级，100：宽松、200：正常、300：严格、400：超严格
+        :type Level: int
+        :param _VulLevel: 威胁等级，0：未知，100：低危，200：中危，300：高危，400：危急
+        :type VulLevel: int
+        :param _CveID: CVE ID
+        :type CveID: str
+        :param _TypeId: 规则所属的类型ID
+        :type TypeId: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ModifyTime: 更新时间
+        :type ModifyTime: str
+        :param _Locked: 是否被锁定
+        :type Locked: int
+        :param _Reason: 修改原因
+0：无(兼容记录为空)
+1：业务自身特性误报避免
+2：规则误报上报
+3：核心业务规则灰度
+4：其它
+        :type Reason: int
+        """
+        self._RuleId = None
+        self._Description = None
+        self._Status = None
+        self._Level = None
+        self._VulLevel = None
+        self._CveID = None
+        self._TypeId = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Locked = None
+        self._Reason = None
+
+    @property
+    def RuleId(self):
+        """规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Description(self):
+        """规则描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        """规则开关，0：关闭、1：开启、2：只观察
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Level(self):
+        """规则的防护等级，100：宽松、200：正常、300：严格、400：超严格
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def VulLevel(self):
+        """威胁等级，0：未知，100：低危，200：中危，300：高危，400：危急
+        :rtype: int
+        """
+        return self._VulLevel
+
+    @VulLevel.setter
+    def VulLevel(self, VulLevel):
+        self._VulLevel = VulLevel
+
+    @property
+    def CveID(self):
+        """CVE ID
+        :rtype: str
+        """
+        return self._CveID
+
+    @CveID.setter
+    def CveID(self, CveID):
+        self._CveID = CveID
+
+    @property
+    def TypeId(self):
+        """规则所属的类型ID
+        :rtype: int
+        """
+        return self._TypeId
+
+    @TypeId.setter
+    def TypeId(self, TypeId):
+        self._TypeId = TypeId
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Locked(self):
+        """是否被锁定
+        :rtype: int
+        """
+        return self._Locked
+
+    @Locked.setter
+    def Locked(self, Locked):
+        self._Locked = Locked
+
+    @property
+    def Reason(self):
+        """修改原因
+0：无(兼容记录为空)
+1：业务自身特性误报避免
+2：规则误报上报
+3：核心业务规则灰度
+4：其它
+        :rtype: int
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Level = params.get("Level")
+        self._VulLevel = params.get("VulLevel")
+        self._CveID = params.get("CveID")
+        self._TypeId = params.get("TypeId")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Locked = params.get("Locked")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwaspRuleType(AbstractModel):
+    """Owasp规则类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TypeId: 类型ID
+        :type TypeId: int
+        :param _TypeName: 类型名称
+        :type TypeName: str
+        :param _Description: 类型描述
+
+        :type Description: str
+        :param _Classification: 类型分类
+        :type Classification: str
+        :param _Action: 规则类型的防护模式，0：观察、1：拦截
+        :type Action: int
+        :param _Level: 规则类型的防护等级，100：宽松、200：正常、300：严格、400：超严格
+        :type Level: int
+        :param _Status: 规则类型的开关状态，0：关闭、1：开启
+        :type Status: int
+        :param _TotalRule: 规则类型下的所有规则总是
+        :type TotalRule: int
+        :param _ActiveRule: 规则类型下的启用的规则总数
+        :type ActiveRule: int
+        """
+        self._TypeId = None
+        self._TypeName = None
+        self._Description = None
+        self._Classification = None
+        self._Action = None
+        self._Level = None
+        self._Status = None
+        self._TotalRule = None
+        self._ActiveRule = None
+
+    @property
+    def TypeId(self):
+        """类型ID
+        :rtype: int
+        """
+        return self._TypeId
+
+    @TypeId.setter
+    def TypeId(self, TypeId):
+        self._TypeId = TypeId
+
+    @property
+    def TypeName(self):
+        """类型名称
+        :rtype: str
+        """
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def Description(self):
+        """类型描述
+
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Classification(self):
+        """类型分类
+        :rtype: str
+        """
+        return self._Classification
+
+    @Classification.setter
+    def Classification(self, Classification):
+        self._Classification = Classification
+
+    @property
+    def Action(self):
+        """规则类型的防护模式，0：观察、1：拦截
+        :rtype: int
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Level(self):
+        """规则类型的防护等级，100：宽松、200：正常、300：严格、400：超严格
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Status(self):
+        """规则类型的开关状态，0：关闭、1：开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TotalRule(self):
+        """规则类型下的所有规则总是
+        :rtype: int
+        """
+        return self._TotalRule
+
+    @TotalRule.setter
+    def TotalRule(self, TotalRule):
+        self._TotalRule = TotalRule
+
+    @property
+    def ActiveRule(self):
+        """规则类型下的启用的规则总数
+        :rtype: int
+        """
+        return self._ActiveRule
+
+    @ActiveRule.setter
+    def ActiveRule(self, ActiveRule):
+        self._ActiveRule = ActiveRule
+
+
+    def _deserialize(self, params):
+        self._TypeId = params.get("TypeId")
+        self._TypeName = params.get("TypeName")
+        self._Description = params.get("Description")
+        self._Classification = params.get("Classification")
+        self._Action = params.get("Action")
+        self._Level = params.get("Level")
+        self._Status = params.get("Status")
+        self._TotalRule = params.get("TotalRule")
+        self._ActiveRule = params.get("ActiveRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

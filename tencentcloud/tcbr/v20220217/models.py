@@ -1498,6 +1498,8 @@ AccessTypes，EntryPoint，Cmd
         :type TimerScale: list of TimerScale
         :param _VpcConf: 配置内网访问时网络信息
         :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
+        :param _VolumesConf: 存储配置信息
+        :type VolumesConf: list of VolumeConf
         """
         self._Key = None
         self._Value = None
@@ -1508,6 +1510,7 @@ AccessTypes，EntryPoint，Cmd
         self._PolicyDetails = None
         self._TimerScale = None
         self._VpcConf = None
+        self._VolumesConf = None
 
     @property
     def Key(self):
@@ -1635,6 +1638,17 @@ AccessTypes，EntryPoint，Cmd
     def VpcConf(self, VpcConf):
         self._VpcConf = VpcConf
 
+    @property
+    def VolumesConf(self):
+        """存储配置信息
+        :rtype: list of VolumeConf
+        """
+        return self._VolumesConf
+
+    @VolumesConf.setter
+    def VolumesConf(self, VolumesConf):
+        self._VolumesConf = VolumesConf
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
@@ -1658,6 +1672,12 @@ AccessTypes，EntryPoint，Cmd
         if params.get("VpcConf") is not None:
             self._VpcConf = VpcConf()
             self._VpcConf._deserialize(params.get("VpcConf"))
+        if params.get("VolumesConf") is not None:
+            self._VolumesConf = []
+            for item in params.get("VolumesConf"):
+                obj = VolumeConf()
+                obj._deserialize(item)
+                self._VolumesConf.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2939,6 +2959,8 @@ class ServerBaseConfig(AbstractModel):
         :type SessionAffinity: str
         :param _VpcConf: Vpc 配置参数
         :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
+        :param _VolumesConf: 存储配置信息
+        :type VolumesConf: list of VolumeConf
         """
         self._EnvId = None
         self._ServerName = None
@@ -2969,6 +2991,7 @@ class ServerBaseConfig(AbstractModel):
         self._Cmd = None
         self._SessionAffinity = None
         self._VpcConf = None
+        self._VolumesConf = None
 
     @property
     def EnvId(self):
@@ -3290,6 +3313,17 @@ class ServerBaseConfig(AbstractModel):
     def VpcConf(self, VpcConf):
         self._VpcConf = VpcConf
 
+    @property
+    def VolumesConf(self):
+        """存储配置信息
+        :rtype: list of VolumeConf
+        """
+        return self._VolumesConf
+
+    @VolumesConf.setter
+    def VolumesConf(self, VolumesConf):
+        self._VolumesConf = VolumesConf
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3333,6 +3367,12 @@ class ServerBaseConfig(AbstractModel):
         if params.get("VpcConf") is not None:
             self._VpcConf = VpcConf()
             self._VpcConf._deserialize(params.get("VpcConf"))
+        if params.get("VolumesConf") is not None:
+            self._VolumesConf = []
+            for item in params.get("VolumesConf"):
+                obj = VolumeConf()
+                obj._deserialize(item)
+                self._VolumesConf.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4504,6 +4544,117 @@ class VersionFlowInfo(AbstractModel):
             self._UrlParam = ObjectKV()
             self._UrlParam._deserialize(params.get("UrlParam"))
         self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeConf(AbstractModel):
+    """存储配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 存储类型
+        :type Type: str
+        :param _BucketName: 对象存储桶名称
+        :type BucketName: str
+        :param _Endpoint: 存储连接地址
+        :type Endpoint: str
+        :param _KeyID: 存储连接用户密码
+        :type KeyID: str
+        :param _DstPath: 存储挂载目的目录
+        :type DstPath: str
+        :param _SrcPath: 存储挂载源目录
+        :type SrcPath: str
+        """
+        self._Type = None
+        self._BucketName = None
+        self._Endpoint = None
+        self._KeyID = None
+        self._DstPath = None
+        self._SrcPath = None
+
+    @property
+    def Type(self):
+        """存储类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def BucketName(self):
+        """对象存储桶名称
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Endpoint(self):
+        """存储连接地址
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def KeyID(self):
+        """存储连接用户密码
+        :rtype: str
+        """
+        return self._KeyID
+
+    @KeyID.setter
+    def KeyID(self, KeyID):
+        self._KeyID = KeyID
+
+    @property
+    def DstPath(self):
+        """存储挂载目的目录
+        :rtype: str
+        """
+        return self._DstPath
+
+    @DstPath.setter
+    def DstPath(self, DstPath):
+        self._DstPath = DstPath
+
+    @property
+    def SrcPath(self):
+        """存储挂载源目录
+        :rtype: str
+        """
+        return self._SrcPath
+
+    @SrcPath.setter
+    def SrcPath(self, SrcPath):
+        self._SrcPath = SrcPath
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._BucketName = params.get("BucketName")
+        self._Endpoint = params.get("Endpoint")
+        self._KeyID = params.get("KeyID")
+        self._DstPath = params.get("DstPath")
+        self._SrcPath = params.get("SrcPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

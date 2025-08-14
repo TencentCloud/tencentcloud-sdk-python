@@ -5213,7 +5213,7 @@ class CreateTargetGroupRequest(AbstractModel):
         r"""
         :param _TargetGroupName: 目标组名称，限定50个字符
         :type TargetGroupName: str
-        :param _VpcId: 目标组的vpcid属性，不填则使用默认vpc
+        :param _VpcId: 目标组的vpcId属性，不填则使用默认vpc。
         :type VpcId: str
         :param _Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。
 
@@ -5224,14 +5224,15 @@ class CreateTargetGroupRequest(AbstractModel):
         :type Type: str
         :param _Protocol: 目标组后端转发协议。v2新版目标组该项必填。目前支持TCP、UDP、HTTP、HTTPS、GRPC。
         :type Protocol: str
+        :param _HealthCheck: 健康检查。
+        :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
+        :param _ScheduleAlgorithm: 调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
+<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+        :type ScheduleAlgorithm: str
         :param _Tags: 标签。
         :type Tags: list of TagInfo
-        :param _Weight: 后端服务默认权重。
-<ul>
-    <li>取值范围[0, 100]</li>
-    <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
-</ul>
-v1 目标组类型不支持设置 Weight 参数。
+        :param _Weight: 后端服务默认权重, 其中：
+<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1 目标组类型不支持设置 Weight 参数。</li></ul>
         :type Weight: int
         :param _FullListenSwitch: 全监听目标组标识，true表示是全监听目标组，false表示不是全监听目标组。仅V2新版类型目标组支持该参数。
         :type FullListenSwitch: bool
@@ -5246,6 +5247,8 @@ v1 目标组类型不支持设置 Weight 参数。
         self._TargetGroupInstances = None
         self._Type = None
         self._Protocol = None
+        self._HealthCheck = None
+        self._ScheduleAlgorithm = None
         self._Tags = None
         self._Weight = None
         self._FullListenSwitch = None
@@ -5265,7 +5268,7 @@ v1 目标组类型不支持设置 Weight 参数。
 
     @property
     def VpcId(self):
-        """目标组的vpcid属性，不填则使用默认vpc
+        """目标组的vpcId属性，不填则使用默认vpc。
         :rtype: str
         """
         return self._VpcId
@@ -5320,6 +5323,29 @@ v1 目标组类型不支持设置 Weight 参数。
         self._Protocol = Protocol
 
     @property
+    def HealthCheck(self):
+        """健康检查。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
+        """
+        return self._HealthCheck
+
+    @HealthCheck.setter
+    def HealthCheck(self, HealthCheck):
+        self._HealthCheck = HealthCheck
+
+    @property
+    def ScheduleAlgorithm(self):
+        """调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
+<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+        :rtype: str
+        """
+        return self._ScheduleAlgorithm
+
+    @ScheduleAlgorithm.setter
+    def ScheduleAlgorithm(self, ScheduleAlgorithm):
+        self._ScheduleAlgorithm = ScheduleAlgorithm
+
+    @property
     def Tags(self):
         """标签。
         :rtype: list of TagInfo
@@ -5332,12 +5358,8 @@ v1 目标组类型不支持设置 Weight 参数。
 
     @property
     def Weight(self):
-        """后端服务默认权重。
-<ul>
-    <li>取值范围[0, 100]</li>
-    <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
-</ul>
-v1 目标组类型不支持设置 Weight 参数。
+        """后端服务默认权重, 其中：
+<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1 目标组类型不支持设置 Weight 参数。</li></ul>
         :rtype: int
         """
         return self._Weight
@@ -5392,6 +5414,10 @@ v1 目标组类型不支持设置 Weight 参数。
                 self._TargetGroupInstances.append(obj)
         self._Type = params.get("Type")
         self._Protocol = params.get("Protocol")
+        if params.get("HealthCheck") is not None:
+            self._HealthCheck = TargetGroupHealthCheck()
+            self._HealthCheck._deserialize(params.get("HealthCheck"))
+        self._ScheduleAlgorithm = params.get("ScheduleAlgorithm")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -17724,12 +17750,12 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         :type TargetGroupName: str
         :param _Port: 目标组的新默认端口。全监听目标组不支持此参数。
         :type Port: int
-        :param _Weight: 后端服务默认权重。
-<ul>
-    <li>取值范围[0, 100]</li>
-    <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
-</ul>
-v1目标组类型不支持设置Weight参数。
+        :param _ScheduleAlgorithm: 调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
+<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+        :type ScheduleAlgorithm: str
+        :param _HealthCheck: 健康检查详情。
+        :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
+        :param _Weight: 后端服务默认权重, 其中：<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1目标组类型不支持设置Weight参数。</li> </ul>
         :type Weight: int
         :param _KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。
         :type KeepaliveEnable: bool
@@ -17739,6 +17765,8 @@ v1目标组类型不支持设置Weight参数。
         self._TargetGroupId = None
         self._TargetGroupName = None
         self._Port = None
+        self._ScheduleAlgorithm = None
+        self._HealthCheck = None
         self._Weight = None
         self._KeepaliveEnable = None
         self._SessionExpireTime = None
@@ -17777,13 +17805,31 @@ v1目标组类型不支持设置Weight参数。
         self._Port = Port
 
     @property
+    def ScheduleAlgorithm(self):
+        """调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：
+<ur><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li><ur>
+        :rtype: str
+        """
+        return self._ScheduleAlgorithm
+
+    @ScheduleAlgorithm.setter
+    def ScheduleAlgorithm(self, ScheduleAlgorithm):
+        self._ScheduleAlgorithm = ScheduleAlgorithm
+
+    @property
+    def HealthCheck(self):
+        """健康检查详情。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
+        """
+        return self._HealthCheck
+
+    @HealthCheck.setter
+    def HealthCheck(self, HealthCheck):
+        self._HealthCheck = HealthCheck
+
+    @property
     def Weight(self):
-        """后端服务默认权重。
-<ul>
-    <li>取值范围[0, 100]</li>
-    <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
-</ul>
-v1目标组类型不支持设置Weight参数。
+        """后端服务默认权重, 其中：<ul><li>取值范围[0, 100]</li><li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li><li>v1目标组类型不支持设置Weight参数。</li> </ul>
         :rtype: int
         """
         return self._Weight
@@ -17819,6 +17865,10 @@ v1目标组类型不支持设置Weight参数。
         self._TargetGroupId = params.get("TargetGroupId")
         self._TargetGroupName = params.get("TargetGroupName")
         self._Port = params.get("Port")
+        self._ScheduleAlgorithm = params.get("ScheduleAlgorithm")
+        if params.get("HealthCheck") is not None:
+            self._HealthCheck = TargetGroupHealthCheck()
+            self._HealthCheck._deserialize(params.get("HealthCheck"))
         self._Weight = params.get("Weight")
         self._KeepaliveEnable = params.get("KeepaliveEnable")
         self._SessionExpireTime = params.get("SessionExpireTime")
@@ -21856,6 +21906,304 @@ class TargetGroupBackend(AbstractModel):
         
 
 
+class TargetGroupHealthCheck(AbstractModel):
+    """目标组健康检查详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthSwitch: 是否开启健康检查。
+        :type HealthSwitch: bool
+        :param _Protocol: 健康检查方式， 其中仅V2新版目标组类型支持该参数， 支持取值 TCP | HTTP | HTTPS | PING | CUSTOM，其中:
+<ur><li>当目标组后端转发协议为TCP时， 健康检查方式支持 TCP/HTTP/CUSTOM， 默认为TCP。</li><li>当目标组后端转发协议为UDP时， 健康检查方式支持 PING/CUSTOM，默认为PING。</li><li>当目标组后端转发协议为HTTP时， 健康检查方式支持 HTTP/TCP， 默认为HTTP。</li><li>当目标组后端转发协议为HTTPS时， 健康检查方式支持 HTTPS/TCP， 默认为HTTPS。</li><li>当目标组后端转发协议为GRPC时， 健康检查方式支持GRPC/TCP， 默认为GRPC。</li></ur>
+        :type Protocol: str
+        :param _Port: 自定义探测相关参数。健康检查端口，默认为后端服务的端口，除非您希望指定特定端口，否则建议留空。（仅适用于TCP/UDP目标组）。
+
+        :type Port: int
+        :param _Timeout: 健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。
+        :type Timeout: int
+        :param _GapTime: 检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。
+        :type GapTime: int
+        :param _GoodLimit: 检测健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+        :type GoodLimit: int
+        :param _BadLimit: 检测不健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+        :type BadLimit: int
+        :param _JumboFrame: 目标组下的所有rs的探测包是否开启巨帧。默认开启。仅GWLB类型目标组支持该参数。
+        :type JumboFrame: bool
+        :param _HttpCode: 健康检查状态码（仅适用于HTTP/HTTPS目标组、TCP目标组的HTTP健康检查方式）。可选值：1~31，默认 31，其中：<url> <li>1 表示探测后返回值 1xx 代表健康。</li><li>2 表示返回 2xx 代表健康。</li><li>4 表示返回 3xx 代表健康。</li><li>8 表示返回 4xx 代表健康。</li><li>16 表示返回 5xx 代表健康。</li></url>若希望多种返回码都可代表健康，则将相应的值相加。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpCode: int
+        :param _HttpCheckDomain: 健康检查域名， 其中：<ur><li>仅适用于HTTP/HTTPS目标组和TCP目标组的HTTP健康检查方式。</li><li>针对HTTP/HTTPS目标组，当使用HTTP健康检查方式时，该参数为必填项。</li></ur>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpCheckDomain: str
+        :param _HttpCheckPath: 健康检查路径（仅适用于HTTP/HTTPS转发规则、TCP监听器的HTTP健康检查方式）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpCheckPath: str
+        :param _HttpCheckMethod: 健康检查方法（仅适用于HTTP/HTTPS转发规则、TCP监听器的HTTP健康检查方式），默认值：HEAD，可选值HEAD或GET。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpCheckMethod: str
+        :param _ContextType: 健康检查的输入格式，健康检查方式取CUSTOM时，必填此字段，可取值：HEX或TEXT，其中：<ur><li>TEXT：文本格式。</li><li>HEX：十六进制格式， SendContext和RecvContext的字符只能在0123456789ABCDEF中选取且长度必须是偶数位。</li><li>仅适用于TCP/UDP目标组。</li></ur>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContextType: str
+        :param _SendContext: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查发送的请求内容，只允许ASCII可见字符，最大长度限制500。（仅适用于TCP/UDP目标组）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendContext: str
+        :param _RecvContext: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查返回的结果，只允许ASCII可见字符，最大长度限制500。（仅适用于TCP/UDP目标组）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecvContext: str
+        :param _HttpVersion: HTTP版本, 其中：<ur><li>健康检查协议CheckType的值取HTTP时，必传此字段。</li><li>支持配置选项：HTTP/1.0, HTTP/1.1。</li><li>仅适用于TCP目标组。</li></ur>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpVersion: str
+        :param _ExtendedCode: GRPC健康检查状态码（仅适用于后端转发协议为GRPC的目标组）。默认值为 12，可输入值为数值、多个数值、或者范围，例如 20 或 20,25 或 0-99。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtendedCode: str
+        """
+        self._HealthSwitch = None
+        self._Protocol = None
+        self._Port = None
+        self._Timeout = None
+        self._GapTime = None
+        self._GoodLimit = None
+        self._BadLimit = None
+        self._JumboFrame = None
+        self._HttpCode = None
+        self._HttpCheckDomain = None
+        self._HttpCheckPath = None
+        self._HttpCheckMethod = None
+        self._ContextType = None
+        self._SendContext = None
+        self._RecvContext = None
+        self._HttpVersion = None
+        self._ExtendedCode = None
+
+    @property
+    def HealthSwitch(self):
+        """是否开启健康检查。
+        :rtype: bool
+        """
+        return self._HealthSwitch
+
+    @HealthSwitch.setter
+    def HealthSwitch(self, HealthSwitch):
+        self._HealthSwitch = HealthSwitch
+
+    @property
+    def Protocol(self):
+        """健康检查方式， 其中仅V2新版目标组类型支持该参数， 支持取值 TCP | HTTP | HTTPS | PING | CUSTOM，其中:
+<ur><li>当目标组后端转发协议为TCP时， 健康检查方式支持 TCP/HTTP/CUSTOM， 默认为TCP。</li><li>当目标组后端转发协议为UDP时， 健康检查方式支持 PING/CUSTOM，默认为PING。</li><li>当目标组后端转发协议为HTTP时， 健康检查方式支持 HTTP/TCP， 默认为HTTP。</li><li>当目标组后端转发协议为HTTPS时， 健康检查方式支持 HTTPS/TCP， 默认为HTTPS。</li><li>当目标组后端转发协议为GRPC时， 健康检查方式支持GRPC/TCP， 默认为GRPC。</li></ur>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        """自定义探测相关参数。健康检查端口，默认为后端服务的端口，除非您希望指定特定端口，否则建议留空。（仅适用于TCP/UDP目标组）。
+
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Timeout(self):
+        """健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def GapTime(self):
+        """检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。
+        :rtype: int
+        """
+        return self._GapTime
+
+    @GapTime.setter
+    def GapTime(self, GapTime):
+        self._GapTime = GapTime
+
+    @property
+    def GoodLimit(self):
+        """检测健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+        :rtype: int
+        """
+        return self._GoodLimit
+
+    @GoodLimit.setter
+    def GoodLimit(self, GoodLimit):
+        self._GoodLimit = GoodLimit
+
+    @property
+    def BadLimit(self):
+        """检测不健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+        :rtype: int
+        """
+        return self._BadLimit
+
+    @BadLimit.setter
+    def BadLimit(self, BadLimit):
+        self._BadLimit = BadLimit
+
+    @property
+    def JumboFrame(self):
+        """目标组下的所有rs的探测包是否开启巨帧。默认开启。仅GWLB类型目标组支持该参数。
+        :rtype: bool
+        """
+        return self._JumboFrame
+
+    @JumboFrame.setter
+    def JumboFrame(self, JumboFrame):
+        self._JumboFrame = JumboFrame
+
+    @property
+    def HttpCode(self):
+        """健康检查状态码（仅适用于HTTP/HTTPS目标组、TCP目标组的HTTP健康检查方式）。可选值：1~31，默认 31，其中：<url> <li>1 表示探测后返回值 1xx 代表健康。</li><li>2 表示返回 2xx 代表健康。</li><li>4 表示返回 3xx 代表健康。</li><li>8 表示返回 4xx 代表健康。</li><li>16 表示返回 5xx 代表健康。</li></url>若希望多种返回码都可代表健康，则将相应的值相加。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._HttpCode
+
+    @HttpCode.setter
+    def HttpCode(self, HttpCode):
+        self._HttpCode = HttpCode
+
+    @property
+    def HttpCheckDomain(self):
+        """健康检查域名， 其中：<ur><li>仅适用于HTTP/HTTPS目标组和TCP目标组的HTTP健康检查方式。</li><li>针对HTTP/HTTPS目标组，当使用HTTP健康检查方式时，该参数为必填项。</li></ur>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HttpCheckDomain
+
+    @HttpCheckDomain.setter
+    def HttpCheckDomain(self, HttpCheckDomain):
+        self._HttpCheckDomain = HttpCheckDomain
+
+    @property
+    def HttpCheckPath(self):
+        """健康检查路径（仅适用于HTTP/HTTPS转发规则、TCP监听器的HTTP健康检查方式）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HttpCheckPath
+
+    @HttpCheckPath.setter
+    def HttpCheckPath(self, HttpCheckPath):
+        self._HttpCheckPath = HttpCheckPath
+
+    @property
+    def HttpCheckMethod(self):
+        """健康检查方法（仅适用于HTTP/HTTPS转发规则、TCP监听器的HTTP健康检查方式），默认值：HEAD，可选值HEAD或GET。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HttpCheckMethod
+
+    @HttpCheckMethod.setter
+    def HttpCheckMethod(self, HttpCheckMethod):
+        self._HttpCheckMethod = HttpCheckMethod
+
+    @property
+    def ContextType(self):
+        """健康检查的输入格式，健康检查方式取CUSTOM时，必填此字段，可取值：HEX或TEXT，其中：<ur><li>TEXT：文本格式。</li><li>HEX：十六进制格式， SendContext和RecvContext的字符只能在0123456789ABCDEF中选取且长度必须是偶数位。</li><li>仅适用于TCP/UDP目标组。</li></ur>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContextType
+
+    @ContextType.setter
+    def ContextType(self, ContextType):
+        self._ContextType = ContextType
+
+    @property
+    def SendContext(self):
+        """自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查发送的请求内容，只允许ASCII可见字符，最大长度限制500。（仅适用于TCP/UDP目标组）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SendContext
+
+    @SendContext.setter
+    def SendContext(self, SendContext):
+        self._SendContext = SendContext
+
+    @property
+    def RecvContext(self):
+        """自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查返回的结果，只允许ASCII可见字符，最大长度限制500。（仅适用于TCP/UDP目标组）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RecvContext
+
+    @RecvContext.setter
+    def RecvContext(self, RecvContext):
+        self._RecvContext = RecvContext
+
+    @property
+    def HttpVersion(self):
+        """HTTP版本, 其中：<ur><li>健康检查协议CheckType的值取HTTP时，必传此字段。</li><li>支持配置选项：HTTP/1.0, HTTP/1.1。</li><li>仅适用于TCP目标组。</li></ur>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HttpVersion
+
+    @HttpVersion.setter
+    def HttpVersion(self, HttpVersion):
+        self._HttpVersion = HttpVersion
+
+    @property
+    def ExtendedCode(self):
+        """GRPC健康检查状态码（仅适用于后端转发协议为GRPC的目标组）。默认值为 12，可输入值为数值、多个数值、或者范围，例如 20 或 20,25 或 0-99。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExtendedCode
+
+    @ExtendedCode.setter
+    def ExtendedCode(self, ExtendedCode):
+        self._ExtendedCode = ExtendedCode
+
+
+    def _deserialize(self, params):
+        self._HealthSwitch = params.get("HealthSwitch")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
+        self._Timeout = params.get("Timeout")
+        self._GapTime = params.get("GapTime")
+        self._GoodLimit = params.get("GoodLimit")
+        self._BadLimit = params.get("BadLimit")
+        self._JumboFrame = params.get("JumboFrame")
+        self._HttpCode = params.get("HttpCode")
+        self._HttpCheckDomain = params.get("HttpCheckDomain")
+        self._HttpCheckPath = params.get("HttpCheckPath")
+        self._HttpCheckMethod = params.get("HttpCheckMethod")
+        self._ContextType = params.get("ContextType")
+        self._SendContext = params.get("SendContext")
+        self._RecvContext = params.get("RecvContext")
+        self._HttpVersion = params.get("HttpVersion")
+        self._ExtendedCode = params.get("ExtendedCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TargetGroupInfo(AbstractModel):
     """目标组信息
 
@@ -21882,6 +22230,18 @@ class TargetGroupInfo(AbstractModel):
         :param _Protocol: 目标组后端转发协议, 仅v2新版目标组返回有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
+        :param _ScheduleAlgorithm: 调度算法，仅后端转发协议为(HTTP、HTTPS、GRPC)的目标组返回有效值， 可选值：
+<ur>
+<li>WRR:按权重轮询。</li>
+<li>LEAST_CONN:最小连接数。</li>
+<li>IP_HASH:按IP哈希。</li>
+</ur>
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleAlgorithm: str
+        :param _HealthCheck: 健康检查详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
         :param _TargetGroupType: 目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。
         :type TargetGroupType: str
         :param _AssociatedRuleCount: 目标组已关联的规则数。
@@ -21908,6 +22268,8 @@ class TargetGroupInfo(AbstractModel):
         self._UpdatedTime = None
         self._AssociatedRule = None
         self._Protocol = None
+        self._ScheduleAlgorithm = None
+        self._HealthCheck = None
         self._TargetGroupType = None
         self._AssociatedRuleCount = None
         self._RegisteredInstancesCount = None
@@ -22007,6 +22369,36 @@ class TargetGroupInfo(AbstractModel):
     @Protocol.setter
     def Protocol(self, Protocol):
         self._Protocol = Protocol
+
+    @property
+    def ScheduleAlgorithm(self):
+        """调度算法，仅后端转发协议为(HTTP、HTTPS、GRPC)的目标组返回有效值， 可选值：
+<ur>
+<li>WRR:按权重轮询。</li>
+<li>LEAST_CONN:最小连接数。</li>
+<li>IP_HASH:按IP哈希。</li>
+</ur>
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleAlgorithm
+
+    @ScheduleAlgorithm.setter
+    def ScheduleAlgorithm(self, ScheduleAlgorithm):
+        self._ScheduleAlgorithm = ScheduleAlgorithm
+
+    @property
+    def HealthCheck(self):
+        """健康检查详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
+        """
+        return self._HealthCheck
+
+    @HealthCheck.setter
+    def HealthCheck(self, HealthCheck):
+        self._HealthCheck = HealthCheck
 
     @property
     def TargetGroupType(self):
@@ -22112,6 +22504,10 @@ class TargetGroupInfo(AbstractModel):
                 obj._deserialize(item)
                 self._AssociatedRule.append(obj)
         self._Protocol = params.get("Protocol")
+        self._ScheduleAlgorithm = params.get("ScheduleAlgorithm")
+        if params.get("HealthCheck") is not None:
+            self._HealthCheck = TargetGroupHealthCheck()
+            self._HealthCheck._deserialize(params.get("HealthCheck"))
         self._TargetGroupType = params.get("TargetGroupType")
         self._AssociatedRuleCount = params.get("AssociatedRuleCount")
         self._RegisteredInstancesCount = params.get("RegisteredInstancesCount")

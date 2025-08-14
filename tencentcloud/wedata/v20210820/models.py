@@ -11007,11 +11007,15 @@ class CompareResult(AbstractModel):
         :param _TriggerRows: 检测不通过行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerRows: int
+        :param _ComputeExpression: 比较关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeExpression: str
         """
         self._Items = None
         self._TotalRows = None
         self._PassRows = None
         self._TriggerRows = None
+        self._ComputeExpression = None
 
     @property
     def Items(self):
@@ -11061,6 +11065,18 @@ class CompareResult(AbstractModel):
     def TriggerRows(self, TriggerRows):
         self._TriggerRows = TriggerRows
 
+    @property
+    def ComputeExpression(self):
+        """比较关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComputeExpression
+
+    @ComputeExpression.setter
+    def ComputeExpression(self, ComputeExpression):
+        self._ComputeExpression = ComputeExpression
+
 
     def _deserialize(self, params):
         if params.get("Items") is not None:
@@ -11072,6 +11088,7 @@ class CompareResult(AbstractModel):
         self._TotalRows = params.get("TotalRows")
         self._PassRows = params.get("PassRows")
         self._TriggerRows = params.get("TriggerRows")
+        self._ComputeExpression = params.get("ComputeExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -83822,6 +83839,39 @@ class RuleExecResult(AbstractModel):
         :param _TriggerCondition: 触发条件
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerCondition: str
+        :param _RuleGroupName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupName: str
+        :param _DatasourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _SchemaName: 模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _RuleGroupExist: 判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupExist: int
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
+        :param _RuleGroupTableId: 数据表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupTableId: int
+        :param _MonitorType: 监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: int
+        :param _FinishTime: 执行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
         """
         self._RuleExecId = None
         self._RuleGroupExecId = None
@@ -83845,6 +83895,17 @@ class RuleExecResult(AbstractModel):
         self._StartTime = None
         self._AlarmLevel = None
         self._TriggerCondition = None
+        self._RuleGroupName = None
+        self._DatasourceId = None
+        self._DatasourceName = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._RuleGroupExist = None
+        self._DatasourceType = None
+        self._RuleGroupTableId = None
+        self._MonitorType = None
+        self._FinishTime = None
 
     @property
     def RuleExecId(self):
@@ -84110,6 +84171,138 @@ class RuleExecResult(AbstractModel):
     def TriggerCondition(self, TriggerCondition):
         self._TriggerCondition = TriggerCondition
 
+    @property
+    def RuleGroupName(self):
+        """任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleGroupName
+
+    @RuleGroupName.setter
+    def RuleGroupName(self, RuleGroupName):
+        self._RuleGroupName = RuleGroupName
+
+    @property
+    def DatasourceId(self):
+        """数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatasourceName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DatabaseName(self):
+        """数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        """模式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        """表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def RuleGroupExist(self):
+        """判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupExist
+
+    @RuleGroupExist.setter
+    def RuleGroupExist(self, RuleGroupExist):
+        self._RuleGroupExist = RuleGroupExist
+
+    @property
+    def DatasourceType(self):
+        """数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
+    @property
+    def RuleGroupTableId(self):
+        """数据表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleGroupTableId
+
+    @RuleGroupTableId.setter
+    def RuleGroupTableId(self, RuleGroupTableId):
+        self._RuleGroupTableId = RuleGroupTableId
+
+    @property
+    def MonitorType(self):
+        """监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def FinishTime(self):
+        """执行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
 
     def _deserialize(self, params):
         self._RuleExecId = params.get("RuleExecId")
@@ -84138,6 +84331,17 @@ class RuleExecResult(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._AlarmLevel = params.get("AlarmLevel")
         self._TriggerCondition = params.get("TriggerCondition")
+        self._RuleGroupName = params.get("RuleGroupName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._RuleGroupExist = params.get("RuleGroupExist")
+        self._DatasourceType = params.get("DatasourceType")
+        self._RuleGroupTableId = params.get("RuleGroupTableId")
+        self._MonitorType = params.get("MonitorType")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

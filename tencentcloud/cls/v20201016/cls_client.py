@@ -1990,7 +1990,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyAlarmShield(self, request):
-        """该接口用于修改告警屏蔽规则。
+        """该接口用于修改告警屏蔽规则。当告警屏蔽规则为失效中时，无法对其进行修改
 
         :param request: Request instance for ModifyAlarmShield.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmShieldRequest`

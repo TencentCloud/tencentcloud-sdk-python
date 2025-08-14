@@ -227,6 +227,8 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
         :type Internal: bool
         :param _AlternateExchange: 替代 exchange, 如果消息无法发送到当前 exchange, 就会发送到该替代 exchange
         :type AlternateExchange: str
+        :param _DelayedExchangeType: 延迟类型的exchange背后对应的exchange类型, 支持 "fanout","direct","topic","headers"
+        :type DelayedExchangeType: str
         """
         self._InstanceId = None
         self._VirtualHost = None
@@ -237,6 +239,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
         self._AutoDelete = None
         self._Internal = None
         self._AlternateExchange = None
+        self._DelayedExchangeType = None
 
     @property
     def InstanceId(self):
@@ -337,6 +340,17 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
     def AlternateExchange(self, AlternateExchange):
         self._AlternateExchange = AlternateExchange
 
+    @property
+    def DelayedExchangeType(self):
+        """延迟类型的exchange背后对应的exchange类型, 支持 "fanout","direct","topic","headers"
+        :rtype: str
+        """
+        return self._DelayedExchangeType
+
+    @DelayedExchangeType.setter
+    def DelayedExchangeType(self, DelayedExchangeType):
+        self._DelayedExchangeType = DelayedExchangeType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -348,6 +362,7 @@ class CreateRabbitMQServerlessExchangeRequest(AbstractModel):
         self._AutoDelete = params.get("AutoDelete")
         self._Internal = params.get("Internal")
         self._AlternateExchange = params.get("AlternateExchange")
+        self._DelayedExchangeType = params.get("DelayedExchangeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5497,6 +5512,10 @@ class RabbitMQClusterInfo(AbstractModel):
         :type InstanceType: int
         :param _MessageRetainTime: 消息保留时间，单位小时
         :type MessageRetainTime: int
+        :param _SendReceiveRatio: 发送消息流量比例
+        :type SendReceiveRatio: float
+        :param _TraceTime: 消息轨迹保留时间，单位小时
+        :type TraceTime: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -5523,6 +5542,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._PayMode = None
         self._InstanceType = None
         self._MessageRetainTime = None
+        self._SendReceiveRatio = None
+        self._TraceTime = None
 
     @property
     def ClusterId(self):
@@ -5799,6 +5820,28 @@ class RabbitMQClusterInfo(AbstractModel):
     def MessageRetainTime(self, MessageRetainTime):
         self._MessageRetainTime = MessageRetainTime
 
+    @property
+    def SendReceiveRatio(self):
+        """发送消息流量比例
+        :rtype: float
+        """
+        return self._SendReceiveRatio
+
+    @SendReceiveRatio.setter
+    def SendReceiveRatio(self, SendReceiveRatio):
+        self._SendReceiveRatio = SendReceiveRatio
+
+    @property
+    def TraceTime(self):
+        """消息轨迹保留时间，单位小时
+        :rtype: int
+        """
+        return self._TraceTime
+
+    @TraceTime.setter
+    def TraceTime(self, TraceTime):
+        self._TraceTime = TraceTime
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5831,6 +5874,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._PayMode = params.get("PayMode")
         self._InstanceType = params.get("InstanceType")
         self._MessageRetainTime = params.get("MessageRetainTime")
+        self._SendReceiveRatio = params.get("SendReceiveRatio")
+        self._TraceTime = params.get("TraceTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6916,9 +6961,12 @@ class RabbitMQServerlessAccessInfo(AbstractModel):
         :type PublicAccessEndpoint: str
         :param _PublicDataStreamStatus: 公网状态
         :type PublicDataStreamStatus: str
+        :param _PublicClbId: 公网CLB实例ID
+        :type PublicClbId: str
         """
         self._PublicAccessEndpoint = None
         self._PublicDataStreamStatus = None
+        self._PublicClbId = None
 
     @property
     def PublicAccessEndpoint(self):
@@ -6942,10 +6990,22 @@ class RabbitMQServerlessAccessInfo(AbstractModel):
     def PublicDataStreamStatus(self, PublicDataStreamStatus):
         self._PublicDataStreamStatus = PublicDataStreamStatus
 
+    @property
+    def PublicClbId(self):
+        """公网CLB实例ID
+        :rtype: str
+        """
+        return self._PublicClbId
+
+    @PublicClbId.setter
+    def PublicClbId(self, PublicClbId):
+        self._PublicClbId = PublicClbId
+
 
     def _deserialize(self, params):
         self._PublicAccessEndpoint = params.get("PublicAccessEndpoint")
         self._PublicDataStreamStatus = params.get("PublicDataStreamStatus")
+        self._PublicClbId = params.get("PublicClbId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

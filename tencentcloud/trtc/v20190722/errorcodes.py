@@ -281,6 +281,9 @@ INVALIDPARAMETERVALUE_ROOMID = 'InvalidParameterValue.RoomId'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 无效的APIKey
+MISSINGPARAMETER_APIKEY = 'MissingParameter.APIKey'
+
 # 缺少AccessKey参数。
 MISSINGPARAMETER_ACCESSKEY = 'MissingParameter.AccessKey'
 

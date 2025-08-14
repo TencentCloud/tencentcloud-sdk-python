@@ -327,31 +327,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateServerlessDBInstance(self, request):
-        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
-
-        【接口下线中，请勿使用】本接口 (CreateServerlessDBInstance) 用于创建一个ServerlessDB实例，创建成功返回实例ID。
-
-        :param request: Request instance for CreateServerlessDBInstance.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateServerlessDBInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateServerlessDBInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteAccount(self, request):
         """此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。注：该接口可重入，如果账号已经不存在，调用此接口进行删除时不会报错。
 
@@ -975,31 +950,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDBSlowlogs(self, request):
-        """早期接口不规范，已提供新接口 DescribeSlowQueryList 替换
-
-        本接口（DescribeDBSlowlogs）用于获取慢查询日志。本接口已于2021.09.01日废弃，后续此接口将不再返回任何数据，推荐使用接口[DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)替代。
-
-        :param request: Request instance for DescribeDBSlowlogs.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBSlowlogsRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBSlowlogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDBSlowlogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDBSlowlogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDBVersions(self, request):
         """本接口（DescribeDBVersions）用于查询支持的数据库版本。
 
@@ -1359,31 +1309,6 @@ class PostgresClient(AbstractClient):
             body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRegionsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeServerlessDBInstances(self, request):
-        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
-
-        【接口下线中，请勿使用】用于查询一个或多个serverlessDB实例的详细信息
-
-        :param request: Request instance for DescribeServerlessDBInstances.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeServerlessDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeServerlessDBInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
