@@ -10630,7 +10630,7 @@ class CreateApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationName: 应用名称
+        :param _ApplicationName: 应用名称，最长60字符
         :type ApplicationName: str
         :param _ApplicationType: 应用类型，V：虚拟机应用；C：容器应用；S：serverless应用
         :type ApplicationType: str
@@ -10644,7 +10644,7 @@ class CreateApplicationRequest(AbstractModel):
         :type ApplicationResourceType: str
         :param _ApplicationRuntimeType: 应用runtime类型
         :type ApplicationRuntimeType: str
-        :param _ProgramId: 需要绑定的数据集ID
+        :param _ProgramId: 【数据集ID】。可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a26486wy)进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramId: str
         :param _ServiceConfigList: 服务配置信息列表
         :type ServiceConfigList: list of ServiceConfig
@@ -10682,7 +10682,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """应用名称
+        """应用名称，最长60字符
         :rtype: str
         """
         return self._ApplicationName
@@ -10767,7 +10767,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ProgramId(self):
-        """需要绑定的数据集ID
+        """【数据集ID】。可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a26486wy)进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: str
         """
         return self._ProgramId
@@ -11948,9 +11948,9 @@ class CreateContainGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 分组所属应用ID
+        :param _ApplicationId: 分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _NamespaceId: 分组所属命名空间ID
+        :param _NamespaceId: 分组所属【命名空间ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
         :param _GroupName: 分组名称字段，长度1~60，字母或下划线开头，可包含字母数字下划线
         :type GroupName: str
@@ -11976,11 +11976,9 @@ class CreateContainGroupRequest(AbstractModel):
         :type CpuRequest: str
         :param _MemRequest: 初始分配的内存 MiB 数，对应 K8S request
         :type MemRequest: str
-        :param _GroupResourceType: 部署组资源类型；
-DEF — 默认资源类型；
-GW — 网关资源类型；
+        :param _GroupResourceType: 部署组资源类型；DEF 表示默认资源类型
         :type GroupResourceType: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: 分组所属【子网ID】，可前往TKE侧集群[控制台](https://console.cloud.tencent.com/tke2/cluster/sub/list/basic/info/base?rid=1&clusterId=cls-2nhp3g1i)进行获取
         :type SubnetId: str
         :param _AgentCpuRequest: agent 容器分配的 CPU 核数，对应 K8S 的 request
         :type AgentCpuRequest: str
@@ -12026,7 +12024,7 @@ GW — 网关资源类型；
 
     @property
     def ApplicationId(self):
-        """分组所属应用ID
+        """分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -12037,7 +12035,7 @@ GW — 网关资源类型；
 
     @property
     def NamespaceId(self):
-        """分组所属命名空间ID
+        """分组所属【命名空间ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -12180,9 +12178,7 @@ GW — 网关资源类型；
 
     @property
     def GroupResourceType(self):
-        """部署组资源类型；
-DEF — 默认资源类型；
-GW — 网关资源类型；
+        """部署组资源类型；DEF 表示默认资源类型
         :rtype: str
         """
         return self._GroupResourceType
@@ -12193,7 +12189,7 @@ GW — 网关资源类型；
 
     @property
     def SubnetId(self):
-        """子网ID
+        """分组所属【子网ID】，可前往TKE侧集群[控制台](https://console.cloud.tencent.com/tke2/cluster/sub/list/basic/info/base?rid=1&clusterId=cls-2nhp3g1i)进行获取
         :rtype: str
         """
         return self._SubnetId
@@ -12963,22 +12959,24 @@ class CreateGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 部署组所属的应用ID
+        :param _ApplicationId: 部署组所属的【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _NamespaceId: 部署组所属命名空间ID
+        :param _NamespaceId: 部署组所属【命名空间ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
         :param _GroupName: 部署组名称
         :type GroupName: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 部署组所属的【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :type ClusterId: str
         :param _GroupDesc: 部署组描述
         :type GroupDesc: str
-        :param _GroupResourceType: 部署组资源类型；DEF 表示默认资源类型；GW 表示网关资源类型
+        :param _GroupResourceType: 部署组资源类型；DEF 表示默认资源类型
         :type GroupResourceType: str
         :param _Alias: 部署组备注
         :type Alias: str
         :param _Tags: 标签列表
         :type Tags: list of Tag
+        :param _K8sNamespaceName: k8s命名空间名称
+        :type K8sNamespaceName: str
         """
         self._ApplicationId = None
         self._NamespaceId = None
@@ -12988,10 +12986,11 @@ class CreateGroupRequest(AbstractModel):
         self._GroupResourceType = None
         self._Alias = None
         self._Tags = None
+        self._K8sNamespaceName = None
 
     @property
     def ApplicationId(self):
-        """部署组所属的应用ID
+        """部署组所属的【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -13002,7 +13001,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """部署组所属命名空间ID
+        """部署组所属【命名空间ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -13024,7 +13023,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """部署组所属的【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -13046,7 +13045,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupResourceType(self):
-        """部署组资源类型；DEF 表示默认资源类型；GW 表示网关资源类型
+        """部署组资源类型；DEF 表示默认资源类型
         :rtype: str
         """
         return self._GroupResourceType
@@ -13077,6 +13076,17 @@ class CreateGroupRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def K8sNamespaceName(self):
+        """k8s命名空间名称
+        :rtype: str
+        """
+        return self._K8sNamespaceName
+
+    @K8sNamespaceName.setter
+    def K8sNamespaceName(self, K8sNamespaceName):
+        self._K8sNamespaceName = K8sNamespaceName
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -13092,6 +13102,7 @@ class CreateGroupRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._K8sNamespaceName = params.get("K8sNamespaceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13672,9 +13683,9 @@ class CreateNamespaceRequest(AbstractModel):
         :type ClusterId: str
         :param _NamespaceDesc: 命名空间描述
         :type NamespaceDesc: str
-        :param _NamespaceResourceType: 命名空间资源类型(默认值为DEF)。DEF：默认普通命名空间。GLOBAL：全局命名空间
+        :param _NamespaceResourceType: 命名空间资源类型；DEF：表示默认资源类型；GW：表示网关资源类型
         :type NamespaceResourceType: str
-        :param _NamespaceType: 是否是全局命名空间(默认是DEF，表示普通命名空间；GLOBAL表示全局命名空间)
+        :param _NamespaceType: 命名空间类型；DEF 表示默认普通命名空间；GLOBAL 表示全局命名空间
         :type NamespaceType: str
         :param _NamespaceId: 命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :type NamespaceId: str
@@ -13733,7 +13744,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceResourceType(self):
-        """命名空间资源类型(默认值为DEF)。DEF：默认普通命名空间。GLOBAL：全局命名空间
+        """命名空间资源类型；DEF：表示默认资源类型；GW：表示网关资源类型
         :rtype: str
         """
         return self._NamespaceResourceType
@@ -13744,7 +13755,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceType(self):
-        """是否是全局命名空间(默认是DEF，表示普通命名空间；GLOBAL表示全局命名空间)
+        """命名空间类型；DEF 表示默认普通命名空间；GLOBAL 表示全局命名空间
         :rtype: str
         """
         return self._NamespaceType
@@ -18285,6 +18296,14 @@ class DeployContainerApplicationRequest(AbstractModel):
         :type EnvClean: bool
         :param _DeployDesc: 本次部署的描述信息
         :type DeployDesc: str
+        :param _K8sNamespaceName: k8s命名空间名称
+        :type K8sNamespaceName: str
+        :param _StaticIpEnabled: 是否启用静态IP
+        :type StaticIpEnabled: bool
+        :param _PodManagementPolicyType: 启动策略[OrderedReady/Parallel]
+        :type PodManagementPolicyType: str
+        :param _Partition: 滚动更新分区序号
+        :type Partition: int
         """
         self._ApplicationId = None
         self._ObservabilityConfig = None
@@ -18343,6 +18362,10 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._ServiceClean = None
         self._EnvClean = None
         self._DeployDesc = None
+        self._K8sNamespaceName = None
+        self._StaticIpEnabled = None
+        self._PodManagementPolicyType = None
+        self._Partition = None
 
     @property
     def ApplicationId(self):
@@ -18971,6 +18994,50 @@ class DeployContainerApplicationRequest(AbstractModel):
     def DeployDesc(self, DeployDesc):
         self._DeployDesc = DeployDesc
 
+    @property
+    def K8sNamespaceName(self):
+        """k8s命名空间名称
+        :rtype: str
+        """
+        return self._K8sNamespaceName
+
+    @K8sNamespaceName.setter
+    def K8sNamespaceName(self, K8sNamespaceName):
+        self._K8sNamespaceName = K8sNamespaceName
+
+    @property
+    def StaticIpEnabled(self):
+        """是否启用静态IP
+        :rtype: bool
+        """
+        return self._StaticIpEnabled
+
+    @StaticIpEnabled.setter
+    def StaticIpEnabled(self, StaticIpEnabled):
+        self._StaticIpEnabled = StaticIpEnabled
+
+    @property
+    def PodManagementPolicyType(self):
+        """启动策略[OrderedReady/Parallel]
+        :rtype: str
+        """
+        return self._PodManagementPolicyType
+
+    @PodManagementPolicyType.setter
+    def PodManagementPolicyType(self, PodManagementPolicyType):
+        self._PodManagementPolicyType = PodManagementPolicyType
+
+    @property
+    def Partition(self):
+        """滚动更新分区序号
+        :rtype: int
+        """
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -19082,6 +19149,10 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._ServiceClean = params.get("ServiceClean")
         self._EnvClean = params.get("EnvClean")
         self._DeployDesc = params.get("DeployDesc")
+        self._K8sNamespaceName = params.get("K8sNamespaceName")
+        self._StaticIpEnabled = params.get("StaticIpEnabled")
+        self._PodManagementPolicyType = params.get("PodManagementPolicyType")
+        self._Partition = params.get("Partition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19887,9 +19958,9 @@ class DeployGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
-        :param _PkgId: 程序包ID
+        :param _PkgId: 软件包ID，可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type PkgId: str
         :param _StartupParameters: 部署组启动参数
         :type StartupParameters: str
@@ -19909,7 +19980,7 @@ class DeployGroupRequest(AbstractModel):
         :type DeployBatch: list of float
         :param _DeployExeMode: 滚动发布的执行方式，auto表示自动， manual表示手动
         :type DeployExeMode: str
-        :param _DeployWaitTime: 滚动发布每个批次的时间间隔
+        :param _DeployWaitTime: 滚动发布每个批次的时间间隔，单位min。默认值是0，不等待。
         :type DeployWaitTime: int
         :param _StartScript: 启动脚本 base64编码
         :type StartScript: str
@@ -19952,7 +20023,7 @@ openJDK版本：8、17
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -19963,7 +20034,7 @@ openJDK版本：8、17
 
     @property
     def PkgId(self):
-        """程序包ID
+        """软件包ID，可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._PkgId
@@ -20073,7 +20144,7 @@ openJDK版本：8、17
 
     @property
     def DeployWaitTime(self):
-        """滚动发布每个批次的时间间隔
+        """滚动发布每个批次的时间间隔，单位min。默认值是0，不等待。
         :rtype: int
         """
         return self._DeployWaitTime
@@ -21039,14 +21110,14 @@ class DescribeApplicationAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
         """
         self._ApplicationId = None
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -21215,11 +21286,14 @@ class DescribeApplicationsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Limit: int
-        :param _ApplicationType: 应用类型
+        :param _ApplicationType: 指定应用类型，目前支持：
+- `V`：普通应用/CVM应用
+- `C`：容器应用
+- `S`：serverless 应用
         :type ApplicationType: str
         :param _MicroserviceType: 应用的微服务类型
         :type MicroserviceType: str
-        :param _ApplicationResourceTypeList: 应用资源类型数组
+        :param _ApplicationResourceTypeList: 应用资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :type ApplicationResourceTypeList: list of str
         :param _ApplicationIdList: IdList
         :type ApplicationIdList: list of str
@@ -21296,7 +21370,10 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型
+        """指定应用类型，目前支持：
+- `V`：普通应用/CVM应用
+- `C`：容器应用
+- `S`：serverless 应用
         :rtype: str
         """
         return self._ApplicationType
@@ -21318,7 +21395,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationResourceTypeList(self):
-        """应用资源类型数组
+        """应用资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :rtype: list of str
         """
         return self._ApplicationResourceTypeList
@@ -23144,14 +23221,14 @@ class DescribeContainerGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
         :rtype: str
         """
         return self._GroupId
@@ -23387,7 +23464,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 分组所属应用ID。
+        :param _ApplicationId: 分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
         :param _SearchWord: 搜索字段，模糊搜索groupName字段
         :type SearchWord: str
@@ -23399,9 +23476,9 @@ class DescribeContainerGroupsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页个数，默认为20， 取值应为1~50
         :type Limit: int
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 分组所属【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :type ClusterId: str
-        :param _NamespaceId: 命名空间 ID
+        :param _NamespaceId: 分组所属【命名空间 ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
         """
         self._ApplicationId = None
@@ -23415,7 +23492,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """分组所属应用ID。
+        """分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -23481,7 +23558,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """分组所属【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -23492,7 +23569,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间 ID
+        """分组所属【命名空间 ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -29713,9 +29790,9 @@ class DescribeProgramsRequest(AbstractModel):
         r"""
         :param _SearchWord: 模糊查询数据集ID，数据集名称，不传入时查询全量
         :type SearchWord: str
-        :param _Limit: 每页数量
+        :param _Limit: 每页数量，默认值20
         :type Limit: int
-        :param _Offset: 起始偏移量
+        :param _Offset: 起始偏移量，默认值0
         :type Offset: int
         """
         self._SearchWord = None
@@ -29735,7 +29812,7 @@ class DescribeProgramsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量
+        """每页数量，默认值20
         :rtype: int
         """
         return self._Limit
@@ -29746,7 +29823,7 @@ class DescribeProgramsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始偏移量
+        """起始偏移量，默认值0
         :rtype: int
         """
         return self._Offset
@@ -31415,7 +31492,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         :type Offset: int
         :param _MicroserviceType: 微服务类型
         :type MicroserviceType: str
-        :param _ApplicationResourceTypeList: 资源类型数组
+        :param _ApplicationResourceTypeList: 应用资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :type ApplicationResourceTypeList: list of str
         :param _SearchWord: 通过id和name进行关键词过滤
         :type SearchWord: str
@@ -31494,7 +31571,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationResourceTypeList(self):
-        """资源类型数组
+        """应用资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :rtype: list of str
         """
         return self._ApplicationResourceTypeList
@@ -31765,17 +31842,17 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIdList: 部署组ID列表，不填写时查询全量
+        :param _GroupIdList: 按照【部署组ID】进行过滤，不填写时查询全量。可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupIdList: list of str
-        :param _ApplicationId: 应用ID，不填写时查询全量
+        :param _ApplicationId: 按照【应用ID】进行过滤，不填写时查询全量。可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _ClusterId: 集群ID，不填写时查询全量
+        :param _ClusterId: 按照【集群ID】进行过滤，不填写时查询全量。可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :type ClusterId: str
-        :param _NamespaceId: 命名空间ID，不填写时查询全量
+        :param _NamespaceId: 按照【命名空间ID】进行过滤，不填写时查询全量。可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _Limit: 每页条数
+        :param _Limit: 每页条数，默认值20，无上限
         :type Limit: int
-        :param _Offset: 起始偏移量
+        :param _Offset: 起始偏移量，默认值0
         :type Offset: int
         :param _GroupId: 部署组ID，不填写时查询全量
         :type GroupId: str
@@ -31796,7 +31873,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def GroupIdList(self):
-        """部署组ID列表，不填写时查询全量
+        """按照【部署组ID】进行过滤，不填写时查询全量。可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: list of str
         """
         return self._GroupIdList
@@ -31807,7 +31884,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，不填写时查询全量
+        """按照【应用ID】进行过滤，不填写时查询全量。可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -31818,7 +31895,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID，不填写时查询全量
+        """按照【集群ID】进行过滤，不填写时查询全量。可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -31829,7 +31906,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID，不填写时查询全量
+        """按照【命名空间ID】进行过滤，不填写时查询全量。可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -31840,7 +31917,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """每页条数，默认值20，无上限
         :rtype: int
         """
         return self._Limit
@@ -31851,7 +31928,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始偏移量
+        """起始偏移量，默认值0
         :rtype: int
         """
         return self._Offset
@@ -31976,7 +32053,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         :type Offset: int
         :param _NamespaceId: 命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :type NamespaceId: str
-        :param _NamespaceResourceTypeList: 查询资源类型列表
+        :param _NamespaceResourceTypeList: 查询资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :type NamespaceResourceTypeList: list of str
         :param _SearchWord: 通过id和name进行过滤
         :type SearchWord: str
@@ -32058,7 +32135,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def NamespaceResourceTypeList(self):
-        """查询资源类型列表
+        """查询资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :rtype: list of str
         """
         return self._NamespaceResourceTypeList
@@ -36593,6 +36670,10 @@ class GatewayPlugin(AbstractModel):
         :param _Status: 发布状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _DeleteDisabled: 是否禁用删除
+        :type DeleteDisabled: bool
+        :param _DeleteDisabledReason: 禁用原因
+        :type DeleteDisabledReason: str
         """
         self._Id = None
         self._Name = None
@@ -36601,6 +36682,8 @@ class GatewayPlugin(AbstractModel):
         self._CreatedTime = None
         self._UpdatedTime = None
         self._Status = None
+        self._DeleteDisabled = None
+        self._DeleteDisabledReason = None
 
     @property
     def Id(self):
@@ -36686,6 +36769,28 @@ class GatewayPlugin(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def DeleteDisabled(self):
+        """是否禁用删除
+        :rtype: bool
+        """
+        return self._DeleteDisabled
+
+    @DeleteDisabled.setter
+    def DeleteDisabled(self, DeleteDisabled):
+        self._DeleteDisabled = DeleteDisabled
+
+    @property
+    def DeleteDisabledReason(self):
+        """禁用原因
+        :rtype: str
+        """
+        return self._DeleteDisabledReason
+
+    @DeleteDisabledReason.setter
+    def DeleteDisabledReason(self, DeleteDisabledReason):
+        self._DeleteDisabledReason = DeleteDisabledReason
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -36695,6 +36800,8 @@ class GatewayPlugin(AbstractModel):
         self._CreatedTime = params.get("CreatedTime")
         self._UpdatedTime = params.get("UpdatedTime")
         self._Status = params.get("Status")
+        self._DeleteDisabled = params.get("DeleteDisabled")
+        self._DeleteDisabledReason = params.get("DeleteDisabledReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41593,6 +41700,12 @@ class LaneInfo(AbstractModel):
         :param _LaneGroupId: 泳道部署组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LaneGroupId: str
+        :param _DeleteDisabled: 是否禁用删除。
+true：禁用
+false：取消禁用
+        :type DeleteDisabled: bool
+        :param _DeleteDisabledReason: 禁用原因
+        :type DeleteDisabledReason: str
         """
         self._LaneId = None
         self._LaneName = None
@@ -41603,6 +41716,8 @@ class LaneInfo(AbstractModel):
         self._Entrance = None
         self._NamespaceIdList = None
         self._LaneGroupId = None
+        self._DeleteDisabled = None
+        self._DeleteDisabledReason = None
 
     @property
     def LaneId(self):
@@ -41712,6 +41827,30 @@ class LaneInfo(AbstractModel):
     def LaneGroupId(self, LaneGroupId):
         self._LaneGroupId = LaneGroupId
 
+    @property
+    def DeleteDisabled(self):
+        """是否禁用删除。
+true：禁用
+false：取消禁用
+        :rtype: bool
+        """
+        return self._DeleteDisabled
+
+    @DeleteDisabled.setter
+    def DeleteDisabled(self, DeleteDisabled):
+        self._DeleteDisabled = DeleteDisabled
+
+    @property
+    def DeleteDisabledReason(self):
+        """禁用原因
+        :rtype: str
+        """
+        return self._DeleteDisabledReason
+
+    @DeleteDisabledReason.setter
+    def DeleteDisabledReason(self, DeleteDisabledReason):
+        self._DeleteDisabledReason = DeleteDisabledReason
+
 
     def _deserialize(self, params):
         self._LaneId = params.get("LaneId")
@@ -41728,6 +41867,8 @@ class LaneInfo(AbstractModel):
         self._Entrance = params.get("Entrance")
         self._NamespaceIdList = params.get("NamespaceIdList")
         self._LaneGroupId = params.get("LaneGroupId")
+        self._DeleteDisabled = params.get("DeleteDisabled")
+        self._DeleteDisabledReason = params.get("DeleteDisabledReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44439,7 +44580,7 @@ class ModifyProgramRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProgramId: 数据集ID
+        :param _ProgramId: 数据集ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)查询接口会返回数据集信息，包括programId
         :type ProgramId: str
         :param _ProgramName: 数据集名称，不传入时不更新
         :type ProgramName: str
@@ -44458,7 +44599,7 @@ class ModifyProgramRequest(AbstractModel):
 
     @property
     def ProgramId(self):
-        """数据集ID
+        """数据集ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)查询接口会返回数据集信息，包括programId
         :rtype: str
         """
         return self._ProgramId
@@ -52110,6 +52251,8 @@ class SimpleGroup(AbstractModel):
         :type GroupResourceType: str
         :param _AppMicroServiceType: 应用微服务类型
         :type AppMicroServiceType: str
+        :param _K8sNamespaceName: k8s 命名空间名称
+        :type K8sNamespaceName: str
         """
         self._GroupId = None
         self._GroupName = None
@@ -52124,6 +52267,7 @@ class SimpleGroup(AbstractModel):
         self._StartupParameters = None
         self._GroupResourceType = None
         self._AppMicroServiceType = None
+        self._K8sNamespaceName = None
 
     @property
     def GroupId(self):
@@ -52268,6 +52412,17 @@ class SimpleGroup(AbstractModel):
     def AppMicroServiceType(self, AppMicroServiceType):
         self._AppMicroServiceType = AppMicroServiceType
 
+    @property
+    def K8sNamespaceName(self):
+        """k8s 命名空间名称
+        :rtype: str
+        """
+        return self._K8sNamespaceName
+
+    @K8sNamespaceName.setter
+    def K8sNamespaceName(self, K8sNamespaceName):
+        self._K8sNamespaceName = K8sNamespaceName
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -52283,6 +52438,7 @@ class SimpleGroup(AbstractModel):
         self._StartupParameters = params.get("StartupParameters")
         self._GroupResourceType = params.get("GroupResourceType")
         self._AppMicroServiceType = params.get("AppMicroServiceType")
+        self._K8sNamespaceName = params.get("K8sNamespaceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52438,14 +52594,14 @@ class StartGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 按照【部署组ID】进行部署组启动，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """按照【部署组ID】进行部署组启动，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -52683,14 +52839,14 @@ class StopGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 按照【部署组ID】进行部署组删除，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """按照【部署组ID】进行部署组删除，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId

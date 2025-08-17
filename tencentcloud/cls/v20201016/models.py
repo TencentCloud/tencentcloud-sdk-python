@@ -6257,6 +6257,7 @@ class CreateConfigExtraRequest(AbstractModel):
         :param _Name: 采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
         :type Name: str
         :param _TopicId: 日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Type: 日志源类型。支持 container_stdout：容器标准输出；container_file：容器文件路径；host_file：节点文件路径。
         :type Type: str
@@ -6274,16 +6275,23 @@ class CreateConfigExtraRequest(AbstractModel):
 
         :type ConfigFlag: str
         :param _LogsetId: 日志集id
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _LogsetName: 日志集name
+        :param _LogsetName: 日志集名称
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
         :type LogsetName: str
         :param _TopicName: 日志主题名称
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
         :type TopicName: str
-        :param _HostFile: 节点文件路径类型配置。
+        :param _HostFile: 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+
+- 详细参考 [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 信息。
         :type HostFile: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         :param _ContainerFile: 容器文件路径类型配置。
         :type ContainerFile: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
-        :param _ContainerStdout: 容器标准输出类型配置。
+        :param _ContainerStdout: 自建k8s-容器标准输出信息，包括容器、命名空间等。
+
+- 详细参考 [ContainerStdoutInfo](https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 信息。
         :type ContainerStdout: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         :param _LogFormat: 日志格式化方式，用于容器采集场景。
 - stdout-docker-json：用于docker容器采集场景
@@ -6297,11 +6305,15 @@ class CreateConfigExtraRequest(AbstractModel):
 - 取值参考：[使用组合解析提取模式采集日志
 ](https://cloud.tencent.com/document/product/614/61310)
         :type UserDefineRule: str
-        :param _GroupId: 绑定的机器组id
+        :param _GroupId: 绑定的机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
+- GroupId 与 GroupIds 选择其一即可，不可同时为空。
         :type GroupId: str
-        :param _GroupIds: 绑定的机器组id列表
+        :param _GroupIds: 绑定的机器组ID列表
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id信息。
+- GroupId 与 GroupIds 选择其一即可，不可同时为空。
         :type GroupIds: list of str
-        :param _CollectInfos: 采集相关配置信息。详情见CollectInfo复杂类型配置。
+        :param _CollectInfos: 采集相关配置信息。详细参考 [CollectInfo](https://cloud.tencent.com/document/api/614/56471#CollectInfo) 信息。
         :type CollectInfos: list of CollectInfo
         :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
 - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
@@ -6345,6 +6357,7 @@ class CreateConfigExtraRequest(AbstractModel):
     @property
     def TopicId(self):
         """日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -6398,6 +6411,7 @@ class CreateConfigExtraRequest(AbstractModel):
     @property
     def LogsetId(self):
         """日志集id
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -6408,7 +6422,8 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def LogsetName(self):
-        """日志集name
+        """日志集名称
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
         :rtype: str
         """
         return self._LogsetName
@@ -6420,6 +6435,7 @@ class CreateConfigExtraRequest(AbstractModel):
     @property
     def TopicName(self):
         """日志主题名称
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
         :rtype: str
         """
         return self._TopicName
@@ -6430,7 +6446,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def HostFile(self):
-        """节点文件路径类型配置。
+        """自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+
+- 详细参考 [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 信息。
         :rtype: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         """
         return self._HostFile
@@ -6452,7 +6470,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def ContainerStdout(self):
-        """容器标准输出类型配置。
+        """自建k8s-容器标准输出信息，包括容器、命名空间等。
+
+- 详细参考 [ContainerStdoutInfo](https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 信息。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         """
         return self._ContainerStdout
@@ -6515,7 +6535,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """绑定的机器组id
+        """绑定的机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
+- GroupId 与 GroupIds 选择其一即可，不可同时为空。
         :rtype: str
         """
         return self._GroupId
@@ -6526,7 +6548,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """绑定的机器组id列表
+        """绑定的机器组ID列表
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id信息。
+- GroupId 与 GroupIds 选择其一即可，不可同时为空。
         :rtype: list of str
         """
         return self._GroupIds
@@ -6537,7 +6561,7 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def CollectInfos(self):
-        """采集相关配置信息。详情见CollectInfo复杂类型配置。
+        """采集相关配置信息。详细参考 [CollectInfo](https://cloud.tencent.com/document/api/614/56471#CollectInfo) 信息。
         :rtype: list of CollectInfo
         """
         return self._CollectInfos
@@ -10245,25 +10269,34 @@ class DashboardNoticeMode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReceiverType: 仪表盘通知方式。<br>
-<li/>Uin：腾讯云用户<br>
-<li/>Group：腾讯云用户组<br>
-<li/>Email：自定义Email<br>
-<li/>WeCom: 企业微信回调<br>
-<li/>DingTalk：钉钉<br>
-<li/>Lark：飞书
+        :param _ReceiverType: 仪表盘通知方式。
+
+- Uin：腾讯云用户
+- Group：腾讯云用户组
+- WeCom：企业微信回调
+- Email：自定义邮件
+- DingTalk：钉钉
+- Lark：飞书
         :type ReceiverType: str
         :param _Values: 知方式对应的值。
-<br> <li/> 当ReceiverType不是 WeCom 时，Values必填。
+- 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Values必须为空，且Url字段必填。
+- 当ReceiverType为：`Uin`、`Group`、`Email` 时，Values必填，且Url字段必须为空。
+- 当ReceiverType为：`Uin ` 时，Values为用户id，通过 [拉取子用户](https://cloud.tencent.com/document/product/598/34587) 获取子用户 UID 。
+- 当ReceiverType为：`Group` 时，Values为用户组id，通过 [查询用户组列表](https://cloud.tencent.com/document/product/598/34589) 获取用户组 ID 。
+- 当ReceiverType为：`Email` 时，Values为用户邮箱信息。
         :type Values: list of str
         :param _ReceiverChannels: 仪表盘通知渠道。
-<br><li/> 支持：["Email","Sms","WeChat","Phone"]。
-<br><li/> 当ReceiverType是 Email 或 WeCom 时，ReceiverChannels不能赋值。
+
+-  支持：["Email","Sms","WeChat","Phone"]。
+-  当ReceiverType为 `Email` 或 `WeCom` 时，ReceiverChannels无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiverChannels: list of str
-        :param _Url: 回调Url。
-<br><li/> 当ReceiverType是 WeCom 时，Url必填。
-<br><li/> 当ReceiverType不是 WeCom 时，Url不能填写。
+        :param _Url: 订阅方式	- 回调地址。
+- 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Url字段必填为各渠道的回调地址。
+    - 为：`WeCom` 时，Url为 企业微信回调地址。
+    - 为：`DingTalk` 时，Url为 钉钉机器人Webhook地址。
+    - 为：`Lark` 时，Url为 飞书机器人Webhook地址。
+- 当ReceiverType为：`Uin`、`Group`、`Email` 时，Url字段必须为空。
         :type Url: str
         """
         self._ReceiverType = None
@@ -10273,13 +10306,14 @@ class DashboardNoticeMode(AbstractModel):
 
     @property
     def ReceiverType(self):
-        """仪表盘通知方式。<br>
-<li/>Uin：腾讯云用户<br>
-<li/>Group：腾讯云用户组<br>
-<li/>Email：自定义Email<br>
-<li/>WeCom: 企业微信回调<br>
-<li/>DingTalk：钉钉<br>
-<li/>Lark：飞书
+        """仪表盘通知方式。
+
+- Uin：腾讯云用户
+- Group：腾讯云用户组
+- WeCom：企业微信回调
+- Email：自定义邮件
+- DingTalk：钉钉
+- Lark：飞书
         :rtype: str
         """
         return self._ReceiverType
@@ -10291,7 +10325,11 @@ class DashboardNoticeMode(AbstractModel):
     @property
     def Values(self):
         """知方式对应的值。
-<br> <li/> 当ReceiverType不是 WeCom 时，Values必填。
+- 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Values必须为空，且Url字段必填。
+- 当ReceiverType为：`Uin`、`Group`、`Email` 时，Values必填，且Url字段必须为空。
+- 当ReceiverType为：`Uin ` 时，Values为用户id，通过 [拉取子用户](https://cloud.tencent.com/document/product/598/34587) 获取子用户 UID 。
+- 当ReceiverType为：`Group` 时，Values为用户组id，通过 [查询用户组列表](https://cloud.tencent.com/document/product/598/34589) 获取用户组 ID 。
+- 当ReceiverType为：`Email` 时，Values为用户邮箱信息。
         :rtype: list of str
         """
         return self._Values
@@ -10303,8 +10341,9 @@ class DashboardNoticeMode(AbstractModel):
     @property
     def ReceiverChannels(self):
         """仪表盘通知渠道。
-<br><li/> 支持：["Email","Sms","WeChat","Phone"]。
-<br><li/> 当ReceiverType是 Email 或 WeCom 时，ReceiverChannels不能赋值。
+
+-  支持：["Email","Sms","WeChat","Phone"]。
+-  当ReceiverType为 `Email` 或 `WeCom` 时，ReceiverChannels无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10316,9 +10355,12 @@ class DashboardNoticeMode(AbstractModel):
 
     @property
     def Url(self):
-        """回调Url。
-<br><li/> 当ReceiverType是 WeCom 时，Url必填。
-<br><li/> 当ReceiverType不是 WeCom 时，Url不能填写。
+        """订阅方式	- 回调地址。
+- 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Url字段必填为各渠道的回调地址。
+    - 为：`WeCom` 时，Url为 企业微信回调地址。
+    - 为：`DingTalk` 时，Url为 钉钉机器人Webhook地址。
+    - 为：`Lark` 时，Url为 飞书机器人Webhook地址。
+- 当ReceiverType为：`Uin`、`Group`、`Email` 时，Url字段必须为空。
         :rtype: str
         """
         return self._Url
@@ -10473,6 +10515,194 @@ class DashboardSubscribeData(AbstractModel):
         self._SubscribeLanguage = params.get("SubscribeLanguage")
         self._JumpDomain = params.get("JumpDomain")
         self._JumpUrl = params.get("JumpUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DashboardSubscribeInfo(AbstractModel):
+    """仪表盘订阅信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 仪表盘订阅id。
+        :type Id: int
+        :param _Name: 仪表盘订阅名称。
+        :type Name: str
+        :param _DashboardId: 仪表盘id。
+        :type DashboardId: str
+        :param _Cron: 仪表盘订阅时间。
+        :type Cron: str
+        :param _SubscribeData: 仪表盘订阅数据。
+        :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        :param _CreateTime: 仪表盘订阅记录创建时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :type CreateTime: str
+        :param _UpdateTime: 仪表盘订阅记录更新时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :type UpdateTime: str
+        :param _LastTime: 仪表盘订阅记录最后一次发送成功时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :type LastTime: str
+        :param _Uin: 腾讯云主账号Id。
+        :type Uin: int
+        :param _SubUin: 腾讯云主账号下的子账号Id。
+        :type SubUin: int
+        :param _LastStatus: 仪表盘订阅记录最后一次发送的状态。success：全部发送成功，fail：未发送， partialSuccess：部分发送成功。
+        :type LastStatus: str
+        """
+        self._Id = None
+        self._Name = None
+        self._DashboardId = None
+        self._Cron = None
+        self._SubscribeData = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LastTime = None
+        self._Uin = None
+        self._SubUin = None
+        self._LastStatus = None
+
+    @property
+    def Id(self):
+        """仪表盘订阅id。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """仪表盘订阅名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DashboardId(self):
+        """仪表盘id。
+        :rtype: str
+        """
+        return self._DashboardId
+
+    @DashboardId.setter
+    def DashboardId(self, DashboardId):
+        self._DashboardId = DashboardId
+
+    @property
+    def Cron(self):
+        """仪表盘订阅时间。
+        :rtype: str
+        """
+        return self._Cron
+
+    @Cron.setter
+    def Cron(self, Cron):
+        self._Cron = Cron
+
+    @property
+    def SubscribeData(self):
+        """仪表盘订阅数据。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        """
+        return self._SubscribeData
+
+    @SubscribeData.setter
+    def SubscribeData(self, SubscribeData):
+        self._SubscribeData = SubscribeData
+
+    @property
+    def CreateTime(self):
+        """仪表盘订阅记录创建时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """仪表盘订阅记录更新时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LastTime(self):
+        """仪表盘订阅记录最后一次发送成功时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :rtype: str
+        """
+        return self._LastTime
+
+    @LastTime.setter
+    def LastTime(self, LastTime):
+        self._LastTime = LastTime
+
+    @property
+    def Uin(self):
+        """腾讯云主账号Id。
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubUin(self):
+        """腾讯云主账号下的子账号Id。
+        :rtype: int
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def LastStatus(self):
+        """仪表盘订阅记录最后一次发送的状态。success：全部发送成功，fail：未发送， partialSuccess：部分发送成功。
+        :rtype: str
+        """
+        return self._LastStatus
+
+    @LastStatus.setter
+    def LastStatus(self, LastStatus):
+        self._LastStatus = LastStatus
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._DashboardId = params.get("DashboardId")
+        self._Cron = params.get("Cron")
+        if params.get("SubscribeData") is not None:
+            self._SubscribeData = DashboardSubscribeData()
+            self._SubscribeData._deserialize(params.get("SubscribeData"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LastTime = params.get("LastTime")
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._LastStatus = params.get("LastStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11660,7 +11890,7 @@ class DeleteCosRechargeRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: COS导入配置Id。
-- 通过[获取投递任务列表](https://cloud.tencent.com/document/api/614/58745)获取COS导入配置Id。
+- 通过 [获取cos导入配置](https://cloud.tencent.com/document/product/614/88099) 获取COS导入配置Id。
         :type Id: str
         :param _TopicId: 日志主题Id。
 -  通过[获取日志主题列表](https://cloud.tencent.com/document/api/614/56454)获取日志主题Id。
@@ -11672,7 +11902,7 @@ class DeleteCosRechargeRequest(AbstractModel):
     @property
     def Id(self):
         """COS导入配置Id。
-- 通过[获取投递任务列表](https://cloud.tencent.com/document/api/614/58745)获取COS导入配置Id。
+- 通过 [获取cos导入配置](https://cloud.tencent.com/document/product/614/88099) 获取COS导入配置Id。
         :rtype: str
         """
         return self._Id
@@ -12651,9 +12881,9 @@ class DeliverConfig(AbstractModel):
  ap-guangzhou  广州地域；
 ap-nanjing 南京地域。
 
-详细信息请查看官网：
+详细信息请查看官网[地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
 
-https://cloud.tencent.com/document/product/614/18940
+
         :type Region: str
         :param _TopicId: 日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
         :type TopicId: str
@@ -12676,9 +12906,9 @@ https://cloud.tencent.com/document/product/614/18940
  ap-guangzhou  广州地域；
 ap-nanjing 南京地域。
 
-详细信息请查看官网：
+详细信息请查看官网[地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
 
-https://cloud.tencent.com/document/product/614/18940
+
         :rtype: str
         """
         return self._Region
@@ -12923,7 +13153,7 @@ class DescribeAlarmShieldsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNoticeId: 通知渠道组id。
+        :param _AlarmNoticeId: 通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组id
         :type AlarmNoticeId: str
         :param _Filters: - taskId:按照【规则id】进行过滤。类型：String  必选：否
 - status:按照【规则状态】进行过滤。类型：String。 支持 0:暂未生效，1:生效中，2:已失效。 必选：否
@@ -12941,7 +13171,7 @@ class DescribeAlarmShieldsRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组id。
+        """通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组id
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -14371,6 +14601,7 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
         :param _Filters: dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
 
 - 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+- 入参示例：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
@@ -14388,6 +14619,7 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
         """dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
 
 - 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+- 入参示例：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
@@ -14447,10 +14679,38 @@ class DescribeDashboardSubscribesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DashboardSubscribeInfos: 仪表盘订阅列表
+        :type DashboardSubscribeInfos: list of DashboardSubscribeInfo
+        :param _TotalCount: 总数目
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DashboardSubscribeInfos = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def DashboardSubscribeInfos(self):
+        """仪表盘订阅列表
+        :rtype: list of DashboardSubscribeInfo
+        """
+        return self._DashboardSubscribeInfos
+
+    @DashboardSubscribeInfos.setter
+    def DashboardSubscribeInfos(self, DashboardSubscribeInfos):
+        self._DashboardSubscribeInfos = DashboardSubscribeInfos
+
+    @property
+    def TotalCount(self):
+        """总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -14465,6 +14725,13 @@ class DescribeDashboardSubscribesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("DashboardSubscribeInfos") is not None:
+            self._DashboardSubscribeInfos = []
+            for item in params.get("DashboardSubscribeInfos"):
+                obj = DashboardSubscribeInfo()
+                obj._deserialize(item)
+                self._DashboardSubscribeInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -14480,17 +14747,44 @@ class DescribeDashboardsRequest(AbstractModel):
         :param _Limit: 分页单页限制数目，默认值为20，最大值100。
         :type Limit: int
         :param _Filters: - dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+    - 示例值：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
-- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。 [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)，例如：ap-guangzhou
+    - 示例值：业务大盘
+- dashboardRegion 按照【仪表盘地域】进行过滤（兼容老的仪表盘），通过云API创建的仪表盘该属性，类型：String，必选：否。
+    - 参考  [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
+    - 示例：ap-guangzhou
 - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
-- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
+    - 示例值：
+    ```
+    "Filters":[
+        {
+            "Key": "tagKey",
+            "Values": [
+                "tag-key-test"
+            ]
+        }
+    ]
+    ```
+
+- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，
+    - 参考 [示例1](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B) 使用。
+    ```
+    "Filters": [
+        {
+            "Key": "tag:tag-key-test",
+            "Values": [
+                "12"
+            ]
+        }
+    ]
+    ```
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
         :param _TopicIdRegionFilter: 按照topicId和regionId过滤。
-
 - topicId:日志主题Id。
     -  通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+    - 示例值：439a5304-08f9-484b-9c4d-46ff57133816
 - regionId
     - 1:广州
     - 4:上海
@@ -14547,10 +14841,37 @@ class DescribeDashboardsRequest(AbstractModel):
     @property
     def Filters(self):
         """- dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+    - 示例值：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
-- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。 [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)，例如：ap-guangzhou
+    - 示例值：业务大盘
+- dashboardRegion 按照【仪表盘地域】进行过滤（兼容老的仪表盘），通过云API创建的仪表盘该属性，类型：String，必选：否。
+    - 参考  [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
+    - 示例：ap-guangzhou
 - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
-- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
+    - 示例值：
+    ```
+    "Filters":[
+        {
+            "Key": "tagKey",
+            "Values": [
+                "tag-key-test"
+            ]
+        }
+    ]
+    ```
+
+- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，
+    - 参考 [示例1](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B) 使用。
+    ```
+    "Filters": [
+        {
+            "Key": "tag:tag-key-test",
+            "Values": [
+                "12"
+            ]
+        }
+    ]
+    ```
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
@@ -14564,9 +14885,9 @@ class DescribeDashboardsRequest(AbstractModel):
     @property
     def TopicIdRegionFilter(self):
         """按照topicId和regionId过滤。
-
 - topicId:日志主题Id。
     -  通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+    - 示例值：439a5304-08f9-484b-9c4d-46ff57133816
 - regionId
     - 1:广州
     - 4:上海
@@ -21900,7 +22221,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNoticeId: 通知渠道组ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知渠道组ID
+        :param _AlarmNoticeId: 通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
         :type AlarmNoticeId: str
         :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
         :type Tags: list of Tag
@@ -21955,7 +22276,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知渠道组ID
+        """通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -22913,12 +23234,17 @@ class ModifyConfigExtraRequest(AbstractModel):
         :param _TopicId: 日志主题id
 - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _HostFile: 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息，详细参考https://cloud.tencent.com/document/api/614/56471#HostFileInfo
+        :param _HostFile: 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+
+- 详情参考  [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 文档。
         :type HostFile: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         :param _ContainerFile: 采集配置标记。
 - 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
+- 详情参考 [ ContainerFileInfo](https://cloud.tencent.com/document/api/614/56471#ContainerFileInfo) 文档
         :type ContainerFile: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
-        :param _ContainerStdout: 自建k8s-容器标准输出信息，包括容器、命名空间等，详细参考https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo
+        :param _ContainerStdout: 自建k8s-容器标准输出信息，包括容器、命名空间等，
+
+- 详情参考 [ContainerStdoutInfo]( https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 文档
         :type ContainerStdout: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         :param _LogType: 采集的日志类型，默认为minimalist_log。支持以下类型：
 - json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
@@ -22933,7 +23259,7 @@ class ModifyConfigExtraRequest(AbstractModel):
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :type LogFormat: str
-        :param _ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :param _ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType。
         :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         :param _ExcludePaths: 采集黑名单路径列表
         :type ExcludePaths: list of ExcludePathInfo
@@ -23024,7 +23350,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def HostFile(self):
-        """自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息，详细参考https://cloud.tencent.com/document/api/614/56471#HostFileInfo
+        """自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+
+- 详情参考  [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 文档。
         :rtype: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         """
         return self._HostFile
@@ -23037,6 +23365,7 @@ class ModifyConfigExtraRequest(AbstractModel):
     def ContainerFile(self):
         """采集配置标记。
 - 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
+- 详情参考 [ ContainerFileInfo](https://cloud.tencent.com/document/api/614/56471#ContainerFileInfo) 文档
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
         """
         return self._ContainerFile
@@ -23047,7 +23376,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ContainerStdout(self):
-        """自建k8s-容器标准输出信息，包括容器、命名空间等，详细参考https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo
+        """自建k8s-容器标准输出信息，包括容器、命名空间等，
+
+- 详情参考 [ContainerStdoutInfo]( https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 文档
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         """
         return self._ContainerStdout
@@ -23093,7 +23424,7 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ExtractRule(self):
-        """提取规则，如果设置了ExtractRule，则必须设置LogType
+        """提取规则，如果设置了ExtractRule，则必须设置LogType。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         """
         return self._ExtractRule
@@ -25746,7 +26077,7 @@ class ModifyTopicRequest(AbstractModel):
 - 如果传递了MaxSplitPartitions，需要PartitionCount<=MaxSplitPartitions；
         :type PartitionCount: int
         :param _CancelTopicAsyncTaskID: 取消切换存储任务的id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
         :type CancelTopicAsyncTaskID: str
         """
         self._TopicId = None
@@ -25912,7 +26243,7 @@ class ModifyTopicRequest(AbstractModel):
     @property
     def CancelTopicAsyncTaskID(self):
         """取消切换存储任务的id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
         :rtype: str
         """
         return self._CancelTopicAsyncTaskID

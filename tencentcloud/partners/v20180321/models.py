@@ -2076,9 +2076,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
         :type HasOverdueBill: int
         :param _ClientRemark: 客户备注
         :type ClientRemark: str
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量 请保持必传
         :type Offset: int
-        :param _Limit: 限制数目
+        :param _Limit: 限制数目 请保持必传，最大2000
         :type Limit: int
         :param _ClientType: 可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
         :type ClientType: str
@@ -2182,7 +2182,7 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量 请保持必传
         :rtype: int
         """
         return self._Offset
@@ -2193,7 +2193,7 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制数目
+        """限制数目 请保持必传，最大2000
         :rtype: int
         """
         return self._Limit

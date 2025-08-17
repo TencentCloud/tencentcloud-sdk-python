@@ -18916,6 +18916,127 @@ class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMPSTemplateRequest(AbstractModel):
+    """CreateMPSTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _TemplateType: 需要创建的 MPS 模板的类型。取值：
+<li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
+        :type TemplateType: str
+        :param _MPSCreateTemplateParams: MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
+目前仅支持通过此方式创建以下任务类型的模板：
+1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填。
+
+目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
+
+        :type MPSCreateTemplateParams: str
+        """
+        self._SubAppId = None
+        self._TemplateType = None
+        self._MPSCreateTemplateParams = None
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def TemplateType(self):
+        """需要创建的 MPS 模板的类型。取值：
+<li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def MPSCreateTemplateParams(self):
+        """MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
+目前仅支持通过此方式创建以下任务类型的模板：
+1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填。
+
+目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
+
+        :rtype: str
+        """
+        return self._MPSCreateTemplateParams
+
+    @MPSCreateTemplateParams.setter
+    def MPSCreateTemplateParams(self, MPSCreateTemplateParams):
+        self._MPSCreateTemplateParams = MPSCreateTemplateParams
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._TemplateType = params.get("TemplateType")
+        self._MPSCreateTemplateParams = params.get("MPSCreateTemplateParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMPSTemplateResponse(AbstractModel):
+    """CreateMPSTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: MPS 任务模板唯一标识。该模板独立于直接在 MPS 服务中创建的模板。
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        """MPS 任务模板唯一标识。该模板独立于直接在 MPS 服务中创建的模板。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePersonSampleRequest(AbstractModel):
     """CreatePersonSample请求参数结构体
 
@@ -22937,6 +23058,102 @@ class DeleteJustInTimeTranscodeTemplateRequest(AbstractModel):
 
 class DeleteJustInTimeTranscodeTemplateResponse(AbstractModel):
     """DeleteJustInTimeTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteMPSTemplateRequest(AbstractModel):
+    """DeleteMPSTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _TemplateType: 需要删除的 MPS 模板的类型。取值：
+<li>Transcode: 删除转码模板。</li>
+        :type TemplateType: str
+        :param _Definition: MPS 任务模板唯一标识。
+        :type Definition: int
+        """
+        self._SubAppId = None
+        self._TemplateType = None
+        self._Definition = None
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def TemplateType(self):
+        """需要删除的 MPS 模板的类型。取值：
+<li>Transcode: 删除转码模板。</li>
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def Definition(self):
+        """MPS 任务模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._TemplateType = params.get("TemplateType")
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMPSTemplateResponse(AbstractModel):
+    """DeleteMPSTemplate返回参数结构体
 
     """
 
@@ -28601,6 +28818,139 @@ class DescribeLicenseUsageDataResponse(AbstractModel):
                 obj = LicenseUsageDataItem()
                 obj._deserialize(item)
                 self._LicenseUsageDataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMPSTemplatesRequest(AbstractModel):
+    """DescribeMPSTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _TemplateType: MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
+<li>Transcode: 查询转码模板列表。</li>
+        :type TemplateType: str
+        :param _MPSDescribeTemplateParams: MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
+1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+        :type MPSDescribeTemplateParams: str
+        """
+        self._SubAppId = None
+        self._TemplateType = None
+        self._MPSDescribeTemplateParams = None
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def TemplateType(self):
+        """MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
+<li>Transcode: 查询转码模板列表。</li>
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def MPSDescribeTemplateParams(self):
+        """MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
+1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+        :rtype: str
+        """
+        return self._MPSDescribeTemplateParams
+
+    @MPSDescribeTemplateParams.setter
+    def MPSDescribeTemplateParams(self, MPSDescribeTemplateParams):
+        self._MPSDescribeTemplateParams = MPSDescribeTemplateParams
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._TemplateType = params.get("TemplateType")
+        self._MPSDescribeTemplateParams = params.get("MPSDescribeTemplateParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMPSTemplatesResponse(AbstractModel):
+    """DescribeMPSTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _MPSTemplateSet: MPS 任务模板详情列表。
+        :type MPSTemplateSet: list of MPSTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._MPSTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MPSTemplateSet(self):
+        """MPS 任务模板详情列表。
+        :rtype: list of MPSTemplate
+        """
+        return self._MPSTemplateSet
+
+    @MPSTemplateSet.setter
+    def MPSTemplateSet(self, MPSTemplateSet):
+        self._MPSTemplateSet = MPSTemplateSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("MPSTemplateSet") is not None:
+            self._MPSTemplateSet = []
+            for item in params.get("MPSTemplateSet"):
+                obj = MPSTemplate()
+                obj._deserialize(item)
+                self._MPSTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -41132,6 +41482,61 @@ class MPSTaskOutput(AbstractModel):
         
 
 
+class MPSTemplate(AbstractModel):
+    """MPS 任务模板详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: MPS 模板的类型。取值：
+<li>Transcode: 转码模板。</li>
+        :type TaskType: str
+        :param _MPSTemplateInfo: MPS 任务模板详情内容。
+示例：{"Definition":24214,"Name":"test","Comment":"","Type":"Preset","EnhanceConfig":{"VideoEnhance":{"FrameRate":{"Switch":"ON","Fps":50},"SuperResolution":{"Switch":"ON","Type":"lq"}}}}
+        :type MPSTemplateInfo: str
+        """
+        self._TaskType = None
+        self._MPSTemplateInfo = None
+
+    @property
+    def TaskType(self):
+        """MPS 模板的类型。取值：
+<li>Transcode: 转码模板。</li>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def MPSTemplateInfo(self):
+        """MPS 任务模板详情内容。
+示例：{"Definition":24214,"Name":"test","Comment":"","Type":"Preset","EnhanceConfig":{"VideoEnhance":{"FrameRate":{"Switch":"ON","Fps":50},"SuperResolution":{"Switch":"ON","Type":"lq"}}}}
+        :rtype: str
+        """
+        return self._MPSTemplateInfo
+
+    @MPSTemplateInfo.setter
+    def MPSTemplateInfo(self, MPSTemplateInfo):
+        self._MPSTemplateInfo = MPSTemplateInfo
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._MPSTemplateInfo = params.get("MPSTemplateInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ManageTaskRequest(AbstractModel):
     """ManageTask请求参数结构体
 
@@ -49511,6 +49916,108 @@ class ModifyJustInTimeTranscodeTemplateRequest(AbstractModel):
 
 class ModifyJustInTimeTranscodeTemplateResponse(AbstractModel):
     """ModifyJustInTimeTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMPSTemplateRequest(AbstractModel):
+    """ModifyMPSTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _TemplateType: 需要修改的 MPS 模板的类型。取值：
+<li>Transcode: 创建转码模板，目前仅支持修改增强参数。</li>
+        :type TemplateType: str
+        :param _MPSModifyTemplateParams: MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。
+ 目前仅支持通过此方式修改以下任务类型的模板：
+1. 音视频增强：仅支持填写“[修改转码模板](https://cloud.tencent.com/document/api/862/37578)”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+示例：{"Definition":24214,"Container":"mp4","Name":"test","RemoveAudio":1,"VideoTemplate":{"Codec":"h264","Fps":0,"Bitrate":0},"EnhanceConfig":{"VideoEnhance":{"FrameRate":{"Switch":"ON","Fps":50}}}}
+        :type MPSModifyTemplateParams: str
+        """
+        self._SubAppId = None
+        self._TemplateType = None
+        self._MPSModifyTemplateParams = None
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def TemplateType(self):
+        """需要修改的 MPS 模板的类型。取值：
+<li>Transcode: 创建转码模板，目前仅支持修改增强参数。</li>
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def MPSModifyTemplateParams(self):
+        """MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。
+ 目前仅支持通过此方式修改以下任务类型的模板：
+1. 音视频增强：仅支持填写“[修改转码模板](https://cloud.tencent.com/document/api/862/37578)”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+示例：{"Definition":24214,"Container":"mp4","Name":"test","RemoveAudio":1,"VideoTemplate":{"Codec":"h264","Fps":0,"Bitrate":0},"EnhanceConfig":{"VideoEnhance":{"FrameRate":{"Switch":"ON","Fps":50}}}}
+        :rtype: str
+        """
+        return self._MPSModifyTemplateParams
+
+    @MPSModifyTemplateParams.setter
+    def MPSModifyTemplateParams(self, MPSModifyTemplateParams):
+        self._MPSModifyTemplateParams = MPSModifyTemplateParams
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._TemplateType = params.get("TemplateType")
+        self._MPSModifyTemplateParams = params.get("MPSModifyTemplateParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMPSTemplateResponse(AbstractModel):
+    """ModifyMPSTemplate返回参数结构体
 
     """
 

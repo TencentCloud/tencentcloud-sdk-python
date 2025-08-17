@@ -16620,6 +16620,8 @@ class CreateSealRequest(AbstractModel):
 <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 </ul>
         :type TaxIdentifyCode: str
+        :param _SealDescription: 印章描述内容
+        :type SealDescription: str
         """
         self._Operator = None
         self._SealName = None
@@ -16638,6 +16640,7 @@ class CreateSealRequest(AbstractModel):
         self._SealStyle = None
         self._SealSize = None
         self._TaxIdentifyCode = None
+        self._SealDescription = None
 
     @property
     def Operator(self):
@@ -16853,6 +16856,17 @@ class CreateSealRequest(AbstractModel):
     def TaxIdentifyCode(self, TaxIdentifyCode):
         self._TaxIdentifyCode = TaxIdentifyCode
 
+    @property
+    def SealDescription(self):
+        """印章描述内容
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -16876,6 +16890,7 @@ class CreateSealRequest(AbstractModel):
         self._SealStyle = params.get("SealStyle")
         self._SealSize = params.get("SealSize")
         self._TaxIdentifyCode = params.get("TaxIdentifyCode")
+        self._SealDescription = params.get("SealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31928,6 +31943,16 @@ class OccupiedSeal(AbstractModel):
         :type AuthorizedUsers: list of AuthorizedUser
         :param _ExtendScene: 印章扩展数据信息
         :type ExtendScene: :class:`tencentcloud.ess.v20201111.models.ExtendScene`
+        :param _RealWidth: 印章的真实宽度，单位毫米
+        :type RealWidth: int
+        :param _RealHeight: 印章的真实高度，单位毫米
+        :type RealHeight: int
+        :param _SubSealType: 自定义子类型印章
+        :type SubSealType: str
+        :param _SubSealName: 自定义子类型印章名称
+        :type SubSealName: str
+        :param _SealDescription: 印章描述
+        :type SealDescription: str
         """
         self._SealId = None
         self._SealName = None
@@ -31941,6 +31966,11 @@ class OccupiedSeal(AbstractModel):
         self._IsAllTime = None
         self._AuthorizedUsers = None
         self._ExtendScene = None
+        self._RealWidth = None
+        self._RealHeight = None
+        self._SubSealType = None
+        self._SubSealName = None
+        self._SealDescription = None
 
     @property
     def SealId(self):
@@ -32074,6 +32104,61 @@ class OccupiedSeal(AbstractModel):
     def ExtendScene(self, ExtendScene):
         self._ExtendScene = ExtendScene
 
+    @property
+    def RealWidth(self):
+        """印章的真实宽度，单位毫米
+        :rtype: int
+        """
+        return self._RealWidth
+
+    @RealWidth.setter
+    def RealWidth(self, RealWidth):
+        self._RealWidth = RealWidth
+
+    @property
+    def RealHeight(self):
+        """印章的真实高度，单位毫米
+        :rtype: int
+        """
+        return self._RealHeight
+
+    @RealHeight.setter
+    def RealHeight(self, RealHeight):
+        self._RealHeight = RealHeight
+
+    @property
+    def SubSealType(self):
+        """自定义子类型印章
+        :rtype: str
+        """
+        return self._SubSealType
+
+    @SubSealType.setter
+    def SubSealType(self, SubSealType):
+        self._SubSealType = SubSealType
+
+    @property
+    def SubSealName(self):
+        """自定义子类型印章名称
+        :rtype: str
+        """
+        return self._SubSealName
+
+    @SubSealName.setter
+    def SubSealName(self, SubSealName):
+        self._SubSealName = SubSealName
+
+    @property
+    def SealDescription(self):
+        """印章描述
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
 
     def _deserialize(self, params):
         self._SealId = params.get("SealId")
@@ -32095,6 +32180,11 @@ class OccupiedSeal(AbstractModel):
         if params.get("ExtendScene") is not None:
             self._ExtendScene = ExtendScene()
             self._ExtendScene._deserialize(params.get("ExtendScene"))
+        self._RealWidth = params.get("RealWidth")
+        self._RealHeight = params.get("RealHeight")
+        self._SubSealType = params.get("SubSealType")
+        self._SubSealName = params.get("SubSealName")
+        self._SealDescription = params.get("SealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32534,10 +32624,13 @@ class OrganizationAuthUrl(AbstractModel):
         :type ErrorMessage: str
         :param _SubTaskId: 企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationAuthorizationUrl)。
         :type SubTaskId: str
+        :param _OrganizationName: 企业批量注册 传递过来的企业名称，方便客户定位企业
+        :type OrganizationName: str
         """
         self._AuthUrl = None
         self._ErrorMessage = None
         self._SubTaskId = None
+        self._OrganizationName = None
 
     @property
     def AuthUrl(self):
@@ -32580,11 +32673,23 @@ class OrganizationAuthUrl(AbstractModel):
     def SubTaskId(self, SubTaskId):
         self._SubTaskId = SubTaskId
 
+    @property
+    def OrganizationName(self):
+        """企业批量注册 传递过来的企业名称，方便客户定位企业
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
 
     def _deserialize(self, params):
         self._AuthUrl = params.get("AuthUrl")
         self._ErrorMessage = params.get("ErrorMessage")
         self._SubTaskId = params.get("SubTaskId")
+        self._OrganizationName = params.get("OrganizationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -4613,11 +4613,14 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
         :type Remark: str
         :param _TraceFlag: 是否开启trace
         :type TraceFlag: bool
+        :param _SendReceiveRatio: 限流生产消费比例
+        :type SendReceiveRatio: float
         """
         self._InstanceId = None
         self._ClusterName = None
         self._Remark = None
         self._TraceFlag = None
+        self._SendReceiveRatio = None
 
     @property
     def InstanceId(self):
@@ -4663,12 +4666,24 @@ class ModifyRabbitMQServerlessInstanceRequest(AbstractModel):
     def TraceFlag(self, TraceFlag):
         self._TraceFlag = TraceFlag
 
+    @property
+    def SendReceiveRatio(self):
+        """限流生产消费比例
+        :rtype: float
+        """
+        return self._SendReceiveRatio
+
+    @SendReceiveRatio.setter
+    def SendReceiveRatio(self, SendReceiveRatio):
+        self._SendReceiveRatio = SendReceiveRatio
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ClusterName = params.get("ClusterName")
         self._Remark = params.get("Remark")
         self._TraceFlag = params.get("TraceFlag")
+        self._SendReceiveRatio = params.get("SendReceiveRatio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

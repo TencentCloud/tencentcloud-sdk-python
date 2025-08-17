@@ -36801,6 +36801,8 @@ class VatElectronicInfo(AbstractModel):
         :type TaxMark: str
         :param _CompanySealMark: 是否有公司印章（0：没有，1：有）
         :type CompanySealMark: int
+        :param _InvoicePageIndex: 全电类型的多页pdf票据中，支持输出票面页码：当前第几页，一共第几页。
+        :type InvoicePageIndex: str
         """
         self._Title = None
         self._Number = None
@@ -36824,6 +36826,7 @@ class VatElectronicInfo(AbstractModel):
         self._PretaxAmountMark = None
         self._TaxMark = None
         self._CompanySealMark = None
+        self._InvoicePageIndex = None
 
     @property
     def Title(self):
@@ -37067,6 +37070,17 @@ class VatElectronicInfo(AbstractModel):
     def CompanySealMark(self, CompanySealMark):
         self._CompanySealMark = CompanySealMark
 
+    @property
+    def InvoicePageIndex(self):
+        """全电类型的多页pdf票据中，支持输出票面页码：当前第几页，一共第几页。
+        :rtype: str
+        """
+        return self._InvoicePageIndex
+
+    @InvoicePageIndex.setter
+    def InvoicePageIndex(self, InvoicePageIndex):
+        self._InvoicePageIndex = InvoicePageIndex
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -37096,6 +37110,7 @@ class VatElectronicInfo(AbstractModel):
         self._PretaxAmountMark = params.get("PretaxAmountMark")
         self._TaxMark = params.get("TaxMark")
         self._CompanySealMark = params.get("CompanySealMark")
+        self._InvoicePageIndex = params.get("InvoicePageIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

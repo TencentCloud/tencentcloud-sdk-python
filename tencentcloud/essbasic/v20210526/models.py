@@ -17683,6 +17683,8 @@ class CreateSealByImageRequest(AbstractModel):
 <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 </ul>
         :type TaxIdentifyCode: str
+        :param _SealDescription: 印章描述内容
+        :type SealDescription: str
         """
         self._Agent = None
         self._SealName = None
@@ -17694,6 +17696,7 @@ class CreateSealByImageRequest(AbstractModel):
         self._SealStyle = None
         self._SealSize = None
         self._TaxIdentifyCode = None
+        self._SealDescription = None
 
     @property
     def Agent(self):
@@ -17838,6 +17841,17 @@ class CreateSealByImageRequest(AbstractModel):
     def TaxIdentifyCode(self, TaxIdentifyCode):
         self._TaxIdentifyCode = TaxIdentifyCode
 
+    @property
+    def SealDescription(self):
+        """印章描述内容
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -17854,6 +17868,7 @@ class CreateSealByImageRequest(AbstractModel):
         self._SealStyle = params.get("SealStyle")
         self._SealSize = params.get("SealSize")
         self._TaxIdentifyCode = params.get("TaxIdentifyCode")
+        self._SealDescription = params.get("SealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26444,6 +26459,12 @@ class OccupiedSeal(AbstractModel):
         :type IsAllTime: bool
         :param _AuthorizedUsers: 授权人列表
         :type AuthorizedUsers: list of AuthorizedUser
+        :param _RealWidth: 印章的真实宽度，单位毫米	
+        :type RealWidth: int
+        :param _RealHeight: 印章的真实高度，单位毫米	
+        :type RealHeight: int
+        :param _SealDescription: 印章描述
+        :type SealDescription: str
         """
         self._SealId = None
         self._SealName = None
@@ -26456,6 +26477,9 @@ class OccupiedSeal(AbstractModel):
         self._SealType = None
         self._IsAllTime = None
         self._AuthorizedUsers = None
+        self._RealWidth = None
+        self._RealHeight = None
+        self._SealDescription = None
 
     @property
     def SealId(self):
@@ -26584,6 +26608,39 @@ class OccupiedSeal(AbstractModel):
     def AuthorizedUsers(self, AuthorizedUsers):
         self._AuthorizedUsers = AuthorizedUsers
 
+    @property
+    def RealWidth(self):
+        """印章的真实宽度，单位毫米	
+        :rtype: int
+        """
+        return self._RealWidth
+
+    @RealWidth.setter
+    def RealWidth(self, RealWidth):
+        self._RealWidth = RealWidth
+
+    @property
+    def RealHeight(self):
+        """印章的真实高度，单位毫米	
+        :rtype: int
+        """
+        return self._RealHeight
+
+    @RealHeight.setter
+    def RealHeight(self, RealHeight):
+        self._RealHeight = RealHeight
+
+    @property
+    def SealDescription(self):
+        """印章描述
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
 
     def _deserialize(self, params):
         self._SealId = params.get("SealId")
@@ -26602,6 +26659,9 @@ class OccupiedSeal(AbstractModel):
                 obj = AuthorizedUser()
                 obj._deserialize(item)
                 self._AuthorizedUsers.append(obj)
+        self._RealWidth = params.get("RealWidth")
+        self._RealHeight = params.get("RealHeight")
+        self._SealDescription = params.get("SealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

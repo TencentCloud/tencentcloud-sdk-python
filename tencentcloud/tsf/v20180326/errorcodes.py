@@ -125,6 +125,9 @@ FAILEDOPERATION_FINDMETRICSEXCLUSIVEERROR = 'FailedOperation.FindMetricsExclusiv
 # 网关通用异常[网关异常]。
 FAILEDOPERATION_GATEWAYCOMMONERROR = 'FailedOperation.GatewayCommonError'
 
+# 当前分组已绑定部署组,请解绑后删除
+FAILEDOPERATION_GATEWAYGROUPBOUNDDELETEFAILED = 'FailedOperation.GatewayGroupBoundDeleteFailed'
+
 # 远端访问错误。
 FAILEDOPERATION_GATEWAYREMOTECALLERROR = 'FailedOperation.GatewayRemoteCallError'
 
@@ -388,6 +391,9 @@ INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = 'InternalError.Containergrou
 
 # Kubernetes deployment 未找到。
 INTERNALERROR_CONTAINERGROUPKUBERNETEDEPLOYMENTNOTFOUND = 'InternalError.ContainergroupKuberneteDeploymentNotfound'
+
+# 连接TKE服务失败。
+INTERNALERROR_CONTAINERGROUPKUBERNETESCONNECTERROR = 'InternalError.ContainergroupKubernetesConnectError'
 
 # 容器应用SQL错误。
 INTERNALERROR_CONTAINERGROUPSQLFAILED = 'InternalError.ContainergroupSqlFailed'

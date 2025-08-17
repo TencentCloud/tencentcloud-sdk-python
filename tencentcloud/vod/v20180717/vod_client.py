@@ -518,6 +518,36 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMPSTemplate(self, request):
+        """该接口用于创建自定义模板，模板用于 ProcessMediaByMPS 接口的部分功能。
+        创建模板时，需要将 MPS 相关参数以 JSON 格式填入 MPSCreateTemplateParams 参数中。关于具体的任务参数配置方法，请参考 MPS 任务模板相关文档说明。
+        当前支持创建自定义模板的 MPS 功能：
+        1. [音视频增强](https://cloud.tencent.com/document/product/862/118703)。
+
+        > 以该种方式创建的任务模板：
+        > 1. 模板的管理仍在点播平台中完成。
+        > 2. 该功能目前仍在内测中，如需测试体验，您可以联系我们获得支持。
+
+        :param request: Request instance for CreateMPSTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateMPSTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateMPSTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMPSTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMPSTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePersonSample(self, request):
         """该接口用于创建素材样本，用于通过五官定位等技术，进行内容识别、不适宜视频识别等视频处理。
 
@@ -1143,6 +1173,29 @@ class VodClient(AbstractClient):
             body = self.call("DeleteJustInTimeTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteMPSTemplate(self, request):
+        """删除用户自定义 MPS 任务模板。
+
+        :param request: Request instance for DeleteMPSTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteMPSTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteMPSTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMPSTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMPSTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2212,6 +2265,30 @@ class VodClient(AbstractClient):
             body = self.call("DescribeLicenseUsageData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLicenseUsageDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMPSTemplates(self, request):
+        """获取用户自定义媒体处理服务（MPS）任务模板。
+        查询模板列表时，需要将 MPS 相关参数以 JSON 格式填入 MPSDescribeTemplateParams 参数中。关于具体的任务参数配置方法，请参考 MPS 任务模板相关文档说明。
+
+        :param request: Request instance for DescribeMPSTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeMPSTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeMPSTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMPSTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMPSTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3432,6 +3509,30 @@ class VodClient(AbstractClient):
             body = self.call("ModifyJustInTimeTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMPSTemplate(self, request):
+        """修改用户自定义 MPS 任务模板。
+        修改模板时，需要将 MPS 相关参数以 JSON 格式填入 MPSModifyTemplateParams 参数中。关于具体的任务参数配置方法，请参考 MPS 任务模板相关文档说明。
+
+        :param request: Request instance for ModifyMPSTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyMPSTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyMPSTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMPSTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMPSTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
