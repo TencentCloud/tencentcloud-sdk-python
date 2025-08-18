@@ -434,39 +434,28 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
-        :type DomainInstanceId: str
         :param _DeviceVirtualGroupName: 必填，终端自定义分组名
         :type DeviceVirtualGroupName: str
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
         :param _Description: 详情
         :type Description: str
-        :param _OsType: 必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios ）(只支持32位)
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios ； 默认值0）(只支持32位)
         :type OsType: int
-        :param _TimeType: 必填，分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组）(只支持32位)
+        :param _TimeType: 分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组； 默认值0）(只支持32位)
         :type TimeType: int
         :param _AutoMinute: 选填，TimeType=3时的自动划分时间，其他情况为0（单位min）(只支持32位)
         :type AutoMinute: int
         :param _AutoRules: 选填，手动分组不填，自动划分分组的划分规则数据
         :type AutoRules: :class:`tencentcloud.ioa.v20220601.models.ComplexRule`
         """
-        self._DomainInstanceId = None
         self._DeviceVirtualGroupName = None
+        self._DomainInstanceId = None
         self._Description = None
         self._OsType = None
         self._TimeType = None
         self._AutoMinute = None
         self._AutoRules = None
-
-    @property
-    def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
-        :rtype: str
-        """
-        return self._DomainInstanceId
-
-    @DomainInstanceId.setter
-    def DomainInstanceId(self, DomainInstanceId):
-        self._DomainInstanceId = DomainInstanceId
 
     @property
     def DeviceVirtualGroupName(self):
@@ -478,6 +467,17 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
     @DeviceVirtualGroupName.setter
     def DeviceVirtualGroupName(self, DeviceVirtualGroupName):
         self._DeviceVirtualGroupName = DeviceVirtualGroupName
+
+    @property
+    def DomainInstanceId(self):
+        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
 
     @property
     def Description(self):
@@ -492,7 +492,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios ）(只支持32位)
+        """系统类型（0: win，1：linux，2: mac，4：android，5：ios ； 默认值0）(只支持32位)
         :rtype: int
         """
         return self._OsType
@@ -503,7 +503,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def TimeType(self):
-        """必填，分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组）(只支持32位)
+        """分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组； 默认值0）(只支持32位)
         :rtype: int
         """
         return self._TimeType
@@ -536,8 +536,8 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._DomainInstanceId = params.get("DomainInstanceId")
         self._DeviceVirtualGroupName = params.get("DeviceVirtualGroupName")
+        self._DomainInstanceId = params.get("DomainInstanceId")
         self._Description = params.get("Description")
         self._OsType = params.get("OsType")
         self._TimeType = params.get("TimeType")
@@ -643,13 +643,27 @@ class CreatePrivilegeCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
-        :type DomainInstanceId: str
         :param _Mid: 必填；设备唯一标识符;
         :type Mid: str
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
+        :type OsType: int
         """
-        self._DomainInstanceId = None
         self._Mid = None
+        self._DomainInstanceId = None
+        self._OsType = None
+
+    @property
+    def Mid(self):
+        """必填；设备唯一标识符;
+        :rtype: str
+        """
+        return self._Mid
+
+    @Mid.setter
+    def Mid(self, Mid):
+        self._Mid = Mid
 
     @property
     def DomainInstanceId(self):
@@ -663,20 +677,21 @@ class CreatePrivilegeCodeRequest(AbstractModel):
         self._DomainInstanceId = DomainInstanceId
 
     @property
-    def Mid(self):
-        """必填；设备唯一标识符;
-        :rtype: str
+    def OsType(self):
+        """系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
+        :rtype: int
         """
-        return self._Mid
+        return self._OsType
 
-    @Mid.setter
-    def Mid(self, Mid):
-        self._Mid = Mid
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
 
 
     def _deserialize(self, params):
-        self._DomainInstanceId = params.get("DomainInstanceId")
         self._Mid = params.get("Mid")
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        self._OsType = params.get("OsType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -695,7 +710,6 @@ class CreatePrivilegeCodeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 业务响应数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.CreatePrivilegeCodeRspData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -706,7 +720,6 @@ class CreatePrivilegeCodeResponse(AbstractModel):
     @property
     def Data(self):
         """业务响应数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ioa.v20220601.models.CreatePrivilegeCodeRspData`
         """
         return self._Data
@@ -1502,6 +1515,8 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
         :type HardDiskSize: str
         :param _Monitor: 显示器品牌型号
         :type Monitor: str
+        :param _RemarkName: 终端备注名
+        :type RemarkName: str
         """
         self._Id = None
         self._Mid = None
@@ -1519,6 +1534,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
         self._Memory = None
         self._HardDiskSize = None
         self._Monitor = None
+        self._RemarkName = None
 
     @property
     def Id(self):
@@ -1696,6 +1712,17 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
     def Monitor(self, Monitor):
         self._Monitor = Monitor
 
+    @property
+    def RemarkName(self):
+        """终端备注名
+        :rtype: str
+        """
+        return self._RemarkName
+
+    @RemarkName.setter
+    def RemarkName(self, RemarkName):
+        self._RemarkName = RemarkName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1714,6 +1741,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
         self._Memory = params.get("Memory")
         self._HardDiskSize = params.get("HardDiskSize")
         self._Monitor = params.get("Monitor")
+        self._RemarkName = params.get("RemarkName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5789,22 +5817,33 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DeviceList: 必填，操作的设备列表数据
+        :type DeviceList: list of ModifyVirtualDeviceGroupsReqItem
         :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :type DomainInstanceId: str
         :param _DeviceVirtualGroupId: 添加到的终端自定义分组id。和DeviceVirtualGroupIds互斥，必填其一，优先使用本参数
         :type DeviceVirtualGroupId: int
-        :param _DeviceList: 必填，操作的设备列表数据
-        :type DeviceList: list of ModifyVirtualDeviceGroupsReqItem
         :param _DeviceVirtualGroupIds: 要添加的终端自定义分组id列表
         :type DeviceVirtualGroupIds: list of int
-        :param _OsType: 必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
         :type OsType: int
         """
+        self._DeviceList = None
         self._DomainInstanceId = None
         self._DeviceVirtualGroupId = None
-        self._DeviceList = None
         self._DeviceVirtualGroupIds = None
         self._OsType = None
+
+    @property
+    def DeviceList(self):
+        """必填，操作的设备列表数据
+        :rtype: list of ModifyVirtualDeviceGroupsReqItem
+        """
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
 
     @property
     def DomainInstanceId(self):
@@ -5829,17 +5868,6 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
         self._DeviceVirtualGroupId = DeviceVirtualGroupId
 
     @property
-    def DeviceList(self):
-        """必填，操作的设备列表数据
-        :rtype: list of ModifyVirtualDeviceGroupsReqItem
-        """
-        return self._DeviceList
-
-    @DeviceList.setter
-    def DeviceList(self, DeviceList):
-        self._DeviceList = DeviceList
-
-    @property
     def DeviceVirtualGroupIds(self):
         """要添加的终端自定义分组id列表
         :rtype: list of int
@@ -5852,7 +5880,7 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
     @property
     def OsType(self):
-        """必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios   默认值0）
+        """系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
         :rtype: int
         """
         return self._OsType
@@ -5863,14 +5891,14 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._DomainInstanceId = params.get("DomainInstanceId")
-        self._DeviceVirtualGroupId = params.get("DeviceVirtualGroupId")
         if params.get("DeviceList") is not None:
             self._DeviceList = []
             for item in params.get("DeviceList"):
                 obj = ModifyVirtualDeviceGroupsReqItem()
                 obj._deserialize(item)
                 self._DeviceList.append(obj)
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        self._DeviceVirtualGroupId = params.get("DeviceVirtualGroupId")
         self._DeviceVirtualGroupIds = params.get("DeviceVirtualGroupIds")
         self._OsType = params.get("OsType")
         memeber_set = set(params.keys())

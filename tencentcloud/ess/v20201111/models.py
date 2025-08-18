@@ -25095,11 +25095,18 @@ class EmbedUrlOption(AbstractModel):
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
 
         :type ForbidEditWatermark: bool
+        :param _SealDescription: 印章描述
+        :type SealDescription: str
+        :param _ForbidEditSealDescription: 是否禁止编辑印章描述内容
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :type ForbidEditSealDescription: str
         """
         self._ShowFlowDetailComponent = None
         self._ShowTemplateComponent = None
         self._SkipUploadFile = None
         self._ForbidEditWatermark = None
+        self._SealDescription = None
+        self._ForbidEditSealDescription = None
 
     @property
     def ShowFlowDetailComponent(self):
@@ -25158,12 +25165,37 @@ class EmbedUrlOption(AbstractModel):
     def ForbidEditWatermark(self, ForbidEditWatermark):
         self._ForbidEditWatermark = ForbidEditWatermark
 
+    @property
+    def SealDescription(self):
+        """印章描述
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
+    @property
+    def ForbidEditSealDescription(self):
+        """是否禁止编辑印章描述内容
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :rtype: str
+        """
+        return self._ForbidEditSealDescription
+
+    @ForbidEditSealDescription.setter
+    def ForbidEditSealDescription(self, ForbidEditSealDescription):
+        self._ForbidEditSealDescription = ForbidEditSealDescription
+
 
     def _deserialize(self, params):
         self._ShowFlowDetailComponent = params.get("ShowFlowDetailComponent")
         self._ShowTemplateComponent = params.get("ShowTemplateComponent")
         self._SkipUploadFile = params.get("SkipUploadFile")
         self._ForbidEditWatermark = params.get("ForbidEditWatermark")
+        self._SealDescription = params.get("SealDescription")
+        self._ForbidEditSealDescription = params.get("ForbidEditSealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

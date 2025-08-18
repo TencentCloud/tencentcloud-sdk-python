@@ -210,6 +210,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AttachDataMaskPolicy(self, request):
+        """绑定数据脱敏策略
+
+        :param request: Request instance for AttachDataMaskPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.AttachDataMaskPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.AttachDataMaskPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachDataMaskPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachDataMaskPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AttachUserPolicy(self, request):
         """绑定鉴权策略到用户
 
@@ -569,6 +592,29 @@ class DlcClient(AbstractClient):
             body = self.call("CreateDataEngine", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDataMaskStrategy(self, request):
+        """创建数据脱敏策略
+
+        :param request: Request instance for CreateDataMaskStrategy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDataMaskStrategyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateDataMaskStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataMaskStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataMaskStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1123,6 +1169,29 @@ class DlcClient(AbstractClient):
             body = self.call("DeleteDataEngine", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDataMaskStrategy(self, request):
+        """删除数据脱敏策略
+
+        :param request: Request instance for DeleteDataMaskStrategy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteDataMaskStrategyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteDataMaskStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataMaskStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataMaskStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1698,6 +1767,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeDataEnginesScaleDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataEnginesScaleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataMaskStrategies(self, request):
+        """查询数据脱敏列表接口
+
+        :param request: Request instance for DescribeDataMaskStrategies.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataMaskStrategiesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataMaskStrategiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataMaskStrategies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataMaskStrategiesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2687,6 +2779,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeThirdPartyAccessUser", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeThirdPartyAccessUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUDFPolicy(self, request):
+        """获取UDF权限信息
+
+        :param request: Request instance for DescribeUDFPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUDFPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUDFPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUDFPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUDFPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3823,6 +3938,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateDataMaskStrategy(self, request):
+        """更新数据脱敏策略
+
+        :param request: Request instance for UpdateDataMaskStrategy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataMaskStrategyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateDataMaskStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataMaskStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataMaskStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateEngineResourceGroupNetworkConfigInfo(self, request):
         """更新标准引擎资源组网络配置信息
 
@@ -3952,6 +4090,29 @@ class DlcClient(AbstractClient):
             body = self.call("UpdateStandardEngineResourceGroupResourceInfo", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateStandardEngineResourceGroupResourceInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateUDFPolicy(self, request):
+        """UDP权限修改
+
+        :param request: Request instance for UpdateUDFPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateUDFPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateUDFPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateUDFPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateUDFPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

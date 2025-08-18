@@ -9560,6 +9560,57 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GpuInfo(AbstractModel):
+    """节点Gpu信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GpuCount: Gpu块数
+        :type GpuCount: int
+        :param _GpuType: Gpu类型
+        :type GpuType: str
+        """
+        self._GpuCount = None
+        self._GpuType = None
+
+    @property
+    def GpuCount(self):
+        """Gpu块数
+        :rtype: int
+        """
+        return self._GpuCount
+
+    @GpuCount.setter
+    def GpuCount(self, GpuCount):
+        self._GpuCount = GpuCount
+
+    @property
+    def GpuType(self):
+        """Gpu类型
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+
+    def _deserialize(self, params):
+        self._GpuCount = params.get("GpuCount")
+        self._GpuType = params.get("GpuType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IndexMetaField(AbstractModel):
     """索引元数据字段
 
@@ -10739,6 +10790,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         :type EnableDestroyProtection: str
         :param _ShowKibanaIpPort: kibana内网访问地址
         :type ShowKibanaIpPort: str
+        :param _IsCdzLite: 是否为CDZLite可用区
+        :type IsCdzLite: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -10835,6 +10888,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._EnableScheduleOperationDuration = None
         self._EnableDestroyProtection = None
         self._ShowKibanaIpPort = None
+        self._IsCdzLite = None
 
     @property
     def InstanceId(self):
@@ -11944,6 +11998,17 @@ RENEW_FLAG_DEFAULT：不自动续费
     def ShowKibanaIpPort(self, ShowKibanaIpPort):
         self._ShowKibanaIpPort = ShowKibanaIpPort
 
+    @property
+    def IsCdzLite(self):
+        """是否为CDZLite可用区
+        :rtype: bool
+        """
+        return self._IsCdzLite
+
+    @IsCdzLite.setter
+    def IsCdzLite(self, IsCdzLite):
+        self._IsCdzLite = IsCdzLite
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12089,6 +12154,7 @@ RENEW_FLAG_DEFAULT：不自动续费
             self._EnableScheduleOperationDuration._deserialize(params.get("EnableScheduleOperationDuration"))
         self._EnableDestroyProtection = params.get("EnableDestroyProtection")
         self._ShowKibanaIpPort = params.get("ShowKibanaIpPort")
+        self._IsCdzLite = params.get("IsCdzLite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14360,6 +14426,9 @@ class NodeInfo(AbstractModel):
         :param _DiskEnhance: /
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskEnhance: int
+        :param _GpuInfo: 节点Gpu信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuInfo: :class:`tencentcloud.es.v20180416.models.GpuInfo`
         """
         self._NodeNum = None
         self._NodeType = None
@@ -14372,6 +14441,7 @@ class NodeInfo(AbstractModel):
         self._CpuNum = None
         self._MemSize = None
         self._DiskEnhance = None
+        self._GpuInfo = None
 
     @property
     def NodeNum(self):
@@ -14501,6 +14571,18 @@ class NodeInfo(AbstractModel):
     def DiskEnhance(self, DiskEnhance):
         self._DiskEnhance = DiskEnhance
 
+    @property
+    def GpuInfo(self):
+        """节点Gpu信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.GpuInfo`
+        """
+        return self._GpuInfo
+
+    @GpuInfo.setter
+    def GpuInfo(self, GpuInfo):
+        self._GpuInfo = GpuInfo
+
 
     def _deserialize(self, params):
         self._NodeNum = params.get("NodeNum")
@@ -14516,6 +14598,9 @@ class NodeInfo(AbstractModel):
         self._CpuNum = params.get("CpuNum")
         self._MemSize = params.get("MemSize")
         self._DiskEnhance = params.get("DiskEnhance")
+        if params.get("GpuInfo") is not None:
+            self._GpuInfo = GpuInfo()
+            self._GpuInfo._deserialize(params.get("GpuInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

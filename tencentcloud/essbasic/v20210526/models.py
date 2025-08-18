@@ -21367,11 +21367,18 @@ class EmbedUrlOption(AbstractModel):
         :param _ForbidEditWatermark: 是否禁止编辑（展示）水印控件属性
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :type ForbidEditWatermark: bool
+        :param _SealDescription: 印章描述
+        :type SealDescription: str
+        :param _ForbidEditSealDescription: 是否禁止编辑印章描述内容
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :type ForbidEditSealDescription: str
         """
         self._ShowFlowDetailComponent = None
         self._ShowTemplateComponent = None
         self._SkipUploadFile = None
         self._ForbidEditWatermark = None
+        self._SealDescription = None
+        self._ForbidEditSealDescription = None
 
     @property
     def ShowFlowDetailComponent(self):
@@ -21429,12 +21436,37 @@ class EmbedUrlOption(AbstractModel):
     def ForbidEditWatermark(self, ForbidEditWatermark):
         self._ForbidEditWatermark = ForbidEditWatermark
 
+    @property
+    def SealDescription(self):
+        """印章描述
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
+    @property
+    def ForbidEditSealDescription(self):
+        """是否禁止编辑印章描述内容
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :rtype: str
+        """
+        return self._ForbidEditSealDescription
+
+    @ForbidEditSealDescription.setter
+    def ForbidEditSealDescription(self, ForbidEditSealDescription):
+        self._ForbidEditSealDescription = ForbidEditSealDescription
+
 
     def _deserialize(self, params):
         self._ShowFlowDetailComponent = params.get("ShowFlowDetailComponent")
         self._ShowTemplateComponent = params.get("ShowTemplateComponent")
         self._SkipUploadFile = params.get("SkipUploadFile")
         self._ForbidEditWatermark = params.get("ForbidEditWatermark")
+        self._SealDescription = params.get("SealDescription")
+        self._ForbidEditSealDescription = params.get("ForbidEditSealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27182,9 +27214,15 @@ class OrganizationAuthUrl(AbstractModel):
         :type AuthUrl: str
         :param _ErrorMessage: 企业批量注册的错误信息，例如：企业三要素不通过
         :type ErrorMessage: str
+        :param _OrganizationName: 企业批量注册 传递过来的企业名称，方便客户定位企业	
+        :type OrganizationName: str
+        :param _SubTaskId: 企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)。
+        :type SubTaskId: str
         """
         self._AuthUrl = None
         self._ErrorMessage = None
+        self._OrganizationName = None
+        self._SubTaskId = None
 
     @property
     def AuthUrl(self):
@@ -27213,10 +27251,34 @@ class OrganizationAuthUrl(AbstractModel):
     def ErrorMessage(self, ErrorMessage):
         self._ErrorMessage = ErrorMessage
 
+    @property
+    def OrganizationName(self):
+        """企业批量注册 传递过来的企业名称，方便客户定位企业	
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def SubTaskId(self):
+        """企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)。
+        :rtype: str
+        """
+        return self._SubTaskId
+
+    @SubTaskId.setter
+    def SubTaskId(self, SubTaskId):
+        self._SubTaskId = SubTaskId
+
 
     def _deserialize(self, params):
         self._AuthUrl = params.get("AuthUrl")
         self._ErrorMessage = params.get("ErrorMessage")
+        self._OrganizationName = params.get("OrganizationName")
+        self._SubTaskId = params.get("SubTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

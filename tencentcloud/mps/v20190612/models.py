@@ -18013,11 +18013,14 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param _RecordType: 录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。不填时默认值为video。
+        :type RecordType: str
         """
         self._HLSConfigure = None
         self._MP4Configure = None
         self._Name = None
         self._Comment = None
+        self._RecordType = None
 
     @property
     def HLSConfigure(self):
@@ -18063,6 +18066,17 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def RecordType(self):
+        """录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。不填时默认值为video。
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
 
     def _deserialize(self, params):
         if params.get("HLSConfigure") is not None:
@@ -18073,6 +18087,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
             self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        self._RecordType = params.get("RecordType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38613,6 +38628,8 @@ class LiveRecordTemplate(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
+        :param _RecordType: 录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。
+        :type RecordType: str
         """
         self._Definition = None
         self._HLSConfigure = None
@@ -38622,6 +38639,7 @@ class LiveRecordTemplate(AbstractModel):
         self._Type = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._RecordType = None
 
     @property
     def Definition(self):
@@ -38713,6 +38731,17 @@ class LiveRecordTemplate(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def RecordType(self):
+        """录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -38727,6 +38756,7 @@ class LiveRecordTemplate(AbstractModel):
         self._Type = params.get("Type")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._RecordType = params.get("RecordType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41229,20 +41259,20 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _NotifyType: 通知类型：
-"CMQ"：回调消息写入cmq队列； 
+TDMQ-CMQ：消息队列
 "URL"： 指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同[解析直播事件通知接口](https://cloud.tencent.com/document/product/862/39229) 的输出参数
 
 <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
         :type NotifyType: str
         :param _NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
         :type NotifyUrl: str
-        :param _CmqModel: CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
+        :param _CmqModel: 有 Queue 和 Topic 两种模型。
         :type CmqModel: str
-        :param _CmqRegion: CMQ 的园区，如 sh，bj 等。
+        :param _CmqRegion: TDMQ-CMQ 的园区，如 sh，bj 等。
         :type CmqRegion: str
-        :param _QueueName: 当模型为 Queue 时有效，表示接收事件通知的 CMQ 的队列名。
+        :param _QueueName: 当模型为 Queue 时有效，表示接收事件通知的 TDMQ-CMQ 的队列名。
         :type QueueName: str
-        :param _TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
+        :param _TopicName: 当模型为 Topic 时有效，表示接收事件通知的 TDMQ-CMQ 的主题名。
         :type TopicName: str
         :param _NotifyKey: 用于生成回调签名的 Key。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -41259,7 +41289,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
     @property
     def NotifyType(self):
         """通知类型：
-"CMQ"：回调消息写入cmq队列； 
+TDMQ-CMQ：消息队列
 "URL"： 指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同[解析直播事件通知接口](https://cloud.tencent.com/document/product/862/39229) 的输出参数
 
 <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
@@ -41284,7 +41314,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def CmqModel(self):
-        """CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
+        """有 Queue 和 Topic 两种模型。
         :rtype: str
         """
         return self._CmqModel
@@ -41295,7 +41325,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def CmqRegion(self):
-        """CMQ 的园区，如 sh，bj 等。
+        """TDMQ-CMQ 的园区，如 sh，bj 等。
         :rtype: str
         """
         return self._CmqRegion
@@ -41306,7 +41336,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def QueueName(self):
-        """当模型为 Queue 时有效，表示接收事件通知的 CMQ 的队列名。
+        """当模型为 Queue 时有效，表示接收事件通知的 TDMQ-CMQ 的队列名。
         :rtype: str
         """
         return self._QueueName
@@ -41317,7 +41347,7 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def TopicName(self):
-        """当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
+        """当模型为 Topic 时有效，表示接收事件通知的 TDMQ-CMQ 的主题名。
         :rtype: str
         """
         return self._TopicName
@@ -47193,12 +47223,15 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param _RecordType: 录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。
+        :type RecordType: str
         """
         self._Definition = None
         self._HLSConfigure = None
         self._MP4Configure = None
         self._Name = None
         self._Comment = None
+        self._RecordType = None
 
     @property
     def Definition(self):
@@ -47255,6 +47288,17 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def RecordType(self):
+        """录制类型，取值为video（音视频录制）、audio（纯音频录制）、auto（自动探测）。
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -47266,6 +47310,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
             self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        self._RecordType = params.get("RecordType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -16227,14 +16227,16 @@ class DeleteContainerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或[登录控制台](https://console.cloud.tencent.com/tsf/app-group-docker-detail?rid=1&id=group-aedpen6v)
+进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或[登录控制台](https://console.cloud.tencent.com/tsf/app-group-docker-detail?rid=1&id=group-aedpen6v)
+进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -31064,10 +31066,10 @@ class DescribeResourceConfigLicenseFunction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: name
+        :param _Name: 功能名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Enable: enable
+        :param _Enable: 是否启用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: bool
         """
@@ -31076,7 +31078,7 @@ class DescribeResourceConfigLicenseFunction(AbstractModel):
 
     @property
     def Name(self):
-        """name
+        """功能名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31088,7 +31090,7 @@ class DescribeResourceConfigLicenseFunction(AbstractModel):
 
     @property
     def Enable(self):
-        """enable
+        """是否启用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -31398,14 +31400,14 @@ class DescribeResourceTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 容器实例任务ID，可通过调用 ListContainerTask 查询已创建的变更记录总数或登录控制台进行查看。
+        :param _TaskId: 容器实例任务ID，可通过调用 [DeployContainerGroup](https://cloud.tencent.com/document/product/649/120669) 部署容器应用，查询其返回内容中的任务ID。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """容器实例任务ID，可通过调用 ListContainerTask 查询已创建的变更记录总数或登录控制台进行查看。
+        """容器实例任务ID，可通过调用 [DeployContainerGroup](https://cloud.tencent.com/document/product/649/120669) 部署容器应用，查询其返回内容中的任务ID。
         :rtype: str
         """
         return self._TaskId

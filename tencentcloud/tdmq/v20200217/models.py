@@ -10957,14 +10957,14 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvironmentId: 必填字段，环境（命名空间）名称。
+        :param _ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        :param _EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param _Offset: 起始下标，不填默认为0。
         :type Offset: int
         :param _Limit: 返回数量，不填则默认为10，最大值为20。
         :type Limit: int
-        :param _ClusterId: 必填字段，Pulsar 集群的ID
-        :type ClusterId: str
         :param _RoleName: 角色名称
         :type RoleName: str
         :param _Filters: * RoleName
@@ -10973,16 +10973,27 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
 必选：否
         :type Filters: list of Filter
         """
+        self._ClusterId = None
         self._EnvironmentId = None
         self._Offset = None
         self._Limit = None
-        self._ClusterId = None
         self._RoleName = None
         self._Filters = None
 
     @property
+    def ClusterId(self):
+        """Pulsar 集群的ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
     def EnvironmentId(self):
-        """必填字段，环境（命名空间）名称。
+        """环境（命名空间）名称。
         :rtype: str
         """
         return self._EnvironmentId
@@ -11014,17 +11025,6 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
         self._Limit = Limit
 
     @property
-    def ClusterId(self):
-        """必填字段，Pulsar 集群的ID
-        :rtype: str
-        """
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
-    @property
     def RoleName(self):
         """角色名称
         :rtype: str
@@ -11051,10 +11051,10 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
         self._EnvironmentId = params.get("EnvironmentId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
-        self._ClusterId = params.get("ClusterId")
         self._RoleName = params.get("RoleName")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -21349,6 +21349,40 @@ class ExchangeQuota(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExecuteDisasterRecoveryRequest(AbstractModel):
+    """ExecuteDisasterRecovery请求参数结构体
+
+    """
+
+
+class ExecuteDisasterRecoveryResponse(AbstractModel):
+    """ExecuteDisasterRecovery返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ExportRocketMQMessageDetailRequest(AbstractModel):

@@ -9282,9 +9282,12 @@ class DeleteCloudNativeAPIGatewayServiceRequest(AbstractModel):
         :type GatewayId: str
         :param _Name: 服务名字，服务ID
         :type Name: str
+        :param _DeleteRoutes: 是否同步删除服务上绑定的路由
+        :type DeleteRoutes: bool
         """
         self._GatewayId = None
         self._Name = None
+        self._DeleteRoutes = None
 
     @property
     def GatewayId(self):
@@ -9308,10 +9311,22 @@ class DeleteCloudNativeAPIGatewayServiceRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def DeleteRoutes(self):
+        """是否同步删除服务上绑定的路由
+        :rtype: bool
+        """
+        return self._DeleteRoutes
+
+    @DeleteRoutes.setter
+    def DeleteRoutes(self, DeleteRoutes):
+        self._DeleteRoutes = DeleteRoutes
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Name = params.get("Name")
+        self._DeleteRoutes = params.get("DeleteRoutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

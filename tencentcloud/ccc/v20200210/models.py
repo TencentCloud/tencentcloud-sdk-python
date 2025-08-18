@@ -3218,6 +3218,11 @@ HoaiMy
         :type VadLevel: int
         :param _ToneWord: 衔接语
         :type ToneWord: :class:`tencentcloud.ccc.v20200210.models.ToneWordInfo`
+        :param _EnableComplianceAudio: 合规提示音， 
+该参数传true（默认）表示通话开始播放摩斯码，提示对话内容为 AI 生成。
+该参数传false表示关闭合规提示音。该参数传false则代表您知晓并同意以下协议：
+我方充分知悉和理解，根据[《网络安全法》](https://www.gov.cn/xinwen/2016-11/07/content_5129723.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
+        :type EnableComplianceAudio: bool
         """
         self._SdkAppId = None
         self._Callee = None
@@ -3251,6 +3256,7 @@ HoaiMy
         self._TopP = None
         self._VadLevel = None
         self._ToneWord = None
+        self._EnableComplianceAudio = None
 
     @property
     def SdkAppId(self):
@@ -3779,6 +3785,20 @@ HoaiMy
     def ToneWord(self, ToneWord):
         self._ToneWord = ToneWord
 
+    @property
+    def EnableComplianceAudio(self):
+        """合规提示音， 
+该参数传true（默认）表示通话开始播放摩斯码，提示对话内容为 AI 生成。
+该参数传false表示关闭合规提示音。该参数传false则代表您知晓并同意以下协议：
+我方充分知悉和理解，根据[《网络安全法》](https://www.gov.cn/xinwen/2016-11/07/content_5129723.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
+        :rtype: bool
+        """
+        return self._EnableComplianceAudio
+
+    @EnableComplianceAudio.setter
+    def EnableComplianceAudio(self, EnableComplianceAudio):
+        self._EnableComplianceAudio = EnableComplianceAudio
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3835,6 +3855,7 @@ HoaiMy
         if params.get("ToneWord") is not None:
             self._ToneWord = ToneWordInfo()
             self._ToneWord._deserialize(params.get("ToneWord"))
+        self._EnableComplianceAudio = params.get("EnableComplianceAudio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

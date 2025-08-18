@@ -1796,6 +1796,75 @@ class AssociateDatasourceHouseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AttachDataMaskPolicyRequest(AbstractModel):
+    """AttachDataMaskPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataMaskStrategyPolicySet: 要绑定的数据脱敏策略权限对象集合
+        :type DataMaskStrategyPolicySet: list of DataMaskStrategyPolicy
+        """
+        self._DataMaskStrategyPolicySet = None
+
+    @property
+    def DataMaskStrategyPolicySet(self):
+        """要绑定的数据脱敏策略权限对象集合
+        :rtype: list of DataMaskStrategyPolicy
+        """
+        return self._DataMaskStrategyPolicySet
+
+    @DataMaskStrategyPolicySet.setter
+    def DataMaskStrategyPolicySet(self, DataMaskStrategyPolicySet):
+        self._DataMaskStrategyPolicySet = DataMaskStrategyPolicySet
+
+
+    def _deserialize(self, params):
+        if params.get("DataMaskStrategyPolicySet") is not None:
+            self._DataMaskStrategyPolicySet = []
+            for item in params.get("DataMaskStrategyPolicySet"):
+                obj = DataMaskStrategyPolicy()
+                obj._deserialize(item)
+                self._DataMaskStrategyPolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachDataMaskPolicyResponse(AbstractModel):
+    """AttachDataMaskPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AttachUserPolicyRequest(AbstractModel):
     """AttachUserPolicy请求参数结构体
 
@@ -4942,6 +5011,72 @@ class CreateDataEngineResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DataEngineId = params.get("DataEngineId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDataMaskStrategyRequest(AbstractModel):
+    """CreateDataMaskStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Strategy: 数据脱敏策略详情
+        :type Strategy: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
+        """
+        self._Strategy = None
+
+    @property
+    def Strategy(self):
+        """数据脱敏策略详情
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+
+    def _deserialize(self, params):
+        if params.get("Strategy") is not None:
+            self._Strategy = DataMaskStrategyInfo()
+            self._Strategy._deserialize(params.get("Strategy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataMaskStrategyResponse(AbstractModel):
+    """CreateDataMaskStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -12326,6 +12461,236 @@ class DataGovernPolicy(AbstractModel):
         
 
 
+class DataMaskStrategy(AbstractModel):
+    """数据脱敏策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: 策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyId: str
+        :param _UserAppId: 用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAppId: str
+        :param _Uin: 用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _SubAccountUin: 操作用户子账号uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
+        :param _StrategyName: 策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyName: str
+        :param _StrategyType: MASK_SHOW_FIRST_4; MASK_SHOW_LAST_4;MASK_HASH; MASK_DATE_SHOW_YEAR; MASK_NULL; MASK_DEFAULT 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyType: str
+        :param _StrategyDesc: 策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyDesc: str
+        :param _Groups: 用户组策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of GroupInfo
+        :param _Users: 用户子账号uin列表，按;拼接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Users: str
+        :param _State: 1: 生效中； 0：已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param _CreateTime: 策略创建时间，毫秒时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: 策略更新时间，毫秒时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        """
+        self._StrategyId = None
+        self._UserAppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._StrategyName = None
+        self._StrategyType = None
+        self._StrategyDesc = None
+        self._Groups = None
+        self._Users = None
+        self._State = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def StrategyId(self):
+        """策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def UserAppId(self):
+        """用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserAppId
+
+    @UserAppId.setter
+    def UserAppId(self, UserAppId):
+        self._UserAppId = UserAppId
+
+    @property
+    def Uin(self):
+        """用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        """操作用户子账号uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def StrategyName(self):
+        """策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def StrategyType(self):
+        """MASK_SHOW_FIRST_4; MASK_SHOW_LAST_4;MASK_HASH; MASK_DATE_SHOW_YEAR; MASK_NULL; MASK_DEFAULT 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def StrategyDesc(self):
+        """策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StrategyDesc
+
+    @StrategyDesc.setter
+    def StrategyDesc(self, StrategyDesc):
+        self._StrategyDesc = StrategyDesc
+
+    @property
+    def Groups(self):
+        """用户组策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupInfo
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def Users(self):
+        """用户子账号uin列表，按;拼接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def State(self):
+        """1: 生效中； 0：已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def CreateTime(self):
+        """策略创建时间，毫秒时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """策略更新时间，毫秒时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        self._UserAppId = params.get("UserAppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._StrategyName = params.get("StrategyName")
+        self._StrategyType = params.get("StrategyType")
+        self._StrategyDesc = params.get("StrategyDesc")
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        self._Users = params.get("Users")
+        self._State = params.get("State")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataMaskStrategyInfo(AbstractModel):
     """数据脱敏策略信息
 
@@ -12434,6 +12799,80 @@ class DataMaskStrategyInfo(AbstractModel):
                 self._Groups.append(obj)
         self._Users = params.get("Users")
         self._StrategyId = params.get("StrategyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataMaskStrategyPolicy(AbstractModel):
+    """数据脱敏策略权限对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyInfo: 数据脱敏权限对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policy`
+        :param _DataMaskStrategyId: 数据脱敏策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataMaskStrategyId: str
+        :param _ColumnType: 绑定字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnType: str
+        """
+        self._PolicyInfo = None
+        self._DataMaskStrategyId = None
+        self._ColumnType = None
+
+    @property
+    def PolicyInfo(self):
+        """数据脱敏权限对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Policy`
+        """
+        return self._PolicyInfo
+
+    @PolicyInfo.setter
+    def PolicyInfo(self, PolicyInfo):
+        self._PolicyInfo = PolicyInfo
+
+    @property
+    def DataMaskStrategyId(self):
+        """数据脱敏策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataMaskStrategyId
+
+    @DataMaskStrategyId.setter
+    def DataMaskStrategyId(self, DataMaskStrategyId):
+        self._DataMaskStrategyId = DataMaskStrategyId
+
+    @property
+    def ColumnType(self):
+        """绑定字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ColumnType
+
+    @ColumnType.setter
+    def ColumnType(self, ColumnType):
+        self._ColumnType = ColumnType
+
+
+    def _deserialize(self, params):
+        if params.get("PolicyInfo") is not None:
+            self._PolicyInfo = Policy()
+            self._PolicyInfo._deserialize(params.get("PolicyInfo"))
+        self._DataMaskStrategyId = params.get("DataMaskStrategyId")
+        self._ColumnType = params.get("ColumnType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13667,6 +14106,70 @@ class DeleteDataEngineRequest(AbstractModel):
 
 class DeleteDataEngineResponse(AbstractModel):
     """DeleteDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDataMaskStrategyRequest(AbstractModel):
+    """DeleteDataMaskStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: 数据脱敏策略Id
+        :type StrategyId: str
+        """
+        self._StrategyId = None
+
+    @property
+    def StrategyId(self):
+        """数据脱敏策略Id
+        :rtype: str
+        """
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataMaskStrategyResponse(AbstractModel):
+    """DeleteDataMaskStrategy返回参数结构体
 
     """
 
@@ -17160,6 +17663,140 @@ class DescribeDataEnginesScaleDetailResponse(AbstractModel):
                 obj = DataEngineScaleInfo()
                 obj._deserialize(item)
                 self._Scales.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataMaskStrategiesRequest(AbstractModel):
+    """DescribeDataMaskStrategies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 分页参数，单页返回数据量，默认10
+        :type Limit: int
+        :param _Offset: 分页参数，数据便偏移量，默认0
+        :type Offset: int
+        :param _Filters: 过滤字段，strategy-name: 按策略名称搜索
+        :type Filters: list of Filter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        """分页参数，单页返回数据量，默认10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页参数，数据便偏移量，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        """过滤字段，strategy-name: 按策略名称搜索
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataMaskStrategiesResponse(AbstractModel):
+    """DescribeDataMaskStrategies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数据脱敏策略数
+        :type TotalCount: int
+        :param _Strategies: 数据脱敏策略列表
+        :type Strategies: list of DataMaskStrategy
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Strategies = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总数据脱敏策略数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Strategies(self):
+        """数据脱敏策略列表
+        :rtype: list of DataMaskStrategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = DataMaskStrategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23286,6 +23923,120 @@ class DescribeThirdPartyAccessUserResponse(AbstractModel):
         if params.get("UserInfo") is not None:
             self._UserInfo = OpendThirdAccessUserInfo()
             self._UserInfo._deserialize(params.get("UserInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUDFPolicyRequest(AbstractModel):
+    """DescribeUDFPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: udf名称
+        :type Name: str
+        :param _DatabaseName: 数据库名(全局UDF：global-function)
+        :type DatabaseName: str
+        :param _CatalogName: 数据目录名
+        :type CatalogName: str
+        """
+        self._Name = None
+        self._DatabaseName = None
+        self._CatalogName = None
+
+    @property
+    def Name(self):
+        """udf名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DatabaseName(self):
+        """数据库名(全局UDF：global-function)
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def CatalogName(self):
+        """数据目录名
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._DatabaseName = params.get("DatabaseName")
+        self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUDFPolicyResponse(AbstractModel):
+    """DescribeUDFPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UDFPolicyInfos: UDF权限信息
+        :type UDFPolicyInfos: list of UDFPolicyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UDFPolicyInfos = None
+        self._RequestId = None
+
+    @property
+    def UDFPolicyInfos(self):
+        """UDF权限信息
+        :rtype: list of UDFPolicyInfo
+        """
+        return self._UDFPolicyInfos
+
+    @UDFPolicyInfos.setter
+    def UDFPolicyInfos(self, UDFPolicyInfos):
+        self._UDFPolicyInfos = UDFPolicyInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UDFPolicyInfos") is not None:
+            self._UDFPolicyInfos = []
+            for item in params.get("UDFPolicyInfos"):
+                obj = UDFPolicyInfo()
+                obj._deserialize(item)
+                self._UDFPolicyInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -39590,6 +40341,74 @@ class TextFile(AbstractModel):
         
 
 
+class UDFPolicyInfo(AbstractModel):
+    """UDF权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Accesses: 权限类型
+示例：select，alter，drop
+        :type Accesses: list of str
+        :param _Users: 拥有权限的用户信息
+        :type Users: list of str
+        :param _Groups: 拥有权限的工作组的信息
+        :type Groups: list of str
+        """
+        self._Accesses = None
+        self._Users = None
+        self._Groups = None
+
+    @property
+    def Accesses(self):
+        """权限类型
+示例：select，alter，drop
+        :rtype: list of str
+        """
+        return self._Accesses
+
+    @Accesses.setter
+    def Accesses(self, Accesses):
+        self._Accesses = Accesses
+
+    @property
+    def Users(self):
+        """拥有权限的用户信息
+        :rtype: list of str
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def Groups(self):
+        """拥有权限的工作组的信息
+        :rtype: list of str
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+
+    def _deserialize(self, params):
+        self._Accesses = params.get("Accesses")
+        self._Users = params.get("Users")
+        self._Groups = params.get("Groups")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UnbindWorkGroupsFromUserRequest(AbstractModel):
     """UnbindWorkGroupsFromUser请求参数结构体
 
@@ -40233,6 +41052,72 @@ class UpdateDataEngineRequest(AbstractModel):
 
 class UpdateDataEngineResponse(AbstractModel):
     """UpdateDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateDataMaskStrategyRequest(AbstractModel):
+    """UpdateDataMaskStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Strategy: 数据脱敏策略详情
+        :type Strategy: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
+        """
+        self._Strategy = None
+
+    @property
+    def Strategy(self):
+        """数据脱敏策略详情
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+
+    def _deserialize(self, params):
+        if params.get("Strategy") is not None:
+            self._Strategy = DataMaskStrategyInfo()
+            self._Strategy._deserialize(params.get("Strategy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDataMaskStrategyResponse(AbstractModel):
+    """UpdateDataMaskStrategy返回参数结构体
 
     """
 
@@ -41041,6 +41926,140 @@ class UpdateStandardEngineResourceGroupResourceInfoResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateUDFPolicyRequest(AbstractModel):
+    """UpdateUDFPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: UDF名称
+        :type Name: str
+        :param _DatabaseName: 数据库名
+        :type DatabaseName: str
+        :param _CatalogName: 数据目录名
+        :type CatalogName: str
+        :param _UDFPolicyInfos: UDF权限信息
+        :type UDFPolicyInfos: list of UDFPolicyInfo
+        """
+        self._Name = None
+        self._DatabaseName = None
+        self._CatalogName = None
+        self._UDFPolicyInfos = None
+
+    @property
+    def Name(self):
+        """UDF名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DatabaseName(self):
+        """数据库名
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def CatalogName(self):
+        """数据目录名
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def UDFPolicyInfos(self):
+        """UDF权限信息
+        :rtype: list of UDFPolicyInfo
+        """
+        return self._UDFPolicyInfos
+
+    @UDFPolicyInfos.setter
+    def UDFPolicyInfos(self, UDFPolicyInfos):
+        self._UDFPolicyInfos = UDFPolicyInfos
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._DatabaseName = params.get("DatabaseName")
+        self._CatalogName = params.get("CatalogName")
+        if params.get("UDFPolicyInfos") is not None:
+            self._UDFPolicyInfos = []
+            for item in params.get("UDFPolicyInfos"):
+                obj = UDFPolicyInfo()
+                obj._deserialize(item)
+                self._UDFPolicyInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUDFPolicyResponse(AbstractModel):
+    """UpdateUDFPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UDFPolicyInfos: UDF权限信息
+        :type UDFPolicyInfos: list of UDFPolicyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UDFPolicyInfos = None
+        self._RequestId = None
+
+    @property
+    def UDFPolicyInfos(self):
+        """UDF权限信息
+        :rtype: list of UDFPolicyInfo
+        """
+        return self._UDFPolicyInfos
+
+    @UDFPolicyInfos.setter
+    def UDFPolicyInfos(self, UDFPolicyInfos):
+        self._UDFPolicyInfos = UDFPolicyInfos
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UDFPolicyInfos") is not None:
+            self._UDFPolicyInfos = []
+            for item in params.get("UDFPolicyInfos"):
+                obj = UDFPolicyInfo()
+                obj._deserialize(item)
+                self._UDFPolicyInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 

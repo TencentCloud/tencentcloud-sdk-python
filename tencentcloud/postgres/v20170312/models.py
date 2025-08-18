@@ -12950,14 +12950,14 @@ class IsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceIdSet: 实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：当前已不支持同时隔离多个实例，这里只能传入单个实例ID。
+        :param _DBInstanceIdSet: 实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。
         :type DBInstanceIdSet: list of str
         """
         self._DBInstanceIdSet = None
 
     @property
     def DBInstanceIdSet(self):
-        """实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：当前已不支持同时隔离多个实例，这里只能传入单个实例ID。
+        """实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。
         :rtype: list of str
         """
         return self._DBInstanceIdSet

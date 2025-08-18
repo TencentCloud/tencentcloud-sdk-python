@@ -3094,9 +3094,9 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
         :type ChainId: str
         :param _ContractName: 合约名称，可在合约管理中获取
         :type ContractName: str
-        :param _FuncName: 合约方法名
+        :param _FuncName: 合约方法名，由合约代码定义，可以参考合约详情中的合约调用定义
         :type FuncName: str
-        :param _FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map
+        :param _FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义，可以参考合约详情中的合约调用定义
         :type FuncParam: str
         :param _AsyncFlag: 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
         :type AsyncFlag: int
@@ -3143,7 +3143,7 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def FuncName(self):
-        """合约方法名
+        """合约方法名，由合约代码定义，可以参考合约详情中的合约调用定义
         :rtype: str
         """
         return self._FuncName
@@ -3154,7 +3154,7 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def FuncParam(self):
-        """合约方法入参，json格式字符串，key/value都是string类型的map
+        """合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义，可以参考合约详情中的合约调用定义
         :rtype: str
         """
         return self._FuncParam
@@ -3897,9 +3897,9 @@ class QueryChainMakerContractRequest(AbstractModel):
         :type ChainId: str
         :param _ContractName: 合约名称，可在合约管理中获取
         :type ContractName: str
-        :param _FuncName: 合约方法名
+        :param _FuncName: 合约方法名，由合约代码定义
         :type FuncName: str
-        :param _FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map
+        :param _FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义
         :type FuncParam: str
         """
         self._ClusterId = None
@@ -3943,7 +3943,7 @@ class QueryChainMakerContractRequest(AbstractModel):
 
     @property
     def FuncName(self):
-        """合约方法名
+        """合约方法名，由合约代码定义
         :rtype: str
         """
         return self._FuncName
@@ -3954,7 +3954,7 @@ class QueryChainMakerContractRequest(AbstractModel):
 
     @property
     def FuncParam(self):
-        """合约方法入参，json格式字符串，key/value都是string类型的map
+        """合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义
         :rtype: str
         """
         return self._FuncParam
@@ -4197,9 +4197,9 @@ class QueryChainMakerDemoContractRequest(AbstractModel):
         :type ChainId: str
         :param _ContractName: 合约名称，可在合约管理中获取
         :type ContractName: str
-        :param _FuncName: 合约方法名
+        :param _FuncName: 合约方法名，由合约代码定义，可以参考合约详情中的合约调用定义
         :type FuncName: str
-        :param _FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map
+        :param _FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义，可以参考合约详情中的合约调用定义
         :type FuncParam: str
         """
         self._ClusterId = None
@@ -4243,7 +4243,7 @@ class QueryChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def FuncName(self):
-        """合约方法名
+        """合约方法名，由合约代码定义，可以参考合约详情中的合约调用定义
         :rtype: str
         """
         return self._FuncName
@@ -4254,7 +4254,7 @@ class QueryChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def FuncParam(self):
-        """合约方法入参，json格式字符串，key/value都是string类型的map
+        """合约方法入参，json格式字符串，key/value都是string类型的map，由合约代码定义，可以参考合约详情中的合约调用定义
         :rtype: str
         """
         return self._FuncParam
