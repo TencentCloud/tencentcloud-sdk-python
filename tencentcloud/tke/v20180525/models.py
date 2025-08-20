@@ -2300,6 +2300,8 @@ class ClusterAdvancedSettings(AbstractModel):
         :type CiliumMode: str
         :param _ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
         :type ContainerRuntime: str
+        :param _DataPlaneV2: 是否启用 DataPlaneV2（cilium替代kube-proxy） 
+        :type DataPlaneV2: bool
         :param _DeletionProtection: 是否启用集群删除保护
         :type DeletionProtection: bool
         :param _EnableCustomizedPodCIDR: 是否开节点podCIDR大小的自定义模式
@@ -2322,7 +2324,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 1. 集群版本必须为1.14及以上；
 2. 系统镜像必须是: Tencent Linux 2.4；
         :type KubeProxyMode: str
-        :param _NetworkType: 集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
+        :param _NetworkType: 集群网络类型。包括GR（全局路由）和VPC-CNI两种模式，默认为GR。
         :type NetworkType: str
         :param _NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
         :type NodeNameType: str
@@ -2340,6 +2342,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._BasePodNumber = None
         self._CiliumMode = None
         self._ContainerRuntime = None
+        self._DataPlaneV2 = None
         self._DeletionProtection = None
         self._EnableCustomizedPodCIDR = None
         self._EtcdOverrideConfigs = None
@@ -2430,6 +2433,17 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
     @ContainerRuntime.setter
     def ContainerRuntime(self, ContainerRuntime):
         self._ContainerRuntime = ContainerRuntime
+
+    @property
+    def DataPlaneV2(self):
+        """是否启用 DataPlaneV2（cilium替代kube-proxy） 
+        :rtype: bool
+        """
+        return self._DataPlaneV2
+
+    @DataPlaneV2.setter
+    def DataPlaneV2(self, DataPlaneV2):
+        self._DataPlaneV2 = DataPlaneV2
 
     @property
     def DeletionProtection(self):
@@ -2527,7 +2541,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def NetworkType(self):
-        """集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
+        """集群网络类型。包括GR（全局路由）和VPC-CNI两种模式，默认为GR。
         :rtype: str
         """
         return self._NetworkType
@@ -2589,6 +2603,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._BasePodNumber = params.get("BasePodNumber")
         self._CiliumMode = params.get("CiliumMode")
         self._ContainerRuntime = params.get("ContainerRuntime")
+        self._DataPlaneV2 = params.get("DataPlaneV2")
         self._DeletionProtection = params.get("DeletionProtection")
         self._EnableCustomizedPodCIDR = params.get("EnableCustomizedPodCIDR")
         if params.get("EtcdOverrideConfigs") is not None:
@@ -8460,6 +8475,8 @@ class CreateImageCacheRequest(AbstractModel):
         :param _ResolveConfig: 自定义制作镜像缓存过程中容器实例的宿主机上的 DNS。如：
 "nameserver 4.4.4.4\nnameserver 8.8.8.8"
         :type ResolveConfig: str
+        :param _Tags: 腾讯云标签
+        :type Tags: list of Tag
         """
         self._Images = None
         self._SubnetId = None
@@ -8475,6 +8492,7 @@ class CreateImageCacheRequest(AbstractModel):
         self._RegistrySkipVerifyList = None
         self._RegistryHttpEndPointList = None
         self._ResolveConfig = None
+        self._Tags = None
 
     @property
     def Images(self):
@@ -8632,6 +8650,17 @@ class CreateImageCacheRequest(AbstractModel):
     def ResolveConfig(self, ResolveConfig):
         self._ResolveConfig = ResolveConfig
 
+    @property
+    def Tags(self):
+        """腾讯云标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Images = params.get("Images")
@@ -8655,6 +8684,12 @@ class CreateImageCacheRequest(AbstractModel):
         self._RegistrySkipVerifyList = params.get("RegistrySkipVerifyList")
         self._RegistryHttpEndPointList = params.get("RegistryHttpEndPointList")
         self._ResolveConfig = params.get("ResolveConfig")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30148,6 +30183,12 @@ Updating：更新中
 UpdateFailed：更新失败
 只有状态为Ready时，才能正常使用镜像缓存
         :type Status: str
+        :param _RetentionDays: 镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
+        :type RetentionDays: int
+        :param _ImageRegistryCredentials: 镜像拉取凭证
+        :type ImageRegistryCredentials: list of ImageRegistryCredential
+        :param _Tags: 腾讯云标签
+        :type Tags: list of Tag
         """
         self._ImageCacheId = None
         self._ImageCacheName = None
@@ -30159,6 +30200,9 @@ UpdateFailed：更新失败
         self._LastMatchedTime = None
         self._SnapshotId = None
         self._Status = None
+        self._RetentionDays = None
+        self._ImageRegistryCredentials = None
+        self._Tags = None
 
     @property
     def ImageCacheId(self):
@@ -30276,6 +30320,39 @@ UpdateFailed：更新失败
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def RetentionDays(self):
+        """镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
+        :rtype: int
+        """
+        return self._RetentionDays
+
+    @RetentionDays.setter
+    def RetentionDays(self, RetentionDays):
+        self._RetentionDays = RetentionDays
+
+    @property
+    def ImageRegistryCredentials(self):
+        """镜像拉取凭证
+        :rtype: list of ImageRegistryCredential
+        """
+        return self._ImageRegistryCredentials
+
+    @ImageRegistryCredentials.setter
+    def ImageRegistryCredentials(self, ImageRegistryCredentials):
+        self._ImageRegistryCredentials = ImageRegistryCredentials
+
+    @property
+    def Tags(self):
+        """腾讯云标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ImageCacheId = params.get("ImageCacheId")
@@ -30293,6 +30370,19 @@ UpdateFailed：更新失败
         self._LastMatchedTime = params.get("LastMatchedTime")
         self._SnapshotId = params.get("SnapshotId")
         self._Status = params.get("Status")
+        self._RetentionDays = params.get("RetentionDays")
+        if params.get("ImageRegistryCredentials") is not None:
+            self._ImageRegistryCredentials = []
+            for item in params.get("ImageRegistryCredentials"):
+                obj = ImageRegistryCredential()
+                obj._deserialize(item)
+                self._ImageRegistryCredentials.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31053,10 +31143,10 @@ class InstanceAdvancedSettings(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Taints: list of Taint
         :param _MountTarget: 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
-注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
+注意：多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
-        :param _DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
+        :param _DockerGraphPath: dockerd --graph 指定值。若未指定此参数，将使用内置默认路径 /var/lib/docker 作为存储根目录。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DockerGraphPath: str
         :param _UserScript: base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度
@@ -31136,7 +31226,7 @@ class InstanceAdvancedSettings(AbstractModel):
     @property
     def MountTarget(self):
         """数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
-注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
+注意：多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31148,7 +31238,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def DockerGraphPath(self):
-        """dockerd --graph 指定值, 默认为 /var/lib/docker
+        """dockerd --graph 指定值。若未指定此参数，将使用内置默认路径 /var/lib/docker 作为存储根目录。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -45173,10 +45263,10 @@ class Switch(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
-        :type ClusterId: str
         :param _Audit: 审计开关的详细信息
         :type Audit: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
         :param _Event: 事件开关的详细信息
         :type Event: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         :param _Log: 普通日志的详细信息
@@ -45184,22 +45274,11 @@ class Switch(AbstractModel):
         :param _MasterLog: master 日志详细信息
         :type MasterLog: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         """
-        self._ClusterId = None
         self._Audit = None
+        self._ClusterId = None
         self._Event = None
         self._Log = None
         self._MasterLog = None
-
-    @property
-    def ClusterId(self):
-        """集群ID
-        :rtype: str
-        """
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
 
     @property
     def Audit(self):
@@ -45211,6 +45290,17 @@ class Switch(AbstractModel):
     @Audit.setter
     def Audit(self, Audit):
         self._Audit = Audit
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
     @property
     def Event(self):
@@ -45247,10 +45337,10 @@ class Switch(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._ClusterId = params.get("ClusterId")
         if params.get("Audit") is not None:
             self._Audit = SwitchInfo()
             self._Audit._deserialize(params.get("Audit"))
+        self._ClusterId = params.get("ClusterId")
         if params.get("Event") is not None:
             self._Event = SwitchInfo()
             self._Event._deserialize(params.get("Event"))
@@ -45279,23 +45369,29 @@ class SwitchInfo(AbstractModel):
         r"""
         :param _Enable: 开启标识符 true代表开启
         :type Enable: bool
+        :param _ErrorMsg: 获取日志状态失败时，返回错误信息
+        :type ErrorMsg: str
         :param _LogsetId: CLS日志集ID
         :type LogsetId: str
+        :param _Status: 日志主题状态，opened表示已开启，opening开启中，closed表示已关闭，closing 表示关闭中
+        :type Status: str
         :param _TopicId: CLS日志主题ID
         :type TopicId: str
-        :param _Version: 当前log-agent版本
-        :type Version: str
-        :param _UpgradeAble: 是否可升级
-        :type UpgradeAble: bool
         :param _TopicRegion: CLS日志主题所属region
         :type TopicRegion: str
+        :param _UpgradeAble: 是否可升级
+        :type UpgradeAble: bool
+        :param _Version: 当前log-agent版本
+        :type Version: str
         """
         self._Enable = None
+        self._ErrorMsg = None
         self._LogsetId = None
+        self._Status = None
         self._TopicId = None
-        self._Version = None
-        self._UpgradeAble = None
         self._TopicRegion = None
+        self._UpgradeAble = None
+        self._Version = None
 
     @property
     def Enable(self):
@@ -45309,6 +45405,17 @@ class SwitchInfo(AbstractModel):
         self._Enable = Enable
 
     @property
+    def ErrorMsg(self):
+        """获取日志状态失败时，返回错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
     def LogsetId(self):
         """CLS日志集ID
         :rtype: str
@@ -45318,6 +45425,17 @@ class SwitchInfo(AbstractModel):
     @LogsetId.setter
     def LogsetId(self, LogsetId):
         self._LogsetId = LogsetId
+
+    @property
+    def Status(self):
+        """日志主题状态，opened表示已开启，opening开启中，closed表示已关闭，closing 表示关闭中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def TopicId(self):
@@ -45331,15 +45449,15 @@ class SwitchInfo(AbstractModel):
         self._TopicId = TopicId
 
     @property
-    def Version(self):
-        """当前log-agent版本
+    def TopicRegion(self):
+        """CLS日志主题所属region
         :rtype: str
         """
-        return self._Version
+        return self._TopicRegion
 
-    @Version.setter
-    def Version(self, Version):
-        self._Version = Version
+    @TopicRegion.setter
+    def TopicRegion(self, TopicRegion):
+        self._TopicRegion = TopicRegion
 
     @property
     def UpgradeAble(self):
@@ -45353,24 +45471,26 @@ class SwitchInfo(AbstractModel):
         self._UpgradeAble = UpgradeAble
 
     @property
-    def TopicRegion(self):
-        """CLS日志主题所属region
+    def Version(self):
+        """当前log-agent版本
         :rtype: str
         """
-        return self._TopicRegion
+        return self._Version
 
-    @TopicRegion.setter
-    def TopicRegion(self, TopicRegion):
-        self._TopicRegion = TopicRegion
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._LogsetId = params.get("LogsetId")
+        self._Status = params.get("Status")
         self._TopicId = params.get("TopicId")
-        self._Version = params.get("Version")
-        self._UpgradeAble = params.get("UpgradeAble")
         self._TopicRegion = params.get("TopicRegion")
+        self._UpgradeAble = params.get("UpgradeAble")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47148,6 +47268,8 @@ class UpdateImageCacheRequest(AbstractModel):
         :type RetentionDays: int
         :param _SecurityGroupIds: 安全组Id
         :type SecurityGroupIds: list of str
+        :param _Tags: 腾讯云标签
+        :type Tags: list of Tag
         """
         self._ImageCacheId = None
         self._ImageCacheName = None
@@ -47156,6 +47278,7 @@ class UpdateImageCacheRequest(AbstractModel):
         self._ImageCacheSize = None
         self._RetentionDays = None
         self._SecurityGroupIds = None
+        self._Tags = None
 
     @property
     def ImageCacheId(self):
@@ -47234,6 +47357,17 @@ class UpdateImageCacheRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Tags(self):
+        """腾讯云标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ImageCacheId = params.get("ImageCacheId")
@@ -47248,6 +47382,12 @@ class UpdateImageCacheRequest(AbstractModel):
         self._ImageCacheSize = params.get("ImageCacheSize")
         self._RetentionDays = params.get("RetentionDays")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

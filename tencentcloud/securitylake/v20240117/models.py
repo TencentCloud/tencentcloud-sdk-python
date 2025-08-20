@@ -349,7 +349,6 @@ class SecurityAlarmTable(AbstractModel):
         :param _SdlId: 实例id
         :type SdlId: str
         :param _RichCustomInfos: 自定义富化字段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RichCustomInfos: list of str
         :param _AttackerIp: 攻击者ip
         :type AttackerIp: str
@@ -882,7 +881,6 @@ class SecurityAlarmTable(AbstractModel):
     @property
     def RichCustomInfos(self):
         """自定义富化字段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._RichCustomInfos

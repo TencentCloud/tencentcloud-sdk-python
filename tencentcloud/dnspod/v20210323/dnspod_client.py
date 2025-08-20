@@ -1326,6 +1326,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeResolveCount(self, request):
+        """查看域名的解析量
+
+        :param request: Request instance for DescribeResolveCount.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeResolveCountRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeResolveCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResolveCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResolveCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSnapshotConfig(self, request):
         """查询解析快照配置
 

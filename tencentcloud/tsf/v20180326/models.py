@@ -25,9 +25,9 @@ class AddClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :type ClusterId: str
-        :param _InstanceIdList: 云主机ID列表
+        :param _InstanceIdList: 云主机ID列表，可通过调用[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)查询已创建的云主机列表或登录控制台进行查看；也可以调用[RunInstances](https://cloud.tencent.com/document/api/213/15730)创建新的云主机。
         :type InstanceIdList: list of str
         :param _OsName: 操作系统名称
         :type OsName: str
@@ -65,7 +65,7 @@ class AddClusterInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :rtype: str
         """
         return self._ClusterId
@@ -76,7 +76,7 @@ class AddClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
-        """云主机ID列表
+        """云主机ID列表，可通过调用[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)查询已创建的云主机列表或登录控制台进行查看；也可以调用[RunInstances](https://cloud.tencent.com/document/api/213/15730)创建新的云主机。
         :rtype: list of str
         """
         return self._InstanceIdList
@@ -356,9 +356,9 @@ class AddInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :type ClusterId: str
-        :param _InstanceIdList: 云主机ID列表
+        :param _InstanceIdList: 云主机ID列表，可通过调用[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)查询已创建的云主机列表或登录控制台进行查看；也可以调用[RunInstances](https://cloud.tencent.com/document/api/213/15730)创建新的云主机。
         :type InstanceIdList: list of str
         :param _OsName: 操作系统名称
         :type OsName: str
@@ -387,7 +387,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :rtype: str
         """
         return self._ClusterId
@@ -398,7 +398,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
-        """云主机ID列表
+        """云主机ID列表，可通过调用[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)查询已创建的云主机列表或登录控制台进行查看；也可以调用[RunInstances](https://cloud.tencent.com/document/api/213/15730)创建新的云主机。
         :rtype: list of str
         """
         return self._InstanceIdList
@@ -2898,9 +2898,11 @@ class AssociateBusinessLogConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: TSF分组ID
+        :param _GroupId: 部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :type GroupId: str
         :param _ConfigIdList: 日志配置项ID列表
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :type ConfigIdList: list of str
         """
         self._GroupId = None
@@ -2908,7 +2910,8 @@ class AssociateBusinessLogConfigRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """TSF分组ID
+        """部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :rtype: str
         """
         return self._GroupId
@@ -2920,6 +2923,7 @@ class AssociateBusinessLogConfigRequest(AbstractModel):
     @property
     def ConfigIdList(self):
         """日志配置项ID列表
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :rtype: list of str
         """
         return self._ConfigIdList
@@ -2949,7 +2953,7 @@ class AssociateBusinessLogConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作结果
+        :param _Result: 操作结果，true：成功，false：失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2959,7 +2963,7 @@ class AssociateBusinessLogConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作结果
+        """操作结果，true：成功，false：失败
         :rtype: bool
         """
         return self._Result
@@ -2992,15 +2996,18 @@ class AssociateConfigWithGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置项id
+        :param _ConfigId: 配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :type ConfigId: str
         :param _Groups: 部署组信息
         :type Groups: list of GroupInfo
         :param _SelectAll: 是否选择全部投递，1 表示全部，0或不填表示非全部
         :type SelectAll: int
-        :param _NamespaceId: 命名空间id
+        :param _NamespaceId: 命名空间ID
+可通过[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已经创建的命名空间，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)查看
         :type NamespaceId: str
-        :param _ClusterId: 集群id
+        :param _ClusterId: 集群ID
+可通过[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已经创建的集群列表，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1)查看
         :type ClusterId: str
         :param _SearchWord: 模糊搜索关键词
         :type SearchWord: str
@@ -3014,7 +3021,8 @@ class AssociateConfigWithGroupRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置项id
+        """配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :rtype: str
         """
         return self._ConfigId
@@ -3047,7 +3055,8 @@ class AssociateConfigWithGroupRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间id
+        """命名空间ID
+可通过[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已经创建的命名空间，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)查看
         :rtype: str
         """
         return self._NamespaceId
@@ -3058,7 +3067,8 @@ class AssociateConfigWithGroupRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群id
+        """集群ID
+可通过[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已经创建的集群列表，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1)查看
         :rtype: str
         """
         return self._ClusterId
@@ -3627,10 +3637,10 @@ class BusinessLogConfig(AbstractModel):
         :type ConfigTags: str
         :param _ConfigPipeline: 配置项对应的ES管道
         :type ConfigPipeline: str
-        :param _ConfigCreateTime: 配置项创建时间
+        :param _ConfigCreateTime: 配置项创建时间，格式为yyyy-MM-dd HH:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigCreateTime: str
-        :param _ConfigUpdateTime: 配置项更新时间
+        :param _ConfigUpdateTime: 配置项更新时间，格式为yyyy-MM-dd HH:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigUpdateTime: str
         :param _ConfigSchema: 配置项解析规则
@@ -3644,6 +3654,14 @@ class BusinessLogConfig(AbstractModel):
         :type FilebeatConfigEnable: bool
         :param _FilebeatCloseTimeout: close_timeout参数
         :type FilebeatCloseTimeout: int
+        :param _FilebeatIgnoreOlder: filebeat ignore_older参数
+        :type FilebeatIgnoreOlder: int
+        :param _FilebeatHarvesterLimit: filebeat harvester_limit参数
+        :type FilebeatHarvesterLimit: int
+        :param _FilebeatCloseInactive: filebeat close_inactive参数
+        :type FilebeatCloseInactive: int
+        :param _FilebeatCleanInactive: filebeat clean_inactive参数
+        :type FilebeatCleanInactive: int
         """
         self._ConfigId = None
         self._ConfigName = None
@@ -3658,6 +3676,10 @@ class BusinessLogConfig(AbstractModel):
         self._ConfigAssociatedGroupList = None
         self._FilebeatConfigEnable = None
         self._FilebeatCloseTimeout = None
+        self._FilebeatIgnoreOlder = None
+        self._FilebeatHarvesterLimit = None
+        self._FilebeatCloseInactive = None
+        self._FilebeatCleanInactive = None
 
     @property
     def ConfigId(self):
@@ -3729,7 +3751,7 @@ class BusinessLogConfig(AbstractModel):
 
     @property
     def ConfigCreateTime(self):
-        """配置项创建时间
+        """配置项创建时间，格式为yyyy-MM-dd HH:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3741,7 +3763,7 @@ class BusinessLogConfig(AbstractModel):
 
     @property
     def ConfigUpdateTime(self):
-        """配置项更新时间
+        """配置项更新时间，格式为yyyy-MM-dd HH:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3811,6 +3833,50 @@ class BusinessLogConfig(AbstractModel):
     def FilebeatCloseTimeout(self, FilebeatCloseTimeout):
         self._FilebeatCloseTimeout = FilebeatCloseTimeout
 
+    @property
+    def FilebeatIgnoreOlder(self):
+        """filebeat ignore_older参数
+        :rtype: int
+        """
+        return self._FilebeatIgnoreOlder
+
+    @FilebeatIgnoreOlder.setter
+    def FilebeatIgnoreOlder(self, FilebeatIgnoreOlder):
+        self._FilebeatIgnoreOlder = FilebeatIgnoreOlder
+
+    @property
+    def FilebeatHarvesterLimit(self):
+        """filebeat harvester_limit参数
+        :rtype: int
+        """
+        return self._FilebeatHarvesterLimit
+
+    @FilebeatHarvesterLimit.setter
+    def FilebeatHarvesterLimit(self, FilebeatHarvesterLimit):
+        self._FilebeatHarvesterLimit = FilebeatHarvesterLimit
+
+    @property
+    def FilebeatCloseInactive(self):
+        """filebeat close_inactive参数
+        :rtype: int
+        """
+        return self._FilebeatCloseInactive
+
+    @FilebeatCloseInactive.setter
+    def FilebeatCloseInactive(self, FilebeatCloseInactive):
+        self._FilebeatCloseInactive = FilebeatCloseInactive
+
+    @property
+    def FilebeatCleanInactive(self):
+        """filebeat clean_inactive参数
+        :rtype: int
+        """
+        return self._FilebeatCleanInactive
+
+    @FilebeatCleanInactive.setter
+    def FilebeatCleanInactive(self, FilebeatCleanInactive):
+        self._FilebeatCleanInactive = FilebeatCleanInactive
+
 
     def _deserialize(self, params):
         self._ConfigId = params.get("ConfigId")
@@ -3838,6 +3904,10 @@ class BusinessLogConfig(AbstractModel):
                 self._ConfigAssociatedGroupList.append(obj)
         self._FilebeatConfigEnable = params.get("FilebeatConfigEnable")
         self._FilebeatCloseTimeout = params.get("FilebeatCloseTimeout")
+        self._FilebeatIgnoreOlder = params.get("FilebeatIgnoreOlder")
+        self._FilebeatHarvesterLimit = params.get("FilebeatHarvesterLimit")
+        self._FilebeatCloseInactive = params.get("FilebeatCloseInactive")
+        self._FilebeatCleanInactive = params.get("FilebeatCleanInactive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3863,7 +3933,7 @@ class BusinessLogConfigAssociatedGroup(AbstractModel):
         :type ApplicationId: str
         :param _ApplicationName: 部署组所属应用名称
         :type ApplicationName: str
-        :param _ApplicationType: 部署组所属应用类型
+        :param _ApplicationType: 部署组所属应用类型，C：容器应用，V：虚拟机应用
         :type ApplicationType: str
         :param _NamespaceId: 部署组所属命名空间ID
         :type NamespaceId: str
@@ -3873,9 +3943,9 @@ class BusinessLogConfigAssociatedGroup(AbstractModel):
         :type ClusterId: str
         :param _ClusterName: 部署组所属集群名称
         :type ClusterName: str
-        :param _ClusterType: 部署组所属集群类型
+        :param _ClusterType: 部署组所属集群类型，C：容器集群，V：虚拟机集群
         :type ClusterType: str
-        :param _AssociatedTime: 部署组关联日志配置时间
+        :param _AssociatedTime: 部署组关联日志配置时间，格式yyyy-MM-dd HH:mm:ss
         :type AssociatedTime: str
         """
         self._GroupId = None
@@ -3936,7 +4006,7 @@ class BusinessLogConfigAssociatedGroup(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """部署组所属应用类型
+        """部署组所属应用类型，C：容器应用，V：虚拟机应用
         :rtype: str
         """
         return self._ApplicationType
@@ -3991,7 +4061,7 @@ class BusinessLogConfigAssociatedGroup(AbstractModel):
 
     @property
     def ClusterType(self):
-        """部署组所属集群类型
+        """部署组所属集群类型，C：容器集群，V：虚拟机集群
         :rtype: str
         """
         return self._ClusterType
@@ -4002,7 +4072,7 @@ class BusinessLogConfigAssociatedGroup(AbstractModel):
 
     @property
     def AssociatedTime(self):
-        """部署组关联日志配置时间
+        """部署组关联日志配置时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._AssociatedTime
@@ -4041,7 +4111,7 @@ class BusinessLogConfigSchema(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SchemaType: 解析规则类型
+        :param _SchemaType: 解析规则类型。可选值 0（SPRING_BOOT：默认Spring Boot格式），1（NONE：无解析规则），4（NGINX_ACCESS：nginx access日志），5（CUSTOM_LOGBACK：自定义Logback），6（CUSTOM_LOG4J：自定义Log4J），7（CUSTOM_LOG4J2：自定义Log4J2），8（TEXT：单行/多行文本），9（ENVOY_MSGW_ACCESS：envoy access日志）。
         :type SchemaType: int
         :param _SchemaContent: 解析规则内容
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4052,7 +4122,7 @@ class BusinessLogConfigSchema(AbstractModel):
         :param _SchemaMultilinePattern: 解析规则对应的多行匹配规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaMultilinePattern: str
-        :param _SchemaCreateTime: 解析规则创建时间
+        :param _SchemaCreateTime: 解析规则创建时间，格式为yyyy-MM-dd HH:mm:ss
         :type SchemaCreateTime: str
         :param _SchemaPatternLayout: 用户填写的解析规则
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4067,7 +4137,7 @@ class BusinessLogConfigSchema(AbstractModel):
 
     @property
     def SchemaType(self):
-        """解析规则类型
+        """解析规则类型。可选值 0（SPRING_BOOT：默认Spring Boot格式），1（NONE：无解析规则），4（NGINX_ACCESS：nginx access日志），5（CUSTOM_LOGBACK：自定义Logback），6（CUSTOM_LOG4J：自定义Log4J），7（CUSTOM_LOG4J2：自定义Log4J2），8（TEXT：单行/多行文本），9（ENVOY_MSGW_ACCESS：envoy access日志）。
         :rtype: int
         """
         return self._SchemaType
@@ -4114,7 +4184,7 @@ class BusinessLogConfigSchema(AbstractModel):
 
     @property
     def SchemaCreateTime(self):
-        """解析规则创建时间
+        """解析规则创建时间，格式为yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._SchemaCreateTime
@@ -4164,7 +4234,7 @@ class BusinessLogV2(AbstractModel):
         :type InstanceId: str
         :param _Content: 日志内容
         :type Content: str
-        :param _Timestamp: 日志时间戳
+        :param _Timestamp: 日志时间戳，单位毫秒
         :type Timestamp: int
         :param _InstanceIp: 实例IP
         :type InstanceIp: str
@@ -4204,7 +4274,7 @@ class BusinessLogV2(AbstractModel):
 
     @property
     def Timestamp(self):
-        """日志时间戳
+        """日志时间戳，单位毫秒
         :rtype: int
         """
         return self._Timestamp
@@ -4818,7 +4888,7 @@ class ClusterV2(AbstractModel):
         :param _ClusterDesc: 集群描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterDesc: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，C表示容器集群，V表示虚拟机集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: str
         :param _VpcId: 集群所属私有网络ID
@@ -4854,10 +4924,10 @@ class ClusterV2(AbstractModel):
         :param _DeleteFlag: 删除标记：true：可以删除；false：不可删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteFlag: bool
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间，格式为​​YYYY-MM-DD HH:MM:SS
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间，格式为​​YYYY-MM-DD HH:MM:SS
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _TsfRegionId: 集群所属TSF地域ID
@@ -4911,7 +4981,7 @@ class ClusterV2(AbstractModel):
         :param _KuberneteApiServer: api地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type KuberneteApiServer: str
-        :param _KuberneteNativeType: K : kubeconfig, S : service account
+        :param _KuberneteNativeType: K 表示通过kubeconfig 导入, S 表示通过service account导入
 注意：此字段可能返回 null，表示取不到有效值。
         :type KuberneteNativeType: str
         :param _KuberneteNativeSecret: native secret
@@ -4998,7 +5068,7 @@ class ClusterV2(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型
+        """集群类型，C表示容器集群，V表示虚拟机集群
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5142,7 +5212,7 @@ class ClusterV2(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间，格式为​​YYYY-MM-DD HH:MM:SS
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5154,7 +5224,7 @@ class ClusterV2(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        """更新时间，格式为​​YYYY-MM-DD HH:MM:SS
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5370,7 +5440,7 @@ class ClusterV2(AbstractModel):
 
     @property
     def KuberneteNativeType(self):
-        """K : kubeconfig, S : service account
+        """K 表示通过kubeconfig 导入, S 表示通过service account导入
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6964,6 +7034,120 @@ class ContainGroupResult(AbstractModel):
         
 
 
+class ContainerAdditionalResourceRequirement(AbstractModel):
+    """应用使用容器部署时需要的额外资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: CPU 核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: str
+        :param _Mem: 内存 MiB 数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mem: str
+        """
+        self._Cpu = None
+        self._Mem = None
+
+    @property
+    def Cpu(self):
+        """CPU 核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        """内存 MiB 数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerAdditionalResourceRequirementMap(AbstractModel):
+    """不同类型的应用的容器部署组，部署时的额外资源要求
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _M: Mesh 应用部署时需要的额外资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type M: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirement`
+        :param _N: 普通应用部署时需要的额外资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type N: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirement`
+        """
+        self._M = None
+        self._N = None
+
+    @property
+    def M(self):
+        """Mesh 应用部署时需要的额外资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirement`
+        """
+        return self._M
+
+    @M.setter
+    def M(self, M):
+        self._M = M
+
+    @property
+    def N(self):
+        """普通应用部署时需要的额外资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirement`
+        """
+        return self._N
+
+    @N.setter
+    def N(self, N):
+        self._N = N
+
+
+    def _deserialize(self, params):
+        if params.get("M") is not None:
+            self._M = ContainerAdditionalResourceRequirement()
+            self._M._deserialize(params.get("M"))
+        if params.get("N") is not None:
+            self._N = ContainerAdditionalResourceRequirement()
+            self._N._deserialize(params.get("N"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerEvent(AbstractModel):
     """返回容器的事件，比如 k8s deployment 或者 pod 的 events
 
@@ -7200,7 +7384,7 @@ class ContainerGroupDeploy(AbstractModel):
         :param _TcrRepoInfo: TcrRepoInfo值
 注意：此字段可能返回 null，表示取不到有效值。
         :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
-        :param _VolumeInfos: 数据卷信息，list
+        :param _VolumeInfos: 数据卷信息，数组结构
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeInfos: list of VolumeInfo
         :param _VolumeMountInfos: 数据卷挂载信息，list
@@ -7646,7 +7830,7 @@ class ContainerGroupDeploy(AbstractModel):
 
     @property
     def VolumeInfos(self):
-        """数据卷信息，list
+        """数据卷信息，数组结构
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VolumeInfo
         """
@@ -8810,6 +8994,46 @@ class ContainerGroupOther(AbstractModel):
         
 
 
+class ContainerGroupResourceConfig(AbstractModel):
+    """容器部署组相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AdditionalResourceRequirement: 不同类型的应用的容器部署组，部署时的额外资源要求
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdditionalResourceRequirement: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirementMap`
+        """
+        self._AdditionalResourceRequirement = None
+
+    @property
+    def AdditionalResourceRequirement(self):
+        """不同类型的应用的容器部署组，部署时的额外资源要求
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerAdditionalResourceRequirementMap`
+        """
+        return self._AdditionalResourceRequirement
+
+    @AdditionalResourceRequirement.setter
+    def AdditionalResourceRequirement(self, AdditionalResourceRequirement):
+        self._AdditionalResourceRequirement = AdditionalResourceRequirement
+
+
+    def _deserialize(self, params):
+        if params.get("AdditionalResourceRequirement") is not None:
+            self._AdditionalResourceRequirement = ContainerAdditionalResourceRequirementMap()
+            self._AdditionalResourceRequirement._deserialize(params.get("AdditionalResourceRequirement"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerGroupServiceGovernanceConfig(AbstractModel):
     """服务治理相关配置项
 
@@ -9413,6 +9637,78 @@ class ContainerInfo(AbstractModel):
         
 
 
+class ContainerInstanceResourceConfig(AbstractModel):
+    """容器实例相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImportMode: 实例导入方式，可多个，公有云为 ["R"]，独立版的取值有 "M" 脚本模式、"S" SSH 模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportMode: list of str
+        :param _MasterNumLimit: SSH 模式时，前端应该限制用户填这个数量的 master 主机信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterNumLimit: int
+        :param _NodeNumLimitPerSetup: SSH 模式时，前端应该限制用户填的最高数量的 node 主机信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeNumLimitPerSetup: int
+        """
+        self._ImportMode = None
+        self._MasterNumLimit = None
+        self._NodeNumLimitPerSetup = None
+
+    @property
+    def ImportMode(self):
+        """实例导入方式，可多个，公有云为 ["R"]，独立版的取值有 "M" 脚本模式、"S" SSH 模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ImportMode
+
+    @ImportMode.setter
+    def ImportMode(self, ImportMode):
+        self._ImportMode = ImportMode
+
+    @property
+    def MasterNumLimit(self):
+        """SSH 模式时，前端应该限制用户填这个数量的 master 主机信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MasterNumLimit
+
+    @MasterNumLimit.setter
+    def MasterNumLimit(self, MasterNumLimit):
+        self._MasterNumLimit = MasterNumLimit
+
+    @property
+    def NodeNumLimitPerSetup(self):
+        """SSH 模式时，前端应该限制用户填的最高数量的 node 主机信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NodeNumLimitPerSetup
+
+    @NodeNumLimitPerSetup.setter
+    def NodeNumLimitPerSetup(self, NodeNumLimitPerSetup):
+        self._NodeNumLimitPerSetup = NodeNumLimitPerSetup
+
+
+    def _deserialize(self, params):
+        self._ImportMode = params.get("ImportMode")
+        self._MasterNumLimit = params.get("MasterNumLimit")
+        self._NodeNumLimitPerSetup = params.get("NodeNumLimitPerSetup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContinueRunFailedTaskBatchRequest(AbstractModel):
     """ContinueRunFailedTaskBatch请求参数结构体
 
@@ -9420,14 +9716,14 @@ class ContinueRunFailedTaskBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchId: 批次ID。
+        :param _BatchId: 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入执行记录页，第一列即为任务批次ID，在[任务执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=task)页能查看所有任务批次ID。
         :type BatchId: str
         """
         self._BatchId = None
 
     @property
     def BatchId(self):
-        """批次ID。
+        """任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入执行记录页，第一列即为任务批次ID，在[任务执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=task)页能查看所有任务批次ID。
         :rtype: str
         """
         return self._BatchId
@@ -10334,7 +10630,7 @@ class CreateApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationName: 应用名称
+        :param _ApplicationName: 应用名称，最长60字符
         :type ApplicationName: str
         :param _ApplicationType: 应用类型，V：虚拟机应用；C：容器应用；S：serverless应用
         :type ApplicationType: str
@@ -10348,7 +10644,7 @@ class CreateApplicationRequest(AbstractModel):
         :type ApplicationResourceType: str
         :param _ApplicationRuntimeType: 应用runtime类型
         :type ApplicationRuntimeType: str
-        :param _ProgramId: 需要绑定的数据集ID
+        :param _ProgramId: 【数据集ID】。可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a26486wy)进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramId: str
         :param _ServiceConfigList: 服务配置信息列表
         :type ServiceConfigList: list of ServiceConfig
@@ -10386,7 +10682,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """应用名称
+        """应用名称，最长60字符
         :rtype: str
         """
         return self._ApplicationName
@@ -10471,7 +10767,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ProgramId(self):
-        """需要绑定的数据集ID
+        """【数据集ID】。可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a26486wy)进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: str
         """
         return self._ProgramId
@@ -10655,9 +10951,12 @@ class CreateClusterRequest(AbstractModel):
         r"""
         :param _ClusterName: 集群名称
         :type ClusterName: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 指定集群类型，目前支持：
+- `V`：虚拟机集群
+- `C`：容器集群
+- `S`：Serverless 集群
         :type ClusterType: str
-        :param _VpcId: 私有网络ID
+        :param _VpcId: 私有网络ID，可通过调用[DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)查询已创建的私有网络列表或登录控制台进行查看；也可以调用[CreateVpc](https://cloud.tencent.com/document/api/215/1309)创建新的私有网络。
         :type VpcId: str
         :param _ClusterCIDR: 分配给集群容器和服务IP的CIDR
         :type ClusterCIDR: str
@@ -10719,7 +11018,10 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型
+        """指定集群类型，目前支持：
+- `V`：虚拟机集群
+- `C`：容器集群
+- `S`：Serverless 集群
         :rtype: str
         """
         return self._ClusterType
@@ -10730,7 +11032,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络ID
+        """私有网络ID，可通过调用[DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)查询已创建的私有网络列表或登录控制台进行查看；也可以调用[CreateVpc](https://cloud.tencent.com/document/api/215/1309)创建新的私有网络。
         :rtype: str
         """
         return self._VpcId
@@ -10972,21 +11274,23 @@ class CreateConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigName: 配置项名称
+        :param _ConfigName: 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :type ConfigName: str
-        :param _ConfigVersion: 配置项版本
+        :param _ConfigVersion: 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :type ConfigVersion: str
-        :param _ConfigValue: 配置项值
+        :param _ConfigValue: 配置项值。
         :type ConfigValue: str
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _ConfigVersionDesc: 配置项版本描述
+        :param _ConfigVersionDesc: 配置项版本描述，最多支持200个字符。
         :type ConfigVersionDesc: str
-        :param _ConfigType: 配置项值类型
+        :param _ConfigType: 配置项值类型，固定值。
         :type ConfigType: str
-        :param _EncodeWithBase64: Base64编码的配置项
+        :param _EncodeWithBase64: Base64编码的配置项。
+- true：开启
+- false：关闭
         :type EncodeWithBase64: bool
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._ConfigName = None
@@ -11000,7 +11304,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称
+        """配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigName
@@ -11011,7 +11315,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ConfigVersion(self):
-        """配置项版本
+        """配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :rtype: str
         """
         return self._ConfigVersion
@@ -11022,7 +11326,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ConfigValue(self):
-        """配置项值
+        """配置项值。
         :rtype: str
         """
         return self._ConfigValue
@@ -11033,7 +11337,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -11044,7 +11348,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ConfigVersionDesc(self):
-        """配置项版本描述
+        """配置项版本描述，最多支持200个字符。
         :rtype: str
         """
         return self._ConfigVersionDesc
@@ -11055,7 +11359,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ConfigType(self):
-        """配置项值类型
+        """配置项值类型，固定值。
         :rtype: str
         """
         return self._ConfigType
@@ -11066,7 +11370,9 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def EncodeWithBase64(self):
-        """Base64编码的配置项
+        """Base64编码的配置项。
+- true：开启
+- false：关闭
         :rtype: bool
         """
         return self._EncodeWithBase64
@@ -11077,7 +11383,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -11113,7 +11419,9 @@ class CreateConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：创建成功；false：创建失败
+        :param _Result: 创建结果。
+- true：创建成功
+- false：创建失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11123,7 +11431,9 @@ class CreateConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：创建成功；false：创建失败
+        """创建结果。
+- true：创建成功
+- false：创建失败
         :rtype: bool
         """
         return self._Result
@@ -11156,15 +11466,19 @@ class CreateConfigTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigTemplateName: 配置模板名称
+        :param _ConfigTemplateName: 配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :type ConfigTemplateName: str
-        :param _ConfigTemplateType: 配置模板对应的微服务框架
+        :param _ConfigTemplateType: 配置模板对应的微服务框架。
+- Ribbon：Ribbon类型配置模板
+- Hystrix：Hystrix类型配置模板
+- Zuul：Zuul类型配置模板
+- customize：自定义类型配置模板
         :type ConfigTemplateType: str
-        :param _ConfigTemplateValue: 配置模板数据
+        :param _ConfigTemplateValue: 配置模板数据。
         :type ConfigTemplateValue: str
-        :param _ConfigTemplateDesc: 配置模板描述
+        :param _ConfigTemplateDesc: 配置模板描述，最多支持200个字符。
         :type ConfigTemplateDesc: str
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._ConfigTemplateName = None
@@ -11175,7 +11489,7 @@ class CreateConfigTemplateRequest(AbstractModel):
 
     @property
     def ConfigTemplateName(self):
-        """配置模板名称
+        """配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigTemplateName
@@ -11186,7 +11500,11 @@ class CreateConfigTemplateRequest(AbstractModel):
 
     @property
     def ConfigTemplateType(self):
-        """配置模板对应的微服务框架
+        """配置模板对应的微服务框架。
+- Ribbon：Ribbon类型配置模板
+- Hystrix：Hystrix类型配置模板
+- Zuul：Zuul类型配置模板
+- customize：自定义类型配置模板
         :rtype: str
         """
         return self._ConfigTemplateType
@@ -11197,7 +11515,7 @@ class CreateConfigTemplateRequest(AbstractModel):
 
     @property
     def ConfigTemplateValue(self):
-        """配置模板数据
+        """配置模板数据。
         :rtype: str
         """
         return self._ConfigTemplateValue
@@ -11208,7 +11526,7 @@ class CreateConfigTemplateRequest(AbstractModel):
 
     @property
     def ConfigTemplateDesc(self):
-        """配置模板描述
+        """配置模板描述，最多支持200个字符。
         :rtype: str
         """
         return self._ConfigTemplateDesc
@@ -11219,7 +11537,7 @@ class CreateConfigTemplateRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -11252,7 +11570,9 @@ class CreateConfigTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：创建成功；false：创建失败
+        :param _Result: 创建结果。
+- true：创建成功
+- false：创建失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11262,7 +11582,9 @@ class CreateConfigTemplateResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：创建成功；false：创建失败
+        """创建结果。
+- true：创建成功
+- false：创建失败
         :rtype: bool
         """
         return self._Result
@@ -11295,15 +11617,15 @@ class CreateConfigTemplateWithDetailRespRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigTemplateName: 配置模板名称
+        :param _ConfigTemplateName: 配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :type ConfigTemplateName: str
-        :param _ConfigTemplateType: 配置模板对应的微服务框架
+        :param _ConfigTemplateType: 配置模板对应的微服务框架。- Ribbon：Ribbon类型配置模板- Hystrix：Hystrix类型配置模板- Zuul：Zuul类型配置模板- customize：自定义类型配置模板。
         :type ConfigTemplateType: str
-        :param _ConfigTemplateValue: 配置模板数据
+        :param _ConfigTemplateValue: 配置模板数据。
         :type ConfigTemplateValue: str
-        :param _ConfigTemplateDesc: 配置模板描述
+        :param _ConfigTemplateDesc: 配置模板描述，最多支持200个字符。
         :type ConfigTemplateDesc: str
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._ConfigTemplateName = None
@@ -11314,7 +11636,7 @@ class CreateConfigTemplateWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigTemplateName(self):
-        """配置模板名称
+        """配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigTemplateName
@@ -11325,7 +11647,7 @@ class CreateConfigTemplateWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigTemplateType(self):
-        """配置模板对应的微服务框架
+        """配置模板对应的微服务框架。- Ribbon：Ribbon类型配置模板- Hystrix：Hystrix类型配置模板- Zuul：Zuul类型配置模板- customize：自定义类型配置模板。
         :rtype: str
         """
         return self._ConfigTemplateType
@@ -11336,7 +11658,7 @@ class CreateConfigTemplateWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigTemplateValue(self):
-        """配置模板数据
+        """配置模板数据。
         :rtype: str
         """
         return self._ConfigTemplateValue
@@ -11347,7 +11669,7 @@ class CreateConfigTemplateWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigTemplateDesc(self):
-        """配置模板描述
+        """配置模板描述，最多支持200个字符。
         :rtype: str
         """
         return self._ConfigTemplateDesc
@@ -11358,7 +11680,7 @@ class CreateConfigTemplateWithDetailRespRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -11391,7 +11713,7 @@ class CreateConfigTemplateWithDetailRespResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 创建成功，返回 ID
+        :param _Result: 创建成功，返回配置模板ID。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ConfigTemplate`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11401,7 +11723,7 @@ class CreateConfigTemplateWithDetailRespResponse(AbstractModel):
 
     @property
     def Result(self):
-        """创建成功，返回 ID
+        """创建成功，返回配置模板ID。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ConfigTemplate`
         """
         return self._Result
@@ -11436,21 +11758,23 @@ class CreateConfigWithDetailRespRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigName: 配置项名称
+        :param _ConfigName: 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :type ConfigName: str
-        :param _ConfigVersion: 配置项版本
+        :param _ConfigVersion: 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :type ConfigVersion: str
-        :param _ConfigValue: 配置项值
+        :param _ConfigValue: 配置项值。
         :type ConfigValue: str
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _ConfigVersionDesc: 配置项版本描述
+        :param _ConfigVersionDesc: 配置项版本描述，最多支持200个字符。
         :type ConfigVersionDesc: str
-        :param _ConfigType: 配置项值类型
+        :param _ConfigType: 配置项值类型，固定值。
         :type ConfigType: str
-        :param _EncodeWithBase64: Base64编码的配置项
+        :param _EncodeWithBase64: Base64编码的配置项。
+- true：开启
+- false：关闭
         :type EncodeWithBase64: bool
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._ConfigName = None
@@ -11464,7 +11788,7 @@ class CreateConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称
+        """配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigName
@@ -11475,7 +11799,7 @@ class CreateConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigVersion(self):
-        """配置项版本
+        """配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :rtype: str
         """
         return self._ConfigVersion
@@ -11486,7 +11810,7 @@ class CreateConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigValue(self):
-        """配置项值
+        """配置项值。
         :rtype: str
         """
         return self._ConfigValue
@@ -11497,7 +11821,7 @@ class CreateConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -11508,7 +11832,7 @@ class CreateConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigVersionDesc(self):
-        """配置项版本描述
+        """配置项版本描述，最多支持200个字符。
         :rtype: str
         """
         return self._ConfigVersionDesc
@@ -11519,7 +11843,7 @@ class CreateConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigType(self):
-        """配置项值类型
+        """配置项值类型，固定值。
         :rtype: str
         """
         return self._ConfigType
@@ -11530,7 +11854,9 @@ class CreateConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def EncodeWithBase64(self):
-        """Base64编码的配置项
+        """Base64编码的配置项。
+- true：开启
+- false：关闭
         :rtype: bool
         """
         return self._EncodeWithBase64
@@ -11541,7 +11867,7 @@ class CreateConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -11577,7 +11903,7 @@ class CreateConfigWithDetailRespResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 配置项
+        :param _Result: 配置项。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.Config`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11587,7 +11913,7 @@ class CreateConfigWithDetailRespResponse(AbstractModel):
 
     @property
     def Result(self):
-        """配置项
+        """配置项。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.Config`
         """
         return self._Result
@@ -11622,9 +11948,9 @@ class CreateContainGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 分组所属应用ID
+        :param _ApplicationId: 分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _NamespaceId: 分组所属命名空间ID
+        :param _NamespaceId: 分组所属【命名空间ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
         :param _GroupName: 分组名称字段，长度1~60，字母或下划线开头，可包含字母数字下划线
         :type GroupName: str
@@ -11650,11 +11976,9 @@ class CreateContainGroupRequest(AbstractModel):
         :type CpuRequest: str
         :param _MemRequest: 初始分配的内存 MiB 数，对应 K8S request
         :type MemRequest: str
-        :param _GroupResourceType: 部署组资源类型；
-DEF — 默认资源类型；
-GW — 网关资源类型；
+        :param _GroupResourceType: 部署组资源类型；DEF 表示默认资源类型
         :type GroupResourceType: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: 分组所属【子网ID】，可前往TKE侧集群[控制台](https://console.cloud.tencent.com/tke2/cluster/sub/list/basic/info/base?rid=1&clusterId=cls-2nhp3g1i)进行获取
         :type SubnetId: str
         :param _AgentCpuRequest: agent 容器分配的 CPU 核数，对应 K8S 的 request
         :type AgentCpuRequest: str
@@ -11700,7 +12024,7 @@ GW — 网关资源类型；
 
     @property
     def ApplicationId(self):
-        """分组所属应用ID
+        """分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -11711,7 +12035,7 @@ GW — 网关资源类型；
 
     @property
     def NamespaceId(self):
-        """分组所属命名空间ID
+        """分组所属【命名空间ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -11854,9 +12178,7 @@ GW — 网关资源类型；
 
     @property
     def GroupResourceType(self):
-        """部署组资源类型；
-DEF — 默认资源类型；
-GW — 网关资源类型；
+        """部署组资源类型；DEF 表示默认资源类型
         :rtype: str
         """
         return self._GroupResourceType
@@ -11867,7 +12189,7 @@ GW — 网关资源类型；
 
     @property
     def SubnetId(self):
-        """子网ID
+        """分组所属【子网ID】，可前往TKE侧集群[控制台](https://console.cloud.tencent.com/tke2/cluster/sub/list/basic/info/base?rid=1&clusterId=cls-2nhp3g1i)进行获取
         :rtype: str
         """
         return self._SubnetId
@@ -12055,27 +12377,29 @@ class CreateFileConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigName: 配置项名称
+        :param _ConfigName: 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :type ConfigName: str
-        :param _ConfigVersion: 配置项版本
+        :param _ConfigVersion: 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :type ConfigVersion: str
-        :param _ConfigFileName: 配置项文件名
+        :param _ConfigFileName: 配置项文件名，最多支持60个字符，只能包含英文、数字、"-"（英文）、"_"（英文）、"."（英文）。
         :type ConfigFileName: str
         :param _ConfigFileValue: 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
         :type ConfigFileValue: str
-        :param _ApplicationId: 配置项关联应用ID
+        :param _ApplicationId: 配置项关联应用ID，该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _ConfigFilePath: 发布路径
+        :param _ConfigFilePath: 发布路径。
         :type ConfigFilePath: str
-        :param _ConfigVersionDesc: 配置项版本描述
+        :param _ConfigVersionDesc: 配置项版本描述，最多支持200个字符。
         :type ConfigVersionDesc: str
-        :param _ConfigFileCode: 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+        :param _ConfigFileCode: 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持。
         :type ConfigFileCode: str
-        :param _ConfigPostCmd: 后置命令
+        :param _ConfigPostCmd: 后置命令。
         :type ConfigPostCmd: str
-        :param _EncodeWithBase64: Base64编码的配置项
+        :param _EncodeWithBase64: Base64编码的配置项。
+- true：开启
+- false：关闭
         :type EncodeWithBase64: bool
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._ConfigName = None
@@ -12092,7 +12416,7 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称
+        """配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigName
@@ -12103,7 +12427,7 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def ConfigVersion(self):
-        """配置项版本
+        """配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :rtype: str
         """
         return self._ConfigVersion
@@ -12114,7 +12438,7 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def ConfigFileName(self):
-        """配置项文件名
+        """配置项文件名，最多支持60个字符，只能包含英文、数字、"-"（英文）、"_"（英文）、"."（英文）。
         :rtype: str
         """
         return self._ConfigFileName
@@ -12136,7 +12460,7 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """配置项关联应用ID
+        """配置项关联应用ID，该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -12147,7 +12471,7 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def ConfigFilePath(self):
-        """发布路径
+        """发布路径。
         :rtype: str
         """
         return self._ConfigFilePath
@@ -12158,7 +12482,7 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def ConfigVersionDesc(self):
-        """配置项版本描述
+        """配置项版本描述，最多支持200个字符。
         :rtype: str
         """
         return self._ConfigVersionDesc
@@ -12169,7 +12493,7 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def ConfigFileCode(self):
-        """配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+        """配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持。
         :rtype: str
         """
         return self._ConfigFileCode
@@ -12180,7 +12504,7 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def ConfigPostCmd(self):
-        """后置命令
+        """后置命令。
         :rtype: str
         """
         return self._ConfigPostCmd
@@ -12191,7 +12515,9 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def EncodeWithBase64(self):
-        """Base64编码的配置项
+        """Base64编码的配置项。
+- true：开启
+- false：关闭
         :rtype: bool
         """
         return self._EncodeWithBase64
@@ -12202,7 +12528,7 @@ class CreateFileConfigRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -12241,7 +12567,9 @@ class CreateFileConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：创建成功；false：创建失败
+        :param _Result: 创建结果。
+- true：创建成功
+- false：创建失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12251,7 +12579,9 @@ class CreateFileConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：创建成功；false：创建失败
+        """创建结果。
+- true：创建成功
+- false：创建失败
         :rtype: bool
         """
         return self._Result
@@ -12284,27 +12614,27 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigName: 配置项名称
+        :param _ConfigName: 配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :type ConfigName: str
-        :param _ConfigVersion: 配置项版本
+        :param _ConfigVersion: 配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :type ConfigVersion: str
-        :param _ConfigFileName: 配置项文件名
+        :param _ConfigFileName: 配置项文件名，不超过60个字符，只能包含英文、数字、"-"（英文）、"_"（英文）、"."（英文）。
         :type ConfigFileName: str
-        :param _ConfigFileValue: 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
+        :param _ConfigFileValue: 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）。
         :type ConfigFileValue: str
-        :param _ApplicationId: 配置项关联应用ID
+        :param _ApplicationId: 配置项关联应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _ConfigFilePath: 发布路径
+        :param _ConfigFilePath: 发布路径。
         :type ConfigFilePath: str
-        :param _ConfigVersionDesc: 配置项版本描述
+        :param _ConfigVersionDesc: 配置项版本描述，最多支持200个字符。
         :type ConfigVersionDesc: str
-        :param _ConfigFileCode: 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+        :param _ConfigFileCode: 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持。
         :type ConfigFileCode: str
-        :param _ConfigPostCmd: 后置命令
+        :param _ConfigPostCmd: 后置命令。
         :type ConfigPostCmd: str
         :param _EncodeWithBase64: Base64编码的配置项
         :type EncodeWithBase64: bool
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._ConfigName = None
@@ -12321,7 +12651,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称
+        """配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigName
@@ -12332,7 +12662,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigVersion(self):
-        """配置项版本
+        """配置项版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :rtype: str
         """
         return self._ConfigVersion
@@ -12343,7 +12673,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigFileName(self):
-        """配置项文件名
+        """配置项文件名，不超过60个字符，只能包含英文、数字、"-"（英文）、"_"（英文）、"."（英文）。
         :rtype: str
         """
         return self._ConfigFileName
@@ -12354,7 +12684,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigFileValue(self):
-        """配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
+        """配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）。
         :rtype: str
         """
         return self._ConfigFileValue
@@ -12365,7 +12695,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """配置项关联应用ID
+        """配置项关联应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -12376,7 +12706,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigFilePath(self):
-        """发布路径
+        """发布路径。
         :rtype: str
         """
         return self._ConfigFilePath
@@ -12387,7 +12717,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigVersionDesc(self):
-        """配置项版本描述
+        """配置项版本描述，最多支持200个字符。
         :rtype: str
         """
         return self._ConfigVersionDesc
@@ -12398,7 +12728,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigFileCode(self):
-        """配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+        """配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持。
         :rtype: str
         """
         return self._ConfigFileCode
@@ -12409,7 +12739,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigPostCmd(self):
-        """后置命令
+        """后置命令。
         :rtype: str
         """
         return self._ConfigPostCmd
@@ -12431,7 +12761,7 @@ class CreateFileConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -12470,7 +12800,7 @@ class CreateFileConfigWithDetailRespResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 文件配置项
+        :param _Result: 文件配置项。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.FileConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12480,7 +12810,7 @@ class CreateFileConfigWithDetailRespResponse(AbstractModel):
 
     @property
     def Result(self):
-        """文件配置项
+        """文件配置项。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.FileConfig`
         """
         return self._Result
@@ -12629,22 +12959,24 @@ class CreateGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 部署组所属的应用ID
+        :param _ApplicationId: 部署组所属的【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _NamespaceId: 部署组所属命名空间ID
+        :param _NamespaceId: 部署组所属【命名空间ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
         :param _GroupName: 部署组名称
         :type GroupName: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 部署组所属的【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :type ClusterId: str
         :param _GroupDesc: 部署组描述
         :type GroupDesc: str
-        :param _GroupResourceType: 部署组资源类型；DEF 表示默认资源类型；GW 表示网关资源类型
+        :param _GroupResourceType: 部署组资源类型；DEF 表示默认资源类型
         :type GroupResourceType: str
         :param _Alias: 部署组备注
         :type Alias: str
         :param _Tags: 标签列表
         :type Tags: list of Tag
+        :param _K8sNamespaceName: k8s命名空间名称
+        :type K8sNamespaceName: str
         """
         self._ApplicationId = None
         self._NamespaceId = None
@@ -12654,10 +12986,11 @@ class CreateGroupRequest(AbstractModel):
         self._GroupResourceType = None
         self._Alias = None
         self._Tags = None
+        self._K8sNamespaceName = None
 
     @property
     def ApplicationId(self):
-        """部署组所属的应用ID
+        """部署组所属的【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -12668,7 +13001,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """部署组所属命名空间ID
+        """部署组所属【命名空间ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -12690,7 +13023,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """部署组所属的【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -12712,7 +13045,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupResourceType(self):
-        """部署组资源类型；DEF 表示默认资源类型；GW 表示网关资源类型
+        """部署组资源类型；DEF 表示默认资源类型
         :rtype: str
         """
         return self._GroupResourceType
@@ -12743,6 +13076,17 @@ class CreateGroupRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def K8sNamespaceName(self):
+        """k8s命名空间名称
+        :rtype: str
+        """
+        return self._K8sNamespaceName
+
+    @K8sNamespaceName.setter
+    def K8sNamespaceName(self, K8sNamespaceName):
+        self._K8sNamespaceName = K8sNamespaceName
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -12758,6 +13102,7 @@ class CreateGroupRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._K8sNamespaceName = params.get("K8sNamespaceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12818,13 +13163,13 @@ class CreateLaneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaneName: 泳道名称
+        :param _LaneName: 泳道配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :type LaneName: str
-        :param _Remark: 泳道备注
+        :param _Remark: 泳道配置备注，最多支持200个字符。
         :type Remark: str
-        :param _LaneGroupList: 泳道部署组信息
+        :param _LaneGroupList: 泳道部署组信息。
         :type LaneGroupList: list of LaneGroup
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._LaneName = None
@@ -12834,7 +13179,7 @@ class CreateLaneRequest(AbstractModel):
 
     @property
     def LaneName(self):
-        """泳道名称
+        """泳道配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._LaneName
@@ -12845,7 +13190,7 @@ class CreateLaneRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """泳道备注
+        """泳道配置备注，最多支持200个字符。
         :rtype: str
         """
         return self._Remark
@@ -12856,7 +13201,7 @@ class CreateLaneRequest(AbstractModel):
 
     @property
     def LaneGroupList(self):
-        """泳道部署组信息
+        """泳道部署组信息。
         :rtype: list of LaneGroup
         """
         return self._LaneGroupList
@@ -12867,7 +13212,7 @@ class CreateLaneRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -12904,7 +13249,7 @@ class CreateLaneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 泳道ID
+        :param _Result: 泳道配置ID。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12914,7 +13259,7 @@ class CreateLaneResponse(AbstractModel):
 
     @property
     def Result(self):
-        """泳道ID
+        """泳道配置ID。
         :rtype: str
         """
         return self._Result
@@ -12947,17 +13292,19 @@ class CreateLaneRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleName: 泳道规则名称
+        :param _RuleName: 灰度发布规则名称，最多支持60个字符，支持中英文字符。
         :type RuleName: str
-        :param _Remark: 泳道规则备注
+        :param _Remark: 灰度发布规则备注，最多支持200个字符。
         :type Remark: str
-        :param _RuleTagList: 泳道规则标签列表
+        :param _RuleTagList: 灰度发布规则标签列表。
         :type RuleTagList: list of LaneRuleTag
-        :param _RuleTagRelationship: 泳道规则标签关系
+        :param _RuleTagRelationship: 灰度发布规则标签关系。
+- RELEATION_AND：与
+- RELEATION_OR：或
         :type RuleTagRelationship: str
-        :param _LaneId: 泳道Id
+        :param _LaneId: 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :type LaneId: str
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._RuleName = None
@@ -12969,7 +13316,7 @@ class CreateLaneRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """泳道规则名称
+        """灰度发布规则名称，最多支持60个字符，支持中英文字符。
         :rtype: str
         """
         return self._RuleName
@@ -12980,7 +13327,7 @@ class CreateLaneRuleRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """泳道规则备注
+        """灰度发布规则备注，最多支持200个字符。
         :rtype: str
         """
         return self._Remark
@@ -12991,7 +13338,7 @@ class CreateLaneRuleRequest(AbstractModel):
 
     @property
     def RuleTagList(self):
-        """泳道规则标签列表
+        """灰度发布规则标签列表。
         :rtype: list of LaneRuleTag
         """
         return self._RuleTagList
@@ -13002,7 +13349,9 @@ class CreateLaneRuleRequest(AbstractModel):
 
     @property
     def RuleTagRelationship(self):
-        """泳道规则标签关系
+        """灰度发布规则标签关系。
+- RELEATION_AND：与
+- RELEATION_OR：或
         :rtype: str
         """
         return self._RuleTagRelationship
@@ -13013,7 +13362,7 @@ class CreateLaneRuleRequest(AbstractModel):
 
     @property
     def LaneId(self):
-        """泳道Id
+        """泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :rtype: str
         """
         return self._LaneId
@@ -13024,7 +13373,7 @@ class CreateLaneRuleRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -13063,7 +13412,7 @@ class CreateLaneRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 泳道规则Id
+        :param _Result: 灰度发布规则ID。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13073,7 +13422,7 @@ class CreateLaneRuleResponse(AbstractModel):
 
     @property
     def Result(self):
-        """泳道规则Id
+        """灰度发布规则ID。
         :rtype: str
         """
         return self._Result
@@ -13106,11 +13455,11 @@ class CreateMicroserviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _MicroserviceName: 微服务名称
+        :param _MicroserviceName: 微服务名称。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :type MicroserviceName: str
-        :param _MicroserviceDesc: 微服务描述信息
+        :param _MicroserviceDesc: 微服务备注信息，最多支持200个字符。
         :type MicroserviceDesc: str
         """
         self._NamespaceId = None
@@ -13119,7 +13468,7 @@ class CreateMicroserviceRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -13130,7 +13479,7 @@ class CreateMicroserviceRequest(AbstractModel):
 
     @property
     def MicroserviceName(self):
-        """微服务名称
+        """微服务名称。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :rtype: str
         """
         return self._MicroserviceName
@@ -13141,7 +13490,7 @@ class CreateMicroserviceRequest(AbstractModel):
 
     @property
     def MicroserviceDesc(self):
-        """微服务描述信息
+        """微服务备注信息，最多支持200个字符。
         :rtype: str
         """
         return self._MicroserviceDesc
@@ -13172,7 +13521,7 @@ class CreateMicroserviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 新增微服务是否成功。
+        :param _Result: 新增结果。
 true：操作成功。
 false：操作失败。
         :type Result: bool
@@ -13184,7 +13533,7 @@ false：操作失败。
 
     @property
     def Result(self):
-        """新增微服务是否成功。
+        """新增结果。
 true：操作成功。
 false：操作失败。
         :rtype: bool
@@ -13219,11 +13568,11 @@ class CreateMicroserviceWithDetailRespRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _MicroserviceName: 微服务名称
+        :param _MicroserviceName: 微服务名称，最多支持128个字符。
         :type MicroserviceName: str
-        :param _MicroserviceDesc: 微服务描述信息
+        :param _MicroserviceDesc: 微服务描述信息，最多支持200个字符。
         :type MicroserviceDesc: str
         """
         self._NamespaceId = None
@@ -13232,7 +13581,7 @@ class CreateMicroserviceWithDetailRespRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -13243,7 +13592,7 @@ class CreateMicroserviceWithDetailRespRequest(AbstractModel):
 
     @property
     def MicroserviceName(self):
-        """微服务名称
+        """微服务名称，最多支持128个字符。
         :rtype: str
         """
         return self._MicroserviceName
@@ -13254,7 +13603,7 @@ class CreateMicroserviceWithDetailRespRequest(AbstractModel):
 
     @property
     def MicroserviceDesc(self):
-        """微服务描述信息
+        """微服务描述信息，最多支持200个字符。
         :rtype: str
         """
         return self._MicroserviceDesc
@@ -13285,7 +13634,7 @@ class CreateMicroserviceWithDetailRespResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 微服务ID
+        :param _Result: 微服务ID。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13295,7 +13644,7 @@ class CreateMicroserviceWithDetailRespResponse(AbstractModel):
 
     @property
     def Result(self):
-        """微服务ID
+        """微服务ID。
         :rtype: str
         """
         return self._Result
@@ -13330,22 +13679,24 @@ class CreateNamespaceRequest(AbstractModel):
         r"""
         :param _NamespaceName: 命名空间名称
         :type NamespaceName: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :type ClusterId: str
         :param _NamespaceDesc: 命名空间描述
         :type NamespaceDesc: str
-        :param _NamespaceResourceType: 命名空间资源类型(默认值为DEF)
+        :param _NamespaceResourceType: 命名空间资源类型；DEF：表示默认资源类型；GW：表示网关资源类型
         :type NamespaceResourceType: str
-        :param _NamespaceType: 是否是全局命名空间(默认是DEF，表示普通命名空间；GLOBAL表示全局命名空间)
+        :param _NamespaceType: 命名空间类型；DEF 表示默认普通命名空间；GLOBAL 表示全局命名空间
         :type NamespaceType: str
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :type NamespaceId: str
         :param _IsHaEnable: 是否开启高可用，1 表示开启，0 表示不开启
         :type IsHaEnable: str
-        :param _ProgramId: 需要绑定的数据集ID
+        :param _ProgramId: 需要绑定的数据集ID，可通过调用[DescribePrograms](https://cloud.tencent.com/document/api/649/73477)查询已创建的数据集列表或登录控制台进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/api/649/108544)创建新的数据集。
         :type ProgramId: str
-        :param _ProgramIdList: 需要绑定的数据集ID
+        :param _ProgramIdList: 需要绑定的数据集ID列表，可通过调用[DescribePrograms](https://cloud.tencent.com/document/api/649/73477)查询已创建的数据集列表或登录控制台进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/api/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
+        :param _CreateK8sNamespaceFlag: 是否创建k8s命名空间标识
+        :type CreateK8sNamespaceFlag: bool
         """
         self._NamespaceName = None
         self._ClusterId = None
@@ -13356,6 +13707,7 @@ class CreateNamespaceRequest(AbstractModel):
         self._IsHaEnable = None
         self._ProgramId = None
         self._ProgramIdList = None
+        self._CreateK8sNamespaceFlag = None
 
     @property
     def NamespaceName(self):
@@ -13370,7 +13722,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :rtype: str
         """
         return self._ClusterId
@@ -13392,7 +13744,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceResourceType(self):
-        """命名空间资源类型(默认值为DEF)
+        """命名空间资源类型；DEF：表示默认资源类型；GW：表示网关资源类型
         :rtype: str
         """
         return self._NamespaceResourceType
@@ -13403,7 +13755,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceType(self):
-        """是否是全局命名空间(默认是DEF，表示普通命名空间；GLOBAL表示全局命名空间)
+        """命名空间类型；DEF 表示默认普通命名空间；GLOBAL 表示全局命名空间
         :rtype: str
         """
         return self._NamespaceType
@@ -13414,7 +13766,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -13436,7 +13788,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def ProgramId(self):
-        """需要绑定的数据集ID
+        """需要绑定的数据集ID，可通过调用[DescribePrograms](https://cloud.tencent.com/document/api/649/73477)查询已创建的数据集列表或登录控制台进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/api/649/108544)创建新的数据集。
         :rtype: str
         """
         return self._ProgramId
@@ -13447,7 +13799,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """需要绑定的数据集ID
+        """需要绑定的数据集ID列表，可通过调用[DescribePrograms](https://cloud.tencent.com/document/api/649/73477)查询已创建的数据集列表或登录控制台进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/api/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -13455,6 +13807,17 @@ class CreateNamespaceRequest(AbstractModel):
     @ProgramIdList.setter
     def ProgramIdList(self, ProgramIdList):
         self._ProgramIdList = ProgramIdList
+
+    @property
+    def CreateK8sNamespaceFlag(self):
+        """是否创建k8s命名空间标识
+        :rtype: bool
+        """
+        return self._CreateK8sNamespaceFlag
+
+    @CreateK8sNamespaceFlag.setter
+    def CreateK8sNamespaceFlag(self, CreateK8sNamespaceFlag):
+        self._CreateK8sNamespaceFlag = CreateK8sNamespaceFlag
 
 
     def _deserialize(self, params):
@@ -13467,6 +13830,7 @@ class CreateNamespaceRequest(AbstractModel):
         self._IsHaEnable = params.get("IsHaEnable")
         self._ProgramId = params.get("ProgramId")
         self._ProgramIdList = params.get("ProgramIdList")
+        self._CreateK8sNamespaceFlag = params.get("CreateK8sNamespaceFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13806,19 +14170,21 @@ class CreatePublicConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigName: 配置项名称
+        :param _ConfigName: 配置名称，最长60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :type ConfigName: str
-        :param _ConfigVersion: 配置项版本
+        :param _ConfigVersion: 配置版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :type ConfigVersion: str
-        :param _ConfigValue: 配置项值，总是接收yaml格式的内容
+        :param _ConfigValue: 配置项值，总是接收yaml格式的内容。
         :type ConfigValue: str
-        :param _ConfigVersionDesc: 配置项版本描述
+        :param _ConfigVersionDesc: 配置项版本描述，最多支持200个字符。
         :type ConfigVersionDesc: str
-        :param _ConfigType: 配置项类型
+        :param _ConfigType: 配置项类型，固定值。
         :type ConfigType: str
-        :param _EncodeWithBase64: Base64编码的配置项
+        :param _EncodeWithBase64: Base64编码的配置项。
+- true：开启
+- false：关闭
         :type EncodeWithBase64: bool
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._ConfigName = None
@@ -13831,7 +14197,7 @@ class CreatePublicConfigRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称
+        """配置名称，最长60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigName
@@ -13842,7 +14208,7 @@ class CreatePublicConfigRequest(AbstractModel):
 
     @property
     def ConfigVersion(self):
-        """配置项版本
+        """配置版本，只能包含小写字母、数字及分隔符("-"，".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :rtype: str
         """
         return self._ConfigVersion
@@ -13853,7 +14219,7 @@ class CreatePublicConfigRequest(AbstractModel):
 
     @property
     def ConfigValue(self):
-        """配置项值，总是接收yaml格式的内容
+        """配置项值，总是接收yaml格式的内容。
         :rtype: str
         """
         return self._ConfigValue
@@ -13864,7 +14230,7 @@ class CreatePublicConfigRequest(AbstractModel):
 
     @property
     def ConfigVersionDesc(self):
-        """配置项版本描述
+        """配置项版本描述，最多支持200个字符。
         :rtype: str
         """
         return self._ConfigVersionDesc
@@ -13875,7 +14241,7 @@ class CreatePublicConfigRequest(AbstractModel):
 
     @property
     def ConfigType(self):
-        """配置项类型
+        """配置项类型，固定值。
         :rtype: str
         """
         return self._ConfigType
@@ -13886,7 +14252,9 @@ class CreatePublicConfigRequest(AbstractModel):
 
     @property
     def EncodeWithBase64(self):
-        """Base64编码的配置项
+        """Base64编码的配置项。
+- true：开启
+- false：关闭
         :rtype: bool
         """
         return self._EncodeWithBase64
@@ -13897,7 +14265,7 @@ class CreatePublicConfigRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -13932,7 +14300,9 @@ class CreatePublicConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：创建成功；false：创建失败
+        :param _Result: 创建结果。
+- true：创建成功
+- false：创建失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13942,7 +14312,9 @@ class CreatePublicConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：创建成功；false：创建失败
+        """创建结果。
+- true：创建成功
+- false：创建失败
         :rtype: bool
         """
         return self._Result
@@ -13975,19 +14347,21 @@ class CreatePublicConfigWithDetailRespRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigName: 配置项名称
+        :param _ConfigName: 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :type ConfigName: str
-        :param _ConfigVersion: 配置项版本
+        :param _ConfigVersion: 配置项版本，最多支持60个字符，只能包含小写字母、数字及分隔符("-",".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :type ConfigVersion: str
-        :param _ConfigValue: 配置项值，总是接收yaml格式的内容
+        :param _ConfigValue: 配置项值，总是接收yaml格式的内容。
         :type ConfigValue: str
-        :param _ConfigVersionDesc: 配置项版本描述
+        :param _ConfigVersionDesc: 配置项版本描述，最多支持200个字符。
         :type ConfigVersionDesc: str
-        :param _ConfigType: 配置项类型
+        :param _ConfigType: 配置项类型，固定值。
         :type ConfigType: str
-        :param _EncodeWithBase64: Base64编码的配置项
+        :param _EncodeWithBase64: Base64编码的配置项。
+- true：开启
+- false：关闭
         :type EncodeWithBase64: bool
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :type ProgramIdList: list of str
         """
         self._ConfigName = None
@@ -14000,7 +14374,7 @@ class CreatePublicConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称
+        """配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”、“_”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigName
@@ -14011,7 +14385,7 @@ class CreatePublicConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigVersion(self):
-        """配置项版本
+        """配置项版本，最多支持60个字符，只能包含小写字母、数字及分隔符("-",".")，且必须以小写字母或数字开头、以小写字母或数字结尾，中间不能有连续的"-"或"."。
         :rtype: str
         """
         return self._ConfigVersion
@@ -14022,7 +14396,7 @@ class CreatePublicConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigValue(self):
-        """配置项值，总是接收yaml格式的内容
+        """配置项值，总是接收yaml格式的内容。
         :rtype: str
         """
         return self._ConfigValue
@@ -14033,7 +14407,7 @@ class CreatePublicConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigVersionDesc(self):
-        """配置项版本描述
+        """配置项版本描述，最多支持200个字符。
         :rtype: str
         """
         return self._ConfigVersionDesc
@@ -14044,7 +14418,7 @@ class CreatePublicConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigType(self):
-        """配置项类型
+        """配置项类型，固定值。
         :rtype: str
         """
         return self._ConfigType
@@ -14055,7 +14429,9 @@ class CreatePublicConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def EncodeWithBase64(self):
-        """Base64编码的配置项
+        """Base64编码的配置项。
+- true：开启
+- false：关闭
         :rtype: bool
         """
         return self._EncodeWithBase64
@@ -14066,7 +14442,7 @@ class CreatePublicConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """需要绑定的数据集ID。该参数可以通过调用 [DescribePrograms](https://cloud.tencent.com/document/product/649/73477) 的返回值中的 ProgramId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/privilege?tab=program&roleId=role-yrle4doy)查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -14101,7 +14477,7 @@ class CreatePublicConfigWithDetailRespResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 公共配置项 ID
+        :param _Result: 公共配置项ID。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.Config`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14111,7 +14487,7 @@ class CreatePublicConfigWithDetailRespResponse(AbstractModel):
 
     @property
     def Result(self):
-        """公共配置项 ID
+        """公共配置项ID。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.Config`
         """
         return self._Result
@@ -14150,9 +14526,9 @@ class CreateRepositoryRequest(AbstractModel):
         :type RepositoryName: str
         :param _RepositoryType: 仓库类型（默认仓库：default，私有仓库：private）
         :type RepositoryType: str
-        :param _BucketName: 仓库所在桶名称
+        :param _BucketName: 仓库所在桶名称，[存储桶概述和创建](https://cloud.tencent.com/document/product/436/13312)
         :type BucketName: str
-        :param _BucketRegion: 仓库所在桶地域
+        :param _BucketRegion: 仓库所在桶地域，[存储桶概述和创建](https://cloud.tencent.com/document/product/436/13312)
         :type BucketRegion: str
         :param _Directory: 目录
         :type Directory: str
@@ -14190,7 +14566,7 @@ class CreateRepositoryRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        """仓库所在桶名称
+        """仓库所在桶名称，[存储桶概述和创建](https://cloud.tencent.com/document/product/436/13312)
         :rtype: str
         """
         return self._BucketName
@@ -14201,7 +14577,7 @@ class CreateRepositoryRequest(AbstractModel):
 
     @property
     def BucketRegion(self):
-        """仓库所在桶地域
+        """仓库所在桶地域，[存储桶概述和创建](https://cloud.tencent.com/document/product/436/13312)
         :rtype: str
         """
         return self._BucketRegion
@@ -14450,13 +14826,13 @@ class CreateTaskRequest(AbstractModel):
         :type TaskName: str
         :param _TaskContent: 任务内容，长度限制65536个字节
         :type TaskContent: str
-        :param _ExecuteType: 执行类型，unicast/broadcast
+        :param _ExecuteType: 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
         :type ExecuteType: str
-        :param _TaskType: 任务类型,java
+        :param _TaskType: 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
         :type TaskType: str
-        :param _TimeOut: 任务超时时间， 时间单位 ms
+        :param _TimeOut: 任务超时时间，取值大于0，单位：毫秒（ms）
         :type TimeOut: int
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
         :type GroupId: str
         :param _TaskRule: 触发规则
         :type TaskRule: :class:`tencentcloud.tsf.v20180326.models.TaskRule`
@@ -14464,7 +14840,7 @@ class CreateTaskRequest(AbstractModel):
         :type RetryCount: int
         :param _RetryInterval: 重试间隔， 0 <= RetryInterval <= 600000， 时间单位 ms
         :type RetryInterval: int
-        :param _ShardCount: 分片数量
+        :param _ShardCount: 分片数量，仅当任务执行方式为分片执行时需要设置该值，取值范围2~1000
         :type ShardCount: int
         :param _ShardArguments: 分片参数
         :type ShardArguments: list of ShardArgument
@@ -14476,7 +14852,7 @@ class CreateTaskRequest(AbstractModel):
         :type AdvanceSettings: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`
         :param _TaskArgument: 任务参数，长度限制10000个字符
         :type TaskArgument: str
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 数据集列表
         :type ProgramIdList: list of str
         """
         self._TaskName = None
@@ -14520,7 +14896,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def ExecuteType(self):
-        """执行类型，unicast/broadcast
+        """任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
         :rtype: str
         """
         return self._ExecuteType
@@ -14531,7 +14907,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型,java
+        """任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
         :rtype: str
         """
         return self._TaskType
@@ -14542,7 +14918,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def TimeOut(self):
-        """任务超时时间， 时间单位 ms
+        """任务超时时间，取值大于0，单位：毫秒（ms）
         :rtype: int
         """
         return self._TimeOut
@@ -14553,7 +14929,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
         :rtype: str
         """
         return self._GroupId
@@ -14597,7 +14973,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def ShardCount(self):
-        """分片数量
+        """分片数量，仅当任务执行方式为分片执行时需要设置该值，取值范围2~1000
         :rtype: int
         """
         return self._ShardCount
@@ -14663,7 +15039,7 @@ class CreateTaskRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """数据集列表
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -15122,7 +15498,7 @@ class CurvePoint(AbstractModel):
         :type Label: str
         :param _Value: 当前坐标 Y轴的值
         :type Value: str
-        :param _Timestamp: 该坐标点时间戳
+        :param _Timestamp: 该坐标点时间戳，单位毫秒
         :type Timestamp: str
         """
         self._Label = None
@@ -15153,7 +15529,7 @@ class CurvePoint(AbstractModel):
 
     @property
     def Timestamp(self):
-        """该坐标点时间戳
+        """该坐标点时间戳，单位毫秒
         :rtype: str
         """
         return self._Timestamp
@@ -15493,7 +15869,7 @@ class DeleteApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :type ApplicationId: str
         :param _SyncDeleteImageRepository: 是否删除镜像仓库
         :type SyncDeleteImageRepository: bool
@@ -15503,7 +15879,7 @@ class DeleteApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -15591,7 +15967,7 @@ class DeleteClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。仅在集群下无部署组、命名空间、云主机时可以删除。
         :type ClusterId: str
         :param _Unbind: 是否只解绑，不删除容器集群，默认不传则删除容器集群。
         :type Unbind: bool
@@ -15601,7 +15977,7 @@ class DeleteClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。仅在集群下无部署组、命名空间、云主机时可以删除。
         :rtype: str
         """
         return self._ClusterId
@@ -15689,14 +16065,14 @@ class DeleteConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置项ID
+        :param _ConfigId: 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :type ConfigId: str
         """
         self._ConfigId = None
 
     @property
     def ConfigId(self):
-        """配置项ID
+        """配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -15725,7 +16101,9 @@ class DeleteConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：删除成功；false：删除失败
+        :param _Result: 删除结果。
+- true：删除成功
+- false：删除失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15735,7 +16113,9 @@ class DeleteConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：删除成功；false：删除失败
+        """删除结果。
+- true：删除成功
+- false：删除失败
         :rtype: bool
         """
         return self._Result
@@ -15768,14 +16148,14 @@ class DeleteConfigTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigTemplateId: 无
+        :param _ConfigTemplateId: 配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
         :type ConfigTemplateId: str
         """
         self._ConfigTemplateId = None
 
     @property
     def ConfigTemplateId(self):
-        """无
+        """配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
         :rtype: str
         """
         return self._ConfigTemplateId
@@ -15847,14 +16227,16 @@ class DeleteContainerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，分组唯一标识
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或[登录控制台](https://console.cloud.tencent.com/tsf/app-group-docker-detail?rid=1&id=group-aedpen6v)
+进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID，分组唯一标识
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或[登录控制台](https://console.cloud.tencent.com/tsf/app-group-docker-detail?rid=1&id=group-aedpen6v)
+进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -15930,14 +16312,14 @@ class DeleteFileConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 文件配置项ID
+        :param _ConfigId: 文件配置项ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=file)-详情页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的文件配置。
         :type ConfigId: str
         """
         self._ConfigId = None
 
     @property
     def ConfigId(self):
-        """文件配置项ID
+        """文件配置项ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=file)-详情页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的文件配置。
         :rtype: str
         """
         return self._ConfigId
@@ -15966,7 +16348,9 @@ class DeleteFileConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 删除结果
+        :param _Result: 删除结果。
+- true：成功
+- false：失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15976,7 +16360,9 @@ class DeleteFileConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """删除结果
+        """删除结果。
+- true：成功
+- false：失败
         :rtype: bool
         """
         return self._Result
@@ -16103,14 +16489,14 @@ class DeleteGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -16237,7 +16623,7 @@ class DeleteImageTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageTags: 镜像版本数组
+        :param _ImageTags: 需要删除的镜像版本列表，可通过调用[DescribeImageTags](https://cloud.tencent.com/document/api/649/36052)查询已创建的镜像版本列表或登录控制台进行查看。
         :type ImageTags: list of DeleteImageTag
         :param _RepoType: 企业: tcr ；个人: personal或者不填
         :type RepoType: str
@@ -16247,7 +16633,7 @@ class DeleteImageTagsRequest(AbstractModel):
 
     @property
     def ImageTags(self):
-        """镜像版本数组
+        """需要删除的镜像版本列表，可通过调用[DescribeImageTags](https://cloud.tencent.com/document/api/649/36052)查询已创建的镜像版本列表或登录控制台进行查看。
         :rtype: list of DeleteImageTag
         """
         return self._ImageTags
@@ -16340,14 +16726,14 @@ class DeleteLaneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaneId: 泳道Idl
+        :param _LaneId: 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :type LaneId: str
         """
         self._LaneId = None
 
     @property
     def LaneId(self):
-        """泳道Idl
+        """泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :rtype: str
         """
         return self._LaneId
@@ -16376,7 +16762,9 @@ class DeleteLaneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 删除成功: true / 删除失败: false
+        :param _Result: 删除结果。
+- true：删除成功
+- false：删除失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16386,7 +16774,9 @@ class DeleteLaneResponse(AbstractModel):
 
     @property
     def Result(self):
-        """删除成功: true / 删除失败: false
+        """删除结果。
+- true：删除成功
+- false：删除失败
         :rtype: bool
         """
         return self._Result
@@ -16419,14 +16809,14 @@ class DeleteLaneRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 泳道规则Id
+        :param _RuleId: 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的泳道规则。
         :type RuleId: str
         """
         self._RuleId = None
 
     @property
     def RuleId(self):
-        """泳道规则Id
+        """灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的泳道规则。
         :rtype: str
         """
         return self._RuleId
@@ -16455,7 +16845,9 @@ class DeleteLaneRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作状态
+        :param _Result: 删除结果。
+- true：成功
+- false：失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16465,7 +16857,9 @@ class DeleteLaneRuleResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作状态
+        """删除结果。
+- true：成功
+- false：失败
         :rtype: bool
         """
         return self._Result
@@ -16498,14 +16892,14 @@ class DeleteMicroserviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MicroserviceId: 微服务ID
+        :param _MicroserviceId: 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :type MicroserviceId: str
         """
         self._MicroserviceId = None
 
     @property
     def MicroserviceId(self):
-        """微服务ID
+        """微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :rtype: str
         """
         return self._MicroserviceId
@@ -16534,9 +16928,9 @@ class DeleteMicroserviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 删除微服务是否成功。
-true：操作成功。
-false：操作失败。
+        :param _Result: 删除结果。
+- true：操作成功
+- false：操作失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16546,9 +16940,9 @@ false：操作失败。
 
     @property
     def Result(self):
-        """删除微服务是否成功。
-true：操作成功。
-false：操作失败。
+        """删除结果。
+- true：操作成功
+- false：操作失败
         :rtype: bool
         """
         return self._Result
@@ -16581,9 +16975,9 @@ class DeleteNamespaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :type NamespaceId: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :type ClusterId: str
         """
         self._NamespaceId = None
@@ -16591,7 +16985,7 @@ class DeleteNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -16602,7 +16996,7 @@ class DeleteNamespaceRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :rtype: str
         """
         return self._ClusterId
@@ -16758,13 +17152,13 @@ class DeletePkgsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :type ApplicationId: str
-        :param _PkgIds: 需要删除的程序包ID列表
+        :param _PkgIds: 软件包ID所形成的列表，软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type PkgIds: list of str
-        :param _RepositoryType: 程序包仓库类型
+        :param _RepositoryType: 程序包仓库类型（允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库）
         :type RepositoryType: str
-        :param _RepositoryId: 程序包仓库id
+        :param _RepositoryId: 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type RepositoryId: str
         """
         self._ApplicationId = None
@@ -16774,7 +17168,7 @@ class DeletePkgsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :rtype: str
         """
         return self._ApplicationId
@@ -16785,7 +17179,7 @@ class DeletePkgsRequest(AbstractModel):
 
     @property
     def PkgIds(self):
-        """需要删除的程序包ID列表
+        """软件包ID所形成的列表，软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: list of str
         """
         return self._PkgIds
@@ -16796,7 +17190,7 @@ class DeletePkgsRequest(AbstractModel):
 
     @property
     def RepositoryType(self):
-        """程序包仓库类型
+        """程序包仓库类型（允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库）
         :rtype: str
         """
         return self._RepositoryType
@@ -16807,7 +17201,7 @@ class DeletePkgsRequest(AbstractModel):
 
     @property
     def RepositoryId(self):
-        """程序包仓库id
+        """仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._RepositoryId
@@ -16867,14 +17261,14 @@ class DeletePublicConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置项ID
+        :param _ConfigId: 配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :type ConfigId: str
         """
         self._ConfigId = None
 
     @property
     def ConfigId(self):
-        """配置项ID
+        """配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -16903,7 +17297,9 @@ class DeletePublicConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：删除成功；false：删除失败
+        :param _Result: 删除结果。
+- true：删除成功
+- false：删除失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16913,7 +17309,9 @@ class DeletePublicConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：删除成功；false：删除失败
+        """删除结果。
+- true：删除成功
+- false：删除失败
         :rtype: bool
         """
         return self._Result
@@ -16946,14 +17344,14 @@ class DeleteRepositoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RepositoryId: 仓库ID
+        :param _RepositoryId: 删除对应仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type RepositoryId: str
         """
         self._RepositoryId = None
 
     @property
     def RepositoryId(self):
-        """仓库ID
+        """删除对应仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._RepositoryId
@@ -17104,14 +17502,14 @@ class DeleteTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -17140,7 +17538,7 @@ class DeleteTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 删除成功or失败
+        :param _Result: true：删除成功，false：删除失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17150,7 +17548,7 @@ class DeleteTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        """删除成功or失败
+        """true：删除成功，false：删除失败
         :rtype: bool
         """
         return self._Result
@@ -17364,15 +17762,15 @@ class DeliveryConfigBindGroup(AbstractModel):
         :type CollectPath: list of str
         :param _Groups: 关联部署组信息
         :type Groups: list of GroupInfo
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间，格式yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
-        :param _KafkaVIp: KafkaVIp
+        :param _KafkaVIp: Kafka的vip
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaVIp: str
-        :param _KafkaAddress: KafkaAddress
+        :param _KafkaAddress: Kafka地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaAddress: str
-        :param _KafkaVPort: KafkaVPort
+        :param _KafkaVPort: Kafka端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaVPort: str
         :param _Topic: Topic
@@ -17380,18 +17778,18 @@ class DeliveryConfigBindGroup(AbstractModel):
         :param _LineRule: LineRule
 注意：此字段可能返回 null，表示取不到有效值。
         :type LineRule: str
-        :param _CustomRule: CustomRule
+        :param _CustomRule: 自定义规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRule: str
         :param _EnableGlobalLineRule: EnableGlobalLineRule
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableGlobalLineRule: bool
-        :param _EnableAuth: EnableAuth
+        :param _EnableAuth: 是否开启认证
         :type EnableAuth: bool
-        :param _Username: Username
+        :param _Username: 用户名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Username: str
-        :param _Password: Password
+        :param _Password: 密码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _KafkaInfos: KafkaInfos
@@ -17461,7 +17859,7 @@ class DeliveryConfigBindGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -17472,7 +17870,7 @@ class DeliveryConfigBindGroup(AbstractModel):
 
     @property
     def KafkaVIp(self):
-        """KafkaVIp
+        """Kafka的vip
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17484,7 +17882,7 @@ class DeliveryConfigBindGroup(AbstractModel):
 
     @property
     def KafkaAddress(self):
-        """KafkaAddress
+        """Kafka地址
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17496,7 +17894,7 @@ class DeliveryConfigBindGroup(AbstractModel):
 
     @property
     def KafkaVPort(self):
-        """KafkaVPort
+        """Kafka端口
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17531,7 +17929,7 @@ class DeliveryConfigBindGroup(AbstractModel):
 
     @property
     def CustomRule(self):
-        """CustomRule
+        """自定义规则
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17555,7 +17953,7 @@ class DeliveryConfigBindGroup(AbstractModel):
 
     @property
     def EnableAuth(self):
-        """EnableAuth
+        """是否开启认证
         :rtype: bool
         """
         return self._EnableAuth
@@ -17566,7 +17964,7 @@ class DeliveryConfigBindGroup(AbstractModel):
 
     @property
     def Username(self):
-        """Username
+        """用户名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17578,7 +17976,7 @@ class DeliveryConfigBindGroup(AbstractModel):
 
     @property
     def Password(self):
-        """Password
+        """密码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17900,6 +18298,14 @@ class DeployContainerApplicationRequest(AbstractModel):
         :type EnvClean: bool
         :param _DeployDesc: 本次部署的描述信息
         :type DeployDesc: str
+        :param _K8sNamespaceName: k8s命名空间名称
+        :type K8sNamespaceName: str
+        :param _StaticIpEnabled: 是否启用静态IP
+        :type StaticIpEnabled: bool
+        :param _PodManagementPolicyType: 启动策略[OrderedReady/Parallel]
+        :type PodManagementPolicyType: str
+        :param _Partition: 滚动更新分区序号
+        :type Partition: int
         """
         self._ApplicationId = None
         self._ObservabilityConfig = None
@@ -17958,6 +18364,10 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._ServiceClean = None
         self._EnvClean = None
         self._DeployDesc = None
+        self._K8sNamespaceName = None
+        self._StaticIpEnabled = None
+        self._PodManagementPolicyType = None
+        self._Partition = None
 
     @property
     def ApplicationId(self):
@@ -18586,6 +18996,50 @@ class DeployContainerApplicationRequest(AbstractModel):
     def DeployDesc(self, DeployDesc):
         self._DeployDesc = DeployDesc
 
+    @property
+    def K8sNamespaceName(self):
+        """k8s命名空间名称
+        :rtype: str
+        """
+        return self._K8sNamespaceName
+
+    @K8sNamespaceName.setter
+    def K8sNamespaceName(self, K8sNamespaceName):
+        self._K8sNamespaceName = K8sNamespaceName
+
+    @property
+    def StaticIpEnabled(self):
+        """是否启用静态IP
+        :rtype: bool
+        """
+        return self._StaticIpEnabled
+
+    @StaticIpEnabled.setter
+    def StaticIpEnabled(self, StaticIpEnabled):
+        self._StaticIpEnabled = StaticIpEnabled
+
+    @property
+    def PodManagementPolicyType(self):
+        """启动策略[OrderedReady/Parallel]
+        :rtype: str
+        """
+        return self._PodManagementPolicyType
+
+    @PodManagementPolicyType.setter
+    def PodManagementPolicyType(self, PodManagementPolicyType):
+        self._PodManagementPolicyType = PodManagementPolicyType
+
+    @property
+    def Partition(self):
+        """滚动更新分区序号
+        :rtype: int
+        """
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -18697,6 +19151,10 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._ServiceClean = params.get("ServiceClean")
         self._EnvClean = params.get("EnvClean")
         self._DeployDesc = params.get("DeployDesc")
+        self._K8sNamespaceName = params.get("K8sNamespaceName")
+        self._StaticIpEnabled = params.get("StaticIpEnabled")
+        self._PodManagementPolicyType = params.get("PodManagementPolicyType")
+        self._Partition = params.get("Partition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18820,7 +19278,7 @@ class DeployContainerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，分组唯一标识
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         :param _TagName: 镜像版本名称,如v1
         :type TagName: str
@@ -18938,7 +19396,7 @@ class DeployContainerGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID，分组唯一标识
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -19502,9 +19960,9 @@ class DeployGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
-        :param _PkgId: 程序包ID
+        :param _PkgId: 软件包ID，可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type PkgId: str
         :param _StartupParameters: 部署组启动参数
         :type StartupParameters: str
@@ -19524,7 +19982,7 @@ class DeployGroupRequest(AbstractModel):
         :type DeployBatch: list of float
         :param _DeployExeMode: 滚动发布的执行方式，auto表示自动， manual表示手动
         :type DeployExeMode: str
-        :param _DeployWaitTime: 滚动发布每个批次的时间间隔
+        :param _DeployWaitTime: 滚动发布每个批次的时间间隔，单位min。默认值是0，不等待。
         :type DeployWaitTime: int
         :param _StartScript: 启动脚本 base64编码
         :type StartScript: str
@@ -19567,7 +20025,7 @@ openJDK版本：8、17
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -19578,7 +20036,7 @@ openJDK版本：8、17
 
     @property
     def PkgId(self):
-        """程序包ID
+        """软件包ID，可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._PkgId
@@ -19688,7 +20146,7 @@ openJDK版本：8、17
 
     @property
     def DeployWaitTime(self):
-        """滚动发布每个批次的时间间隔
+        """滚动发布每个批次的时间间隔，单位min。默认值是0，不等待。
         :rtype: int
         """
         return self._DeployWaitTime
@@ -19879,15 +20337,22 @@ class DescribeApiDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MicroserviceId: 微服务id
+        :param _MicroserviceId: 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :type MicroserviceId: str
-        :param _Path: 请求路径
+        :param _Path: 请求路径。
         :type Path: str
-        :param _Method: 请求方法
+        :param _Method: 请求方法。
+- GET
+- POST
+- PUT
+- DELETE
+- HEAD
+- PATCH
+- OPTIONS
         :type Method: str
-        :param _PkgVersion: 包版本
+        :param _PkgVersion: 应用包版本号。
         :type PkgVersion: str
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
         """
         self._MicroserviceId = None
@@ -19898,7 +20363,7 @@ class DescribeApiDetailRequest(AbstractModel):
 
     @property
     def MicroserviceId(self):
-        """微服务id
+        """微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :rtype: str
         """
         return self._MicroserviceId
@@ -19909,7 +20374,7 @@ class DescribeApiDetailRequest(AbstractModel):
 
     @property
     def Path(self):
-        """请求路径
+        """请求路径。
         :rtype: str
         """
         return self._Path
@@ -19920,7 +20385,14 @@ class DescribeApiDetailRequest(AbstractModel):
 
     @property
     def Method(self):
-        """请求方法
+        """请求方法。
+- GET
+- POST
+- PUT
+- DELETE
+- HEAD
+- PATCH
+- OPTIONS
         :rtype: str
         """
         return self._Method
@@ -19931,7 +20403,7 @@ class DescribeApiDetailRequest(AbstractModel):
 
     @property
     def PkgVersion(self):
-        """包版本
+        """应用包版本号。
         :rtype: str
         """
         return self._PkgVersion
@@ -19942,7 +20414,7 @@ class DescribeApiDetailRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -19975,7 +20447,7 @@ class DescribeApiDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: API 详情
+        :param _Result: API详情。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ApiDetailResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19985,7 +20457,7 @@ class DescribeApiDetailResponse(AbstractModel):
 
     @property
     def Result(self):
-        """API 详情
+        """API详情。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ApiDetailResponse`
         """
         return self._Result
@@ -20512,11 +20984,18 @@ class DescribeApiVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MicroserviceId: 微服务ID
+        :param _MicroserviceId: 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :type MicroserviceId: str
-        :param _Path: API 请求路径
+        :param _Path: API请求路径。
         :type Path: str
-        :param _Method: 请求方法
+        :param _Method: API请求方法。
+- GET
+- POST
+- PUT
+- DELETE
+- HEAD
+- PATCH
+- OPTIONS
         :type Method: str
         """
         self._MicroserviceId = None
@@ -20525,7 +21004,7 @@ class DescribeApiVersionsRequest(AbstractModel):
 
     @property
     def MicroserviceId(self):
-        """微服务ID
+        """微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :rtype: str
         """
         return self._MicroserviceId
@@ -20536,7 +21015,7 @@ class DescribeApiVersionsRequest(AbstractModel):
 
     @property
     def Path(self):
-        """API 请求路径
+        """API请求路径。
         :rtype: str
         """
         return self._Path
@@ -20547,7 +21026,14 @@ class DescribeApiVersionsRequest(AbstractModel):
 
     @property
     def Method(self):
-        """请求方法
+        """API请求方法。
+- GET
+- POST
+- PUT
+- DELETE
+- HEAD
+- PATCH
+- OPTIONS
         :rtype: str
         """
         return self._Method
@@ -20578,7 +21064,7 @@ class DescribeApiVersionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: API版本列表
+        :param _Result: API版本列表。
         :type Result: list of ApiVersionArray
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20588,7 +21074,7 @@ class DescribeApiVersionsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """API版本列表
+        """API版本列表。
         :rtype: list of ApiVersionArray
         """
         return self._Result
@@ -20626,14 +21112,14 @@ class DescribeApplicationAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
         """
         self._ApplicationId = None
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -20707,14 +21193,14 @@ class DescribeApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :type ApplicationId: str
         """
         self._ApplicationId = None
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -20794,17 +21280,22 @@ class DescribeApplicationsRequest(AbstractModel):
         :type SearchWord: str
         :param _OrderBy: 排序字段
         :type OrderBy: str
-        :param _OrderType: 排序类型
+        :param _OrderType: 指定排序类型，目前支持：
+`0`：降序
+`1`：升序
         :type OrderType: int
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Offset: int
-        :param _Limit: 分页个数
+        :param _Limit: 数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Limit: int
-        :param _ApplicationType: 应用类型
+        :param _ApplicationType: 指定应用类型，目前支持：
+- `V`：普通应用/CVM应用
+- `C`：容器应用
+- `S`：serverless 应用
         :type ApplicationType: str
         :param _MicroserviceType: 应用的微服务类型
         :type MicroserviceType: str
-        :param _ApplicationResourceTypeList: 应用资源类型数组
+        :param _ApplicationResourceTypeList: 应用资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :type ApplicationResourceTypeList: list of str
         :param _ApplicationIdList: IdList
         :type ApplicationIdList: list of str
@@ -20846,7 +21337,9 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序类型
+        """指定排序类型，目前支持：
+`0`：降序
+`1`：升序
         :rtype: int
         """
         return self._OrderType
@@ -20857,7 +21350,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Offset
@@ -20868,7 +21361,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页个数
+        """数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Limit
@@ -20879,7 +21372,10 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型
+        """指定应用类型，目前支持：
+- `V`：普通应用/CVM应用
+- `C`：容器应用
+- `S`：serverless 应用
         :rtype: str
         """
         return self._ApplicationType
@@ -20901,7 +21397,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationResourceTypeList(self):
-        """应用资源类型数组
+        """应用资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :rtype: list of str
         """
         return self._ApplicationResourceTypeList
@@ -21087,14 +21583,16 @@ class DescribeBusinessLogConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置项ID
+        :param _ConfigId: 日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :type ConfigId: str
         """
         self._ConfigId = None
 
     @property
     def ConfigId(self):
-        """配置项ID
+        """日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :rtype: str
         """
         return self._ConfigId
@@ -21174,9 +21672,10 @@ class DescribeBusinessLogConfigsRequest(AbstractModel):
         :type Limit: int
         :param _SearchWord: 模糊匹配关键词
         :type SearchWord: str
-        :param _DisableProgramAuthCheck: 无
+        :param _DisableProgramAuthCheck: 是否禁用数据集鉴权
         :type DisableProgramAuthCheck: bool
-        :param _ConfigIdList: 无
+        :param _ConfigIdList: 日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :type ConfigIdList: list of str
         """
         self._Offset = None
@@ -21220,7 +21719,7 @@ class DescribeBusinessLogConfigsRequest(AbstractModel):
 
     @property
     def DisableProgramAuthCheck(self):
-        """无
+        """是否禁用数据集鉴权
         :rtype: bool
         """
         return self._DisableProgramAuthCheck
@@ -21231,7 +21730,8 @@ class DescribeBusinessLogConfigsRequest(AbstractModel):
 
     @property
     def ConfigIdList(self):
-        """无
+        """日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :rtype: list of str
         """
         return self._ConfigIdList
@@ -21309,17 +21809,17 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群 ID。调用[DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)查询已创建的集群或通过[CreateCluster](https://cloud.tencent.com/document/api/649/36049)接口创建新的集群。
         :type ClusterId: str
         :param _SearchWord: 搜索字段
         :type SearchWord: str
         :param _OrderBy: 排序字段
         :type OrderBy: str
-        :param _OrderType: 排序类型
+        :param _OrderType: 排序类型；0：升序，1：降序。
         :type OrderType: int
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认值：0。
         :type Offset: int
-        :param _Limit: 分页个数
+        :param _Limit: 分页个数，默认值：20。
         :type Limit: int
         """
         self._ClusterId = None
@@ -21331,7 +21831,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群 ID。调用[DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)查询已创建的集群或通过[CreateCluster](https://cloud.tencent.com/document/api/649/36049)接口创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -21364,7 +21864,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序类型
+        """排序类型；0：升序，1：降序。
         :rtype: int
         """
         return self._OrderType
@@ -21375,7 +21875,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认值：0。
         :rtype: int
         """
         return self._Offset
@@ -21386,7 +21886,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页个数
+        """分页个数，默认值：20。
         :rtype: int
         """
         return self._Limit
@@ -21465,17 +21965,17 @@ class DescribeClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SearchWord: 搜索词
+        :param _SearchWord: 搜索词，可以搜索ID/名称/备注/标签
         :type SearchWord: str
-        :param _OrderBy: 排序字段
+        :param _OrderBy: 排序字段，例如创建时间
         :type OrderBy: str
-        :param _OrderType: 排序方式
+        :param _OrderType: 排序方式，0表示升序，1表示倒序
         :type OrderType: int
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认0
         :type Offset: int
-        :param _Limit: 分页个数
+        :param _Limit: 分页个数，0-50 之间，默认20
         :type Limit: int
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，C表示容器集群，V表示虚拟机集群
         :type ClusterType: str
         :param _ClusterIdList: idList
         :type ClusterIdList: list of str
@@ -21490,7 +21990,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """搜索词
+        """搜索词，可以搜索ID/名称/备注/标签
         :rtype: str
         """
         return self._SearchWord
@@ -21501,7 +22001,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序字段
+        """排序字段，例如创建时间
         :rtype: str
         """
         return self._OrderBy
@@ -21512,7 +22012,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序方式
+        """排序方式，0表示升序，1表示倒序
         :rtype: int
         """
         return self._OrderType
@@ -21523,7 +22023,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -21534,7 +22034,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页个数
+        """分页个数，0-50 之间，默认20
         :rtype: int
         """
         return self._Limit
@@ -21545,7 +22045,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型
+        """集群类型，C表示容器集群，V表示虚拟机集群
         :rtype: str
         """
         return self._ClusterType
@@ -21636,17 +22136,17 @@ class DescribeConfigReleaseLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，不传入时查询全量
+        :param _GroupId: 部署组ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 每页条数，默认为20
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param _NamespaceId: 命名空间ID，不传入时查询全量
+        :param _NamespaceId: 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _ClusterId: 集群ID，不传入时查询全量
+        :param _ClusterId: 集群ID，不传入时查询全量。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :type ClusterId: str
-        :param _ApplicationId: 应用ID，不传入时查询全量
+        :param _ApplicationId: 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
         """
         self._GroupId = None
@@ -21658,7 +22158,7 @@ class DescribeConfigReleaseLogsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID，不传入时查询全量
+        """部署组ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -21669,7 +22169,7 @@ class DescribeConfigReleaseLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -21680,7 +22180,7 @@ class DescribeConfigReleaseLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数，默认为20
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -21691,7 +22191,7 @@ class DescribeConfigReleaseLogsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID，不传入时查询全量
+        """命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -21702,7 +22202,7 @@ class DescribeConfigReleaseLogsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID，不传入时查询全量
+        """集群ID，不传入时查询全量。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -21713,7 +22213,7 @@ class DescribeConfigReleaseLogsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，不传入时查询全量
+        """应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -21747,7 +22247,7 @@ class DescribeConfigReleaseLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 分页的配置项发布历史列表
+        :param _Result: 分页的配置项发布历史列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21757,7 +22257,7 @@ class DescribeConfigReleaseLogsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """分页的配置项发布历史列表
+        """分页的配置项发布历史列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
         """
         return self._Result
@@ -21792,21 +22292,21 @@ class DescribeConfigReleasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigName: 配置项名称，不传入时查询全量
+        :param _ConfigName: 配置项名称，不传入时查询全量。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :type ConfigName: str
-        :param _GroupId: 部署组ID，不传入时查询全量
+        :param _GroupId: 部署组ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
-        :param _NamespaceId: 命名空间ID，不传入时查询全量
+        :param _NamespaceId: 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _ClusterId: 集群ID，不传入时查询全量
+        :param _ClusterId: 集群ID，不传入时查询全量。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :type ClusterId: str
-        :param _Limit: 每页条数
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _ConfigId: 配置ID，不传入时查询全量
+        :param _ConfigId: 配置ID，不传入时查询全量。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :type ConfigId: str
-        :param _ApplicationId: 应用ID，不传入时查询全量
+        :param _ApplicationId: 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
         """
         self._ConfigName = None
@@ -21820,7 +22320,7 @@ class DescribeConfigReleasesRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称，不传入时查询全量
+        """配置项名称，不传入时查询全量。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :rtype: str
         """
         return self._ConfigName
@@ -21831,7 +22331,7 @@ class DescribeConfigReleasesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID，不传入时查询全量
+        """部署组ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -21842,7 +22342,7 @@ class DescribeConfigReleasesRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID，不传入时查询全量
+        """命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -21853,7 +22353,7 @@ class DescribeConfigReleasesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID，不传入时查询全量
+        """集群ID，不传入时查询全量。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -21864,7 +22364,7 @@ class DescribeConfigReleasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -21875,7 +22375,7 @@ class DescribeConfigReleasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -21886,7 +22386,7 @@ class DescribeConfigReleasesRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置ID，不传入时查询全量
+        """配置ID，不传入时查询全量。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -21897,7 +22397,7 @@ class DescribeConfigReleasesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，不传入时查询全量
+        """应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -21933,7 +22433,7 @@ class DescribeConfigReleasesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 分页的配置发布信息
+        :param _Result: 分页的配置发布信息。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21943,7 +22443,7 @@ class DescribeConfigReleasesResponse(AbstractModel):
 
     @property
     def Result(self):
-        """分页的配置发布信息
+        """分页的配置发布信息。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
         """
         return self._Result
@@ -21978,14 +22478,14 @@ class DescribeConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置项ID
+        :param _ConfigId: 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :type ConfigId: str
         """
         self._ConfigId = None
 
     @property
     def ConfigId(self):
-        """配置项ID
+        """配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -22014,7 +22514,7 @@ class DescribeConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 配置项
+        :param _Result: 配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.Config`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22025,7 +22525,7 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """配置项
+        """配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.Config`
         """
@@ -22061,23 +22561,27 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID，不传入时查询全量
+        :param _ApplicationId: 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _SearchWord: 查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量
+        :param _SearchWord: 查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量。
         :type SearchWord: str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 每页条数，默认为20
+        :param _Limit: 返回数量，默认为20，最大值为50。
         :type Limit: int
-        :param _OrderBy: 按时间排序：creation_time；按名称排序：config_name
+        :param _OrderBy: 排序字段。
+- creation_time：按时间排序
+- config_name：按名称排序
         :type OrderBy: str
-        :param _OrderType: 升序传 0，降序传 1
+        :param _OrderType: 排序顺序。
+- 0：升序
+- 1：降序
         :type OrderType: int
-        :param _ConfigTagList: 无
+        :param _ConfigTagList: TAG标签资源值。
         :type ConfigTagList: list of str
-        :param _DisableProgramAuthCheck: 无
+        :param _DisableProgramAuthCheck: 忽略传参，业务预留字段。
         :type DisableProgramAuthCheck: bool
-        :param _ConfigIdList: 无
+        :param _ConfigIdList: 配置ID列表。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :type ConfigIdList: list of str
         """
         self._ApplicationId = None
@@ -22092,7 +22596,7 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，不传入时查询全量
+        """应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -22103,7 +22607,7 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量
+        """查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量。
         :rtype: str
         """
         return self._SearchWord
@@ -22114,7 +22618,7 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -22125,7 +22629,7 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数，默认为20
+        """返回数量，默认为20，最大值为50。
         :rtype: int
         """
         return self._Limit
@@ -22136,7 +22640,9 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """按时间排序：creation_time；按名称排序：config_name
+        """排序字段。
+- creation_time：按时间排序
+- config_name：按名称排序
         :rtype: str
         """
         return self._OrderBy
@@ -22147,7 +22653,9 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """升序传 0，降序传 1
+        """排序顺序。
+- 0：升序
+- 1：降序
         :rtype: int
         """
         return self._OrderType
@@ -22158,7 +22666,7 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     @property
     def ConfigTagList(self):
-        """无
+        """TAG标签资源值。
         :rtype: list of str
         """
         return self._ConfigTagList
@@ -22169,7 +22677,7 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     @property
     def DisableProgramAuthCheck(self):
-        """无
+        """忽略传参，业务预留字段。
         :rtype: bool
         """
         return self._DisableProgramAuthCheck
@@ -22180,7 +22688,7 @@ class DescribeConfigSummaryRequest(AbstractModel):
 
     @property
     def ConfigIdList(self):
-        """无
+        """配置ID列表。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :rtype: list of str
         """
         return self._ConfigIdList
@@ -22217,7 +22725,7 @@ class DescribeConfigSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 配置项分页对象
+        :param _Result: 配置项分页对象。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22227,7 +22735,7 @@ class DescribeConfigSummaryResponse(AbstractModel):
 
     @property
     def Result(self):
-        """配置项分页对象
+        """配置项分页对象。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         """
         return self._Result
@@ -22262,14 +22770,14 @@ class DescribeConfigTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigTemplateId: 配置模板Id
+        :param _ConfigTemplateId: 配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
         :type ConfigTemplateId: str
         """
         self._ConfigTemplateId = None
 
     @property
     def ConfigTemplateId(self):
-        """配置模板Id
+        """配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
         :rtype: str
         """
         return self._ConfigTemplateId
@@ -22298,7 +22806,7 @@ class DescribeConfigTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 导入结果
+        :param _Result: 导入结果。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ConfigTemplate`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22308,7 +22816,7 @@ class DescribeConfigTemplateResponse(AbstractModel):
 
     @property
     def Result(self):
-        """导入结果
+        """导入结果。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ConfigTemplate`
         """
         return self._Result
@@ -22343,19 +22851,19 @@ class DescribeConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID，不传入时查询全量
+        :param _ApplicationId: 应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _ConfigId: 配置项ID，不传入时查询全量，高优先级
+        :param _ConfigId: 配置ID，不传入时查询全量，高优先级。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :type ConfigId: str
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 每页条数
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param _ConfigIdList: 配置项ID列表，不传入时查询全量，低优先级
+        :param _ConfigIdList: 配置ID列表，不传入时查询全量，低优先级。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :type ConfigIdList: list of str
-        :param _ConfigName: 配置项名称，精确查询，不传入时查询全量
+        :param _ConfigName: 配置项名称，精确查询，不传入时查询全量。
         :type ConfigName: str
-        :param _ConfigVersion: 配置项版本，精确查询，不传入时查询全量
+        :param _ConfigVersion: 配置项版本，精确查询，不传入时查询全量。
         :type ConfigVersion: str
         """
         self._ApplicationId = None
@@ -22368,7 +22876,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，不传入时查询全量
+        """应用ID，不传入时查询全量。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -22379,7 +22887,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置项ID，不传入时查询全量，高优先级
+        """配置ID，不传入时查询全量，高优先级。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -22390,7 +22898,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -22401,7 +22909,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -22412,7 +22920,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def ConfigIdList(self):
-        """配置项ID列表，不传入时查询全量，低优先级
+        """配置ID列表，不传入时查询全量，低优先级。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :rtype: list of str
         """
         return self._ConfigIdList
@@ -22423,7 +22931,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称，精确查询，不传入时查询全量
+        """配置项名称，精确查询，不传入时查询全量。
         :rtype: str
         """
         return self._ConfigName
@@ -22434,7 +22942,7 @@ class DescribeConfigsRequest(AbstractModel):
 
     @property
     def ConfigVersion(self):
-        """配置项版本，精确查询，不传入时查询全量
+        """配置项版本，精确查询，不传入时查询全量。
         :rtype: str
         """
         return self._ConfigVersion
@@ -22469,7 +22977,7 @@ class DescribeConfigsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 分页后的配置项列表
+        :param _Result: 分页后的配置项列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22479,7 +22987,7 @@ class DescribeConfigsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """分页后的配置项列表
+        """分页后的配置项列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         """
         return self._Result
@@ -22514,19 +23022,19 @@ class DescribeContainerEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceType: event 的资源类型, group 或者 instance
+        :param _ResourceType: event 的资源类型, 仅支持 group
         :type ResourceType: str
-        :param _ResourceId: event 的资源 id
+        :param _ResourceId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd
         :type ResourceId: str
         :param _Offset: 偏移量，取值从0开始
         :type Offset: int
         :param _Limit: 分页个数，默认为20， 取值应为1~50
         :type Limit: int
-        :param _GroupId: 当类型是 instance 时需要
+        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
         :type GroupId: str
-        :param _Kind: event的资源kind
+        :param _Kind: event的资源种类
         :type Kind: str
-        :param _Type: event 的type
+        :param _Type: event 的事件级别
         :type Type: str
         :param _ResourceName: 资源名称
         :type ResourceName: str
@@ -22545,7 +23053,7 @@ class DescribeContainerEventsRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """event 的资源类型, group 或者 instance
+        """event 的资源类型, 仅支持 group
         :rtype: str
         """
         return self._ResourceType
@@ -22556,7 +23064,7 @@ class DescribeContainerEventsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """event 的资源 id
+        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd
         :rtype: str
         """
         return self._ResourceId
@@ -22589,7 +23097,7 @@ class DescribeContainerEventsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """当类型是 instance 时需要
+        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
         :rtype: str
         """
         return self._GroupId
@@ -22600,7 +23108,7 @@ class DescribeContainerEventsRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """event的资源kind
+        """event的资源种类
         :rtype: str
         """
         return self._Kind
@@ -22611,7 +23119,7 @@ class DescribeContainerEventsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """event 的type
+        """event 的事件级别
         :rtype: str
         """
         return self._Type
@@ -22715,14 +23223,14 @@ class DescribeContainerGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
         :rtype: str
         """
         return self._GroupId
@@ -22796,14 +23304,14 @@ class DescribeContainerGroupDeployInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 实例所属 groupId
+        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """实例所属 groupId
+        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
         :rtype: str
         """
         return self._GroupId
@@ -22958,7 +23466,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 分组所属应用ID。
+        :param _ApplicationId: 分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
         :param _SearchWord: 搜索字段，模糊搜索groupName字段
         :type SearchWord: str
@@ -22970,9 +23478,9 @@ class DescribeContainerGroupsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页个数，默认为20， 取值应为1~50
         :type Limit: int
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 分组所属【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :type ClusterId: str
-        :param _NamespaceId: 命名空间 ID
+        :param _NamespaceId: 分组所属【命名空间 ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
         """
         self._ApplicationId = None
@@ -22986,7 +23494,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """分组所属应用ID。
+        """分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -23052,7 +23560,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """分组所属【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -23063,7 +23571,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间 ID
+        """分组所属【命名空间 ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -23144,9 +23652,9 @@ class DescribeCreateGatewayApiStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 所属分组ID
+        :param _GroupId: 网关分组ID。该参数可以通过调用 [DescribeApiGroups](https://cloud.tencent.com/document/product/649/50636) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app?tab=middleware&subTab=app)-网关应用详情-Java网关实例-实例详情-分组管理页查看；也可以调用[CreateApiGroup](https://cloud.tencent.com/document/product/649/50641)创建新的网关分组。
         :type GroupId: str
-        :param _MicroserviceId: 微服务ID
+        :param _MicroserviceId: 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :type MicroserviceId: str
         """
         self._GroupId = None
@@ -23154,7 +23662,7 @@ class DescribeCreateGatewayApiStatusRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """所属分组ID
+        """网关分组ID。该参数可以通过调用 [DescribeApiGroups](https://cloud.tencent.com/document/product/649/50636) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app?tab=middleware&subTab=app)-网关应用详情-Java网关实例-实例详情-分组管理页查看；也可以调用[CreateApiGroup](https://cloud.tencent.com/document/product/649/50641)创建新的网关分组。
         :rtype: str
         """
         return self._GroupId
@@ -23165,7 +23673,7 @@ class DescribeCreateGatewayApiStatusRequest(AbstractModel):
 
     @property
     def MicroserviceId(self):
-        """微服务ID
+        """微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :rtype: str
         """
         return self._MicroserviceId
@@ -23195,7 +23703,9 @@ class DescribeCreateGatewayApiStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 是否已完成导入任务
+        :param _Result: 导入任务状态执行结果。
+- true：已完成
+- false：未完成
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23205,7 +23715,9 @@ class DescribeCreateGatewayApiStatusResponse(AbstractModel):
 
     @property
     def Result(self):
-        """是否已完成导入任务
+        """导入任务状态执行结果。
+- true：已完成
+- false：未完成
         :rtype: bool
         """
         return self._Result
@@ -23238,14 +23750,16 @@ class DescribeDeliveryConfigByGroupIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组id
+        :param _GroupId: 部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组id
+        """部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :rtype: str
         """
         return self._GroupId
@@ -23319,14 +23833,16 @@ class DescribeDeliveryConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 投递配置id
+        :param _ConfigId: 日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :type ConfigId: str
         """
         self._ConfigId = None
 
     @property
     def ConfigId(self):
-        """投递配置id
+        """日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :rtype: str
         """
         return self._ConfigId
@@ -23406,9 +23922,11 @@ class DescribeDeliveryConfigsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 搜索条数
         :type Limit: int
-        :param _ProgramIdList: 数据集idList
+        :param _ProgramIdList: 数据集ID列表
+可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a22gwdwa)进行查看
         :type ProgramIdList: list of str
-        :param _ConfigIdList: ConfigIdList
+        :param _ConfigIdList: 日志配置项ID列表
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :type ConfigIdList: list of str
         """
         self._SearchWord = None
@@ -23452,7 +23970,8 @@ class DescribeDeliveryConfigsRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """数据集idList
+        """数据集ID列表
+可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a22gwdwa)进行查看
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -23463,7 +23982,8 @@ class DescribeDeliveryConfigsRequest(AbstractModel):
 
     @property
     def ConfigIdList(self):
-        """ConfigIdList
+        """日志配置项ID列表
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :rtype: list of str
         """
         return self._ConfigIdList
@@ -23541,13 +24061,13 @@ class DescribeDownloadInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :type ApplicationId: str
-        :param _PkgId: 程序包ID
+        :param _PkgId: 软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type PkgId: str
-        :param _RepositoryId: 程序包仓库ID
+        :param _RepositoryId: 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type RepositoryId: str
-        :param _RepositoryType: 程序包仓库类型
+        :param _RepositoryType: 程序包仓库类型（允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库）
         :type RepositoryType: str
         """
         self._ApplicationId = None
@@ -23557,7 +24077,7 @@ class DescribeDownloadInfoRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :rtype: str
         """
         return self._ApplicationId
@@ -23568,7 +24088,7 @@ class DescribeDownloadInfoRequest(AbstractModel):
 
     @property
     def PkgId(self):
-        """程序包ID
+        """软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._PkgId
@@ -23579,7 +24099,7 @@ class DescribeDownloadInfoRequest(AbstractModel):
 
     @property
     def RepositoryId(self):
-        """程序包仓库ID
+        """仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._RepositoryId
@@ -23590,7 +24110,7 @@ class DescribeDownloadInfoRequest(AbstractModel):
 
     @property
     def RepositoryType(self):
-        """程序包仓库类型
+        """程序包仓库类型（允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库）
         :rtype: str
         """
         return self._RepositoryType
@@ -23748,21 +24268,21 @@ class DescribeFileConfigReleasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置项ID
+        :param _ConfigId: 配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
         :type ConfigId: str
-        :param _ConfigName: 配置项名称
+        :param _ConfigName: 配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”,“_”），且不能以分隔符开头或结尾。
         :type ConfigName: str
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :type ClusterId: str
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 每页条数
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         """
         self._ConfigId = None
@@ -23776,7 +24296,7 @@ class DescribeFileConfigReleasesRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置项ID
+        """配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -23787,7 +24307,7 @@ class DescribeFileConfigReleasesRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称
+        """配置项名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”,“_”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigName
@@ -23798,7 +24318,7 @@ class DescribeFileConfigReleasesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -23809,7 +24329,7 @@ class DescribeFileConfigReleasesRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -23820,7 +24340,7 @@ class DescribeFileConfigReleasesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID。该参数可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/649/85857) 的返回值中的 ClusterId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -23831,7 +24351,7 @@ class DescribeFileConfigReleasesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -23842,7 +24362,7 @@ class DescribeFileConfigReleasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -23853,7 +24373,7 @@ class DescribeFileConfigReleasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -23889,7 +24409,7 @@ class DescribeFileConfigReleasesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 配置项发布信息列表
+        :param _Result: 配置项发布信息列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageFileConfigRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23899,7 +24419,7 @@ class DescribeFileConfigReleasesResponse(AbstractModel):
 
     @property
     def Result(self):
-        """配置项发布信息列表
+        """配置项发布信息列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageFileConfigRelease`
         """
         return self._Result
@@ -23934,19 +24454,19 @@ class DescribeFileConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置项ID
+        :param _ConfigId: 配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
         :type ConfigId: str
-        :param _ConfigIdList: 配置项ID列表
+        :param _ConfigIdList: 配置项ID列表。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
         :type ConfigIdList: list of str
-        :param _ConfigName: 配置项名称
+        :param _ConfigName: 配置项名称。
         :type ConfigName: str
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 每页条数
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param _ConfigVersion: 配置项版本
+        :param _ConfigVersion: 配置项版本。
         :type ConfigVersion: str
         """
         self._ConfigId = None
@@ -23959,7 +24479,7 @@ class DescribeFileConfigsRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置项ID
+        """配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -23970,7 +24490,7 @@ class DescribeFileConfigsRequest(AbstractModel):
 
     @property
     def ConfigIdList(self):
-        """配置项ID列表
+        """配置项ID列表。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
         :rtype: list of str
         """
         return self._ConfigIdList
@@ -23981,7 +24501,7 @@ class DescribeFileConfigsRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称
+        """配置项名称。
         :rtype: str
         """
         return self._ConfigName
@@ -23992,7 +24512,7 @@ class DescribeFileConfigsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID。该参数可以通过调用 [DescribeApplications](https://cloud.tencent.com/document/product/649/36090) 的返回值中的 ApplicationId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/app)查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -24003,7 +24523,7 @@ class DescribeFileConfigsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -24014,7 +24534,7 @@ class DescribeFileConfigsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -24025,7 +24545,7 @@ class DescribeFileConfigsRequest(AbstractModel):
 
     @property
     def ConfigVersion(self):
-        """配置项版本
+        """配置项版本。
         :rtype: str
         """
         return self._ConfigVersion
@@ -24060,7 +24580,7 @@ class DescribeFileConfigsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 文件配置项列表
+        :param _Result: 文件配置项列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageFileConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24070,7 +24590,7 @@ class DescribeFileConfigsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """文件配置项列表
+        """文件配置项列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageFileConfig`
         """
         return self._Result
@@ -24105,14 +24625,14 @@ class DescribeFlowLastBatchStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 工作流 ID
+        :param _FlowId: 工作流 ID。前往[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)，在工作流列表第一列和工作流详情页查看工作流ID。
         :type FlowId: str
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        """工作流 ID
+        """工作流 ID。前往[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)，在工作流列表第一列和工作流详情页查看工作流ID。
         :rtype: str
         """
         return self._FlowId
@@ -24519,14 +25039,14 @@ class DescribeGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID字段
+        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID字段
+        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
         :rtype: str
         """
         return self._GroupId
@@ -24726,14 +25246,16 @@ class DescribeGroupBusinessLogConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 分组ID
+        :param _GroupId: 部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """分组ID
+        """部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :rtype: str
         """
         return self._GroupId
@@ -24933,17 +25455,17 @@ class DescribeGroupInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :type GroupId: str
         :param _SearchWord: 搜索字段
         :type SearchWord: str
         :param _OrderBy: 排序字段
         :type OrderBy: str
-        :param _OrderType: 排序类型
+        :param _OrderType: 排序类型；0：升序，1：降序
         :type OrderType: int
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认值：0
         :type Offset: int
-        :param _Limit: 分页个数
+        :param _Limit: 分页个数；默认值：20
         :type Limit: int
         """
         self._GroupId = None
@@ -24955,7 +25477,7 @@ class DescribeGroupInstancesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -24988,7 +25510,7 @@ class DescribeGroupInstancesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序类型
+        """排序类型；0：升序，1：降序
         :rtype: int
         """
         return self._OrderType
@@ -24999,7 +25521,7 @@ class DescribeGroupInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认值：0
         :rtype: int
         """
         return self._Offset
@@ -25010,7 +25532,7 @@ class DescribeGroupInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页个数
+        """分页个数；默认值：20
         :rtype: int
         """
         return self._Limit
@@ -25089,14 +25611,14 @@ class DescribeGroupReleaseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -25125,7 +25647,7 @@ class DescribeGroupReleaseResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 部署组发布的相关信息
+        :param _Result: 部署组发布的相关信息。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.GroupRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25135,7 +25657,7 @@ class DescribeGroupReleaseResponse(AbstractModel):
 
     @property
     def Result(self):
-        """部署组发布的相关信息
+        """部署组发布的相关信息。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.GroupRelease`
         """
         return self._Result
@@ -25170,14 +25692,14 @@ class DescribeGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -25394,19 +25916,19 @@ class DescribeGroupsRequest(AbstractModel):
         r"""
         :param _SearchWord: 搜索字段
         :type SearchWord: str
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID。调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用或通过[CreateApplication](https://cloud.tencent.com/document/api/649/36094)接口创建新的应用。
         :type ApplicationId: str
         :param _OrderBy: 排序字段
         :type OrderBy: str
-        :param _OrderType: 排序方式
+        :param _OrderType: 排序方式，0：升序，1：降序
         :type OrderType: int
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认值：0
         :type Offset: int
-        :param _Limit: 分页个数
+        :param _Limit: 分页个数，默认值：20
         :type Limit: int
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID。调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096)查询已创建的命名空间或通过[CreateNamespace](https://cloud.tencent.com/document/api/649/36098)接口创建新的集群。
         :type NamespaceId: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群 ID。调用[DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)查询已创建的集群或通过[CreateCluster](https://cloud.tencent.com/document/api/649/36049)接口创建新的集群。
         :type ClusterId: str
         :param _GroupResourceTypeList: 部署组资源类型列表
         :type GroupResourceTypeList: list of str
@@ -25440,7 +25962,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID。调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用或通过[CreateApplication](https://cloud.tencent.com/document/api/649/36094)接口创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -25462,7 +25984,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序方式
+        """排序方式，0：升序，1：降序
         :rtype: int
         """
         return self._OrderType
@@ -25473,7 +25995,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认值：0
         :rtype: int
         """
         return self._Offset
@@ -25484,7 +26006,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页个数
+        """分页个数，默认值：20
         :rtype: int
         """
         return self._Limit
@@ -25495,7 +26017,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID。调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096)查询已创建的命名空间或通过[CreateNamespace](https://cloud.tencent.com/document/api/649/36098)接口创建新的集群。
         :rtype: str
         """
         return self._NamespaceId
@@ -25506,7 +26028,7 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群 ID。调用[DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)查询已创建的集群或通过[CreateCluster](https://cloud.tencent.com/document/api/649/36049)接口创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -25781,13 +26303,13 @@ class DescribeImageRepositoryRequest(AbstractModel):
         r"""
         :param _SearchWord: 仓库名，搜索关键字,不带命名空间的
         :type SearchWord: str
-        :param _Offset: 偏移量，取值从0开始
+        :param _Offset: 偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Offset: int
-        :param _Limit: 分页个数，默认为20， 取值应为1~100
+        :param _Limit: 数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Limit: int
         :param _RepoType: 企业: tcr ；个人: personal或者不填
         :type RepoType: str
-        :param _ApplicationId: 应用id
+        :param _ApplicationId: 应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :type ApplicationId: str
         :param _TcrRepoInfo: TcrRepoInfo值
         :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
@@ -25815,7 +26337,7 @@ class DescribeImageRepositoryRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，取值从0开始
+        """偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Offset
@@ -25826,7 +26348,7 @@ class DescribeImageRepositoryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页个数，默认为20， 取值应为1~100
+        """数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Limit
@@ -25848,7 +26370,7 @@ class DescribeImageRepositoryRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id
+        """应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -25952,11 +26474,11 @@ class DescribeImageTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用Id
+        :param _ApplicationId: 应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _Offset: 偏移量，取值从0开始
+        :param _Offset: 偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Offset: int
-        :param _Limit: 分页个数，默认为20， 取值应为1~100
+        :param _Limit: 数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Limit: int
         :param _QueryImageIdFlag: 不填和0:查询 1:不查询
         :type QueryImageIdFlag: int
@@ -25980,7 +26502,7 @@ class DescribeImageTagsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用Id
+        """应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -25991,7 +26513,7 @@ class DescribeImageTagsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，取值从0开始
+        """偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Offset
@@ -26002,7 +26524,7 @@ class DescribeImageTagsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页个数，默认为20， 取值应为1~100
+        """数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Limit
@@ -26388,7 +26910,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件
+        :param _Filters: 过滤条件，name表示过滤字段，value表示过滤字段值。
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0
         :type Offset: int
@@ -26401,7 +26923,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        """过滤条件，name表示过滤字段，value表示过滤字段值。
         :rtype: list of Filter
         """
         return self._Filters
@@ -26504,17 +27026,17 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 查询开始时间
+        :param _StartTime: 开始时间，格式yyyy-MM-dd HH:mm:ss
         :type StartTime: str
-        :param _EndTime: 查询结束时间
+        :param _EndTime: 结束时间，格式yyyy-MM-dd HH:mm:ss
         :type EndTime: str
-        :param _Period: 查询时间粒度，单位秒可选值：60、3600、86400
+        :param _Period: 查询时间粒度，单位秒。可选值：60、3600、86400
         :type Period: int
-        :param _MetricDimensions: 查询指标维度，不能为空，支持 ServiceName, OperationName, PeerServiceName, PeerOperationName
+        :param _MetricDimensions: 查询指标维度，不能为空
         :type MetricDimensions: list of MetricDimension
-        :param _Metrics: 查询指标名，不能为空.
+        :param _Metrics: 查询指标名，不能为空
         :type Metrics: list of Metric
-        :param _Kind: 视图视角。可选值：SERVER, CLIENT。默认为SERVER
+        :param _Kind: 视图视角。可选值：SERVER：服务端，CLIENT：客户端。默认为SERVER
         :type Kind: str
         :param _Type: 类型。组件监控使用，可选值：SQL 或者 NoSQL
         :type Type: str
@@ -26529,7 +27051,7 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询开始时间
+        """开始时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -26540,7 +27062,7 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间
+        """结束时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -26551,7 +27073,7 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
 
     @property
     def Period(self):
-        """查询时间粒度，单位秒可选值：60、3600、86400
+        """查询时间粒度，单位秒。可选值：60、3600、86400
         :rtype: int
         """
         return self._Period
@@ -26562,7 +27084,7 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
 
     @property
     def MetricDimensions(self):
-        """查询指标维度，不能为空，支持 ServiceName, OperationName, PeerServiceName, PeerOperationName
+        """查询指标维度，不能为空
         :rtype: list of MetricDimension
         """
         return self._MetricDimensions
@@ -26573,7 +27095,7 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
 
     @property
     def Metrics(self):
-        """查询指标名，不能为空.
+        """查询指标名，不能为空
         :rtype: list of Metric
         """
         return self._Metrics
@@ -26584,7 +27106,7 @@ class DescribeInvocationMetricDataCurveRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """视图视角。可选值：SERVER, CLIENT。默认为SERVER
+        """视图视角。可选值：SERVER：服务端，CLIENT：客户端。默认为SERVER
         :rtype: str
         """
         return self._Kind
@@ -26688,19 +27210,19 @@ class DescribeInvocationMetricDataDimensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间，格式yyyy-MM-dd HH:mm:ss
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间，格式yyyy-MM-dd HH:mm:ss
         :type EndTime: str
         :param _Offset: 开始index
         :type Offset: int
         :param _Limit: 分页大小
         :type Limit: int
-        :param _DimensionName: 聚合维度
+        :param _DimensionName: 聚合维度。可选值 NamespaceId：命名空间ID，GroupId：部署组ID，InstanceId：实例ID，ApplicationId：应用ID，OperationMethod：执行方法，OperationName：执行名称，ServiceName：服务名，UpstreamNamespaceId：上游命名空间ID
         :type DimensionName: str
         :param _SearchWord: 搜索关键字
         :type SearchWord: str
-        :param _MetricDimensionValues: 维度
+        :param _MetricDimensionValues: 构建维度
         :type MetricDimensionValues: list of MetricDimensionValue
         """
         self._StartTime = None
@@ -26713,7 +27235,7 @@ class DescribeInvocationMetricDataDimensionRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        """开始时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -26724,7 +27246,7 @@ class DescribeInvocationMetricDataDimensionRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -26757,7 +27279,7 @@ class DescribeInvocationMetricDataDimensionRequest(AbstractModel):
 
     @property
     def DimensionName(self):
-        """聚合维度
+        """聚合维度。可选值 NamespaceId：命名空间ID，GroupId：部署组ID，InstanceId：实例ID，ApplicationId：应用ID，OperationMethod：执行方法，OperationName：执行名称，ServiceName：服务名，UpstreamNamespaceId：上游命名空间ID
         :rtype: str
         """
         return self._DimensionName
@@ -26779,7 +27301,7 @@ class DescribeInvocationMetricDataDimensionRequest(AbstractModel):
 
     @property
     def MetricDimensionValues(self):
-        """维度
+        """构建维度
         :rtype: list of MetricDimensionValue
         """
         return self._MetricDimensionValues
@@ -26864,15 +27386,15 @@ class DescribeInvocationMetricDataPointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间，格式yyyy-MM-dd HH:mm:ss
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间，格式yyyy-MM-dd HH:mm:ss
         :type EndTime: str
-        :param _MetricDimensionValues: 维度，并且 维度 key value 不能为空
+        :param _MetricDimensionValues: 查询指标维度, 不能为空
         :type MetricDimensionValues: list of MetricDimensionValue
-        :param _Metrics: 指标，并且 key, value 不能为空
+        :param _Metrics: 指标，不能为空
         :type Metrics: list of Metric
-        :param _Kind: 调用视角。可选值：SERVER, CLIENT。默认为SERVER
+        :param _Kind: 视图视角。可选值：SERVER：服务端, CLIENT：客户端。默认为SERVER
         :type Kind: str
         """
         self._StartTime = None
@@ -26883,7 +27405,7 @@ class DescribeInvocationMetricDataPointRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        """开始时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -26894,7 +27416,7 @@ class DescribeInvocationMetricDataPointRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -26905,7 +27427,7 @@ class DescribeInvocationMetricDataPointRequest(AbstractModel):
 
     @property
     def MetricDimensionValues(self):
-        """维度，并且 维度 key value 不能为空
+        """查询指标维度, 不能为空
         :rtype: list of MetricDimensionValue
         """
         return self._MetricDimensionValues
@@ -26916,7 +27438,7 @@ class DescribeInvocationMetricDataPointRequest(AbstractModel):
 
     @property
     def Metrics(self):
-        """指标，并且 key, value 不能为空
+        """指标，不能为空
         :rtype: list of Metric
         """
         return self._Metrics
@@ -26927,7 +27449,7 @@ class DescribeInvocationMetricDataPointRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """调用视角。可选值：SERVER, CLIENT。默认为SERVER
+        """视图视角。可选值：SERVER：服务端, CLIENT：客户端。默认为SERVER
         :rtype: str
         """
         return self._Kind
@@ -27018,17 +27540,17 @@ class DescribeInvocationMetricScatterPlotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 查询开始时间
+        :param _StartTime: 查询开始时间，格式yyyy-MM-dd HH:mm:ss
         :type StartTime: str
-        :param _EndTime: 查询结束时间
+        :param _EndTime: 查询结束时间，格式yyyy-MM-dd HH:mm:ss
         :type EndTime: str
-        :param _Period: 查询时间粒度，单位秒。可选值：60、3600、86400。
+        :param _Period: 查询时间粒度，单位秒。可选值：60、3600、86400
         :type Period: int
-        :param _MetricDimensions: 查询指标维度, 不能为空。可选 NamespaceId, GroupId, InstanceId, OperationName, ServiceName, PeerServiceName, PeerOperationName
+        :param _MetricDimensions: 查询指标维度, 不能为空。Name, Valeu键值对形式。Name可选值 NamespaceId：命名空间ID，GroupId：部署组ID，InstanceId：实例ID，ApplicationId：应用ID，OperationMethod：执行方法，OperationName：执行名称，ServiceName：服务名，UpstreamNamespaceId：上游命名空间ID
         :type MetricDimensions: list of MetricDimension
-        :param _Metrics: 查询指标名， 不能为空。仅支持 range_count_duratioin 为 key 下的 sum 方法
+        :param _Metrics: 查询指标名， 不能为空。仅支持 range_count_duration（响应耗时分布） 为 key 下的 sum（求和） 方法
         :type Metrics: list of Metric
-        :param _Kind: 视图视角。可选值：SERVER, CLIENT。默认为SERVER
+        :param _Kind: 视图视角。可选值：SERVER：服务端, CLIENT：客户端。默认为SERVER
         :type Kind: str
         """
         self._StartTime = None
@@ -27040,7 +27562,7 @@ class DescribeInvocationMetricScatterPlotRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询开始时间
+        """查询开始时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -27051,7 +27573,7 @@ class DescribeInvocationMetricScatterPlotRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间
+        """查询结束时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -27062,7 +27584,7 @@ class DescribeInvocationMetricScatterPlotRequest(AbstractModel):
 
     @property
     def Period(self):
-        """查询时间粒度，单位秒。可选值：60、3600、86400。
+        """查询时间粒度，单位秒。可选值：60、3600、86400
         :rtype: int
         """
         return self._Period
@@ -27073,7 +27595,7 @@ class DescribeInvocationMetricScatterPlotRequest(AbstractModel):
 
     @property
     def MetricDimensions(self):
-        """查询指标维度, 不能为空。可选 NamespaceId, GroupId, InstanceId, OperationName, ServiceName, PeerServiceName, PeerOperationName
+        """查询指标维度, 不能为空。Name, Valeu键值对形式。Name可选值 NamespaceId：命名空间ID，GroupId：部署组ID，InstanceId：实例ID，ApplicationId：应用ID，OperationMethod：执行方法，OperationName：执行名称，ServiceName：服务名，UpstreamNamespaceId：上游命名空间ID
         :rtype: list of MetricDimension
         """
         return self._MetricDimensions
@@ -27084,7 +27606,7 @@ class DescribeInvocationMetricScatterPlotRequest(AbstractModel):
 
     @property
     def Metrics(self):
-        """查询指标名， 不能为空。仅支持 range_count_duratioin 为 key 下的 sum 方法
+        """查询指标名， 不能为空。仅支持 range_count_duration（响应耗时分布） 为 key 下的 sum（求和） 方法
         :rtype: list of Metric
         """
         return self._Metrics
@@ -27095,7 +27617,7 @@ class DescribeInvocationMetricScatterPlotRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """视图视角。可选值：SERVER, CLIENT。默认为SERVER
+        """视图视角。可选值：SERVER：服务端, CLIENT：客户端。默认为SERVER
         :rtype: str
         """
         return self._Kind
@@ -27186,9 +27708,11 @@ class DescribeJvmMonitorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 查询的实例Id
+        :param _InstanceId: 查询的实例ID
+可通过调用[DescribeClusterInstances](https://cloud.tencent.com/document/product/649/36048)查询已导入的实例列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=instance)进行查询。实例ID例如：ins-6decplwk
         :type InstanceId: str
-        :param _ApplicationId: 实例所属应用Id
+        :param _ApplicationId: 实例所属应用ID
+可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已经存在的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)查看。应用ID例如：application-v378ewna
         :type ApplicationId: str
         :param _TimeGranularity: 时间粒度,单位:秒
         :type TimeGranularity: int
@@ -27196,7 +27720,8 @@ class DescribeJvmMonitorRequest(AbstractModel):
         :type From: str
         :param _To: 查询数据结束时间格式(yyyy-MM-dd HH:mm:ss)
         :type To: str
-        :param _RequiredPictures: 查询的监控图列表,以返回值属性名作为入参
+        :param _RequiredPictures: 查询的监控图列表，以返回值属性名作为入参，可选值：
+heapMemory：堆内存监控图；nonHeapMemory：非堆内存监控图；edenSpace：伊甸区监控图；survivorSpace：幸存者区监控图；oldSpace：老年代监控图；metaSpace：元空间监控图；youngGC：youngGC增量监控图；fullGC：fullGC增量监控图；cpuUsage：cpu使用率监控图；classCount：加载类数监控图；threadPicture：线程图
         :type RequiredPictures: list of str
         :param _Tag: 扩展字段
         :type Tag: str
@@ -27211,7 +27736,8 @@ class DescribeJvmMonitorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """查询的实例Id
+        """查询的实例ID
+可通过调用[DescribeClusterInstances](https://cloud.tencent.com/document/product/649/36048)查询已导入的实例列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=instance)进行查询。实例ID例如：ins-6decplwk
         :rtype: str
         """
         return self._InstanceId
@@ -27222,7 +27748,8 @@ class DescribeJvmMonitorRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """实例所属应用Id
+        """实例所属应用ID
+可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已经存在的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)查看。应用ID例如：application-v378ewna
         :rtype: str
         """
         return self._ApplicationId
@@ -27266,7 +27793,8 @@ class DescribeJvmMonitorRequest(AbstractModel):
 
     @property
     def RequiredPictures(self):
-        """查询的监控图列表,以返回值属性名作为入参
+        """查询的监控图列表，以返回值属性名作为入参，可选值：
+heapMemory：堆内存监控图；nonHeapMemory：非堆内存监控图；edenSpace：伊甸区监控图；survivorSpace：幸存者区监控图；oldSpace：老年代监控图；metaSpace：元空间监控图；youngGC：youngGC增量监控图；fullGC：fullGC增量监控图；cpuUsage：cpu使用率监控图；classCount：加载类数监控图；threadPicture：线程图
         :rtype: list of str
         """
         return self._RequiredPictures
@@ -27357,15 +27885,15 @@ class DescribeLaneRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页展示的条数
+        :param _Limit: 返回数量，默认为20，最大值为500。
         :type Limit: int
-        :param _Offset: 翻页偏移量
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _SearchWord: 搜索关键词
+        :param _SearchWord: 搜索关键词。
         :type SearchWord: str
-        :param _RuleId: 泳道规则ID（用于精确搜索）
+        :param _RuleId: 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :type RuleId: str
-        :param _RuleIdList: 无
+        :param _RuleIdList: 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :type RuleIdList: list of str
         """
         self._Limit = None
@@ -27376,7 +27904,7 @@ class DescribeLaneRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页展示的条数
+        """返回数量，默认为20，最大值为500。
         :rtype: int
         """
         return self._Limit
@@ -27387,7 +27915,7 @@ class DescribeLaneRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页偏移量
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -27398,7 +27926,7 @@ class DescribeLaneRulesRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """搜索关键词
+        """搜索关键词。
         :rtype: str
         """
         return self._SearchWord
@@ -27409,7 +27937,7 @@ class DescribeLaneRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """泳道规则ID（用于精确搜索）
+        """灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :rtype: str
         """
         return self._RuleId
@@ -27420,7 +27948,7 @@ class DescribeLaneRulesRequest(AbstractModel):
 
     @property
     def RuleIdList(self):
-        """无
+        """灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :rtype: list of str
         """
         return self._RuleIdList
@@ -27453,7 +27981,7 @@ class DescribeLaneRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 泳道规则列表
+        :param _Result: 灰度发布规则列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.LaneRules`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27463,7 +27991,7 @@ class DescribeLaneRulesResponse(AbstractModel):
 
     @property
     def Result(self):
-        """泳道规则列表
+        """灰度发布规则列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.LaneRules`
         """
         return self._Result
@@ -27498,15 +28026,15 @@ class DescribeLanesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页展示的条数
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param _Offset: 翻页偏移量
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _SearchWord: 搜索关键字
+        :param _SearchWord: 搜索关键字。
         :type SearchWord: str
-        :param _LaneIdList: 无
+        :param _LaneIdList: 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :type LaneIdList: list of str
-        :param _DisableProgramAuthCheck: 无
+        :param _DisableProgramAuthCheck: 忽略传参，业务预留字段。
         :type DisableProgramAuthCheck: bool
         """
         self._Limit = None
@@ -27517,7 +28045,7 @@ class DescribeLanesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页展示的条数
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -27528,7 +28056,7 @@ class DescribeLanesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页偏移量
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -27539,7 +28067,7 @@ class DescribeLanesRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """搜索关键字
+        """搜索关键字。
         :rtype: str
         """
         return self._SearchWord
@@ -27550,7 +28078,7 @@ class DescribeLanesRequest(AbstractModel):
 
     @property
     def LaneIdList(self):
-        """无
+        """泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :rtype: list of str
         """
         return self._LaneIdList
@@ -27561,7 +28089,7 @@ class DescribeLanesRequest(AbstractModel):
 
     @property
     def DisableProgramAuthCheck(self):
-        """无
+        """忽略传参，业务预留字段。
         :rtype: bool
         """
         return self._DisableProgramAuthCheck
@@ -27594,7 +28122,7 @@ class DescribeLanesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 泳道列表
+        :param _Result: 泳道配置列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.LaneInfos`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27604,7 +28132,7 @@ class DescribeLanesResponse(AbstractModel):
 
     @property
     def Result(self):
-        """泳道列表
+        """泳道配置列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.LaneInfos`
         """
         return self._Result
@@ -27632,40 +28160,20 @@ class DescribeLanesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeMicroserviceRequest(AbstractModel):
-    """DescribeMicroservice请求参数结构体
+class DescribeLicensesRequest(AbstractModel):
+    """DescribeLicenses请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _MicroserviceId: 微服务ID
-        :type MicroserviceId: str
         :param _Offset: 偏移量
         :type Offset: int
-        :param _Limit: 分页个数
+        :param _Limit: 每页条数
         :type Limit: int
-        :param _GroupIds: 可选，根据部署组ID进行过滤
-        :type GroupIds: list of str
-        :param _Filters: 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。filter name 取值有：id（实例id）、name（实例名）、lan-ip（内网ip）、node-ip（所在节点ip）
-        :type Filters: list of Filter
         """
-        self._MicroserviceId = None
         self._Offset = None
         self._Limit = None
-        self._GroupIds = None
-        self._Filters = None
-
-    @property
-    def MicroserviceId(self):
-        """微服务ID
-        :rtype: str
-        """
-        return self._MicroserviceId
-
-    @MicroserviceId.setter
-    def MicroserviceId(self, MicroserviceId):
-        self._MicroserviceId = MicroserviceId
 
     @property
     def Offset(self):
@@ -27680,7 +28188,195 @@ class DescribeMicroserviceRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页个数
+        """每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLicensesResponse(AbstractModel):
+    """DescribeLicenses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 许可标签列表分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageLicenseTag`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """许可标签列表分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageLicenseTag`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = TsfPageLicenseTag()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLogCapacityRequest(AbstractModel):
+    """DescribeLogCapacity请求参数结构体
+
+    """
+
+
+class DescribeLogCapacityResponse(AbstractModel):
+    """DescribeLogCapacity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UsedSpace: 使用日志容量大小
+        :type UsedSpace: float
+        :param _Capacity: 日志总容量大小
+        :type Capacity: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UsedSpace = None
+        self._Capacity = None
+        self._RequestId = None
+
+    @property
+    def UsedSpace(self):
+        """使用日志容量大小
+        :rtype: float
+        """
+        return self._UsedSpace
+
+    @UsedSpace.setter
+    def UsedSpace(self, UsedSpace):
+        self._UsedSpace = UsedSpace
+
+    @property
+    def Capacity(self):
+        """日志总容量大小
+        :rtype: float
+        """
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UsedSpace = params.get("UsedSpace")
+        self._Capacity = params.get("Capacity")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMicroserviceRequest(AbstractModel):
+    """DescribeMicroservice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MicroserviceId: 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+        :type MicroserviceId: str
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为50。
+        :type Limit: int
+        :param _GroupIds: 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
+        :type GroupIds: list of str
+        :param _Filters: 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。
+参考：[{"Name":"LanIp","Values":["172.16.16.139"]}]
+filter name 取值范围：
+- id：实例ID
+- name：实例名
+- lan-ip：内网IP
+- node-ip：所在节点IP
+        :type Filters: list of Filter
+        """
+        self._MicroserviceId = None
+        self._Offset = None
+        self._Limit = None
+        self._GroupIds = None
+        self._Filters = None
+
+    @property
+    def MicroserviceId(self):
+        """微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+        :rtype: str
+        """
+        return self._MicroserviceId
+
+    @MicroserviceId.setter
+    def MicroserviceId(self, MicroserviceId):
+        self._MicroserviceId = MicroserviceId
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量，默认为20，最大值为50。
         :rtype: int
         """
         return self._Limit
@@ -27691,7 +28387,7 @@ class DescribeMicroserviceRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """可选，根据部署组ID进行过滤
+        """部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: list of str
         """
         return self._GroupIds
@@ -27702,7 +28398,13 @@ class DescribeMicroserviceRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。filter name 取值有：id（实例id）、name（实例名）、lan-ip（内网ip）、node-ip（所在节点ip）
+        """过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。
+参考：[{"Name":"LanIp","Values":["172.16.16.139"]}]
+filter name 取值范围：
+- id：实例ID
+- name：实例名
+- lan-ip：内网IP
+- node-ip：所在节点IP
         :rtype: list of Filter
         """
         return self._Filters
@@ -27740,7 +28442,7 @@ class DescribeMicroserviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 微服务详情实例列表
+        :param _Result: 微服务详情实例列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageMsInstance`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27750,7 +28452,7 @@ class DescribeMicroserviceResponse(AbstractModel):
 
     @property
     def Result(self):
-        """微服务详情实例列表
+        """微服务详情实例列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageMsInstance`
         """
         return self._Result
@@ -27785,14 +28487,14 @@ class DescribeMicroservicesByGroupIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: 部署组ID列表
+        :param _GroupIds: 部署组ID列表。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupIds: list of str
         """
         self._GroupIds = None
 
     @property
     def GroupIds(self):
-        """部署组ID列表
+        """部署组ID列表。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: list of str
         """
         return self._GroupIds
@@ -27821,7 +28523,7 @@ class DescribeMicroservicesByGroupIdsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 微服务信息分页列表
+        :param _Result: 微服务信息分页列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageMicroservice`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27831,7 +28533,7 @@ class DescribeMicroservicesByGroupIdsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """微服务信息分页列表
+        """微服务信息分页列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageMicroservice`
         """
         return self._Result
@@ -27866,25 +28568,32 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _SearchWord: 搜索字段
+        :param _SearchWord: 搜索字段。
         :type SearchWord: str
-        :param _OrderBy: 排序字段
+        :param _OrderBy: 排序字段。
+- create_time：创建时间
+默认为创建时间，暂不支持其他值。
         :type OrderBy: str
-        :param _OrderType: 排序类型
+        :param _OrderType: 排序类型。
+- 1：倒序
+默认为倒序，暂不支持其他值。
         :type OrderType: int
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 分页个数
+        :param _Limit: 返回数量，默认为20，最大值为50。
         :type Limit: int
-        :param _Status: 状态过滤，online、offline、single_online
+        :param _Status: 状态。
+- online：在线
+- offline：离线
+- single_online：单点在线
         :type Status: list of str
-        :param _MicroserviceIdList: IdList
+        :param _MicroserviceIdList: 微服务ID列表。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :type MicroserviceIdList: list of str
-        :param _MicroserviceNameList: 搜索的服务名列表
+        :param _MicroserviceNameList: 微服务名称列表。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :type MicroserviceNameList: list of str
-        :param _ConfigCenterInstanceId: 注册中心实例id
+        :param _ConfigCenterInstanceId: 注册中心实例ID。业务预留参数，忽略传参。
         :type ConfigCenterInstanceId: str
         """
         self._NamespaceId = None
@@ -27900,7 +28609,7 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -27911,7 +28620,7 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """搜索字段
+        """搜索字段。
         :rtype: str
         """
         return self._SearchWord
@@ -27922,7 +28631,9 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序字段
+        """排序字段。
+- create_time：创建时间
+默认为创建时间，暂不支持其他值。
         :rtype: str
         """
         return self._OrderBy
@@ -27933,7 +28644,9 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序类型
+        """排序类型。
+- 1：倒序
+默认为倒序，暂不支持其他值。
         :rtype: int
         """
         return self._OrderType
@@ -27944,7 +28657,7 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -27955,7 +28668,7 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页个数
+        """返回数量，默认为20，最大值为50。
         :rtype: int
         """
         return self._Limit
@@ -27966,7 +28679,10 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态过滤，online、offline、single_online
+        """状态。
+- online：在线
+- offline：离线
+- single_online：单点在线
         :rtype: list of str
         """
         return self._Status
@@ -27977,7 +28693,7 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def MicroserviceIdList(self):
-        """IdList
+        """微服务ID列表。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :rtype: list of str
         """
         return self._MicroserviceIdList
@@ -27988,7 +28704,7 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def MicroserviceNameList(self):
-        """搜索的服务名列表
+        """微服务名称列表。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :rtype: list of str
         """
         return self._MicroserviceNameList
@@ -27999,7 +28715,7 @@ class DescribeMicroservicesRequest(AbstractModel):
 
     @property
     def ConfigCenterInstanceId(self):
-        """注册中心实例id
+        """注册中心实例ID。业务预留参数，忽略传参。
         :rtype: str
         """
         return self._ConfigCenterInstanceId
@@ -28037,7 +28753,7 @@ class DescribeMicroservicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 微服务分页列表信息
+        :param _Result: 微服务分页列表信息。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageMicroservice`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28047,7 +28763,7 @@ class DescribeMicroservicesResponse(AbstractModel):
 
     @property
     def Result(self):
-        """微服务分页列表信息
+        """微服务分页列表信息。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageMicroservice`
         """
         return self._Result
@@ -28082,13 +28798,13 @@ class DescribeMsApiListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MicroserviceId: 微服务ID
+        :param _MicroserviceId: 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :type MicroserviceId: str
-        :param _SearchWord: 搜索关键字
+        :param _SearchWord: 搜索关键字。
         :type SearchWord: str
-        :param _Limit: 每页的数量
+        :param _Limit: 返回数量，默认为20，最大值为50。
         :type Limit: int
-        :param _Offset: 翻页偏移量
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
         """
         self._MicroserviceId = None
@@ -28098,7 +28814,7 @@ class DescribeMsApiListRequest(AbstractModel):
 
     @property
     def MicroserviceId(self):
-        """微服务ID
+        """微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :rtype: str
         """
         return self._MicroserviceId
@@ -28109,7 +28825,7 @@ class DescribeMsApiListRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """搜索关键字
+        """搜索关键字。
         :rtype: str
         """
         return self._SearchWord
@@ -28120,7 +28836,7 @@ class DescribeMsApiListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页的数量
+        """返回数量，默认为20，最大值为50。
         :rtype: int
         """
         return self._Limit
@@ -28131,7 +28847,7 @@ class DescribeMsApiListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页偏移量
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -28163,7 +28879,7 @@ class DescribeMsApiListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 相应结果
+        :param _Result: 微服务API列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfApiListResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28173,7 +28889,7 @@ class DescribeMsApiListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """相应结果
+        """微服务API列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfApiListResponse`
         """
         return self._Result
@@ -28209,14 +28925,15 @@ class DescribeOverviewInvocationRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _NamespaceId: 命名空间ID， 此参数必填
+可通过[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已经创建的命名空间，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)查看
         :type NamespaceId: str
-        :param _Type: 监控统计类型，必填，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
+        :param _Type: 监控统计类型，必填，取值范围 SumReqAmount：请求量，AvgFailureRate：请求错误率，AvgTimeCost：平均响应耗时
         :type Type: str
         :param _Period: 监控统计数据粒度，可选值：60、3600、86400，分别对应1分钟、1小时、1天
         :type Period: int
-        :param _StartTime: 查询开始时间，默认为当天的 00:00:00
+        :param _StartTime: 查询开始时间，格式为yyyy-MM-dd HH:mm:ss，默认为当天的 00:00:00
         :type StartTime: str
-        :param _EndTime: 查询结束时间，默认为当前时间
+        :param _EndTime: 查询结束时间，格式为yyyy-MM-dd HH:mm:ss，默认为当前时间
         :type EndTime: str
         """
         self._NamespaceId = None
@@ -28228,6 +28945,7 @@ class DescribeOverviewInvocationRequest(AbstractModel):
     @property
     def NamespaceId(self):
         """命名空间ID， 此参数必填
+可通过[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已经创建的命名空间，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)查看
         :rtype: str
         """
         return self._NamespaceId
@@ -28238,7 +28956,7 @@ class DescribeOverviewInvocationRequest(AbstractModel):
 
     @property
     def Type(self):
-        """监控统计类型，必填，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
+        """监控统计类型，必填，取值范围 SumReqAmount：请求量，AvgFailureRate：请求错误率，AvgTimeCost：平均响应耗时
         :rtype: str
         """
         return self._Type
@@ -28260,7 +28978,7 @@ class DescribeOverviewInvocationRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询开始时间，默认为当天的 00:00:00
+        """查询开始时间，格式为yyyy-MM-dd HH:mm:ss，默认为当天的 00:00:00
         :rtype: str
         """
         return self._StartTime
@@ -28271,7 +28989,7 @@ class DescribeOverviewInvocationRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间，默认为当前时间
+        """查询结束时间，格式为yyyy-MM-dd HH:mm:ss，默认为当前时间
         :rtype: str
         """
         return self._EndTime
@@ -28559,21 +29277,21 @@ class DescribePkgsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID（只传入应用ID，返回该应用下所有软件包信息）
+        :param _ApplicationId: 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :type ApplicationId: str
         :param _SearchWord: 查询关键字（支持根据包ID，包名，包版本号搜索）
         :type SearchWord: str
-        :param _OrderBy: 排序关键字（默认为"UploadTime"：上传时间）
+        :param _OrderBy: 排序关键字（默认值"UploadTime"），允许值："UploadTime"上传时间, "name"程序包名, "size"应用大小, "id"程序包ID
         :type OrderBy: str
         :param _OrderType: 升序：0/降序：1（默认降序）
         :type OrderType: int
-        :param _Offset: 查询起始偏移
+        :param _Offset: 查询起始偏移，大于等于0，默认值为0
         :type Offset: int
         :param _Limit: 返回数量限制
         :type Limit: int
-        :param _RepositoryType: 程序包仓库类型
+        :param _RepositoryType: 程序包仓库类型，允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库
         :type RepositoryType: str
-        :param _RepositoryId: 程序包仓库id
+        :param _RepositoryId: 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type RepositoryId: str
         :param _PackageTypeList: 程序包类型数组支持（fatjar jar war tar.gz zip）
         :type PackageTypeList: list of str
@@ -28590,7 +29308,7 @@ class DescribePkgsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID（只传入应用ID，返回该应用下所有软件包信息）
+        """应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :rtype: str
         """
         return self._ApplicationId
@@ -28612,7 +29330,7 @@ class DescribePkgsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序关键字（默认为"UploadTime"：上传时间）
+        """排序关键字（默认值"UploadTime"），允许值："UploadTime"上传时间, "name"程序包名, "size"应用大小, "id"程序包ID
         :rtype: str
         """
         return self._OrderBy
@@ -28634,7 +29352,7 @@ class DescribePkgsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始偏移
+        """查询起始偏移，大于等于0，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -28656,7 +29374,7 @@ class DescribePkgsRequest(AbstractModel):
 
     @property
     def RepositoryType(self):
-        """程序包仓库类型
+        """程序包仓库类型，允许值："public-demo"TSF公共demo仓库, "private"自定义仓库, "default"TSF公共仓库
         :rtype: str
         """
         return self._RepositoryType
@@ -28667,7 +29385,7 @@ class DescribePkgsRequest(AbstractModel):
 
     @property
     def RepositoryId(self):
-        """程序包仓库id
+        """仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._RepositoryId
@@ -28916,17 +29634,17 @@ class DescribePodInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 实例所属groupId
+        :param _GroupId: 实例所属部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。部署组所在集群必须是活跃状态的。
         :type GroupId: str
         :param _Offset: 偏移量，取值从0开始
         :type Offset: int
         :param _Limit: 分页个数，默认为20， 取值应为1~50
         :type Limit: int
-        :param _PodNameList: 过滤字段
+        :param _PodNameList: 用于通过PodName字段过滤返回结果。
         :type PodNameList: list of str
-        :param _DeployVersion: 新老版本pod批次标识
+        :param _DeployVersion: 新老版本pod批次标识，old表示老版本，new表示新版本。
         :type DeployVersion: str
-        :param _TaskId: 任务ID
+        :param _TaskId: 实例所属任务ID，登录控制台进行查看。
         :type TaskId: str
         """
         self._GroupId = None
@@ -28938,7 +29656,7 @@ class DescribePodInstancesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """实例所属groupId
+        """实例所属部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。部署组所在集群必须是活跃状态的。
         :rtype: str
         """
         return self._GroupId
@@ -28971,7 +29689,7 @@ class DescribePodInstancesRequest(AbstractModel):
 
     @property
     def PodNameList(self):
-        """过滤字段
+        """用于通过PodName字段过滤返回结果。
         :rtype: list of str
         """
         return self._PodNameList
@@ -28982,7 +29700,7 @@ class DescribePodInstancesRequest(AbstractModel):
 
     @property
     def DeployVersion(self):
-        """新老版本pod批次标识
+        """新老版本pod批次标识，old表示老版本，new表示新版本。
         :rtype: str
         """
         return self._DeployVersion
@@ -28993,7 +29711,7 @@ class DescribePodInstancesRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """实例所属任务ID，登录控制台进行查看。
         :rtype: str
         """
         return self._TaskId
@@ -29074,9 +29792,9 @@ class DescribeProgramsRequest(AbstractModel):
         r"""
         :param _SearchWord: 模糊查询数据集ID，数据集名称，不传入时查询全量
         :type SearchWord: str
-        :param _Limit: 每页数量
+        :param _Limit: 每页数量，默认值20
         :type Limit: int
-        :param _Offset: 起始偏移量
+        :param _Offset: 起始偏移量，默认值0
         :type Offset: int
         """
         self._SearchWord = None
@@ -29096,7 +29814,7 @@ class DescribeProgramsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页数量
+        """每页数量，默认值20
         :rtype: int
         """
         return self._Limit
@@ -29107,7 +29825,7 @@ class DescribeProgramsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始偏移量
+        """起始偏移量，默认值0
         :rtype: int
         """
         return self._Offset
@@ -29183,11 +29901,11 @@ class DescribePublicConfigReleaseLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID，不传入时查询全量
+        :param _NamespaceId: 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 每页条数，默认为20
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         """
         self._NamespaceId = None
@@ -29196,7 +29914,7 @@ class DescribePublicConfigReleaseLogsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID，不传入时查询全量
+        """命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -29207,7 +29925,7 @@ class DescribePublicConfigReleaseLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -29218,7 +29936,7 @@ class DescribePublicConfigReleaseLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数，默认为20
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -29249,7 +29967,7 @@ class DescribePublicConfigReleaseLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 分页后的公共配置项发布历史列表
+        :param _Result: 分页后的公共配置项发布历史列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29259,7 +29977,7 @@ class DescribePublicConfigReleaseLogsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """分页后的公共配置项发布历史列表
+        """分页后的公共配置项发布历史列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
         """
         return self._Result
@@ -29294,15 +30012,15 @@ class DescribePublicConfigReleasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigName: 配置项名称，不传入时查询全量
+        :param _ConfigName: 配置名称，不传入时查询全量。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :type ConfigName: str
-        :param _NamespaceId: 命名空间ID，不传入时查询全量
+        :param _NamespaceId: 命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _Limit: 每页条数
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _ConfigId: 配置项ID，不传入时查询全量
+        :param _ConfigId: 配置项ID，不传入时查询全量。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :type ConfigId: str
         """
         self._ConfigName = None
@@ -29313,7 +30031,7 @@ class DescribePublicConfigReleasesRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称，不传入时查询全量
+        """配置名称，不传入时查询全量。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :rtype: str
         """
         return self._ConfigName
@@ -29324,7 +30042,7 @@ class DescribePublicConfigReleasesRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID，不传入时查询全量
+        """命名空间ID，不传入时查询全量。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -29335,7 +30053,7 @@ class DescribePublicConfigReleasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -29346,7 +30064,7 @@ class DescribePublicConfigReleasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -29357,7 +30075,7 @@ class DescribePublicConfigReleasesRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置项ID，不传入时查询全量
+        """配置项ID，不传入时查询全量。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -29390,7 +30108,7 @@ class DescribePublicConfigReleasesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 公共配置发布信息
+        :param _Result: 公共配置发布信息。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29400,7 +30118,7 @@ class DescribePublicConfigReleasesResponse(AbstractModel):
 
     @property
     def Result(self):
-        """公共配置发布信息
+        """公共配置发布信息。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
         """
         return self._Result
@@ -29435,14 +30153,14 @@ class DescribePublicConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 需要查询的配置项ID
+        :param _ConfigId: 需要查询的配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :type ConfigId: str
         """
         self._ConfigId = None
 
     @property
     def ConfigId(self):
-        """需要查询的配置项ID
+        """需要查询的配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -29471,7 +30189,7 @@ class DescribePublicConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 全局配置
+        :param _Result: 全局配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.Config`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -29482,7 +30200,7 @@ class DescribePublicConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """全局配置
+        """全局配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.Config`
         """
@@ -29518,21 +30236,25 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SearchWord: 查询关键字，模糊查询：配置项名称，不传入时查询全量
+        :param _SearchWord: 查询关键字，模糊查询：配置项名称，不传入时查询全量。
         :type SearchWord: str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 每页条数，默认为20
+        :param _Limit: 返回数量，默认为20，最大值为50。
         :type Limit: int
-        :param _OrderBy: 按时间排序：creation_time；按名称排序：config_name
+        :param _OrderBy: 排序字段。
+- creation_time：按时间排序
+- config_name：按名称排序
         :type OrderBy: str
-        :param _OrderType: 升序传 0，降序传 1
+        :param _OrderType: 排序顺序。
+- 0：升序
+- 1：降序
         :type OrderType: int
-        :param _ConfigTagList: 无
+        :param _ConfigTagList: TAG标签资源值。
         :type ConfigTagList: list of str
-        :param _DisableProgramAuthCheck: 无
+        :param _DisableProgramAuthCheck: 忽略传参，业务预留字段。
         :type DisableProgramAuthCheck: bool
-        :param _ConfigIdList: 无
+        :param _ConfigIdList: 配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :type ConfigIdList: list of str
         """
         self._SearchWord = None
@@ -29546,7 +30268,7 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """查询关键字，模糊查询：配置项名称，不传入时查询全量
+        """查询关键字，模糊查询：配置项名称，不传入时查询全量。
         :rtype: str
         """
         return self._SearchWord
@@ -29557,7 +30279,7 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -29568,7 +30290,7 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数，默认为20
+        """返回数量，默认为20，最大值为50。
         :rtype: int
         """
         return self._Limit
@@ -29579,7 +30301,9 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """按时间排序：creation_time；按名称排序：config_name
+        """排序字段。
+- creation_time：按时间排序
+- config_name：按名称排序
         :rtype: str
         """
         return self._OrderBy
@@ -29590,7 +30314,9 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """升序传 0，降序传 1
+        """排序顺序。
+- 0：升序
+- 1：降序
         :rtype: int
         """
         return self._OrderType
@@ -29601,7 +30327,7 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
 
     @property
     def ConfigTagList(self):
-        """无
+        """TAG标签资源值。
         :rtype: list of str
         """
         return self._ConfigTagList
@@ -29612,7 +30338,7 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
 
     @property
     def DisableProgramAuthCheck(self):
-        """无
+        """忽略传参，业务预留字段。
         :rtype: bool
         """
         return self._DisableProgramAuthCheck
@@ -29623,7 +30349,7 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
 
     @property
     def ConfigIdList(self):
-        """无
+        """配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :rtype: list of str
         """
         return self._ConfigIdList
@@ -29659,7 +30385,7 @@ class DescribePublicConfigSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 分页的全局配置统计信息列表
+        :param _Result: 分页的全局配置统计信息列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29669,7 +30395,7 @@ class DescribePublicConfigSummaryResponse(AbstractModel):
 
     @property
     def Result(self):
-        """分页的全局配置统计信息列表
+        """分页的全局配置统计信息列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         """
         return self._Result
@@ -29704,17 +30430,17 @@ class DescribePublicConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置项ID，不传入时查询全量，高优先级
+        :param _ConfigId: 配置ID。不传入时查询全量，高优先级。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :type ConfigId: str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 每页条数，默认为20
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param _ConfigIdList: 配置项ID列表，不传入时查询全量，低优先级
+        :param _ConfigIdList: 配置ID列表，不传入时查询全量，低优先级。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :type ConfigIdList: list of str
-        :param _ConfigName: 配置项名称，精确查询，不传入时查询全量
+        :param _ConfigName: 配置项名称，精确查询，不传入时查询全量。
         :type ConfigName: str
-        :param _ConfigVersion: 配置项版本，精确查询，不传入时查询全量
+        :param _ConfigVersion: 配置项版本，精确查询，不传入时查询全量。
         :type ConfigVersion: str
         """
         self._ConfigId = None
@@ -29726,7 +30452,7 @@ class DescribePublicConfigsRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置项ID，不传入时查询全量，高优先级
+        """配置ID。不传入时查询全量，高优先级。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -29737,7 +30463,7 @@ class DescribePublicConfigsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        """偏移量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -29748,7 +30474,7 @@ class DescribePublicConfigsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数，默认为20
+        """返回数量，默认为20，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -29759,7 +30485,7 @@ class DescribePublicConfigsRequest(AbstractModel):
 
     @property
     def ConfigIdList(self):
-        """配置项ID列表，不传入时查询全量，低优先级
+        """配置ID列表，不传入时查询全量，低优先级。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :rtype: list of str
         """
         return self._ConfigIdList
@@ -29770,7 +30496,7 @@ class DescribePublicConfigsRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """配置项名称，精确查询，不传入时查询全量
+        """配置项名称，精确查询，不传入时查询全量。
         :rtype: str
         """
         return self._ConfigName
@@ -29781,7 +30507,7 @@ class DescribePublicConfigsRequest(AbstractModel):
 
     @property
     def ConfigVersion(self):
-        """配置项版本，精确查询，不传入时查询全量
+        """配置项版本，精确查询，不传入时查询全量。
         :rtype: str
         """
         return self._ConfigVersion
@@ -29815,7 +30541,7 @@ class DescribePublicConfigsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 分页后的全局配置项列表
+        :param _Result: 分页后的全局配置项列表。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29825,7 +30551,7 @@ class DescribePublicConfigsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """分页后的全局配置项列表
+        """分页后的全局配置项列表。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         """
         return self._Result
@@ -29860,14 +30586,14 @@ class DescribeReleasedConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -29896,7 +30622,7 @@ class DescribeReleasedConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 已发布的配置内容
+        :param _Result: 已发布的配置内容。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29906,7 +30632,7 @@ class DescribeReleasedConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """已发布的配置内容
+        """已发布的配置内容。
         :rtype: str
         """
         return self._Result
@@ -29941,11 +30667,11 @@ class DescribeRepositoriesRequest(AbstractModel):
         r"""
         :param _SearchWord: 查询关键字（按照仓库名称搜索）
         :type SearchWord: str
-        :param _Offset: 查询起始偏移
+        :param _Offset: 查询起始偏移，大于等于0，默认值为0
         :type Offset: int
-        :param _Limit: 返回数量限制
+        :param _Limit: 返回数量限制，大于0，默认为不分页
         :type Limit: int
-        :param _RepositoryType: 仓库类型（默认仓库：default，私有仓库：private）
+        :param _RepositoryType: 仓库类型（默认仓库：default，私有仓库：private，公共仓库：public-demo）
         :type RepositoryType: str
         """
         self._SearchWord = None
@@ -29966,7 +30692,7 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始偏移
+        """查询起始偏移，大于等于0，默认值为0
         :rtype: int
         """
         return self._Offset
@@ -29977,7 +30703,7 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量限制
+        """返回数量限制，大于0，默认为不分页
         :rtype: int
         """
         return self._Limit
@@ -29988,7 +30714,7 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def RepositoryType(self):
-        """仓库类型（默认仓库：default，私有仓库：private）
+        """仓库类型（默认仓库：default，私有仓库：private，公共仓库：public-demo）
         :rtype: str
         """
         return self._RepositoryType
@@ -30065,14 +30791,14 @@ class DescribeRepositoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RepositoryId: 仓库ID
+        :param _RepositoryId: 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type RepositoryId: str
         """
         self._RepositoryId = None
 
     @property
     def RepositoryId(self):
-        """仓库ID
+        """仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._RepositoryId
@@ -30139,6 +30865,534 @@ class DescribeRepositoryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeResourceConfigCluster(AbstractModel):
+    """返回给前端的控制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: 返回给前端的控制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Container: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigClusterContainer`
+        """
+        self._Container = None
+
+    @property
+    def Container(self):
+        """返回给前端的控制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigClusterContainer`
+        """
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+
+    def _deserialize(self, params):
+        if params.get("Container") is not None:
+            self._Container = DescribeResourceConfigClusterContainer()
+            self._Container._deserialize(params.get("Container"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigClusterContainer(AbstractModel):
+    """返回给前端的控制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NeedSubnetWhenCreatingCluster: 是否需要子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedSubnetWhenCreatingCluster: bool
+        """
+        self._NeedSubnetWhenCreatingCluster = None
+
+    @property
+    def NeedSubnetWhenCreatingCluster(self):
+        """是否需要子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._NeedSubnetWhenCreatingCluster
+
+    @NeedSubnetWhenCreatingCluster.setter
+    def NeedSubnetWhenCreatingCluster(self, NeedSubnetWhenCreatingCluster):
+        self._NeedSubnetWhenCreatingCluster = NeedSubnetWhenCreatingCluster
+
+
+    def _deserialize(self, params):
+        self._NeedSubnetWhenCreatingCluster = params.get("NeedSubnetWhenCreatingCluster")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigLicense(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Function: 功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Function: list of DescribeResourceConfigLicenseFunction
+        :param _Resource: 资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: list of DescribeResourceConfigLicenseResource
+        :param _ExpireTime: utc时间 单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param _Countdown: utc时间 单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Countdown: int
+        :param _Spec: 规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: str
+        """
+        self._Function = None
+        self._Resource = None
+        self._ExpireTime = None
+        self._Countdown = None
+        self._Spec = None
+
+    @property
+    def Function(self):
+        """功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeResourceConfigLicenseFunction
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+    @property
+    def Resource(self):
+        """资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeResourceConfigLicenseResource
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def ExpireTime(self):
+        """utc时间 单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Countdown(self):
+        """utc时间 单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Countdown
+
+    @Countdown.setter
+    def Countdown(self, Countdown):
+        self._Countdown = Countdown
+
+    @property
+    def Spec(self):
+        """规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+
+    def _deserialize(self, params):
+        if params.get("Function") is not None:
+            self._Function = []
+            for item in params.get("Function"):
+                obj = DescribeResourceConfigLicenseFunction()
+                obj._deserialize(item)
+                self._Function.append(obj)
+        if params.get("Resource") is not None:
+            self._Resource = []
+            for item in params.get("Resource"):
+                obj = DescribeResourceConfigLicenseResource()
+                obj._deserialize(item)
+                self._Resource.append(obj)
+        self._ExpireTime = params.get("ExpireTime")
+        self._Countdown = params.get("Countdown")
+        self._Spec = params.get("Spec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigLicenseFunction(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 功能名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Enable: 是否启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        """
+        self._Name = None
+        self._Enable = None
+
+    @property
+    def Name(self):
+        """功能名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Enable(self):
+        """是否启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigLicenseResource(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Quota: Quota
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quota: int
+        """
+        self._Name = None
+        self._Quota = None
+
+    @property
+    def Name(self):
+        """Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Quota(self):
+        """Quota
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Quota = params.get("Quota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigRequest(AbstractModel):
+    """DescribeResourceConfig请求参数结构体
+
+    """
+
+
+class DescribeResourceConfigResponse(AbstractModel):
+    """DescribeResourceConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 配置详情
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigResultV2`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """配置详情
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigResultV2`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeResourceConfigResultV2()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceConfigResultV2(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sts: STS参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sts: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigSts`
+        :param _License: 许可信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type License: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigLicense`
+        :param _Group: 部署组相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: :class:`tencentcloud.tsf.v20180326.models.GroupResourceConfig`
+        :param _Instance: 实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instance: :class:`tencentcloud.tsf.v20180326.models.InstanceResourceConfig`
+        :param _Cluster: Cluster相关配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cluster: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigCluster`
+        :param _Package: 程序包相关配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Package: :class:`tencentcloud.tsf.v20180326.models.PackageConfig`
+        """
+        self._Sts = None
+        self._License = None
+        self._Group = None
+        self._Instance = None
+        self._Cluster = None
+        self._Package = None
+
+    @property
+    def Sts(self):
+        """STS参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigSts`
+        """
+        return self._Sts
+
+    @Sts.setter
+    def Sts(self, Sts):
+        self._Sts = Sts
+
+    @property
+    def License(self):
+        """许可信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigLicense`
+        """
+        return self._License
+
+    @License.setter
+    def License(self, License):
+        self._License = License
+
+    @property
+    def Group(self):
+        """部署组相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.GroupResourceConfig`
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Instance(self):
+        """实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.InstanceResourceConfig`
+        """
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+    @property
+    def Cluster(self):
+        """Cluster相关配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigCluster`
+        """
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def Package(self):
+        """程序包相关配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.PackageConfig`
+        """
+        return self._Package
+
+    @Package.setter
+    def Package(self, Package):
+        self._Package = Package
+
+
+    def _deserialize(self, params):
+        if params.get("Sts") is not None:
+            self._Sts = DescribeResourceConfigSts()
+            self._Sts._deserialize(params.get("Sts"))
+        if params.get("License") is not None:
+            self._License = DescribeResourceConfigLicense()
+            self._License._deserialize(params.get("License"))
+        if params.get("Group") is not None:
+            self._Group = GroupResourceConfig()
+            self._Group._deserialize(params.get("Group"))
+        if params.get("Instance") is not None:
+            self._Instance = InstanceResourceConfig()
+            self._Instance._deserialize(params.get("Instance"))
+        if params.get("Cluster") is not None:
+            self._Cluster = DescribeResourceConfigCluster()
+            self._Cluster._deserialize(params.get("Cluster"))
+        if params.get("Package") is not None:
+            self._Package = PackageConfig()
+            self._Package._deserialize(params.get("Package"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceConfigSts(AbstractModel):
+    """DescribeResourceConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        """
+        self._Uin = None
+
+    @property
+    def Uin(self):
+        """uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeResourceTaskStatusRequest(AbstractModel):
     """DescribeResourceTaskStatus请求参数结构体
 
@@ -30146,14 +31400,14 @@ class DescribeResourceTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 容器实例任务ID，可通过调用 [DeployContainerGroup](https://cloud.tencent.com/document/product/649/120669) 部署容器应用，查询其返回内容中的任务ID。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """任务ID
+        """容器实例任务ID，可通过调用 [DeployContainerGroup](https://cloud.tencent.com/document/product/649/120669) 部署容器应用，查询其返回内容中的任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -30227,21 +31481,24 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationIdList: 应用ID列表
+        :param _ApplicationIdList: 应用ID列表，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :type ApplicationIdList: list of str
-        :param _ApplicationType: 应用类型
+        :param _ApplicationType: 指定应用类型，目前支持：
+- `V`：普通应用/CVM应用
+- `C`：容器应用
+- `S`：serverless 应用
         :type ApplicationType: str
-        :param _Limit: 每页条数
+        :param _Limit: 数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Limit: int
-        :param _Offset: 起始偏移量
+        :param _Offset: 偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Offset: int
         :param _MicroserviceType: 微服务类型
         :type MicroserviceType: str
-        :param _ApplicationResourceTypeList: 资源类型数组
+        :param _ApplicationResourceTypeList: 应用资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :type ApplicationResourceTypeList: list of str
         :param _SearchWord: 通过id和name进行关键词过滤
         :type SearchWord: str
-        :param _DisableProgramAuthCheck: 无
+        :param _DisableProgramAuthCheck: 是否关闭鉴权查询
         :type DisableProgramAuthCheck: bool
         :param _MicroserviceTypeList: 查询指定微服务类型的应用列表
         :type MicroserviceTypeList: list of str
@@ -30258,7 +31515,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationIdList(self):
-        """应用ID列表
+        """应用ID列表，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :rtype: list of str
         """
         return self._ApplicationIdList
@@ -30269,7 +31526,10 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型
+        """指定应用类型，目前支持：
+- `V`：普通应用/CVM应用
+- `C`：容器应用
+- `S`：serverless 应用
         :rtype: str
         """
         return self._ApplicationType
@@ -30280,7 +31540,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Limit
@@ -30291,7 +31551,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始偏移量
+        """偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Offset
@@ -30313,7 +31573,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationResourceTypeList(self):
-        """资源类型数组
+        """应用资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :rtype: list of str
         """
         return self._ApplicationResourceTypeList
@@ -30335,7 +31595,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
 
     @property
     def DisableProgramAuthCheck(self):
-        """无
+        """是否关闭鉴权查询
         :rtype: bool
         """
         return self._DisableProgramAuthCheck
@@ -30584,17 +31844,17 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIdList: 部署组ID列表，不填写时查询全量
+        :param _GroupIdList: 按照【部署组ID】进行过滤，不填写时查询全量。可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupIdList: list of str
-        :param _ApplicationId: 应用ID，不填写时查询全量
+        :param _ApplicationId: 按照【应用ID】进行过滤，不填写时查询全量。可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :type ApplicationId: str
-        :param _ClusterId: 集群ID，不填写时查询全量
+        :param _ClusterId: 按照【集群ID】进行过滤，不填写时查询全量。可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :type ClusterId: str
-        :param _NamespaceId: 命名空间ID，不填写时查询全量
+        :param _NamespaceId: 按照【命名空间ID】进行过滤，不填写时查询全量。可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _Limit: 每页条数
+        :param _Limit: 每页条数，默认值20，无上限
         :type Limit: int
-        :param _Offset: 起始偏移量
+        :param _Offset: 起始偏移量，默认值0
         :type Offset: int
         :param _GroupId: 部署组ID，不填写时查询全量
         :type GroupId: str
@@ -30615,7 +31875,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def GroupIdList(self):
-        """部署组ID列表，不填写时查询全量
+        """按照【部署组ID】进行过滤，不填写时查询全量。可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: list of str
         """
         return self._GroupIdList
@@ -30626,7 +31886,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID，不填写时查询全量
+        """按照【应用ID】进行过滤，不填写时查询全量。可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -30637,7 +31897,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID，不填写时查询全量
+        """按照【集群ID】进行过滤，不填写时查询全量。可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -30648,7 +31908,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID，不填写时查询全量
+        """按照【命名空间ID】进行过滤，不填写时查询全量。可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -30659,7 +31919,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """每页条数，默认值20，无上限
         :rtype: int
         """
         return self._Limit
@@ -30670,7 +31930,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始偏移量
+        """起始偏移量，默认值0
         :rtype: int
         """
         return self._Offset
@@ -30785,25 +32045,25 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceIdList: 命名空间ID列表，不传入时查询全量
+        :param _NamespaceIdList: 命名空间ID列表，按照【命名空间ID列表】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceIdList: list of str
-        :param _ClusterId: 集群ID，不传入时查询全量
+        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :type ClusterId: str
-        :param _Limit: 每页条数
+        :param _Limit: 数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Limit: int
-        :param _Offset: 起始偏移量
+        :param _Offset: 偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :type Offset: int
-        :param _NamespaceId: 命名空间ID，不传入时查询全量
+        :param _NamespaceId: 命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :type NamespaceId: str
-        :param _NamespaceResourceTypeList: 查询资源类型列表
+        :param _NamespaceResourceTypeList: 查询资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :type NamespaceResourceTypeList: list of str
         :param _SearchWord: 通过id和name进行过滤
         :type SearchWord: str
-        :param _NamespaceTypeList: 查询的命名空间类型列表
+        :param _NamespaceTypeList: 查询的命名空间类型列表。DEF：默认普通命名空间。GLOBAL：全局命名空间。
         :type NamespaceTypeList: list of str
         :param _NamespaceName: 通过命名空间名精确过滤
         :type NamespaceName: str
-        :param _IsDefault: 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间
+        :param _IsDefault: 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间。
         :type IsDefault: str
         :param _DisableProgramAuthCheck: 是否关闭鉴权查询
         :type DisableProgramAuthCheck: bool
@@ -30822,7 +32082,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def NamespaceIdList(self):
-        """命名空间ID列表，不传入时查询全量
+        """命名空间ID列表，按照【命名空间ID列表】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: list of str
         """
         return self._NamespaceIdList
@@ -30833,7 +32093,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID，不传入时查询全量
+        """集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :rtype: str
         """
         return self._ClusterId
@@ -30844,7 +32104,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页条数
+        """数量限制，默认为20，最大值为100。关于Limit详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Limit
@@ -30855,7 +32115,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始偏移量
+        """偏移量，默认为0。关于Offset详见[API简介](https://cloud.tencent.com/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)
         :rtype: int
         """
         return self._Offset
@@ -30866,7 +32126,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID，不传入时查询全量
+        """命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -30877,7 +32137,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def NamespaceResourceTypeList(self):
-        """查询资源类型列表
+        """查询资源类型列表；DEF 表示默认资源类型；GW 表示网关资源类型
         :rtype: list of str
         """
         return self._NamespaceResourceTypeList
@@ -30899,7 +32159,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def NamespaceTypeList(self):
-        """查询的命名空间类型列表
+        """查询的命名空间类型列表。DEF：默认普通命名空间。GLOBAL：全局命名空间。
         :rtype: list of str
         """
         return self._NamespaceTypeList
@@ -30921,7 +32181,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
 
     @property
     def IsDefault(self):
-        """通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间
+        """通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间。
         :rtype: str
         """
         return self._IsDefault
@@ -31016,15 +32276,17 @@ class DescribeStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 类型：Interface、Service、Group、Instance、SQL、NoSQL
+        :param _Type: 统计类型。可选值 Interface：接口类型、Service：服务类型、Group：部署组类型、Instance：实例类型、SQL：SQL类型、NoSQL：NoSQL类型
         :type Type: str
-        :param _TimeStep: 步长，单位s：60、3600、86400
+        :param _TimeStep: 步长，单位秒。可选值 60、3600、86400
         :type TimeStep: int
         :param _Offset: 偏移量，取值范围大于等于0，默认值为0
         :type Offset: int
         :param _Limit: 单页请求配置数量，取值范围[1, 50]，默认值为10
         :type Limit: int
-        :param _NamespaceId: 命名空间Id,此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一。
+        :param _NamespaceId: 命名空间ID。此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一。
+可通过[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已经创建的命名空间，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)查看
+
         :type NamespaceId: str
         :param _OrderBy: 排序字段:AvgTimeConsuming[默认]、RequestCount、ErrorRate。实例监控还支持 CpuPercent
         :type OrderBy: str
@@ -31038,15 +32300,16 @@ class DescribeStatisticsRequest(AbstractModel):
         :type ServiceName: str
         :param _SearchWord: 搜索关键词
         :type SearchWord: str
-        :param _MetricDimensionValues: 维度
+        :param _MetricDimensionValues: 维度。此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一
         :type MetricDimensionValues: list of MetricDimensionValue
         :param _BucketKey: 聚合关键词
         :type BucketKey: str
-        :param _DbName: 数据库
+        :param _DbName: 数据库名称
         :type DbName: str
-        :param _NamespaceIdList: 命名空间id数组
+        :param _NamespaceIdList: 命名空间ID数组。此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一
         :type NamespaceIdList: list of str
-        :param _ConfigCenterInstanceId: 独占配置中心的ID
+        :param _ConfigCenterInstanceId: 独占配置中心的ID。
+可通过调用[DescribeClusterInstances](https://cloud.tencent.com/document/product/649/36048)查询已导入的实例列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=instance)进行查询。实例ID例如：ins-6decplwk。
         :type ConfigCenterInstanceId: str
         """
         self._Type = None
@@ -31068,7 +32331,7 @@ class DescribeStatisticsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """类型：Interface、Service、Group、Instance、SQL、NoSQL
+        """统计类型。可选值 Interface：接口类型、Service：服务类型、Group：部署组类型、Instance：实例类型、SQL：SQL类型、NoSQL：NoSQL类型
         :rtype: str
         """
         return self._Type
@@ -31079,7 +32342,7 @@ class DescribeStatisticsRequest(AbstractModel):
 
     @property
     def TimeStep(self):
-        """步长，单位s：60、3600、86400
+        """步长，单位秒。可选值 60、3600、86400
         :rtype: int
         """
         return self._TimeStep
@@ -31112,7 +32375,9 @@ class DescribeStatisticsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间Id,此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一。
+        """命名空间ID。此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一。
+可通过[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已经创建的命名空间，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)查看
+
         :rtype: str
         """
         return self._NamespaceId
@@ -31189,7 +32454,7 @@ class DescribeStatisticsRequest(AbstractModel):
 
     @property
     def MetricDimensionValues(self):
-        """维度
+        """维度。此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一
         :rtype: list of MetricDimensionValue
         """
         return self._MetricDimensionValues
@@ -31211,7 +32476,7 @@ class DescribeStatisticsRequest(AbstractModel):
 
     @property
     def DbName(self):
-        """数据库
+        """数据库名称
         :rtype: str
         """
         return self._DbName
@@ -31222,7 +32487,7 @@ class DescribeStatisticsRequest(AbstractModel):
 
     @property
     def NamespaceIdList(self):
-        """命名空间id数组
+        """命名空间ID数组。此字段，和 NamespaceIdList 或者 MetricDimensionValues 字段包含 namespaceId 维度信息。三者选其一
         :rtype: list of str
         """
         return self._NamespaceIdList
@@ -31233,7 +32498,8 @@ class DescribeStatisticsRequest(AbstractModel):
 
     @property
     def ConfigCenterInstanceId(self):
-        """独占配置中心的ID
+        """独占配置中心的ID。
+可通过调用[DescribeClusterInstances](https://cloud.tencent.com/document/product/649/36048)查询已导入的实例列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=instance)进行查询。实例ID例如：ins-6decplwk。
         :rtype: str
         """
         return self._ConfigCenterInstanceId
@@ -31327,9 +32593,9 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
         :type TaskId: str
-        :param _TaskLogId: 任务历史ID
+        :param _TaskLogId: 任务历史ID。查询任务列表 [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136) 返回值字段 TaskLogId
         :type TaskLogId: str
         """
         self._TaskId = None
@@ -31337,7 +32603,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -31348,7 +32614,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def TaskLogId(self):
-        """任务历史ID
+        """任务历史ID。查询任务列表 [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136) 返回值字段 TaskLogId
         :rtype: str
         """
         return self._TaskLogId
@@ -31423,14 +32689,14 @@ class DescribeTaskLastStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -31504,21 +32770,21 @@ class DescribeTaskRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 翻页偏移量。
+        :param _Offset: 翻页偏移量。默认值为0
         :type Offset: int
-        :param _Limit: 翻页查询单页数量。
+        :param _Limit: 翻页查询单页数量。默认值为 20，最大值为 1000
         :type Limit: int
         :param _SearchWord: 模糊查询关键字，支持任务ID和任务名称。
         :type SearchWord: str
-        :param _TaskState: 任务启用状态。enabled/disabled
+        :param _TaskState: 任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
         :type TaskState: str
-        :param _GroupId: 分组ID。
+        :param _GroupId: 部署组ID。前往[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)点击应用ID进入应用部署列表页面获取部署组ID。
         :type GroupId: str
-        :param _TaskType: 任务类型。
+        :param _TaskType: 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
         :type TaskType: str
-        :param _ExecuteType: 任务触发类型，UNICAST、BROADCAST。
+        :param _ExecuteType: 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
         :type ExecuteType: str
-        :param _Ids: 无
+        :param _Ids: 任务ID列表。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列查看任务ID。
         :type Ids: list of str
         """
         self._Offset = None
@@ -31532,7 +32798,7 @@ class DescribeTaskRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """翻页偏移量。
+        """翻页偏移量。默认值为0
         :rtype: int
         """
         return self._Offset
@@ -31543,7 +32809,7 @@ class DescribeTaskRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """翻页查询单页数量。
+        """翻页查询单页数量。默认值为 20，最大值为 1000
         :rtype: int
         """
         return self._Limit
@@ -31565,7 +32831,7 @@ class DescribeTaskRecordsRequest(AbstractModel):
 
     @property
     def TaskState(self):
-        """任务启用状态。enabled/disabled
+        """任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
         :rtype: str
         """
         return self._TaskState
@@ -31576,7 +32842,7 @@ class DescribeTaskRecordsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID。
+        """部署组ID。前往[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)点击应用ID进入应用部署列表页面获取部署组ID。
         :rtype: str
         """
         return self._GroupId
@@ -31587,7 +32853,7 @@ class DescribeTaskRecordsRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型。
+        """任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
         :rtype: str
         """
         return self._TaskType
@@ -31598,7 +32864,7 @@ class DescribeTaskRecordsRequest(AbstractModel):
 
     @property
     def ExecuteType(self):
-        """任务触发类型，UNICAST、BROADCAST。
+        """任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
         :rtype: str
         """
         return self._ExecuteType
@@ -31609,7 +32875,7 @@ class DescribeTaskRecordsRequest(AbstractModel):
 
     @property
     def Ids(self):
-        """无
+        """任务ID列表。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列查看任务ID。
         :rtype: list of str
         """
         return self._Ids
@@ -32383,7 +33649,7 @@ class DescribeUploadInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :type ApplicationId: str
         :param _PkgName: 程序包名
         :type PkgName: str
@@ -32393,9 +33659,9 @@ class DescribeUploadInfoRequest(AbstractModel):
         :type PkgType: str
         :param _PkgDesc: 程序包介绍
         :type PkgDesc: str
-        :param _RepositoryType: 程序包仓库类型
+        :param _RepositoryType: 仓库类型（默认仓库：default，私有仓库：private，公共仓库：public-demo）
         :type RepositoryType: str
-        :param _RepositoryId: 程序包仓库id
+        :param _RepositoryId: 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type RepositoryId: str
         """
         self._ApplicationId = None
@@ -32408,7 +33674,7 @@ class DescribeUploadInfoRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :rtype: str
         """
         return self._ApplicationId
@@ -32463,7 +33729,7 @@ class DescribeUploadInfoRequest(AbstractModel):
 
     @property
     def RepositoryType(self):
-        """程序包仓库类型
+        """仓库类型（默认仓库：default，私有仓库：private，公共仓库：public-demo）
         :rtype: str
         """
         return self._RepositoryType
@@ -32474,7 +33740,7 @@ class DescribeUploadInfoRequest(AbstractModel):
 
     @property
     def RepositoryId(self):
-        """程序包仓库id
+        """仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._RepositoryId
@@ -32665,14 +33931,14 @@ class DisableLaneRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 泳道规则ID
+        :param _RuleId: 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :type RuleId: str
         """
         self._RuleId = None
 
     @property
     def RuleId(self):
-        """泳道规则ID
+        """灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :rtype: str
         """
         return self._RuleId
@@ -32701,7 +33967,9 @@ class DisableLaneRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作状态。成功：true，失败：false
+        :param _Result: 操作状态。
+- true：成功
+- false：失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32711,7 +33979,9 @@ class DisableLaneRuleResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作状态。成功：true，失败：false
+        """操作状态。
+- true：成功
+- false：失败
         :rtype: bool
         """
         return self._Result
@@ -32744,14 +34014,14 @@ class DisableTaskFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 工作流 ID
+        :param _FlowId: 工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
         :type FlowId: str
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        """工作流 ID
+        """工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
         :rtype: str
         """
         return self._FlowId
@@ -32823,14 +34093,14 @@ class DisableTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -32859,7 +34129,7 @@ class DisableTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作成功 or 失败
+        :param _Result: true：操作成功，false：操作失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32869,7 +34139,7 @@ class DisableTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作成功 or 失败
+        """true：操作成功，false：操作失败
         :rtype: bool
         """
         return self._Result
@@ -33061,8 +34331,10 @@ class DisassociateBusinessLogConfigRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ConfigIdList: 业务日志配置项ID列表
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :type ConfigIdList: list of str
-        :param _GroupId: TSF分组ID
+        :param _GroupId: 部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :type GroupId: str
         """
         self._ConfigIdList = None
@@ -33071,6 +34343,7 @@ class DisassociateBusinessLogConfigRequest(AbstractModel):
     @property
     def ConfigIdList(self):
         """业务日志配置项ID列表
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :rtype: list of str
         """
         return self._ConfigIdList
@@ -33081,7 +34354,8 @@ class DisassociateBusinessLogConfigRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """TSF分组ID
+        """部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :rtype: str
         """
         return self._GroupId
@@ -33111,7 +34385,7 @@ class DisassociateBusinessLogConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作结果
+        :param _Result: 操作结果，true：成功，false：失败。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33121,7 +34395,7 @@ class DisassociateBusinessLogConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作结果
+        """操作结果，true：成功，false：失败。
         :rtype: bool
         """
         return self._Result
@@ -33154,9 +34428,11 @@ class DisassociateKafkaConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置项id
+        :param _ConfigId: 日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :type ConfigId: str
-        :param _GroupIds: 部署组id
+        :param _GroupIds: 部署组ID列表
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :type GroupIds: list of str
         """
         self._ConfigId = None
@@ -33164,7 +34440,8 @@ class DisassociateKafkaConfigRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置项id
+        """日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :rtype: str
         """
         return self._ConfigId
@@ -33175,7 +34452,8 @@ class DisassociateKafkaConfigRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """部署组id
+        """部署组ID列表
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :rtype: list of str
         """
         return self._GroupIds
@@ -33205,7 +34483,7 @@ class DisassociateKafkaConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 解除绑定是否成功
+        :param _Result: 解除绑定是否成功，true：成功，false：失败。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33215,7 +34493,7 @@ class DisassociateKafkaConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """解除绑定是否成功
+        """解除绑定是否成功，true：成功，false：失败。
         :rtype: bool
         """
         return self._Result
@@ -33408,14 +34686,14 @@ class EnableLaneRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 泳道规则ID
+        :param _RuleId: 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :type RuleId: str
         """
         self._RuleId = None
 
     @property
     def RuleId(self):
-        """泳道规则ID
+        """灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :rtype: str
         """
         return self._RuleId
@@ -33444,7 +34722,9 @@ class EnableLaneRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作状态。成功：true，失败：false
+        :param _Result: 操作状态。
+- true：成功
+- false：失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33454,7 +34734,9 @@ class EnableLaneRuleResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作状态。成功：true，失败：false
+        """操作状态。
+- true：成功
+- false：失败
         :rtype: bool
         """
         return self._Result
@@ -33487,14 +34769,14 @@ class EnableTaskFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 工作流 ID
+        :param _FlowId: 工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
         :type FlowId: str
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        """工作流 ID
+        """工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
         :rtype: str
         """
         return self._FlowId
@@ -33566,14 +34848,14 @@ class EnableTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 启用任务
+        :param _TaskId: 任务ID。[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """启用任务
+        """任务ID。[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -33602,7 +34884,7 @@ class EnableTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作成功or失败
+        :param _Result: true：操作成功，false：操作失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33612,7 +34894,7 @@ class EnableTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作成功or失败
+        """true：操作成功，false：操作失败
         :rtype: bool
         """
         return self._Result
@@ -33873,17 +35155,17 @@ class ExclusiveInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CenterType: 配置中心类型[Registration、Configuration]
+        :param _CenterType: 配置中心类型[注册中心Registration、配置中心Configuration]
         :type CenterType: str
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例id，通过北极星控制台获取
         :type InstanceId: str
-        :param _InstanceType: 实例类型[Polaris]
+        :param _InstanceType: 实例类型，例如北极星Polaris
         :type InstanceType: str
         :param _InstanceName: 实例名称
         :type InstanceName: str
-        :param _RegionId: 实例地域id
+        :param _RegionId: 实例地域id，通过北极星控制台获取
         :type RegionId: str
-        :param _InstanceNamespaceId: 实例命名空间ID
+        :param _InstanceNamespaceId: 实例命名空间ID，通过北极星控制台获取
         :type InstanceNamespaceId: str
         """
         self._CenterType = None
@@ -33895,7 +35177,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def CenterType(self):
-        """配置中心类型[Registration、Configuration]
+        """配置中心类型[注册中心Registration、配置中心Configuration]
         :rtype: str
         """
         return self._CenterType
@@ -33906,7 +35188,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """实例id，通过北极星控制台获取
         :rtype: str
         """
         return self._InstanceId
@@ -33917,7 +35199,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型[Polaris]
+        """实例类型，例如北极星Polaris
         :rtype: str
         """
         return self._InstanceType
@@ -33939,7 +35221,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def RegionId(self):
-        """实例地域id
+        """实例地域id，通过北极星控制台获取
         :rtype: str
         """
         return self._RegionId
@@ -33950,7 +35232,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def InstanceNamespaceId(self):
-        """实例命名空间ID
+        """实例命名空间ID，通过北极星控制台获取
         :rtype: str
         """
         return self._InstanceNamespaceId
@@ -33984,14 +35266,14 @@ class ExecuteTaskFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 工作流 ID
+        :param _FlowId: 工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
         :type FlowId: str
         """
         self._FlowId = None
 
     @property
     def FlowId(self):
-        """工作流 ID
+        """工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
         :rtype: str
         """
         return self._FlowId
@@ -34020,7 +35302,7 @@ class ExecuteTaskFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 工作流批次ID
+        :param _Result: 操作成功返回工作流批次ID，操作失败返回空字符串。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -34030,7 +35312,7 @@ class ExecuteTaskFlowResponse(AbstractModel):
 
     @property
     def Result(self):
-        """工作流批次ID
+        """操作成功返回工作流批次ID，操作失败返回空字符串。
         :rtype: str
         """
         return self._Result
@@ -34063,14 +35345,14 @@ class ExecuteTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """任务 ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -34099,7 +35381,7 @@ class ExecuteTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 成功/失败
+        :param _Result: 操作成功返回任务批次ID，操作失败返回空字符串。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -34109,7 +35391,7 @@ class ExecuteTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        """成功/失败
+        """操作成功返回任务批次ID，操作失败返回空字符串。
         :rtype: str
         """
         return self._Result
@@ -34142,9 +35424,9 @@ class ExpandGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :type GroupId: str
-        :param _InstanceIdList: 扩容的机器实例ID列表
+        :param _InstanceIdList: 扩容的机器实例ID列表，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1)接口，选定一个虚拟机集群，选择部署组，选择应用扩容可获取实例列表
         :type InstanceIdList: list of str
         """
         self._GroupId = None
@@ -34152,7 +35434,7 @@ class ExpandGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -34163,7 +35445,7 @@ class ExpandGroupRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
-        """扩容的机器实例ID列表
+        """扩容的机器实例ID列表，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1)接口，选定一个虚拟机集群，选择部署组，选择应用扩容可获取实例列表
         :rtype: list of str
         """
         return self._InstanceIdList
@@ -34582,7 +35864,7 @@ class FileConfigRelease(AbstractModel):
         :param _ReleaseDesc: 发布描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseDesc: str
-        :param _ReleaseTime: 发布时间
+        :param _ReleaseTime: 发布时间。格式为 YYYY-MM-DD hh:mm:ss。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseTime: str
         :param _GroupId: 部署组ID
@@ -34683,7 +35965,7 @@ class FileConfigRelease(AbstractModel):
 
     @property
     def ReleaseTime(self):
-        """发布时间
+        """发布时间。格式为 YYYY-MM-DD hh:mm:ss。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35390,6 +36672,10 @@ class GatewayPlugin(AbstractModel):
         :param _Status: 发布状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _DeleteDisabled: 是否禁用删除
+        :type DeleteDisabled: bool
+        :param _DeleteDisabledReason: 禁用原因
+        :type DeleteDisabledReason: str
         """
         self._Id = None
         self._Name = None
@@ -35398,6 +36684,8 @@ class GatewayPlugin(AbstractModel):
         self._CreatedTime = None
         self._UpdatedTime = None
         self._Status = None
+        self._DeleteDisabled = None
+        self._DeleteDisabledReason = None
 
     @property
     def Id(self):
@@ -35483,6 +36771,28 @@ class GatewayPlugin(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def DeleteDisabled(self):
+        """是否禁用删除
+        :rtype: bool
+        """
+        return self._DeleteDisabled
+
+    @DeleteDisabled.setter
+    def DeleteDisabled(self, DeleteDisabled):
+        self._DeleteDisabled = DeleteDisabled
+
+    @property
+    def DeleteDisabledReason(self):
+        """禁用原因
+        :rtype: str
+        """
+        return self._DeleteDisabledReason
+
+    @DeleteDisabledReason.setter
+    def DeleteDisabledReason(self, DeleteDisabledReason):
+        self._DeleteDisabledReason = DeleteDisabledReason
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -35492,6 +36802,8 @@ class GatewayPlugin(AbstractModel):
         self._CreatedTime = params.get("CreatedTime")
         self._UpdatedTime = params.get("UpdatedTime")
         self._Status = params.get("Status")
+        self._DeleteDisabled = params.get("DeleteDisabled")
+        self._DeleteDisabledReason = params.get("DeleteDisabledReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36130,19 +37442,21 @@ class GroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组id
+        :param _GroupId: 部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看。
         :type GroupId: str
         :param _GroupName: 部署组名称
         :type GroupName: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，C：容器集群，V：虚拟机集群
         :type ClusterType: str
-        :param _ClusterId: 集群id
+        :param _ClusterId: 集群ID
+可通过[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已经创建的集群列表，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1)查看。
         :type ClusterId: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
         :param _NamespaceName: 命名空间名称
         :type NamespaceName: str
-        :param _AssociateTime: 绑定时间
+        :param _AssociateTime: 绑定时间，格式yyyy-MM-dd HH:mm:ss
         :type AssociateTime: str
         """
         self._GroupId = None
@@ -36155,7 +37469,8 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组id
+        """部署组ID
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看。
         :rtype: str
         """
         return self._GroupId
@@ -36177,7 +37492,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型
+        """集群类型，C：容器集群，V：虚拟机集群
         :rtype: str
         """
         return self._ClusterType
@@ -36188,7 +37503,8 @@ class GroupInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群id
+        """集群ID
+可通过[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已经创建的集群列表，也可以通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1)查看。
         :rtype: str
         """
         return self._ClusterId
@@ -36221,7 +37537,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def AssociateTime(self):
-        """绑定时间
+        """绑定时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._AssociateTime
@@ -36272,13 +37588,13 @@ class GroupPod(AbstractModel):
         :type RestartCount: int
         :param _ReadyCount: 实例中已就绪容器的个数
         :type ReadyCount: int
-        :param _Runtime: 运行时长
+        :param _Runtime: 运行时长，单位秒
         :type Runtime: str
-        :param _CreatedAt: 实例启动时间
+        :param _CreatedAt: 实例启动时的时间戳
         :type CreatedAt: str
-        :param _ServiceInstanceStatus: 服务实例状态
+        :param _ServiceInstanceStatus: 服务实例状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
         :type ServiceInstanceStatus: str
-        :param _InstanceAvailableStatus: 机器实例可使用状态
+        :param _InstanceAvailableStatus: 机器实例可使用状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
         :type InstanceAvailableStatus: str
         :param _InstanceStatus: 机器实例状态
         :type InstanceStatus: str
@@ -36393,7 +37709,7 @@ class GroupPod(AbstractModel):
 
     @property
     def Runtime(self):
-        """运行时长
+        """运行时长，单位秒
         :rtype: str
         """
         return self._Runtime
@@ -36404,7 +37720,7 @@ class GroupPod(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """实例启动时间
+        """实例启动时的时间戳
         :rtype: str
         """
         return self._CreatedAt
@@ -36415,7 +37731,7 @@ class GroupPod(AbstractModel):
 
     @property
     def ServiceInstanceStatus(self):
-        """服务实例状态
+        """服务实例状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
         :rtype: str
         """
         return self._ServiceInstanceStatus
@@ -36426,7 +37742,7 @@ class GroupPod(AbstractModel):
 
     @property
     def InstanceAvailableStatus(self):
-        """机器实例可使用状态
+        """机器实例可使用状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
         :rtype: str
         """
         return self._InstanceAvailableStatus
@@ -36713,6 +38029,46 @@ class GroupRelease(AbstractModel):
                 obj = FileConfigRelease()
                 obj._deserialize(item)
                 self._FileConfigReleaseList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupResourceConfig(AbstractModel):
+    """部署组相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: 容器部署组相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Container: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupResourceConfig`
+        """
+        self._Container = None
+
+    @property
+    def Container(self):
+        """容器部署组相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupResourceConfig`
+        """
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+
+    def _deserialize(self, params):
+        if params.get("Container") is not None:
+            self._Container = ContainerGroupResourceConfig()
+            self._Container._deserialize(params.get("Container"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37076,13 +38432,13 @@ class HealthCheckSetting(AbstractModel):
         :param _ActionType: 健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
-        :param _InitialDelaySeconds: 容器延时启动健康检查的时间。
+        :param _InitialDelaySeconds: 容器延时启动健康检查的时间，单位秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InitialDelaySeconds: int
-        :param _TimeoutSeconds: 每次健康检查响应的最大超时时间。
+        :param _TimeoutSeconds: 每次健康检查响应的最大超时时间，单位秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeoutSeconds: int
-        :param _PeriodSeconds: 进行健康检查的时间间隔。
+        :param _PeriodSeconds: 进行健康检查的时间间隔，单位秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodSeconds: int
         :param _SuccessThreshold: 表示后端容器从失败到成功的连续健康检查成功次数。
@@ -37133,7 +38489,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def InitialDelaySeconds(self):
-        """容器延时启动健康检查的时间。
+        """容器延时启动健康检查的时间，单位秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37145,7 +38501,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def TimeoutSeconds(self):
-        """每次健康检查响应的最大超时时间。
+        """每次健康检查响应的最大超时时间，单位秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37157,7 +38513,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def PeriodSeconds(self):
-        """进行健康检查的时间间隔。
+        """进行健康检查的时间间隔，单位秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -38975,13 +40331,13 @@ class InstanceEnrichedInfo(AbstractModel):
         :type ApplicationId: str
         :param _ApplicationName: 应用名称
         :type ApplicationName: str
-        :param _ApplicationType: 应用类型
+        :param _ApplicationType: 应用类型，C表示容器应用，V表示虚拟机应用
         :type ApplicationType: str
         :param _ClusterId: 集群ID
         :type ClusterId: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型，C表示容器集群，V表示虚拟机集群
         :type ClusterType: str
         :param _NamespaceId: 命名空间ID
         :type NamespaceId: str
@@ -39111,7 +40467,7 @@ class InstanceEnrichedInfo(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型
+        """应用类型，C表示容器应用，V表示虚拟机应用
         :rtype: str
         """
         return self._ApplicationType
@@ -39144,7 +40500,7 @@ class InstanceEnrichedInfo(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型
+        """集群类型，C表示容器集群，V表示虚拟机集群
         :rtype: str
         """
         return self._ClusterType
@@ -39272,6 +40628,65 @@ class InstanceEnrichedInfoPage(AbstractModel):
                 obj = InstanceEnrichedInfo()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceResourceConfig(AbstractModel):
+    """实例相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: 容器实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Container: :class:`tencentcloud.tsf.v20180326.models.ContainerInstanceResourceConfig`
+        :param _Vm: 虚拟机实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vm: :class:`tencentcloud.tsf.v20180326.models.VmInstanceResourceConfig`
+        """
+        self._Container = None
+        self._Vm = None
+
+    @property
+    def Container(self):
+        """容器实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerInstanceResourceConfig`
+        """
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+    @property
+    def Vm(self):
+        """虚拟机实例相关的参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.VmInstanceResourceConfig`
+        """
+        return self._Vm
+
+    @Vm.setter
+    def Vm(self, Vm):
+        self._Vm = Vm
+
+
+    def _deserialize(self, params):
+        if params.get("Container") is not None:
+            self._Container = ContainerInstanceResourceConfig()
+            self._Container._deserialize(params.get("Container"))
+        if params.get("Vm") is not None:
+            self._Vm = VmInstanceResourceConfig()
+            self._Vm._deserialize(params.get("Vm"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40287,6 +41702,12 @@ class LaneInfo(AbstractModel):
         :param _LaneGroupId: 泳道部署组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LaneGroupId: str
+        :param _DeleteDisabled: 是否禁用删除。
+true：禁用
+false：取消禁用
+        :type DeleteDisabled: bool
+        :param _DeleteDisabledReason: 禁用原因
+        :type DeleteDisabledReason: str
         """
         self._LaneId = None
         self._LaneName = None
@@ -40297,6 +41718,8 @@ class LaneInfo(AbstractModel):
         self._Entrance = None
         self._NamespaceIdList = None
         self._LaneGroupId = None
+        self._DeleteDisabled = None
+        self._DeleteDisabledReason = None
 
     @property
     def LaneId(self):
@@ -40406,6 +41829,30 @@ class LaneInfo(AbstractModel):
     def LaneGroupId(self, LaneGroupId):
         self._LaneGroupId = LaneGroupId
 
+    @property
+    def DeleteDisabled(self):
+        """是否禁用删除。
+true：禁用
+false：取消禁用
+        :rtype: bool
+        """
+        return self._DeleteDisabled
+
+    @DeleteDisabled.setter
+    def DeleteDisabled(self, DeleteDisabled):
+        self._DeleteDisabled = DeleteDisabled
+
+    @property
+    def DeleteDisabledReason(self):
+        """禁用原因
+        :rtype: str
+        """
+        return self._DeleteDisabledReason
+
+    @DeleteDisabledReason.setter
+    def DeleteDisabledReason(self, DeleteDisabledReason):
+        self._DeleteDisabledReason = DeleteDisabledReason
+
 
     def _deserialize(self, params):
         self._LaneId = params.get("LaneId")
@@ -40422,6 +41869,8 @@ class LaneInfo(AbstractModel):
         self._Entrance = params.get("Entrance")
         self._NamespaceIdList = params.get("NamespaceIdList")
         self._LaneGroupId = params.get("LaneGroupId")
+        self._DeleteDisabled = params.get("DeleteDisabled")
+        self._DeleteDisabledReason = params.get("DeleteDisabledReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40880,6 +42329,66 @@ class LaneRules(AbstractModel):
         
 
 
+class LicenseTag(AbstractModel):
+    """许可标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LicenseId: 许可ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseId: str
+        :param _Tags: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self._LicenseId = None
+        self._Tags = None
+
+    @property
+    def LicenseId(self):
+        """许可ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LicenseId
+
+    @LicenseId.setter
+    def LicenseId(self, LicenseId):
+        self._LicenseId = LicenseId
+
+    @property
+    def Tags(self):
+        """标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._LicenseId = params.get("LicenseId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LifeCycleHook(AbstractModel):
     """LifeCycleHook
 
@@ -41061,7 +42570,7 @@ class Metric(AbstractModel):
         r"""
         :param _Name: 指标名称
         :type Name: str
-        :param _Function: 指标计算方式
+        :param _Function: 指标计算方式，可选值： none：无，sum：求和，exclusive：独占值，avg：平均值，max：最大值，min：最小值，percentage_50：50分位数，percentage_75：75分位数，percentage_95：95分位数，percentage_99：99分位数，bucket_5：分桶统计。
         :type Function: str
         """
         self._Name = None
@@ -41080,7 +42589,7 @@ class Metric(AbstractModel):
 
     @property
     def Function(self):
-        """指标计算方式
+        """指标计算方式，可选值： none：无，sum：求和，exclusive：独占值，avg：平均值，max：最大值，min：最小值，percentage_50：50分位数，percentage_75：75分位数，percentage_95：95分位数，percentage_99：99分位数，bucket_5：分桶统计。
         :rtype: str
         """
         return self._Function
@@ -41454,7 +42963,7 @@ class MetricDimension(AbstractModel):
 
 
 class MetricDimensionValue(AbstractModel):
-    """指标维度多值匹配
+    """指标维度多值匹配。可选值 NamespaceId：命名空间ID，GroupId：部署组ID，InstanceId：实例ID，ApplicationId：应用ID，OperationMethod：执行方法，OperationName：执行名称，ServiceName：服务名，UpstreamNamespaceId：上游命名空间ID
 
     """
 
@@ -41678,11 +43187,11 @@ class ModifyApplicationRequest(AbstractModel):
         :type ApplicationRemarkName: str
         :param _ServiceConfigList: 服务配置信息列表
         :type ServiceConfigList: list of ServiceConfig
-        :param _MicroserviceType: 应用的微服务类型
+        :param _MicroserviceType: 应用的微服务类型，N表示普通应用，M表示Mesh应用，G表示网关应用，NATIVE表示原生应用，RAW表示裸应用
         :type MicroserviceType: str
         :param _ServiceGovernanceConfig: 注册配置治理信息
         :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
-        :param _FrameworkType: 应用开发框架
+        :param _FrameworkType: 应用开发框架，SpringCloud表示SpringCloud应用，Dubbo表示Dubbo应用，Go-GRPC表示Go-GRPC应用，Other表示其他应用
         :type FrameworkType: str
         """
         self._ApplicationId = None
@@ -41751,7 +43260,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def MicroserviceType(self):
-        """应用的微服务类型
+        """应用的微服务类型，N表示普通应用，M表示Mesh应用，G表示网关应用，NATIVE表示原生应用，RAW表示裸应用
         :rtype: str
         """
         return self._MicroserviceType
@@ -41773,7 +43282,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def FrameworkType(self):
-        """应用开发框架
+        """应用开发框架，SpringCloud表示SpringCloud应用，Dubbo表示Dubbo应用，Go-GRPC表示Go-GRPC应用，Other表示其他应用
         :rtype: str
         """
         return self._FrameworkType
@@ -41816,8 +43325,7 @@ class ModifyApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：操作成功
-false：操作失败
+        :param _Result: true表示修改成功，false表示修改失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -41827,8 +43335,7 @@ false：操作失败
 
     @property
     def Result(self):
-        """true：操作成功
-false：操作失败
+        """true表示修改成功，false表示修改失败
         :rtype: bool
         """
         return self._Result
@@ -41861,7 +43368,7 @@ class ModifyClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。
         :type ClusterId: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
@@ -41869,9 +43376,9 @@ class ModifyClusterRequest(AbstractModel):
         :type ClusterDesc: str
         :param _ClusterRemarkName: 备注名
         :type ClusterRemarkName: str
-        :param _EnableLogCollection: 是否开启cls日志功能
+        :param _EnableLogCollection: 是否开启cls日志功能，true表示开启，false表示关闭
         :type EnableLogCollection: bool
-        :param _RepairLog: 是否修复cls日志功能
+        :param _RepairLog: 是否修复cls日志功能，true表示修复，false表示不修复
         :type RepairLog: bool
         """
         self._ClusterId = None
@@ -41883,7 +43390,7 @@ class ModifyClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。
         :rtype: str
         """
         return self._ClusterId
@@ -41927,7 +43434,7 @@ class ModifyClusterRequest(AbstractModel):
 
     @property
     def EnableLogCollection(self):
-        """是否开启cls日志功能
+        """是否开启cls日志功能，true表示开启，false表示关闭
         :rtype: bool
         """
         return self._EnableLogCollection
@@ -41938,7 +43445,7 @@ class ModifyClusterRequest(AbstractModel):
 
     @property
     def RepairLog(self):
-        """是否修复cls日志功能
+        """是否修复cls日志功能，true表示修复，false表示不修复
         :rtype: bool
         """
         return self._RepairLog
@@ -42019,7 +43526,7 @@ class ModifyContainerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID 必填项
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         :param _AccessType: 0:公网 1:集群内访问 2：NodePort
         :type AccessType: int
@@ -42029,7 +43536,7 @@ class ModifyContainerGroupRequest(AbstractModel):
         :type UpdateType: int
         :param _UpdateIvl: 更新间隔,单位秒
         :type UpdateIvl: int
-        :param _SubnetId: 子网ID
+        :param _SubnetId: 子网ID，可通过调用[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)查询已创建的子网列表或登录控制台进行查看；也可以调用[CreateSubnet](https://cloud.tencent.com/document/product/1108/43594)创建新的子网。
         :type SubnetId: str
         :param _Alias: 部署组备注
         :type Alias: str
@@ -42044,7 +43551,7 @@ class ModifyContainerGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID 必填项
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -42099,7 +43606,7 @@ class ModifyContainerGroupRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """子网ID
+        """子网ID，可通过调用[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)查询已创建的子网列表或登录控制台进行查看；也可以调用[CreateSubnet](https://cloud.tencent.com/document/product/1108/43594)创建新的子网。
         :rtype: str
         """
         return self._SubnetId
@@ -42197,7 +43704,7 @@ class ModifyContainerReplicasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，部署组唯一标识
+        :param _GroupId: 部署组ID，部署组唯一标识，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)接口，选定一个容器集群，选择部署组，查看DescribeSingleContainerGroups接口返回的GroupId
         :type GroupId: str
         :param _InstanceNum: 实例数量
         :type InstanceNum: int
@@ -42207,7 +43714,7 @@ class ModifyContainerReplicasRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID，部署组唯一标识
+        """部署组ID，部署组唯一标识，调用[DescribeClusters](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)接口，选定一个容器集群，选择部署组，查看DescribeSingleContainerGroups接口返回的GroupId
         :rtype: str
         """
         return self._GroupId
@@ -42291,7 +43798,7 @@ class ModifyGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
         :type GroupId: str
         :param _GroupName: 部署组名称
         :type GroupName: str
@@ -42307,7 +43814,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
         :rtype: str
         """
         return self._GroupId
@@ -42419,11 +43926,11 @@ class ModifyLaneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaneId: 泳道ID
+        :param _LaneId: 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :type LaneId: str
-        :param _LaneName: 泳道名称
+        :param _LaneName: 泳道配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :type LaneName: str
-        :param _Remark: 备注
+        :param _Remark: 备注，最多支持200个字符。
         :type Remark: str
         """
         self._LaneId = None
@@ -42432,7 +43939,7 @@ class ModifyLaneRequest(AbstractModel):
 
     @property
     def LaneId(self):
-        """泳道ID
+        """泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :rtype: str
         """
         return self._LaneId
@@ -42443,7 +43950,7 @@ class ModifyLaneRequest(AbstractModel):
 
     @property
     def LaneName(self):
-        """泳道名称
+        """泳道配置名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._LaneName
@@ -42454,7 +43961,7 @@ class ModifyLaneRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注
+        """备注，最多支持200个字符。
         :rtype: str
         """
         return self._Remark
@@ -42485,7 +43992,9 @@ class ModifyLaneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 更新成功: true / 更新失败: false
+        :param _Result: 更新结果。
+- true：更新成功
+- false：更新失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -42495,7 +44004,9 @@ class ModifyLaneResponse(AbstractModel):
 
     @property
     def Result(self):
-        """更新成功: true / 更新失败: false
+        """更新结果。
+- true：更新成功
+- false：更新失败
         :rtype: bool
         """
         return self._Result
@@ -42528,19 +44039,21 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 泳道规则ID
+        :param _RuleId: 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :type RuleId: str
-        :param _RuleName: 泳道规则名称
+        :param _RuleName: 灰度发布规则名称，最多支持60个字符，支持中英文字符。
         :type RuleName: str
-        :param _Remark: 泳道规则备注
+        :param _Remark: 灰度发布规则备注，最多支持200个字符。
         :type Remark: str
-        :param _RuleTagList: 泳道规则标签列表
+        :param _RuleTagList: 灰度发布规则标签列表。
         :type RuleTagList: list of LaneRuleTag
-        :param _RuleTagRelationship: 泳道规则标签关系
+        :param _RuleTagRelationship: 灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或
         :type RuleTagRelationship: str
-        :param _LaneId: 泳道ID
+        :param _LaneId: 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :type LaneId: str
-        :param _Enable: 开启状态
+        :param _Enable: 开启状态。
+- true：开启
+- false：关闭
         :type Enable: bool
         """
         self._RuleId = None
@@ -42553,7 +44066,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """泳道规则ID
+        """灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
         :rtype: str
         """
         return self._RuleId
@@ -42564,7 +44077,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """泳道规则名称
+        """灰度发布规则名称，最多支持60个字符，支持中英文字符。
         :rtype: str
         """
         return self._RuleName
@@ -42575,7 +44088,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """泳道规则备注
+        """灰度发布规则备注，最多支持200个字符。
         :rtype: str
         """
         return self._Remark
@@ -42586,7 +44099,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def RuleTagList(self):
-        """泳道规则标签列表
+        """灰度发布规则标签列表。
         :rtype: list of LaneRuleTag
         """
         return self._RuleTagList
@@ -42597,7 +44110,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def RuleTagRelationship(self):
-        """泳道规则标签关系
+        """灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或
         :rtype: str
         """
         return self._RuleTagRelationship
@@ -42608,7 +44121,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def LaneId(self):
-        """泳道ID
+        """泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
         :rtype: str
         """
         return self._LaneId
@@ -42619,7 +44132,9 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """开启状态
+        """开启状态。
+- true：开启
+- false：关闭
         :rtype: bool
         """
         return self._Enable
@@ -42659,7 +44174,9 @@ class ModifyLaneRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作状态。成功：true，失败：false
+        :param _Result: 修改结果。
+- true：成功
+- false：失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -42669,7 +44186,9 @@ class ModifyLaneRuleResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作状态。成功：true，失败：false
+        """修改结果。
+- true：成功
+- false：失败
         :rtype: bool
         """
         return self._Result
@@ -42702,9 +44221,9 @@ class ModifyMicroserviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MicroserviceId: 微服务 ID
+        :param _MicroserviceId: 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :type MicroserviceId: str
-        :param _MicroserviceDesc: 微服务备注信息
+        :param _MicroserviceDesc: 微服务备注信息，最多支持200个字符。
         :type MicroserviceDesc: str
         """
         self._MicroserviceId = None
@@ -42712,7 +44231,7 @@ class ModifyMicroserviceRequest(AbstractModel):
 
     @property
     def MicroserviceId(self):
-        """微服务 ID
+        """微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
         :rtype: str
         """
         return self._MicroserviceId
@@ -42723,7 +44242,7 @@ class ModifyMicroserviceRequest(AbstractModel):
 
     @property
     def MicroserviceDesc(self):
-        """微服务备注信息
+        """微服务备注信息，最多支持200个字符。
         :rtype: str
         """
         return self._MicroserviceDesc
@@ -42753,9 +44272,9 @@ class ModifyMicroserviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 修改微服务详情是否成功。
-true：操作成功。
-false：操作失败。
+        :param _Result: 修改结果。
+- true：修改成功
+- false：修改失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -42765,9 +44284,9 @@ false：操作失败。
 
     @property
     def Result(self):
-        """修改微服务详情是否成功。
-true：操作成功。
-false：操作失败。
+        """修改结果。
+- true：修改成功
+- false：修改失败
         :rtype: bool
         """
         return self._Result
@@ -42800,13 +44319,13 @@ class ModifyNamespaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID，按照【命名空间ID】进行过滤，可通过调用DescribeNamespaces查询已创建的项目列表或登录控制台进行查看；也可以调用CreateNamespace创建新的项目。命名空间ID例如：namespace-6a79x94v。
         :type NamespaceId: str
         :param _NamespaceName: 命名空间名称
         :type NamespaceName: str
         :param _NamespaceDesc: 命名空间备注
         :type NamespaceDesc: str
-        :param _IsHaEnable: 是否开启高可用
+        :param _IsHaEnable: 是否开启高可用，0表示不开启，1表示开启
         :type IsHaEnable: str
         """
         self._NamespaceId = None
@@ -42816,7 +44335,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID，按照【命名空间ID】进行过滤，可通过调用DescribeNamespaces查询已创建的项目列表或登录控制台进行查看；也可以调用CreateNamespace创建新的项目。命名空间ID例如：namespace-6a79x94v。
         :rtype: str
         """
         return self._NamespaceId
@@ -42849,7 +44368,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def IsHaEnable(self):
-        """是否开启高可用
+        """是否开启高可用，0表示不开启，1表示开启
         :rtype: str
         """
         return self._IsHaEnable
@@ -43063,7 +44582,7 @@ class ModifyProgramRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProgramId: 数据集ID
+        :param _ProgramId: 数据集ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)查询接口会返回数据集信息，包括programId
         :type ProgramId: str
         :param _ProgramName: 数据集名称，不传入时不更新
         :type ProgramName: str
@@ -43082,7 +44601,7 @@ class ModifyProgramRequest(AbstractModel):
 
     @property
     def ProgramId(self):
-        """数据集ID
+        """数据集ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)查询接口会返回数据集信息，包括programId
         :rtype: str
         """
         return self._ProgramId
@@ -43207,23 +44726,23 @@ class ModifyTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :type TaskId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: 任务名称，长度限制为64字符。在任务管理列表页面第一列或是任务基本信息页查看任务名称。
         :type TaskName: str
-        :param _TaskType: 任务类型
+        :param _TaskType: 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
         :type TaskType: str
-        :param _TaskContent: 任务内容
+        :param _TaskContent: 任务内容，长度限制为 65536 字节
         :type TaskContent: str
-        :param _ExecuteType: 任务执行类型
+        :param _ExecuteType: 任务执行方式，枚举值。unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
         :type ExecuteType: str
         :param _TaskRule: 触发规则
         :type TaskRule: :class:`tencentcloud.tsf.v20180326.models.TaskRule`
-        :param _TimeOut: 超时时间，单位 ms
+        :param _TimeOut: 超时时间，取值大于0，单位：毫秒（ms）
         :type TimeOut: int
-        :param _GroupId: 分组ID
+        :param _GroupId: 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
         :type GroupId: str
-        :param _ShardCount: 分片数量
+        :param _ShardCount: 分片数量，取值范围2~1000
         :type ShardCount: int
         :param _ShardArguments: 分片参数
         :type ShardArguments: list of ShardArgument
@@ -43231,15 +44750,15 @@ class ModifyTaskRequest(AbstractModel):
         :type AdvanceSettings: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`
         :param _SuccessOperator: 判断任务成功的操作符 GT/GTE
         :type SuccessOperator: str
-        :param _SuccessRatio: 判断任务成功率的阈值
+        :param _SuccessRatio: 判断任务成功率的阈值，取值范围：1-100，单位：百分比（%）
         :type SuccessRatio: int
-        :param _RetryCount: 重试次数
+        :param _RetryCount: 重试次数，取值范围 0 - 10，单位：次
         :type RetryCount: int
-        :param _RetryInterval: 重试间隔
+        :param _RetryInterval: 重试间隔，取值范围 0-600，单位：秒（s）
         :type RetryInterval: int
         :param _TaskArgument: 任务参数，长度限制10000个字符
         :type TaskArgument: str
-        :param _ProgramIdList: 无
+        :param _ProgramIdList: 数据集列表。
         :type ProgramIdList: list of str
         """
         self._TaskId = None
@@ -43262,7 +44781,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -43273,7 +44792,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        """任务名称，长度限制为64字符。在任务管理列表页面第一列或是任务基本信息页查看任务名称。
         :rtype: str
         """
         return self._TaskName
@@ -43284,7 +44803,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """任务类型
+        """任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
         :rtype: str
         """
         return self._TaskType
@@ -43295,7 +44814,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def TaskContent(self):
-        """任务内容
+        """任务内容，长度限制为 65536 字节
         :rtype: str
         """
         return self._TaskContent
@@ -43306,7 +44825,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def ExecuteType(self):
-        """任务执行类型
+        """任务执行方式，枚举值。unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
         :rtype: str
         """
         return self._ExecuteType
@@ -43328,7 +44847,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def TimeOut(self):
-        """超时时间，单位 ms
+        """超时时间，取值大于0，单位：毫秒（ms）
         :rtype: int
         """
         return self._TimeOut
@@ -43339,7 +44858,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID
+        """部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
         :rtype: str
         """
         return self._GroupId
@@ -43350,7 +44869,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def ShardCount(self):
-        """分片数量
+        """分片数量，取值范围2~1000
         :rtype: int
         """
         return self._ShardCount
@@ -43394,7 +44913,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def SuccessRatio(self):
-        """判断任务成功率的阈值
+        """判断任务成功率的阈值，取值范围：1-100，单位：百分比（%）
         :rtype: int
         """
         return self._SuccessRatio
@@ -43405,7 +44924,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def RetryCount(self):
-        """重试次数
+        """重试次数，取值范围 0 - 10，单位：次
         :rtype: int
         """
         return self._RetryCount
@@ -43416,7 +44935,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def RetryInterval(self):
-        """重试间隔
+        """重试间隔，取值范围 0-600，单位：秒（s）
         :rtype: int
         """
         return self._RetryInterval
@@ -43438,7 +44957,7 @@ class ModifyTaskRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        """无
+        """数据集列表。
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -43492,7 +45011,7 @@ class ModifyTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 更新是否成功
+        :param _Result: 更新是否成功。true：操作成功、false：操作失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43502,7 +45021,7 @@ class ModifyTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        """更新是否成功
+        """更新是否成功。true：操作成功、false：操作失败
         :rtype: bool
         """
         return self._Result
@@ -43535,9 +45054,9 @@ class ModifyUploadInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :type ApplicationId: str
-        :param _PkgId: 调用DescribeUploadInfo接口时返回的软件包ID
+        :param _PkgId: 软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type PkgId: str
         :param _Result: COS返回上传结果（默认为0：成功，其他值表示失败）
         :type Result: int
@@ -43547,7 +45066,7 @@ class ModifyUploadInfoRequest(AbstractModel):
         :type Size: int
         :param _RepositoryType: 程序包仓库类型
         :type RepositoryType: str
-        :param _RepositoryId: 程序包仓库id
+        :param _RepositoryId: 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type RepositoryId: str
         """
         self._ApplicationId = None
@@ -43560,7 +45079,7 @@ class ModifyUploadInfoRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
         :rtype: str
         """
         return self._ApplicationId
@@ -43571,7 +45090,7 @@ class ModifyUploadInfoRequest(AbstractModel):
 
     @property
     def PkgId(self):
-        """调用DescribeUploadInfo接口时返回的软件包ID
+        """软件包ID可通过调用DescribeUploadInfo接口时[获取上传程序包信息](https://cloud.tencent.com/document/api/649/36078)返回的COS上传信息获取，登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._PkgId
@@ -43626,7 +45145,7 @@ class ModifyUploadInfoRequest(AbstractModel):
 
     @property
     def RepositoryId(self):
-        """程序包仓库id
+        """仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._RepositoryId
@@ -44718,9 +46237,11 @@ class OperateApplicationTcrBindingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Command: bind 或 unbind
+        :param _Command: 指定操作类型，目前支持：
+- `bind`：绑定（默认）
+- `unbind`：解除绑定
         :type Command: str
-        :param _ApplicationId: 应用id
+        :param _ApplicationId: 应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :type ApplicationId: str
         :param _TcrRepoInfo: TcrRepoInfo值
         :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
@@ -44731,7 +46252,9 @@ class OperateApplicationTcrBindingRequest(AbstractModel):
 
     @property
     def Command(self):
-        """bind 或 unbind
+        """指定操作类型，目前支持：
+- `bind`：绑定（默认）
+- `unbind`：解除绑定
         :rtype: str
         """
         return self._Command
@@ -44742,7 +46265,7 @@ class OperateApplicationTcrBindingRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id
+        """应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -45046,6 +46569,44 @@ class OverviewBasicResourceUsage(AbstractModel):
         self._GroupCount = params.get("GroupCount")
         self._PackageSpaceUsed = params.get("PackageSpaceUsed")
         self._ConsulInstanceCount = params.get("ConsulInstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PackageConfig(AbstractModel):
+    """程序包相关配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceSize: 程序包存储空间大小，单位字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpaceSize: int
+        """
+        self._SpaceSize = None
+
+    @property
+    def SpaceSize(self):
+        """程序包存储空间大小，单位字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SpaceSize
+
+    @SpaceSize.setter
+    def SpaceSize(self, SpaceSize):
+        self._SpaceSize = SpaceSize
+
+
+    def _deserialize(self, params):
+        self._SpaceSize = params.get("SpaceSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45697,7 +47258,7 @@ class Ports(AbstractModel):
         r"""
         :param _TargetPort: 服务端口
         :type TargetPort: int
-        :param _Protocol: 端口协议
+        :param _Protocol: 端口协议，TCP或者UDP
         :type Protocol: str
         """
         self._TargetPort = None
@@ -45716,7 +47277,7 @@ class Ports(AbstractModel):
 
     @property
     def Protocol(self):
-        """端口协议
+        """端口协议，TCP或者UDP
         :rtype: str
         """
         return self._Protocol
@@ -45881,7 +47442,8 @@ class ProgramItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProgramItemId: 数据项ID
+        :param _ProgramItemId: 数据项ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)接口查询已创建的数据集或登陆控制台进行查看；也可以通过调用[CreateProgram](https://cloud.tencent.com/document/api/649/108544)创建新的数据集。
+
         :type ProgramItemId: str
         :param _Resource: 资源
         :type Resource: :class:`tencentcloud.tsf.v20180326.models.Resource`
@@ -45889,13 +47451,13 @@ class ProgramItem(AbstractModel):
         :type ValueList: list of str
         :param _IsAll: 全选标识，true: 全选；false: 非全选
         :type IsAll: bool
-        :param _CreationTime: 创建时间
+        :param _CreationTime: 创建时间，时间戳格式【Long】
         :type CreationTime: int
-        :param _LastUpdateTime: 最后更新时间
+        :param _LastUpdateTime: 最后更新时间，时间戳格式【Long】，单位毫秒
         :type LastUpdateTime: int
         :param _DeleteFlag: 删除标识，true: 可删除；false: 不可删除
         :type DeleteFlag: bool
-        :param _ProgramId: 数据集ID
+        :param _ProgramId: 数据集ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)查询接口获取
         :type ProgramId: str
         """
         self._ProgramItemId = None
@@ -45909,7 +47471,8 @@ class ProgramItem(AbstractModel):
 
     @property
     def ProgramItemId(self):
-        """数据项ID
+        """数据项ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)接口查询已创建的数据集或登陆控制台进行查看；也可以通过调用[CreateProgram](https://cloud.tencent.com/document/api/649/108544)创建新的数据集。
+
         :rtype: str
         """
         return self._ProgramItemId
@@ -45953,7 +47516,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def CreationTime(self):
-        """创建时间
+        """创建时间，时间戳格式【Long】
         :rtype: int
         """
         return self._CreationTime
@@ -45964,7 +47527,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """最后更新时间
+        """最后更新时间，时间戳格式【Long】，单位毫秒
         :rtype: int
         """
         return self._LastUpdateTime
@@ -45986,7 +47549,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def ProgramId(self):
-        """数据集ID
+        """数据集ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)查询接口获取
         :rtype: str
         """
         return self._ProgramId
@@ -46386,9 +47949,9 @@ class RedoTaskBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :type TaskId: str
-        :param _BatchId: 批次ID
+        :param _BatchId: 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
         :type BatchId: str
         """
         self._TaskId = None
@@ -46396,7 +47959,7 @@ class RedoTaskBatchRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -46407,7 +47970,7 @@ class RedoTaskBatchRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        """任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
         :rtype: str
         """
         return self._BatchId
@@ -46437,7 +48000,7 @@ class RedoTaskBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 批次ID
+        :param _Result: 批次流水ID
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46447,7 +48010,7 @@ class RedoTaskBatchResponse(AbstractModel):
 
     @property
     def Result(self):
-        """批次ID
+        """批次流水ID
         :rtype: str
         """
         return self._Result
@@ -46480,11 +48043,11 @@ class RedoTaskExecuteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchId: 任务批次ID
+        :param _BatchId: 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面第一列点击任务ID进入任务详情，进入执行记录列表页，第一列内容即为任务批次ID。
         :type BatchId: str
-        :param _ExecuteId: 任务执行ID
+        :param _ExecuteId: 任务执行ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面第一列点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
         :type ExecuteId: str
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :type TaskId: str
         """
         self._BatchId = None
@@ -46493,7 +48056,7 @@ class RedoTaskExecuteRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """任务批次ID
+        """任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面第一列点击任务ID进入任务详情，进入执行记录列表页，第一列内容即为任务批次ID。
         :rtype: str
         """
         return self._BatchId
@@ -46504,7 +48067,7 @@ class RedoTaskExecuteRequest(AbstractModel):
 
     @property
     def ExecuteId(self):
-        """任务执行ID
+        """任务执行ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面第一列点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
         :rtype: str
         """
         return self._ExecuteId
@@ -46515,7 +48078,7 @@ class RedoTaskExecuteRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -46546,7 +48109,7 @@ class RedoTaskExecuteResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 成功失败
+        :param _Result: 成功返回执行批次流水ID。失败返回空字符串。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46556,7 +48119,7 @@ class RedoTaskExecuteResponse(AbstractModel):
 
     @property
     def Result(self):
-        """成功失败
+        """成功返回执行批次流水ID。失败返回空字符串。
         :rtype: str
         """
         return self._Result
@@ -46589,14 +48152,14 @@ class RedoTaskFlowBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowBatchId: 工作流批次 ID
+        :param _FlowBatchId: 工作流批次 ID。在[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)页面，点击第一列的工作流ID进入工作流执行记录列表页面，第一列的内容即为工作流批次ID。
         :type FlowBatchId: str
         """
         self._FlowBatchId = None
 
     @property
     def FlowBatchId(self):
-        """工作流批次 ID
+        """工作流批次 ID。在[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)页面，点击第一列的工作流ID进入工作流执行记录列表页面，第一列的内容即为工作流批次ID。
         :rtype: str
         """
         return self._FlowBatchId
@@ -46625,7 +48188,7 @@ class RedoTaskFlowBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 工作流批次历史 ID
+        :param _Result: 工作流批次历史 ID。操作失败时不返回该字段，返回错误码。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46635,7 +48198,7 @@ class RedoTaskFlowBatchResponse(AbstractModel):
 
     @property
     def Result(self):
-        """工作流批次历史 ID
+        """工作流批次历史 ID。操作失败时不返回该字段，返回错误码。
         :rtype: str
         """
         return self._Result
@@ -46668,14 +48231,14 @@ class RedoTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -46704,7 +48267,7 @@ class RedoTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作成功or失败
+        :param _Result: 操作成功任务批次ID。操作失败返回空字符串。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46714,7 +48277,7 @@ class RedoTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作成功or失败
+        """操作成功任务批次ID。操作失败返回空字符串。
         :rtype: str
         """
         return self._Result
@@ -46826,11 +48389,11 @@ class ReleaseConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置ID
+        :param _ConfigId: 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :type ConfigId: str
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
-        :param _ReleaseDesc: 发布描述
+        :param _ReleaseDesc: 发布描述，最多支持200个字符。
         :type ReleaseDesc: str
         """
         self._ConfigId = None
@@ -46839,7 +48402,7 @@ class ReleaseConfigRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置ID
+        """配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -46850,7 +48413,7 @@ class ReleaseConfigRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -46861,7 +48424,7 @@ class ReleaseConfigRequest(AbstractModel):
 
     @property
     def ReleaseDesc(self):
-        """发布描述
+        """发布描述，最多支持200个字符。
         :rtype: str
         """
         return self._ReleaseDesc
@@ -46892,7 +48455,9 @@ class ReleaseConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：发布成功；false：发布失败
+        :param _Result: 发布结果。
+- true：发布成功
+- false：发布失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46902,7 +48467,9 @@ class ReleaseConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：发布成功；false：发布失败
+        """发布结果。
+- true：发布成功
+- false：发布失败
         :rtype: bool
         """
         return self._Result
@@ -46935,11 +48502,11 @@ class ReleaseConfigWithDetailRespRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置ID
+        :param _ConfigId: 配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :type ConfigId: str
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
-        :param _ReleaseDesc: 发布描述
+        :param _ReleaseDesc: 发布描述，最多支持200个字符。
         :type ReleaseDesc: str
         """
         self._ConfigId = None
@@ -46948,7 +48515,7 @@ class ReleaseConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置ID
+        """配置ID。该参数可以通过调用 [DescribeConfigs](https://cloud.tencent.com/document/product/649/38340) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-配置版本页查看；也可以调用[CreateConfig](https://cloud.tencent.com/document/product/649/38348)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -46959,7 +48526,7 @@ class ReleaseConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -46970,7 +48537,7 @@ class ReleaseConfigWithDetailRespRequest(AbstractModel):
 
     @property
     def ReleaseDesc(self):
-        """发布描述
+        """发布描述，最多支持200个字符。
         :rtype: str
         """
         return self._ReleaseDesc
@@ -47001,7 +48568,7 @@ class ReleaseConfigWithDetailRespResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 配置项发布 ID
+        :param _Result: 配置项发布ID。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ConfigRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47011,7 +48578,7 @@ class ReleaseConfigWithDetailRespResponse(AbstractModel):
 
     @property
     def Result(self):
-        """配置项发布 ID
+        """配置项发布ID。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ConfigRelease`
         """
         return self._Result
@@ -47046,11 +48613,11 @@ class ReleaseFileConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置ID
+        :param _ConfigId: 配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
         :type ConfigId: str
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
-        :param _ReleaseDesc: 发布描述
+        :param _ReleaseDesc: 发布描述，最多支持200个字符。
         :type ReleaseDesc: str
         """
         self._ConfigId = None
@@ -47059,7 +48626,7 @@ class ReleaseFileConfigRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置ID
+        """配置ID。该参数可以通过调用 [DescribeFileConfigs](https://cloud.tencent.com/document/product/649/58593) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?rid=1&subTab=file)配置详情-配置版本页查看；也可以调用[CreateFileConfig](https://cloud.tencent.com/document/product/649/58594)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -47070,7 +48637,7 @@ class ReleaseFileConfigRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID。该参数可以通过调用 [DescribeSimpleGroups](https://cloud.tencent.com/document/product/649/36064) 的返回值中的 GroupId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource)-查看部署组页查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -47081,7 +48648,7 @@ class ReleaseFileConfigRequest(AbstractModel):
 
     @property
     def ReleaseDesc(self):
-        """发布描述
+        """发布描述，最多支持200个字符。
         :rtype: str
         """
         return self._ReleaseDesc
@@ -47112,7 +48679,9 @@ class ReleaseFileConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 发布结果，成功：true，失败：false。
+        :param _Result: 发布结果。
+- true：成功
+- false：失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47122,7 +48691,9 @@ class ReleaseFileConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """发布结果，成功：true，失败：false。
+        """发布结果。
+- true：成功
+- false：失败
         :rtype: bool
         """
         return self._Result
@@ -47155,11 +48726,11 @@ class ReleasePublicConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置ID
+        :param _ConfigId: 配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :type ConfigId: str
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :type NamespaceId: str
-        :param _ReleaseDesc: 发布描述
+        :param _ReleaseDesc: 发布描述，最多支持200个字符。
         :type ReleaseDesc: str
         """
         self._ConfigId = None
@@ -47168,7 +48739,7 @@ class ReleasePublicConfigRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        """配置ID
+        """配置ID。该参数可以通过调用 [DescribePublicConfigs](https://cloud.tencent.com/document/product/649/38335) 的返回值中的 ConfigId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=public)配置详情-配置版本页查看；也可以调用[CreatePublicConfig](https://cloud.tencent.com/document/product/649/38347)创建新的配置。
         :rtype: str
         """
         return self._ConfigId
@@ -47179,7 +48750,7 @@ class ReleasePublicConfigRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
         :rtype: str
         """
         return self._NamespaceId
@@ -47190,7 +48761,7 @@ class ReleasePublicConfigRequest(AbstractModel):
 
     @property
     def ReleaseDesc(self):
-        """发布描述
+        """发布描述，最多支持200个字符。
         :rtype: str
         """
         return self._ReleaseDesc
@@ -47221,7 +48792,9 @@ class ReleasePublicConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：发布成功；false：发布失败
+        :param _Result: 发布结果。
+- true：发布成功
+- false：发布失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47231,7 +48804,9 @@ class ReleasePublicConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：发布成功；false：发布失败
+        """发布结果。
+- true：发布成功
+- false：发布失败
         :rtype: bool
         """
         return self._Result
@@ -47264,7 +48839,7 @@ class RemoveInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: 集群 ID。调用[DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)查询已创建的集群或通过[CreateCluster](https://cloud.tencent.com/document/api/649/36049)接口创建新的集群。
         :type ClusterId: str
         :param _InstanceIdList: 云主机 ID 列表
         :type InstanceIdList: list of str
@@ -47274,7 +48849,7 @@ class RemoveInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群 ID
+        """集群 ID。调用[DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)查询已创建的集群或通过[CreateCluster](https://cloud.tencent.com/document/api/649/36049)接口创建新的集群。
         :rtype: str
         """
         return self._ClusterId
@@ -47570,25 +49145,25 @@ class Resource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID
+        :param _ResourceId: 资源ID，调用[DescribeResource](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)查询接口获取
         :type ResourceId: str
-        :param _ResourceCode: 资源编码
+        :param _ResourceCode: 资源编码，枚举值描述【cluster、namespace、config】
         :type ResourceCode: str
         :param _ResourceName: 资源名称
         :type ResourceName: str
-        :param _ServiceCode: 资源所属产品编码
+        :param _ServiceCode: 资源所属产品编码，枚举值描述【tsf】
         :type ServiceCode: str
-        :param _ResourceAction: 选取资源使用的Action
+        :param _ResourceAction: 选取资源使用的Action，枚举值描述【DescribeSimpleCluster、DescribeLanes、DescribeTaskRecords】
         :type ResourceAction: str
-        :param _IdField: 资源数据查询的ID字段名
+        :param _IdField: 资源数据查询的ID字段名，调用[DescribeResource](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)查询接口获取
         :type IdField: str
         :param _NameField: 资源数据查询的名称字段名
         :type NameField: str
         :param _SelectIdsField: 资源数据查询的ID过滤字段名
         :type SelectIdsField: str
-        :param _CreationTime: 创建时间
+        :param _CreationTime: 创建时间，时间戳格式【Long】
         :type CreationTime: int
-        :param _LastUpdateTime: 最后更新时间
+        :param _LastUpdateTime: 最后更新时间，时间戳格式【Long】
         :type LastUpdateTime: int
         :param _DeleteFlag: 删除标识
         :type DeleteFlag: bool
@@ -47598,7 +49173,7 @@ class Resource(AbstractModel):
         :type CanSelectAll: bool
         :param _SearchWordField: 资源数据查询的模糊查询字段名
         :type SearchWordField: str
-        :param _Index: 排序
+        :param _Index: 排序，枚举值描述【10、20、77】
         :type Index: int
         """
         self._ResourceId = None
@@ -47619,7 +49194,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID
+        """资源ID，调用[DescribeResource](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)查询接口获取
         :rtype: str
         """
         return self._ResourceId
@@ -47630,7 +49205,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceCode(self):
-        """资源编码
+        """资源编码，枚举值描述【cluster、namespace、config】
         :rtype: str
         """
         return self._ResourceCode
@@ -47652,7 +49227,7 @@ class Resource(AbstractModel):
 
     @property
     def ServiceCode(self):
-        """资源所属产品编码
+        """资源所属产品编码，枚举值描述【tsf】
         :rtype: str
         """
         return self._ServiceCode
@@ -47663,7 +49238,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceAction(self):
-        """选取资源使用的Action
+        """选取资源使用的Action，枚举值描述【DescribeSimpleCluster、DescribeLanes、DescribeTaskRecords】
         :rtype: str
         """
         return self._ResourceAction
@@ -47674,7 +49249,7 @@ class Resource(AbstractModel):
 
     @property
     def IdField(self):
-        """资源数据查询的ID字段名
+        """资源数据查询的ID字段名，调用[DescribeResource](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)查询接口获取
         :rtype: str
         """
         return self._IdField
@@ -47707,7 +49282,7 @@ class Resource(AbstractModel):
 
     @property
     def CreationTime(self):
-        """创建时间
+        """创建时间，时间戳格式【Long】
         :rtype: int
         """
         return self._CreationTime
@@ -47718,7 +49293,7 @@ class Resource(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """最后更新时间
+        """最后更新时间，时间戳格式【Long】
         :rtype: int
         """
         return self._LastUpdateTime
@@ -47773,7 +49348,7 @@ class Resource(AbstractModel):
 
     @property
     def Index(self):
-        """排序
+        """排序，枚举值描述【10、20、77】
         :rtype: int
         """
         return self._Index
@@ -47852,14 +49427,20 @@ class ResourceTaskStatusResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskStatus: 任务的执行状态
+        :param _TaskStatus: 变更状态：
+- `0`：成功
+- `1`：失败
+- `2`：执行中
         :type TaskStatus: int
         """
         self._TaskStatus = None
 
     @property
     def TaskStatus(self):
-        """任务的执行状态
+        """变更状态：
+- `0`：成功
+- `1`：失败
+- `2`：执行中
         :rtype: int
         """
         return self._TaskStatus
@@ -47888,14 +49469,14 @@ class RevocationConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigReleaseId: 配置项发布ID
+        :param _ConfigReleaseId: 配置项发布ID。该参数可以通过调用 [DescribeConfigReleases](https://cloud.tencent.com/document/product/649/38342) 的返回值中的 ConfigReleaseId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-发布情况页查看。
         :type ConfigReleaseId: str
         """
         self._ConfigReleaseId = None
 
     @property
     def ConfigReleaseId(self):
-        """配置项发布ID
+        """配置项发布ID。该参数可以通过调用 [DescribeConfigReleases](https://cloud.tencent.com/document/product/649/38342) 的返回值中的 ConfigReleaseId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-发布情况页查看。
         :rtype: str
         """
         return self._ConfigReleaseId
@@ -47924,7 +49505,9 @@ class RevocationConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：回滚成功；false：回滚失败
+        :param _Result: 撤回结果。
+- true：成功
+- false：失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47934,7 +49517,9 @@ class RevocationConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：回滚成功；false：回滚失败
+        """撤回结果。
+- true：成功
+- false：失败
         :rtype: bool
         """
         return self._Result
@@ -48046,14 +49631,14 @@ class RevokeFileConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigReleaseId: 配置项发布ID
+        :param _ConfigReleaseId: 按照【配置项发布ID】进行撤回。可通过调用[DescribeFileConfigReleases](https://cloud.tencent.com/document/product/649/85855)查询已发布的文件配置列表或登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=file)-查看发布信息-发布情况进行查看；也可以调用[ReleaseFileConfig](https://cloud.tencent.com/document/product/649/58592)发布文件配置。
         :type ConfigReleaseId: str
         """
         self._ConfigReleaseId = None
 
     @property
     def ConfigReleaseId(self):
-        """配置项发布ID
+        """按照【配置项发布ID】进行撤回。可通过调用[DescribeFileConfigReleases](https://cloud.tencent.com/document/product/649/85855)查询已发布的文件配置列表或登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=file)-查看发布信息-发布情况进行查看；也可以调用[ReleaseFileConfig](https://cloud.tencent.com/document/product/649/58592)发布文件配置。
         :rtype: str
         """
         return self._ConfigReleaseId
@@ -48125,9 +49710,9 @@ class RollbackConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigReleaseLogId: 配置项发布历史ID
+        :param _ConfigReleaseLogId: 配置项发布历史ID。该参数可以通过调用 [DescribeConfigReleaseLogs](https://cloud.tencent.com/document/product/649/38343) 的返回值中的 ConfigReleaseLogId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-发布情况页查看。
         :type ConfigReleaseLogId: str
-        :param _ReleaseDesc: 回滚描述
+        :param _ReleaseDesc: 回滚描述，最多支持200个字符。
         :type ReleaseDesc: str
         """
         self._ConfigReleaseLogId = None
@@ -48135,7 +49720,7 @@ class RollbackConfigRequest(AbstractModel):
 
     @property
     def ConfigReleaseLogId(self):
-        """配置项发布历史ID
+        """配置项发布历史ID。该参数可以通过调用 [DescribeConfigReleaseLogs](https://cloud.tencent.com/document/product/649/38343) 的返回值中的 ConfigReleaseLogId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=app)配置详情-发布情况页查看。
         :rtype: str
         """
         return self._ConfigReleaseLogId
@@ -48146,7 +49731,7 @@ class RollbackConfigRequest(AbstractModel):
 
     @property
     def ReleaseDesc(self):
-        """回滚描述
+        """回滚描述，最多支持200个字符。
         :rtype: str
         """
         return self._ReleaseDesc
@@ -48176,7 +49761,9 @@ class RollbackConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true：回滚成功；false：回滚失败
+        :param _Result: 回滚结果。
+- true：回滚成功
+- false：回滚失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -48186,7 +49773,9 @@ class RollbackConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """true：回滚成功；false：回滚失败
+        """回滚结果。
+- true：回滚成功
+- false：回滚失败
         :rtype: bool
         """
         return self._Result
@@ -48604,12 +50193,13 @@ class SearchBusinessLogRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ConfigId: 日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :type ConfigId: str
         :param _InstanceIds: 机器实例ID，不传表示全部实例
         :type InstanceIds: list of str
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间，格式yyyy-MM-dd HH:mm:ss
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间，格式yyyy-MM-dd HH:mm:ss
         :type EndTime: str
         :param _Offset: 请求偏移量，取值范围大于等于0，默认值为0
         :type Offset: int
@@ -48622,10 +50212,11 @@ class SearchBusinessLogRequest(AbstractModel):
         :param _SearchWords: 检索关键词
         :type SearchWords: list of str
         :param _GroupIds: 部署组ID列表，不传表示全部部署组
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :type GroupIds: list of str
-        :param _SearchWordType: 检索类型，取值"LUCENE", "REGEXP", "NORMAL"
+        :param _SearchWordType: 检索类型，取值 LUCENE：Lucene检索，REGEXP：正则检索，NORMAL：普通检索
         :type SearchWordType: str
-        :param _BatchType: 批量请求类型，取值"page"或"scroll"
+        :param _BatchType: 批量请求类型，取值 PAGE：分页查询，SCROLL：滚动查询，SEARCHAFTER：游标查询，默认值PAGE
         :type BatchType: str
         :param _ScrollId: 游标ID
         :type ScrollId: str
@@ -48650,6 +50241,7 @@ class SearchBusinessLogRequest(AbstractModel):
     @property
     def ConfigId(self):
         """日志配置项ID
+可通过调用[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/product/649/75777)查询已创建的日志配置项列表或登录[控制台](https://console.cloud.tencent.com/tsf/observable/log?rid=1)进行查看
         :rtype: str
         """
         return self._ConfigId
@@ -48671,7 +50263,7 @@ class SearchBusinessLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        """开始时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -48682,7 +50274,7 @@ class SearchBusinessLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -48749,6 +50341,7 @@ class SearchBusinessLogRequest(AbstractModel):
     @property
     def GroupIds(self):
         """部署组ID列表，不传表示全部部署组
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :rtype: list of str
         """
         return self._GroupIds
@@ -48759,7 +50352,7 @@ class SearchBusinessLogRequest(AbstractModel):
 
     @property
     def SearchWordType(self):
-        """检索类型，取值"LUCENE", "REGEXP", "NORMAL"
+        """检索类型，取值 LUCENE：Lucene检索，REGEXP：正则检索，NORMAL：普通检索
         :rtype: str
         """
         return self._SearchWordType
@@ -48770,7 +50363,7 @@ class SearchBusinessLogRequest(AbstractModel):
 
     @property
     def BatchType(self):
-        """批量请求类型，取值"page"或"scroll"
+        """批量请求类型，取值 PAGE：分页查询，SCROLL：滚动查询，SEARCHAFTER：游标查询，默认值PAGE
         :rtype: str
         """
         return self._BatchType
@@ -48879,31 +50472,34 @@ class SearchStdoutLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 机器实例ID， 和  实例 ID 二者必选其一，不能同时为空
+        :param _InstanceId: 机器实例ID， 和 部署组 ID 二者必选其一，不能同时为空
+可通过调用[DescribeClusterInstances](https://cloud.tencent.com/document/product/649/36048)查询已导入的实例列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=instance)进行查询。实例ID例如：ins-6decplwk
+
+
+
         :type InstanceId: str
         :param _Limit: 单页请求配置数量，取值范围[1, 500]，默认值为100
         :type Limit: int
         :param _SearchWords: 检索关键词
         :type SearchWords: list of str
-        :param _StartTime: 查询起始时间
+        :param _StartTime: 查询起始时间，格式yyyy-MM-dd HH:mm:ss
         :type StartTime: str
         :param _GroupId: 部署组ID，和 InstanceId 二者必选其一，不能同时为空
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :type GroupId: str
-        :param _EndTime: 查询结束时间
+        :param _EndTime: 查询结束时间，格式yyyy-MM-dd HH:mm:ss
         :type EndTime: str
         :param _Offset: 请求偏移量，取值范围大于等于0，默认值为
 0
         :type Offset: int
-        :param _OrderBy: 排序规则，默认值"time"
+        :param _OrderBy: 排序规则，time：按时间排序，score：按检索值排序，默认值"time"
         :type OrderBy: str
-        :param _OrderType: 排序方式，取值"asc"或"desc"，默认
-值"desc"
+        :param _OrderType: 排序方式，取值 asc：升序 或 desc：降序，默认值desc
         :type OrderType: str
-        :param _SearchWordType: 检索类型，取值"LUCENE", "REGEXP",
-"NORMAL"
+        :param _SearchWordType: 检索类型，取值 LUCENE：Lucene检索，REGEXP：正则检索，NORMAL：普通检索
         :type SearchWordType: str
-        :param _BatchType: 批量请求类型，取值"page"或"scroll"，默认
-值"page"
+        :param _BatchType: 批量请求类型，取值 PAGE：分页查询，SCROLL：滚动查询，SEARCHAFTER：游标查询，默认值PAGE
+
         :type BatchType: str
         :param _ScrollId: 游标ID
         :type ScrollId: str
@@ -48926,7 +50522,11 @@ class SearchStdoutLogRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """机器实例ID， 和  实例 ID 二者必选其一，不能同时为空
+        """机器实例ID， 和 部署组 ID 二者必选其一，不能同时为空
+可通过调用[DescribeClusterInstances](https://cloud.tencent.com/document/product/649/36048)查询已导入的实例列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=instance)进行查询。实例ID例如：ins-6decplwk
+
+
+
         :rtype: str
         """
         return self._InstanceId
@@ -48959,7 +50559,7 @@ class SearchStdoutLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """查询起始时间
+        """查询起始时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -48971,6 +50571,7 @@ class SearchStdoutLogRequest(AbstractModel):
     @property
     def GroupId(self):
         """部署组ID，和 InstanceId 二者必选其一，不能同时为空
+可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)或[DescribeGroups](https://cloud.tencent.com/document/product/649/36065)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-yo7kp9dv&tab=publish&subTab=group)进行查看
         :rtype: str
         """
         return self._GroupId
@@ -48981,7 +50582,7 @@ class SearchStdoutLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """查询结束时间
+        """查询结束时间，格式yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -49004,7 +50605,7 @@ class SearchStdoutLogRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序规则，默认值"time"
+        """排序规则，time：按时间排序，score：按检索值排序，默认值"time"
         :rtype: str
         """
         return self._OrderBy
@@ -49015,8 +50616,7 @@ class SearchStdoutLogRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """排序方式，取值"asc"或"desc"，默认
-值"desc"
+        """排序方式，取值 asc：升序 或 desc：降序，默认值desc
         :rtype: str
         """
         return self._OrderType
@@ -49027,8 +50627,7 @@ class SearchStdoutLogRequest(AbstractModel):
 
     @property
     def SearchWordType(self):
-        """检索类型，取值"LUCENE", "REGEXP",
-"NORMAL"
+        """检索类型，取值 LUCENE：Lucene检索，REGEXP：正则检索，NORMAL：普通检索
         :rtype: str
         """
         return self._SearchWordType
@@ -49039,8 +50638,8 @@ class SearchStdoutLogRequest(AbstractModel):
 
     @property
     def BatchType(self):
-        """批量请求类型，取值"page"或"scroll"，默认
-值"page"
+        """批量请求类型，取值 PAGE：分页查询，SCROLL：滚动查询，SEARCHAFTER：游标查询，默认值PAGE
+
         :rtype: str
         """
         return self._BatchType
@@ -49223,7 +50822,7 @@ class ServiceGovernanceConfig(AbstractModel):
         r"""
         :param _EnableGovernance: 是否开启服务注册治理
         :type EnableGovernance: bool
-        :param _GovernanceType: 服务治理类型（枚举：SHARE、EXCLUSIVE）
+        :param _GovernanceType: 服务治理类型（枚举：SHARE表示共享型、EXCLUSIVE表示独占型）
         :type GovernanceType: str
         :param _ExclusiveInstances: 独享实例列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -49246,7 +50845,7 @@ class ServiceGovernanceConfig(AbstractModel):
 
     @property
     def GovernanceType(self):
-        """服务治理类型（枚举：SHARE、EXCLUSIVE）
+        """服务治理类型（枚举：SHARE表示共享型、EXCLUSIVE表示独占型）
         :rtype: str
         """
         return self._GovernanceType
@@ -49318,7 +50917,7 @@ class ServiceSetting(AbstractModel):
         :type ExternalTrafficPolicy: str
         :param _LoadBalancerProvisioner: 负载均衡提供者
         :type LoadBalancerProvisioner: str
-        :param _LoadBalancingType: 负载均衡类型
+        :param _LoadBalancingType: 负载均衡类型，Intranet表示内网，Internet表示外网
         :type LoadBalancingType: str
         :param _ClusterIp: k8s负载均衡内网vip
         :type ClusterIp: str
@@ -49496,7 +51095,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def LoadBalancingType(self):
-        """负载均衡类型
+        """负载均衡类型，Intranet表示内网，Internet表示外网
         :rtype: str
         """
         return self._LoadBalancingType
@@ -49654,7 +51253,7 @@ class ServiceStatisticsResult(AbstractModel):
         :type Path: str
         :param _Method: 请求方法:type为接口时返回，服务时不返回
         :type Method: str
-        :param _MicroserviceId: 微服务Id
+        :param _MicroserviceId: 微服务ID
         :type MicroserviceId: str
         :param _MicroserviceName: 微服务名称
         :type MicroserviceName: str
@@ -49670,19 +51269,19 @@ class ServiceStatisticsResult(AbstractModel):
         :type InstanceId: str
         :param _InstanceName: 实例name
         :type InstanceName: str
-        :param _GroupId: 部署组id
+        :param _GroupId: 部署组ID
         :type GroupId: str
         :param _GroupName: 部署组name
         :type GroupName: str
-        :param _ClusterType: 部署组类型
+        :param _ClusterType: 集群类型，C：容器集群，V：虚拟机集群
         :type ClusterType: str
         :param _GroupExist: 部署组是否存在
         :type GroupExist: int
         :param _InstanceExist: 实例是否存在，仅限cvm
         :type InstanceExist: int
-        :param _ApplicationId: 应用id
+        :param _ApplicationId: 应用ID
         :type ApplicationId: str
-        :param _MicroserviceType: 微服务类型
+        :param _MicroserviceType: 微服务类型。RAW：裸应用，M：mesh应用，N：普通应用，G：网关应用
         :type MicroserviceType: str
         :param _CpuPercent: cpu使用率
         :type CpuPercent: int
@@ -49702,13 +51301,13 @@ class ServiceStatisticsResult(AbstractModel):
         :type InstanceOnlineCount: int
         :param _InstanceTotalCount: 实例总数
         :type InstanceTotalCount: int
-        :param _Status: normal/error
+        :param _Status: 状态。normal：正常，warn：警告，error：错误
         :type Status: str
-        :param _ErrorRateLevel: normal/warn/error
+        :param _ErrorRateLevel: 请求错误率等级。normal：正常，warn：警告，error：错误
         :type ErrorRateLevel: str
-        :param _AvgTimeConsumingLevel: normal/warn/error
+        :param _AvgTimeConsumingLevel: 请求平均耗时等级。normal：正常，warn：警告，error：错误
         :type AvgTimeConsumingLevel: str
-        :param _ApdexLevel: normal/warn/error
+        :param _ApdexLevel: 应用程序性能指数等级。normal：正常，warn：警告，error：错误
         :type ApdexLevel: str
         """
         self._Path = None
@@ -49766,7 +51365,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     @property
     def MicroserviceId(self):
-        """微服务Id
+        """微服务ID
         :rtype: str
         """
         return self._MicroserviceId
@@ -49854,7 +51453,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组id
+        """部署组ID
         :rtype: str
         """
         return self._GroupId
@@ -49876,7 +51475,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     @property
     def ClusterType(self):
-        """部署组类型
+        """集群类型，C：容器集群，V：虚拟机集群
         :rtype: str
         """
         return self._ClusterType
@@ -49909,7 +51508,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id
+        """应用ID
         :rtype: str
         """
         return self._ApplicationId
@@ -49920,7 +51519,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     @property
     def MicroserviceType(self):
-        """微服务类型
+        """微服务类型。RAW：裸应用，M：mesh应用，N：普通应用，G：网关应用
         :rtype: str
         """
         return self._MicroserviceType
@@ -50030,7 +51629,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     @property
     def Status(self):
-        """normal/error
+        """状态。normal：正常，warn：警告，error：错误
         :rtype: str
         """
         return self._Status
@@ -50041,7 +51640,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     @property
     def ErrorRateLevel(self):
-        """normal/warn/error
+        """请求错误率等级。normal：正常，warn：警告，error：错误
         :rtype: str
         """
         return self._ErrorRateLevel
@@ -50052,7 +51651,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     @property
     def AvgTimeConsumingLevel(self):
-        """normal/warn/error
+        """请求平均耗时等级。normal：正常，warn：警告，error：错误
         :rtype: str
         """
         return self._AvgTimeConsumingLevel
@@ -50063,7 +51662,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     @property
     def ApdexLevel(self):
-        """normal/warn/error
+        """应用程序性能指数等级。normal：正常，warn：警告，error：错误
         :rtype: str
         """
         return self._ApdexLevel
@@ -50235,14 +51834,14 @@ class ShrinkGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeGroups](https://cloud.tencent.com/document/api/649/36065)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/api/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -50316,9 +51915,9 @@ class ShrinkInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[获取虚拟机部署组列表](https://cloud.tencent.com/document/api/649/36065)接口时出参中的Result.Content.GroupId，或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-aaaaaaaa&tab=publish&subTab=group)选择对应应用进入应用部署页面查看，同时也是调用[创建部署组](https://cloud.tencent.com/document/api/649/36074)接口返回的Result值
         :type GroupId: str
-        :param _InstanceIdList: 下线机器实例ID列表
+        :param _InstanceIdList: 实例ID列表，实例ID可通过调用[查询虚拟机部署组云主机列表](https://cloud.tencent.com/document/product/649/36066)接口时出参中的Result.Content.InstanceId，或登录[控制台](https://console.cloud.tencent.com/tsf/resource-detail?rid=1&id=cluster-aaaaaaaa)选择对应的虚拟机集群查看云主机信息，同时也是[集群添加云主机](https://cloud.tencent.com/document/product/649/41225?ls=doc-search!current)接口的的返回值Result中的节点列表
         :type InstanceIdList: list of str
         """
         self._GroupId = None
@@ -50326,7 +51925,7 @@ class ShrinkInstancesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[获取虚拟机部署组列表](https://cloud.tencent.com/document/api/649/36065)接口时出参中的Result.Content.GroupId，或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-aaaaaaaa&tab=publish&subTab=group)选择对应应用进入应用部署页面查看，同时也是调用[创建部署组](https://cloud.tencent.com/document/api/649/36074)接口返回的Result值
         :rtype: str
         """
         return self._GroupId
@@ -50337,7 +51936,7 @@ class ShrinkInstancesRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
-        """下线机器实例ID列表
+        """实例ID列表，实例ID可通过调用[查询虚拟机部署组云主机列表](https://cloud.tencent.com/document/product/649/36066)接口时出参中的Result.Content.InstanceId，或登录[控制台](https://console.cloud.tencent.com/tsf/resource-detail?rid=1&id=cluster-aaaaaaaa)选择对应的虚拟机集群查看云主机信息，同时也是[集群添加云主机](https://cloud.tencent.com/document/product/649/41225?ls=doc-search!current)接口的的返回值Result中的节点列表
         :rtype: list of str
         """
         return self._InstanceIdList
@@ -50654,6 +52253,8 @@ class SimpleGroup(AbstractModel):
         :type GroupResourceType: str
         :param _AppMicroServiceType: 应用微服务类型
         :type AppMicroServiceType: str
+        :param _K8sNamespaceName: k8s 命名空间名称
+        :type K8sNamespaceName: str
         """
         self._GroupId = None
         self._GroupName = None
@@ -50668,6 +52269,7 @@ class SimpleGroup(AbstractModel):
         self._StartupParameters = None
         self._GroupResourceType = None
         self._AppMicroServiceType = None
+        self._K8sNamespaceName = None
 
     @property
     def GroupId(self):
@@ -50812,6 +52414,17 @@ class SimpleGroup(AbstractModel):
     def AppMicroServiceType(self, AppMicroServiceType):
         self._AppMicroServiceType = AppMicroServiceType
 
+    @property
+    def K8sNamespaceName(self):
+        """k8s 命名空间名称
+        :rtype: str
+        """
+        return self._K8sNamespaceName
+
+    @K8sNamespaceName.setter
+    def K8sNamespaceName(self, K8sNamespaceName):
+        self._K8sNamespaceName = K8sNamespaceName
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -50827,6 +52440,7 @@ class SimpleGroup(AbstractModel):
         self._StartupParameters = params.get("StartupParameters")
         self._GroupResourceType = params.get("GroupResourceType")
         self._AppMicroServiceType = params.get("AppMicroServiceType")
+        self._K8sNamespaceName = params.get("K8sNamespaceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50899,14 +52513,14 @@ class StartContainerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -50982,14 +52596,14 @@ class StartGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 按照【部署组ID】进行部署组启动，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """按照【部署组ID】进行部署组启动，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -51067,7 +52681,7 @@ class StdoutLogV2(AbstractModel):
         :type InstanceId: str
         :param _Content: 日志内容
         :type Content: str
-        :param _Timestamp: 日志时间戳
+        :param _Timestamp: 日志时间戳，单位毫秒
         :type Timestamp: int
         :param _InstanceIp: 实例IP
         :type InstanceIp: str
@@ -51101,7 +52715,7 @@ class StdoutLogV2(AbstractModel):
 
     @property
     def Timestamp(self):
-        """日志时间戳
+        """日志时间戳，单位毫秒
         :rtype: int
         """
         return self._Timestamp
@@ -51144,14 +52758,14 @@ class StopContainerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -51227,14 +52841,14 @@ class StopGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 按照【部署组ID】进行部署组删除，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID
+        """按照【部署组ID】进行部署组删除，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/product/649/36068)查询已创建的部署组列表或登录[控制台](https://console.cloud.tencent.com/tsf/app-detail?rid=1&id=application-zvw6zp9a&tab=publish&subTab=group)进行查看；也可以调用[CreateGroup](https://cloud.tencent.com/document/product/649/36074)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -51308,9 +52922,9 @@ class StopTaskBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchId: 批次ID
+        :param _BatchId: 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
         :type BatchId: str
-        :param _TaskId: 参数ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页面可以查看任务ID。
         :type TaskId: str
         """
         self._BatchId = None
@@ -51318,7 +52932,7 @@ class StopTaskBatchRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """批次ID
+        """任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
         :rtype: str
         """
         return self._BatchId
@@ -51329,7 +52943,7 @@ class StopTaskBatchRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """参数ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页面可以查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -51359,7 +52973,7 @@ class StopTaskBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作成功 or 失败
+        :param _Result: 返回 true 或 false。true：操作成功，false：操作失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -51369,7 +52983,7 @@ class StopTaskBatchResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作成功 or 失败
+        """返回 true 或 false。true：操作成功，false：操作失败
         :rtype: bool
         """
         return self._Result
@@ -51402,11 +53016,11 @@ class StopTaskExecuteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExecuteId: 任务执行ID
+        :param _ExecuteId: 任务执行ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
         :type ExecuteId: str
-        :param _BatchId: 任务批次ID
+        :param _BatchId: 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
         :type BatchId: str
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页面可以查看任务ID。
         :type TaskId: str
         """
         self._ExecuteId = None
@@ -51415,7 +53029,7 @@ class StopTaskExecuteRequest(AbstractModel):
 
     @property
     def ExecuteId(self):
-        """任务执行ID
+        """任务执行ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
         :rtype: str
         """
         return self._ExecuteId
@@ -51426,7 +53040,7 @@ class StopTaskExecuteRequest(AbstractModel):
 
     @property
     def BatchId(self):
-        """任务批次ID
+        """任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
         :rtype: str
         """
         return self._BatchId
@@ -51437,7 +53051,7 @@ class StopTaskExecuteRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页面可以查看任务ID。
         :rtype: str
         """
         return self._TaskId
@@ -51468,7 +53082,7 @@ class StopTaskExecuteResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作成功 or 失败
+        :param _Result: 返回 true 或 false。true：操作成功，false：操作失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -51478,7 +53092,7 @@ class StopTaskExecuteResponse(AbstractModel):
 
     @property
     def Result(self):
-        """操作成功 or 失败
+        """返回 true 或 false。true：操作成功，false：操作失败
         :rtype: bool
         """
         return self._Result
@@ -51562,29 +53176,29 @@ class TaskFlowEdge(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeId: 节点 ID
+        :param _NodeId: 节点 ID，节点类型为任务时为任务ID，节点类型为逻辑节点"且"时为 AND，为逻辑节点"或"时为 OR，节点类型为头节点时为字符串"head"
         :type NodeId: str
-        :param _ChildNodeId: 子节点 ID
+        :param _ChildNodeId: 子节点 ID，节点类型为任务时为任务ID，节点类型为逻辑节点"且"时为 AND，为逻辑节点"或"时为 OR
         :type ChildNodeId: str
         :param _CoreNode: 是否核心任务,Y/N
         :type CoreNode: str
-        :param _EdgeType: 边类型
+        :param _EdgeType: 边类型，上下游任务依赖触发关系。一共2个值，Y：成功触发，N：失败触发
         :type EdgeType: str
-        :param _NodeType: 任务节点类型
+        :param _NodeType: 任务节点类型，一共有4种类型，AND：逻辑节点且，OR：逻辑节点或，TASK：任务节点，START：头节点
         :type NodeType: str
         :param _PositionX: X轴坐标位置
         :type PositionX: str
         :param _PositionY: Y轴坐标位置
         :type PositionY: str
-        :param _GraphId: 图 ID
+        :param _GraphId: 图 ID，新建工作流时自动生成，不需要填写，查看工作流图时后端返回
         :type GraphId: str
-        :param _FlowId: 工作流 ID
+        :param _FlowId: 工作流 ID，新建工作流时自动生成，不需要填写，查看工作流图时后端返回
         :type FlowId: str
         :param _NodeName: 节点名称
         :type NodeName: str
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，新建工作流时不需要填写，查看工作流图时后端返回
         :type TaskId: str
-        :param _TaskLogId: 任务历史ID
+        :param _TaskLogId: 任务历史ID，新建工作流时不需要填写，查看工作流图时后端返回
         :type TaskLogId: str
         """
         self._NodeId = None
@@ -51602,7 +53216,7 @@ class TaskFlowEdge(AbstractModel):
 
     @property
     def NodeId(self):
-        """节点 ID
+        """节点 ID，节点类型为任务时为任务ID，节点类型为逻辑节点"且"时为 AND，为逻辑节点"或"时为 OR，节点类型为头节点时为字符串"head"
         :rtype: str
         """
         return self._NodeId
@@ -51613,7 +53227,7 @@ class TaskFlowEdge(AbstractModel):
 
     @property
     def ChildNodeId(self):
-        """子节点 ID
+        """子节点 ID，节点类型为任务时为任务ID，节点类型为逻辑节点"且"时为 AND，为逻辑节点"或"时为 OR
         :rtype: str
         """
         return self._ChildNodeId
@@ -51635,7 +53249,7 @@ class TaskFlowEdge(AbstractModel):
 
     @property
     def EdgeType(self):
-        """边类型
+        """边类型，上下游任务依赖触发关系。一共2个值，Y：成功触发，N：失败触发
         :rtype: str
         """
         return self._EdgeType
@@ -51646,7 +53260,7 @@ class TaskFlowEdge(AbstractModel):
 
     @property
     def NodeType(self):
-        """任务节点类型
+        """任务节点类型，一共有4种类型，AND：逻辑节点且，OR：逻辑节点或，TASK：任务节点，START：头节点
         :rtype: str
         """
         return self._NodeType
@@ -51679,7 +53293,7 @@ class TaskFlowEdge(AbstractModel):
 
     @property
     def GraphId(self):
-        """图 ID
+        """图 ID，新建工作流时自动生成，不需要填写，查看工作流图时后端返回
         :rtype: str
         """
         return self._GraphId
@@ -51690,7 +53304,7 @@ class TaskFlowEdge(AbstractModel):
 
     @property
     def FlowId(self):
-        """工作流 ID
+        """工作流 ID，新建工作流时自动生成，不需要填写，查看工作流图时后端返回
         :rtype: str
         """
         return self._FlowId
@@ -51712,7 +53326,7 @@ class TaskFlowEdge(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，新建工作流时不需要填写，查看工作流图时后端返回
         :rtype: str
         """
         return self._TaskId
@@ -51723,7 +53337,7 @@ class TaskFlowEdge(AbstractModel):
 
     @property
     def TaskLogId(self):
-        """任务历史ID
+        """任务历史ID，新建工作流时不需要填写，查看工作流图时后端返回
         :rtype: str
         """
         return self._TaskLogId
@@ -51935,21 +53549,21 @@ class TaskRecord(AbstractModel):
         :type TaskName: str
         :param _TaskType: 任务类型
         :type TaskType: str
-        :param _ExecuteType: 执行类型
+        :param _ExecuteType: 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
         :type ExecuteType: str
         :param _TaskContent: 任务内容，长度限制65535字节
         :type TaskContent: str
         :param _GroupId: 分组ID
         :type GroupId: str
-        :param _TimeOut: 超时时间
+        :param _TimeOut: 超时时间，单位：毫秒。
         :type TimeOut: int
         :param _RetryCount: 重试次数
         :type RetryCount: int
-        :param _RetryInterval: 重试间隔
+        :param _RetryInterval: 重试间隔，单位：毫秒。
         :type RetryInterval: int
         :param _TaskRule: 触发规则
         :type TaskRule: :class:`tencentcloud.tsf.v20180326.models.TaskRule`
-        :param _TaskState: 是否启用任务,ENABLED/DISABLED
+        :param _TaskState: 任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
         :type TaskState: str
         :param _TaskId: 任务ID
         :type TaskId: str
@@ -51967,7 +53581,7 @@ class TaskRecord(AbstractModel):
         :type BelongFlowIds: list of str
         :param _TaskLogId: 任务历史ID
         :type TaskLogId: str
-        :param _TriggerType: 触发类型
+        :param _TriggerType: 触发类型，一共3种类型，WorkFlow：工作流触发，Cron：定时触发，FixRate：周期触发
         :type TriggerType: str
         :param _TaskArgument: 任务参数，长度限制10000个字符
         :type TaskArgument: str
@@ -52017,7 +53631,7 @@ class TaskRecord(AbstractModel):
 
     @property
     def ExecuteType(self):
-        """执行类型
+        """任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
         :rtype: str
         """
         return self._ExecuteType
@@ -52050,7 +53664,7 @@ class TaskRecord(AbstractModel):
 
     @property
     def TimeOut(self):
-        """超时时间
+        """超时时间，单位：毫秒。
         :rtype: int
         """
         return self._TimeOut
@@ -52072,7 +53686,7 @@ class TaskRecord(AbstractModel):
 
     @property
     def RetryInterval(self):
-        """重试间隔
+        """重试间隔，单位：毫秒。
         :rtype: int
         """
         return self._RetryInterval
@@ -52094,7 +53708,7 @@ class TaskRecord(AbstractModel):
 
     @property
     def TaskState(self):
-        """是否启用任务,ENABLED/DISABLED
+        """任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
         :rtype: str
         """
         return self._TaskState
@@ -52193,7 +53807,7 @@ class TaskRecord(AbstractModel):
 
     @property
     def TriggerType(self):
-        """触发类型
+        """触发类型，一共3种类型，WorkFlow：工作流触发，Cron：定时触发，FixRate：周期触发
         :rtype: str
         """
         return self._TriggerType
@@ -52317,7 +53931,7 @@ class TaskRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleType: 触发规则类型, Cron/Repeat
+        :param _RuleType: 触发规则类型，枚举值。一共3个值，Cron：定时触发，Repeat：周期触发，WorkFlow：工作流触发
         :type RuleType: str
         :param _Expression: Cron类型规则，cron表达式。
         :type Expression: str
@@ -52331,7 +53945,7 @@ class TaskRule(AbstractModel):
 
     @property
     def RuleType(self):
-        """触发规则类型, Cron/Repeat
+        """触发规则类型，枚举值。一共3个值，Cron：定时触发，Repeat：周期触发，WorkFlow：工作流触发
         :rtype: str
         """
         return self._RuleType
@@ -52481,14 +54095,14 @@ class TerminateTaskFlowBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowBatchId: 工作流批次 ID
+        :param _FlowBatchId: 工作流批次 ID，在[工作流执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=taskflow)列表页第一列获取。
         :type FlowBatchId: str
         """
         self._FlowBatchId = None
 
     @property
     def FlowBatchId(self):
-        """工作流批次 ID
+        """工作流批次 ID，在[工作流执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=taskflow)列表页第一列获取。
         :rtype: str
         """
         return self._FlowBatchId
@@ -52517,7 +54131,7 @@ class TerminateTaskFlowBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 是否停止成功
+        :param _Result: 是否停止成功，true：停止成功，false：停止失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -52527,7 +54141,7 @@ class TerminateTaskFlowBatchResponse(AbstractModel):
 
     @property
     def Result(self):
-        """是否停止成功
+        """是否停止成功，true：停止成功，false：停止失败
         :rtype: bool
         """
         return self._Result
@@ -52786,7 +54400,9 @@ class TsfConfigCenter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigType: 配置中心类型
+        :param _ConfigType: 配置中心类型。
+- SHARE：共享型
+- EXCLUSIVE：独占型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigType: str
         :param _ConfigCenterInstanceId: 配置中心实例id
@@ -52818,7 +54434,9 @@ class TsfConfigCenter(AbstractModel):
 
     @property
     def ConfigType(self):
-        """配置中心类型
+        """配置中心类型。
+- SHARE：共享型
+- EXCLUSIVE：独占型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53172,7 +54790,7 @@ class TsfPageBusinessLogV2(AbstractModel):
         :param _ScrollId: 游标ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScrollId: str
-        :param _Status: 查询状态
+        :param _Status: 查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _SearchAfter: 查询es时，使用searchAfter返回的游标
@@ -53220,7 +54838,7 @@ class TsfPageBusinessLogV2(AbstractModel):
 
     @property
     def Status(self):
-        """查询状态
+        """查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53942,6 +55560,66 @@ class TsfPageInstance(AbstractModel):
         
 
 
+class TsfPageLicenseTag(AbstractModel):
+    """LicenseTag 翻页对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Content: 记录实体列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of LicenseTag
+        """
+        self._TotalCount = None
+        self._Content = None
+
+    @property
+    def TotalCount(self):
+        """记录总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Content(self):
+        """记录实体列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LicenseTag
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = LicenseTag()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TsfPageMicroservice(AbstractModel):
     """微服务列表信息
 
@@ -54244,10 +55922,10 @@ class TsfPageStdoutLogV2(AbstractModel):
         :param _ScrollId: 游标ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScrollId: str
-        :param _Status: 查询状态
+        :param _Status: 查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _SearchAfter: 游标ID
+        :param _SearchAfter: 查询es使用searchAfter时，游标
         :type SearchAfter: list of str
         """
         self._TotalCount = None
@@ -54292,7 +55970,7 @@ class TsfPageStdoutLogV2(AbstractModel):
 
     @property
     def Status(self):
-        """查询状态
+        """查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54304,7 +55982,7 @@ class TsfPageStdoutLogV2(AbstractModel):
 
     @property
     def SearchAfter(self):
-        """游标ID
+        """查询es使用searchAfter时，游标
         :rtype: list of str
         """
         return self._SearchAfter
@@ -55784,15 +57462,19 @@ class UpdateConfigTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigTemplateId: 配置模板id
+        :param _ConfigTemplateId: 配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
         :type ConfigTemplateId: str
-        :param _ConfigTemplateName: 配置模板名称
+        :param _ConfigTemplateName: 配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :type ConfigTemplateName: str
-        :param _ConfigTemplateType: 配置模板对应的微服务框架
+        :param _ConfigTemplateType: 配置模板对应的微服务框架。
+- Ribbon：Ribbon类型配置模板
+- Hystrix：Hystrix类型配置模板
+- Zuul：Zuul类型配置模板
+- customize：自定义类型配置模板
         :type ConfigTemplateType: str
-        :param _ConfigTemplateValue: 配置模板数据
+        :param _ConfigTemplateValue: 配置模板数据。
         :type ConfigTemplateValue: str
-        :param _ConfigTemplateDesc: 配置模板描述
+        :param _ConfigTemplateDesc: 配置模板描述，最多支持200个字符。
         :type ConfigTemplateDesc: str
         """
         self._ConfigTemplateId = None
@@ -55803,7 +57485,7 @@ class UpdateConfigTemplateRequest(AbstractModel):
 
     @property
     def ConfigTemplateId(self):
-        """配置模板id
+        """配置模板ID。该参数可以通过调用 [DescribeConfigTemplate](https://cloud.tencent.com/document/product/649/85856) 的返回值中的 ConfigTemplateId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?subTab=template)查看；也可以调用[CreateConfigTemplate](https://cloud.tencent.com/document/product/649/85861)创建新的配置模板。
         :rtype: str
         """
         return self._ConfigTemplateId
@@ -55814,7 +57496,7 @@ class UpdateConfigTemplateRequest(AbstractModel):
 
     @property
     def ConfigTemplateName(self):
-        """配置模板名称
+        """配置模板名称，最多支持60个字符，只能包含字母、数字及分隔符（“-”），且不能以分隔符开头或结尾。
         :rtype: str
         """
         return self._ConfigTemplateName
@@ -55825,7 +57507,11 @@ class UpdateConfigTemplateRequest(AbstractModel):
 
     @property
     def ConfigTemplateType(self):
-        """配置模板对应的微服务框架
+        """配置模板对应的微服务框架。
+- Ribbon：Ribbon类型配置模板
+- Hystrix：Hystrix类型配置模板
+- Zuul：Zuul类型配置模板
+- customize：自定义类型配置模板
         :rtype: str
         """
         return self._ConfigTemplateType
@@ -55836,7 +57522,7 @@ class UpdateConfigTemplateRequest(AbstractModel):
 
     @property
     def ConfigTemplateValue(self):
-        """配置模板数据
+        """配置模板数据。
         :rtype: str
         """
         return self._ConfigTemplateValue
@@ -55847,7 +57533,7 @@ class UpdateConfigTemplateRequest(AbstractModel):
 
     @property
     def ConfigTemplateDesc(self):
-        """配置模板描述
+        """配置模板描述，最多支持200个字符。
         :rtype: str
         """
         return self._ConfigTemplateDesc
@@ -55880,7 +57566,9 @@ class UpdateConfigTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 更新成功: true / 更新失败: false
+        :param _Result: 更新结果。
+- true：成功
+- false：失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -55890,7 +57578,9 @@ class UpdateConfigTemplateResponse(AbstractModel):
 
     @property
     def Result(self):
-        """更新成功: true / 更新失败: false
+        """更新结果。
+- true：成功
+- false：失败
         :rtype: bool
         """
         return self._Result
@@ -56077,7 +57767,7 @@ class UpdateHealthCheckSettingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         :param _EnableHealthCheck: 是否开启健康检查
         :type EnableHealthCheck: bool
@@ -56090,7 +57780,7 @@ class UpdateHealthCheckSettingsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -56192,7 +57882,7 @@ class UpdateRepositoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RepositoryId: 仓库ID
+        :param _RepositoryId: 仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :type RepositoryId: str
         :param _RepositoryDesc: 仓库描述
         :type RepositoryDesc: str
@@ -56202,7 +57892,7 @@ class UpdateRepositoryRequest(AbstractModel):
 
     @property
     def RepositoryId(self):
-        """仓库ID
+        """仓库ID，可通过调用[仓库信息查询类](https://cloud.tencent.com/document/api/649/45925)接口时出参中的RepositoryId，或登录[控制台](https://console.cloud.tencent.com/tsf/product?rid=1)进行查看
         :rtype: str
         """
         return self._RepositoryId
@@ -57254,7 +58944,7 @@ class VmGroupOther(AbstractModel):
         :type RunInstanceCount: int
         :param _OffInstanceCount: 部署组中停止实例数
         :type OffInstanceCount: int
-        :param _GroupStatus: 部署组状态
+        :param _GroupStatus: 部署组状态，Running运行中，Waiting等待中，Paused暂停中，Updating更新中，RollingBack回滚中，Abnormal异常，Unknown未知
         :type GroupStatus: str
         :param _IsNotEqualServiceConfig: 服务配置信息是否匹配
         :type IsNotEqualServiceConfig: bool
@@ -57355,7 +59045,7 @@ class VmGroupOther(AbstractModel):
 
     @property
     def GroupStatus(self):
-        """部署组状态
+        """部署组状态，Running运行中，Waiting等待中，Paused暂停中，Updating更新中，RollingBack回滚中，Abnormal异常，Unknown未知
         :rtype: str
         """
         return self._GroupStatus
@@ -57702,6 +59392,110 @@ class VmGroupSimple(AbstractModel):
         
 
 
+class VmInstanceResourceConfig(AbstractModel):
+    """虚拟机实例相关的参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImportMode: 实例导入方式，可多个，公有云为 ["R", "M"]，独立版的取值仅有 "M" 脚本模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportMode: list of str
+        """
+        self._ImportMode = None
+
+    @property
+    def ImportMode(self):
+        """实例导入方式，可多个，公有云为 ["R", "M"]，独立版的取值仅有 "M" 脚本模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ImportMode
+
+    @ImportMode.setter
+    def ImportMode(self, ImportMode):
+        self._ImportMode = ImportMode
+
+
+    def _deserialize(self, params):
+        self._ImportMode = params.get("ImportMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeClaimTemplatesOption(AbstractModel):
+    """VolumeClaim模板项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageClass: StorageClass名称
+        :type StorageClass: str
+        :param _AccessModes: 访问模式
+        :type AccessModes: list of str
+        :param _StorageRequest: 卷空间的预占声明
+        :type StorageRequest: int
+        """
+        self._StorageClass = None
+        self._AccessModes = None
+        self._StorageRequest = None
+
+    @property
+    def StorageClass(self):
+        """StorageClass名称
+        :rtype: str
+        """
+        return self._StorageClass
+
+    @StorageClass.setter
+    def StorageClass(self, StorageClass):
+        self._StorageClass = StorageClass
+
+    @property
+    def AccessModes(self):
+        """访问模式
+        :rtype: list of str
+        """
+        return self._AccessModes
+
+    @AccessModes.setter
+    def AccessModes(self, AccessModes):
+        self._AccessModes = AccessModes
+
+    @property
+    def StorageRequest(self):
+        """卷空间的预占声明
+        :rtype: int
+        """
+        return self._StorageRequest
+
+    @StorageRequest.setter
+    def StorageRequest(self, StorageRequest):
+        self._StorageRequest = StorageRequest
+
+
+    def _deserialize(self, params):
+        self._StorageClass = params.get("StorageClass")
+        self._AccessModes = params.get("AccessModes")
+        self._StorageRequest = params.get("StorageRequest")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VolumeInfo(AbstractModel):
     """容器卷挂载信息
 
@@ -57719,12 +59513,15 @@ class VolumeInfo(AbstractModel):
         :type ConfigMapOptions: list of ConfigMapOption
         :param _EmptyDirOption: -
         :type EmptyDirOption: :class:`tencentcloud.tsf.v20180326.models.EmptyDirOption`
+        :param _VolumeClaimTemplateOption: 数据卷PVC声明模板
+        :type VolumeClaimTemplateOption: :class:`tencentcloud.tsf.v20180326.models.VolumeClaimTemplatesOption`
         """
         self._VolumeType = None
         self._VolumeName = None
         self._VolumeConfig = None
         self._ConfigMapOptions = None
         self._EmptyDirOption = None
+        self._VolumeClaimTemplateOption = None
 
     @property
     def VolumeType(self):
@@ -57781,6 +59578,17 @@ class VolumeInfo(AbstractModel):
     def EmptyDirOption(self, EmptyDirOption):
         self._EmptyDirOption = EmptyDirOption
 
+    @property
+    def VolumeClaimTemplateOption(self):
+        """数据卷PVC声明模板
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.VolumeClaimTemplatesOption`
+        """
+        return self._VolumeClaimTemplateOption
+
+    @VolumeClaimTemplateOption.setter
+    def VolumeClaimTemplateOption(self, VolumeClaimTemplateOption):
+        self._VolumeClaimTemplateOption = VolumeClaimTemplateOption
+
 
     def _deserialize(self, params):
         self._VolumeType = params.get("VolumeType")
@@ -57795,6 +59603,9 @@ class VolumeInfo(AbstractModel):
         if params.get("EmptyDirOption") is not None:
             self._EmptyDirOption = EmptyDirOption()
             self._EmptyDirOption._deserialize(params.get("EmptyDirOption"))
+        if params.get("VolumeClaimTemplateOption") is not None:
+            self._VolumeClaimTemplateOption = VolumeClaimTemplatesOption()
+            self._VolumeClaimTemplateOption._deserialize(params.get("VolumeClaimTemplateOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57895,7 +59706,7 @@ class WarmupSetting(AbstractModel):
         r"""
         :param _Enabled: 是否开启预热
         :type Enabled: bool
-        :param _WarmupTime: 预热时间
+        :param _WarmupTime: 预热时间，单位秒
         :type WarmupTime: int
         :param _Curvature: 预热曲率，取值 1~5
         :type Curvature: int
@@ -57920,7 +59731,7 @@ class WarmupSetting(AbstractModel):
 
     @property
     def WarmupTime(self):
-        """预热时间
+        """预热时间，单位秒
         :rtype: int
         """
         return self._WarmupTime

@@ -1475,6 +1475,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeResourceToShareMember(self, request):
+        """获取与我共享的资源列表。
+
+        :param request: Request instance for DescribeResourceToShareMember.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeResourceToShareMemberRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeResourceToShareMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceToShareMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceToShareMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeShareAreas(self, request):
         """获取可共享地域列表
 

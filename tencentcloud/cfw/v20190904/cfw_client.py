@@ -325,31 +325,6 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateIdsWhiteRule(self, request):
-        """CreateIdsWhiteRule
-
-        创建入侵防御规则白名单接口
-
-        :param request: Request instance for CreateIdsWhiteRule.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateIdsWhiteRuleRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateIdsWhiteRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateIdsWhiteRule", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateIdsWhiteRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateNatFwInstance(self, request):
         """创建NAT防火墙实例（Region参数必填）
 
@@ -548,31 +523,6 @@ class CfwClient(AbstractClient):
             body = self.call("DeleteBlockIgnoreRuleNew", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteBlockIgnoreRuleNewResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteIdsWhiteRule(self, request):
-        """历史方案，业务已迁移，接口不再适用
-
-        删除入侵防御规则白名单接口
-
-        :param request: Request instance for DeleteIdsWhiteRule.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteIdsWhiteRuleRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteIdsWhiteRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteIdsWhiteRule", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteIdsWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1125,31 +1075,6 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeIPStatusList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIPStatusListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeIdsWhiteRule(self, request):
-        """历史方案，业务已迁移，接口不再适用
-
-        查询入侵防御规则白名单接口
-
-        :param request: Request instance for DescribeIdsWhiteRule.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeIdsWhiteRuleRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeIdsWhiteRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeIdsWhiteRule", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeIdsWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

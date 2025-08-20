@@ -27,28 +27,21 @@ class Address(AbstractModel):
         r"""
         :param _Addr: 地址值：只支持ipv4、ipv6和域名格式；
 不支持回环地址、保留地址、内网地址与腾讯保留网段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Addr: str
         :param _IsEnable: 是否启用:DISABLED不启用；ENABLED启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsEnable: str
         :param _AddressId: 地址id
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressId: int
         :param _Location: 地址名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
         :param _Status: OK正常，DOWN故障，WARN风险，UNKNOWN探测中，UNMONITORED未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Weight: 权重，流量策略为WEIGHT时，必填；范围1-100
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         :param _CreatedOn: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedOn: str
         :param _UpdatedOn: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedOn: str
         """
         self._Addr = None
@@ -64,7 +57,6 @@ class Address(AbstractModel):
     def Addr(self):
         """地址值：只支持ipv4、ipv6和域名格式；
 不支持回环地址、保留地址、内网地址与腾讯保留网段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Addr
@@ -76,7 +68,6 @@ class Address(AbstractModel):
     @property
     def IsEnable(self):
         """是否启用:DISABLED不启用；ENABLED启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsEnable
@@ -88,7 +79,6 @@ class Address(AbstractModel):
     @property
     def AddressId(self):
         """地址id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AddressId
@@ -100,7 +90,6 @@ class Address(AbstractModel):
     @property
     def Location(self):
         """地址名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Location
@@ -112,7 +101,6 @@ class Address(AbstractModel):
     @property
     def Status(self):
         """OK正常，DOWN故障，WARN风险，UNKNOWN探测中，UNMONITORED未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -136,7 +124,6 @@ class Address(AbstractModel):
     @property
     def CreatedOn(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedOn
@@ -148,7 +135,6 @@ class Address(AbstractModel):
     @property
     def UpdatedOn(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedOn
@@ -185,10 +171,8 @@ class AddressLocation(AbstractModel):
     def __init__(self):
         r"""
         :param _Addr: ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Addr: str
         :param _Location: 所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
         """
         self._Addr = None
@@ -197,7 +181,6 @@ class AddressLocation(AbstractModel):
     @property
     def Addr(self):
         """ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Addr
@@ -209,7 +192,6 @@ class AddressLocation(AbstractModel):
     @property
     def Location(self):
         """所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Location
@@ -240,31 +222,23 @@ class AddressPool(AbstractModel):
     def __init__(self):
         r"""
         :param _PoolId: 地址池 id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoolId: int
         :param _PoolName: 地址池名
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoolName: str
         :param _AddrType: 地址池地址类型：IPV4、IPV6、DOMAIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddrType: str
         :param _TrafficStrategy: 流量策略: WEIGHT负载均衡，ALL解析全部
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrafficStrategy: str
         :param _MonitorId: 监控器id
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorId: int
         :param _Status: OK正常，DOWN故障，WARN风险，UNKNOWN未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _AddressNum: 地址数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressNum: int
         :param _MonitorGroupNum: 探点数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorGroupNum: int
         :param _MonitorTaskNum: 探测任务数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorTaskNum: int
         :param _InstanceInfo: 实例相关信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -273,10 +247,8 @@ class AddressPool(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressSet: list of Address
         :param _CreatedOn: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedOn: str
         :param _UpdatedOn: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedOn: str
         """
         self._PoolId = None
@@ -296,7 +268,6 @@ class AddressPool(AbstractModel):
     @property
     def PoolId(self):
         """地址池 id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PoolId
@@ -308,7 +279,6 @@ class AddressPool(AbstractModel):
     @property
     def PoolName(self):
         """地址池名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PoolName
@@ -320,7 +290,6 @@ class AddressPool(AbstractModel):
     @property
     def AddrType(self):
         """地址池地址类型：IPV4、IPV6、DOMAIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddrType
@@ -332,7 +301,6 @@ class AddressPool(AbstractModel):
     @property
     def TrafficStrategy(self):
         """流量策略: WEIGHT负载均衡，ALL解析全部
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrafficStrategy
@@ -356,7 +324,6 @@ class AddressPool(AbstractModel):
     @property
     def Status(self):
         """OK正常，DOWN故障，WARN风险，UNKNOWN未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -368,7 +335,6 @@ class AddressPool(AbstractModel):
     @property
     def AddressNum(self):
         """地址数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AddressNum
@@ -380,7 +346,6 @@ class AddressPool(AbstractModel):
     @property
     def MonitorGroupNum(self):
         """探点数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorGroupNum
@@ -392,7 +357,6 @@ class AddressPool(AbstractModel):
     @property
     def MonitorTaskNum(self):
         """探测任务数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorTaskNum
@@ -428,7 +392,6 @@ class AddressPool(AbstractModel):
     @property
     def CreatedOn(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedOn
@@ -440,7 +403,6 @@ class AddressPool(AbstractModel):
     @property
     def UpdatedOn(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedOn
@@ -492,25 +454,19 @@ class AddressPoolDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _PoolId: 地址池 id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoolId: int
         :param _PoolName: 地址池名
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoolName: str
         :param _AddrType: 地址池地址类型：IPV4、IPV6、DOMAIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddrType: str
         :param _TrafficStrategy: 流量策略: WEIGHT负载均衡，ALL解析全部
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrafficStrategy: str
         :param _MonitorId: 监控器id
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorId: int
         :param _CreatedOn: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedOn: str
         :param _UpdatedOn: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedOn: str
         """
         self._PoolId = None
@@ -524,7 +480,6 @@ class AddressPoolDetail(AbstractModel):
     @property
     def PoolId(self):
         """地址池 id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PoolId
@@ -536,7 +491,6 @@ class AddressPoolDetail(AbstractModel):
     @property
     def PoolName(self):
         """地址池名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PoolName
@@ -548,7 +502,6 @@ class AddressPoolDetail(AbstractModel):
     @property
     def AddrType(self):
         """地址池地址类型：IPV4、IPV6、DOMAIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddrType
@@ -560,7 +513,6 @@ class AddressPoolDetail(AbstractModel):
     @property
     def TrafficStrategy(self):
         """流量策略: WEIGHT负载均衡，ALL解析全部
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrafficStrategy
@@ -584,7 +536,6 @@ class AddressPoolDetail(AbstractModel):
     @property
     def CreatedOn(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedOn
@@ -596,7 +547,6 @@ class AddressPoolDetail(AbstractModel):
     @property
     def UpdatedOn(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedOn
@@ -831,7 +781,7 @@ ULTIMATE：旗舰版
         :type AccessSubDomain: str
         :param _Remark: 备注
         :type Remark: str
-        :param _ResourceId: 套餐资源id，必填
+        :param _ResourceId: 套餐资源id
         :type ResourceId: str
         """
         self._Domain = None
@@ -938,7 +888,7 @@ ULTIMATE：旗舰版
 
     @property
     def ResourceId(self):
-        """套餐资源id，必填
+        """套餐资源id
         :rtype: str
         """
         return self._ResourceId
@@ -1280,7 +1230,6 @@ class CreateMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MonitorId: 监控器id
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1291,7 +1240,6 @@ class CreateMonitorResponse(AbstractModel):
     @property
     def MonitorId(self):
         """监控器id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorId
@@ -1466,7 +1414,6 @@ class CreateStrategyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _StrategyId: 新增策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1477,7 +1424,6 @@ class CreateStrategyResponse(AbstractModel):
     @property
     def StrategyId(self):
         """新增策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StrategyId
@@ -1547,7 +1493,6 @@ class DeleteAddressPoolResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1558,7 +1503,6 @@ class DeleteAddressPoolResponse(AbstractModel):
     @property
     def Msg(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -1628,7 +1572,6 @@ class DeleteMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 成功返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1639,7 +1582,6 @@ class DeleteMonitorResponse(AbstractModel):
     @property
     def Msg(self):
         """成功返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -1724,7 +1666,6 @@ class DeleteStrategyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1735,7 +1676,6 @@ class DeleteStrategyResponse(AbstractModel):
     @property
     def Msg(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -1805,7 +1745,6 @@ class DescribeAddressLocationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AddressLocation: 所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressLocation: list of AddressLocation
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1816,7 +1755,6 @@ class DescribeAddressLocationResponse(AbstractModel):
     @property
     def AddressLocation(self):
         """所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AddressLocation
         """
         return self._AddressLocation
@@ -1891,10 +1829,8 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AddressPool: 资源组详情描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressPool: :class:`tencentcloud.igtm.v20231024.models.AddressPoolDetail`
         :param _AddressSet: 资源组中的资源列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressSet: list of Address
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1906,7 +1842,6 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
     @property
     def AddressPool(self):
         """资源组详情描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.igtm.v20231024.models.AddressPoolDetail`
         """
         return self._AddressPool
@@ -1918,7 +1853,6 @@ class DescribeAddressPoolDetailResponse(AbstractModel):
     @property
     def AddressSet(self):
         """资源组中的资源列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Address
         """
         return self._AddressSet
@@ -2031,10 +1965,8 @@ class DescribeAddressPoolListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AddressPoolSet: 资源组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressPoolSet: list of AddressPool
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2046,7 +1978,6 @@ class DescribeAddressPoolListResponse(AbstractModel):
     @property
     def AddressPoolSet(self):
         """资源组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AddressPool
         """
         return self._AddressPoolSet
@@ -2058,7 +1989,6 @@ class DescribeAddressPoolListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -2147,7 +2077,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
         :type IsExpire: int
         :param _Status: 状态 ENABLED: 正常 ISOLATED: 隔离 DESTROYED：销毁 REFUNDED：已退款
         :type Status: str
-        :param _AutoRenewFlag: 是否自动续费0不1是
+        :param _AutoRenewFlag: 是否自动续费：0否1是
         :type AutoRenewFlag: int
         :param _Remark: 备注
         :type Remark: str
@@ -2250,7 +2180,7 @@ class DescribeDetectPackageDetailResponse(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """是否自动续费0不1是
+        """是否自动续费：0否1是
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2711,13 +2641,10 @@ class DescribeInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceSet: 实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceSet: list of Instance
         :param _TotalCount: 列表总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _SystemAccessEnabled: 是否支持系统域名接入：true支持；false不支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type SystemAccessEnabled: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2730,7 +2657,6 @@ class DescribeInstanceListResponse(AbstractModel):
     @property
     def InstanceSet(self):
         """实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Instance
         """
         return self._InstanceSet
@@ -2742,7 +2668,6 @@ class DescribeInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """列表总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -2754,7 +2679,6 @@ class DescribeInstanceListResponse(AbstractModel):
     @property
     def SystemAccessEnabled(self):
         """是否支持系统域名接入：true支持；false不支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SystemAccessEnabled
@@ -2965,7 +2889,6 @@ class DescribeMonitorDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MonitorDetail: 探测规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorDetail: :class:`tencentcloud.igtm.v20231024.models.MonitorDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2976,7 +2899,6 @@ class DescribeMonitorDetailResponse(AbstractModel):
     @property
     def MonitorDetail(self):
         """探测规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.igtm.v20231024.models.MonitorDetail`
         """
         return self._MonitorDetail
@@ -3078,7 +3000,6 @@ class DescribeMonitorsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MonitorDataSet: 监控器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorDataSet: list of MonitorDetail
         :param _TotalCount: 数量
         :type TotalCount: int
@@ -3092,7 +3013,6 @@ class DescribeMonitorsResponse(AbstractModel):
     @property
     def MonitorDataSet(self):
         """监控器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MonitorDetail
         """
         return self._MonitorDataSet
@@ -3179,7 +3099,6 @@ class DescribeQuotasResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Quotas: 配额id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Quotas: :class:`tencentcloud.igtm.v20231024.models.Quota`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3190,7 +3109,6 @@ class DescribeQuotasResponse(AbstractModel):
     @property
     def Quotas(self):
         """配额id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.igtm.v20231024.models.Quota`
         """
         return self._Quotas
@@ -3408,10 +3326,8 @@ class DescribeStrategyListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _StrategySet: 策略列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategySet: list of Strategy
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3423,7 +3339,6 @@ class DescribeStrategyListResponse(AbstractModel):
     @property
     def StrategySet(self):
         """策略列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Strategy
         """
         return self._StrategySet
@@ -3435,7 +3350,6 @@ class DescribeStrategyListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -3776,28 +3690,20 @@ class GroupLine(AbstractModel):
     def __init__(self):
         r"""
         :param _DnsLineId: 分组线路id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DnsLineId: int
         :param _Parent: 父节点 0为根节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type Parent: int
         :param _LineName: 线路名
-注意：此字段可能返回 null，表示取不到有效值。
         :type LineName: str
         :param _LineId: 10=9 DNSPod 线路 id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LineId: str
         :param _Useful: 是否已使用过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Useful: bool
         :param _SubGroup: 0为未使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubGroup: int
         :param _LinePackage: 权限标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type LinePackage: int
         :param _Weight: 1
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         """
         self._DnsLineId = None
@@ -3812,7 +3718,6 @@ class GroupLine(AbstractModel):
     @property
     def DnsLineId(self):
         """分组线路id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DnsLineId
@@ -3824,7 +3729,6 @@ class GroupLine(AbstractModel):
     @property
     def Parent(self):
         """父节点 0为根节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Parent
@@ -3836,7 +3740,6 @@ class GroupLine(AbstractModel):
     @property
     def LineName(self):
         """线路名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LineName
@@ -3848,7 +3751,6 @@ class GroupLine(AbstractModel):
     @property
     def LineId(self):
         """10=9 DNSPod 线路 id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LineId
@@ -3860,7 +3762,6 @@ class GroupLine(AbstractModel):
     @property
     def Useful(self):
         """是否已使用过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Useful
@@ -3872,7 +3773,6 @@ class GroupLine(AbstractModel):
     @property
     def SubGroup(self):
         """0为未使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubGroup
@@ -3884,7 +3784,6 @@ class GroupLine(AbstractModel):
     @property
     def LinePackage(self):
         """权限标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LinePackage
@@ -3896,7 +3795,6 @@ class GroupLine(AbstractModel):
     @property
     def Weight(self):
         """1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Weight
@@ -3937,7 +3835,6 @@ class Instance(AbstractModel):
         :param _InstanceName: 实例名
         :type InstanceName: str
         :param _ResourceId: 资源 id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _Domain: 业务域名
         :type Domain: str
@@ -3955,39 +3852,28 @@ SYSTEM: 系统接入域名
 FREE: 免费版
 STANDARD：标准版
 ULTIMATE：旗舰版
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param _WorkingStatus: 实例运行状态
 NORMAL: 健康
 FAULTY: 有风险
 DOWN: 宕机
 UNKNOWN: 未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkingStatus: str
-        :param _Status: 实例状态
-ENABLED: 正常
-DISABLED: 禁用
+        :param _Status: 实例状态，ENABLED: 正常，DISABLED: 禁用
         :type Status: str
         :param _IsCnameConfigured: 是否cname接入：true已接入；false未接入
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCnameConfigured: bool
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _StrategyNum: 策略数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyNum: int
         :param _AddressPoolNum: 绑定地址池个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressPoolNum: int
         :param _MonitorNum: 绑定监控器数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorNum: int
         :param _PoolId: 地址池id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoolId: int
         :param _PoolName: 地址池名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoolName: str
         :param _CreatedOn: 实例创建时间
         :type CreatedOn: str
@@ -4040,7 +3926,6 @@ DISABLED: 禁用
     @property
     def ResourceId(self):
         """资源 id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -4112,7 +3997,6 @@ SYSTEM: 系统接入域名
 FREE: 免费版
 STANDARD：标准版
 ULTIMATE：旗舰版
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageType
@@ -4128,7 +4012,6 @@ NORMAL: 健康
 FAULTY: 有风险
 DOWN: 宕机
 UNKNOWN: 未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkingStatus
@@ -4139,9 +4022,7 @@ UNKNOWN: 未知
 
     @property
     def Status(self):
-        """实例状态
-ENABLED: 正常
-DISABLED: 禁用
+        """实例状态，ENABLED: 正常，DISABLED: 禁用
         :rtype: str
         """
         return self._Status
@@ -4153,7 +4034,6 @@ DISABLED: 禁用
     @property
     def IsCnameConfigured(self):
         """是否cname接入：true已接入；false未接入
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCnameConfigured
@@ -4165,7 +4045,6 @@ DISABLED: 禁用
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -4177,7 +4056,6 @@ DISABLED: 禁用
     @property
     def StrategyNum(self):
         """策略数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StrategyNum
@@ -4189,7 +4067,6 @@ DISABLED: 禁用
     @property
     def AddressPoolNum(self):
         """绑定地址池个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AddressPoolNum
@@ -4201,7 +4078,6 @@ DISABLED: 禁用
     @property
     def MonitorNum(self):
         """绑定监控器数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorNum
@@ -4213,7 +4089,6 @@ DISABLED: 禁用
     @property
     def PoolId(self):
         """地址池id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PoolId
@@ -4225,7 +4100,6 @@ DISABLED: 禁用
     @property
     def PoolName(self):
         """地址池名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PoolName
@@ -4299,17 +4173,15 @@ class InstanceConfig(AbstractModel):
         :type InstanceName: str
         :param _Domain: 业务域名
         :type Domain: str
-        :param _AccessType: CUSTOM: 自定义接入域名
-SYSTEM: 系统接入域名
+        :param _AccessType: CUSTOM: 自定义接入域名，SYSTEM: 系统接入域名
         :type AccessType: str
         :param _Remark: 备注
         :type Remark: str
         :param _GlobalTtl: 全局记录过期时间	
         :type GlobalTtl: int
-        :param _AccessDomain: 接入主域名，自定义接入域名时必填
-
+        :param _AccessDomain: 接入主域名
         :type AccessDomain: str
-        :param _AccessSubDomain: 接入子域名，自定义接入域名时必填
+        :param _AccessSubDomain: 接入子域名
         :type AccessSubDomain: str
         """
         self._InstanceName = None
@@ -4344,8 +4216,7 @@ SYSTEM: 系统接入域名
 
     @property
     def AccessType(self):
-        """CUSTOM: 自定义接入域名
-SYSTEM: 系统接入域名
+        """CUSTOM: 自定义接入域名，SYSTEM: 系统接入域名
         :rtype: str
         """
         return self._AccessType
@@ -4378,8 +4249,7 @@ SYSTEM: 系统接入域名
 
     @property
     def AccessDomain(self):
-        """接入主域名，自定义接入域名时必填
-
+        """接入主域名
         :rtype: str
         """
         return self._AccessDomain
@@ -4390,7 +4260,7 @@ SYSTEM: 系统接入域名
 
     @property
     def AccessSubDomain(self):
-        """接入子域名，自定义接入域名时必填
+        """接入子域名
         :rtype: str
         """
         return self._AccessSubDomain
@@ -4445,7 +4315,6 @@ SYSTEM: 系统接入域名
 FREE: 免费版
 STANDARD：标准版
 ULTIMATE：旗舰版
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param _WorkingStatus: 实例运行状态
 NORMAL: 健康
@@ -4453,15 +4322,11 @@ FAULTY: 有风险
 DOWN: 宕机
 UNKNOWN: 未知
         :type WorkingStatus: str
-        :param _Status: 实例状态
-ENABLED: 正常
-DISABLED: 禁用
+        :param _Status: 实例状态，ENABLED: 正常；DISABLED: 禁用
         :type Status: str
         :param _IsCnameConfigured: cname是否接入：true已接入；false未接入
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCnameConfigured: bool
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _StrategyNum: 策略数量
         :type StrategyNum: int
@@ -4470,7 +4335,6 @@ DISABLED: 禁用
         :param _MonitorNum: 绑定监控器数量
         :type MonitorNum: int
         :param _ResourceId: 实例绑定套餐资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _NotifyEventSet: 订阅事件列表
         :type NotifyEventSet: list of str
@@ -4584,7 +4448,6 @@ SYSTEM: 系统接入域名
 FREE: 免费版
 STANDARD：标准版
 ULTIMATE：旗舰版
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageType
@@ -4610,9 +4473,7 @@ UNKNOWN: 未知
 
     @property
     def Status(self):
-        """实例状态
-ENABLED: 正常
-DISABLED: 禁用
+        """实例状态，ENABLED: 正常；DISABLED: 禁用
         :rtype: str
         """
         return self._Status
@@ -4624,7 +4485,6 @@ DISABLED: 禁用
     @property
     def IsCnameConfigured(self):
         """cname是否接入：true已接入；false未接入
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCnameConfigured
@@ -4636,7 +4496,6 @@ DISABLED: 禁用
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -4681,7 +4540,6 @@ DISABLED: 禁用
     @property
     def ResourceId(self):
         """实例绑定套餐资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -4762,10 +4620,8 @@ class InstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         """
         self._InstanceId = None
@@ -4774,7 +4630,6 @@ class InstanceInfo(AbstractModel):
     @property
     def InstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -4786,7 +4641,6 @@ class InstanceInfo(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -5083,13 +4937,10 @@ class MainAddressPool(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressPools: list of MainPoolWeight
         :param _MainAddressPoolId: 地址池集合id
-注意：此字段可能返回 null，表示取不到有效值。
         :type MainAddressPoolId: int
         :param _MinSurviveNum: 切换阀值，不能大于主力集合内地址总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinSurviveNum: int
         :param _TrafficStrategy: 切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrafficStrategy: str
         """
         self._AddressPools = None
@@ -5112,7 +4963,6 @@ class MainAddressPool(AbstractModel):
     @property
     def MainAddressPoolId(self):
         """地址池集合id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MainAddressPoolId
@@ -5124,7 +4974,6 @@ class MainAddressPool(AbstractModel):
     @property
     def MinSurviveNum(self):
         """切换阀值，不能大于主力集合内地址总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinSurviveNum
@@ -5136,7 +4985,6 @@ class MainAddressPool(AbstractModel):
     @property
     def TrafficStrategy(self):
         """切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrafficStrategy
@@ -5174,7 +5022,6 @@ class MainPoolWeight(AbstractModel):
     def __init__(self):
         r"""
         :param _PoolId: 地址池id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoolId: int
         :param _Weight: 权重
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5186,7 +5033,6 @@ class MainPoolWeight(AbstractModel):
     @property
     def PoolId(self):
         """地址池id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PoolId
@@ -5232,7 +5078,7 @@ class ModifyAddressPoolRequest(AbstractModel):
         :type PoolId: int
         :param _PoolName: 地址池名称，不允许重复
         :type PoolName: str
-        :param _TrafficStrategy: 流量策略: WEIGHT负载均衡，ALl解析全部
+        :param _TrafficStrategy: 流量策略: WEIGHT负载均衡，ALL解析全部
         :type TrafficStrategy: str
         :param _MonitorId: 监控器id
         :type MonitorId: int
@@ -5269,7 +5115,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def TrafficStrategy(self):
-        """流量策略: WEIGHT负载均衡，ALl解析全部
+        """流量策略: WEIGHT负载均衡，ALL解析全部
         :rtype: str
         """
         return self._TrafficStrategy
@@ -5330,7 +5176,6 @@ class ModifyAddressPoolResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 是否修改成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5341,7 +5186,6 @@ class ModifyAddressPoolResponse(AbstractModel):
     @property
     def Msg(self):
         """是否修改成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -5749,7 +5593,6 @@ class ModifyMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: success 为修改成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5760,7 +5603,6 @@ class ModifyMonitorResponse(AbstractModel):
     @property
     def Msg(self):
         """success 为修改成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -5965,7 +5807,6 @@ class ModifyStrategyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5976,7 +5817,6 @@ class ModifyStrategyResponse(AbstractModel):
     @property
     def Msg(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -6012,69 +5852,48 @@ class MonitorDetail(AbstractModel):
         :param _MonitorId: 探测规则id
         :type MonitorId: int
         :param _MonitorName: 监控器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorName: str
         :param _Uin: 所属用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _DetectorGroupIds: 监控节点id组
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetectorGroupIds: list of int non-negative
         :param _CheckProtocol: 探测协议 PING TCP HTTP HTTPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckProtocol: str
         :param _CheckInterval: 探测周期
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckInterval: int
         :param _PingNum: 发包数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type PingNum: int
         :param _TcpPort: tcp端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type TcpPort: int
         :param _Host: 探测 host
-注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         :param _Path: 探测路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _ReturnCodeThreshold: 返回值阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnCodeThreshold: int
         :param _EnableRedirect: 是否开启3xx重定向跟随 ENABLED DISABLED
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableRedirect: str
         :param _EnableSni: 是否启用 sni
 ENABLED DISABLED
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableSni: str
         :param _PacketLossRate: 丢包率上限
-注意：此字段可能返回 null，表示取不到有效值。
         :type PacketLossRate: int
         :param _Timeout: 探测超时
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
         :param _FailTimes: 失败次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailTimes: int
         :param _FailRate: 失败率上限100
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailRate: int
         :param _CreatedOn: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedOn: str
         :param _UpdatedOn: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedOn: str
         :param _DetectorStyle: 监控节点类型
 AUTO INTERNAL OVERSEAS IPV6 ALL
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetectorStyle: str
         :param _DetectNum: 探测次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetectNum: int
         :param _ContinuePeriod: 持续周期数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContinuePeriod: int
         """
         self._MonitorId = None
@@ -6114,7 +5933,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def MonitorName(self):
         """监控器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MonitorName
@@ -6126,7 +5944,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def Uin(self):
         """所属用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -6138,7 +5955,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def DetectorGroupIds(self):
         """监控节点id组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._DetectorGroupIds
@@ -6150,7 +5966,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def CheckProtocol(self):
         """探测协议 PING TCP HTTP HTTPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckProtocol
@@ -6162,7 +5977,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def CheckInterval(self):
         """探测周期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckInterval
@@ -6174,7 +5988,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def PingNum(self):
         """发包数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PingNum
@@ -6186,7 +5999,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def TcpPort(self):
         """tcp端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TcpPort
@@ -6198,7 +6010,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def Host(self):
         """探测 host
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Host
@@ -6210,7 +6021,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def Path(self):
         """探测路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -6222,7 +6032,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def ReturnCodeThreshold(self):
         """返回值阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReturnCodeThreshold
@@ -6234,7 +6043,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def EnableRedirect(self):
         """是否开启3xx重定向跟随 ENABLED DISABLED
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnableRedirect
@@ -6247,7 +6055,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     def EnableSni(self):
         """是否启用 sni
 ENABLED DISABLED
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnableSni
@@ -6259,7 +6066,6 @@ ENABLED DISABLED
     @property
     def PacketLossRate(self):
         """丢包率上限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PacketLossRate
@@ -6271,7 +6077,6 @@ ENABLED DISABLED
     @property
     def Timeout(self):
         """探测超时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timeout
@@ -6283,7 +6088,6 @@ ENABLED DISABLED
     @property
     def FailTimes(self):
         """失败次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailTimes
@@ -6295,7 +6099,6 @@ ENABLED DISABLED
     @property
     def FailRate(self):
         """失败率上限100
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailRate
@@ -6307,7 +6110,6 @@ ENABLED DISABLED
     @property
     def CreatedOn(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedOn
@@ -6319,7 +6121,6 @@ ENABLED DISABLED
     @property
     def UpdatedOn(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedOn
@@ -6332,7 +6133,6 @@ ENABLED DISABLED
     def DetectorStyle(self):
         """监控节点类型
 AUTO INTERNAL OVERSEAS IPV6 ALL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DetectorStyle
@@ -6344,7 +6144,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def DetectNum(self):
         """探测次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DetectNum
@@ -6356,7 +6155,6 @@ AUTO INTERNAL OVERSEAS IPV6 ALL
     @property
     def ContinuePeriod(self):
         """持续周期数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ContinuePeriod
@@ -6407,37 +6205,26 @@ class Quota(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskQuota: 探测任务配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskQuota: int
         :param _PoolQuota: 地址池配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoolQuota: int
         :param _AddressQuota: 地址配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressQuota: int
         :param _MonitorQuota: 探点资源数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorQuota: int
         :param _MessageQuota: 消息资源数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageQuota: int
         :param _UsedTaskQuota: 已使用探测任务数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedTaskQuota: int
         :param _UsedFreeInstanceNum: 已使用体验实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedFreeInstanceNum: int
         :param _UsedBillInstanceNum: 已使用付费实例
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedBillInstanceNum: int
         :param _FreePackageNum: 体验套餐总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FreePackageNum: int
         :param _UsedBillPackageNum: 已使用付费套餐数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedBillPackageNum: int
         :param _BillPackageNum: 付费套餐总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillPackageNum: int
         """
         self._TaskQuota = None
@@ -6455,7 +6242,6 @@ class Quota(AbstractModel):
     @property
     def TaskQuota(self):
         """探测任务配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskQuota
@@ -6467,7 +6253,6 @@ class Quota(AbstractModel):
     @property
     def PoolQuota(self):
         """地址池配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PoolQuota
@@ -6479,7 +6264,6 @@ class Quota(AbstractModel):
     @property
     def AddressQuota(self):
         """地址配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AddressQuota
@@ -6491,7 +6275,6 @@ class Quota(AbstractModel):
     @property
     def MonitorQuota(self):
         """探点资源数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorQuota
@@ -6503,7 +6286,6 @@ class Quota(AbstractModel):
     @property
     def MessageQuota(self):
         """消息资源数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MessageQuota
@@ -6515,7 +6297,6 @@ class Quota(AbstractModel):
     @property
     def UsedTaskQuota(self):
         """已使用探测任务数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedTaskQuota
@@ -6527,7 +6308,6 @@ class Quota(AbstractModel):
     @property
     def UsedFreeInstanceNum(self):
         """已使用体验实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedFreeInstanceNum
@@ -6539,7 +6319,6 @@ class Quota(AbstractModel):
     @property
     def UsedBillInstanceNum(self):
         """已使用付费实例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedBillInstanceNum
@@ -6551,7 +6330,6 @@ class Quota(AbstractModel):
     @property
     def FreePackageNum(self):
         """体验套餐总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FreePackageNum
@@ -6563,7 +6341,6 @@ class Quota(AbstractModel):
     @property
     def UsedBillPackageNum(self):
         """已使用付费套餐数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedBillPackageNum
@@ -6575,7 +6352,6 @@ class Quota(AbstractModel):
     @property
     def BillPackageNum(self):
         """付费套餐总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BillPackageNum
@@ -6691,7 +6467,6 @@ class Source(AbstractModel):
         :param _DnsLineId: 解析请求来源线路id
         :type DnsLineId: int
         :param _Name: 解析请求来源线路名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._DnsLineId = None
@@ -6711,7 +6486,6 @@ class Source(AbstractModel):
     @property
     def Name(self):
         """解析请求来源线路名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6742,19 +6516,15 @@ class Strategy(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _Name: 策略名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Source: 地址来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: list of Source
         :param _StrategyId: 策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyId: int
         :param _Status: 健康状态：ok健康、warn风险、down故障
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _ActivateMainPoolId: 生效的主力池id，null则为未知
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6763,28 +6533,20 @@ class Strategy(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivateLevel: int
         :param _ActivePoolType: 当前生效地址池集合类型：main主力；fallback兜底
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivePoolType: str
         :param _ActiveTrafficStrategy: 当前生效地址池流量策略：all解析所有；weight负载均衡
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveTrafficStrategy: str
         :param _MonitorNum: 监控器数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorNum: int
         :param _IsEnabled: 是否开启：ENABLED开启；DISABLED关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsEnabled: str
         :param _KeepDomainRecords: 是否保留线路：enabled保留，disabled不保留，只保留默认线路
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeepDomainRecords: str
         :param _SwitchPoolType: 调度模式：AUTO默认；PAUSE仅暂停不切换
-注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchPoolType: str
         :param _CreatedOn: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedOn: str
         :param _UpdatedOn: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedOn: str
         """
         self._InstanceId = None
@@ -6806,7 +6568,6 @@ class Strategy(AbstractModel):
     @property
     def InstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -6818,7 +6579,6 @@ class Strategy(AbstractModel):
     @property
     def Name(self):
         """策略名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6842,7 +6602,6 @@ class Strategy(AbstractModel):
     @property
     def StrategyId(self):
         """策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StrategyId
@@ -6854,7 +6613,6 @@ class Strategy(AbstractModel):
     @property
     def Status(self):
         """健康状态：ok健康、warn风险、down故障
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -6890,7 +6648,6 @@ class Strategy(AbstractModel):
     @property
     def ActivePoolType(self):
         """当前生效地址池集合类型：main主力；fallback兜底
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActivePoolType
@@ -6902,7 +6659,6 @@ class Strategy(AbstractModel):
     @property
     def ActiveTrafficStrategy(self):
         """当前生效地址池流量策略：all解析所有；weight负载均衡
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActiveTrafficStrategy
@@ -6914,7 +6670,6 @@ class Strategy(AbstractModel):
     @property
     def MonitorNum(self):
         """监控器数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorNum
@@ -6926,7 +6681,6 @@ class Strategy(AbstractModel):
     @property
     def IsEnabled(self):
         """是否开启：ENABLED开启；DISABLED关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsEnabled
@@ -6938,7 +6692,6 @@ class Strategy(AbstractModel):
     @property
     def KeepDomainRecords(self):
         """是否保留线路：enabled保留，disabled不保留，只保留默认线路
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KeepDomainRecords
@@ -6950,7 +6703,6 @@ class Strategy(AbstractModel):
     @property
     def SwitchPoolType(self):
         """调度模式：AUTO默认；PAUSE仅暂停不切换
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SwitchPoolType
@@ -6962,7 +6714,6 @@ class Strategy(AbstractModel):
     @property
     def CreatedOn(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedOn
@@ -6974,7 +6725,6 @@ class Strategy(AbstractModel):
     @property
     def UpdatedOn(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedOn
@@ -7023,13 +6773,10 @@ class StrategyDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _StrategyId: 策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyId: int
         :param _Name: 策略名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Source: 线路
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7041,19 +6788,15 @@ class StrategyDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type FallbackAddressPoolSet: list of MainAddressPool
         :param _KeepDomainRecords: 是否保留线路：enabled保留，disabled不保留，只保留默认线路
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeepDomainRecords: str
         :param _ActivateMainPoolId: 生效主力地址池id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivateMainPoolId: int
         :param _CreatedOn: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedOn: str
         :param _UpdatedOn: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedOn: str
         :param _SwitchPoolType: 调度模式：AUTO默认；PAUSE仅暂停不切换
-注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchPoolType: str
         """
         self._InstanceId = None
@@ -7071,7 +6814,6 @@ class StrategyDetail(AbstractModel):
     @property
     def InstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -7083,7 +6825,6 @@ class StrategyDetail(AbstractModel):
     @property
     def StrategyId(self):
         """策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StrategyId
@@ -7095,7 +6836,6 @@ class StrategyDetail(AbstractModel):
     @property
     def Name(self):
         """策略名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7143,7 +6883,6 @@ class StrategyDetail(AbstractModel):
     @property
     def KeepDomainRecords(self):
         """是否保留线路：enabled保留，disabled不保留，只保留默认线路
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KeepDomainRecords
@@ -7167,7 +6906,6 @@ class StrategyDetail(AbstractModel):
     @property
     def CreatedOn(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedOn
@@ -7179,7 +6917,6 @@ class StrategyDetail(AbstractModel):
     @property
     def UpdatedOn(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedOn
@@ -7191,7 +6928,6 @@ class StrategyDetail(AbstractModel):
     @property
     def SwitchPoolType(self):
         """调度模式：AUTO默认；PAUSE仅暂停不切换
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SwitchPoolType

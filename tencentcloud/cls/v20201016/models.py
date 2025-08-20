@@ -25,7 +25,8 @@ class AddMachineGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 机器组ID
+        :param _GroupId: 机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :type GroupId: str
         :param _MachineGroupType: 机器组类型
 目前type支持 ip 和 label
@@ -36,7 +37,8 @@ class AddMachineGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """机器组ID
+        """机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -308,7 +310,7 @@ class AlarmInfo(AbstractModel):
         :type AlarmTargets: list of AlarmTargetInfo
         :param _MonitorTime: 监控任务运行时间点。
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _Condition: 单触发条件。与MultiConditions参数互斥。
+        :param _Condition: 是否触发告警的单触发条件。与MultiConditions参数互斥。
         :type Condition: str
         :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
         :type TriggerCount: int
@@ -320,9 +322,9 @@ class AlarmInfo(AbstractModel):
         :type Status: bool
         :param _AlarmId: 告警策略ID。
         :type AlarmId: str
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。格式： YYYY-MM-DD HH:MM:SS
         :type CreateTime: str
-        :param _UpdateTime: 最近更新时间。
+        :param _UpdateTime: 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
         :type UpdateTime: str
         :param _MessageTemplate: 自定义通知模板
 注意：此字段可能返回 null，表示取不到有效值。
@@ -404,7 +406,7 @@ Condition互斥。
 
     @property
     def Condition(self):
-        """单触发条件。与MultiConditions参数互斥。
+        """是否触发告警的单触发条件。与MultiConditions参数互斥。
         :rtype: str
         """
         return self._Condition
@@ -470,7 +472,7 @@ Condition互斥。
 
     @property
     def CreateTime(self):
-        """创建时间。
+        """创建时间。格式： YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._CreateTime
@@ -481,7 +483,7 @@ Condition互斥。
 
     @property
     def UpdateTime(self):
-        """最近更新时间。
+        """最近更新时间。格式： YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._UpdateTime
@@ -696,9 +698,9 @@ class AlarmNotice(AbstractModel):
         :param _AlarmNoticeDeliverConfig: 投递相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmNoticeDeliverConfig: :class:`tencentcloud.cls.v20201016.models.AlarmNoticeDeliverConfig`
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。格式： YYYY-MM-DD HH:MM:SS
         :type CreateTime: str
-        :param _UpdateTime: 最近更新时间。
+        :param _UpdateTime: 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
         :type UpdateTime: str
         """
         self._Name = None
@@ -831,7 +833,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        """创建时间。格式： YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._CreateTime
@@ -842,7 +844,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """最近更新时间。
+        """最近更新时间。格式： YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._UpdateTime
@@ -979,9 +981,9 @@ class AlarmShieldInfo(AbstractModel):
         :param _Status: 规则状态。
 0：暂未生效，1：生效中，2：已失效
         :type Status: int
-        :param _CreateTime: 规则创建时间。
+        :param _CreateTime: 规则创建时间。秒级时间戳(s)
         :type CreateTime: int
-        :param _UpdateTime: 规则更新时间。
+        :param _UpdateTime: 规则更新时间。秒级时间戳(s)
         :type UpdateTime: int
         """
         self._AlarmNoticeId = None
@@ -1111,7 +1113,7 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """规则创建时间。
+        """规则创建时间。秒级时间戳(s)
         :rtype: int
         """
         return self._CreateTime
@@ -1122,7 +1124,7 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """规则更新时间。
+        """规则更新时间。秒级时间戳(s)
         :rtype: int
         """
         return self._UpdateTime
@@ -1162,7 +1164,7 @@ class AlarmTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID。
+        :param _TopicId: 日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
         :type TopicId: str
         :param _Query: 查询语句。
         :type Query: str
@@ -1172,7 +1174,7 @@ class AlarmTarget(AbstractModel):
         :type StartTimeOffset: int
         :param _EndTimeOffset: 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
         :type EndTimeOffset: int
-        :param _LogsetId: 日志集ID。
+        :param _LogsetId: 日志集ID。通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志集ID
         :type LogsetId: str
         :param _SyntaxRule: 检索语法规则，默认值为0。
 0：Lucene语法，1：CQL语法。
@@ -1189,7 +1191,7 @@ class AlarmTarget(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID。
+        """日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -1244,7 +1246,7 @@ class AlarmTarget(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID。
+        """日志集ID。通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志集ID
         :rtype: str
         """
         return self._LogsetId
@@ -1536,15 +1538,15 @@ class AlertHistoryRecord(AbstractModel):
         :type Trigger: str
         :param _TriggerCount: 持续周期，持续满足触发条件TriggerCount个周期后，再进行告警
         :type TriggerCount: int
-        :param _AlarmPeriod: 告警通知发送频率，单位为分钟
+        :param _AlarmPeriod: 告警通知发送频率，单位为分钟(min)
         :type AlarmPeriod: int
         :param _Notices: 通知渠道组
         :type Notices: list of AlertHistoryNotice
-        :param _Duration: 告警持续时间，单位为分钟
+        :param _Duration: 告警持续时间，单位为分钟(min)
         :type Duration: int
         :param _Status: 告警状态，0代表未恢复，1代表已恢复，2代表已失效
         :type Status: int
-        :param _CreateTime: 告警发生时间，毫秒级Unix时间戳
+        :param _CreateTime: 告警发生时间，毫秒级Unix时间戳(ms)
         :type CreateTime: int
         :param _GroupTriggerCondition: 告警分组触发时对应的分组信息
         :type GroupTriggerCondition: list of GroupTriggerConditionInfo
@@ -1661,7 +1663,7 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def AlarmPeriod(self):
-        """告警通知发送频率，单位为分钟
+        """告警通知发送频率，单位为分钟(min)
         :rtype: int
         """
         return self._AlarmPeriod
@@ -1683,7 +1685,7 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def Duration(self):
-        """告警持续时间，单位为分钟
+        """告警持续时间，单位为分钟(min)
         :rtype: int
         """
         return self._Duration
@@ -1705,7 +1707,7 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def CreateTime(self):
-        """告警发生时间，毫秒级Unix时间戳
+        """告警发生时间，毫秒级Unix时间戳(ms)
         :rtype: int
         """
         return self._CreateTime
@@ -1795,7 +1797,8 @@ class AnalysisDimensional(AbstractModel):
         r"""
         :param _Name: 分析名称
         :type Name: str
-        :param _Type: 分析类型：query，field ，original
+        :param _Type: 分析类型：query(自定义检索分析)，field(字段TOP5及占比统计) ，original(相关原始日志)
+
         :type Type: str
         :param _Content: 分析内容
         :type Content: str
@@ -1860,7 +1863,8 @@ class AnalysisDimensional(AbstractModel):
 
     @property
     def Type(self):
-        """分析类型：query，field ，original
+        """分析类型：query(自定义检索分析)，field(字段TOP5及占比统计) ，original(相关原始日志)
+
         :rtype: str
         """
         return self._Type
@@ -2016,8 +2020,10 @@ class ApplyConfigToMachineGroupRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ConfigId: 采集配置ID
+ - 通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)获取采集配置Id。
         :type ConfigId: str
         :param _GroupId: 机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :type GroupId: str
         """
         self._ConfigId = None
@@ -2026,6 +2032,7 @@ class ApplyConfigToMachineGroupRequest(AbstractModel):
     @property
     def ConfigId(self):
         """采集配置ID
+ - 通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)获取采集配置Id。
         :rtype: str
         """
         return self._ConfigId
@@ -2037,6 +2044,7 @@ class ApplyConfigToMachineGroupRequest(AbstractModel):
     @property
     def GroupId(self):
         """机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -2177,9 +2185,15 @@ class CheckFunctionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EtlContent: 用户输入的加工语句
+        :param _EtlContent: 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
+
+其他参考文档：
+
+- [创建加工任务](https://cloud.tencent.com/document/product/614/63940) 
+-  [函数总览](https://cloud.tencent.com/document/product/614/70395)
         :type EtlContent: str
-        :param _DstResources: 加工任务目的topic_id以及别名
+        :param _DstResources: 加工任务目标topic_id以及别名，当 FuncType 为 1 时，必填。
+目标日志主题ID通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type DstResources: list of DataTransformResouceInfo
         :param _FuncType: 数据加工目标主题的类型. 1 固定主题 2动态创建
         :type FuncType: int
@@ -2190,7 +2204,12 @@ class CheckFunctionRequest(AbstractModel):
 
     @property
     def EtlContent(self):
-        """用户输入的加工语句
+        """加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
+
+其他参考文档：
+
+- [创建加工任务](https://cloud.tencent.com/document/product/614/63940) 
+-  [函数总览](https://cloud.tencent.com/document/product/614/70395)
         :rtype: str
         """
         return self._EtlContent
@@ -2201,7 +2220,8 @@ class CheckFunctionRequest(AbstractModel):
 
     @property
     def DstResources(self):
-        """加工任务目的topic_id以及别名
+        """加工任务目标topic_id以及别名，当 FuncType 为 1 时，必填。
+目标日志主题ID通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: list of DataTransformResouceInfo
         """
         return self._DstResources
@@ -2310,6 +2330,8 @@ class CheckRechargeKafkaServerRequest(AbstractModel):
         :type KafkaType: int
         :param _KafkaInstance: 腾讯云CKafka实例ID。
 KafkaType为0时，KafkaInstance必填
+
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
         :type KafkaInstance: str
         :param _ServerAddr: 服务地址。
 KafkaType为1时，ServerAddr必填
@@ -2340,6 +2362,8 @@ KafkaType为1时，ServerAddr必填
     def KafkaInstance(self):
         """腾讯云CKafka实例ID。
 KafkaType为0时，KafkaInstance必填
+
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
         :rtype: str
         """
         return self._KafkaInstance
@@ -2408,7 +2432,20 @@ class CheckRechargeKafkaServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Kafka集群可访问状态，0：可正常访问 ...
+        :param _Status: Kafka集群可访问状态。
+
+- 0：可正常访问 
+- -1：broker 连接失败
+- -2：sasl 鉴权失败
+- -3：ckafka 角色未授权
+- -4：topic 列表不存在
+- -5：topic 内暂无数据
+- -6：用户没有 ckafka 权限
+- -7：消费组已经存在
+- -8：kafka 实例不存在或已销毁
+- -9：Broker 列表为空
+- -10：Broker 地址格式不正确
+- -11：Broker 端口非整型
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2418,7 +2455,20 @@ class CheckRechargeKafkaServerResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Kafka集群可访问状态，0：可正常访问 ...
+        """Kafka集群可访问状态。
+
+- 0：可正常访问 
+- -1：broker 连接失败
+- -2：sasl 鉴权失败
+- -3：ckafka 角色未授权
+- -4：topic 列表不存在
+- -5：topic 内暂无数据
+- -6：用户没有 ckafka 权限
+- -7：消费组已经存在
+- -8：kafka 实例不存在或已销毁
+- -9：Broker 列表为空
+- -10：Broker 地址格式不正确
+- -11：Broker 端口非整型
         :rtype: int
         """
         return self._Status
@@ -2451,17 +2501,31 @@ class Ckafka(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Ckafka 的 InstanceId
+        :param _InstanceId: Ckafka 的 InstanceId。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+- 通过 [创建实例](https://cloud.tencent.com/document/product/597/53207) 获取实例id。
         :type InstanceId: str
-        :param _TopicName: Ckafka 的 TopicName
+        :param _TopicName: Ckafka 的 TopicName。
+- 通过 [创建 Topic](https://cloud.tencent.com/document/product/597/73566) 获得TopicName。
+- 通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获得TopicName。
         :type TopicName: str
-        :param _Vip: Ckafka 的 Vip
+        :param _Vip: Ckafka 的 Vip。
+- 通过 [获取实例属性 ](https://cloud.tencent.com/document/product/597/40836) 获取vip信息。
+- 如果是通过 角色ARN 方式创建投递任务，则Vip字段可为空。
         :type Vip: str
-        :param _Vport: Ckafka 的 Vport
+        :param _Vport: Ckafka 的 Vport。
+- 通过 [获取实例属性 ](https://cloud.tencent.com/document/product/597/40836) 获取vip port信息。
+- 如果是通过 角色ARN 方式创建投递任务，则Vport字段可为空。
         :type Vport: str
-        :param _InstanceName: Ckafka 的 InstanceName
+        :param _InstanceName: Ckafka 的 InstanceName。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取InstanceName。
+- 通过 [创建实例](https://cloud.tencent.com/document/product/597/53207) 获取InstanceName。
+- 如果是通过 角色ARN 方式创建投递任务，则InstanceName字段可为空。
         :type InstanceName: str
-        :param _TopicId: Ckafka 的 TopicId
+        :param _TopicId: Ckafka 的 TopicId。
+- 通过 [创建 Topic](https://cloud.tencent.com/document/product/597/73566) 获得TopicId。
+- 通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获得TopicId。
+- 如果是通过 角色ARN 方式创建投递任务，则TopicId字段可为空。
         :type TopicId: str
         """
         self._InstanceId = None
@@ -2473,7 +2537,9 @@ class Ckafka(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Ckafka 的 InstanceId
+        """Ckafka 的 InstanceId。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+- 通过 [创建实例](https://cloud.tencent.com/document/product/597/53207) 获取实例id。
         :rtype: str
         """
         return self._InstanceId
@@ -2484,7 +2550,9 @@ class Ckafka(AbstractModel):
 
     @property
     def TopicName(self):
-        """Ckafka 的 TopicName
+        """Ckafka 的 TopicName。
+- 通过 [创建 Topic](https://cloud.tencent.com/document/product/597/73566) 获得TopicName。
+- 通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获得TopicName。
         :rtype: str
         """
         return self._TopicName
@@ -2495,7 +2563,9 @@ class Ckafka(AbstractModel):
 
     @property
     def Vip(self):
-        """Ckafka 的 Vip
+        """Ckafka 的 Vip。
+- 通过 [获取实例属性 ](https://cloud.tencent.com/document/product/597/40836) 获取vip信息。
+- 如果是通过 角色ARN 方式创建投递任务，则Vip字段可为空。
         :rtype: str
         """
         return self._Vip
@@ -2506,7 +2576,9 @@ class Ckafka(AbstractModel):
 
     @property
     def Vport(self):
-        """Ckafka 的 Vport
+        """Ckafka 的 Vport。
+- 通过 [获取实例属性 ](https://cloud.tencent.com/document/product/597/40836) 获取vip port信息。
+- 如果是通过 角色ARN 方式创建投递任务，则Vport字段可为空。
         :rtype: str
         """
         return self._Vport
@@ -2517,7 +2589,10 @@ class Ckafka(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Ckafka 的 InstanceName
+        """Ckafka 的 InstanceName。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取InstanceName。
+- 通过 [创建实例](https://cloud.tencent.com/document/product/597/53207) 获取InstanceName。
+- 如果是通过 角色ARN 方式创建投递任务，则InstanceName字段可为空。
         :rtype: str
         """
         return self._InstanceName
@@ -2528,7 +2603,10 @@ class Ckafka(AbstractModel):
 
     @property
     def TopicId(self):
-        """Ckafka 的 TopicId
+        """Ckafka 的 TopicId。
+- 通过 [创建 Topic](https://cloud.tencent.com/document/product/597/73566) 获得TopicId。
+- 通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获得TopicId。
+- 如果是通过 角色ARN 方式创建投递任务，则TopicId字段可为空。
         :rtype: str
         """
         return self._TopicId
@@ -2562,14 +2640,18 @@ class CloseKafkaConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromTopicId: 日志主题ID
+        :param _FromTopicId: 日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type FromTopicId: str
         """
         self._FromTopicId = None
 
     @property
     def FromTopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._FromTopicId
@@ -3019,7 +3101,10 @@ class ConfigExtraInfo(AbstractModel):
         :type Name: str
         :param _TopicId: 日志主题ID
         :type TopicId: str
-        :param _Type: 类型：container_stdout、container_file、host_file
+        :param _Type: 自建k8s集群日志采集类型，支持
+- container_stdout 标准输出
+- container_file 标准文件
+- host_file 节点文件
         :type Type: str
         :param _HostFile: 节点文件配置信息
         :type HostFile: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
@@ -3037,16 +3122,20 @@ class ConfigExtraInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludePaths: list of ExcludePathInfo
         :param _UpdateTime: 更新时间
+- 时间格式：yyyy-MM-dd HH:mm:ss
         :type UpdateTime: str
         :param _CreateTime: 创建时间
+- 时间格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
         :param _UserDefineRule: 用户自定义解析字符串
         :type UserDefineRule: str
         :param _GroupId: 机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :type GroupId: str
         :param _ConfigFlag: 自建采集配置标
         :type ConfigFlag: str
         :param _LogsetId: 日志集ID
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :type LogsetId: str
         :param _LogsetName: 日志集name
         :type LogsetName: str
@@ -3118,7 +3207,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def Type(self):
-        """类型：container_stdout、container_file、host_file
+        """自建k8s集群日志采集类型，支持
+- container_stdout 标准输出
+- container_file 标准文件
+- host_file 节点文件
         :rtype: str
         """
         return self._Type
@@ -3208,6 +3300,7 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
+- 时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._UpdateTime
@@ -3219,6 +3312,7 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
+- 时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -3241,6 +3335,7 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def GroupId(self):
         """机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -3263,6 +3358,7 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def LogsetId(self):
         """日志集ID
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -3404,8 +3500,10 @@ class ConfigInfo(AbstractModel):
         :param _Output: 采集配置所属日志主题ID即TopicId
         :type Output: str
         :param _UpdateTime: 更新时间
+- 时间格式：yyyy-MM-dd HH:mm:ss
         :type UpdateTime: str
         :param _CreateTime: 创建时间
+- 时间格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
         :param _UserDefineRule: 用户自定义解析字符串，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)。
         :type UserDefineRule: str
@@ -3533,6 +3631,7 @@ class ConfigInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
+- 时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._UpdateTime
@@ -3544,6 +3643,7 @@ class ConfigInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
+- 时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -3837,6 +3937,169 @@ class ConsoleSharingConfig(AbstractModel):
         self._IsLockTimeRange = params.get("IsLockTimeRange")
         self._IsLockQuery = params.get("IsLockQuery")
         self._IsSupportLogExport = params.get("IsSupportLogExport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsoleSharingInfo(AbstractModel):
+    """控制台分享信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SharingId: 分享ID
+        :type SharingId: str
+        :param _SharingUrl: 分享链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SharingUrl: str
+        :param _SharingConfig: 匿名分享配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SharingConfig: :class:`tencentcloud.cls.v20201016.models.ConsoleSharingConfig`
+        :param _ExpiredTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param _Status: 分享链接状态
+1: 正常 
+-1: 因内容安全审查异常导致被封禁(存在于使用公网域名分享时)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _ContentSafetyCode: 10001-广告 20001-政治 20002-色情 20004-社会事件 20011-暴力 20012-低俗 20006-违法犯罪 20007-谩骂 20008-欺诈 20013-版权 20104-谣言 21000-其他, 10086-聚合, 24001-暴恐（天御独有恶意类型），20472-违法，
+24005-社会
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentSafetyCode: int
+        """
+        self._SharingId = None
+        self._SharingUrl = None
+        self._SharingConfig = None
+        self._ExpiredTime = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Status = None
+        self._ContentSafetyCode = None
+
+    @property
+    def SharingId(self):
+        """分享ID
+        :rtype: str
+        """
+        return self._SharingId
+
+    @SharingId.setter
+    def SharingId(self, SharingId):
+        self._SharingId = SharingId
+
+    @property
+    def SharingUrl(self):
+        """分享链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SharingUrl
+
+    @SharingUrl.setter
+    def SharingUrl(self, SharingUrl):
+        self._SharingUrl = SharingUrl
+
+    @property
+    def SharingConfig(self):
+        """匿名分享配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ConsoleSharingConfig`
+        """
+        return self._SharingConfig
+
+    @SharingConfig.setter
+    def SharingConfig(self, SharingConfig):
+        self._SharingConfig = SharingConfig
+
+    @property
+    def ExpiredTime(self):
+        """过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        """分享链接状态
+1: 正常 
+-1: 因内容安全审查异常导致被封禁(存在于使用公网域名分享时)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ContentSafetyCode(self):
+        """10001-广告 20001-政治 20002-色情 20004-社会事件 20011-暴力 20012-低俗 20006-违法犯罪 20007-谩骂 20008-欺诈 20013-版权 20104-谣言 21000-其他, 10086-聚合, 24001-暴恐（天御独有恶意类型），20472-违法，
+24005-社会
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ContentSafetyCode
+
+    @ContentSafetyCode.setter
+    def ContentSafetyCode(self, ContentSafetyCode):
+        self._ContentSafetyCode = ContentSafetyCode
+
+
+    def _deserialize(self, params):
+        self._SharingId = params.get("SharingId")
+        self._SharingUrl = params.get("SharingUrl")
+        if params.get("SharingConfig") is not None:
+            self._SharingConfig = ConsoleSharingConfig()
+            self._SharingConfig._deserialize(params.get("SharingConfig"))
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._ContentSafetyCode = params.get("ContentSafetyCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4377,7 +4640,12 @@ class ContainerWorkLoadInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Kind: 工作负载的类型
+        :param _Kind: 工作负载的类型，支持
+- deployment
+- statefulset
+- daemonset
+- job
+- cronjob
         :type Kind: str
         :param _Name: 工作负载的名称
         :type Name: str
@@ -4393,7 +4661,12 @@ class ContainerWorkLoadInfo(AbstractModel):
 
     @property
     def Kind(self):
-        """工作负载的类型
+        """工作负载的类型，支持
+- deployment
+- statefulset
+- daemonset
+- job
+- cronjob
         :rtype: str
         """
         return self._Kind
@@ -4458,7 +4731,7 @@ class ContentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Format: 内容格式，支持json、csv
+        :param _Format: 内容格式，支持json，csv，parquet
         :type Format: str
         :param _Csv: csv格式内容描述
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4477,7 +4750,7 @@ class ContentInfo(AbstractModel):
 
     @property
     def Format(self):
-        """内容格式，支持json、csv
+        """内容格式，支持json，csv，parquet
         :rtype: str
         """
         return self._Format
@@ -4561,7 +4834,9 @@ class CosRechargeInfo(AbstractModel):
         :type Name: str
         :param _Bucket: COS存储桶
         :type Bucket: str
-        :param _BucketRegion: COS存储桶所在地域
+        :param _BucketRegion: COS存储桶所在地域。
+
+- 通过[地域和访问域名](https://cloud.tencent.com/document/product/436/6224)获取地域信息。
         :type BucketRegion: str
         :param _Prefix: COS文件所在文件夹的前缀
         :type Prefix: str
@@ -4572,13 +4847,13 @@ class CosRechargeInfo(AbstractModel):
         :type Status: int
         :param _Enable: 是否启用:   0： 未启用  ， 1：启用
         :type Enable: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间。时间格式：YYYY-MM-DD HH:mm:ss
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间。时间格式：YYYY-MM-DD HH:mm:ss
         :type UpdateTime: str
         :param _Progress: 进度条百分值
         :type Progress: int
-        :param _Compress: supported: "", "gzip", "lzop", "snappy”; 默认空
+        :param _Compress: 压缩方式supported: "", "gzip", "lzop", "snappy”;  默认空不压缩
         :type Compress: str
         :param _ExtractRuleInfo: 见： ExtractRuleInfo 结构描述
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
@@ -4662,7 +4937,9 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def BucketRegion(self):
-        """COS存储桶所在地域
+        """COS存储桶所在地域。
+
+- 通过[地域和访问域名](https://cloud.tencent.com/document/product/436/6224)获取地域信息。
         :rtype: str
         """
         return self._BucketRegion
@@ -4718,7 +4995,7 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间。时间格式：YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -4729,7 +5006,7 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        """更新时间。时间格式：YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._UpdateTime
@@ -4751,7 +5028,7 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Compress(self):
-        """supported: "", "gzip", "lzop", "snappy”; 默认空
+        """压缩方式supported: "", "gzip", "lzop", "snappy”;  默认空不压缩
         :rtype: str
         """
         return self._Compress
@@ -4831,7 +5108,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 通知渠道组名称。
+        :param _Name: 通知渠道组名称。最大支持255个字节。 不支持 '|'。
         :type Name: str
         :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持50个标签键值对，并且不能有重复的键值对。
         :type Tags: list of Tag
@@ -4877,7 +5154,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """通知渠道组名称。
+        """通知渠道组名称。最大支持255个字节。 不支持 '|'。
         :rtype: str
         """
         return self._Name
@@ -5091,7 +5368,7 @@ class CreateAlarmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 告警策略名称
+        :param _Name: 告警策略名称。最大支持255个字节。 不支持 '|'。
         :type Name: str
         :param _AlarmTargets: 监控对象列表。
         :type AlarmTargets: list of AlarmTarget
@@ -5101,9 +5378,9 @@ class CreateAlarmRequest(AbstractModel):
         :type TriggerCount: int
         :param _AlarmPeriod: 告警重复的周期，单位是分钟。取值范围是0~1440。
         :type AlarmPeriod: int
-        :param _AlarmNoticeIds: 关联的告警通知模板列表。
+        :param _AlarmNoticeIds: 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表
         :type AlarmNoticeIds: list of str
-        :param _Condition: 触发条件
+        :param _Condition: 告警发送通知的触发条件
  注意:  
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 
@@ -5174,7 +5451,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Name(self):
-        """告警策略名称
+        """告警策略名称。最大支持255个字节。 不支持 '|'。
         :rtype: str
         """
         return self._Name
@@ -5229,7 +5506,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmNoticeIds(self):
-        """关联的告警通知模板列表。
+        """关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表
         :rtype: list of str
         """
         return self._AlarmNoticeIds
@@ -5240,7 +5517,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Condition(self):
-        """触发条件
+        """告警发送通知的触发条件
  注意:  
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 
@@ -5517,11 +5794,11 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNoticeId: 通知渠道组id。
+        :param _AlarmNoticeId: 通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取通知渠道组id
         :type AlarmNoticeId: str
-        :param _StartTime: 屏蔽开始时间（秒级时间戳）。
+        :param _StartTime: 屏蔽规则开始时间，秒级(s)时间戳。
         :type StartTime: int
-        :param _EndTime: 屏蔽结束时间（秒级时间戳）。
+        :param _EndTime: 屏蔽规则结束时间，秒级(s)时间戳。结束时间需要大于当前时间
         :type EndTime: int
         :param _Type: 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
         :type Type: int
@@ -5539,7 +5816,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组id。
+        """通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取通知渠道组id
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -5550,7 +5827,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """屏蔽开始时间（秒级时间戳）。
+        """屏蔽规则开始时间，秒级(s)时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -5561,7 +5838,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """屏蔽结束时间（秒级时间戳）。
+        """屏蔽规则结束时间，秒级(s)时间戳。结束时间需要大于当前时间
         :rtype: int
         """
         return self._EndTime
@@ -5672,12 +5949,13 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID
+- 通过各个接入云产品官方文档获取
         :type InstanceId: str
         :param _AssumerName: 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
         :type AssumerName: str
         :param _LogType: 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
         :type LogType: str
-        :param _CloudProductRegion: 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+        :param _CloudProductRegion: 云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：
 - CDS所有日志类型：ap-guangzhou
 - CDB-AUDIT: gz
 - TDSQL-C-AUDIT:  gz
@@ -5692,16 +5970,19 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
 - APIS所有日志类型：gz
         :type CloudProductRegion: str
         :param _ClsRegion: CLS目标地域
+- 支持地域参考  [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档   
         :type ClsRegion: str
         :param _LogsetName: 日志集名称，未填LogsetId时必填。若日志集不存在, 将自动创建
         :type LogsetName: str
         :param _TopicName: 日志主题名称，在未填TopicId时必填。 若日志主题不存在，将自动创建
         :type TopicName: str
-        :param _Extend: 日志配置拓展信息， 一般用于存储额外的日志投递配置
+        :param _Extend: 日志配置扩展信息， 一般用于存储额外的日志投递配置
         :type Extend: str
         :param _LogsetId: 日志集id
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :type LogsetId: str
         :param _TopicId: 日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._InstanceId = None
@@ -5718,6 +5999,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
+- 通过各个接入云产品官方文档获取
         :rtype: str
         """
         return self._InstanceId
@@ -5750,7 +6032,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def CloudProductRegion(self):
-        """云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+        """云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：
 - CDS所有日志类型：ap-guangzhou
 - CDB-AUDIT: gz
 - TDSQL-C-AUDIT:  gz
@@ -5774,6 +6056,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
     @property
     def ClsRegion(self):
         """CLS目标地域
+- 支持地域参考  [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档   
         :rtype: str
         """
         return self._ClsRegion
@@ -5806,7 +6089,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def Extend(self):
-        """日志配置拓展信息， 一般用于存储额外的日志投递配置
+        """日志配置扩展信息， 一般用于存储额外的日志投递配置
         :rtype: str
         """
         return self._Extend
@@ -5818,6 +6101,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
     @property
     def LogsetId(self):
         """日志集id
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -5829,6 +6113,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
     @property
     def TopicId(self):
         """日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -5972,6 +6257,7 @@ class CreateConfigExtraRequest(AbstractModel):
         :param _Name: 采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
         :type Name: str
         :param _TopicId: 日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Type: 日志源类型。支持 container_stdout：容器标准输出；container_file：容器文件路径；host_file：节点文件路径。
         :type Type: str
@@ -5989,16 +6275,23 @@ class CreateConfigExtraRequest(AbstractModel):
 
         :type ConfigFlag: str
         :param _LogsetId: 日志集id
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _LogsetName: 日志集name
+        :param _LogsetName: 日志集名称
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
         :type LogsetName: str
         :param _TopicName: 日志主题名称
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
         :type TopicName: str
-        :param _HostFile: 节点文件路径类型配置。
+        :param _HostFile: 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+
+- 详细参考 [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 信息。
         :type HostFile: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         :param _ContainerFile: 容器文件路径类型配置。
         :type ContainerFile: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
-        :param _ContainerStdout: 容器标准输出类型配置。
+        :param _ContainerStdout: 自建k8s-容器标准输出信息，包括容器、命名空间等。
+
+- 详细参考 [ContainerStdoutInfo](https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 信息。
         :type ContainerStdout: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         :param _LogFormat: 日志格式化方式，用于容器采集场景。
 - stdout-docker-json：用于docker容器采集场景
@@ -6012,11 +6305,15 @@ class CreateConfigExtraRequest(AbstractModel):
 - 取值参考：[使用组合解析提取模式采集日志
 ](https://cloud.tencent.com/document/product/614/61310)
         :type UserDefineRule: str
-        :param _GroupId: 绑定的机器组id
+        :param _GroupId: 绑定的机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
+- GroupId 与 GroupIds 选择其一即可，不可同时为空。
         :type GroupId: str
-        :param _GroupIds: 绑定的机器组id列表
+        :param _GroupIds: 绑定的机器组ID列表
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id信息。
+- GroupId 与 GroupIds 选择其一即可，不可同时为空。
         :type GroupIds: list of str
-        :param _CollectInfos: 采集相关配置信息。详情见CollectInfo复杂类型配置。
+        :param _CollectInfos: 采集相关配置信息。详细参考 [CollectInfo](https://cloud.tencent.com/document/api/614/56471#CollectInfo) 信息。
         :type CollectInfos: list of CollectInfo
         :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
 - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
@@ -6060,6 +6357,7 @@ class CreateConfigExtraRequest(AbstractModel):
     @property
     def TopicId(self):
         """日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -6113,6 +6411,7 @@ class CreateConfigExtraRequest(AbstractModel):
     @property
     def LogsetId(self):
         """日志集id
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -6123,7 +6422,8 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def LogsetName(self):
-        """日志集name
+        """日志集名称
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
         :rtype: str
         """
         return self._LogsetName
@@ -6135,6 +6435,7 @@ class CreateConfigExtraRequest(AbstractModel):
     @property
     def TopicName(self):
         """日志主题名称
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
         :rtype: str
         """
         return self._TopicName
@@ -6145,7 +6446,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def HostFile(self):
-        """节点文件路径类型配置。
+        """自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+
+- 详细参考 [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 信息。
         :rtype: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         """
         return self._HostFile
@@ -6167,7 +6470,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def ContainerStdout(self):
-        """容器标准输出类型配置。
+        """自建k8s-容器标准输出信息，包括容器、命名空间等。
+
+- 详细参考 [ContainerStdoutInfo](https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 信息。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         """
         return self._ContainerStdout
@@ -6230,7 +6535,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """绑定的机器组id
+        """绑定的机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
+- GroupId 与 GroupIds 选择其一即可，不可同时为空。
         :rtype: str
         """
         return self._GroupId
@@ -6241,7 +6548,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """绑定的机器组id列表
+        """绑定的机器组ID列表
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id信息。
+- GroupId 与 GroupIds 选择其一即可，不可同时为空。
         :rtype: list of str
         """
         return self._GroupIds
@@ -6252,7 +6561,7 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def CollectInfos(self):
-        """采集相关配置信息。详情见CollectInfo复杂类型配置。
+        """采集相关配置信息。详细参考 [CollectInfo](https://cloud.tencent.com/document/api/614/56471#CollectInfo) 信息。
         :rtype: list of CollectInfo
         """
         return self._CollectInfos
@@ -6377,8 +6686,11 @@ class CreateConfigRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 采集配置名称
+- 名称种不得包含特殊字符｜
+- 名称最长255字符，超过截断
         :type Name: str
         :param _Output: 采集配置所属日志主题ID即TopicId
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type Output: str
         :param _Path: 日志采集路径，包含文件名，支持多个路径，多个路径之间英文逗号分隔，文件采集情况下必填
         :type Path: str
@@ -6421,6 +6733,8 @@ class CreateConfigRequest(AbstractModel):
     @property
     def Name(self):
         """采集配置名称
+- 名称种不得包含特殊字符｜
+- 名称最长255字符，超过截断
         :rtype: str
         """
         return self._Name
@@ -6432,6 +6746,7 @@ class CreateConfigRequest(AbstractModel):
     @property
     def Output(self):
         """采集配置所属日志主题ID即TopicId
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._Output
@@ -6695,7 +7010,9 @@ class CreateConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 投递任务绑定的日志主题 ID
+        :param _TopicId: 投递任务绑定的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type TopicId: str
         :param _NeedContent: 是否投递日志的元数据信息，默认为 true。
 当NeedContent为true时：字段Content有效。
@@ -6716,7 +7033,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """投递任务绑定的日志主题 ID
+        """投递任务绑定的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -6827,13 +7146,19 @@ class CreateCosRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题 ID
+        :param _TopicId: 日志主题Id。
+
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: 日志集Id。
+
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _Name: 投递任务名称
+        :param _Name: COS导入任务名称,最大支持128个字节。
         :type Name: str
-        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
         :type BucketRegion: str
@@ -6842,7 +7167,7 @@ class CreateCosRechargeRequest(AbstractModel):
         :type LogType: str
         :param _Prefix: COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
         :type Prefix: str
-        :param _Compress: supported: "", "gzip", "lzop", "snappy"; 默认空
+        :param _Compress: supported: "", "gzip", "lzop", "snappy"。默认空，不压缩。
         :type Compress: str
         :param _ExtractRuleInfo: 提取规则，如果设置了ExtractRule，则必须设置LogType
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
@@ -6865,7 +7190,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题 ID
+        """日志主题Id。
+
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -6876,7 +7203,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        """日志集Id。
+
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -6887,7 +7216,7 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """投递任务名称
+        """COS导入任务名称,最大支持128个字节。
         :rtype: str
         """
         return self._Name
@@ -6898,7 +7227,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -6943,7 +7274,7 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Compress(self):
-        """supported: "", "gzip", "lzop", "snappy"; 默认空
+        """supported: "", "gzip", "lzop", "snappy"。默认空，不压缩。
         :rtype: str
         """
         return self._Compress
@@ -7061,10 +7392,21 @@ class CreateDashboardSubscribeRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 仪表盘订阅名称。
+输入限制：
+- 不能为空
+- 长度不能超过128字节
+- 不能包含字符'|'
         :type Name: str
-        :param _DashboardId: 仪表盘id。
+        :param _DashboardId: 仪表盘Id。
+- 通过[获取仪表盘](https://cloud.tencent.com/document/product/614/95636)获取仪表盘Id。
         :type DashboardId: str
-        :param _Cron: 订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。<br><li/>{秒数} 取值范围： 0 ~ 59 <br><li/>{分钟} 取值范围： 0 ~ 59  <br><li/>{小时} 取值范围： 0 ~ 23  <br><li/>{日期} 取值范围： 1 ~ 31 AND (dayOfMonth最后一天： L) <br><li/>{月份} 取值范围： 1 ~ 12 <br><li/>{星期} 取值范围： 0 ~ 6 【0:星期日， 6星期六】
+        :param _Cron: 订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。
+- {秒数} 取值范围： 0 ~ 59 
+- {分钟} 取值范围： 0 ~ 59 
+- {小时} 取值范围： 0 ~ 23 
+- {日期} 取值范围： 1 ~ 31 AND (dayOfMonth最后一天： L) 
+- {月份} 取值范围： 1 ~ 12 
+- {星期} 取值范围： 0 ~ 6 【0:星期日， 6星期六】
         :type Cron: str
         :param _SubscribeData: 仪表盘订阅数据。
         :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
@@ -7077,6 +7419,10 @@ class CreateDashboardSubscribeRequest(AbstractModel):
     @property
     def Name(self):
         """仪表盘订阅名称。
+输入限制：
+- 不能为空
+- 长度不能超过128字节
+- 不能包含字符'|'
         :rtype: str
         """
         return self._Name
@@ -7087,7 +7433,8 @@ class CreateDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
-        """仪表盘id。
+        """仪表盘Id。
+- 通过[获取仪表盘](https://cloud.tencent.com/document/product/614/95636)获取仪表盘Id。
         :rtype: str
         """
         return self._DashboardId
@@ -7098,7 +7445,13 @@ class CreateDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Cron(self):
-        """订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。<br><li/>{秒数} 取值范围： 0 ~ 59 <br><li/>{分钟} 取值范围： 0 ~ 59  <br><li/>{小时} 取值范围： 0 ~ 23  <br><li/>{日期} 取值范围： 1 ~ 31 AND (dayOfMonth最后一天： L) <br><li/>{月份} 取值范围： 1 ~ 12 <br><li/>{星期} 取值范围： 0 ~ 6 【0:星期日， 6星期六】
+        """订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。
+- {秒数} 取值范围： 0 ~ 59 
+- {分钟} 取值范围： 0 ~ 59 
+- {小时} 取值范围： 0 ~ 23 
+- {日期} 取值范围： 1 ~ 31 AND (dayOfMonth最后一天： L) 
+- {月份} 取值范围： 1 ~ 12 
+- {星期} 取值范围： 0 ~ 6 【0:星期日， 6星期六】
         :rtype: str
         """
         return self._Cron
@@ -7392,17 +7745,22 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 投递规则属于的 topic id
+        :param _TopicId: 投递规则属于的TopicId。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type TopicId: str
         :param _FunctionName: 投递的云函数名字。仅支持[事件函数](https://cloud.tencent.com/document/product/583/9694#scf-.E4.BA.8B.E4.BB.B6.E5.87.BD.E6.95.B0) （[函数类型选型](https://cloud.tencent.com/document/product/583/73483)）
+通过 [获取函数列表](https://cloud.tencent.com/document/product/583/18582) 获取函数信息。
         :type FunctionName: str
-        :param _Namespace: 命名空间
+        :param _Namespace: 命名空间。参考 [命名空间管理](https://cloud.tencent.com/document/product/583/35913)
+- 通过 [列出命名空间列表](https://cloud.tencent.com/document/product/583/37158) 获取Name。
         :type Namespace: str
-        :param _Qualifier: 函数版本
+        :param _Qualifier: 函数版本。
+- 通过 [查询函数版本 ](https://cloud.tencent.com/document/product/583/37162) 获取函数版本。
         :type Qualifier: str
-        :param _Timeout: 投递最长等待时间，单位：秒
+        :param _Timeout: 投递最长等待时间，单位：秒。 默认：60
         :type Timeout: int
-        :param _MaxMsgNum: 投递最大消息数
+        :param _MaxMsgNum: 投递最大消息数。默认为100。支持范围[1,10000]
         :type MaxMsgNum: int
         """
         self._TopicId = None
@@ -7414,7 +7772,9 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """投递规则属于的 topic id
+        """投递规则属于的TopicId。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -7426,6 +7786,7 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
     @property
     def FunctionName(self):
         """投递的云函数名字。仅支持[事件函数](https://cloud.tencent.com/document/product/583/9694#scf-.E4.BA.8B.E4.BB.B6.E5.87.BD.E6.95.B0) （[函数类型选型](https://cloud.tencent.com/document/product/583/73483)）
+通过 [获取函数列表](https://cloud.tencent.com/document/product/583/18582) 获取函数信息。
         :rtype: str
         """
         return self._FunctionName
@@ -7436,7 +7797,8 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间
+        """命名空间。参考 [命名空间管理](https://cloud.tencent.com/document/product/583/35913)
+- 通过 [列出命名空间列表](https://cloud.tencent.com/document/product/583/37158) 获取Name。
         :rtype: str
         """
         return self._Namespace
@@ -7447,7 +7809,8 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """函数版本
+        """函数版本。
+- 通过 [查询函数版本 ](https://cloud.tencent.com/document/product/583/37162) 获取函数版本。
         :rtype: str
         """
         return self._Qualifier
@@ -7458,7 +7821,7 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        """投递最长等待时间，单位：秒
+        """投递最长等待时间，单位：秒。 默认：60
         :rtype: int
         """
         return self._Timeout
@@ -7469,7 +7832,7 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def MaxMsgNum(self):
-        """投递最大消息数
+        """投递最大消息数。默认为100。支持范围[1,10000]
         :rtype: int
         """
         return self._MaxMsgNum
@@ -7531,7 +7894,8 @@ class CreateExportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Count: 日志导出数量,  最大值5000万
         :type Count: int
@@ -7563,7 +7927,8 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -7732,7 +8097,8 @@ class CreateIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Rule: 索引规则
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
@@ -7756,7 +8122,8 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -7868,7 +8235,9 @@ class CreateKafkaRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 导入CLS目标topic ID
+        :param _TopicId: 导入CLS目标TopicId。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type TopicId: str
         :param _Name: Kafka导入配置名称
         :type Name: str
@@ -7881,6 +8250,7 @@ class CreateKafkaRechargeRequest(AbstractModel):
         :param _LogRechargeRule: 日志导入规则。
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
         :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
         :type KafkaInstance: str
         :param _ServerAddr: 服务地址，KafkaType为1时必填。
         :type ServerAddr: str
@@ -7889,7 +8259,8 @@ class CreateKafkaRechargeRequest(AbstractModel):
         :param _Protocol: 加密访问协议。
 KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
-        :param _ConsumerGroupName: 用户Kafka消费组名称
+        :param _ConsumerGroupName: 用户Kafka消费组名称。
+- 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
         :type ConsumerGroupName: str
         """
         self._TopicId = None
@@ -7906,7 +8277,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def TopicId(self):
-        """导入CLS目标topic ID
+        """导入CLS目标TopicId。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -7973,6 +8346,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
     @property
     def KafkaInstance(self):
         """腾讯云CKafka实例ID，KafkaType为0时必填。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
         :rtype: str
         """
         return self._KafkaInstance
@@ -8017,7 +8391,8 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ConsumerGroupName(self):
-        """用户Kafka消费组名称
+        """用户Kafka消费组名称。
+- 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -8103,7 +8478,9 @@ class CreateLogsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetName: 日志集名字，不能重名
+        :param _LogsetName: 日志集名字。
+
+- 最大支持255个字符。不支持`|`字符。
         :type LogsetName: str
         :param _Tags: 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
         :type Tags: list of Tag
@@ -8116,7 +8493,9 @@ class CreateLogsetRequest(AbstractModel):
 
     @property
     def LogsetName(self):
-        """日志集名字，不能重名
+        """日志集名字。
+
+- 最大支持255个字符。不支持`|`字符。
         :rtype: str
         """
         return self._LogsetName
@@ -8217,7 +8596,10 @@ class CreateMachineGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 机器组名字，不能重复
+        :param _GroupName: 机器组名字。
+输入限制：
+- 最大支持255个字符，不能为空字符串
+- 不能包含字符'|'
         :type GroupName: str
         :param _MachineGroupType: 创建机器组类型。取值如下：
 - Type：ip，Values中为ip字符串列表创建机器组
@@ -8228,12 +8610,16 @@ class CreateMachineGroupRequest(AbstractModel):
         :param _AutoUpdate: 是否开启机器组自动更新。默认false
         :type AutoUpdate: bool
         :param _UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :type UpdateStartTime: str
         :param _UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :type UpdateEndTime: str
         :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费。默认false
         :type ServiceLogging: bool
         :param _DelayCleanupTime: 机器组中机器离线清理时间。单位：天
+
+- 大于0时生效。
         :type DelayCleanupTime: int
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
@@ -8255,7 +8641,10 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """机器组名字，不能重复
+        """机器组名字。
+输入限制：
+- 最大支持255个字符，不能为空字符串
+- 不能包含字符'|'
         :rtype: str
         """
         return self._GroupName
@@ -8302,6 +8691,7 @@ class CreateMachineGroupRequest(AbstractModel):
     @property
     def UpdateStartTime(self):
         """升级开始时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :rtype: str
         """
         return self._UpdateStartTime
@@ -8313,6 +8703,7 @@ class CreateMachineGroupRequest(AbstractModel):
     @property
     def UpdateEndTime(self):
         """升级结束时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :rtype: str
         """
         return self._UpdateEndTime
@@ -8335,6 +8726,8 @@ class CreateMachineGroupRequest(AbstractModel):
     @property
     def DelayCleanupTime(self):
         """机器组中机器离线清理时间。单位：天
+
+- 大于0时生效。
         :rtype: int
         """
         return self._DelayCleanupTime
@@ -8451,7 +8844,7 @@ class CreateNoticeContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 模板名称。
+        :param _Name: 模板名称。最大支持255个字节
         :type Name: str
         :param _Type: 模板内容语言。0：中文1：英文
         :type Type: int
@@ -8464,7 +8857,7 @@ class CreateNoticeContentRequest(AbstractModel):
 
     @property
     def Name(self):
-        """模板名称。
+        """模板名称。最大支持255个字节
         :rtype: str
         """
         return self._Name
@@ -8565,9 +8958,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SrcTopicId: 源日志主题
+        :param _SrcTopicId: 源日志主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type SrcTopicId: str
-        :param _Name: 任务名称
+        :param _Name: 任务名称，0~255字符
         :type Name: str
         :param _EnableFlag: 任务启动状态.  1开启,  2关闭
         :type EnableFlag: int
@@ -8579,13 +8972,13 @@ class CreateScheduledSqlRequest(AbstractModel):
         :type ProcessStartTime: int
         :param _ProcessType: 调度类型，1:持续运行 2:指定时间范围
         :type ProcessType: int
-        :param _ProcessPeriod: 调度周期(分钟)
+        :param _ProcessPeriod: 调度周期(分钟)，1~1440分钟
         :type ProcessPeriod: int
         :param _ProcessTimeWindow: 单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。 
         :type ProcessTimeWindow: str
-        :param _ProcessDelay: 执行延迟(秒)
+        :param _ProcessDelay: 执行延迟(秒)，0~120秒，默认60秒
         :type ProcessDelay: int
-        :param _SrcTopicRegion: 源topicId的地域信息
+        :param _SrcTopicRegion: 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
         :type SrcTopicRegion: str
         :param _ProcessEndTime: 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
         :type ProcessEndTime: int
@@ -8608,7 +9001,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
-        """源日志主题
+        """源日志主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._SrcTopicId
@@ -8619,7 +9012,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        """任务名称，0~255字符
         :rtype: str
         """
         return self._Name
@@ -8685,7 +9078,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessPeriod(self):
-        """调度周期(分钟)
+        """调度周期(分钟)，1~1440分钟
         :rtype: int
         """
         return self._ProcessPeriod
@@ -8707,7 +9100,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessDelay(self):
-        """执行延迟(秒)
+        """执行延迟(秒)，0~120秒，默认60秒
         :rtype: int
         """
         return self._ProcessDelay
@@ -8718,7 +9111,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
-        """源topicId的地域信息
+        """源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
         :rtype: str
         """
         return self._SrcTopicRegion
@@ -8826,15 +9219,18 @@ class CreateShipperRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 创建的投递规则所属的日志主题ID
+        :param _TopicId: 创建的投递规则所属的日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _Prefix: 投递规则投递的新的目录前缀。
 - 仅支持0-9A-Za-z-_/
 - 最大支持256个字符
         :type Prefix: str
-        :param _ShipperName: 投递规则的名字
+        :param _ShipperName: 投递规则的名字。最大支持255个字符
         :type ShipperName: str
         :param _Interval: 投递的时间间隔，单位 秒，默认300，范围 300-900
         :type Interval: int
@@ -8856,15 +9252,17 @@ class CreateShipperRequest(AbstractModel):
         :param _EndTime: 投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。
 如果用户不填写，默认为持续投递，即无限。
         :type EndTime: int
-        :param _StorageType: cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+        :param _StorageType: 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
 
-1. STANDARD_IA：低频存储；
-2. ARCHIVE：归档存储；
-3. DEEP_ARCHIVE：深度归档存储；
-4. STANDARD：标准存储；
-5. MAZ_STANDARD：标准存储（多 AZ）；
-6. MAZ_STANDARD_IA：低频存储（多 AZ）；
-7. INTELLIGENT_TIERING：智能分层存储。
+- STANDARD：标准存储
+- STANDARD_IA：低频存储
+- ARCHIVE：归档存储
+- DEEP_ARCHIVE：深度归档存储
+- MAZ_STANDARD：标准存储（多 AZ）
+- MAZ_STANDARD_IA：低频存储（多 AZ）
+- INTELLIGENT_TIERING：智能分层存储
+- MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :type StorageType: str
         """
         self._TopicId = None
@@ -8884,7 +9282,8 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """创建的投递规则所属的日志主题ID
+        """创建的投递规则所属的日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -8895,7 +9294,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -8919,7 +9320,7 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def ShipperName(self):
-        """投递规则的名字
+        """投递规则的名字。最大支持255个字符
         :rtype: str
         """
         return self._ShipperName
@@ -9031,15 +9432,17 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        """cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+        """对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
 
-1. STANDARD_IA：低频存储；
-2. ARCHIVE：归档存储；
-3. DEEP_ARCHIVE：深度归档存储；
-4. STANDARD：标准存储；
-5. MAZ_STANDARD：标准存储（多 AZ）；
-6. MAZ_STANDARD_IA：低频存储（多 AZ）；
-7. INTELLIGENT_TIERING：智能分层存储。
+- STANDARD：标准存储
+- STANDARD_IA：低频存储
+- ARCHIVE：归档存储
+- DEEP_ARCHIVE：深度归档存储
+- MAZ_STANDARD：标准存储（多 AZ）
+- MAZ_STANDARD_IA：低频存储（多 AZ）
+- INTELLIGENT_TIERING：智能分层存储
+- MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :rtype: str
         """
         return self._StorageType
@@ -9134,8 +9537,14 @@ class CreateTopicRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _LogsetId: 日志集ID
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
         :param _TopicName: 日志主题名称
+名称限制
+- 不能为空字符串
+- 不能包含字符'|'
+- 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
+
         :type TopicName: str
         :param _PartitionCount: 日志主题分区个数。默认创建1个，最大支持创建10个分区。
         :type PartitionCount: int
@@ -9184,6 +9593,7 @@ class CreateTopicRequest(AbstractModel):
     @property
     def LogsetId(self):
         """日志集ID
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -9195,6 +9605,11 @@ class CreateTopicRequest(AbstractModel):
     @property
     def TopicName(self):
         """日志主题名称
+名称限制
+- 不能为空字符串
+- 不能包含字符'|'
+- 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
+
         :rtype: str
         """
         return self._TopicName
@@ -9413,7 +9828,7 @@ class CreateWebCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 通知内容名称。
+        :param _Name: 通知内容名称。最大支持255个字节
         :type Name: str
         :param _Type: 渠道类型。
 
@@ -9425,7 +9840,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
 
 当Type为Http时，必填。
         :type Method: str
-        :param _Key: 秘钥。
+        :param _Key: 秘钥。最大支持1024个字节
         :type Key: str
         """
         self._Name = None
@@ -9436,7 +9851,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
 
     @property
     def Name(self):
-        """通知内容名称。
+        """通知内容名称。最大支持255个字节
         :rtype: str
         """
         return self._Name
@@ -9484,7 +9899,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调。
 
     @property
     def Key(self):
-        """秘钥。
+        """秘钥。最大支持1024个字节
         :rtype: str
         """
         return self._Key
@@ -9664,7 +10079,7 @@ class DashboardInfo(AbstractModel):
         :type DashboardName: str
         :param _Data: 仪表盘数据
         :type Data: str
-        :param _CreateTime: 创建仪表盘的时间
+        :param _CreateTime: 创建仪表盘的时间。格式：YYYY-MM-DD HH:MM:SS
         :type CreateTime: str
         :param _AssumerUin: AssumerUin非空则表示创建该日志主题的服务方Uin
         :type AssumerUin: int
@@ -9676,7 +10091,7 @@ class DashboardInfo(AbstractModel):
         :type Tags: list of Tag
         :param _DashboardRegion: 仪表盘所在地域： 为了兼容老的地域。
         :type DashboardRegion: str
-        :param _UpdateTime: 修改仪表盘的时间
+        :param _UpdateTime: 修改仪表盘的时间。格式：YYYY-MM-DD HH:MM:SS
         :type UpdateTime: str
         :param _DashboardTopicInfos: 仪表盘对应的topic相关信息
         :type DashboardTopicInfos: list of DashboardTopicInfo
@@ -9728,7 +10143,7 @@ class DashboardInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建仪表盘的时间
+        """创建仪表盘的时间。格式：YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._CreateTime
@@ -9794,7 +10209,7 @@ class DashboardInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """修改仪表盘的时间
+        """修改仪表盘的时间。格式：YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._UpdateTime
@@ -9854,23 +10269,34 @@ class DashboardNoticeMode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReceiverType: 仪表盘通知方式。<br>
-<li/>Uin：腾讯云用户<br>
-<li/>Group：腾讯云用户组<br>
-<li/>Email：自定义Email<br>
-<li/>WeCom: 企业微信回调
+        :param _ReceiverType: 仪表盘通知方式。
+
+- Uin：腾讯云用户
+- Group：腾讯云用户组
+- WeCom：企业微信回调
+- Email：自定义邮件
+- DingTalk：钉钉
+- Lark：飞书
         :type ReceiverType: str
         :param _Values: 知方式对应的值。
-<br> <li/> 当ReceiverType不是 WeCom 时，Values必填。
+- 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Values必须为空，且Url字段必填。
+- 当ReceiverType为：`Uin`、`Group`、`Email` 时，Values必填，且Url字段必须为空。
+- 当ReceiverType为：`Uin ` 时，Values为用户id，通过 [拉取子用户](https://cloud.tencent.com/document/product/598/34587) 获取子用户 UID 。
+- 当ReceiverType为：`Group` 时，Values为用户组id，通过 [查询用户组列表](https://cloud.tencent.com/document/product/598/34589) 获取用户组 ID 。
+- 当ReceiverType为：`Email` 时，Values为用户邮箱信息。
         :type Values: list of str
         :param _ReceiverChannels: 仪表盘通知渠道。
-<br><li/> 支持：["Email","Sms","WeChat","Phone"]。
-<br><li/> 当ReceiverType是 Email 或 WeCom 时，ReceiverChannels不能赋值。
+
+-  支持：["Email","Sms","WeChat","Phone"]。
+-  当ReceiverType为 `Email` 或 `WeCom` 时，ReceiverChannels无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiverChannels: list of str
-        :param _Url: 回调Url。
-<br><li/> 当ReceiverType是 WeCom 时，Url必填。
-<br><li/> 当ReceiverType不是 WeCom 时，Url不能填写。
+        :param _Url: 订阅方式	- 回调地址。
+- 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Url字段必填为各渠道的回调地址。
+    - 为：`WeCom` 时，Url为 企业微信回调地址。
+    - 为：`DingTalk` 时，Url为 钉钉机器人Webhook地址。
+    - 为：`Lark` 时，Url为 飞书机器人Webhook地址。
+- 当ReceiverType为：`Uin`、`Group`、`Email` 时，Url字段必须为空。
         :type Url: str
         """
         self._ReceiverType = None
@@ -9880,11 +10306,14 @@ class DashboardNoticeMode(AbstractModel):
 
     @property
     def ReceiverType(self):
-        """仪表盘通知方式。<br>
-<li/>Uin：腾讯云用户<br>
-<li/>Group：腾讯云用户组<br>
-<li/>Email：自定义Email<br>
-<li/>WeCom: 企业微信回调
+        """仪表盘通知方式。
+
+- Uin：腾讯云用户
+- Group：腾讯云用户组
+- WeCom：企业微信回调
+- Email：自定义邮件
+- DingTalk：钉钉
+- Lark：飞书
         :rtype: str
         """
         return self._ReceiverType
@@ -9896,7 +10325,11 @@ class DashboardNoticeMode(AbstractModel):
     @property
     def Values(self):
         """知方式对应的值。
-<br> <li/> 当ReceiverType不是 WeCom 时，Values必填。
+- 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Values必须为空，且Url字段必填。
+- 当ReceiverType为：`Uin`、`Group`、`Email` 时，Values必填，且Url字段必须为空。
+- 当ReceiverType为：`Uin ` 时，Values为用户id，通过 [拉取子用户](https://cloud.tencent.com/document/product/598/34587) 获取子用户 UID 。
+- 当ReceiverType为：`Group` 时，Values为用户组id，通过 [查询用户组列表](https://cloud.tencent.com/document/product/598/34589) 获取用户组 ID 。
+- 当ReceiverType为：`Email` 时，Values为用户邮箱信息。
         :rtype: list of str
         """
         return self._Values
@@ -9908,8 +10341,9 @@ class DashboardNoticeMode(AbstractModel):
     @property
     def ReceiverChannels(self):
         """仪表盘通知渠道。
-<br><li/> 支持：["Email","Sms","WeChat","Phone"]。
-<br><li/> 当ReceiverType是 Email 或 WeCom 时，ReceiverChannels不能赋值。
+
+-  支持：["Email","Sms","WeChat","Phone"]。
+-  当ReceiverType为 `Email` 或 `WeCom` 时，ReceiverChannels无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -9921,9 +10355,12 @@ class DashboardNoticeMode(AbstractModel):
 
     @property
     def Url(self):
-        """回调Url。
-<br><li/> 当ReceiverType是 WeCom 时，Url必填。
-<br><li/> 当ReceiverType不是 WeCom 时，Url不能填写。
+        """订阅方式	- 回调地址。
+- 当ReceiverType为：`WeCom`、`DingTalk`、`Lark` 时，Url字段必填为各渠道的回调地址。
+    - 为：`WeCom` 时，Url为 企业微信回调地址。
+    - 为：`DingTalk` 时，Url为 钉钉机器人Webhook地址。
+    - 为：`Lark` 时，Url为 飞书机器人Webhook地址。
+- 当ReceiverType为：`Uin`、`Group`、`Email` 时，Url字段必须为空。
         :rtype: str
         """
         return self._Url
@@ -10088,6 +10525,194 @@ class DashboardSubscribeData(AbstractModel):
         
 
 
+class DashboardSubscribeInfo(AbstractModel):
+    """仪表盘订阅信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 仪表盘订阅id。
+        :type Id: int
+        :param _Name: 仪表盘订阅名称。
+        :type Name: str
+        :param _DashboardId: 仪表盘id。
+        :type DashboardId: str
+        :param _Cron: 仪表盘订阅时间。
+        :type Cron: str
+        :param _SubscribeData: 仪表盘订阅数据。
+        :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        :param _CreateTime: 仪表盘订阅记录创建时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :type CreateTime: str
+        :param _UpdateTime: 仪表盘订阅记录更新时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :type UpdateTime: str
+        :param _LastTime: 仪表盘订阅记录最后一次发送成功时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :type LastTime: str
+        :param _Uin: 腾讯云主账号Id。
+        :type Uin: int
+        :param _SubUin: 腾讯云主账号下的子账号Id。
+        :type SubUin: int
+        :param _LastStatus: 仪表盘订阅记录最后一次发送的状态。success：全部发送成功，fail：未发送， partialSuccess：部分发送成功。
+        :type LastStatus: str
+        """
+        self._Id = None
+        self._Name = None
+        self._DashboardId = None
+        self._Cron = None
+        self._SubscribeData = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LastTime = None
+        self._Uin = None
+        self._SubUin = None
+        self._LastStatus = None
+
+    @property
+    def Id(self):
+        """仪表盘订阅id。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """仪表盘订阅名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DashboardId(self):
+        """仪表盘id。
+        :rtype: str
+        """
+        return self._DashboardId
+
+    @DashboardId.setter
+    def DashboardId(self, DashboardId):
+        self._DashboardId = DashboardId
+
+    @property
+    def Cron(self):
+        """仪表盘订阅时间。
+        :rtype: str
+        """
+        return self._Cron
+
+    @Cron.setter
+    def Cron(self, Cron):
+        self._Cron = Cron
+
+    @property
+    def SubscribeData(self):
+        """仪表盘订阅数据。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        """
+        return self._SubscribeData
+
+    @SubscribeData.setter
+    def SubscribeData(self, SubscribeData):
+        self._SubscribeData = SubscribeData
+
+    @property
+    def CreateTime(self):
+        """仪表盘订阅记录创建时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """仪表盘订阅记录更新时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LastTime(self):
+        """仪表盘订阅记录最后一次发送成功时间。格式：`YYYY-MM-DD HH:MM:SS`
+        :rtype: str
+        """
+        return self._LastTime
+
+    @LastTime.setter
+    def LastTime(self, LastTime):
+        self._LastTime = LastTime
+
+    @property
+    def Uin(self):
+        """腾讯云主账号Id。
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubUin(self):
+        """腾讯云主账号下的子账号Id。
+        :rtype: int
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def LastStatus(self):
+        """仪表盘订阅记录最后一次发送的状态。success：全部发送成功，fail：未发送， partialSuccess：部分发送成功。
+        :rtype: str
+        """
+        return self._LastStatus
+
+    @LastStatus.setter
+    def LastStatus(self, LastStatus):
+        self._LastStatus = LastStatus
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._DashboardId = params.get("DashboardId")
+        self._Cron = params.get("Cron")
+        if params.get("SubscribeData") is not None:
+            self._SubscribeData = DashboardSubscribeData()
+            self._SubscribeData._deserialize(params.get("SubscribeData"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LastTime = params.get("LastTime")
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._LastStatus = params.get("LastStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DashboardTemplateVariable(AbstractModel):
     """仪表盘订阅模板变量
 
@@ -10148,7 +10773,29 @@ class DashboardTopicInfo(AbstractModel):
         r"""
         :param _TopicId: 主题id
         :type TopicId: str
-        :param _Region: topic所在的地域
+        :param _Region: topic所在的地域。
+- 1:广州
+- 4:上海
+- 5:中国香港
+- 7:上海金融
+- 8:北京
+- 9:新加坡
+- 11:深圳金融
+- 15:硅谷
+- 16:成都
+- 17:法兰克福
+- 18:首尔
+- 19:重庆
+- 22:弗吉尼亚
+- 23:曼谷
+- 25:东京
+- 33:南京
+- 36:天津
+- 39:台北
+- 46:北京金融
+- 72:雅加达
+- 74:圣保罗
+- 78:上海自动驾驶云
         :type Region: str
         """
         self._TopicId = None
@@ -10167,7 +10814,29 @@ class DashboardTopicInfo(AbstractModel):
 
     @property
     def Region(self):
-        """topic所在的地域
+        """topic所在的地域。
+- 1:广州
+- 4:上海
+- 5:中国香港
+- 7:上海金融
+- 8:北京
+- 9:新加坡
+- 11:深圳金融
+- 15:硅谷
+- 16:成都
+- 17:法兰克福
+- 18:首尔
+- 19:重庆
+- 22:弗吉尼亚
+- 23:曼谷
+- 25:东京
+- 33:南京
+- 36:天津
+- 39:台北
+- 46:北京金融
+- 72:雅加达
+- 74:圣保罗
+- 78:上海自动驾驶云
         :rtype: str
         """
         return self._Region
@@ -10514,14 +11183,14 @@ class DeleteAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNoticeId: 通知渠道组ID
+        :param _AlarmNoticeId: 通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
         :type AlarmNoticeId: str
         """
         self._AlarmNoticeId = None
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组ID
+        """通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -10642,9 +11311,9 @@ class DeleteAlarmShieldRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 屏蔽规则id。
+        :param _TaskId: 屏蔽规则id。通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取屏蔽规则ID
         :type TaskId: str
-        :param _AlarmNoticeId: 通知渠道组id。
+        :param _AlarmNoticeId: 通知渠道组id。通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取通知渠道组id
         :type AlarmNoticeId: str
         """
         self._TaskId = None
@@ -10652,7 +11321,7 @@ class DeleteAlarmShieldRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """屏蔽规则id。
+        """屏蔽规则id。通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取屏蔽规则ID
         :rtype: str
         """
         return self._TaskId
@@ -10663,7 +11332,7 @@ class DeleteAlarmShieldRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组id。
+        """通知渠道组id。通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取通知渠道组id
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -10727,7 +11396,7 @@ class DeleteCloudProductLogCollectionRequest(AbstractModel):
         :type AssumerName: str
         :param _LogType: 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
         :type LogType: str
-        :param _CloudProductRegion: 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+        :param _CloudProductRegion: 云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：
 - CDS所有日志类型：ap-guangzhou
 - CDB-AUDIT: gz
 - TDSQL-C-AUDIT: gz
@@ -10782,7 +11451,7 @@ class DeleteCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def CloudProductRegion(self):
-        """云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+        """云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：
 - CDS所有日志类型：ap-guangzhou
 - CDB-AUDIT: gz
 - TDSQL-C-AUDIT: gz
@@ -10870,6 +11539,7 @@ class DeleteConfigExtraRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ConfigExtraId: 特殊采集规则扩展配置ID
+- 通过[获取特殊采集配置](https://cloud.tencent.com/document/api/614/71164)特殊采集规则扩展配置ID。
         :type ConfigExtraId: str
         """
         self._ConfigExtraId = None
@@ -10877,6 +11547,7 @@ class DeleteConfigExtraRequest(AbstractModel):
     @property
     def ConfigExtraId(self):
         """特殊采集规则扩展配置ID
+- 通过[获取特殊采集配置](https://cloud.tencent.com/document/api/614/71164)特殊采集规则扩展配置ID。
         :rtype: str
         """
         return self._ConfigExtraId
@@ -10934,8 +11605,10 @@ class DeleteConfigFromMachineGroupRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupId: 机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :type GroupId: str
         :param _ConfigId: 采集配置ID
+ - 通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)获取采集配置Id。
         :type ConfigId: str
         """
         self._GroupId = None
@@ -10944,6 +11617,7 @@ class DeleteConfigFromMachineGroupRequest(AbstractModel):
     @property
     def GroupId(self):
         """机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -10955,6 +11629,7 @@ class DeleteConfigFromMachineGroupRequest(AbstractModel):
     @property
     def ConfigId(self):
         """采集配置ID
+ - 通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)获取采集配置Id。
         :rtype: str
         """
         return self._ConfigId
@@ -11012,14 +11687,16 @@ class DeleteConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 采集规则配置ID
+        :param _ConfigId: 采集配置ID
+ - 通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)获取采集配置Id。
         :type ConfigId: str
         """
         self._ConfigId = None
 
     @property
     def ConfigId(self):
-        """采集规则配置ID
+        """采集配置ID
+ - 通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)获取采集配置Id。
         :rtype: str
         """
         return self._ConfigId
@@ -11076,14 +11753,18 @@ class DeleteConsoleSharingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SharingId: 免密分享Id
+        :param _SharingId: 免密分享Id。
+- 通过 [获取免密分享列表](https://cloud.tencent.com/document/product/614/109798) 获取免密分享Id。 
+- 通过 [创建免密分享](https://cloud.tencent.com/document/product/614/109800) 获取免密分享Id。
         :type SharingId: str
         """
         self._SharingId = None
 
     @property
     def SharingId(self):
-        """免密分享Id
+        """免密分享Id。
+- 通过 [获取免密分享列表](https://cloud.tencent.com/document/product/614/109798) 获取免密分享Id。 
+- 通过 [创建免密分享](https://cloud.tencent.com/document/product/614/109800) 获取免密分享Id。
         :rtype: str
         """
         return self._SharingId
@@ -11140,14 +11821,18 @@ class DeleteConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 投递任务绑定的日志主题 ID
+        :param _TopicId: 投递任务绑定的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        """投递任务绑定的日志主题 ID
+        """投递任务绑定的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -11204,9 +11889,11 @@ class DeleteCosRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: COS导入配置Id
+        :param _Id: COS导入配置Id。
+- 通过 [获取cos导入配置](https://cloud.tencent.com/document/product/614/88099) 获取COS导入配置Id。
         :type Id: str
-        :param _TopicId: 日志主题Id
+        :param _TopicId: 日志主题Id。
+-  通过[获取日志主题列表](https://cloud.tencent.com/document/api/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._Id = None
@@ -11214,7 +11901,8 @@ class DeleteCosRechargeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """COS导入配置Id
+        """COS导入配置Id。
+- 通过 [获取cos导入配置](https://cloud.tencent.com/document/product/614/88099) 获取COS导入配置Id。
         :rtype: str
         """
         return self._Id
@@ -11225,7 +11913,8 @@ class DeleteCosRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题Id
+        """日志主题Id。
+-  通过[获取日志主题列表](https://cloud.tencent.com/document/api/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -11283,14 +11972,14 @@ class DeleteDashboardSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 仪表盘订阅记录id。
+        :param _Id: 仪表盘订阅记录id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :type Id: int
         """
         self._Id = None
 
     @property
     def Id(self):
-        """仪表盘订阅记录id。
+        """仪表盘订阅记录id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :rtype: int
         """
         return self._Id
@@ -11347,14 +12036,14 @@ class DeleteDataTransformRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 数据加工任务id
+        :param _TaskId: 数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """数据加工任务id
+        """数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
         :rtype: str
         """
         return self._TaskId
@@ -11411,14 +12100,18 @@ class DeleteExportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExportId: 日志导出ID
+        :param _ExportId: 日志导出任务Id
+- 通过[获取日志下载任务列表](https://cloud.tencent.com/document/product/614/56449)获取日志导出任务Id。
+
         :type ExportId: str
         """
         self._ExportId = None
 
     @property
     def ExportId(self):
-        """日志导出ID
+        """日志导出任务Id
+- 通过[获取日志下载任务列表](https://cloud.tencent.com/document/product/614/56449)获取日志导出任务Id。
+
         :rtype: str
         """
         return self._ExportId
@@ -11475,14 +12168,16 @@ class DeleteIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -11539,9 +12234,13 @@ class DeleteKafkaRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Kafka导入配置ID
+        :param _Id: Kafka导入配置Id。
+
+- 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
+- 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
         :type Id: str
-        :param _TopicId: 导入CLS目标topic ID
+        :param _TopicId: 导入CLS目标日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._Id = None
@@ -11549,7 +12248,10 @@ class DeleteKafkaRechargeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Kafka导入配置ID
+        """Kafka导入配置Id。
+
+- 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
+- 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
         :rtype: str
         """
         return self._Id
@@ -11560,7 +12262,8 @@ class DeleteKafkaRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """导入CLS目标topic ID
+        """导入CLS目标日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -11618,14 +12321,14 @@ class DeleteLogsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
         """
         self._LogsetId = None
 
     @property
     def LogsetId(self):
-        """日志集ID
+        """日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -11682,7 +12385,8 @@ class DeleteMachineGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 机器组ID
+        :param _GroupId: 机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :type GroupId: str
         :param _MachineGroupType: 机器组类型
 目前type支持 ip 和 label
@@ -11693,7 +12397,8 @@ class DeleteMachineGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """机器组ID
+        """机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -11765,14 +12470,16 @@ class DeleteMachineGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 机器组ID
+        :param _GroupId: 机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """机器组ID
+        """机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -11829,14 +12536,14 @@ class DeleteNoticeContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeContentId: 通知内容模板ID
+        :param _NoticeContentId: 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
         :type NoticeContentId: str
         """
         self._NoticeContentId = None
 
     @property
     def NoticeContentId(self):
-        """通知内容模板ID
+        """通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
         :rtype: str
         """
         return self._NoticeContentId
@@ -11893,9 +12600,9 @@ class DeleteScheduledSqlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
         :type TaskId: str
-        :param _SrcTopicId: 源日志主题ID
+        :param _SrcTopicId: 源日志主题ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
         :type SrcTopicId: str
         """
         self._TaskId = None
@@ -11903,7 +12610,7 @@ class DeleteScheduledSqlRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
         :rtype: str
         """
         return self._TaskId
@@ -11914,7 +12621,7 @@ class DeleteScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
-        """源日志主题ID
+        """源日志主题ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
         :rtype: str
         """
         return self._SrcTopicId
@@ -11972,14 +12679,16 @@ class DeleteShipperRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShipperId: 投递规则ID
+        :param _ShipperId: 投递规则Id。
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :type ShipperId: str
         """
         self._ShipperId = None
 
     @property
     def ShipperId(self):
-        """投递规则ID
+        """投递规则Id。
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :rtype: str
         """
         return self._ShipperId
@@ -12037,6 +12746,7 @@ class DeleteTopicRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: 日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._TopicId = None
@@ -12044,6 +12754,7 @@ class DeleteTopicRequest(AbstractModel):
     @property
     def TopicId(self):
         """日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -12100,14 +12811,14 @@ class DeleteWebCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WebCallbackId: 告警渠道回调配置ID。
+        :param _WebCallbackId: 告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
         :type WebCallbackId: str
         """
         self._WebCallbackId = None
 
     @property
     def WebCallbackId(self):
-        """告警渠道回调配置ID。
+        """告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
         :rtype: str
         """
         return self._WebCallbackId
@@ -12170,11 +12881,11 @@ class DeliverConfig(AbstractModel):
  ap-guangzhou  广州地域；
 ap-nanjing 南京地域。
 
-详细信息请查看官网：
+详细信息请查看官网[地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
 
-https://cloud.tencent.com/document/product/614/18940
+
         :type Region: str
-        :param _TopicId: 日志主题ID。
+        :param _TopicId: 日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
         :type TopicId: str
         :param _Scope: 投递数据范围。
 
@@ -12195,9 +12906,9 @@ https://cloud.tencent.com/document/product/614/18940
  ap-guangzhou  广州地域；
 ap-nanjing 南京地域。
 
-详细信息请查看官网：
+详细信息请查看官网[地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
 
-https://cloud.tencent.com/document/product/614/18940
+
         :rtype: str
         """
         return self._Region
@@ -12208,7 +12919,7 @@ https://cloud.tencent.com/document/product/614/18940
 
     @property
     def TopicId(self):
-        """日志主题ID。
+        """日志主题ID。-通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题ID
         :rtype: str
         """
         return self._TopicId
@@ -12257,18 +12968,22 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :param _Filters: <li> name
 按照【通知渠道组名称】进行过滤。
 类型：String
+示例："Filters":[{"Key":"name","Values":["test-notice"]}]
 必选：否</li>
 <li> alarmNoticeId
 按照【通知渠道组ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
 必选：否</li>
 <li> uid
 按照【接收用户ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "uid", Values: ["1137546"]}]
 必选：否</li>
 <li> groupId
 按照【接收用户组ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "groupId", Values: ["344098"]}]
 必选：否</li>
 
 <li> deliverFlag
@@ -12276,7 +12991,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 类型：String
 必选：否
 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
-
+示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
         :param _Offset: 分页的偏移量，默认值为0。
@@ -12293,18 +13008,22 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         """<li> name
 按照【通知渠道组名称】进行过滤。
 类型：String
+示例："Filters":[{"Key":"name","Values":["test-notice"]}]
 必选：否</li>
 <li> alarmNoticeId
 按照【通知渠道组ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "alarmNoticeId", Values: ["notice-5281f1d2-6275-4e56-9ec3-a1eb19d8bc2f"]}]
 必选：否</li>
 <li> uid
 按照【接收用户ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "uid", Values: ["1137546"]}]
 必选：否</li>
 <li> groupId
 按照【接收用户组ID】进行过滤。
 类型：String
+示例："Filters": [{Key: "groupId", Values: ["344098"]}]
 必选：否</li>
 
 <li> deliverFlag
@@ -12312,7 +13031,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 类型：String
 必选：否
 可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
-
+示例："Filters":[{"Key":"deliverFlag","Values":["2"]}]
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :rtype: list of Filter
         """
@@ -12434,7 +13153,7 @@ class DescribeAlarmShieldsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNoticeId: 通知渠道组id。
+        :param _AlarmNoticeId: 通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组id
         :type AlarmNoticeId: str
         :param _Filters: - taskId:按照【规则id】进行过滤。类型：String  必选：否
 - status:按照【规则状态】进行过滤。类型：String。 支持 0:暂未生效，1:生效中，2:已失效。 必选：否
@@ -12452,7 +13171,7 @@ class DescribeAlarmShieldsRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组id。
+        """通知渠道组id。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组id
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -12591,22 +13310,26 @@ class DescribeAlarmsRequest(AbstractModel):
 - 按照【告警策略名称】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：test-alarm
 
 alarmId
 - 按照【告警策略ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：alarm-b60cf034-c3d6-4b01-xxxx-4e877ebb4751
 
 topicId
 - 按照【监控对象的日志主题ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：6766f83d-659e-xxxx-a8f7-9104a1012743
 
 enable
 - 按照【启用状态】进行过滤。
 - 类型：String
 - 备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
 - 必选：否
+- 示例：true
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
@@ -12625,22 +13348,26 @@ enable
 - 按照【告警策略名称】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：test-alarm
 
 alarmId
 - 按照【告警策略ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：alarm-b60cf034-c3d6-4b01-xxxx-4e877ebb4751
 
 topicId
 - 按照【监控对象的日志主题ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：6766f83d-659e-xxxx-a8f7-9104a1012743
 
 enable
 - 按照【启用状态】进行过滤。
 - 类型：String
 - 备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
 - 必选：否
+- 示例：true
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :rtype: list of Filter
@@ -12763,9 +13490,9 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _From: 查询时间范围启始时间，毫秒级unix时间戳
+        :param _From: 查询时间范围启始时间，毫秒级unix时间戳(ms)
         :type From: int
-        :param _To: 查询时间范围结束时间，毫秒级unix时间戳
+        :param _To: 查询时间范围结束时间，毫秒级unix时间戳(ms)
         :type To: int
         :param _Offset: 分页的偏移量，默认值为0。
         :type Offset: int
@@ -12787,7 +13514,7 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     @property
     def From(self):
-        """查询时间范围启始时间，毫秒级unix时间戳
+        """查询时间范围启始时间，毫秒级unix时间戳(ms)
         :rtype: int
         """
         return self._From
@@ -12798,7 +13525,7 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     @property
     def To(self):
-        """查询时间范围结束时间，毫秒级unix时间戳
+        """查询时间范围结束时间，毫秒级unix时间戳(ms)
         :rtype: int
         """
         return self._To
@@ -13101,18 +13828,22 @@ class DescribeConfigExtrasRequest(AbstractModel):
 name
 - 按照【特殊采集配置名称】进行模糊匹配过滤。
 - 类型：String
+- 示例：test-config
 
 configExtraId
 - 按照【特殊采集配置ID】进行过滤。
 - 类型：String
+- 示例：3b83f9d6-3a4d-47f9-9b7f-285c868b2f9a
 
 topicId
 - 按照【日志主题】进行过滤。
 - 类型：String
+- 示例：3581a3be-aa41-423b-995a-54ec84da6264
 
 machineGroupId
 - 按照【机器组ID】进行过滤。
 - 类型：String
+- 示例：f948972f-a063-408c-a59f-8c3230bddaf6
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
@@ -13131,18 +13862,22 @@ machineGroupId
 name
 - 按照【特殊采集配置名称】进行模糊匹配过滤。
 - 类型：String
+- 示例：test-config
 
 configExtraId
 - 按照【特殊采集配置ID】进行过滤。
 - 类型：String
+- 示例：3b83f9d6-3a4d-47f9-9b7f-285c868b2f9a
 
 topicId
 - 按照【日志主题】进行过滤。
 - 类型：String
+- 示例：3581a3be-aa41-423b-995a-54ec84da6264
 
 machineGroupId
 - 按照【机器组ID】进行过滤。
 - 类型：String
+- 示例：f948972f-a063-408c-a59f-8c3230bddaf6
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :rtype: list of Filter
@@ -13268,6 +14003,7 @@ class DescribeConfigMachineGroupsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ConfigId: 采集配置ID
+- 通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)获取采集配置Id。
         :type ConfigId: str
         """
         self._ConfigId = None
@@ -13275,6 +14011,7 @@ class DescribeConfigMachineGroupsRequest(AbstractModel):
     @property
     def ConfigId(self):
         """采集配置ID
+- 通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)获取采集配置Id。
         :rtype: str
         """
         return self._ConfigId
@@ -13357,16 +14094,20 @@ class DescribeConfigsRequest(AbstractModel):
 - 按照【采集配置名称】进行模糊匹配过滤。
 - 类型：String
 - 必选：否
+- 示例：test-config
 
 configId
 - 按照【采集配置ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：3581a3be-aa41-423b-995a-54ec84da6264
 
 topicId
 - 按照【日志主题】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：3b83f9d6-3a4d-47f9-9b7f-285c868b2f9a
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
@@ -13385,16 +14126,20 @@ topicId
 - 按照【采集配置名称】进行模糊匹配过滤。
 - 类型：String
 - 必选：否
+- 示例：test-config
 
 configId
 - 按照【采集配置ID】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：3581a3be-aa41-423b-995a-54ec84da6264
 
 topicId
 - 按照【日志主题】进行过滤。
 - 类型：String
 - 必选：否
+- 示例：3b83f9d6-3a4d-47f9-9b7f-285c868b2f9a
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :rtype: list of Filter
@@ -13527,10 +14272,13 @@ class DescribeConsoleSharingListResponse(AbstractModel):
         r"""
         :param _TotalCount: 分页的总数目
         :type TotalCount: int
+        :param _ConsoleSharingInfos: 控制台免密分享列表
+        :type ConsoleSharingInfos: list of ConsoleSharingInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
+        self._ConsoleSharingInfos = None
         self._RequestId = None
 
     @property
@@ -13543,6 +14291,17 @@ class DescribeConsoleSharingListResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def ConsoleSharingInfos(self):
+        """控制台免密分享列表
+        :rtype: list of ConsoleSharingInfo
+        """
+        return self._ConsoleSharingInfos
+
+    @ConsoleSharingInfos.setter
+    def ConsoleSharingInfos(self, ConsoleSharingInfos):
+        self._ConsoleSharingInfos = ConsoleSharingInfos
 
     @property
     def RequestId(self):
@@ -13558,6 +14317,12 @@ class DescribeConsoleSharingListResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
+        if params.get("ConsoleSharingInfos") is not None:
+            self._ConsoleSharingInfos = []
+            for item in params.get("ConsoleSharingInfos"):
+                obj = ConsoleSharingInfo()
+                obj._deserialize(item)
+                self._ConsoleSharingInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13568,14 +14333,18 @@ class DescribeConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 投递任务绑定的日志主题 ID
+        :param _TopicId: 投递任务绑定的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        """投递任务绑定的日志主题 ID
+        """投递任务绑定的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -13713,7 +14482,8 @@ class DescribeCosRechargesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题 ID
+        :param _TopicId: 日志主题Id。
+-  通过[获取日志主题列表](https://cloud.tencent.com/document/api/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Status: 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
         :type Status: int
@@ -13726,7 +14496,8 @@ class DescribeCosRechargesRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题 ID
+        """日志主题Id。
+-  通过[获取日志主题列表](https://cloud.tencent.com/document/api/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -13827,7 +14598,12 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <br><li/> dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否<br><br><li/> 每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :param _Filters: dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
+
+- 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+- 入参示例：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
         :param _Offset: 分页的偏移量，默认值为0。
         :type Offset: int
@@ -13840,7 +14616,12 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<br><li/> dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否<br><br><li/> 每次请求的Filters的上限为10，Filter.Values的上限为100。
+        """dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否
+
+- 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
+- 入参示例：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
         """
         return self._Filters
@@ -13898,10 +14679,38 @@ class DescribeDashboardSubscribesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DashboardSubscribeInfos: 仪表盘订阅列表
+        :type DashboardSubscribeInfos: list of DashboardSubscribeInfo
+        :param _TotalCount: 总数目
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DashboardSubscribeInfos = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def DashboardSubscribeInfos(self):
+        """仪表盘订阅列表
+        :rtype: list of DashboardSubscribeInfo
+        """
+        return self._DashboardSubscribeInfos
+
+    @DashboardSubscribeInfos.setter
+    def DashboardSubscribeInfos(self, DashboardSubscribeInfos):
+        self._DashboardSubscribeInfos = DashboardSubscribeInfos
+
+    @property
+    def TotalCount(self):
+        """总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -13916,6 +14725,13 @@ class DescribeDashboardSubscribesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("DashboardSubscribeInfos") is not None:
+            self._DashboardSubscribeInfos = []
+            for item in params.get("DashboardSubscribeInfos"):
+                obj = DashboardSubscribeInfo()
+                obj._deserialize(item)
+                self._DashboardSubscribeInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -13931,14 +14747,68 @@ class DescribeDashboardsRequest(AbstractModel):
         :param _Limit: 分页单页限制数目，默认值为20，最大值100。
         :type Limit: int
         :param _Filters: - dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+    - 示例值：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
-- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。
+    - 示例值：业务大盘
+- dashboardRegion 按照【仪表盘地域】进行过滤（兼容老的仪表盘），通过云API创建的仪表盘该属性，类型：String，必选：否。
+    - 参考  [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
+    - 示例：ap-guangzhou
 - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
-- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
+    - 示例值：
+    ```
+    "Filters":[
+        {
+            "Key": "tagKey",
+            "Values": [
+                "tag-key-test"
+            ]
+        }
+    ]
+    ```
+
+- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，
+    - 参考 [示例1](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B) 使用。
+    ```
+    "Filters": [
+        {
+            "Key": "tag:tag-key-test",
+            "Values": [
+                "12"
+            ]
+        }
+    ]
+    ```
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
         :param _TopicIdRegionFilter: 按照topicId和regionId过滤。
+- topicId:日志主题Id。
+    -  通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+    - 示例值：439a5304-08f9-484b-9c4d-46ff57133816
+- regionId
+    - 1:广州
+    - 4:上海
+    - 5:中国香港
+    - 7:上海金融
+    - 8:北京
+    - 9:新加坡
+    - 11:深圳金融
+    - 15:硅谷
+    - 16:成都
+    - 17:法兰克福
+    - 18:首尔
+    - 19:重庆
+    - 22:弗吉尼亚
+    - 23:曼谷
+    - 25:东京
+    - 33:南京
+    - 36:天津
+    - 39:台北
+    - 46:北京金融
+    - 72:雅加达
+    - 74:圣保罗
+    - 78:上海自动驾驶云
+
         :type TopicIdRegionFilter: list of TopicIdAndRegion
         """
         self._Offset = None
@@ -13971,10 +14841,37 @@ class DescribeDashboardsRequest(AbstractModel):
     @property
     def Filters(self):
         """- dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+    - 示例值：dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 - dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
-- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。
+    - 示例值：业务大盘
+- dashboardRegion 按照【仪表盘地域】进行过滤（兼容老的仪表盘），通过云API创建的仪表盘该属性，类型：String，必选：否。
+    - 参考  [地域和访问域名](https://cloud.tencent.com/document/product/614/18940)
+    - 示例：ap-guangzhou
 - tagKey 按照【标签键】进行过滤，类型：String，必选：否。
-- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
+    - 示例值：
+    ```
+    "Filters":[
+        {
+            "Key": "tagKey",
+            "Values": [
+                "tag-key-test"
+            ]
+        }
+    ]
+    ```
+
+- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，
+    - 参考 [示例1](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B) 使用。
+    ```
+    "Filters": [
+        {
+            "Key": "tag:tag-key-test",
+            "Values": [
+                "12"
+            ]
+        }
+    ]
+    ```
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
@@ -13988,6 +14885,33 @@ class DescribeDashboardsRequest(AbstractModel):
     @property
     def TopicIdRegionFilter(self):
         """按照topicId和regionId过滤。
+- topicId:日志主题Id。
+    -  通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+    - 示例值：439a5304-08f9-484b-9c4d-46ff57133816
+- regionId
+    - 1:广州
+    - 4:上海
+    - 5:中国香港
+    - 7:上海金融
+    - 8:北京
+    - 9:新加坡
+    - 11:深圳金融
+    - 15:硅谷
+    - 16:成都
+    - 17:法兰克福
+    - 18:首尔
+    - 19:重庆
+    - 22:弗吉尼亚
+    - 23:曼谷
+    - 25:东京
+    - 33:南京
+    - 36:天津
+    - 39:台北
+    - 46:北京金融
+    - 72:雅加达
+    - 74:圣保罗
+    - 78:上海自动驾驶云
+
         :rtype: list of TopicIdAndRegion
         """
         return self._TopicIdRegionFilter
@@ -14310,7 +15234,8 @@ class DescribeExportsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Offset: 分页的偏移量，默认值为0
         :type Offset: int
@@ -14323,7 +15248,8 @@ class DescribeExportsRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -14439,14 +15365,16 @@ class DescribeIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -14475,14 +15403,15 @@ class DescribeIndexResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id
         :type TopicId: str
-        :param _Status: 是否生效
+        :param _Status: 索引状态。true：开启状态，false：关闭状态
+开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
         :type Status: bool
         :param _Rule: 索引配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
-        :param _ModifyTime: 索引修改时间，初始值为索引创建时间。
+        :param _ModifyTime: 索引修改时间，初始值为索引创建时间。格式 `YYYY-MM-DD HH:MM:SS`
         :type ModifyTime: str
         :param _IncludeInternalFields: 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
 * false:不包含
@@ -14506,7 +15435,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id
         :rtype: str
         """
         return self._TopicId
@@ -14517,7 +15446,8 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def Status(self):
-        """是否生效
+        """索引状态。true：开启状态，false：关闭状态
+开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
         :rtype: bool
         """
         return self._Status
@@ -14540,7 +15470,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """索引修改时间，初始值为索引创建时间。
+        """索引修改时间，初始值为索引创建时间。格式 `YYYY-MM-DD HH:MM:SS`
         :rtype: str
         """
         return self._ModifyTime
@@ -14607,14 +15537,18 @@ class DescribeKafkaConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromTopicId: 日志主题ID
+        :param _FromTopicId: 日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type FromTopicId: str
         """
         self._FromTopicId = None
 
     @property
     def FromTopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._FromTopicId
@@ -14733,11 +15667,14 @@ class DescribeKafkaRechargesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题 ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _Id: 导入配置ID
+        :param _Id: 导入配置Id。
+- 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
+- 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
         :type Id: str
-        :param _Status: 状态   status 1: 运行中, 2: 暂停...
+        :param _Status: 状态。1: 运行中，2: 暂停，3：错误
         :type Status: int
         """
         self._TopicId = None
@@ -14746,7 +15683,8 @@ class DescribeKafkaRechargesRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题 ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -14757,7 +15695,9 @@ class DescribeKafkaRechargesRequest(AbstractModel):
 
     @property
     def Id(self):
-        """导入配置ID
+        """导入配置Id。
+- 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
+- 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
         :rtype: str
         """
         return self._Id
@@ -14768,7 +15708,7 @@ class DescribeKafkaRechargesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态   status 1: 运行中, 2: 暂停...
+        """状态。1: 运行中，2: 暂停，3：错误
         :rtype: int
         """
         return self._Status
@@ -15118,9 +16058,12 @@ class DescribeLogHistogramRequest(AbstractModel):
         :type From: int
         :param _To: 要查询的日志的结束时间，Unix时间戳，单位ms
         :type To: int
-        :param _Query: 查询语句
+        :param _Query: 检索分析语句。
+语句由 [检索条件] | [SQL语句]构成，无需对日志进行统计分析时，可省略其中的管道符 | 及SQL语句。
+使用*或空字符串可查询所有日志。
         :type Query: str
         :param _TopicId: 要查询的日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Interval: 时间间隔: 单位ms  限制性条件：(To-From) / interval <= 200
         :type Interval: int
@@ -15160,7 +16103,9 @@ class DescribeLogHistogramRequest(AbstractModel):
 
     @property
     def Query(self):
-        """查询语句
+        """检索分析语句。
+语句由 [检索条件] | [SQL语句]构成，无需对日志进行统计分析时，可省略其中的管道符 | 及SQL语句。
+使用*或空字符串可查询所有日志。
         :rtype: str
         """
         return self._Query
@@ -15172,6 +16117,7 @@ class DescribeLogHistogramRequest(AbstractModel):
     @property
     def TopicId(self):
         """要查询的日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -15311,11 +16257,12 @@ class DescribeLogsetsRequest(AbstractModel):
 - 按照【日志集名称】进行过滤。
 - 类型：String
 - 必选：否
-
+- 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集名称。
 logsetId
 - 按照【日志集ID】进行过滤。
 - 类型：String
 - 必选：否
+- 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 
 tagKey
 - 按照【标签键】进行过滤。
@@ -15344,11 +16291,12 @@ tag:tagKey
 - 按照【日志集名称】进行过滤。
 - 类型：String
 - 必选：否
-
+- 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集名称。
 logsetId
 - 按照【日志集ID】进行过滤。
 - 类型：String
 - 必选：否
+- 通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 
 tagKey
 - 按照【标签键】进行过滤。
@@ -15482,6 +16430,7 @@ class DescribeMachineGroupConfigsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupId: 机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :type GroupId: str
         """
         self._GroupId = None
@@ -15489,6 +16438,7 @@ class DescribeMachineGroupConfigsRequest(AbstractModel):
     @property
     def GroupId(self):
         """机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -15567,7 +16517,8 @@ class DescribeMachineGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: machineGroupName
+        :param _Filters: 过滤条件
+machineGroupName
 - 按照【机器组名称】进行过滤。
 - 类型：String
 - 必选：否
@@ -15578,7 +16529,7 @@ machineGroupId
 - 必选：否
 
 osType
-- 按照【操作系统类型】进行过滤。
+- 按照【操作系统类型】进行过滤。0： Linux；1： Windows
 - 类型：Int
 - 必选：否
 
@@ -15605,7 +16556,8 @@ tag:tagKey
 
     @property
     def Filters(self):
-        """machineGroupName
+        """过滤条件
+machineGroupName
 - 按照【机器组名称】进行过滤。
 - 类型：String
 - 必选：否
@@ -15616,7 +16568,7 @@ machineGroupId
 - 必选：否
 
 osType
-- 按照【操作系统类型】进行过滤。
+- 按照【操作系统类型】进行过滤。0： Linux；1： Windows
 - 类型：Int
 - 必选：否
 
@@ -15751,34 +16703,36 @@ class DescribeMachinesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 查询的机器组ID
+        :param _GroupId: 查询的机器组ID。
+
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组ID。
         :type GroupId: str
         :param _Filters: ip
-- 按照【ip】进行过滤。
+- 按照ip进行过滤。
 - 类型：String
 - 必选：否
 
 instance
-- 按照【instance】进行过滤。
+- 按照实例id进行过滤。
 - 类型：String
 - 必选：否
 
 version
-- 按照【LogListener版本】进行过滤。
+- 按照LogListener版本进行过滤。
 - 类型：String
 - 必选：否
 
 status
-- 按照【状态】进行过滤。
+- 按照机器状态进行过滤。
 - 类型：String
 - 必选：否
 - 可选值：0：离线，1：正常
 
 offlineTime
-- 按照【机器离线时间】进行过滤。
+- 按照机器离线时间进行过滤。
 - 类型：String
 - 必选：否
-- - 可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
+- -可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
@@ -15794,7 +16748,9 @@ offlineTime
 
     @property
     def GroupId(self):
-        """查询的机器组ID
+        """查询的机器组ID。
+
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组ID。
         :rtype: str
         """
         return self._GroupId
@@ -15806,31 +16762,31 @@ offlineTime
     @property
     def Filters(self):
         """ip
-- 按照【ip】进行过滤。
+- 按照ip进行过滤。
 - 类型：String
 - 必选：否
 
 instance
-- 按照【instance】进行过滤。
+- 按照实例id进行过滤。
 - 类型：String
 - 必选：否
 
 version
-- 按照【LogListener版本】进行过滤。
+- 按照LogListener版本进行过滤。
 - 类型：String
 - 必选：否
 
 status
-- 按照【状态】进行过滤。
+- 按照机器状态进行过滤。
 - 类型：String
 - 必选：否
 - 可选值：0：离线，1：正常
 
 offlineTime
-- 按照【机器离线时间】进行过滤。
+- 按照机器离线时间进行过滤。
 - 类型：String
 - 必选：否
-- - 可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
+- -可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
@@ -16183,14 +17139,16 @@ class DescribePartitionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -16275,15 +17233,14 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
         :type Name: str
         :param _TaskId: 任务id。
         :type TaskId: str
-        :param _Filters: <li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
-<li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
-<li>srcTopicId按照【源日志主题ID】进行过滤。类型：String。必选：否</li>
-<li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String。必选：否</li>
-<li>bizType按照【主题类型】进行过滤，0：日志主题；1：指标主题。类型：String。必选：否</li>
-<li>status按照【任务状态】进行过滤，1：运行；2：停止。类型：String。必选：否</li>
-<li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li>
-<li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
-
+        :param _Filters: - srcTopicName按照【源日志主题名称】进行过滤，模糊匹配。类型：String。必选：否。示例：业务日志主题1 ，通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题名称。
+- dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否。示例：业务日志主题 2，通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题名称。
+- srcTopicId按照【源日志主题ID】进行过滤。类型：String。必选：否。示例：a4478687-2382-4486-9692-de7986350f6b ，通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题id。
+- dstTopicId按照【目标日志主题ID】进行过滤。类型：String。必选：否。示例：bd4d3375-d72a-4cd2-988d-d8eda2bd62b0，通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题id。
+- bizType按照【主题类型】进行过滤，0：日志主题；1：指标主题。类型：String。必选：否
+- status按照【任务状态】进行过滤，1：运行；2：停止；3：异常。类型：String。必选：否
+- taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否。示例：metricTask ，通过 [获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519) 获取任务名称。
+- taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否。示例：9c64f9c1-a14e-4b59-b074-5b73cac3dd66 ，通过 [获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519) 获取任务id。
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -16338,15 +17295,14 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
-<li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
-<li>srcTopicId按照【源日志主题ID】进行过滤。类型：String。必选：否</li>
-<li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String。必选：否</li>
-<li>bizType按照【主题类型】进行过滤，0：日志主题；1：指标主题。类型：String。必选：否</li>
-<li>status按照【任务状态】进行过滤，1：运行；2：停止。类型：String。必选：否</li>
-<li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li>
-<li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
-
+        """- srcTopicName按照【源日志主题名称】进行过滤，模糊匹配。类型：String。必选：否。示例：业务日志主题1 ，通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题名称。
+- dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否。示例：业务日志主题 2，通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题名称。
+- srcTopicId按照【源日志主题ID】进行过滤。类型：String。必选：否。示例：a4478687-2382-4486-9692-de7986350f6b ，通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题id。
+- dstTopicId按照【目标日志主题ID】进行过滤。类型：String。必选：否。示例：bd4d3375-d72a-4cd2-988d-d8eda2bd62b0，通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题id。
+- bizType按照【主题类型】进行过滤，0：日志主题；1：指标主题。类型：String。必选：否
+- status按照【任务状态】进行过滤，1：运行；2：停止；3：异常。类型：String。必选：否
+- taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否。示例：metricTask ，通过 [获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519) 获取任务名称。
+- taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否。示例：9c64f9c1-a14e-4b59-b074-5b73cac3dd66 ，通过 [获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519) 获取任务id。
         :rtype: list of Filter
         """
         return self._Filters
@@ -16447,7 +17403,9 @@ class DescribeShipperTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShipperId: 投递规则ID
+        :param _ShipperId: 投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :type ShipperId: str
         :param _StartTime: 查询的开始时间戳，支持最近3天的查询， 毫秒。
 StartTime必须小于EndTime
@@ -16462,7 +17420,9 @@ StartTime必须小于EndTime
 
     @property
     def ShipperId(self):
-        """投递规则ID
+        """投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :rtype: str
         """
         return self._ShipperId
@@ -16576,10 +17536,9 @@ class DescribeShippersRequest(AbstractModel):
 - topicId：按照【日志主题】进行过滤。
     类型：String。
     必选：否
-- taskStatus
-按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
-类型：String
-必选：否
+- taskStatus：按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+    类型：String
+    必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为10。
         :type Filters: list of Filter
@@ -16606,10 +17565,9 @@ class DescribeShippersRequest(AbstractModel):
 - topicId：按照【日志主题】进行过滤。
     类型：String。
     必选：否
-- taskStatus
-按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
-类型：String
-必选：否
+- taskStatus：按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+    类型：String
+    必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为10。
         :rtype: list of Filter
@@ -16747,7 +17705,7 @@ class DescribeTopicsRequest(AbstractModel):
         :param _Filters: <ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
 <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
 <li>topicId 按照【日志主题ID】进行过滤。类型：String。必选：否</li>
-<li>logsetId 按照【日志集ID】进行过滤，可通过调用 DescribeLogsets 查询已创建的日志集列表或登录控制台进行查看；也可以调用 CreateLogset 创建新的日志集。类型：String。必选：否</li>
+<li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
 <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
 <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
 <li>storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
@@ -16779,7 +17737,7 @@ class DescribeTopicsRequest(AbstractModel):
         """<ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
 <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
 <li>topicId 按照【日志主题ID】进行过滤。类型：String。必选：否</li>
-<li>logsetId 按照【日志集ID】进行过滤，可通过调用 DescribeLogsets 查询已创建的日志集列表或登录控制台进行查看；也可以调用 CreateLogset 创建新的日志集。类型：String。必选：否</li>
+<li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
 <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
 <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
 <li>storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
@@ -16948,7 +17906,7 @@ class DescribeWebCallbacksRequest(AbstractModel):
 按照【告警渠道回调配置渠道类型】进行过滤。
 类型：String
 必选：否
-
+枚举值：WeCom，DingTalk，Lark，Http
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
         :param _Offset: 分页的偏移量，默认值为0。
@@ -16976,7 +17934,7 @@ class DescribeWebCallbacksRequest(AbstractModel):
 按照【告警渠道回调配置渠道类型】进行过滤。
 类型：String
 必选：否
-
+枚举值：WeCom，DingTalk，Lark，Http
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
         """
@@ -17263,12 +18221,20 @@ class EventLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventChannel: 事件通道，支持Application，Security，Setup，System，ALL
+        :param _EventChannel: 事件通道，支持
+- Application 应用日志
+- Security 安全日志
+- Setup 启动日志
+- System 系统日志
+- ALL 所有日志
 
         :type EventChannel: str
-        :param _TimeType: 时间类型，1:用户自定义，2:当前时间
+        :param _TimeType: 时间字段（Timestamp）支持的类型
+- 1（用户自定义时间）
+- 2（当前时间）
         :type TimeType: int
-        :param _Timestamp: 时间，用户选择自定义时间类型时，需要指定时间
+        :param _Timestamp: 时间，用户选择自定义时间类型时，需要指定时间，单位秒
+格式：时间戳，1754897446
         :type Timestamp: int
         :param _EventIDs: 事件ID过滤列表
 	
@@ -17284,7 +18250,12 @@ class EventLog(AbstractModel):
 
     @property
     def EventChannel(self):
-        """事件通道，支持Application，Security，Setup，System，ALL
+        """事件通道，支持
+- Application 应用日志
+- Security 安全日志
+- Setup 启动日志
+- System 系统日志
+- ALL 所有日志
 
         :rtype: str
         """
@@ -17296,7 +18267,9 @@ class EventLog(AbstractModel):
 
     @property
     def TimeType(self):
-        """时间类型，1:用户自定义，2:当前时间
+        """时间字段（Timestamp）支持的类型
+- 1（用户自定义时间）
+- 2（当前时间）
         :rtype: int
         """
         return self._TimeType
@@ -17307,7 +18280,8 @@ class EventLog(AbstractModel):
 
     @property
     def Timestamp(self):
-        """时间，用户选择自定义时间类型时，需要指定时间
+        """时间，用户选择自定义时间类型时，需要指定时间，单位秒
+格式：时间戳，1754897446
         :rtype: int
         """
         return self._Timestamp
@@ -17423,13 +18397,14 @@ class ExportInfo(AbstractModel):
         :type Count: int
         :param _Status: 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
         :type Status: str
-        :param _From: 日志导出起始时间
+        :param _From: 日志导出起始时间，毫秒时间戳
         :type From: int
-        :param _To: 日志导出结束时间
+        :param _To: 日志导出结束时间，毫秒时间戳
         :type To: int
         :param _CosPath: 日志导出路径,有效期一个小时，请尽快使用该路径下载。
         :type CosPath: str
         :param _CreateTime: 日志导出创建时间
+时间格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
         :param _SyntaxRule: 语法规则。 默认值为0。
 0：Lucene语法，1：CQL语法。
@@ -17554,7 +18529,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def From(self):
-        """日志导出起始时间
+        """日志导出起始时间，毫秒时间戳
         :rtype: int
         """
         return self._From
@@ -17565,7 +18540,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def To(self):
-        """日志导出结束时间
+        """日志导出结束时间，毫秒时间戳
         :rtype: int
         """
         return self._To
@@ -17588,6 +18563,7 @@ class ExportInfo(AbstractModel):
     @property
     def CreateTime(self):
         """日志导出创建时间
+时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -17653,9 +18629,10 @@ class ExtractRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeKey: 时间字段的key名字，TikeKey和TimeFormat必须成对出现
+        :param _TimeKey: 时间字段的key名字，TimeKey和TimeFormat必须成对出现
         :type TimeKey: str
         :param _TimeFormat: 时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
+- 参考 [配置时间格式](https://cloud.tencent.com/document/product/614/38614) 文档 
         :type TimeFormat: str
         :param _Delimiter: 分隔符类型日志的分隔符，只有LogType为delimiter_log时有效
         :type Delimiter: str
@@ -17760,7 +18737,7 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def TimeKey(self):
-        """时间字段的key名字，TikeKey和TimeFormat必须成对出现
+        """时间字段的key名字，TimeKey和TimeFormat必须成对出现
         :rtype: str
         """
         return self._TimeKey
@@ -17772,6 +18749,7 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
     @property
     def TimeFormat(self):
         """时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
+- 参考 [配置时间格式](https://cloud.tencent.com/document/product/614/38614) 文档 
         :rtype: str
         """
         return self._TimeFormat
@@ -18324,7 +19302,9 @@ class GetAlarmLogRequest(AbstractModel):
         :type To: int
         :param _Query: 查询过滤条件，例如：
 - 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
+   - 通过[获取告警策略列表](https://cloud.tencent.com/document/api/614/56461)获取告警策略ID
 - 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b" `
+  - 通过[获取告警策略列表](https://cloud.tencent.com/document/api/614/56461)获取监控对象ID
 - 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b"`
 - 按告警策略ID及监控对象ID查询支持SQL语句：`(alert_id:"alarm-5ce45495-09e8-4d58-xxxx-768134bf330c") AND (monitored_object:"3c514e84-6f1f-46ec-xxxx-05de6163f7fe") AND NOT condition_evaluate_result: "Skip" AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result='ProcessError') as top50StatisticsFailureCount, count_if(notification_send_result!='NotSend') as top50NoticeTotalCount, count_if(notification_send_result='SendPartFail' or notification_send_result='SendFail') as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1`
         :type Query: str
@@ -18379,7 +19359,9 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
     def Query(self):
         """查询过滤条件，例如：
 - 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
+   - 通过[获取告警策略列表](https://cloud.tencent.com/document/api/614/56461)获取告警策略ID
 - 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b" `
+  - 通过[获取告警策略列表](https://cloud.tencent.com/document/api/614/56461)获取监控对象ID
 - 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b"`
 - 按告警策略ID及监控对象ID查询支持SQL语句：`(alert_id:"alarm-5ce45495-09e8-4d58-xxxx-768134bf330c") AND (monitored_object:"3c514e84-6f1f-46ec-xxxx-05de6163f7fe") AND NOT condition_evaluate_result: "Skip" AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result='ProcessError') as top50StatisticsFailureCount, count_if(notification_send_result!='NotSend') as top50NoticeTotalCount, count_if(notification_send_result='SendPartFail' or notification_send_result='SendFail') as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1`
         :rtype: str
@@ -18873,6 +19855,11 @@ class JsonInfo(AbstractModel):
         :param _EnableTag: 启用标志
         :type EnableTag: bool
         :param _MetaFields: 元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
+
+- __SOURCE__：日志采集的源 IP，示例：10.0.1.2
+- __FILENAME__：日志采集的文件名，示例：/data/log/nginx/access.log
+- __TIMESTAMP__：日志时间戳（毫秒级别 Unix 时间戳），按时间范围检索日志时，将自动使用该时间对日志进行检索，在控制台显示为“日志时间”，示例：1640005601188
+- __HOSTNAME__：日志来源机器名称，需使用2.7.4及以上版本的 Loglistener 才会采集该字段，示例：localhost
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaFields: list of str
         :param _JsonType: 投递Json格式，0：字符串方式投递；1:以结构化方式投递
@@ -18896,6 +19883,11 @@ class JsonInfo(AbstractModel):
     @property
     def MetaFields(self):
         """元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
+
+- __SOURCE__：日志采集的源 IP，示例：10.0.1.2
+- __FILENAME__：日志采集的文件名，示例：/data/log/nginx/access.log
+- __TIMESTAMP__：日志时间戳（毫秒级别 Unix 时间戳），按时间范围检索日志时，将自动使用该时间对日志进行检索，在控制台显示为“日志时间”，示例：1640005601188
+- __HOSTNAME__：日志来源机器名称，需使用2.7.4及以上版本的 Loglistener 才会采集该字段，示例：localhost
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -19079,10 +20071,22 @@ class KafkaProtocolInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Protocol: 协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
-入参必填
+
+- 当IsEncryptionAddr为true时，Protocol必填。
+- 支持的协议类型如下：
+    - plaintext：纯文本无加密协议
+    - sasl_ssl：SASL 认证 + SSL 加密
+    - ssl：纯 SSL/TLS 加密协议
+    - sasl_plaintext：SASL 认证 + 非加密通道
+
         :type Protocol: str
         :param _Mechanism: 加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
-当Protocol为sasl_plaintext或sasl_ssl时必填
+
+- 当Protocol为  `sasl_plaintext` 或 `sasl_ssl` 时 Mechanism 必填。
+- 支持加密类型如下
+    -  PLAIN：明文认证
+    -  SCRAM-SHA-256：基于挑战-响应机制，使用PBKDF2-HMAC-SHA256算法
+    -  SCRAM-SHA-512：增强版SCRAM，使用PBKDF2-HMAC-SHA512算法
         :type Mechanism: str
         :param _UserName: 用户名。
 当Protocol为sasl_plaintext或sasl_ssl时必填
@@ -19099,7 +20103,14 @@ class KafkaProtocolInfo(AbstractModel):
     @property
     def Protocol(self):
         """协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
-入参必填
+
+- 当IsEncryptionAddr为true时，Protocol必填。
+- 支持的协议类型如下：
+    - plaintext：纯文本无加密协议
+    - sasl_ssl：SASL 认证 + SSL 加密
+    - ssl：纯 SSL/TLS 加密协议
+    - sasl_plaintext：SASL 认证 + 非加密通道
+
         :rtype: str
         """
         return self._Protocol
@@ -19111,7 +20122,12 @@ class KafkaProtocolInfo(AbstractModel):
     @property
     def Mechanism(self):
         """加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
-当Protocol为sasl_plaintext或sasl_ssl时必填
+
+- 当Protocol为  `sasl_plaintext` 或 `sasl_ssl` 时 Mechanism 必填。
+- 支持加密类型如下
+    -  PLAIN：明文认证
+    -  SCRAM-SHA-256：基于挑战-响应机制，使用PBKDF2-HMAC-SHA256算法
+    -  SCRAM-SHA-512：增强版SCRAM，使用PBKDF2-HMAC-SHA512算法
         :rtype: str
         """
         return self._Mechanism
@@ -19191,9 +20207,9 @@ class KafkaRechargeInfo(AbstractModel):
         :type Status: int
         :param _Offset: 导入数据位置，-2:最早（默认），-1：最晚
         :type Offset: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间。格式`YYYY-MM-DD HH:MM:SS`
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: 更新时间。格式`YYYY-MM-DD HH:MM:SS`
         :type UpdateTime: str
         :param _LogRechargeRule: 日志导入规则
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
@@ -19348,7 +20364,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间。格式`YYYY-MM-DD HH:MM:SS`
         :rtype: str
         """
         return self._CreateTime
@@ -19359,7 +20375,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间
+        """更新时间。格式`YYYY-MM-DD HH:MM:SS`
         :rtype: str
         """
         return self._UpdateTime
@@ -20011,7 +21027,7 @@ class LogRechargeRuleInfo(AbstractModel):
         :type RechargeType: str
         :param _EncodingFormat: 解析编码格式，0: UTF-8（默认值），1: GBK
         :type EncodingFormat: int
-        :param _DefaultTimeSwitch: 使用默认时间，true：开启（默认值）， flase：关闭
+        :param _DefaultTimeSwitch: 使用默认时间状态。true：开启后将使用系统当前时间或 Kafka 消息时间戳作为日志时间戳；false：关闭将使用日志中的时间字段作为日志时间戳。 默认：true
         :type DefaultTimeSwitch: bool
         :param _LogRegex: 整条日志匹配规则，只有RechargeType为fullregex_log时有效
         :type LogRegex: str
@@ -20023,13 +21039,101 @@ class LogRechargeRuleInfo(AbstractModel):
         :type UnMatchLogTimeSrc: int
         :param _DefaultTimeSrc: 默认时间来源，0: 系统当前时间，1: Kafka消息时间戳
         :type DefaultTimeSrc: int
-        :param _TimeKey: 时间字段
+        :param _TimeKey: 时间字段，日志中代表时间的字段名。
+
+- 当DefaultTimeSwitch为false，且RechargeType数据提取模式为 `json_log` JSON-文件日志 或 `fullregex_log` 单行完全正则-文件日志时， TimeKey不能为空。
         :type TimeKey: str
-        :param _TimeRegex: 时间提取正则表达式
+        :param _TimeRegex: 时间提取正则表达式。
+- 当DefaultTimeSwitch为false，且RechargeType数据提取模式为 `minimalist_log` 单行全文-文件日志时， TimeRegex不能为空。
+- 仅需输入日志中代表时间的字段的正则表达式即可；若匹配到多个字段，将使用第一个。
+   例：日志原文为：message with time 2022-08-08 14:20:20，则您可以设置提取时间正则为\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d
+
         :type TimeRegex: str
-        :param _TimeFormat: 时间字段格式
+        :param _TimeFormat: 时间字段格式。
+- 当DefaultTimeSwitch为false时， TimeFormat不能为空。
         :type TimeFormat: str
-        :param _TimeZone: 时间字段时区
+        :param _TimeZone: 时间字段时区。
+- 当DefaultTimeSwitch为false时， TimeZone不能为空。
+- 时区格式规则
+​前缀​：使用 GMT 或 UTC 作为时区基准
+​偏移量​：
+    - `-` 表示西时区（比基准时间晚）
+    - `+` 表示东时区（比基准时间早）
+    -  格式为 ±HH:MM（小时:分钟）
+
+- 当前支持：
+```
+"GMT-12:00" 
+"GMT-11:00" 
+"GMT-10:00" 
+"GMT-09:30" 
+"GMT-09:00" 
+"GMT-08:00" 
+"GMT-07:00" 
+"GMT-06:00" 
+"GMT-05:00" 
+"GMT-04:00" 
+"GMT-03:30" 
+"GMT-03:00" 
+"GMT-02:00" 
+"GMT-01:00" 
+"GMT+00:00"
+"GMT+01:00"
+"GMT+02:00"
+"GMT+03:30"
+"GMT+04:00"
+"GMT+04:30"
+"GMT+05:00"
+"GMT+05:30"
+"GMT+05:45"
+"GMT+06:00"
+"GMT+06:30"
+"GMT+07:00"
+"GMT+08:00"
+"GMT+09:00"
+"GMT+09:30"
+"GMT+10:00"
+"GMT+10:30"
+"GMT+11:00"
+"GMT+11:30"
+"GMT+12:00"
+"GMT+12:45"
+"GMT+13:00"
+"GMT+14:00"
+"UTC-11:00"
+"UTC-10:00"
+"UTC-09:00"
+"UTC-08:00"
+"UTC-12:00"
+"UTC-07:00"
+"UTC-06:00"
+"UTC-05:00"
+"UTC-04:30"
+"UTC-04:00"
+"UTC-03:30"
+"UTC-03:00"
+"UTC-02:00"
+"UTC-01:00"
+"UTC+00:00"
+"UTC+01:00"
+"UTC+02:00"
+"UTC+03:00"
+"UTC+03:30"
+"UTC+04:00"
+"UTC+04:30"
+"UTC+05:00"
+"UTC+05:45"
+"UTC+06:00"
+"UTC+06:30"
+"UTC+07:00"
+"UTC+08:00"
+"UTC+09:00"
+"UTC+09:30"
+"UTC+10:00"
+"UTC+11:00"
+"UTC+12:00"
+"UTC+13:00"
+```
         :type TimeZone: str
         :param _Metadata: 元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
         :type Metadata: list of str
@@ -20078,7 +21182,7 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def DefaultTimeSwitch(self):
-        """使用默认时间，true：开启（默认值）， flase：关闭
+        """使用默认时间状态。true：开启后将使用系统当前时间或 Kafka 消息时间戳作为日志时间戳；false：关闭将使用日志中的时间字段作为日志时间戳。 默认：true
         :rtype: bool
         """
         return self._DefaultTimeSwitch
@@ -20144,7 +21248,9 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def TimeKey(self):
-        """时间字段
+        """时间字段，日志中代表时间的字段名。
+
+- 当DefaultTimeSwitch为false，且RechargeType数据提取模式为 `json_log` JSON-文件日志 或 `fullregex_log` 单行完全正则-文件日志时， TimeKey不能为空。
         :rtype: str
         """
         return self._TimeKey
@@ -20155,7 +21261,11 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def TimeRegex(self):
-        """时间提取正则表达式
+        """时间提取正则表达式。
+- 当DefaultTimeSwitch为false，且RechargeType数据提取模式为 `minimalist_log` 单行全文-文件日志时， TimeRegex不能为空。
+- 仅需输入日志中代表时间的字段的正则表达式即可；若匹配到多个字段，将使用第一个。
+   例：日志原文为：message with time 2022-08-08 14:20:20，则您可以设置提取时间正则为\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d
+
         :rtype: str
         """
         return self._TimeRegex
@@ -20166,7 +21276,8 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def TimeFormat(self):
-        """时间字段格式
+        """时间字段格式。
+- 当DefaultTimeSwitch为false时， TimeFormat不能为空。
         :rtype: str
         """
         return self._TimeFormat
@@ -20177,7 +21288,88 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def TimeZone(self):
-        """时间字段时区
+        """时间字段时区。
+- 当DefaultTimeSwitch为false时， TimeZone不能为空。
+- 时区格式规则
+​前缀​：使用 GMT 或 UTC 作为时区基准
+​偏移量​：
+    - `-` 表示西时区（比基准时间晚）
+    - `+` 表示东时区（比基准时间早）
+    -  格式为 ±HH:MM（小时:分钟）
+
+- 当前支持：
+```
+"GMT-12:00" 
+"GMT-11:00" 
+"GMT-10:00" 
+"GMT-09:30" 
+"GMT-09:00" 
+"GMT-08:00" 
+"GMT-07:00" 
+"GMT-06:00" 
+"GMT-05:00" 
+"GMT-04:00" 
+"GMT-03:30" 
+"GMT-03:00" 
+"GMT-02:00" 
+"GMT-01:00" 
+"GMT+00:00"
+"GMT+01:00"
+"GMT+02:00"
+"GMT+03:30"
+"GMT+04:00"
+"GMT+04:30"
+"GMT+05:00"
+"GMT+05:30"
+"GMT+05:45"
+"GMT+06:00"
+"GMT+06:30"
+"GMT+07:00"
+"GMT+08:00"
+"GMT+09:00"
+"GMT+09:30"
+"GMT+10:00"
+"GMT+10:30"
+"GMT+11:00"
+"GMT+11:30"
+"GMT+12:00"
+"GMT+12:45"
+"GMT+13:00"
+"GMT+14:00"
+"UTC-11:00"
+"UTC-10:00"
+"UTC-09:00"
+"UTC-08:00"
+"UTC-12:00"
+"UTC-07:00"
+"UTC-06:00"
+"UTC-05:00"
+"UTC-04:30"
+"UTC-04:00"
+"UTC-03:30"
+"UTC-03:00"
+"UTC-02:00"
+"UTC-01:00"
+"UTC+00:00"
+"UTC+01:00"
+"UTC+02:00"
+"UTC+03:00"
+"UTC+03:30"
+"UTC+04:00"
+"UTC+04:30"
+"UTC+05:00"
+"UTC+05:45"
+"UTC+06:00"
+"UTC+06:30"
+"UTC+07:00"
+"UTC+08:00"
+"UTC+09:00"
+"UTC+09:30"
+"UTC+10:00"
+"UTC+11:00"
+"UTC+12:00"
+"UTC+13:00"
+```
         :rtype: str
         """
         return self._TimeZone
@@ -20257,7 +21449,7 @@ class LogsetInfo(AbstractModel):
         :type LogsetId: str
         :param _LogsetName: 日志集名称
         :type LogsetName: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间。格式 `YYYY-MM-DD HH:MM:SS`
         :type CreateTime: str
         :param _AssumerName: 云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
         :type AssumerName: str
@@ -20300,7 +21492,7 @@ class LogsetInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间。格式 `YYYY-MM-DD HH:MM:SS`
         :rtype: str
         """
         return self._CreateTime
@@ -20391,18 +21583,21 @@ class MachineGroupInfo(AbstractModel):
         :param _MachineGroupType: 机器组类型
         :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
         :param _CreateTime: 创建时间
+时间格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
         :param _Tags: 机器组绑定的标签列表
         :type Tags: list of Tag
         :param _AutoUpdate: 是否开启机器组自动更新
         :type AutoUpdate: str
         :param _UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :type UpdateStartTime: str
         :param _UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :type UpdateEndTime: str
         :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
         :type ServiceLogging: bool
-        :param _DelayCleanupTime: 机器组中机器离线定期清理时间
+        :param _DelayCleanupTime: 机器组中机器离线定期清理时间，单位天，默认设置30天。
         :type DelayCleanupTime: int
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
@@ -20458,6 +21653,7 @@ class MachineGroupInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
+时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -20491,6 +21687,7 @@ class MachineGroupInfo(AbstractModel):
     @property
     def UpdateStartTime(self):
         """升级开始时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :rtype: str
         """
         return self._UpdateStartTime
@@ -20502,6 +21699,7 @@ class MachineGroupInfo(AbstractModel):
     @property
     def UpdateEndTime(self):
         """升级结束时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :rtype: str
         """
         return self._UpdateEndTime
@@ -20523,7 +21721,7 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def DelayCleanupTime(self):
-        """机器组中机器离线定期清理时间
+        """机器组中机器离线定期清理时间，单位天，默认设置30天。
         :rtype: int
         """
         return self._DelayCleanupTime
@@ -20658,7 +21856,7 @@ class MachineInfo(AbstractModel):
         :type InstanceID: str
         :param _Status: 机器状态，0:异常，1:正常
         :type Status: int
-        :param _OfflineTime: 机器离线时间，空为正常，异常返回具体时间
+        :param _OfflineTime: 机器离线时间，空为正常，异常返回具体时间。时间格式：YYYY-MM-DD HH:mm:ss
         :type OfflineTime: str
         :param _AutoUpdate: 机器是否开启自动升级。0:关闭，1:开启
         :type AutoUpdate: int
@@ -20718,7 +21916,7 @@ class MachineInfo(AbstractModel):
 
     @property
     def OfflineTime(self):
-        """机器离线时间，空为正常，异常返回具体时间
+        """机器离线时间，空为正常，异常返回具体时间。时间格式：YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._OfflineTime
@@ -20812,9 +22010,10 @@ class MergePartitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _PartitionId: 合并的PartitionId（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等，且找到的分区必须是读写分区（Staus:readwrite），入参PartitionId与找到的PartitionId设置为只读分区（Status:readonly）,再新建一个新的读写分区） 。[获取分区列表](https://cloud.tencent.com/document/product/614/56469)
+        :param _PartitionId: 合并的PartitionId（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等，且找到的分区必须是读写分区（Status:readwrite），入参PartitionId与找到的PartitionId设置为只读分区（Status:readonly）,再新建一个新的读写分区） 。[获取分区列表](https://cloud.tencent.com/document/product/614/56470)
 
 1. 入参PartitionId只能是读写分区（Status的值有readonly，readwrite），且能找到入参PartitionId的下一个可读写分区（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等）；
 2. 入参PartitionId不能是最后一个分区（PartitionId的ExclusiveEndKey不能是ffffffffffffffffffffffffffffffff）；
@@ -20826,7 +22025,8 @@ class MergePartitionRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -20837,7 +22037,7 @@ class MergePartitionRequest(AbstractModel):
 
     @property
     def PartitionId(self):
-        """合并的PartitionId（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等，且找到的分区必须是读写分区（Staus:readwrite），入参PartitionId与找到的PartitionId设置为只读分区（Status:readonly）,再新建一个新的读写分区） 。[获取分区列表](https://cloud.tencent.com/document/product/614/56469)
+        """合并的PartitionId（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等，且找到的分区必须是读写分区（Status:readwrite），入参PartitionId与找到的PartitionId设置为只读分区（Status:readonly）,再新建一个新的读写分区） 。[获取分区列表](https://cloud.tencent.com/document/product/614/56470)
 
 1. 入参PartitionId只能是读写分区（Status的值有readonly，readwrite），且能找到入参PartitionId的下一个可读写分区（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等）；
 2. 入参PartitionId不能是最后一个分区（PartitionId的ExclusiveEndKey不能是ffffffffffffffffffffffffffffffff）；
@@ -21021,7 +22221,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNoticeId: 通知渠道组ID。
+        :param _AlarmNoticeId: 通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
         :type AlarmNoticeId: str
         :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
         :type Tags: list of Tag
@@ -21076,7 +22276,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组ID。
+        """通知渠道组ID。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/api/614/56462)获取通知渠道组ID
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -21293,13 +22493,13 @@ class ModifyAlarmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmId: 告警策略ID。
+        :param _AlarmId: 告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
         :type AlarmId: str
-        :param _Name: 告警策略名称
+        :param _Name: 告警策略名称。最大支持255个字节，不支持 '|'。
         :type Name: str
         :param _MonitorTime: 监控任务运行时间点。
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _Condition: 触发条件。
+        :param _Condition: 告警信息发送的触发条件。
 
 注意:  
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
@@ -21320,7 +22520,7 @@ class ModifyAlarmRequest(AbstractModel):
         :type TriggerCount: int
         :param _AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。
         :type AlarmPeriod: int
-        :param _AlarmNoticeIds: 关联的告警通知模板列表。
+        :param _AlarmNoticeIds: 关联的告警通知渠道列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取告警通知渠道列表
         :type AlarmNoticeIds: list of str
         :param _AlarmTargets: 监控对象列表。
         :type AlarmTargets: list of AlarmTarget
@@ -21373,7 +22573,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmId(self):
-        """告警策略ID。
+        """告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
         :rtype: str
         """
         return self._AlarmId
@@ -21384,7 +22584,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Name(self):
-        """告警策略名称
+        """告警策略名称。最大支持255个字节，不支持 '|'。
         :rtype: str
         """
         return self._Name
@@ -21406,7 +22606,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Condition(self):
-        """触发条件。
+        """告警信息发送的触发条件。
 
 注意:  
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
@@ -21472,7 +22672,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmNoticeIds(self):
-        """关联的告警通知模板列表。
+        """关联的告警通知渠道列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取告警通知渠道列表
         :rtype: list of str
         """
         return self._AlarmNoticeIds
@@ -21707,13 +22907,13 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 屏蔽规则ID。
+        :param _TaskId: 屏蔽规则ID。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取屏蔽规则ID
         :type TaskId: str
-        :param _AlarmNoticeId: 通知渠道组id。
+        :param _AlarmNoticeId: 通知渠道组id。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取通知渠道组id
         :type AlarmNoticeId: str
-        :param _StartTime: 屏蔽开始时间（秒级时间戳）。
+        :param _StartTime: 屏蔽开始时间，秒级(s)时间戳。
         :type StartTime: int
-        :param _EndTime: 屏蔽结束时间（秒级时间戳）。
+        :param _EndTime: 屏蔽结束时间，秒级(s)时间戳。
         :type EndTime: int
         :param _Type: 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
         :type Type: int
@@ -21722,6 +22922,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
         :param _Reason: 屏蔽原因。
         :type Reason: str
         :param _Status: 规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+枚举：0（未生效），1（生效中），2（已失效）
         :type Status: int
         """
         self._TaskId = None
@@ -21735,7 +22936,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """屏蔽规则ID。
+        """屏蔽规则ID。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取屏蔽规则ID
         :rtype: str
         """
         return self._TaskId
@@ -21746,7 +22947,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
-        """通知渠道组id。
+        """通知渠道组id。-通过[获取告警屏蔽配置规则](https://cloud.tencent.com/document/api/614/103650)获取通知渠道组id
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -21757,7 +22958,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """屏蔽开始时间（秒级时间戳）。
+        """屏蔽开始时间，秒级(s)时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -21768,7 +22969,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """屏蔽结束时间（秒级时间戳）。
+        """屏蔽结束时间，秒级(s)时间戳。
         :rtype: int
         """
         return self._EndTime
@@ -21813,6 +23014,7 @@ class ModifyAlarmShieldRequest(AbstractModel):
     @property
     def Status(self):
         """规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+枚举：0（未生效），1（生效中），2（已失效）
         :rtype: int
         """
         return self._Status
@@ -22025,17 +23227,24 @@ class ModifyConfigExtraRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ConfigExtraId: 采集配置扩展信息id
+- 通过[获取特殊采集配置](https://cloud.tencent.com/document/api/614/71164)获取采集配置扩展信息id。
         :type ConfigExtraId: str
         :param _Name: 采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
         :type Name: str
         :param _TopicId: 日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _HostFile: 节点文件配置信息
+        :param _HostFile: 自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+
+- 详情参考  [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 文档。
         :type HostFile: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         :param _ContainerFile: 采集配置标记。
 - 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
+- 详情参考 [ ContainerFileInfo](https://cloud.tencent.com/document/api/614/56471#ContainerFileInfo) 文档
         :type ContainerFile: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
-        :param _ContainerStdout: 容器标准输出信息
+        :param _ContainerStdout: 自建k8s-容器标准输出信息，包括容器、命名空间等，
+
+- 详情参考 [ContainerStdoutInfo]( https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 文档
         :type ContainerStdout: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         :param _LogType: 采集的日志类型，默认为minimalist_log。支持以下类型：
 - json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
@@ -22050,7 +23259,7 @@ class ModifyConfigExtraRequest(AbstractModel):
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :type LogFormat: str
-        :param _ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :param _ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType。
         :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         :param _ExcludePaths: 采集黑名单路径列表
         :type ExcludePaths: list of ExcludePathInfo
@@ -22058,17 +23267,24 @@ class ModifyConfigExtraRequest(AbstractModel):
 - 取值参考：[使用组合解析提取模式采集日志
 ](https://cloud.tencent.com/document/product/614/61310)
         :type UserDefineRule: str
-        :param _Type: 类型：container_stdout、container_file、host_file
+        :param _Type: 容器场景，日志采集输入类型，支持以下三种类型
+- container_stdout 标准输出
+- container_file 容器文件
+- host_file 主机节点文件
         :type Type: str
         :param _GroupId: 机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :type GroupId: str
         :param _ConfigFlag: 自建采集配置标
         :type ConfigFlag: str
         :param _LogsetId: 日志集ID
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _LogsetName: 日志集name
+        :param _LogsetName: 日志集名称
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
         :type LogsetName: str
-        :param _TopicName: 日志主题name
+        :param _TopicName: 日志主题名称
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
         :type TopicName: str
         :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
 - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
@@ -22100,6 +23316,7 @@ class ModifyConfigExtraRequest(AbstractModel):
     @property
     def ConfigExtraId(self):
         """采集配置扩展信息id
+- 通过[获取特殊采集配置](https://cloud.tencent.com/document/api/614/71164)获取采集配置扩展信息id。
         :rtype: str
         """
         return self._ConfigExtraId
@@ -22122,6 +23339,7 @@ class ModifyConfigExtraRequest(AbstractModel):
     @property
     def TopicId(self):
         """日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -22132,7 +23350,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def HostFile(self):
-        """节点文件配置信息
+        """自建k8s-节点文件配置信息,包括文件路径、名称及元数据相关信息。
+
+- 详情参考  [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo) 文档。
         :rtype: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         """
         return self._HostFile
@@ -22145,6 +23365,7 @@ class ModifyConfigExtraRequest(AbstractModel):
     def ContainerFile(self):
         """采集配置标记。
 - 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
+- 详情参考 [ ContainerFileInfo](https://cloud.tencent.com/document/api/614/56471#ContainerFileInfo) 文档
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
         """
         return self._ContainerFile
@@ -22155,7 +23376,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ContainerStdout(self):
-        """容器标准输出信息
+        """自建k8s-容器标准输出信息，包括容器、命名空间等，
+
+- 详情参考 [ContainerStdoutInfo]( https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo) 文档
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         """
         return self._ContainerStdout
@@ -22201,7 +23424,7 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ExtractRule(self):
-        """提取规则，如果设置了ExtractRule，则必须设置LogType
+        """提取规则，如果设置了ExtractRule，则必须设置LogType。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         """
         return self._ExtractRule
@@ -22236,7 +23459,10 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def Type(self):
-        """类型：container_stdout、container_file、host_file
+        """容器场景，日志采集输入类型，支持以下三种类型
+- container_stdout 标准输出
+- container_file 容器文件
+- host_file 主机节点文件
         :rtype: str
         """
         return self._Type
@@ -22248,6 +23474,7 @@ class ModifyConfigExtraRequest(AbstractModel):
     @property
     def GroupId(self):
         """机器组ID
+- 通过[获取机器组列表](https://cloud.tencent.com/document/api/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -22270,6 +23497,7 @@ class ModifyConfigExtraRequest(AbstractModel):
     @property
     def LogsetId(self):
         """日志集ID
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -22280,7 +23508,8 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def LogsetName(self):
-        """日志集name
+        """日志集名称
+- 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集名称。
         :rtype: str
         """
         return self._LogsetName
@@ -22291,7 +23520,8 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """日志主题name
+        """日志主题名称
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题名称。
         :rtype: str
         """
         return self._TopicName
@@ -22397,6 +23627,8 @@ class ModifyConfigRequest(AbstractModel):
         :param _ConfigId: 采集规则配置ID，通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)返回信息获取。
         :type ConfigId: str
         :param _Name: 采集规则配置名称
+- 不能包含特殊字符｜
+- 长度不能超过255字符，超过会被截断
         :type Name: str
         :param _Path: 日志采集路径，包含文件名
         :type Path: str
@@ -22418,6 +23650,7 @@ class ModifyConfigRequest(AbstractModel):
         :param _ExcludePaths: 采集黑名单路径列表
         :type ExcludePaths: list of ExcludePathInfo
         :param _Output: 采集配置关联的日志主题（TopicId）
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type Output: str
         :param _UserDefineRule: 用户自定义解析字符串，Json格式序列化的字符串。
         :type UserDefineRule: str
@@ -22453,6 +23686,8 @@ class ModifyConfigRequest(AbstractModel):
     @property
     def Name(self):
         """采集规则配置名称
+- 不能包含特殊字符｜
+- 长度不能超过255字符，超过会被截断
         :rtype: str
         """
         return self._Name
@@ -22519,6 +23754,7 @@ class ModifyConfigRequest(AbstractModel):
     @property
     def Output(self):
         """采集配置关联的日志主题（TopicId）
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._Output
@@ -22617,7 +23853,9 @@ class ModifyConsoleSharingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SharingId: 免密分享链接Id
+        :param _SharingId: 免密分享Id。
+- 通过 [获取免密分享列表](https://cloud.tencent.com/document/product/614/109798) 获取免密分享Id。 
+- 通过 [创建免密分享](https://cloud.tencent.com/document/product/614/109800) 获取免密分享Id。
         :type SharingId: str
         :param _DurationMilliseconds: 指定分享链接有效期，单位：毫秒，最长可设定有效期为30天
         :type DurationMilliseconds: int
@@ -22627,7 +23865,9 @@ class ModifyConsoleSharingRequest(AbstractModel):
 
     @property
     def SharingId(self):
-        """免密分享链接Id
+        """免密分享Id。
+- 通过 [获取免密分享列表](https://cloud.tencent.com/document/product/614/109798) 获取免密分享Id。 
+- 通过 [创建免密分享](https://cloud.tencent.com/document/product/614/109800) 获取免密分享Id。
         :rtype: str
         """
         return self._SharingId
@@ -22696,7 +23936,9 @@ class ModifyConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 投递任务绑定的日志主题 ID
+        :param _TopicId: 投递任务绑定的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type TopicId: str
         :param _Effective: 投递任务是否生效，默认不生效
         :type Effective: bool
@@ -22720,7 +23962,9 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """投递任务绑定的日志主题 ID
+        """投递任务绑定的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -22843,15 +24087,21 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: COS导入配置Id
+        :param _Id: COS导入配置Id。
+
+- 通过[获取cos导入配置](https://cloud.tencent.com/document/product/614/88099)接口获取COS导入配置Id。
         :type Id: str
-        :param _TopicId: 日志主题Id
+        :param _TopicId: 日志主题Id。
+
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _Name: COS导入任务名称
+        :param _Name: COS导入任务名称,最大支持128个字节。
         :type Name: str
         :param _Enable: 任务状态   0： 停用 ， 1：启用
         :type Enable: int
         :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
         :type BucketRegion: str
@@ -22859,7 +24109,7 @@ class ModifyCosRechargeRequest(AbstractModel):
         :type Prefix: str
         :param _LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文； 默认为minimalist_log
         :type LogType: str
-        :param _Compress: 解析格式。supported: "", "gzip", "lzop", "snappy"; 默认空
+        :param _Compress: 解析格式。supported: "", "gzip", "lzop", "snappy"。空串表示不压缩。
         :type Compress: str
         :param _ExtractRuleInfo: 提取规则，如果设置了ExtractRule，则必须设置LogType
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
@@ -22883,7 +24133,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """COS导入配置Id
+        """COS导入配置Id。
+
+- 通过[获取cos导入配置](https://cloud.tencent.com/document/product/614/88099)接口获取COS导入配置Id。
         :rtype: str
         """
         return self._Id
@@ -22894,7 +24146,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题Id
+        """日志主题Id。
+
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -22905,7 +24159,7 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """COS导入任务名称
+        """COS导入任务名称,最大支持128个字节。
         :rtype: str
         """
         return self._Name
@@ -22928,6 +24182,8 @@ class ModifyCosRechargeRequest(AbstractModel):
     @property
     def Bucket(self):
         """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -22971,7 +24227,7 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Compress(self):
-        """解析格式。supported: "", "gzip", "lzop", "snappy"; 默认空
+        """解析格式。supported: "", "gzip", "lzop", "snappy"。空串表示不压缩。
         :rtype: str
         """
         return self._Compress
@@ -23074,11 +24330,11 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 仪表盘订阅id。
+        :param _Id: 仪表盘订阅id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :type Id: int
-        :param _DashboardId: 仪表盘id。
+        :param _DashboardId: 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
         :type DashboardId: str
-        :param _Name: 仪表盘订阅名称。
+        :param _Name: 仪表盘订阅名称。最大支持128个字符，且不支持'|'字符。
         :type Name: str
         :param _Cron: 订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。
         :type Cron: str
@@ -23093,7 +24349,7 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """仪表盘订阅id。
+        """仪表盘订阅id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :rtype: int
         """
         return self._Id
@@ -23104,7 +24360,7 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
-        """仪表盘id。
+        """仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
         :rtype: str
         """
         return self._DashboardId
@@ -23115,7 +24371,7 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """仪表盘订阅名称。
+        """仪表盘订阅名称。最大支持128个字符，且不支持'|'字符。
         :rtype: str
         """
         return self._Name
@@ -23490,9 +24746,11 @@ class ModifyKafkaConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromTopicId: 日志主题ID
+        :param _FromTopicId: 日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type FromTopicId: str
-        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :param _Compression: 压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩
         :type Compression: int
         :param _ConsumerContent: kafka协议消费数据格式
         :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
@@ -23503,7 +24761,9 @@ class ModifyKafkaConsumerRequest(AbstractModel):
 
     @property
     def FromTopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._FromTopicId
@@ -23514,7 +24774,7 @@ class ModifyKafkaConsumerRequest(AbstractModel):
 
     @property
     def Compression(self):
-        """压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        """压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩
         :rtype: int
         """
         return self._Compression
@@ -23586,15 +24846,20 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Kafka导入配置ID
+        :param _Id: 导入配置Id。
+- 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
+- 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
         :type Id: str
-        :param _TopicId: 导入CLS目标topic ID
+        :param _TopicId: 导入CLS目标TopicId。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456)获取日志主题Id。
         :type TopicId: str
         :param _Name: Kafka导入配置名称
         :type Name: str
         :param _KafkaType: 导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。
         :type KafkaType: int
         :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
         :type KafkaInstance: str
         :param _ServerAddr: 服务地址，KafkaType为1时必填。
         :type ServerAddr: str
@@ -23602,13 +24867,15 @@ class ModifyKafkaRechargeRequest(AbstractModel):
         :type IsEncryptionAddr: bool
         :param _Protocol: 加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
-        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
+
+- Kafka类型为腾讯云CKafka时：通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获取TopicName。
         :type UserKafkaTopics: str
         :param _ConsumerGroupName: 用户Kafka消费组名称
         :type ConsumerGroupName: str
         :param _LogRechargeRule: 日志导入规则
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
-        :param _StatusControl: 导入控制，1：暂停；2：继续。
+        :param _StatusControl: 导入控制，1：暂停；2：启动。
         :type StatusControl: int
         """
         self._Id = None
@@ -23626,7 +24893,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Kafka导入配置ID
+        """导入配置Id。
+- 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
+- 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
         :rtype: str
         """
         return self._Id
@@ -23637,7 +24906,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """导入CLS目标topic ID
+        """导入CLS目标TopicId。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -23671,6 +24942,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
     @property
     def KafkaInstance(self):
         """腾讯云CKafka实例ID，KafkaType为0时必填。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
         :rtype: str
         """
         return self._KafkaInstance
@@ -23714,7 +24986,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def UserKafkaTopics(self):
-        """用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        """用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
+
+- Kafka类型为腾讯云CKafka时：通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获取TopicName。
         :rtype: str
         """
         return self._UserKafkaTopics
@@ -23747,7 +25021,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def StatusControl(self):
-        """导入控制，1：暂停；2：继续。
+        """导入控制，1：暂停；2：启动。
         :rtype: int
         """
         return self._StatusControl
@@ -23819,9 +25093,9 @@ class ModifyLogsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _LogsetName: 日志集名称
+        :param _LogsetName: 日志集名字。- 最大支持255个字符。不支持`|`字符。
         :type LogsetName: str
         :param _Tags: 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
         :type Tags: list of Tag
@@ -23832,7 +25106,7 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        """日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -23843,7 +25117,7 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def LogsetName(self):
-        """日志集名称
+        """日志集名字。- 最大支持255个字符。不支持`|`字符。
         :rtype: str
         """
         return self._LogsetName
@@ -23918,9 +25192,13 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 机器组ID
+        :param _GroupId: 机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :type GroupId: str
         :param _GroupName: 机器组名称
+输入限制：
+- 不能为空字符串
+- 不能包含字符'|'
         :type GroupName: str
         :param _MachineGroupType: 机器组类型。 
 Type：ip，Values中为ip字符串列表机器组；
@@ -23931,8 +25209,10 @@ Type：label，Values中为标签字符串列表机器组。
         :param _AutoUpdate: 是否开启机器组自动更新
         :type AutoUpdate: bool
         :param _UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :type UpdateStartTime: str
         :param _UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :type UpdateEndTime: str
         :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
         :type ServiceLogging: bool
@@ -23954,7 +25234,8 @@ Type：label，Values中为标签字符串列表机器组。
 
     @property
     def GroupId(self):
-        """机器组ID
+        """机器组Id
+- 通过[获取机器组列表](https://cloud.tencent.com/document/product/614/56438)获取机器组Id。
         :rtype: str
         """
         return self._GroupId
@@ -23966,6 +25247,9 @@ Type：label，Values中为标签字符串列表机器组。
     @property
     def GroupName(self):
         """机器组名称
+输入限制：
+- 不能为空字符串
+- 不能包含字符'|'
         :rtype: str
         """
         return self._GroupName
@@ -24012,6 +25296,7 @@ Type：label，Values中为标签字符串列表机器组。
     @property
     def UpdateStartTime(self):
         """升级开始时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :rtype: str
         """
         return self._UpdateStartTime
@@ -24023,6 +25308,7 @@ Type：label，Values中为标签字符串列表机器组。
     @property
     def UpdateEndTime(self):
         """升级结束时间，建议业务低峰期升级LogListener
+时间格式：HH:mm:ss
         :rtype: str
         """
         return self._UpdateEndTime
@@ -24133,7 +25419,7 @@ class ModifyNoticeContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeContentId: 通知内容模板ID。
+        :param _NoticeContentId: 通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
         :type NoticeContentId: str
         :param _Name: 通知内容模板名称。
         :type Name: str
@@ -24151,7 +25437,7 @@ class ModifyNoticeContentRequest(AbstractModel):
 
     @property
     def NoticeContentId(self):
-        """通知内容模板ID。
+        """通知内容模板ID。-通过[获取通知内容模板](https://cloud.tencent.com/document/api/614/111714)获取通知内容模版ID
         :rtype: str
         """
         return self._NoticeContentId
@@ -24251,9 +25537,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
         :type TaskId: str
-        :param _SrcTopicId: 源日志主题
+        :param _SrcTopicId: 源日志主题，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
         :type SrcTopicId: str
         :param _EnableFlag: 任务启动状态.   1开启,  2关闭
         :type EnableFlag: int
@@ -24261,15 +25547,15 @@ class ModifyScheduledSqlRequest(AbstractModel):
         :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
         :param _ScheduledSqlContent: 查询语句
         :type ScheduledSqlContent: str
-        :param _ProcessPeriod: 调度周期(分钟)
+        :param _ProcessPeriod: 调度周期(分钟)，1~1440分钟
         :type ProcessPeriod: int
         :param _ProcessTimeWindow: 单次查询的时间窗口. 例子中为近15分钟
         :type ProcessTimeWindow: str
-        :param _ProcessDelay: 执行延迟(秒)
+        :param _ProcessDelay: 执行延迟(秒)，0~120秒，默认60秒
         :type ProcessDelay: int
-        :param _SrcTopicRegion: 源topicId的地域信息
+        :param _SrcTopicRegion: 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
         :type SrcTopicRegion: str
-        :param _Name: 任务名称
+        :param _Name: 任务名称，0~255字符
         :type Name: str
         :param _SyntaxRule: 语法规则。 默认值为0。 0：Lucene语法，1：CQL语法
         :type SyntaxRule: int
@@ -24288,7 +25574,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
         :rtype: str
         """
         return self._TaskId
@@ -24299,7 +25585,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
-        """源日志主题
+        """源日志主题，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
         :rtype: str
         """
         return self._SrcTopicId
@@ -24343,7 +25629,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessPeriod(self):
-        """调度周期(分钟)
+        """调度周期(分钟)，1~1440分钟
         :rtype: int
         """
         return self._ProcessPeriod
@@ -24365,7 +25651,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessDelay(self):
-        """执行延迟(秒)
+        """执行延迟(秒)，0~120秒，默认60秒
         :rtype: int
         """
         return self._ProcessDelay
@@ -24376,7 +25662,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
-        """源topicId的地域信息
+        """源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
         :rtype: str
         """
         return self._SrcTopicRegion
@@ -24387,7 +25673,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def Name(self):
-        """任务名称
+        """任务名称，0~255字符
         :rtype: str
         """
         return self._Name
@@ -24467,9 +25753,13 @@ class ModifyShipperRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShipperId: 投递规则ID
+        :param _ShipperId: 投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :type ShipperId: str
-        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _Prefix: 投递规则投递的新的目录前缀。
 - 仅支持0-9A-Za-z-_/
@@ -24493,15 +25783,17 @@ class ModifyShipperRequest(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         :param _FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名。
         :type FilenameMode: int
-        :param _StorageType: cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+        :param _StorageType: 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
 
-1. STANDARD_IA：低频存储；
-2. ARCHIVE：归档存储；
-3. DEEP_ARCHIVE：深度归档存储；
-4. STANDARD：标准存储；
-5. MAZ_STANDARD：标准存储（多 AZ）；
-6. MAZ_STANDARD_IA：低频存储（多 AZ）；
-7. INTELLIGENT_TIERING：智能分层存储。
+- STANDARD：标准存储
+- STANDARD_IA：低频存储
+- ARCHIVE：归档存储
+- DEEP_ARCHIVE：深度归档存储
+- MAZ_STANDARD：标准存储（多 AZ）
+- MAZ_STANDARD_IA：低频存储（多 AZ）
+- INTELLIGENT_TIERING：智能分层存储
+- MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :type StorageType: str
         """
         self._ShipperId = None
@@ -24520,7 +25812,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def ShipperId(self):
-        """投递规则ID
+        """投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :rtype: str
         """
         return self._ShipperId
@@ -24531,7 +25825,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -24654,15 +25950,17 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        """cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+        """对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
 
-1. STANDARD_IA：低频存储；
-2. ARCHIVE：归档存储；
-3. DEEP_ARCHIVE：深度归档存储；
-4. STANDARD：标准存储；
-5. MAZ_STANDARD：标准存储（多 AZ）；
-6. MAZ_STANDARD_IA：低频存储（多 AZ）；
-7. INTELLIGENT_TIERING：智能分层存储。
+- STANDARD：标准存储
+- STANDARD_IA：低频存储
+- ARCHIVE：归档存储
+- DEEP_ARCHIVE：深度归档存储
+- MAZ_STANDARD：标准存储（多 AZ）
+- MAZ_STANDARD_IA：低频存储（多 AZ）
+- INTELLIGENT_TIERING：智能分层存储
+- MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :rtype: str
         """
         return self._StorageType
@@ -24741,8 +26039,13 @@ class ModifyTopicRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: 日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _TopicName: 日志主题名称
+输入限制：
+- 不能为空字符串
+- 不能包含字符'|'
+- 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
         :type TopicName: str
         :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
         :type Tags: list of Tag
@@ -24751,7 +26054,8 @@ class ModifyTopicRequest(AbstractModel):
         :type Status: bool
         :param _AutoSplit: 是否开启自动分裂
         :type AutoSplit: bool
-        :param _MaxSplitPartitions: 若开启最大分裂，该主题能够能够允许的最大分区数
+        :param _MaxSplitPartitions: 若开启最大分裂，该主题能够能够允许的最大分区数；
+默认为50；必须为正数
         :type MaxSplitPartitions: int
         :param _Period: 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
         :type Period: int
@@ -24765,9 +26069,15 @@ class ModifyTopicRequest(AbstractModel):
         :type IsWebTracking: bool
         :param _Extends: 日志主题扩展信息
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
-        :param _PartitionCount: 日志主题分区数量
+        :param _PartitionCount: 日志主题分区数量。
+默认为1；
+取值范围及约束：
+- 当输入值<=0，系统自动调整为1。
+- 如果未传MaxSplitPartitions，需要PartitionCount<=50；
+- 如果传递了MaxSplitPartitions，需要PartitionCount<=MaxSplitPartitions；
         :type PartitionCount: int
         :param _CancelTopicAsyncTaskID: 取消切换存储任务的id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
         :type CancelTopicAsyncTaskID: str
         """
         self._TopicId = None
@@ -24787,6 +26097,7 @@ class ModifyTopicRequest(AbstractModel):
     @property
     def TopicId(self):
         """日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -24798,6 +26109,10 @@ class ModifyTopicRequest(AbstractModel):
     @property
     def TopicName(self):
         """日志主题名称
+输入限制：
+- 不能为空字符串
+- 不能包含字符'|'
+- 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
         :rtype: str
         """
         return self._TopicName
@@ -24842,7 +26157,8 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def MaxSplitPartitions(self):
-        """若开启最大分裂，该主题能够能够允许的最大分区数
+        """若开启最大分裂，该主题能够能够允许的最大分区数；
+默认为50；必须为正数
         :rtype: int
         """
         return self._MaxSplitPartitions
@@ -24910,7 +26226,12 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def PartitionCount(self):
-        """日志主题分区数量
+        """日志主题分区数量。
+默认为1；
+取值范围及约束：
+- 当输入值<=0，系统自动调整为1。
+- 如果未传MaxSplitPartitions，需要PartitionCount<=50；
+- 如果传递了MaxSplitPartitions，需要PartitionCount<=MaxSplitPartitions；
         :rtype: int
         """
         return self._PartitionCount
@@ -24922,6 +26243,7 @@ class ModifyTopicRequest(AbstractModel):
     @property
     def CancelTopicAsyncTaskID(self):
         """取消切换存储任务的id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
         :rtype: str
         """
         return self._CancelTopicAsyncTaskID
@@ -24997,9 +26319,9 @@ class ModifyWebCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WebCallbackId: 告警渠道回调配置ID。
+        :param _WebCallbackId: 告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
         :type WebCallbackId: str
-        :param _Name: 告警渠道回调配置名称。
+        :param _Name: 告警渠道回调配置名称。最大支持255个字节
         :type Name: str
         :param _Type: 渠道类型
 
@@ -25013,7 +26335,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
 注意：当Type为Http时，必填。
         :type Method: str
-        :param _Key: 秘钥信息。
+        :param _Key: 秘钥信息。最大支持1024个字节
         :type Key: str
         """
         self._WebCallbackId = None
@@ -25025,7 +26347,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def WebCallbackId(self):
-        """告警渠道回调配置ID。
+        """告警渠道回调配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/api/614/115229)获取告警渠道回调配置ID
         :rtype: str
         """
         return self._WebCallbackId
@@ -25036,7 +26358,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def Name(self):
-        """告警渠道回调配置名称。
+        """告警渠道回调配置名称。最大支持255个字节
         :rtype: str
         """
         return self._Name
@@ -25086,7 +26408,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def Key(self):
-        """秘钥信息。
+        """秘钥信息。最大支持1024个字节
         :rtype: str
         """
         return self._Key
@@ -25157,7 +26479,7 @@ class MonitorTime(AbstractModel):
         :param _Time: 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
 当type为`Period`,`Fixed`时，time字段生效。
         :type Time: int
-        :param _CronExpression: 执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field, Hours field,Day of month field,Month field,Day of week field， 不支持秒级别。
+        :param _CronExpression: 执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field(分钟), Hours field(小时),Day of month field(日期),Month field(月份),Day of week field(星期)， 不支持秒级别。
 当type为`Cron`时，CronExpression字段生效。
         :type CronExpression: str
         """
@@ -25194,7 +26516,7 @@ class MonitorTime(AbstractModel):
 
     @property
     def CronExpression(self):
-        """执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field, Hours field,Day of month field,Month field,Day of week field， 不支持秒级别。
+        """执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field(分钟), Hours field(小时),Day of month field(日期),Month field(月份),Day of week field(星期)， 不支持秒级别。
 当type为`Cron`时，CronExpression字段生效。
         :rtype: str
         """
@@ -25407,7 +26729,7 @@ class NoticeContentInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Title: 通知内容模板标题信息。
-部分通知渠道类型不支持“标题”，请参照腾讯云控制台页面。
+部分通知渠道类型不支持“标题”，请参照[腾讯云控制台页面](https://console.cloud.tencent.com/cls/alarm/notice-template)。
         :type Title: str
         :param _Content: 通知内容模板正文信息。
         :type Content: str
@@ -25422,7 +26744,7 @@ class NoticeContentInfo(AbstractModel):
     @property
     def Title(self):
         """通知内容模板标题信息。
-部分通知渠道类型不支持“标题”，请参照腾讯云控制台页面。
+部分通知渠道类型不支持“标题”，请参照[腾讯云控制台页面](https://console.cloud.tencent.com/cls/alarm/notice-template)。
         :rtype: str
         """
         return self._Title
@@ -25496,9 +26818,9 @@ class NoticeContentTemplate(AbstractModel):
         :type Uin: int
         :param _SubUin: 创建/修改者子账号。
         :type SubUin: int
-        :param _CreateTime: 创建时间 秒级时间戳。
+        :param _CreateTime: 创建时间 秒级(s)时间戳。
         :type CreateTime: int
-        :param _UpdateTime: 更新时间 秒级时间戳。
+        :param _UpdateTime: 更新时间 秒级(s)时间戳。
         :type UpdateTime: int
         """
         self._NoticeContentId = None
@@ -25596,7 +26918,7 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间 秒级时间戳。
+        """创建时间 秒级(s)时间戳。
         :rtype: int
         """
         return self._CreateTime
@@ -25607,7 +26929,7 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间 秒级时间戳。
+        """更新时间 秒级(s)时间戳。
         :rtype: int
         """
         return self._UpdateTime
@@ -25664,7 +26986,7 @@ class NoticeReceiver(AbstractModel):
 - WeChat - 微信
 - Phone - 电话
         :type ReceiverChannels: list of str
-        :param _NoticeContentId: 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+        :param _NoticeContentId: 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。-通过[获取通知内容模板](https://cloud.tencent.com/document/product/614/111714)获取通知内容模板ID
         :type NoticeContentId: str
         :param _StartTime: 允许接收信息的开始时间。格式：`15:04:05`。必填
         :type StartTime: str
@@ -25728,7 +27050,7 @@ class NoticeReceiver(AbstractModel):
 
     @property
     def NoticeContentId(self):
-        """通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+        """通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。-通过[获取通知内容模板](https://cloud.tencent.com/document/product/614/111714)获取通知内容模板ID
         :rtype: str
         """
         return self._NoticeContentId
@@ -26057,7 +27379,9 @@ class OpenKafkaConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromTopicId: 日志主题ID
+        :param _FromTopicId: 日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type FromTopicId: str
         :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0
         :type Compression: int
@@ -26070,7 +27394,9 @@ class OpenKafkaConsumerRequest(AbstractModel):
 
     @property
     def FromTopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._FromTopicId
@@ -26284,8 +27610,10 @@ class PartitionInfo(AbstractModel):
         :param _ExclusiveEndKey: 分区哈希键结束key
         :type ExclusiveEndKey: str
         :param _CreateTime: 分区创建时间
+时间格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
         :param _LastWriteTime: 只读分区数据停止写入时间
+时间格式：yyyy-MM-dd HH:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastWriteTime: str
         """
@@ -26343,6 +27671,7 @@ class PartitionInfo(AbstractModel):
     @property
     def CreateTime(self):
         """分区创建时间
+时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -26354,6 +27683,7 @@ class PartitionInfo(AbstractModel):
     @property
     def LastWriteTime(self):
         """只读分区数据停止写入时间
+时间格式：yyyy-MM-dd HH:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26398,6 +27728,7 @@ class PreviewKafkaRechargeRequest(AbstractModel):
         :param _Offset: 导入数据位置，-2：最早；-1：最晚。
         :type Offset: int
         :param _KafkaInstance: 腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
         :type KafkaInstance: str
         :param _ServerAddr: 服务地址。
 KafkaType为1时ServerAddr必填。
@@ -26408,7 +27739,9 @@ KafkaType为1时有效。
         :param _Protocol: 加密访问协议。
 KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
-        :param _ConsumerGroupName: 用户Kafka消费组
+        :param _ConsumerGroupName: 用户Kafka消费组。
+
+- 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
         :type ConsumerGroupName: str
         :param _LogRechargeRule: 日志导入规则
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
@@ -26472,6 +27805,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
     @property
     def KafkaInstance(self):
         """腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
+- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
         :rtype: str
         """
         return self._KafkaInstance
@@ -26518,7 +27852,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ConsumerGroupName(self):
-        """用户Kafka消费组
+        """用户Kafka消费组。
+
+- 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -26753,8 +28089,10 @@ class QueryMetricRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Query: 查询语句，使用PromQL语法	
+- 参考 [语法规则](https://cloud.tencent.com/document/product/614/90334) 文档
         :type Query: str
         :param _TopicId: 指标主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Time: 查询时间，秒级Unix时间戳。为空时代表当前时间戳。
 
@@ -26767,6 +28105,7 @@ class QueryMetricRequest(AbstractModel):
     @property
     def Query(self):
         """查询语句，使用PromQL语法	
+- 参考 [语法规则](https://cloud.tencent.com/document/product/614/90334) 文档
         :rtype: str
         """
         return self._Query
@@ -26778,6 +28117,7 @@ class QueryMetricRequest(AbstractModel):
     @property
     def TopicId(self):
         """指标主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -26820,7 +28160,11 @@ class QueryMetricResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResultType: 指标查询结果类型
+        :param _ResultType: 指标查询结果类型，支持
+- scalar 标量值
+- string 字符串值
+- vector 瞬时向量
+- matrix 区间向量
         :type ResultType: str
         :param _Result: 指标查询结果
         :type Result: str
@@ -26833,7 +28177,11 @@ class QueryMetricResponse(AbstractModel):
 
     @property
     def ResultType(self):
-        """指标查询结果类型
+        """指标查询结果类型，支持
+- scalar 标量值
+- string 字符串值
+- vector 瞬时向量
+- matrix 区间向量
         :rtype: str
         """
         return self._ResultType
@@ -26879,8 +28227,10 @@ class QueryRangeMetricRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: 指标主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Query: 查询语句，使用PromQL语法
+- 参考 [语法规则](https://cloud.tencent.com/document/product/614/90334) 文档
         :type Query: str
         :param _Start: 查询起始时间，秒级Unix时间戳
         :type Start: int
@@ -26898,6 +28248,7 @@ class QueryRangeMetricRequest(AbstractModel):
     @property
     def TopicId(self):
         """指标主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -26909,6 +28260,7 @@ class QueryRangeMetricRequest(AbstractModel):
     @property
     def Query(self):
         """查询语句，使用PromQL语法
+- 参考 [语法规则](https://cloud.tencent.com/document/product/614/90334) 文档
         :rtype: str
         """
         return self._Query
@@ -26974,7 +28326,11 @@ class QueryRangeMetricResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResultType: 指标查询结果类型
+        :param _ResultType: 指标查询结果类型，支持
+- scalar 标量值
+- string 字符串值
+- vector 瞬时向量
+- matrix 区间向量
         :type ResultType: str
         :param _Result: 指标查询结果
         :type Result: str
@@ -26987,7 +28343,11 @@ class QueryRangeMetricResponse(AbstractModel):
 
     @property
     def ResultType(self):
-        """指标查询结果类型
+        """指标查询结果类型，支持
+- scalar 标量值
+- string 字符串值
+- vector 瞬时向量
+- matrix 区间向量
         :rtype: str
         """
         return self._ResultType
@@ -27032,9 +28392,13 @@ class RetryShipperTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShipperId: 投递规则ID
+        :param _ShipperId: 投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :type ShipperId: str
-        :param _TaskId: 投递任务ID
+        :param _TaskId: 投递任务Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745) 获取TaskId。
         :type TaskId: str
         """
         self._ShipperId = None
@@ -27042,7 +28406,9 @@ class RetryShipperTaskRequest(AbstractModel):
 
     @property
     def ShipperId(self):
-        """投递规则ID
+        """投递规则Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
         :rtype: str
         """
         return self._ShipperId
@@ -27053,7 +28419,9 @@ class RetryShipperTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """投递任务ID
+        """投递任务Id。
+
+- 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745) 获取TaskId。
         :rtype: str
         """
         return self._TaskId
@@ -27322,9 +28690,9 @@ class ScheduledSqlResouceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 目标主题id
+        :param _TopicId: 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
         :type TopicId: str
-        :param _Region: 主题的地域信息
+        :param _Region: 主题的地域信息，当前不支持跨地域，支持地域参考 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档。
         :type Region: str
         :param _BizType: 主题类型：0为日志主题，1为指标主题
         :type BizType: int
@@ -27352,7 +28720,7 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def TopicId(self):
-        """目标主题id
+        """通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -27363,7 +28731,7 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def Region(self):
-        """主题的地域信息
+        """主题的地域信息，当前不支持跨地域，支持地域参考 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档。
         :rtype: str
         """
         return self._Region
@@ -27482,9 +28850,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
         :type SrcTopicName: str
         :param _DstResource: 定时SQL分析目标主题
         :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
-        :param _CreateTime: 任务创建时间
+        :param _CreateTime: 任务创建时间。格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
-        :param _UpdateTime: 任务更新时间
+        :param _UpdateTime: 任务更新时间，格式：yyyy-MM-dd HH:mm:ss
         :type UpdateTime: str
         :param _Status: 任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
 
@@ -27494,19 +28862,19 @@ class ScheduledSqlTaskInfo(AbstractModel):
         :type EnableFlag: int
         :param _ScheduledSqlContent: 查询语句
         :type ScheduledSqlContent: str
-        :param _ProcessStartTime: 调度开始时间
+        :param _ProcessStartTime: 调度开始时间，格式：yyyy-MM-dd HH:mm:ss
         :type ProcessStartTime: str
         :param _ProcessType: 调度类型，1:持续运行 2:指定时间范围
         :type ProcessType: int
-        :param _ProcessEndTime: 调度结束时间，当process_type=2时为必传字段
+        :param _ProcessEndTime: 调度结束时间，格式：yyyy-MM-dd HH:mm:ss，当process_type=2时为必传字段
         :type ProcessEndTime: str
-        :param _ProcessPeriod: 调度周期(分钟)
+        :param _ProcessPeriod: 调度周期(分钟)，1~1440分钟
         :type ProcessPeriod: int
         :param _ProcessTimeWindow: 查询的时间窗口. @m-15m, @m，意为近15分钟
         :type ProcessTimeWindow: str
-        :param _ProcessDelay: 执行延迟(秒)
+        :param _ProcessDelay: 执行延迟(秒)，0~120秒，默认60秒
         :type ProcessDelay: int
-        :param _SrcTopicRegion: 源topicId的地域信息
+        :param _SrcTopicRegion: 源topicId的地域信息，支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档。
         :type SrcTopicRegion: str
         :param _SyntaxRule: 语法规则，0：Lucene语法，1：CQL语法
         :type SyntaxRule: int
@@ -27593,7 +28961,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """任务创建时间
+        """任务创建时间。格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -27604,7 +28972,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """任务更新时间
+        """任务更新时间，格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._UpdateTime
@@ -27650,7 +29018,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessStartTime(self):
-        """调度开始时间
+        """调度开始时间，格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._ProcessStartTime
@@ -27672,7 +29040,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessEndTime(self):
-        """调度结束时间，当process_type=2时为必传字段
+        """调度结束时间，格式：yyyy-MM-dd HH:mm:ss，当process_type=2时为必传字段
         :rtype: str
         """
         return self._ProcessEndTime
@@ -27683,7 +29051,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessPeriod(self):
-        """调度周期(分钟)
+        """调度周期(分钟)，1~1440分钟
         :rtype: int
         """
         return self._ProcessPeriod
@@ -27705,7 +29073,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessDelay(self):
-        """执行延迟(秒)
+        """执行延迟(秒)，0~120秒，默认60秒
         :rtype: int
         """
         return self._ProcessDelay
@@ -27716,7 +29084,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
-        """源topicId的地域信息
+        """源topicId的地域信息，支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档。
         :rtype: str
         """
         return self._SrcTopicRegion
@@ -27799,19 +29167,24 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题 ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: 日志集Id。
+
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :type LogsetId: str
-        :param _Name: 投递任务名称
+        :param _Name: COS导入任务名称,最大支持128个字节。
         :type Name: str
-        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :param _Bucket: COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
         :type BucketRegion: str
         :param _Prefix: COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
         :type Prefix: str
-        :param _Compress: 压缩模式:   "", "gzip", "lzop", "snappy";   默认""
+        :param _Compress: 压缩模式:   "", "gzip", "lzop", "snappy"。  默认："" 不压缩
         :type Compress: str
         """
         self._TopicId = None
@@ -27824,7 +29197,8 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题 ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -27835,7 +29209,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """日志集ID
+        """日志集Id。
+
+- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
         :rtype: str
         """
         return self._LogsetId
@@ -27846,7 +29222,7 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Name(self):
-        """投递任务名称
+        """COS导入任务名称,最大支持128个字节。
         :rtype: str
         """
         return self._Name
@@ -27857,7 +29233,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+
+- 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
         :rtype: str
         """
         return self._Bucket
@@ -27890,7 +29268,7 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Compress(self):
-        """压缩模式:   "", "gzip", "lzop", "snappy";   默认""
+        """压缩模式:   "", "gzip", "lzop", "snappy"。  默认："" 不压缩
         :rtype: str
         """
         return self._Compress
@@ -27933,7 +29311,16 @@ class SearchCosRechargeInfoResponse(AbstractModel):
         :type Path: str
         :param _Msg: 预览获取数据失败原因
         :type Msg: str
-        :param _Status: 状态
+        :param _Status: 状态。
+- 0：成功
+- 10000：参数错误，请确认参数
+- 10001：授权失败，请确认授权
+- 10002：获取文件列表失败，请稍后再试。若无法解决，请联系智能客服或提交工单
+- 10003：桶内无相应前缀文件，请使用正确的桶、文件前缀和压缩方式
+- 10004：文件下载失败，请稍后再试。若无法解决，请联系智能客服或提交工单
+- 10005：文件解压缩失败，请选择正确的压缩方式然后再试
+- 10006：读取文件内容失败，请确认文件可读
+- 10007：文件预览失败，请稍后再试。若无法解决，请联系智能客服或提交工单
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27991,7 +29378,16 @@ class SearchCosRechargeInfoResponse(AbstractModel):
 
     @property
     def Status(self):
-        """状态
+        """状态。
+- 0：成功
+- 10000：参数错误，请确认参数
+- 10001：授权失败，请确认授权
+- 10002：获取文件列表失败，请稍后再试。若无法解决，请联系智能客服或提交工单
+- 10003：桶内无相应前缀文件，请使用正确的桶、文件前缀和压缩方式
+- 10004：文件下载失败，请稍后再试。若无法解决，请联系智能客服或提交工单
+- 10005：文件解压缩失败，请选择正确的压缩方式然后再试
+- 10006：读取文件内容失败，请确认文件可读
+- 10007：文件预览失败，请稍后再试。若无法解决，请联系智能客服或提交工单
         :rtype: int
         """
         return self._Status
@@ -28028,13 +29424,13 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DashboardId: 仪表盘id。
+        :param _DashboardId: 仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
         :type DashboardId: str
         :param _SubscribeData: 仪表盘订阅数据。
         :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
-        :param _Id: 仪表盘订阅Id。
+        :param _Id: 仪表盘订阅Id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :type Id: int
-        :param _Name: 仪表盘订阅名称。
+        :param _Name: 仪表盘订阅名称。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Name。
         :type Name: str
         """
         self._DashboardId = None
@@ -28044,7 +29440,7 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
-        """仪表盘id。
+        """仪表盘id。通过 [获取仪表盘](https://cloud.tencent.com/document/api/614/95636)接口获取DashboardId。
         :rtype: str
         """
         return self._DashboardId
@@ -28066,7 +29462,7 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Id(self):
-        """仪表盘订阅Id。
+        """仪表盘订阅Id。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Id。
         :rtype: int
         """
         return self._Id
@@ -28077,7 +29473,7 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """仪表盘订阅名称。
+        """仪表盘订阅名称。通过 [获取仪表盘订阅列表](https://cloud.tencent.com/document/api/614/105779)接口获取Name。
         :rtype: str
         """
         return self._Name
@@ -28870,7 +30266,7 @@ class ShipperInfo(AbstractModel):
         :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
         :param _Content: 投递日志的内容格式配置
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
-        :param _CreateTime: 投递日志的创建时间
+        :param _CreateTime: 投递日志的创建时间。格式：YYYY-MM-DD HH:MM:SS
         :type CreateTime: str
         :param _FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
         :type FilenameMode: int
@@ -28889,7 +30285,16 @@ class ShipperInfo(AbstractModel):
 3：任务运行异常
 4：任务运行结束
         :type HistoryStatus: int
-        :param _StorageType: cos桶类型
+        :param _StorageType: 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
+STANDARD：标准存储
+STANDARD_IA：低频存储
+ARCHIVE：归档存储
+DEEP_ARCHIVE：深度归档存储
+MAZ_STANDARD：标准存储（多 AZ）
+MAZ_STANDARD_IA：低频存储（多 AZ）
+INTELLIGENT_TIERING：智能分层存储
+MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :type StorageType: str
         """
         self._ShipperId = None
@@ -29047,7 +30452,7 @@ class ShipperInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """投递日志的创建时间
+        """投递日志的创建时间。格式：YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._CreateTime
@@ -29129,7 +30534,16 @@ class ShipperInfo(AbstractModel):
 
     @property
     def StorageType(self):
-        """cos桶类型
+        """对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
+参考值有：
+STANDARD：标准存储
+STANDARD_IA：低频存储
+ARCHIVE：归档存储
+DEEP_ARCHIVE：深度归档存储
+MAZ_STANDARD：标准存储（多 AZ）
+MAZ_STANDARD_IA：低频存储（多 AZ）
+INTELLIGENT_TIERING：智能分层存储
+MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
         :rtype: str
         """
         return self._StorageType
@@ -29200,7 +30614,11 @@ class ShipperTaskInfo(AbstractModel):
         :type StartTime: int
         :param _EndTime: 本次投递任务的结束时间戳， 毫秒
         :type EndTime: int
-        :param _Status: 本次投递的结果，"success","running","failed"
+        :param _Status: 本次投递的结果。"success"，"running"，"failed"
+
+- success：任务成功。
+- running：任务处理中。
+- failed：任务失败。
         :type Status: str
         :param _Message: 结果的详细信息
         :type Message: str
@@ -29294,7 +30712,11 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        """本次投递的结果，"success","running","failed"
+        """本次投递的结果。"success"，"running"，"failed"
+
+- success：任务成功。
+- running：任务处理中。
+- failed：任务失败。
         :rtype: str
         """
         return self._Status
@@ -29668,6 +31090,7 @@ class TopicInfo(AbstractModel):
         :param _AssumerName: 云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
         :type AssumerName: str
         :param _CreateTime: 创建时间
+时间格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
         :param _Status: 主题是否开启采集，true：开启采集；false：关闭采集。
 创建日志主题时默认开启，可通过SDK调用ModifyTopic修改此字段。
@@ -29706,8 +31129,13 @@ HotPeriod=0为没有开启日志沉降。
         :param _TopicAsyncTaskID: 异步迁移任务ID
         :type TopicAsyncTaskID: str
         :param _MigrationStatus: 异步迁移状态
+- 1：进行中
+- 2：已完成
+- 3：失败
+- 4：已取消
         :type MigrationStatus: int
         :param _EffectiveDate: 异步迁移完成后，预计生效日期
+时间格式：yyyy-MM-dd HH:mm:ss
         :type EffectiveDate: str
         """
         self._LogsetId = None
@@ -29802,6 +31230,7 @@ HotPeriod=0为没有开启日志沉降。
     @property
     def CreateTime(self):
         """创建时间
+时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._CreateTime
@@ -29966,6 +31395,10 @@ HotPeriod=0为没有开启日志沉降。
     @property
     def MigrationStatus(self):
         """异步迁移状态
+- 1：进行中
+- 2：已完成
+- 3：失败
+- 4：已取消
         :rtype: int
         """
         return self._MigrationStatus
@@ -29977,6 +31410,7 @@ HotPeriod=0为没有开启日志沉降。
     @property
     def EffectiveDate(self):
         """异步迁移完成后，预计生效日期
+时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
         return self._EffectiveDate
@@ -30033,11 +31467,14 @@ class UploadLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 主题id
+        :param _TopicId: 日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _HashKey: 该参数已废弃，请勿使用
         :type HashKey: str
-        :param _CompressType: 压缩方法
+        :param _CompressType: 压缩方法，目前支持
+- lz4
+- zstd
         :type CompressType: str
         """
         self._TopicId = None
@@ -30046,7 +31483,8 @@ class UploadLogRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """主题id
+        """日志主题id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -30072,7 +31510,9 @@ class UploadLogRequest(AbstractModel):
 
     @property
     def CompressType(self):
-        """压缩方法
+        """压缩方法，目前支持
+- lz4
+- zstd
         :rtype: str
         """
         return self._CompressType
@@ -30234,15 +31674,15 @@ class WebCallback(AbstractModel):
     def __init__(self):
         r"""
         :param _CallbackType: 回调的类型。可选值：
-- Http
-- WeCom
-- DingTalk
-- Lark
+- Http(自定义接口回调)
+- WeCom(企业微信)
+- DingTalk(钉钉)
+- Lark(飞书)
         :type CallbackType: str
         :param _Url: 回调地址，最大支持1024个字节。
 也可使用WebCallbackId引用集成配置中的URL，此时该字段请填写为空字符串。
         :type Url: str
-        :param _WebCallbackId: 集成配置ID。
+        :param _WebCallbackId: 集成配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/product/614/115229)获取集成配置ID
         :type WebCallbackId: str
         :param _Method: 回调方法。可选值：
 - POST（默认值）
@@ -30286,10 +31726,10 @@ class WebCallback(AbstractModel):
     @property
     def CallbackType(self):
         """回调的类型。可选值：
-- Http
-- WeCom
-- DingTalk
-- Lark
+- Http(自定义接口回调)
+- WeCom(企业微信)
+- DingTalk(钉钉)
+- Lark(飞书)
         :rtype: str
         """
         return self._CallbackType
@@ -30312,7 +31752,7 @@ class WebCallback(AbstractModel):
 
     @property
     def WebCallbackId(self):
-        """集成配置ID。
+        """集成配置ID。-通过[获取告警渠道回调配置列表](https://cloud.tencent.com/document/product/614/115229)获取集成配置ID
         :rtype: str
         """
         return self._WebCallbackId
@@ -30475,9 +31915,9 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
         :type Uin: int
         :param _SubUin: 子账号。
         :type SubUin: int
-        :param _CreateTime: 创建时间。秒级时间戳
+        :param _CreateTime: 创建时间。秒(s)级时间戳
         :type CreateTime: int
-        :param _UpdateTime: 更新时间。秒级时间戳
+        :param _UpdateTime: 更新时间。秒(s)级时间戳
         :type UpdateTime: int
         """
         self._WebCallbackId = None
@@ -30583,7 +32023,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def CreateTime(self):
-        """创建时间。秒级时间戳
+        """创建时间。秒(s)级时间戳
         :rtype: int
         """
         return self._CreateTime
@@ -30594,7 +32034,7 @@ WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
 
     @property
     def UpdateTime(self):
-        """更新时间。秒级时间戳
+        """更新时间。秒(s)级时间戳
         :rtype: int
         """
         return self._UpdateTime

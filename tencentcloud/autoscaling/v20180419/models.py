@@ -5180,6 +5180,7 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
         :param _Filters: 过滤条件。
 <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。可通过登录[控制台](https://console.cloud.tencent.com/cvm/index)或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
+<li> private-ip-address - String - 是否必填：否 -（过滤条件）按照实例内网IP过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `PrivateIpAddresses`获取实例内网IP。</li>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`InstanceIds`和`Filters`。
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -5211,6 +5212,7 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
         """过滤条件。
 <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。可通过登录[控制台](https://console.cloud.tencent.com/cvm/index)或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
+<li> private-ip-address - String - 是否必填：否 -（过滤条件）按照实例内网IP过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `PrivateIpAddresses`获取实例内网IP。</li>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`InstanceIds`和`Filters`。
         :rtype: list of Filter
         """
@@ -8155,11 +8157,46 @@ class InternetAccessible(AbstractModel):
         :param _BandwidthPackageId: 带宽包ID。可通过[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthPackageId: str
+        :param _InternetServiceProvider: 线路类型。各种线路类型及支持地区详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+
+<li>BGP：常规 BGP 线路</li>
+已开通静态单线IP白名单的用户，可选值：
+
+<li>CMCC：中国移动</li>
+<li>CTCC：中国电信</li>
+<li>CUCC：中国联通</li>
+注意：仅部分地域支持静态单线IP。
+
+        :type InternetServiceProvider: str
+        :param _IPv4AddressType: 公网 IP 类型。
+
+<li> WanIP：普通公网IP。</li>
+<li> HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
+<li> AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646) 。  </li> 
+如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
+
+精品IP 高防IP功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+        :type IPv4AddressType: str
+        :param _AntiDDoSPackageId: 高防包唯一ID，申请高防IP时，该字段必传。
+        :type AntiDDoSPackageId: str
+        :param _IsKeepEIP: 实例销毁时是否一并销毁绑定的弹性IP。
+
+取值范围：
+<li>TRUE：表示保留EIP</li>
+<li>FALSE：表示不保留</li>
+请注意，当IPv4AddressType字段指定EIP类型时，默认不保留EIP。WanIP不受此字段影响始终随实例销毁。
+变更配置此字段，已绑定伸缩组会立刻生效。
+
+        :type IsKeepEIP: bool
         """
         self._InternetChargeType = None
         self._InternetMaxBandwidthOut = None
         self._PublicIpAssigned = None
         self._BandwidthPackageId = None
+        self._InternetServiceProvider = None
+        self._IPv4AddressType = None
+        self._AntiDDoSPackageId = None
+        self._IsKeepEIP = None
 
     @property
     def InternetChargeType(self):
@@ -8209,12 +8246,83 @@ class InternetAccessible(AbstractModel):
     def BandwidthPackageId(self, BandwidthPackageId):
         self._BandwidthPackageId = BandwidthPackageId
 
+    @property
+    def InternetServiceProvider(self):
+        """线路类型。各种线路类型及支持地区详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+
+<li>BGP：常规 BGP 线路</li>
+已开通静态单线IP白名单的用户，可选值：
+
+<li>CMCC：中国移动</li>
+<li>CTCC：中国电信</li>
+<li>CUCC：中国联通</li>
+注意：仅部分地域支持静态单线IP。
+
+        :rtype: str
+        """
+        return self._InternetServiceProvider
+
+    @InternetServiceProvider.setter
+    def InternetServiceProvider(self, InternetServiceProvider):
+        self._InternetServiceProvider = InternetServiceProvider
+
+    @property
+    def IPv4AddressType(self):
+        """公网 IP 类型。
+
+<li> WanIP：普通公网IP。</li>
+<li> HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
+<li> AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646) 。  </li> 
+如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
+
+精品IP 高防IP功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+        :rtype: str
+        """
+        return self._IPv4AddressType
+
+    @IPv4AddressType.setter
+    def IPv4AddressType(self, IPv4AddressType):
+        self._IPv4AddressType = IPv4AddressType
+
+    @property
+    def AntiDDoSPackageId(self):
+        """高防包唯一ID，申请高防IP时，该字段必传。
+        :rtype: str
+        """
+        return self._AntiDDoSPackageId
+
+    @AntiDDoSPackageId.setter
+    def AntiDDoSPackageId(self, AntiDDoSPackageId):
+        self._AntiDDoSPackageId = AntiDDoSPackageId
+
+    @property
+    def IsKeepEIP(self):
+        """实例销毁时是否一并销毁绑定的弹性IP。
+
+取值范围：
+<li>TRUE：表示保留EIP</li>
+<li>FALSE：表示不保留</li>
+请注意，当IPv4AddressType字段指定EIP类型时，默认不保留EIP。WanIP不受此字段影响始终随实例销毁。
+变更配置此字段，已绑定伸缩组会立刻生效。
+
+        :rtype: bool
+        """
+        return self._IsKeepEIP
+
+    @IsKeepEIP.setter
+    def IsKeepEIP(self, IsKeepEIP):
+        self._IsKeepEIP = IsKeepEIP
+
 
     def _deserialize(self, params):
         self._InternetChargeType = params.get("InternetChargeType")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._PublicIpAssigned = params.get("PublicIpAssigned")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
+        self._InternetServiceProvider = params.get("InternetServiceProvider")
+        self._IPv4AddressType = params.get("IPv4AddressType")
+        self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
+        self._IsKeepEIP = params.get("IsKeepEIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12963,9 +13071,11 @@ class ScaleOutInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: 伸缩组ID。
+        :param _AutoScalingGroupId: 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+<li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+<li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
         :type AutoScalingGroupId: str
-        :param _ScaleOutNumber: 希望扩容的实例数量。
+        :param _ScaleOutNumber: 希望扩容的实例数量。该参数的静态取值范围是 [1,2000]，同时该参数不得大于期望数与最大值的差值。例如伸缩组期望数为 20，最大值为 100，此时可取值范围为 [1,80]。
         :type ScaleOutNumber: int
         """
         self._AutoScalingGroupId = None
@@ -12973,7 +13083,9 @@ class ScaleOutInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """伸缩组ID。
+        """伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+<li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+<li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -12984,7 +13096,7 @@ class ScaleOutInstancesRequest(AbstractModel):
 
     @property
     def ScaleOutNumber(self):
-        """希望扩容的实例数量。
+        """希望扩容的实例数量。该参数的静态取值范围是 [1,2000]，同时该参数不得大于期望数与最大值的差值。例如伸缩组期望数为 20，最大值为 100，此时可取值范围为 [1,80]。
         :rtype: int
         """
         return self._ScaleOutNumber
@@ -13984,7 +14096,7 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: 伸缩组ID。
+        :param _AutoScalingGroupId: 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
         :type AutoScalingGroupId: str
         :param _RefreshSettings: 刷新设置。
         :type RefreshSettings: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
@@ -13999,7 +14111,7 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """伸缩组ID。
+        """伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
         :rtype: str
         """
         return self._AutoScalingGroupId

@@ -1346,7 +1346,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentTemplateControlItems(self, request):
-        """获取DSPA评估模版关联的评估控制项列表
+        """获取DSPA评估模板关联的评估控制项列表
 
         :param request: Request instance for DescribeDSPAAssessmentTemplateControlItems.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentTemplateControlItemsRequest`

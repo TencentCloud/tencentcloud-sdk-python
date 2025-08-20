@@ -4170,6 +4170,368 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBatchContractReviewTaskRequest(AbstractModel):
+    """CreateBatchContractReviewTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ResourceIds: 合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+
+注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+        :type ResourceIds: list of str
+        :param _PolicyType: 合同审查的审查立场方。
+
+审查立场方如下：
+<ul>
+    <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+    <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+    <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+</ul>
+        :type PolicyType: int
+        :param _Role: 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+        :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
+        :param _ChecklistId: 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
+[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+        :type ChecklistId: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._ResourceIds = None
+        self._PolicyType = None
+        self._Role = None
+        self._ChecklistId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        """执行合同审查任务的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ResourceIds(self):
+        """合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+
+注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def PolicyType(self):
+        """合同审查的审查立场方。
+
+审查立场方如下：
+<ul>
+    <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+    <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+    <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+</ul>
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def Role(self):
+        """合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def ChecklistId(self):
+        """用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
+[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+        :rtype: str
+        """
+        return self._ChecklistId
+
+    @ChecklistId.setter
+    def ChecklistId(self, ChecklistId):
+        self._ChecklistId = ChecklistId
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ResourceIds = params.get("ResourceIds")
+        self._PolicyType = params.get("PolicyType")
+        if params.get("Role") is not None:
+            self._Role = RiskIdentificationRoleInfo()
+            self._Role._deserialize(params.get("Role"))
+        self._ChecklistId = params.get("ChecklistId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchContractReviewTaskResponse(AbstractModel):
+    """CreateBatchContractReviewTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: 合同审查的任务ID列表，每个任务ID为32位字符串。
+建议开发者保存此任务ID，后续[查询合同审查任务取详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask/)需要此任务ID。
+
+注意：`返回的索引和ResourceIds数组一致`
+        :type TaskIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskIds = None
+        self._RequestId = None
+
+    @property
+    def TaskIds(self):
+        """合同审查的任务ID列表，每个任务ID为32位字符串。
+建议开发者保存此任务ID，后续[查询合同审查任务取详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask/)需要此任务ID。
+
+注意：`返回的索引和ResourceIds数组一致`
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBatchInformationExtractionTaskRequest(AbstractModel):
+    """CreateBatchInformationExtractionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行合同智能提取的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ResourceIds: 合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
+
+ 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+        :type ResourceIds: list of str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _FieldTemplateId: 用户配置的合同智能提取字段模板ID，会基于此模板批量创建合同智能提取任务，为32位字符串。
+[点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/99008608577532423ea437c7fdbedca1.png)
+
+注:  `此配置优先级最高，设置了模板ID后Fields配置就会无效`
+        :type FieldTemplateId: str
+        :param _Fields: 用于合同智能提取的字段信息。
+
+注意：`字段模板优先级最高，如果设置了FieldTemplateId值，此配置就无效`
+        :type Fields: list of ExtractionField
+        """
+        self._Operator = None
+        self._ResourceIds = None
+        self._Agent = None
+        self._FieldTemplateId = None
+        self._Fields = None
+
+    @property
+    def Operator(self):
+        """执行合同智能提取的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ResourceIds(self):
+        """合同智能提取的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
+
+ 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下`
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def FieldTemplateId(self):
+        """用户配置的合同智能提取字段模板ID，会基于此模板批量创建合同智能提取任务，为32位字符串。
+[点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/99008608577532423ea437c7fdbedca1.png)
+
+注:  `此配置优先级最高，设置了模板ID后Fields配置就会无效`
+        :rtype: str
+        """
+        return self._FieldTemplateId
+
+    @FieldTemplateId.setter
+    def FieldTemplateId(self, FieldTemplateId):
+        self._FieldTemplateId = FieldTemplateId
+
+    @property
+    def Fields(self):
+        """用于合同智能提取的字段信息。
+
+注意：`字段模板优先级最高，如果设置了FieldTemplateId值，此配置就无效`
+        :rtype: list of ExtractionField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ResourceIds = params.get("ResourceIds")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._FieldTemplateId = params.get("FieldTemplateId")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = ExtractionField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchInformationExtractionTaskResponse(AbstractModel):
+    """CreateBatchInformationExtractionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: 合同智能提取的任务ID列表，每个任务ID为32位字符串。
+建议开发者保存此任务ID，后续查询合同智能提取详情需要此任务ID。
+
+注意：`返回的索引和ResourceIds数组一致`
+        :type TaskIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskIds = None
+        self._RequestId = None
+
+    @property
+    def TaskIds(self):
+        """合同智能提取的任务ID列表，每个任务ID为32位字符串。
+建议开发者保存此任务ID，后续查询合同智能提取详情需要此任务ID。
+
+注意：`返回的索引和ResourceIds数组一致`
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBatchInitOrganizationUrlRequest(AbstractModel):
     """CreateBatchInitOrganizationUrl请求参数结构体
 
@@ -11676,6 +12038,423 @@ class CreateLegalSealQrCodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMiniAppPrepareFlowRequest(AbstractModel):
+    """CreateMiniAppPrepareFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+支持填入集团子公司经办人 userId 代发合同。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ResourceType: 资源类型，取值有：
+<ul><li> **1**：模板</li>
+<li> **2**：文件 </li></ul>
+        :type ResourceType: int
+        :param _ResourceId: 资源id，与ResourceType相对应，取值范围：
+<ul>
+<li>文件Id（通过UploadFiles获取文件资源Id）</li>
+<li>模板Id（通过控制台创建模板后获取模板Id）</li>
+</ul>
+注意：需要同时设置 ResourceType 参数指定资源类型
+        :type ResourceId: str
+        :param _FlowName: 自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
+
+该名称还将用于合同签署完成后文件下载的默认文件名称。
+        :type FlowName: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Approvers: 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息。
+        :type Approvers: list of MiniAppCreateApproverInfo
+        :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+
+**注：暂不支持通过NotifyType参数控制抄送人通知方式**
+        :type CcInfos: list of CcInfo
+        :param _Unordered: 合同流程的签署顺序类型：
+<ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+<li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+
+**注：仅在文件发起模式下设置有效，模板发起以模板配置为准**
+        :type Unordered: bool
+        :param _DeadlineAfterStartDays: 合同发起后经过多少天截止（1-30天可选），默认7天
+        :type DeadlineAfterStartDays: int
+        :param _UserFlowTypeId: 用户自定义合同类型Id  该id为电子签企业内的合同类型id， 可以在控制台-合同-自定义合同类型处获取
+        :type UserFlowTypeId: str
+        :param _FlowOption: 发起合同个性化参数
+用于满足小程序合同创建的个性化要求
+具体定制化内容详见数据接口说明
+        :type FlowOption: :class:`tencentcloud.ess.v20201111.models.MiniAppCreateFlowOption`
+        :param _PageOption: 发起合同小程序页面个性化参数 
+用于满足小程序合同创建页面的个性化要求 具体定制化内容详见数据接口说明
+        :type PageOption: :class:`tencentcloud.ess.v20201111.models.MiniAppCreateFlowPageOption`
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000 长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        :type UserData: str
+        """
+        self._Operator = None
+        self._ResourceType = None
+        self._ResourceId = None
+        self._FlowName = None
+        self._Agent = None
+        self._Approvers = None
+        self._CcInfos = None
+        self._Unordered = None
+        self._DeadlineAfterStartDays = None
+        self._UserFlowTypeId = None
+        self._FlowOption = None
+        self._PageOption = None
+        self._UserData = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。使用此接口时，必须填写userId。
+支持填入集团子公司经办人 userId 代发合同。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ResourceType(self):
+        """资源类型，取值有：
+<ul><li> **1**：模板</li>
+<li> **2**：文件 </li></ul>
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        """资源id，与ResourceType相对应，取值范围：
+<ul>
+<li>文件Id（通过UploadFiles获取文件资源Id）</li>
+<li>模板Id（通过控制台创建模板后获取模板Id）</li>
+</ul>
+注意：需要同时设置 ResourceType 参数指定资源类型
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def FlowName(self):
+        """自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&)、（+）组成。
+
+该名称还将用于合同签署完成后文件下载的默认文件名称。
+        :rtype: str
+        """
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Approvers(self):
+        """合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息。
+        :rtype: list of MiniAppCreateApproverInfo
+        """
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def CcInfos(self):
+        """合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+
+**注：暂不支持通过NotifyType参数控制抄送人通知方式**
+        :rtype: list of CcInfo
+        """
+        return self._CcInfos
+
+    @CcInfos.setter
+    def CcInfos(self, CcInfos):
+        self._CcInfos = CcInfos
+
+    @property
+    def Unordered(self):
+        """合同流程的签署顺序类型：
+<ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+<li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+
+**注：仅在文件发起模式下设置有效，模板发起以模板配置为准**
+        :rtype: bool
+        """
+        return self._Unordered
+
+    @Unordered.setter
+    def Unordered(self, Unordered):
+        self._Unordered = Unordered
+
+    @property
+    def DeadlineAfterStartDays(self):
+        """合同发起后经过多少天截止（1-30天可选），默认7天
+        :rtype: int
+        """
+        return self._DeadlineAfterStartDays
+
+    @DeadlineAfterStartDays.setter
+    def DeadlineAfterStartDays(self, DeadlineAfterStartDays):
+        self._DeadlineAfterStartDays = DeadlineAfterStartDays
+
+    @property
+    def UserFlowTypeId(self):
+        """用户自定义合同类型Id  该id为电子签企业内的合同类型id， 可以在控制台-合同-自定义合同类型处获取
+        :rtype: str
+        """
+        return self._UserFlowTypeId
+
+    @UserFlowTypeId.setter
+    def UserFlowTypeId(self, UserFlowTypeId):
+        self._UserFlowTypeId = UserFlowTypeId
+
+    @property
+    def FlowOption(self):
+        """发起合同个性化参数
+用于满足小程序合同创建的个性化要求
+具体定制化内容详见数据接口说明
+        :rtype: :class:`tencentcloud.ess.v20201111.models.MiniAppCreateFlowOption`
+        """
+        return self._FlowOption
+
+    @FlowOption.setter
+    def FlowOption(self, FlowOption):
+        self._FlowOption = FlowOption
+
+    @property
+    def PageOption(self):
+        """发起合同小程序页面个性化参数 
+用于满足小程序合同创建页面的个性化要求 具体定制化内容详见数据接口说明
+        :rtype: :class:`tencentcloud.ess.v20201111.models.MiniAppCreateFlowPageOption`
+        """
+        return self._PageOption
+
+    @PageOption.setter
+    def PageOption(self, PageOption):
+        self._PageOption = PageOption
+
+    @property
+    def UserData(self):
+        """调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000 长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._FlowName = params.get("FlowName")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = MiniAppCreateApproverInfo()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
+        if params.get("CcInfos") is not None:
+            self._CcInfos = []
+            for item in params.get("CcInfos"):
+                obj = CcInfo()
+                obj._deserialize(item)
+                self._CcInfos.append(obj)
+        self._Unordered = params.get("Unordered")
+        self._DeadlineAfterStartDays = params.get("DeadlineAfterStartDays")
+        self._UserFlowTypeId = params.get("UserFlowTypeId")
+        if params.get("FlowOption") is not None:
+            self._FlowOption = MiniAppCreateFlowOption()
+            self._FlowOption._deserialize(params.get("FlowOption"))
+        if params.get("PageOption") is not None:
+            self._PageOption = MiniAppCreateFlowPageOption()
+            self._PageOption._deserialize(params.get("PageOption"))
+        self._UserData = params.get("UserData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMiniAppPrepareFlowResponse(AbstractModel):
+    """CreateMiniAppPrepareFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LongUrl: H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :type LongUrl: str
+        :param _ShortUrl: H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :type ShortUrl: str
+        :param _MiniAppPath: APP或小程序跳转电子签小程序链接, 一般用于客户小程序或者APP跳转过来, 打开后进入腾讯电子签小程序
+        :type MiniAppPath: str
+        :param _FlowId: 创建的合同id（还未实际发起，也未扣费），每次调用会生成新的id，用户可以记录此字段对应后续在小程序发起的合同，若在小程序上未成功发起，则此字段无效。
+        :type FlowId: str
+        :param _QrcodeUrl: 跳转至电子签小程序的二维码链接
+        :type QrcodeUrl: str
+        :param _WeixinQrcodeUrl: 直接跳转至电子签小程序的二维码链接，无需通过中转页。需要自行将其转换为二维码，使用微信扫码后可直接进入。
+        :type WeixinQrcodeUrl: str
+        :param _ExpiredOn: 链接过期时间，精确到秒，若在此过期时间前未使用，则链接失效。
+
+        :type ExpiredOn: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LongUrl = None
+        self._ShortUrl = None
+        self._MiniAppPath = None
+        self._FlowId = None
+        self._QrcodeUrl = None
+        self._WeixinQrcodeUrl = None
+        self._ExpiredOn = None
+        self._RequestId = None
+
+    @property
+    def LongUrl(self):
+        """H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :rtype: str
+        """
+        return self._LongUrl
+
+    @LongUrl.setter
+    def LongUrl(self, LongUrl):
+        self._LongUrl = LongUrl
+
+    @property
+    def ShortUrl(self):
+        """H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序
+        :rtype: str
+        """
+        return self._ShortUrl
+
+    @ShortUrl.setter
+    def ShortUrl(self, ShortUrl):
+        self._ShortUrl = ShortUrl
+
+    @property
+    def MiniAppPath(self):
+        """APP或小程序跳转电子签小程序链接, 一般用于客户小程序或者APP跳转过来, 打开后进入腾讯电子签小程序
+        :rtype: str
+        """
+        return self._MiniAppPath
+
+    @MiniAppPath.setter
+    def MiniAppPath(self, MiniAppPath):
+        self._MiniAppPath = MiniAppPath
+
+    @property
+    def FlowId(self):
+        """创建的合同id（还未实际发起，也未扣费），每次调用会生成新的id，用户可以记录此字段对应后续在小程序发起的合同，若在小程序上未成功发起，则此字段无效。
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def QrcodeUrl(self):
+        """跳转至电子签小程序的二维码链接
+        :rtype: str
+        """
+        return self._QrcodeUrl
+
+    @QrcodeUrl.setter
+    def QrcodeUrl(self, QrcodeUrl):
+        self._QrcodeUrl = QrcodeUrl
+
+    @property
+    def WeixinQrcodeUrl(self):
+        """直接跳转至电子签小程序的二维码链接，无需通过中转页。需要自行将其转换为二维码，使用微信扫码后可直接进入。
+        :rtype: str
+        """
+        return self._WeixinQrcodeUrl
+
+    @WeixinQrcodeUrl.setter
+    def WeixinQrcodeUrl(self, WeixinQrcodeUrl):
+        self._WeixinQrcodeUrl = WeixinQrcodeUrl
+
+    @property
+    def ExpiredOn(self):
+        """链接过期时间，精确到秒，若在此过期时间前未使用，则链接失效。
+
+        :rtype: int
+        """
+        return self._ExpiredOn
+
+    @ExpiredOn.setter
+    def ExpiredOn(self, ExpiredOn):
+        self._ExpiredOn = ExpiredOn
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LongUrl = params.get("LongUrl")
+        self._ShortUrl = params.get("ShortUrl")
+        self._MiniAppPath = params.get("MiniAppPath")
+        self._FlowId = params.get("FlowId")
+        self._QrcodeUrl = params.get("QrcodeUrl")
+        self._WeixinQrcodeUrl = params.get("WeixinQrcodeUrl")
+        self._ExpiredOn = params.get("ExpiredOn")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateModifyAdminAuthorizationUrlRequest(AbstractModel):
     """CreateModifyAdminAuthorizationUrl请求参数结构体
 
@@ -12399,6 +13178,16 @@ p.s. 如果上传授权书 ，需遵循以下条件
 
 在. 企业引导企业实名认证后回调中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_staffs" target="_blank">回调通知</a>模块。
         :type UserData: str
+        :param _BankAccountNumber: 组织机构对公打款账号，账户名跟企业名称一致。
+
+p.s.
+只有认证方式是授权书+对公打款时才生效。
+        :type BankAccountNumber: str
+        :param _BankAccountNumberSame: 对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+
+
+p.s. 仅在对公打款不为空时有效
+        :type BankAccountNumberSame: bool
         """
         self._Operator = None
         self._AuthorizationTypes = None
@@ -12422,6 +13211,8 @@ p.s. 如果上传授权书 ，需遵循以下条件
         self._Initialization = None
         self._PowerOfAttorneys = None
         self._UserData = None
+        self._BankAccountNumber = None
+        self._BankAccountNumberSame = None
 
     @property
     def Operator(self):
@@ -12714,6 +13505,34 @@ p.s. 如果上传授权书 ，需遵循以下条件
     def UserData(self, UserData):
         self._UserData = UserData
 
+    @property
+    def BankAccountNumber(self):
+        """组织机构对公打款账号，账户名跟企业名称一致。
+
+p.s.
+只有认证方式是授权书+对公打款时才生效。
+        :rtype: str
+        """
+        return self._BankAccountNumber
+
+    @BankAccountNumber.setter
+    def BankAccountNumber(self, BankAccountNumber):
+        self._BankAccountNumber = BankAccountNumber
+
+    @property
+    def BankAccountNumberSame(self):
+        """对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+
+
+p.s. 仅在对公打款不为空时有效
+        :rtype: bool
+        """
+        return self._BankAccountNumberSame
+
+    @BankAccountNumberSame.setter
+    def BankAccountNumberSame(self, BankAccountNumberSame):
+        self._BankAccountNumberSame = BankAccountNumberSame
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -12740,6 +13559,8 @@ p.s. 如果上传授权书 ，需遵循以下条件
         self._Initialization = params.get("Initialization")
         self._PowerOfAttorneys = params.get("PowerOfAttorneys")
         self._UserData = params.get("UserData")
+        self._BankAccountNumber = params.get("BankAccountNumber")
+        self._BankAccountNumberSame = params.get("BankAccountNumberSame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15790,7 +16611,7 @@ class CreateSealRequest(AbstractModel):
 <ul><li>**circle**:(默认)圆形印章</li>
 <li>**ellipse**:椭圆印章</li></ul>
         :type SealStyle: str
-        :param _SealSize: 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+        :param _SealSize: 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
         :type SealSize: str
         :param _TaxIdentifyCode: 企业税号
 注:
@@ -15799,6 +16620,8 @@ class CreateSealRequest(AbstractModel):
 <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 </ul>
         :type TaxIdentifyCode: str
+        :param _SealDescription: 印章描述内容
+        :type SealDescription: str
         """
         self._Operator = None
         self._SealName = None
@@ -15817,6 +16640,7 @@ class CreateSealRequest(AbstractModel):
         self._SealStyle = None
         self._SealSize = None
         self._TaxIdentifyCode = None
+        self._SealDescription = None
 
     @property
     def Operator(self):
@@ -16007,7 +16831,7 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def SealSize(self):
-        """印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+        """印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
         :rtype: str
         """
         return self._SealSize
@@ -16032,6 +16856,17 @@ class CreateSealRequest(AbstractModel):
     def TaxIdentifyCode(self, TaxIdentifyCode):
         self._TaxIdentifyCode = TaxIdentifyCode
 
+    @property
+    def SealDescription(self):
+        """印章描述内容
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -16055,6 +16890,7 @@ class CreateSealRequest(AbstractModel):
         self._SealStyle = params.get("SealStyle")
         self._SealSize = params.get("SealSize")
         self._TaxIdentifyCode = params.get("TaxIdentifyCode")
+        self._SealDescription = params.get("SealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19521,6 +20357,284 @@ class DescribeContractDiffTaskWebUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeContractReviewTaskRequest(AbstractModel):
+    """DescribeContractReviewTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 合同审查任务ID，该参数通过调用接口[批量创建合同审查任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask)获取。
+        :type TaskId: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._TaskId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        """合同审查任务ID，该参数通过调用接口[批量创建合同审查任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask)获取。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContractReviewTaskResponse(AbstractModel):
+    """DescribeContractReviewTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChecklistId: 用于审查任务的审查清单ID。
+        :type ChecklistId: str
+        :param _CreatedOn: 合同审查任务创建时间。
+        :type CreatedOn: int
+        :param _FinishedOn: 合同审查任务完成时间。
+        :type FinishedOn: int
+        :param _PolicyType: 合同审查的审查立场方。
+
+审查立场方如下：
+<ul>
+    <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+    <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+    <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+</ul>
+        :type PolicyType: int
+        :param _ResourceId: 合同审查的PDF文件资源ID。
+        :type ResourceId: str
+        :param _Risks: 合同审查识别出的PDF文件风险信息，如果是空数组表示无风险。
+
+注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
+        :type Risks: list of OutputRisk
+        :param _Role: 合同审查中的角色信息。
+        :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
+        :param _Status: 合同审查任务状态。
+状态如下：
+<ul>
+    <li>**1** - 合同审查任务创建成功</li>   
+    <li>**2** - 合同审查任务排队中</li>  
+    <li>**3** - 合同审查任务执行中</li>   
+    <li>**4** - 合同审查任务执行成功</li>
+    <li>**5** - 合同审查任务执行失败</li>
+</ul>
+        :type Status: int
+        :param _TaskId: 合同审查任务ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChecklistId = None
+        self._CreatedOn = None
+        self._FinishedOn = None
+        self._PolicyType = None
+        self._ResourceId = None
+        self._Risks = None
+        self._Role = None
+        self._Status = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ChecklistId(self):
+        """用于审查任务的审查清单ID。
+        :rtype: str
+        """
+        return self._ChecklistId
+
+    @ChecklistId.setter
+    def ChecklistId(self, ChecklistId):
+        self._ChecklistId = ChecklistId
+
+    @property
+    def CreatedOn(self):
+        """合同审查任务创建时间。
+        :rtype: int
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def FinishedOn(self):
+        """合同审查任务完成时间。
+        :rtype: int
+        """
+        return self._FinishedOn
+
+    @FinishedOn.setter
+    def FinishedOn(self, FinishedOn):
+        self._FinishedOn = FinishedOn
+
+    @property
+    def PolicyType(self):
+        """合同审查的审查立场方。
+
+审查立场方如下：
+<ul>
+    <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
+    <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
+    <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
+</ul>
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def ResourceId(self):
+        """合同审查的PDF文件资源ID。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Risks(self):
+        """合同审查识别出的PDF文件风险信息，如果是空数组表示无风险。
+
+注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
+        :rtype: list of OutputRisk
+        """
+        return self._Risks
+
+    @Risks.setter
+    def Risks(self, Risks):
+        self._Risks = Risks
+
+    @property
+    def Role(self):
+        """合同审查中的角色信息。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Status(self):
+        """合同审查任务状态。
+状态如下：
+<ul>
+    <li>**1** - 合同审查任务创建成功</li>   
+    <li>**2** - 合同审查任务排队中</li>  
+    <li>**3** - 合同审查任务执行中</li>   
+    <li>**4** - 合同审查任务执行成功</li>
+    <li>**5** - 合同审查任务执行失败</li>
+</ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        """合同审查任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChecklistId = params.get("ChecklistId")
+        self._CreatedOn = params.get("CreatedOn")
+        self._FinishedOn = params.get("FinishedOn")
+        self._PolicyType = params.get("PolicyType")
+        self._ResourceId = params.get("ResourceId")
+        if params.get("Risks") is not None:
+            self._Risks = []
+            for item in params.get("Risks"):
+                obj = OutputRisk()
+                obj._deserialize(item)
+                self._Risks.append(obj)
+        if params.get("Role") is not None:
+            self._Role = RiskIdentificationRoleInfo()
+            self._Role._deserialize(params.get("Role"))
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExtendedServiceAuthDetailRequest(AbstractModel):
     """DescribeExtendedServiceAuthDetail请求参数结构体
 
@@ -21171,6 +22285,178 @@ class DescribeFlowTemplatesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Templates.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInformationExtractionTaskRequest(AbstractModel):
+    """DescribeInformationExtractionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _TaskId: 合同智能提取任务ID，该参数通过调用接口[批量创建合同智能提取任务接口](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask)获取。
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._Agent = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def TaskId(self):
+        """合同智能提取任务ID，该参数通过调用接口[批量创建合同智能提取任务接口](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask)获取。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInformationExtractionTaskResponse(AbstractModel):
+    """DescribeInformationExtractionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Fields: 信息提取任务结果
+        :type Fields: list of ExtractionField
+        :param _Status: 合同智能提取任务状态。
+状态如下：
+<ul>
+    <li>**0** - 任务创建成功（还未执行）</li> 
+    <li>**1** - 排队中（等待执行）</li>   
+    <li>**2** - 提取中（正在执行）</li>  
+    <li>**3** - 提取成功</li>   
+    <li>**4** - 提取失败</li>
+</ul>
+        :type Status: int
+        :param _Url: 合同智能提取结果下载，文件格式为`xlsx`。
+
+注意：`链接有效期为5分钟，过期后可重新获取`
+        :type Url: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Fields = None
+        self._Status = None
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Fields(self):
+        """信息提取任务结果
+        :rtype: list of ExtractionField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def Status(self):
+        """合同智能提取任务状态。
+状态如下：
+<ul>
+    <li>**0** - 任务创建成功（还未执行）</li> 
+    <li>**1** - 排队中（等待执行）</li>   
+    <li>**2** - 提取中（正在执行）</li>  
+    <li>**3** - 提取成功</li>   
+    <li>**4** - 提取失败</li>
+</ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Url(self):
+        """合同智能提取结果下载，文件格式为`xlsx`。
+
+注意：`链接有效期为5分钟，过期后可重新获取`
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = ExtractionField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        self._Status = params.get("Status")
+        self._Url = params.get("Url")
         self._RequestId = params.get("RequestId")
 
 
@@ -23809,11 +25095,18 @@ class EmbedUrlOption(AbstractModel):
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
 
         :type ForbidEditWatermark: bool
+        :param _SealDescription: 印章描述
+        :type SealDescription: str
+        :param _ForbidEditSealDescription: 是否禁止编辑印章描述内容
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :type ForbidEditSealDescription: str
         """
         self._ShowFlowDetailComponent = None
         self._ShowTemplateComponent = None
         self._SkipUploadFile = None
         self._ForbidEditWatermark = None
+        self._SealDescription = None
+        self._ForbidEditSealDescription = None
 
     @property
     def ShowFlowDetailComponent(self):
@@ -23872,12 +25165,37 @@ class EmbedUrlOption(AbstractModel):
     def ForbidEditWatermark(self, ForbidEditWatermark):
         self._ForbidEditWatermark = ForbidEditWatermark
 
+    @property
+    def SealDescription(self):
+        """印章描述
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
+    @property
+    def ForbidEditSealDescription(self):
+        """是否禁止编辑印章描述内容
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :rtype: str
+        """
+        return self._ForbidEditSealDescription
+
+    @ForbidEditSealDescription.setter
+    def ForbidEditSealDescription(self, ForbidEditSealDescription):
+        self._ForbidEditSealDescription = ForbidEditSealDescription
+
 
     def _deserialize(self, params):
         self._ShowFlowDetailComponent = params.get("ShowFlowDetailComponent")
         self._ShowTemplateComponent = params.get("ShowTemplateComponent")
         self._SkipUploadFile = params.get("SkipUploadFile")
         self._ForbidEditWatermark = params.get("ForbidEditWatermark")
+        self._SealDescription = params.get("SealDescription")
+        self._ForbidEditSealDescription = params.get("ForbidEditSealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24090,6 +25408,111 @@ class ExtendScene(AbstractModel):
         self._GenerateType = params.get("GenerateType")
         self._GenerateTypeDesc = params.get("GenerateTypeDesc")
         self._GenerateTypeLogo = params.get("GenerateTypeLogo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractionField(AbstractModel):
+    """合同智能提取字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 用于合同智能提取的字段名称。
+
+注意: `长度不能超过30个字符`
+        :type Name: str
+        :param _Type: 指定合同智能提取的字段类型，目前仅支持`TEXT`、`DATE`、`NUMBER`、`OPTION`类型。
+
+类型支持如下：
+1、TEXT（文本）
+2、DATE（日期）
+3、NUMBER（数字）
+4、OPTION（选项值）
+        :type Type: str
+        :param _Description: 用于描述字段信息。
+
+注意：
+1、`如果Type值为OPTION时，需要在字段描述中填写选项值，用,分隔`
+2、描述字段不能超过100个字符
+        :type Description: str
+        :param _Values: 提取出合同中的字段信息。
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Type = None
+        self._Description = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        """用于合同智能提取的字段名称。
+
+注意: `长度不能超过30个字符`
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """指定合同智能提取的字段类型，目前仅支持`TEXT`、`DATE`、`NUMBER`、`OPTION`类型。
+
+类型支持如下：
+1、TEXT（文本）
+2、DATE（日期）
+3、NUMBER（数字）
+4、OPTION（选项值）
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        """用于描述字段信息。
+
+注意：
+1、`如果Type值为OPTION时，需要在字段描述中填写选项值，用,分隔`
+2、描述字段不能超过100个字符
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Values(self):
+        """提取出合同中的字段信息。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26892,7 +28315,7 @@ class FlowGroupInfo(AbstractModel):
 注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。
         :type Approvers: list of ApproverInfo
         :param _FileIds: 文件资源ID，通过多文件上传[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获得，为32位字符串。
-建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
+注：此字段定义为数组，但仅支持单个文件
         :type FileIds: list of str
         :param _TemplateId: 合同模板ID，为32位字符串。
 建议开发者保存此模板ID，后续用此模板发起合同流程需要此参数。
@@ -26981,7 +28404,7 @@ false：有序签
     @property
     def FileIds(self):
         """文件资源ID，通过多文件上传[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获得，为32位字符串。
-建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
+注：此字段定义为数组，但仅支持单个文件
         :rtype: list of str
         """
         return self._FileIds
@@ -28765,10 +30188,13 @@ class Intention(AbstractModel):
 
 注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
         :type IntentionActions: list of IntentionAction
+        :param _RuleIdConfig: 视频核身相关配置
+        :type RuleIdConfig: :class:`tencentcloud.ess.v20201111.models.RuleIdConfig`
         """
         self._IntentionType = None
         self._IntentionQuestions = None
         self._IntentionActions = None
+        self._RuleIdConfig = None
 
     @property
     def IntentionType(self):
@@ -28811,6 +30237,17 @@ class Intention(AbstractModel):
     def IntentionActions(self, IntentionActions):
         self._IntentionActions = IntentionActions
 
+    @property
+    def RuleIdConfig(self):
+        """视频核身相关配置
+        :rtype: :class:`tencentcloud.ess.v20201111.models.RuleIdConfig`
+        """
+        return self._RuleIdConfig
+
+    @RuleIdConfig.setter
+    def RuleIdConfig(self, RuleIdConfig):
+        self._RuleIdConfig = RuleIdConfig
+
 
     def _deserialize(self, params):
         self._IntentionType = params.get("IntentionType")
@@ -28826,6 +30263,9 @@ class Intention(AbstractModel):
                 obj = IntentionAction()
                 obj._deserialize(item)
                 self._IntentionActions.append(obj)
+        if params.get("RuleIdConfig") is not None:
+            self._RuleIdConfig = RuleIdConfig()
+            self._RuleIdConfig._deserialize(params.get("RuleIdConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29060,6 +30500,290 @@ class IntentionQuestionResult(AbstractModel):
         self._Video = params.get("Video")
         self._ResultCode = params.get("ResultCode")
         self._AsrResult = params.get("AsrResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MiniAppCreateApproverInfo(AbstractModel):
+    """创建流程的签署方信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApproverType: 在指定签署方时，可以选择企业B端或个人C端等不同的参与者类型，可选类型如下：
+
+<ul><li> <b>0</b> :企业B端。</li>
+<li> <b>1</b> :个人C端。</li>
+<li> <b>3</b> :企业B端静默（自动）签署，无需签署人参与，自动签署可以参考<a href="https://qian.tencent.com/developers/company/autosign_guide" target="_blank" rel="noopener noreferrer">自动签署使用说明</a>文档。</li>
+<li> <b>7</b> :个人C端自动签署，适用于个人自动签场景。注: <b>个人自动签场景为白名单功能，使用前请联系对接的客户经理沟通。</b> </li></ul>
+        :type ApproverType: int
+        :param _OrganizationName: 组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+
+注: `当approverType=0(企业签署方) 或 approverType=3(企业静默签署)时，必须指定`
+
+
+        :type OrganizationName: str
+        :param _ApproverName: 签署方经办人的姓名。
+经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+
+在未指定签署人电子签UserId情况下，为必填参数
+        :type ApproverName: str
+        :param _ApproverMobile: 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 此手机号用于通知和用户的实名认证等环境，请确认手机号所有方为此合同签署方。
+
+注：`在未指定签署人电子签UserId情况下，为必填参数`
+
+        :type ApproverMobile: str
+        :param _ApproverIdCardType: 证件类型，支持以下类型
+<ul><li><b>ID_CARD</b>: 居民身份证 (默认值)</li>
+<li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
+<li><b>HONGKONG_MACAO_AND_TAIWAN</b> : 港澳台居民居住证(格式同居民身份证)</li></ul>
+        :type ApproverIdCardType: str
+        :param _ApproverIdCardNumber: 证件号码，应符合以下规则
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :type ApproverIdCardNumber: str
+        :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+
+<b>模板发起合同时，该参数为必填项，可以通过[查询模板信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
+<b>文件发起合同时，该参数无需传值。</b>
+
+如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
+        :type RecipientId: str
+        """
+        self._ApproverType = None
+        self._OrganizationName = None
+        self._ApproverName = None
+        self._ApproverMobile = None
+        self._ApproverIdCardType = None
+        self._ApproverIdCardNumber = None
+        self._RecipientId = None
+
+    @property
+    def ApproverType(self):
+        """在指定签署方时，可以选择企业B端或个人C端等不同的参与者类型，可选类型如下：
+
+<ul><li> <b>0</b> :企业B端。</li>
+<li> <b>1</b> :个人C端。</li>
+<li> <b>3</b> :企业B端静默（自动）签署，无需签署人参与，自动签署可以参考<a href="https://qian.tencent.com/developers/company/autosign_guide" target="_blank" rel="noopener noreferrer">自动签署使用说明</a>文档。</li>
+<li> <b>7</b> :个人C端自动签署，适用于个人自动签场景。注: <b>个人自动签场景为白名单功能，使用前请联系对接的客户经理沟通。</b> </li></ul>
+        :rtype: int
+        """
+        return self._ApproverType
+
+    @ApproverType.setter
+    def ApproverType(self, ApproverType):
+        self._ApproverType = ApproverType
+
+    @property
+    def OrganizationName(self):
+        """组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+
+注: `当approverType=0(企业签署方) 或 approverType=3(企业静默签署)时，必须指定`
+
+
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def ApproverName(self):
+        """签署方经办人的姓名。
+经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+
+在未指定签署人电子签UserId情况下，为必填参数
+        :rtype: str
+        """
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproverMobile(self):
+        """签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 此手机号用于通知和用户的实名认证等环境，请确认手机号所有方为此合同签署方。
+
+注：`在未指定签署人电子签UserId情况下，为必填参数`
+
+        :rtype: str
+        """
+        return self._ApproverMobile
+
+    @ApproverMobile.setter
+    def ApproverMobile(self, ApproverMobile):
+        self._ApproverMobile = ApproverMobile
+
+    @property
+    def ApproverIdCardType(self):
+        """证件类型，支持以下类型
+<ul><li><b>ID_CARD</b>: 居民身份证 (默认值)</li>
+<li><b>HONGKONG_AND_MACAO</b> : 港澳居民来往内地通行证</li>
+<li><b>HONGKONG_MACAO_AND_TAIWAN</b> : 港澳台居民居住证(格式同居民身份证)</li></ul>
+        :rtype: str
+        """
+        return self._ApproverIdCardType
+
+    @ApproverIdCardType.setter
+    def ApproverIdCardType(self, ApproverIdCardType):
+        self._ApproverIdCardType = ApproverIdCardType
+
+    @property
+    def ApproverIdCardNumber(self):
+        """证件号码，应符合以下规则
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
+<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :rtype: str
+        """
+        return self._ApproverIdCardNumber
+
+    @ApproverIdCardNumber.setter
+    def ApproverIdCardNumber(self, ApproverIdCardNumber):
+        self._ApproverIdCardNumber = ApproverIdCardNumber
+
+    @property
+    def RecipientId(self):
+        """签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+
+<b>模板发起合同时，该参数为必填项，可以通过[查询模板信息接口](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFlowTemplates)获得。</b>
+<b>文件发起合同时，该参数无需传值。</b>
+
+如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
+        :rtype: str
+        """
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+
+    def _deserialize(self, params):
+        self._ApproverType = params.get("ApproverType")
+        self._OrganizationName = params.get("OrganizationName")
+        self._ApproverName = params.get("ApproverName")
+        self._ApproverMobile = params.get("ApproverMobile")
+        self._ApproverIdCardType = params.get("ApproverIdCardType")
+        self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
+        self._RecipientId = params.get("RecipientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MiniAppCreateFlowOption(AbstractModel):
+    """小程序发起合同可选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RemindedOn: 到期提醒日（linux时间戳） 精确到天
+        :type RemindedOn: int
+        :param _NeedCreateReview: 是否需要发起前进行审批
+        :type NeedCreateReview: bool
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :type FlowDisplayType: int
+        """
+        self._RemindedOn = None
+        self._NeedCreateReview = None
+        self._FlowDisplayType = None
+
+    @property
+    def RemindedOn(self):
+        """到期提醒日（linux时间戳） 精确到天
+        :rtype: int
+        """
+        return self._RemindedOn
+
+    @RemindedOn.setter
+    def RemindedOn(self, RemindedOn):
+        self._RemindedOn = RemindedOn
+
+    @property
+    def NeedCreateReview(self):
+        """是否需要发起前进行审批
+        :rtype: bool
+        """
+        return self._NeedCreateReview
+
+    @NeedCreateReview.setter
+    def NeedCreateReview(self, NeedCreateReview):
+        self._NeedCreateReview = NeedCreateReview
+
+    @property
+    def FlowDisplayType(self):
+        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :rtype: int
+        """
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
+
+    def _deserialize(self, params):
+        self._RemindedOn = params.get("RemindedOn")
+        self._NeedCreateReview = params.get("NeedCreateReview")
+        self._FlowDisplayType = params.get("FlowDisplayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MiniAppCreateFlowPageOption(AbstractModel):
+    """小程序发起页面个性化配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HideSignCodeAfterStart: 发起后隐藏签署码
+        :type HideSignCodeAfterStart: bool
+        """
+        self._HideSignCodeAfterStart = None
+
+    @property
+    def HideSignCodeAfterStart(self):
+        """发起后隐藏签署码
+        :rtype: bool
+        """
+        return self._HideSignCodeAfterStart
+
+    @HideSignCodeAfterStart.setter
+    def HideSignCodeAfterStart(self, HideSignCodeAfterStart):
+        self._HideSignCodeAfterStart = HideSignCodeAfterStart
+
+
+    def _deserialize(self, params):
+        self._HideSignCodeAfterStart = params.get("HideSignCodeAfterStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30251,6 +31975,16 @@ class OccupiedSeal(AbstractModel):
         :type AuthorizedUsers: list of AuthorizedUser
         :param _ExtendScene: 印章扩展数据信息
         :type ExtendScene: :class:`tencentcloud.ess.v20201111.models.ExtendScene`
+        :param _RealWidth: 印章的真实宽度，单位毫米
+        :type RealWidth: int
+        :param _RealHeight: 印章的真实高度，单位毫米
+        :type RealHeight: int
+        :param _SubSealType: 自定义子类型印章
+        :type SubSealType: str
+        :param _SubSealName: 自定义子类型印章名称
+        :type SubSealName: str
+        :param _SealDescription: 印章描述
+        :type SealDescription: str
         """
         self._SealId = None
         self._SealName = None
@@ -30264,6 +31998,11 @@ class OccupiedSeal(AbstractModel):
         self._IsAllTime = None
         self._AuthorizedUsers = None
         self._ExtendScene = None
+        self._RealWidth = None
+        self._RealHeight = None
+        self._SubSealType = None
+        self._SubSealName = None
+        self._SealDescription = None
 
     @property
     def SealId(self):
@@ -30397,6 +32136,61 @@ class OccupiedSeal(AbstractModel):
     def ExtendScene(self, ExtendScene):
         self._ExtendScene = ExtendScene
 
+    @property
+    def RealWidth(self):
+        """印章的真实宽度，单位毫米
+        :rtype: int
+        """
+        return self._RealWidth
+
+    @RealWidth.setter
+    def RealWidth(self, RealWidth):
+        self._RealWidth = RealWidth
+
+    @property
+    def RealHeight(self):
+        """印章的真实高度，单位毫米
+        :rtype: int
+        """
+        return self._RealHeight
+
+    @RealHeight.setter
+    def RealHeight(self, RealHeight):
+        self._RealHeight = RealHeight
+
+    @property
+    def SubSealType(self):
+        """自定义子类型印章
+        :rtype: str
+        """
+        return self._SubSealType
+
+    @SubSealType.setter
+    def SubSealType(self, SubSealType):
+        self._SubSealType = SubSealType
+
+    @property
+    def SubSealName(self):
+        """自定义子类型印章名称
+        :rtype: str
+        """
+        return self._SubSealName
+
+    @SubSealName.setter
+    def SubSealName(self, SubSealName):
+        self._SubSealName = SubSealName
+
+    @property
+    def SealDescription(self):
+        """印章描述
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
 
     def _deserialize(self, params):
         self._SealId = params.get("SealId")
@@ -30418,6 +32212,11 @@ class OccupiedSeal(AbstractModel):
         if params.get("ExtendScene") is not None:
             self._ExtendScene = ExtendScene()
             self._ExtendScene._deserialize(params.get("ExtendScene"))
+        self._RealWidth = params.get("RealWidth")
+        self._RealHeight = params.get("RealHeight")
+        self._SubSealType = params.get("SubSealType")
+        self._SubSealName = params.get("SubSealName")
+        self._SealDescription = params.get("SealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30857,10 +32656,13 @@ class OrganizationAuthUrl(AbstractModel):
         :type ErrorMessage: str
         :param _SubTaskId: 企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/companyApis/organizations/CreateBatchOrganizationAuthorizationUrl)。
         :type SubTaskId: str
+        :param _OrganizationName: 企业批量注册 传递过来的企业名称，方便客户定位企业
+        :type OrganizationName: str
         """
         self._AuthUrl = None
         self._ErrorMessage = None
         self._SubTaskId = None
+        self._OrganizationName = None
 
     @property
     def AuthUrl(self):
@@ -30903,11 +32705,23 @@ class OrganizationAuthUrl(AbstractModel):
     def SubTaskId(self, SubTaskId):
         self._SubTaskId = SubTaskId
 
+    @property
+    def OrganizationName(self):
+        """企业批量注册 传递过来的企业名称，方便客户定位企业
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
 
     def _deserialize(self, params):
         self._AuthUrl = params.get("AuthUrl")
         self._ErrorMessage = params.get("ErrorMessage")
         self._SubTaskId = params.get("SubTaskId")
+        self._OrganizationName = params.get("OrganizationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31256,6 +33070,159 @@ class OrganizationInfo(AbstractModel):
         self._OrganizationOpenId = params.get("OrganizationOpenId")
         self._ClientIp = params.get("ClientIp")
         self._ProxyIp = params.get("ProxyIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputRisk(AbstractModel):
+    """合同审查任务识别出的风险结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskId: 合同审查风险结果ID
+        :type RiskId: str
+        :param _RiskName: 风险名称
+        :type RiskName: str
+        :param _RiskDescription: 风险描述
+        :type RiskDescription: str
+        :param _RiskLevel: 风险等级。
+
+等级描述如下：
+<ul>
+    <li>**HIGH** - 高风险</li> 
+    <li>**NORMAL** - 风险</li>   
+</ul>
+        :type RiskLevel: str
+        :param _RiskAdvice: 风险建议
+        :type RiskAdvice: str
+        :param _RiskPresentation: 风险评估
+        :type RiskPresentation: list of str
+        :param _Content: PDF风险原文内容
+        :type Content: str
+        :param _RiskBasis: 审查依据
+        :type RiskBasis: str
+        """
+        self._RiskId = None
+        self._RiskName = None
+        self._RiskDescription = None
+        self._RiskLevel = None
+        self._RiskAdvice = None
+        self._RiskPresentation = None
+        self._Content = None
+        self._RiskBasis = None
+
+    @property
+    def RiskId(self):
+        """合同审查风险结果ID
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def RiskName(self):
+        """风险名称
+        :rtype: str
+        """
+        return self._RiskName
+
+    @RiskName.setter
+    def RiskName(self, RiskName):
+        self._RiskName = RiskName
+
+    @property
+    def RiskDescription(self):
+        """风险描述
+        :rtype: str
+        """
+        return self._RiskDescription
+
+    @RiskDescription.setter
+    def RiskDescription(self, RiskDescription):
+        self._RiskDescription = RiskDescription
+
+    @property
+    def RiskLevel(self):
+        """风险等级。
+
+等级描述如下：
+<ul>
+    <li>**HIGH** - 高风险</li> 
+    <li>**NORMAL** - 风险</li>   
+</ul>
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def RiskAdvice(self):
+        """风险建议
+        :rtype: str
+        """
+        return self._RiskAdvice
+
+    @RiskAdvice.setter
+    def RiskAdvice(self, RiskAdvice):
+        self._RiskAdvice = RiskAdvice
+
+    @property
+    def RiskPresentation(self):
+        """风险评估
+        :rtype: list of str
+        """
+        return self._RiskPresentation
+
+    @RiskPresentation.setter
+    def RiskPresentation(self, RiskPresentation):
+        self._RiskPresentation = RiskPresentation
+
+    @property
+    def Content(self):
+        """PDF风险原文内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RiskBasis(self):
+        """审查依据
+        :rtype: str
+        """
+        return self._RiskBasis
+
+    @RiskBasis.setter
+    def RiskBasis(self, RiskBasis):
+        self._RiskBasis = RiskBasis
+
+
+    def _deserialize(self, params):
+        self._RiskId = params.get("RiskId")
+        self._RiskName = params.get("RiskName")
+        self._RiskDescription = params.get("RiskDescription")
+        self._RiskLevel = params.get("RiskLevel")
+        self._RiskAdvice = params.get("RiskAdvice")
+        self._RiskPresentation = params.get("RiskPresentation")
+        self._Content = params.get("Content")
+        self._RiskBasis = params.get("RiskBasis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33162,6 +35129,109 @@ class ReviewerInfo(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Mobile = params.get("Mobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RiskIdentificationRoleInfo(AbstractModel):
+    """用于定义合同风险识别角色信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 风险识别角色的名称。用于唯一标识和区分不同的风险识别角色。
+
+注意：`最大长度应不超过200个字符`
+        :type Name: str
+        :param _Description: 风险识别角色的详细说明。
+
+注意： `最大长度应不超过500个字符`
+        :type Description: str
+        """
+        self._Name = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        """风险识别角色的名称。用于唯一标识和区分不同的风险识别角色。
+
+注意：`最大长度应不超过200个字符`
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """风险识别角色的详细说明。
+
+注意： `最大长度应不超过500个字符`
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleIdConfig(AbstractModel):
+    """视频核身相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Speed: 意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
+0-智能语速（根据播报文案的长度自动调整语音播报速度）
+1-固定1倍速
+2-固定1.2倍速
+3-固定1.5倍速
+        :type Speed: int
+        """
+        self._Speed = None
+
+    @property
+    def Speed(self):
+        """意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
+0-智能语速（根据播报文案的长度自动调整语音播报速度）
+1-固定1倍速
+2-固定1.2倍速
+3-固定1.5倍速
+        :rtype: int
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+
+    def _deserialize(self, params):
+        self._Speed = params.get("Speed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

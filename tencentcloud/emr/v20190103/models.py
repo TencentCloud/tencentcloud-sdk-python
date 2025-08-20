@@ -9440,7 +9440,7 @@ class DescribeHBaseTableOverviewRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _Offset: 分页查询编号偏移量，从0开始	
+        :param _Offset: 页码，第一页:0，第二页:1
         :type Offset: int
         :param _Limit: 分页查询时的分页大小，最小1，最大100
         :type Limit: int
@@ -9471,7 +9471,7 @@ class DescribeHBaseTableOverviewRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页查询编号偏移量，从0开始	
+        """页码，第一页:0，第二页:1
         :rtype: int
         """
         return self._Offset
@@ -10183,6 +10183,8 @@ class DescribeInsightListRequest(AbstractModel):
         :type Page: int
         :param _Type: 查询类型,支持HIVE,SPARK,DLC_SPARK,SPARK_SQL,SCHEDULE,MAPREDUCE,TRINO等类型,默认查询全部
         :type Type: str
+        :param _MustHasContext: 是否包含具体参数建议等信息
+        :type MustHasContext: bool
         """
         self._InstanceId = None
         self._StartTime = None
@@ -10190,6 +10192,7 @@ class DescribeInsightListRequest(AbstractModel):
         self._PageSize = None
         self._Page = None
         self._Type = None
+        self._MustHasContext = None
 
     @property
     def InstanceId(self):
@@ -10257,6 +10260,17 @@ class DescribeInsightListRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def MustHasContext(self):
+        """是否包含具体参数建议等信息
+        :rtype: bool
+        """
+        return self._MustHasContext
+
+    @MustHasContext.setter
+    def MustHasContext(self, MustHasContext):
+        self._MustHasContext = MustHasContext
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10265,6 +10279,7 @@ class DescribeInsightListRequest(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._Page = params.get("Page")
         self._Type = params.get("Type")
+        self._MustHasContext = params.get("MustHasContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35134,6 +35149,8 @@ class StageInfoDetail(AbstractModel):
         :type FailedReason: str
         :param _TimeConsuming: 步骤耗时
         :type TimeConsuming: str
+        :param _Id: id，前端用
+        :type Id: int
         """
         self._Stage = None
         self._Name = None
@@ -35150,6 +35167,7 @@ class StageInfoDetail(AbstractModel):
         self._LanguageKey = None
         self._FailedReason = None
         self._TimeConsuming = None
+        self._Id = None
 
     @property
     def Stage(self):
@@ -35318,6 +35336,17 @@ class StageInfoDetail(AbstractModel):
     def TimeConsuming(self, TimeConsuming):
         self._TimeConsuming = TimeConsuming
 
+    @property
+    def Id(self):
+        """id，前端用
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._Stage = params.get("Stage")
@@ -35335,6 +35364,7 @@ class StageInfoDetail(AbstractModel):
         self._LanguageKey = params.get("LanguageKey")
         self._FailedReason = params.get("FailedReason")
         self._TimeConsuming = params.get("TimeConsuming")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

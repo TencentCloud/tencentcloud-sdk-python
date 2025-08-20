@@ -12753,6 +12753,14 @@ class DiagHistoryEventItem(AbstractModel):
         :type Metric: str
         :param _Region: 地域。
         :type Region: str
+        :param _ClusterId: 集群ID。
+        :type ClusterId: str
+        :param _ClusterName: 集群名称。
+        :type ClusterName: str
+        :param _Vip: vip地址。
+        :type Vip: str
+        :param _Vport: vip端口。
+        :type Vport: int
         """
         self._DiagType = None
         self._EndTime = None
@@ -12764,6 +12772,10 @@ class DiagHistoryEventItem(AbstractModel):
         self._InstanceId = None
         self._Metric = None
         self._Region = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._Vip = None
+        self._Vport = None
 
     @property
     def DiagType(self):
@@ -12875,6 +12887,50 @@ class DiagHistoryEventItem(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def ClusterId(self):
+        """集群ID。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        """集群名称。
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Vip(self):
+        """vip地址。
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        """vip端口。
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
 
     def _deserialize(self, params):
         self._DiagType = params.get("DiagType")
@@ -12887,6 +12943,10 @@ class DiagHistoryEventItem(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._Metric = params.get("Metric")
         self._Region = params.get("Region")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

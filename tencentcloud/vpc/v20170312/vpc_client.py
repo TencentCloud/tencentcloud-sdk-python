@@ -430,7 +430,7 @@ class VpcClient(AbstractClient):
 
 
     def AssociateHaVipInstance(self, request):
-        """本接口（AssociateHaVipInstance）用于HAVIP绑定子机或网卡（限制HaVip的飘移范围）。
+        """本接口（AssociateHaVipInstance）用于HAVIP绑定子机或网卡（限制HaVip的漂移范围）。
 
         :param request: Request instance for AssociateHaVipInstance.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateHaVipInstanceRequest`

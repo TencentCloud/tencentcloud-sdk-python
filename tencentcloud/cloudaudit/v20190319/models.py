@@ -318,6 +318,8 @@ class CreateAuditTrackRequest(AbstractModel):
         :type EventNames: list of str
         :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
         :type TrackForAllMembers: int
+        :param _ExportId: 任务ID
+        :type ExportId: str
         """
         self._Name = None
         self._Status = None
@@ -326,6 +328,7 @@ class CreateAuditTrackRequest(AbstractModel):
         self._ResourceType = None
         self._EventNames = None
         self._TrackForAllMembers = None
+        self._ExportId = None
 
     @property
     def Name(self):
@@ -404,6 +407,17 @@ class CreateAuditTrackRequest(AbstractModel):
     def TrackForAllMembers(self, TrackForAllMembers):
         self._TrackForAllMembers = TrackForAllMembers
 
+    @property
+    def ExportId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._ExportId
+
+    @ExportId.setter
+    def ExportId(self, ExportId):
+        self._ExportId = ExportId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -415,6 +429,7 @@ class CreateAuditTrackRequest(AbstractModel):
         self._ResourceType = params.get("ResourceType")
         self._EventNames = params.get("EventNames")
         self._TrackForAllMembers = params.get("TrackForAllMembers")
+        self._ExportId = params.get("ExportId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

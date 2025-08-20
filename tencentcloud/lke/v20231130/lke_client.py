@@ -72,31 +72,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ConvertDocument(self, request):
-        """产品规划
-
-        接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
-
-        :param request: Request instance for ConvertDocument.
-        :type request: :class:`tencentcloud.lke.v20231130.models.ConvertDocumentRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.ConvertDocumentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ConvertDocument", params, headers=headers)
-            response = json.loads(body)
-            model = models.ConvertDocumentResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateAgent(self, request):
         """你创建一个Agent
 
@@ -157,29 +132,6 @@ class LkeClient(AbstractClient):
             body = self.call("CreateAttributeLabel", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAttributeLabelResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateCorp(self, request):
-        """创建企业
-
-        :param request: Request instance for CreateCorp.
-        :type request: :class:`tencentcloud.lke.v20231130.models.CreateCorpRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateCorpResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateCorp", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateCorpResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -733,29 +685,6 @@ class LkeClient(AbstractClient):
             body = self.call("DescribeConcurrencyUsageGraph", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConcurrencyUsageGraphResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCorp(self, request):
-        """企业详情
-
-        :param request: Request instance for DescribeCorp.
-        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeCorpRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeCorpResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCorp", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCorpResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1340,31 +1269,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetEmbedding(self, request):
-        """本接口（GetEmbedding）调用文本表示模型，将文本转化为用数值表示的向量形式，可用于文本检索、信息推荐、知识挖掘等场景。
-        开通[产品体验](https://lke.cloud.tencent.com/lke/#/trialProduct)后可获得50wtoken体验额度。
-        本接口（GetEmbedding）有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
-
-        :param request: Request instance for GetEmbedding.
-        :type request: :class:`tencentcloud.lke.v20231130.models.GetEmbeddingRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.GetEmbeddingResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetEmbedding", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetEmbeddingResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def GetLikeDataCount(self, request):
         """点赞点踩数据统计
 
@@ -1403,29 +1307,6 @@ class LkeClient(AbstractClient):
             body = self.call("GetMsgRecord", params, headers=headers)
             response = json.loads(body)
             model = models.GetMsgRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetReconstructDocumentResult(self, request):
-        """本接口为异步接口的查询结果接口，用于获取文档解析处理结果。
-
-        :param request: Request instance for GetReconstructDocumentResult.
-        :type request: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetReconstructDocumentResult", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetReconstructDocumentResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1610,29 +1491,6 @@ class LkeClient(AbstractClient):
             body = self.call("ListApp", params, headers=headers)
             response = json.loads(body)
             model = models.ListAppResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListAppCategory(self, request):
-        """应用类型列表
-
-        :param request: Request instance for ListAppCategory.
-        :type request: :class:`tencentcloud.lke.v20231130.models.ListAppCategoryRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.ListAppCategoryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListAppCategory", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListAppCategoryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1965,7 +1823,7 @@ class LkeClient(AbstractClient):
 
 
     def ListSelectDoc(self, request):
-        """获取账户信息
+        """文档生成问答时，可通过该接口获得当前支持生成问答的文档列表，当前不支持xlsx、xls、csv格式的文档生成问答，且文档需处于待发布或已发布状态才可生成问答。
 
         :param request: Request instance for ListSelectDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListSelectDocRequest`
@@ -2309,30 +2167,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def QueryRewrite(self, request):
-        """多轮改写（QueryRewrite）主要用于多轮对话中，进行指代消解和省略补全。使用本接口，无需输入prompt描述，根据对话历史即可生成更精确的用户查询。在应用场景上，本接口可应用于智能问答、对话式搜索等多种场景。
-        开通[产品体验](https://lke.cloud.tencent.com/lke/#/trialProduct)后可获得50wtoken体验额度。本接口（QueryRewrite）有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
-
-        :param request: Request instance for QueryRewrite.
-        :type request: :class:`tencentcloud.lke.v20231130.models.QueryRewriteRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.QueryRewriteResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("QueryRewrite", params, headers=headers)
-            response = json.loads(body)
-            model = models.QueryRewriteResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RateMsgRecord(self, request):
         """点赞点踩消息
 
@@ -2347,31 +2181,6 @@ class LkeClient(AbstractClient):
             body = self.call("RateMsgRecord", params, headers=headers)
             response = json.loads(body)
             model = models.RateMsgRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ReconstructDocument(self, request):
-        """支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
-
-        体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
-
-        :param request: Request instance for ReconstructDocument.
-        :type request: :class:`tencentcloud.lke.v20231130.models.ReconstructDocumentRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.ReconstructDocumentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ReconstructDocument", params, headers=headers)
-            response = json.loads(body)
-            model = models.ReconstructDocumentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2487,29 +2296,6 @@ class LkeClient(AbstractClient):
             body = self.call("RetryRelease", params, headers=headers)
             response = json.loads(body)
             model = models.RetryReleaseResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RunReRank(self, request):
-        """基于知识引擎精调模型技术的rerank模型，支持对多路召回的结果进行重排序，根据query与切片内容的相关性，按分数由高到低对切片进行排序，并输出对应的打分结果。（这个接口已下线，请使用新接口，接口文档：https://cloud.tencent.com/document/product/1772/115339）。
-
-        :param request: Request instance for RunReRank.
-        :type request: :class:`tencentcloud.lke.v20231130.models.RunReRankRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.RunReRankResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RunReRank", params, headers=headers)
-            response = json.loads(body)
-            model = models.RunReRankResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

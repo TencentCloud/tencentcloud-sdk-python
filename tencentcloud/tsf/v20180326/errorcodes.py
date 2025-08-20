@@ -65,6 +65,12 @@ FAILEDOPERATION_CONFIGNAMESPACEQUERYFAILED = 'FailedOperation.ConfigNamespaceQue
 # 配置项查询失败。
 FAILEDOPERATION_CONFIGQUERYFAILED = 'FailedOperation.ConfigQueryFailed'
 
+# 配置项发布日志新增失败。
+FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = 'FailedOperation.ConfigReleaseLogCreateFailed'
+
+# 配置项发布日志查询失败。
+FAILEDOPERATION_CONFIGRELEASELOGQUERYFAILED = 'FailedOperation.ConfigReleaseLogQueryFailed'
+
 # 配置项发布信息查询失败。
 FAILEDOPERATION_CONFIGRELEASEQUERYFAILED = 'FailedOperation.ConfigReleaseQueryFailed'
 
@@ -92,7 +98,7 @@ FAILEDOPERATION_CONTAINERGROUPGROUPHASSTOP = 'FailedOperation.ContainergroupGrou
 # 调用 kube-api-server 失败。
 FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = 'FailedOperation.ContainergroupKuberneteApiInvokeError'
 
-# 连接 kube-api-sever 失败。
+# 连接 kube-api-server 失败。
 FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = 'FailedOperation.ContainergroupKuberneteConnectError'
 
 # 调用 kube-api-server 失败。
@@ -116,17 +122,26 @@ FAILEDOPERATION_DISPATCHCOMMONERROR = 'FailedOperation.DispatchCommonError'
 # 寻找独占配置中心相关指标异常
 FAILEDOPERATION_FINDMETRICSEXCLUSIVEERROR = 'FailedOperation.FindMetricsExclusiveError'
 
-# 网关通用异常:%s。
+# 网关通用异常[网关异常]。
 FAILEDOPERATION_GATEWAYCOMMONERROR = 'FailedOperation.GatewayCommonError'
 
-# 远端访问错误: %s。
+# 当前分组已绑定部署组,请解绑后删除
+FAILEDOPERATION_GATEWAYGROUPBOUNDDELETEFAILED = 'FailedOperation.GatewayGroupBoundDeleteFailed'
+
+# 远端访问错误。
 FAILEDOPERATION_GATEWAYREMOTECALLERROR = 'FailedOperation.GatewayRemoteCallError'
+
+# 分组通用错误。
+FAILEDOPERATION_GROUPCOMMONERROR = 'FailedOperation.GroupCommonError'
 
 # 命名空间下存在部署组。
 FAILEDOPERATION_GROUPEXISTS = 'FailedOperation.GroupExists'
 
 # 部署组查询失败。
 FAILEDOPERATION_GROUPQUERYFAILD = 'FailedOperation.GroupQueryFaild'
+
+# 部署组查询失败。
+FAILEDOPERATION_GROUPQUERYFAILED = 'FailedOperation.GroupQueryFailed'
 
 # 镜像仓库已关联至部署组，请移除后重试
 FAILEDOPERATION_IMAGEVALIDATEISUSED = 'FailedOperation.ImageValidateIsUsed'
@@ -136,6 +151,9 @@ FAILEDOPERATION_IMAGEREPOREJECTDELERROR = 'FailedOperation.ImagerepoRejectDelErr
 
 # tcr仓库绑定失败。
 FAILEDOPERATION_IMAGEREPOTCRBINDERROR = 'FailedOperation.ImagerepoTcrBindError'
+
+# TSF节点管理通用错误信息。
+FAILEDOPERATION_INSTANCECOMMONERROR = 'FailedOperation.InstanceCommonError'
 
 # 机器实例删除失败。
 FAILEDOPERATION_INSTANCEDELETEFAILED = 'FailedOperation.InstanceDeleteFailed'
@@ -172,6 +190,9 @@ FAILEDOPERATION_LANEINFORELEASEMESHFAILED = 'FailedOperation.LaneInfoReleaseMesh
 
 # 全链路灰度规则启用失败。
 FAILEDOPERATION_LANERULEENABLECONSULFAILED = 'FailedOperation.LaneRuleEnableConsulFailed'
+
+# 该灰度规则生效中,请关闭后删除
+FAILEDOPERATION_LANERULEENABLEDRULEDELETEFAILED = 'FailedOperation.LaneRuleEnabledRuleDeleteFailed'
 
 # 用户全链路灰度规则最大100条。
 FAILEDOPERATION_LANERULEMAXLIMIT = 'FailedOperation.LaneRuleMaxLimit'
@@ -221,7 +242,7 @@ FAILEDOPERATION_TASKDELETEERROR = 'FailedOperation.TaskDeleteError'
 # 操作失败。
 FAILEDOPERATION_TASKOPERATIONFAILED = 'FailedOperation.TaskOperationFailed'
 
-# 禁止操作。
+# 操作不允许。
 FAILEDOPERATION_TASKOPERATIONFORBIDDEN = 'FailedOperation.TaskOperationForbidden'
 
 # 任务下发异常。
@@ -236,7 +257,7 @@ FAILEDOPERATION_TASKTERMINATEFAILED = 'FailedOperation.TaskTerminateFailed'
 # 任务更新异常。
 FAILEDOPERATION_TASKUPDATEERROR = 'FailedOperation.TaskUpdateError'
 
-# TKE 集群创建失败，%s。
+# 示例：TKE 集群创建失败，插入数据库失败。
 FAILEDOPERATION_TKECLUSTERCREATEFAILED = 'FailedOperation.TkeClusterCreateFailed'
 
 # TKE 集群删除失败。
@@ -317,7 +338,7 @@ FAILEDOPERATION_TSFMSERROR = 'FailedOperation.TsfMsError'
 # 调用ms server失败。
 FAILEDOPERATION_TSFMSSERVERERROR = 'FailedOperation.TsfMsServerError'
 
-# TSF权限模块异常，请联系系统管理员。。
+# TSF权限模块异常，请联系系统管理员。
 FAILEDOPERATION_TSFPRIVILEGEERROR = 'FailedOperation.TsfPrivilegeError'
 
 # 未授权。
@@ -371,10 +392,13 @@ INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = 'InternalError.Containergrou
 # Kubernetes deployment 未找到。
 INTERNALERROR_CONTAINERGROUPKUBERNETEDEPLOYMENTNOTFOUND = 'InternalError.ContainergroupKuberneteDeploymentNotfound'
 
+# 连接TKE服务失败。
+INTERNALERROR_CONTAINERGROUPKUBERNETESCONNECTERROR = 'InternalError.ContainergroupKubernetesConnectError'
+
 # 容器应用SQL错误。
 INTERNALERROR_CONTAINERGROUPSQLFAILED = 'InternalError.ContainergroupSqlFailed'
 
-# 容器平台集群不可用，当前状态 %s。
+# 示例：容器平台集群不可用，当前状态 Notinit。
 INTERNALERROR_CPCLUSTERUNAVAILABLE = 'InternalError.CpClusterUnavailable'
 
 # 命令下放失败。
@@ -389,13 +413,13 @@ INTERNALERROR_CVMCAEMASTERNONALIVE = 'InternalError.CvmCaeMasterNonAlive'
 # 数据查询失败。
 INTERNALERROR_CVMCAEMASTERQUERYERROR = 'InternalError.CvmCaeMasterQueryError'
 
-# TSF暂时不能响应请求。。
+# TSF暂时不能响应请求。
 INTERNALERROR_DISPATCHCOMMONERROR = 'InternalError.DispatchCommonError'
 
-# 网关通用异常:%s。
+# 网关通用异常[网关资源]。
 INTERNALERROR_GATEWAYCOMMONERROR = 'InternalError.GatewayCommonError'
 
-# 数据一致性异常:%s。
+# 数据一致性异常[网关资源]。
 INTERNALERROR_GATEWAYCONSISTENCYERROR = 'InternalError.GatewayConsistencyError'
 
 # 配置中心访问异常。
@@ -437,7 +461,7 @@ INTERNALERROR_SQLTOOMANYINITEM = 'InternalError.SqlTooManyInItem'
 # 任务内部异常。
 INTERNALERROR_TASKINTERNALERROR = 'InternalError.TaskInternalError'
 
-# 调用 TKE 接口失败，%s。
+# 示例：调用 TKE 接口失败，具体报错信息。
 INTERNALERROR_TKEAPIFAILEDOPERATION = 'InternalError.TkeApiFailedOperation'
 
 # TSF应用性能管理业务日志配置与应用关联处理错误。
@@ -464,7 +488,7 @@ INTERNALERROR_TSFMONITORINTERNALERROR = 'InternalError.TsfMonitorInternalError'
 # TSF服务管理通用异常。
 INTERNALERROR_TSFMSERROR = 'InternalError.TsfMsError'
 
-# [%s]模块未处理异常。。
+# 模块未处理异常。
 INTERNALERROR_UNHANDLEDEXCEPTION = 'InternalError.UnhandledException'
 
 # 参数错误。
@@ -473,7 +497,7 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 删除应用失败。
 INVALIDPARAMETER_APPLICATIONDELETEFAILED = 'InvalidParameter.ApplicationDeleteFailed'
 
-# [%s]模块接口[%s]请求不正确（400 BAD REQUEST）。。
+# 示例：serviceId模块接口action请求不正确（400 BAD REQUEST）。
 INVALIDPARAMETER_BADREQUEST = 'InvalidParameter.BadRequest'
 
 # 配置模板名称不符合规范。
@@ -590,7 +614,7 @@ INVALIDPARAMETER_TSFAPMSTDOUTSEARCHREQUESTPARAMERROR = 'InvalidParameter.TsfApmS
 # TSF应用性能管理调用链搜索请求参数错误。
 INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = 'InvalidParameter.TsfApmTraceSearchRequestParamError'
 
-# TSF监控统计请求参数[%s]非法。
+# TSF监控统计请求参数非法。
 INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = 'InvalidParameter.TsfMonitorRequestParamIllegal'
 
 # 仓库批量删除包数量超过单次允许上限。
@@ -635,7 +659,7 @@ INVALIDPARAMETERVALUE_CLUSTERCIDRCONFLICT = 'InvalidParameterValue.ClusterCidrCo
 # 集群命名已存在，请更换其他名称。
 INVALIDPARAMETERVALUE_CLUSTERNAMEEXIST = 'InvalidParameterValue.ClusterNameExist'
 
-# 本环境集群名称禁止以 %s 开头
+# 示例：本环境集群名称禁止以 11 开头
 INVALIDPARAMETERVALUE_CLUSTERNAMEPREFIXILLEGALERROR = 'InvalidParameterValue.ClusterNamePrefixIllegalError'
 
 # 集群命名不能为空。
@@ -686,7 +710,7 @@ INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = 'InvalidParameterValue.ConfigT
 # 配置格式不符合YAML要求。
 INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = 'InvalidParameterValue.ConfigValueFormatInvalid'
 
-# 配置项值内容大小（%s）超过限制。
+# 配置项值内容大小[当前值]超过限制。
 INVALIDPARAMETERVALUE_CONFIGVALUETOOLONG = 'InvalidParameterValue.ConfigValueTooLong'
 
 # 配置项版本描述不合规。
@@ -764,7 +788,7 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLPORTSNULL = 'InvalidParameterValue.C
 # 镜像仓库名与应用名不匹配。
 INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = 'InvalidParameterValue.ContainergroupReponameInvalid'
 
-# agent 容器资源值非法 , %s。
+# 示例：agent 容器资源值非法 , cpu。
 INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = 'InvalidParameterValue.ContainergroupResourceAgentValueInvalid'
 
 # 容器端口不允许重复映射。
@@ -824,6 +848,9 @@ INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = 'InvalidParameterValue.FileCon
 # 文件配置项固定字段不可变更。
 INVALIDPARAMETERVALUE_FILECONFIGFIXEDFIELDUNCHANGEABLE = 'InvalidParameterValue.FileConfigFixedFieldUnchangeable'
 
+# 文件配置项和部署组所属应用不一致。
+INVALIDPARAMETERVALUE_FILECONFIGGROUPAPPLICATIONIDNOTMATCH = 'InvalidParameterValue.FileConfigGroupApplicationIdNotMatch'
+
 # 文件配置项名称不合规。
 INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = 'InvalidParameterValue.FileConfigNameInvalid'
 
@@ -842,10 +869,10 @@ INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = 'InvalidParameterValue.File
 # 文件配置项版本不合规。
 INVALIDPARAMETERVALUE_FILECONFIGVERSIONINVALID = 'InvalidParameterValue.FileConfigVersionInvalid'
 
-# 请求参数异常:%s。
+# 请求参数异常[参数]。
 INVALIDPARAMETERVALUE_GATEWAYPARAMETERERROR = 'InvalidParameterValue.GatewayParameterError'
 
-# 无效请求参数:%s。
+# 无效请求参数[参数异常]。
 INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = 'InvalidParameterValue.GatewayParameterInvalid'
 
 # 全局命名空间已经存在，只能创建一个全局命名空间。
@@ -899,7 +926,7 @@ INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = 'InvalidParameterValue.ImagerepoTag
 # 重装系统，无效的镜像id。
 INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = 'InvalidParameterValue.InstanceInvalidImage'
 
-# 参数 %s 取值错误。
+# 示例：参数 Region 取值错误。
 INVALIDPARAMETERVALUE_INVALIDPARAMETER = 'InvalidParameterValue.InvalidParameter'
 
 # 参数格式异常。
@@ -908,7 +935,7 @@ INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = 'InvalidParameterValue.InvalidPar
 # 数据集名非法。
 INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = 'InvalidParameterValue.InvalidProgramName'
 
-# 已经绑定灰度规则，无法删除。
+# 该泳道已关联全链路灰度发布规则,请先从规则中移除后删除
 INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = 'InvalidParameterValue.LaneInfoAlreadyUsed'
 
 # 存在同名的泳道。
@@ -980,6 +1007,12 @@ INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = 'InvalidParameterValue.LaneRuleT
 # 全链路灰度规则总标签值不能超过200个字符。
 INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = 'InvalidParameterValue.LaneRuleTagValueTotalTooLong'
 
+# 无法获取上一次的配置项。
+INVALIDPARAMETERVALUE_LASTCONFIGNOTEXISTS = 'InvalidParameterValue.LastConfigNotExists'
+
+# [参数]不合法。
+INVALIDPARAMETERVALUE_MSPARAMETERINVALID = 'InvalidParameterValue.MsParameterInvalid'
+
 # 集群已关联该命名空间。
 INVALIDPARAMETERVALUE_NAMESPACEALREADYBINDCLUSTER = 'InvalidParameterValue.NamespaceAlreadyBindCluster'
 
@@ -1004,7 +1037,7 @@ INVALIDPARAMETERVALUE_RELEASEDCONFIGCANNOTBEDELETED = 'InvalidParameterValue.Rel
 # 文件配置项已经发布，不允许删除。
 INVALIDPARAMETERVALUE_RELEASEDFILECONFIGCANNOTBEDELETED = 'InvalidParameterValue.ReleasedFileConfigCanNotBeDeleted'
 
-# 无权限操作资源%s。
+# 无权限操作资源[资源ID]。
 INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = 'InvalidParameterValue.ResourcePermissionDenied'
 
 # ResourceType 不支持。
@@ -1016,7 +1049,7 @@ INVALIDPARAMETERVALUE_SERVICEDESCLENGTH = 'InvalidParameterValue.ServiceDescLeng
 # 服务名称重复。
 INVALIDPARAMETERVALUE_SERVICENAMEREPEATED = 'InvalidParameterValue.ServiceNameRepeated'
 
-# 服务不存在或权限不足。
+# 无法获取微服务列表或无访问权限。
 INVALIDPARAMETERVALUE_SERVICENOTEXISTSORPERMISSIONDENIED = 'InvalidParameterValue.ServiceNotExistsOrPermissionDenied'
 
 # 无效请求参数。
@@ -1024,6 +1057,9 @@ INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = 'InvalidParameterValue.TaskParamete
 
 # TSF应用性能管理业务日志搜索解析时间格式错误。
 INVALIDPARAMETERVALUE_TSFAPMBUSILOGSEARCHPARSERSPDATEFORMATERROR = 'InvalidParameterValue.TsfApmBusiLogSearchParseRspDateFormatError'
+
+# 数据卷名称校验失败。
+INVALIDPARAMETERVALUE_VOLUMENAMEVALIDERROR = 'InvalidParameterValue.VolumeNameValidError'
 
 # 仅有停止状态下的部署组才可以不启动。
 INVALIDPARAMETERVALUE_WRONGDONTSTARTVALUE = 'InvalidParameterValue.WrongDontStartValue'
@@ -1082,7 +1118,7 @@ MISSINGPARAMETER_CONFIGVERSIONREQUIRED = 'MissingParameter.ConfigVersionRequired
 # 文件配置项文件内容未填写。
 MISSINGPARAMETER_FILECONFIGFILEVALUEREQUIRED = 'MissingParameter.FileConfigFileValueRequired'
 
-# 缺少请求参数:%s。
+# 缺少请求参数[网关参数异常]。
 MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = 'MissingParameter.GatewayParameterRequired'
 
 # 分组所属应用不能为空。
@@ -1112,13 +1148,13 @@ MISSINGPARAMETER_NAMESPACEIDREQUIRED = 'MissingParameter.NamespaceIdRequired'
 # 命名空间名称未填写。
 MISSINGPARAMETER_NAMESPACENAMEREQUIRED = 'MissingParameter.NamespaceNameRequired'
 
-# %s缺失。
+# [入参]缺失。
 MISSINGPARAMETER_REQUIREDPARAMETERMISSING = 'MissingParameter.RequiredParameterMissing'
 
 # 未填写服务Id。
 MISSINGPARAMETER_SERVICEIDREQUIRED = 'MissingParameter.ServiceIdRequired'
 
-# 未指定%s。。
+# 示例：未指定language。
 MISSINGPARAMETER_SYSTEMPARAMETERREQUIRED = 'MissingParameter.SystemParameterRequired'
 
 # 缺少必填参数。
@@ -1127,7 +1163,7 @@ MISSINGPARAMETER_TASKPARAMETERMISSED = 'MissingParameter.TaskParameterMissed'
 # 此应用下存在资源，无法执行删除操作。
 RESOURCEINUSE_APPLICATIONCANNOTDELETE = 'ResourceInUse.ApplicationCannotDelete'
 
-# 资源仍在使用中 无法删除。
+# 资源仍在使用中无法删除。
 RESOURCEINUSE_CVMCAEMASTERCANNOTDELETE = 'ResourceInUse.CvmcaeMasterCannotDelete'
 
 # 默认命名空间不能被删除。
@@ -1142,7 +1178,7 @@ RESOURCEINUSE_GROUPEXISTS = 'ResourceInUse.GroupExists'
 # 部署组在更新中 请稍后再执行该操作。
 RESOURCEINUSE_GROUPINOPERATION = 'ResourceInUse.GroupInOperation'
 
-# 实例已经存在。
+# 集群内有云主机,不允许删除集群。
 RESOURCEINUSE_INSTANCEEXISTS = 'ResourceInUse.InstanceExists'
 
 # 机器实例已经被使用。
@@ -1205,16 +1241,16 @@ RESOURCENOTFOUND_GROUPNOTEXIST = 'ResourceNotFound.GroupNotExist'
 # 无法获取机器信息。
 RESOURCENOTFOUND_INSTANCENOTEXIST = 'ResourceNotFound.InstanceNotExist'
 
-# [%s]模块未提供该接口[%s]。。
+# [%s]模块未提供该接口[%s]。
 RESOURCENOTFOUND_INTERFACENOTFOUND = 'ResourceNotFound.InterfaceNotFound'
 
 # 无法找到License服务器。
 RESOURCENOTFOUND_LICENSESERVERNOTFOUND = 'ResourceNotFound.LicenseServerNotFound'
 
-# 目标微服务已离线[%s]。。
+# 目标微服务已离线。
 RESOURCENOTFOUND_MICROSERVICEOFFLINE = 'ResourceNotFound.MicroserviceOffline'
 
-# 无法获取命名空间。
+# 命名空间不存在,或相应权限不足。
 RESOURCENOTFOUND_NAMESPACENOTEXIST = 'ResourceNotFound.NamespaceNotExist'
 
 # 资源对象不存在。
@@ -1223,38 +1259,38 @@ RESOURCENOTFOUND_OBJECTNOEXIST = 'ResourceNotFound.ObjectNoExist'
 # 无法获取服务，无法执行该操作。
 RESOURCENOTFOUND_SERVICENOTEXIST = 'ResourceNotFound.ServiceNotExist'
 
-# 任务不存在。
+# 资源不存在。
 RESOURCENOTFOUND_TASKNOTFOUND = 'ResourceNotFound.TaskNotFound'
 
 # TKE 中不存在该集群。
 RESOURCENOTFOUND_TKECLUSTERNOTEXISTS = 'ResourceNotFound.TkeClusterNotExists'
 
-# 访问 CAM 系统出错，%s。
+# 示例：访问 CAM 系统出错，具体报错信息。
 UNAUTHORIZEDOPERATION_CAMGENERALERROR = 'UnauthorizedOperation.CamGeneralError'
 
-# 协作者身份未授权，需要主账号授予协作者权限，参考 TSF 官网文档「快速入门/准备工作」。
+# 协作者身份未授权，需要主账号授予协作者权限，参考 TSF 官网文档[子账号获取访问授权](https://cloud.tencent.com/document/product/649/55570)。
 UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = 'UnauthorizedOperation.CamTsfRoleNoPermission'
 
-# 当前主账号未创建TSF_QCSRole或未对子账号授予预设策略QcloudCamSubaccountsAuthorizeRoleFullAccess。请参考产品文档主账号协作者使用说明。。
+# 当前主账号未创建TSF_QCSRole或未对子账号授予预设策略QcloudCamSubaccountsAuthorizeRoleFullAccess。请参考产品文档[主账号获取访问授权](https://cloud.tencent.com/document/product/649/16869)。
 UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = 'UnauthorizedOperation.CamTsfRoleNotExist'
 
-# License未激活。。
+# License未激活。
 UNAUTHORIZEDOPERATION_LICENSEINACTIVE = 'UnauthorizedOperation.LicenseInactive'
 
 # 您所购买的服务不支持该操作。
 UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = 'UnauthorizedOperation.LicenseUnauthorized'
 
-# 缺少License。。
+# 缺少License。
 UNAUTHORIZEDOPERATION_NOLICENSE = 'UnauthorizedOperation.NoLicense'
 
-# 用户无权限访问该接口。。
+# 用户无权限访问该接口。
 UNAUTHORIZEDOPERATION_NOPRIVILEGE = 'UnauthorizedOperation.NoPrivilege'
 
-# 批量操作数量超过限制:%s。
+# 批量操作数量超过限制[长度]。
 UNSUPPORTEDOPERATION_GATEWAYTOOMANYREQUESTPARAMETER = 'UnsupportedOperation.GatewayTooManyRequestParameter'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION_TASKNOTSUPPORTED = 'UnsupportedOperation.TaskNotSupported'
 
-# 不支持的ACTION。。
+# 不支持的ACTION。
 UNSUPPORTEDOPERATION_UNSUPPORTACTION = 'UnsupportedOperation.UnsupportAction'

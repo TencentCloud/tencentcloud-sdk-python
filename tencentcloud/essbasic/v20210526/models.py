@@ -9686,13 +9686,14 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
         :param _Filters: 查询的关键字段，支持Key-Values查询。可选键值如下：
 <ul>
   <li>Key:**"Status"**，Values: **["IsVerified"]**, 查询已实名的员工</li>
+  <li>Key:**"Status"**，Values: **["NotVerified"]**, 查询未实名的员工</li>
   <li>Key:**"Status"**，Values: **["QuiteJob"]**, 查询离职员工</li>
+  <li>Key:**"ExcludeQuiteJob"**，Values: **["true"]**, 查询排除离职员工</li>
   <li>Key:**"StaffOpenId"**，Values: **["OpenId1","OpenId2",...]**, 根据第三方系统用户OpenId查询员工</li>
 </ul>
 注: `同名字的Key的过滤条件会冲突,  只能填写一个`
         :type Filters: list of Filter
-        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页。
-页码从 0 开始，即首页为 0，最大20000。
+        :param _Offset: 偏移量:从 0 开始，最大20000。
         :type Offset: int
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -9738,7 +9739,9 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
         """查询的关键字段，支持Key-Values查询。可选键值如下：
 <ul>
   <li>Key:**"Status"**，Values: **["IsVerified"]**, 查询已实名的员工</li>
+  <li>Key:**"Status"**，Values: **["NotVerified"]**, 查询未实名的员工</li>
   <li>Key:**"Status"**，Values: **["QuiteJob"]**, 查询离职员工</li>
+  <li>Key:**"ExcludeQuiteJob"**，Values: **["true"]**, 查询排除离职员工</li>
   <li>Key:**"StaffOpenId"**，Values: **["OpenId1","OpenId2",...]**, 根据第三方系统用户OpenId查询员工</li>
 </ul>
 注: `同名字的Key的过滤条件会冲突,  只能填写一个`
@@ -9752,8 +9755,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """指定分页返回第几页的数据，如果不传默认返回第一页。
-页码从 0 开始，即首页为 0，最大20000。
+        """偏移量:从 0 开始，最大20000。
         :rtype: int
         """
         return self._Offset
@@ -12183,8 +12185,38 @@ class CommonApproverOption(AbstractModel):
         r"""
         :param _CanEditApprover: 是否允许修改签署人信息
         :type CanEditApprover: bool
+        :param _NoRefuse: 是否可以拒签 默认false-可以拒签 true-不可以拒签
+        :type NoRefuse: bool
+        :param _NoTransfer: 是否可以转发 默认false-可以转发 true-不可以转发
+        :type NoTransfer: bool
+        :param _HideOneKeySign: 当签署方有多个签署区时候，是否隐藏一键所有的签署区
+
+false：（默认）不隐藏
+true：隐藏，每个签署区要单独选择印章或者签名
+        :type HideOneKeySign: bool
+        :param _FlowReadLimit: 签署人阅读合同限制参数
+ <br/>取值：
+<ul>
+<li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
+<li> LimitReadTime，阅读合同仅限制阅读时长</li>
+<li> LimitBottom，阅读合同仅限制必须阅读到底</li>
+<li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
+</ul>
+        :type FlowReadLimit: str
+        :param _ForbidAddSignDate: 禁止在签署过程中添加签署日期控件
+ <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
+<ul>
+<li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
+<li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
+</ul>
+        :type ForbidAddSignDate: bool
         """
         self._CanEditApprover = None
+        self._NoRefuse = None
+        self._NoTransfer = None
+        self._HideOneKeySign = None
+        self._FlowReadLimit = None
+        self._ForbidAddSignDate = None
 
     @property
     def CanEditApprover(self):
@@ -12197,9 +12229,84 @@ class CommonApproverOption(AbstractModel):
     def CanEditApprover(self, CanEditApprover):
         self._CanEditApprover = CanEditApprover
 
+    @property
+    def NoRefuse(self):
+        """是否可以拒签 默认false-可以拒签 true-不可以拒签
+        :rtype: bool
+        """
+        return self._NoRefuse
+
+    @NoRefuse.setter
+    def NoRefuse(self, NoRefuse):
+        self._NoRefuse = NoRefuse
+
+    @property
+    def NoTransfer(self):
+        """是否可以转发 默认false-可以转发 true-不可以转发
+        :rtype: bool
+        """
+        return self._NoTransfer
+
+    @NoTransfer.setter
+    def NoTransfer(self, NoTransfer):
+        self._NoTransfer = NoTransfer
+
+    @property
+    def HideOneKeySign(self):
+        """当签署方有多个签署区时候，是否隐藏一键所有的签署区
+
+false：（默认）不隐藏
+true：隐藏，每个签署区要单独选择印章或者签名
+        :rtype: bool
+        """
+        return self._HideOneKeySign
+
+    @HideOneKeySign.setter
+    def HideOneKeySign(self, HideOneKeySign):
+        self._HideOneKeySign = HideOneKeySign
+
+    @property
+    def FlowReadLimit(self):
+        """签署人阅读合同限制参数
+ <br/>取值：
+<ul>
+<li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
+<li> LimitReadTime，阅读合同仅限制阅读时长</li>
+<li> LimitBottom，阅读合同仅限制必须阅读到底</li>
+<li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
+</ul>
+        :rtype: str
+        """
+        return self._FlowReadLimit
+
+    @FlowReadLimit.setter
+    def FlowReadLimit(self, FlowReadLimit):
+        self._FlowReadLimit = FlowReadLimit
+
+    @property
+    def ForbidAddSignDate(self):
+        """禁止在签署过程中添加签署日期控件
+ <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
+<ul>
+<li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
+<li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
+</ul>
+        :rtype: bool
+        """
+        return self._ForbidAddSignDate
+
+    @ForbidAddSignDate.setter
+    def ForbidAddSignDate(self, ForbidAddSignDate):
+        self._ForbidAddSignDate = ForbidAddSignDate
+
 
     def _deserialize(self, params):
         self._CanEditApprover = params.get("CanEditApprover")
+        self._NoRefuse = params.get("NoRefuse")
+        self._NoTransfer = params.get("NoTransfer")
+        self._HideOneKeySign = params.get("HideOneKeySign")
+        self._FlowReadLimit = params.get("FlowReadLimit")
+        self._ForbidAddSignDate = params.get("ForbidAddSignDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14918,8 +15025,6 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 <li>5：授权书+对公打款</li>
 </ul>
         :type AuthorizationTypes: list of int
-        :param _Operator: 暂未开放
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param _ProxyOperatorIdCardNumber: 子客经办人身份证
 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持中国大陆居民身份证类型`。
         :type ProxyOperatorIdCardNumber: str
@@ -14952,6 +15057,13 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :type PowerOfAttorneys: list of str
         :param _OrganizationAuthorizationOptions: 企业认证时个性化能力信息
         :type OrganizationAuthorizationOptions: :class:`tencentcloud.essbasic.v20210526.models.OrganizationAuthorizationOptions`
+        :param _BankAccountNumber: 组织机构对公打款 账号，账户名跟企业名称一致。
+
+p.s.
+只有认证方式是授权书+对公打款时才生效。
+        :type BankAccountNumber: str
+        :param _Operator: 无
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self._Agent = None
         self._ProxyOrganizationName = None
@@ -14964,7 +15076,6 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._Endpoint = None
         self._AutoJumpBackEvent = None
         self._AuthorizationTypes = None
-        self._Operator = None
         self._ProxyOperatorIdCardNumber = None
         self._AutoJumpUrl = None
         self._TopNavigationStatus = None
@@ -14974,6 +15085,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._ProxyLegalName = None
         self._PowerOfAttorneys = None
         self._OrganizationAuthorizationOptions = None
+        self._BankAccountNumber = None
+        self._Operator = None
 
     @property
     def Agent(self):
@@ -15146,21 +15259,6 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._AuthorizationTypes = AuthorizationTypes
 
     @property
-    def Operator(self):
-        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
-
-        """暂未开放
-        :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        """
-        return self._Operator
-
-    @Operator.setter
-    def Operator(self, Operator):
-        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
-
-        self._Operator = Operator
-
-    @property
     def ProxyOperatorIdCardNumber(self):
         """子客经办人身份证
 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持中国大陆居民身份证类型`。
@@ -15273,6 +15371,35 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
     def OrganizationAuthorizationOptions(self, OrganizationAuthorizationOptions):
         self._OrganizationAuthorizationOptions = OrganizationAuthorizationOptions
 
+    @property
+    def BankAccountNumber(self):
+        """组织机构对公打款 账号，账户名跟企业名称一致。
+
+p.s.
+只有认证方式是授权书+对公打款时才生效。
+        :rtype: str
+        """
+        return self._BankAccountNumber
+
+    @BankAccountNumber.setter
+    def BankAccountNumber(self, BankAccountNumber):
+        self._BankAccountNumber = BankAccountNumber
+
+    @property
+    def Operator(self):
+        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
+
+        """无
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
+
+        self._Operator = Operator
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -15288,9 +15415,6 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._Endpoint = params.get("Endpoint")
         self._AutoJumpBackEvent = params.get("AutoJumpBackEvent")
         self._AuthorizationTypes = params.get("AuthorizationTypes")
-        if params.get("Operator") is not None:
-            self._Operator = UserInfo()
-            self._Operator._deserialize(params.get("Operator"))
         self._ProxyOperatorIdCardNumber = params.get("ProxyOperatorIdCardNumber")
         self._AutoJumpUrl = params.get("AutoJumpUrl")
         self._TopNavigationStatus = params.get("TopNavigationStatus")
@@ -15302,6 +15426,10 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         if params.get("OrganizationAuthorizationOptions") is not None:
             self._OrganizationAuthorizationOptions = OrganizationAuthorizationOptions()
             self._OrganizationAuthorizationOptions._deserialize(params.get("OrganizationAuthorizationOptions"))
+        self._BankAccountNumber = params.get("BankAccountNumber")
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17545,7 +17673,7 @@ class CreateSealByImageRequest(AbstractModel):
 <ul><li>**circle**:(默认)圆形印章</li>
 <li>**ellipse**:椭圆印章</li></ul>
         :type SealStyle: str
-        :param _SealSize: 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+        :param _SealSize: 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
         :type SealSize: str
         :param _TaxIdentifyCode: 企业税号
 
@@ -17555,6 +17683,8 @@ class CreateSealByImageRequest(AbstractModel):
 <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
 </ul>
         :type TaxIdentifyCode: str
+        :param _SealDescription: 印章描述内容
+        :type SealDescription: str
         """
         self._Agent = None
         self._SealName = None
@@ -17566,6 +17696,7 @@ class CreateSealByImageRequest(AbstractModel):
         self._SealStyle = None
         self._SealSize = None
         self._TaxIdentifyCode = None
+        self._SealDescription = None
 
     @property
     def Agent(self):
@@ -17684,7 +17815,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealSize(self):
-        """印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+        """印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
         :rtype: str
         """
         return self._SealSize
@@ -17710,6 +17841,17 @@ class CreateSealByImageRequest(AbstractModel):
     def TaxIdentifyCode(self, TaxIdentifyCode):
         self._TaxIdentifyCode = TaxIdentifyCode
 
+    @property
+    def SealDescription(self):
+        """印章描述内容
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -17726,6 +17868,7 @@ class CreateSealByImageRequest(AbstractModel):
         self._SealStyle = params.get("SealStyle")
         self._SealSize = params.get("SealSize")
         self._TaxIdentifyCode = params.get("TaxIdentifyCode")
+        self._SealDescription = params.get("SealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21224,11 +21367,18 @@ class EmbedUrlOption(AbstractModel):
         :param _ForbidEditWatermark: 是否禁止编辑（展示）水印控件属性
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :type ForbidEditWatermark: bool
+        :param _SealDescription: 印章描述
+        :type SealDescription: str
+        :param _ForbidEditSealDescription: 是否禁止编辑印章描述内容
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :type ForbidEditSealDescription: str
         """
         self._ShowFlowDetailComponent = None
         self._ShowTemplateComponent = None
         self._SkipUploadFile = None
         self._ForbidEditWatermark = None
+        self._SealDescription = None
+        self._ForbidEditSealDescription = None
 
     @property
     def ShowFlowDetailComponent(self):
@@ -21286,12 +21436,37 @@ class EmbedUrlOption(AbstractModel):
     def ForbidEditWatermark(self, ForbidEditWatermark):
         self._ForbidEditWatermark = ForbidEditWatermark
 
+    @property
+    def SealDescription(self):
+        """印章描述
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
+    @property
+    def ForbidEditSealDescription(self):
+        """是否禁止编辑印章描述内容
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :rtype: str
+        """
+        return self._ForbidEditSealDescription
+
+    @ForbidEditSealDescription.setter
+    def ForbidEditSealDescription(self, ForbidEditSealDescription):
+        self._ForbidEditSealDescription = ForbidEditSealDescription
+
 
     def _deserialize(self, params):
         self._ShowFlowDetailComponent = params.get("ShowFlowDetailComponent")
         self._ShowTemplateComponent = params.get("ShowTemplateComponent")
         self._SkipUploadFile = params.get("SkipUploadFile")
         self._ForbidEditWatermark = params.get("ForbidEditWatermark")
+        self._SealDescription = params.get("SealDescription")
+        self._ForbidEditSealDescription = params.get("ForbidEditSealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25284,10 +25459,13 @@ class Intention(AbstractModel):
 
 注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
         :type IntentionActions: list of IntentionAction
+        :param _RuleIdConfig: 视频核身相关配置
+        :type RuleIdConfig: :class:`tencentcloud.essbasic.v20210526.models.RuleIdConfig`
         """
         self._IntentionType = None
         self._IntentionQuestions = None
         self._IntentionActions = None
+        self._RuleIdConfig = None
 
     @property
     def IntentionType(self):
@@ -25330,6 +25508,17 @@ class Intention(AbstractModel):
     def IntentionActions(self, IntentionActions):
         self._IntentionActions = IntentionActions
 
+    @property
+    def RuleIdConfig(self):
+        """视频核身相关配置
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.RuleIdConfig`
+        """
+        return self._RuleIdConfig
+
+    @RuleIdConfig.setter
+    def RuleIdConfig(self, RuleIdConfig):
+        self._RuleIdConfig = RuleIdConfig
+
 
     def _deserialize(self, params):
         self._IntentionType = params.get("IntentionType")
@@ -25345,6 +25534,9 @@ class Intention(AbstractModel):
                 obj = IntentionAction()
                 obj._deserialize(item)
                 self._IntentionActions.append(obj)
+        if params.get("RuleIdConfig") is not None:
+            self._RuleIdConfig = RuleIdConfig()
+            self._RuleIdConfig._deserialize(params.get("RuleIdConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26299,6 +26491,12 @@ class OccupiedSeal(AbstractModel):
         :type IsAllTime: bool
         :param _AuthorizedUsers: 授权人列表
         :type AuthorizedUsers: list of AuthorizedUser
+        :param _RealWidth: 印章的真实宽度，单位毫米	
+        :type RealWidth: int
+        :param _RealHeight: 印章的真实高度，单位毫米	
+        :type RealHeight: int
+        :param _SealDescription: 印章描述
+        :type SealDescription: str
         """
         self._SealId = None
         self._SealName = None
@@ -26311,6 +26509,9 @@ class OccupiedSeal(AbstractModel):
         self._SealType = None
         self._IsAllTime = None
         self._AuthorizedUsers = None
+        self._RealWidth = None
+        self._RealHeight = None
+        self._SealDescription = None
 
     @property
     def SealId(self):
@@ -26439,6 +26640,39 @@ class OccupiedSeal(AbstractModel):
     def AuthorizedUsers(self, AuthorizedUsers):
         self._AuthorizedUsers = AuthorizedUsers
 
+    @property
+    def RealWidth(self):
+        """印章的真实宽度，单位毫米	
+        :rtype: int
+        """
+        return self._RealWidth
+
+    @RealWidth.setter
+    def RealWidth(self, RealWidth):
+        self._RealWidth = RealWidth
+
+    @property
+    def RealHeight(self):
+        """印章的真实高度，单位毫米	
+        :rtype: int
+        """
+        return self._RealHeight
+
+    @RealHeight.setter
+    def RealHeight(self, RealHeight):
+        self._RealHeight = RealHeight
+
+    @property
+    def SealDescription(self):
+        """印章描述
+        :rtype: str
+        """
+        return self._SealDescription
+
+    @SealDescription.setter
+    def SealDescription(self, SealDescription):
+        self._SealDescription = SealDescription
+
 
     def _deserialize(self, params):
         self._SealId = params.get("SealId")
@@ -26457,6 +26691,9 @@ class OccupiedSeal(AbstractModel):
                 obj = AuthorizedUser()
                 obj._deserialize(item)
                 self._AuthorizedUsers.append(obj)
+        self._RealWidth = params.get("RealWidth")
+        self._RealHeight = params.get("RealHeight")
+        self._SealDescription = params.get("SealDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26977,9 +27214,15 @@ class OrganizationAuthUrl(AbstractModel):
         :type AuthUrl: str
         :param _ErrorMessage: 企业批量注册的错误信息，例如：企业三要素不通过
         :type ErrorMessage: str
+        :param _OrganizationName: 企业批量注册 传递过来的企业名称，方便客户定位企业	
+        :type OrganizationName: str
+        :param _SubTaskId: 企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)。
+        :type SubTaskId: str
         """
         self._AuthUrl = None
         self._ErrorMessage = None
+        self._OrganizationName = None
+        self._SubTaskId = None
 
     @property
     def AuthUrl(self):
@@ -27008,10 +27251,34 @@ class OrganizationAuthUrl(AbstractModel):
     def ErrorMessage(self, ErrorMessage):
         self._ErrorMessage = ErrorMessage
 
+    @property
+    def OrganizationName(self):
+        """企业批量注册 传递过来的企业名称，方便客户定位企业	
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def SubTaskId(self):
+        """企业批量注册的唯一 Id， 此 Id 可以用在[创建企业批量认证链接-单链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)。
+        :rtype: str
+        """
+        return self._SubTaskId
+
+    @SubTaskId.setter
+    def SubTaskId(self, SubTaskId):
+        self._SubTaskId = SubTaskId
+
 
     def _deserialize(self, params):
         self._AuthUrl = params.get("AuthUrl")
         self._ErrorMessage = params.get("ErrorMessage")
+        self._OrganizationName = params.get("OrganizationName")
+        self._SubTaskId = params.get("SubTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27023,7 +27290,7 @@ class OrganizationAuthUrl(AbstractModel):
 
 
 class OrganizationAuthorizationOptions(AbstractModel):
-    """企业认证可选项，其中包括 社会信用代码是否一致，企业名称是否一致，法人是否一致等信息。
+    """企业认证可选项，其中包括 社会信用代码是否一致，企业名称是否一致，法人是否一致， 对公打款账号是否一致等信息。
     代表生成链接的时候指定的这些信息不能被用户修改。
 
     p.s. 注意这些选项一旦传递，相关的信息也不会被上传的营业执照里面包含的信息所覆盖。
@@ -27038,10 +27305,13 @@ class OrganizationAuthorizationOptions(AbstractModel):
         :type OrganizationNameSame: bool
         :param _LegalNameSame: 对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
         :type LegalNameSame: bool
+        :param _BankAccountNumberSame: 对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效
+        :type BankAccountNumberSame: bool
         """
         self._UniformSocialCreditCodeSame = None
         self._OrganizationNameSame = None
         self._LegalNameSame = None
+        self._BankAccountNumberSame = None
 
     @property
     def UniformSocialCreditCodeSame(self):
@@ -27076,11 +27346,23 @@ class OrganizationAuthorizationOptions(AbstractModel):
     def LegalNameSame(self, LegalNameSame):
         self._LegalNameSame = LegalNameSame
 
+    @property
+    def BankAccountNumberSame(self):
+        """对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效
+        :rtype: bool
+        """
+        return self._BankAccountNumberSame
+
+    @BankAccountNumberSame.setter
+    def BankAccountNumberSame(self, BankAccountNumberSame):
+        self._BankAccountNumberSame = BankAccountNumberSame
+
 
     def _deserialize(self, params):
         self._UniformSocialCreditCodeSame = params.get("UniformSocialCreditCodeSame")
         self._OrganizationNameSame = params.get("OrganizationNameSame")
         self._LegalNameSame = params.get("LegalNameSame")
+        self._BankAccountNumberSame = params.get("BankAccountNumberSame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29434,6 +29716,50 @@ class ResourceUrlInfo(AbstractModel):
         self._Url = params.get("Url")
         self._Name = params.get("Name")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleIdConfig(AbstractModel):
+    """视频核身相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Speed: 意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
+0-智能语速（根据播报文案的长度自动调整语音播报速度）
+1-固定1倍速
+2-固定1.2倍速
+3-固定1.5倍速
+        :type Speed: int
+        """
+        self._Speed = None
+
+    @property
+    def Speed(self):
+        """意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0：
+0-智能语速（根据播报文案的长度自动调整语音播报速度）
+1-固定1倍速
+2-固定1.2倍速
+3-固定1.5倍速
+        :rtype: int
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+
+    def _deserialize(self, params):
+        self._Speed = params.get("Speed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

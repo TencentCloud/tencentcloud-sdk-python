@@ -428,10 +428,13 @@ class AddClusterSlaveZoneRequest(AbstractModel):
         :type SlaveZone: str
         :param _BinlogSyncWay: binlog同步方式。默认值：async。可选值：sync、semisync、async
         :type BinlogSyncWay: str
+        :param _SemiSyncTimeout: 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :type SemiSyncTimeout: int
         """
         self._ClusterId = None
         self._SlaveZone = None
         self._BinlogSyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def ClusterId(self):
@@ -466,11 +469,23 @@ class AddClusterSlaveZoneRequest(AbstractModel):
     def BinlogSyncWay(self, BinlogSyncWay):
         self._BinlogSyncWay = BinlogSyncWay
 
+    @property
+    def SemiSyncTimeout(self):
+        """半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._SlaveZone = params.get("SlaveZone")
         self._BinlogSyncWay = params.get("BinlogSyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27507,11 +27522,14 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
         :type NewSlaveZone: str
         :param _BinlogSyncWay: binlog同步方式。默认值：async。可选值：sync、semisync、async
         :type BinlogSyncWay: str
+        :param _SemiSyncTimeout: 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :type SemiSyncTimeout: int
         """
         self._ClusterId = None
         self._OldSlaveZone = None
         self._NewSlaveZone = None
         self._BinlogSyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def ClusterId(self):
@@ -27557,12 +27575,24 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
     def BinlogSyncWay(self, BinlogSyncWay):
         self._BinlogSyncWay = BinlogSyncWay
 
+    @property
+    def SemiSyncTimeout(self):
+        """半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._OldSlaveZone = params.get("OldSlaveZone")
         self._NewSlaveZone = params.get("NewSlaveZone")
         self._BinlogSyncWay = params.get("BinlogSyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34915,6 +34945,192 @@ class RenewClustersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReplayInstanceAuditLogRequest(AbstractModel):
+    """ReplayInstanceAuditLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceClusterId: 源集群id
+        :type SourceClusterId: str
+        :param _SourceInstanceId: 源实例id
+        :type SourceInstanceId: str
+        :param _TargetClusterId: 目标集群id
+目标集群必须为原始集群三天内克隆出的集群。
+        :type TargetClusterId: str
+        :param _TargetInstanceId: 目标实例id
+        :type TargetInstanceId: str
+        :param _TargetUserName: 用户名.需要host为%的用户名
+        :type TargetUserName: str
+        :param _TargetPassword: 密码
+        :type TargetPassword: str
+        :param _StartTime: 开始时间。时间格式为：yyyy-DD-mm hh:mm:ss
+        :type StartTime: str
+        :param _EndTime: 结束时间。时间格式为：yyyy-DD-mm hh:mm:ss
+        :type EndTime: str
+        """
+        self._SourceClusterId = None
+        self._SourceInstanceId = None
+        self._TargetClusterId = None
+        self._TargetInstanceId = None
+        self._TargetUserName = None
+        self._TargetPassword = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def SourceClusterId(self):
+        """源集群id
+        :rtype: str
+        """
+        return self._SourceClusterId
+
+    @SourceClusterId.setter
+    def SourceClusterId(self, SourceClusterId):
+        self._SourceClusterId = SourceClusterId
+
+    @property
+    def SourceInstanceId(self):
+        """源实例id
+        :rtype: str
+        """
+        return self._SourceInstanceId
+
+    @SourceInstanceId.setter
+    def SourceInstanceId(self, SourceInstanceId):
+        self._SourceInstanceId = SourceInstanceId
+
+    @property
+    def TargetClusterId(self):
+        """目标集群id
+目标集群必须为原始集群三天内克隆出的集群。
+        :rtype: str
+        """
+        return self._TargetClusterId
+
+    @TargetClusterId.setter
+    def TargetClusterId(self, TargetClusterId):
+        self._TargetClusterId = TargetClusterId
+
+    @property
+    def TargetInstanceId(self):
+        """目标实例id
+        :rtype: str
+        """
+        return self._TargetInstanceId
+
+    @TargetInstanceId.setter
+    def TargetInstanceId(self, TargetInstanceId):
+        self._TargetInstanceId = TargetInstanceId
+
+    @property
+    def TargetUserName(self):
+        """用户名.需要host为%的用户名
+        :rtype: str
+        """
+        return self._TargetUserName
+
+    @TargetUserName.setter
+    def TargetUserName(self, TargetUserName):
+        self._TargetUserName = TargetUserName
+
+    @property
+    def TargetPassword(self):
+        """密码
+        :rtype: str
+        """
+        return self._TargetPassword
+
+    @TargetPassword.setter
+    def TargetPassword(self, TargetPassword):
+        self._TargetPassword = TargetPassword
+
+    @property
+    def StartTime(self):
+        """开始时间。时间格式为：yyyy-DD-mm hh:mm:ss
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间。时间格式为：yyyy-DD-mm hh:mm:ss
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._SourceClusterId = params.get("SourceClusterId")
+        self._SourceInstanceId = params.get("SourceInstanceId")
+        self._TargetClusterId = params.get("TargetClusterId")
+        self._TargetInstanceId = params.get("TargetInstanceId")
+        self._TargetUserName = params.get("TargetUserName")
+        self._TargetPassword = params.get("TargetPassword")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplayInstanceAuditLogResponse(AbstractModel):
+    """ReplayInstanceAuditLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ResetAccountPasswordRequest(AbstractModel):
     """ResetAccountPassword请求参数结构体
 
@@ -38340,9 +38556,12 @@ class SlaveZoneAttrItem(AbstractModel):
         :type Zone: str
         :param _BinlogSyncWay: binlog同步方式
         :type BinlogSyncWay: str
+        :param _SemiSyncTimeout: 半同步超时时间，单位ms
+        :type SemiSyncTimeout: int
         """
         self._Zone = None
         self._BinlogSyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def Zone(self):
@@ -38366,10 +38585,22 @@ class SlaveZoneAttrItem(AbstractModel):
     def BinlogSyncWay(self, BinlogSyncWay):
         self._BinlogSyncWay = BinlogSyncWay
 
+    @property
+    def SemiSyncTimeout(self):
+        """半同步超时时间，单位ms
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._BinlogSyncWay = params.get("BinlogSyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

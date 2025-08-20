@@ -1538,6 +1538,8 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         :type Type: int
         :param _CaType: 只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
         :type CaType: str
+        :param _SignAlgo: 签名算法
+        :type SignAlgo: str
         """
         self._CertId = None
         self._GenCsrType = None
@@ -1579,6 +1581,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         self._TechTitle = None
         self._Type = None
         self._CaType = None
+        self._SignAlgo = None
 
     @property
     def CertId(self):
@@ -2045,6 +2048,17 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
     def CaType(self, CaType):
         self._CaType = CaType
 
+    @property
+    def SignAlgo(self):
+        """签名算法
+        :rtype: str
+        """
+        return self._SignAlgo
+
+    @SignAlgo.setter
+    def SignAlgo(self, SignAlgo):
+        self._SignAlgo = SignAlgo
+
 
     def _deserialize(self, params):
         self._CertId = params.get("CertId")
@@ -2087,6 +2101,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         self._TechTitle = params.get("TechTitle")
         self._Type = params.get("Type")
         self._CaType = params.get("CaType")
+        self._SignAlgo = params.get("SignAlgo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2391,13 +2406,13 @@ null：用户上传证书（没有套餐类型），
         :type StatusMsg: str
         :param _VerifyType: 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
         :type VerifyType: str
-        :param _CertBeginTime: 证书生效时间。
+        :param _CertBeginTime: 证书生效时间。时区为GMT+8:00
         :type CertBeginTime: str
-        :param _CertEndTime: 证书过期时间。
+        :param _CertEndTime: 证书过期时间。时区为GMT+8:00
         :type CertEndTime: str
         :param _ValidityPeriod: 证书有效期，单位（月）。
         :type ValidityPeriod: str
-        :param _InsertTime: 创建时间。
+        :param _InsertTime: 创建时间。时区为GMT+8:00
         :type InsertTime: str
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
@@ -2453,9 +2468,9 @@ null：用户上传证书（没有套餐类型），
         :type ReplaceOriCertIsDelete: bool
         :param _IsExpiring: 是否即将过期， 证书即将到期的30天内为即将过期
         :type IsExpiring: bool
-        :param _DVAuthDeadline: DV证书添加验证截止时间
+        :param _DVAuthDeadline: DV证书添加验证截止时间，时区为GMT+8:00
         :type DVAuthDeadline: str
-        :param _ValidationPassedTime: 域名验证通过时间
+        :param _ValidationPassedTime: 域名验证通过时间，时区为GMT+8:00
         :type ValidationPassedTime: str
         :param _CertSANs: 证书关联的多域名
         :type CertSANs: list of str
@@ -2471,7 +2486,7 @@ null：用户上传证书（没有套餐类型），
         :type KeyPasswordCustomFlag: bool
         :param _SupportDownloadType: 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
         :type SupportDownloadType: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
-        :param _CertRevokedTime: 证书吊销完成时间
+        :param _CertRevokedTime: 证书吊销完成时间，时区为GMT+8:00
         :type CertRevokedTime: str
         :param _HostingResourceTypes: 托管资源类型列表
         :type HostingResourceTypes: list of str
@@ -2772,7 +2787,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。
+        """证书生效时间。时区为GMT+8:00
         :rtype: str
         """
         return self._CertBeginTime
@@ -2783,7 +2798,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        """证书过期时间。
+        """证书过期时间。时区为GMT+8:00
         :rtype: str
         """
         return self._CertEndTime
@@ -2805,7 +2820,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        """创建时间。
+        """创建时间。时区为GMT+8:00
         :rtype: str
         """
         return self._InsertTime
@@ -3113,7 +3128,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DVAuthDeadline(self):
-        """DV证书添加验证截止时间
+        """DV证书添加验证截止时间，时区为GMT+8:00
         :rtype: str
         """
         return self._DVAuthDeadline
@@ -3124,7 +3139,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ValidationPassedTime(self):
-        """域名验证通过时间
+        """域名验证通过时间，时区为GMT+8:00
         :rtype: str
         """
         return self._ValidationPassedTime
@@ -3212,7 +3227,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertRevokedTime(self):
-        """证书吊销完成时间
+        """证书吊销完成时间，时区为GMT+8:00
         :rtype: str
         """
         return self._CertRevokedTime
@@ -6532,6 +6547,8 @@ class DeployRecord(AbstractModel):
         :type Status: int
         :param _CreateTime: 托管资源创建时间
         :type CreateTime: str
+        :param _PendingTotalCount: 待部署总数
+        :type PendingTotalCount: int
         """
         self._TotalCount = None
         self._SuccessTotalCount = None
@@ -6541,6 +6558,7 @@ class DeployRecord(AbstractModel):
         self._RecordDetailList = None
         self._Status = None
         self._CreateTime = None
+        self._PendingTotalCount = None
 
     @property
     def TotalCount(self):
@@ -6630,6 +6648,17 @@ class DeployRecord(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def PendingTotalCount(self):
+        """待部署总数
+        :rtype: int
+        """
+        return self._PendingTotalCount
+
+    @PendingTotalCount.setter
+    def PendingTotalCount(self, PendingTotalCount):
+        self._PendingTotalCount = PendingTotalCount
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -6645,6 +6674,7 @@ class DeployRecord(AbstractModel):
                 self._RecordDetailList.append(obj)
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
+        self._PendingTotalCount = params.get("PendingTotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6706,6 +6736,12 @@ class DeployRecordDetail(AbstractModel):
         :type Region: str
         :param _Url: 部署CLB监听器的Url
         :type Url: list of str
+        :param _Algorithm: 当前部署证书加密算法
+        :type Algorithm: str
+        :param _OldAlgorithm: 原证书加密算法
+        :type OldAlgorithm: str
+        :param _InstanceStatus: 实例状态，不同云产品状态不一样
+        :type InstanceStatus: str
         """
         self._Id = None
         self._CertId = None
@@ -6729,6 +6765,9 @@ class DeployRecordDetail(AbstractModel):
         self._TCBType = None
         self._Region = None
         self._Url = None
+        self._Algorithm = None
+        self._OldAlgorithm = None
+        self._InstanceStatus = None
 
     @property
     def Id(self):
@@ -6972,6 +7011,39 @@ class DeployRecordDetail(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def Algorithm(self):
+        """当前部署证书加密算法
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def OldAlgorithm(self):
+        """原证书加密算法
+        :rtype: str
+        """
+        return self._OldAlgorithm
+
+    @OldAlgorithm.setter
+    def OldAlgorithm(self, OldAlgorithm):
+        self._OldAlgorithm = OldAlgorithm
+
+    @property
+    def InstanceStatus(self):
+        """实例状态，不同云产品状态不一样
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -6996,6 +7068,9 @@ class DeployRecordDetail(AbstractModel):
         self._TCBType = params.get("TCBType")
         self._Region = params.get("Region")
         self._Url = params.get("Url")
+        self._Algorithm = params.get("Algorithm")
+        self._OldAlgorithm = params.get("OldAlgorithm")
+        self._InstanceStatus = params.get("InstanceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8309,15 +8384,15 @@ null：用户上传证书（没有套餐类型），
         :type VerifyType: str
         :param _VulnerabilityStatus: 漏洞扫描状态。
         :type VulnerabilityStatus: str
-        :param _CertBeginTime: 证书生效时间。
+        :param _CertBeginTime: 证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertBeginTime: str
-        :param _CertEndTime: 证书失效时间。
+        :param _CertEndTime: 证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
         :param _ValidityPeriod: 证书有效期：单位（月）。
         :type ValidityPeriod: str
-        :param _InsertTime: 证书申请时间。
+        :param _InsertTime: 证书申请时间。时区为GMT+8:00
         :type InsertTime: str
         :param _OrderId: CA订单 ID。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8674,7 +8749,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。
+        """证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8686,7 +8761,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        """证书失效时间。
+        """证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8709,7 +8784,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        """证书申请时间。
+        """证书申请时间。时区为GMT+8:00
         :rtype: str
         """
         return self._InsertTime
@@ -9460,16 +9535,16 @@ null：用户上传证书（没有套餐类型），
         :param _VulnerabilityStatus: 漏洞扫描状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityStatus: str
-        :param _CertBeginTime: 证书生效时间。
+        :param _CertBeginTime: 证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertBeginTime: str
-        :param _CertEndTime: 证书失效时间。
+        :param _CertEndTime: 证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
         :param _ValidityPeriod: 证书有效期：单位(月)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: str
-        :param _InsertTime: 申请时间。
+        :param _InsertTime: 申请时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
         :param _OrderId: 订单 ID。
@@ -9526,7 +9601,7 @@ null：用户上传证书（没有套餐类型），
         :param _CACommonNames: CA证书的所有通用名称。仅证书类型CertificateType为CA有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type CACommonNames: list of str
-        :param _CAEndTimes: CA证书所有的到期时间。仅证书类型CertificateType为CA有效
+        :param _CAEndTimes: CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type CAEndTimes: list of str
         :param _DvRevokeAuthDetail: DV证书吊销验证值
@@ -9819,7 +9894,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        """证书生效时间。
+        """证书生效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9831,7 +9906,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        """证书失效时间。
+        """证书失效时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9855,7 +9930,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        """申请时间。
+        """申请时间。时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10083,7 +10158,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CAEndTimes(self):
-        """CA证书所有的到期时间。仅证书类型CertificateType为CA有效
+        """CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10739,7 +10814,7 @@ class DescribeDeployedResourcesRequest(AbstractModel):
         r"""
         :param _CertificateIds: 证书ID
         :type CertificateIds: list of str
-        :param _ResourceType: 资源类型:clb,cdn,live,waf,antiddos,teo
+        :param _ResourceType: 资源类型:clb,cdn,live,vod,waf,antiddos,teo
         :type ResourceType: str
         """
         self._CertificateIds = None
@@ -10758,7 +10833,7 @@ class DescribeDeployedResourcesRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型:clb,cdn,live,waf,antiddos,teo
+        """资源类型:clb,cdn,live,vod,waf,antiddos,teo
         :rtype: str
         """
         return self._ResourceType
@@ -10838,7 +10913,7 @@ class DescribeDownloadCertificateUrlRequest(AbstractModel):
         r"""
         :param _CertificateId: 证书ID
         :type CertificateId: str
-        :param _ServiceType: 必填选项，下载的服务类型: nginx tomcat apache iis jks other root
+        :param _ServiceType: 下载的服务类型: nginx tomcat apache iis jks other root， 不传则默认下载nginx格式
         :type ServiceType: str
         """
         self._CertificateId = None
@@ -10857,7 +10932,7 @@ class DescribeDownloadCertificateUrlRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """必填选项，下载的服务类型: nginx tomcat apache iis jks other root
+        """下载的服务类型: nginx tomcat apache iis jks other root， 不传则默认下载nginx格式
         :rtype: str
         """
         return self._ServiceType
@@ -12164,6 +12239,8 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         :type FailedTotalCount: int
         :param _RunningTotalCount: 部署中总数
         :type RunningTotalCount: int
+        :param _PendingTotalCount: 待部署总数
+        :type PendingTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12172,6 +12249,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         self._SuccessTotalCount = None
         self._FailedTotalCount = None
         self._RunningTotalCount = None
+        self._PendingTotalCount = None
         self._RequestId = None
 
     @property
@@ -12230,6 +12308,17 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         self._RunningTotalCount = RunningTotalCount
 
     @property
+    def PendingTotalCount(self):
+        """待部署总数
+        :rtype: int
+        """
+        return self._PendingTotalCount
+
+    @PendingTotalCount.setter
+    def PendingTotalCount(self, PendingTotalCount):
+        self._PendingTotalCount = PendingTotalCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12252,6 +12341,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         self._SuccessTotalCount = params.get("SuccessTotalCount")
         self._FailedTotalCount = params.get("FailedTotalCount")
         self._RunningTotalCount = params.get("RunningTotalCount")
+        self._PendingTotalCount = params.get("PendingTotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -13240,6 +13330,8 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
         :type FailedTotalCount: int
         :param _RunningTotalCount: 部署中总数,如果取不到返回0
         :type RunningTotalCount: int
+        :param _PendingTotalCount: 待部署总数
+        :type PendingTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -13248,6 +13340,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
         self._SuccessTotalCount = None
         self._FailedTotalCount = None
         self._RunningTotalCount = None
+        self._PendingTotalCount = None
         self._RequestId = None
 
     @property
@@ -13306,6 +13399,17 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
         self._RunningTotalCount = RunningTotalCount
 
     @property
+    def PendingTotalCount(self):
+        """待部署总数
+        :rtype: int
+        """
+        return self._PendingTotalCount
+
+    @PendingTotalCount.setter
+    def PendingTotalCount(self, PendingTotalCount):
+        self._PendingTotalCount = PendingTotalCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -13328,6 +13432,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
         self._SuccessTotalCount = params.get("SuccessTotalCount")
         self._FailedTotalCount = params.get("FailedTotalCount")
         self._RunningTotalCount = params.get("RunningTotalCount")
+        self._PendingTotalCount = params.get("PendingTotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -14160,6 +14265,14 @@ class DescribeManagerDetailResponse(AbstractModel):
         :type ManagerId: int
         :param _StatusInfo: 审核状态详细信息
         :type StatusInfo: list of ManagerStatusInfo
+        :param _ManagerIdType: 管理员证件类型，SFZ代表身份证，HZ代表护照
+        :type ManagerIdType: str
+        :param _ManagerIdNumber: 管理员证件号码
+        :type ManagerIdNumber: str
+        :param _ContactIdType: 联系人证件类型，SFZ代表身份证，HZ代表护照
+        :type ContactIdType: str
+        :param _ContactIdNumber: 联系人证件号码
+        :type ContactIdNumber: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -14182,6 +14295,10 @@ class DescribeManagerDetailResponse(AbstractModel):
         self._CompanyId = None
         self._ManagerId = None
         self._StatusInfo = None
+        self._ManagerIdType = None
+        self._ManagerIdNumber = None
+        self._ContactIdType = None
+        self._ContactIdNumber = None
         self._RequestId = None
 
     @property
@@ -14400,6 +14517,50 @@ class DescribeManagerDetailResponse(AbstractModel):
         self._StatusInfo = StatusInfo
 
     @property
+    def ManagerIdType(self):
+        """管理员证件类型，SFZ代表身份证，HZ代表护照
+        :rtype: str
+        """
+        return self._ManagerIdType
+
+    @ManagerIdType.setter
+    def ManagerIdType(self, ManagerIdType):
+        self._ManagerIdType = ManagerIdType
+
+    @property
+    def ManagerIdNumber(self):
+        """管理员证件号码
+        :rtype: str
+        """
+        return self._ManagerIdNumber
+
+    @ManagerIdNumber.setter
+    def ManagerIdNumber(self, ManagerIdNumber):
+        self._ManagerIdNumber = ManagerIdNumber
+
+    @property
+    def ContactIdType(self):
+        """联系人证件类型，SFZ代表身份证，HZ代表护照
+        :rtype: str
+        """
+        return self._ContactIdType
+
+    @ContactIdType.setter
+    def ContactIdType(self, ContactIdType):
+        self._ContactIdType = ContactIdType
+
+    @property
+    def ContactIdNumber(self):
+        """联系人证件号码
+        :rtype: str
+        """
+        return self._ContactIdNumber
+
+    @ContactIdNumber.setter
+    def ContactIdNumber(self, ContactIdNumber):
+        self._ContactIdNumber = ContactIdNumber
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -14438,6 +14599,10 @@ class DescribeManagerDetailResponse(AbstractModel):
                 obj = ManagerStatusInfo()
                 obj._deserialize(item)
                 self._StatusInfo.append(obj)
+        self._ManagerIdType = params.get("ManagerIdType")
+        self._ManagerIdNumber = params.get("ManagerIdNumber")
+        self._ContactIdType = params.get("ContactIdType")
+        self._ContactIdNumber = params.get("ContactIdNumber")
         self._RequestId = params.get("RequestId")
 
 
@@ -17380,7 +17545,7 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CertificateId: str
         :param _ValidType: 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
         :type ValidType: str
-        :param _CsrType: 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
+        :param _CsrType: 类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
         :type CsrType: str
         :param _CsrContent: CSR 内容，手动上传的时候需要。
         :type CsrContent: str
@@ -17393,6 +17558,8 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CertCSREncryptAlgo: str
         :param _CertCSRKeyParameter: CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
         :type CertCSRKeyParameter: str
+        :param _SignAlgo: 签名算法
+        :type SignAlgo: str
         """
         self._CertificateId = None
         self._ValidType = None
@@ -17402,6 +17569,7 @@ class ReplaceCertificateRequest(AbstractModel):
         self._Reason = None
         self._CertCSREncryptAlgo = None
         self._CertCSRKeyParameter = None
+        self._SignAlgo = None
 
     @property
     def CertificateId(self):
@@ -17427,7 +17595,7 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CsrType(self):
-        """类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
+        """类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
         :rtype: str
         """
         return self._CsrType
@@ -17492,6 +17660,17 @@ class ReplaceCertificateRequest(AbstractModel):
     def CertCSRKeyParameter(self, CertCSRKeyParameter):
         self._CertCSRKeyParameter = CertCSRKeyParameter
 
+    @property
+    def SignAlgo(self):
+        """签名算法
+        :rtype: str
+        """
+        return self._SignAlgo
+
+    @SignAlgo.setter
+    def SignAlgo(self, SignAlgo):
+        self._SignAlgo = SignAlgo
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
@@ -17502,6 +17681,7 @@ class ReplaceCertificateRequest(AbstractModel):
         self._Reason = params.get("Reason")
         self._CertCSREncryptAlgo = params.get("CertCSREncryptAlgo")
         self._CertCSRKeyParameter = params.get("CertCSRKeyParameter")
+        self._SignAlgo = params.get("SignAlgo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19866,11 +20046,14 @@ applying：申请中；
 failed：申请失败；
 issued：绑定失败。
         :type Status: str
+        :param _Algorithm: 证书加密算法
+        :type Algorithm: str
         """
         self._Host = None
         self._CertId = None
         self._ZoneId = None
         self._Status = None
+        self._Algorithm = None
 
     @property
     def Host(self):
@@ -19922,12 +20105,24 @@ issued：绑定失败。
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def Algorithm(self):
+        """证书加密算法
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
 
     def _deserialize(self, params):
         self._Host = params.get("Host")
         self._CertId = params.get("CertId")
         self._ZoneId = params.get("ZoneId")
         self._Status = params.get("Status")
+        self._Algorithm = params.get("Algorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20952,6 +21147,10 @@ class UpdateRecordDetail(AbstractModel):
         :type TCBType: str
         :param _Url: 监听器Url(clb专属)
         :type Url: str
+        :param _Algorithm: 新证书加密算法
+        :type Algorithm: str
+        :param _OldAlgorithm: 旧证书加密算法
+        :type OldAlgorithm: str
         """
         self._Id = None
         self._CertId = None
@@ -20976,6 +21175,8 @@ class UpdateRecordDetail(AbstractModel):
         self._EnvId = None
         self._TCBType = None
         self._Url = None
+        self._Algorithm = None
+        self._OldAlgorithm = None
 
     @property
     def Id(self):
@@ -21262,6 +21463,28 @@ class UpdateRecordDetail(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def Algorithm(self):
+        """新证书加密算法
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def OldAlgorithm(self):
+        """旧证书加密算法
+        :rtype: str
+        """
+        return self._OldAlgorithm
+
+    @OldAlgorithm.setter
+    def OldAlgorithm(self, OldAlgorithm):
+        self._OldAlgorithm = OldAlgorithm
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -21287,6 +21510,8 @@ class UpdateRecordDetail(AbstractModel):
         self._EnvId = params.get("EnvId")
         self._TCBType = params.get("TCBType")
         self._Url = params.get("Url")
+        self._Algorithm = params.get("Algorithm")
+        self._OldAlgorithm = params.get("OldAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21722,6 +21947,8 @@ class UploadCertificateRequest(AbstractModel):
         :type Tags: list of Tags
         :param _Repeatable: 相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
         :type Repeatable: bool
+        :param _KeyPassword: 私钥密码
+        :type KeyPassword: str
         """
         self._CertificatePublicKey = None
         self._CertificatePrivateKey = None
@@ -21731,6 +21958,7 @@ class UploadCertificateRequest(AbstractModel):
         self._CertificateUse = None
         self._Tags = None
         self._Repeatable = None
+        self._KeyPassword = None
 
     @property
     def CertificatePublicKey(self):
@@ -21820,6 +22048,17 @@ class UploadCertificateRequest(AbstractModel):
     def Repeatable(self, Repeatable):
         self._Repeatable = Repeatable
 
+    @property
+    def KeyPassword(self):
+        """私钥密码
+        :rtype: str
+        """
+        return self._KeyPassword
+
+    @KeyPassword.setter
+    def KeyPassword(self, KeyPassword):
+        self._KeyPassword = KeyPassword
+
 
     def _deserialize(self, params):
         self._CertificatePublicKey = params.get("CertificatePublicKey")
@@ -21835,6 +22074,7 @@ class UploadCertificateRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Repeatable = params.get("Repeatable")
+        self._KeyPassword = params.get("KeyPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21854,7 +22094,7 @@ class UploadCertificateResponse(AbstractModel):
         r"""
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
-        :param _RepeatCertId: 重复证书的ID
+        :param _RepeatCertId: 当入参Repeatable为false的时候 返回的重复证书的ID，注意当用户上传相同的证书超过5000张的时候，当前接口会无视入参Repeatable，直接返回重复证书的ID。
         :type RepeatCertId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21876,7 +22116,7 @@ class UploadCertificateResponse(AbstractModel):
 
     @property
     def RepeatCertId(self):
-        """重复证书的ID
+        """当入参Repeatable为false的时候 返回的重复证书的ID，注意当用户上传相同的证书超过5000张的时候，当前接口会无视入参Repeatable，直接返回重复证书的ID。
         :rtype: str
         """
         return self._RepeatCertId

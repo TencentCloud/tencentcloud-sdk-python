@@ -1812,98 +1812,6 @@ class ErrorMsg(AbstractModel):
         
 
 
-class File3D(AbstractModel):
-    """3D文件
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Type: 3D文件的格式。取值范围：GIF, OBJ
-        :type Type: str
-        :param _Url: 文件的Url（有效期24小时）
-        :type Url: str
-        """
-        self._Type = None
-        self._Url = None
-
-    @property
-    def Type(self):
-        """3D文件的格式。取值范围：GIF, OBJ
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def Url(self):
-        """文件的Url（有效期24小时）
-        :rtype: str
-        """
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
-
-
-    def _deserialize(self, params):
-        self._Type = params.get("Type")
-        self._Url = params.get("Url")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class File3Ds(AbstractModel):
-    """3D文件列表
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _File3D: 3D文件列表
-        :type File3D: list of File3D
-        """
-        self._File3D = None
-
-    @property
-    def File3D(self):
-        """3D文件列表
-        :rtype: list of File3D
-        """
-        return self._File3D
-
-    @File3D.setter
-    def File3D(self, File3D):
-        self._File3D = File3D
-
-
-    def _deserialize(self, params):
-        if params.get("File3D") is not None:
-            self._File3D = []
-            for item in params.get("File3D"):
-                obj = File3D()
-                obj._deserialize(item)
-                self._File3D.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class FileObject(AbstractModel):
     """已上传的文件对象。
 
@@ -4638,11 +4546,21 @@ class Multimedia(AbstractModel):
 说明：
 1. type 为 image 时，地址为图片的预览地址；其他类型时，地址为封面图地址。
         :type Url: str
+        :param _Width: 如果Url为图片地址，标识图片宽度。
+        :type Width: int
+        :param _Height: 如果Url为图片地址，标识图片高度。
+        :type Height: int
         :param _JumpUrl: 多媒体详情地址。
 说明：
 1. 仅 type 为 image 时，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type JumpUrl: str
+        :param _ThumbURL: 缩略图地址。
+        :type ThumbURL: str
+        :param _ThumbWidth: 缩略图宽度
+        :type ThumbWidth: int
+        :param _ThumbHeight: 缩略图高度
+        :type ThumbHeight: int
         :param _Title: 名称。
 说明：
 1. type 为 image 时，该字段为空。
@@ -4661,14 +4579,28 @@ class Multimedia(AbstractModel):
 1. 仅 type 为 music 时，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.hunyuan.v20230901.models.SongExt`
+        :param _PublishTime: 发布时间。
+        :type PublishTime: str
+        :param _SiteName: 站点名称
+        :type SiteName: str
+        :param _SiteIcon: 站点图标
+        :type SiteIcon: str
         """
         self._Type = None
         self._Url = None
+        self._Width = None
+        self._Height = None
         self._JumpUrl = None
+        self._ThumbURL = None
+        self._ThumbWidth = None
+        self._ThumbHeight = None
         self._Title = None
         self._Desc = None
         self._Singer = None
         self._Ext = None
+        self._PublishTime = None
+        self._SiteName = None
+        self._SiteIcon = None
 
     @property
     def Type(self):
@@ -4698,6 +4630,28 @@ class Multimedia(AbstractModel):
         self._Url = Url
 
     @property
+    def Width(self):
+        """如果Url为图片地址，标识图片宽度。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """如果Url为图片地址，标识图片高度。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
     def JumpUrl(self):
         """多媒体详情地址。
 说明：
@@ -4710,6 +4664,39 @@ class Multimedia(AbstractModel):
     @JumpUrl.setter
     def JumpUrl(self, JumpUrl):
         self._JumpUrl = JumpUrl
+
+    @property
+    def ThumbURL(self):
+        """缩略图地址。
+        :rtype: str
+        """
+        return self._ThumbURL
+
+    @ThumbURL.setter
+    def ThumbURL(self, ThumbURL):
+        self._ThumbURL = ThumbURL
+
+    @property
+    def ThumbWidth(self):
+        """缩略图宽度
+        :rtype: int
+        """
+        return self._ThumbWidth
+
+    @ThumbWidth.setter
+    def ThumbWidth(self, ThumbWidth):
+        self._ThumbWidth = ThumbWidth
+
+    @property
+    def ThumbHeight(self):
+        """缩略图高度
+        :rtype: int
+        """
+        return self._ThumbHeight
+
+    @ThumbHeight.setter
+    def ThumbHeight(self, ThumbHeight):
+        self._ThumbHeight = ThumbHeight
 
     @property
     def Title(self):
@@ -4765,17 +4752,58 @@ class Multimedia(AbstractModel):
     def Ext(self, Ext):
         self._Ext = Ext
 
+    @property
+    def PublishTime(self):
+        """发布时间。
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def SiteName(self):
+        """站点名称
+        :rtype: str
+        """
+        return self._SiteName
+
+    @SiteName.setter
+    def SiteName(self, SiteName):
+        self._SiteName = SiteName
+
+    @property
+    def SiteIcon(self):
+        """站点图标
+        :rtype: str
+        """
+        return self._SiteIcon
+
+    @SiteIcon.setter
+    def SiteIcon(self, SiteIcon):
+        self._SiteIcon = SiteIcon
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Url = params.get("Url")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         self._JumpUrl = params.get("JumpUrl")
+        self._ThumbURL = params.get("ThumbURL")
+        self._ThumbWidth = params.get("ThumbWidth")
+        self._ThumbHeight = params.get("ThumbHeight")
         self._Title = params.get("Title")
         self._Desc = params.get("Desc")
         self._Singer = params.get("Singer")
         if params.get("Ext") is not None:
             self._Ext = SongExt()
             self._Ext._deserialize(params.get("Ext"))
+        self._PublishTime = params.get("PublishTime")
+        self._SiteName = params.get("SiteName")
+        self._SiteIcon = params.get("SiteIcon")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5239,135 +5267,6 @@ class QueryHunyuanImageJobResponse(AbstractModel):
         self._ResultImage = params.get("ResultImage")
         self._ResultDetails = params.get("ResultDetails")
         self._RevisedPrompt = params.get("RevisedPrompt")
-        self._RequestId = params.get("RequestId")
-
-
-class QueryHunyuanTo3DJobRequest(AbstractModel):
-    """QueryHunyuanTo3DJob请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _JobId: 任务ID
-        :type JobId: str
-        """
-        self._JobId = None
-
-    @property
-    def JobId(self):
-        """任务ID
-        :rtype: str
-        """
-        return self._JobId
-
-    @JobId.setter
-    def JobId(self, JobId):
-        self._JobId = JobId
-
-
-    def _deserialize(self, params):
-        self._JobId = params.get("JobId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class QueryHunyuanTo3DJobResponse(AbstractModel):
-    """QueryHunyuanTo3DJob返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Status: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
-        :type Status: str
-        :param _ResultFile3Ds: 生成的3D文件数组
-        :type ResultFile3Ds: list of File3Ds
-        :param _ErrorCode: 错误码
-        :type ErrorCode: str
-        :param _ErrorMessage: 错误信息
-        :type ErrorMessage: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Status = None
-        self._ResultFile3Ds = None
-        self._ErrorCode = None
-        self._ErrorMessage = None
-        self._RequestId = None
-
-    @property
-    def Status(self):
-        """任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def ResultFile3Ds(self):
-        """生成的3D文件数组
-        :rtype: list of File3Ds
-        """
-        return self._ResultFile3Ds
-
-    @ResultFile3Ds.setter
-    def ResultFile3Ds(self, ResultFile3Ds):
-        self._ResultFile3Ds = ResultFile3Ds
-
-    @property
-    def ErrorCode(self):
-        """错误码
-        :rtype: str
-        """
-        return self._ErrorCode
-
-    @ErrorCode.setter
-    def ErrorCode(self, ErrorCode):
-        self._ErrorCode = ErrorCode
-
-    @property
-    def ErrorMessage(self):
-        """错误信息
-        :rtype: str
-        """
-        return self._ErrorMessage
-
-    @ErrorMessage.setter
-    def ErrorMessage(self, ErrorMessage):
-        self._ErrorMessage = ErrorMessage
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Status = params.get("Status")
-        if params.get("ResultFile3Ds") is not None:
-            self._ResultFile3Ds = []
-            for item in params.get("ResultFile3Ds"):
-                obj = File3Ds()
-                obj._deserialize(item)
-                self._ResultFile3Ds.append(obj)
-        self._ErrorCode = params.get("ErrorCode")
-        self._ErrorMessage = params.get("ErrorMessage")
         self._RequestId = params.get("RequestId")
 
 
@@ -6455,7 +6354,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
 在 Resolution 的基础上按比例提高分辨率，例如1024:1024开启2倍超分后将得到2048:2048。
         :type Clarity: str
         :param _ContentImage: 用于引导内容的参考图。
-图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png。
         :type ContentImage: :class:`tencentcloud.hunyuan.v20230901.models.Image`
         :param _Revise: prompt 扩写开关。1为开启，0为关闭，不传默认开启。
 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
@@ -6569,7 +6468,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
     @property
     def ContentImage(self):
         """用于引导内容的参考图。
-图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png。
         :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Image`
         """
         return self._ContentImage
@@ -6678,142 +6577,6 @@ class SubmitHunyuanImageJobResponse(AbstractModel):
     @property
     def JobId(self):
         """任务 ID。
-        :rtype: str
-        """
-        return self._JobId
-
-    @JobId.setter
-    def JobId(self, JobId):
-        self._JobId = JobId
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._JobId = params.get("JobId")
-        self._RequestId = params.get("RequestId")
-
-
-class SubmitHunyuanTo3DJobRequest(AbstractModel):
-    """SubmitHunyuanTo3DJob请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Prompt: 3D内容的描述，中文正向提示词。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-        :type Prompt: str
-        :param _ImageBase64: 输入图 Base64 数据。
-大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
-格式：jpg，png，jpeg，webp。
-ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-        :type ImageBase64: str
-        :param _ImageUrl: 输入图Url。
-大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
-格式：jpg，png，jpeg，webp。
-ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-        :type ImageUrl: str
-        :param _Num: 生成数量。默认1，当前限制只能为1。
-        :type Num: int
-        """
-        self._Prompt = None
-        self._ImageBase64 = None
-        self._ImageUrl = None
-        self._Num = None
-
-    @property
-    def Prompt(self):
-        """3D内容的描述，中文正向提示词。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-        :rtype: str
-        """
-        return self._Prompt
-
-    @Prompt.setter
-    def Prompt(self, Prompt):
-        self._Prompt = Prompt
-
-    @property
-    def ImageBase64(self):
-        """输入图 Base64 数据。
-大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
-格式：jpg，png，jpeg，webp。
-ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-        :rtype: str
-        """
-        return self._ImageBase64
-
-    @ImageBase64.setter
-    def ImageBase64(self, ImageBase64):
-        self._ImageBase64 = ImageBase64
-
-    @property
-    def ImageUrl(self):
-        """输入图Url。
-大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
-格式：jpg，png，jpeg，webp。
-ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
-        :rtype: str
-        """
-        return self._ImageUrl
-
-    @ImageUrl.setter
-    def ImageUrl(self, ImageUrl):
-        self._ImageUrl = ImageUrl
-
-    @property
-    def Num(self):
-        """生成数量。默认1，当前限制只能为1。
-        :rtype: int
-        """
-        return self._Num
-
-    @Num.setter
-    def Num(self, Num):
-        self._Num = Num
-
-
-    def _deserialize(self, params):
-        self._Prompt = params.get("Prompt")
-        self._ImageBase64 = params.get("ImageBase64")
-        self._ImageUrl = params.get("ImageUrl")
-        self._Num = params.get("Num")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SubmitHunyuanTo3DJobResponse(AbstractModel):
-    """SubmitHunyuanTo3DJob返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _JobId: 任务id（有效期24小时）
-        :type JobId: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._JobId = None
-        self._RequestId = None
-
-    @property
-    def JobId(self):
-        """任务id（有效期24小时）
         :rtype: str
         """
         return self._JobId

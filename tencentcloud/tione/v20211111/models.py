@@ -10776,10 +10776,16 @@ class HorizontalPodAutoscaler(AbstractModel):
 "concurrency-util":单个实例请求数量值。范围{1,100000}
 注意：此字段可能返回 null，表示取不到有效值。
         :type HpaMetrics: list of Option
+        :param _ScaleUpStabilizationWindowSeconds: 扩容观察期，单位秒
+        :type ScaleUpStabilizationWindowSeconds: int
+        :param _ScaleDownStabilizationWindowSeconds: 缩容观察期，单位秒
+        :type ScaleDownStabilizationWindowSeconds: int
         """
         self._MinReplicas = None
         self._MaxReplicas = None
         self._HpaMetrics = None
+        self._ScaleUpStabilizationWindowSeconds = None
+        self._ScaleDownStabilizationWindowSeconds = None
 
     @property
     def MinReplicas(self):
@@ -10819,6 +10825,28 @@ class HorizontalPodAutoscaler(AbstractModel):
     def HpaMetrics(self, HpaMetrics):
         self._HpaMetrics = HpaMetrics
 
+    @property
+    def ScaleUpStabilizationWindowSeconds(self):
+        """扩容观察期，单位秒
+        :rtype: int
+        """
+        return self._ScaleUpStabilizationWindowSeconds
+
+    @ScaleUpStabilizationWindowSeconds.setter
+    def ScaleUpStabilizationWindowSeconds(self, ScaleUpStabilizationWindowSeconds):
+        self._ScaleUpStabilizationWindowSeconds = ScaleUpStabilizationWindowSeconds
+
+    @property
+    def ScaleDownStabilizationWindowSeconds(self):
+        """缩容观察期，单位秒
+        :rtype: int
+        """
+        return self._ScaleDownStabilizationWindowSeconds
+
+    @ScaleDownStabilizationWindowSeconds.setter
+    def ScaleDownStabilizationWindowSeconds(self, ScaleDownStabilizationWindowSeconds):
+        self._ScaleDownStabilizationWindowSeconds = ScaleDownStabilizationWindowSeconds
+
 
     def _deserialize(self, params):
         self._MinReplicas = params.get("MinReplicas")
@@ -10829,6 +10857,8 @@ class HorizontalPodAutoscaler(AbstractModel):
                 obj = Option()
                 obj._deserialize(item)
                 self._HpaMetrics.append(obj)
+        self._ScaleUpStabilizationWindowSeconds = params.get("ScaleUpStabilizationWindowSeconds")
+        self._ScaleDownStabilizationWindowSeconds = params.get("ScaleDownStabilizationWindowSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14143,6 +14173,8 @@ HYBRID_PAID:
         :type RollingUpdate: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
         :param _Sidecar: sidecar配置
         :type Sidecar: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
+        :param _ResourceGroupId: 资源组 id
+        :type ResourceGroupId: str
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -14176,6 +14208,7 @@ HYBRID_PAID:
         self._HealthProbe = None
         self._RollingUpdate = None
         self._Sidecar = None
+        self._ResourceGroupId = None
 
     @property
     def ServiceId(self):
@@ -14552,6 +14585,17 @@ HYBRID_PAID:
     def Sidecar(self, Sidecar):
         self._Sidecar = Sidecar
 
+    @property
+    def ResourceGroupId(self):
+        """资源组 id
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -14620,6 +14664,7 @@ HYBRID_PAID:
         if params.get("Sidecar") is not None:
             self._Sidecar = SidecarSpec()
             self._Sidecar._deserialize(params.get("Sidecar"))
+        self._ResourceGroupId = params.get("ResourceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18450,6 +18495,8 @@ DEFAULT: 其他来源
         :param _MonitorSource: 用于监控查询的Source
 枚举值，部分情况下与CreateSource不同，通过该字段兼容
         :type MonitorSource: str
+        :param _SubUinName: 服务创建者的子账号名称
+        :type SubUinName: str
         """
         self._ServiceGroupId = None
         self._ServiceId = None
@@ -18485,6 +18532,7 @@ DEFAULT: 其他来源
         self._DeployType = None
         self._InstancePerReplicas = None
         self._MonitorSource = None
+        self._SubUinName = None
 
     @property
     def ServiceGroupId(self):
@@ -18909,6 +18957,17 @@ DEFAULT: 其他来源
     def MonitorSource(self, MonitorSource):
         self._MonitorSource = MonitorSource
 
+    @property
+    def SubUinName(self):
+        """服务创建者的子账号名称
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -18956,6 +19015,7 @@ DEFAULT: 其他来源
         self._DeployType = params.get("DeployType")
         self._InstancePerReplicas = params.get("InstancePerReplicas")
         self._MonitorSource = params.get("MonitorSource")
+        self._SubUinName = params.get("SubUinName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

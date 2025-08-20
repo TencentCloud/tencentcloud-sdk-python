@@ -21053,7 +21053,7 @@ class DescribeCostDetailRequest(AbstractModel):
         :type NeedRecordNum: int
         :param _Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
         :type Month: str
-        :param _ProductCode: 查询指定产品信息（暂时未开放获取）
+        :param _ProductCode: 查询指定产品信息
         :type ProductCode: str
         :param _PayMode: 付费模式 prePay/postPay
         :type PayMode: str
@@ -21139,7 +21139,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        """查询指定产品信息（暂时未开放获取）
+        """查询指定产品信息
         :rtype: str
         """
         return self._ProductCode

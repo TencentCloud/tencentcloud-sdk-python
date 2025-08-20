@@ -22227,9 +22227,9 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 帐号统计列表记录总数。
+        :param _TotalCount: 账号统计列表记录总数。
         :type TotalCount: int
-        :param _AccountStatistics: 帐号统计列表。
+        :param _AccountStatistics: 账号统计列表。
         :type AccountStatistics: list of AccountStatistics
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22240,7 +22240,7 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """帐号统计列表记录总数。
+        """账号统计列表记录总数。
         :rtype: int
         """
         return self._TotalCount
@@ -22251,7 +22251,7 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def AccountStatistics(self):
-        """帐号统计列表。
+        """账号统计列表。
         :rtype: list of AccountStatistics
         """
         return self._AccountStatistics
@@ -39086,9 +39086,9 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 帐号变更历史列表记录总数。
+        :param _TotalCount: 账号变更历史列表记录总数。
         :type TotalCount: int
-        :param _HistoryAccounts: 帐号变更历史数据数组。
+        :param _HistoryAccounts: 账号变更历史数据数组。
         :type HistoryAccounts: list of HistoryAccount
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39099,7 +39099,7 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """帐号变更历史列表记录总数。
+        """账号变更历史列表记录总数。
         :rtype: int
         """
         return self._TotalCount
@@ -39110,7 +39110,7 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def HistoryAccounts(self):
-        """帐号变更历史数据数组。
+        """账号变更历史数据数组。
         :rtype: list of HistoryAccount
         """
         return self._HistoryAccounts
@@ -41689,12 +41689,15 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
         :type Professional: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         :param _PrattWhitney: 轻量版 配置信息
         :type PrattWhitney: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
+        :param _RASP: 重保授权包 配置信息
+        :type RASP: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlagShip = None
         self._Professional = None
         self._PrattWhitney = None
+        self._RASP = None
         self._RequestId = None
 
     @property
@@ -41731,6 +41734,17 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
         self._PrattWhitney = PrattWhitney
 
     @property
+    def RASP(self):
+        """重保授权包 配置信息
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
+        """
+        return self._RASP
+
+    @RASP.setter
+    def RASP(self, RASP):
+        self._RASP = RASP
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -41752,6 +41766,9 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
         if params.get("PrattWhitney") is not None:
             self._PrattWhitney = VersionWhiteConfig()
             self._PrattWhitney._deserialize(params.get("PrattWhitney"))
+        if params.get("RASP") is not None:
+            self._RASP = VersionWhiteConfig()
+            self._RASP._deserialize(params.get("RASP"))
         self._RequestId = params.get("RequestId")
 
 
@@ -77155,6 +77172,8 @@ class Machine(AbstractModel):
         :type InstanceId: str
         :param _Remark: 备注信息
         :type Remark: str
+        :param _AgentVersion: 主机安全agent版本
+        :type AgentVersion: str
         """
         self._MachineName = None
         self._MachineOs = None
@@ -77189,6 +77208,7 @@ class Machine(AbstractModel):
         self._MachineExtraInfo = None
         self._InstanceId = None
         self._Remark = None
+        self._AgentVersion = None
 
     @property
     def MachineName(self):
@@ -77560,6 +77580,17 @@ class Machine(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def AgentVersion(self):
+        """主机安全agent版本
+        :rtype: str
+        """
+        return self._AgentVersion
+
+    @AgentVersion.setter
+    def AgentVersion(self, AgentVersion):
+        self._AgentVersion = AgentVersion
+
 
     def _deserialize(self, params):
         self._MachineName = params.get("MachineName")
@@ -77609,6 +77640,7 @@ class Machine(AbstractModel):
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._InstanceId = params.get("InstanceId")
         self._Remark = params.get("Remark")
+        self._AgentVersion = params.get("AgentVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

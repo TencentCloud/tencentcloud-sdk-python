@@ -2263,7 +2263,7 @@ class CreateBackupRequest(AbstractModel):
         :type Strategy: int
         :param _DBNames: 需要备份库名的列表(多库备份才填写)
         :type DBNames: list of str
-        :param _InstanceId: 实例ID（必填），形如mssql-i1z41iwd
+        :param _InstanceId: 实例ID，形如mssql-i1z41iwd
         :type InstanceId: str
         :param _BackupName: 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
         :type BackupName: str
@@ -2300,7 +2300,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID（必填），形如mssql-i1z41iwd
+        """实例ID，形如mssql-i1z41iwd
         :rtype: str
         """
         return self._InstanceId
@@ -11425,7 +11425,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
         :type CrossBackupStatus: str
         :param _CrossRegion: 跨地域备份目标地域
         :type CrossRegion: str
-        :param _OrderBy: 排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份培训
+        :param _OrderBy: 排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份
         :type OrderBy: str
         :param _OrderByType: 排序规则（desc-降序，asc-升序），默认desc
         :type OrderByType: str
@@ -11507,7 +11507,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份培训
+        """排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份
         :rtype: str
         """
         return self._OrderBy
@@ -12079,6 +12079,10 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         :type MultiDrReadableInfo: list of DrReadableInfo
         :param _IsDiskEncryptFlag: 是否开启磁盘加密，1-开启，0-未开启
         :type IsDiskEncryptFlag: int
+        :param _IsSafetyLimited: 是否安全限制部分功能，0-没有限制，1-有限制。限制的功能有：修改可用区、迁移变配、DTS数据迁移等
+        :type IsSafetyLimited: int
+        :param _IsSupportSA: 是否支持创建SA权限账号，0-不支持，1-支持
+        :type IsSupportSA: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12097,6 +12101,8 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._XEventStatus = None
         self._MultiDrReadableInfo = None
         self._IsDiskEncryptFlag = None
+        self._IsSafetyLimited = None
+        self._IsSupportSA = None
         self._RequestId = None
 
     @property
@@ -12265,6 +12271,28 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._IsDiskEncryptFlag = IsDiskEncryptFlag
 
     @property
+    def IsSafetyLimited(self):
+        """是否安全限制部分功能，0-没有限制，1-有限制。限制的功能有：修改可用区、迁移变配、DTS数据迁移等
+        :rtype: int
+        """
+        return self._IsSafetyLimited
+
+    @IsSafetyLimited.setter
+    def IsSafetyLimited(self, IsSafetyLimited):
+        self._IsSafetyLimited = IsSafetyLimited
+
+    @property
+    def IsSupportSA(self):
+        """是否支持创建SA权限账号，0-不支持，1-支持
+        :rtype: int
+        """
+        return self._IsSupportSA
+
+    @IsSupportSA.setter
+    def IsSupportSA(self, IsSupportSA):
+        self._IsSupportSA = IsSupportSA
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12308,6 +12336,8 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
                 obj._deserialize(item)
                 self._MultiDrReadableInfo.append(obj)
         self._IsDiskEncryptFlag = params.get("IsDiskEncryptFlag")
+        self._IsSafetyLimited = params.get("IsSafetyLimited")
+        self._IsSupportSA = params.get("IsSupportSA")
         self._RequestId = params.get("RequestId")
 
 
@@ -12352,7 +12382,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceNameSet: list of str
         :param _VersionSet: 实例版本代号列表，格式如：2008R2，2012SP3等
         :type VersionSet: list of str
-        :param _Zone: 实例可用区，格式如：ap-guangzhou-2
+        :param _Zone: 实例可用区
         :type Zone: str
         :param _TagKeys: 实例标签列表
         :type TagKeys: list of str
@@ -12518,7 +12548,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """实例可用区，格式如：ap-guangzhou-2
+        """实例可用区
         :rtype: str
         """
         return self._Zone
@@ -16147,7 +16177,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区英文ID，形如ap-guangzhou-1
+        :param _Zone: 可用区英文 ID
         :type Zone: str
         :param _InstanceType: 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
         :type InstanceType: str
@@ -16157,7 +16187,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """可用区英文ID，形如ap-guangzhou-1
+        """可用区英文 ID
         :rtype: str
         """
         return self._Zone
@@ -22655,7 +22685,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
         :type BackupTime: int
         :param _BackupDay: BackupType取值为daily时，表示备份间隔天数。当前取值只能为1
         :type BackupDay: int
-        :param _BackupModel: 备份模式（必填），master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
+        :param _BackupModel: 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
         :type BackupModel: str
         :param _BackupCycle: BackupType取值为weekly时，表示每周的星期N做备份。（如果数据备份保留时间<7天，则取值[1,2,3,4,5,6,7]。如果数据备份保留时间>=7天，则备份周期取值至少是一周的任意2天）
         :type BackupCycle: list of int non-negative
@@ -22731,7 +22761,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def BackupModel(self):
-        """备份模式（必填），master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
+        """备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
         :rtype: str
         """
         return self._BackupModel
@@ -31863,9 +31893,9 @@ class ZoneStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 规格地域
+        :param _Zone: 规格可用区
         :type Zone: str
-        :param _Region: 规格可用区
+        :param _Region: 规格地域
         :type Region: str
         :param _Status: 规格在该可用区的售卖状态 1-正常 2-关闭售卖但是可以升级 3-完全关闭售卖
         :type Status: int
@@ -31876,7 +31906,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Zone(self):
-        """规格地域
+        """规格可用区
         :rtype: str
         """
         return self._Zone
@@ -31887,7 +31917,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Region(self):
-        """规格可用区
+        """规格地域
         :rtype: str
         """
         return self._Region

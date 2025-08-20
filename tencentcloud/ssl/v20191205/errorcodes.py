@@ -56,6 +56,9 @@ FAILEDOPERATION_CERTIFICATECANCELFAILEDMULTI = 'FailedOperation.CertificateCance
 # 温馨提示：证书链检测异常，请核对每段证书是否存在异常
 FAILEDOPERATION_CERTIFICATECHAINERROR = 'FailedOperation.CertificateChainError'
 
+# CSR解析失败。
+FAILEDOPERATION_CERTIFICATECSRPARSEFAILED = 'FailedOperation.CertificateCsrParseFailed'
+
 # 记录状态必须完结才可以执行该操作。
 FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = 'FailedOperation.CertificateDeployDetailRollbackStatusInvalid'
 
@@ -335,7 +338,7 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # 邮箱格式有误，请您重新输入
 INVALIDPARAMETERVALUE_CERTIFICATEEMAILPARSEINVALID = 'InvalidParameterValue.CertificateEmailParseInvalid'
 
-# 中间根证书不一致
+# 中间证书不一致
 INVALIDPARAMETERVALUE_INTERMEDIATECERTNOTSAME = 'InvalidParameterValue.IntermediateCertNotSame'
 
 # 单位时间内接口请求频率达到限制。

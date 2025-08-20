@@ -6506,6 +6506,8 @@ class ClusterInfoItem(AbstractModel):
         :type AccessedStatus: str
         :param _AccessedSubStatus: 接入失败原因
         :type AccessedSubStatus: str
+        :param _AccessedErrorReason: 接入/卸载失败原因
+        :type AccessedErrorReason: str
         :param _NodeCount: 节点总数
         :type NodeCount: int
         :param _OffLineNodeCount: 离线节点数
@@ -6549,6 +6551,7 @@ class ClusterInfoItem(AbstractModel):
         self._TaskCreateTime = None
         self._AccessedStatus = None
         self._AccessedSubStatus = None
+        self._AccessedErrorReason = None
         self._NodeCount = None
         self._OffLineNodeCount = None
         self._UnInstallAgentNodeCount = None
@@ -6824,6 +6827,17 @@ class ClusterInfoItem(AbstractModel):
         self._AccessedSubStatus = AccessedSubStatus
 
     @property
+    def AccessedErrorReason(self):
+        """接入/卸载失败原因
+        :rtype: str
+        """
+        return self._AccessedErrorReason
+
+    @AccessedErrorReason.setter
+    def AccessedErrorReason(self, AccessedErrorReason):
+        self._AccessedErrorReason = AccessedErrorReason
+
+    @property
     def NodeCount(self):
         """节点总数
         :rtype: int
@@ -6948,6 +6962,7 @@ class ClusterInfoItem(AbstractModel):
         self._TaskCreateTime = params.get("TaskCreateTime")
         self._AccessedStatus = params.get("AccessedStatus")
         self._AccessedSubStatus = params.get("AccessedSubStatus")
+        self._AccessedErrorReason = params.get("AccessedErrorReason")
         self._NodeCount = params.get("NodeCount")
         self._OffLineNodeCount = params.get("OffLineNodeCount")
         self._UnInstallAgentNodeCount = params.get("UnInstallAgentNodeCount")
@@ -22779,6 +22794,8 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         :type ClusterName: str
         :param _ClusterAccessedStatus: 集群接入状态
         :type ClusterAccessedStatus: str
+        :param _AssetSyncTime: 资产同步时间
+        :type AssetSyncTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -22811,6 +22828,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self._ClusterID = None
         self._ClusterName = None
         self._ClusterAccessedStatus = None
+        self._AssetSyncTime = None
         self._RequestId = None
 
     @property
@@ -23133,6 +23151,17 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self._ClusterAccessedStatus = ClusterAccessedStatus
 
     @property
+    def AssetSyncTime(self):
+        """资产同步时间
+        :rtype: str
+        """
+        return self._AssetSyncTime
+
+    @AssetSyncTime.setter
+    def AssetSyncTime(self, AssetSyncTime):
+        self._AssetSyncTime = AssetSyncTime
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -23181,6 +23210,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self._ClusterID = params.get("ClusterID")
         self._ClusterName = params.get("ClusterName")
         self._ClusterAccessedStatus = params.get("ClusterAccessedStatus")
+        self._AssetSyncTime = params.get("AssetSyncTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -30448,6 +30478,8 @@ class DescribeClusterDetailResponse(AbstractModel):
         :type MasterIps: str
         :param _OwnerName: 所有者名称
         :type OwnerName: str
+        :param _CheckFailReason: 检查失败原因
+        :type CheckFailReason: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -30478,6 +30510,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._IngressCount = None
         self._MasterIps = None
         self._OwnerName = None
+        self._CheckFailReason = None
         self._RequestId = None
 
     @property
@@ -30778,6 +30811,17 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._OwnerName = OwnerName
 
     @property
+    def CheckFailReason(self):
+        """检查失败原因
+        :rtype: str
+        """
+        return self._CheckFailReason
+
+    @CheckFailReason.setter
+    def CheckFailReason(self, CheckFailReason):
+        self._CheckFailReason = CheckFailReason
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -30817,6 +30861,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._IngressCount = params.get("IngressCount")
         self._MasterIps = params.get("MasterIps")
         self._OwnerName = params.get("OwnerName")
+        self._CheckFailReason = params.get("CheckFailReason")
         self._RequestId = params.get("RequestId")
 
 

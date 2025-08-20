@@ -1206,6 +1206,8 @@ class Bundle(AbstractModel):
 "NORMAL": 普通套餐
 "CAREFREE": 无忧套餐
         :type BundleDisplayLabel: str
+        :param _TrafficUnlimited: 流量是否无上限。
+        :type TrafficUnlimited: bool
         """
         self._BundleId = None
         self._Memory = None
@@ -1222,6 +1224,7 @@ class Bundle(AbstractModel):
         self._BundleType = None
         self._BundleTypeDescription = None
         self._BundleDisplayLabel = None
+        self._TrafficUnlimited = None
 
     @property
     def BundleId(self):
@@ -1403,6 +1406,17 @@ class Bundle(AbstractModel):
     def BundleDisplayLabel(self, BundleDisplayLabel):
         self._BundleDisplayLabel = BundleDisplayLabel
 
+    @property
+    def TrafficUnlimited(self):
+        """流量是否无上限。
+        :rtype: bool
+        """
+        return self._TrafficUnlimited
+
+    @TrafficUnlimited.setter
+    def TrafficUnlimited(self, TrafficUnlimited):
+        self._TrafficUnlimited = TrafficUnlimited
+
 
     def _deserialize(self, params):
         self._BundleId = params.get("BundleId")
@@ -1422,6 +1436,7 @@ class Bundle(AbstractModel):
         self._BundleType = params.get("BundleType")
         self._BundleTypeDescription = params.get("BundleTypeDescription")
         self._BundleDisplayLabel = params.get("BundleDisplayLabel")
+        self._TrafficUnlimited = params.get("TrafficUnlimited")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6853,6 +6868,191 @@ class DescribeGeneralResourceQuotasResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeImagesToShareRequest(AbstractModel):
+    """DescribeImagesToShare请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageIds: CVM镜像 ID 列表。可通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回值中的ImageId获取。
+        :type ImageIds: list of str
+        :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :type Limit: int
+        :param _Filters: 过滤器列表。
+<li>image-id</li>按照【CVM镜像ID】进行过滤。
+类型：String
+必选：否
+
+<li>image-name</li>按照【CVM镜像名称】进行过滤。
+类型：String
+必选：否
+
+<li>image-type</li>按照【CVM镜像类型】进行过滤。
+类型：String
+必选：否
+取值范围：
+PRIVATE_IMAGE: 私有镜像 (本账户创建的镜像)
+PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)
+SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像) 。
+
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+参数不可以同时指定ImageIds和Filters。
+        :type Filters: list of Filter
+        """
+        self._ImageIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ImageIds(self):
+        """CVM镜像 ID 列表。可通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回值中的ImageId获取。
+        :rtype: list of str
+        """
+        return self._ImageIds
+
+    @ImageIds.setter
+    def ImageIds(self, ImageIds):
+        self._ImageIds = ImageIds
+
+    @property
+    def Offset(self):
+        """偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """过滤器列表。
+<li>image-id</li>按照【CVM镜像ID】进行过滤。
+类型：String
+必选：否
+
+<li>image-name</li>按照【CVM镜像名称】进行过滤。
+类型：String
+必选：否
+
+<li>image-type</li>按照【CVM镜像类型】进行过滤。
+类型：String
+必选：否
+取值范围：
+PRIVATE_IMAGE: 私有镜像 (本账户创建的镜像)
+PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)
+SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像) 。
+
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+参数不可以同时指定ImageIds和Filters。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ImageIds = params.get("ImageIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImagesToShareResponse(AbstractModel):
+    """DescribeImagesToShare返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的镜像数量。
+        :type TotalCount: int
+        :param _ImageSet: CVM镜像详细信息列表。
+        :type ImageSet: list of Image
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ImageSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合条件的镜像数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ImageSet(self):
+        """CVM镜像详细信息列表。
+        :rtype: list of Image
+        """
+        return self._ImageSet
+
+    @ImageSet.setter
+    def ImageSet(self, ImageSet):
+        self._ImageSet = ImageSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ImageSet") is not None:
+            self._ImageSet = []
+            for item in params.get("ImageSet"):
+                obj = Image()
+                obj._deserialize(item)
+                self._ImageSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceVncUrlRequest(AbstractModel):
     """DescribeInstanceVncUrl请求参数结构体
 
@@ -11656,6 +11856,259 @@ class GeneralResourceQuota(AbstractModel):
         
 
 
+class Image(AbstractModel):
+    """CVM镜像信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: CVM镜像 ID ，是Image的唯一标识。
+        :type ImageId: str
+        :param _ImageName: 镜像名称。
+        :type ImageName: str
+        :param _ImageDescription: 镜像描述。
+        :type ImageDescription: str
+        :param _ImageSize: 镜像大小。单位GB。
+        :type ImageSize: int
+        :param _ImageSource: 镜像来源。
+<li>CREATE_IMAGE：自定义镜像</li>
+<li>EXTERNAL_IMPORT：外部导入镜像</li>
+        :type ImageSource: str
+        :param _ImageClass: 镜像分类
+<li>SystemImage：系统盘镜像</li>
+<li>InstanceImage：整机镜像</li>
+        :type ImageClass: str
+        :param _ImageState: 镜像状态
+CREATING:创建中
+NORMAL:正常
+CREATEFAILED:创建失败
+USING:使用中
+SYNCING:同步中
+IMPORTING:导入中
+IMPORTFAILED:导入失败
+        :type ImageState: str
+        :param _IsSupportCloudinit: 镜像是否支持Cloudinit。
+        :type IsSupportCloudinit: bool
+        :param _Architecture: 镜像架构。
+        :type Architecture: str
+        :param _OsName: 镜像操作系统。
+        :type OsName: str
+        :param _Platform: 镜像来源平台。
+        :type Platform: str
+        :param _CreatedTime: 镜像创建时间。
+        :type CreatedTime: str
+        :param _IsShareable: 镜像是否可共享到轻量应用服务器。
+        :type IsShareable: bool
+        :param _UnshareableReason: 不可共享的原因。
+        :type UnshareableReason: str
+        """
+        self._ImageId = None
+        self._ImageName = None
+        self._ImageDescription = None
+        self._ImageSize = None
+        self._ImageSource = None
+        self._ImageClass = None
+        self._ImageState = None
+        self._IsSupportCloudinit = None
+        self._Architecture = None
+        self._OsName = None
+        self._Platform = None
+        self._CreatedTime = None
+        self._IsShareable = None
+        self._UnshareableReason = None
+
+    @property
+    def ImageId(self):
+        """CVM镜像 ID ，是Image的唯一标识。
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ImageName(self):
+        """镜像名称。
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageDescription(self):
+        """镜像描述。
+        :rtype: str
+        """
+        return self._ImageDescription
+
+    @ImageDescription.setter
+    def ImageDescription(self, ImageDescription):
+        self._ImageDescription = ImageDescription
+
+    @property
+    def ImageSize(self):
+        """镜像大小。单位GB。
+        :rtype: int
+        """
+        return self._ImageSize
+
+    @ImageSize.setter
+    def ImageSize(self, ImageSize):
+        self._ImageSize = ImageSize
+
+    @property
+    def ImageSource(self):
+        """镜像来源。
+<li>CREATE_IMAGE：自定义镜像</li>
+<li>EXTERNAL_IMPORT：外部导入镜像</li>
+        :rtype: str
+        """
+        return self._ImageSource
+
+    @ImageSource.setter
+    def ImageSource(self, ImageSource):
+        self._ImageSource = ImageSource
+
+    @property
+    def ImageClass(self):
+        """镜像分类
+<li>SystemImage：系统盘镜像</li>
+<li>InstanceImage：整机镜像</li>
+        :rtype: str
+        """
+        return self._ImageClass
+
+    @ImageClass.setter
+    def ImageClass(self, ImageClass):
+        self._ImageClass = ImageClass
+
+    @property
+    def ImageState(self):
+        """镜像状态
+CREATING:创建中
+NORMAL:正常
+CREATEFAILED:创建失败
+USING:使用中
+SYNCING:同步中
+IMPORTING:导入中
+IMPORTFAILED:导入失败
+        :rtype: str
+        """
+        return self._ImageState
+
+    @ImageState.setter
+    def ImageState(self, ImageState):
+        self._ImageState = ImageState
+
+    @property
+    def IsSupportCloudinit(self):
+        """镜像是否支持Cloudinit。
+        :rtype: bool
+        """
+        return self._IsSupportCloudinit
+
+    @IsSupportCloudinit.setter
+    def IsSupportCloudinit(self, IsSupportCloudinit):
+        self._IsSupportCloudinit = IsSupportCloudinit
+
+    @property
+    def Architecture(self):
+        """镜像架构。
+        :rtype: str
+        """
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        self._Architecture = Architecture
+
+    @property
+    def OsName(self):
+        """镜像操作系统。
+        :rtype: str
+        """
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+    @property
+    def Platform(self):
+        """镜像来源平台。
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def CreatedTime(self):
+        """镜像创建时间。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def IsShareable(self):
+        """镜像是否可共享到轻量应用服务器。
+        :rtype: bool
+        """
+        return self._IsShareable
+
+    @IsShareable.setter
+    def IsShareable(self, IsShareable):
+        self._IsShareable = IsShareable
+
+    @property
+    def UnshareableReason(self):
+        """不可共享的原因。
+        :rtype: str
+        """
+        return self._UnshareableReason
+
+    @UnshareableReason.setter
+    def UnshareableReason(self, UnshareableReason):
+        self._UnshareableReason = UnshareableReason
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._ImageName = params.get("ImageName")
+        self._ImageDescription = params.get("ImageDescription")
+        self._ImageSize = params.get("ImageSize")
+        self._ImageSource = params.get("ImageSource")
+        self._ImageClass = params.get("ImageClass")
+        self._ImageState = params.get("ImageState")
+        self._IsSupportCloudinit = params.get("IsSupportCloudinit")
+        self._Architecture = params.get("Architecture")
+        self._OsName = params.get("OsName")
+        self._Platform = params.get("Platform")
+        self._CreatedTime = params.get("CreatedTime")
+        self._IsShareable = params.get("IsShareable")
+        self._UnshareableReason = params.get("UnshareableReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImportKeyPairRequest(AbstractModel):
     """ImportKeyPair请求参数结构体
 
@@ -14952,6 +15405,102 @@ class ModifyFirewallTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyImageSharePermissionRequest(AbstractModel):
+    """ModifyImageSharePermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: 镜像 ID。可通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回值中的ImageId获取。
+        :type ImageId: str
+        :param _Permission: 共享属性，包括 SHARE，CANCEL。其中SHARE代表共享，CANCEL代表取消共享。
+        :type Permission: str
+        """
+        self._ImageId = None
+        self._Permission = None
+
+    @property
+    def ImageId(self):
+        """镜像 ID。可通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回值中的ImageId获取。
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def Permission(self):
+        """共享属性，包括 SHARE，CANCEL。其中SHARE代表共享，CANCEL代表取消共享。
+        :rtype: str
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._Permission = params.get("Permission")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyImageSharePermissionResponse(AbstractModel):
+    """ModifyImageSharePermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlueprintId: CVM自定义镜像共享到轻量应用服务器后的镜像ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlueprintId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BlueprintId = None
+        self._RequestId = None
+
+    @property
+    def BlueprintId(self):
+        """CVM自定义镜像共享到轻量应用服务器后的镜像ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlueprintId
+
+    @BlueprintId.setter
+    def BlueprintId(self, BlueprintId):
+        self._BlueprintId = BlueprintId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BlueprintId = params.get("BlueprintId")
         self._RequestId = params.get("RequestId")
 
 

@@ -264,6 +264,11 @@ class ConsumeGroupItem(AbstractModel):
         :param _FullNamespaceV4: 4.x的完整命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullNamespaceV4: str
+        :param _SubscribeTopicNum: 订阅的主题个数
+        :type SubscribeTopicNum: int
+        :param _CreateTime: 1753153590
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self._InstanceId = None
         self._ConsumerGroup = None
@@ -275,6 +280,8 @@ class ConsumeGroupItem(AbstractModel):
         self._NamespaceV4 = None
         self._ConsumerGroupV4 = None
         self._FullNamespaceV4 = None
+        self._SubscribeTopicNum = None
+        self._CreateTime = None
 
     @property
     def InstanceId(self):
@@ -391,6 +398,29 @@ class ConsumeGroupItem(AbstractModel):
     def FullNamespaceV4(self, FullNamespaceV4):
         self._FullNamespaceV4 = FullNamespaceV4
 
+    @property
+    def SubscribeTopicNum(self):
+        """订阅的主题个数
+        :rtype: int
+        """
+        return self._SubscribeTopicNum
+
+    @SubscribeTopicNum.setter
+    def SubscribeTopicNum(self, SubscribeTopicNum):
+        self._SubscribeTopicNum = SubscribeTopicNum
+
+    @property
+    def CreateTime(self):
+        """1753153590
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -403,6 +433,8 @@ class ConsumeGroupItem(AbstractModel):
         self._NamespaceV4 = params.get("NamespaceV4")
         self._ConsumerGroupV4 = params.get("ConsumerGroupV4")
         self._FullNamespaceV4 = params.get("FullNamespaceV4")
+        self._SubscribeTopicNum = params.get("SubscribeTopicNum")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -748,12 +780,12 @@ class CreateInstanceRequest(AbstractModel):
         :type Name: str
         :param _SkuCode: 商品规格，从 [DescribeProductSKUs](https://cloud.tencent.com/document/api/1493/107676) 接口中的 [ProductSKU](https://cloud.tencent.com/document/api/1493/96031#ProductSKU) 出参获得。
         :type SkuCode: str
+        :param _VpcList: 集群绑定的VPC信息
+        :type VpcList: list of VpcInfo
         :param _Remark: 备注信息
         :type Remark: str
         :param _TagList: 标签列表
         :type TagList: list of Tag
-        :param _VpcList: 集群绑定的VPC信息，必填
-        :type VpcList: list of VpcInfo
         :param _EnablePublic: 是否开启公网，默认值为false表示不开启
         :type EnablePublic: bool
         :param _BillingFlow: 公网是否按流量计费，默认值为false表示不按流量计费
@@ -785,9 +817,9 @@ class CreateInstanceRequest(AbstractModel):
         self._InstanceType = None
         self._Name = None
         self._SkuCode = None
+        self._VpcList = None
         self._Remark = None
         self._TagList = None
-        self._VpcList = None
         self._EnablePublic = None
         self._BillingFlow = None
         self._Bandwidth = None
@@ -841,6 +873,17 @@ class CreateInstanceRequest(AbstractModel):
         self._SkuCode = SkuCode
 
     @property
+    def VpcList(self):
+        """集群绑定的VPC信息
+        :rtype: list of VpcInfo
+        """
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+    @property
     def Remark(self):
         """备注信息
         :rtype: str
@@ -861,17 +904,6 @@ class CreateInstanceRequest(AbstractModel):
     @TagList.setter
     def TagList(self, TagList):
         self._TagList = TagList
-
-    @property
-    def VpcList(self):
-        """集群绑定的VPC信息，必填
-        :rtype: list of VpcInfo
-        """
-        return self._VpcList
-
-    @VpcList.setter
-    def VpcList(self, VpcList):
-        self._VpcList = VpcList
 
     @property
     def EnablePublic(self):
@@ -995,6 +1027,12 @@ class CreateInstanceRequest(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._Name = params.get("Name")
         self._SkuCode = params.get("SkuCode")
+        if params.get("VpcList") is not None:
+            self._VpcList = []
+            for item in params.get("VpcList"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcList.append(obj)
         self._Remark = params.get("Remark")
         if params.get("TagList") is not None:
             self._TagList = []
@@ -1002,12 +1040,6 @@ class CreateInstanceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagList.append(obj)
-        if params.get("VpcList") is not None:
-            self._VpcList = []
-            for item in params.get("VpcList"):
-                obj = VpcInfo()
-                obj._deserialize(item)
-                self._VpcList.append(obj)
         self._EnablePublic = params.get("EnablePublic")
         self._BillingFlow = params.get("BillingFlow")
         self._Bandwidth = params.get("Bandwidth")
@@ -3139,12 +3171,22 @@ class DescribeConsumerGroupListRequest(AbstractModel):
         :type Limit: int
         :param _FromTopic: 查询指定主题下的消费组
         :type FromTopic: str
+        :param _SortedBy: 按照指定字段排序，枚举值如下：
+- subscribeNum：订阅 Topic 个数
+        :type SortedBy: str
+        :param _SortOrder: 按升序或降序排列，枚举值如下：
+
+- asc：升序
+- desc：降序
+        :type SortOrder: str
         """
         self._InstanceId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._FromTopic = None
+        self._SortedBy = None
+        self._SortOrder = None
 
     @property
     def InstanceId(self):
@@ -3201,6 +3243,32 @@ class DescribeConsumerGroupListRequest(AbstractModel):
     def FromTopic(self, FromTopic):
         self._FromTopic = FromTopic
 
+    @property
+    def SortedBy(self):
+        """按照指定字段排序，枚举值如下：
+- subscribeNum：订阅 Topic 个数
+        :rtype: str
+        """
+        return self._SortedBy
+
+    @SortedBy.setter
+    def SortedBy(self, SortedBy):
+        self._SortedBy = SortedBy
+
+    @property
+    def SortOrder(self):
+        """按升序或降序排列，枚举值如下：
+
+- asc：升序
+- desc：降序
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3213,6 +3281,8 @@ class DescribeConsumerGroupListRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._FromTopic = params.get("FromTopic")
+        self._SortedBy = params.get("SortedBy")
+        self._SortOrder = params.get("SortOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7847,6 +7917,170 @@ class DescribeMigrationTaskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProducerListRequest(AbstractModel):
+    """DescribeProducerList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :type Topic: str
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        :type Filters: list of Filter
+        :param _Limit: 查询结果限制数量，默认20。
+        :type Limit: int
+        :param _Offset: 查询起始位置，默认为0。
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        """腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        """主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Filters(self):
+        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """查询结果限制数量，默认20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """查询起始位置，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProducerListResponse(AbstractModel):
+    """DescribeProducerList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _ProducerList: 生产者信息列表
+        :type ProducerList: list of ProducerInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ProducerList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ProducerList(self):
+        """生产者信息列表
+        :rtype: list of ProducerInfo
+        """
+        return self._ProducerList
+
+    @ProducerList.setter
+    def ProducerList(self, ProducerList):
+        self._ProducerList = ProducerList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ProducerList") is not None:
+            self._ProducerList = []
+            for item in params.get("ProducerList"):
+                obj = ProducerInfo()
+                obj._deserialize(item)
+                self._ProducerList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProductSKUsRequest(AbstractModel):
     """DescribeProductSKUs请求参数结构体
 
@@ -8518,11 +8752,14 @@ class DescribeTopicListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
+        :param _FromGroup: 按照消费组查询订阅的主题
+        :type FromGroup: str
         """
         self._InstanceId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._FromGroup = None
 
     @property
     def InstanceId(self):
@@ -8568,6 +8805,17 @@ class DescribeTopicListRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def FromGroup(self):
+        """按照消费组查询订阅的主题
+        :rtype: str
+        """
+        return self._FromGroup
+
+    @FromGroup.setter
+    def FromGroup(self, FromGroup):
+        self._FromGroup = FromGroup
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8579,6 +8827,7 @@ class DescribeTopicListRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._FromGroup = params.get("FromGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9044,7 +9293,7 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
         :param _TopicName: 主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
 
         :type TopicName: str
-        :param _IgnoreCheck: 必填，是否忽略当前检查
+        :param _IgnoreCheck: 是否忽略当前检查
         :type IgnoreCheck: bool
         :param _Namespace: 命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :type Namespace: str
@@ -9080,7 +9329,7 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     @property
     def IgnoreCheck(self):
-        """必填，是否忽略当前检查
+        """是否忽略当前检查
         :rtype: bool
         """
         return self._IgnoreCheck
@@ -13667,6 +13916,161 @@ class PriceTag(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Step = params.get("Step")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProducerInfo(AbstractModel):
+    """生产者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: 客户端ID	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientId: str
+        :param _ClientIp: 客户端IP	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIp: str
+        :param _Language: 客户端语言 
+- JAVA((byte) 0)
+- CPP((byte) 1) 
+- DOTNET((byte) 2) 
+- PYTHON((byte) 3)
+- DELPHI((byte) 4)
+- ERLANG((byte) 5)
+- RUBY((byte) 6)
+- OTHER((byte) 7)
+- HTTP((byte) 8)
+- GO((byte) 9)
+- PHP((byte) 10)
+- OMS((byte) 11)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Language: str
+        :param _Version: 客户端版本	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _LastUpdateTimestamp: 最后生产时间，**Unix时间戳（秒）**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTimestamp: int
+        :param _ChannelProtocol: 生产者客户端协议类型，枚举如下：
+
+- grpc：GRpc协议
+- remoting：Remoting协议
+- http：HTTP协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelProtocol: str
+        """
+        self._ClientId = None
+        self._ClientIp = None
+        self._Language = None
+        self._Version = None
+        self._LastUpdateTimestamp = None
+        self._ChannelProtocol = None
+
+    @property
+    def ClientId(self):
+        """客户端ID	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientIp(self):
+        """客户端IP	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def Language(self):
+        """客户端语言 
+- JAVA((byte) 0)
+- CPP((byte) 1) 
+- DOTNET((byte) 2) 
+- PYTHON((byte) 3)
+- DELPHI((byte) 4)
+- ERLANG((byte) 5)
+- RUBY((byte) 6)
+- OTHER((byte) 7)
+- HTTP((byte) 8)
+- GO((byte) 9)
+- PHP((byte) 10)
+- OMS((byte) 11)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Version(self):
+        """客户端版本	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def LastUpdateTimestamp(self):
+        """最后生产时间，**Unix时间戳（秒）**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastUpdateTimestamp
+
+    @LastUpdateTimestamp.setter
+    def LastUpdateTimestamp(self, LastUpdateTimestamp):
+        self._LastUpdateTimestamp = LastUpdateTimestamp
+
+    @property
+    def ChannelProtocol(self):
+        """生产者客户端协议类型，枚举如下：
+
+- grpc：GRpc协议
+- remoting：Remoting协议
+- http：HTTP协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChannelProtocol
+
+    @ChannelProtocol.setter
+    def ChannelProtocol(self, ChannelProtocol):
+        self._ChannelProtocol = ChannelProtocol
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientIp = params.get("ClientIp")
+        self._Language = params.get("Language")
+        self._Version = params.get("Version")
+        self._LastUpdateTimestamp = params.get("LastUpdateTimestamp")
+        self._ChannelProtocol = params.get("ChannelProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

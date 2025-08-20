@@ -26,6 +26,29 @@ class LowcodeClient(AbstractClient):
     _service = 'lowcode'
 
 
+    def CheckDeployApp(self, request):
+        """检查应用发布状态
+
+        :param request: Request instance for CheckDeployApp.
+        :type request: :class:`tencentcloud.lowcode.v20210108.models.CheckDeployAppRequest`
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.CheckDeployAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDeployApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckDeployAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateKnowledgeSet(self, request):
         """创建知识库
 
@@ -40,6 +63,29 @@ class LowcodeClient(AbstractClient):
             body = self.call("CreateKnowledgeSet", params, headers=headers)
             response = json.loads(body)
             model = models.CreateKnowledgeSetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAppBindWxApp(self, request):
+        """删除应用绑定小程序
+
+        :param request: Request instance for DeleteAppBindWxApp.
+        :type request: :class:`tencentcloud.lowcode.v20210108.models.DeleteAppBindWxAppRequest`
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.DeleteAppBindWxAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAppBindWxApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAppBindWxAppResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -86,6 +132,29 @@ class LowcodeClient(AbstractClient):
             body = self.call("DeleteKnowledgeSet", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteKnowledgeSetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeployApp(self, request):
+        """发布应用
+
+        :param request: Request instance for DeployApp.
+        :type request: :class:`tencentcloud.lowcode.v20210108.models.DeployAppRequest`
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.DeployAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployAppResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -178,6 +247,29 @@ class LowcodeClient(AbstractClient):
             body = self.call("DescribeKnowledgeSetList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeKnowledgeSetListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PutWxAppIdToWeApp(self, request):
+        """接口提供应用绑定微信ID功能。
+
+        :param request: Request instance for PutWxAppIdToWeApp.
+        :type request: :class:`tencentcloud.lowcode.v20210108.models.PutWxAppIdToWeAppRequest`
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.PutWxAppIdToWeAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PutWxAppIdToWeApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.PutWxAppIdToWeAppResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

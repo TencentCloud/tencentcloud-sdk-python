@@ -227,6 +227,9 @@ INVALIDPARAMETERVALUE_DUPLICATEPARA = 'InvalidParameterValue.DuplicatePara'
 # 本端地域和端地域重复。
 INVALIDPARAMETERVALUE_DUPLICATEREGION = 'InvalidParameterValue.DuplicateRegion'
 
+# 指定的HaVip和实例存在绑定。
+INVALIDPARAMETERVALUE_DUPLICATEDHAVIPASSOCIATIONS = 'InvalidParameterValue.DuplicatedHaVipAssociations'
+
 # 当前IP已在其他公网IP类型的流量镜像中使用。
 INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = 'InvalidParameterValue.DuplicatedLbTrafficMirrorCollectors'
 
@@ -1387,6 +1390,9 @@ UNSUPPORTEDOPERATION_VPNCONNINVALIDSTATE = 'UnsupportedOperation.VpnConnInvalidS
 
 # SPD本端网段冲突，请检查后重试。
 UNSUPPORTEDOPERATION_VPNCONNSPDOVERLAP = 'UnsupportedOperation.VpnConnSPDOverlap'
+
+# 当前创建VPN网关所使用的VPC没有分配IPV6子网。
+UNSUPPORTEDOPERATION_VPNGATEWAYVPCNOIPV6SUBNET = 'UnsupportedOperation.VpnGatewayVpcNoIpv6Subnet'
 
 # VPC类型VPN网关必须携带VpcId。
 UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = 'UnsupportedOperation.VpnGwVpcIdMustHave'

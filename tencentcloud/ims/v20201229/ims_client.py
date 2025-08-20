@@ -94,7 +94,7 @@ class ImsClient(AbstractClient):
         - 图片尺寸支持：长和宽需大于50像素且小于10000像素，并且图片长宽比需小于90:1；
         - 分辨率建议：为保证识别效果，建议图片分辨率大于256x256。
         - 文件格式支持：
-            - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC
+            - **静态图**：BMP、ICO、JPEG、JNG、PNG、TIFF、RAW、SVG、GIF、WEBP、HEIC、AVIF
             - **动态图**：GIF、WEBP、HEIC（默认最多抽取5帧图像，每隔5帧进行一次采样）
         - 传输协议：仅支持HTTP和HTTPS协议的图片链接；
         - 并发请求与审核：每次仅能传输一条URL进行审核，支持多并发请求，默认并发量为100 QPS。超过此限制将返回`RequestLimitExceeded`错误；

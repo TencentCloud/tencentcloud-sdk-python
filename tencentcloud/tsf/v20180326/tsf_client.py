@@ -487,7 +487,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateFileConfigWithDetailResp(self, request):
-        """创建文件配置项，返回详细信息
+        """创建文件配置项，返回详细信息。
 
         :param request: Request instance for CreateFileConfigWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateFileConfigWithDetailRespRequest`
@@ -556,7 +556,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateLane(self, request):
-        """创建泳道
+        """创建泳道配置
 
         :param request: Request instance for CreateLane.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRequest`
@@ -579,7 +579,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateLaneRule(self, request):
-        """创建泳道规则
+        """创建灰度发布规则
 
         :param request: Request instance for CreateLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRuleRequest`
@@ -625,7 +625,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateMicroserviceWithDetailResp(self, request):
-        """新增微服务返回id
+        """新增微服务返回ID
 
         :param request: Request instance for CreateMicroserviceWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateMicroserviceWithDetailRespRequest`
@@ -763,7 +763,7 @@ class TsfClient(AbstractClient):
 
 
     def CreatePublicConfigWithDetailResp(self, request):
-        """创建公共配置项，并返回配置项详细信息
+        """创建公共配置项，并返回配置项详细信息。
 
         :param request: Request instance for CreatePublicConfigWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreatePublicConfigWithDetailRespRequest`
@@ -1177,7 +1177,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteLane(self, request):
-        """删除泳道
+        """删除泳道配置
 
         :param request: Request instance for DeleteLane.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneRequest`
@@ -1200,7 +1200,7 @@ class TsfClient(AbstractClient):
 
 
     def DeleteLaneRule(self, request):
-        """删除泳道规则
+        """删除灰度发布规则
 
         :param request: Request instance for DeleteLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneRuleRequest`
@@ -1640,7 +1640,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeApiVersions(self, request):
-        """查询API 版本
+        """查询API版本
 
         :param request: Request instance for DescribeApiVersions.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiVersionsRequest`
@@ -2057,7 +2057,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeContainerGroupDetail(self, request):
-        """容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
+        """容器部署组详情（已废弃，请使用  [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/product/649/67221)）
 
         :param request: Request instance for DescribeContainerGroupDetail.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupDetailRequest`
@@ -2196,7 +2196,7 @@ class TsfClient(AbstractClient):
 
     def DescribeDownloadInfo(self, request):
         """TSF上传的程序包存放在腾讯云对象存储（COS）中，通过该API可以获取从COS下载程序包需要的信息，包括包所在的桶、存储路径、鉴权信息等，之后使用COS API（或SDK）进行下载。
-        COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+        请查阅[COS相关文档](https://cloud.tencent.com/document/product/436)
 
         :param request: Request instance for DescribeDownloadInfo.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeDownloadInfoRequest`
@@ -2819,7 +2819,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeLaneRules(self, request):
-        """查询泳道规则列表
+        """查询灰度发布规则列表
 
         :param request: Request instance for DescribeLaneRules.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLaneRulesRequest`
@@ -2842,7 +2842,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeLanes(self, request):
-        """查询泳道列表
+        """查询泳道配置列表
 
         :param request: Request instance for DescribeLanes.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLanesRequest`
@@ -2855,6 +2855,52 @@ class TsfClient(AbstractClient):
             body = self.call("DescribeLanes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLanesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLicenses(self, request):
+        """查询许可列表
+
+        :param request: Request instance for DescribeLicenses.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLicensesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeLicensesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLicenses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLicensesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogCapacity(self, request):
+        """获取用户日志使用量
+
+        :param request: Request instance for DescribeLogCapacity.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLogCapacityRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeLogCapacityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogCapacity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogCapacityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3233,7 +3279,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeReleasedConfig(self, request):
-        """查询group发布的配置
+        """查询部署组发布的配置
 
         :param request: Request instance for DescribeReleasedConfig.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeReleasedConfigRequest`
@@ -3292,6 +3338,29 @@ class TsfClient(AbstractClient):
             body = self.call("DescribeRepository", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRepositoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceConfig(self, request):
+        """无
+
+        :param request: Request instance for DescribeResourceConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeResourceConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3625,7 +3694,7 @@ class TsfClient(AbstractClient):
 
     def DescribeUploadInfo(self, request):
         """TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
-        COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+        请查阅[COS相关文档](https://cloud.tencent.com/document/product/436)
 
         :param request: Request instance for DescribeUploadInfo.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUploadInfoRequest`
@@ -3671,7 +3740,7 @@ class TsfClient(AbstractClient):
 
 
     def DisableLaneRule(self, request):
-        """禁用泳道规则
+        """禁用灰度发布规则
 
         :param request: Request instance for DisableLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DisableLaneRuleRequest`
@@ -3855,7 +3924,7 @@ class TsfClient(AbstractClient):
 
 
     def EnableLaneRule(self, request):
-        """启用泳道规则
+        """启用灰度发布规则
 
         :param request: Request instance for EnableLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.EnableLaneRuleRequest`
@@ -4154,7 +4223,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyLane(self, request):
-        """更新泳道信息
+        """更新泳道配置信息
 
         :param request: Request instance for ModifyLane.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRequest`
@@ -4177,7 +4246,7 @@ class TsfClient(AbstractClient):
 
 
     def ModifyLaneRule(self, request):
-        """更新泳道规则
+        """更新灰度发布规则
 
         :param request: Request instance for ModifyLaneRule.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRuleRequest`
@@ -4525,7 +4594,7 @@ class TsfClient(AbstractClient):
 
 
     def ReleaseConfigWithDetailResp(self, request):
-        """发布配置,并且返回配置 ID
+        """发布配置，并且返回配置ID。
 
         :param request: Request instance for ReleaseConfigWithDetailResp.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseConfigWithDetailRespRequest`

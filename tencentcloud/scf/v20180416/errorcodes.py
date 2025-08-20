@@ -38,6 +38,9 @@ FAILEDOPERATION_AUTHFAILURE = 'FailedOperation.AuthFailure'
 # 绑定插件失败，请检查参数。
 FAILEDOPERATION_BINDPLUGIN = 'FailedOperation.BindPlugin'
 
+# CNAME解析错误
+FAILEDOPERATION_CNAME = 'FailedOperation.CNAME'
+
 # 调用 NetDeploy 失败。
 FAILEDOPERATION_CALLNETDEPLOYFAILED = 'FailedOperation.CallNetDeployFailed'
 
@@ -230,6 +233,9 @@ INTERNALERROR_GETROLEERROR = 'InternalError.GetRoleError'
 # 获取sts票据信息失败。
 INTERNALERROR_GETSTSTOKENFAILED = 'InternalError.GetStsTokenFailed'
 
+# 查找失败
+INTERNALERROR_SEARCHFAILED = 'InternalError.SearchFailed'
+
 # 内部系统错误。
 INTERNALERROR_SYSTEM = 'InternalError.System'
 
@@ -244,6 +250,9 @@ INVALIDPARAMETER_FUNCTIONNAME = 'InvalidParameter.FunctionName'
 
 # 资源ID和函数名参数不能同时为空。
 INVALIDPARAMETER_FUNCTIONNAMEORRESOURCEIDREQUIRED = 'InvalidParameter.FunctionNameOrResourceIdRequired'
+
+# GooseFsRequired 未必项。
+INVALIDPARAMETER_GOOSEFSREQUIRED = 'InvalidParameter.GooseFsRequired'
 
 # 创建函数传参异常。
 INVALIDPARAMETER_PARAMERROR = 'InvalidParameter.ParamError'
@@ -302,14 +311,38 @@ INVALIDPARAMETERVALUE_CDN = 'InvalidParameterValue.Cdn'
 # CertConfig配置为空。
 INVALIDPARAMETERVALUE_CERTCONFIG_EMPTY = 'InvalidParameterValue.CertConfig.empty'
 
+# CfsId参数异常。
+INVALIDPARAMETERVALUE_CFSID = 'InvalidParameterValue.CfsId'
+
+# CfsLocalMountDir参数异常。
+INVALIDPARAMETERVALUE_CFSLOCALMOUNTDIR = 'InvalidParameterValue.CfsLocalMountDir'
+
+# CfsMountInsId参数异常。
+INVALIDPARAMETERVALUE_CFSMOUNTINSID = 'InvalidParameterValue.CfsMountInsId'
+
 # cfs配置项重复。
 INVALIDPARAMETERVALUE_CFSPARAMETERDUPLICATE = 'InvalidParameterValue.CfsParameterDuplicate'
 
 # cfs配置项取值与规范不符。
 INVALIDPARAMETERVALUE_CFSPARAMETERERROR = 'InvalidParameterValue.CfsParameterError'
 
+# CfsRegion参数异常。
+INVALIDPARAMETERVALUE_CFSREGION = 'InvalidParameterValue.CfsRegion'
+
+# CfsRemoteMountDir参数异常。
+INVALIDPARAMETERVALUE_CFSREMOTEMOUNTDIR = 'InvalidParameterValue.CfsRemoteMountDir'
+
 # cfs参数格式与规范不符。
 INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = 'InvalidParameterValue.CfsStructionError'
+
+# CfsType参数异常。
+INVALIDPARAMETERVALUE_CFSTYPE = 'InvalidParameterValue.CfsType'
+
+# CfsUserGroupId参数异常。
+INVALIDPARAMETERVALUE_CFSUSERGROUPID = 'InvalidParameterValue.CfsUserGroupId'
+
+# CfsUserId参数异常。
+INVALIDPARAMETERVALUE_CFSUSERID = 'InvalidParameterValue.CfsUserId'
 
 # Ckafka传入错误。
 INVALIDPARAMETERVALUE_CKAFKA = 'InvalidParameterValue.Ckafka'
@@ -359,6 +392,24 @@ INVALIDPARAMETERVALUE_COSBUCKETNAME = 'InvalidParameterValue.CosBucketName'
 # CosBucketRegion取值与规范不符，请修正后再试。可参考：https://cloud.tencent.com/document/product/583/17244#Code。
 INVALIDPARAMETERVALUE_COSBUCKETREGION = 'InvalidParameterValue.CosBucketRegion'
 
+# CosFsBucketMountDir参数异常。
+INVALIDPARAMETERVALUE_COSFSBUCKETMOUNTDIR = 'InvalidParameterValue.CosFsBucketMountDir'
+
+# CosFsBucketName参数异常。
+INVALIDPARAMETERVALUE_COSFSBUCKETNAME = 'InvalidParameterValue.CosFsBucketName'
+
+# CosFsLocalMountDir参数异常。
+INVALIDPARAMETERVALUE_COSFSLOCALMOUNTDIR = 'InvalidParameterValue.CosFsLocalMountDir'
+
+# CosFsRegion参数异常。
+INVALIDPARAMETERVALUE_COSFSREGION = 'InvalidParameterValue.CosFsRegion'
+
+# CosFsStruction参数异常。
+INVALIDPARAMETERVALUE_COSFSSTRUCTION = 'InvalidParameterValue.CosFsStruction'
+
+# CosFsType参数异常。
+INVALIDPARAMETERVALUE_COSFSTYPE = 'InvalidParameterValue.CosFsType'
+
 # COS通知规则冲突。
 INVALIDPARAMETERVALUE_COSNOTIFYRULECONFLICT = 'InvalidParameterValue.CosNotifyRuleConflict'
 
@@ -391,6 +442,9 @@ INVALIDPARAMETERVALUE_DISKSIZE = 'InvalidParameterValue.DiskSize'
 
 # 环境变量DNS[OS_NAMESERVER]配置有误。
 INVALIDPARAMETERVALUE_DNSINFO = 'InvalidParameterValue.DnsInfo'
+
+# 域名参数非法
+INVALIDPARAMETERVALUE_DOMAIN = 'InvalidParameterValue.Domain'
 
 # DynamicEnabled 参数传入错误。
 INVALIDPARAMETERVALUE_DYNAMICENABLED = 'InvalidParameterValue.DynamicEnabled'
@@ -449,6 +503,36 @@ INVALIDPARAMETERVALUE_GITUSERNAME = 'InvalidParameterValue.GitUserName'
 # GitUserNameSecret 传参有误。
 INVALIDPARAMETERVALUE_GITUSERNAMESECRET = 'InvalidParameterValue.GitUserNameSecret'
 
+# GooseFsCluster参数异常。
+INVALIDPARAMETERVALUE_GOOSEFSCLUSTER = 'InvalidParameterValue.GooseFsCluster'
+
+# GooseFs SiteProperties 配置格式化失败。
+INVALIDPARAMETERVALUE_GOOSEFSCLUSTERGOOSEFSSITEPROPERTIESBASE64DECODEERR = 'InvalidParameterValue.GooseFsClusterGooseFsSitePropertiesBase64DecodeErr'
+
+# GooseFs SiteProperties 配置格式化异常。
+INVALIDPARAMETERVALUE_GOOSEFSCLUSTERGOOSEFSSITEPROPERTIESFORMATERR = 'InvalidParameterValue.GooseFsClusterGooseFsSitePropertiesFormatErr'
+
+# GooseFsEndpoint参数异常。
+INVALIDPARAMETERVALUE_GOOSEFSENDPOINT = 'InvalidParameterValue.GooseFsEndpoint'
+
+# GooseFsFuseJVMConfig参数异常。
+INVALIDPARAMETERVALUE_GOOSEFSFUSEJVMCONFIG = 'InvalidParameterValue.GooseFsFuseJVMConfig'
+
+# GooseFsLocalMountDir参数异常。
+INVALIDPARAMETERVALUE_GOOSEFSLOCALMOUNTDIR = 'InvalidParameterValue.GooseFsLocalMountDir'
+
+# GooseFsNamespace参数异常。
+INVALIDPARAMETERVALUE_GOOSEFSNAMESPACE = 'InvalidParameterValue.GooseFsNamespace'
+
+# GooseFsRemoteMountPath参数异常。
+INVALIDPARAMETERVALUE_GOOSEFSREMOTEMOUNTPATH = 'InvalidParameterValue.GooseFsRemoteMountPath'
+
+# GooseFsStructionError参数异常。
+INVALIDPARAMETERVALUE_GOOSEFSSTRUCTIONERROR = 'InvalidParameterValue.GooseFsStructionError'
+
+# GooseFsType参数异常。
+INVALIDPARAMETERVALUE_GOOSEFSTYPE = 'InvalidParameterValue.GooseFsType'
+
 # Handler传入错误。
 INVALIDPARAMETERVALUE_HANDLER = 'InvalidParameterValue.Handler'
 
@@ -466,6 +550,9 @@ INVALIDPARAMETERVALUE_INLINEZIPFILE = 'InvalidParameterValue.InlineZipFile'
 
 # InstanceConcurrencyConfig 参数传入错误。
 INVALIDPARAMETERVALUE_INSTANCECONCURRENCYCONFIG = 'InvalidParameterValue.InstanceConcurrencyConfig'
+
+# 证书配置错误
+INVALIDPARAMETERVALUE_INVALIDCERTCONFIG = 'InvalidParameterValue.InvalidCertConfig'
 
 # InvokeType取值与规范不符，请修正后再试。
 INVALIDPARAMETERVALUE_INVOKETYPE = 'InvalidParameterValue.InvokeType'
@@ -500,6 +587,9 @@ INVALIDPARAMETERVALUE_MEMORYSIZE = 'InvalidParameterValue.MemorySize'
 # MinCapacity 参数传入错误。
 INVALIDPARAMETERVALUE_MINCAPACITY = 'InvalidParameterValue.MinCapacity'
 
+# MountOption参数异常。
+INVALIDPARAMETERVALUE_MOUNTOPTION = 'InvalidParameterValue.MountOption'
+
 # Name参数传入错误。
 INVALIDPARAMETERVALUE_NAME = 'InvalidParameterValue.Name'
 
@@ -526,6 +616,12 @@ INVALIDPARAMETERVALUE_ORDERBY = 'InvalidParameterValue.OrderBy'
 
 # 入参不是标准的json。
 INVALIDPARAMETERVALUE_PARAM = 'InvalidParameterValue.Param'
+
+# Permission参数异常。
+INVALIDPARAMETERVALUE_PERMISSION = 'InvalidParameterValue.Permission'
+
+# PluginConfig 参数异常。
+INVALIDPARAMETERVALUE_PLUGINCONFIG = 'InvalidParameterValue.PluginConfig'
 
 # ProtocolType参数传入错误。
 INVALIDPARAMETERVALUE_PROTOCOLTYPE = 'InvalidParameterValue.ProtocolType'
@@ -644,6 +740,9 @@ LIMITEXCEEDED_CONTAINERIMAGEACCELERATEQUOTA = 'LimitExceeded.ContainerImageAccel
 # eip资源超限。
 LIMITEXCEEDED_EIP = 'LimitExceeded.Eip'
 
+# 文件数超限
+LIMITEXCEEDED_FS = 'LimitExceeded.Fs'
+
 # 函数数量超出最大限制 ，可通过[提交工单](https://cloud.tencent.com/act/event/Online_service?from=scf%7Cindex)申请提升限制。
 LIMITEXCEEDED_FUNCTION = 'LimitExceeded.Function'
 
@@ -661,6 +760,12 @@ LIMITEXCEEDED_FUNCTIONTOTALPROVISIONEDCONCURRENCYMEMORY = 'LimitExceeded.Functio
 
 # 函数预置并发总数达到限制。
 LIMITEXCEEDED_FUNCTIONTOTALPROVISIONEDCONCURRENCYNUM = 'LimitExceeded.FunctionTotalProvisionedConcurrencyNum'
+
+# 函数版本超限
+LIMITEXCEEDED_FUNCTIONVERSIONS = 'LimitExceeded.FunctionVersions'
+
+# GPU预留额度不足
+LIMITEXCEEDED_GPURESERVEDQUOTA = 'LimitExceeded.GpuReservedQuota'
 
 # InitTimeout达到限制，可提交工单申请提升限制：https://tencentcs.com/7Fixwt63。
 LIMITEXCEEDED_INITTIMEOUT = 'LimitExceeded.InitTimeout'
@@ -803,6 +908,9 @@ RESOURCENOTFOUND_CMQ = 'ResourceNotFound.Cmq'
 # Cos不存在。
 RESOURCENOTFOUND_COS = 'ResourceNotFound.Cos'
 
+# Cos对象不存在
+RESOURCENOTFOUND_COSOBJECT = 'ResourceNotFound.CosObject'
+
 # 不存在的Demo。
 RESOURCENOTFOUND_DEMO = 'ResourceNotFound.Demo'
 
@@ -820,6 +928,15 @@ RESOURCENOTFOUND_GETCFSMOUNTINSERROR = 'ResourceNotFound.GetCfsMountInsError'
 
 # 获取cfs信息错误。
 RESOURCENOTFOUND_GETCFSNOTMATCH = 'ResourceNotFound.GetCfsNotMatch'
+
+# GooseFsClusterEndpoint 不存在。
+RESOURCENOTFOUND_GOOSEFSCLUSTERENDPOINT = 'ResourceNotFound.GooseFsClusterEndpoint'
+
+# GooseFsClusterId 不存在。
+RESOURCENOTFOUND_GOOSEFSCLUSTERID = 'ResourceNotFound.GooseFsClusterId'
+
+# GooseFsClusterNamespace 不存在。
+RESOURCENOTFOUND_GOOSEFSCLUSTERNAMESPACE = 'ResourceNotFound.GooseFsClusterNamespace'
 
 # 未找到指定的ImageConfig，请创建后再试。
 RESOURCENOTFOUND_IMAGECONFIG = 'ResourceNotFound.ImageConfig'

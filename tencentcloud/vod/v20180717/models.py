@@ -13852,11 +13852,14 @@ class ComplexAdaptiveDynamicStreamingTaskAudioInput(AbstractModel):
 <li>NO：不设置为默认音频（默认值）。</li>
 
         :type Default: str
+        :param _AudioTrackIdx: 音轨序号，表示选择音频源中的第几个音轨，从0开始计数。默认值为0，表示选择最靠前的音轨。
+        :type AudioTrackIdx: int
         """
         self._FileId = None
         self._Name = None
         self._Language = None
         self._Default = None
+        self._AudioTrackIdx = None
 
     @property
     def FileId(self):
@@ -13905,12 +13908,24 @@ class ComplexAdaptiveDynamicStreamingTaskAudioInput(AbstractModel):
     def Default(self, Default):
         self._Default = Default
 
+    @property
+    def AudioTrackIdx(self):
+        """音轨序号，表示选择音频源中的第几个音轨，从0开始计数。默认值为0，表示选择最靠前的音轨。
+        :rtype: int
+        """
+        return self._AudioTrackIdx
+
+    @AudioTrackIdx.setter
+    def AudioTrackIdx(self, AudioTrackIdx):
+        self._AudioTrackIdx = AudioTrackIdx
+
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
         self._Name = params.get("Name")
         self._Language = params.get("Language")
         self._Default = params.get("Default")
+        self._AudioTrackIdx = params.get("AudioTrackIdx")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18901,6 +18916,127 @@ class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMPSTemplateRequest(AbstractModel):
+    """CreateMPSTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _TemplateType: 需要创建的 MPS 模板的类型。取值：
+<li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
+        :type TemplateType: str
+        :param _MPSCreateTemplateParams: MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
+目前仅支持通过此方式创建以下任务类型的模板：
+1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填，且 Container 目前暂不支持 hls。
+
+目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
+
+        :type MPSCreateTemplateParams: str
+        """
+        self._SubAppId = None
+        self._TemplateType = None
+        self._MPSCreateTemplateParams = None
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def TemplateType(self):
+        """需要创建的 MPS 模板的类型。取值：
+<li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def MPSCreateTemplateParams(self):
+        """MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
+目前仅支持通过此方式创建以下任务类型的模板：
+1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填，且 Container 目前暂不支持 hls。
+
+目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
+
+        :rtype: str
+        """
+        return self._MPSCreateTemplateParams
+
+    @MPSCreateTemplateParams.setter
+    def MPSCreateTemplateParams(self, MPSCreateTemplateParams):
+        self._MPSCreateTemplateParams = MPSCreateTemplateParams
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._TemplateType = params.get("TemplateType")
+        self._MPSCreateTemplateParams = params.get("MPSCreateTemplateParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMPSTemplateResponse(AbstractModel):
+    """CreateMPSTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: MPS 任务模板唯一标识。该模板独立于直接在 MPS 服务中创建的模板。
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        """MPS 任务模板唯一标识。该模板独立于直接在 MPS 服务中创建的模板。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePersonSampleRequest(AbstractModel):
     """CreatePersonSample请求参数结构体
 
@@ -19109,7 +19245,9 @@ class CreateProcedureTemplateRequest(AbstractModel):
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param _AiAnalysisTask: AI 内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTask: AI 内容识别类型任务参数。
+        :param _AiRecognitionTaskSet: AI 内容识别类型任务参数。
+        :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
+        :param _AiRecognitionTask: 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         :param _ReviewAudioVideoTask: 音视频审核类型任务参数。
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
@@ -19120,6 +19258,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         self._MediaProcessTask = None
         self._AiContentReviewTask = None
         self._AiAnalysisTask = None
+        self._AiRecognitionTaskSet = None
         self._AiRecognitionTask = None
         self._ReviewAudioVideoTask = None
 
@@ -19191,14 +19330,29 @@ class CreateProcedureTemplateRequest(AbstractModel):
         self._AiAnalysisTask = AiAnalysisTask
 
     @property
-    def AiRecognitionTask(self):
+    def AiRecognitionTaskSet(self):
         """AI 内容识别类型任务参数。
+        :rtype: list of AiRecognitionTaskInput
+        """
+        return self._AiRecognitionTaskSet
+
+    @AiRecognitionTaskSet.setter
+    def AiRecognitionTaskSet(self, AiRecognitionTaskSet):
+        self._AiRecognitionTaskSet = AiRecognitionTaskSet
+
+    @property
+    def AiRecognitionTask(self):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
+        """该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
     def AiRecognitionTask(self, AiRecognitionTask):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
         self._AiRecognitionTask = AiRecognitionTask
 
     @property
@@ -19226,6 +19380,12 @@ class CreateProcedureTemplateRequest(AbstractModel):
         if params.get("AiAnalysisTask") is not None:
             self._AiAnalysisTask = AiAnalysisTaskInput()
             self._AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTaskSet") is not None:
+            self._AiRecognitionTaskSet = []
+            for item in params.get("AiRecognitionTaskSet"):
+                obj = AiRecognitionTaskInput()
+                obj._deserialize(item)
+                self._AiRecognitionTaskSet.append(obj)
         if params.get("AiRecognitionTask") is not None:
             self._AiRecognitionTask = AiRecognitionTaskInput()
             self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
@@ -22898,6 +23058,102 @@ class DeleteJustInTimeTranscodeTemplateRequest(AbstractModel):
 
 class DeleteJustInTimeTranscodeTemplateResponse(AbstractModel):
     """DeleteJustInTimeTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteMPSTemplateRequest(AbstractModel):
+    """DeleteMPSTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _TemplateType: 需要删除的 MPS 模板的类型。取值：
+<li>Transcode: 删除转码模板。</li>
+        :type TemplateType: str
+        :param _Definition: MPS 任务模板唯一标识。
+        :type Definition: int
+        """
+        self._SubAppId = None
+        self._TemplateType = None
+        self._Definition = None
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def TemplateType(self):
+        """需要删除的 MPS 模板的类型。取值：
+<li>Transcode: 删除转码模板。</li>
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def Definition(self):
+        """MPS 任务模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._TemplateType = params.get("TemplateType")
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMPSTemplateResponse(AbstractModel):
+    """DeleteMPSTemplate返回参数结构体
 
     """
 
@@ -28443,8 +28699,9 @@ class DescribeLicenseUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
-        :param _LicenseType: License 类型，默认为 DRM 。目前支持的 License 类型包括：
-<li> DRM: DRM 加密播放 License</li>
+        :param _LicenseType: License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
+<li> CommercialDRMLicense: 商业级 DRM License</li>
+<li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
         :type LicenseType: str
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
@@ -28478,8 +28735,9 @@ class DescribeLicenseUsageDataRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        """License 类型，默认为 DRM 。目前支持的 License 类型包括：
-<li> DRM: DRM 加密播放 License</li>
+        """License 类型，默认为 CommercialDRMLicense 。目前支持的 License 类型包括：
+<li> CommercialDRMLicense: 商业级 DRM License</li>
+<li> JITEncryptionDRMLicense: 即时加密 DRM License</li>
         :rtype: str
         """
         return self._LicenseType
@@ -28560,6 +28818,139 @@ class DescribeLicenseUsageDataResponse(AbstractModel):
                 obj = LicenseUsageDataItem()
                 obj._deserialize(item)
                 self._LicenseUsageDataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMPSTemplatesRequest(AbstractModel):
+    """DescribeMPSTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _TemplateType: MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
+<li>Transcode: 查询转码模板列表。</li>
+        :type TemplateType: str
+        :param _MPSDescribeTemplateParams: MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
+1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+        :type MPSDescribeTemplateParams: str
+        """
+        self._SubAppId = None
+        self._TemplateType = None
+        self._MPSDescribeTemplateParams = None
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def TemplateType(self):
+        """MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
+<li>Transcode: 查询转码模板列表。</li>
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def MPSDescribeTemplateParams(self):
+        """MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
+1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+        :rtype: str
+        """
+        return self._MPSDescribeTemplateParams
+
+    @MPSDescribeTemplateParams.setter
+    def MPSDescribeTemplateParams(self, MPSDescribeTemplateParams):
+        self._MPSDescribeTemplateParams = MPSDescribeTemplateParams
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._TemplateType = params.get("TemplateType")
+        self._MPSDescribeTemplateParams = params.get("MPSDescribeTemplateParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMPSTemplatesResponse(AbstractModel):
+    """DescribeMPSTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _MPSTemplateSet: MPS 任务模板详情列表。
+        :type MPSTemplateSet: list of MPSTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._MPSTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MPSTemplateSet(self):
+        """MPS 任务模板详情列表。
+        :rtype: list of MPSTemplate
+        """
+        return self._MPSTemplateSet
+
+    @MPSTemplateSet.setter
+    def MPSTemplateSet(self, MPSTemplateSet):
+        self._MPSTemplateSet = MPSTemplateSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("MPSTemplateSet") is not None:
+            self._MPSTemplateSet = []
+            for item in params.get("MPSTemplateSet"):
+                obj = MPSTemplate()
+                obj._deserialize(item)
+                self._MPSTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -28903,6 +29294,8 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
+<li>JITEncryption: 即时加密</li>
+
         :type Type: str
         """
         self._StartTime = None
@@ -28969,6 +29362,8 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
+<li>JITEncryption: 即时加密</li>
+
         :rtype: str
         """
         return self._Type
@@ -31476,7 +31871,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务。</li>
+        :param _TaskType: 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务。</li>
         :type TaskType: str
         :param _Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -31556,6 +31951,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _ComplexAdaptiveDynamicStreamingTask: 复杂自适应码流任务信息，仅当 TaskType 为 ComplexAdaptiveDynamicStreaming，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComplexAdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTask`
+        :param _ProcessMediaByMPSTask: MPS 视频处理任务信息，仅当 TaskType 为 ProcessMediaByMPS，该字段有值。
+        :type ProcessMediaByMPSTask: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -31586,11 +31983,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._QualityInspectTask = None
         self._QualityEnhanceTask = None
         self._ComplexAdaptiveDynamicStreamingTask = None
+        self._ProcessMediaByMPSTask = None
         self._RequestId = None
 
     @property
     def TaskType(self):
-        """任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务。</li>
+        """任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务。</li>
         :rtype: str
         """
         return self._TaskType
@@ -31912,6 +32310,17 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._ComplexAdaptiveDynamicStreamingTask = ComplexAdaptiveDynamicStreamingTask
 
     @property
+    def ProcessMediaByMPSTask(self):
+        """MPS 视频处理任务信息，仅当 TaskType 为 ProcessMediaByMPS，该字段有值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
+        """
+        return self._ProcessMediaByMPSTask
+
+    @ProcessMediaByMPSTask.setter
+    def ProcessMediaByMPSTask(self, ProcessMediaByMPSTask):
+        self._ProcessMediaByMPSTask = ProcessMediaByMPSTask
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -31995,6 +32404,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("ComplexAdaptiveDynamicStreamingTask") is not None:
             self._ComplexAdaptiveDynamicStreamingTask = ComplexAdaptiveDynamicStreamingTask()
             self._ComplexAdaptiveDynamicStreamingTask._deserialize(params.get("ComplexAdaptiveDynamicStreamingTask"))
+        if params.get("ProcessMediaByMPSTask") is not None:
+            self._ProcessMediaByMPSTask = ProcessMediaByMPS()
+            self._ProcessMediaByMPSTask._deserialize(params.get("ProcessMediaByMPSTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -35107,6 +35519,7 @@ class EventContent(AbstractModel):
 <li>QualityEnhanceComplete：音画质重生任务完成；</li>
 <li>PersistenceComplete：剪辑固化完成；</li>
 <li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li>
+<li>ProcessMediaByMPSComplete：MPS视频处理完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -35195,6 +35608,8 @@ class EventContent(AbstractModel):
         :param _ComplexAdaptiveDynamicStreamingCompleteEvent: 自适应码流任务信息，仅当 EventType 为ComplexAdaptiveDynamicStreamingComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComplexAdaptiveDynamicStreamingCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTask`
+        :param _ProcessMediaByMPSCompleteEvent: MPS 视频处理任务信息，仅当 EventType 为 ProcessMediaByMPSComplete 时有效。
+        :type ProcessMediaByMPSCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
         """
         self._EventHandle = None
         self._EventType = None
@@ -35225,6 +35640,7 @@ class EventContent(AbstractModel):
         self._MediaCastStatusChangedEvent = None
         self._PersistenceCompleteEvent = None
         self._ComplexAdaptiveDynamicStreamingCompleteEvent = None
+        self._ProcessMediaByMPSCompleteEvent = None
 
     @property
     def EventHandle(self):
@@ -35259,6 +35675,7 @@ class EventContent(AbstractModel):
 <li>QualityEnhanceComplete：音画质重生任务完成；</li>
 <li>PersistenceComplete：剪辑固化完成；</li>
 <li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li>
+<li>ProcessMediaByMPSComplete：MPS视频处理完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -35597,6 +36014,17 @@ class EventContent(AbstractModel):
     def ComplexAdaptiveDynamicStreamingCompleteEvent(self, ComplexAdaptiveDynamicStreamingCompleteEvent):
         self._ComplexAdaptiveDynamicStreamingCompleteEvent = ComplexAdaptiveDynamicStreamingCompleteEvent
 
+    @property
+    def ProcessMediaByMPSCompleteEvent(self):
+        """MPS 视频处理任务信息，仅当 EventType 为 ProcessMediaByMPSComplete 时有效。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
+        """
+        return self._ProcessMediaByMPSCompleteEvent
+
+    @ProcessMediaByMPSCompleteEvent.setter
+    def ProcessMediaByMPSCompleteEvent(self, ProcessMediaByMPSCompleteEvent):
+        self._ProcessMediaByMPSCompleteEvent = ProcessMediaByMPSCompleteEvent
+
 
     def _deserialize(self, params):
         self._EventHandle = params.get("EventHandle")
@@ -35682,6 +36110,9 @@ class EventContent(AbstractModel):
         if params.get("ComplexAdaptiveDynamicStreamingCompleteEvent") is not None:
             self._ComplexAdaptiveDynamicStreamingCompleteEvent = ComplexAdaptiveDynamicStreamingTask()
             self._ComplexAdaptiveDynamicStreamingCompleteEvent._deserialize(params.get("ComplexAdaptiveDynamicStreamingCompleteEvent"))
+        if params.get("ProcessMediaByMPSCompleteEvent") is not None:
+            self._ProcessMediaByMPSCompleteEvent = ProcessMediaByMPS()
+            self._ProcessMediaByMPSCompleteEvent._deserialize(params.get("ProcessMediaByMPSCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37851,10 +38282,12 @@ class HandleCurrentPlaylistRequest(AbstractModel):
         :type SubAppId: int
         :param _RoundPlayId: 轮播播单唯一标识。
         :type RoundPlayId: str
-        :param _Operation: 操作类型，取值有：<li>Insert：向当前播放列表插入播放节目。</li> <li>InsertTemporary：向当前播放列表临时插入播放节目。只能插入到当前正在播放的节目后面，临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的播放节目。不能删除正在播放的节目。</li>
+        :param _Operation: 操作类型，取值有：<li>Insert：向当前播放列表插入节目。插入的节目在后续轮播过程仍然有效。</li> <li>InsertTemporary：向当前播放列表临时插入节目。临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的节目。不能删除正在播放的节目。</li>
         :type Operation: str
-        :param _ItemId: 播单节目 ID。当 Operation 为 Insert 时必填，表示插入的节目列表位于该播放节目之后。插入的位置必须在当前正在播放的节目之后。
+        :param _ItemId: 播单节目 ID。 <li>当 Operation 为 Insert 时，该字段必填，表示插入的节目列表位于该节目之后。</li> <li>当 Operation 为 InsertTemporary 时，该字段选填，不填时表示插入节目到最近的一个插入点上。当该字段填写时，如果同时填写 SegmentIndex，表示节目被插入到 ItemId 对应节目的第 SegmentIndex 分片后面，否则插入到该节目之后。</li> <li>当 Operation 为 Delete 时，该字段必填，表示删除该节目。不能删除正在播放的节目。</li>
         :type ItemId: str
+        :param _SegmentIndex: M3U8 文件分片的索引号。M3U8 文件第一个分片的 SegmentIndex 为0。当 Operation 为 InsertTemporary 且 ItemId 有值时该参数有效。
+        :type SegmentIndex: int
         :param _RoundPlaylist: 节目列表。当 Operation 为 Insert、InsertTemporary、Delete 时必填，表示要操作的节目列表。列表长度最大为10。
         :type RoundPlaylist: list of RoundPlayListItemInfo
         """
@@ -37862,6 +38295,7 @@ class HandleCurrentPlaylistRequest(AbstractModel):
         self._RoundPlayId = None
         self._Operation = None
         self._ItemId = None
+        self._SegmentIndex = None
         self._RoundPlaylist = None
 
     @property
@@ -37888,7 +38322,7 @@ class HandleCurrentPlaylistRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """操作类型，取值有：<li>Insert：向当前播放列表插入播放节目。</li> <li>InsertTemporary：向当前播放列表临时插入播放节目。只能插入到当前正在播放的节目后面，临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的播放节目。不能删除正在播放的节目。</li>
+        """操作类型，取值有：<li>Insert：向当前播放列表插入节目。插入的节目在后续轮播过程仍然有效。</li> <li>InsertTemporary：向当前播放列表临时插入节目。临时插入的节目只在本次轮播过程生效。</li><li>Delete：删除播放列表中的节目。不能删除正在播放的节目。</li>
         :rtype: str
         """
         return self._Operation
@@ -37899,7 +38333,7 @@ class HandleCurrentPlaylistRequest(AbstractModel):
 
     @property
     def ItemId(self):
-        """播单节目 ID。当 Operation 为 Insert 时必填，表示插入的节目列表位于该播放节目之后。插入的位置必须在当前正在播放的节目之后。
+        """播单节目 ID。 <li>当 Operation 为 Insert 时，该字段必填，表示插入的节目列表位于该节目之后。</li> <li>当 Operation 为 InsertTemporary 时，该字段选填，不填时表示插入节目到最近的一个插入点上。当该字段填写时，如果同时填写 SegmentIndex，表示节目被插入到 ItemId 对应节目的第 SegmentIndex 分片后面，否则插入到该节目之后。</li> <li>当 Operation 为 Delete 时，该字段必填，表示删除该节目。不能删除正在播放的节目。</li>
         :rtype: str
         """
         return self._ItemId
@@ -37907,6 +38341,17 @@ class HandleCurrentPlaylistRequest(AbstractModel):
     @ItemId.setter
     def ItemId(self, ItemId):
         self._ItemId = ItemId
+
+    @property
+    def SegmentIndex(self):
+        """M3U8 文件分片的索引号。M3U8 文件第一个分片的 SegmentIndex 为0。当 Operation 为 InsertTemporary 且 ItemId 有值时该参数有效。
+        :rtype: int
+        """
+        return self._SegmentIndex
+
+    @SegmentIndex.setter
+    def SegmentIndex(self, SegmentIndex):
+        self._SegmentIndex = SegmentIndex
 
     @property
     def RoundPlaylist(self):
@@ -37925,6 +38370,7 @@ class HandleCurrentPlaylistRequest(AbstractModel):
         self._RoundPlayId = params.get("RoundPlayId")
         self._Operation = params.get("Operation")
         self._ItemId = params.get("ItemId")
+        self._SegmentIndex = params.get("SegmentIndex")
         if params.get("RoundPlaylist") is not None:
             self._RoundPlaylist = []
             for item in params.get("RoundPlaylist"):
@@ -40757,6 +41203,326 @@ class LowLightEnhanceInfo(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSOutputFile(AbstractModel):
+    """用于描述 MPS 视频处理任务中的返回文件结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: 文件类型。用于标识 MPS 视频处理任务执行结果中的特定返回文件。
+取值：<li>AiAnalysis.DeLogo.Video: 智能擦除任务中产生的擦除后视频文件，默认以原文件类型存储；</li><li>AiAnalysis.DeLogo.OriginSubtitle: 智能擦除任务中基于画面提取的字幕文件；</li><li>AiAnalysis.DeLogo.TranslateSubtitle: 智能擦除任务中基于画面提取的字幕翻译文件。</li><li>MediaProcess.Transcode.Video: 音视频增强任务中增强后的音视频文件，默认以转码文件类型存储。</li>
+        :type FileType: str
+        :param _StorageMode: 存储形式。用于表示该结果文件的存储形式，取值有：<li> Permanent：永久存储；</li><li> Temporary：临时存储。</li>
+        :type StorageMode: str
+        :param _FileId: 媒体文件 ID。当 Type 为 Permanent 时有效，表示该结果文件以视频媒资形式存储在点播平台中，字段值为视频媒资的 FileId。
+        :type FileId: str
+        :param _Url: 结果文件的可下载 Url。
+        :type Url: str
+        :param _Definition: 转码规格 ID。当 FileType 等于 MediaProcess.Transcode.Video时有效，取值为0表示原始文件。 
+        :type Definition: str
+        :param _ExpiredTime: 过期时间。当 StorageMode 为 Temporary 时有效，表示 Url 的过期时间，单位为秒。
+        :type ExpiredTime: int
+        """
+        self._FileType = None
+        self._StorageMode = None
+        self._FileId = None
+        self._Url = None
+        self._Definition = None
+        self._ExpiredTime = None
+
+    @property
+    def FileType(self):
+        """文件类型。用于标识 MPS 视频处理任务执行结果中的特定返回文件。
+取值：<li>AiAnalysis.DeLogo.Video: 智能擦除任务中产生的擦除后视频文件，默认以原文件类型存储；</li><li>AiAnalysis.DeLogo.OriginSubtitle: 智能擦除任务中基于画面提取的字幕文件；</li><li>AiAnalysis.DeLogo.TranslateSubtitle: 智能擦除任务中基于画面提取的字幕翻译文件。</li><li>MediaProcess.Transcode.Video: 音视频增强任务中增强后的音视频文件，默认以转码文件类型存储。</li>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def StorageMode(self):
+        """存储形式。用于表示该结果文件的存储形式，取值有：<li> Permanent：永久存储；</li><li> Temporary：临时存储。</li>
+        :rtype: str
+        """
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def FileId(self):
+        """媒体文件 ID。当 Type 为 Permanent 时有效，表示该结果文件以视频媒资形式存储在点播平台中，字段值为视频媒资的 FileId。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        """结果文件的可下载 Url。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Definition(self):
+        """转码规格 ID。当 FileType 等于 MediaProcess.Transcode.Video时有效，取值为0表示原始文件。 
+        :rtype: str
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def ExpiredTime(self):
+        """过期时间。当 StorageMode 为 Temporary 时有效，表示 Url 的过期时间，单位为秒。
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._StorageMode = params.get("StorageMode")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        self._Definition = params.get("Definition")
+        self._ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSSubTaskResult(AbstractModel):
+    """MPS 具体子任务查询结果类型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: 任务类型。MPS 的 WorkflowTask 结构中的具体子任务类型。取值：<li>AiAnalysis.DeLogo：智能擦除任务。</li><li>MediaProcess.Transcode：音视频增强任务。</li>
+        :type TaskType: str
+        :param _Status: 任务状态。有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCode: 错误码。返回0时成功，其他值为失败。
+        :type ErrCode: str
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: MPS 视频处理任务输入。该字段对应 MPS 任务返回中的 Input 结果，以 JSON 格式返回。
+        :type Input: str
+        :param _Output: MPS 视频处理任务输出。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.MPSTaskOutput`
+        """
+        self._TaskType = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def TaskType(self):
+        """任务类型。MPS 的 WorkflowTask 结构中的具体子任务类型。取值：<li>AiAnalysis.DeLogo：智能擦除任务。</li><li>MediaProcess.Transcode：音视频增强任务。</li>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Status(self):
+        """任务状态。有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        """错误码。返回0时成功，其他值为失败。
+        :rtype: str
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """MPS 视频处理任务输入。该字段对应 MPS 任务返回中的 Input 结果，以 JSON 格式返回。
+        :rtype: str
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """MPS 视频处理任务输出。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSTaskOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._Input = params.get("Input")
+        if params.get("Output") is not None:
+            self._Output = MPSTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSTaskOutput(AbstractModel):
+    """MPS 子任务输出返回结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputFiles: 任务返回结果中的文件类型结果。如智能擦除中，擦除后的视频文件将被存入媒资，并在此字段中给出 FileId；基于画面提取的字幕文件 Url 将在此字段中给出。
+        :type OutputFiles: list of MPSOutputFile
+        """
+        self._OutputFiles = None
+
+    @property
+    def OutputFiles(self):
+        """任务返回结果中的文件类型结果。如智能擦除中，擦除后的视频文件将被存入媒资，并在此字段中给出 FileId；基于画面提取的字幕文件 Url 将在此字段中给出。
+        :rtype: list of MPSOutputFile
+        """
+        return self._OutputFiles
+
+    @OutputFiles.setter
+    def OutputFiles(self, OutputFiles):
+        self._OutputFiles = OutputFiles
+
+
+    def _deserialize(self, params):
+        if params.get("OutputFiles") is not None:
+            self._OutputFiles = []
+            for item in params.get("OutputFiles"):
+                obj = MPSOutputFile()
+                obj._deserialize(item)
+                self._OutputFiles.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSTemplate(AbstractModel):
+    """MPS 任务模板详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: MPS 模板的类型。取值：
+<li>Transcode: 转码模板。</li>
+        :type TaskType: str
+        :param _MPSTemplateInfo: MPS 任务模板详情内容。
+        :type MPSTemplateInfo: str
+        """
+        self._TaskType = None
+        self._MPSTemplateInfo = None
+
+    @property
+    def TaskType(self):
+        """MPS 模板的类型。取值：
+<li>Transcode: 转码模板。</li>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def MPSTemplateInfo(self):
+        """MPS 任务模板详情内容。
+        :rtype: str
+        """
+        return self._MPSTemplateInfo
+
+    @MPSTemplateInfo.setter
+    def MPSTemplateInfo(self, MPSTemplateInfo):
+        self._MPSTemplateInfo = MPSTemplateInfo
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._MPSTemplateInfo = params.get("MPSTemplateInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49172,6 +49938,106 @@ class ModifyJustInTimeTranscodeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMPSTemplateRequest(AbstractModel):
+    """ModifyMPSTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _TemplateType: 需要修改的 MPS 模板的类型。取值：
+<li>Transcode: 创建转码模板，目前仅支持修改增强参数。</li>
+        :type TemplateType: str
+        :param _MPSModifyTemplateParams: MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。
+ 目前仅支持通过此方式修改以下任务类型的模板：
+1. 音视频增强：仅支持填写“[修改转码模板](https://cloud.tencent.com/document/api/862/37578)”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+        :type MPSModifyTemplateParams: str
+        """
+        self._SubAppId = None
+        self._TemplateType = None
+        self._MPSModifyTemplateParams = None
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def TemplateType(self):
+        """需要修改的 MPS 模板的类型。取值：
+<li>Transcode: 创建转码模板，目前仅支持修改增强参数。</li>
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def MPSModifyTemplateParams(self):
+        """MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。
+ 目前仅支持通过此方式修改以下任务类型的模板：
+1. 音视频增强：仅支持填写“[修改转码模板](https://cloud.tencent.com/document/api/862/37578)”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+        :rtype: str
+        """
+        return self._MPSModifyTemplateParams
+
+    @MPSModifyTemplateParams.setter
+    def MPSModifyTemplateParams(self, MPSModifyTemplateParams):
+        self._MPSModifyTemplateParams = MPSModifyTemplateParams
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._TemplateType = params.get("TemplateType")
+        self._MPSModifyTemplateParams = params.get("MPSModifyTemplateParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMPSTemplateResponse(AbstractModel):
+    """ModifyMPSTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyMediaInfoRequest(AbstractModel):
     """ModifyMediaInfo请求参数结构体
 
@@ -55654,7 +56520,9 @@ class ProcedureTemplate(AbstractModel):
         :param _AiAnalysisTask: AI 智能内容分析类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTask: AI 内容识别类型任务参数。
+        :param _AiRecognitionTaskSet: AI 内容识别类型任务参数。
+        :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
+        :param _AiRecognitionTask: 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         :param _MiniProgramPublishTask: 微信小程序发布任务参数。
@@ -55674,6 +56542,7 @@ class ProcedureTemplate(AbstractModel):
         self._MediaProcessTask = None
         self._AiContentReviewTask = None
         self._AiAnalysisTask = None
+        self._AiRecognitionTaskSet = None
         self._AiRecognitionTask = None
         self._MiniProgramPublishTask = None
         self._ReviewAudioVideoTask = None
@@ -55753,8 +56622,21 @@ class ProcedureTemplate(AbstractModel):
         self._AiAnalysisTask = AiAnalysisTask
 
     @property
-    def AiRecognitionTask(self):
+    def AiRecognitionTaskSet(self):
         """AI 内容识别类型任务参数。
+        :rtype: list of AiRecognitionTaskInput
+        """
+        return self._AiRecognitionTaskSet
+
+    @AiRecognitionTaskSet.setter
+    def AiRecognitionTaskSet(self, AiRecognitionTaskSet):
+        self._AiRecognitionTaskSet = AiRecognitionTaskSet
+
+    @property
+    def AiRecognitionTask(self):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
+        """该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         """
@@ -55762,6 +56644,8 @@ class ProcedureTemplate(AbstractModel):
 
     @AiRecognitionTask.setter
     def AiRecognitionTask(self, AiRecognitionTask):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
         self._AiRecognitionTask = AiRecognitionTask
 
     @property
@@ -55824,6 +56708,12 @@ class ProcedureTemplate(AbstractModel):
         if params.get("AiAnalysisTask") is not None:
             self._AiAnalysisTask = AiAnalysisTaskInput()
             self._AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTaskSet") is not None:
+            self._AiRecognitionTaskSet = []
+            for item in params.get("AiRecognitionTaskSet"):
+                obj = AiRecognitionTaskInput()
+                obj._deserialize(item)
+                self._AiRecognitionTaskSet.append(obj)
         if params.get("AiRecognitionTask") is not None:
             self._AiRecognitionTask = AiRecognitionTaskInput()
             self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
@@ -55973,6 +56863,241 @@ class ProcessImageResponse(AbstractModel):
                 obj = ContentReviewResult()
                 obj._deserialize(item)
                 self._ContentReviewResultSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ProcessMediaByMPS(AbstractModel):
+    """MPS 媒体处理任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _Status: 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        :type ErrCode: int
+        :param _Message: 错误信息。源异常时返回对应异常 Message，否则请使用各个具体任务的 Message。
+        :type Message: str
+        :param _SubTaskSet: MPS 视频处理任务。
+        :type SubTaskSet: list of MPSSubTaskResult
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._SubTaskSet = None
+
+    @property
+    def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        """任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        """错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """错误信息。源异常时返回对应异常 Message，否则请使用各个具体任务的 Message。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def SubTaskSet(self):
+        """MPS 视频处理任务。
+        :rtype: list of MPSSubTaskResult
+        """
+        return self._SubTaskSet
+
+    @SubTaskSet.setter
+    def SubTaskSet(self, SubTaskSet):
+        self._SubTaskSet = SubTaskSet
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("SubTaskSet") is not None:
+            self._SubTaskSet = []
+            for item in params.get("SubTaskSet"):
+                obj = MPSSubTaskResult()
+                obj._deserialize(item)
+                self._SubTaskSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessMediaByMPSRequest(AbstractModel):
+    """ProcessMediaByMPS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :type FileId: str
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :type SubAppId: int
+        :param _MPSProcessMediaParams: 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
+视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
+填写说明：
+1. 目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；
+2. 当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；
+3. 音视频增强任务目前不支持使用预置模板发起，可通过 [CreateMPSTemplate](https://cloud.tencent.com/document/product/266/122580) 接口创建自定义模板。
+        :type MPSProcessMediaParams: str
+        :param _ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
+        """
+        self._FileId = None
+        self._SubAppId = None
+        self._MPSProcessMediaParams = None
+        self._ExtInfo = None
+
+    @property
+    def FileId(self):
+        """媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def MPSProcessMediaParams(self):
+        """该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
+视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
+填写说明：
+1. 目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；
+2. 当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；
+3. 音视频增强任务目前不支持使用预置模板发起，可通过 [CreateMPSTemplate](https://cloud.tencent.com/document/product/266/122580) 接口创建自定义模板。
+        :rtype: str
+        """
+        return self._MPSProcessMediaParams
+
+    @MPSProcessMediaParams.setter
+    def MPSProcessMediaParams(self, MPSProcessMediaParams):
+        self._MPSProcessMediaParams = MPSProcessMediaParams
+
+    @property
+    def ExtInfo(self):
+        """保留字段，特殊用途时使用。
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._SubAppId = params.get("SubAppId")
+        self._MPSProcessMediaParams = params.get("MPSProcessMediaParams")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessMediaByMPSResponse(AbstractModel):
+    """ProcessMediaByMPS返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -63103,7 +64228,9 @@ class ResetProcedureTemplateRequest(AbstractModel):
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param _AiAnalysisTask: AI 智能内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTask: AI 内容识别类型任务参数。
+        :param _AiRecognitionTaskSet: AI 内容识别类型任务参数。
+        :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
+        :param _AiRecognitionTask: 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         :param _ReviewAudioVideoTask: 音视频审核类型任务参数。
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
@@ -63114,6 +64241,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
         self._MediaProcessTask = None
         self._AiContentReviewTask = None
         self._AiAnalysisTask = None
+        self._AiRecognitionTaskSet = None
         self._AiRecognitionTask = None
         self._ReviewAudioVideoTask = None
 
@@ -63185,14 +64313,29 @@ class ResetProcedureTemplateRequest(AbstractModel):
         self._AiAnalysisTask = AiAnalysisTask
 
     @property
-    def AiRecognitionTask(self):
+    def AiRecognitionTaskSet(self):
         """AI 内容识别类型任务参数。
+        :rtype: list of AiRecognitionTaskInput
+        """
+        return self._AiRecognitionTaskSet
+
+    @AiRecognitionTaskSet.setter
+    def AiRecognitionTaskSet(self, AiRecognitionTaskSet):
+        self._AiRecognitionTaskSet = AiRecognitionTaskSet
+
+    @property
+    def AiRecognitionTask(self):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
+        """该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
     def AiRecognitionTask(self, AiRecognitionTask):
+        warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
+
         self._AiRecognitionTask = AiRecognitionTask
 
     @property
@@ -63220,6 +64363,12 @@ class ResetProcedureTemplateRequest(AbstractModel):
         if params.get("AiAnalysisTask") is not None:
             self._AiAnalysisTask = AiAnalysisTaskInput()
             self._AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTaskSet") is not None:
+            self._AiRecognitionTaskSet = []
+            for item in params.get("AiRecognitionTaskSet"):
+                obj = AiRecognitionTaskInput()
+                obj._deserialize(item)
+                self._AiRecognitionTaskSet.append(obj)
         if params.get("AiRecognitionTask") is not None:
             self._AiRecognitionTask = AiRecognitionTaskInput()
             self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
@@ -70104,6 +71253,7 @@ class TaskStatData(AbstractModel):
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
+<li>JITEncryption: 即时加密</li>
         :type TaskType: str
         :param _Summary: 任务数统计数据概览，用量单位为秒。
         :type Summary: list of TaskStatDataItem
@@ -70196,6 +71346,7 @@ class TaskStatData(AbstractModel):
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
 <li>VideoSnapshot: 视频截图</li>
+<li>JITEncryption: 即时加密</li>
         :rtype: str
         """
         return self._TaskType

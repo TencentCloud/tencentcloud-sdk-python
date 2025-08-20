@@ -1033,11 +1033,11 @@ class CreateRuleRequest(AbstractModel):
         :type EventPattern: str
         :param _EventBusId: 事件集ID
         :type EventBusId: str
-        :param _RuleName: 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
+        :param _RuleName: 事件规则名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
         :type RuleName: str
         :param _Enable: 使能开关。
         :type Enable: bool
-        :param _Description: 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+        :param _Description: 事件规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :type Description: str
         """
         self._EventPattern = None
@@ -1070,7 +1070,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
+        """事件规则名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
         :rtype: str
         """
         return self._RuleName
@@ -1092,7 +1092,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+        """事件规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :rtype: str
         """
         return self._Description
@@ -3585,7 +3585,7 @@ class ListEventBusesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+        :param _OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：created_at（创建时间）, updated_at（修改时间）
         :type OrderBy: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
@@ -3604,7 +3604,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+        """根据哪个字段进行返回结果排序,支持以下字段：created_at（创建时间）, updated_at（修改时间）
         :rtype: str
         """
         return self._OrderBy
@@ -6415,7 +6415,7 @@ class UpdateRuleRequest(AbstractModel):
         :type EventBusId: str
         :param _Enable: 使能开关。
         :type Enable: bool
-        :param _Description: 规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+        :param _Description: 事件规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :type Description: str
         :param _EventPattern: 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
         :type EventPattern: str
@@ -6464,7 +6464,7 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+        """事件规则描述，只能包含数字、中英文及常用标点符号，不超过200个字符
         :rtype: str
         """
         return self._Description

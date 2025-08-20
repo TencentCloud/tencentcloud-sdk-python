@@ -2224,12 +2224,15 @@ class CreateSnapshotRequest(AbstractModel):
         :type DiskBackupId: str
         :param _Tags: 快照绑定的标签。
         :type Tags: list of Tag
+        :param _DiskUsage: 快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。
+        :type DiskUsage: str
         """
         self._DiskId = None
         self._SnapshotName = None
         self._Deadline = None
         self._DiskBackupId = None
         self._Tags = None
+        self._DiskUsage = None
 
     @property
     def DiskId(self):
@@ -2286,6 +2289,17 @@ class CreateSnapshotRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def DiskUsage(self):
+        """快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。
+        :rtype: str
+        """
+        return self._DiskUsage
+
+    @DiskUsage.setter
+    def DiskUsage(self, DiskUsage):
+        self._DiskUsage = DiskUsage
+
 
     def _deserialize(self, params):
         self._DiskId = params.get("DiskId")
@@ -2298,6 +2312,7 @@ class CreateSnapshotRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._DiskUsage = params.get("DiskUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6505,14 +6520,17 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
         r"""
         :param _DiskSize: 云硬盘扩容后的大小，单位为GiB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :type DiskSize: int
-        :param _DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :param _DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。与参数DiskIds互斥。
         :type DiskId: str
         :param _ProjectId: 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
         :type ProjectId: int
+        :param _DiskIds: 云硬盘ID列表， 通过[DescribeDisks](/document/product/362/16315)接口查询。与参数DiskId互斥。
+        :type DiskIds: list of str
         """
         self._DiskSize = None
         self._DiskId = None
         self._ProjectId = None
+        self._DiskIds = None
 
     @property
     def DiskSize(self):
@@ -6527,7 +6545,7 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
 
     @property
     def DiskId(self):
-        """云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        """云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。与参数DiskIds互斥。
         :rtype: str
         """
         return self._DiskId
@@ -6547,11 +6565,23 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def DiskIds(self):
+        """云硬盘ID列表， 通过[DescribeDisks](/document/product/362/16315)接口查询。与参数DiskId互斥。
+        :rtype: list of str
+        """
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
 
     def _deserialize(self, params):
         self._DiskSize = params.get("DiskSize")
         self._DiskId = params.get("DiskId")
         self._ProjectId = params.get("ProjectId")
+        self._DiskIds = params.get("DiskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

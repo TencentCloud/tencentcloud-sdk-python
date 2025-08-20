@@ -213,6 +213,64 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBatchContractReviewTask(self, request):
+        """此接口（CreateBatchContractReviewTask）用来通过上传后的PDF资源编号来批量创建合同智能审查任务。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注:
+        1. PDF格式限制大小为10M以下
+        2. 仅支持5份PDF文件批量发起（一份PDF对应一个审查任务）
+
+        :param request: Request instance for CreateBatchContractReviewTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateBatchContractReviewTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateBatchContractReviewTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchContractReviewTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBatchContractReviewTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateBatchInformationExtractionTask(self, request):
+        """此接口（CreateBatchInformationExtractionTask）用来通过上传后的PDF资源编号来批量创建合同智能审查任务。<br/>
+
+        适用场景：根据合同关键词（字段名称）来提取PDF合同文件的字段结果信息。
+
+        注:
+        1. PDF格式限制大小为10M以下
+        2. 仅支持5个PDF文件批量发起（一份PDF对应一个合同提取任务）
+
+        :param request: Request instance for CreateBatchInformationExtractionTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateBatchInformationExtractionTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateBatchInformationExtractionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchInformationExtractionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBatchInformationExtractionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBatchInitOrganizationUrl(self, request):
         """支持企业进行批量初始化操作：
 
@@ -503,9 +561,6 @@ class EssClient(AbstractClient):
     def CreateDynamicFlowApprover(self, request):
         """此接口（CreateDynamicFlowApprover）接口主要用于补充动态签署方2.0合同的签署方信息，包括但不限于名字、手机号和签署区域等信息。
 
-
-        **功能开通**
-        动态签署方2.0功能的使用需要先<font color="red">联系产品经理开通模块化计费功能</font>，然后到控制台中打开此功能。详细的使用说明请参考<a href="https://qian.tencent.com/developers/company/dynamic_signer_v2" target="_blank">动态签署方2.0</a>文档。
 
         **使用条件**
         - 在发起合同时，必须将OpenDynamicSignFlow参数设置为true，以确保合同以动态签署方2.0的方式处理，否则默认处理为普通合同。
@@ -1417,11 +1472,53 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMiniAppPrepareFlow(self, request):
+        """创建小程序发起流程链接，在小程序页面上完成签署人等信息的编辑与确认后，可快速发起流程。
+         <br/>
+        适用场景：如果需要签署人在自己的APP、小程序、H5应用中发起合同，可在收集合同信息，签署人等信息后（非必选），通过此接口获取跳转腾讯电子签小程序的合同发起跳转链接，跳转到腾讯电子签小程序继续合同的发起。
+
+        跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+
+        注：
+        <ul>
+        <li>1. 签署链接的有效期为<font color="red">90天</font>，超过有效期链接不可用</li>
+        <li>2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li>
+         <li>3. 调用接口后，<font color="red">流程不会立即发起，需使用链接跳转到小程序上继续发起流程操作</font>。</li>
+        <li>4. <font color="red">使用链接成功发起一份合同后，链接立即失效</font></li>
+        </ul>
+
+        其中小程序的原始Id如下，或者查看小程序信息自助获取。
+
+        | 小程序 | AppID | 原始ID |
+        | ------------ | ------------ | ------------ |
+        | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+        | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+
+        :param request: Request instance for CreateMiniAppPrepareFlow.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateMiniAppPrepareFlowRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateMiniAppPrepareFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMiniAppPrepareFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMiniAppPrepareFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateModifyAdminAuthorizationUrl(self, request):
         """本接口（CreateModifyAdminAuthorizationUrl）用于重新上传超管授权书。
 
         注意:
-        1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
+        1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!企业认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到授权书是否审核失败的结果。
 
         :param request: Request instance for CreateModifyAdminAuthorizationUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateModifyAdminAuthorizationUrlRequest`
@@ -1664,7 +1761,7 @@ class EssClient(AbstractClient):
 
 
         **该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权**
-        ![image](https://qcloudimg.tencent-cloud.cn/raw/489aa0bf74941469b5e740f428f17c3a.png)
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/4f89c8d5ccc1397db964257fd73dd5e1.png)
 
         :param request: Request instance for CreatePartnerAutoSignAuthUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreatePartnerAutoSignAuthUrlRequest`
@@ -2031,7 +2128,7 @@ class EssClient(AbstractClient):
 
 
     def CreateUserVerifyUrl(self, request):
-        """生成个人用户实名认证链接，个人用户点击此链接进入实名流程（若用户已完成实名认证，则直接进入成功页面）。
+        """生成个人用户实名认证链接，个人用户点击此链接进入实名流程（若用户已完成实名认证，则直接进入成功页面）。用户点击此接口生成的链接完成实名认证后，其数据将通过[企业引导个人实名认证后回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E4%BA%8C-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83)返回
 
         注： 调用此接口需要购买<font color="red"><b>单独的实名套餐包</b></font>。使用前请联系对接的客户经理沟通。
 
@@ -2388,6 +2485,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeContractReviewTask(self, request):
+        """本接口（DescribeContractReviewTask）用于获取合同审查任务详情，包括任务的状态和识别出的风险信息。
+
+        :param request: Request instance for DescribeContractReviewTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContractReviewTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContractReviewTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExtendedServiceAuthDetail(self, request):
         """查询企业扩展服务的授权详情（列表），当前支持查询以下内容：
         1. 企业自动签（本企业授权、集团企业授权、合作企业授权）
@@ -2689,6 +2809,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInformationExtractionTask(self, request):
+        """本接口（DescribeInformationExtractionTask）用于获取合同智能提取任务详情，包括任务的状态和提取的字段结果信息。
+
+        :param request: Request instance for DescribeInformationExtractionTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeInformationExtractionTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeInformationExtractionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInformationExtractionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInformationExtractionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIntegrationDepartments(self, request):
         """此接口（DescribeIntegrationDepartments）用于查询企业的部门信息列表，支持查询单个部门节点或单个部门节点及一级子节点部门列表。
 
@@ -2737,6 +2880,21 @@ class EssClient(AbstractClient):
 
     def DescribeIntegrationRoles(self, request):
         """此接口（DescribeIntegrationRoles）用于分页查询企业角色列表，列表按照角色创建时间升序排列。
+
+        角色分为系统默认角色与企业自定义角色，其中系统默认角色不可以禁用、删除、编辑权限项，只可往默认角色中添加成员。企业自定义角色为企业根据自身需要新增的角色，可根据企业具体情况设置各个角色的权限，例如新增财务岗、销售岗等角色。
+
+        企业版的系统默认角色包含如下角色：
+
+        | 角色名称                     | 角色描述                                                                 |
+        |------------------------------|--------------------------------------------------------------------------|
+        | 超级管理员（电子签业务最高权限，e.g.法务/业务负责人） | 所有功能和数据管理权限，只能设置一位超管。                              |
+        | IT信息管理员（IT系统负责人，e.g. CTO）        | 组织员工、计费模块、应用模块等权限能力。                                |
+        | 企业合同管理员（企业法务负责人）             | 企业全部合同管理、可申请出证等权限能力。                                |
+        | 企业模板管理员                  | 企业全部模板管理权限能力。                                              |
+        | 企业印章管理员（企业行政负责人）             | 管理企业的所有电子印章，如添加印章、启用停用印章、印章授权等。          |
+        | 用印审批岗（各部门的印章管理岗）             | 可对被授权的印章进行日常使用管理，如合同盖章用印的审核及登记。          |
+        | 部门管理员（部门的合同+印章+模板管理）         | 部门级（含子部门）所有合同管理权限能力。                                |
+        | 业务员（销售员、采购员）             | 发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力。      |
 
         :param request: Request instance for DescribeIntegrationRoles.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeIntegrationRolesRequest`
@@ -3321,7 +3479,9 @@ class EssClient(AbstractClient):
 
 
     def RenewAutoSignLicense(self, request):
-        """给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
+        """已经不再使用
+
+        给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 
         注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
 

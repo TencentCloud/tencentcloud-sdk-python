@@ -830,7 +830,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteBackup(self, request):
-        """本接口(DeleteBackup)用于删除数据库备份。本接口只支持删除手动发起的备份。
+        """本接口（DeleteBackup）用于删除数据库备份。本接口只支持删除手动发起的备份。
 
         :param request: Request instance for DeleteBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteBackupRequest`
@@ -1339,7 +1339,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupSummaries(self, request):
-        """本接口(DescribeBackupSummaries)用于查询备份的统计情况，返回以实例为维度的备份占用容量，以及每个实例的数据备份和日志备份的个数和容量（容量单位为字节）。
+        """本接口（DescribeBackupSummaries）用于查询备份的统计情况，返回以实例为维度的备份占用容量，以及每个实例的数据备份和日志备份的个数和容量（容量单位为字节）。
 
         :param request: Request instance for DescribeBackupSummaries.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupSummariesRequest`
@@ -1707,7 +1707,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceLogToCLS(self, request):
-        """本接口(DescribeDBInstanceLogToCLS)用于查询实例慢日志、错误日志投递CLS的配置，通过AppId、Region以及实例ID过滤出当前实例日志投递CLS的配置。
+        """本接口（DescribeDBInstanceLogToCLS）用于查询实例慢日志、错误日志投递CLS的配置，通过AppId、Region以及实例ID过滤出当前实例日志投递CLS的配置。
 
         :param request: Request instance for DescribeDBInstanceLogToCLS.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceLogToCLSRequest`
@@ -2333,7 +2333,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeRollbackTaskDetail(self, request):
-        """本接口(DescribeRollbackTaskDetail)用于查询云数据库实例回档任务详情。
+        """本接口（DescribeRollbackTaskDetail）用于查询云数据库实例回档任务详情。
 
         :param request: Request instance for DescribeRollbackTaskDetail.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackTaskDetailRequest`
@@ -2403,7 +2403,8 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSlowLogs(self, request):
-        """本接口(DescribeSlowLogs)用于获取云数据库实例的慢查询日志。说明：若单次查询数据量过大，则有可能响应超时，建议缩短单次查询时间范围，如一小时，避免导致超时。
+        """本接口（DescribeSlowLogs）用于获取云数据库实例的慢查询日志。
+        说明：若单次查询数据量过大，则有可能响应超时，建议缩短单次查询时间范围，如一小时，避免导致超时。
 
         :param request: Request instance for DescribeSlowLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogsRequest`
@@ -2449,7 +2450,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeTableColumns(self, request):
-        """本接口(DescribeTableColumns)用于查询云数据库实例的指定数据库表的列信息，仅支持主实例和灾备实例。
+        """本接口（DescribeTableColumns）用于查询云数据库实例的指定数据库表的列信息，仅支持主实例和灾备实例。
 
         :param request: Request instance for DescribeTableColumns.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTableColumnsRequest`
@@ -2891,7 +2892,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyBackupConfig(self, request):
-        """本接口(ModifyBackupConfig)用于修改数据库备份配置信息。
+        """本接口（ModifyBackupConfig）用于修改数据库备份配置信息。
 
         :param request: Request instance for ModifyBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupConfigRequest`
@@ -3236,7 +3237,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyLocalBinlogConfig(self, request):
-        """该接口用于修改实例本地binlog保留策略。
+        """本接口（ModifyLocalBinlogConfig）用于修改实例本地 binlog 保留策略。
 
         :param request: Request instance for ModifyLocalBinlogConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyLocalBinlogConfigRequest`
@@ -3366,6 +3367,29 @@ class CdbClient(AbstractClient):
             body = self.call("ModifyRoGroupInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRoGroupInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRoGroupVipVport(self, request):
+        """该接口（ModifyRoGroupVipVport）用于修改Ro组的vip和vport。
+
+        :param request: Request instance for ModifyRoGroupVipVport.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupVipVportRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupVipVportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRoGroupVipVport", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRoGroupVipVportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

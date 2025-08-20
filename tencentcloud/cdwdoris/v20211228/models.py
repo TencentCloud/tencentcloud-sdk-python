@@ -15529,6 +15529,8 @@ class UserInfo(AbstractModel):
         :type CamUin: str
         :param _CamRangerGroupIds: ranger group id列表
         :type CamRangerGroupIds: list of int
+        :param _ComputeGroupType: 0: 灵活场景 1: 固定场景
+        :type ComputeGroupType: int
         """
         self._InstanceId = None
         self._UserName = None
@@ -15539,6 +15541,7 @@ class UserInfo(AbstractModel):
         self._OldPwd = None
         self._CamUin = None
         self._CamRangerGroupIds = None
+        self._ComputeGroupType = None
 
     @property
     def InstanceId(self):
@@ -15639,6 +15642,17 @@ class UserInfo(AbstractModel):
     def CamRangerGroupIds(self, CamRangerGroupIds):
         self._CamRangerGroupIds = CamRangerGroupIds
 
+    @property
+    def ComputeGroupType(self):
+        """0: 灵活场景 1: 固定场景
+        :rtype: int
+        """
+        return self._ComputeGroupType
+
+    @ComputeGroupType.setter
+    def ComputeGroupType(self, ComputeGroupType):
+        self._ComputeGroupType = ComputeGroupType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -15650,6 +15664,7 @@ class UserInfo(AbstractModel):
         self._OldPwd = params.get("OldPwd")
         self._CamUin = params.get("CamUin")
         self._CamRangerGroupIds = params.get("CamRangerGroupIds")
+        self._ComputeGroupType = params.get("ComputeGroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -34,7 +34,6 @@ class Application(AbstractModel):
         :param _ClusterName: 集群名称
         :type ClusterName: str
         :param _TableGroupName: 表格组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupName: str
         :param _TableName: 表格名称
         :type TableName: str
@@ -49,22 +48,16 @@ class Application(AbstractModel):
         :param _TaskId: 已提交的任务Id，未提交申请为0
         :type TaskId: str
         :param _TableInstanceId: 腾讯云上table的唯一键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _ExecuteUser: 审批人
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteUser: str
         :param _ExecuteStatus: 执行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteStatus: str
         :param _CanCensor: 该申请单是否可以被当前用户审批
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanCensor: bool
         :param _CanWithdrawal: 该申请单是否可以被当前用户撤回
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanWithdrawal: bool
         """
         self._ApplicationId = None
@@ -132,7 +125,6 @@ class Application(AbstractModel):
     @property
     def TableGroupName(self):
         """表格组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupName
@@ -210,7 +202,6 @@ class Application(AbstractModel):
     @property
     def TableInstanceId(self):
         """腾讯云上table的唯一键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableInstanceId
@@ -222,7 +213,6 @@ class Application(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -234,7 +224,6 @@ class Application(AbstractModel):
     @property
     def ExecuteUser(self):
         """审批人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExecuteUser
@@ -246,7 +235,6 @@ class Application(AbstractModel):
     @property
     def ExecuteStatus(self):
         """执行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExecuteStatus
@@ -258,7 +246,6 @@ class Application(AbstractModel):
     @property
     def CanCensor(self):
         """该申请单是否可以被当前用户审批
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CanCensor
@@ -270,7 +257,6 @@ class Application(AbstractModel):
     @property
     def CanWithdrawal(self):
         """该申请单是否可以被当前用户撤回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CanWithdrawal
@@ -320,13 +306,10 @@ class ApplyResult(AbstractModel):
         :param _ApplicationType: 申请类型
         :type ApplicationType: int
         :param _ApplicationStatus: 处理状态 0-待审核 1-已经审核并提交任务 2-已驳回
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationStatus: int
         :param _TaskId: 已提交的任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         self._ApplicationId = None
@@ -360,7 +343,6 @@ class ApplyResult(AbstractModel):
     @property
     def ApplicationStatus(self):
         """处理状态 0-待审核 1-已经审核并提交任务 2-已驳回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ApplicationStatus
@@ -372,7 +354,6 @@ class ApplyResult(AbstractModel):
     @property
     def TaskId(self):
         """已提交的任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -384,7 +365,6 @@ class ApplyResult(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -922,54 +902,38 @@ class ClusterInfo(AbstractModel):
         :param _ApiAccessPort: TcaplusDB SDK连接参数，接入端口
         :type ApiAccessPort: int
         :param _OldPasswordExpireTime: 如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldPasswordExpireTime: str
         :param _ApiAccessIpv6: TcaplusDB SDK连接参数，接入ipv6地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiAccessIpv6: str
         :param _ClusterType: 集群类型，0,1:共享集群; 2:独立集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: int
         :param _ClusterStatus: 集群状态, 0：表示正常运行中，1：表示冻结隔离一般欠费进入此状态，2：表示待回收，一般用户主动触发删除进入这个状态，3：待释放，进入这个状态，表示可以释放此表占用的资源了，4：变更中
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: int
         :param _ReadCapacityUnit: 读CU
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadCapacityUnit: int
         :param _WriteCapacityUnit: 写CU
-注意：此字段可能返回 null，表示取不到有效值。
         :type WriteCapacityUnit: int
         :param _DiskVolume: 磁盘容量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskVolume: int
         :param _ServerList: 独占server机器信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerList: list of ServerDetailInfo
         :param _ProxyList: 独占proxy机器信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyList: list of ProxyDetailInfo
         :param _Censorship: 是否开启审核 0-不开启 1-开启
         :type Censorship: int
         :param _DbaUins: 审批人uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbaUins: list of str
         :param _DataFlowStatus: 是否开启了数据订阅
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataFlowStatus: int
         :param _KafkaInfo: 数据订阅的kafka信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         :param _TxhBackupExpireDay: 集群Txh备份文件多少天后过期删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type TxhBackupExpireDay: int
         :param _UlogBackupExpireDay: 集群Ulog备份文件多少天后过期删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type UlogBackupExpireDay: int
         :param _IsReadOnlyUlogBackupExpireDay: 集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsReadOnlyUlogBackupExpireDay: int
         :param _RestProxyStatus: restproxy状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type RestProxyStatus: int
         """
         self._ClusterName = None
@@ -1149,7 +1113,6 @@ class ClusterInfo(AbstractModel):
     @property
     def OldPasswordExpireTime(self):
         """如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldPasswordExpireTime
@@ -1161,7 +1124,6 @@ class ClusterInfo(AbstractModel):
     @property
     def ApiAccessIpv6(self):
         """TcaplusDB SDK连接参数，接入ipv6地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApiAccessIpv6
@@ -1173,7 +1135,6 @@ class ClusterInfo(AbstractModel):
     @property
     def ClusterType(self):
         """集群类型，0,1:共享集群; 2:独立集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClusterType
@@ -1185,7 +1146,6 @@ class ClusterInfo(AbstractModel):
     @property
     def ClusterStatus(self):
         """集群状态, 0：表示正常运行中，1：表示冻结隔离一般欠费进入此状态，2：表示待回收，一般用户主动触发删除进入这个状态，3：待释放，进入这个状态，表示可以释放此表占用的资源了，4：变更中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClusterStatus
@@ -1197,7 +1157,6 @@ class ClusterInfo(AbstractModel):
     @property
     def ReadCapacityUnit(self):
         """读CU
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReadCapacityUnit
@@ -1209,7 +1168,6 @@ class ClusterInfo(AbstractModel):
     @property
     def WriteCapacityUnit(self):
         """写CU
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WriteCapacityUnit
@@ -1221,7 +1179,6 @@ class ClusterInfo(AbstractModel):
     @property
     def DiskVolume(self):
         """磁盘容量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskVolume
@@ -1233,7 +1190,6 @@ class ClusterInfo(AbstractModel):
     @property
     def ServerList(self):
         """独占server机器信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ServerDetailInfo
         """
         return self._ServerList
@@ -1245,7 +1201,6 @@ class ClusterInfo(AbstractModel):
     @property
     def ProxyList(self):
         """独占proxy机器信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProxyDetailInfo
         """
         return self._ProxyList
@@ -1268,7 +1223,6 @@ class ClusterInfo(AbstractModel):
     @property
     def DbaUins(self):
         """审批人uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DbaUins
@@ -1280,7 +1234,6 @@ class ClusterInfo(AbstractModel):
     @property
     def DataFlowStatus(self):
         """是否开启了数据订阅
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataFlowStatus
@@ -1292,7 +1245,6 @@ class ClusterInfo(AbstractModel):
     @property
     def KafkaInfo(self):
         """数据订阅的kafka信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         """
         return self._KafkaInfo
@@ -1304,7 +1256,6 @@ class ClusterInfo(AbstractModel):
     @property
     def TxhBackupExpireDay(self):
         """集群Txh备份文件多少天后过期删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TxhBackupExpireDay
@@ -1316,7 +1267,6 @@ class ClusterInfo(AbstractModel):
     @property
     def UlogBackupExpireDay(self):
         """集群Ulog备份文件多少天后过期删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UlogBackupExpireDay
@@ -1328,7 +1278,6 @@ class ClusterInfo(AbstractModel):
     @property
     def IsReadOnlyUlogBackupExpireDay(self):
         """集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsReadOnlyUlogBackupExpireDay
@@ -1340,7 +1289,6 @@ class ClusterInfo(AbstractModel):
     @property
     def RestProxyStatus(self):
         """restproxy状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RestProxyStatus
@@ -1590,28 +1538,20 @@ class CompareTablesInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SrcTableClusterId: 源表格的集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcTableClusterId: str
         :param _SrcTableGroupId: 源表格的表格组id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcTableGroupId: str
         :param _SrcTableName: 源表格的表名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcTableName: str
         :param _DstTableClusterId: 目标表格的集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstTableClusterId: str
         :param _DstTableGroupId: 目标表格的表格组id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstTableGroupId: str
         :param _DstTableName: 目标表格的表名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstTableName: str
         :param _SrcTableInstanceId: 源表格的实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcTableInstanceId: str
         :param _DstTableInstanceId: 目标表格的实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstTableInstanceId: str
         """
         self._SrcTableClusterId = None
@@ -1626,7 +1566,6 @@ class CompareTablesInfo(AbstractModel):
     @property
     def SrcTableClusterId(self):
         """源表格的集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SrcTableClusterId
@@ -1638,7 +1577,6 @@ class CompareTablesInfo(AbstractModel):
     @property
     def SrcTableGroupId(self):
         """源表格的表格组id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SrcTableGroupId
@@ -1650,7 +1588,6 @@ class CompareTablesInfo(AbstractModel):
     @property
     def SrcTableName(self):
         """源表格的表名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SrcTableName
@@ -1662,7 +1599,6 @@ class CompareTablesInfo(AbstractModel):
     @property
     def DstTableClusterId(self):
         """目标表格的集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstTableClusterId
@@ -1674,7 +1610,6 @@ class CompareTablesInfo(AbstractModel):
     @property
     def DstTableGroupId(self):
         """目标表格的表格组id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstTableGroupId
@@ -1686,7 +1621,6 @@ class CompareTablesInfo(AbstractModel):
     @property
     def DstTableName(self):
         """目标表格的表名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstTableName
@@ -1698,7 +1632,6 @@ class CompareTablesInfo(AbstractModel):
     @property
     def SrcTableInstanceId(self):
         """源表格的实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SrcTableInstanceId
@@ -1710,7 +1643,6 @@ class CompareTablesInfo(AbstractModel):
     @property
     def DstTableInstanceId(self):
         """目标表格的实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstTableInstanceId
@@ -1818,10 +1750,8 @@ class CreateBackupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskIds: 创建的备份任务ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIds: list of str
         :param _ApplicationIds: 创建的备份申请ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1833,7 +1763,6 @@ class CreateBackupResponse(AbstractModel):
     @property
     def TaskIds(self):
         """创建的备份任务ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TaskIds
@@ -1845,7 +1774,6 @@ class CreateBackupResponse(AbstractModel):
     @property
     def ApplicationIds(self):
         """创建的备份申请ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ApplicationIds
@@ -2587,7 +2515,6 @@ class DeleteBackupRecordsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2598,7 +2525,6 @@ class DeleteBackupRecordsResponse(AbstractModel):
     @property
     def TaskId(self):
         """TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -3799,10 +3725,8 @@ class DescribeClusterTagsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Rows: 集群标签信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rows: list of TagsInfoOfCluster
         :param _TotalCount: 返回结果个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3814,7 +3738,6 @@ class DescribeClusterTagsResponse(AbstractModel):
     @property
     def Rows(self):
         """集群标签信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagsInfoOfCluster
         """
         return self._Rows
@@ -3826,7 +3749,6 @@ class DescribeClusterTagsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """返回结果个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -4557,10 +4479,8 @@ class DescribeTableGroupTagsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Rows: 表格组标签信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rows: list of TagsInfoOfTableGroup
         :param _TotalCount: 返回结果个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4572,7 +4492,6 @@ class DescribeTableGroupTagsResponse(AbstractModel):
     @property
     def Rows(self):
         """表格组标签信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagsInfoOfTableGroup
         """
         return self._Rows
@@ -4584,7 +4503,6 @@ class DescribeTableGroupTagsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """返回结果个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -5862,10 +5780,8 @@ class IdlFileInfo(AbstractModel):
         :param _FileSize: 文件大小（Bytes）
         :type FileSize: int
         :param _FileId: 文件ID，对于已上传的文件有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: int
         :param _FileContent: 文件内容，对于本次新上传的文件有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileContent: str
         """
         self._FileName = None
@@ -5922,7 +5838,6 @@ class IdlFileInfo(AbstractModel):
     @property
     def FileId(self):
         """文件ID，对于已上传的文件有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileId
@@ -5934,7 +5849,6 @@ class IdlFileInfo(AbstractModel):
     @property
     def FileContent(self):
         """文件内容，对于本次新上传的文件有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileContent
@@ -5969,22 +5883,16 @@ class IdlFileInfoWithoutContent(AbstractModel):
     def __init__(self):
         r"""
         :param _FileName: 文件名称，不包含扩展名
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _FileType: 数据描述语言（IDL）类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         :param _FileExtType: 文件扩展名
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileExtType: str
         :param _FileSize: 文件大小（Bytes）
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
         :param _FileId: 文件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: int
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         self._FileName = None
@@ -5997,7 +5905,6 @@ class IdlFileInfoWithoutContent(AbstractModel):
     @property
     def FileName(self):
         """文件名称，不包含扩展名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileName
@@ -6009,7 +5916,6 @@ class IdlFileInfoWithoutContent(AbstractModel):
     @property
     def FileType(self):
         """数据描述语言（IDL）类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileType
@@ -6021,7 +5927,6 @@ class IdlFileInfoWithoutContent(AbstractModel):
     @property
     def FileExtType(self):
         """文件扩展名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileExtType
@@ -6033,7 +5938,6 @@ class IdlFileInfoWithoutContent(AbstractModel):
     @property
     def FileSize(self):
         """文件大小（Bytes）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileSize
@@ -6045,7 +5949,6 @@ class IdlFileInfoWithoutContent(AbstractModel):
     @property
     def FileId(self):
         """文件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileId
@@ -6057,7 +5960,6 @@ class IdlFileInfoWithoutContent(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -6224,10 +6126,8 @@ class ImportSnapshotsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _ApplicationId: ApplicationId由 AppInstanceId-applicationId 组成，以区分不同集群的申请
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6239,7 +6139,6 @@ class ImportSnapshotsResponse(AbstractModel):
     @property
     def TaskId(self):
         """TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -6251,7 +6150,6 @@ class ImportSnapshotsResponse(AbstractModel):
     @property
     def ApplicationId(self):
         """ApplicationId由 AppInstanceId-applicationId 组成，以区分不同集群的申请
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -6286,22 +6184,16 @@ class KafkaInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Address: Kafka address
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _Topic: Kafka topic
-注意：此字段可能返回 null，表示取不到有效值。
         :type Topic: str
         :param _User: kafka username
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Password: kafka password
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _Instance: ckafka实例
-注意：此字段可能返回 null，表示取不到有效值。
         :type Instance: str
         :param _IsVpc: 是否走VPC
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsVpc: int
         """
         self._Address = None
@@ -6314,7 +6206,6 @@ class KafkaInfo(AbstractModel):
     @property
     def Address(self):
         """Kafka address
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -6326,7 +6217,6 @@ class KafkaInfo(AbstractModel):
     @property
     def Topic(self):
         """Kafka topic
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Topic
@@ -6338,7 +6228,6 @@ class KafkaInfo(AbstractModel):
     @property
     def User(self):
         """kafka username
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -6350,7 +6239,6 @@ class KafkaInfo(AbstractModel):
     @property
     def Password(self):
         """kafka password
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -6362,7 +6250,6 @@ class KafkaInfo(AbstractModel):
     @property
     def Instance(self):
         """ckafka实例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Instance
@@ -6374,7 +6261,6 @@ class KafkaInfo(AbstractModel):
     @property
     def IsVpc(self):
         """是否走VPC
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsVpc
@@ -6541,15 +6427,12 @@ class MergeTableResult(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _Error: 成功时此字段返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         :param _Table: 对比的表格信息
         :type Table: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
         :param _ApplicationId: 申请单Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         """
         self._TaskId = None
@@ -6560,7 +6443,6 @@ class MergeTableResult(AbstractModel):
     @property
     def TaskId(self):
         """任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -6572,7 +6454,6 @@ class MergeTableResult(AbstractModel):
     @property
     def Error(self):
         """成功时此字段返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -6595,7 +6476,6 @@ class MergeTableResult(AbstractModel):
     @property
     def ApplicationId(self):
         """申请单Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -6857,7 +6737,6 @@ class ModifyCensorshipResponse(AbstractModel):
         :param _ClusterId: 集群id
         :type ClusterId: str
         :param _Uins: 已加入审批人的uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uins: list of str
         :param _Censorship: 集群是否开启审核 0-关闭 1-开启
         :type Censorship: int
@@ -6883,7 +6762,6 @@ class ModifyCensorshipResponse(AbstractModel):
     @property
     def Uins(self):
         """已加入审批人的uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Uins
@@ -7343,7 +7221,6 @@ class ModifyClusterTagsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7354,7 +7231,6 @@ class ModifyClusterTagsResponse(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -7692,7 +7568,6 @@ class ModifyTableGroupTagsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7703,7 +7578,6 @@ class ModifyTableGroupTagsResponse(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -8273,58 +8147,40 @@ class ParsedTableInfoNew(AbstractModel):
     def __init__(self):
         r"""
         :param _TableIdlType: 表格描述语言类型：`PROTO`或`TDR`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableIdlType: str
         :param _TableInstanceId: 表格实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
         :param _TableName: 表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _TableType: 表格数据结构类型：`GENERIC`或`LIST`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableType: str
         :param _KeyFields: 主键字段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyFields: str
         :param _OldKeyFields: 原主键字段信息，改表校验时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldKeyFields: str
         :param _ValueFields: 非主键字段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValueFields: str
         :param _OldValueFields: 原非主键字段信息，改表校验时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldValueFields: str
         :param _TableGroupId: 所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
         :param _SumKeyFieldSize: 主键字段总大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type SumKeyFieldSize: int
         :param _SumValueFieldSize: 非主键字段总大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type SumValueFieldSize: int
         :param _IndexKeySet: 索引键集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexKeySet: str
         :param _ShardingKeySet: 分表因子集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShardingKeySet: str
         :param _TdrVersion: TDR版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type TdrVersion: int
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         :param _ListElementNum: LIST类型表格元素个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListElementNum: int
         :param _SortFieldNum: SORTLIST类型表格排序字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SortFieldNum: int
         :param _SortRule: SORTLIST类型表格排序顺序
-注意：此字段可能返回 null，表示取不到有效值。
         :type SortRule: int
         """
         self._TableIdlType = None
@@ -8349,7 +8205,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def TableIdlType(self):
         """表格描述语言类型：`PROTO`或`TDR`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableIdlType
@@ -8361,7 +8216,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def TableInstanceId(self):
         """表格实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableInstanceId
@@ -8373,7 +8227,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def TableName(self):
         """表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -8385,7 +8238,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def TableType(self):
         """表格数据结构类型：`GENERIC`或`LIST`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableType
@@ -8397,7 +8249,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def KeyFields(self):
         """主键字段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KeyFields
@@ -8409,7 +8260,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def OldKeyFields(self):
         """原主键字段信息，改表校验时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldKeyFields
@@ -8421,7 +8271,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def ValueFields(self):
         """非主键字段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValueFields
@@ -8433,7 +8282,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def OldValueFields(self):
         """原非主键字段信息，改表校验时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldValueFields
@@ -8445,7 +8293,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def TableGroupId(self):
         """所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupId
@@ -8457,7 +8304,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def SumKeyFieldSize(self):
         """主键字段总大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SumKeyFieldSize
@@ -8469,7 +8315,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def SumValueFieldSize(self):
         """非主键字段总大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SumValueFieldSize
@@ -8481,7 +8326,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def IndexKeySet(self):
         """索引键集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexKeySet
@@ -8493,7 +8337,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def ShardingKeySet(self):
         """分表因子集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ShardingKeySet
@@ -8505,7 +8348,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def TdrVersion(self):
         """TDR版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TdrVersion
@@ -8517,7 +8359,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -8529,7 +8370,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def ListElementNum(self):
         """LIST类型表格元素个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ListElementNum
@@ -8541,7 +8381,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def SortFieldNum(self):
         """SORTLIST类型表格排序字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SortFieldNum
@@ -8553,7 +8392,6 @@ class ParsedTableInfoNew(AbstractModel):
     @property
     def SortRule(self):
         """SORTLIST类型表格排序顺序
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SortRule
@@ -8718,7 +8556,6 @@ class ProxyDetailInfo(AbstractModel):
         :param _SlowProcessSpeed: 慢处理包速度
         :type SlowProcessSpeed: int
         :param _Version: 版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
         self._ProxyUid = None
@@ -8786,7 +8623,6 @@ class ProxyDetailInfo(AbstractModel):
     @property
     def Version(self):
         """版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -9627,7 +9463,6 @@ class ServerDetailInfo(AbstractModel):
         :param _WriteNum: 写次数
         :type WriteNum: int
         :param _Version: 版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
         self._ServerUid = None
@@ -9707,7 +9542,6 @@ class ServerDetailInfo(AbstractModel):
     @property
     def Version(self):
         """版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -9850,7 +9684,6 @@ class SetBackupExpireRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9861,7 +9694,6 @@ class SetBackupExpireRuleResponse(AbstractModel):
     @property
     def TaskId(self):
         """TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -10310,37 +10142,26 @@ class SnapshotResult(AbstractModel):
     def __init__(self):
         r"""
         :param _TableGroupId: 表格所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
         :param _TableName: 表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _TaskId: 任务ID，对于创建单任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         :param _SnapshotName: 快照名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotName: str
         :param _SnapshotTime: 快照的时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotTime: str
         :param _SnapshotDeadTime: 快照的过期时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotDeadTime: str
         :param _SnapshotCreateTime: 快照创建时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotCreateTime: str
         :param _SnapshotSize: 快照大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotSize: int
         :param _SnapshotStatus: 快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotStatus: int
         :param _ApplicationId: 申请单ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         """
         self._TableGroupId = None
@@ -10358,7 +10179,6 @@ class SnapshotResult(AbstractModel):
     @property
     def TableGroupId(self):
         """表格所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupId
@@ -10370,7 +10190,6 @@ class SnapshotResult(AbstractModel):
     @property
     def TableName(self):
         """表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -10382,7 +10201,6 @@ class SnapshotResult(AbstractModel):
     @property
     def TaskId(self):
         """任务ID，对于创建单任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -10394,7 +10212,6 @@ class SnapshotResult(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -10406,7 +10223,6 @@ class SnapshotResult(AbstractModel):
     @property
     def SnapshotName(self):
         """快照名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SnapshotName
@@ -10418,7 +10234,6 @@ class SnapshotResult(AbstractModel):
     @property
     def SnapshotTime(self):
         """快照的时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SnapshotTime
@@ -10430,7 +10245,6 @@ class SnapshotResult(AbstractModel):
     @property
     def SnapshotDeadTime(self):
         """快照的过期时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SnapshotDeadTime
@@ -10442,7 +10256,6 @@ class SnapshotResult(AbstractModel):
     @property
     def SnapshotCreateTime(self):
         """快照创建时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SnapshotCreateTime
@@ -10454,7 +10267,6 @@ class SnapshotResult(AbstractModel):
     @property
     def SnapshotSize(self):
         """快照大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SnapshotSize
@@ -10466,7 +10278,6 @@ class SnapshotResult(AbstractModel):
     @property
     def SnapshotStatus(self):
         """快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SnapshotStatus
@@ -10478,7 +10289,6 @@ class SnapshotResult(AbstractModel):
     @property
     def ApplicationId(self):
         """申请单ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -10777,15 +10587,12 @@ class TableGroupInfo(AbstractModel):
         :param _TotalSize: 表格组包含的表格存储总量（MB）
         :type TotalSize: int
         :param _TxhBackupExpireDay: 表格Txh备份文件多少天后过期删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type TxhBackupExpireDay: int
         :param _EnableMysql: 是否开启mysql负载均衡,0未开启 1开启中 2已开启
         :type EnableMysql: int
         :param _MysqlConnIp: mysql负载均衡vip
-注意：此字段可能返回 null，表示取不到有效值。
         :type MysqlConnIp: str
         :param _MysqlConnPort: mysql负载均衡vport
-注意：此字段可能返回 null，表示取不到有效值。
         :type MysqlConnPort: int
         """
         self._TableGroupId = None
@@ -10856,7 +10663,6 @@ class TableGroupInfo(AbstractModel):
     @property
     def TxhBackupExpireDay(self):
         """表格Txh备份文件多少天后过期删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TxhBackupExpireDay
@@ -10879,7 +10685,6 @@ class TableGroupInfo(AbstractModel):
     @property
     def MysqlConnIp(self):
         """mysql负载均衡vip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MysqlConnIp
@@ -10891,7 +10696,6 @@ class TableGroupInfo(AbstractModel):
     @property
     def MysqlConnPort(self):
         """mysql负载均衡vport
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MysqlConnPort
@@ -10929,91 +10733,62 @@ class TableInfoNew(AbstractModel):
     def __init__(self):
         r"""
         :param _TableName: 表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _TableInstanceId: 表格实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
         :param _TableType: 表格数据结构类型，如：`GENERIC`或`LIST`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableType: str
         :param _TableIdlType: 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableIdlType: str
         :param _ClusterId: 表格所属集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 表格所属集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _TableGroupId: 表格所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
         :param _TableGroupName: 表格所属表格组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupName: str
         :param _KeyStruct: 表格主键字段结构json字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyStruct: str
         :param _ValueStruct: 表格非主键字段结构json字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValueStruct: str
         :param _ShardingKeySet: 表格分表因子集合，对PROTO类型表格有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShardingKeySet: str
         :param _IndexStruct: 表格索引键字段集合，对PROTO类型表格有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStruct: str
         :param _ListElementNum: LIST类型表格元素个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListElementNum: int
         :param _IdlFiles: 表格所关联IDL文件信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdlFiles: list of IdlFileInfo
         :param _ReservedVolume: 表格预留容量（GB）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedVolume: int
         :param _ReservedReadQps: 表格预留读CU
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedReadQps: int
         :param _ReservedWriteQps: 表格预留写CU
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedWriteQps: int
         :param _TableSize: 表格实际数据量大小（MB）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableSize: int
         :param _Status: 表格状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _CreatedTime: 表格创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _UpdatedTime: 表格最后一次修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
         :param _Memo: 表格备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Memo: str
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         :param _ApiAccessId: TcaplusDB SDK数据访问接入ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiAccessId: str
         :param _SortFieldNum: SORTLIST类型表格排序字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SortFieldNum: int
         :param _SortRule: SORTLIST类型表格排序顺序
-注意：此字段可能返回 null，表示取不到有效值。
         :type SortRule: int
         :param _DbClusterInfoStruct: 表格分布式索引/缓写、kafka数据订阅信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbClusterInfoStruct: str
         :param _TxhBackupExpireDay: 表格Txh备份文件多少天后过期删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type TxhBackupExpireDay: int
         :param _SyncTableInfo: 表格的缓写信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SyncTableInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.SyncTableInfo`
         """
         self._TableName = None
@@ -11049,7 +10824,6 @@ class TableInfoNew(AbstractModel):
     @property
     def TableName(self):
         """表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -11061,7 +10835,6 @@ class TableInfoNew(AbstractModel):
     @property
     def TableInstanceId(self):
         """表格实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableInstanceId
@@ -11073,7 +10846,6 @@ class TableInfoNew(AbstractModel):
     @property
     def TableType(self):
         """表格数据结构类型，如：`GENERIC`或`LIST`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableType
@@ -11085,7 +10857,6 @@ class TableInfoNew(AbstractModel):
     @property
     def TableIdlType(self):
         """表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableIdlType
@@ -11097,7 +10868,6 @@ class TableInfoNew(AbstractModel):
     @property
     def ClusterId(self):
         """表格所属集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -11109,7 +10879,6 @@ class TableInfoNew(AbstractModel):
     @property
     def ClusterName(self):
         """表格所属集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -11121,7 +10890,6 @@ class TableInfoNew(AbstractModel):
     @property
     def TableGroupId(self):
         """表格所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupId
@@ -11133,7 +10901,6 @@ class TableInfoNew(AbstractModel):
     @property
     def TableGroupName(self):
         """表格所属表格组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupName
@@ -11145,7 +10912,6 @@ class TableInfoNew(AbstractModel):
     @property
     def KeyStruct(self):
         """表格主键字段结构json字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KeyStruct
@@ -11157,7 +10923,6 @@ class TableInfoNew(AbstractModel):
     @property
     def ValueStruct(self):
         """表格非主键字段结构json字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValueStruct
@@ -11169,7 +10934,6 @@ class TableInfoNew(AbstractModel):
     @property
     def ShardingKeySet(self):
         """表格分表因子集合，对PROTO类型表格有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ShardingKeySet
@@ -11181,7 +10945,6 @@ class TableInfoNew(AbstractModel):
     @property
     def IndexStruct(self):
         """表格索引键字段集合，对PROTO类型表格有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexStruct
@@ -11193,7 +10956,6 @@ class TableInfoNew(AbstractModel):
     @property
     def ListElementNum(self):
         """LIST类型表格元素个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ListElementNum
@@ -11205,7 +10967,6 @@ class TableInfoNew(AbstractModel):
     @property
     def IdlFiles(self):
         """表格所关联IDL文件信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IdlFileInfo
         """
         return self._IdlFiles
@@ -11217,7 +10978,6 @@ class TableInfoNew(AbstractModel):
     @property
     def ReservedVolume(self):
         """表格预留容量（GB）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReservedVolume
@@ -11229,7 +10989,6 @@ class TableInfoNew(AbstractModel):
     @property
     def ReservedReadQps(self):
         """表格预留读CU
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReservedReadQps
@@ -11241,7 +11000,6 @@ class TableInfoNew(AbstractModel):
     @property
     def ReservedWriteQps(self):
         """表格预留写CU
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReservedWriteQps
@@ -11253,7 +11011,6 @@ class TableInfoNew(AbstractModel):
     @property
     def TableSize(self):
         """表格实际数据量大小（MB）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TableSize
@@ -11265,7 +11022,6 @@ class TableInfoNew(AbstractModel):
     @property
     def Status(self):
         """表格状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -11277,7 +11033,6 @@ class TableInfoNew(AbstractModel):
     @property
     def CreatedTime(self):
         """表格创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -11289,7 +11044,6 @@ class TableInfoNew(AbstractModel):
     @property
     def UpdatedTime(self):
         """表格最后一次修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedTime
@@ -11301,7 +11055,6 @@ class TableInfoNew(AbstractModel):
     @property
     def Memo(self):
         """表格备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Memo
@@ -11313,7 +11066,6 @@ class TableInfoNew(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -11325,7 +11077,6 @@ class TableInfoNew(AbstractModel):
     @property
     def ApiAccessId(self):
         """TcaplusDB SDK数据访问接入ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApiAccessId
@@ -11337,7 +11088,6 @@ class TableInfoNew(AbstractModel):
     @property
     def SortFieldNum(self):
         """SORTLIST类型表格排序字段个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SortFieldNum
@@ -11349,7 +11099,6 @@ class TableInfoNew(AbstractModel):
     @property
     def SortRule(self):
         """SORTLIST类型表格排序顺序
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SortRule
@@ -11361,7 +11110,6 @@ class TableInfoNew(AbstractModel):
     @property
     def DbClusterInfoStruct(self):
         """表格分布式索引/缓写、kafka数据订阅信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbClusterInfoStruct
@@ -11373,7 +11121,6 @@ class TableInfoNew(AbstractModel):
     @property
     def TxhBackupExpireDay(self):
         """表格Txh备份文件多少天后过期删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TxhBackupExpireDay
@@ -11385,7 +11132,6 @@ class TableInfoNew(AbstractModel):
     @property
     def SyncTableInfo(self):
         """表格的缓写信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.SyncTableInfo`
         """
         return self._SyncTableInfo
@@ -11452,31 +11198,22 @@ class TableResultNew(AbstractModel):
     def __init__(self):
         r"""
         :param _TableInstanceId: 表格实例ID，形如：tcaplus-3be64cbb
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
         :param _TaskId: 任务ID，对于创建单任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _TableName: 表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _TableType: 表格数据结构类型，如：`GENERIC`或`LIST`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableType: str
         :param _TableIdlType: 表数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableIdlType: str
         :param _TableGroupId: 表格所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         :param _TaskIds: 任务ID列表，对于创建多任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIds: list of str
         :param _ApplicationId: 腾讯云申请审核单Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         """
         self._TableInstanceId = None
@@ -11492,7 +11229,6 @@ class TableResultNew(AbstractModel):
     @property
     def TableInstanceId(self):
         """表格实例ID，形如：tcaplus-3be64cbb
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableInstanceId
@@ -11504,7 +11240,6 @@ class TableResultNew(AbstractModel):
     @property
     def TaskId(self):
         """任务ID，对于创建单任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -11516,7 +11251,6 @@ class TableResultNew(AbstractModel):
     @property
     def TableName(self):
         """表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -11528,7 +11262,6 @@ class TableResultNew(AbstractModel):
     @property
     def TableType(self):
         """表格数据结构类型，如：`GENERIC`或`LIST`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableType
@@ -11540,7 +11273,6 @@ class TableResultNew(AbstractModel):
     @property
     def TableIdlType(self):
         """表数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableIdlType
@@ -11552,7 +11284,6 @@ class TableResultNew(AbstractModel):
     @property
     def TableGroupId(self):
         """表格所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupId
@@ -11564,7 +11295,6 @@ class TableResultNew(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -11576,7 +11306,6 @@ class TableResultNew(AbstractModel):
     @property
     def TaskIds(self):
         """任务ID列表，对于创建多任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TaskIds
@@ -11588,7 +11317,6 @@ class TableResultNew(AbstractModel):
     @property
     def ApplicationId(self):
         """腾讯云申请审核单Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -11628,37 +11356,26 @@ class TableRollbackResultNew(AbstractModel):
     def __init__(self):
         r"""
         :param _TableInstanceId: 表格实例ID，形如：tcaplus-3be64cbb
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
         :param _TaskId: 任务ID，对于创建单任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _TableName: 表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _TableType: 表格数据结构类型，如：`GENERIC`或`LIST`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableType: str
         :param _TableIdlType: 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableIdlType: str
         :param _TableGroupId: 表格所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         :param _TaskIds: 任务ID列表，对于创建多任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIds: list of str
         :param _FileId: 上传的key文件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param _SuccKeyNum: 校验成功Key数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccKeyNum: int
         :param _TotalKeyNum: Key文件中包含总的Key数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalKeyNum: int
         """
         self._TableInstanceId = None
@@ -11676,7 +11393,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def TableInstanceId(self):
         """表格实例ID，形如：tcaplus-3be64cbb
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableInstanceId
@@ -11688,7 +11404,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def TaskId(self):
         """任务ID，对于创建单任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -11700,7 +11415,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def TableName(self):
         """表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -11712,7 +11426,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def TableType(self):
         """表格数据结构类型，如：`GENERIC`或`LIST`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableType
@@ -11724,7 +11437,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def TableIdlType(self):
         """表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableIdlType
@@ -11736,7 +11448,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def TableGroupId(self):
         """表格所属表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupId
@@ -11748,7 +11459,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -11760,7 +11470,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def TaskIds(self):
         """任务ID列表，对于创建多任务的接口有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TaskIds
@@ -11772,7 +11481,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def FileId(self):
         """上传的key文件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileId
@@ -11784,7 +11492,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def SuccKeyNum(self):
         """校验成功Key数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SuccKeyNum
@@ -11796,7 +11503,6 @@ class TableRollbackResultNew(AbstractModel):
     @property
     def TotalKeyNum(self):
         """Key文件中包含总的Key数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalKeyNum
@@ -11840,7 +11546,6 @@ class TagInfoUnit(AbstractModel):
         :param _TagKey: 标签键
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -11860,7 +11565,6 @@ class TagInfoUnit(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue
@@ -11891,13 +11595,10 @@ class TagsInfoOfCluster(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterId: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _Tags: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfoUnit
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         self._ClusterId = None
@@ -11907,7 +11608,6 @@ class TagsInfoOfCluster(AbstractModel):
     @property
     def ClusterId(self):
         """集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -11919,7 +11619,6 @@ class TagsInfoOfCluster(AbstractModel):
     @property
     def Tags(self):
         """标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfoUnit
         """
         return self._Tags
@@ -11931,7 +11630,6 @@ class TagsInfoOfCluster(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -11970,19 +11668,14 @@ class TagsInfoOfTable(AbstractModel):
     def __init__(self):
         r"""
         :param _TableInstanceId: 表格实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
         :param _TableName: 表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _TableGroupId: 表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
         :param _Tags: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfoUnit
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         self._TableInstanceId = None
@@ -11994,7 +11687,6 @@ class TagsInfoOfTable(AbstractModel):
     @property
     def TableInstanceId(self):
         """表格实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableInstanceId
@@ -12006,7 +11698,6 @@ class TagsInfoOfTable(AbstractModel):
     @property
     def TableName(self):
         """表格名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -12018,7 +11709,6 @@ class TagsInfoOfTable(AbstractModel):
     @property
     def TableGroupId(self):
         """表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupId
@@ -12030,7 +11720,6 @@ class TagsInfoOfTable(AbstractModel):
     @property
     def Tags(self):
         """标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfoUnit
         """
         return self._Tags
@@ -12042,7 +11731,6 @@ class TagsInfoOfTable(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -12083,16 +11771,12 @@ class TagsInfoOfTableGroup(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterId: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _TableGroupId: 表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
         :param _Tags: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfoUnit
         :param _Error: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         self._ClusterId = None
@@ -12103,7 +11787,6 @@ class TagsInfoOfTableGroup(AbstractModel):
     @property
     def ClusterId(self):
         """集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -12115,7 +11798,6 @@ class TagsInfoOfTableGroup(AbstractModel):
     @property
     def TableGroupId(self):
         """表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupId
@@ -12127,7 +11809,6 @@ class TagsInfoOfTableGroup(AbstractModel):
     @property
     def Tags(self):
         """标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfoUnit
         """
         return self._Tags
@@ -12139,7 +11820,6 @@ class TagsInfoOfTableGroup(AbstractModel):
     @property
     def Error(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -12199,13 +11879,10 @@ class TaskInfoNew(AbstractModel):
         :param _Content: 任务详情
         :type Content: str
         :param _TableGroupId: 表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
         :param _TableGroupName: 表格组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupName: str
         :param _TableName: 表名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         """
         self._TaskId = None
@@ -12335,7 +12012,6 @@ class TaskInfoNew(AbstractModel):
     @property
     def TableGroupId(self):
         """表格组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupId
@@ -12347,7 +12023,6 @@ class TaskInfoNew(AbstractModel):
     @property
     def TableGroupName(self):
         """表格组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableGroupName
@@ -12359,7 +12034,6 @@ class TaskInfoNew(AbstractModel):
     @property
     def TableName(self):
         """表名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -12442,7 +12116,6 @@ class UpdateApplyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ApplyResults: 已更新的申请单列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyResults: list of ApplyResult
         :param _TotalCount: 更新数量
         :type TotalCount: int
@@ -12456,7 +12129,6 @@ class UpdateApplyResponse(AbstractModel):
     @property
     def ApplyResults(self):
         """已更新的申请单列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApplyResult
         """
         return self._ApplyResults

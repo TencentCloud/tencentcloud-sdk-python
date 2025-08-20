@@ -2541,6 +2541,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExecuteDisasterRecovery(self, request):
+        """执行域名异地访问切换，域名的访问指向将切换至备份集群。
+
+        :param request: Request instance for ExecuteDisasterRecovery.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ExecuteDisasterRecoveryRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ExecuteDisasterRecoveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExecuteDisasterRecovery", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExecuteDisasterRecoveryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportRocketMQMessageDetail(self, request):
         """导出RocketMQ消息详情
 

@@ -1172,6 +1172,29 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeImagesToShare(self, request):
+        """本接口 (DescribeImagesToShare) 用于查询CVM的自定义镜像列表共享到轻量应用服务器。
+
+        :param request: Request instance for DescribeImagesToShare.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeImagesToShareRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeImagesToShareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImagesToShare", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImagesToShareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceVncUrl(self, request):
         """本接口 ( DescribeInstanceVncUrl ) 用于查询实例管理终端地址，获取的地址可用于实例的 VNC 登录。
 
@@ -2012,6 +2035,36 @@ class LighthouseClient(AbstractClient):
             body = self.call("ModifyFirewallTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyFirewallTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyImageSharePermission(self, request):
+        """本接口 (ModifyImageSharePermission) 用于共享和取消共享CVM自定义镜像到轻量应用服务器服务。
+        CVM镜像共享到轻量应用服务器镜像需要满足如下条件：
+        1.已共享过的镜像不支持再次共享。
+        2.外部导入的镜像不支持共享。
+        3.整机镜像不支持共享。
+        4.镜像要支持Cloudinit才支持共享。
+        5.镜像的Platform和OsName要满足。
+        6.NORMAL状态的镜像才支持共享。
+
+        :param request: Request instance for ModifyImageSharePermission.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyImageSharePermissionRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyImageSharePermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyImageSharePermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyImageSharePermissionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

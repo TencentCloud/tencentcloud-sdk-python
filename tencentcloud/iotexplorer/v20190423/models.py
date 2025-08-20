@@ -5869,6 +5869,8 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
 - `minutely`：分钟级（默认值）
 - `immediate`：立即
         :type SummaryQOS: str
+        :param _SummaryConfig: 摘要输出配置
+        :type SummaryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
         """
         self._ProductId = None
         self._DeviceName = None
@@ -5881,6 +5883,7 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
         self._IsCustomDevice = None
         self._InputType = None
         self._SummaryQOS = None
+        self._SummaryConfig = None
 
     @property
     def ProductId(self):
@@ -6009,6 +6012,17 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
     def SummaryQOS(self, SummaryQOS):
         self._SummaryQOS = SummaryQOS
 
+    @property
+    def SummaryConfig(self):
+        """摘要输出配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
+        """
+        return self._SummaryConfig
+
+    @SummaryConfig.setter
+    def SummaryConfig(self, SummaryConfig):
+        self._SummaryConfig = SummaryConfig
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -6022,6 +6036,9 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
         self._IsCustomDevice = params.get("IsCustomDevice")
         self._InputType = params.get("InputType")
         self._SummaryQOS = params.get("SummaryQOS")
+        if params.get("SummaryConfig") is not None:
+            self._SummaryConfig = VisionSummaryConfig()
+            self._SummaryConfig._deserialize(params.get("SummaryConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21158,6 +21175,8 @@ class InvokeTWeSeeRecognitionTaskRequest(AbstractModel):
 - `minutely`：分钟级（默认值）
 - `immediate`：立即
         :type SummaryQOS: str
+        :param _SummaryConfig: 摘要输出配置
+        :type SummaryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
         """
         self._ProductId = None
         self._DeviceName = None
@@ -21170,6 +21189,7 @@ class InvokeTWeSeeRecognitionTaskRequest(AbstractModel):
         self._IsCustomDevice = None
         self._InputType = None
         self._SummaryQOS = None
+        self._SummaryConfig = None
 
     @property
     def ProductId(self):
@@ -21298,6 +21318,17 @@ class InvokeTWeSeeRecognitionTaskRequest(AbstractModel):
     def SummaryQOS(self, SummaryQOS):
         self._SummaryQOS = SummaryQOS
 
+    @property
+    def SummaryConfig(self):
+        """摘要输出配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
+        """
+        return self._SummaryConfig
+
+    @SummaryConfig.setter
+    def SummaryConfig(self, SummaryConfig):
+        self._SummaryConfig = SummaryConfig
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -21311,6 +21342,9 @@ class InvokeTWeSeeRecognitionTaskRequest(AbstractModel):
         self._IsCustomDevice = params.get("IsCustomDevice")
         self._InputType = params.get("InputType")
         self._SummaryQOS = params.get("SummaryQOS")
+        if params.get("SummaryConfig") is not None:
+            self._SummaryConfig = VisionSummaryConfig()
+            self._SummaryConfig._deserialize(params.get("SummaryConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24750,6 +24784,8 @@ class ModifyTWeSeeConfigRequest(AbstractModel):
         :type EnableSearch: bool
         :param _Config: 配置参数，不传则不修改
         :type Config: str
+        :param _SummaryConfig: 视频摘要配置参数，不传则不修改
+        :type SummaryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
         """
         self._ProductId = None
         self._DeviceName = None
@@ -24758,6 +24794,7 @@ class ModifyTWeSeeConfigRequest(AbstractModel):
         self._EnableSummary = None
         self._EnableSearch = None
         self._Config = None
+        self._SummaryConfig = None
 
     @property
     def ProductId(self):
@@ -24836,6 +24873,17 @@ class ModifyTWeSeeConfigRequest(AbstractModel):
     def Config(self, Config):
         self._Config = Config
 
+    @property
+    def SummaryConfig(self):
+        """视频摘要配置参数，不传则不修改
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
+        """
+        return self._SummaryConfig
+
+    @SummaryConfig.setter
+    def SummaryConfig(self, SummaryConfig):
+        self._SummaryConfig = SummaryConfig
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -24845,6 +24893,9 @@ class ModifyTWeSeeConfigRequest(AbstractModel):
         self._EnableSummary = params.get("EnableSummary")
         self._EnableSearch = params.get("EnableSearch")
         self._Config = params.get("Config")
+        if params.get("SummaryConfig") is not None:
+            self._SummaryConfig = VisionSummaryConfig()
+            self._SummaryConfig._deserialize(params.get("SummaryConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30421,7 +30472,7 @@ class VisionRecognitionResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功）
+        :param _Status: 任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功；4：执行中）
         :type Status: int
         :param _DetectedClassifications: 识别到的目标类型。可能取值：
 
@@ -30433,21 +30484,26 @@ class VisionRecognitionResult(AbstractModel):
 - `smoke`：烟雾
 - `package`：快递包裹
 - `license_plate`：车牌
-
         :type DetectedClassifications: list of str
         :param _Summary: 摘要文本
         :type Summary: str
         :param _AlternativeSummary: 摘要文本（次选语言）
         :type AlternativeSummary: str
+        :param _ErrorCode: 错误码，可能取值：
+
+- `DownloadFailed`：下载视频/图片文件失败
+- `ReadFailed`：读取视频/图片文件失败
+        :type ErrorCode: str
         """
         self._Status = None
         self._DetectedClassifications = None
         self._Summary = None
         self._AlternativeSummary = None
+        self._ErrorCode = None
 
     @property
     def Status(self):
-        """任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功）
+        """任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功；4：执行中）
         :rtype: int
         """
         return self._Status
@@ -30468,7 +30524,6 @@ class VisionRecognitionResult(AbstractModel):
 - `smoke`：烟雾
 - `package`：快递包裹
 - `license_plate`：车牌
-
         :rtype: list of str
         """
         return self._DetectedClassifications
@@ -30499,12 +30554,157 @@ class VisionRecognitionResult(AbstractModel):
     def AlternativeSummary(self, AlternativeSummary):
         self._AlternativeSummary = AlternativeSummary
 
+    @property
+    def ErrorCode(self):
+        """错误码，可能取值：
+
+- `DownloadFailed`：下载视频/图片文件失败
+- `ReadFailed`：读取视频/图片文件失败
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._DetectedClassifications = params.get("DetectedClassifications")
         self._Summary = params.get("Summary")
         self._AlternativeSummary = params.get("AlternativeSummary")
+        self._ErrorCode = params.get("ErrorCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VisionSummaryConfig(AbstractModel):
+    """视频摘要配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputLang: 主输出语言
+
+支持列表如下：
+zh 中文
+en 英语
+ja 日语
+ko 韩文
+pt-BR 葡萄牙语（巴西）
+th 泰语
+
+        :type OutputLang: str
+        :param _AlternativeOutputLang: 可选输出语言
+
+支持列表如下：
+zh 中文
+en 英语
+ja 日语
+ko 韩文
+pt-BR 葡萄牙语（巴西）
+th 泰语
+
+        :type AlternativeOutputLang: str
+        :param _MultiCameraLayout: 多摄像头布局定义。可能取值：
+
+- 单摄（默认值）：`Single`
+
+- 双摄（纵向排列）- 全部画面：`Vertical,Num=2,Index=0;1`
+- 双摄（纵向排列）- 画面1：`Vertical,Num=2,Index=0`
+- 双摄（纵向排列）- 画面2：`Vertical,Num=2,Index=1`
+
+- 三摄（纵向排列）- 全部画面：`Vertical,Num=3,Index=0;1;2`
+- 三摄（纵向排列）- 画面1：`Vertical,Num=3,Index=0`
+- 三摄（纵向排列）- 画面2：`Vertical,Num=3,Index=1`
+- 三摄（纵向排列）- 画面3：`Vertical,Num=3,Index=2`
+- 三摄（纵向排列）- 画面1+2：`Vertical,Num=3,Index=0;1`
+- 三摄（纵向排列）- 画面1+3：`Vertical,Num=3,Index=0;2`
+- 三摄（纵向排列）- 画面2+3：`Vertical,Num=3,Index=1;2`
+        :type MultiCameraLayout: str
+        """
+        self._OutputLang = None
+        self._AlternativeOutputLang = None
+        self._MultiCameraLayout = None
+
+    @property
+    def OutputLang(self):
+        """主输出语言
+
+支持列表如下：
+zh 中文
+en 英语
+ja 日语
+ko 韩文
+pt-BR 葡萄牙语（巴西）
+th 泰语
+
+        :rtype: str
+        """
+        return self._OutputLang
+
+    @OutputLang.setter
+    def OutputLang(self, OutputLang):
+        self._OutputLang = OutputLang
+
+    @property
+    def AlternativeOutputLang(self):
+        """可选输出语言
+
+支持列表如下：
+zh 中文
+en 英语
+ja 日语
+ko 韩文
+pt-BR 葡萄牙语（巴西）
+th 泰语
+
+        :rtype: str
+        """
+        return self._AlternativeOutputLang
+
+    @AlternativeOutputLang.setter
+    def AlternativeOutputLang(self, AlternativeOutputLang):
+        self._AlternativeOutputLang = AlternativeOutputLang
+
+    @property
+    def MultiCameraLayout(self):
+        """多摄像头布局定义。可能取值：
+
+- 单摄（默认值）：`Single`
+
+- 双摄（纵向排列）- 全部画面：`Vertical,Num=2,Index=0;1`
+- 双摄（纵向排列）- 画面1：`Vertical,Num=2,Index=0`
+- 双摄（纵向排列）- 画面2：`Vertical,Num=2,Index=1`
+
+- 三摄（纵向排列）- 全部画面：`Vertical,Num=3,Index=0;1;2`
+- 三摄（纵向排列）- 画面1：`Vertical,Num=3,Index=0`
+- 三摄（纵向排列）- 画面2：`Vertical,Num=3,Index=1`
+- 三摄（纵向排列）- 画面3：`Vertical,Num=3,Index=2`
+- 三摄（纵向排列）- 画面1+2：`Vertical,Num=3,Index=0;1`
+- 三摄（纵向排列）- 画面1+3：`Vertical,Num=3,Index=0;2`
+- 三摄（纵向排列）- 画面2+3：`Vertical,Num=3,Index=1;2`
+        :rtype: str
+        """
+        return self._MultiCameraLayout
+
+    @MultiCameraLayout.setter
+    def MultiCameraLayout(self, MultiCameraLayout):
+        self._MultiCameraLayout = MultiCameraLayout
+
+
+    def _deserialize(self, params):
+        self._OutputLang = params.get("OutputLang")
+        self._AlternativeOutputLang = params.get("AlternativeOutputLang")
+        self._MultiCameraLayout = params.get("MultiCameraLayout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

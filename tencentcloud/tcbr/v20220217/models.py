@@ -441,13 +441,16 @@ class CreateCloudRunServerRequest(AbstractModel):
         :type ServerName: str
         :param _DeployInfo: 部署信息
         :type DeployInfo: :class:`tencentcloud.tcbr.v20220217.models.DeployParam`
-        :param _ServerConfig: 服务配置信息
+        :param _ServerConfig: 服务配置信息(已废弃)
         :type ServerConfig: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
+        :param _Items: 服务配置信息
+        :type Items: list of DiffConfigItem
         """
         self._EnvId = None
         self._ServerName = None
         self._DeployInfo = None
         self._ServerConfig = None
+        self._Items = None
 
     @property
     def EnvId(self):
@@ -484,7 +487,7 @@ class CreateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerConfig(self):
-        """服务配置信息
+        """服务配置信息(已废弃)
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
         """
         return self._ServerConfig
@@ -492,6 +495,17 @@ class CreateCloudRunServerRequest(AbstractModel):
     @ServerConfig.setter
     def ServerConfig(self, ServerConfig):
         self._ServerConfig = ServerConfig
+
+    @property
+    def Items(self):
+        """服务配置信息
+        :rtype: list of DiffConfigItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
 
 
     def _deserialize(self, params):
@@ -503,6 +517,12 @@ class CreateCloudRunServerRequest(AbstractModel):
         if params.get("ServerConfig") is not None:
             self._ServerConfig = ServerBaseConfig()
             self._ServerConfig._deserialize(params.get("ServerConfig"))
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DiffConfigItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1424,6 +1444,248 @@ class DescribeServerManageTaskResponse(AbstractModel):
             self._Task = ServerManageTaskInfo()
             self._Task._deserialize(params.get("Task"))
         self._RequestId = params.get("RequestId")
+
+
+class DiffConfigItem(AbstractModel):
+    """服务配置入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 配置项 Key
+MinNum 最小副本数
+MaxNum 最大副本数
+PolicyDetails 扩缩容策略
+AccessTypes 访问类型
+TimerScale 定时扩缩容
+InternalAccess 内网访问
+OperationMode 运行模式 noScale | condScale | alwaysScale | custom ｜ manualScale
+SessionAffinity 会话亲和性 open | close
+CpuSpecs cpu 规格
+MemSpecs mem规格
+EnvParam 环境变量
+LogPath 日志采集路径
+Port 端口
+Dockerfile dockerfile 文件名
+BuildDir 目标目录
+Tag 服务标签
+LogType 日志类型 none | default | custom 
+LogSetId 日志集Id
+LogTopicId 日志主题ID
+LogParseType 日志解析类型 json ｜ line
+EntryPoint entrypoint 命令
+Cmd cmd命令
+VpcConf 网络信息
+        :type Key: str
+        :param _Value: 字符串类型配置项值
+InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfile、BuildDir、Tag、LogType、LogSetId、LogTopicId、LogParseType
+        :type Value: str
+        :param _IntValue: int 类型配置项值
+MinNum、MaxNum、Port
+        :type IntValue: int
+        :param _BoolValue: bool 类型配置项值
+        :type BoolValue: bool
+        :param _FloatValue: 浮点型配置项值
+CpuSpecs、MemSpecs
+        :type FloatValue: float
+        :param _ArrayValue: 字符串数组配置项值
+AccessTypes，EntryPoint，Cmd
+        :type ArrayValue: list of str
+        :param _PolicyDetails: 扩缩容策略配置项值
+        :type PolicyDetails: list of HpaPolicy
+        :param _TimerScale: 定时扩缩容配置项值
+        :type TimerScale: list of TimerScale
+        :param _VpcConf: 配置内网访问时网络信息
+        :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
+        :param _VolumesConf: 存储配置信息
+        :type VolumesConf: list of VolumeConf
+        """
+        self._Key = None
+        self._Value = None
+        self._IntValue = None
+        self._BoolValue = None
+        self._FloatValue = None
+        self._ArrayValue = None
+        self._PolicyDetails = None
+        self._TimerScale = None
+        self._VpcConf = None
+        self._VolumesConf = None
+
+    @property
+    def Key(self):
+        """配置项 Key
+MinNum 最小副本数
+MaxNum 最大副本数
+PolicyDetails 扩缩容策略
+AccessTypes 访问类型
+TimerScale 定时扩缩容
+InternalAccess 内网访问
+OperationMode 运行模式 noScale | condScale | alwaysScale | custom ｜ manualScale
+SessionAffinity 会话亲和性 open | close
+CpuSpecs cpu 规格
+MemSpecs mem规格
+EnvParam 环境变量
+LogPath 日志采集路径
+Port 端口
+Dockerfile dockerfile 文件名
+BuildDir 目标目录
+Tag 服务标签
+LogType 日志类型 none | default | custom 
+LogSetId 日志集Id
+LogTopicId 日志主题ID
+LogParseType 日志解析类型 json ｜ line
+EntryPoint entrypoint 命令
+Cmd cmd命令
+VpcConf 网络信息
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """字符串类型配置项值
+InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfile、BuildDir、Tag、LogType、LogSetId、LogTopicId、LogParseType
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def IntValue(self):
+        """int 类型配置项值
+MinNum、MaxNum、Port
+        :rtype: int
+        """
+        return self._IntValue
+
+    @IntValue.setter
+    def IntValue(self, IntValue):
+        self._IntValue = IntValue
+
+    @property
+    def BoolValue(self):
+        """bool 类型配置项值
+        :rtype: bool
+        """
+        return self._BoolValue
+
+    @BoolValue.setter
+    def BoolValue(self, BoolValue):
+        self._BoolValue = BoolValue
+
+    @property
+    def FloatValue(self):
+        """浮点型配置项值
+CpuSpecs、MemSpecs
+        :rtype: float
+        """
+        return self._FloatValue
+
+    @FloatValue.setter
+    def FloatValue(self, FloatValue):
+        self._FloatValue = FloatValue
+
+    @property
+    def ArrayValue(self):
+        """字符串数组配置项值
+AccessTypes，EntryPoint，Cmd
+        :rtype: list of str
+        """
+        return self._ArrayValue
+
+    @ArrayValue.setter
+    def ArrayValue(self, ArrayValue):
+        self._ArrayValue = ArrayValue
+
+    @property
+    def PolicyDetails(self):
+        """扩缩容策略配置项值
+        :rtype: list of HpaPolicy
+        """
+        return self._PolicyDetails
+
+    @PolicyDetails.setter
+    def PolicyDetails(self, PolicyDetails):
+        self._PolicyDetails = PolicyDetails
+
+    @property
+    def TimerScale(self):
+        """定时扩缩容配置项值
+        :rtype: list of TimerScale
+        """
+        return self._TimerScale
+
+    @TimerScale.setter
+    def TimerScale(self, TimerScale):
+        self._TimerScale = TimerScale
+
+    @property
+    def VpcConf(self):
+        """配置内网访问时网络信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
+        """
+        return self._VpcConf
+
+    @VpcConf.setter
+    def VpcConf(self, VpcConf):
+        self._VpcConf = VpcConf
+
+    @property
+    def VolumesConf(self):
+        """存储配置信息
+        :rtype: list of VolumeConf
+        """
+        return self._VolumesConf
+
+    @VolumesConf.setter
+    def VolumesConf(self, VolumesConf):
+        self._VolumesConf = VolumesConf
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._IntValue = params.get("IntValue")
+        self._BoolValue = params.get("BoolValue")
+        self._FloatValue = params.get("FloatValue")
+        self._ArrayValue = params.get("ArrayValue")
+        if params.get("PolicyDetails") is not None:
+            self._PolicyDetails = []
+            for item in params.get("PolicyDetails"):
+                obj = HpaPolicy()
+                obj._deserialize(item)
+                self._PolicyDetails.append(obj)
+        if params.get("TimerScale") is not None:
+            self._TimerScale = []
+            for item in params.get("TimerScale"):
+                obj = TimerScale()
+                obj._deserialize(item)
+                self._TimerScale.append(obj)
+        if params.get("VpcConf") is not None:
+            self._VpcConf = VpcConf()
+            self._VpcConf._deserialize(params.get("VpcConf"))
+        if params.get("VolumesConf") is not None:
+            self._VolumesConf = []
+            for item in params.get("VolumesConf"):
+                obj = VolumeConf()
+                obj._deserialize(item)
+                self._VolumesConf.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EnvBaseInfo(AbstractModel):
@@ -2697,6 +2959,8 @@ class ServerBaseConfig(AbstractModel):
         :type SessionAffinity: str
         :param _VpcConf: Vpc 配置参数
         :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
+        :param _VolumesConf: 存储配置信息
+        :type VolumesConf: list of VolumeConf
         """
         self._EnvId = None
         self._ServerName = None
@@ -2727,6 +2991,7 @@ class ServerBaseConfig(AbstractModel):
         self._Cmd = None
         self._SessionAffinity = None
         self._VpcConf = None
+        self._VolumesConf = None
 
     @property
     def EnvId(self):
@@ -3048,6 +3313,17 @@ class ServerBaseConfig(AbstractModel):
     def VpcConf(self, VpcConf):
         self._VpcConf = VpcConf
 
+    @property
+    def VolumesConf(self):
+        """存储配置信息
+        :rtype: list of VolumeConf
+        """
+        return self._VolumesConf
+
+    @VolumesConf.setter
+    def VolumesConf(self, VolumesConf):
+        self._VolumesConf = VolumesConf
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3091,6 +3367,12 @@ class ServerBaseConfig(AbstractModel):
         if params.get("VpcConf") is not None:
             self._VpcConf = VpcConf()
             self._VpcConf._deserialize(params.get("VpcConf"))
+        if params.get("VolumesConf") is not None:
+            self._VolumesConf = []
+            for item in params.get("VolumesConf"):
+                obj = VolumeConf()
+                obj._deserialize(item)
+                self._VolumesConf.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3126,6 +3408,8 @@ class ServerBaseInfo(AbstractModel):
         :type ServerType: str
         :param _TrafficType: 流量类型，目前只有 FLOW
         :type TrafficType: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
         """
         self._ServerName = None
         self._DefaultDomainName = None
@@ -3136,6 +3420,7 @@ class ServerBaseInfo(AbstractModel):
         self._CustomDomainNames = None
         self._ServerType = None
         self._TrafficType = None
+        self._CreateTime = None
 
     @property
     def ServerName(self):
@@ -3236,6 +3521,17 @@ class ServerBaseInfo(AbstractModel):
     def TrafficType(self, TrafficType):
         self._TrafficType = TrafficType
 
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._ServerName = params.get("ServerName")
@@ -3247,6 +3543,7 @@ class ServerBaseInfo(AbstractModel):
         self._CustomDomainNames = params.get("CustomDomainNames")
         self._ServerType = params.get("ServerType")
         self._TrafficType = params.get("TrafficType")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3994,16 +4291,19 @@ class UpdateCloudRunServerRequest(AbstractModel):
         :type ServerName: str
         :param _DeployInfo: 部署信息
         :type DeployInfo: :class:`tencentcloud.tcbr.v20220217.models.DeployParam`
-        :param _ServerConfig: 服务配置信息
+        :param _ServerConfig: 服务配置信息(已废弃)
         :type ServerConfig: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
         :param _Business: 业务类型，默认tcr
         :type Business: str
+        :param _Items: 服务配置信息
+        :type Items: list of DiffConfigItem
         """
         self._EnvId = None
         self._ServerName = None
         self._DeployInfo = None
         self._ServerConfig = None
         self._Business = None
+        self._Items = None
 
     @property
     def EnvId(self):
@@ -4040,7 +4340,7 @@ class UpdateCloudRunServerRequest(AbstractModel):
 
     @property
     def ServerConfig(self):
-        """服务配置信息
+        """服务配置信息(已废弃)
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
         """
         return self._ServerConfig
@@ -4060,6 +4360,17 @@ class UpdateCloudRunServerRequest(AbstractModel):
     def Business(self, Business):
         self._Business = Business
 
+    @property
+    def Items(self):
+        """服务配置信息
+        :rtype: list of DiffConfigItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -4071,6 +4382,12 @@ class UpdateCloudRunServerRequest(AbstractModel):
             self._ServerConfig = ServerBaseConfig()
             self._ServerConfig._deserialize(params.get("ServerConfig"))
         self._Business = params.get("Business")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DiffConfigItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4227,6 +4544,117 @@ class VersionFlowInfo(AbstractModel):
             self._UrlParam = ObjectKV()
             self._UrlParam._deserialize(params.get("UrlParam"))
         self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeConf(AbstractModel):
+    """存储配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 存储类型
+        :type Type: str
+        :param _BucketName: 对象存储桶名称
+        :type BucketName: str
+        :param _Endpoint: 存储连接地址
+        :type Endpoint: str
+        :param _KeyID: 存储连接用户密码
+        :type KeyID: str
+        :param _DstPath: 存储挂载目的目录
+        :type DstPath: str
+        :param _SrcPath: 存储挂载源目录
+        :type SrcPath: str
+        """
+        self._Type = None
+        self._BucketName = None
+        self._Endpoint = None
+        self._KeyID = None
+        self._DstPath = None
+        self._SrcPath = None
+
+    @property
+    def Type(self):
+        """存储类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def BucketName(self):
+        """对象存储桶名称
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Endpoint(self):
+        """存储连接地址
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def KeyID(self):
+        """存储连接用户密码
+        :rtype: str
+        """
+        return self._KeyID
+
+    @KeyID.setter
+    def KeyID(self, KeyID):
+        self._KeyID = KeyID
+
+    @property
+    def DstPath(self):
+        """存储挂载目的目录
+        :rtype: str
+        """
+        return self._DstPath
+
+    @DstPath.setter
+    def DstPath(self, DstPath):
+        self._DstPath = DstPath
+
+    @property
+    def SrcPath(self):
+        """存储挂载源目录
+        :rtype: str
+        """
+        return self._SrcPath
+
+    @SrcPath.setter
+    def SrcPath(self, SrcPath):
+        self._SrcPath = SrcPath
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._BucketName = params.get("BucketName")
+        self._Endpoint = params.get("Endpoint")
+        self._KeyID = params.get("KeyID")
+        self._DstPath = params.get("DstPath")
+        self._SrcPath = params.get("SrcPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

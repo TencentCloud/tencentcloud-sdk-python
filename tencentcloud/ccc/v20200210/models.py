@@ -3212,6 +3212,17 @@ HoaiMy
 2.  dify-inputs-user 为dify的user值
 3.  dify-inputs-conversation_id 为dify的conversation_id值
         :type Variables: list of Variable
+        :param _TopP: 模型topP
+        :type TopP: float
+        :param _VadLevel: vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :type VadLevel: int
+        :param _ToneWord: 衔接语
+        :type ToneWord: :class:`tencentcloud.ccc.v20200210.models.ToneWordInfo`
+        :param _EnableComplianceAudio: 合规提示音， 
+该参数传true（默认）表示通话开始播放摩斯码，提示对话内容为 AI 生成。
+该参数传false表示关闭合规提示音。该参数传false则代表您知晓并同意以下协议：
+我方充分知悉和理解，根据[《网络安全法》](https://www.gov.cn/xinwen/2016-11/07/content_5129723.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
+        :type EnableComplianceAudio: bool
         """
         self._SdkAppId = None
         self._Callee = None
@@ -3242,6 +3253,10 @@ HoaiMy
         self._ExtractConfig = None
         self._Temperature = None
         self._Variables = None
+        self._TopP = None
+        self._VadLevel = None
+        self._ToneWord = None
+        self._EnableComplianceAudio = None
 
     @property
     def SdkAppId(self):
@@ -3737,6 +3752,53 @@ HoaiMy
     def Variables(self, Variables):
         self._Variables = Variables
 
+    @property
+    def TopP(self):
+        """模型topP
+        :rtype: float
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def VadLevel(self):
+        """vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :rtype: int
+        """
+        return self._VadLevel
+
+    @VadLevel.setter
+    def VadLevel(self, VadLevel):
+        self._VadLevel = VadLevel
+
+    @property
+    def ToneWord(self):
+        """衔接语
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ToneWordInfo`
+        """
+        return self._ToneWord
+
+    @ToneWord.setter
+    def ToneWord(self, ToneWord):
+        self._ToneWord = ToneWord
+
+    @property
+    def EnableComplianceAudio(self):
+        """合规提示音， 
+该参数传true（默认）表示通话开始播放摩斯码，提示对话内容为 AI 生成。
+该参数传false表示关闭合规提示音。该参数传false则代表您知晓并同意以下协议：
+我方充分知悉和理解，根据[《网络安全法》](https://www.gov.cn/xinwen/2016-11/07/content_5129723.htm)[《互联网信息服务深度合成管理规定》](https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm)[《生成式人工智能服务管理暂行办法》](https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm)[《人工智能生成合成内容标识办法》](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm)的法律法规的规定，对人工智能生成合成内容应当添加显式标识和隐式标识。我方基于业务需求，请腾讯云对生成合成内容不添加显式标识，我方承诺合法合规使用生成合成内容，避免造成混淆、误认；如果使用生成合成内容对公众提供服务的，或通过网络传播的，我方将自觉主动添加符合法律规定和国家标准要求的显式标识，承担人工智能生成合成内容标识的法律义务。我方未能恰当、合理地履行人工智能内容标识义务造成不良后果的，或遭受主管部门责罚的，相关责任由我方完全承担。
+        :rtype: bool
+        """
+        return self._EnableComplianceAudio
+
+    @EnableComplianceAudio.setter
+    def EnableComplianceAudio(self, EnableComplianceAudio):
+        self._EnableComplianceAudio = EnableComplianceAudio
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3788,6 +3850,12 @@ HoaiMy
                 obj = Variable()
                 obj._deserialize(item)
                 self._Variables.append(obj)
+        self._TopP = params.get("TopP")
+        self._VadLevel = params.get("VadLevel")
+        if params.get("ToneWord") is not None:
+            self._ToneWord = ToneWordInfo()
+            self._ToneWord._deserialize(params.get("ToneWord"))
+        self._EnableComplianceAudio = params.get("EnableComplianceAudio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15072,7 +15140,7 @@ class ServerPushText(AbstractModel):
 
 注意：DropMode为1时，允许缓存多个消息，如果后续出现了打断，缓存的消息会被清空
         :type DropMode: int
-        :param _Priority: ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。**目前仅支持传入0，如果需要传入1，请提工单联系我们添加权限。**
+        :param _Priority: ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。
 注意：在接收到Priority=1的消息后，后续其他任何消息都会被忽略（包括Priority=1的消息），直到Priority=1的消息处理结束。该字段可与Interrupt、DropMode字段配合使用。
 例子：
 - Priority=1、Interrupt=true，会打断现有交互，立刻播报，播报过程中不会被打断
@@ -15153,7 +15221,7 @@ class ServerPushText(AbstractModel):
 
     @property
     def Priority(self):
-        """ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。**目前仅支持传入0，如果需要传入1，请提工单联系我们添加权限。**
+        """ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。
 注意：在接收到Priority=1的消息后，后续其他任何消息都会被忽略（包括Priority=1的消息），直到Priority=1的消息处理结束。该字段可与Interrupt、DropMode字段配合使用。
 例子：
 - Priority=1、Interrupt=true，会打断现有交互，立刻播报，播报过程中不会被打断
@@ -15222,6 +15290,8 @@ class SkillGroupInfoItem(AbstractModel):
         :type SkillGroupType: int
         :param _Alias: 技能组内线号码
         :type Alias: str
+        :param _RingAll: 是否同振
+        :type RingAll: bool
         """
         self._SkillGroupId = None
         self._SkillGroupName = None
@@ -15232,6 +15302,7 @@ class SkillGroupInfoItem(AbstractModel):
         self._LastModifyTimestamp = None
         self._SkillGroupType = None
         self._Alias = None
+        self._RingAll = None
 
     @property
     def SkillGroupId(self):
@@ -15332,6 +15403,17 @@ class SkillGroupInfoItem(AbstractModel):
     def Alias(self, Alias):
         self._Alias = Alias
 
+    @property
+    def RingAll(self):
+        """是否同振
+        :rtype: bool
+        """
+        return self._RingAll
+
+    @RingAll.setter
+    def RingAll(self, RingAll):
+        self._RingAll = RingAll
+
 
     def _deserialize(self, params):
         self._SkillGroupId = params.get("SkillGroupId")
@@ -15343,6 +15425,7 @@ class SkillGroupInfoItem(AbstractModel):
         self._LastModifyTimestamp = params.get("LastModifyTimestamp")
         self._SkillGroupType = params.get("SkillGroupType")
         self._Alias = params.get("Alias")
+        self._RingAll = params.get("RingAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17086,6 +17169,59 @@ class TimeRange(AbstractModel):
         
 
 
+class ToneWordInfo(AbstractModel):
+    """承接语气词信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FirstSentenceTimeout: 首句超时时间，单位秒
+        :type FirstSentenceTimeout: float
+        :param _ZHToneWords: 承接语气词
+        :type ZHToneWords: :class:`tencentcloud.ccc.v20200210.models.ZHToneWordsInfo`
+        """
+        self._FirstSentenceTimeout = None
+        self._ZHToneWords = None
+
+    @property
+    def FirstSentenceTimeout(self):
+        """首句超时时间，单位秒
+        :rtype: float
+        """
+        return self._FirstSentenceTimeout
+
+    @FirstSentenceTimeout.setter
+    def FirstSentenceTimeout(self, FirstSentenceTimeout):
+        self._FirstSentenceTimeout = FirstSentenceTimeout
+
+    @property
+    def ZHToneWords(self):
+        """承接语气词
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ZHToneWordsInfo`
+        """
+        return self._ZHToneWords
+
+    @ZHToneWords.setter
+    def ZHToneWords(self, ZHToneWords):
+        self._ZHToneWords = ZHToneWords
+
+
+    def _deserialize(self, params):
+        self._FirstSentenceTimeout = params.get("FirstSentenceTimeout")
+        if params.get("ZHToneWords") is not None:
+            self._ZHToneWords = ZHToneWordsInfo()
+            self._ZHToneWords._deserialize(params.get("ZHToneWords"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TransferToManualRequest(AbstractModel):
     """TransferToManual请求参数结构体
 
@@ -18073,6 +18209,72 @@ class Variable(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZHToneWordsInfo(AbstractModel):
+    """承接语气词
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Neutral: 中性词列表
+        :type Neutral: list of str
+        :param _Positive: 正面词列表
+        :type Positive: list of str
+        :param _Negative: 负面词列表
+        :type Negative: list of str
+        """
+        self._Neutral = None
+        self._Positive = None
+        self._Negative = None
+
+    @property
+    def Neutral(self):
+        """中性词列表
+        :rtype: list of str
+        """
+        return self._Neutral
+
+    @Neutral.setter
+    def Neutral(self, Neutral):
+        self._Neutral = Neutral
+
+    @property
+    def Positive(self):
+        """正面词列表
+        :rtype: list of str
+        """
+        return self._Positive
+
+    @Positive.setter
+    def Positive(self, Positive):
+        self._Positive = Positive
+
+    @property
+    def Negative(self):
+        """负面词列表
+        :rtype: list of str
+        """
+        return self._Negative
+
+    @Negative.setter
+    def Negative(self, Negative):
+        self._Negative = Negative
+
+
+    def _deserialize(self, params):
+        self._Neutral = params.get("Neutral")
+        self._Positive = params.get("Positive")
+        self._Negative = params.get("Negative")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

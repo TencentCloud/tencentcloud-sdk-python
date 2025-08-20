@@ -3378,11 +3378,19 @@ class DescribeJobMonitorDataRequest(AbstractModel):
 - MemUsage：内存利用率，单位：%
 - LanOuttraffic：内网出带宽，单位：Bytes/s
 - LanIntraffic：内网入带宽，单位：Bytes/s
+- MaxDiskUsage：所有磁盘中的使用率最高的磁盘使用率，单位：%
+- TargetDiskUsage：指定磁盘的使用率，单位：%；配合Dimensions参数使用
         :type MetricName: str
         :param _StartTime: 查询任务实例的起始时间；如果未传入查询起始时间或传入的时间小于任务实例的创建时间（任务实例创建时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），会自动将查询时间调整到任务实例的创建时间。传入时间格式只支持零时区格式。
         :type StartTime: str
         :param _EndTime: 查询任务实例的终止时间；如果未传入查询终止时间或传入的时间大于任务实例的终止时间（任务实例终止时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），并且任务实例已经结束，会自动将查询终止时间调整到任务实例的终止时间；如果任务实例未结束，会自动将查询终止时间调整到当前时间。传入时间格式只支持零时区格式。
         :type EndTime: str
+        :param _Dimensions: 查询指标的扩展参数；当前只支持TargetDiskUsage;
+
+- TargetDiskUsage
+    -支持的查询维度diskname, 维度值为磁盘挂载名，例如vdb；如果不传此参数，默认查询vdb磁盘的使用率。
+    样例：[{"Name":"diskname", "Value":"vdb"}]
+        :type Dimensions: list of Dimension
         """
         self._JobId = None
         self._TaskName = None
@@ -3390,6 +3398,7 @@ class DescribeJobMonitorDataRequest(AbstractModel):
         self._MetricName = None
         self._StartTime = None
         self._EndTime = None
+        self._Dimensions = None
 
     @property
     def JobId(self):
@@ -3432,6 +3441,8 @@ class DescribeJobMonitorDataRequest(AbstractModel):
 - MemUsage：内存利用率，单位：%
 - LanOuttraffic：内网出带宽，单位：Bytes/s
 - LanIntraffic：内网入带宽，单位：Bytes/s
+- MaxDiskUsage：所有磁盘中的使用率最高的磁盘使用率，单位：%
+- TargetDiskUsage：指定磁盘的使用率，单位：%；配合Dimensions参数使用
         :rtype: str
         """
         return self._MetricName
@@ -3462,6 +3473,21 @@ class DescribeJobMonitorDataRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def Dimensions(self):
+        """查询指标的扩展参数；当前只支持TargetDiskUsage;
+
+- TargetDiskUsage
+    -支持的查询维度diskname, 维度值为磁盘挂载名，例如vdb；如果不传此参数，默认查询vdb磁盘的使用率。
+    样例：[{"Name":"diskname", "Value":"vdb"}]
+        :rtype: list of Dimension
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -3470,6 +3496,12 @@ class DescribeJobMonitorDataRequest(AbstractModel):
         self._MetricName = params.get("MetricName")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        if params.get("Dimensions") is not None:
+            self._Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = Dimension()
+                obj._deserialize(item)
+                self._Dimensions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3842,14 +3874,14 @@ class DescribeJobSubmitInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        """作业ID
+        """作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :rtype: str
         """
         return self._JobId
@@ -4648,7 +4680,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskTemplateIds: 任务模板ID列表，与Filters参数不能同时指定。
+        :param _TaskTemplateIds: 任务模板ID列表，与Filters参数不能同时指定。模版ID最大限制100.
         :type TaskTemplateIds: list of str
         :param _Filters: 过滤条件
 <li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
@@ -4659,7 +4691,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Offset: 偏移量
         :type Offset: int
-        :param _Limit: 返回数量
+        :param _Limit: 返回数量; 可选范围[1-100]；默认值为20。
         :type Limit: int
         """
         self._TaskTemplateIds = None
@@ -4669,7 +4701,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     @property
     def TaskTemplateIds(self):
-        """任务模板ID列表，与Filters参数不能同时指定。
+        """任务模板ID列表，与Filters参数不能同时指定。模版ID最大限制100.
         :rtype: list of str
         """
         return self._TaskTemplateIds
@@ -4707,7 +4739,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量
+        """返回数量; 可选范围[1-100]；默认值为20。
         :rtype: int
         """
         return self._Limit
@@ -4877,6 +4909,57 @@ class DetachInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class Dimension(AbstractModel):
+    """Job资源监控查询维度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 查询指标的维度名称
+        :type Name: str
+        :param _Value: 查询指标的维度值
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        """查询指标的维度名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """查询指标的维度值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Docker(AbstractModel):
@@ -5593,10 +5676,10 @@ class Filter(AbstractModel):
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
     > * 若同一个`Filter`存在多个`Values`，同一`Filter`下`Values`间的关系为逻辑或（`OR`）关系。
     >
-    > 以[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州一区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
+    > 以[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州六区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
     ```
     Filters.0.Name=zone
-    &Filters.0.Values.0=ap-guangzhou-1
+    &Filters.0.Values.0=ap-guangzhou-6
     &Filters.1.Name=instance-charge-type
     &Filters.1.Values.0=PREPAID
     &Filters.1.Values.1=POSTPAID_BY_HOUR
@@ -6442,42 +6525,32 @@ class InternetAccessible(AbstractModel):
         :type PublicIpAssigned: bool
         :param _BandwidthPackageId: 带宽包ID。可通过[ DescribeBandwidthPackages ](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
         :type BandwidthPackageId: str
-        :param _InternetServiceProvider: 线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
-
-- BGP：常规 BGP 线路
-
+        :param _InternetServiceProvider: 线路类型。各种线路类型及支持地区详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+<li>BGP：常规 BGP 线路</li>
 已开通静态单线IP白名单的用户，可选值：
-
- - CMCC：中国移动
- - CTCC：中国电信
- - CUCC：中国联通
-
+<li>CMCC：中国移动</li>
+<li>CTCC：中国电信</li>
+<li>CUCC：中国联通</li>
 注意：仅部分地域支持静态单线IP。
-示例值：BGP
+
         :type InternetServiceProvider: str
         :param _IPv4AddressType: 公网 IP 类型。
 
-- WanIP：普通公网IP。
-- HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。
-- AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。
-
+<li> WanIP：普通公网IP。</li>
+<li> HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
+<li> AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
 如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
-
-示例值：WanIP
 
 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :type IPv4AddressType: str
         :param _IPv6AddressType: 弹性公网 IPv6 类型。
-- EIPv6：弹性公网 IPv6。
-- HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。
-
+<li> EIPv6：弹性公网 IPv6。</li>
+<li> HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。</li>
 如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
-示例值：EIPv6
 
 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :type IPv6AddressType: str
         :param _AntiDDoSPackageId: 高防包唯一ID，申请高防IP时，该字段必传。
-示例值：bgp-12345678
 
         :type AntiDDoSPackageId: str
         """
@@ -6536,18 +6609,14 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetServiceProvider(self):
-        """线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
-
-- BGP：常规 BGP 线路
-
+        """线路类型。各种线路类型及支持地区详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+<li>BGP：常规 BGP 线路</li>
 已开通静态单线IP白名单的用户，可选值：
-
- - CMCC：中国移动
- - CTCC：中国电信
- - CUCC：中国联通
-
+<li>CMCC：中国移动</li>
+<li>CTCC：中国电信</li>
+<li>CUCC：中国联通</li>
 注意：仅部分地域支持静态单线IP。
-示例值：BGP
+
         :rtype: str
         """
         return self._InternetServiceProvider
@@ -6560,13 +6629,10 @@ class InternetAccessible(AbstractModel):
     def IPv4AddressType(self):
         """公网 IP 类型。
 
-- WanIP：普通公网IP。
-- HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。
-- AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。
-
+<li> WanIP：普通公网IP。</li>
+<li> HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
+<li> AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
 如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
-
-示例值：WanIP
 
 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :rtype: str
@@ -6580,11 +6646,9 @@ class InternetAccessible(AbstractModel):
     @property
     def IPv6AddressType(self):
         """弹性公网 IPv6 类型。
-- EIPv6：弹性公网 IPv6。
-- HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。
-
+<li> EIPv6：弹性公网 IPv6。</li>
+<li> HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。</li>
 如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
-示例值：EIPv6
 
 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
         :rtype: str
@@ -6598,7 +6662,6 @@ class InternetAccessible(AbstractModel):
     @property
     def AntiDDoSPackageId(self):
         """高防包唯一ID，申请高防IP时，该字段必传。
-示例值：bgp-12345678
 
         :rtype: str
         """

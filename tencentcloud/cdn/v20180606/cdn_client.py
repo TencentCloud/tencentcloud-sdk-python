@@ -96,7 +96,9 @@ class CdnClient(AbstractClient):
 
 
     def CreateDiagnoseUrl(self, request):
-        """### <font color=red>**该接口已废弃** </font><br>
+        """以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+
+        ### <font color=red>**该接口已废弃** </font><br>
         CreateDiagnoseUrl 用于添加域名诊断任务URL。
 
         :param request: Request instance for CreateDiagnoseUrl.
@@ -133,81 +135,6 @@ class CdnClient(AbstractClient):
             body = self.call("CreateEdgePackTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateEdgePackTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateScdnDomain(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        CreateScdnDomain 用于创建 SCDN 加速域名
-
-        :param request: Request instance for CreateScdnDomain.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnDomainRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateScdnDomainResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateScdnDomain", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateScdnDomainResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateScdnFailedLogTask(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        CreateScdnFailedLogTask 用于重试创建失败的事件日志任务
-
-        :param request: Request instance for CreateScdnFailedLogTask.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnFailedLogTaskRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateScdnFailedLogTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateScdnFailedLogTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateScdnFailedLogTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateScdnLogTask(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        CreateScdnLogTask 用于创建事件日志任务
-
-        :param request: Request instance for CreateScdnLogTask.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnLogTaskRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateScdnLogTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateScdnLogTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateScdnLogTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -289,31 +216,6 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteScdnDomain(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        删除SCDN域名
-
-        :param request: Request instance for DeleteScdnDomain.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteScdnDomainRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DeleteScdnDomainResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteScdnDomain", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteScdnDomainResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeBillingData(self, request):
         """DescribeBillingData 用于查询实际计费数据明细。
 
@@ -328,31 +230,6 @@ class CdnClient(AbstractClient):
             body = self.call("DescribeBillingData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBillingDataResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCcData(self, request):
-        """SCDN平台下线，接口开始预下线处理
-
-        CC统计数据查询
-
-        :param request: Request instance for DescribeCcData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCcDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCcDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCcData", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCcDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -491,33 +368,10 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDDoSData(self, request):
-        """SCDN平台下线，接口开始预下线处理
-
-        DDoS统计数据查询
-
-        :param request: Request instance for DescribeDDoSData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDDoSDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeDDoSDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDDoSData", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDDoSDataResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDiagnoseReport(self, request):
-        """### <font color=red>**该接口已废弃** </font><br>
+        """以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+
+        ### <font color=red>**该接口已废弃** </font><br>
         DescribeDiagnoseReport 用于获取指定报告id的内容。
 
         :param request: Request instance for DescribeDiagnoseReport.
@@ -624,31 +478,6 @@ class CdnClient(AbstractClient):
             body = self.call("DescribeEdgePackTaskStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEdgePackTaskStatusResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeEventLogData(self, request):
-        """SCDN平台下线，接口开始预下线处理
-
-        DescribeEventLogData 用于查询事件日志统计曲线
-
-        :param request: Request instance for DescribeEventLogData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeEventLogDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeEventLogDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEventLogData", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEventLogDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -949,131 +778,6 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeScdnBotData(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        获取BOT统计数据列表
-
-        :param request: Request instance for DescribeScdnBotData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnBotDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnBotDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeScdnBotData", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeScdnBotDataResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeScdnBotRecords(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        查询BOT会话记录列表
-
-        :param request: Request instance for DescribeScdnBotRecords.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnBotRecordsRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnBotRecordsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeScdnBotRecords", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeScdnBotRecordsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeScdnConfig(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        DescribeScdnConfig 用于查询指定 SCDN 加速域名的安全相关配置
-
-        :param request: Request instance for DescribeScdnConfig.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnConfigRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeScdnConfig", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeScdnConfigResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeScdnIpStrategy(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        查询在SCDN IP安全策略
-
-        :param request: Request instance for DescribeScdnIpStrategy.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnIpStrategyRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnIpStrategyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeScdnIpStrategy", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeScdnIpStrategyResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeScdnTopData(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        获取SCDN的Top数据
-
-        :param request: Request instance for DescribeScdnTopData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnTopDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnTopDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeScdnTopData", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeScdnTopDataResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeTopData(self, request):
         """DescribeTopData 通过入参 Metric 和 Filter 组合不同，可以查询以下排序数据：
 
@@ -1144,31 +848,6 @@ class CdnClient(AbstractClient):
             body = self.call("DescribeUrlViolations", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUrlViolationsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeWafData(self, request):
-        """SCDN平台下线，接口开始预下线处理
-
-        Waf统计数据查询
-
-        :param request: Request instance for DescribeWafData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeWafDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeWafDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeWafData", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeWafDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1296,7 +975,9 @@ class CdnClient(AbstractClient):
 
 
     def GetDisableRecords(self, request):
-        """### <font color=red>**该接口已废弃** </font><br>
+        """以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+
+        ### <font color=red>**该接口已废弃** </font><br>
         GetDisableRecords 用于查询资源禁用历史，及 URL 当前状态。
 
         :param request: Request instance for GetDisableRecords.
@@ -1366,7 +1047,9 @@ class CdnClient(AbstractClient):
 
 
     def ListDiagnoseReport(self, request):
-        """### <font color=red>**该接口已废弃** </font><br>
+        """以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+
+        ### <font color=red>**该接口已废弃** </font><br>
         ListDiagnoseReport 用于获取用户诊断URL访问后各个子任务的简要详情。
 
         :param request: Request instance for ListDiagnoseReport.
@@ -1380,131 +1063,6 @@ class CdnClient(AbstractClient):
             body = self.call("ListDiagnoseReport", params, headers=headers)
             response = json.loads(body)
             model = models.ListDiagnoseReportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListScdnDomains(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        ListScdnDomains 用于查询 SCDN 安全加速域名列表，及域名基本配置信息
-
-        :param request: Request instance for ListScdnDomains.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.ListScdnDomainsRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListScdnDomainsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListScdnDomains", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListScdnDomainsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListScdnLogTasks(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        ListScdnLogTasks 用于查询SCDN日志下载任务列表,以及展示下载任务基本信息
-
-        :param request: Request instance for ListScdnLogTasks.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.ListScdnLogTasksRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListScdnLogTasksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListScdnLogTasks", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListScdnLogTasksResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListScdnTopBotData(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        获取Bot攻击的Top数据列表
-
-        :param request: Request instance for ListScdnTopBotData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.ListScdnTopBotDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListScdnTopBotDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListScdnTopBotData", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListScdnTopBotDataResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListTopBotData(self, request):
-        """SCDN平台下线，接口开始预下线处理
-
-        获取Bot攻击的Top信息
-
-        :param request: Request instance for ListTopBotData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopBotDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopBotDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListTopBotData", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListTopBotDataResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListTopCcData(self, request):
-        """SCDN平台下线，接口开始预下线处理
-
-        获取CC攻击Top数据
-
-        :param request: Request instance for ListTopCcData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopCcDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopCcDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListTopCcData", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListTopCcDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1537,31 +1095,6 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ListTopDDoSData(self, request):
-        """SCDN平台下线，接口开始预下线处理
-
-        获取DDoS攻击Top数据
-
-        :param request: Request instance for ListTopDDoSData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopDDoSDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopDDoSDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListTopDDoSData", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListTopDDoSDataResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ListTopData(self, request):
         """ListTopData 通过入参 Metric 和 Filter 组合不同，可以查询以下排序数据：
 
@@ -1584,31 +1117,6 @@ class CdnClient(AbstractClient):
             body = self.call("ListTopData", params, headers=headers)
             response = json.loads(body)
             model = models.ListTopDataResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListTopWafData(self, request):
-        """SCDN平台下线，接口开始预下线处理
-
-        获取Waf攻击Top数据
-
-        :param request: Request instance for ListTopWafData.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopWafDataRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopWafDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListTopWafData", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListTopWafDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1809,31 +1317,6 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def StartScdnDomain(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        StartScdnDomain 用于开启域名的安全防护配置
-
-        :param request: Request instance for StartScdnDomain.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.StartScdnDomainRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.StartScdnDomainResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StartScdnDomain", params, headers=headers)
-            response = json.loads(body)
-            model = models.StartScdnDomainResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def StopCdnDomain(self, request):
         """StopCdnDomain 用于停止域名的加速服务。
         注意：停止加速服务后，访问至加速节点的请求将会直接返回 404。为避免对您的业务造成影响，请在停止加速服务前将解析切走。
@@ -1849,31 +1332,6 @@ class CdnClient(AbstractClient):
             body = self.call("StopCdnDomain", params, headers=headers)
             response = json.loads(body)
             model = models.StopCdnDomainResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def StopScdnDomain(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        StopScdnDomain 用于关闭域名的安全防护配置
-
-        :param request: Request instance for StopScdnDomain.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.StopScdnDomainRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.StopScdnDomainResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StopScdnDomain", params, headers=headers)
-            response = json.loads(body)
-            model = models.StopScdnDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1945,31 +1403,6 @@ class CdnClient(AbstractClient):
             body = self.call("UpdatePayType", params, headers=headers)
             response = json.loads(body)
             model = models.UpdatePayTypeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpdateScdnDomain(self, request):
-        """SCDN平台已经正式下线，接口开始预下线处理
-
-        UpdateScdnDomain 用于修改 SCDN 加速域名安全相关配置
-
-        :param request: Request instance for UpdateScdnDomain.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateScdnDomainRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.UpdateScdnDomainResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpdateScdnDomain", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpdateScdnDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

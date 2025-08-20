@@ -18,6 +18,115 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CheckDeployAppRequest(AbstractModel):
+    """CheckDeployApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Id: 应用id
+        :type Id: str
+        :param _BuildId: 构建 Id
+        :type BuildId: str
+        """
+        self._EnvId = None
+        self._Id = None
+        self._BuildId = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Id(self):
+        """应用id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def BuildId(self):
+        """构建 Id
+        :rtype: str
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Id = params.get("Id")
+        self._BuildId = params.get("BuildId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckDeployAppResponse(AbstractModel):
+    """CheckDeployApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态：success、building、reviewFail、releaseSuccess、underReview
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """状态：success、building、reviewFail、releaseSuccess、underReview
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateKnowledgeSetRequest(AbstractModel):
     """CreateKnowledgeSet请求参数结构体
 
@@ -1011,6 +1120,70 @@ class DataSourceQueryOption(AbstractModel):
         
 
 
+class DeleteAppBindWxAppRequest(AbstractModel):
+    """DeleteAppBindWxApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WeappId: 应用id
+        :type WeappId: str
+        """
+        self._WeappId = None
+
+    @property
+    def WeappId(self):
+        """应用id
+        :rtype: str
+        """
+        return self._WeappId
+
+    @WeappId.setter
+    def WeappId(self, WeappId):
+        self._WeappId = WeappId
+
+
+    def _deserialize(self, params):
+        self._WeappId = params.get("WeappId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAppBindWxAppResponse(AbstractModel):
+    """DeleteAppBindWxApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteKnowledgeDocumentSetRequest(AbstractModel):
     """DeleteKnowledgeDocumentSet请求参数结构体
 
@@ -1236,6 +1409,177 @@ class DeleteKnowledgeSetResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeployAppRequest(AbstractModel):
+    """DeployApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Id: 应用id
+        :type Id: str
+        :param _Mode: 发布体验preview/正式upload
+        :type Mode: str
+        :param _BuildType: 构建类型：mp、pc、web、adminPortal
+        :type BuildType: str
+        :param _SubAppIds: 子包数组
+        :type SubAppIds: list of str
+        """
+        self._EnvId = None
+        self._Id = None
+        self._Mode = None
+        self._BuildType = None
+        self._SubAppIds = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Id(self):
+        """应用id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Mode(self):
+        """发布体验preview/正式upload
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def BuildType(self):
+        """构建类型：mp、pc、web、adminPortal
+        :rtype: str
+        """
+        return self._BuildType
+
+    @BuildType.setter
+    def BuildType(self, BuildType):
+        self._BuildType = BuildType
+
+    @property
+    def SubAppIds(self):
+        """子包数组
+        :rtype: list of str
+        """
+        return self._SubAppIds
+
+    @SubAppIds.setter
+    def SubAppIds(self, SubAppIds):
+        self._SubAppIds = SubAppIds
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Id = params.get("Id")
+        self._Mode = params.get("Mode")
+        self._BuildType = params.get("BuildType")
+        self._SubAppIds = params.get("SubAppIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployAppResponse(AbstractModel):
+    """DeployApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BuildId: 构建id
+        :type BuildId: str
+        :param _DeployErrCode: 发布错误code
+        :type DeployErrCode: int
+        :param _DeployErrMsg: 发布错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployErrMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BuildId = None
+        self._DeployErrCode = None
+        self._DeployErrMsg = None
+        self._RequestId = None
+
+    @property
+    def BuildId(self):
+        """构建id
+        :rtype: str
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def DeployErrCode(self):
+        """发布错误code
+        :rtype: int
+        """
+        return self._DeployErrCode
+
+    @DeployErrCode.setter
+    def DeployErrCode(self, DeployErrCode):
+        self._DeployErrCode = DeployErrCode
+
+    @property
+    def DeployErrMsg(self):
+        """发布错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeployErrMsg
+
+    @DeployErrMsg.setter
+    def DeployErrMsg(self, DeployErrMsg):
+        self._DeployErrMsg = DeployErrMsg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BuildId = params.get("BuildId")
+        self._DeployErrCode = params.get("DeployErrCode")
+        self._DeployErrMsg = params.get("DeployErrMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -2884,6 +3228,85 @@ class PageQuery(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PutWxAppIdToWeAppRequest(AbstractModel):
+    """PutWxAppIdToWeApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WeAppId: 应用ID
+        :type WeAppId: str
+        :param _WxAppId: 微信AppId
+        :type WxAppId: str
+        """
+        self._WeAppId = None
+        self._WxAppId = None
+
+    @property
+    def WeAppId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._WeAppId
+
+    @WeAppId.setter
+    def WeAppId(self, WeAppId):
+        self._WeAppId = WeAppId
+
+    @property
+    def WxAppId(self):
+        """微信AppId
+        :rtype: str
+        """
+        return self._WxAppId
+
+    @WxAppId.setter
+    def WxAppId(self, WxAppId):
+        self._WxAppId = WxAppId
+
+
+    def _deserialize(self, params):
+        self._WeAppId = params.get("WeAppId")
+        self._WxAppId = params.get("WxAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PutWxAppIdToWeAppResponse(AbstractModel):
+    """PutWxAppIdToWeApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class QureyKnowledgeDocumentSet(AbstractModel):

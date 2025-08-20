@@ -352,7 +352,6 @@ class EssbasicClient(AbstractClient):
         """接口（ChannelCreateDynamicFlowApprover）用来补充<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>发起的动态合同的签署人信息
         **注**:
         <ul>
-        <li>此接口需要保证：渠道企业已开启：模块化计费能力，</li>
         <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
         <li>此接口需要保证：合同发起时指定开启了动态合同</li>
         <li>此接口补充的动态签署人传参规则，请参考接口：<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>的签署人传参规则</li>
@@ -1585,7 +1584,9 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelRenewAutoSignLicense(self, request):
-        """给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
+        """已经不再使用
+
+        给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 
         注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
 
@@ -1717,7 +1718,7 @@ class EssbasicClient(AbstractClient):
 
     def CreateBatchOrganizationRegistrationTasks(self, request):
         """该接口用于批量创建企业认证链接， 可以支持PC浏览器，H5和小程序三种途径。
-        此接口为异步提交任务接口，需要与[查询子企业批量认证链接](https://qcloudimg.tencent-cloud.cn/raw/1d3737991b2a3be78002bd78a47d6917.png)配合使用，整体流程如下图。
+        此接口为异步提交任务接口，需要与[查询子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/DescribeBatchOrganizationRegistrationTasks)配合使用，整体流程如下图。
         ![image](https://qcloudimg.tencent-cloud.cn/raw/654aa2a72ab7d42f06464ea33c50c3bb.png)
 
 

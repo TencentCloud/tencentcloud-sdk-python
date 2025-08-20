@@ -287,9 +287,6 @@ INVALIDINSTANCESTATUS = 'InvalidInstanceStatus'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 实例名已存在。
-INVALIDPARAMETER_INSTANCENAMEEXIST = 'InvalidParameter.InstanceNameExist'
-
 # 参数检查失败。
 INVALIDPARAMETER_PARAMETERCHECKERROR = 'InvalidParameter.ParameterCheckError'
 
@@ -340,9 +337,6 @@ INVALIDPARAMETERVALUE_ILLEGALREGION = 'InvalidParameterValue.IllegalRegion'
 
 # 非法的Zone参数。
 INVALIDPARAMETERVALUE_ILLEGALZONE = 'InvalidParameterValue.IllegalZone'
-
-# 当前账号已存在。
-INVALIDPARAMETERVALUE_INSTANCENAMEEXIST = 'InvalidParameterValue.InstanceNameExist'
 
 # 当前实例不存在。
 INVALIDPARAMETERVALUE_INSTANCENOTEXIST = 'InvalidParameterValue.InstanceNotExist'
@@ -485,9 +479,6 @@ OPERATIONDENIED_INSUFFICIENTBALANCEERROR = 'OperationDenied.InsufficientBalanceE
 # 内核版本过低，导致实例无法创建tencentDBSuper账号。如果您想使用此功能，请升级内核版本。
 OPERATIONDENIED_KERNELVERSIONERROR = 'OperationDenied.KernelVersionError'
 
-# Serverless不支持当前可用区。
-OPERATIONDENIED_NOTSUPPORTZONEERROR = 'OperationDenied.NotSupportZoneError'
-
 # 不支持的付费类型。
 OPERATIONDENIED_PAYMODEERROR = 'OperationDenied.PayModeError'
 
@@ -511,9 +502,6 @@ OPERATIONDENIED_TRADEPERMISSIONERROR = 'OperationDenied.TradePermissionError'
 
 # 用户未进行实名认证，请先进行实名认证才可购买。
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'
-
-# Serverless不支持该版本。
-OPERATIONDENIED_VERSIONNOTSUPPORTERROR = 'OperationDenied.VersionNotSupportError'
 
 # 您没有权限操作该VPC网络。
 OPERATIONDENIED_VPCDENIEDERROR = 'OperationDenied.VpcDeniedError'

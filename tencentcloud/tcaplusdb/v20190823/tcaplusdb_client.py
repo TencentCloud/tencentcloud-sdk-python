@@ -1112,7 +1112,9 @@ class TcaplusdbClient(AbstractClient):
 
 
     def RollbackTables(self, request):
-        """表格数据回档
+        """不再使用
+
+        表格数据回档
 
         :param request: Request instance for RollbackTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.RollbackTablesRequest`

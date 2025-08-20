@@ -39,7 +39,7 @@ class AndroidApp(AbstractModel):
         :type UserId: str
         :param _AppMode: 应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
         :type AppMode: str
-        :param _UpdateState: 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
+        :param _UpdateState: 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
         :type UpdateState: str
         :param _PackageName: 安卓应用包名
         :type PackageName: str
@@ -133,7 +133,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def UpdateState(self):
-        """应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
+        """应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
         :rtype: str
         """
         return self._UpdateState
@@ -239,9 +239,7 @@ class AndroidAppVersionInfo(AbstractModel):
         r"""
         :param _AndroidAppVersion: 安卓应用版本
         :type AndroidAppVersion: str
-        :param _State: 安卓应用版本创建状态（NORMAL：无、UPLOADING：上传中、
-CREATING： 创建中、
-CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
+        :param _State: 安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
         :type State: str
         :param _CreateTime: 安卓应用版本创建时间
         :type CreateTime: str
@@ -257,6 +255,12 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         :type Activity: str
         :param _VersionName: 应用版本号（Version Name）
         :type VersionName: str
+        :param _MD5: 应用包 MD5
+        :type MD5: str
+        :param _FileSize: 应用包文件大小（字节）
+        :type FileSize: int
+        :param _PackageName: 安卓应用包名
+        :type PackageName: str
         """
         self._AndroidAppVersion = None
         self._State = None
@@ -267,6 +271,9 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         self._AndroidAppVersionName = None
         self._Activity = None
         self._VersionName = None
+        self._MD5 = None
+        self._FileSize = None
+        self._PackageName = None
 
     @property
     def AndroidAppVersion(self):
@@ -281,9 +288,7 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
 
     @property
     def State(self):
-        """安卓应用版本创建状态（NORMAL：无、UPLOADING：上传中、
-CREATING： 创建中、
-CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
+        """安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
         :rtype: str
         """
         return self._State
@@ -369,6 +374,39 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
     def VersionName(self, VersionName):
         self._VersionName = VersionName
 
+    @property
+    def MD5(self):
+        """应用包 MD5
+        :rtype: str
+        """
+        return self._MD5
+
+    @MD5.setter
+    def MD5(self, MD5):
+        self._MD5 = MD5
+
+    @property
+    def FileSize(self):
+        """应用包文件大小（字节）
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def PackageName(self):
+        """安卓应用包名
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
 
     def _deserialize(self, params):
         self._AndroidAppVersion = params.get("AndroidAppVersion")
@@ -380,6 +418,9 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         self._AndroidAppVersionName = params.get("AndroidAppVersionName")
         self._Activity = params.get("Activity")
         self._VersionName = params.get("VersionName")
+        self._MD5 = params.get("MD5")
+        self._FileSize = params.get("FileSize")
+        self._PackageName = params.get("PackageName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3358,17 +3399,20 @@ class CreateCosCredentialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CosType: Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+        :param _CosType: Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
         :type CosType: str
-        :param _AndroidAppCosInfo: 云手机 Cos 数据
+        :param _AndroidAppCosInfo: 云手机应用管理 Cos 数据
         :type AndroidAppCosInfo: :class:`tencentcloud.gs.v20191118.models.AndroidAppCosInfo`
+        :param _AndroidAppFileCosInfo: 云手机文件管理 Cos 数据
+        :type AndroidAppFileCosInfo: :class:`tencentcloud.gs.v20191118.models.FileCosInfo`
         """
         self._CosType = None
         self._AndroidAppCosInfo = None
+        self._AndroidAppFileCosInfo = None
 
     @property
     def CosType(self):
-        """Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+        """Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
         :rtype: str
         """
         return self._CosType
@@ -3379,7 +3423,7 @@ class CreateCosCredentialRequest(AbstractModel):
 
     @property
     def AndroidAppCosInfo(self):
-        """云手机 Cos 数据
+        """云手机应用管理 Cos 数据
         :rtype: :class:`tencentcloud.gs.v20191118.models.AndroidAppCosInfo`
         """
         return self._AndroidAppCosInfo
@@ -3388,12 +3432,26 @@ class CreateCosCredentialRequest(AbstractModel):
     def AndroidAppCosInfo(self, AndroidAppCosInfo):
         self._AndroidAppCosInfo = AndroidAppCosInfo
 
+    @property
+    def AndroidAppFileCosInfo(self):
+        """云手机文件管理 Cos 数据
+        :rtype: :class:`tencentcloud.gs.v20191118.models.FileCosInfo`
+        """
+        return self._AndroidAppFileCosInfo
+
+    @AndroidAppFileCosInfo.setter
+    def AndroidAppFileCosInfo(self, AndroidAppFileCosInfo):
+        self._AndroidAppFileCosInfo = AndroidAppFileCosInfo
+
 
     def _deserialize(self, params):
         self._CosType = params.get("CosType")
         if params.get("AndroidAppCosInfo") is not None:
             self._AndroidAppCosInfo = AndroidAppCosInfo()
             self._AndroidAppCosInfo._deserialize(params.get("AndroidAppCosInfo"))
+        if params.get("AndroidAppFileCosInfo") is not None:
+            self._AndroidAppFileCosInfo = FileCosInfo()
+            self._AndroidAppFileCosInfo._deserialize(params.get("AndroidAppFileCosInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4920,11 +4978,14 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 限制量，默认为20，最大值为100
         :type Limit: int
+        :param _RecentDays: 时间范围限制，以天数为单位
+        :type RecentDays: int
         """
         self._TaskIds = None
         self._Filter = None
         self._Offset = None
         self._Limit = None
+        self._RecentDays = None
 
     @property
     def TaskIds(self):
@@ -4970,6 +5031,17 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def RecentDays(self):
+        """时间范围限制，以天数为单位
+        :rtype: int
+        """
+        return self._RecentDays
+
+    @RecentDays.setter
+    def RecentDays(self, RecentDays):
+        self._RecentDays = RecentDays
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
@@ -4981,6 +5053,7 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
                 self._Filter.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._RecentDays = params.get("RecentDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6401,6 +6474,42 @@ class FetchAndroidInstancesLogsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class FileCosInfo(AbstractModel):
+    """应用文件 Cos 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 文件 Id
+        :type FileId: str
+        """
+        self._FileId = None
+
+    @property
+    def FileId(self):
+        """文件 Id
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Filter(AbstractModel):

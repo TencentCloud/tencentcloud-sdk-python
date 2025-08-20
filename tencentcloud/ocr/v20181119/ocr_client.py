@@ -2103,6 +2103,31 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeTableMultiOCR(self, request):
+        """基于MLLM(多模态大语言模型)的表格识别能力，针对复杂表格的算法识别效果更佳，适配财务报表识别场景，并可输出直接对接业务系统的Excel数据。
+
+        默认接口请求频率限制：1次/秒。
+
+        :param request: Request instance for RecognizeTableMultiOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableMultiOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableMultiOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeTableMultiOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeTableMultiOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeTableOCR(self, request):
         """本接口支持中英文图片/ PDF内常规表格、无线表格、多表格的检测和识别，支持日文有线表格识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。
 

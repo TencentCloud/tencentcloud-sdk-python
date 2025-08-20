@@ -77,8 +77,14 @@ FAILEDOPERATION_RULEALREADYENABLED = 'FailedOperation.RuleAlreadyEnabled'
 # 部分产品已经被绑定。
 FAILEDOPERATION_SOMEPRODUCTISALREADYBINDED = 'FailedOperation.SomeProductIsAlreadyBinded'
 
+# 目标设备存在启用状态的 TWeSee 配置
+FAILEDOPERATION_TARGETDEVICEHASENABLEDWESEECONFIG = 'FailedOperation.TargetDeviceHasEnabledWeSeeConfig'
+
 # 超过时间。
 FAILEDOPERATION_TIMEOUT = 'FailedOperation.Timeout'
+
+# 未开通 TWeSee 后付费服务
+FAILEDOPERATION_WESEESERVICENOTENABLED = 'FailedOperation.WeSeeServiceNotEnabled'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -458,11 +464,17 @@ RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = 'ResourceNotFound.TopicPolicyNotExist'
 # 规则不存在。
 RESOURCENOTFOUND_TOPICRULENOTEXIST = 'ResourceNotFound.TopicRuleNotExist'
 
+# TWeSee 后付费资源已隔离
+RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = 'ResourceUnavailable.WeSeeServiceIsolated'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # APP对产品没有权限。
 UNAUTHORIZEDOPERATION_APPNOPERMISSIONTOSTUDIOPRODUCT = 'UnauthorizedOperation.APPNoPermissionToStudioProduct'
+
+# 该账号未在白名单内，不能通过 API 创建 AI 任务
+UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = 'UnauthorizedOperation.ApiCreateAITaskNotInWhitelist'
 
 # App无权限。
 UNAUTHORIZEDOPERATION_APPNOPERMISSION = 'UnauthorizedOperation.AppNoPermission'

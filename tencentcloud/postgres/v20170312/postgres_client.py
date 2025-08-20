@@ -165,7 +165,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateDBInstanceNetworkAccess(self, request):
-        """本接口（CreateDBInstanceNetworkAccess）用于创建实例网络。
+        """本接口（CreateDBInstanceNetworkAccess）用于创建实例网络。单个实例允许创建的网络配置最多为2套，最少为1套。
 
         :param request: Request instance for CreateDBInstanceNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstanceNetworkAccessRequest`
@@ -305,7 +305,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateReadOnlyGroupNetworkAccess(self, request):
-        """本接口（CreateReadOnlyGroupNetworkAccess）用于创建RO组的网络。
+        """本接口（CreateReadOnlyGroupNetworkAccess）用于创建RO组的网络。创建网络的数量最多为2个。
 
         :param request: Request instance for CreateReadOnlyGroupNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateReadOnlyGroupNetworkAccessRequest`
@@ -327,33 +327,8 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateServerlessDBInstance(self, request):
-        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
-
-        【接口下线中，请勿使用】本接口 (CreateServerlessDBInstance) 用于创建一个ServerlessDB实例，创建成功返回实例ID。
-
-        :param request: Request instance for CreateServerlessDBInstance.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateServerlessDBInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateServerlessDBInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteAccount(self, request):
-        """此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。
+        """此接口用于删除数据库账号，需要同时输入Oid与UserName，避免误删。注：该接口可重入，如果账号已经不存在，调用此接口进行删除时不会报错。
 
         :param request: Request instance for DeleteAccount.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteAccountRequest`
@@ -422,7 +397,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteDBInstanceNetworkAccess(self, request):
-        """可对实例进行网络的删除操作。
+        """可对实例进行网络的删除操作（实例内至少保留一个网络）。
 
         :param request: Request instance for DeleteDBInstanceNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteDBInstanceNetworkAccessRequest`
@@ -514,7 +489,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteReadOnlyGroupNetworkAccess(self, request):
-        """可对RO组进行网络的删除操作。
+        """可对RO组进行网络的删除操作（网络数量至少保留1个）。
 
         :param request: Request instance for DeleteReadOnlyGroupNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteReadOnlyGroupNetworkAccessRequest`
@@ -975,31 +950,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDBSlowlogs(self, request):
-        """早期接口不规范，已提供新接口 DescribeSlowQueryList 替换
-
-        本接口（DescribeDBSlowlogs）用于获取慢查询日志。本接口已于2021.09.01日废弃，后续此接口将不再返回任何数据，推荐使用接口[DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)替代。
-
-        :param request: Request instance for DescribeDBSlowlogs.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBSlowlogsRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBSlowlogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDBSlowlogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDBSlowlogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDBVersions(self, request):
         """本接口（DescribeDBVersions）用于查询支持的数据库版本。
 
@@ -1359,31 +1309,6 @@ class PostgresClient(AbstractClient):
             body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRegionsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeServerlessDBInstances(self, request):
-        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
-
-        【接口下线中，请勿使用】用于查询一个或多个serverlessDB实例的详细信息
-
-        :param request: Request instance for DescribeServerlessDBInstances.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeServerlessDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeServerlessDBInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1810,8 +1735,8 @@ class PostgresClient(AbstractClient):
 
     def ModifyDBInstanceHAConfig(self, request):
         """本接口（ModifyDBInstanceHAConfig）用于修改实例HA配置信息。其中HA配置信息包括：
-        <li>允许备节点切换为主节点的条件配置
-        <li>半同步实例使用同步复制或异步复制的条件配置
+        <li>允许备节点切换为主节点的条件配置</li>
+        <li>半同步实例使用同步复制或异步复制的条件配置</li>
 
         :param request: Request instance for ModifyDBInstanceHAConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceHAConfigRequest`
@@ -1949,7 +1874,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceSpec(self, request):
-        """本接口（ModifyDBInstanceSpec）用于修改实例规格，包括内存、磁盘。
+        """本接口（ModifyDBInstanceSpec）用于修改实例规格，包括内存、磁盘、Cpu。
 
         :param request: Request instance for ModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSpecRequest`
@@ -2318,9 +2243,9 @@ class PostgresClient(AbstractClient):
 
     def SwitchDBInstancePrimary(self, request):
         """本接口（SwitchDBInstancePrimary）用于切换实例主备关系。
-        <li>通过主动发起切换，可以验证业务能否正确处理实例主备切换的场景
-        <li>通过使用强制切换，可以在备节点延迟不满足切换条件时，强制发起主从切换
-        <li>只有主实例可以执行该操作
+        <li>通过主动发起切换，可以验证业务能否正确处理实例主备切换的场景</li>
+        <li>通过使用强制切换，可以在备节点延迟不满足切换条件时，强制发起主从切换</li>
+        <li>只有主实例可以执行该操作</li>
 
         :param request: Request instance for SwitchDBInstancePrimary.
         :type request: :class:`tencentcloud.postgres.v20170312.models.SwitchDBInstancePrimaryRequest`

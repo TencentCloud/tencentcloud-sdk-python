@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 实例开启了销毁保护，不允许销毁
+FAILEDOPERATION_DELETIONPROTECTIONENABLED = 'FailedOperation.DeletionProtectionEnabled'
+
 # 按key回档未开启
 FAILEDOPERATION_FLASHBACKBYKEYNOTOPEN = 'FailedOperation.FlashbackByKeyNotOpen'
 

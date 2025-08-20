@@ -3829,6 +3829,8 @@ class Invocation(AbstractModel):
         :type InvocationId: str
         :param _CommandId: 命令ID。
         :type CommandId: str
+        :param _CommandName: 执行的命令的名称
+        :type CommandName: str
         :param _InvocationStatus: 执行任务状态。取值范围：
 
 - PENDING：等待下发
@@ -3881,6 +3883,7 @@ class Invocation(AbstractModel):
         """
         self._InvocationId = None
         self._CommandId = None
+        self._CommandName = None
         self._InvocationStatus = None
         self._InvocationTaskBasicInfoSet = None
         self._Description = None
@@ -3921,6 +3924,17 @@ class Invocation(AbstractModel):
     @CommandId.setter
     def CommandId(self, CommandId):
         self._CommandId = CommandId
+
+    @property
+    def CommandName(self):
+        """执行的命令的名称
+        :rtype: str
+        """
+        return self._CommandName
+
+    @CommandName.setter
+    def CommandName(self, CommandName):
+        self._CommandName = CommandName
 
     @property
     def InvocationStatus(self):
@@ -4137,6 +4151,7 @@ class Invocation(AbstractModel):
     def _deserialize(self, params):
         self._InvocationId = params.get("InvocationId")
         self._CommandId = params.get("CommandId")
+        self._CommandName = params.get("CommandName")
         self._InvocationStatus = params.get("InvocationStatus")
         if params.get("InvocationTaskBasicInfoSet") is not None:
             self._InvocationTaskBasicInfoSet = []

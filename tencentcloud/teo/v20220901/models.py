@@ -18,6 +18,183 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class APIResource(AbstractModel):
+    """API 资源。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 资源 ID。
+        :type Id: str
+        :param _Name: 资源名称。
+        :type Name: str
+        :param _APIServiceIds: API 资源关联的 API 服务 ID 列表。
+        :type APIServiceIds: list of str
+        :param _Path: 资源路径。
+        :type Path: str
+        :param _Methods: 请求方法列表。支持以下取值：GET, POST, PUT, HEAD, PATCH, OPTIONS, DELETE。
+        :type Methods: list of str
+        :param _RequestConstraint: 请求内容匹配规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :type RequestConstraint: str
+        """
+        self._Id = None
+        self._Name = None
+        self._APIServiceIds = None
+        self._Path = None
+        self._Methods = None
+        self._RequestConstraint = None
+
+    @property
+    def Id(self):
+        """资源 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """资源名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def APIServiceIds(self):
+        """API 资源关联的 API 服务 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIServiceIds
+
+    @APIServiceIds.setter
+    def APIServiceIds(self, APIServiceIds):
+        self._APIServiceIds = APIServiceIds
+
+    @property
+    def Path(self):
+        """资源路径。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Methods(self):
+        """请求方法列表。支持以下取值：GET, POST, PUT, HEAD, PATCH, OPTIONS, DELETE。
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def RequestConstraint(self):
+        """请求内容匹配规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :rtype: str
+        """
+        return self._RequestConstraint
+
+    @RequestConstraint.setter
+    def RequestConstraint(self, RequestConstraint):
+        self._RequestConstraint = RequestConstraint
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._APIServiceIds = params.get("APIServiceIds")
+        self._Path = params.get("Path")
+        self._Methods = params.get("Methods")
+        self._RequestConstraint = params.get("RequestConstraint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class APIService(AbstractModel):
+    """API 服务配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: API 服务 ID。
+        :type Id: str
+        :param _Name: API 服务名称。
+        :type Name: str
+        :param _BasePath: 基础路径。
+        :type BasePath: str
+        """
+        self._Id = None
+        self._Name = None
+        self._BasePath = None
+
+    @property
+    def Id(self):
+        """API 服务 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """API 服务名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BasePath(self):
+        """基础路径。
+        :rtype: str
+        """
+        return self._BasePath
+
+    @BasePath.setter
+    def BasePath(self, BasePath):
+        self._BasePath = BasePath
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._BasePath = params.get("BasePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccelerateMainland(AbstractModel):
     """中国大陆加速优化配置。
 
@@ -2837,6 +3014,59 @@ class AscriptionInfo(AbstractModel):
         
 
 
+class AudioTemplateInfo(AbstractModel):
+    """音频流配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Codec: 音频流的编码格式。可选值为：
+<li>libfdk_aac。</li>
+        :type Codec: str
+        :param _AudioChannel: 音频通道数，可选值：<li>2：双通道。</li>默认值：2。
+        :type AudioChannel: int
+        """
+        self._Codec = None
+        self._AudioChannel = None
+
+    @property
+    def Codec(self):
+        """音频流的编码格式。可选值为：
+<li>libfdk_aac。</li>
+        :rtype: str
+        """
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def AudioChannel(self):
+        """音频通道数，可选值：<li>2：双通道。</li>默认值：2。
+        :rtype: int
+        """
+        return self._AudioChannel
+
+    @AudioChannel.setter
+    def AudioChannel(self, AudioChannel):
+        self._AudioChannel = AudioChannel
+
+
+    def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._AudioChannel = params.get("AudioChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthenticationParameters(AbstractModel):
     """Token 鉴权 配置参数。
 
@@ -3037,23 +3267,35 @@ class BandwidthAbuseDefense(AbstractModel):
 
 
 class BillingData(AbstractModel):
-    """计费数据项
+    """计费数据项。
 
     """
 
     def __init__(self):
         r"""
-        :param _Time: 时间。
+        :param _Time: 数据时间戳。
         :type Time: str
         :param _Value: 数值。
         :type Value: int
+        :param _ZoneId: 数据点所属站点 ID。若使用内容标识符功能，则该项值为内容标识符。
+        :type ZoneId: str
+        :param _Host: 数据点所属域名。
+        :type Host: str
+        :param _ProxyId: 数据点所属四层代理实例 ID。
+        :type ProxyId: str
+        :param _RegionId: 数据点所属计费大区 ID。计费大区以实际服务用户客户端的 EdgeOne 节点所在区域为准。取值有：<li>CH：中国大陆境内</li><li>AF：非洲</li><li>AS1：亚太一区</li><li>AS2：亚太二区</li><li>AS3：亚太三区</li><li>EU：欧洲</li><li>MidEast：中东</li><li>NA：北美</li><li> SA：南美</li>
+        :type RegionId: str
         """
         self._Time = None
         self._Value = None
+        self._ZoneId = None
+        self._Host = None
+        self._ProxyId = None
+        self._RegionId = None
 
     @property
     def Time(self):
-        """时间。
+        """数据时间戳。
         :rtype: str
         """
         return self._Time
@@ -3073,10 +3315,58 @@ class BillingData(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
+    @property
+    def ZoneId(self):
+        """数据点所属站点 ID。若使用内容标识符功能，则该项值为内容标识符。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Host(self):
+        """数据点所属域名。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def ProxyId(self):
+        """数据点所属四层代理实例 ID。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RegionId(self):
+        """数据点所属计费大区 ID。计费大区以实际服务用户客户端的 EdgeOne 节点所在区域为准。取值有：<li>CH：中国大陆境内</li><li>AF：非洲</li><li>AS1：亚太一区</li><li>AS2：亚太二区</li><li>AS3：亚太三区</li><li>EU：欧洲</li><li>MidEast：中东</li><li>NA：北美</li><li> SA：南美</li>
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
         self._Value = params.get("Value")
+        self._ZoneId = params.get("ZoneId")
+        self._Host = params.get("Host")
+        self._ProxyId = params.get("ProxyId")
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6158,6 +6448,154 @@ class ClientAttestationRules(AbstractModel):
         
 
 
+class ClientAttester(AbstractModel):
+    """认证选项配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 认证选项 ID。
+        :type Id: str
+        :param _Name: 认证选项名称。
+        :type Name: str
+        :param _Type: 认证规则类型。仅出参返回，取值有：
+<li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li>
+<li>CUSTOM: 用户自定义规则。</li>
+        :type Type: str
+        :param _AttesterSource: 认证方法。取值有：
+<li>TC-RCE: 使用全栈式风控引擎进行认证；</li>
+<li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
+        :type AttesterSource: str
+        :param _AttesterDuration: 认证有效时间。默认为 60s，支持的单位有：
+<li>s：秒，取值范围 60～43200；</li>
+<li>m：分，取值范围 1～720；</li>
+<li>h：小时，取值范围 1～12。</li>
+        :type AttesterDuration: str
+        :param _TCRCEOption: TC-RCE 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
+        :type TCRCEOption: :class:`tencentcloud.teo.v20220901.models.TCRCEOption`
+        :param _TCCaptchaOption: TC-CAPTCHA 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
+        :type TCCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
+        """
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._AttesterSource = None
+        self._AttesterDuration = None
+        self._TCRCEOption = None
+        self._TCCaptchaOption = None
+
+    @property
+    def Id(self):
+        """认证选项 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """认证选项名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """认证规则类型。仅出参返回，取值有：
+<li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li>
+<li>CUSTOM: 用户自定义规则。</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AttesterSource(self):
+        """认证方法。取值有：
+<li>TC-RCE: 使用全栈式风控引擎进行认证；</li>
+<li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
+        :rtype: str
+        """
+        return self._AttesterSource
+
+    @AttesterSource.setter
+    def AttesterSource(self, AttesterSource):
+        self._AttesterSource = AttesterSource
+
+    @property
+    def AttesterDuration(self):
+        """认证有效时间。默认为 60s，支持的单位有：
+<li>s：秒，取值范围 60～43200；</li>
+<li>m：分，取值范围 1～720；</li>
+<li>h：小时，取值范围 1～12。</li>
+        :rtype: str
+        """
+        return self._AttesterDuration
+
+    @AttesterDuration.setter
+    def AttesterDuration(self, AttesterDuration):
+        self._AttesterDuration = AttesterDuration
+
+    @property
+    def TCRCEOption(self):
+        """TC-RCE 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TCRCEOption`
+        """
+        return self._TCRCEOption
+
+    @TCRCEOption.setter
+    def TCRCEOption(self, TCRCEOption):
+        self._TCRCEOption = TCRCEOption
+
+    @property
+    def TCCaptchaOption(self):
+        """TC-CAPTCHA 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
+        """
+        return self._TCCaptchaOption
+
+    @TCCaptchaOption.setter
+    def TCCaptchaOption(self, TCCaptchaOption):
+        self._TCCaptchaOption = TCCaptchaOption
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._AttesterSource = params.get("AttesterSource")
+        self._AttesterDuration = params.get("AttesterDuration")
+        if params.get("TCRCEOption") is not None:
+            self._TCRCEOption = TCRCEOption()
+            self._TCRCEOption._deserialize(params.get("TCRCEOption"))
+        if params.get("TCCaptchaOption") is not None:
+            self._TCCaptchaOption = TCCaptchaOption()
+            self._TCCaptchaOption._deserialize(params.get("TCCaptchaOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientFiltering(AbstractModel):
     """智能客户端过滤
 
@@ -8774,6 +9212,187 @@ class CreateFunctionRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateJustInTimeTranscodeTemplateRequest(AbstractModel):
+    """CreateJustInTimeTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _TemplateName: 即时转码模板名称，长度限制：64 个字符。
+        :type TemplateName: str
+        :param _Comment: 模板描述信息，长度限制：256 个字符。默认为空。
+        :type Comment: str
+        :param _VideoStreamSwitch: 启用视频流开关，取值：
+<li>on：开启；</li>
+<li>off：关闭。</li>默认值：on。
+        :type VideoStreamSwitch: str
+        :param _AudioStreamSwitch: 启用音频流开关，取值：
+<li>on：开启；</li>
+<li>off：关闭。</li>默认值：on。
+        :type AudioStreamSwitch: str
+        :param _VideoTemplate: 视频流配置参数，当 VideoStreamSwitch 为 on，该字段必填。
+        :type VideoTemplate: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
+        :param _AudioTemplate: 音频流配置参数，当 AudioStreamSwitch 为 on，该字段必填。
+        :type AudioTemplate: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
+        """
+        self._ZoneId = None
+        self._TemplateName = None
+        self._Comment = None
+        self._VideoStreamSwitch = None
+        self._AudioStreamSwitch = None
+        self._VideoTemplate = None
+        self._AudioTemplate = None
+
+    @property
+    def ZoneId(self):
+        """站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateName(self):
+        """即时转码模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Comment(self):
+        """模板描述信息，长度限制：256 个字符。默认为空。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def VideoStreamSwitch(self):
+        """启用视频流开关，取值：
+<li>on：开启；</li>
+<li>off：关闭。</li>默认值：on。
+        :rtype: str
+        """
+        return self._VideoStreamSwitch
+
+    @VideoStreamSwitch.setter
+    def VideoStreamSwitch(self, VideoStreamSwitch):
+        self._VideoStreamSwitch = VideoStreamSwitch
+
+    @property
+    def AudioStreamSwitch(self):
+        """启用音频流开关，取值：
+<li>on：开启；</li>
+<li>off：关闭。</li>默认值：on。
+        :rtype: str
+        """
+        return self._AudioStreamSwitch
+
+    @AudioStreamSwitch.setter
+    def AudioStreamSwitch(self, AudioStreamSwitch):
+        self._AudioStreamSwitch = AudioStreamSwitch
+
+    @property
+    def VideoTemplate(self):
+        """视频流配置参数，当 VideoStreamSwitch 为 on，该字段必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
+        """
+        return self._VideoTemplate
+
+    @VideoTemplate.setter
+    def VideoTemplate(self, VideoTemplate):
+        self._VideoTemplate = VideoTemplate
+
+    @property
+    def AudioTemplate(self):
+        """音频流配置参数，当 AudioStreamSwitch 为 on，该字段必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
+        """
+        return self._AudioTemplate
+
+    @AudioTemplate.setter
+    def AudioTemplate(self, AudioTemplate):
+        self._AudioTemplate = AudioTemplate
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateName = params.get("TemplateName")
+        self._Comment = params.get("Comment")
+        self._VideoStreamSwitch = params.get("VideoStreamSwitch")
+        self._AudioStreamSwitch = params.get("AudioStreamSwitch")
+        if params.get("VideoTemplate") is not None:
+            self._VideoTemplate = VideoTemplateInfo()
+            self._VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self._AudioTemplate = AudioTemplateInfo()
+            self._AudioTemplate._deserialize(params.get("AudioTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
+    """CreateJustInTimeTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 即时转码模板唯一标识，用于即时转码 URL 拼接。
+        :type TemplateId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        """即时转码模板唯一标识，用于即时转码 URL 拼接。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateL4ProxyRequest(AbstractModel):
     """CreateL4Proxy请求参数结构体
 
@@ -9374,6 +9993,403 @@ class CreateLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMultiPathGatewayLineRequest(AbstractModel):
+    """CreateMultiPathGatewayLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID 。
+        :type ZoneId: str
+        :param _GatewayId: 多通道安全网关 ID 。
+        :type GatewayId: str
+        :param _LineType: 线路类型，取值有：
+ <li>direct ：直连线路，不支持修改和删除。</li> <li>proxy ：EdgeOne 四层代理线路，支持修改实例 ID 和规则 ID，不支持删除。</li> <li>custom ：自定义线路，支持修改、删除实例 ID 和规则 ID。</li>
+        :type LineType: str
+        :param _LineAddress: 线路地址，格式为 ip:port。
+        :type LineAddress: str
+        :param _ProxyId: 四层代理实例 ID，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可由接口 [DescribeL4Proxy](https://cloud.tencent.com/document/api/1552/103413) 获取。
+        :type ProxyId: str
+        :param _RuleId: 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可以从接口 [DescribeL4ProxyRules](https://cloud.tencent.com/document/api/1552/103412) 获取。
+        :type RuleId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._LineType = None
+        self._LineAddress = None
+        self._ProxyId = None
+        self._RuleId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID 。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """多通道安全网关 ID 。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def LineType(self):
+        """线路类型，取值有：
+ <li>direct ：直连线路，不支持修改和删除。</li> <li>proxy ：EdgeOne 四层代理线路，支持修改实例 ID 和规则 ID，不支持删除。</li> <li>custom ：自定义线路，支持修改、删除实例 ID 和规则 ID。</li>
+        :rtype: str
+        """
+        return self._LineType
+
+    @LineType.setter
+    def LineType(self, LineType):
+        self._LineType = LineType
+
+    @property
+    def LineAddress(self):
+        """线路地址，格式为 ip:port。
+        :rtype: str
+        """
+        return self._LineAddress
+
+    @LineAddress.setter
+    def LineAddress(self, LineAddress):
+        self._LineAddress = LineAddress
+
+    @property
+    def ProxyId(self):
+        """四层代理实例 ID，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可由接口 [DescribeL4Proxy](https://cloud.tencent.com/document/api/1552/103413) 获取。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RuleId(self):
+        """转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可以从接口 [DescribeL4ProxyRules](https://cloud.tencent.com/document/api/1552/103412) 获取。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._LineType = params.get("LineType")
+        self._LineAddress = params.get("LineAddress")
+        self._ProxyId = params.get("ProxyId")
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMultiPathGatewayLineResponse(AbstractModel):
+    """CreateMultiPathGatewayLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LineId: 线路 ID ， 取值有:
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :type LineId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LineId = None
+        self._RequestId = None
+
+    @property
+    def LineId(self):
+        """线路 ID ， 取值有:
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LineId = params.get("LineId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMultiPathGatewayRequest(AbstractModel):
+    """CreateMultiPathGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayType: 网关类型，取值有：
+<li> cloud：云上网关，腾讯云创建和管理的网关；</li>
+<li> private：自有网关，用户部署的私有网关。</li>
+        :type GatewayType: str
+        :param _GatewayName: 网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+        :type GatewayName: str
+        :param _GatewayPort: 网关端口，范围 1～65535（除去 8888 ）。
+        :type GatewayPort: int
+        :param _RegionId: 网关地域，GatewayType 取值为 cloud（云上网关）必填。可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+        :type RegionId: str
+        :param _GatewayIP: 网关地址，GatewayType 取值为 private（自有网关）必填，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+        :type GatewayIP: str
+        """
+        self._ZoneId = None
+        self._GatewayType = None
+        self._GatewayName = None
+        self._GatewayPort = None
+        self._RegionId = None
+        self._GatewayIP = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayType(self):
+        """网关类型，取值有：
+<li> cloud：云上网关，腾讯云创建和管理的网关；</li>
+<li> private：自有网关，用户部署的私有网关。</li>
+        :rtype: str
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def GatewayName(self):
+        """网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def GatewayPort(self):
+        """网关端口，范围 1～65535（除去 8888 ）。
+        :rtype: int
+        """
+        return self._GatewayPort
+
+    @GatewayPort.setter
+    def GatewayPort(self, GatewayPort):
+        self._GatewayPort = GatewayPort
+
+    @property
+    def RegionId(self):
+        """网关地域，GatewayType 取值为 cloud（云上网关）必填。可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def GatewayIP(self):
+        """网关地址，GatewayType 取值为 private（自有网关）必填，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+        :rtype: str
+        """
+        return self._GatewayIP
+
+    @GatewayIP.setter
+    def GatewayIP(self, GatewayIP):
+        self._GatewayIP = GatewayIP
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayType = params.get("GatewayType")
+        self._GatewayName = params.get("GatewayName")
+        self._GatewayPort = params.get("GatewayPort")
+        self._RegionId = params.get("RegionId")
+        self._GatewayIP = params.get("GatewayIP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMultiPathGatewayResponse(AbstractModel):
+    """CreateMultiPathGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GatewayId = None
+        self._RequestId = None
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMultiPathGatewaySecretKeyRequest(AbstractModel):
+    """CreateMultiPathGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _SecretKey: 多通道安全加速网关接入密钥，base64字符串，编码前字符串长度为 32-48 个字符，非必填，不填系统自动生成，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+        :type SecretKey: str
+        """
+        self._ZoneId = None
+        self._SecretKey = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SecretKey(self):
+        """多通道安全加速网关接入密钥，base64字符串，编码前字符串长度为 32-48 个字符，非必填，不填系统自动生成，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMultiPathGatewaySecretKeyResponse(AbstractModel):
+    """CreateMultiPathGatewaySecretKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOriginGroupRequest(AbstractModel):
     """CreateOriginGroup请求参数结构体
 
@@ -9383,21 +10399,21 @@ class CreateOriginGroupRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID
         :type ZoneId: str
+        :param _Records: 源站记录信息，此参数必填。
+        :type Records: list of OriginRecord
         :param _Name: 源站组名称，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。
         :type Name: str
         :param _Type: 源站组类型，此参数必填，取值有：
 <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡、HTTP 专用型负载均衡引用；</li>
 <li>HTTP： HTTP 专用型源站组，支持添加 IP/域名、对象存储源站作为源站，无法被四层代理引用，仅支持被添加加速域名、规则引擎-修改源站、HTTP 专用型负载均衡引用。</li>
         :type Type: str
-        :param _Records: 源站记录信息，此参数必填。
-        :type Records: list of OriginRecord
         :param _HostHeader: 回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
         :type HostHeader: str
         """
         self._ZoneId = None
+        self._Records = None
         self._Name = None
         self._Type = None
-        self._Records = None
         self._HostHeader = None
 
     @property
@@ -9410,6 +10426,17 @@ class CreateOriginGroupRequest(AbstractModel):
     @ZoneId.setter
     def ZoneId(self, ZoneId):
         self._ZoneId = ZoneId
+
+    @property
+    def Records(self):
+        """源站记录信息，此参数必填。
+        :rtype: list of OriginRecord
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
 
     @property
     def Name(self):
@@ -9436,17 +10463,6 @@ class CreateOriginGroupRequest(AbstractModel):
         self._Type = Type
 
     @property
-    def Records(self):
-        """源站记录信息，此参数必填。
-        :rtype: list of OriginRecord
-        """
-        return self._Records
-
-    @Records.setter
-    def Records(self, Records):
-        self._Records = Records
-
-    @property
     def HostHeader(self):
         """回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
         :rtype: str
@@ -9460,14 +10476,14 @@ class CreateOriginGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
-        self._Name = params.get("Name")
-        self._Type = params.get("Type")
         if params.get("Records") is not None:
             self._Records = []
             for item in params.get("Records"):
                 obj = OriginRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
         self._HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10195,15 +11211,17 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :param _TaskType: 实时日志投递任务类型，取值有：
 <li>cls: 推送到腾讯云 CLS；</li>
 <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-<li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+<li>s3：推送到 AWS S3 兼容存储桶地址；</li>
         :type TaskType: str
-        :param _EntityList: 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-<li>七层域名：domain.example.com；</li>
-<li>四层代理实例：sid-2s69eb5wcms7。</li>
+        :param _EntityList: 实时日志投递任务对应的实体列表。取值示例如下：
+<li>七层域名：domain.example.com</li>
+<li>四层代理实例：sid-2s69eb5wcms7</li>
+<li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
         :type EntityList: list of str
         :param _LogType: 数据投递类型，取值有：
 <li>domain：站点加速日志；</li>
 <li>application：四层代理日志；</li>
+<li>function：边缘函数运行日志；</li>
 <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
 <li>web-attack：托管规则日志；</li>
 <li>web-rule：自定义规则日志；</li>
@@ -10213,7 +11231,10 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 <li>mainland：中国大陆境内；</li>
 <li>overseas：全球（不含中国大陆）。</li>
         :type Area: str
-        :param _Fields: 投递的预设字段列表。
+        :param _Fields: 投递的预设字段列表。取值参考：
+<li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
+<li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
+<li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
         :type Fields: list of str
         :param _CustomFields: 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
         :type CustomFields: list of CustomField
@@ -10274,7 +11295,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         """实时日志投递任务类型，取值有：
 <li>cls: 推送到腾讯云 CLS；</li>
 <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-<li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+<li>s3：推送到 AWS S3 兼容存储桶地址；</li>
         :rtype: str
         """
         return self._TaskType
@@ -10285,9 +11306,10 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def EntityList(self):
-        """实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-<li>七层域名：domain.example.com；</li>
-<li>四层代理实例：sid-2s69eb5wcms7。</li>
+        """实时日志投递任务对应的实体列表。取值示例如下：
+<li>七层域名：domain.example.com</li>
+<li>四层代理实例：sid-2s69eb5wcms7</li>
+<li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
         :rtype: list of str
         """
         return self._EntityList
@@ -10301,6 +11323,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         """数据投递类型，取值有：
 <li>domain：站点加速日志；</li>
 <li>application：四层代理日志；</li>
+<li>function：边缘函数运行日志；</li>
 <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
 <li>web-attack：托管规则日志；</li>
 <li>web-rule：自定义规则日志；</li>
@@ -10328,7 +11351,10 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Fields(self):
-        """投递的预设字段列表。
+        """投递的预设字段列表。取值参考：
+<li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
+<li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
+<li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
         :rtype: list of str
         """
         return self._Fields
@@ -10651,6 +11677,303 @@ class CreateRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSecurityAPIResourceRequest(AbstractModel):
+    """CreateSecurityAPIResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIResources:  API 资源列表。
+        :type APIResources: list of APIResource
+        """
+        self._ZoneId = None
+        self._APIResources = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIResources(self):
+        """ API 资源列表。
+        :rtype: list of APIResource
+        """
+        return self._APIResources
+
+    @APIResources.setter
+    def APIResources(self, APIResources):
+        self._APIResources = APIResources
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("APIResources") is not None:
+            self._APIResources = []
+            for item in params.get("APIResources"):
+                obj = APIResource()
+                obj._deserialize(item)
+                self._APIResources.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityAPIResourceResponse(AbstractModel):
+    """CreateSecurityAPIResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _APIResourceIds: API 资源 ID 列表。
+        :type APIResourceIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._APIResourceIds = None
+        self._RequestId = None
+
+    @property
+    def APIResourceIds(self):
+        """API 资源 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIResourceIds
+
+    @APIResourceIds.setter
+    def APIResourceIds(self, APIResourceIds):
+        self._APIResourceIds = APIResourceIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._APIResourceIds = params.get("APIResourceIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSecurityAPIServiceRequest(AbstractModel):
+    """CreateSecurityAPIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIServices:  API 服务列表。
+        :type APIServices: list of APIService
+        """
+        self._ZoneId = None
+        self._APIServices = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIServices(self):
+        """ API 服务列表。
+        :rtype: list of APIService
+        """
+        return self._APIServices
+
+    @APIServices.setter
+    def APIServices(self, APIServices):
+        self._APIServices = APIServices
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("APIServices") is not None:
+            self._APIServices = []
+            for item in params.get("APIServices"):
+                obj = APIService()
+                obj._deserialize(item)
+                self._APIServices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityAPIServiceResponse(AbstractModel):
+    """CreateSecurityAPIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _APIServiceIds: API 服务 ID 列表。
+        :type APIServiceIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._APIServiceIds = None
+        self._RequestId = None
+
+    @property
+    def APIServiceIds(self):
+        """API 服务 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIServiceIds
+
+    @APIServiceIds.setter
+    def APIServiceIds(self, APIServiceIds):
+        self._APIServiceIds = APIServiceIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._APIServiceIds = params.get("APIServiceIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSecurityClientAttesterRequest(AbstractModel):
+    """CreateSecurityClientAttester请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _ClientAttesters: 认证选项列表。
+        :type ClientAttesters: list of ClientAttester
+        """
+        self._ZoneId = None
+        self._ClientAttesters = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ClientAttesters(self):
+        """认证选项列表。
+        :rtype: list of ClientAttester
+        """
+        return self._ClientAttesters
+
+    @ClientAttesters.setter
+    def ClientAttesters(self, ClientAttesters):
+        self._ClientAttesters = ClientAttesters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("ClientAttesters") is not None:
+            self._ClientAttesters = []
+            for item in params.get("ClientAttesters"):
+                obj = ClientAttester()
+                obj._deserialize(item)
+                self._ClientAttesters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityClientAttesterResponse(AbstractModel):
+    """CreateSecurityClientAttester返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientAttesterIds: 认证选项 ID 列表。
+        :type ClientAttesterIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClientAttesterIds = None
+        self._RequestId = None
+
+    @property
+    def ClientAttesterIds(self):
+        """认证选项 ID 列表。
+        :rtype: list of str
+        """
+        return self._ClientAttesterIds
+
+    @ClientAttesterIds.setter
+    def ClientAttesterIds(self, ClientAttesterIds):
+        self._ClientAttesterIds = ClientAttesterIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClientAttesterIds = params.get("ClientAttesterIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSecurityIPGroupRequest(AbstractModel):
     """CreateSecurityIPGroup请求参数结构体
 
@@ -10744,6 +12067,105 @@ class CreateSecurityIPGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSecurityJSInjectionRuleRequest(AbstractModel):
+    """CreateSecurityJSInjectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _JSInjectionRules: JavaScript 注入规则列表。
+        :type JSInjectionRules: list of JSInjectionRule
+        """
+        self._ZoneId = None
+        self._JSInjectionRules = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def JSInjectionRules(self):
+        """JavaScript 注入规则列表。
+        :rtype: list of JSInjectionRule
+        """
+        return self._JSInjectionRules
+
+    @JSInjectionRules.setter
+    def JSInjectionRules(self, JSInjectionRules):
+        self._JSInjectionRules = JSInjectionRules
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("JSInjectionRules") is not None:
+            self._JSInjectionRules = []
+            for item in params.get("JSInjectionRules"):
+                obj = JSInjectionRule()
+                obj._deserialize(item)
+                self._JSInjectionRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityJSInjectionRuleResponse(AbstractModel):
+    """CreateSecurityJSInjectionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JSInjectionRuleIds: JavaScript 注入规则 ID 列表。
+        :type JSInjectionRuleIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JSInjectionRuleIds = None
+        self._RequestId = None
+
+    @property
+    def JSInjectionRuleIds(self):
+        """JavaScript 注入规则 ID 列表。
+        :rtype: list of str
+        """
+        return self._JSInjectionRuleIds
+
+    @JSInjectionRuleIds.setter
+    def JSInjectionRuleIds(self, JSInjectionRuleIds):
+        self._JSInjectionRuleIds = JSInjectionRuleIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JSInjectionRuleIds = params.get("JSInjectionRuleIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -12254,6 +13676,90 @@ class DDoSBlockData(AbstractModel):
         
 
 
+class DDoSProtection(AbstractModel):
+    """独立 DDoS 防护配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProtectionOption: 指定独立 DDoS 的防护范围。取值为：
+<li> protect_all_domains：独立 DDoS 防护对站点内全部域名生效，新接入域名自动开启独立 DDoS 防护，入参为 protect_all_domains 时，入参 DomainDDoSProtections 不作处理；</li>
+<li> protect_specified_domains：仅对指定域名生效，具体范围可通过 DomainDDoSProtection 参数指定。</li>
+        :type ProtectionOption: str
+        :param _DomainDDoSProtections: 域名的独立 DDoS 防护配置。在入参场景中：
+<li> 当 ProtectionOption 保持为 protect_specified_domains 时：未填写的域名维持原有独立 DDoS 防护配置不变，显式指定的域名​按传入参数更新；</li>
+<li> 当 ProtectionOption 由 protect_all_domains 切换为 protect_specified_domains 时：若 DomainDDoSProtections 传空，停用站点下全部域名的独立 DDoS 防护；若 DomainDDoSProtections 不为空，参数中指定的域名停用或保持独立 DDoS 防护，其余未列出的域名统一停用独立 DDoS 防护。</li>
+        :type DomainDDoSProtections: list of DomainDDoSProtection
+        :param _SharedCNAMEDDoSProtections: 共享 CNAME 的独立 DDoS 防护配置。仅作为出参使用。
+        :type SharedCNAMEDDoSProtections: list of DomainDDoSProtection
+        """
+        self._ProtectionOption = None
+        self._DomainDDoSProtections = None
+        self._SharedCNAMEDDoSProtections = None
+
+    @property
+    def ProtectionOption(self):
+        """指定独立 DDoS 的防护范围。取值为：
+<li> protect_all_domains：独立 DDoS 防护对站点内全部域名生效，新接入域名自动开启独立 DDoS 防护，入参为 protect_all_domains 时，入参 DomainDDoSProtections 不作处理；</li>
+<li> protect_specified_domains：仅对指定域名生效，具体范围可通过 DomainDDoSProtection 参数指定。</li>
+        :rtype: str
+        """
+        return self._ProtectionOption
+
+    @ProtectionOption.setter
+    def ProtectionOption(self, ProtectionOption):
+        self._ProtectionOption = ProtectionOption
+
+    @property
+    def DomainDDoSProtections(self):
+        """域名的独立 DDoS 防护配置。在入参场景中：
+<li> 当 ProtectionOption 保持为 protect_specified_domains 时：未填写的域名维持原有独立 DDoS 防护配置不变，显式指定的域名​按传入参数更新；</li>
+<li> 当 ProtectionOption 由 protect_all_domains 切换为 protect_specified_domains 时：若 DomainDDoSProtections 传空，停用站点下全部域名的独立 DDoS 防护；若 DomainDDoSProtections 不为空，参数中指定的域名停用或保持独立 DDoS 防护，其余未列出的域名统一停用独立 DDoS 防护。</li>
+        :rtype: list of DomainDDoSProtection
+        """
+        return self._DomainDDoSProtections
+
+    @DomainDDoSProtections.setter
+    def DomainDDoSProtections(self, DomainDDoSProtections):
+        self._DomainDDoSProtections = DomainDDoSProtections
+
+    @property
+    def SharedCNAMEDDoSProtections(self):
+        """共享 CNAME 的独立 DDoS 防护配置。仅作为出参使用。
+        :rtype: list of DomainDDoSProtection
+        """
+        return self._SharedCNAMEDDoSProtections
+
+    @SharedCNAMEDDoSProtections.setter
+    def SharedCNAMEDDoSProtections(self, SharedCNAMEDDoSProtections):
+        self._SharedCNAMEDDoSProtections = SharedCNAMEDDoSProtections
+
+
+    def _deserialize(self, params):
+        self._ProtectionOption = params.get("ProtectionOption")
+        if params.get("DomainDDoSProtections") is not None:
+            self._DomainDDoSProtections = []
+            for item in params.get("DomainDDoSProtections"):
+                obj = DomainDDoSProtection()
+                obj._deserialize(item)
+                self._DomainDDoSProtections.append(obj)
+        if params.get("SharedCNAMEDDoSProtections") is not None:
+            self._SharedCNAMEDDoSProtections = []
+            for item in params.get("SharedCNAMEDDoSProtections"):
+                obj = DomainDDoSProtection()
+                obj._deserialize(item)
+                self._SharedCNAMEDDoSProtections.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DDosProtectionConfig(AbstractModel):
     """适用于四层代理或 Web 站点服务的独立 DDoS 防护规格配置。
 
@@ -13253,6 +14759,85 @@ class DeleteFunctionRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteJustInTimeTranscodeTemplatesRequest(AbstractModel):
+    """DeleteJustInTimeTranscodeTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _TemplateIds: 需删除的即时转码模板唯一标识数组，长度限制：100。
+        :type TemplateIds: list of str
+        """
+        self._ZoneId = None
+        self._TemplateIds = None
+
+    @property
+    def ZoneId(self):
+        """站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateIds(self):
+        """需删除的即时转码模板唯一标识数组，长度限制：100。
+        :rtype: list of str
+        """
+        return self._TemplateIds
+
+    @TemplateIds.setter
+    def TemplateIds(self, TemplateIds):
+        self._TemplateIds = TemplateIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateIds = params.get("TemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteJustInTimeTranscodeTemplatesResponse(AbstractModel):
+    """DeleteJustInTimeTranscodeTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteL4ProxyRequest(AbstractModel):
     """DeleteL4Proxy请求参数结构体
 
@@ -13584,6 +15169,179 @@ class DeleteLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteMultiPathGatewayLineRequest(AbstractModel):
+    """DeleteMultiPathGatewayLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _LineId: 线路 ID。
+        :type LineId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._LineId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def LineId(self):
+        """线路 ID。
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._LineId = params.get("LineId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMultiPathGatewayLineResponse(AbstractModel):
+    """DeleteMultiPathGatewayLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteMultiPathGatewayRequest(AbstractModel):
+    """DeleteMultiPathGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMultiPathGatewayResponse(AbstractModel):
+    """DeleteMultiPathGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteOriginGroupRequest(AbstractModel):
     """DeleteOriginGroup请求参数结构体
 
@@ -13821,6 +15579,243 @@ class DeleteRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteSecurityAPIResourceRequest(AbstractModel):
+    """DeleteSecurityAPIResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIResourceIds: 需要删除的 API 资源 ID 列表。
+        :type APIResourceIds: list of str
+        """
+        self._ZoneId = None
+        self._APIResourceIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIResourceIds(self):
+        """需要删除的 API 资源 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIResourceIds
+
+    @APIResourceIds.setter
+    def APIResourceIds(self, APIResourceIds):
+        self._APIResourceIds = APIResourceIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._APIResourceIds = params.get("APIResourceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityAPIResourceResponse(AbstractModel):
+    """DeleteSecurityAPIResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSecurityAPIServiceRequest(AbstractModel):
+    """DeleteSecurityAPIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIServiceIds: API 服务 ID 列表。
+        :type APIServiceIds: list of str
+        """
+        self._ZoneId = None
+        self._APIServiceIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIServiceIds(self):
+        """API 服务 ID 列表。
+        :rtype: list of str
+        """
+        return self._APIServiceIds
+
+    @APIServiceIds.setter
+    def APIServiceIds(self, APIServiceIds):
+        self._APIServiceIds = APIServiceIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._APIServiceIds = params.get("APIServiceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityAPIServiceResponse(AbstractModel):
+    """DeleteSecurityAPIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSecurityClientAttesterRequest(AbstractModel):
+    """DeleteSecurityClientAttester请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _ClientAttesterIds: 客户端认证选项 ID。
+        :type ClientAttesterIds: list of str
+        """
+        self._ZoneId = None
+        self._ClientAttesterIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ClientAttesterIds(self):
+        """客户端认证选项 ID。
+        :rtype: list of str
+        """
+        return self._ClientAttesterIds
+
+    @ClientAttesterIds.setter
+    def ClientAttesterIds(self, ClientAttesterIds):
+        self._ClientAttesterIds = ClientAttesterIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ClientAttesterIds = params.get("ClientAttesterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityClientAttesterResponse(AbstractModel):
+    """DeleteSecurityClientAttester返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteSecurityIPGroupRequest(AbstractModel):
     """DeleteSecurityIPGroup请求参数结构体
 
@@ -13874,6 +15869,85 @@ class DeleteSecurityIPGroupRequest(AbstractModel):
 
 class DeleteSecurityIPGroupResponse(AbstractModel):
     """DeleteSecurityIPGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSecurityJSInjectionRuleRequest(AbstractModel):
+    """DeleteSecurityJSInjectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _JSInjectionRuleIds: JavaScript 注入规则 ID 列表。
+        :type JSInjectionRuleIds: list of str
+        """
+        self._ZoneId = None
+        self._JSInjectionRuleIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def JSInjectionRuleIds(self):
+        """JavaScript 注入规则 ID 列表。
+        :rtype: list of str
+        """
+        return self._JSInjectionRuleIds
+
+    @JSInjectionRuleIds.setter
+    def JSInjectionRuleIds(self, JSInjectionRuleIds):
+        self._JSInjectionRuleIds = JSInjectionRuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._JSInjectionRuleIds = params.get("JSInjectionRuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityJSInjectionRuleResponse(AbstractModel):
+    """DeleteSecurityJSInjectionRule返回参数结构体
 
     """
 
@@ -15144,34 +17218,13 @@ class DescribeBillingDataRequest(AbstractModel):
         r"""
         :param _StartTime: 起始时间。
         :type StartTime: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :type EndTime: str
-        :param _ZoneIds: 站点 ID 集合，此参数必填。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :type ZoneIds: list of str
-        :param _MetricName: 指标列表，取值有：
-<li>acc_flux: 内容加速流量，单位为 Byte；</li>
-<li>smt_flux: 智能加速流量，单位为 Byte；</li>
-<li>l4_flux: 四层加速流量，单位为 Byte；</li>
-<li>sec_flux: 独立防护流量，单位为 Byte；</li>
-<li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte；</li>
-<li>acc_bandwidth: 内容加速带宽，单位为 bps；</li>
-<li>smt_bandwidth: 智能加速带宽，单位为 bps；</li>
-<li>l4_bandwidth: 四层加速带宽，单位为 bps；</li>
-<li>sec_bandwidth: 独立防护带宽，单位为 bps；</li>
-<li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps；</li>
-<li>sec_request_clean: HTTP/HTTPS 请求，单位为次；</li>
-<li>smt_request_clean: 智能加速请求，单位为次；</li>
-<li>quic_request: QUIC 请求，单位为次；</li>
-<li>bot_request_clean: Bot 请求，单位为次；</li>
-<li>cls_count: 实时日志推送条数，单位为条；</li>
-<li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps；</li>
-<li>total_transcode：所有规格音频，视频即时转码，转封装时长，单位为秒；</li>
-<li>remux：转封装时长，单位为秒；</li>
-<li>transcode_audio：音频转码时长，单位为秒；</li>
-<li>transcode_H264_SD：H.264 编码方式的标清视频（短边 <= 480 px）时长，单位为秒；</li>
-<li>transcode_H264_HD：H.264 编码方式的高清视频（短边 <= 720 px）时长，单位为秒；</li>
-<li>transcode_H264_FHD：H.264 编码方式的全高清视频（短边 <= 1080 px）时长，单位为秒；</li>
-<li>transcode_H264_2K：H.264 编码方式的 2K 视频（短边 <= 1440 px）时长，单位为秒。</li>
+        :param _MetricName: 指标列表，取值如下：
+<b>四/七层加速流量：</b><li>acc_flux: 内容加速流量，单位为 Byte；</li><li>smt_flux: 智能加速流量，单位为 Byte；</li><li>l4_flux: 四层加速流量，单位为 Byte；</li><li>sec_flux: 独立防护流量，单位为 Byte；</li><li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte。</li><br><b>四/七层加速带宽:</b><li>acc_bandwidth: 内容加速带宽，单位为 bps；</li><li>smt_bandwidth: 智能加速带宽，单位为 bps；</li><li>l4_bandwidth: 四层加速带宽，单位为 bps；</li><li>sec_bandwidth: 独立防护带宽，单位为 bps；</li><li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps。</li><br><b>HTTP/HTTPS 安全请求数：</b><li>sec_request_clean: HTTP/HTTPS 请求，单位为次。</li><b><br>增值服务用量：</b><li>smt_request_clean: 智能加速请求，单位为次；</li><li>quic_request: QUIC 请求，单位为次；</li><li>bot_request_clean: Bot 请求，单位为次；</li><li>cls_count: 实时日志推送条数，单位为条；</li><li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps。</li><br><b>边缘计算用量：</b><li>edgefunction_request：边缘函数请求数，单位为次；</li><li>edgefunction_cpu_time：边缘函数CPU处理时间，单位为毫秒。</li>
+<b>媒体处理用量：</b><li>total_transcode：所有规格音频，视频即时转码，转封装时长，单位为秒；</li><li>remux：转封装时长，单位为秒；</li><li>transcode_audio：音频转码时长，单位为秒；</li><li>transcode_H264_SD：H.264 编码方式的标清视频（短边 <= 480 px）时长，单位为秒；</li><li>transcode_H264_HD：H.264 编码方式的高清视频（短边 <= 720 px）时长，单位为秒；</li><li>transcode_H264_FHD：H.264 编码方式的全高清视频（短边 <= 1080 px）时长，单位为秒；</li><li>transcode_H264_2K：H.264 编码方式的 2K 视频（短边 <= 1440 px）时长，单位为秒。</li>
         :type MetricName: str
         :param _Interval: 查询时间粒度，取值有：
 <li>5min：5 分钟粒度；</li>
@@ -15182,7 +17235,10 @@ class DescribeBillingDataRequest(AbstractModel):
 <li>host：按照域名进行过滤。示例值：test.example.com。<br></li>
 <li>proxy-id：按照四层代理实例 ID 进行过滤。示例值：sid-2rugn89bkla9。<br></li>
 <li>region-id：按照计费大区进行过滤。可选项如下：<br>  CH：中国大陆境内<br>  AF：非洲<br>  AS1：亚太一区<br>  AS2：亚太二区<br>  AS3：亚太三区<br>  EU：欧洲<br>  MidEast：中东<br>  NA：北美<br>  SA：南美</li>
+说明：相同 `Type` 的 `BillingDataFilter` 之间为“或”关系，不同 `Type` 的 `BillingDataFilter` 之间为“且”关系。
         :type Filters: list of BillingDataFilter
+        :param _GroupBy: 分组聚合维度。最多允许同时按照两种维度进行分组。取值如下：  <li>zone-id：按照站点 ID 进行分组，若使用了内容标识符功能，则优先按照内容标识符分组；<br></li><li>host：按照域名进行分组；<br></li> <li>proxy-id：按照四层代理实例 ID 进行分组；<br></li> <li>region-id：按照计费大区进行分组。</li> 
+        :type GroupBy: list of str
         """
         self._StartTime = None
         self._EndTime = None
@@ -15190,6 +17246,7 @@ class DescribeBillingDataRequest(AbstractModel):
         self._MetricName = None
         self._Interval = None
         self._Filters = None
+        self._GroupBy = None
 
     @property
     def StartTime(self):
@@ -15204,7 +17261,7 @@ class DescribeBillingDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。
+        """结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
         :rtype: str
         """
         return self._EndTime
@@ -15215,7 +17272,7 @@ class DescribeBillingDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """站点 ID 集合，此参数必填。
+        """站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15226,30 +17283,9 @@ class DescribeBillingDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """指标列表，取值有：
-<li>acc_flux: 内容加速流量，单位为 Byte；</li>
-<li>smt_flux: 智能加速流量，单位为 Byte；</li>
-<li>l4_flux: 四层加速流量，单位为 Byte；</li>
-<li>sec_flux: 独立防护流量，单位为 Byte；</li>
-<li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte；</li>
-<li>acc_bandwidth: 内容加速带宽，单位为 bps；</li>
-<li>smt_bandwidth: 智能加速带宽，单位为 bps；</li>
-<li>l4_bandwidth: 四层加速带宽，单位为 bps；</li>
-<li>sec_bandwidth: 独立防护带宽，单位为 bps；</li>
-<li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps；</li>
-<li>sec_request_clean: HTTP/HTTPS 请求，单位为次；</li>
-<li>smt_request_clean: 智能加速请求，单位为次；</li>
-<li>quic_request: QUIC 请求，单位为次；</li>
-<li>bot_request_clean: Bot 请求，单位为次；</li>
-<li>cls_count: 实时日志推送条数，单位为条；</li>
-<li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps；</li>
-<li>total_transcode：所有规格音频，视频即时转码，转封装时长，单位为秒；</li>
-<li>remux：转封装时长，单位为秒；</li>
-<li>transcode_audio：音频转码时长，单位为秒；</li>
-<li>transcode_H264_SD：H.264 编码方式的标清视频（短边 <= 480 px）时长，单位为秒；</li>
-<li>transcode_H264_HD：H.264 编码方式的高清视频（短边 <= 720 px）时长，单位为秒；</li>
-<li>transcode_H264_FHD：H.264 编码方式的全高清视频（短边 <= 1080 px）时长，单位为秒；</li>
-<li>transcode_H264_2K：H.264 编码方式的 2K 视频（短边 <= 1440 px）时长，单位为秒。</li>
+        """指标列表，取值如下：
+<b>四/七层加速流量：</b><li>acc_flux: 内容加速流量，单位为 Byte；</li><li>smt_flux: 智能加速流量，单位为 Byte；</li><li>l4_flux: 四层加速流量，单位为 Byte；</li><li>sec_flux: 独立防护流量，单位为 Byte；</li><li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte。</li><br><b>四/七层加速带宽:</b><li>acc_bandwidth: 内容加速带宽，单位为 bps；</li><li>smt_bandwidth: 智能加速带宽，单位为 bps；</li><li>l4_bandwidth: 四层加速带宽，单位为 bps；</li><li>sec_bandwidth: 独立防护带宽，单位为 bps；</li><li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps。</li><br><b>HTTP/HTTPS 安全请求数：</b><li>sec_request_clean: HTTP/HTTPS 请求，单位为次。</li><b><br>增值服务用量：</b><li>smt_request_clean: 智能加速请求，单位为次；</li><li>quic_request: QUIC 请求，单位为次；</li><li>bot_request_clean: Bot 请求，单位为次；</li><li>cls_count: 实时日志推送条数，单位为条；</li><li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps。</li><br><b>边缘计算用量：</b><li>edgefunction_request：边缘函数请求数，单位为次；</li><li>edgefunction_cpu_time：边缘函数CPU处理时间，单位为毫秒。</li>
+<b>媒体处理用量：</b><li>total_transcode：所有规格音频，视频即时转码，转封装时长，单位为秒；</li><li>remux：转封装时长，单位为秒；</li><li>transcode_audio：音频转码时长，单位为秒；</li><li>transcode_H264_SD：H.264 编码方式的标清视频（短边 <= 480 px）时长，单位为秒；</li><li>transcode_H264_HD：H.264 编码方式的高清视频（短边 <= 720 px）时长，单位为秒；</li><li>transcode_H264_FHD：H.264 编码方式的全高清视频（短边 <= 1080 px）时长，单位为秒；</li><li>transcode_H264_2K：H.264 编码方式的 2K 视频（短边 <= 1440 px）时长，单位为秒。</li>
         :rtype: str
         """
         return self._MetricName
@@ -15278,6 +17314,7 @@ class DescribeBillingDataRequest(AbstractModel):
 <li>host：按照域名进行过滤。示例值：test.example.com。<br></li>
 <li>proxy-id：按照四层代理实例 ID 进行过滤。示例值：sid-2rugn89bkla9。<br></li>
 <li>region-id：按照计费大区进行过滤。可选项如下：<br>  CH：中国大陆境内<br>  AF：非洲<br>  AS1：亚太一区<br>  AS2：亚太二区<br>  AS3：亚太三区<br>  EU：欧洲<br>  MidEast：中东<br>  NA：北美<br>  SA：南美</li>
+说明：相同 `Type` 的 `BillingDataFilter` 之间为“或”关系，不同 `Type` 的 `BillingDataFilter` 之间为“且”关系。
         :rtype: list of BillingDataFilter
         """
         return self._Filters
@@ -15285,6 +17322,17 @@ class DescribeBillingDataRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def GroupBy(self):
+        """分组聚合维度。最多允许同时按照两种维度进行分组。取值如下：  <li>zone-id：按照站点 ID 进行分组，若使用了内容标识符功能，则优先按照内容标识符分组；<br></li><li>host：按照域名进行分组；<br></li> <li>proxy-id：按照四层代理实例 ID 进行分组；<br></li> <li>region-id：按照计费大区进行分组。</li> 
+        :rtype: list of str
+        """
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
 
 
     def _deserialize(self, params):
@@ -15299,6 +17347,7 @@ class DescribeBillingDataRequest(AbstractModel):
                 obj = BillingDataFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._GroupBy = params.get("GroupBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16762,6 +18811,87 @@ class DescribeDDoSAttackTopDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDDoSProtectionRequest(AbstractModel):
+    """DescribeDDoSProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSProtectionResponse(AbstractModel):
+    """DescribeDDoSProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DDoSProtection: 独立 DDoS 防护配置。用于控制独立 DDoS 防护的生效范围。
+        :type DDoSProtection: :class:`tencentcloud.teo.v20220901.models.DDoSProtection`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DDoSProtection = None
+        self._RequestId = None
+
+    @property
+    def DDoSProtection(self):
+        """独立 DDoS 防护配置。用于控制独立 DDoS 防护的生效范围。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DDoSProtection`
+        """
+        return self._DDoSProtection
+
+    @DDoSProtection.setter
+    def DDoSProtection(self, DDoSProtection):
+        self._DDoSProtection = DDoSProtection
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DDoSProtection") is not None:
+            self._DDoSProtection = DDoSProtection()
+            self._DDoSProtection._deserialize(params.get("DDoSProtection"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDefaultCertificatesRequest(AbstractModel):
     """DescribeDefaultCertificates请求参数结构体
 
@@ -18090,6 +20220,185 @@ class DescribeIdentificationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeJustInTimeTranscodeTemplatesRequest(AbstractModel):
+    """DescribeJustInTimeTranscodeTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _Filters: 过滤条件，Filters 的上限为 20，Filters.Values 的上限为 20。该参数不填写时，默认返回当前 ZoneId 下有权限的即时转码模板。详细的过滤条件如下：<li>template-name：按照模版名批量进行过滤。例如：mytemplate；</li><li>template-type：按照模板类型批量进行过滤。例如：preset 或 custom。</li><li>template-id：按照模板 ID 批量进行过滤。例如：C1LZ7982VgTpYhJ7M。</li>默认为空。
+        :type Filters: list of Filter
+        :param _SortBy: 排序字段，取值有：<li>createTime：模板创建时间。</li>默认值为：createTime。
+        :type SortBy: str
+        :param _SortOrder: 排序方式，取值有：<li>asc：升序方式；</li><li>desc：降序方式。</li>默认值为：desc。
+        :type SortOrder: str
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：20，最大值：1000。
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        """站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        """过滤条件，Filters 的上限为 20，Filters.Values 的上限为 20。该参数不填写时，默认返回当前 ZoneId 下有权限的即时转码模板。详细的过滤条件如下：<li>template-name：按照模版名批量进行过滤。例如：mytemplate；</li><li>template-type：按照模板类型批量进行过滤。例如：preset 或 custom。</li><li>template-id：按照模板 ID 批量进行过滤。例如：C1LZ7982VgTpYhJ7M。</li>默认为空。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        """排序字段，取值有：<li>createTime：模板创建时间。</li>默认值为：createTime。
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        """排序方式，取值有：<li>asc：升序方式；</li><li>desc：降序方式。</li>默认值为：desc。
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回记录条数，默认值：20，最大值：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJustInTimeTranscodeTemplatesResponse(AbstractModel):
+    """DescribeJustInTimeTranscodeTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _TemplateSet: 模板详情列表。
+        :type TemplateSet: list of JustInTimeTranscodeTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TemplateSet(self):
+        """模板详情列表。
+        :rtype: list of JustInTimeTranscodeTemplate
+        """
+        return self._TemplateSet
+
+    @TemplateSet.setter
+    def TemplateSet(self, TemplateSet):
+        self._TemplateSet = TemplateSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TemplateSet") is not None:
+            self._TemplateSet = []
+            for item in params.get("TemplateSet"):
+                obj = JustInTimeTranscodeTemplate()
+                obj._deserialize(item)
+                self._TemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeL4ProxyRequest(AbstractModel):
     """DescribeL4Proxy请求参数结构体
 
@@ -18799,6 +21108,529 @@ class DescribeLoadBalancerListResponse(AbstractModel):
                 obj = LoadBalancer()
                 obj._deserialize(item)
                 self._LoadBalancerList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewayLineRequest(AbstractModel):
+    """DescribeMultiPathGatewayLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _LineId: 线路 ID。
+        :type LineId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._LineId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def LineId(self):
+        """线路 ID。
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._LineId = params.get("LineId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewayLineResponse(AbstractModel):
+    """DescribeMultiPathGatewayLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Line: 线路信息。
+        :type Line: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayLine`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Line = None
+        self._RequestId = None
+
+    @property
+    def Line(self):
+        """线路信息。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MultiPathGatewayLine`
+        """
+        return self._Line
+
+    @Line.setter
+    def Line(self, Line):
+        self._Line = Line
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Line") is not None:
+            self._Line = MultiPathGatewayLine()
+            self._Line._deserialize(params.get("Line"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewayRegionsRequest(AbstractModel):
+    """DescribeMultiPathGatewayRegions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewayRegionsResponse(AbstractModel):
+    """DescribeMultiPathGatewayRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayRegions: 网关可用地域列表。
+        :type GatewayRegions: list of GatewayRegion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GatewayRegions = None
+        self._RequestId = None
+
+    @property
+    def GatewayRegions(self):
+        """网关可用地域列表。
+        :rtype: list of GatewayRegion
+        """
+        return self._GatewayRegions
+
+    @GatewayRegions.setter
+    def GatewayRegions(self, GatewayRegions):
+        self._GatewayRegions = GatewayRegions
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GatewayRegions") is not None:
+            self._GatewayRegions = []
+            for item in params.get("GatewayRegions"):
+                obj = GatewayRegion()
+                obj._deserialize(item)
+                self._GatewayRegions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewayRequest(AbstractModel):
+    """DescribeMultiPathGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewayResponse(AbstractModel):
+    """DescribeMultiPathGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayDetail: 网关详情。
+        :type GatewayDetail: :class:`tencentcloud.teo.v20220901.models.MultiPathGateway`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GatewayDetail = None
+        self._RequestId = None
+
+    @property
+    def GatewayDetail(self):
+        """网关详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MultiPathGateway`
+        """
+        return self._GatewayDetail
+
+    @GatewayDetail.setter
+    def GatewayDetail(self, GatewayDetail):
+        self._GatewayDetail = GatewayDetail
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GatewayDetail") is not None:
+            self._GatewayDetail = MultiPathGateway()
+            self._GatewayDetail._deserialize(params.get("GatewayDetail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewaySecretKeyRequest(AbstractModel):
+    """DescribeMultiPathGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewaySecretKeyResponse(AbstractModel):
+    """DescribeMultiPathGatewaySecretKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretKey: 接入密钥。
+        :type SecretKey: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecretKey = None
+        self._RequestId = None
+
+    @property
+    def SecretKey(self):
+        """接入密钥。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SecretKey = params.get("SecretKey")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMultiPathGatewaysRequest(AbstractModel):
+    """DescribeMultiPathGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：1000。
+        :type Limit: int
+        :param _Filters: 网关列表的过滤字段，该参数不填写时，返回当前 appid 下所有网关信息，详细的过滤条件如下：
+<li> gateway-type：按照网关类型进行过滤，支持取值 cloud 和 private，分别代表过滤云上网关和自由网关；</li>
+<li> keyword：按照网关名的关键字进行过滤。</li>
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """网关列表的过滤字段，该参数不填写时，返回当前 appid 下所有网关信息，详细的过滤条件如下：
+<li> gateway-type：按照网关类型进行过滤，支持取值 cloud 和 private，分别代表过滤云上网关和自由网关；</li>
+<li> keyword：按照网关名的关键字进行过滤。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultiPathGatewaysResponse(AbstractModel):
+    """DescribeMultiPathGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Gateways: 网关详情。
+        :type Gateways: list of MultiPathGateway
+        :param _TotalCount: 总条数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Gateways = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Gateways(self):
+        """网关详情。
+        :rtype: list of MultiPathGateway
+        """
+        return self._Gateways
+
+    @Gateways.setter
+    def Gateways(self, Gateways):
+        self._Gateways = Gateways
+
+    @property
+    def TotalCount(self):
+        """总条数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Gateways") is not None:
+            self._Gateways = []
+            for item in params.get("Gateways"):
+                obj = MultiPathGateway()
+                obj._deserialize(item)
+                self._Gateways.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -20432,6 +23264,532 @@ class DescribeRulesSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecurityAPIResourceRequest(AbstractModel):
+    """DescribeSecurityAPIResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityAPIResourceResponse(AbstractModel):
+    """DescribeSecurityAPIResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: API 资源总数量。
+        :type TotalCount: int
+        :param _APIResources: API 资源列表。	
+        :type APIResources: list of APIResource
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._APIResources = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """API 资源总数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def APIResources(self):
+        """API 资源列表。	
+        :rtype: list of APIResource
+        """
+        return self._APIResources
+
+    @APIResources.setter
+    def APIResources(self, APIResources):
+        self._APIResources = APIResources
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("APIResources") is not None:
+            self._APIResources = []
+            for item in params.get("APIResources"):
+                obj = APIResource()
+                obj._deserialize(item)
+                self._APIResources.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSecurityAPIServiceRequest(AbstractModel):
+    """DescribeSecurityAPIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityAPIServiceResponse(AbstractModel):
+    """DescribeSecurityAPIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: API 服务总数量。	
+        :type TotalCount: int
+        :param _APIServices: API 服务列表。	
+        :type APIServices: list of APIService
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._APIServices = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """API 服务总数量。	
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def APIServices(self):
+        """API 服务列表。	
+        :rtype: list of APIService
+        """
+        return self._APIServices
+
+    @APIServices.setter
+    def APIServices(self, APIServices):
+        self._APIServices = APIServices
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("APIServices") is not None:
+            self._APIServices = []
+            for item in params.get("APIServices"):
+                obj = APIService()
+                obj._deserialize(item)
+                self._APIServices.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSecurityClientAttesterRequest(AbstractModel):
+    """DescribeSecurityClientAttester请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityClientAttesterResponse(AbstractModel):
+    """DescribeSecurityClientAttester返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 认证选项总数量。
+        :type TotalCount: int
+        :param _ClientAttesters: 认证选项列表。
+        :type ClientAttesters: list of ClientAttester
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ClientAttesters = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """认证选项总数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ClientAttesters(self):
+        """认证选项列表。
+        :rtype: list of ClientAttester
+        """
+        return self._ClientAttesters
+
+    @ClientAttesters.setter
+    def ClientAttesters(self, ClientAttesters):
+        self._ClientAttesters = ClientAttesters
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ClientAttesters") is not None:
+            self._ClientAttesters = []
+            for item in params.get("ClientAttesters"):
+                obj = ClientAttester()
+                obj._deserialize(item)
+                self._ClientAttesters.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSecurityIPGroupContentRequest(AbstractModel):
+    """DescribeSecurityIPGroupContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GroupId: IP 组 ID。
+        :type GroupId: int
+        :param _Limit: 分页查询限制数目。默认值：2000，最大值：100000。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        """IP 组 ID。
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：2000，最大值：100000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityIPGroupContentResponse(AbstractModel):
+    """DescribeSecurityIPGroupContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPTotalCount: IP 组中正在生效的 IP 或网段个数。
+        :type IPTotalCount: int
+        :param _IPList: 满足查询条件的 IP 或网段列表。受 Limit 和 Offset 参数限制。
+        :type IPList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IPTotalCount = None
+        self._IPList = None
+        self._RequestId = None
+
+    @property
+    def IPTotalCount(self):
+        """IP 组中正在生效的 IP 或网段个数。
+        :rtype: int
+        """
+        return self._IPTotalCount
+
+    @IPTotalCount.setter
+    def IPTotalCount(self, IPTotalCount):
+        self._IPTotalCount = IPTotalCount
+
+    @property
+    def IPList(self):
+        """满足查询条件的 IP 或网段列表。受 Limit 和 Offset 参数限制。
+        :rtype: list of str
+        """
+        return self._IPList
+
+    @IPList.setter
+    def IPList(self, IPList):
+        self._IPList = IPList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IPTotalCount = params.get("IPTotalCount")
+        self._IPList = params.get("IPList")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSecurityIPGroupInfoRequest(AbstractModel):
     """DescribeSecurityIPGroupInfo请求参数结构体
 
@@ -20657,6 +24015,135 @@ class DescribeSecurityIPGroupResponse(AbstractModel):
                 obj = IPGroup()
                 obj._deserialize(item)
                 self._IPGroups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSecurityJSInjectionRuleRequest(AbstractModel):
+    """DescribeSecurityJSInjectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityJSInjectionRuleResponse(AbstractModel):
+    """DescribeSecurityJSInjectionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: JavaScript 注入规则总数量。
+        :type TotalCount: int
+        :param _JSInjectionRules: JavaScript 注入规则列表。
+        :type JSInjectionRules: list of JSInjectionRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._JSInjectionRules = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """JavaScript 注入规则总数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def JSInjectionRules(self):
+        """JavaScript 注入规则列表。
+        :rtype: list of JSInjectionRule
+        """
+        return self._JSInjectionRules
+
+    @JSInjectionRules.setter
+    def JSInjectionRules(self, JSInjectionRules):
+        self._JSInjectionRules = JSInjectionRules
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("JSInjectionRules") is not None:
+            self._JSInjectionRules = []
+            for item in params.get("JSInjectionRules"):
+                obj = JSInjectionRule()
+                obj._deserialize(item)
+                self._JSInjectionRules.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -21164,27 +24651,10 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 <li>hour: 1小时；</li>
 <li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
         :type Interval: str
-        :param _Filters: 过滤条件，详细的过滤条件 Key 值如下：
-<li>country：按照国家/地区进行过滤，国家/地区遵循 <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> 规范。示例值：CN。</li>
-<li>province：按照省份进行过滤，此参数只支持服务区域为中国大陆。省份代码参考<a href="https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">境内省份映射表</a>，示例值：22。</li>
-<li>isp：按照运营商进行过滤，此参数只支持服务区域为中国大陆。对应的 Value 可选项如下：<br>   2：中国电信；<br>   26：中国联通；<br>   1046：中国移动；<br>   3947：中国铁通；<br>   38：教育网；<br>   43：长城宽带；<br>   0：其他运营商。</li>
-<li>domain：按照子域名进行过滤，示例值： www.example.com。</li>
-<li>url：按照 URL Path 进行过滤，示例值：/content 或 /content/test.jpg。若填写 url 参数，则最多可查询近 30 天的数据。</li>
-<li>referer：按照 Referer 请求头部进行过滤，示例值：http://www.example.com/。若填写 referer 参数，则最多可查询近 30 天的数据；</li>
-<li>resourceType：按照资源类型进行过滤，资源类型一般是文件后缀，示例值：.jpg。若填写 resourceType 参数，则最多可查询近 30 天的数据；</li>
-<li>protocol：按照 HTTP 协议版本进行过滤。对应的 Value 可选项如下：<br>   HTTP/1.0；<br>   HTTP/1.1；<br>   HTTP/2.0；<br>   HTTP/3；<br>   WebSocket。</li>
-<li>socket：按照 HTTP协议类型进行过滤。对应的 Value 可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS 协议；<br>   QUIC：QUIC 协议。</li>
-<li>statusCode：按照边缘状态码进行过滤。若填写 statusCode 参数，则最多可查询近 30 天的数据。对应的 Value 可选项如下：<br>   1XX：1xx类型的状态码；<br>   2XX：2xx类型的状态码；<br>   3XX：3xx类型的状态码；<br>   4XX：4xx类型的状态码；<br>   5XX：5xx类型的状态码；<br>   在 [0,600) 范围内的整数。</li>
-<li>browserType：按照浏览器类型进行过滤。若填写 browserType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Firefox：Firefox浏览器；<br>   Chrome：Chrome浏览器；<br>   Safari：Safari浏览器；<br>   Other：其他浏览器类型；<br>   Empty：浏览器类型为空；<br>   Bot：搜索引擎爬虫；<br>   MicrosoftEdge：MicrosoftEdge浏览器；<br>   IE：IE浏览器；<br>   Opera：Opera浏览器；<br>   QQBrowser：QQ浏览器；<br>   LBBrowser：LB浏览器；<br>   MaxthonBrowser：Maxthon浏览器；<br>   SouGouBrowser：搜狗浏览器；<br>   BIDUBrowser：百度浏览器；<br>   TaoBrowser：淘浏览器；<br>   UBrowser：UC浏览器。</li>
-<li>deviceType：按照设备类型进行过滤。若填写 deviceType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TV：TV设备；<br>   Tablet：Tablet设备；<br>   Mobile：Mobile设备；<br>   Desktop：Desktop设备；<br>   Other：其他设备类型；<br>   Empty：设备类型为空。</li>
-<li>operatingSystemType：按照操作系统类型进行过滤。若填写 operatingSystemType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Linux：Linux操作系统；<br>   MacOS：MacOs操作系统；<br>   Android：Android操作系统；<br>   IOS：IOS操作系统；<br>   Windows：Windows操作系统；<br>   NetBSD：NetBSD；<br>   ChromiumOS：ChromiumOS；<br>   Bot：搜索引擎爬虫；<br>   Other：其他类型的操作系统；<br>   Empty：操作系统为空。</li>
-<li>tlsVersion：按照 TLS 版本进行过滤。若填写 tlsVersion 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TLS1.0；<br>   TLS1.1；<br>   TLS1.2；<br>   TLS1.3。</li>
-<li>ipVersion：按照 IP 版本进行过滤。对应 Value 的可选项如下：<br>   4：IPv4；<br>   6：IPv6。</li>
-<li>cacheType：按照缓存状态进行过滤。对应 Value 的可选项如下：<br>   hit：请求命中 EdgeOne 节点缓存，资源由节点缓存提供。资源部分命中缓存也会记录为 hit。<br>   miss：请求未命中 EdgeOne 节点缓存，资源由源站提供。<br>   dynamic：请求的资源无法缓存/未配置被节点缓存，资源由源站提供。<br>   other：无法被识别的缓存状态。边缘函数响应的请求会记录为 other。</li>
-<li>clientIp：按照客户端 IP 进行过滤。若填写 clientIp 参数，则最多可查询近 30 天的数据。</li>
-<li>userAgent：按照 User-Agent 请求头部进行过滤。若填写 userAgent 参数，则最多可查询近 30 天的数据。</li>
+        :param _Filters: 筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
+如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
         :type Filters: list of QueryCondition
-        :param _Area: 数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
+        :param _Area: 数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
         :type Area: str
         """
         self._StartTime = None
@@ -21265,25 +24735,8 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，详细的过滤条件 Key 值如下：
-<li>country：按照国家/地区进行过滤，国家/地区遵循 <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> 规范。示例值：CN。</li>
-<li>province：按照省份进行过滤，此参数只支持服务区域为中国大陆。省份代码参考<a href="https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">境内省份映射表</a>，示例值：22。</li>
-<li>isp：按照运营商进行过滤，此参数只支持服务区域为中国大陆。对应的 Value 可选项如下：<br>   2：中国电信；<br>   26：中国联通；<br>   1046：中国移动；<br>   3947：中国铁通；<br>   38：教育网；<br>   43：长城宽带；<br>   0：其他运营商。</li>
-<li>domain：按照子域名进行过滤，示例值： www.example.com。</li>
-<li>url：按照 URL Path 进行过滤，示例值：/content 或 /content/test.jpg。若填写 url 参数，则最多可查询近 30 天的数据。</li>
-<li>referer：按照 Referer 请求头部进行过滤，示例值：http://www.example.com/。若填写 referer 参数，则最多可查询近 30 天的数据；</li>
-<li>resourceType：按照资源类型进行过滤，资源类型一般是文件后缀，示例值：.jpg。若填写 resourceType 参数，则最多可查询近 30 天的数据；</li>
-<li>protocol：按照 HTTP 协议版本进行过滤。对应的 Value 可选项如下：<br>   HTTP/1.0；<br>   HTTP/1.1；<br>   HTTP/2.0；<br>   HTTP/3；<br>   WebSocket。</li>
-<li>socket：按照 HTTP协议类型进行过滤。对应的 Value 可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS 协议；<br>   QUIC：QUIC 协议。</li>
-<li>statusCode：按照边缘状态码进行过滤。若填写 statusCode 参数，则最多可查询近 30 天的数据。对应的 Value 可选项如下：<br>   1XX：1xx类型的状态码；<br>   2XX：2xx类型的状态码；<br>   3XX：3xx类型的状态码；<br>   4XX：4xx类型的状态码；<br>   5XX：5xx类型的状态码；<br>   在 [0,600) 范围内的整数。</li>
-<li>browserType：按照浏览器类型进行过滤。若填写 browserType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Firefox：Firefox浏览器；<br>   Chrome：Chrome浏览器；<br>   Safari：Safari浏览器；<br>   Other：其他浏览器类型；<br>   Empty：浏览器类型为空；<br>   Bot：搜索引擎爬虫；<br>   MicrosoftEdge：MicrosoftEdge浏览器；<br>   IE：IE浏览器；<br>   Opera：Opera浏览器；<br>   QQBrowser：QQ浏览器；<br>   LBBrowser：LB浏览器；<br>   MaxthonBrowser：Maxthon浏览器；<br>   SouGouBrowser：搜狗浏览器；<br>   BIDUBrowser：百度浏览器；<br>   TaoBrowser：淘浏览器；<br>   UBrowser：UC浏览器。</li>
-<li>deviceType：按照设备类型进行过滤。若填写 deviceType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TV：TV设备；<br>   Tablet：Tablet设备；<br>   Mobile：Mobile设备；<br>   Desktop：Desktop设备；<br>   Other：其他设备类型；<br>   Empty：设备类型为空。</li>
-<li>operatingSystemType：按照操作系统类型进行过滤。若填写 operatingSystemType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Linux：Linux操作系统；<br>   MacOS：MacOs操作系统；<br>   Android：Android操作系统；<br>   IOS：IOS操作系统；<br>   Windows：Windows操作系统；<br>   NetBSD：NetBSD；<br>   ChromiumOS：ChromiumOS；<br>   Bot：搜索引擎爬虫；<br>   Other：其他类型的操作系统；<br>   Empty：操作系统为空。</li>
-<li>tlsVersion：按照 TLS 版本进行过滤。若填写 tlsVersion 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TLS1.0；<br>   TLS1.1；<br>   TLS1.2；<br>   TLS1.3。</li>
-<li>ipVersion：按照 IP 版本进行过滤。对应 Value 的可选项如下：<br>   4：IPv4；<br>   6：IPv6。</li>
-<li>cacheType：按照缓存状态进行过滤。对应 Value 的可选项如下：<br>   hit：请求命中 EdgeOne 节点缓存，资源由节点缓存提供。资源部分命中缓存也会记录为 hit。<br>   miss：请求未命中 EdgeOne 节点缓存，资源由源站提供。<br>   dynamic：请求的资源无法缓存/未配置被节点缓存，资源由源站提供。<br>   other：无法被识别的缓存状态。边缘函数响应的请求会记录为 other。</li>
-<li>clientIp：按照客户端 IP 进行过滤。若填写 clientIp 参数，则最多可查询近 30 天的数据。</li>
-<li>userAgent：按照 User-Agent 请求头部进行过滤。若填写 userAgent 参数，则最多可查询近 30 天的数据。</li>
+        """筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
+如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -21294,7 +24747,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Area(self):
-        """数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
+        """数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
         :rtype: str
         """
         return self._Area
@@ -21658,40 +25111,17 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_request_ua_browser：按浏览器类型维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_ua_os：按操作系统类型维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_ua：按 User-Agent 维度统计 L7 访问请求数指标。</li>
-
-
         :type MetricName: str
         :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
         :type ZoneIds: list of str
         :param _Limit: 查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。
         :type Limit: int
-        :param _Filters: 过滤条件，详细的过滤条件 Key 值如下：
-<li>country：按照国家/地区进行过滤，国家/地区遵循 <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> 规范。示例值：CN。</li>
-<li>province：按照省份进行过滤，此参数只支持服务区域为中国大陆。省份代码参考<a href="https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">境内省份映射表</a>，示例值：22。</li>
-<li>isp：按照运营商进行过滤，此参数只支持服务区域为中国大陆。对应的 Value 可选项如下：<br>   2：中国电信；<br>   26：中国联通；<br>   1046：中国移动；<br>   3947：中国铁通；<br>   38：教育网；<br>   43：长城宽带；<br>   0：其他运营商。</li>
-<li>domain：按照子域名进行过滤，示例值： www.example.com。</li>
-<li>url：按照 URL Path 进行过滤，示例值：/content 或 /content/test.jpg。若填写 url 参数，则最多可查询近 30 天的数据。</li>
-<li>referer：按照 Referer 请求头部进行过滤，示例值：http://www.example.com/。若填写 referer 参数，则最多可查询近 30 天的数据；</li>
-<li>resourceType：按照资源类型进行过滤，资源类型一般是文件后缀，示例值：.jpg。若填写 resourceType 参数，则最多可查询近 30 天的数据；</li>
-<li>protocol：按照 HTTP 协议版本进行过滤。对应的 Value 可选项如下：<br>   HTTP/1.0；<br>   HTTP/1.1；<br>   HTTP/2.0；<br>   HTTP/3；<br>   WebSocket。</li>
-<li>socket：按照 HTTP协议类型进行过滤。对应的 Value 可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS 协议；<br>   QUIC：QUIC 协议。</li>
-<li>statusCode：按照边缘状态码进行过滤。若填写 statusCode 参数，则最多可查询近 30 天的数据。对应的 Value 可选项如下：<br>   1XX：1xx类型的状态码；<br>   2XX：2xx类型的状态码；<br>   3XX：3xx类型的状态码；<br>   4XX：4xx类型的状态码；<br>   5XX：5xx类型的状态码；<br>   在 [0,600) 范围内的整数。</li>
-<li>browserType：按照浏览器类型进行过滤。若填写 browserType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Firefox：Firefox浏览器；<br>   Chrome：Chrome浏览器；<br>   Safari：Safari浏览器；<br>   Other：其他浏览器类型；<br>   Empty：浏览器类型为空；<br>   Bot：搜索引擎爬虫；<br>   MicrosoftEdge：MicrosoftEdge浏览器；<br>   IE：IE浏览器；<br>   Opera：Opera浏览器；<br>   QQBrowser：QQ浏览器；<br>   LBBrowser：LB浏览器；<br>   MaxthonBrowser：Maxthon浏览器；<br>   SouGouBrowser：搜狗浏览器；<br>   BIDUBrowser：百度浏览器；<br>   TaoBrowser：淘浏览器；<br>   UBrowser：UC浏览器。</li>
-<li>deviceType：按照设备类型进行过滤。若填写 deviceType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TV：TV设备；<br>   Tablet：Tablet设备；<br>   Mobile：Mobile设备；<br>   Desktop：Desktop设备；<br>   Other：其他设备类型；<br>   Empty：设备类型为空。</li>
-<li>operatingSystemType：按照操作系统类型进行过滤。若填写 operatingSystemType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Linux：Linux操作系统；<br>   MacOS：MacOs操作系统；<br>   Android：Android操作系统；<br>   IOS：IOS操作系统；<br>   Windows：Windows操作系统；<br>   NetBSD：NetBSD；<br>   ChromiumOS：ChromiumOS；<br>   Bot：搜索引擎爬虫；<br>   Other：其他类型的操作系统；<br>   Empty：操作系统为空。</li>
-<li>tlsVersion：按照 TLS 版本进行过滤。若填写 tlsVersion 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TLS1.0；<br>   TLS1.1；<br>   TLS1.2；<br>   TLS1.3。</li>
-<li>ipVersion：按照 IP 版本进行过滤。对应 Value 的可选项如下：<br>   4：IPv4；<br>   6：IPv6。</li>
-<li>cacheType：按照缓存状态进行过滤。对应 Value 的可选项如下：<br>   hit：请求命中 EdgeOne 节点缓存，资源由节点缓存提供。资源部分命中缓存也会记录为 hit。<br>   miss：请求未命中 EdgeOne 节点缓存，资源由源站提供。<br>   dynamic：请求的资源无法缓存/未配置被节点缓存，资源由源站提供。<br>   other：无法被识别的缓存状态。边缘函数响应的请求会记录为 other。</li>
-<li>clientIp：按照客户端 IP 进行过滤。若填写 clientIp 参数，则最多可查询近 30 天的数据。</li>
-<li>userAgent：按照 User-Agent 请求头部进行过滤。若填写 userAgent 参数，则最多可查询近 30 天的数据。</li>
+        :param _Filters: 筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
+如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
         :type Filters: list of QueryCondition
-        :param _Interval: 查询时间粒度，取值有：
-<li>min: 1分钟；</li>
-<li>5min: 5分钟；</li>
-<li>hour: 1小时；</li>
-<li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+        :param _Interval: 查询时间粒度，该参数无效，待废弃。
         :type Interval: str
-        :param _Area: 数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
+        :param _Area: 数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
         :type Area: str
         """
         self._StartTime = None
@@ -21752,8 +25182,6 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_request_ua_browser：按浏览器类型维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_ua_os：按操作系统类型维度统计 L7 访问请求数指标；</li>
 <li> l7Flow_request_ua：按 User-Agent 维度统计 L7 访问请求数指标。</li>
-
-
         :rtype: str
         """
         return self._MetricName
@@ -21786,25 +25214,8 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，详细的过滤条件 Key 值如下：
-<li>country：按照国家/地区进行过滤，国家/地区遵循 <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> 规范。示例值：CN。</li>
-<li>province：按照省份进行过滤，此参数只支持服务区域为中国大陆。省份代码参考<a href="https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">境内省份映射表</a>，示例值：22。</li>
-<li>isp：按照运营商进行过滤，此参数只支持服务区域为中国大陆。对应的 Value 可选项如下：<br>   2：中国电信；<br>   26：中国联通；<br>   1046：中国移动；<br>   3947：中国铁通；<br>   38：教育网；<br>   43：长城宽带；<br>   0：其他运营商。</li>
-<li>domain：按照子域名进行过滤，示例值： www.example.com。</li>
-<li>url：按照 URL Path 进行过滤，示例值：/content 或 /content/test.jpg。若填写 url 参数，则最多可查询近 30 天的数据。</li>
-<li>referer：按照 Referer 请求头部进行过滤，示例值：http://www.example.com/。若填写 referer 参数，则最多可查询近 30 天的数据；</li>
-<li>resourceType：按照资源类型进行过滤，资源类型一般是文件后缀，示例值：.jpg。若填写 resourceType 参数，则最多可查询近 30 天的数据；</li>
-<li>protocol：按照 HTTP 协议版本进行过滤。对应的 Value 可选项如下：<br>   HTTP/1.0；<br>   HTTP/1.1；<br>   HTTP/2.0；<br>   HTTP/3；<br>   WebSocket。</li>
-<li>socket：按照 HTTP协议类型进行过滤。对应的 Value 可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS 协议；<br>   QUIC：QUIC 协议。</li>
-<li>statusCode：按照边缘状态码进行过滤。若填写 statusCode 参数，则最多可查询近 30 天的数据。对应的 Value 可选项如下：<br>   1XX：1xx类型的状态码；<br>   2XX：2xx类型的状态码；<br>   3XX：3xx类型的状态码；<br>   4XX：4xx类型的状态码；<br>   5XX：5xx类型的状态码；<br>   在 [0,600) 范围内的整数。</li>
-<li>browserType：按照浏览器类型进行过滤。若填写 browserType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Firefox：Firefox浏览器；<br>   Chrome：Chrome浏览器；<br>   Safari：Safari浏览器；<br>   Other：其他浏览器类型；<br>   Empty：浏览器类型为空；<br>   Bot：搜索引擎爬虫；<br>   MicrosoftEdge：MicrosoftEdge浏览器；<br>   IE：IE浏览器；<br>   Opera：Opera浏览器；<br>   QQBrowser：QQ浏览器；<br>   LBBrowser：LB浏览器；<br>   MaxthonBrowser：Maxthon浏览器；<br>   SouGouBrowser：搜狗浏览器；<br>   BIDUBrowser：百度浏览器；<br>   TaoBrowser：淘浏览器；<br>   UBrowser：UC浏览器。</li>
-<li>deviceType：按照设备类型进行过滤。若填写 deviceType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TV：TV设备；<br>   Tablet：Tablet设备；<br>   Mobile：Mobile设备；<br>   Desktop：Desktop设备；<br>   Other：其他设备类型；<br>   Empty：设备类型为空。</li>
-<li>operatingSystemType：按照操作系统类型进行过滤。若填写 operatingSystemType 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   Linux：Linux操作系统；<br>   MacOS：MacOs操作系统；<br>   Android：Android操作系统；<br>   IOS：IOS操作系统；<br>   Windows：Windows操作系统；<br>   NetBSD：NetBSD；<br>   ChromiumOS：ChromiumOS；<br>   Bot：搜索引擎爬虫；<br>   Other：其他类型的操作系统；<br>   Empty：操作系统为空。</li>
-<li>tlsVersion：按照 TLS 版本进行过滤。若填写 tlsVersion 参数，则最多可查询近 30 天的数据。对应 Value 的可选项如下：<br>   TLS1.0；<br>   TLS1.1；<br>   TLS1.2；<br>   TLS1.3。</li>
-<li>ipVersion：按照 IP 版本进行过滤。对应 Value 的可选项如下：<br>   4：IPv4；<br>   6：IPv6。</li>
-<li>cacheType：按照缓存状态进行过滤。对应 Value 的可选项如下：<br>   hit：请求命中 EdgeOne 节点缓存，资源由节点缓存提供。资源部分命中缓存也会记录为 hit。<br>   miss：请求未命中 EdgeOne 节点缓存，资源由源站提供。<br>   dynamic：请求的资源无法缓存/未配置被节点缓存，资源由源站提供。<br>   other：无法被识别的缓存状态。边缘函数响应的请求会记录为 other。</li>
-<li>clientIp：按照客户端 IP 进行过滤。若填写 clientIp 参数，则最多可查询近 30 天的数据。</li>
-<li>userAgent：按照 User-Agent 请求头部进行过滤。若填写 userAgent 参数，则最多可查询近 30 天的数据。</li>
+        """筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
+如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -21815,11 +25226,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """查询时间粒度，取值有：
-<li>min: 1分钟；</li>
-<li>5min: 5分钟；</li>
-<li>hour: 1小时；</li>
-<li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+        """查询时间粒度，该参数无效，待废弃。
         :rtype: str
         """
         return self._Interval
@@ -21830,7 +25237,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Area(self):
-        """数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
+        """数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
         :rtype: str
         """
         return self._Area
@@ -24017,6 +27424,61 @@ class DnsVerification(AbstractModel):
         self._Subdomain = params.get("Subdomain")
         self._RecordType = params.get("RecordType")
         self._RecordValue = params.get("RecordValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DomainDDoSProtection(AbstractModel):
+    """域名的独立 DDoS 防护信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名。
+        :type Domain: str
+        :param _Switch: 域名的独立 DDoS 开关，取值为：
+<li> on：已开启；</li>
+<li> off：已关闭。</li>
+        :type Switch: str
+        """
+        self._Domain = None
+        self._Switch = None
+
+    @property
+    def Domain(self):
+        """域名。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Switch(self):
+        """域名的独立 DDoS 开关，取值为：
+<li> on：已开启；</li>
+<li> off：已关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26265,6 +29727,119 @@ class ForceRedirectHTTPSParameters(AbstractModel):
         
 
 
+class FrequentScanningProtection(AbstractModel):
+    """高频扫描防护配置选项，当某一访客的请求频繁命中「配置为拦截」的托管规则时，在一段时间内封禁该访客所有请求。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 高频扫描防护规则是否开启。取值有：<li>on：开启，高频扫描防护规则生效；</li><li>off：关闭，高频扫描防护规则不生效。</li>	
+        :type Enabled: str
+        :param _Action: 高频扫描防护的处置动作。 当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>JSChallenge：JavaScript 挑战，响应 JavaScript 挑战页面。</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _CountBy: 请求统计的匹配方式，当 Enabled 为 on 时，此字段必填。取值有：<li>http.request.xff_header_ip：客户端 IP（优先匹配 XFF 头部）；</li><li>http.request.ip：客户端 IP。</li> 
+        :type CountBy: str
+        :param _BlockThreshold: 此参数指定高频扫描防护的阈值，即在 CountingPeriod 所设置时间范围内命中「配置为拦截」的托管规则时的累计拦截次数，取值范围 1 ~ 4294967294，例如 100，当超过此统计值时，后续请求将触发 Action 所设置的处置动作。当 Enabled 为 on 时，此字段必填。
+        :type BlockThreshold: int
+        :param _CountingPeriod: 此参数指定高频扫描防护所统计的时间窗口，即命中「配置为拦截」的托管规则的请求的统计时间窗口，取值 5 ~ 1800，单位仅支持秒（s），例如 5s。 当 Enabled 为 on 时，此字段必填。
+        :type CountingPeriod: str
+        :param _ActionDuration: 此参数指定高频扫描防护 Action 参数所设置处置动作的持续时长，取值范围 60 ~ 86400，单位仅支持秒（s），例如 60s。当 Enabled 为 on 时，此字段必填。
+        :type ActionDuration: str
+        """
+        self._Enabled = None
+        self._Action = None
+        self._CountBy = None
+        self._BlockThreshold = None
+        self._CountingPeriod = None
+        self._ActionDuration = None
+
+    @property
+    def Enabled(self):
+        """高频扫描防护规则是否开启。取值有：<li>on：开启，高频扫描防护规则生效；</li><li>off：关闭，高频扫描防护规则不生效。</li>	
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Action(self):
+        """高频扫描防护的处置动作。 当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>JSChallenge：JavaScript 挑战，响应 JavaScript 挑战页面。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def CountBy(self):
+        """请求统计的匹配方式，当 Enabled 为 on 时，此字段必填。取值有：<li>http.request.xff_header_ip：客户端 IP（优先匹配 XFF 头部）；</li><li>http.request.ip：客户端 IP。</li> 
+        :rtype: str
+        """
+        return self._CountBy
+
+    @CountBy.setter
+    def CountBy(self, CountBy):
+        self._CountBy = CountBy
+
+    @property
+    def BlockThreshold(self):
+        """此参数指定高频扫描防护的阈值，即在 CountingPeriod 所设置时间范围内命中「配置为拦截」的托管规则时的累计拦截次数，取值范围 1 ~ 4294967294，例如 100，当超过此统计值时，后续请求将触发 Action 所设置的处置动作。当 Enabled 为 on 时，此字段必填。
+        :rtype: int
+        """
+        return self._BlockThreshold
+
+    @BlockThreshold.setter
+    def BlockThreshold(self, BlockThreshold):
+        self._BlockThreshold = BlockThreshold
+
+    @property
+    def CountingPeriod(self):
+        """此参数指定高频扫描防护所统计的时间窗口，即命中「配置为拦截」的托管规则的请求的统计时间窗口，取值 5 ~ 1800，单位仅支持秒（s），例如 5s。 当 Enabled 为 on 时，此字段必填。
+        :rtype: str
+        """
+        return self._CountingPeriod
+
+    @CountingPeriod.setter
+    def CountingPeriod(self, CountingPeriod):
+        self._CountingPeriod = CountingPeriod
+
+    @property
+    def ActionDuration(self):
+        """此参数指定高频扫描防护 Action 参数所设置处置动作的持续时长，取值范围 60 ~ 86400，单位仅支持秒（s），例如 60s。当 Enabled 为 on 时，此字段必填。
+        :rtype: str
+        """
+        return self._ActionDuration
+
+    @ActionDuration.setter
+    def ActionDuration(self, ActionDuration):
+        self._ActionDuration = ActionDuration
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        self._CountBy = params.get("CountBy")
+        self._BlockThreshold = params.get("BlockThreshold")
+        self._CountingPeriod = params.get("CountingPeriod")
+        self._ActionDuration = params.get("ActionDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Function(AbstractModel):
     """边缘函数详情
 
@@ -26653,6 +30228,72 @@ class FunctionRuleCondition(AbstractModel):
                 obj = RuleCondition()
                 obj._deserialize(item)
                 self._RuleConditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GatewayRegion(AbstractModel):
+    """多通道安全网关可用地域
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: 地域 ID 。
+        :type RegionId: str
+        :param _CNName: 中文地域名称。
+        :type CNName: str
+        :param _ENName: 英文地域名称。
+        :type ENName: str
+        """
+        self._RegionId = None
+        self._CNName = None
+        self._ENName = None
+
+    @property
+    def RegionId(self):
+        """地域 ID 。
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def CNName(self):
+        """中文地域名称。
+        :rtype: str
+        """
+        return self._CNName
+
+    @CNName.setter
+    def CNName(self, CNName):
+        self._CNName = CNName
+
+    @property
+    def ENName(self):
+        """英文地域名称。
+        :rtype: str
+        """
+        return self._ENName
+
+    @ENName.setter
+    def ENName(self, ENName):
+        self._ENName = ENName
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._CNName = params.get("CNName")
+        self._ENName = params.get("ENName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29151,6 +32792,283 @@ class JITVideoProcess(AbstractModel):
         
 
 
+class JSInjectionRule(AbstractModel):
+    """JavaScript 注入规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则 ID。
+        :type RuleId: str
+        :param _Name: 规则名称。
+        :type Name: str
+        :param _Priority: 规则优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。
+        :type Priority: int
+        :param _Condition: 匹配条件内容。需符合表达式语法，详细规范参见产品文档。
+        :type Condition: str
+        :param _InjectJS: JavaScript 注入选项。默认值为 run-attestations，取值有：
+<li> no-injection: 不注入 JavaScript;</li>
+<li> inject-sdk-only: 注入当前支持的所有认证方式的 SDK，当前支持：TC-RCE 和 TC-CAPTCHA。注意：若需执行认证检测，请配置挑战规则。</li>
+
+        :type InjectJS: str
+        """
+        self._RuleId = None
+        self._Name = None
+        self._Priority = None
+        self._Condition = None
+        self._InjectJS = None
+
+    @property
+    def RuleId(self):
+        """规则 ID。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        """规则名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Priority(self):
+        """规则优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Condition(self):
+        """匹配条件内容。需符合表达式语法，详细规范参见产品文档。
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def InjectJS(self):
+        """JavaScript 注入选项。默认值为 run-attestations，取值有：
+<li> no-injection: 不注入 JavaScript;</li>
+<li> inject-sdk-only: 注入当前支持的所有认证方式的 SDK，当前支持：TC-RCE 和 TC-CAPTCHA。注意：若需执行认证检测，请配置挑战规则。</li>
+
+        :rtype: str
+        """
+        return self._InjectJS
+
+    @InjectJS.setter
+    def InjectJS(self, InjectJS):
+        self._InjectJS = InjectJS
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._Priority = params.get("Priority")
+        self._Condition = params.get("Condition")
+        self._InjectJS = params.get("InjectJS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JustInTimeTranscodeTemplate(AbstractModel):
+    """即时转码模板详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 即时转码模板唯一标识。
+        :type TemplateId: str
+        :param _TemplateName: 转码模板名称。
+        :type TemplateName: str
+        :param _Comment: 模板描述信息。
+        :type Comment: str
+        :param _Type: 模板类型，取值：<li>preset：系统预置模板；</li><li>custom：用户自定义模板。</li>
+        :type Type: str
+        :param _VideoStreamSwitch: 启用视频流开关，取值：<li>on：开启；</li><li>off：关闭。</li>
+        :type VideoStreamSwitch: str
+        :param _AudioStreamSwitch: 启用音频流开关，取值：<li>on：开启；</li><li>off：关闭。</li>
+        :type AudioStreamSwitch: str
+        :param _VideoTemplate: 视频流配置参数，仅当 VideoStreamSwitch 为 on，该字段有效。
+        :type VideoTemplate: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
+        :param _AudioTemplate: 音频流配置参数，仅当 AudioStreamSwitch 为 on，该字段有效。
+        :type AudioTemplate: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
+        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Comment = None
+        self._Type = None
+        self._VideoStreamSwitch = None
+        self._AudioStreamSwitch = None
+        self._VideoTemplate = None
+        self._AudioTemplate = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TemplateId(self):
+        """即时转码模板唯一标识。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        """转码模板名称。
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Comment(self):
+        """模板描述信息。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        """模板类型，取值：<li>preset：系统预置模板；</li><li>custom：用户自定义模板。</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def VideoStreamSwitch(self):
+        """启用视频流开关，取值：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._VideoStreamSwitch
+
+    @VideoStreamSwitch.setter
+    def VideoStreamSwitch(self, VideoStreamSwitch):
+        self._VideoStreamSwitch = VideoStreamSwitch
+
+    @property
+    def AudioStreamSwitch(self):
+        """启用音频流开关，取值：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._AudioStreamSwitch
+
+    @AudioStreamSwitch.setter
+    def AudioStreamSwitch(self, AudioStreamSwitch):
+        self._AudioStreamSwitch = AudioStreamSwitch
+
+    @property
+    def VideoTemplate(self):
+        """视频流配置参数，仅当 VideoStreamSwitch 为 on，该字段有效。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.VideoTemplateInfo`
+        """
+        return self._VideoTemplate
+
+    @VideoTemplate.setter
+    def VideoTemplate(self, VideoTemplate):
+        self._VideoTemplate = VideoTemplate
+
+    @property
+    def AudioTemplate(self):
+        """音频流配置参数，仅当 AudioStreamSwitch 为 on，该字段有效。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AudioTemplateInfo`
+        """
+        return self._AudioTemplate
+
+    @AudioTemplate.setter
+    def AudioTemplate(self, AudioTemplate):
+        self._AudioTemplate = AudioTemplate
+
+    @property
+    def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        self._VideoStreamSwitch = params.get("VideoStreamSwitch")
+        self._AudioStreamSwitch = params.get("AudioStreamSwitch")
+        if params.get("VideoTemplate") is not None:
+            self._VideoTemplate = VideoTemplateInfo()
+            self._VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self._AudioTemplate = AudioTemplateInfo()
+            self._AudioTemplate._deserialize(params.get("AudioTemplate"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class L4OfflineLog(AbstractModel):
     """离线日志详细信息
 
@@ -30786,12 +34704,15 @@ class ManagedRules(AbstractModel):
         :type AutoUpdate: :class:`tencentcloud.teo.v20220901.models.ManagedRuleAutoUpdate`
         :param _ManagedRuleGroups: 托管规则组的配置。如果此结构传空数组或 GroupId 未包含在列表内将按照默认方式处理。
         :type ManagedRuleGroups: list of ManagedRuleGroup
+        :param _FrequentScanningProtection: 高频扫描防护配置选项，当某一访客的请求频繁命中「配置为拦截」的托管规则时，在一段时间内封禁该访客所有请求。
+        :type FrequentScanningProtection: :class:`tencentcloud.teo.v20220901.models.FrequentScanningProtection`
         """
         self._Enabled = None
         self._DetectionOnly = None
         self._SemanticAnalysis = None
         self._AutoUpdate = None
         self._ManagedRuleGroups = None
+        self._FrequentScanningProtection = None
 
     @property
     def Enabled(self):
@@ -30848,6 +34769,17 @@ class ManagedRules(AbstractModel):
     def ManagedRuleGroups(self, ManagedRuleGroups):
         self._ManagedRuleGroups = ManagedRuleGroups
 
+    @property
+    def FrequentScanningProtection(self):
+        """高频扫描防护配置选项，当某一访客的请求频繁命中「配置为拦截」的托管规则时，在一段时间内封禁该访客所有请求。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.FrequentScanningProtection`
+        """
+        return self._FrequentScanningProtection
+
+    @FrequentScanningProtection.setter
+    def FrequentScanningProtection(self, FrequentScanningProtection):
+        self._FrequentScanningProtection = FrequentScanningProtection
+
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
@@ -30862,6 +34794,9 @@ class ManagedRules(AbstractModel):
                 obj = ManagedRuleGroup()
                 obj._deserialize(item)
                 self._ManagedRuleGroups.append(obj)
+        if params.get("FrequentScanningProtection") is not None:
+            self._FrequentScanningProtection = FrequentScanningProtection()
+            self._FrequentScanningProtection._deserialize(params.get("FrequentScanningProtection"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32425,6 +36360,87 @@ class ModifyCustomErrorPageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDDoSProtectionRequest(AbstractModel):
+    """ModifyDDoSProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _DDoSProtection: 独立 DDoS 防护配置。
+        :type DDoSProtection: :class:`tencentcloud.teo.v20220901.models.DDoSProtection`
+        """
+        self._ZoneId = None
+        self._DDoSProtection = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def DDoSProtection(self):
+        """独立 DDoS 防护配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DDoSProtection`
+        """
+        return self._DDoSProtection
+
+    @DDoSProtection.setter
+    def DDoSProtection(self, DDoSProtection):
+        self._DDoSProtection = DDoSProtection
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("DDoSProtection") is not None:
+            self._DDoSProtection = DDoSProtection()
+            self._DDoSProtection._deserialize(params.get("DDoSProtection"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDDoSProtectionResponse(AbstractModel):
+    """ModifyDDoSProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDnsRecordsRequest(AbstractModel):
     """ModifyDnsRecords请求参数结构体
 
@@ -33927,6 +37943,371 @@ class ModifyLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMultiPathGatewayLineRequest(AbstractModel):
+    """ModifyMultiPathGatewayLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 多通道安全加速网关 ID 。
+        :type GatewayId: str
+        :param _LineId: 线路 ID ， 取值有:
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :type LineId: str
+        :param _LineType: 线路类型，取值有： 
+<li>proxy ：EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li> 
+<li>custom ：自定义线路，支持编辑、删除实例和规则。</li>
+        :type LineType: str
+        :param _LineAddress: 线路地址，格式为 host:port，直连线路（ LineType 取值为 direct ）不允许修改，其余类型支持修改。
+        :type LineAddress: str
+        :param _ProxyId: 四层代理实例 ID  ，当线路类型 LineType  取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+        :type ProxyId: str
+        :param _RuleId: 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+        :type RuleId: str
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._LineId = None
+        self._LineType = None
+        self._LineAddress = None
+        self._ProxyId = None
+        self._RuleId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """多通道安全加速网关 ID 。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def LineId(self):
+        """线路 ID ， 取值有:
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+    @property
+    def LineType(self):
+        """线路类型，取值有： 
+<li>proxy ：EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li> 
+<li>custom ：自定义线路，支持编辑、删除实例和规则。</li>
+        :rtype: str
+        """
+        return self._LineType
+
+    @LineType.setter
+    def LineType(self, LineType):
+        self._LineType = LineType
+
+    @property
+    def LineAddress(self):
+        """线路地址，格式为 host:port，直连线路（ LineType 取值为 direct ）不允许修改，其余类型支持修改。
+        :rtype: str
+        """
+        return self._LineAddress
+
+    @LineAddress.setter
+    def LineAddress(self, LineAddress):
+        self._LineAddress = LineAddress
+
+    @property
+    def ProxyId(self):
+        """四层代理实例 ID  ，当线路类型 LineType  取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RuleId(self):
+        """转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._LineId = params.get("LineId")
+        self._LineType = params.get("LineType")
+        self._LineAddress = params.get("LineAddress")
+        self._ProxyId = params.get("ProxyId")
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMultiPathGatewayLineResponse(AbstractModel):
+    """ModifyMultiPathGatewayLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMultiPathGatewayRequest(AbstractModel):
+    """ModifyMultiPathGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _GatewayName: 网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+        :type GatewayName: str
+        :param _GatewayIP: 网关地址，GatewayType 取值为 private（自有网关）可填入进行修改，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+        :type GatewayIP: str
+        :param _GatewayPort: 网关端口，范围 1～65535（除去 8888 ），只支持修改 GatewayType 取值为 private 的自有网关。
+        :type GatewayPort: int
+        """
+        self._ZoneId = None
+        self._GatewayId = None
+        self._GatewayName = None
+        self._GatewayIP = None
+        self._GatewayPort = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayName(self):
+        """网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def GatewayIP(self):
+        """网关地址，GatewayType 取值为 private（自有网关）可填入进行修改，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+        :rtype: str
+        """
+        return self._GatewayIP
+
+    @GatewayIP.setter
+    def GatewayIP(self, GatewayIP):
+        self._GatewayIP = GatewayIP
+
+    @property
+    def GatewayPort(self):
+        """网关端口，范围 1～65535（除去 8888 ），只支持修改 GatewayType 取值为 private 的自有网关。
+        :rtype: int
+        """
+        return self._GatewayPort
+
+    @GatewayPort.setter
+    def GatewayPort(self, GatewayPort):
+        self._GatewayPort = GatewayPort
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayName = params.get("GatewayName")
+        self._GatewayIP = params.get("GatewayIP")
+        self._GatewayPort = params.get("GatewayPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMultiPathGatewayResponse(AbstractModel):
+    """ModifyMultiPathGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMultiPathGatewaySecretKeyRequest(AbstractModel):
+    """ModifyMultiPathGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _SecretKey: 多通道安全加速网关接入密钥，base64 字符串，编码前字符串长度为 32-48 个字符。
+        :type SecretKey: str
+        """
+        self._ZoneId = None
+        self._SecretKey = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SecretKey(self):
+        """多通道安全加速网关接入密钥，base64 字符串，编码前字符串长度为 32-48 个字符。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMultiPathGatewaySecretKeyResponse(AbstractModel):
+    """ModifyMultiPathGatewaySecretKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOriginACLRequest(AbstractModel):
     """ModifyOriginACL请求参数结构体
 
@@ -34904,6 +39285,258 @@ class ModifyRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySecurityAPIResourceRequest(AbstractModel):
+    """ModifySecurityAPIResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIResources: API 资源列表。
+        :type APIResources: list of APIResource
+        """
+        self._ZoneId = None
+        self._APIResources = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIResources(self):
+        """API 资源列表。
+        :rtype: list of APIResource
+        """
+        return self._APIResources
+
+    @APIResources.setter
+    def APIResources(self, APIResources):
+        self._APIResources = APIResources
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("APIResources") is not None:
+            self._APIResources = []
+            for item in params.get("APIResources"):
+                obj = APIResource()
+                obj._deserialize(item)
+                self._APIResources.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityAPIResourceResponse(AbstractModel):
+    """ModifySecurityAPIResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySecurityAPIServiceRequest(AbstractModel):
+    """ModifySecurityAPIService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _APIServices: API 服务列表。
+        :type APIServices: list of APIService
+        """
+        self._ZoneId = None
+        self._APIServices = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。	
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def APIServices(self):
+        """API 服务列表。
+        :rtype: list of APIService
+        """
+        return self._APIServices
+
+    @APIServices.setter
+    def APIServices(self, APIServices):
+        self._APIServices = APIServices
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("APIServices") is not None:
+            self._APIServices = []
+            for item in params.get("APIServices"):
+                obj = APIService()
+                obj._deserialize(item)
+                self._APIServices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityAPIServiceResponse(AbstractModel):
+    """ModifySecurityAPIService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySecurityClientAttesterRequest(AbstractModel):
+    """ModifySecurityClientAttester请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _ClientAttesters: 认证选项列表。
+        :type ClientAttesters: list of ClientAttester
+        """
+        self._ZoneId = None
+        self._ClientAttesters = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ClientAttesters(self):
+        """认证选项列表。
+        :rtype: list of ClientAttester
+        """
+        return self._ClientAttesters
+
+    @ClientAttesters.setter
+    def ClientAttesters(self, ClientAttesters):
+        self._ClientAttesters = ClientAttesters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("ClientAttesters") is not None:
+            self._ClientAttesters = []
+            for item in params.get("ClientAttesters"):
+                obj = ClientAttester()
+                obj._deserialize(item)
+                self._ClientAttesters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityClientAttesterResponse(AbstractModel):
+    """ModifySecurityClientAttester返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySecurityIPGroupRequest(AbstractModel):
     """ModifySecurityIPGroup请求参数结构体
 
@@ -34974,6 +39607,90 @@ class ModifySecurityIPGroupRequest(AbstractModel):
 
 class ModifySecurityIPGroupResponse(AbstractModel):
     """ModifySecurityIPGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySecurityJSInjectionRuleRequest(AbstractModel):
+    """ModifySecurityJSInjectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _JSInjectionRules: JavaScript 注入规则列表。
+        :type JSInjectionRules: list of JSInjectionRule
+        """
+        self._ZoneId = None
+        self._JSInjectionRules = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def JSInjectionRules(self):
+        """JavaScript 注入规则列表。
+        :rtype: list of JSInjectionRule
+        """
+        return self._JSInjectionRules
+
+    @JSInjectionRules.setter
+    def JSInjectionRules(self, JSInjectionRules):
+        self._JSInjectionRules = JSInjectionRules
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("JSInjectionRules") is not None:
+            self._JSInjectionRules = []
+            for item in params.get("JSInjectionRules"):
+                obj = JSInjectionRule()
+                obj._deserialize(item)
+                self._JSInjectionRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityJSInjectionRuleResponse(AbstractModel):
+    """ModifySecurityJSInjectionRule返回参数结构体
 
     """
 
@@ -35949,6 +40666,272 @@ class ModifyZoneStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class MultiPathGateway(AbstractModel):
+    """多通道安全网关详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关 ID。
+        :type GatewayId: str
+        :param _GatewayName: 网关名。
+        :type GatewayName: str
+        :param _GatewayType: 网关类型，取值有：
+<li> cloud：云上网关，腾讯云创建和管理的网关。</li>
+<li> private：自有网关，用户部署的私有网关。</li>
+        :type GatewayType: str
+        :param _GatewayPort: 网关端口，范围 1～65535（除去 8888 ）。
+        :type GatewayPort: int
+        :param _Status: 网关状态，取值有：
+<li> creating : 创建中；</li>
+<li> online : 在线；</li>
+<li> offline : 离线；</li>
+<li> disable : 已停用。</li>
+        :type Status: str
+        :param _GatewayIP: 网关 IP， 格式为 IPv4。
+        :type GatewayIP: str
+        :param _RegionId: 网关地域 Id，可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+        :type RegionId: str
+        :param _Lines: 线路信息，当查询网关信息详情 DescribeMultiPathGateway 的时候会返回，当查询网关列表 DescribeMultiPathGateways 的时候不会返回。
+        :type Lines: list of MultiPathGatewayLine
+        """
+        self._GatewayId = None
+        self._GatewayName = None
+        self._GatewayType = None
+        self._GatewayPort = None
+        self._Status = None
+        self._GatewayIP = None
+        self._RegionId = None
+        self._Lines = None
+
+    @property
+    def GatewayId(self):
+        """网关 ID。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayName(self):
+        """网关名。
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def GatewayType(self):
+        """网关类型，取值有：
+<li> cloud：云上网关，腾讯云创建和管理的网关。</li>
+<li> private：自有网关，用户部署的私有网关。</li>
+        :rtype: str
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def GatewayPort(self):
+        """网关端口，范围 1～65535（除去 8888 ）。
+        :rtype: int
+        """
+        return self._GatewayPort
+
+    @GatewayPort.setter
+    def GatewayPort(self, GatewayPort):
+        self._GatewayPort = GatewayPort
+
+    @property
+    def Status(self):
+        """网关状态，取值有：
+<li> creating : 创建中；</li>
+<li> online : 在线；</li>
+<li> offline : 离线；</li>
+<li> disable : 已停用。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def GatewayIP(self):
+        """网关 IP， 格式为 IPv4。
+        :rtype: str
+        """
+        return self._GatewayIP
+
+    @GatewayIP.setter
+    def GatewayIP(self, GatewayIP):
+        self._GatewayIP = GatewayIP
+
+    @property
+    def RegionId(self):
+        """网关地域 Id，可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Lines(self):
+        """线路信息，当查询网关信息详情 DescribeMultiPathGateway 的时候会返回，当查询网关列表 DescribeMultiPathGateways 的时候不会返回。
+        :rtype: list of MultiPathGatewayLine
+        """
+        return self._Lines
+
+    @Lines.setter
+    def Lines(self, Lines):
+        self._Lines = Lines
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayName = params.get("GatewayName")
+        self._GatewayType = params.get("GatewayType")
+        self._GatewayPort = params.get("GatewayPort")
+        self._Status = params.get("Status")
+        self._GatewayIP = params.get("GatewayIP")
+        self._RegionId = params.get("RegionId")
+        if params.get("Lines") is not None:
+            self._Lines = []
+            for item in params.get("Lines"):
+                obj = MultiPathGatewayLine()
+                obj._deserialize(item)
+                self._Lines.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultiPathGatewayLine(AbstractModel):
+    """多通道安全网关线路信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LineId: 线路 ID ， 其中 line-0 和 line-1 为系统内置线路 ID，取值有:
+<li> line-0：直连线路，不支持添加、编辑和删除；</li>
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :type LineId: str
+        :param _LineType: 线路类型，取值有：
+<li>direct ：直连线路，不支持编辑、不支持删除；</li>
+<li>proxy ：EdgeOne 四层代理线路，支持编辑修改实例和规则，不支持删除；</li>
+<li>custom ：自定义线路，支持编辑、支持删除。</li>
+        :type LineType: str
+        :param _LineAddress: 线路地址，格式为 host:port 。
+        :type LineAddress: str
+        :param _ProxyId: 四层代理实例 ID  ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+        :type ProxyId: str
+        :param _RuleId: 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+        :type RuleId: str
+        """
+        self._LineId = None
+        self._LineType = None
+        self._LineAddress = None
+        self._ProxyId = None
+        self._RuleId = None
+
+    @property
+    def LineId(self):
+        """线路 ID ， 其中 line-0 和 line-1 为系统内置线路 ID，取值有:
+<li> line-0：直连线路，不支持添加、编辑和删除；</li>
+<li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+<li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+        :rtype: str
+        """
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+    @property
+    def LineType(self):
+        """线路类型，取值有：
+<li>direct ：直连线路，不支持编辑、不支持删除；</li>
+<li>proxy ：EdgeOne 四层代理线路，支持编辑修改实例和规则，不支持删除；</li>
+<li>custom ：自定义线路，支持编辑、支持删除。</li>
+        :rtype: str
+        """
+        return self._LineType
+
+    @LineType.setter
+    def LineType(self, LineType):
+        self._LineType = LineType
+
+    @property
+    def LineAddress(self):
+        """线路地址，格式为 host:port 。
+        :rtype: str
+        """
+        return self._LineAddress
+
+    @LineAddress.setter
+    def LineAddress(self, LineAddress):
+        self._LineAddress = LineAddress
+
+    @property
+    def ProxyId(self):
+        """四层代理实例 ID  ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RuleId(self):
+        """转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._LineId = params.get("LineId")
+        self._LineType = params.get("LineType")
+        self._LineAddress = params.get("LineAddress")
+        self._ProxyId = params.get("ProxyId")
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MutualTLS(AbstractModel):
@@ -37969,7 +42952,7 @@ class OriginRecord(AbstractModel):
         :type Type: str
         :param _RecordId: 源站记录ID。
         :type RecordId: str
-        :param _Weight: 源站权重，取值为0-100, 不填表示不设置权重，由系统自由调度，填0表示权重为0, 流量将不会调度到此源站。
+        :param _Weight: 【源站权重】：用于控制流量分配优先级的参数，取值范围：0-100（整数）：<li>空值：不设置权重，系统按默认策略调度；</li><li>0 值：明确设置权重为0，流量将不会分配到该源站，注意事项：必须确保至少有一个源站的权重值大于0；</li><li>正常值：数值越大分配流量越多 ；</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         :param _Private: 是否私有鉴权，当源站类型 RecordType=COS/AWS_S3 时生效，取值有：
@@ -38025,7 +43008,7 @@ class OriginRecord(AbstractModel):
 
     @property
     def Weight(self):
-        """源站权重，取值为0-100, 不填表示不设置权重，由系统自由调度，填0表示权重为0, 流量将不会调度到此源站。
+        """【源站权重】：用于控制流量分配优先级的参数，取值范围：0-100（整数）：<li>空值：不设置权重，系统按默认策略调度；</li><li>0 值：明确设置权重为0，流量将不会分配到该源站，注意事项：必须确保至少有一个源站的权重值大于0；</li><li>正常值：数值越大分配流量越多 ；</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40622,6 +45605,85 @@ class RedirectActionParameters(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RefreshMultiPathGatewaySecretKeyRequest(AbstractModel):
+    """RefreshMultiPathGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshMultiPathGatewaySecretKeyResponse(AbstractModel):
+    """RefreshMultiPathGatewaySecretKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretKey: 多通道安全加速网关接入密钥。
+        :type SecretKey: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecretKey = None
+        self._RequestId = None
+
+    @property
+    def SecretKey(self):
+        """多通道安全加速网关接入密钥。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SecretKey = params.get("SecretKey")
+        self._RequestId = params.get("RequestId")
 
 
 class RenewFlag(AbstractModel):
@@ -45605,6 +50667,93 @@ class SwitchConfig(AbstractModel):
         
 
 
+class TCCaptchaOption(AbstractModel):
+    """验证码认证实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaptchaAppId: CaptchaAppId 信息。
+        :type CaptchaAppId: str
+        :param _AppSecretKey: AppSecretKey 信息。
+        :type AppSecretKey: str
+        """
+        self._CaptchaAppId = None
+        self._AppSecretKey = None
+
+    @property
+    def CaptchaAppId(self):
+        """CaptchaAppId 信息。
+        :rtype: str
+        """
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def AppSecretKey(self):
+        """AppSecretKey 信息。
+        :rtype: str
+        """
+        return self._AppSecretKey
+
+    @AppSecretKey.setter
+    def AppSecretKey(self, AppSecretKey):
+        self._AppSecretKey = AppSecretKey
+
+
+    def _deserialize(self, params):
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._AppSecretKey = params.get("AppSecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCRCEOption(AbstractModel):
+    """RCE 认证选项实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Channel: Channel 信息。
+        :type Channel: str
+        """
+        self._Channel = None
+
+    @property
+    def Channel(self):
+        """Channel 信息。
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+
+    def _deserialize(self, params):
+        self._Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TLSConfigParameters(AbstractModel):
     """SSL/TLS 安全配置参数。
 
@@ -45731,7 +50880,7 @@ class Task(AbstractModel):
         :param _Status: 状态。取值有：
 <li>processing：处理中；</li>
 <li>success：成功；</li>
-<li> failed：失败；</li>
+<li>failed：失败；</li>
 <li>timeout：超时；</li>
 <li>canceled：已取消。</li>
         :type Status: str
@@ -45739,6 +50888,15 @@ class Task(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 任务完成时间。
         :type UpdateTime: str
+        :param _FailType: 刷新、预热失败类型。取值有：
+<li>taskFailed：任务失败；</li>
+<li>quotaExceeded：配额超限；</li>
+<li>downloadManifestFailed：下载描述文件失败；</li>
+<li>accessDenied：访问被拒绝。</li>
+<li>originPullFailed：回源失败。</li>
+        :type FailType: str
+        :param _FailMessage: 刷新、预热失败描述。
+        :type FailMessage: str
         """
         self._JobId = None
         self._Target = None
@@ -45747,6 +50905,8 @@ class Task(AbstractModel):
         self._Status = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._FailType = None
+        self._FailMessage = None
 
     @property
     def JobId(self):
@@ -45799,7 +50959,7 @@ class Task(AbstractModel):
         """状态。取值有：
 <li>processing：处理中；</li>
 <li>success：成功；</li>
-<li> failed：失败；</li>
+<li>failed：失败；</li>
 <li>timeout：超时；</li>
 <li>canceled：已取消。</li>
         :rtype: str
@@ -45832,6 +50992,33 @@ class Task(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def FailType(self):
+        """刷新、预热失败类型。取值有：
+<li>taskFailed：任务失败；</li>
+<li>quotaExceeded：配额超限；</li>
+<li>downloadManifestFailed：下载描述文件失败；</li>
+<li>accessDenied：访问被拒绝。</li>
+<li>originPullFailed：回源失败。</li>
+        :rtype: str
+        """
+        return self._FailType
+
+    @FailType.setter
+    def FailType(self, FailType):
+        self._FailType = FailType
+
+    @property
+    def FailMessage(self):
+        """刷新、预热失败描述。
+        :rtype: str
+        """
+        return self._FailMessage
+
+    @FailMessage.setter
+    def FailMessage(self, FailMessage):
+        self._FailMessage = FailMessage
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -45841,6 +51028,8 @@ class Task(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._FailType = params.get("FailType")
+        self._FailMessage = params.get("FailMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47296,6 +52485,140 @@ class VerifyOwnershipResponse(AbstractModel):
         self._Status = params.get("Status")
         self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
+
+
+class VideoTemplateInfo(AbstractModel):
+    """视频流配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Codec: 视频流的编码格式，可选值：<li>H.264: 使用 H.264 编码；</li><li>H.265: 使用 H.265 编码。</li>
+        :type Codec: str
+        :param _Fps: 视频帧率，取值范围：[0, 30]，单位：Hz。
+取值为 0，表示帧率和原始视频保持一致，但最大不超过 30。
+默认值：0。
+        :type Fps: float
+        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
+取值为 0，表示自动根据视频画面和质量选择视频码率。
+默认值：0。
+        :type Bitrate: int
+        :param _ResolutionAdaptive: 分辨率自适应，可选值：<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
+        :type ResolutionAdaptive: str
+        :param _Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 1920]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :type Width: int
+        :param _Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 1080]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :type Height: int
+        :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁”或者“拉长”。</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>默认值：black 。
+        :type FillType: str
+        """
+        self._Codec = None
+        self._Fps = None
+        self._Bitrate = None
+        self._ResolutionAdaptive = None
+        self._Width = None
+        self._Height = None
+        self._FillType = None
+
+    @property
+    def Codec(self):
+        """视频流的编码格式，可选值：<li>H.264: 使用 H.264 编码；</li><li>H.265: 使用 H.265 编码。</li>
+        :rtype: str
+        """
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def Fps(self):
+        """视频帧率，取值范围：[0, 30]，单位：Hz。
+取值为 0，表示帧率和原始视频保持一致，但最大不超过 30。
+默认值：0。
+        :rtype: float
+        """
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Bitrate(self):
+        """视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
+取值为 0，表示自动根据视频画面和质量选择视频码率。
+默认值：0。
+        :rtype: int
+        """
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+    @property
+    def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
+        :rtype: str
+        """
+        return self._ResolutionAdaptive
+
+    @ResolutionAdaptive.setter
+    def ResolutionAdaptive(self, ResolutionAdaptive):
+        self._ResolutionAdaptive = ResolutionAdaptive
+
+    @property
+    def Width(self):
+        """视频流宽度（或长边）的最大值，取值范围：0 和 [128, 1920]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """视频流高度（或短边）的最大值，取值范围：0 和 [128, 1080]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁”或者“拉长”。</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>默认值：black 。
+        :rtype: str
+        """
+        return self._FillType
+
+    @FillType.setter
+    def FillType(self, FillType):
+        self._FillType = FillType
+
+
+    def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._Fps = params.get("Fps")
+        self._Bitrate = params.get("Bitrate")
+        self._ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Waf(AbstractModel):

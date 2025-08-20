@@ -784,6 +784,8 @@ class CreateTaskFromActionRequest(AbstractModel):
         :type TaskActionCustomConfiguration: str
         :param _TaskPauseDuration: 演练自动暂停时间，单位分钟, 不填则默认为60
         :type TaskPauseDuration: int
+        :param _TaskTags: 标签列表
+        :type TaskTags: list of TagWithCreate
         """
         self._TaskActionId = None
         self._TaskInstances = None
@@ -792,6 +794,7 @@ class CreateTaskFromActionRequest(AbstractModel):
         self._TaskActionGeneralConfiguration = None
         self._TaskActionCustomConfiguration = None
         self._TaskPauseDuration = None
+        self._TaskTags = None
 
     @property
     def TaskActionId(self):
@@ -870,6 +873,17 @@ class CreateTaskFromActionRequest(AbstractModel):
     def TaskPauseDuration(self, TaskPauseDuration):
         self._TaskPauseDuration = TaskPauseDuration
 
+    @property
+    def TaskTags(self):
+        """标签列表
+        :rtype: list of TagWithCreate
+        """
+        return self._TaskTags
+
+    @TaskTags.setter
+    def TaskTags(self, TaskTags):
+        self._TaskTags = TaskTags
+
 
     def _deserialize(self, params):
         self._TaskActionId = params.get("TaskActionId")
@@ -879,6 +893,12 @@ class CreateTaskFromActionRequest(AbstractModel):
         self._TaskActionGeneralConfiguration = params.get("TaskActionGeneralConfiguration")
         self._TaskActionCustomConfiguration = params.get("TaskActionCustomConfiguration")
         self._TaskPauseDuration = params.get("TaskPauseDuration")
+        if params.get("TaskTags") is not None:
+            self._TaskTags = []
+            for item in params.get("TaskTags"):
+                obj = TagWithCreate()
+                obj._deserialize(item)
+                self._TaskTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6231,11 +6251,14 @@ class TaskTarget(AbstractModel):
         :type Type: int
         :param _Source: 1:平台 2:用户个人
         :type Source: int
+        :param _TargetStatus: 目标标签是否已被删除
+        :type TargetStatus: int
         """
         self._TargetId = None
         self._TargetDesc = None
         self._Type = None
         self._Source = None
+        self._TargetStatus = None
 
     @property
     def TargetId(self):
@@ -6282,12 +6305,24 @@ class TaskTarget(AbstractModel):
     def Source(self, Source):
         self._Source = Source
 
+    @property
+    def TargetStatus(self):
+        """目标标签是否已被删除
+        :rtype: int
+        """
+        return self._TargetStatus
+
+    @TargetStatus.setter
+    def TargetStatus(self, TargetStatus):
+        self._TargetStatus = TargetStatus
+
 
     def _deserialize(self, params):
         self._TargetId = params.get("TargetId")
         self._TargetDesc = params.get("TargetDesc")
         self._Type = params.get("Type")
         self._Source = params.get("Source")
+        self._TargetStatus = params.get("TargetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

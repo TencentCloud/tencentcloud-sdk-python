@@ -53,6 +53,9 @@ FAILEDOPERATION_DELIVERGOODSFAILED = 'FailedOperation.DeliverGoodsFailed'
 # 重复的标签键。
 FAILEDOPERATION_DUPLICATETAGKEY = 'FailedOperation.DuplicateTagKey'
 
+# 当前已有资源组正在使用该配置项，无法一键删除（一键删除会导致引擎重启）您可前往资源组列表页点击详情删除
+FAILEDOPERATION_FAILEDOPERATIONCODE_NETWORKCONNECTIONINUSED = 'FailedOperation.FailedOperationCode_NetworkConnectionInUsed'
+
 # 扣费失败。
 FAILEDOPERATION_FEEDEDUCTIONFAILED = 'FailedOperation.FeeDeductionFailed'
 
@@ -89,11 +92,17 @@ FAILEDOPERATION_ILLEGALTAGVALUE = 'FailedOperation.IllegalTagValue'
 # 询价失败。
 FAILEDOPERATION_INQUIREPRICEFAILED = 'FailedOperation.InquirePriceFailed'
 
+# Invalid NetworkConnectionType
+FAILEDOPERATION_INVALIDNETWORKCONNECTIONTYPE = 'FailedOperation.InvalidNetworkConnectionType'
+
 # 元数据错误，请重试，或者提交工单联系我们
 FAILEDOPERATION_METASTOREERROR = 'FailedOperation.MetastoreError'
 
 # 实例变配失败。
 FAILEDOPERATION_MODIFYINSTANCEFAILED = 'FailedOperation.ModifyInstanceFailed'
+
+# The  datasource vpc has been bound to the engine
+FAILEDOPERATION_NETWORKCONNECTIONEXIST = 'FailedOperation.NetworkConnectionExist'
 
 # 没有操作权限。
 FAILEDOPERATION_NOPERMISSION = 'FailedOperation.NoPermission'
@@ -136,6 +145,9 @@ FAILEDOPERATION_TOOMANYRESOURCES = 'FailedOperation.TooManyResources'
 
 # 标签数量超出限制。
 FAILEDOPERATION_TOOMANYTAGS = 'FailedOperation.TooManyTags'
+
+# 更新权限信息失败。
+FAILEDOPERATION_UPDATEPOLICYFAILED = 'FailedOperation.UpdatePolicyFailed'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -205,6 +217,9 @@ INVALIDPARAMETER_DUPLICATEGROUPNAME = 'InvalidParameter.DuplicateGroupName'
 
 # 重复的用户名。
 INVALIDPARAMETER_DUPLICATEUSERNAME = 'InvalidParameter.DuplicateUserName'
+
+# 用户vpc连接名称重复
+INVALIDPARAMETER_DUPLICATEUSERVPCCONNECTIONNAME = 'InvalidParameter.DuplicateUserVpcConnectionName'
 
 # 指定Filter.Values参数数量超限，当前应小于等于50个
 INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = 'InvalidParameter.FiltersValuesNumberOutOfLimit'
@@ -491,6 +506,9 @@ INVALIDPARAMETER_TASKSTATETYPENOTMATH = 'InvalidParameter.TaskStateTypeNotMath'
 # Vpc cidr格式错误。
 INVALIDPARAMETER_VPCCIDRFORMATERROR = 'InvalidParameter.VpcCidrFormatError'
 
+# Vpc cidr重叠。
+INVALIDPARAMETER_VPCCIDROVERLAP = 'InvalidParameter.VpcCidrOverlap'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -554,6 +572,9 @@ RESOURCENOTFOUND_DATASOURCENOTFOUND = 'ResourceNotFound.DatasourceNotFound'
 # 找不到默认引擎
 RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = 'ResourceNotFound.DefaultDataEngineNotFound'
 
+# Eks计算集群初始化或迁移中，请稍后再试。
+RESOURCENOTFOUND_EKSRESOURCENOTFOUND = 'ResourceNotFound.EksResourceNotFound'
+
 # 指定集群镜像Session配置不存在
 RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTFOUND = 'ResourceNotFound.ImageSessionConfigNotFound'
 
@@ -568,6 +589,12 @@ RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = 'ResourceNotFound.ImageVersionNotFound'
 
 # 指定集群镜像版本已存在
 RESOURCENOTFOUND_IMAGEVERSIONNOTUNIQUE = 'ResourceNotFound.ImageVersionNotUnique'
+
+# 该网络连接不存在
+RESOURCENOTFOUND_NETWORKCONNECTIONNOTFOUND = 'ResourceNotFound.NetworkConnectionNotFound'
+
+# 网关不存在
+RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = 'ResourceNotFound.ResourceNotFoundCode_GatewayNotFound'
 
 # 指定任务资源超过集群剩余资源限制，请调整后重试
 RESOURCENOTFOUND_RESOURCEUSAGEOUTOFLIMIT = 'ResourceNotFound.ResourceUsageOutOfLimit'
@@ -613,6 +640,9 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
 # 账号余额不足，无法执行SQL任务。
 RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = 'ResourceUnavailable.BalanceInsufficient'
+
+# 网关未运行
+RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = 'ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning'
 
 # 当前为白名单功能，请联系我们开通
 RESOURCEUNAVAILABLE_WHITELISTFUNCTION = 'ResourceUnavailable.WhiteListFunction'
@@ -697,6 +727,9 @@ UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = 'UnauthorizedOperation.UseComputingEn
 
 # 子用户不存在。
 UNAUTHORIZEDOPERATION_USERNOTEXIST = 'UnauthorizedOperation.UserNotExist'
+
+# Yunti user do not support this operation
+UNAUTHORIZEDOPERATION_YUNTIUSERUNSUPPORT = 'UnauthorizedOperation.YuntiUserUnSupport'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

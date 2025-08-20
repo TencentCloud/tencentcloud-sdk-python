@@ -348,6 +348,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOwaspWhiteRule(self, request):
+        """添加规则引擎白名单
+
+        :param request: Request instance for CreateOwaspWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateOwaspWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateOwaspWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOwaspWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOwaspWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePostCKafkaFlow(self, request):
         """创建CKafka投递流任务
 
@@ -684,6 +707,52 @@ class WafClient(AbstractClient):
             body = self.call("DeleteIpAccessControlV2", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteIpAccessControlV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteOwaspRuleStatus(self, request):
+        """解除门神规则的状态锁
+
+        :param request: Request instance for DeleteOwaspRuleStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteOwaspRuleStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteOwaspRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOwaspRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOwaspRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteOwaspWhiteRule(self, request):
+        """删除用户规则引擎白名单
+
+        :param request: Request instance for DeleteOwaspWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteOwaspWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteOwaspWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOwaspWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOwaspWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1742,6 +1811,75 @@ class WafClient(AbstractClient):
             body = self.call("DescribeObjects", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeObjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOwaspRuleTypes(self, request):
+        """查询规则引擎的规则类型列表
+
+        :param request: Request instance for DescribeOwaspRuleTypes.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspRuleTypesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspRuleTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOwaspRuleTypes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOwaspRuleTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOwaspRules(self, request):
+        """查询规则引擎的规则列表
+
+        :param request: Request instance for DescribeOwaspRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOwaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOwaspRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOwaspWhiteRules(self, request):
+        """获取规则引擎白名单列表
+
+        :param request: Request instance for DescribeOwaspWhiteRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspWhiteRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspWhiteRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOwaspWhiteRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOwaspWhiteRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3019,7 +3157,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyGenerateDeals(self, request):
-        """提供给clb等使用的waf实例下单接口，目前只支持clb旗舰版实例的下单，该接口会进行入参校验，然后调用是否为收购用户，然后调用计费接口下单。目前只支持预付费下单，计费侧接口：https://tcb.woa.com/magical-brush/docs/754661947
+        """提供给clb等使用的waf实例下单接口，目前只支持clb旗舰版实例的下单，该接口会进行入参校验，然后调用是否为收购用户，然后调用计费接口下单。目前只支持预付费下单
 
         :param request: Request instance for ModifyGenerateDeals.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyGenerateDealsRequest`
@@ -3309,6 +3447,121 @@ class WafClient(AbstractClient):
             body = self.call("ModifyObject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyObjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOwaspRuleStatus(self, request):
+        """更新规则的开关
+
+        :param request: Request instance for ModifyOwaspRuleStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOwaspRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOwaspRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOwaspRuleTypeAction(self, request):
+        """更新规则类型的防护模式
+
+        :param request: Request instance for ModifyOwaspRuleTypeAction.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeActionRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeActionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOwaspRuleTypeAction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOwaspRuleTypeActionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOwaspRuleTypeLevel(self, request):
+        """更新规则类型的防护等级
+
+        :param request: Request instance for ModifyOwaspRuleTypeLevel.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeLevelRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeLevelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOwaspRuleTypeLevel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOwaspRuleTypeLevelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOwaspRuleTypeStatus(self, request):
+        """更新规则类型的开关
+
+        :param request: Request instance for ModifyOwaspRuleTypeStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOwaspRuleTypeStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOwaspRuleTypeStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOwaspWhiteRule(self, request):
+        """编辑规则引擎白名单
+
+        :param request: Request instance for ModifyOwaspWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOwaspWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOwaspWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

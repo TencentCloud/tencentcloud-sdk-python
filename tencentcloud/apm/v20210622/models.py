@@ -563,6 +563,8 @@ class ApmField(AbstractModel):
         :type LastPeriodValue: list of APMKV
         :param _CompareVal: 同比指标值，已弃用，不建议使用
         :type CompareVal: str
+        :param _NameCN: 指标中文名
+        :type NameCN: str
         """
         self._Key = None
         self._Value = None
@@ -570,6 +572,7 @@ class ApmField(AbstractModel):
         self._CompareVals = None
         self._LastPeriodValue = None
         self._CompareVal = None
+        self._NameCN = None
 
     @property
     def Key(self):
@@ -639,6 +642,17 @@ class ApmField(AbstractModel):
     def CompareVal(self, CompareVal):
         self._CompareVal = CompareVal
 
+    @property
+    def NameCN(self):
+        """指标中文名
+        :rtype: str
+        """
+        return self._NameCN
+
+    @NameCN.setter
+    def NameCN(self, NameCN):
+        self._NameCN = NameCN
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
@@ -657,6 +671,7 @@ class ApmField(AbstractModel):
                 obj._deserialize(item)
                 self._LastPeriodValue.append(obj)
         self._CompareVal = params.get("CompareVal")
+        self._NameCN = params.get("NameCN")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -788,6 +803,10 @@ class ApmInstanceDetail(AbstractModel):
         :type IsDeserializationAnalysis: int
         :param _Token: 业务系统鉴权 token
         :type Token: str
+        :param _UrlLongSegmentThreshold: URL长分段收敛阈值
+        :type UrlLongSegmentThreshold: int
+        :param _UrlNumberSegmentThreshold: URL数字分段收敛阈值
+        :type UrlNumberSegmentThreshold: int
         """
         self._InstanceId = None
         self._Name = None
@@ -843,6 +862,8 @@ class ApmInstanceDetail(AbstractModel):
         self._IsWebshellBackdoorAnalysis = None
         self._IsDeserializationAnalysis = None
         self._Token = None
+        self._UrlLongSegmentThreshold = None
+        self._UrlNumberSegmentThreshold = None
 
     @property
     def InstanceId(self):
@@ -1444,6 +1465,28 @@ class ApmInstanceDetail(AbstractModel):
     def Token(self, Token):
         self._Token = Token
 
+    @property
+    def UrlLongSegmentThreshold(self):
+        """URL长分段收敛阈值
+        :rtype: int
+        """
+        return self._UrlLongSegmentThreshold
+
+    @UrlLongSegmentThreshold.setter
+    def UrlLongSegmentThreshold(self, UrlLongSegmentThreshold):
+        self._UrlLongSegmentThreshold = UrlLongSegmentThreshold
+
+    @property
+    def UrlNumberSegmentThreshold(self):
+        """URL数字分段收敛阈值
+        :rtype: int
+        """
+        return self._UrlNumberSegmentThreshold
+
+    @UrlNumberSegmentThreshold.setter
+    def UrlNumberSegmentThreshold(self, UrlNumberSegmentThreshold):
+        self._UrlNumberSegmentThreshold = UrlNumberSegmentThreshold
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1505,6 +1548,8 @@ class ApmInstanceDetail(AbstractModel):
         self._IsWebshellBackdoorAnalysis = params.get("IsWebshellBackdoorAnalysis")
         self._IsDeserializationAnalysis = params.get("IsDeserializationAnalysis")
         self._Token = params.get("Token")
+        self._UrlLongSegmentThreshold = params.get("UrlLongSegmentThreshold")
+        self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4198,6 +4243,10 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type IsWebshellBackdoorAnalysis: int
         :param _IsDeserializationAnalysis: 是否开启反序列化检测（0-关闭，1-开启）
         :type IsDeserializationAnalysis: int
+        :param _UrlLongSegmentThreshold: URL长分段收敛阈值
+        :type UrlLongSegmentThreshold: int
+        :param _UrlNumberSegmentThreshold: URL数字分段收敛阈值
+        :type UrlNumberSegmentThreshold: int
         """
         self._InstanceId = None
         self._Name = None
@@ -4239,6 +4288,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsJNIInjectionAnalysis = None
         self._IsWebshellBackdoorAnalysis = None
         self._IsDeserializationAnalysis = None
+        self._UrlLongSegmentThreshold = None
+        self._UrlNumberSegmentThreshold = None
 
     @property
     def InstanceId(self):
@@ -4680,6 +4731,28 @@ class ModifyApmInstanceRequest(AbstractModel):
     def IsDeserializationAnalysis(self, IsDeserializationAnalysis):
         self._IsDeserializationAnalysis = IsDeserializationAnalysis
 
+    @property
+    def UrlLongSegmentThreshold(self):
+        """URL长分段收敛阈值
+        :rtype: int
+        """
+        return self._UrlLongSegmentThreshold
+
+    @UrlLongSegmentThreshold.setter
+    def UrlLongSegmentThreshold(self, UrlLongSegmentThreshold):
+        self._UrlLongSegmentThreshold = UrlLongSegmentThreshold
+
+    @property
+    def UrlNumberSegmentThreshold(self):
+        """URL数字分段收敛阈值
+        :rtype: int
+        """
+        return self._UrlNumberSegmentThreshold
+
+    @UrlNumberSegmentThreshold.setter
+    def UrlNumberSegmentThreshold(self, UrlNumberSegmentThreshold):
+        self._UrlNumberSegmentThreshold = UrlNumberSegmentThreshold
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4727,6 +4800,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsJNIInjectionAnalysis = params.get("IsJNIInjectionAnalysis")
         self._IsWebshellBackdoorAnalysis = params.get("IsWebshellBackdoorAnalysis")
         self._IsDeserializationAnalysis = params.get("IsDeserializationAnalysis")
+        self._UrlLongSegmentThreshold = params.get("UrlLongSegmentThreshold")
+        self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
