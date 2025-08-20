@@ -190,11 +190,11 @@ def test_oidc_role_arn_credential_concurrent():
 
 
     cred = OIDCRoleArnCredential(
-        region="ap-guangzhou",
-        provider_id="mock-provider-id",
-        web_identity_token="mock-token",
-        role_arn="mock-role-arn",
-        role_session_name="session-1",
+        region="test-region",
+        provider_id="test-provider-id",
+        web_identity_token="test-web-identity-token",
+        role_arn="test-role-arn",
+        role_session_name="test-role-session-name",
         duration_seconds=1
     )
 

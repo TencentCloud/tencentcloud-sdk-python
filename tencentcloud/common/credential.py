@@ -17,7 +17,6 @@ import json
 import os
 import time
 import threading
-import threading
 
 try:
     # py3
@@ -75,9 +74,6 @@ class Credential(object):
     
     def get_credential_info(self):
         return self.secret_id, self.secret_key, self.token
-    
-    def get_credential_info(self):
-        return self.secret_id, self.secret_key, self.token
 
 
 class CVMRoleCredential(object):
@@ -100,7 +96,6 @@ class CVMRoleCredential(object):
         self._token = None
         self._expired_ts = 0
         self._lock = threading.Lock()
-        self._lock = threading.Lock()
 
     @property
     def secretId(self):
@@ -109,9 +104,8 @@ class CVMRoleCredential(object):
     @property
     def secret_id(self):
         with self._lock:
-            with self._lock:
             self.update_credential()
-                return self._secret_id
+            return self._secret_id
 
     @property
     def secretKey(self):
@@ -120,16 +114,14 @@ class CVMRoleCredential(object):
     @property
     def secret_key(self):
         with self._lock:
-            with self._lock:
             self.update_credential()
-                return self._secret_key
+            return self._secret_key
 
     @property
     def token(self):
         with self._lock:
-            with self._lock:
             self.update_credential()
-                return self._token
+            return self._token
 
     def get_role_name(self):
         if self.role:
@@ -180,11 +172,6 @@ class CVMRoleCredential(object):
             self.update_credential()
             return self._secret_id, self._secret_key, self._token
 
-    def get_credential_info(self):
-        with self._lock:
-            self.update_credential()
-            return self._secret_id, self._secret_key, self._token
-
 
 class STSAssumeRoleCredential(object):
     """Tencent Cloud Credential via STS service
@@ -227,47 +214,36 @@ class STSAssumeRoleCredential(object):
         if endpoint:
             self._endpoint = endpoint
         self._lock = threading.Lock()
-        self._lock = threading.Lock()
 
     @property
     def secretId(self):
         with self._lock:
-            with self._lock:
             self._need_refresh()
-                return self._tmp_secret_id
+            return self._tmp_secret_id
 
     @property
     def secretKey(self):
         with self._lock:
-            with self._lock:
             self._need_refresh()
-                return self._tmp_secret_key
+            return self._tmp_secret_key
 
     @property
     def secret_id(self):
         with self._lock:
-            with self._lock:
             self._need_refresh()
-                return self._tmp_secret_id
+            return self._tmp_secret_id
 
     @property
     def secret_key(self):
         with self._lock:
-            with self._lock:
             self._need_refresh()
-                return self._tmp_secret_key
+            return self._tmp_secret_key
 
     @property
     def token(self):
         with self._lock:
-            with self._lock:
             self._need_refresh()
-                return self._token
-    
-    def get_credential_info(self):
-        with self._lock:
-            self._need_refresh()
-            return self._tmp_secret_id, self._tmp_secret_key, self._token
+            return self._token
     
     def get_credential_info(self):
         with self._lock:
@@ -454,42 +430,36 @@ class OIDCRoleArnCredential(object):
         self._expired_time = 0
         self._is_tke = False
         self._lock = threading.Lock()
-        self._lock = threading.Lock()
 
     @property
     def secretId(self):
         with self._lock:
-            with self._lock:
             self._keep_fresh()
-                return self._tmp_secret_id
+            return self._tmp_secret_id
 
     @property
     def secretKey(self):
         with self._lock:
-            with self._lock:
             self._keep_fresh()
-                return self._tmp_secret_key
+            return self._tmp_secret_key
 
     @property
     def secret_id(self):
         with self._lock:
-            with self._lock:
             self._keep_fresh()
-                return self._tmp_secret_id
+            return self._tmp_secret_id
 
     @property
     def secret_key(self):
         with self._lock:
-            with self._lock:
             self._keep_fresh()
-                return self._tmp_secret_key
+            return self._tmp_secret_key
 
     @property
     def token(self):
         with self._lock:
-            with self._lock:
             self._keep_fresh()
-                return self._token
+            return self._token
         
     def get_credential_info(self):
         with self._lock:
@@ -503,11 +473,6 @@ class OIDCRoleArnCredential(object):
     @endpoint.setter
     def endpoint(self, endpoint):
         self._endpoint = endpoint
-        
-    def get_credential_info(self):
-        with self._lock:
-            self._keep_fresh()
-            return self._tmp_secret_id, self._tmp_secret_key, self._token
 
     def _keep_fresh(self):
         if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
