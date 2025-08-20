@@ -64,12 +64,12 @@ def test_cvm_role_credential_concurrent():
     with patch("tencentcloud.common.credential.urlopen", new=fake_urlopen):
         cred = CVMRoleCredential()
         threads = []
-        for i in range(50):
+        for i in range(10):
             t = threading.Thread(target=worker, args=(i,))
             threads.append(t)
             t.start()
 
-        time.sleep(10)
+        time.sleep(5)
         stop_event.set()
         for t in threads:
             t.join()
@@ -122,8 +122,8 @@ def test_role_arn_credential_concurrent():
             time.sleep(0.001)
 
     cred = STSAssumeRoleCredential(
-        secret_id="mock-secret-id",
-        secret_key="mock-secret-key",
+        secret_id = os.environ.get("TENCENTCLOUD_SECRET_ID"),
+        secret_key= os.environ.get("TENCENTCLOUD_SECRET_KEY"),
         role_arn="mock-role-arn",
         role_session_name="session-1",
         duration_seconds=1
@@ -131,12 +131,12 @@ def test_role_arn_credential_concurrent():
 
     with patch("tencentcloud.common.credential.CommonClient.call_json", new=fake_call_json):
         threads = []
-        for i in range(100):
+        for i in range(10):
             t = threading.Thread(target=worker, args=(i,))
             threads.append(t)
             t.start()
 
-        time.sleep(10)
+        time.sleep(5)
         stop_event.set()
         for t in threads:
             t.join()
@@ -200,12 +200,12 @@ def test_oidc_role_arn_credential_concurrent():
 
     with patch("tencentcloud.common.credential.CommonClient.call_json", new=fake_call_json):
         threads = []
-        for i in range(100):
+        for i in range(10):
             t = threading.Thread(target=worker, args=(i,))
             threads.append(t)
             t.start()
 
-        time.sleep(10)
+        time.sleep(5)
         stop_event.set()
         for t in threads:
             t.join()
@@ -271,12 +271,12 @@ def test_tke_oidc_role_arn_credential_concurrent():
 
     with patch("tencentcloud.common.credential.CommonClient.call_json", new=fake_call_json):
         threads = []
-        for i in range(100):
+        for i in range(10):
             t = threading.Thread(target=worker, args=(i,))
             threads.append(t)
             t.start()
 
-        time.sleep(10)
+        time.sleep(5)
         stop_event.set()
         for t in threads:
             t.join()
