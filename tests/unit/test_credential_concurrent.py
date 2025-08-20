@@ -122,10 +122,10 @@ def test_role_arn_credential_concurrent():
             time.sleep(0.001)
 
     cred = STSAssumeRoleCredential(
-        secret_id = os.environ.get("TENCENTCLOUD_SECRET_ID"),
-        secret_key= os.environ.get("TENCENTCLOUD_SECRET_KEY"),
-        role_arn="mock-role-arn",
-        role_session_name="session-1",
+        secret_id = "test-secret-id",
+        secret_key= "test-secret-key",
+        role_arn="test-role-arn",
+        role_session_name="test-role-session-name",
         duration_seconds=1
     )
 
