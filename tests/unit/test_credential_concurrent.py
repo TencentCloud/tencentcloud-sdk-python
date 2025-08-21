@@ -5,9 +5,25 @@ import json
 import os
 import tempfile
 import sys
-import pytest
-from unittest.mock import patch, MagicMock
+
 from tencentcloud.common.credential import *
+import tencentcloud.common.credential
+
+
+class my_patch(object):
+    def __init__(self, module, func_name, new_func):
+        self.module = module
+        self.func_name = func_name
+        self.new_func = new_func
+        self.original = None
+
+    def __enter__(self):
+        self.original = getattr(self.module, self.func_name)
+        setattr(self.module, self.func_name, self.new_func)
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        setattr(self.module, self.func_name, self.original)
 
 
 def test_cvm_role_credential_concurrent():
@@ -24,7 +40,6 @@ def test_cvm_role_credential_concurrent():
                 def read(self):
                     return b"mock-role"
             return Resp()
-
         elif url.endswith("/cam/security-credentials/mock-role"):
             now = time.time()
             with refresh_lock:
@@ -34,7 +49,6 @@ def test_cvm_role_credential_concurrent():
                     current_credential[0] = {"id": value, "expire_at": now + 1}
                 else:
                     value = current_credential[0]["id"]
-
             class JsonResp:
                 def read(self):
                     d = {
@@ -45,37 +59,31 @@ def test_cvm_role_credential_concurrent():
                         "Code": "Success"
                     }
                     try:
-                        return json.dumps(d).encode("utf-8")  # py3
+                        return json.dumps(d).encode("utf-8")
                     except TypeError:
-                        return json.dumps(d)  # py2
+                        return json.dumps(d)
             return JsonResp()
-
         raise Exception("Unexpected URL: {}".format(url))
 
     def worker(thread_id):
-        while not stop_event.is_set():
+        while not stop_event.isSet():
             sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
                     inconsistencies[0] += 1
-                sys.stdout.write("[Thread {}] Inconsistent: {} / {} / {}\n".format(
-                    thread_id, sid, skey, token))
-                sys.stdout.flush()
             time.sleep(0.001)
 
-    with patch("tencentcloud.common.credential.urlopen", new=fake_urlopen):
-        cred = CVMRoleCredential()
+    cred = CVMRoleCredential()
+    with my_patch(tencentcloud.common.credential, "urlopen", new_func=fake_urlopen):
         threads = []
         for i in range(10):
             t = threading.Thread(target=worker, args=(i,))
             threads.append(t)
             t.start()
-
         time.sleep(5)
         stop_event.set()
         for t in threads:
             t.join()
-
     assert inconsistencies[0] == 0, "CVMRoleCredential inconsistencies: {}".format(inconsistencies[0])
 
 
@@ -96,23 +104,23 @@ def test_role_arn_credential_concurrent():
                 current_credential[0] = {"id": value, "expire_at": now + 1}
             else:
                 value = current_credential[0]["id"]
-
         return {
             "Response": {
-                "Credentials": {"Token": value, "TmpSecretId": value, "TmpSecretKey": value},
+                "Credentials": {
+                    "Token": value,
+                    "TmpSecretId": value,
+                    "TmpSecretKey": value
+                },
                 "ExpiredTime": int(current_credential[0]["expire_at"])
             }
         }
 
     def worker(thread_id):
-        while not stop_event.is_set():
+        while not stop_event.isSet():
             sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
                     inconsistencies[0] += 1
-                sys.stdout.write("[Thread {}] Inconsistent: {} / {} / {}\n".format(
-                    thread_id, sid, skey, token))
-                sys.stdout.flush()
             time.sleep(0.001)
 
     cred = STSAssumeRoleCredential(
@@ -122,19 +130,16 @@ def test_role_arn_credential_concurrent():
         role_session_name="test-role-session-name",
         duration_seconds=1
     )
-
-    with patch("tencentcloud.common.credential.CommonClient.call_json", new=fake_call_json):
+    with my_patch(tencentcloud.common.credential.CommonClient, "call_json", new_func=fake_call_json):
         threads = []
         for i in range(10):
             t = threading.Thread(target=worker, args=(i,))
             threads.append(t)
             t.start()
-
         time.sleep(5)
         stop_event.set()
         for t in threads:
             t.join()
-
     assert inconsistencies[0] == 0, "RoleArnCredential inconsistencies: {}".format(inconsistencies[0])
 
 
@@ -155,23 +160,23 @@ def test_oidc_role_arn_credential_concurrent():
                 current_credential[0] = {"id": value, "expire_at": now + 1}
             else:
                 value = current_credential[0]["id"]
-
         return {
             "Response": {
-                "Credentials": {"Token": value, "TmpSecretId": value, "TmpSecretKey": value},
+                "Credentials": {
+                    "Token": value,
+                    "TmpSecretId": value,
+                    "TmpSecretKey": value
+                },
                 "ExpiredTime": int(current_credential[0]["expire_at"])
             }
         }
 
     def worker(thread_id):
-        while not stop_event.is_set():
+        while not stop_event.isSet():
             sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
                     inconsistencies[0] += 1
-                sys.stdout.write("[Thread {}] Inconsistent: {} / {} / {}\n".format(
-                    thread_id, sid, skey, token))
-                sys.stdout.flush()
             time.sleep(0.001)
 
     cred = OIDCRoleArnCredential(
@@ -183,18 +188,16 @@ def test_oidc_role_arn_credential_concurrent():
         duration_seconds=1
     )
 
-    with patch("tencentcloud.common.credential.CommonClient.call_json", new=fake_call_json):
+    with my_patch(tencentcloud.common.credential.CommonClient, "call_json", new_func=fake_call_json):
         threads = []
         for i in range(10):
             t = threading.Thread(target=worker, args=(i,))
             threads.append(t)
             t.start()
-
         time.sleep(5)
         stop_event.set()
         for t in threads:
             t.join()
-
     assert inconsistencies[0] == 0, "OIDCRoleArnCredential inconsistencies: {}".format(inconsistencies[0])
 
 
@@ -224,39 +227,35 @@ def test_tke_oidc_role_arn_credential_concurrent():
                 current_credential[0] = {"id": value, "expire_at": now + 1}
             else:
                 value = current_credential[0]["id"]
-
         return {
             "Response": {
-                "Credentials": {"Token": value, "TmpSecretId": value, "TmpSecretKey": value},
+                "Credentials": {
+                    "Token": value,
+                    "TmpSecretId": value,
+                    "TmpSecretKey": value
+                },
                 "ExpiredTime": int(current_credential[0]["expire_at"])
             }
         }
 
     def worker(thread_id):
-        while not stop_event.is_set():
+        while not stop_event.isSet():
             sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
                     inconsistencies[0] += 1
-                sys.stdout.write("[Thread {}] Inconsistent: {} / {} / {}\n".format(
-                    thread_id, sid, skey, token))
-                sys.stdout.flush()
             time.sleep(0.001)
 
     cred = DefaultTkeOIDCRoleArnProvider().get_credential()
-
-    with patch("tencentcloud.common.credential.CommonClient.call_json", new=fake_call_json):
+    with my_patch(tencentcloud.common.credential.CommonClient, "call_json", new_func=fake_call_json):
         threads = []
         for i in range(10):
             t = threading.Thread(target=worker, args=(i,))
             threads.append(t)
             t.start()
-
         time.sleep(5)
         stop_event.set()
         for t in threads:
             t.join()
-
     os.remove(token_file)
-
     assert inconsistencies[0] == 0, "TkeOIDCRoleArnProvider inconsistencies: {}".format(inconsistencies[0])
