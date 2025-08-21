@@ -1,24 +1,24 @@
+# -*- coding: utf-8 -*-
 import threading
 import time
 import json
 import os
 import tempfile
+import sys
 import pytest
 from unittest.mock import patch, MagicMock
 from tencentcloud.common.credential import *
 
 
 def test_cvm_role_credential_concurrent():
-    refresh_counter = 0
+    refresh_counter = [0]
+    current_credential = [{"id": "0", "expire_at": 0}]
+    inconsistencies = [0]
     refresh_lock = threading.Lock()
-    current_credential = {"id": "0", "expire_at": 0}
-    inconsistencies = 0
     inconsistencies_lock = threading.Lock()
     stop_event = threading.Event()
 
     def fake_urlopen(url, *args, **kwargs):
-        nonlocal refresh_counter, current_credential
-
         if url.endswith("/cam/security-credentials/"):
             class Resp:
                 def read(self):
@@ -28,37 +28,39 @@ def test_cvm_role_credential_concurrent():
         elif url.endswith("/cam/security-credentials/mock-role"):
             now = time.time()
             with refresh_lock:
-                if now >= current_credential["expire_at"]:
-                    refresh_counter += 1
-                    value = str(refresh_counter)
-                    current_credential = {
-                        "id": value,
-                        "expire_at": now + 1
-                    }
+                if now >= current_credential[0]["expire_at"]:
+                    refresh_counter[0] += 1
+                    value = str(refresh_counter[0])
+                    current_credential[0] = {"id": value, "expire_at": now + 1}
                 else:
-                    value = current_credential["id"]
+                    value = current_credential[0]["id"]
 
             class JsonResp:
                 def read(self):
-                    return json.dumps({
+                    d = {
                         "TmpSecretId": value,
                         "TmpSecretKey": value,
                         "Token": value,
-                        "ExpiredTime": int(current_credential["expire_at"]),
+                        "ExpiredTime": int(current_credential[0]["expire_at"]),
                         "Code": "Success"
-                    }).encode("utf-8")
+                    }
+                    try:
+                        return json.dumps(d).encode("utf-8")  # py3
+                    except TypeError:
+                        return json.dumps(d)  # py2
             return JsonResp()
 
-        raise Exception(f"Unexpected URL: {url}")
+        raise Exception("Unexpected URL: {}".format(url))
 
     def worker(thread_id):
-        nonlocal inconsistencies
         while not stop_event.is_set():
             sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
-                    inconsistencies += 1
-                print(f"[Thread {thread_id}] Inconsistent: {sid} / {skey} / {token}", flush=True)
+                    inconsistencies[0] += 1
+                sys.stdout.write("[Thread {}] Inconsistent: {} / {} / {}\n".format(
+                    thread_id, sid, skey, token))
+                sys.stdout.flush()
             time.sleep(0.001)
 
     with patch("tencentcloud.common.credential.urlopen", new=fake_urlopen):
@@ -74,56 +76,48 @@ def test_cvm_role_credential_concurrent():
         for t in threads:
             t.join()
 
-    assert inconsistencies == 0, f"CVMRoleCredential inconsistencies: {inconsistencies}"
+    assert inconsistencies[0] == 0, "CVMRoleCredential inconsistencies: {}".format(inconsistencies[0])
 
 
 def test_role_arn_credential_concurrent():
-    refresh_counter = 0
+    refresh_counter = [0]
+    current_credential = [{"id": "0", "expire_at": 0}]
+    inconsistencies = [0]
     refresh_lock = threading.Lock()
-    current_credential = {"id": "0", "expire_at": 0}
-    inconsistencies = 0
     inconsistencies_lock = threading.Lock()
     stop_event = threading.Event()
 
     def fake_call_json(self, action, params, options=None):
-        nonlocal refresh_counter, current_credential
-
         now = time.time()
         with refresh_lock:
-            if now >= current_credential["expire_at"]:
-                refresh_counter += 1
-                value = str(refresh_counter)
-                current_credential = {
-                    "id": value,
-                    "expire_at": now + 1
-                }
+            if now >= current_credential[0]["expire_at"]:
+                refresh_counter[0] += 1
+                value = str(refresh_counter[0])
+                current_credential[0] = {"id": value, "expire_at": now + 1}
             else:
-                value = current_credential["id"]
+                value = current_credential[0]["id"]
 
         return {
             "Response": {
-                "Credentials": {
-                    "Token": value,
-                    "TmpSecretId": value,
-                    "TmpSecretKey": value
-                },
-                "ExpiredTime": int(current_credential["expire_at"])
+                "Credentials": {"Token": value, "TmpSecretId": value, "TmpSecretKey": value},
+                "ExpiredTime": int(current_credential[0]["expire_at"])
             }
         }
 
     def worker(thread_id):
-        nonlocal inconsistencies
         while not stop_event.is_set():
             sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
-                    inconsistencies += 1
-                print(f"[Thread {thread_id}] Inconsistent: {sid} / {skey} / {token}", flush=True)
+                    inconsistencies[0] += 1
+                sys.stdout.write("[Thread {}] Inconsistent: {} / {} / {}\n".format(
+                    thread_id, sid, skey, token))
+                sys.stdout.flush()
             time.sleep(0.001)
 
     cred = STSAssumeRoleCredential(
-        secret_id = "example#test#123456",
-        secret_key= "example#test#123456",
+        secret_id="example#test#123456",
+        secret_key="example#test#123456",
         role_arn="test-role-arn",
         role_session_name="test-role-session-name",
         duration_seconds=1
@@ -141,53 +135,44 @@ def test_role_arn_credential_concurrent():
         for t in threads:
             t.join()
 
-    assert inconsistencies == 0, f"RoleArnCredential inconsistencies: {inconsistencies}"
+    assert inconsistencies[0] == 0, "RoleArnCredential inconsistencies: {}".format(inconsistencies[0])
 
 
 def test_oidc_role_arn_credential_concurrent():
-    refresh_counter = 0
+    refresh_counter = [0]
+    current_credential = [{"id": "0", "expire_at": 0}]
+    inconsistencies = [0]
     refresh_lock = threading.Lock()
-    current_credential = {"id": "0", "expire_at": 0}
-    inconsistencies = 0
     inconsistencies_lock = threading.Lock()
     stop_event = threading.Event()
 
     def fake_call_json(self, action, params, options=None):
-        nonlocal refresh_counter, current_credential
-
         now = time.time()
         with refresh_lock:
-            if now >= current_credential["expire_at"]:
-                refresh_counter += 1
-                value = str(refresh_counter)
-                current_credential = {
-                    "id": value,
-                    "expire_at": now + 1
-                }
+            if now >= current_credential[0]["expire_at"]:
+                refresh_counter[0] += 1
+                value = str(refresh_counter[0])
+                current_credential[0] = {"id": value, "expire_at": now + 1}
             else:
-                value = current_credential["id"]
+                value = current_credential[0]["id"]
 
         return {
             "Response": {
-                "Credentials": {
-                    "Token": value,
-                    "TmpSecretId": value,
-                    "TmpSecretKey": value
-                },
-                "ExpiredTime": int(current_credential["expire_at"])
+                "Credentials": {"Token": value, "TmpSecretId": value, "TmpSecretKey": value},
+                "ExpiredTime": int(current_credential[0]["expire_at"])
             }
         }
 
     def worker(thread_id):
-        nonlocal inconsistencies
         while not stop_event.is_set():
             sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
-                    inconsistencies += 1
-                print(f"[Thread {thread_id}] Inconsistent: {sid} / {skey} / {token}", flush=True)
+                    inconsistencies[0] += 1
+                sys.stdout.write("[Thread {}] Inconsistent: {} / {} / {}\n".format(
+                    thread_id, sid, skey, token))
+                sys.stdout.flush()
             time.sleep(0.001)
-
 
     cred = OIDCRoleArnCredential(
         region="test-region",
@@ -210,15 +195,14 @@ def test_oidc_role_arn_credential_concurrent():
         for t in threads:
             t.join()
 
-    assert inconsistencies == 0, f"OIDCRoleArnCredential inconsistencies: {inconsistencies}"
-
+    assert inconsistencies[0] == 0, "OIDCRoleArnCredential inconsistencies: {}".format(inconsistencies[0])
 
 
 def test_tke_oidc_role_arn_credential_concurrent():
-    refresh_counter = 0
+    refresh_counter = [0]
+    current_credential = [{"id": "0", "expire_at": 0}]
+    inconsistencies = [0]
     refresh_lock = threading.Lock()
-    current_credential = {"id": "0", "expire_at": 0}
-    inconsistencies = 0
     inconsistencies_lock = threading.Lock()
     stop_event = threading.Event()
 
@@ -232,39 +216,31 @@ def test_tke_oidc_role_arn_credential_concurrent():
     os.environ["TKE_ROLE_ARN"] = "mock-role-arn"
 
     def fake_call_json(self, action, params, options=None):
-        nonlocal refresh_counter, current_credential
-
         now = time.time()
         with refresh_lock:
-            if now >= current_credential["expire_at"]:
-                refresh_counter += 1
-                value = str(refresh_counter)
-                current_credential = {
-                    "id": value,
-                    "expire_at": now + 1
-                }
+            if now >= current_credential[0]["expire_at"]:
+                refresh_counter[0] += 1
+                value = str(refresh_counter[0])
+                current_credential[0] = {"id": value, "expire_at": now + 1}
             else:
-                value = current_credential["id"]
+                value = current_credential[0]["id"]
 
         return {
             "Response": {
-                "Credentials": {
-                    "Token": value,
-                    "TmpSecretId": value,
-                    "TmpSecretKey": value
-                },
-                "ExpiredTime": int(current_credential["expire_at"])
+                "Credentials": {"Token": value, "TmpSecretId": value, "TmpSecretKey": value},
+                "ExpiredTime": int(current_credential[0]["expire_at"])
             }
         }
 
     def worker(thread_id):
-        nonlocal inconsistencies
         while not stop_event.is_set():
             sid, skey, token = cred.get_credential_info()
             if sid != skey or skey != token:
                 with inconsistencies_lock:
-                    inconsistencies += 1
-                print(f"[Thread {thread_id}] Inconsistent: {sid} / {skey} / {token}", flush=True)
+                    inconsistencies[0] += 1
+                sys.stdout.write("[Thread {}] Inconsistent: {} / {} / {}\n".format(
+                    thread_id, sid, skey, token))
+                sys.stdout.flush()
             time.sleep(0.001)
 
     cred = DefaultTkeOIDCRoleArnProvider().get_credential()
@@ -283,4 +259,4 @@ def test_tke_oidc_role_arn_credential_concurrent():
 
     os.remove(token_file)
 
-    assert inconsistencies == 0, f"TkeOIDCRoleArnProvider inconsistencies: {inconsistencies}"
+    assert inconsistencies[0] == 0, "TkeOIDCRoleArnProvider inconsistencies: {}".format(inconsistencies[0])
