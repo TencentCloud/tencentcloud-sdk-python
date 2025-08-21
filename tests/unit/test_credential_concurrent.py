@@ -122,8 +122,8 @@ def test_role_arn_credential_concurrent():
             time.sleep(0.001)
 
     cred = STSAssumeRoleCredential(
-        secret_id = "test-secret-id",
-        secret_key= "test-secret-key",
+        secret_id = "example#test#123456",
+        secret_key= "example#test#123456",
         role_arn="test-role-arn",
         role_session_name="test-role-session-name",
         duration_seconds=1
