@@ -363,10 +363,14 @@ class CreateNativeNodePoolParam(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         :param _DataDisks: 原生节点池数据盘列表
         :type DataDisks: list of DataDisk
+        :param _QGPUEnable: qgpu开关
+        :type QGPUEnable: bool
         :param _KeyIds: 节点池ssh公钥id数组
         :type KeyIds: list of str
         :param _MachineType: 节点池类型
         :type MachineType: str
+        :param _AutomationService: 原生节点池安装节点自动化助手开关
+        :type AutomationService: bool
         """
         self._Scaling = None
         self._SubnetIds = None
@@ -387,8 +391,10 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._Replicas = None
         self._InternetAccessible = None
         self._DataDisks = None
+        self._QGPUEnable = None
         self._KeyIds = None
         self._MachineType = None
+        self._AutomationService = None
 
     @property
     def Scaling(self):
@@ -600,6 +606,17 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._DataDisks = DataDisks
 
     @property
+    def QGPUEnable(self):
+        """qgpu开关
+        :rtype: bool
+        """
+        return self._QGPUEnable
+
+    @QGPUEnable.setter
+    def QGPUEnable(self, QGPUEnable):
+        self._QGPUEnable = QGPUEnable
+
+    @property
     def KeyIds(self):
         """节点池ssh公钥id数组
         :rtype: list of str
@@ -620,6 +637,17 @@ class CreateNativeNodePoolParam(AbstractModel):
     @MachineType.setter
     def MachineType(self, MachineType):
         self._MachineType = MachineType
+
+    @property
+    def AutomationService(self):
+        """原生节点池安装节点自动化助手开关
+        :rtype: bool
+        """
+        return self._AutomationService
+
+    @AutomationService.setter
+    def AutomationService(self, AutomationService):
+        self._AutomationService = AutomationService
 
 
     def _deserialize(self, params):
@@ -661,8 +689,10 @@ class CreateNativeNodePoolParam(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self._DataDisks.append(obj)
+        self._QGPUEnable = params.get("QGPUEnable")
         self._KeyIds = params.get("KeyIds")
         self._MachineType = params.get("MachineType")
+        self._AutomationService = params.get("AutomationService")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -696,7 +726,7 @@ class CreateNodePoolRequest(AbstractModel):
         :type DeletionProtection: bool
         :param _Unschedulable: 节点是否默认不可调度
         :type Unschedulable: bool
-        :param _Native: 原生节点池创建参数
+        :param _Native: 原生节点池创建参数（Type字段设置为Native时需填写）
         :type Native: :class:`tencentcloud.tke.v20220501.models.CreateNativeNodePoolParam`
         :param _Annotations: 节点 Annotation 列表
         :type Annotations: list of Annotation
@@ -802,7 +832,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Native(self):
-        """原生节点池创建参数
+        """原生节点池创建参数（Type字段设置为Native时需填写）
         :rtype: :class:`tencentcloud.tke.v20220501.models.CreateNativeNodePoolParam`
         """
         return self._Native

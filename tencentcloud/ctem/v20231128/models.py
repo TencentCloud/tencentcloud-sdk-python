@@ -1432,6 +1432,8 @@ class DescribeConfigsRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Ignored: 是否显示被忽略的数据
         :type Ignored: bool
+        :param _OrderBy: 支持按照响应长度排序，例如：+ContentLength或-ContentLength，+是递增，-是递减
+        :type OrderBy: str
         """
         self._CustomerIdList = None
         self._IsAggregation = None
@@ -1447,6 +1449,7 @@ class DescribeConfigsRequest(AbstractModel):
         self._UpdateAtEnd = None
         self._Filters = None
         self._Ignored = None
+        self._OrderBy = None
 
     @property
     def CustomerIdList(self):
@@ -1602,6 +1605,17 @@ class DescribeConfigsRequest(AbstractModel):
     def Ignored(self, Ignored):
         self._Ignored = Ignored
 
+    @property
+    def OrderBy(self):
+        """支持按照响应长度排序，例如：+ContentLength或-ContentLength，+是递增，-是递减
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
 
     def _deserialize(self, params):
         self._CustomerIdList = params.get("CustomerIdList")
@@ -1623,6 +1637,7 @@ class DescribeConfigsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._Ignored = params.get("Ignored")
+        self._OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9101,12 +9116,15 @@ class DisplayDarkWeb(AbstractModel):
         :type Url: str
         :param _DisplayToolCommon: 公共字段
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
+        :param _Status: 状态：unrepaired:未修复，repaired:已修复，ignore:已忽略
+        :type Status: str
         """
         self._Id = None
         self._Content = None
         self._MatchedKeywords = None
         self._Url = None
         self._DisplayToolCommon = None
+        self._Status = None
 
     @property
     def Id(self):
@@ -9163,6 +9181,17 @@ class DisplayDarkWeb(AbstractModel):
     def DisplayToolCommon(self, DisplayToolCommon):
         self._DisplayToolCommon = DisplayToolCommon
 
+    @property
+    def Status(self):
+        """状态：unrepaired:未修复，repaired:已修复，ignore:已忽略
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9172,6 +9201,7 @@ class DisplayDarkWeb(AbstractModel):
         if params.get("DisplayToolCommon") is not None:
             self._DisplayToolCommon = DisplayToolCommon()
             self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

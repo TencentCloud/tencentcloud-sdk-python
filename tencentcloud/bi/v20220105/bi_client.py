@@ -49,6 +49,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ClearEmbedToken(self, request):
+        """强鉴权token 清理，只有企业管理员才能调用该接口
+
+        :param request: Request instance for ClearEmbedToken.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ClearEmbedTokenRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ClearEmbedTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ClearEmbedToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.ClearEmbedTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDatasource(self, request):
         """创建数据源
 

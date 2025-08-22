@@ -14014,6 +14014,8 @@ ToaClean: TOA（TCP Option Address）清理，清除TCP选项中的地址信息�
         :type Exclusive: int
         :param _TargetCount: 已绑定的后端服务数量。
         :type TargetCount: int
+        :param _AssociateEndpoint: 负载均衡实例关联的Endpoint id。
+        :type AssociateEndpoint: str
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -14072,6 +14074,7 @@ ToaClean: TOA（TCP Option Address）清理，清除TCP选项中的地址信息�
         self._Egress = None
         self._Exclusive = None
         self._TargetCount = None
+        self._AssociateEndpoint = None
 
     @property
     def LoadBalancerId(self):
@@ -14757,6 +14760,17 @@ ToaClean: TOA（TCP Option Address）清理，清除TCP选项中的地址信息�
     def TargetCount(self, TargetCount):
         self._TargetCount = TargetCount
 
+    @property
+    def AssociateEndpoint(self):
+        """负载均衡实例关联的Endpoint id。
+        :rtype: str
+        """
+        return self._AssociateEndpoint
+
+    @AssociateEndpoint.setter
+    def AssociateEndpoint(self, AssociateEndpoint):
+        self._AssociateEndpoint = AssociateEndpoint
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -14843,6 +14857,7 @@ ToaClean: TOA（TCP Option Address）清理，清除TCP选项中的地址信息�
         self._Egress = params.get("Egress")
         self._Exclusive = params.get("Exclusive")
         self._TargetCount = params.get("TargetCount")
+        self._AssociateEndpoint = params.get("AssociateEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17099,6 +17114,8 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type DeleteProtect: bool
         :param _ModifyClassicDomain: 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换，修改后mycloud.com域名将失效。不填则不修改。
         :type ModifyClassicDomain: bool
+        :param _AssociateEndpoint: 关联的终端节点Id，可通过[DescribeVpcEndPoint](https://cloud.tencent.com/document/product/215/54679)接口查询。传空字符串代表解除关联。
+        :type AssociateEndpoint: str
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -17108,6 +17125,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self._SnatPro = None
         self._DeleteProtect = None
         self._ModifyClassicDomain = None
+        self._AssociateEndpoint = None
 
     @property
     def LoadBalancerId(self):
@@ -17200,6 +17218,17 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
     def ModifyClassicDomain(self, ModifyClassicDomain):
         self._ModifyClassicDomain = ModifyClassicDomain
 
+    @property
+    def AssociateEndpoint(self):
+        """关联的终端节点Id，可通过[DescribeVpcEndPoint](https://cloud.tencent.com/document/product/215/54679)接口查询。传空字符串代表解除关联。
+        :rtype: str
+        """
+        return self._AssociateEndpoint
+
+    @AssociateEndpoint.setter
+    def AssociateEndpoint(self, AssociateEndpoint):
+        self._AssociateEndpoint = AssociateEndpoint
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -17214,6 +17243,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self._SnatPro = params.get("SnatPro")
         self._DeleteProtect = params.get("DeleteProtect")
         self._ModifyClassicDomain = params.get("ModifyClassicDomain")
+        self._AssociateEndpoint = params.get("AssociateEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

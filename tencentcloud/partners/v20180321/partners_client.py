@@ -284,7 +284,7 @@ class PartnersClient(AbstractClient):
 
 
     def DescribeAgentPayDealsV2(self, request):
-        """可以查询代理商代付的预付费订单
+        """查询最近15天内的代理商代付订单
 
         :param request: Request instance for DescribeAgentPayDealsV2.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentPayDealsV2Request`
@@ -330,7 +330,7 @@ class PartnersClient(AbstractClient):
 
 
     def DescribeAgentSelfPayDealsV2(self, request):
-        """查询代理商名下指定代客的自付订单（预付费）
+        """查询代理商名下指定代客最近15天内的自付订单（预付费）
 
         :param request: Request instance for DescribeAgentSelfPayDealsV2.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentSelfPayDealsV2Request`

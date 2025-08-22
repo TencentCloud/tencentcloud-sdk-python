@@ -2076,9 +2076,9 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
         :type HasOverdueBill: int
         :param _ClientRemark: 客户备注
         :type ClientRemark: str
-        :param _Offset: 偏移量 请保持必传
+        :param _Offset: *偏移量 【请保持必传】
         :type Offset: int
-        :param _Limit: 限制数目 请保持必传，最大2000
+        :param _Limit: *限制数目 【请保持必传】最大2000
         :type Limit: int
         :param _ClientType: 可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
         :type ClientType: str
@@ -2182,7 +2182,7 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量 请保持必传
+        """*偏移量 【请保持必传】
         :rtype: int
         """
         return self._Offset
@@ -2193,7 +2193,7 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制数目 请保持必传，最大2000
+        """*限制数目 【请保持必传】最大2000
         :rtype: int
         """
         return self._Limit
@@ -3214,7 +3214,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
         :type Offset: int
         :param _Limit: 限制数目 最大100
         :type Limit: int
-        :param _CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        :param _CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
         :type CreatTimeRangeStart: str
         :param _CreatTimeRangeEnd: 下单时间范围终止点
         :type CreatTimeRangeEnd: str
@@ -3263,7 +3263,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeStart(self):
-        """下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        """下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
         :rtype: str
         """
         return self._CreatTimeRangeStart
@@ -3514,7 +3514,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
         :type Offset: int
         :param _Limit: 限制数目 最大100
         :type Limit: int
-        :param _CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        :param _CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
         :type CreatTimeRangeStart: str
         :param _CreatTimeRangeEnd: 下单时间范围终止点
         :type CreatTimeRangeEnd: str
@@ -3572,7 +3572,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
 
     @property
     def CreatTimeRangeStart(self):
-        """下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        """下单时间范围起始点(不传时会默认查最近15天内订单，传值时需要传最近15天内的起始时间)
         :rtype: str
         """
         return self._CreatTimeRangeStart

@@ -1406,6 +1406,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOrganizationMembersAuthPolicy(self, request):
+        """查询组织成员访问策略列表
+
+        :param request: Request instance for DescribeOrganizationMembersAuthPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMembersAuthPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMembersAuthPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationMembersAuthPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationMembersAuthPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOrganizationNodes(self, request):
         """获取组织节点列表
 

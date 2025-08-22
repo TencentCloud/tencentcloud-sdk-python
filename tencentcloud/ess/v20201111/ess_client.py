@@ -464,6 +464,35 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateContractReviewWebUrl(self, request):
+        """此接口（CreateContractReviewWebUrl）用来创建合同审查web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注:
+        1. pdf、word格式限制大小为10M以下
+        2. 如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开
+
+        :param request: Request instance for CreateContractReviewWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateContractReviewWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateContractReviewWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateContractReviewWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateContractReviewWebUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConvertTaskApi(self, request):
         """此接口（CreateConvertTaskApi）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
         前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
@@ -2499,6 +2528,33 @@ class EssClient(AbstractClient):
             body = self.call("DescribeContractReviewTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeContractReviewTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeContractReviewWebUrl(self, request):
+        """此接口（DescribeContractReviewWebUrl）用来创建合同审查web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+
+        适用场景：根据合同内容识别出合同的风险信息。审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。
+
+        注意:  `如果文件资源为word类型生成的链接不能进行iframe嵌入，需要在单独窗口打开`
+
+        :param request: Request instance for DescribeContractReviewWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContractReviewWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContractReviewWebUrlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

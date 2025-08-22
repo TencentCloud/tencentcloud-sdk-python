@@ -1606,9 +1606,9 @@ HYBRID_PAID:
         :type DeployType: str
         :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST时生效，默认1
         :type InstancePerReplicas: int
-        :param _TerminationGracePeriodSeconds: 30
+        :param _TerminationGracePeriodSeconds: 服务的优雅退出时限。单位为秒，默认值为30，最小为1
         :type TerminationGracePeriodSeconds: int
-        :param _PreStopCommand: ["sleep","60"]
+        :param _PreStopCommand: 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
         :type PreStopCommand: list of str
         :param _GrpcEnable: 是否启用 grpc 端口
         :type GrpcEnable: bool
@@ -1618,6 +1618,8 @@ HYBRID_PAID:
         :type RollingUpdate: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
         :param _Sidecar: sidecar配置
         :type Sidecar: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
+        :param _VolumeMounts: 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+        :type VolumeMounts: list of VolumeMount
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -1660,6 +1662,7 @@ HYBRID_PAID:
         self._HealthProbe = None
         self._RollingUpdate = None
         self._Sidecar = None
+        self._VolumeMounts = None
 
     @property
     def ServiceGroupId(self):
@@ -2071,7 +2074,7 @@ HYBRID_PAID:
 
     @property
     def TerminationGracePeriodSeconds(self):
-        """30
+        """服务的优雅退出时限。单位为秒，默认值为30，最小为1
         :rtype: int
         """
         return self._TerminationGracePeriodSeconds
@@ -2082,7 +2085,7 @@ HYBRID_PAID:
 
     @property
     def PreStopCommand(self):
-        """["sleep","60"]
+        """服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
         :rtype: list of str
         """
         return self._PreStopCommand
@@ -2134,6 +2137,17 @@ HYBRID_PAID:
     @Sidecar.setter
     def Sidecar(self, Sidecar):
         self._Sidecar = Sidecar
+
+    @property
+    def VolumeMounts(self):
+        """数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+        :rtype: list of VolumeMount
+        """
+        return self._VolumeMounts
+
+    @VolumeMounts.setter
+    def VolumeMounts(self, VolumeMounts):
+        self._VolumeMounts = VolumeMounts
 
 
     def _deserialize(self, params):
@@ -2217,6 +2231,12 @@ HYBRID_PAID:
         if params.get("Sidecar") is not None:
             self._Sidecar = SidecarSpec()
             self._Sidecar._deserialize(params.get("Sidecar"))
+        if params.get("VolumeMounts") is not None:
+            self._VolumeMounts = []
+            for item in params.get("VolumeMounts"):
+                obj = VolumeMount()
+                obj._deserialize(item)
+                self._VolumeMounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14161,9 +14181,9 @@ HYBRID_PAID:
         :type ServicePort: int
         :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST时生效，默认1
         :type InstancePerReplicas: int
-        :param _TerminationGracePeriodSeconds: 30
+        :param _TerminationGracePeriodSeconds: 服务的优雅退出时限。单位为秒，默认值为30，最小为1
         :type TerminationGracePeriodSeconds: int
-        :param _PreStopCommand: ["sleep","60"]
+        :param _PreStopCommand: 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
         :type PreStopCommand: list of str
         :param _GrpcEnable: 是否启动grpc端口
         :type GrpcEnable: bool
@@ -14175,6 +14195,8 @@ HYBRID_PAID:
         :type Sidecar: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
         :param _ResourceGroupId: 资源组 id
         :type ResourceGroupId: str
+        :param _VolumeMounts: 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+        :type VolumeMounts: list of VolumeMount
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -14209,6 +14231,7 @@ HYBRID_PAID:
         self._RollingUpdate = None
         self._Sidecar = None
         self._ResourceGroupId = None
+        self._VolumeMounts = None
 
     @property
     def ServiceId(self):
@@ -14521,7 +14544,7 @@ HYBRID_PAID:
 
     @property
     def TerminationGracePeriodSeconds(self):
-        """30
+        """服务的优雅退出时限。单位为秒，默认值为30，最小为1
         :rtype: int
         """
         return self._TerminationGracePeriodSeconds
@@ -14532,7 +14555,7 @@ HYBRID_PAID:
 
     @property
     def PreStopCommand(self):
-        """["sleep","60"]
+        """服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
         :rtype: list of str
         """
         return self._PreStopCommand
@@ -14595,6 +14618,17 @@ HYBRID_PAID:
     @ResourceGroupId.setter
     def ResourceGroupId(self, ResourceGroupId):
         self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def VolumeMounts(self):
+        """数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-资源组缓存”。
+        :rtype: list of VolumeMount
+        """
+        return self._VolumeMounts
+
+    @VolumeMounts.setter
+    def VolumeMounts(self, VolumeMounts):
+        self._VolumeMounts = VolumeMounts
 
 
     def _deserialize(self, params):
@@ -14665,6 +14699,12 @@ HYBRID_PAID:
             self._Sidecar = SidecarSpec()
             self._Sidecar._deserialize(params.get("Sidecar"))
         self._ResourceGroupId = params.get("ResourceGroupId")
+        if params.get("VolumeMounts") is not None:
+            self._VolumeMounts = []
+            for item in params.get("VolumeMounts"):
+                obj = VolumeMount()
+                obj._deserialize(item)
+                self._VolumeMounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16583,6 +16623,14 @@ class Pod(AbstractModel):
         :type Message: str
         :param _NodeIP: 当前实例所在的节点 IP
         :type NodeIP: str
+        :param _NodeId: 当前实例所在节点id
+        :type NodeId: str
+        :param _ResourceGroupId: 当时实例所属资源组 id
+        :type ResourceGroupId: str
+        :param _ResourceGroupName: 资源组名称
+        :type ResourceGroupName: str
+        :param _ResourceInfo: 实例的资源占用信息
+        :type ResourceInfo: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
         """
         self._Name = None
         self._Uid = None
@@ -16597,6 +16645,10 @@ class Pod(AbstractModel):
         self._StartScheduleTime = None
         self._Message = None
         self._NodeIP = None
+        self._NodeId = None
+        self._ResourceGroupId = None
+        self._ResourceGroupName = None
+        self._ResourceInfo = None
 
     @property
     def Name(self):
@@ -16754,6 +16806,50 @@ class Pod(AbstractModel):
     def NodeIP(self, NodeIP):
         self._NodeIP = NodeIP
 
+    @property
+    def NodeId(self):
+        """当前实例所在节点id
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def ResourceGroupId(self):
+        """当时实例所属资源组 id
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceGroupName(self):
+        """资源组名称
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def ResourceInfo(self):
+        """实例的资源占用信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        """
+        return self._ResourceInfo
+
+    @ResourceInfo.setter
+    def ResourceInfo(self, ResourceInfo):
+        self._ResourceInfo = ResourceInfo
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -16778,6 +16874,12 @@ class Pod(AbstractModel):
         self._StartScheduleTime = params.get("StartScheduleTime")
         self._Message = params.get("Message")
         self._NodeIP = params.get("NodeIP")
+        self._NodeId = params.get("NodeId")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceGroupName = params.get("ResourceGroupName")
+        if params.get("ResourceInfo") is not None:
+            self._ResourceInfo = ResourceInfo()
+            self._ResourceInfo._deserialize(params.get("ResourceInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17255,6 +17357,51 @@ class PublicDataSourceFS(AbstractModel):
     """公有云数据源结构
 
     """
+
+    def __init__(self):
+        r"""
+        :param _DataSourceId: 数据源id
+        :type DataSourceId: str
+        :param _SubPath: 相对数据源子路径
+        :type SubPath: str
+        """
+        self._DataSourceId = None
+        self._SubPath = None
+
+    @property
+    def DataSourceId(self):
+        """数据源id
+        :rtype: str
+        """
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
+
+    @property
+    def SubPath(self):
+        """相对数据源子路径
+        :rtype: str
+        """
+        return self._SubPath
+
+    @SubPath.setter
+    def SubPath(self, SubPath):
+        self._SubPath = SubPath
+
+
+    def _deserialize(self, params):
+        self._DataSourceId = params.get("DataSourceId")
+        self._SubPath = params.get("SubPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PushTrainingMetricsRequest(AbstractModel):
@@ -17745,7 +17892,7 @@ class ResourceGroup(AbstractModel):
         :type FreeInstance: int
         :param _TotalInstance: 总节点个数(所有节点)
         :type TotalInstance: int
-        :param _UsedResource: 资资源组已用的资源
+        :param _UsedResource: 资源组已用的资源
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsedResource: :class:`tencentcloud.tione.v20211111.models.GroupResource`
         :param _TotalResource: 资源组总资源
@@ -17813,7 +17960,7 @@ class ResourceGroup(AbstractModel):
 
     @property
     def UsedResource(self):
-        """资资源组已用的资源
+        """资源组已用的资源
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.GroupResource`
         """
@@ -17883,6 +18030,57 @@ class ResourceGroup(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceGroupInfo(AbstractModel):
+    """在线服务中服务的资源组简略信息结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroupId: 资源组 id
+        :type ResourceGroupId: str
+        :param _ResourceGroupName: 资源组名称
+        :type ResourceGroupName: str
+        """
+        self._ResourceGroupId = None
+        self._ResourceGroupName = None
+
+    @property
+    def ResourceGroupId(self):
+        """资源组 id
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceGroupName(self):
+        """资源组名称
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+
+    def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18328,6 +18526,42 @@ class ScheduledAction(AbstractModel):
         
 
 
+class SchedulingPolicy(AbstractModel):
+    """服务的调度策略配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CrossResourceGroupScheduling: 是否启用了跨资源组调度开关
+        :type CrossResourceGroupScheduling: bool
+        """
+        self._CrossResourceGroupScheduling = None
+
+    @property
+    def CrossResourceGroupScheduling(self):
+        """是否启用了跨资源组调度开关
+        :rtype: bool
+        """
+        return self._CrossResourceGroupScheduling
+
+    @CrossResourceGroupScheduling.setter
+    def CrossResourceGroupScheduling(self, CrossResourceGroupScheduling):
+        self._CrossResourceGroupScheduling = CrossResourceGroupScheduling
+
+
+    def _deserialize(self, params):
+        self._CrossResourceGroupScheduling = params.get("CrossResourceGroupScheduling")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SchemaInfo(AbstractModel):
     """表格数据集表头信息
 
@@ -18497,6 +18731,10 @@ DEFAULT: 其他来源
         :type MonitorSource: str
         :param _SubUinName: 服务创建者的子账号名称
         :type SubUinName: str
+        :param _SchedulingPolicy: 服务的调度策略
+        :type SchedulingPolicy: :class:`tencentcloud.tione.v20211111.models.SchedulingPolicy`
+        :param _ExternalResourceGroups: 外部的资源组信息，表示借调了哪些资源组的资源
+        :type ExternalResourceGroups: list of ResourceGroupInfo
         """
         self._ServiceGroupId = None
         self._ServiceId = None
@@ -18533,6 +18771,8 @@ DEFAULT: 其他来源
         self._InstancePerReplicas = None
         self._MonitorSource = None
         self._SubUinName = None
+        self._SchedulingPolicy = None
+        self._ExternalResourceGroups = None
 
     @property
     def ServiceGroupId(self):
@@ -18968,6 +19208,28 @@ DEFAULT: 其他来源
     def SubUinName(self, SubUinName):
         self._SubUinName = SubUinName
 
+    @property
+    def SchedulingPolicy(self):
+        """服务的调度策略
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SchedulingPolicy`
+        """
+        return self._SchedulingPolicy
+
+    @SchedulingPolicy.setter
+    def SchedulingPolicy(self, SchedulingPolicy):
+        self._SchedulingPolicy = SchedulingPolicy
+
+    @property
+    def ExternalResourceGroups(self):
+        """外部的资源组信息，表示借调了哪些资源组的资源
+        :rtype: list of ResourceGroupInfo
+        """
+        return self._ExternalResourceGroups
+
+    @ExternalResourceGroups.setter
+    def ExternalResourceGroups(self, ExternalResourceGroups):
+        self._ExternalResourceGroups = ExternalResourceGroups
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -19016,6 +19278,15 @@ DEFAULT: 其他来源
         self._InstancePerReplicas = params.get("InstancePerReplicas")
         self._MonitorSource = params.get("MonitorSource")
         self._SubUinName = params.get("SubUinName")
+        if params.get("SchedulingPolicy") is not None:
+            self._SchedulingPolicy = SchedulingPolicy()
+            self._SchedulingPolicy._deserialize(params.get("SchedulingPolicy"))
+        if params.get("ExternalResourceGroups") is not None:
+            self._ExternalResourceGroups = []
+            for item in params.get("ExternalResourceGroups"):
+                obj = ResourceGroupInfo()
+                obj._deserialize(item)
+                self._ExternalResourceGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20040,6 +20311,10 @@ HYBRID_PAID:
         :type HealthProbe: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
         :param _RollingUpdate: 滚动更新配置
         :type RollingUpdate: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
+        :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST、ROLE时生效，默认1
+        :type InstancePerReplicas: int
+        :param _VolumeMounts: 批量数据盘挂载配置
+        :type VolumeMounts: list of VolumeMount
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -20078,6 +20353,8 @@ HYBRID_PAID:
         self._GrpcEnable = None
         self._HealthProbe = None
         self._RollingUpdate = None
+        self._InstancePerReplicas = None
+        self._VolumeMounts = None
 
     @property
     def Replicas(self):
@@ -20533,6 +20810,28 @@ HYBRID_PAID:
     def RollingUpdate(self, RollingUpdate):
         self._RollingUpdate = RollingUpdate
 
+    @property
+    def InstancePerReplicas(self):
+        """单副本下的实例数，仅在部署类型为DIST、ROLE时生效，默认1
+        :rtype: int
+        """
+        return self._InstancePerReplicas
+
+    @InstancePerReplicas.setter
+    def InstancePerReplicas(self, InstancePerReplicas):
+        self._InstancePerReplicas = InstancePerReplicas
+
+    @property
+    def VolumeMounts(self):
+        """批量数据盘挂载配置
+        :rtype: list of VolumeMount
+        """
+        return self._VolumeMounts
+
+    @VolumeMounts.setter
+    def VolumeMounts(self, VolumeMounts):
+        self._VolumeMounts = VolumeMounts
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -20617,6 +20916,13 @@ HYBRID_PAID:
         if params.get("RollingUpdate") is not None:
             self._RollingUpdate = RollingUpdate()
             self._RollingUpdate._deserialize(params.get("RollingUpdate"))
+        self._InstancePerReplicas = params.get("InstancePerReplicas")
+        if params.get("VolumeMounts") is not None:
+            self._VolumeMounts = []
+            for item in params.get("VolumeMounts"):
+                obj = VolumeMount()
+                obj._deserialize(item)
+                self._VolumeMounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23588,9 +23894,13 @@ class VolumeMount(AbstractModel):
         :type CFSConfig: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
         :param _VolumeSourceType: 挂载源类型，CFS、COS，默认为CFS
         :type VolumeSourceType: str
+        :param _MountPath: 自定义容器内挂载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountPath: str
         """
         self._CFSConfig = None
         self._VolumeSourceType = None
+        self._MountPath = None
 
     @property
     def CFSConfig(self):
@@ -23614,12 +23924,25 @@ class VolumeMount(AbstractModel):
     def VolumeSourceType(self, VolumeSourceType):
         self._VolumeSourceType = VolumeSourceType
 
+    @property
+    def MountPath(self):
+        """自定义容器内挂载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MountPath
+
+    @MountPath.setter
+    def MountPath(self, MountPath):
+        self._MountPath = MountPath
+
 
     def _deserialize(self, params):
         if params.get("CFSConfig") is not None:
             self._CFSConfig = CFSConfig()
             self._CFSConfig._deserialize(params.get("CFSConfig"))
         self._VolumeSourceType = params.get("VolumeSourceType")
+        self._MountPath = params.get("MountPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

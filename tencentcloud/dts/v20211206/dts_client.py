@@ -1349,6 +1349,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetSyncJob(self, request):
+        """重置已经结束的同步任务，重置后可以重新配置启动任务。
+
+        :param request: Request instance for ResetSyncJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ResetSyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ResetSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetSyncJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetSyncJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResizeSyncJob(self, request):
         """调整同步任务规格，此接口只支持按量计费任务的调整，调用此接口后不会立即生效，后台调整时间大概为3~5分钟。调用此接口后可通过查询同步任务信息接口DescribeSyncJobs，获取变配后的状态。
 

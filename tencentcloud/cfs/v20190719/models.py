@@ -6235,17 +6235,22 @@ class DoDirectoryOperationRequest(AbstractModel):
         r"""
         :param _FileSystemId: 文件系统Id
         :type FileSystemId: str
-        :param _OpetationType: create：创建目录  check：确认目录是否存在
+        :param _OpetationType: create：创建目录，等同于mkdir。
+check：确认目录是否存在，等同于stat。
+move：对文件/目录进行重命名，等同于mv。
         :type OpetationType: str
         :param _DirectoryPath: 目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
         :type DirectoryPath: str
         :param _Mode: 创建目录的权限，若不传，默认为0755  若Operation Type为check，此值无实际意义
         :type Mode: str
+        :param _DestPath: mv操作的目标目录名称；如果是turbo文件系统必须以/cfs/开头
+        :type DestPath: str
         """
         self._FileSystemId = None
         self._OpetationType = None
         self._DirectoryPath = None
         self._Mode = None
+        self._DestPath = None
 
     @property
     def FileSystemId(self):
@@ -6260,7 +6265,9 @@ class DoDirectoryOperationRequest(AbstractModel):
 
     @property
     def OpetationType(self):
-        """create：创建目录  check：确认目录是否存在
+        """create：创建目录，等同于mkdir。
+check：确认目录是否存在，等同于stat。
+move：对文件/目录进行重命名，等同于mv。
         :rtype: str
         """
         return self._OpetationType
@@ -6291,12 +6298,24 @@ class DoDirectoryOperationRequest(AbstractModel):
     def Mode(self, Mode):
         self._Mode = Mode
 
+    @property
+    def DestPath(self):
+        """mv操作的目标目录名称；如果是turbo文件系统必须以/cfs/开头
+        :rtype: str
+        """
+        return self._DestPath
+
+    @DestPath.setter
+    def DestPath(self, DestPath):
+        self._DestPath = DestPath
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._OpetationType = params.get("OpetationType")
         self._DirectoryPath = params.get("DirectoryPath")
         self._Mode = params.get("Mode")
+        self._DestPath = params.get("DestPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

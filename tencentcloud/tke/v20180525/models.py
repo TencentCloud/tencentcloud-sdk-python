@@ -4068,6 +4068,8 @@ class ClusterNetworkSettings(AbstractModel):
 - 容器网络插件为CiliumOverlay。
 - 支持CDC的托管集群，且网络插件为VPC-CNI。
         :type SubnetId: str
+        :param _DataPlaneV2: 是否启用了 DataPlaneV2（cilium替代kube-proxy）
+        :type DataPlaneV2: bool
         """
         self._ClusterCIDR = None
         self._IgnoreClusterCIDRConflict = None
@@ -4084,6 +4086,7 @@ class ClusterNetworkSettings(AbstractModel):
         self._Ipv6ServiceCIDR = None
         self._CiliumMode = None
         self._SubnetId = None
+        self._DataPlaneV2 = None
 
     @property
     def ClusterCIDR(self):
@@ -4254,6 +4257,17 @@ class ClusterNetworkSettings(AbstractModel):
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
 
+    @property
+    def DataPlaneV2(self):
+        """是否启用了 DataPlaneV2（cilium替代kube-proxy）
+        :rtype: bool
+        """
+        return self._DataPlaneV2
+
+    @DataPlaneV2.setter
+    def DataPlaneV2(self, DataPlaneV2):
+        self._DataPlaneV2 = DataPlaneV2
+
 
     def _deserialize(self, params):
         self._ClusterCIDR = params.get("ClusterCIDR")
@@ -4271,6 +4285,7 @@ class ClusterNetworkSettings(AbstractModel):
         self._Ipv6ServiceCIDR = params.get("Ipv6ServiceCIDR")
         self._CiliumMode = params.get("CiliumMode")
         self._SubnetId = params.get("SubnetId")
+        self._DataPlaneV2 = params.get("DataPlaneV2")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

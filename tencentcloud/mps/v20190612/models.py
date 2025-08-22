@@ -54905,6 +54905,9 @@ class RawTranscodeParameter(AbstractModel):
         :param _EnhanceConfig: 音视频增强配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        :param _SubtitleTemplate: 字幕参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         self._Container = None
         self._RemoveVideo = None
@@ -54914,6 +54917,7 @@ class RawTranscodeParameter(AbstractModel):
         self._TEHDConfig = None
         self._StdExtInfo = None
         self._EnhanceConfig = None
+        self._SubtitleTemplate = None
 
     @property
     def Container(self):
@@ -55010,6 +55014,18 @@ class RawTranscodeParameter(AbstractModel):
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def SubtitleTemplate(self):
+        """字幕参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
+        """
+        return self._SubtitleTemplate
+
+    @SubtitleTemplate.setter
+    def SubtitleTemplate(self, SubtitleTemplate):
+        self._SubtitleTemplate = SubtitleTemplate
+
 
     def _deserialize(self, params):
         self._Container = params.get("Container")
@@ -55028,6 +55044,9 @@ class RawTranscodeParameter(AbstractModel):
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = EnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        if params.get("SubtitleTemplate") is not None:
+            self._SubtitleTemplate = SubtitleTemplate()
+            self._SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60740,6 +60759,9 @@ class SubtitleTemplate(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamIndex: int
+        :param _SubtitleFileInput: 要压制到视频中的字幕文件的输入信息，目前仅支持存储在COS的字幕文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitleFileInput: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _FontType: 字体类型，支持：
 <li>hei.ttf：黑体</li>
 <li>song.ttf：宋体</li>
@@ -60815,9 +60837,34 @@ class SubtitleTemplate(AbstractModel):
 默认值：0.8。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BoardAlpha: float
+        :param _OutlineWidth: 描边宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutlineWidth: float
+        :param _OutlineColor: 描边颜色。6位16进制RGB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutlineColor: str
+        :param _OutlineAlpha: 描边透明度。(0，1] 正浮点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutlineAlpha: float
+        :param _ShadowWidth: 阴影宽度。浮点数  [0, 1000]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShadowWidth: float
+        :param _ShadowColor: 阴影颜色。6位16进制RGB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShadowColor: str
+        :param _ShadowAlpha: 阴影透明度。(0，1] 正浮点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShadowAlpha: float
+        :param _LineSpacing: 行间距。正整数  [0, 1000]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LineSpacing: int
+        :param _Alignment: 对齐方式，，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alignment: str
         """
         self._Path = None
         self._StreamIndex = None
+        self._SubtitleFileInput = None
         self._FontType = None
         self._FontSize = None
         self._FontColor = None
@@ -60828,6 +60875,14 @@ class SubtitleTemplate(AbstractModel):
         self._BoardHeight = None
         self._BoardColor = None
         self._BoardAlpha = None
+        self._OutlineWidth = None
+        self._OutlineColor = None
+        self._OutlineAlpha = None
+        self._ShadowWidth = None
+        self._ShadowColor = None
+        self._ShadowAlpha = None
+        self._LineSpacing = None
+        self._Alignment = None
 
     @property
     def Path(self):
@@ -60856,6 +60911,18 @@ class SubtitleTemplate(AbstractModel):
     @StreamIndex.setter
     def StreamIndex(self, StreamIndex):
         self._StreamIndex = StreamIndex
+
+    @property
+    def SubtitleFileInput(self):
+        """要压制到视频中的字幕文件的输入信息，目前仅支持存储在COS的字幕文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._SubtitleFileInput
+
+    @SubtitleFileInput.setter
+    def SubtitleFileInput(self, SubtitleFileInput):
+        self._SubtitleFileInput = SubtitleFileInput
 
     @property
     def FontType(self):
@@ -61022,10 +61089,109 @@ class SubtitleTemplate(AbstractModel):
     def BoardAlpha(self, BoardAlpha):
         self._BoardAlpha = BoardAlpha
 
+    @property
+    def OutlineWidth(self):
+        """描边宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._OutlineWidth
+
+    @OutlineWidth.setter
+    def OutlineWidth(self, OutlineWidth):
+        self._OutlineWidth = OutlineWidth
+
+    @property
+    def OutlineColor(self):
+        """描边颜色。6位16进制RGB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OutlineColor
+
+    @OutlineColor.setter
+    def OutlineColor(self, OutlineColor):
+        self._OutlineColor = OutlineColor
+
+    @property
+    def OutlineAlpha(self):
+        """描边透明度。(0，1] 正浮点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._OutlineAlpha
+
+    @OutlineAlpha.setter
+    def OutlineAlpha(self, OutlineAlpha):
+        self._OutlineAlpha = OutlineAlpha
+
+    @property
+    def ShadowWidth(self):
+        """阴影宽度。浮点数  [0, 1000]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ShadowWidth
+
+    @ShadowWidth.setter
+    def ShadowWidth(self, ShadowWidth):
+        self._ShadowWidth = ShadowWidth
+
+    @property
+    def ShadowColor(self):
+        """阴影颜色。6位16进制RGB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ShadowColor
+
+    @ShadowColor.setter
+    def ShadowColor(self, ShadowColor):
+        self._ShadowColor = ShadowColor
+
+    @property
+    def ShadowAlpha(self):
+        """阴影透明度。(0，1] 正浮点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ShadowAlpha
+
+    @ShadowAlpha.setter
+    def ShadowAlpha(self, ShadowAlpha):
+        self._ShadowAlpha = ShadowAlpha
+
+    @property
+    def LineSpacing(self):
+        """行间距。正整数  [0, 1000]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LineSpacing
+
+    @LineSpacing.setter
+    def LineSpacing(self, LineSpacing):
+        self._LineSpacing = LineSpacing
+
+    @property
+    def Alignment(self):
+        """对齐方式，，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Alignment
+
+    @Alignment.setter
+    def Alignment(self, Alignment):
+        self._Alignment = Alignment
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
         self._StreamIndex = params.get("StreamIndex")
+        if params.get("SubtitleFileInput") is not None:
+            self._SubtitleFileInput = MediaInputInfo()
+            self._SubtitleFileInput._deserialize(params.get("SubtitleFileInput"))
         self._FontType = params.get("FontType")
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
@@ -61036,6 +61202,14 @@ class SubtitleTemplate(AbstractModel):
         self._BoardHeight = params.get("BoardHeight")
         self._BoardColor = params.get("BoardColor")
         self._BoardAlpha = params.get("BoardAlpha")
+        self._OutlineWidth = params.get("OutlineWidth")
+        self._OutlineColor = params.get("OutlineColor")
+        self._OutlineAlpha = params.get("OutlineAlpha")
+        self._ShadowWidth = params.get("ShadowWidth")
+        self._ShadowColor = params.get("ShadowColor")
+        self._ShadowAlpha = params.get("ShadowAlpha")
+        self._LineSpacing = params.get("LineSpacing")
+        self._Alignment = params.get("Alignment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

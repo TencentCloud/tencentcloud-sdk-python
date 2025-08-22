@@ -709,7 +709,9 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCMarketQualityMetricData(self, request):
-        """查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
+        """云监控monitor接口已下线，trtc同步下线接口
+
+        查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
         joinSuccessRate：加入频道成功率。
         joinSuccessIn5sRate：5s内加入频道成功率。
         audioFreezeRate：音频卡顿率。
@@ -770,7 +772,9 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCMarketScaleMetricData(self, request):
-        """查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
+        """云监控monitor接口已下线，trtc同步下线接口
+
+        查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
         userCount：通话人数，
         roomCount：通话房间数，从有用户加入频道到所有用户离开频道计为一个通话频道。
         peakCurrentChannels：峰值同时在线频道数。
@@ -828,7 +832,9 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCRealTimeQualityMetricData(self, request):
-        """查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
+        """云监控monitor接口已下线，trtc同步下线接口
+
+        查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
         -视频卡顿率
         -音频卡顿率
         注意：

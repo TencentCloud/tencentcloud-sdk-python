@@ -7526,9 +7526,14 @@ class CreateDataTransformRequest(AbstractModel):
         r"""
         :param _FuncType: 任务类型. 1: 指定主题；2:动态创建。详情请参考[创建加工任务文档](https://cloud.tencent.com/document/product/614/63940)。
         :type FuncType: int
-        :param _SrcTopicId: 源日志主题
+        :param _SrcTopicId: 日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type SrcTopicId: str
         :param _Name: 加工任务名称
+名称限制
+- 不能为空字符串
+- 不能包含字符'|'
+- 最长 255 个字符
         :type Name: str
         :param _EtlContent: 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
 
@@ -7540,11 +7545,15 @@ class CreateDataTransformRequest(AbstractModel):
         :param _TaskType: 加工类型。
 1：使用源日志主题中的随机数据，进行加工预览；2：使用用户自定义测试数据，进行加工预览；3：创建真实加工任务。
         :type TaskType: int
-        :param _DstResources: 加工任务目的topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写。
+        :param _DstResources: 加工任务目标topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写。
+目标topic_id，通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+别名限制 1.不能为空字符串，2. 不能包含字符'|'。
+
         :type DstResources: list of DataTransformResouceInfo
         :param _EnableFlag: 任务启动状态.   默认为1:开启,  2:关闭
         :type EnableFlag: int
         :param _PreviewLogStatistics: 用于预览加工结果的测试数据
+目标日志主题ID通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type PreviewLogStatistics: list of PreviewLogStatistic
         :param _DataTransformType: 数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
         :type DataTransformType: int
@@ -7572,7 +7581,8 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
-        """源日志主题
+        """日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._SrcTopicId
@@ -7584,6 +7594,10 @@ class CreateDataTransformRequest(AbstractModel):
     @property
     def Name(self):
         """加工任务名称
+名称限制
+- 不能为空字符串
+- 不能包含字符'|'
+- 最长 255 个字符
         :rtype: str
         """
         return self._Name
@@ -7622,7 +7636,10 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def DstResources(self):
-        """加工任务目的topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写。
+        """加工任务目标topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写。
+目标topic_id，通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+别名限制 1.不能为空字符串，2. 不能包含字符'|'。
+
         :rtype: list of DataTransformResouceInfo
         """
         return self._DstResources
@@ -7645,6 +7662,7 @@ class CreateDataTransformRequest(AbstractModel):
     @property
     def PreviewLogStatistics(self):
         """用于预览加工结果的测试数据
+目标日志主题ID通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: list of PreviewLogStatistic
         """
         return self._PreviewLogStatistics
@@ -10923,7 +10941,7 @@ class DataTransformTaskInfo(AbstractModel):
         :type TaskId: str
         :param _EnableFlag: 任务启用状态，默认为1，正常开启,  2关闭
         :type EnableFlag: int
-        :param _Type: 加工任务类型，1： DSL， 2：SQL
+        :param _Type: 加工任务类型，1： DSL(使用自定义加工语言的加工任务)， 2：SQL(使用sql的加工任务)
         :type Type: int
         :param _SrcTopicId: 源日志主题
         :type SrcTopicId: str
@@ -10932,8 +10950,10 @@ class DataTransformTaskInfo(AbstractModel):
         :param _CreateTime: 加工任务创建时间
         :type CreateTime: str
         :param _UpdateTime: 最近修改时间
+示例值：2025-06-18 16:55:54
         :type UpdateTime: str
         :param _LastEnableTime: 最后启用时间，如果需要重建集群，修改该时间
+示例值：2025-06-18 19:55:54
         :type LastEnableTime: str
         :param _SrcTopicName: 日志主题名称
         :type SrcTopicName: str
@@ -11002,7 +11022,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def Type(self):
-        """加工任务类型，1： DSL， 2：SQL
+        """加工任务类型，1： DSL(使用自定义加工语言的加工任务)， 2：SQL(使用sql的加工任务)
         :rtype: int
         """
         return self._Type
@@ -11047,6 +11067,7 @@ class DataTransformTaskInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """最近修改时间
+示例值：2025-06-18 16:55:54
         :rtype: str
         """
         return self._UpdateTime
@@ -11058,6 +11079,7 @@ class DataTransformTaskInfo(AbstractModel):
     @property
     def LastEnableTime(self):
         """最后启用时间，如果需要重建集群，修改该时间
+示例值：2025-06-18 19:55:54
         :rtype: str
         """
         return self._LastEnableTime
@@ -15020,28 +15042,40 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 按照【加工任务名称】进行过滤。
 类型：String
 必选：否
+示例：test-task
 
 - taskId
 按照【加工任务id】进行过滤。
 类型：String
 必选：否
+示例：a3622556-6402-4942-b4ff-5ae32ec29810
+数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
 
 - topicId
 按照【源topicId】进行过滤。
 类型：String
 必选：否
+示例：756cec3e-a0a5-44c3-85a8-090870582000
+日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+
 - status
 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
 类型：String
 必选：否
+示例：1
+
 - hasServiceLog
 按照【是否开启服务日志】进行过滤。 1：未开启，2：已开启
 类型：String
 必选：否
+示例：1
+
 - dstTopicType
 按照【目标topic类型】进行过滤。  1：固定，2：动态
 类型：String
 必选：否
+示例：1
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
@@ -15052,6 +15086,7 @@ class DescribeDataTransformInfoRequest(AbstractModel):
         :param _Type: 默认值为2.   1: 获取单个任务的详细信息 2：获取任务列表
         :type Type: int
         :param _TaskId: Type为1， 此参数必填
+数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
         :type TaskId: str
         """
         self._Filters = None
@@ -15066,28 +15101,40 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 按照【加工任务名称】进行过滤。
 类型：String
 必选：否
+示例：test-task
 
 - taskId
 按照【加工任务id】进行过滤。
 类型：String
 必选：否
+示例：a3622556-6402-4942-b4ff-5ae32ec29810
+数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
 
 - topicId
 按照【源topicId】进行过滤。
 类型：String
 必选：否
+示例：756cec3e-a0a5-44c3-85a8-090870582000
+日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+
 - status
 按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
 类型：String
 必选：否
+示例：1
+
 - hasServiceLog
 按照【是否开启服务日志】进行过滤。 1：未开启，2：已开启
 类型：String
 必选：否
+示例：1
+
 - dstTopicType
 按照【目标topic类型】进行过滤。  1：固定，2：动态
 类型：String
 必选：否
+示例：1
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :rtype: list of Filter
@@ -15134,6 +15181,7 @@ class DescribeDataTransformInfoRequest(AbstractModel):
     @property
     def TaskId(self):
         """Type为1， 此参数必填
+数据加工任务ID- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
         :rtype: str
         """
         return self._TaskId
@@ -15802,13 +15850,15 @@ class DescribeLogContextRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 要查询的日志主题ID
+        :param _TopicId: 要查询的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :type TopicId: str
-        :param _BTime: 日志时间,  即SearchLog接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+        :param _BTime: 日志时间,  即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
         :type BTime: str
-        :param _PkgId: 日志包序号，即SearchLog接口返回信息中Results结构体中的PkgId。
+        :param _PkgId: 日志包序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的PkgId。
         :type PkgId: str
-        :param _PkgLogId: 日志包内一条日志的序号，即SearchLog接口返回信息中Results结构中的PkgLogId。
+        :param _PkgLogId: 日志包内一条日志的序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构中的PkgLogId。
         :type PkgLogId: int
         :param _PrevLogs: 前${PrevLogs}条日志，默认值10。
         :type PrevLogs: int
@@ -15842,7 +15892,9 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """要查询的日志主题ID
+        """要查询的日志主题Id。
+- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
+- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -15853,7 +15905,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def BTime(self):
-        """日志时间,  即SearchLog接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+        """日志时间,  即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
         :rtype: str
         """
         return self._BTime
@@ -15864,7 +15916,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def PkgId(self):
-        """日志包序号，即SearchLog接口返回信息中Results结构体中的PkgId。
+        """日志包序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的PkgId。
         :rtype: str
         """
         return self._PkgId
@@ -15875,7 +15927,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def PkgLogId(self):
-        """日志包内一条日志的序号，即SearchLog接口返回信息中Results结构中的PkgLogId。
+        """日志包内一条日志的序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构中的PkgLogId。
         :rtype: int
         """
         return self._PkgLogId
@@ -24456,9 +24508,16 @@ class ModifyDataTransformRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 加工任务id
+        :param _TaskId: 数据加工任务ID
+- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
         :type TaskId: str
         :param _Name: 加工任务名称
+- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务名称。
+
+名称限制
+- 不能为空字符串
+- 不能包含字符'|'
+- 最长 255 个字符
         :type Name: str
         :param _EtlContent: 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
 
@@ -24483,7 +24542,8 @@ class ModifyDataTransformRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """加工任务id
+        """数据加工任务ID
+- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务Id。
         :rtype: str
         """
         return self._TaskId
@@ -24495,6 +24555,12 @@ class ModifyDataTransformRequest(AbstractModel):
     @property
     def Name(self):
         """加工任务名称
+- 通过[获取数据加工任务列表基本信息](https://cloud.tencent.com/document/product/614/72182)获取数据加工任务名称。
+
+名称限制
+- 不能为空字符串
+- 不能包含字符'|'
+- 最长 255 个字符
         :rtype: str
         """
         return self._Name
@@ -24610,9 +24676,11 @@ class ModifyIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _Status: 默认不生效
+        :param _Status: 索引状态。false：关闭索引， true：开启索引
+开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
         :type Status: bool
         :param _Rule: 索引规则
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
@@ -24634,7 +24702,8 @@ class ModifyIndexRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -24645,7 +24714,8 @@ class ModifyIndexRequest(AbstractModel):
 
     @property
     def Status(self):
-        """默认不生效
+        """索引状态。false：关闭索引， true：开启索引
+开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
         :rtype: bool
         """
         return self._Status
@@ -30764,9 +30834,11 @@ class SplitPartitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
-        :param _PartitionId: 待分裂分区ID
+        :param _PartitionId: 待分裂分区Id
+- 通过[获取分区列表](https://cloud.tencent.com/document/product/614/56470)获取待分裂分区Id。
         :type PartitionId: int
         :param _SplitKey: 分区切分的哈希key的位置，只在Number=2时有意义
         :type SplitKey: str
@@ -30780,7 +30852,8 @@ class SplitPartitionRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """日志主题ID
+        """日志主题Id
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._TopicId
@@ -30791,7 +30864,8 @@ class SplitPartitionRequest(AbstractModel):
 
     @property
     def PartitionId(self):
-        """待分裂分区ID
+        """待分裂分区Id
+- 通过[获取分区列表](https://cloud.tencent.com/document/product/614/56470)获取待分裂分区Id。
         :rtype: int
         """
         return self._PartitionId

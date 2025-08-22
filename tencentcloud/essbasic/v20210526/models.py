@@ -1352,7 +1352,7 @@ class BaseFlowInfo(AbstractModel):
 
 
 class BatchOrganizationRegistrationTasksDetails(AbstractModel):
-    """批量认证企业任务详情信息，其中包括 TaskId，状态信息等等
+    """批量认证企业任务详情信息，其中包括 TaskId，状态信息等
 
     """
 
@@ -21371,7 +21371,7 @@ class EmbedUrlOption(AbstractModel):
         :type SealDescription: str
         :param _ForbidEditSealDescription: 是否禁止编辑印章描述内容
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
-        :type ForbidEditSealDescription: str
+        :type ForbidEditSealDescription: bool
         """
         self._ShowFlowDetailComponent = None
         self._ShowTemplateComponent = None
@@ -21451,7 +21451,7 @@ class EmbedUrlOption(AbstractModel):
     def ForbidEditSealDescription(self):
         """是否禁止编辑印章描述内容
 <ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
-        :rtype: str
+        :rtype: bool
         """
         return self._ForbidEditSealDescription
 
@@ -31039,7 +31039,7 @@ class TemplateInfo(AbstractModel):
 <ul><li>1：启用（默认），表示模板处于启用状态，可以被用户正常使用。</li>
 <li>2：停用，表示模板处于停用状态，禁止用户使用该模板。</li></ul>
         :type Available: int
-        :param _UserFlowType: 模版的用户合同类型
+        :param _UserFlowType: 模板的用户合同类型
         :type UserFlowType: :class:`tencentcloud.essbasic.v20210526.models.UserFlowType`
         """
         self._TemplateId = None
@@ -31275,7 +31275,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def UserFlowType(self):
-        """模版的用户合同类型
+        """模板的用户合同类型
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserFlowType`
         """
         return self._UserFlowType
@@ -31332,7 +31332,7 @@ class TemplateInfo(AbstractModel):
 
 
 class TemplateUserFlowType(AbstractModel):
-    """模版对应的合同类型
+    """模板对应的合同类型
 
     """
 
@@ -31342,7 +31342,7 @@ class TemplateUserFlowType(AbstractModel):
         :type UserFlowTypeId: str
         :param _Name: 用户合同类型名称
         :type Name: str
-        :param _TemplateNum: 每个合同类型绑定的模版数量	
+        :param _TemplateNum: 每个合同类型绑定的模板数量	
         :type TemplateNum: int
         :param _Description: 合同类型的具体描述
         :type Description: str
@@ -31376,7 +31376,7 @@ class TemplateUserFlowType(AbstractModel):
 
     @property
     def TemplateNum(self):
-        """每个合同类型绑定的模版数量	
+        """每个合同类型绑定的模板数量	
         :rtype: int
         """
         return self._TemplateNum
@@ -31484,10 +31484,7 @@ class UploadFilesRequest(AbstractModel):
 </ul>
 第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _BusinessType: 
-文件对应业务类型,可以选择的类型如下
-<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-<li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li></ul>
+        :param _BusinessType: 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
         :type BusinessType: str
         :param _FileInfos: 上传文件内容数组，一次最多可上传20个文件。
 
@@ -31522,10 +31519,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def BusinessType(self):
-        """
-文件对应业务类型,可以选择的类型如下
-<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
-<li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">创建文件转换任务</a>转换后才能使用</li></ul>
+        """文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
         :rtype: str
         """
         return self._BusinessType

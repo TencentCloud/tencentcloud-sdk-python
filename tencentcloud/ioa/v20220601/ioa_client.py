@@ -141,6 +141,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAggrSoftCategorySoftList(self, request):
+        """聚合的分类软件列表
+
+        :param request: Request instance for DescribeAggrSoftCategorySoftList.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftCategorySoftListRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftCategorySoftListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAggrSoftCategorySoftList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAggrSoftCategorySoftListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDLPFileDetectResult(self, request):
         """webservice查询文件检测结果
 
@@ -155,6 +178,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeDLPFileDetectResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDLPFileDetectResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeviceChildGroups(self, request):
+        """查询设备组子分组详情，私有化调用path为：capi/Assets/Device/DescribeDeviceChildGroups
+
+        :param request: Request instance for DescribeDeviceChildGroups.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceChildGroupsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceChildGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceChildGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceChildGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

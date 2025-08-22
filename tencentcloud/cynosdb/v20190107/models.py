@@ -27810,6 +27810,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         :param _InstanceId: 网络组id(cynosdbmysql-grp-前缀开头)或集群id
         :type InstanceId: str
         :param _SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
+注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :type SecurityGroupIds: list of str
         :param _Zone: 可用区
         :type Zone: str
@@ -27832,6 +27833,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     @property
     def SecurityGroupIds(self):
         """要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
+注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
         :rtype: list of str
         """
         return self._SecurityGroupIds

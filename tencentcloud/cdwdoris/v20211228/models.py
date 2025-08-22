@@ -277,6 +277,8 @@ class BackUpJobDisplay(AbstractModel):
         :type ErrorReason: str
         :param _SnapshotRemainPolicy: 快照保留策略
         :type SnapshotRemainPolicy: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
+        :param _IsolationCount: 隔离次数
+        :type IsolationCount: int
         """
         self._JobId = None
         self._Snapshot = None
@@ -293,6 +295,7 @@ class BackUpJobDisplay(AbstractModel):
         self._IsUserDefineBucket = None
         self._ErrorReason = None
         self._SnapshotRemainPolicy = None
+        self._IsolationCount = None
 
     @property
     def JobId(self):
@@ -459,6 +462,17 @@ class BackUpJobDisplay(AbstractModel):
     def SnapshotRemainPolicy(self, SnapshotRemainPolicy):
         self._SnapshotRemainPolicy = SnapshotRemainPolicy
 
+    @property
+    def IsolationCount(self):
+        """隔离次数
+        :rtype: int
+        """
+        return self._IsolationCount
+
+    @IsolationCount.setter
+    def IsolationCount(self, IsolationCount):
+        self._IsolationCount = IsolationCount
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -482,6 +496,7 @@ class BackUpJobDisplay(AbstractModel):
         if params.get("SnapshotRemainPolicy") is not None:
             self._SnapshotRemainPolicy = SnapshotRemainPolicy()
             self._SnapshotRemainPolicy._deserialize(params.get("SnapshotRemainPolicy"))
+        self._IsolationCount = params.get("IsolationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3400,10 +3415,13 @@ class DeleteBackUpDataRequest(AbstractModel):
         :type BackUpJobId: int
         :param _IsDeleteAll: 是否删除所有实例
         :type IsDeleteAll: bool
+        :param _IsRecover: true代表恢复删除隔离中的job 默认false就是删除
+        :type IsRecover: bool
         """
         self._InstanceId = None
         self._BackUpJobId = None
         self._IsDeleteAll = None
+        self._IsRecover = None
 
     @property
     def InstanceId(self):
@@ -3438,11 +3456,23 @@ class DeleteBackUpDataRequest(AbstractModel):
     def IsDeleteAll(self, IsDeleteAll):
         self._IsDeleteAll = IsDeleteAll
 
+    @property
+    def IsRecover(self):
+        """true代表恢复删除隔离中的job 默认false就是删除
+        :rtype: bool
+        """
+        return self._IsRecover
+
+    @IsRecover.setter
+    def IsRecover(self, IsRecover):
+        self._IsRecover = IsRecover
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._BackUpJobId = params.get("BackUpJobId")
         self._IsDeleteAll = params.get("IsDeleteAll")
+        self._IsRecover = params.get("IsRecover")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3460,10 +3490,24 @@ class DeleteBackUpDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorMsg = None
         self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
 
     @property
     def RequestId(self):
@@ -3478,6 +3522,7 @@ class DeleteBackUpDataResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 

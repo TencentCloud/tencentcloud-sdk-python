@@ -36032,7 +36032,7 @@ class RecordParam(AbstractModel):
         r"""
         :param _RecordInterval: 录制间隔。
 单位秒，默认：1800。
-取值范围：30-7200。
+FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
         :type RecordInterval: int
         :param _StorageTime: 录制存储时长。
@@ -36101,7 +36101,7 @@ cold：低频存储。
     def RecordInterval(self):
         """录制间隔。
 单位秒，默认：1800。
-取值范围：30-7200。
+FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
         :rtype: int
         """

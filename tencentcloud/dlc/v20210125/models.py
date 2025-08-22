@@ -8954,10 +8954,24 @@ class CreateUserVpcConnectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _UserVpcEndpointId: 终端节点IP
+        :type UserVpcEndpointId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._UserVpcEndpointId = None
         self._RequestId = None
+
+    @property
+    def UserVpcEndpointId(self):
+        """终端节点IP
+        :rtype: str
+        """
+        return self._UserVpcEndpointId
+
+    @UserVpcEndpointId.setter
+    def UserVpcEndpointId(self, UserVpcEndpointId):
+        self._UserVpcEndpointId = UserVpcEndpointId
 
     @property
     def RequestId(self):
@@ -8972,6 +8986,7 @@ class CreateUserVpcConnectionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._UserVpcEndpointId = params.get("UserVpcEndpointId")
         self._RequestId = params.get("RequestId")
 
 
@@ -24891,9 +24906,12 @@ class DescribeUserVpcConnectionRequest(AbstractModel):
         :type EngineNetworkId: str
         :param _DataEngineIds: 引擎ID集合
         :type DataEngineIds: list of str
+        :param _UserVpcEndpointIds: 终端节点ID集合
+        :type UserVpcEndpointIds: list of str
         """
         self._EngineNetworkId = None
         self._DataEngineIds = None
+        self._UserVpcEndpointIds = None
 
     @property
     def EngineNetworkId(self):
@@ -24917,10 +24935,22 @@ class DescribeUserVpcConnectionRequest(AbstractModel):
     def DataEngineIds(self, DataEngineIds):
         self._DataEngineIds = DataEngineIds
 
+    @property
+    def UserVpcEndpointIds(self):
+        """终端节点ID集合
+        :rtype: list of str
+        """
+        return self._UserVpcEndpointIds
+
+    @UserVpcEndpointIds.setter
+    def UserVpcEndpointIds(self, UserVpcEndpointIds):
+        self._UserVpcEndpointIds = UserVpcEndpointIds
+
 
     def _deserialize(self, params):
         self._EngineNetworkId = params.get("EngineNetworkId")
         self._DataEngineIds = params.get("DataEngineIds")
+        self._UserVpcEndpointIds = params.get("UserVpcEndpointIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

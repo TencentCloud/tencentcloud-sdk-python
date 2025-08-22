@@ -6557,6 +6557,169 @@ class DescribeOrganizationMemberPoliciesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOrganizationMembersAuthPolicyRequest(AbstractModel):
+    """DescribeOrganizationMembersAuthPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
+        :type Offset: int
+        :param _Limit: 限制数目。取值范围：1~50。默认值：10。
+        :type Limit: int
+        :param _MemberUin: 成员uin。
+        :type MemberUin: int
+        :param _OrgSubAccountUin: 集团管理员子账号uin。
+        :type OrgSubAccountUin: int
+        :param _PolicyId: 成员访问策略Id。
+        :type PolicyId: int
+        """
+        self._Offset = None
+        self._Limit = None
+        self._MemberUin = None
+        self._OrgSubAccountUin = None
+        self._PolicyId = None
+
+    @property
+    def Offset(self):
+        """偏移量。取值是limit的整数倍。默认值 : 0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """限制数目。取值范围：1~50。默认值：10。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def MemberUin(self):
+        """成员uin。
+        :rtype: int
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def OrgSubAccountUin(self):
+        """集团管理员子账号uin。
+        :rtype: int
+        """
+        return self._OrgSubAccountUin
+
+    @OrgSubAccountUin.setter
+    def OrgSubAccountUin(self, OrgSubAccountUin):
+        self._OrgSubAccountUin = OrgSubAccountUin
+
+    @property
+    def PolicyId(self):
+        """成员访问策略Id。
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._MemberUin = params.get("MemberUin")
+        self._OrgSubAccountUin = params.get("OrgSubAccountUin")
+        self._PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationMembersAuthPolicyResponse(AbstractModel):
+    """DescribeOrganizationMembersAuthPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 访问授权策略列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrgMembersAuthPolicy
+        :param _Total: 总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        """访问授权策略列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgMembersAuthPolicy
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Total(self):
+        """总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = OrgMembersAuthPolicy()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOrganizationMembersRequest(AbstractModel):
     """DescribeOrganizationMembers请求参数结构体
 
@@ -15998,6 +16161,236 @@ class OrgMemberPolicy(AbstractModel):
         self._Description = params.get("Description")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrgMembersAuthPolicy(AbstractModel):
+    """组织成员访问授权策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentityId: 身份Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityId: int
+        :param _IdentityRoleName: 身份的角色名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityRoleName: str
+        :param _IdentityRoleAliasName: 身份的角色别名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityRoleAliasName: str
+        :param _CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _PolicyId: 成员访问策略Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: int
+        :param _PolicyName: 成员访问策略名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyName: str
+        :param _MemberUin: 成员uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberUin: int
+        :param _MemberName: 成员名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberName: str
+        :param _OrgSubAccountUin: 子账号uin或者用户组Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgSubAccountUin: int
+        :param _OrgSubAccountName: 子账号名称或者用户组名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgSubAccountName: str
+        :param _BindType: 绑定类型。1-子账号、2-用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindType: int
+        :param _Members: 成员信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Members: list of MemberMainInfo
+        """
+        self._IdentityId = None
+        self._IdentityRoleName = None
+        self._IdentityRoleAliasName = None
+        self._CreateTime = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._MemberUin = None
+        self._MemberName = None
+        self._OrgSubAccountUin = None
+        self._OrgSubAccountName = None
+        self._BindType = None
+        self._Members = None
+
+    @property
+    def IdentityId(self):
+        """身份Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def IdentityRoleName(self):
+        """身份的角色名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdentityRoleName
+
+    @IdentityRoleName.setter
+    def IdentityRoleName(self, IdentityRoleName):
+        self._IdentityRoleName = IdentityRoleName
+
+    @property
+    def IdentityRoleAliasName(self):
+        """身份的角色别名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdentityRoleAliasName
+
+    @IdentityRoleAliasName.setter
+    def IdentityRoleAliasName(self, IdentityRoleAliasName):
+        self._IdentityRoleAliasName = IdentityRoleAliasName
+
+    @property
+    def CreateTime(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def PolicyId(self):
+        """成员访问策略Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        """成员访问策略名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def MemberUin(self):
+        """成员uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def MemberName(self):
+        """成员名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MemberName
+
+    @MemberName.setter
+    def MemberName(self, MemberName):
+        self._MemberName = MemberName
+
+    @property
+    def OrgSubAccountUin(self):
+        """子账号uin或者用户组Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OrgSubAccountUin
+
+    @OrgSubAccountUin.setter
+    def OrgSubAccountUin(self, OrgSubAccountUin):
+        self._OrgSubAccountUin = OrgSubAccountUin
+
+    @property
+    def OrgSubAccountName(self):
+        """子账号名称或者用户组名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OrgSubAccountName
+
+    @OrgSubAccountName.setter
+    def OrgSubAccountName(self, OrgSubAccountName):
+        self._OrgSubAccountName = OrgSubAccountName
+
+    @property
+    def BindType(self):
+        """绑定类型。1-子账号、2-用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def Members(self):
+        """成员信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MemberMainInfo
+        """
+        return self._Members
+
+    @Members.setter
+    def Members(self, Members):
+        self._Members = Members
+
+
+    def _deserialize(self, params):
+        self._IdentityId = params.get("IdentityId")
+        self._IdentityRoleName = params.get("IdentityRoleName")
+        self._IdentityRoleAliasName = params.get("IdentityRoleAliasName")
+        self._CreateTime = params.get("CreateTime")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._MemberUin = params.get("MemberUin")
+        self._MemberName = params.get("MemberName")
+        self._OrgSubAccountUin = params.get("OrgSubAccountUin")
+        self._OrgSubAccountName = params.get("OrgSubAccountName")
+        self._BindType = params.get("BindType")
+        if params.get("Members") is not None:
+            self._Members = []
+            for item in params.get("Members"):
+                obj = MemberMainInfo()
+                obj._deserialize(item)
+                self._Members.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

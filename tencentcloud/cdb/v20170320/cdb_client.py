@@ -3859,7 +3859,7 @@ class CdbClient(AbstractClient):
 
 
     def StopRollback(self, request):
-        """本接口(StopRollback) 用于撤销实例正在进行的回档任务，该接口返回一个异步任务id。 撤销结果可以通过 DescribeAsyncRequestInfo 查询任务的执行情况。
+        """本接口（StopRollback）用于撤销实例正在进行的回档任务，该接口返回一个异步任务 ID。撤销结果可以通过 [DescribeAsyncRequestInfo](https://cloud.tencent.com/document/api/236/20410) 查询任务的执行情况。
 
         :param request: Request instance for StopRollback.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopRollbackRequest`

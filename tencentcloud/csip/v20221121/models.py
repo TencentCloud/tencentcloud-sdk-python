@@ -27,7 +27,7 @@ class AKInfo(AbstractModel):
         r"""
         :param _ID: ak对应id
         :type ID: int
-        :param _Name: ak具体值
+        :param _Name: ak具体值\n
 临时密钥时返回临时密钥
         :type Name: str
         :param _User: 所属账号
@@ -53,7 +53,7 @@ class AKInfo(AbstractModel):
 
     @property
     def Name(self):
-        """ak具体值
+        """ak具体值\n
 临时密钥时返回临时密钥
         :rtype: str
         """
@@ -32876,7 +32876,7 @@ class SubUserInfo(AbstractModel):
         :type ConfigRiskCount: int
         :param _ActionRiskCount: 危险行为告警
         :type ActionRiskCount: int
-        :param _IsAccessCloudAudit: 是否接入云审计日志
+        :param _IsAccessCloudAudit: 是否接入操作审计日志
         :type IsAccessCloudAudit: bool
         :param _IsAccessCheck: 是否配置风险的安全体检
         :type IsAccessCheck: bool
@@ -33069,7 +33069,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessCloudAudit(self):
-        """是否接入云审计日志
+        """是否接入操作审计日志
         :rtype: bool
         """
         return self._IsAccessCloudAudit

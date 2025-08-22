@@ -2184,6 +2184,8 @@ class DocumentUsage(AbstractModel):
         :type SuccessPageNum: int
         :param _FailPageNum: 解析失败页数
         :type FailPageNum: int
+        :param _FileSize: 文件大小，单位KB
+        :type FileSize: int
         """
         self._PageNumber = None
         self._TotalToken = None
@@ -2192,6 +2194,7 @@ class DocumentUsage(AbstractModel):
         self._MllmTokens = None
         self._SuccessPageNum = None
         self._FailPageNum = None
+        self._FileSize = None
 
     @property
     def PageNumber(self):
@@ -2274,6 +2277,17 @@ class DocumentUsage(AbstractModel):
     def FailPageNum(self, FailPageNum):
         self._FailPageNum = FailPageNum
 
+    @property
+    def FileSize(self):
+        """文件大小，单位KB
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
@@ -2283,6 +2297,7 @@ class DocumentUsage(AbstractModel):
         self._MllmTokens = params.get("MllmTokens")
         self._SuccessPageNum = params.get("SuccessPageNum")
         self._FailPageNum = params.get("FailPageNum")
+        self._FileSize = params.get("FileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

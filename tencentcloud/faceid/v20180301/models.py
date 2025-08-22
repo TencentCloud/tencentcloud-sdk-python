@@ -10992,7 +10992,7 @@ class WeChatBillDetail(AbstractModel):
         r"""
         :param _BizToken: token
         :type BizToken: str
-        :param _ChargeCount: 本token收费次数
+        :param _ChargeCount: 本token收费次数。（说明：一次核身过程用户可能会重试多次，因此一个biztoken可能会对应多次计费，如需配置重试上限，请[联系我们](https://cloud.tencent.com/document/product/1007/56130)配置。）
         :type ChargeCount: int
         :param _ChargeDetails: 本token计费详情
         :type ChargeDetails: list of ChargeDetail
@@ -11017,7 +11017,7 @@ class WeChatBillDetail(AbstractModel):
 
     @property
     def ChargeCount(self):
-        """本token收费次数
+        """本token收费次数。（说明：一次核身过程用户可能会重试多次，因此一个biztoken可能会对应多次计费，如需配置重试上限，请[联系我们](https://cloud.tencent.com/document/product/1007/56130)配置。）
         :rtype: int
         """
         return self._ChargeCount

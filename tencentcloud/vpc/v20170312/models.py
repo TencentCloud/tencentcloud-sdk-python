@@ -48678,12 +48678,15 @@ class ModifyCcnAttributeRequest(AbstractModel):
         :type RouteECMPFlag: bool
         :param _RouteOverlapFlag: 是否开启路由重叠功能。`False` 不开启，`True` 开启。
         :type RouteOverlapFlag: bool
+        :param _TrafficMarkingPolicyFlag: 是否开启qos功能。`False` 不开启，`True` 开启。
+        :type TrafficMarkingPolicyFlag: bool
         """
         self._CcnId = None
         self._CcnName = None
         self._CcnDescription = None
         self._RouteECMPFlag = None
         self._RouteOverlapFlag = None
+        self._TrafficMarkingPolicyFlag = None
 
     @property
     def CcnId(self):
@@ -48740,6 +48743,17 @@ class ModifyCcnAttributeRequest(AbstractModel):
     def RouteOverlapFlag(self, RouteOverlapFlag):
         self._RouteOverlapFlag = RouteOverlapFlag
 
+    @property
+    def TrafficMarkingPolicyFlag(self):
+        """是否开启qos功能。`False` 不开启，`True` 开启。
+        :rtype: bool
+        """
+        return self._TrafficMarkingPolicyFlag
+
+    @TrafficMarkingPolicyFlag.setter
+    def TrafficMarkingPolicyFlag(self, TrafficMarkingPolicyFlag):
+        self._TrafficMarkingPolicyFlag = TrafficMarkingPolicyFlag
+
 
     def _deserialize(self, params):
         self._CcnId = params.get("CcnId")
@@ -48747,6 +48761,7 @@ class ModifyCcnAttributeRequest(AbstractModel):
         self._CcnDescription = params.get("CcnDescription")
         self._RouteECMPFlag = params.get("RouteECMPFlag")
         self._RouteOverlapFlag = params.get("RouteOverlapFlag")
+        self._TrafficMarkingPolicyFlag = params.get("TrafficMarkingPolicyFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

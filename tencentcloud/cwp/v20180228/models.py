@@ -30698,29 +30698,32 @@ class DescribeBanStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 阻断开关状态:
- 0 -- 关闭 
- 1 -- 高级阻断
- 2 -- 基础阻断(只阻断情报库黑ip)
+        :param _Status: (已废弃) 阻断开关状态: 0 -- 关闭  1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)
         :type Status: int
         :param _ShowTips: 是否弹窗提示信息 false: 关闭，true: 开启
         :type ShowTips: bool
         :param _OpenSmartMode: 是否开启智能过白模式
         :type OpenSmartMode: bool
+        :param _BanBlackIp: 是否开启情报IP阻断
+        :type BanBlackIp: bool
+        :param _BanVulIp: 是否开启漏洞IP阻断
+        :type BanVulIp: bool
+        :param _BanByRule: 是否开启规则阻断
+        :type BanByRule: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._ShowTips = None
         self._OpenSmartMode = None
+        self._BanBlackIp = None
+        self._BanVulIp = None
+        self._BanByRule = None
         self._RequestId = None
 
     @property
     def Status(self):
-        """阻断开关状态:
- 0 -- 关闭 
- 1 -- 高级阻断
- 2 -- 基础阻断(只阻断情报库黑ip)
+        """(已废弃) 阻断开关状态: 0 -- 关闭  1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)
         :rtype: int
         """
         return self._Status
@@ -30752,6 +30755,39 @@ class DescribeBanStatusResponse(AbstractModel):
         self._OpenSmartMode = OpenSmartMode
 
     @property
+    def BanBlackIp(self):
+        """是否开启情报IP阻断
+        :rtype: bool
+        """
+        return self._BanBlackIp
+
+    @BanBlackIp.setter
+    def BanBlackIp(self, BanBlackIp):
+        self._BanBlackIp = BanBlackIp
+
+    @property
+    def BanVulIp(self):
+        """是否开启漏洞IP阻断
+        :rtype: bool
+        """
+        return self._BanVulIp
+
+    @BanVulIp.setter
+    def BanVulIp(self, BanVulIp):
+        self._BanVulIp = BanVulIp
+
+    @property
+    def BanByRule(self):
+        """是否开启规则阻断
+        :rtype: bool
+        """
+        return self._BanByRule
+
+    @BanByRule.setter
+    def BanByRule(self, BanByRule):
+        self._BanByRule = BanByRule
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -30767,6 +30803,9 @@ class DescribeBanStatusResponse(AbstractModel):
         self._Status = params.get("Status")
         self._ShowTips = params.get("ShowTips")
         self._OpenSmartMode = params.get("OpenSmartMode")
+        self._BanBlackIp = params.get("BanBlackIp")
+        self._BanVulIp = params.get("BanVulIp")
+        self._BanByRule = params.get("BanByRule")
         self._RequestId = params.get("RequestId")
 
 
@@ -73391,7 +73430,7 @@ class HostLoginList(AbstractModel):
         :param _Quuid: 主机quuid
         :type Quuid: str
         :param _Desc: 高危信息说明：
-ABROAD - 海外IP；
+ABROAD - 境外IP；
 XTI - 威胁情报
         :type Desc: str
         :param _MachineExtraInfo: 附加信息
@@ -73636,7 +73675,7 @@ XTI - 威胁情报
     @property
     def Desc(self):
         """高危信息说明：
-ABROAD - 海外IP；
+ABROAD - 境外IP；
 XTI - 威胁情报
         :rtype: str
         """
@@ -76670,7 +76709,7 @@ class LoginWhiteCombinedInfo(AbstractModel):
         :type ModifyTime: str
         :param _Uuid: 服务器Uuid
         :type Uuid: str
-        :param _Locations: 登陆地
+        :param _Locations: 登录地
         :type Locations: str
         """
         self._Places = None
@@ -76845,7 +76884,7 @@ class LoginWhiteCombinedInfo(AbstractModel):
 
     @property
     def Locations(self):
-        """登陆地
+        """登录地
         :rtype: str
         """
         return self._Locations
@@ -88178,7 +88217,7 @@ class Place(AbstractModel):
         :type CityId: int
         :param _ProvinceId: 省份 ID。
         :type ProvinceId: int
-        :param _CountryId: 国家ID，暂只支持国内：1。
+        :param _CountryId: 国家ID，暂只支持境内：1。
         :type CountryId: int
         :param _Location: 位置名称
         :type Location: str
@@ -88212,7 +88251,7 @@ class Place(AbstractModel):
 
     @property
     def CountryId(self):
-        """国家ID，暂只支持国内：1。
+        """国家ID，暂只支持境内：1。
         :rtype: int
         """
         return self._CountryId

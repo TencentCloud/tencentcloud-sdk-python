@@ -181,9 +181,11 @@ class Auth(AbstractModel):
     def __init__(self):
         r"""
         :param _Mask: 当前账号具有的权限信息。<ul><li>0：无权限。</li><li>1：只读。</li><li>2：只写。</li><li>3：读写。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Mask: int
         :param _NameSpace: 指具有当前账号权限的数据库名。
 <ul><li>* ：表示所有数据库。</li><li>db.name：表示特定name的数据库。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
         :type NameSpace: str
         """
         self._Mask = None
@@ -192,6 +194,7 @@ class Auth(AbstractModel):
     @property
     def Mask(self):
         """当前账号具有的权限信息。<ul><li>0：无权限。</li><li>1：只读。</li><li>2：只写。</li><li>3：读写。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Mask
@@ -204,6 +207,7 @@ class Auth(AbstractModel):
     def NameSpace(self):
         """指具有当前账号权限的数据库名。
 <ul><li>* ：表示所有数据库。</li><li>db.name：表示特定name的数据库。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NameSpace
@@ -12560,12 +12564,15 @@ class UserInfo(AbstractModel):
         :type UpdateTime: str
         :param _UserDesc: 备注信息。
         :type UserDesc: str
+        :param _ConsolePassUpdateTime: 控制台密码更新时间
+        :type ConsolePassUpdateTime: str
         """
         self._UserName = None
         self._AuthRole = None
         self._CreateTime = None
         self._UpdateTime = None
         self._UserDesc = None
+        self._ConsolePassUpdateTime = None
 
     @property
     def UserName(self):
@@ -12622,6 +12629,17 @@ class UserInfo(AbstractModel):
     def UserDesc(self, UserDesc):
         self._UserDesc = UserDesc
 
+    @property
+    def ConsolePassUpdateTime(self):
+        """控制台密码更新时间
+        :rtype: str
+        """
+        return self._ConsolePassUpdateTime
+
+    @ConsolePassUpdateTime.setter
+    def ConsolePassUpdateTime(self, ConsolePassUpdateTime):
+        self._ConsolePassUpdateTime = ConsolePassUpdateTime
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -12634,6 +12652,7 @@ class UserInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._UserDesc = params.get("UserDesc")
+        self._ConsolePassUpdateTime = params.get("ConsolePassUpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

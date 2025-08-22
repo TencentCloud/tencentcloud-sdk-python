@@ -1988,6 +1988,8 @@ class Library(AbstractModel):
         :type BucketName: str
         :param _BucketRegion: 媒体库绑定的 COS 存储桶所在的地域
         :type BucketRegion: str
+        :param _AccessDomain: 该媒体库的业务 API 访问域名
+        :type AccessDomain: str
         :param _CreationTime: 媒体库创建时间
         :type CreationTime: str
         :param _LibraryExtension: 媒体库配置项
@@ -2004,6 +2006,7 @@ class Library(AbstractModel):
         self._Remark = None
         self._BucketName = None
         self._BucketRegion = None
+        self._AccessDomain = None
         self._CreationTime = None
         self._LibraryExtension = None
         self._Size = None
@@ -2064,6 +2067,17 @@ class Library(AbstractModel):
     @BucketRegion.setter
     def BucketRegion(self, BucketRegion):
         self._BucketRegion = BucketRegion
+
+    @property
+    def AccessDomain(self):
+        """该媒体库的业务 API 访问域名
+        :rtype: str
+        """
+        return self._AccessDomain
+
+    @AccessDomain.setter
+    def AccessDomain(self, AccessDomain):
+        self._AccessDomain = AccessDomain
 
     @property
     def CreationTime(self):
@@ -2127,6 +2141,7 @@ class Library(AbstractModel):
         self._Remark = params.get("Remark")
         self._BucketName = params.get("BucketName")
         self._BucketRegion = params.get("BucketRegion")
+        self._AccessDomain = params.get("AccessDomain")
         self._CreationTime = params.get("CreationTime")
         if params.get("LibraryExtension") is not None:
             self._LibraryExtension = LibraryExtension()
@@ -2168,10 +2183,10 @@ class LibraryExtension(AbstractModel):
         :type DenyOnQuotaLessThanUsage: bool
         :param _EnableFileHistory: 是否开启历史版本。默认为 false。
         :type EnableFileHistory: bool
-        :param _FileHistoryCount: 当开启历史版本时，指定单个文件保留的历史版本的数量上限，不能超过 999，指定为 0 则不限制，默认为 0。当未开启历史版本时，该属性为 null。
+        :param _FileHistoryCount: 当开启历史版本时，指定单个文件保留的历史版本的数量上限，取值范围为 1 到 999。当未开启历史版本时，该属性可能为 null。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileHistoryCount: int
-        :param _FileHistoryExpireDay: 当开启历史版本时，指定历史版本保留的最长天数，不能超过 999，指定为 0 则不限制，默认为 0。当未开启历史版本时，该属性为 null。
+        :param _FileHistoryExpireDay: 当开启历史版本时，指定历史版本保留的最长天数，取值范围为 0 到 999，当指定为 0 时代表永久保留。当未开启历史版本时，该属性可能为 null。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileHistoryExpireDay: int
         :param _MaxDirFileNameLength: 目录或文件名的最长长度，不能超过 255，默认为 255。修改该参数不会影响存量目录或文件名，即如果将该字段的值改小，已经存在的长度超过目标值的目录或文件名不会发生变化。
@@ -2312,7 +2327,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def FileHistoryCount(self):
-        """当开启历史版本时，指定单个文件保留的历史版本的数量上限，不能超过 999，指定为 0 则不限制，默认为 0。当未开启历史版本时，该属性为 null。
+        """当开启历史版本时，指定单个文件保留的历史版本的数量上限，取值范围为 1 到 999。当未开启历史版本时，该属性可能为 null。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2324,7 +2339,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def FileHistoryExpireDay(self):
-        """当开启历史版本时，指定历史版本保留的最长天数，不能超过 999，指定为 0 则不限制，默认为 0。当未开启历史版本时，该属性为 null。
+        """当开启历史版本时，指定历史版本保留的最长天数，取值范围为 0 到 999，当指定为 0 时代表永久保留。当未开启历史版本时，该属性可能为 null。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

@@ -1255,6 +1255,8 @@ ChinaOther：中国其他；
         :type FaultReportContactPerson: str
         :param _FaultReportContactNumber: 报障联系电话。
         :type FaultReportContactNumber: str
+        :param _FaultReportContactEmail: 报障联系邮箱。
+        :type FaultReportContactEmail: str
         :param _SignLaw: 物理专线申请者是否签署了用户使用协议。默认已签署。
         :type SignLaw: bool
         :param _Tags: 标签键值对
@@ -1278,6 +1280,7 @@ ChinaOther：中国其他；
         self._CustomerContactNumber = None
         self._FaultReportContactPerson = None
         self._FaultReportContactNumber = None
+        self._FaultReportContactEmail = None
         self._SignLaw = None
         self._Tags = None
         self._IsMacSec = None
@@ -1471,6 +1474,17 @@ ChinaOther：中国其他；
         self._FaultReportContactNumber = FaultReportContactNumber
 
     @property
+    def FaultReportContactEmail(self):
+        """报障联系邮箱。
+        :rtype: str
+        """
+        return self._FaultReportContactEmail
+
+    @FaultReportContactEmail.setter
+    def FaultReportContactEmail(self, FaultReportContactEmail):
+        self._FaultReportContactEmail = FaultReportContactEmail
+
+    @property
     def SignLaw(self):
         """物理专线申请者是否签署了用户使用协议。默认已签署。
         :rtype: bool
@@ -1521,6 +1535,7 @@ ChinaOther：中国其他；
         self._CustomerContactNumber = params.get("CustomerContactNumber")
         self._FaultReportContactPerson = params.get("FaultReportContactPerson")
         self._FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self._FaultReportContactEmail = params.get("FaultReportContactEmail")
         self._SignLaw = params.get("SignLaw")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -5512,6 +5527,8 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         :type FaultReportContactPerson: str
         :param _FaultReportContactNumber: 报障联系电话。
         :type FaultReportContactNumber: str
+        :param _FaultReportContactEmail: 报障联系邮箱。
+        :type FaultReportContactEmail: str
         :param _SignLaw: 物理专线申请者补签用户使用协议。
         :type SignLaw: bool
         :param _Bandwidth: 物理专线带宽。
@@ -5528,6 +5545,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self._CustomerContactNumber = None
         self._FaultReportContactPerson = None
         self._FaultReportContactNumber = None
+        self._FaultReportContactEmail = None
         self._SignLaw = None
         self._Bandwidth = None
 
@@ -5653,6 +5671,17 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self._FaultReportContactNumber = FaultReportContactNumber
 
     @property
+    def FaultReportContactEmail(self):
+        """报障联系邮箱。
+        :rtype: str
+        """
+        return self._FaultReportContactEmail
+
+    @FaultReportContactEmail.setter
+    def FaultReportContactEmail(self, FaultReportContactEmail):
+        self._FaultReportContactEmail = FaultReportContactEmail
+
+    @property
     def SignLaw(self):
         """物理专线申请者补签用户使用协议。
         :rtype: bool
@@ -5687,6 +5716,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self._CustomerContactNumber = params.get("CustomerContactNumber")
         self._FaultReportContactPerson = params.get("FaultReportContactPerson")
         self._FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self._FaultReportContactEmail = params.get("FaultReportContactEmail")
         self._SignLaw = params.get("SignLaw")
         self._Bandwidth = params.get("Bandwidth")
         memeber_set = set(params.keys())

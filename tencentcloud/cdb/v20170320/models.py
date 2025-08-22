@@ -20575,12 +20575,15 @@ class DescribeProxyCustomConfResponse(AbstractModel):
         :type CustomConf: :class:`tencentcloud.cdb.v20170320.models.CustomConfig`
         :param _WeightRule: 权重限制
         :type WeightRule: :class:`tencentcloud.cdb.v20170320.models.Rule`
+        :param _CustomConfInfo: 代理配置
+        :type CustomConfInfo: list of CustomConfig
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Count = None
         self._CustomConf = None
         self._WeightRule = None
+        self._CustomConfInfo = None
         self._RequestId = None
 
     @property
@@ -20596,6 +20599,8 @@ class DescribeProxyCustomConfResponse(AbstractModel):
 
     @property
     def CustomConf(self):
+        warnings.warn("parameter `CustomConf` is deprecated", DeprecationWarning) 
+
         """代理配置
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CustomConfig`
         """
@@ -20603,6 +20608,8 @@ class DescribeProxyCustomConfResponse(AbstractModel):
 
     @CustomConf.setter
     def CustomConf(self, CustomConf):
+        warnings.warn("parameter `CustomConf` is deprecated", DeprecationWarning) 
+
         self._CustomConf = CustomConf
 
     @property
@@ -20615,6 +20622,17 @@ class DescribeProxyCustomConfResponse(AbstractModel):
     @WeightRule.setter
     def WeightRule(self, WeightRule):
         self._WeightRule = WeightRule
+
+    @property
+    def CustomConfInfo(self):
+        """代理配置
+        :rtype: list of CustomConfig
+        """
+        return self._CustomConfInfo
+
+    @CustomConfInfo.setter
+    def CustomConfInfo(self, CustomConfInfo):
+        self._CustomConfInfo = CustomConfInfo
 
     @property
     def RequestId(self):
@@ -20636,6 +20654,12 @@ class DescribeProxyCustomConfResponse(AbstractModel):
         if params.get("WeightRule") is not None:
             self._WeightRule = Rule()
             self._WeightRule._deserialize(params.get("WeightRule"))
+        if params.get("CustomConfInfo") is not None:
+            self._CustomConfInfo = []
+            for item in params.get("CustomConfInfo"):
+                obj = CustomConfig()
+                obj._deserialize(item)
+                self._CustomConfInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25809,7 +25833,7 @@ class InstanceRollbackRangeTime(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: 查询数据库错误码
+        :param _Code: 查询数据库错误码。0 - 正常，1600001 - 内部错误，1600003 - 入参异常，1600009 - 实例不存在，1624001 - DB 访问异常。
         :type Code: int
         :param _Message: 查询数据库错误信息
         :type Message: str
@@ -25825,7 +25849,7 @@ class InstanceRollbackRangeTime(AbstractModel):
 
     @property
     def Code(self):
-        """查询数据库错误码
+        """查询数据库错误码。0 - 正常，1600001 - 内部错误，1600003 - 入参异常，1600009 - 实例不存在，1624001 - DB 访问异常。
         :rtype: int
         """
         return self._Code
@@ -37082,14 +37106,14 @@ class StopRollbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 撤销回档任务对应的实例Id。
+        :param _InstanceId: 撤销回档任务对应的实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """撤销回档任务对应的实例Id。
+        """撤销回档任务对应的实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -37118,7 +37142,7 @@ class StopRollbackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 执行请求的异步任务ID
+        :param _AsyncRequestId: 执行请求的异步任务 ID。
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -37128,7 +37152,7 @@ class StopRollbackResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        """执行请求的异步任务ID
+        """执行请求的异步任务 ID。
         :rtype: str
         """
         return self._AsyncRequestId

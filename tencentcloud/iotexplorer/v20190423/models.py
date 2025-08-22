@@ -5871,6 +5871,12 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
         :type SummaryQOS: str
         :param _SummaryConfig: 摘要输出配置
         :type SummaryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
+        :param _ServiceType: 算法类型，可能取值：
+- `Summary`：视频/图片摘要
+- `ObjectDetect`：目标检测
+        :type ServiceType: str
+        :param _ObjectDetectConfig: 目标检测配置
+        :type ObjectDetectConfig: :class:`tencentcloud.iotexplorer.v20190423.models.VisionObjectDetectConfig`
         """
         self._ProductId = None
         self._DeviceName = None
@@ -5884,6 +5890,8 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
         self._InputType = None
         self._SummaryQOS = None
         self._SummaryConfig = None
+        self._ServiceType = None
+        self._ObjectDetectConfig = None
 
     @property
     def ProductId(self):
@@ -6023,6 +6031,30 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
     def SummaryConfig(self, SummaryConfig):
         self._SummaryConfig = SummaryConfig
 
+    @property
+    def ServiceType(self):
+        """算法类型，可能取值：
+- `Summary`：视频/图片摘要
+- `ObjectDetect`：目标检测
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ObjectDetectConfig(self):
+        """目标检测配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.VisionObjectDetectConfig`
+        """
+        return self._ObjectDetectConfig
+
+    @ObjectDetectConfig.setter
+    def ObjectDetectConfig(self, ObjectDetectConfig):
+        self._ObjectDetectConfig = ObjectDetectConfig
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -6039,6 +6071,10 @@ class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
         if params.get("SummaryConfig") is not None:
             self._SummaryConfig = VisionSummaryConfig()
             self._SummaryConfig._deserialize(params.get("SummaryConfig"))
+        self._ServiceType = params.get("ServiceType")
+        if params.get("ObjectDetectConfig") is not None:
+            self._ObjectDetectConfig = VisionObjectDetectConfig()
+            self._ObjectDetectConfig._deserialize(params.get("ObjectDetectConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21177,6 +21213,12 @@ class InvokeTWeSeeRecognitionTaskRequest(AbstractModel):
         :type SummaryQOS: str
         :param _SummaryConfig: 摘要输出配置
         :type SummaryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
+        :param _ServiceType: 算法类型，可能取值：
+- `Summary`：视频/图片摘要
+- `ObjectDetect`：目标检测
+        :type ServiceType: str
+        :param _ObjectDetectConfig: 目标检测配置
+        :type ObjectDetectConfig: :class:`tencentcloud.iotexplorer.v20190423.models.VisionObjectDetectConfig`
         """
         self._ProductId = None
         self._DeviceName = None
@@ -21190,6 +21232,8 @@ class InvokeTWeSeeRecognitionTaskRequest(AbstractModel):
         self._InputType = None
         self._SummaryQOS = None
         self._SummaryConfig = None
+        self._ServiceType = None
+        self._ObjectDetectConfig = None
 
     @property
     def ProductId(self):
@@ -21329,6 +21373,30 @@ class InvokeTWeSeeRecognitionTaskRequest(AbstractModel):
     def SummaryConfig(self, SummaryConfig):
         self._SummaryConfig = SummaryConfig
 
+    @property
+    def ServiceType(self):
+        """算法类型，可能取值：
+- `Summary`：视频/图片摘要
+- `ObjectDetect`：目标检测
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ObjectDetectConfig(self):
+        """目标检测配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.VisionObjectDetectConfig`
+        """
+        return self._ObjectDetectConfig
+
+    @ObjectDetectConfig.setter
+    def ObjectDetectConfig(self, ObjectDetectConfig):
+        self._ObjectDetectConfig = ObjectDetectConfig
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -21345,6 +21413,10 @@ class InvokeTWeSeeRecognitionTaskRequest(AbstractModel):
         if params.get("SummaryConfig") is not None:
             self._SummaryConfig = VisionSummaryConfig()
             self._SummaryConfig._deserialize(params.get("SummaryConfig"))
+        self._ServiceType = params.get("ServiceType")
+        if params.get("ObjectDetectConfig") is not None:
+            self._ObjectDetectConfig = VisionObjectDetectConfig()
+            self._ObjectDetectConfig._deserialize(params.get("ObjectDetectConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30455,6 +30527,46 @@ class VideoLicenseEntity(AbstractModel):
         self._TotalCount = params.get("TotalCount")
         self._UsedCount = params.get("UsedCount")
         self._ExpiresSoonCount = params.get("ExpiresSoonCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VisionObjectDetectConfig(AbstractModel):
+    """目标检测配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetectTypes: 检测类别，可选值：
+- `adult`：成年人
+- `child`：儿童
+        :type DetectTypes: list of str
+        """
+        self._DetectTypes = None
+
+    @property
+    def DetectTypes(self):
+        """检测类别，可选值：
+- `adult`：成年人
+- `child`：儿童
+        :rtype: list of str
+        """
+        return self._DetectTypes
+
+    @DetectTypes.setter
+    def DetectTypes(self, DetectTypes):
+        self._DetectTypes = DetectTypes
+
+
+    def _deserialize(self, params):
+        self._DetectTypes = params.get("DetectTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -627,8 +627,7 @@ class OcrClient(AbstractClient):
                 <tr>
                   <th style="width:150px"></th>
                   <th >【荐】通用印刷体识别（高精度版）</th>
-                  <th style="width:200px"><a href="https://cloud.tencent.com/document/product/866/33526">【荐】通用印刷体识别</a></th>
-                  <th><a href="https://cloud.tencent.com/document/product/866/37831">通用印刷体识别（精简版）</a></th>
+                  <th style="width:300px"><a href="https://cloud.tencent.com/document/product/866/33526">【荐】通用印刷体识别</a></th>
                 </tr>
               </thead>
               <tbody>
@@ -636,41 +635,34 @@ class OcrClient(AbstractClient):
                   <td> 适用场景</td>
                   <td>适用于文字较多、长串数字、小字、模糊字、倾斜文本等困难场景</td>
                   <td>适用于所有通用场景的印刷体识别</td>
-                  <td>适用于快速文本识别场景，准召率有一定损失，价格更优惠</td>
                 </tr>
                 <tr>
                   <td>识别准确率</td>
                   <td>99%</td>
                   <td>96%</td>
-                  <td>91%</td>
                 </tr>
                 <tr>
                   <td>价格</td>
-                  <td>高</td>
                   <td>中</td>
                   <td>低</td>
                 </tr>
                 <tr>
                   <td>支持的语言</td>
-                  <td>中文、英文、中英文</td>
+                  <td>中文、英文、中英文、泰语、印尼语、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、哈萨克语</td>
                   <td>中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语</td>
-                  <td>中文、英文、中英文</td>
                 </tr>
                 <tr>
                   <td>自动语言检测</td>
-                  <td>支持</td>
-                  <td>支持</td>
+                  <td>中英文支持;其他语言需要调整输入参数</td>
                   <td>支持</td>
                 </tr>
                 <tr>
                   <td>返回文本行坐标</td>
                   <td>支持</td>
                   <td>支持</td>
-                  <td>支持</td>
                 </tr>
                 <tr>
                   <td>自动旋转纠正</td>
-                  <td>支持旋转识别，返回角度信息</td>
                   <td>支持旋转识别，返回角度信息</td>
                   <td>支持旋转识别，返回角度信息</td>
                 </tr>
@@ -711,9 +703,8 @@ class OcrClient(AbstractClient):
               <thead>
                 <tr>
                   <th style="width:150px"></th>
-                  <th style="width:200px">【荐】通用印刷体识别</th>
+                  <th style="width:250px">【荐】通用印刷体识别</th>
                   <th ><a href="https://cloud.tencent.com/document/product/866/34937">【荐】通用印刷体识别（高精度版）</a></th>
-                  <th><a href="https://cloud.tencent.com/document/product/866/37831">通用印刷体识别（精简版）</a></th>
                 </tr>
               </thead>
               <tbody>
@@ -721,41 +712,34 @@ class OcrClient(AbstractClient):
                   <td> 适用场景</td>
                   <td>适用于所有通用场景的印刷体识别</td>
                   <td>适用于文字较多、长串数字、小字、模糊字、倾斜文本等困难场景</td>
-                  <td>适用于快速文本识别场景，准召率有一定损失，价格更优惠</td>
                 </tr>
                 <tr>
                   <td>识别准确率</td>
                   <td>96%</td>
                   <td>99%</td>
-                  <td>91%</td>
                 </tr>
                 <tr>
                   <td>价格</td>
-                  <td>中</td>
-                  <td>高</td>
                   <td>低</td>
+                  <td>中</td>
                 </tr>
                 <tr>
                   <td>支持的语言</td>
                   <td>中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语</td>
-                  <td>中文、英文、中英文</td>
-                  <td>中文、英文、中英文</td>
+                  <td>中文、英文、中英文、泰语、印尼语、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、哈萨克语</td>
                 </tr>
                 <tr>
                   <td>自动语言检测</td>
                   <td>支持</td>
-                  <td>支持</td>
-                  <td>支持</td>
+                  <td>中英文支持；其他语种需要调整输入参数</td>
                 </tr>
                 <tr>
                   <td>返回文本行坐标</td>
                   <td>支持</td>
                   <td>支持</td>
-                  <td>支持</td>
                 </tr>
                 <tr>
                   <td>自动旋转纠正</td>
-                  <td>支持旋转识别，返回角度信息</td>
                   <td>支持旋转识别，返回角度信息</td>
                   <td>支持旋转识别，返回角度信息</td>
                 </tr>

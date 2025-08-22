@@ -1179,6 +1179,152 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDeviceIdentityRequest(AbstractModel):
+    """CreateDeviceIdentity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :type InstanceId: str
+        :param _DeviceId: 设备id
+        :type DeviceId: str
+        :param _Status: 1:ENABLED-可用（默认）
+2:DISABLE-不可用
+        :type Status: str
+        :param _PrimaryKey: 主要签名key，不传则由系统自动生成，需要base64编码。
+        :type PrimaryKey: str
+        :param _SecondaryKey: 次要签名key，不传则油系统自动生成，需要base64编码。
+        :type SecondaryKey: str
+        :param _PropagatingProperties: 该设备id的传播属性设置
+        :type PropagatingProperties: list of PropagatingProperty
+        """
+        self._InstanceId = None
+        self._DeviceId = None
+        self._Status = None
+        self._PrimaryKey = None
+        self._SecondaryKey = None
+        self._PropagatingProperties = None
+
+    @property
+    def InstanceId(self):
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceId(self):
+        """设备id
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Status(self):
+        """1:ENABLED-可用（默认）
+2:DISABLE-不可用
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PrimaryKey(self):
+        """主要签名key，不传则由系统自动生成，需要base64编码。
+        :rtype: str
+        """
+        return self._PrimaryKey
+
+    @PrimaryKey.setter
+    def PrimaryKey(self, PrimaryKey):
+        self._PrimaryKey = PrimaryKey
+
+    @property
+    def SecondaryKey(self):
+        """次要签名key，不传则油系统自动生成，需要base64编码。
+        :rtype: str
+        """
+        return self._SecondaryKey
+
+    @SecondaryKey.setter
+    def SecondaryKey(self, SecondaryKey):
+        self._SecondaryKey = SecondaryKey
+
+    @property
+    def PropagatingProperties(self):
+        """该设备id的传播属性设置
+        :rtype: list of PropagatingProperty
+        """
+        return self._PropagatingProperties
+
+    @PropagatingProperties.setter
+    def PropagatingProperties(self, PropagatingProperties):
+        self._PropagatingProperties = PropagatingProperties
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceId = params.get("DeviceId")
+        self._Status = params.get("Status")
+        self._PrimaryKey = params.get("PrimaryKey")
+        self._SecondaryKey = params.get("SecondaryKey")
+        if params.get("PropagatingProperties") is not None:
+            self._PropagatingProperties = []
+            for item in params.get("PropagatingProperties"):
+                obj = PropagatingProperty()
+                obj._deserialize(item)
+                self._PropagatingProperties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDeviceIdentityResponse(AbstractModel):
+    """CreateDeviceIdentity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateHttpAuthenticatorRequest(AbstractModel):
     """CreateHttpAuthenticator请求参数结构体
 
@@ -2791,6 +2937,85 @@ class DeleteDeviceCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDeviceIdentityRequest(AbstractModel):
+    """DeleteDeviceIdentity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _DeviceId: 设备id
+        :type DeviceId: str
+        """
+        self._InstanceId = None
+        self._DeviceId = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceId(self):
+        """设备id
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceIdentityResponse(AbstractModel):
+    """DeleteDeviceIdentity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteInsPublicEndpointRequest(AbstractModel):
     """DeleteInsPublicEndpoint请求参数结构体
 
@@ -4232,6 +4457,311 @@ class DescribeDeviceCertificatesResponse(AbstractModel):
                 obj = DeviceCertificateItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeviceIdentitiesRequest(AbstractModel):
+    """DescribeDeviceIdentities请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceIdentitiesResponse(AbstractModel):
+    """DescribeDeviceIdentities返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回的设备标识列表
+        :type Data: list of DeviceIdentityItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """返回的设备标识列表
+        :rtype: list of DeviceIdentityItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DeviceIdentityItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeviceIdentityRequest(AbstractModel):
+    """DescribeDeviceIdentity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _DeviceId: 设备id
+        :type DeviceId: str
+        """
+        self._InstanceId = None
+        self._DeviceId = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceId(self):
+        """设备id
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceIdentityResponse(AbstractModel):
+    """DescribeDeviceIdentity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _DeviceId: 设备id
+        :type DeviceId: str
+        :param _Status: 1:ENABLED-可用
+ 2:DISABLE-不可用
+        :type Status: int
+        :param _PrimaryKey: 主要签名key
+        :type PrimaryKey: str
+        :param _SecondaryKey: 次要签名key
+        :type SecondaryKey: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: int
+        :param _PropagatingProperties: 该设备id的传播属性
+        :type PropagatingProperties: list of PropagatingProperty
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._DeviceId = None
+        self._Status = None
+        self._PrimaryKey = None
+        self._SecondaryKey = None
+        self._CreatedTime = None
+        self._PropagatingProperties = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceId(self):
+        """设备id
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Status(self):
+        """1:ENABLED-可用
+ 2:DISABLE-不可用
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PrimaryKey(self):
+        """主要签名key
+        :rtype: str
+        """
+        return self._PrimaryKey
+
+    @PrimaryKey.setter
+    def PrimaryKey(self, PrimaryKey):
+        self._PrimaryKey = PrimaryKey
+
+    @property
+    def SecondaryKey(self):
+        """次要签名key
+        :rtype: str
+        """
+        return self._SecondaryKey
+
+    @SecondaryKey.setter
+    def SecondaryKey(self, SecondaryKey):
+        self._SecondaryKey = SecondaryKey
+
+    @property
+    def CreatedTime(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def PropagatingProperties(self):
+        """该设备id的传播属性
+        :rtype: list of PropagatingProperty
+        """
+        return self._PropagatingProperties
+
+    @PropagatingProperties.setter
+    def PropagatingProperties(self, PropagatingProperties):
+        self._PropagatingProperties = PropagatingProperties
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceId = params.get("DeviceId")
+        self._Status = params.get("Status")
+        self._PrimaryKey = params.get("PrimaryKey")
+        self._SecondaryKey = params.get("SecondaryKey")
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("PropagatingProperties") is not None:
+            self._PropagatingProperties = []
+            for item in params.get("PropagatingProperties"):
+                obj = PropagatingProperty()
+                obj._deserialize(item)
+                self._PropagatingProperties.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6578,6 +7108,137 @@ JITP 自动注册
         
 
 
+class DeviceIdentityItem(AbstractModel):
+    """设备标识列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _DeviceId: 设备id
+        :type DeviceId: str
+        :param _Status: 1:ENABLED-可用2:DISABLE-不可用
+        :type Status: int
+        :param _PrimaryKey: 主要签名key，不传则由系统自动生成
+        :type PrimaryKey: str
+        :param _SecondaryKey: 次要签名key，不传则由系统自动生成
+        :type SecondaryKey: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: int
+        :param _PropagatingProperties: 传播属性列表
+        :type PropagatingProperties: list of PropagatingProperty
+        """
+        self._InstanceId = None
+        self._DeviceId = None
+        self._Status = None
+        self._PrimaryKey = None
+        self._SecondaryKey = None
+        self._CreatedTime = None
+        self._PropagatingProperties = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceId(self):
+        """设备id
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Status(self):
+        """1:ENABLED-可用2:DISABLE-不可用
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PrimaryKey(self):
+        """主要签名key，不传则由系统自动生成
+        :rtype: str
+        """
+        return self._PrimaryKey
+
+    @PrimaryKey.setter
+    def PrimaryKey(self, PrimaryKey):
+        self._PrimaryKey = PrimaryKey
+
+    @property
+    def SecondaryKey(self):
+        """次要签名key，不传则由系统自动生成
+        :rtype: str
+        """
+        return self._SecondaryKey
+
+    @SecondaryKey.setter
+    def SecondaryKey(self, SecondaryKey):
+        self._SecondaryKey = SecondaryKey
+
+    @property
+    def CreatedTime(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def PropagatingProperties(self):
+        """传播属性列表
+        :rtype: list of PropagatingProperty
+        """
+        return self._PropagatingProperties
+
+    @PropagatingProperties.setter
+    def PropagatingProperties(self, PropagatingProperties):
+        self._PropagatingProperties = PropagatingProperties
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceId = params.get("DeviceId")
+        self._Status = params.get("Status")
+        self._PrimaryKey = params.get("PrimaryKey")
+        self._SecondaryKey = params.get("SecondaryKey")
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("PropagatingProperties") is not None:
+            self._PropagatingProperties = []
+            for item in params.get("PropagatingProperties"):
+                obj = PropagatingProperty()
+                obj._deserialize(item)
+                self._PropagatingProperties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """查询过滤器
 
@@ -8436,6 +9097,152 @@ class ModifyAuthorizationPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDeviceIdentityRequest(AbstractModel):
+    """ModifyDeviceIdentity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :type InstanceId: str
+        :param _DeviceId: 设备id
+        :type DeviceId: str
+        :param _Status: 1:ENABLED-可用
+2:DISABLE-不可用
+        :type Status: str
+        :param _PrimaryKey: 主要签名key，需要Base64编码。
+        :type PrimaryKey: str
+        :param _SecondaryKey: 次要签名key，需要Base64编码。
+        :type SecondaryKey: str
+        :param _PropagatingProperties: 该设备id的传播属性设置	
+        :type PropagatingProperties: list of PropagatingProperty
+        """
+        self._InstanceId = None
+        self._DeviceId = None
+        self._Status = None
+        self._PrimaryKey = None
+        self._SecondaryKey = None
+        self._PropagatingProperties = None
+
+    @property
+    def InstanceId(self):
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceId(self):
+        """设备id
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Status(self):
+        """1:ENABLED-可用
+2:DISABLE-不可用
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PrimaryKey(self):
+        """主要签名key，需要Base64编码。
+        :rtype: str
+        """
+        return self._PrimaryKey
+
+    @PrimaryKey.setter
+    def PrimaryKey(self, PrimaryKey):
+        self._PrimaryKey = PrimaryKey
+
+    @property
+    def SecondaryKey(self):
+        """次要签名key，需要Base64编码。
+        :rtype: str
+        """
+        return self._SecondaryKey
+
+    @SecondaryKey.setter
+    def SecondaryKey(self, SecondaryKey):
+        self._SecondaryKey = SecondaryKey
+
+    @property
+    def PropagatingProperties(self):
+        """该设备id的传播属性设置	
+        :rtype: list of PropagatingProperty
+        """
+        return self._PropagatingProperties
+
+    @PropagatingProperties.setter
+    def PropagatingProperties(self, PropagatingProperties):
+        self._PropagatingProperties = PropagatingProperties
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceId = params.get("DeviceId")
+        self._Status = params.get("Status")
+        self._PrimaryKey = params.get("PrimaryKey")
+        self._SecondaryKey = params.get("SecondaryKey")
+        if params.get("PropagatingProperties") is not None:
+            self._PropagatingProperties = []
+            for item in params.get("PropagatingProperties"):
+                obj = PropagatingProperty()
+                obj._deserialize(item)
+                self._PropagatingProperties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceIdentityResponse(AbstractModel):
+    """ModifyDeviceIdentity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyHttpAuthenticatorRequest(AbstractModel):
     """ModifyHttpAuthenticator请求参数结构体
 
@@ -9864,6 +10671,57 @@ PLATINUM： 铂金版
                 obj = PriceTag()
                 obj._deserialize(item)
                 self._PriceTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PropagatingProperty(AbstractModel):
+    """传播属性结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 传播属性key
+        :type Key: str
+        :param _Value: 传播属性value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """传播属性key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """传播属性value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
