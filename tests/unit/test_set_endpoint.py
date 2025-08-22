@@ -41,8 +41,8 @@ def test_sts_credential_with_default_endpoint():
     expected_host = "sts.tencentcloudapi.com"
 
     cred = STSAssumeRoleCredential(
-        "test-secret-id",
-        "test-secret-key",
+        os.environ.get("TENCENTCLOUD_SECRET_ID"),
+        os.environ.get("TENCENTCLOUD_SECRET_KEY"),
         "test-role-arn",
         "test-role-session-name",
         7000
@@ -61,8 +61,8 @@ def test_sts_credential_with_set_endpoint():
     expected_host = "sts.internal.tencentcloudapi.com"
 
     cred = STSAssumeRoleCredential(
-        "test-secret-id",
-        "test-secret-key",
+        os.environ.get("TENCENTCLOUD_SECRET_ID"),
+        os.environ.get("TENCENTCLOUD_SECRET_KEY"),
         "test-role-arn",
         "test-role-session-name",
         7000,
