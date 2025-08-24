@@ -1428,12 +1428,15 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
         :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         :param _Resolution: 视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
         :type Resolution: str
+        :param _BGM: 是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
+        :type BGM: bool
         """
         self._Template = None
         self._Images = None
         self._LogoAdd = None
         self._LogoParam = None
         self._Resolution = None
+        self._BGM = None
 
     @property
     def Template(self):
@@ -1499,6 +1502,17 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
     def Resolution(self, Resolution):
         self._Resolution = Resolution
 
+    @property
+    def BGM(self):
+        """是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
+        :rtype: bool
+        """
+        return self._BGM
+
+    @BGM.setter
+    def BGM(self, BGM):
+        self._BGM = BGM
+
 
     def _deserialize(self, params):
         self._Template = params.get("Template")
@@ -1513,6 +1527,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
             self._LogoParam = LogoParam()
             self._LogoParam._deserialize(params.get("LogoParam"))
         self._Resolution = params.get("Resolution")
+        self._BGM = params.get("BGM")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

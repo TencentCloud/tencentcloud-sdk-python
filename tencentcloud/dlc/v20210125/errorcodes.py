@@ -122,6 +122,9 @@ FAILEDOPERATION_PARAMETERVALIDATIONFAILED = 'FailedOperation.ParameterValidation
 # 退押金失败。
 FAILEDOPERATION_REFUNDDEPOSITFAILED = 'FailedOperation.RefundDepositFailed'
 
+# 结果过期
+FAILEDOPERATION_RESULTEXPIRED = 'FailedOperation.ResultExpired'
+
 # 取消授权失败。
 FAILEDOPERATION_REVOKEPOLICYFAILED = 'FailedOperation.RevokePolicyFailed'
 
@@ -419,6 +422,9 @@ INVALIDPARAMETER_INVALIDTASKID = 'InvalidParameter.InvalidTaskId'
 # 任务类型TaskType错误，Spark引擎任务类型为SparkSQLTask,Presto引擎任务类型为SQLTask
 INVALIDPARAMETER_INVALIDTASKTYPE = 'InvalidParameter.InvalidTaskType'
 
+# 任务长度超限
+INVALIDPARAMETER_INVALIDTASKSFILTERLENGTH = 'InvalidParameter.InvalidTasksFilterLength'
+
 # 指定的TCR Spark镜像格式不匹配，参考样例: my-image/ndf/python/latest
 INVALIDPARAMETER_INVALIDTCRSPARKIMAGEFORMAT = 'InvalidParameter.InvalidTcrSparkImageFormat'
 
@@ -457,6 +463,9 @@ INVALIDPARAMETER_NUMBEROFSQLEXCEEDSTHELIMIT = 'InvalidParameter.NumberOfSQLExcee
 
 # 指定参数Base64解析失败
 INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = 'InvalidParameter.ParameterBase64DecodeFailed'
+
+# 传入参数不合法
+INVALIDPARAMETER_PARAMETERILLEGAL = 'InvalidParameter.ParameterIllegal'
 
 # 找不到参数或参数为空
 INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = 'InvalidParameter.ParameterNotFoundOrBeNone'

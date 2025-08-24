@@ -14829,6 +14829,106 @@ class DescribeTWeSeeConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTWeSeeRecognitionTaskRequest(AbstractModel):
+    """DescribeTWeSeeRecognitionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID
+        :type TaskId: str
+        :param _FileURLExpireTime: 下载 URL 的过期时间。
+
+若传入该参数，则响应中将包含所有文件的下载 URL
+        :type FileURLExpireTime: int
+        """
+        self._TaskId = None
+        self._FileURLExpireTime = None
+
+    @property
+    def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def FileURLExpireTime(self):
+        """下载 URL 的过期时间。
+
+若传入该参数，则响应中将包含所有文件的下载 URL
+        :rtype: int
+        """
+        return self._FileURLExpireTime
+
+    @FileURLExpireTime.setter
+    def FileURLExpireTime(self, FileURLExpireTime):
+        self._FileURLExpireTime = FileURLExpireTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._FileURLExpireTime = params.get("FileURLExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeSeeRecognitionTaskResponse(AbstractModel):
+    """DescribeTWeSeeRecognitionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskInfo: 任务信息
+        :type TaskInfo: :class:`tencentcloud.iotexplorer.v20190423.models.VisionRecognitionTask`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskInfo = None
+        self._RequestId = None
+
+    @property
+    def TaskInfo(self):
+        """任务信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.VisionRecognitionTask`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = VisionRecognitionTask()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTopicPolicyRequest(AbstractModel):
     """DescribeTopicPolicy请求参数结构体
 
@@ -30687,6 +30787,259 @@ class VisionRecognitionResult(AbstractModel):
         self._Summary = params.get("Summary")
         self._AlternativeSummary = params.get("AlternativeSummary")
         self._ErrorCode = params.get("ErrorCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VisionRecognitionTask(AbstractModel):
+    """TWeSee 语义理解任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 云存 AI 服务任务 ID
+        :type TaskId: str
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ChannelId: 通道 ID
+        :type ChannelId: int
+        :param _StartTime: 对应云存视频的起始时间（秒级 UNIX 时间戳）
+        :type StartTime: int
+        :param _StartTimeMs: 对应云存视频的起始时间（毫秒级 UNIX 时间戳）
+        :type StartTimeMs: int
+        :param _EndTime: 对应云存视频的结束时间（秒级 UNIX 时间戳）
+        :type EndTime: int
+        :param _EndTimeMs: 对应云存视频的结束时间（毫秒级 UNIX 时间戳）
+        :type EndTimeMs: int
+        :param _Status: 任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功；4：执行中）
+        :type Status: int
+        :param _Result: 任务结果
+        :type Result: :class:`tencentcloud.iotexplorer.v20190423.models.VisionRecognitionResult`
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _UpdateTime: 最后更新时间
+        :type UpdateTime: int
+        :param _CustomId: 自定义任务 ID
+        :type CustomId: str
+        :param _Files: 任务输出文件列表
+        :type Files: list of str
+        :param _FilesInfo: 任务输出文件信息列表
+        :type FilesInfo: list of CloudStorageAIServiceTaskFileInfo
+        """
+        self._TaskId = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._ChannelId = None
+        self._StartTime = None
+        self._StartTimeMs = None
+        self._EndTime = None
+        self._EndTimeMs = None
+        self._Status = None
+        self._Result = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._CustomId = None
+        self._Files = None
+        self._FilesInfo = None
+
+    @property
+    def TaskId(self):
+        """云存 AI 服务任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ProductId(self):
+        """产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ChannelId(self):
+        """通道 ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def StartTime(self):
+        """对应云存视频的起始时间（秒级 UNIX 时间戳）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StartTimeMs(self):
+        """对应云存视频的起始时间（毫秒级 UNIX 时间戳）
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def EndTime(self):
+        """对应云存视频的结束时间（秒级 UNIX 时间戳）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def EndTimeMs(self):
+        """对应云存视频的结束时间（毫秒级 UNIX 时间戳）
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
+
+    @property
+    def Status(self):
+        """任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功；4：执行中）
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Result(self):
+        """任务结果
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.VisionRecognitionResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """最后更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CustomId(self):
+        """自定义任务 ID
+        :rtype: str
+        """
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def Files(self):
+        """任务输出文件列表
+        :rtype: list of str
+        """
+        return self._Files
+
+    @Files.setter
+    def Files(self, Files):
+        self._Files = Files
+
+    @property
+    def FilesInfo(self):
+        """任务输出文件信息列表
+        :rtype: list of CloudStorageAIServiceTaskFileInfo
+        """
+        return self._FilesInfo
+
+    @FilesInfo.setter
+    def FilesInfo(self, FilesInfo):
+        self._FilesInfo = FilesInfo
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ChannelId = params.get("ChannelId")
+        self._StartTime = params.get("StartTime")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._EndTime = params.get("EndTime")
+        self._EndTimeMs = params.get("EndTimeMs")
+        self._Status = params.get("Status")
+        if params.get("Result") is not None:
+            self._Result = VisionRecognitionResult()
+            self._Result._deserialize(params.get("Result"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CustomId = params.get("CustomId")
+        self._Files = params.get("Files")
+        if params.get("FilesInfo") is not None:
+            self._FilesInfo = []
+            for item in params.get("FilesInfo"):
+                obj = CloudStorageAIServiceTaskFileInfo()
+                obj._deserialize(item)
+                self._FilesInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

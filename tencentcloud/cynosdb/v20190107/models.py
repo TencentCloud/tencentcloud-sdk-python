@@ -25246,8 +25246,10 @@ class LogicBackupConfigInfo(AbstractModel):
         :param _LogicBackupTimeEnd: 自动逻辑备份结束时间
         :type LogicBackupTimeEnd: int
         :param _LogicReserveDuration: 自动逻辑备份保留时间
+单位：秒
         :type LogicReserveDuration: int
         :param _LogicCrossRegionsEnable: 是否开启跨地域逻辑备份
+可选值：ON/OFF
         :type LogicCrossRegionsEnable: str
         :param _LogicCrossRegions: 逻辑备份所跨地域
 注意：此字段可能返回 null，表示取不到有效值。
@@ -25296,6 +25298,7 @@ class LogicBackupConfigInfo(AbstractModel):
     @property
     def LogicReserveDuration(self):
         """自动逻辑备份保留时间
+单位：秒
         :rtype: int
         """
         return self._LogicReserveDuration
@@ -25307,6 +25310,7 @@ class LogicBackupConfigInfo(AbstractModel):
     @property
     def LogicCrossRegionsEnable(self):
         """是否开启跨地域逻辑备份
+可选值：ON/OFF
         :rtype: str
         """
         return self._LogicCrossRegionsEnable

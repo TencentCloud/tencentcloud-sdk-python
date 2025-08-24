@@ -2215,6 +2215,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTWeSeeRecognitionTask(self, request):
+        """查询 TWeSee 语义理解任务
+
+        :param request: Request instance for DescribeTWeSeeRecognitionTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeeRecognitionTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeeRecognitionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTWeSeeRecognitionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTWeSeeRecognitionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTopicPolicy(self, request):
         """本接口（DescribeTopicPolicy）用于查看Topic详细信息
 

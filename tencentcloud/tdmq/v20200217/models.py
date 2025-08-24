@@ -17258,6 +17258,191 @@ class DescribeRocketMQNamespacesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQProducersRequest(AbstractModel):
+    """DescribeRocketMQProducers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _NamespaceId: 命名空间
+        :type NamespaceId: str
+        :param _Topic: 主题名
+        :type Topic: str
+        :param _Offset: 分页offset
+        :type Offset: int
+        :param _Limit: 分页limit
+        :type Limit: int
+        :param _Filters: 过滤查询条件列表，支持以下过滤参数：
+
+- ClientId：生产者客户端ID
+- ClientIp：生产者客户端IP
+        :type Filters: list of Filter
+        """
+        self._ClusterId = None
+        self._NamespaceId = None
+        self._Topic = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NamespaceId(self):
+        """命名空间
+        :rtype: str
+        """
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def Topic(self):
+        """主题名
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Offset(self):
+        """分页offset
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """过滤查询条件列表，支持以下过滤参数：
+
+- ClientId：生产者客户端ID
+- ClientIp：生产者客户端IP
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NamespaceId = params.get("NamespaceId")
+        self._Topic = params.get("Topic")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQProducersResponse(AbstractModel):
+    """DescribeRocketMQProducers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Producers: 生产者客户端列表
+        :type Producers: list of ProducerInfo
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Producers = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Producers(self):
+        """生产者客户端列表
+        :rtype: list of ProducerInfo
+        """
+        return self._Producers
+
+    @Producers.setter
+    def Producers(self, Producers):
+        self._Producers = Producers
+
+    @property
+    def TotalCount(self):
+        """总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Producers") is not None:
+            self._Producers = []
+            for item in params.get("Producers"):
+                obj = ProducerInfo()
+                obj._deserialize(item)
+                self._Producers.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQPublicAccessMonitorDataRequest(AbstractModel):
     """DescribeRocketMQPublicAccessMonitorData请求参数结构体
 
@@ -26111,6 +26296,136 @@ class PartitionsTopic(AbstractModel):
         self._ProducerCount = params.get("ProducerCount")
         self._TotalSize = params.get("TotalSize")
         self._TopicType = params.get("TopicType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProducerInfo(AbstractModel):
+    """生产者客户端详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: 客户端ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientId: str
+        :param _ClientIp: 客户端IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIp: str
+        :param _Language: 客户端语言
+JAVA((byte) 0),
+    CPP((byte) 1),
+    DOTNET((byte) 2),
+    PYTHON((byte) 3),
+    DELPHI((byte) 4),
+    ERLANG((byte) 5),
+    RUBY((byte) 6),
+    OTHER((byte) 7),
+    HTTP((byte) 8),
+    GO((byte) 9),
+    PHP((byte) 10),
+    OMS((byte) 11);
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Language: str
+        :param _Version: 客户端版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _LastUpdateTimestamp: 最后生产时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTimestamp: int
+        """
+        self._ClientId = None
+        self._ClientIp = None
+        self._Language = None
+        self._Version = None
+        self._LastUpdateTimestamp = None
+
+    @property
+    def ClientId(self):
+        """客户端ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientIp(self):
+        """客户端IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def Language(self):
+        """客户端语言
+JAVA((byte) 0),
+    CPP((byte) 1),
+    DOTNET((byte) 2),
+    PYTHON((byte) 3),
+    DELPHI((byte) 4),
+    ERLANG((byte) 5),
+    RUBY((byte) 6),
+    OTHER((byte) 7),
+    HTTP((byte) 8),
+    GO((byte) 9),
+    PHP((byte) 10),
+    OMS((byte) 11);
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Version(self):
+        """客户端版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def LastUpdateTimestamp(self):
+        """最后生产时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastUpdateTimestamp
+
+    @LastUpdateTimestamp.setter
+    def LastUpdateTimestamp(self, LastUpdateTimestamp):
+        self._LastUpdateTimestamp = LastUpdateTimestamp
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientIp = params.get("ClientIp")
+        self._Language = params.get("Language")
+        self._Version = params.get("Version")
+        self._LastUpdateTimestamp = params.get("LastUpdateTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

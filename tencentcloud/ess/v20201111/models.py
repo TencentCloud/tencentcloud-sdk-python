@@ -4184,23 +4184,29 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
 
 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
         :type ResourceIds: list of str
-        :param _PolicyType: 合同审查的审查立场方。
+        :param _PolicyType: 合同审查的审查尺度。默认为`0`严格尺度
 
-审查立场方如下：
+审查尺度如下：
 <ul>
     <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
     <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
 </ul>
         :type PolicyType: int
-        :param _Role: 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+        :param _Role: 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
         :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         :param _ChecklistId: 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
-[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
         :type ChecklistId: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Comment: 备注信息，长度不能超过100个字符
+        :type Comment: str
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :type UserData: str
         """
         self._Operator = None
         self._ResourceIds = None
@@ -4208,6 +4214,8 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
         self._Role = None
         self._ChecklistId = None
         self._Agent = None
+        self._Comment = None
+        self._UserData = None
 
     @property
     def Operator(self):
@@ -4236,9 +4244,9 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
 
     @property
     def PolicyType(self):
-        """合同审查的审查立场方。
+        """合同审查的审查尺度。默认为`0`严格尺度
 
-审查立场方如下：
+审查尺度如下：
 <ul>
     <li>**0** - 【严格】以保护己方利益为核心，对合同条款进行严格把控，尽可能争取对己方有利的条款，同时对对方提出的不合理条款可进行坚决修改或删除。</li> 
     <li>**1** - 【中立】以公平合理为原则，平衡双方的权利义务，既不过分强调己方利益，也不过度让步，力求达成双方均可接受的条款。</li>   
@@ -4254,7 +4262,7 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
 
     @property
     def Role(self):
-        """合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。
+        """合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
         :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         """
         return self._Role
@@ -4266,7 +4274,7 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
     @property
     def ChecklistId(self):
         """用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
-[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)
+[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
         :rtype: str
         """
         return self._ChecklistId
@@ -4287,6 +4295,30 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def Comment(self):
+        """备注信息，长度不能超过100个字符
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def UserData(self):
+        """调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -4301,6 +4333,8 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._Comment = params.get("Comment")
+        self._UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20584,7 +20618,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChecklistId: 用于审查任务的审查清单ID。
+        :param _ChecklistId: 用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
         :type ChecklistId: str
         :param _CreatedOn: 合同审查任务创建时间。
         :type CreatedOn: int
@@ -20605,7 +20639,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
 注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
         :type Risks: list of OutputRisk
-        :param _Role: 合同审查中的角色信息。
+        :param _Role: 合同审查中的角色信息。注意：注意：如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         :param _Status: 合同审查任务状态。
 状态如下：
@@ -20619,6 +20654,12 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         :type Status: int
         :param _TaskId: 合同审查任务ID
         :type TaskId: str
+        :param _Comment: 审查任务备注信息，长度不能超过100个字符
+        :type Comment: str
+        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :type UserData: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -20631,11 +20672,13 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._Role = None
         self._Status = None
         self._TaskId = None
+        self._Comment = None
+        self._UserData = None
         self._RequestId = None
 
     @property
     def ChecklistId(self):
-        """用于审查任务的审查清单ID。
+        """用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
         :rtype: str
         """
         return self._ChecklistId
@@ -20710,7 +20753,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     @property
     def Role(self):
-        """合同审查中的角色信息。
+        """合同审查中的角色信息。注意：注意：如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         """
         return self._Role
@@ -20750,6 +20794,30 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._TaskId = TaskId
 
     @property
+    def Comment(self):
+        """审查任务备注信息，长度不能超过100个字符
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def UserData(self):
+        """调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -20778,6 +20846,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
             self._Role._deserialize(params.get("Role"))
         self._Status = params.get("Status")
         self._TaskId = params.get("TaskId")
+        self._Comment = params.get("Comment")
+        self._UserData = params.get("UserData")
         self._RequestId = params.get("RequestId")
 
 
@@ -33386,6 +33456,8 @@ class OutputRisk(AbstractModel):
         :type RiskPresentation: list of str
         :param _Content: PDF风险原文内容
         :type Content: str
+        :param _Positions: 审查出的PDF段落位置信息
+        :type Positions: list of PositionInfo
         :param _RiskBasis: 审查依据
         :type RiskBasis: str
         """
@@ -33396,6 +33468,7 @@ class OutputRisk(AbstractModel):
         self._RiskAdvice = None
         self._RiskPresentation = None
         self._Content = None
+        self._Positions = None
         self._RiskBasis = None
 
     @property
@@ -33482,6 +33555,17 @@ class OutputRisk(AbstractModel):
         self._Content = Content
 
     @property
+    def Positions(self):
+        """审查出的PDF段落位置信息
+        :rtype: list of PositionInfo
+        """
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+    @property
     def RiskBasis(self):
         """审查依据
         :rtype: str
@@ -33501,6 +33585,12 @@ class OutputRisk(AbstractModel):
         self._RiskAdvice = params.get("RiskAdvice")
         self._RiskPresentation = params.get("RiskPresentation")
         self._Content = params.get("Content")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = PositionInfo()
+                obj._deserialize(item)
+                self._Positions.append(obj)
         self._RiskBasis = params.get("RiskBasis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -34011,6 +34101,117 @@ class PermissionGroup(AbstractModel):
                 obj = Permission()
                 obj._deserialize(item)
                 self._Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PositionInfo(AbstractModel):
+    """坐标详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: PDF文件页X坐标位置,以PDF单页左上角为坐标原点
+        :type X: float
+        :param _Y: PDF文件页Y坐标位置,以PDF单页左上角为坐标原点
+        :type Y: float
+        :param _Width: 距离X坐标的宽度，用于在PDF文件进行画框。
+        :type Width: float
+        :param _Height: 距离Y坐标的高度，用于在PDF文件进行画框。
+        :type Height: float
+        :param _PageIndex: PDF文件页码索引，此值加1就是对应PDF文件的页码。
+        :type PageIndex: int
+        :param _Id: 系统生成的唯一ID值
+        :type Id: str
+        """
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+        self._PageIndex = None
+        self._Id = None
+
+    @property
+    def X(self):
+        """PDF文件页X坐标位置,以PDF单页左上角为坐标原点
+        :rtype: float
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        """PDF文件页Y坐标位置,以PDF单页左上角为坐标原点
+        :rtype: float
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        """距离X坐标的宽度，用于在PDF文件进行画框。
+        :rtype: float
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """距离Y坐标的高度，用于在PDF文件进行画框。
+        :rtype: float
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def PageIndex(self):
+        """PDF文件页码索引，此值加1就是对应PDF文件的页码。
+        :rtype: int
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
+    @property
+    def Id(self):
+        """系统生成的唯一ID值
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._PageIndex = params.get("PageIndex")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -49143,17 +49143,17 @@ class Resource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID，调用[DescribeResource](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)查询接口获取
+        :param _ResourceId: 资源ID，调用[DescribeResources](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)接口，查看接口返回的ResourceId
         :type ResourceId: str
-        :param _ResourceCode: 资源编码，枚举值描述【cluster、namespace、config】
+        :param _ResourceCode: 资源编码，枚举值描述【cluster（集群）、namespace（命名空间）、config（应用配置）】
         :type ResourceCode: str
         :param _ResourceName: 资源名称
         :type ResourceName: str
         :param _ServiceCode: 资源所属产品编码，枚举值描述【tsf】
         :type ServiceCode: str
-        :param _ResourceAction: 选取资源使用的Action，枚举值描述【DescribeSimpleCluster、DescribeLanes、DescribeTaskRecords】
+        :param _ResourceAction: 选取资源使用的Action，枚举值描述【DescribeSimpleCluster（查询简单集群列表）、DescribeTaskRecords（查询任务列表）】
         :type ResourceAction: str
-        :param _IdField: 资源数据查询的ID字段名，调用[DescribeResource](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)查询接口获取
+        :param _IdField: 资源数据查询的ID字段名，调用[DescribeResources](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)接口，查看接口返回的IdField
         :type IdField: str
         :param _NameField: 资源数据查询的名称字段名
         :type NameField: str
@@ -49192,7 +49192,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceId(self):
-        """资源ID，调用[DescribeResource](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)查询接口获取
+        """资源ID，调用[DescribeResources](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)接口，查看接口返回的ResourceId
         :rtype: str
         """
         return self._ResourceId
@@ -49203,7 +49203,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceCode(self):
-        """资源编码，枚举值描述【cluster、namespace、config】
+        """资源编码，枚举值描述【cluster（集群）、namespace（命名空间）、config（应用配置）】
         :rtype: str
         """
         return self._ResourceCode
@@ -49236,7 +49236,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceAction(self):
-        """选取资源使用的Action，枚举值描述【DescribeSimpleCluster、DescribeLanes、DescribeTaskRecords】
+        """选取资源使用的Action，枚举值描述【DescribeSimpleCluster（查询简单集群列表）、DescribeTaskRecords（查询任务列表）】
         :rtype: str
         """
         return self._ResourceAction
@@ -49247,7 +49247,7 @@ class Resource(AbstractModel):
 
     @property
     def IdField(self):
-        """资源数据查询的ID字段名，调用[DescribeResource](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)查询接口获取
+        """资源数据查询的ID字段名，调用[DescribeResources](https://console.cloud.tencent.com/tsf/privilege-program-create?rid=1)接口，查看接口返回的IdField
         :rtype: str
         """
         return self._IdField

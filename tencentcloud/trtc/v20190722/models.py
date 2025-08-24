@@ -217,6 +217,9 @@ class AgentConfig(AbstractModel):
 - 0表示尽快显示，不会和音频播放进行同步。此时字幕全量下发，后面的字幕会包含前面的字幕。
 - 1表示句子级别的实时显示，会和音频播放进行同步，只有当前句子对应的音频播放完后，下一条字幕才会下发。此时字幕增量下发，端上需要把前后的字幕进行拼接才是完整字幕。
         :type SubtitleMode: int
+        :param _InterruptWordList: 打断词列表，在AI说话期间，只有说出列表中的打断词才会打断AI说话。
+注意：打断词不会触发AI回复。
+        :type InterruptWordList: list of str
         """
         self._UserId = None
         self._UserSig = None
@@ -233,6 +236,7 @@ class AgentConfig(AbstractModel):
         self._VoicePrint = None
         self._TurnDetection = None
         self._SubtitleMode = None
+        self._InterruptWordList = None
 
     @property
     def UserId(self):
@@ -409,6 +413,18 @@ class AgentConfig(AbstractModel):
     def SubtitleMode(self, SubtitleMode):
         self._SubtitleMode = SubtitleMode
 
+    @property
+    def InterruptWordList(self):
+        """打断词列表，在AI说话期间，只有说出列表中的打断词才会打断AI说话。
+注意：打断词不会触发AI回复。
+        :rtype: list of str
+        """
+        return self._InterruptWordList
+
+    @InterruptWordList.setter
+    def InterruptWordList(self, InterruptWordList):
+        self._InterruptWordList = InterruptWordList
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -432,6 +448,7 @@ class AgentConfig(AbstractModel):
             self._TurnDetection = TurnDetection()
             self._TurnDetection._deserialize(params.get("TurnDetection"))
         self._SubtitleMode = params.get("SubtitleMode")
+        self._InterruptWordList = params.get("InterruptWordList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
