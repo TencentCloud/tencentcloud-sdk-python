@@ -2292,6 +2292,134 @@ class AlarmInfo(AbstractModel):
         
 
 
+class AlarmReceiverGroup(AbstractModel):
+    """告警接收组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmRecipientType: 告警接收人类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRecipientType: int
+        :param _AlarmRecipientId: 告警接收人ID，多个用逗号隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRecipientId: str
+        :param _AlarmRecipientName: 告警接收人名称，多个用逗号隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRecipientName: str
+        :param _AlarmWay: 告警方式，多个用逗号隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmWay: str
+        :param _QuietPeriods: 免打扰时间段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuietPeriods: list of QuietPeriod
+        :param _AlarmMessageRule: 告警渠道规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmMessageRule: str
+        """
+        self._AlarmRecipientType = None
+        self._AlarmRecipientId = None
+        self._AlarmRecipientName = None
+        self._AlarmWay = None
+        self._QuietPeriods = None
+        self._AlarmMessageRule = None
+
+    @property
+    def AlarmRecipientType(self):
+        """告警接收人类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AlarmRecipientType
+
+    @AlarmRecipientType.setter
+    def AlarmRecipientType(self, AlarmRecipientType):
+        self._AlarmRecipientType = AlarmRecipientType
+
+    @property
+    def AlarmRecipientId(self):
+        """告警接收人ID，多个用逗号隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AlarmRecipientId
+
+    @AlarmRecipientId.setter
+    def AlarmRecipientId(self, AlarmRecipientId):
+        self._AlarmRecipientId = AlarmRecipientId
+
+    @property
+    def AlarmRecipientName(self):
+        """告警接收人名称，多个用逗号隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AlarmRecipientName
+
+    @AlarmRecipientName.setter
+    def AlarmRecipientName(self, AlarmRecipientName):
+        self._AlarmRecipientName = AlarmRecipientName
+
+    @property
+    def AlarmWay(self):
+        """告警方式，多个用逗号隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AlarmWay
+
+    @AlarmWay.setter
+    def AlarmWay(self, AlarmWay):
+        self._AlarmWay = AlarmWay
+
+    @property
+    def QuietPeriods(self):
+        """免打扰时间段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QuietPeriod
+        """
+        return self._QuietPeriods
+
+    @QuietPeriods.setter
+    def QuietPeriods(self, QuietPeriods):
+        self._QuietPeriods = QuietPeriods
+
+    @property
+    def AlarmMessageRule(self):
+        """告警渠道规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AlarmMessageRule
+
+    @AlarmMessageRule.setter
+    def AlarmMessageRule(self, AlarmMessageRule):
+        self._AlarmMessageRule = AlarmMessageRule
+
+
+    def _deserialize(self, params):
+        self._AlarmRecipientType = params.get("AlarmRecipientType")
+        self._AlarmRecipientId = params.get("AlarmRecipientId")
+        self._AlarmRecipientName = params.get("AlarmRecipientName")
+        self._AlarmWay = params.get("AlarmWay")
+        if params.get("QuietPeriods") is not None:
+            self._QuietPeriods = []
+            for item in params.get("QuietPeriods"):
+                obj = QuietPeriod()
+                obj._deserialize(item)
+                self._QuietPeriods.append(obj)
+        self._AlarmMessageRule = params.get("AlarmMessageRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmReceiverInfo(AbstractModel):
     """告警接收人详情
 
@@ -10675,10 +10803,14 @@ class CommitIntegrationTaskResponse(AbstractModel):
         r"""
         :param _Data: 操作成功与否标识
         :type Data: bool
+        :param _DataDto: 数据结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDto: :class:`tencentcloud.wedata.v20210820.models.CommitTaskDataDto`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._DataDto = None
         self._RequestId = None
 
     @property
@@ -10691,6 +10823,18 @@ class CommitIntegrationTaskResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def DataDto(self):
+        """数据结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CommitTaskDataDto`
+        """
+        return self._DataDto
+
+    @DataDto.setter
+    def DataDto(self, DataDto):
+        self._DataDto = DataDto
 
     @property
     def RequestId(self):
@@ -10706,6 +10850,9 @@ class CommitIntegrationTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        if params.get("DataDto") is not None:
+            self._DataDto = CommitTaskDataDto()
+            self._DataDto._deserialize(params.get("DataDto"))
         self._RequestId = params.get("RequestId")
 
 
@@ -10872,6 +11019,44 @@ class CommitRuleGroupTaskResponse(AbstractModel):
             self._Data = RuleGroupExecResult()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class CommitTaskDataDto(AbstractModel):
+    """提交任务数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskApproveId: 任务审批ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskApproveId: str
+        """
+        self._TaskApproveId = None
+
+    @property
+    def TaskApproveId(self):
+        """任务审批ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskApproveId
+
+    @TaskApproveId.setter
+    def TaskApproveId(self, TaskApproveId):
+        self._TaskApproveId = TaskApproveId
+
+
+    def _deserialize(self, params):
+        self._TaskApproveId = params.get("TaskApproveId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CommonContent(AbstractModel):
@@ -17683,6 +17868,9 @@ class DataSourceInfo(AbstractModel):
         :type DataSourceEnvInfos: list of DataSourceEnvInfo
         :param _ForbidProbe: 禁止数据探查
         :type ForbidProbe: bool
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: str
         """
         self._DatabaseName = None
         self._Description = None
@@ -17725,6 +17913,7 @@ class DataSourceInfo(AbstractModel):
         self._Model = None
         self._DataSourceEnvInfos = None
         self._ForbidProbe = None
+        self._DatasourceType = None
 
     @property
     def DatabaseName(self):
@@ -18217,6 +18406,18 @@ class DataSourceInfo(AbstractModel):
     def ForbidProbe(self, ForbidProbe):
         self._ForbidProbe = ForbidProbe
 
+    @property
+    def DatasourceType(self):
+        """数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -18267,6 +18468,7 @@ class DataSourceInfo(AbstractModel):
                 obj._deserialize(item)
                 self._DataSourceEnvInfos.append(obj)
         self._ForbidProbe = params.get("ForbidProbe")
+        self._DatasourceType = params.get("DatasourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26725,269 +26927,6 @@ class DescribeDimensionScoreResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeDrInstancePageRequest(AbstractModel):
-    """DescribeDrInstancePage请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProjectId: 项目id
-        :type ProjectId: str
-        :param _TaskSource: 任务来源 ADHOC || WORKFLOW
-        :type TaskSource: str
-        :param _PageIndex: 索引页码
-        :type PageIndex: int
-        :param _PageSize: 页面大小
-        :type PageSize: int
-        :param _TaskName: 任务名称
-        :type TaskName: str
-        :param _StartTime: 提交开始时间 yyyy-MM-dd HH:mm:ss
-        :type StartTime: str
-        :param _EndTime: 提交结束时间 yyyy-MM-dd HH:mm:ss
-        :type EndTime: str
-        :param _FolderIds: 文件夹id
-        :type FolderIds: list of str
-        :param _WorkflowIds: 工作流id
-        :type WorkflowIds: list of str
-        :param _JustMe: 只看我的
-        :type JustMe: bool
-        :param _TaskTypes: 任务类型
-        :type TaskTypes: list of str
-        :param _SubmitUsers: 试运行提交人userId列表
-        :type SubmitUsers: list of str
-        :param _StatusList: 试运行状态
-        :type StatusList: list of str
-        """
-        self._ProjectId = None
-        self._TaskSource = None
-        self._PageIndex = None
-        self._PageSize = None
-        self._TaskName = None
-        self._StartTime = None
-        self._EndTime = None
-        self._FolderIds = None
-        self._WorkflowIds = None
-        self._JustMe = None
-        self._TaskTypes = None
-        self._SubmitUsers = None
-        self._StatusList = None
-
-    @property
-    def ProjectId(self):
-        """项目id
-        :rtype: str
-        """
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def TaskSource(self):
-        """任务来源 ADHOC || WORKFLOW
-        :rtype: str
-        """
-        return self._TaskSource
-
-    @TaskSource.setter
-    def TaskSource(self, TaskSource):
-        self._TaskSource = TaskSource
-
-    @property
-    def PageIndex(self):
-        """索引页码
-        :rtype: int
-        """
-        return self._PageIndex
-
-    @PageIndex.setter
-    def PageIndex(self, PageIndex):
-        self._PageIndex = PageIndex
-
-    @property
-    def PageSize(self):
-        """页面大小
-        :rtype: int
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def TaskName(self):
-        """任务名称
-        :rtype: str
-        """
-        return self._TaskName
-
-    @TaskName.setter
-    def TaskName(self, TaskName):
-        self._TaskName = TaskName
-
-    @property
-    def StartTime(self):
-        """提交开始时间 yyyy-MM-dd HH:mm:ss
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        """提交结束时间 yyyy-MM-dd HH:mm:ss
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def FolderIds(self):
-        """文件夹id
-        :rtype: list of str
-        """
-        return self._FolderIds
-
-    @FolderIds.setter
-    def FolderIds(self, FolderIds):
-        self._FolderIds = FolderIds
-
-    @property
-    def WorkflowIds(self):
-        """工作流id
-        :rtype: list of str
-        """
-        return self._WorkflowIds
-
-    @WorkflowIds.setter
-    def WorkflowIds(self, WorkflowIds):
-        self._WorkflowIds = WorkflowIds
-
-    @property
-    def JustMe(self):
-        """只看我的
-        :rtype: bool
-        """
-        return self._JustMe
-
-    @JustMe.setter
-    def JustMe(self, JustMe):
-        self._JustMe = JustMe
-
-    @property
-    def TaskTypes(self):
-        """任务类型
-        :rtype: list of str
-        """
-        return self._TaskTypes
-
-    @TaskTypes.setter
-    def TaskTypes(self, TaskTypes):
-        self._TaskTypes = TaskTypes
-
-    @property
-    def SubmitUsers(self):
-        """试运行提交人userId列表
-        :rtype: list of str
-        """
-        return self._SubmitUsers
-
-    @SubmitUsers.setter
-    def SubmitUsers(self, SubmitUsers):
-        self._SubmitUsers = SubmitUsers
-
-    @property
-    def StatusList(self):
-        """试运行状态
-        :rtype: list of str
-        """
-        return self._StatusList
-
-    @StatusList.setter
-    def StatusList(self, StatusList):
-        self._StatusList = StatusList
-
-
-    def _deserialize(self, params):
-        self._ProjectId = params.get("ProjectId")
-        self._TaskSource = params.get("TaskSource")
-        self._PageIndex = params.get("PageIndex")
-        self._PageSize = params.get("PageSize")
-        self._TaskName = params.get("TaskName")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._FolderIds = params.get("FolderIds")
-        self._WorkflowIds = params.get("WorkflowIds")
-        self._JustMe = params.get("JustMe")
-        self._TaskTypes = params.get("TaskTypes")
-        self._SubmitUsers = params.get("SubmitUsers")
-        self._StatusList = params.get("StatusList")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDrInstancePageResponse(AbstractModel):
-    """DescribeDrInstancePage返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: 结果集
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: :class:`tencentcloud.wedata.v20210820.models.DrInstanceOpsDtoPage`
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Data = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        """结果集
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DrInstanceOpsDtoPage`
-        """
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = DrInstanceOpsDtoPage()
-            self._Data._deserialize(params.get("Data"))
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeDsFolderTreeRequest(AbstractModel):
     """DescribeDsFolderTree请求参数结构体
 
@@ -27645,10 +27584,13 @@ class DescribeDsTaskVersionListRequest(AbstractModel):
         :type ProjectId: str
         :param _IsOnlyCurrentEditingVersion: 是否仅返回当前编辑版本
         :type IsOnlyCurrentEditingVersion: bool
+        :param _IsOnlyProductVersion: 是否仅只返回生产使用版本
+        :type IsOnlyProductVersion: bool
         """
         self._TaskId = None
         self._ProjectId = None
         self._IsOnlyCurrentEditingVersion = None
+        self._IsOnlyProductVersion = None
 
     @property
     def TaskId(self):
@@ -27683,11 +27625,23 @@ class DescribeDsTaskVersionListRequest(AbstractModel):
     def IsOnlyCurrentEditingVersion(self, IsOnlyCurrentEditingVersion):
         self._IsOnlyCurrentEditingVersion = IsOnlyCurrentEditingVersion
 
+    @property
+    def IsOnlyProductVersion(self):
+        """是否仅只返回生产使用版本
+        :rtype: bool
+        """
+        return self._IsOnlyProductVersion
+
+    @IsOnlyProductVersion.setter
+    def IsOnlyProductVersion(self, IsOnlyProductVersion):
+        self._IsOnlyProductVersion = IsOnlyProductVersion
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._ProjectId = params.get("ProjectId")
         self._IsOnlyCurrentEditingVersion = params.get("IsOnlyCurrentEditingVersion")
+        self._IsOnlyProductVersion = params.get("IsOnlyProductVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32022,11 +31976,14 @@ class DescribeIntegrationTaskRequest(AbstractModel):
         :type TaskType: int
         :param _InstanceVersion: 提交版本号
         :type InstanceVersion: int
+        :param _ExtConfig: 额外参数
+        :type ExtConfig: list of RecordField
         """
         self._TaskId = None
         self._ProjectId = None
         self._TaskType = None
         self._InstanceVersion = None
+        self._ExtConfig = None
 
     @property
     def TaskId(self):
@@ -32072,12 +32029,29 @@ class DescribeIntegrationTaskRequest(AbstractModel):
     def InstanceVersion(self, InstanceVersion):
         self._InstanceVersion = InstanceVersion
 
+    @property
+    def ExtConfig(self):
+        """额外参数
+        :rtype: list of RecordField
+        """
+        return self._ExtConfig
+
+    @ExtConfig.setter
+    def ExtConfig(self, ExtConfig):
+        self._ExtConfig = ExtConfig
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._ProjectId = params.get("ProjectId")
         self._TaskType = params.get("TaskType")
         self._InstanceVersion = params.get("InstanceVersion")
+        if params.get("ExtConfig") is not None:
+            self._ExtConfig = []
+            for item in params.get("ExtConfig"):
+                obj = RecordField()
+                obj._deserialize(item)
+                self._ExtConfig.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34639,6 +34613,37 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
         :param _ExecutorGroupName: 资源组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
+        :param _TaskTypeId: <p>任务类型id，取值范围：</p>
+<ul>
+<li>26 离线集成任务</li>
+<li>30 Python任务</li>
+<li>31 PySpark任务</li>
+<li>34 HiveSQL任务</li>
+<li>35 Shell任务</li>
+<li>36 SparkSQL任务</li>
+<li>21 JdbcSQL任务</li>
+<li>23 TDSQL-PostgreSQL任务</li>
+<li>32 DLCSQL任务</li>
+<li>33 Impala任务</li>
+<li>41 Kettle任务</li>
+<li>42 Tchouse-X任务</li>
+<li>43 TCHouse-X SQL任务</li>
+<li>46 DLCSpark任务</li>
+<li>50 DLC-PySpark任务</li>
+<li>47 TiOne任务</li>
+<li>48 Trino任务</li>
+<li>39 Spark任务</li>
+<li>92 MapReduce任务</li>
+<li>38 Shell表单模式任务</li>
+<li>130 BranchNode任务</li>
+<li>131 MergeNode任务</li>
+<li>132 Notebook任务</li>
+<li>133 SSH任务</li>
+<li>134 StarRocks任务</li>
+<li>137 For-each任务</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeId: int
         """
         self._TaskId = None
         self._TaskName = None
@@ -34648,6 +34653,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
         self._SubmitPreCheckDetailList = None
         self._ExecutorGroupId = None
         self._ExecutorGroupName = None
+        self._TaskTypeId = None
 
     @property
     def TaskId(self):
@@ -34745,6 +34751,46 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
     def ExecutorGroupName(self, ExecutorGroupName):
         self._ExecutorGroupName = ExecutorGroupName
 
+    @property
+    def TaskTypeId(self):
+        """<p>任务类型id，取值范围：</p>
+<ul>
+<li>26 离线集成任务</li>
+<li>30 Python任务</li>
+<li>31 PySpark任务</li>
+<li>34 HiveSQL任务</li>
+<li>35 Shell任务</li>
+<li>36 SparkSQL任务</li>
+<li>21 JdbcSQL任务</li>
+<li>23 TDSQL-PostgreSQL任务</li>
+<li>32 DLCSQL任务</li>
+<li>33 Impala任务</li>
+<li>41 Kettle任务</li>
+<li>42 Tchouse-X任务</li>
+<li>43 TCHouse-X SQL任务</li>
+<li>46 DLCSpark任务</li>
+<li>50 DLC-PySpark任务</li>
+<li>47 TiOne任务</li>
+<li>48 Trino任务</li>
+<li>39 Spark任务</li>
+<li>92 MapReduce任务</li>
+<li>38 Shell表单模式任务</li>
+<li>130 BranchNode任务</li>
+<li>131 MergeNode任务</li>
+<li>132 Notebook任务</li>
+<li>133 SSH任务</li>
+<li>134 StarRocks任务</li>
+<li>137 For-each任务</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -34760,6 +34806,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
                 self._SubmitPreCheckDetailList.append(obj)
         self._ExecutorGroupId = params.get("ExecutorGroupId")
         self._ExecutorGroupName = params.get("ExecutorGroupName")
+        self._TaskTypeId = params.get("TaskTypeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43281,137 +43328,6 @@ class DescribeTaskAlarmRegulationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeTaskByCycleReportRequest(AbstractModel):
-    """DescribeTaskByCycleReport请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProjectId: 项目id
-        :type ProjectId: str
-        :param _Type: 任务周期类型
-        :type Type: str
-        :param _StartTime: 开始时间
-        :type StartTime: str
-        :param _EndTime: 结束时间
-        :type EndTime: str
-        """
-        self._ProjectId = None
-        self._Type = None
-        self._StartTime = None
-        self._EndTime = None
-
-    @property
-    def ProjectId(self):
-        """项目id
-        :rtype: str
-        """
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def Type(self):
-        """任务周期类型
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def StartTime(self):
-        """开始时间
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        """结束时间
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-
-    def _deserialize(self, params):
-        self._ProjectId = params.get("ProjectId")
-        self._Type = params.get("Type")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeTaskByCycleReportResponse(AbstractModel):
-    """DescribeTaskByCycleReport返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: 任务周期增长趋势统计
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: list of TaskByStatus
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Data = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        """任务周期增长趋势统计
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of TaskByStatus
-        """
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = TaskByStatus()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeTaskByCycleRequest(AbstractModel):
     """DescribeTaskByCycle请求参数结构体
 
@@ -45467,6 +45383,182 @@ class DescribeTenantProjectsResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = ProjectPage()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTestRunningRecordRequest(AbstractModel):
+    """DescribeTestRunningRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _SearchWord: 搜索关键词
+        :type SearchWord: str
+        :param _SearchUserUin: 搜索用户UIN
+        :type SearchUserUin: str
+        :param _CreateTime: 试运行记录创建时间
+        :type CreateTime: str
+        :param _EndTime: 试运行记录最大创建结束时间
+        :type EndTime: str
+        :param _RecordIdList: 试运行记录id
+        :type RecordIdList: list of int
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._SearchWord = None
+        self._SearchUserUin = None
+        self._CreateTime = None
+        self._EndTime = None
+        self._RecordIdList = None
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SearchWord(self):
+        """搜索关键词
+        :rtype: str
+        """
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+    @property
+    def SearchUserUin(self):
+        """搜索用户UIN
+        :rtype: str
+        """
+        return self._SearchUserUin
+
+    @SearchUserUin.setter
+    def SearchUserUin(self, SearchUserUin):
+        self._SearchUserUin = SearchUserUin
+
+    @property
+    def CreateTime(self):
+        """试运行记录创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EndTime(self):
+        """试运行记录最大创建结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RecordIdList(self):
+        """试运行记录id
+        :rtype: list of int
+        """
+        return self._RecordIdList
+
+    @RecordIdList.setter
+    def RecordIdList(self, RecordIdList):
+        self._RecordIdList = RecordIdList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._SearchWord = params.get("SearchWord")
+        self._SearchUserUin = params.get("SearchUserUin")
+        self._CreateTime = params.get("CreateTime")
+        self._EndTime = params.get("EndTime")
+        self._RecordIdList = params.get("RecordIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTestRunningRecordResponse(AbstractModel):
+    """DescribeTestRunningRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 编排空间试运行任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of TestRunningRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """编排空间试运行任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TestRunningRecord
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TestRunningRecord()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -48101,376 +48193,6 @@ class DownloadLogByLineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DrInstanceOpsDto(AbstractModel):
-    """试运行记录
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskSource: 任务来源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskSource: str
-        :param _JobId: 编排空间jobId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type JobId: str
-        :param _RecordId: 任务提交记录Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordId: int
-        :param _SonRecordId: 子任务记录id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SonRecordId: int
-        :param _InstanceId: 任务实例Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceId: str
-        :param _TaskId: 编排空间为任务id, 开发空间为脚本id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskId: str
-        :param _RemotePath: 脚本cos地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RemotePath: str
-        :param _ScriptContent: 试运行内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScriptContent: str
-        :param _CreateTime: 任务提交时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: str
-        :param _StartTime: 任务启动时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartTime: str
-        :param _Duration: 运行时长(秒)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Duration: str
-        :param _Status: 试运行状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param _TaskName: 编排空间为任务名称，开发空间为脚本名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskName: str
-        :param _SubmitUserName: 试运行提交人
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubmitUserName: str
-        :param _SubmitUserId: 试运行提交人userId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubmitUserId: str
-        :param _TaskType: 任务类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskType: str
-        :param _HasResultSet: 是否含有结果集
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HasResultSet: bool
-        """
-        self._TaskSource = None
-        self._JobId = None
-        self._RecordId = None
-        self._SonRecordId = None
-        self._InstanceId = None
-        self._TaskId = None
-        self._RemotePath = None
-        self._ScriptContent = None
-        self._CreateTime = None
-        self._StartTime = None
-        self._Duration = None
-        self._Status = None
-        self._TaskName = None
-        self._SubmitUserName = None
-        self._SubmitUserId = None
-        self._TaskType = None
-        self._HasResultSet = None
-
-    @property
-    def TaskSource(self):
-        """任务来源
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._TaskSource
-
-    @TaskSource.setter
-    def TaskSource(self, TaskSource):
-        self._TaskSource = TaskSource
-
-    @property
-    def JobId(self):
-        """编排空间jobId
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._JobId
-
-    @JobId.setter
-    def JobId(self, JobId):
-        self._JobId = JobId
-
-    @property
-    def RecordId(self):
-        """任务提交记录Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._RecordId
-
-    @RecordId.setter
-    def RecordId(self, RecordId):
-        self._RecordId = RecordId
-
-    @property
-    def SonRecordId(self):
-        """子任务记录id
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._SonRecordId
-
-    @SonRecordId.setter
-    def SonRecordId(self, SonRecordId):
-        self._SonRecordId = SonRecordId
-
-    @property
-    def InstanceId(self):
-        """任务实例Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def TaskId(self):
-        """编排空间为任务id, 开发空间为脚本id
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def RemotePath(self):
-        """脚本cos地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._RemotePath
-
-    @RemotePath.setter
-    def RemotePath(self, RemotePath):
-        self._RemotePath = RemotePath
-
-    @property
-    def ScriptContent(self):
-        """试运行内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._ScriptContent
-
-    @ScriptContent.setter
-    def ScriptContent(self, ScriptContent):
-        self._ScriptContent = ScriptContent
-
-    @property
-    def CreateTime(self):
-        """任务提交时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
-    def StartTime(self):
-        """任务启动时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def Duration(self):
-        """运行时长(秒)
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Duration
-
-    @Duration.setter
-    def Duration(self, Duration):
-        self._Duration = Duration
-
-    @property
-    def Status(self):
-        """试运行状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def TaskName(self):
-        """编排空间为任务名称，开发空间为脚本名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._TaskName
-
-    @TaskName.setter
-    def TaskName(self, TaskName):
-        self._TaskName = TaskName
-
-    @property
-    def SubmitUserName(self):
-        """试运行提交人
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._SubmitUserName
-
-    @SubmitUserName.setter
-    def SubmitUserName(self, SubmitUserName):
-        self._SubmitUserName = SubmitUserName
-
-    @property
-    def SubmitUserId(self):
-        """试运行提交人userId
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._SubmitUserId
-
-    @SubmitUserId.setter
-    def SubmitUserId(self, SubmitUserId):
-        self._SubmitUserId = SubmitUserId
-
-    @property
-    def TaskType(self):
-        """任务类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._TaskType
-
-    @TaskType.setter
-    def TaskType(self, TaskType):
-        self._TaskType = TaskType
-
-    @property
-    def HasResultSet(self):
-        """是否含有结果集
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._HasResultSet
-
-    @HasResultSet.setter
-    def HasResultSet(self, HasResultSet):
-        self._HasResultSet = HasResultSet
-
-
-    def _deserialize(self, params):
-        self._TaskSource = params.get("TaskSource")
-        self._JobId = params.get("JobId")
-        self._RecordId = params.get("RecordId")
-        self._SonRecordId = params.get("SonRecordId")
-        self._InstanceId = params.get("InstanceId")
-        self._TaskId = params.get("TaskId")
-        self._RemotePath = params.get("RemotePath")
-        self._ScriptContent = params.get("ScriptContent")
-        self._CreateTime = params.get("CreateTime")
-        self._StartTime = params.get("StartTime")
-        self._Duration = params.get("Duration")
-        self._Status = params.get("Status")
-        self._TaskName = params.get("TaskName")
-        self._SubmitUserName = params.get("SubmitUserName")
-        self._SubmitUserId = params.get("SubmitUserId")
-        self._TaskType = params.get("TaskType")
-        self._HasResultSet = params.get("HasResultSet")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DrInstanceOpsDtoPage(AbstractModel):
-    """试运行记录
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: 记录总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param _Items: 记录列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Items: list of DrInstanceOpsDto
-        """
-        self._TotalCount = None
-        self._Items = None
-
-    @property
-    def TotalCount(self):
-        """记录总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def Items(self):
-        """记录列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of DrInstanceOpsDto
-        """
-        return self._Items
-
-    @Items.setter
-    def Items(self, Items):
-        self._Items = Items
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("Items") is not None:
-            self._Items = []
-            for item in params.get("Items"):
-                obj = DrInstanceOpsDto()
-                obj._deserialize(item)
-                self._Items.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class DryRunDIOfflineTaskRequest(AbstractModel):
     """DryRunDIOfflineTask请求参数结构体
 
@@ -49265,6 +48987,21 @@ class EngineTaskInfo(AbstractModel):
         :param _CmdArgs: 入参
 注意：此字段可能返回 null，表示取不到有效值。
         :type CmdArgs: str
+        :param _VCoreSeconds: 使用虚拟核心秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VCoreSeconds: int
+        :param _MemorySeconds: 使用的内存秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemorySeconds: int
+        :param _EmrUserName: EMR用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmrUserName: str
+        :param _QueryId: 任务的查询ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryId: str
+        :param _ApplicationId: 应用程序ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
         """
         self._EngineSubmitTime = None
         self._EngineExeTime = None
@@ -49286,6 +49023,11 @@ class EngineTaskInfo(AbstractModel):
         self._WaitTime = None
         self._QueryResultTime = None
         self._CmdArgs = None
+        self._VCoreSeconds = None
+        self._MemorySeconds = None
+        self._EmrUserName = None
+        self._QueryId = None
+        self._ApplicationId = None
 
     @property
     def EngineSubmitTime(self):
@@ -49532,6 +49274,66 @@ class EngineTaskInfo(AbstractModel):
     def CmdArgs(self, CmdArgs):
         self._CmdArgs = CmdArgs
 
+    @property
+    def VCoreSeconds(self):
+        """使用虚拟核心秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._VCoreSeconds
+
+    @VCoreSeconds.setter
+    def VCoreSeconds(self, VCoreSeconds):
+        self._VCoreSeconds = VCoreSeconds
+
+    @property
+    def MemorySeconds(self):
+        """使用的内存秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MemorySeconds
+
+    @MemorySeconds.setter
+    def MemorySeconds(self, MemorySeconds):
+        self._MemorySeconds = MemorySeconds
+
+    @property
+    def EmrUserName(self):
+        """EMR用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EmrUserName
+
+    @EmrUserName.setter
+    def EmrUserName(self, EmrUserName):
+        self._EmrUserName = EmrUserName
+
+    @property
+    def QueryId(self):
+        """任务的查询ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueryId
+
+    @QueryId.setter
+    def QueryId(self, QueryId):
+        self._QueryId = QueryId
+
+    @property
+    def ApplicationId(self):
+        """应用程序ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
 
     def _deserialize(self, params):
         self._EngineSubmitTime = params.get("EngineSubmitTime")
@@ -49554,6 +49356,11 @@ class EngineTaskInfo(AbstractModel):
         self._WaitTime = params.get("WaitTime")
         self._QueryResultTime = params.get("QueryResultTime")
         self._CmdArgs = params.get("CmdArgs")
+        self._VCoreSeconds = params.get("VCoreSeconds")
+        self._MemorySeconds = params.get("MemorySeconds")
+        self._EmrUserName = params.get("EmrUserName")
+        self._QueryId = params.get("QueryId")
+        self._ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -77233,6 +77040,9 @@ class Project(AbstractModel):
         :param _Owner: 项目负责人
 注意：此字段可能返回 null，表示取不到有效值。
         :type Owner: :class:`tencentcloud.wedata.v20210820.models.BaseUser`
+        :param _WorkspaceExt: 项目扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspaceExt: list of WorkspaceExt
         """
         self._TenantId = None
         self._ProjectId = None
@@ -77250,6 +77060,7 @@ class Project(AbstractModel):
         self._Model = None
         self._SecondModuleList = None
         self._Owner = None
+        self._WorkspaceExt = None
 
     @property
     def TenantId(self):
@@ -77442,6 +77253,18 @@ class Project(AbstractModel):
     def Owner(self, Owner):
         self._Owner = Owner
 
+    @property
+    def WorkspaceExt(self):
+        """项目扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WorkspaceExt
+        """
+        return self._WorkspaceExt
+
+    @WorkspaceExt.setter
+    def WorkspaceExt(self, WorkspaceExt):
+        self._WorkspaceExt = WorkspaceExt
+
 
     def _deserialize(self, params):
         self._TenantId = params.get("TenantId")
@@ -77476,6 +77299,12 @@ class Project(AbstractModel):
         if params.get("Owner") is not None:
             self._Owner = BaseUser()
             self._Owner._deserialize(params.get("Owner"))
+        if params.get("WorkspaceExt") is not None:
+            self._WorkspaceExt = []
+            for item in params.get("WorkspaceExt"):
+                obj = WorkspaceExt()
+                obj._deserialize(item)
+                self._WorkspaceExt.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -80265,6 +80094,10 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         :type ScheduleTimeZone: str
         :param _ClearLink: 是否自动清理不支持的任务链接
         :type ClearLink: bool
+        :param _MainCyclicConfig: ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度
+        :type MainCyclicConfig: str
+        :param _SubordinateCyclicConfig: ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围
+        :type SubordinateCyclicConfig: str
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -80287,6 +80120,8 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         self._CalendarId = None
         self._ScheduleTimeZone = None
         self._ClearLink = None
+        self._MainCyclicConfig = None
+        self._SubordinateCyclicConfig = None
 
     @property
     def ProjectId(self):
@@ -80520,6 +80355,28 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
     def ClearLink(self, ClearLink):
         self._ClearLink = ClearLink
 
+    @property
+    def MainCyclicConfig(self):
+        """ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度
+        :rtype: str
+        """
+        return self._MainCyclicConfig
+
+    @MainCyclicConfig.setter
+    def MainCyclicConfig(self, MainCyclicConfig):
+        self._MainCyclicConfig = MainCyclicConfig
+
+    @property
+    def SubordinateCyclicConfig(self):
+        """ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围
+        :rtype: str
+        """
+        return self._SubordinateCyclicConfig
+
+    @SubordinateCyclicConfig.setter
+    def SubordinateCyclicConfig(self, SubordinateCyclicConfig):
+        self._SubordinateCyclicConfig = SubordinateCyclicConfig
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -80543,6 +80400,8 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         self._CalendarId = params.get("CalendarId")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._ClearLink = params.get("ClearLink")
+        self._MainCyclicConfig = params.get("MainCyclicConfig")
+        self._SubordinateCyclicConfig = params.get("SubordinateCyclicConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -88040,15 +87899,15 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Instances: 实例列表
+        :param _Instances: 必填，实例列表，每项必填TaskId ，CurRunDate
         :type Instances: list of InstanceOpsDto
-        :param _CheckFather: 检查父任务类型, true: 检查父任务; false: 不检查父任务 
+        :param _CheckFather: 必填，检查父任务类型, true: 检查父任务; false: 不检查父任务 
         :type CheckFather: bool
-        :param _RerunType: 重跑类型, 1: 自身; 3: 孩子; 2: 自身以及孩子 
+        :param _RerunType: 必填，重跑类型, 1: 自身; 3: 孩子; 2: 自身以及孩子 
         :type RerunType: str
         :param _DependentWay: 实例依赖方式, 1: 自依赖; 2: 任务依赖; 3: 自依赖及父子依赖 
         :type DependentWay: str
-        :param _SkipEventListening: 重跑忽略事件监听与否 
+        :param _SkipEventListening: 必填，重跑忽略事件监听与否 
         :type SkipEventListening: bool
         :param _SonInstanceType: 下游实例范围 1: 所在工作流 2: 所在项目 3: 所有跨工作流依赖的项目
         :type SonInstanceType: str
@@ -88060,7 +87919,7 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
         :type OperatorName: str
         :param _OperatorId: 操作者id
         :type OperatorId: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: 必填，项目id
         :type ProjectId: str
         :param _ProjectIdent: 项目标志
         :type ProjectIdent: str
@@ -88076,7 +87935,7 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
         :type RequestBaseInfo: :class:`tencentcloud.wedata.v20210820.models.ProjectBaseInfoOpsRequest`
         :param _IsCount: 是否计算总数
         :type IsCount: bool
-        :param _AsyncMode: 是否异步模式
+        :param _AsyncMode: 必填，是否异步模式
         :type AsyncMode: bool
         :param _CheckParentType: 是否检查上游任务： ALL（全部）、 MAKE_SCOPE（选中）、NONE （全部不检查）
         :type CheckParentType: str
@@ -88092,6 +87951,10 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
         :type DataTimeOrder: int
         :param _ReDoParams: 重跑参数
         :type ReDoParams: str
+        :param _MapParamList: 重跑实例自定义参数
+        :type MapParamList: list of StrToStrMap
+        :param _AppParam: 引擎应用执行参数
+        :type AppParam: str
         """
         self._Instances = None
         self._CheckFather = None
@@ -88119,10 +87982,12 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
         self._SelfWorkflowDependency = None
         self._DataTimeOrder = None
         self._ReDoParams = None
+        self._MapParamList = None
+        self._AppParam = None
 
     @property
     def Instances(self):
-        """实例列表
+        """必填，实例列表，每项必填TaskId ，CurRunDate
         :rtype: list of InstanceOpsDto
         """
         return self._Instances
@@ -88133,7 +87998,7 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
 
     @property
     def CheckFather(self):
-        """检查父任务类型, true: 检查父任务; false: 不检查父任务 
+        """必填，检查父任务类型, true: 检查父任务; false: 不检查父任务 
         :rtype: bool
         """
         return self._CheckFather
@@ -88144,7 +88009,7 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
 
     @property
     def RerunType(self):
-        """重跑类型, 1: 自身; 3: 孩子; 2: 自身以及孩子 
+        """必填，重跑类型, 1: 自身; 3: 孩子; 2: 自身以及孩子 
         :rtype: str
         """
         return self._RerunType
@@ -88166,7 +88031,7 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
 
     @property
     def SkipEventListening(self):
-        """重跑忽略事件监听与否 
+        """必填，重跑忽略事件监听与否 
         :rtype: bool
         """
         return self._SkipEventListening
@@ -88232,7 +88097,7 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """项目id
+        """必填，项目id
         :rtype: str
         """
         return self._ProjectId
@@ -88320,7 +88185,7 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
 
     @property
     def AsyncMode(self):
-        """是否异步模式
+        """必填，是否异步模式
         :rtype: bool
         """
         return self._AsyncMode
@@ -88406,6 +88271,28 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
     def ReDoParams(self, ReDoParams):
         self._ReDoParams = ReDoParams
 
+    @property
+    def MapParamList(self):
+        """重跑实例自定义参数
+        :rtype: list of StrToStrMap
+        """
+        return self._MapParamList
+
+    @MapParamList.setter
+    def MapParamList(self, MapParamList):
+        self._MapParamList = MapParamList
+
+    @property
+    def AppParam(self):
+        """引擎应用执行参数
+        :rtype: str
+        """
+        return self._AppParam
+
+    @AppParam.setter
+    def AppParam(self, AppParam):
+        self._AppParam = AppParam
+
 
     def _deserialize(self, params):
         if params.get("Instances") is not None:
@@ -88443,6 +88330,13 @@ class RunRerunScheduleInstancesRequest(AbstractModel):
         self._SelfWorkflowDependency = params.get("SelfWorkflowDependency")
         self._DataTimeOrder = params.get("DataTimeOrder")
         self._ReDoParams = params.get("ReDoParams")
+        if params.get("MapParamList") is not None:
+            self._MapParamList = []
+            for item in params.get("MapParamList"):
+                obj = StrToStrMap()
+                obj._deserialize(item)
+                self._MapParamList.append(obj)
+        self._AppParam = params.get("AppParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -97931,6 +97825,12 @@ class TaskAlarmInfo(AbstractModel):
         :param _ReportTarget:  0- wedata, 1-inlong
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTarget: int
+        :param _AlarmReceiverGroups: 告警接收组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmReceiverGroups: list of AlarmReceiverGroup
+        :param _AlarmReceiverGroupFlag: 告警接收组标记，0代表历史版本，1代表新版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmReceiverGroupFlag: int
         """
         self._TaskId = None
         self._RegularName = None
@@ -97968,6 +97868,8 @@ class TaskAlarmInfo(AbstractModel):
         self._BusinessType = None
         self._AlarmMessageRule = None
         self._ReportTarget = None
+        self._AlarmReceiverGroups = None
+        self._AlarmReceiverGroupFlag = None
 
     @property
     def TaskId(self):
@@ -98393,6 +98295,30 @@ class TaskAlarmInfo(AbstractModel):
     def ReportTarget(self, ReportTarget):
         self._ReportTarget = ReportTarget
 
+    @property
+    def AlarmReceiverGroups(self):
+        """告警接收组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmReceiverGroup
+        """
+        return self._AlarmReceiverGroups
+
+    @AlarmReceiverGroups.setter
+    def AlarmReceiverGroups(self, AlarmReceiverGroups):
+        self._AlarmReceiverGroups = AlarmReceiverGroups
+
+    @property
+    def AlarmReceiverGroupFlag(self):
+        """告警接收组标记，0代表历史版本，1代表新版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AlarmReceiverGroupFlag
+
+    @AlarmReceiverGroupFlag.setter
+    def AlarmReceiverGroupFlag(self, AlarmReceiverGroupFlag):
+        self._AlarmReceiverGroupFlag = AlarmReceiverGroupFlag
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -98441,6 +98367,13 @@ class TaskAlarmInfo(AbstractModel):
         self._BusinessType = params.get("BusinessType")
         self._AlarmMessageRule = params.get("AlarmMessageRule")
         self._ReportTarget = params.get("ReportTarget")
+        if params.get("AlarmReceiverGroups") is not None:
+            self._AlarmReceiverGroups = []
+            for item in params.get("AlarmReceiverGroups"):
+                obj = AlarmReceiverGroup()
+                obj._deserialize(item)
+                self._AlarmReceiverGroups.append(obj)
+        self._AlarmReceiverGroupFlag = params.get("AlarmReceiverGroupFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -99406,7 +99339,15 @@ class TaskDsDTO(AbstractModel):
         :param _LastUpdate: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdate: str
-        :param _Status: 任务状态
+        :param _Status: <p>任务状态，取值范围：</p>
+<ul>
+<li>N 新建</li>
+<li>Y 运行</li>
+<li>F 停止</li>
+<li>O 冻结</li>
+<li>T 停止中</li>
+<li>INVALID 已失效</li>
+</ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _InCharge: 责任人
@@ -99559,7 +99500,15 @@ class TaskDsDTO(AbstractModel):
         :param _DependencyConfigList: 依赖配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyConfigList: list of DependencyConfigDsDTO
-        :param _VirtualTaskStatus: 虚拟任务状态
+        :param _VirtualTaskStatus: <p>任务状态，取值范围：</p>
+<ul>
+<li>N 新建</li>
+<li>Y 运行</li>
+<li>F 停止</li>
+<li>O 冻结</li>
+<li>T 停止中</li>
+<li>INVALID 已失效</li>
+</ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualTaskStatus: str
         :param _RecycleTips: 回收站还原提示语
@@ -99680,6 +99629,13 @@ class TaskDsDTO(AbstractModel):
         :param _AllowRedoType: 允许重跑类 ALL 无论实例成功或者失败，都允许重跑 FAILURE 只有失败的实例允许重跑，成功的实例不允许重跑 NONE 无论成功或者失败，都不允许重跑
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowRedoType: str
+        :param _BundleId: BundleId
+CI/CD工程生成的bundle唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BundleId: str
+        :param _BundleName: Bundle名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BundleName: str
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -99782,6 +99738,8 @@ class TaskDsDTO(AbstractModel):
         self._ScheduleTimeZone = None
         self._TemplateId = None
         self._AllowRedoType = None
+        self._BundleId = None
+        self._BundleName = None
 
     @property
     def TaskId(self):
@@ -99917,7 +99875,15 @@ class TaskDsDTO(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态
+        """<p>任务状态，取值范围：</p>
+<ul>
+<li>N 新建</li>
+<li>Y 运行</li>
+<li>F 停止</li>
+<li>O 冻结</li>
+<li>T 停止中</li>
+<li>INVALID 已失效</li>
+</ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -100520,7 +100486,15 @@ class TaskDsDTO(AbstractModel):
 
     @property
     def VirtualTaskStatus(self):
-        """虚拟任务状态
+        """<p>任务状态，取值范围：</p>
+<ul>
+<li>N 新建</li>
+<li>Y 运行</li>
+<li>F 停止</li>
+<li>O 冻结</li>
+<li>T 停止中</li>
+<li>INVALID 已失效</li>
+</ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -100999,6 +100973,31 @@ class TaskDsDTO(AbstractModel):
     def AllowRedoType(self, AllowRedoType):
         self._AllowRedoType = AllowRedoType
 
+    @property
+    def BundleId(self):
+        """BundleId
+CI/CD工程生成的bundle唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleName(self):
+        """Bundle名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BundleName
+
+    @BundleName.setter
+    def BundleName(self, BundleName):
+        self._BundleName = BundleName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -101151,6 +101150,8 @@ class TaskDsDTO(AbstractModel):
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._TemplateId = params.get("TemplateId")
         self._AllowRedoType = params.get("AllowRedoType")
+        self._BundleId = params.get("BundleId")
+        self._BundleName = params.get("BundleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -107148,6 +107149,614 @@ class TaskVersionInstance(AbstractModel):
         
 
 
+class TestRunningRecord(AbstractModel):
+    """编排空间试运行记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _RecordId: 试运行记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: int
+        :param _JobId: 开发侧提交的jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: int
+        :param _ExecutionJobId: 执行平台jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionJobId: str
+        :param _RecordName: 试运行记录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordName: str
+        :param _ScriptContent: 脚本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptContent: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _TimeCost: 耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeCost: int
+        :param _UserUin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserUin: str
+        :param _OwnerUin: 主账户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _SubRecordList: 子记录信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubRecordList: list of TestRunningSubRecord
+        :param _Region: 结果或日志地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _BucketName: 结果或日志桶名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketName: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._UpdateTime = None
+        self._RecordId = None
+        self._JobId = None
+        self._ExecutionJobId = None
+        self._RecordName = None
+        self._ScriptContent = None
+        self._Status = None
+        self._TimeCost = None
+        self._UserUin = None
+        self._OwnerUin = None
+        self._SubRecordList = None
+        self._Region = None
+        self._BucketName = None
+
+    @property
+    def StartTime(self):
+        """开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RecordId(self):
+        """试运行记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def JobId(self):
+        """开发侧提交的jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def ExecutionJobId(self):
+        """执行平台jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionJobId
+
+    @ExecutionJobId.setter
+    def ExecutionJobId(self, ExecutionJobId):
+        self._ExecutionJobId = ExecutionJobId
+
+    @property
+    def RecordName(self):
+        """试运行记录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RecordName
+
+    @RecordName.setter
+    def RecordName(self, RecordName):
+        self._RecordName = RecordName
+
+    @property
+    def ScriptContent(self):
+        """脚本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScriptContent
+
+    @ScriptContent.setter
+    def ScriptContent(self, ScriptContent):
+        self._ScriptContent = ScriptContent
+
+    @property
+    def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TimeCost(self):
+        """耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TimeCost
+
+    @TimeCost.setter
+    def TimeCost(self, TimeCost):
+        self._TimeCost = TimeCost
+
+    @property
+    def UserUin(self):
+        """用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserUin
+
+    @UserUin.setter
+    def UserUin(self, UserUin):
+        self._UserUin = UserUin
+
+    @property
+    def OwnerUin(self):
+        """主账户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def SubRecordList(self):
+        """子记录信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TestRunningSubRecord
+        """
+        return self._SubRecordList
+
+    @SubRecordList.setter
+    def SubRecordList(self, SubRecordList):
+        self._SubRecordList = SubRecordList
+
+    @property
+    def Region(self):
+        """结果或日志地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BucketName(self):
+        """结果或日志桶名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._RecordId = params.get("RecordId")
+        self._JobId = params.get("JobId")
+        self._ExecutionJobId = params.get("ExecutionJobId")
+        self._RecordName = params.get("RecordName")
+        self._ScriptContent = params.get("ScriptContent")
+        self._Status = params.get("Status")
+        self._TimeCost = params.get("TimeCost")
+        self._UserUin = params.get("UserUin")
+        self._OwnerUin = params.get("OwnerUin")
+        if params.get("SubRecordList") is not None:
+            self._SubRecordList = []
+            for item in params.get("SubRecordList"):
+                obj = TestRunningSubRecord()
+                obj._deserialize(item)
+                self._SubRecordList.append(obj)
+        self._Region = params.get("Region")
+        self._BucketName = params.get("BucketName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TestRunningSubRecord(AbstractModel):
+    """试运行子记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _ExecutionJobId: 执行平台执行id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionJobId: str
+        :param _ExecutionSubJobId: 执行平台子执行jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionSubJobId: str
+        :param _JobId: 开发侧提交的jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: str
+        :param _DetailId: 子记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetailId: int
+        :param _RecordId: 试运行记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: int
+        :param _ScriptContent: 脚本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptContent: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _TimeCost: 耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeCost: int
+        :param _ResultTotalCount: 结果总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultTotalCount: int
+        :param _ResultPreviewCount: 预览结果行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultPreviewCount: int
+        :param _ResultFilePath: 结果文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultFilePath: str
+        :param _ResultPreviewFilePath: 预览结果文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultPreviewFilePath: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Sequence: 序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sequence: str
+        :param _LogFilePath: 日志路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogFilePath: str
+        :param _HasSubResultSet: 是否包含子结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasSubResultSet: bool
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ExecutionJobId = None
+        self._ExecutionSubJobId = None
+        self._JobId = None
+        self._DetailId = None
+        self._RecordId = None
+        self._ScriptContent = None
+        self._Status = None
+        self._TimeCost = None
+        self._ResultTotalCount = None
+        self._ResultPreviewCount = None
+        self._ResultFilePath = None
+        self._ResultPreviewFilePath = None
+        self._UpdateTime = None
+        self._Sequence = None
+        self._LogFilePath = None
+        self._HasSubResultSet = None
+
+    @property
+    def StartTime(self):
+        """开发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ExecutionJobId(self):
+        """执行平台执行id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionJobId
+
+    @ExecutionJobId.setter
+    def ExecutionJobId(self, ExecutionJobId):
+        self._ExecutionJobId = ExecutionJobId
+
+    @property
+    def ExecutionSubJobId(self):
+        """执行平台子执行jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionSubJobId
+
+    @ExecutionSubJobId.setter
+    def ExecutionSubJobId(self, ExecutionSubJobId):
+        self._ExecutionSubJobId = ExecutionSubJobId
+
+    @property
+    def JobId(self):
+        """开发侧提交的jobid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def DetailId(self):
+        """子记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DetailId
+
+    @DetailId.setter
+    def DetailId(self, DetailId):
+        self._DetailId = DetailId
+
+    @property
+    def RecordId(self):
+        """试运行记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def ScriptContent(self):
+        """脚本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScriptContent
+
+    @ScriptContent.setter
+    def ScriptContent(self, ScriptContent):
+        self._ScriptContent = ScriptContent
+
+    @property
+    def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TimeCost(self):
+        """耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TimeCost
+
+    @TimeCost.setter
+    def TimeCost(self, TimeCost):
+        self._TimeCost = TimeCost
+
+    @property
+    def ResultTotalCount(self):
+        """结果总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResultTotalCount
+
+    @ResultTotalCount.setter
+    def ResultTotalCount(self, ResultTotalCount):
+        self._ResultTotalCount = ResultTotalCount
+
+    @property
+    def ResultPreviewCount(self):
+        """预览结果行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResultPreviewCount
+
+    @ResultPreviewCount.setter
+    def ResultPreviewCount(self, ResultPreviewCount):
+        self._ResultPreviewCount = ResultPreviewCount
+
+    @property
+    def ResultFilePath(self):
+        """结果文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResultFilePath
+
+    @ResultFilePath.setter
+    def ResultFilePath(self, ResultFilePath):
+        self._ResultFilePath = ResultFilePath
+
+    @property
+    def ResultPreviewFilePath(self):
+        """预览结果文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResultPreviewFilePath
+
+    @ResultPreviewFilePath.setter
+    def ResultPreviewFilePath(self, ResultPreviewFilePath):
+        self._ResultPreviewFilePath = ResultPreviewFilePath
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Sequence(self):
+        """序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sequence
+
+    @Sequence.setter
+    def Sequence(self, Sequence):
+        self._Sequence = Sequence
+
+    @property
+    def LogFilePath(self):
+        """日志路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogFilePath
+
+    @LogFilePath.setter
+    def LogFilePath(self, LogFilePath):
+        self._LogFilePath = LogFilePath
+
+    @property
+    def HasSubResultSet(self):
+        """是否包含子结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasSubResultSet
+
+    @HasSubResultSet.setter
+    def HasSubResultSet(self, HasSubResultSet):
+        self._HasSubResultSet = HasSubResultSet
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ExecutionJobId = params.get("ExecutionJobId")
+        self._ExecutionSubJobId = params.get("ExecutionSubJobId")
+        self._JobId = params.get("JobId")
+        self._DetailId = params.get("DetailId")
+        self._RecordId = params.get("RecordId")
+        self._ScriptContent = params.get("ScriptContent")
+        self._Status = params.get("Status")
+        self._TimeCost = params.get("TimeCost")
+        self._ResultTotalCount = params.get("ResultTotalCount")
+        self._ResultPreviewCount = params.get("ResultPreviewCount")
+        self._ResultFilePath = params.get("ResultFilePath")
+        self._ResultPreviewFilePath = params.get("ResultPreviewFilePath")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Sequence = params.get("Sequence")
+        self._LogFilePath = params.get("LogFilePath")
+        self._HasSubResultSet = params.get("HasSubResultSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ThresholdValue(AbstractModel):
     """数据质量阈值
 
@@ -109270,7 +109879,7 @@ class UploadResourceRequest(AbstractModel):
 
 
 class UploadResourceRequestInfo(AbstractModel):
-    """资管管理-上传资源请求
+    """资源管理-上传资源请求
 
     """
 
@@ -109292,6 +109901,8 @@ class UploadResourceRequestInfo(AbstractModel):
         :type FileSizeList: list of str
         :param _FileMd5: File Md5（适配私有化，公有云可以不传）
         :type FileMd5: str
+        :param _RemotePath: 资源在对象存储上的实际路径
+        :type RemotePath: str
         """
         self._ProjectId = None
         self._FilePath = None
@@ -109301,6 +109912,7 @@ class UploadResourceRequestInfo(AbstractModel):
         self._FileList = None
         self._FileSizeList = None
         self._FileMd5 = None
+        self._RemotePath = None
 
     @property
     def ProjectId(self):
@@ -109390,6 +110002,17 @@ class UploadResourceRequestInfo(AbstractModel):
     def FileMd5(self, FileMd5):
         self._FileMd5 = FileMd5
 
+    @property
+    def RemotePath(self):
+        """资源在对象存储上的实际路径
+        :rtype: str
+        """
+        return self._RemotePath
+
+    @RemotePath.setter
+    def RemotePath(self, RemotePath):
+        self._RemotePath = RemotePath
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -109400,6 +110023,7 @@ class UploadResourceRequestInfo(AbstractModel):
         self._FileList = params.get("FileList")
         self._FileSizeList = params.get("FileSizeList")
         self._FileMd5 = params.get("FileMd5")
+        self._RemotePath = params.get("RemotePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -112549,6 +113173,78 @@ class WorkflowTaskCountOpsDto(AbstractModel):
                 obj = PairDto()
                 obj._deserialize(item)
                 self._CycleCount.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkspaceExt(AbstractModel):
+    """项目扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 2670965482618679296
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _Key: metrics
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: json
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._ProjectId = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def ProjectId(self):
+        """2670965482618679296
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Key(self):
+        """metrics
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """json
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -20639,7 +20639,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
 注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
         :type Risks: list of OutputRisk
-        :param _Role: 合同审查中的角色信息。注意：注意：如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。
+        :param _Role: 合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         :param _Status: 合同审查任务状态。
@@ -20660,6 +20660,10 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
         :type UserData: str
+        :param _HighRiskCount: 合同审查出的高风险项数量
+        :type HighRiskCount: int
+        :param _TotalRiskCount: 合同审查出的风险总数
+        :type TotalRiskCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -20674,6 +20678,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._TaskId = None
         self._Comment = None
         self._UserData = None
+        self._HighRiskCount = None
+        self._TotalRiskCount = None
         self._RequestId = None
 
     @property
@@ -20753,7 +20759,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     @property
     def Role(self):
-        """合同审查中的角色信息。注意：注意：如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。
+        """合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         """
@@ -20818,6 +20824,28 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._UserData = UserData
 
     @property
+    def HighRiskCount(self):
+        """合同审查出的高风险项数量
+        :rtype: int
+        """
+        return self._HighRiskCount
+
+    @HighRiskCount.setter
+    def HighRiskCount(self, HighRiskCount):
+        self._HighRiskCount = HighRiskCount
+
+    @property
+    def TotalRiskCount(self):
+        """合同审查出的风险总数
+        :rtype: int
+        """
+        return self._TotalRiskCount
+
+    @TotalRiskCount.setter
+    def TotalRiskCount(self, TotalRiskCount):
+        self._TotalRiskCount = TotalRiskCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -20848,6 +20876,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._Comment = params.get("Comment")
         self._UserData = params.get("UserData")
+        self._HighRiskCount = params.get("HighRiskCount")
+        self._TotalRiskCount = params.get("TotalRiskCount")
         self._RequestId = params.get("RequestId")
 
 

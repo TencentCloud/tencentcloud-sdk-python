@@ -276,6 +276,10 @@ class ApmApplicationConfigView(AbstractModel):
         :type InstrumentList: list of Instrument
         :param _TraceSquash: 链路压缩开关（已废弃）
         :type TraceSquash: bool
+        :param _DisableMemoryUsed: 探针熔断内存阈值
+        :type DisableMemoryUsed: int
+        :param _DisableCpuUsed: 探针熔断CPU阈值
+        :type DisableCpuUsed: int
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -296,6 +300,8 @@ class ApmApplicationConfigView(AbstractModel):
         self._AgentEnable = None
         self._InstrumentList = None
         self._TraceSquash = None
+        self._DisableMemoryUsed = None
+        self._DisableCpuUsed = None
 
     @property
     def InstanceKey(self):
@@ -506,6 +512,28 @@ class ApmApplicationConfigView(AbstractModel):
     def TraceSquash(self, TraceSquash):
         self._TraceSquash = TraceSquash
 
+    @property
+    def DisableMemoryUsed(self):
+        """探针熔断内存阈值
+        :rtype: int
+        """
+        return self._DisableMemoryUsed
+
+    @DisableMemoryUsed.setter
+    def DisableMemoryUsed(self, DisableMemoryUsed):
+        self._DisableMemoryUsed = DisableMemoryUsed
+
+    @property
+    def DisableCpuUsed(self):
+        """探针熔断CPU阈值
+        :rtype: int
+        """
+        return self._DisableCpuUsed
+
+    @DisableCpuUsed.setter
+    def DisableCpuUsed(self, DisableCpuUsed):
+        self._DisableCpuUsed = DisableCpuUsed
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -532,6 +560,8 @@ class ApmApplicationConfigView(AbstractModel):
                 obj._deserialize(item)
                 self._InstrumentList.append(obj)
         self._TraceSquash = params.get("TraceSquash")
+        self._DisableMemoryUsed = params.get("DisableMemoryUsed")
+        self._DisableCpuUsed = params.get("DisableCpuUsed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

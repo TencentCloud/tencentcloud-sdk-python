@@ -1522,6 +1522,10 @@ mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或�
 mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。
 其他业务暂没有可选参数。
         :type ExtraAttr: list of KeyValuePairOption
+        :param _ConsumerVpcId: vpc id
+        :type ConsumerVpcId: str
+        :param _ConsumerSubnetId: subnet id
+        :type ConsumerSubnetId: str
         """
         self._SubscribeId = None
         self._SubscribeMode = None
@@ -1532,6 +1536,8 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
         self._Protocol = None
         self._PipelineInfo = None
         self._ExtraAttr = None
+        self._ConsumerVpcId = None
+        self._ConsumerSubnetId = None
 
     @property
     def SubscribeId(self):
@@ -1635,6 +1641,28 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
     def ExtraAttr(self, ExtraAttr):
         self._ExtraAttr = ExtraAttr
 
+    @property
+    def ConsumerVpcId(self):
+        """vpc id
+        :rtype: str
+        """
+        return self._ConsumerVpcId
+
+    @ConsumerVpcId.setter
+    def ConsumerVpcId(self, ConsumerVpcId):
+        self._ConsumerVpcId = ConsumerVpcId
+
+    @property
+    def ConsumerSubnetId(self):
+        """subnet id
+        :rtype: str
+        """
+        return self._ConsumerSubnetId
+
+    @ConsumerSubnetId.setter
+    def ConsumerSubnetId(self, ConsumerSubnetId):
+        self._ConsumerSubnetId = ConsumerSubnetId
+
 
     def _deserialize(self, params):
         self._SubscribeId = params.get("SubscribeId")
@@ -1668,6 +1696,8 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
                 self._ExtraAttr.append(obj)
+        self._ConsumerVpcId = params.get("ConsumerVpcId")
+        self._ConsumerSubnetId = params.get("ConsumerSubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2987,6 +3017,8 @@ class CreateSubscribeRequest(AbstractModel):
         :type Tags: list of TagItem
         :param _Name: 任务名，自定义
         :type Name: str
+        :param _InstanceClass: 订阅实例规格，当前仅支持small、medium、large
+        :type InstanceClass: str
         """
         self._Product = None
         self._PayType = None
@@ -2995,6 +3027,7 @@ class CreateSubscribeRequest(AbstractModel):
         self._Count = None
         self._Tags = None
         self._Name = None
+        self._InstanceClass = None
 
     @property
     def Product(self):
@@ -3073,6 +3106,17 @@ class CreateSubscribeRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def InstanceClass(self):
+        """订阅实例规格，当前仅支持small、medium、large
+        :rtype: str
+        """
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
 
     def _deserialize(self, params):
         self._Product = params.get("Product")
@@ -3087,6 +3131,7 @@ class CreateSubscribeRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Name = params.get("Name")
+        self._InstanceClass = params.get("InstanceClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7187,6 +7232,14 @@ class DescribeSubscribeDetailResponse(AbstractModel):
 mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。
 mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
         :type ExtraAttr: list of KeyValuePairOption
+        :param _SubscribeVersion: 数据订阅版本, 当前支持kafka和kafkaPro（专业版）
+        :type SubscribeVersion: str
+        :param _ConsumerVpcId: 消费端地址所在vpc
+        :type ConsumerVpcId: str
+        :param _ConsumerSubnetId: 消费端地址所在子网
+        :type ConsumerSubnetId: str
+        :param _InstanceClass: 订阅实例规格
+        :type InstanceClass: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7218,6 +7271,10 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
         self._Tags = None
         self._Errors = None
         self._ExtraAttr = None
+        self._SubscribeVersion = None
+        self._ConsumerVpcId = None
+        self._ConsumerSubnetId = None
+        self._InstanceClass = None
         self._RequestId = None
 
     @property
@@ -7532,6 +7589,50 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
         self._ExtraAttr = ExtraAttr
 
     @property
+    def SubscribeVersion(self):
+        """数据订阅版本, 当前支持kafka和kafkaPro（专业版）
+        :rtype: str
+        """
+        return self._SubscribeVersion
+
+    @SubscribeVersion.setter
+    def SubscribeVersion(self, SubscribeVersion):
+        self._SubscribeVersion = SubscribeVersion
+
+    @property
+    def ConsumerVpcId(self):
+        """消费端地址所在vpc
+        :rtype: str
+        """
+        return self._ConsumerVpcId
+
+    @ConsumerVpcId.setter
+    def ConsumerVpcId(self, ConsumerVpcId):
+        self._ConsumerVpcId = ConsumerVpcId
+
+    @property
+    def ConsumerSubnetId(self):
+        """消费端地址所在子网
+        :rtype: str
+        """
+        return self._ConsumerSubnetId
+
+    @ConsumerSubnetId.setter
+    def ConsumerSubnetId(self, ConsumerSubnetId):
+        self._ConsumerSubnetId = ConsumerSubnetId
+
+    @property
+    def InstanceClass(self):
+        """订阅实例规格
+        :rtype: str
+        """
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -7604,6 +7705,10 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
                 self._ExtraAttr.append(obj)
+        self._SubscribeVersion = params.get("SubscribeVersion")
+        self._ConsumerVpcId = params.get("ConsumerVpcId")
+        self._ConsumerSubnetId = params.get("ConsumerSubnetId")
+        self._InstanceClass = params.get("InstanceClass")
         self._RequestId = params.get("RequestId")
 
 
@@ -16747,7 +16852,7 @@ class SubscribeInfo(AbstractModel):
         :type AccessType: str
         :param _Endpoints: 数据库节点信息
         :type Endpoints: list of EndpointItem
-        :param _SubscribeVersion: 数据订阅版本, 当前只支持 kafka 版本。
+        :param _SubscribeVersion: 数据订阅版本, 当前支持kafka和kafkaPro（专业版）
         :type SubscribeVersion: str
         :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16755,6 +16860,8 @@ class SubscribeInfo(AbstractModel):
         :param _Errors: 任务报错信息，如果有的话。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of SubsErr
+        :param _InstanceClass: 订阅实例规格
+        :type InstanceClass: str
         """
         self._SubscribeId = None
         self._SubscribeName = None
@@ -16777,6 +16884,7 @@ class SubscribeInfo(AbstractModel):
         self._SubscribeVersion = None
         self._Tags = None
         self._Errors = None
+        self._InstanceClass = None
 
     @property
     def SubscribeId(self):
@@ -16978,7 +17086,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SubscribeVersion(self):
-        """数据订阅版本, 当前只支持 kafka 版本。
+        """数据订阅版本, 当前支持kafka和kafkaPro（专业版）
         :rtype: str
         """
         return self._SubscribeVersion
@@ -17010,6 +17118,17 @@ class SubscribeInfo(AbstractModel):
     @Errors.setter
     def Errors(self, Errors):
         self._Errors = Errors
+
+    @property
+    def InstanceClass(self):
+        """订阅实例规格
+        :rtype: str
+        """
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
 
 
     def _deserialize(self, params):
@@ -17049,6 +17168,7 @@ class SubscribeInfo(AbstractModel):
                 obj = SubsErr()
                 obj._deserialize(item)
                 self._Errors.append(obj)
+        self._InstanceClass = params.get("InstanceClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

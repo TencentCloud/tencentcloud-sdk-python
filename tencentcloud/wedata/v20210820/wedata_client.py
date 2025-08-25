@@ -2119,31 +2119,6 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDrInstancePage(self, request):
-        """无效API，没有上线过的业务功能
-
-        分页查询试运行实例列表
-
-        :param request: Request instance for DescribeDrInstancePage.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDrInstancePageRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDrInstancePageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDrInstancePage", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDrInstancePageResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDsFolderTree(self, request):
         """查询目录树
 
@@ -4309,33 +4284,6 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeTaskByCycleReport(self, request):
-        """能够调通但该API已经没有使用了，看北京数据最后一次上报是23年10月，有接近一千万条数据历史无效数据。当前策略，云API示例修订然后已经分析出来的无效API走预下线流程。
-        https://capi.woa.com/api/detail?product=wedata&env=api_formal&version=2021-08-20&action=DescribeTaskByCycleReport
-        这两天在分析API的时候 有较多运维大屏的原始API当前已经没有使用了，但API没有下线。预计需要专项去梳理这一系列待下线API。
-
-        任务状态周期增长趋势
-
-        :param request: Request instance for DescribeTaskByCycleReport.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByCycleReportRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByCycleReportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTaskByCycleReport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTaskByCycleReportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeTaskByStatusReport(self, request):
         """任务状态趋势
 
@@ -4603,6 +4551,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeTenantProjects", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTenantProjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTestRunningRecord(self, request):
+        """获取编排空间试运行历史
+
+        :param request: Request instance for DescribeTestRunningRecord.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTestRunningRecordRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTestRunningRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTestRunningRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTestRunningRecordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
