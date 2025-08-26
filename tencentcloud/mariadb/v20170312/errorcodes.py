@@ -92,6 +92,9 @@ FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 # 安全组规则下发失败。
 FAILEDOPERATION_SETSVCLOCATIONFAILED = 'FailedOperation.SetSvcLocationFailed'
 
+# SSL状态异常。
+FAILEDOPERATION_SSLSTATUSABNORMAL = 'FailedOperation.SslStatusAbnormal'
+
 # 标签键值校验或鉴权失败。
 FAILEDOPERATION_TAGDRYRUNERROR = 'FailedOperation.TagDryRunError'
 
@@ -413,6 +416,9 @@ RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = 'ResourceUnavailable.InstanceStatus
 # 安全组校验失败。
 RESOURCEUNAVAILABLE_SGCHECKFAIL = 'ResourceUnavailable.SGCheckFail'
 
+# SSL状态异常。
+RESOURCEUNAVAILABLE_SSLSTATUSABNORMAL = 'ResourceUnavailable.SSLStatusAbnormal'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
@@ -430,3 +436,6 @@ UNSUPPORTEDOPERATION_OLDPROXYVERSION = 'UnsupportedOperation.OldProxyVersion'
 
 # 不适用的操作。
 UNSUPPORTEDOPERATION_OPERATIONNOTAPPLICABLE = 'UnsupportedOperation.OperationNotApplicable'
+
+# 当前版本不支持SSL认证，请联系客服升级到新版本后再试。
+UNSUPPORTEDOPERATION_SSLNOTSUPPORTED = 'UnsupportedOperation.SSLNotSupported'

@@ -672,6 +672,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTWeTalkProductConfig(self, request):
+        """用于配置TWeTalk服务连接产品配置信息。
+
+        :param request: Request instance for CreateTWeTalkProductConfig.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeTalkProductConfigRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeTalkProductConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTWeTalkProductConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTWeTalkProductConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTopicPolicy(self, request):
         """本接口（CreateTopicPolicy）用于创建一个Topic
 
@@ -2238,6 +2261,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTWeTalkProductConfig(self, request):
+        """用于获取TWeTalk服务连接产品配置信息。
+
+        :param request: Request instance for DescribeTWeTalkProductConfig.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeTalkProductConfigRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeTalkProductConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTWeTalkProductConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTWeTalkProductConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTopicPolicy(self, request):
         """本接口（DescribeTopicPolicy）用于查看Topic详细信息
 
@@ -2781,6 +2827,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("GetTWeCallActiveStatus", params, headers=headers)
             response = json.loads(body)
             model = models.GetTWeCallActiveStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTWeTalkProductConfigList(self, request):
+        """用于获取TWeTalk服务连接产品配置信息列表。
+
+        :param request: Request instance for GetTWeTalkProductConfigList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeTalkProductConfigListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeTalkProductConfigListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTWeTalkProductConfigList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTWeTalkProductConfigListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3356,6 +3425,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("ModifyTWeSeeConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTWeSeeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTWeTalkProductConfig(self, request):
+        """用于修改TWeTalk服务连接产品配置信息。
+
+        :param request: Request instance for ModifyTWeTalkProductConfig.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeTalkProductConfigRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeTalkProductConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTWeTalkProductConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTWeTalkProductConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

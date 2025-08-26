@@ -10564,6 +10564,85 @@ class DescribeFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceSSLAttributesRequest(AbstractModel):
+    """DescribeInstanceSSLAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceSSLAttributesResponse(AbstractModel):
+    """DescribeInstanceSSLAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 实例SSL认证功能当前状态。1-开启中；2-已开启；3-已关闭；4-关闭中
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """实例SSL认证功能当前状态。1-开启中；2-已开启；3-已关闭；4-关闭中
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLogFileRetentionPeriodRequest(AbstractModel):
     """DescribeLogFileRetentionPeriod请求参数结构体
 
@@ -10898,6 +10977,267 @@ class DescribeOrdersResponse(AbstractModel):
                 obj = Deal()
                 obj._deserialize(item)
                 self._Deals.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProcessListRequest(AbstractModel):
+    """DescribeProcessList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _NodeId: 节点ID。
+        :type NodeId: str
+        :param _ShardId: 分片ID，与ShardSerialId设置一个。
+        :type ShardId: str
+        :param _ShardSerialId: 分片序列ID，与ShardId设置一个。
+        :type ShardSerialId: str
+        :param _Filters: <li><strong>id</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>会话ID</strong>】进行过滤。会话ID例如：125700。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+
+<li><strong>user</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>用户名</strong>】进行过滤。用户名例如：root。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+<li><strong>host</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>客户端Host</strong>】进行过滤。客户端Host例如：127.0.0.1:46295。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：前缀匹配，例如可以查询客户端IP不加端口：127.0.0.1。</p>
+<li><strong>state</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>线程状态</strong>】进行过滤。线程状态例如：Updating。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+<li><strong>db</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>数据库名称</strong>】进行过滤。数据库名称例如：mysql。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+<li><strong>command</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>命令类型</strong>】进行过滤。命令类型例如：Query。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+<li><strong>info</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>执行语句</strong>】进行过滤。执行语句例如：select id, name from demo.table1 where id > 10。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：前缀匹配，例如SQL较长，可以输入SQL前缀：select  id, name from demo.table1。</p>
+<li><strong>time</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>执行时间大于多少（秒）</strong>】进行过滤。例如：10，表示查询执行时间超过10秒的会话。</p>
+    <p style="padding-left: 30px;">类型：Integer</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：范围匹配，Values值只支持输入1个。</p>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为50。
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._NodeId = None
+        self._ShardId = None
+        self._ShardSerialId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeId(self):
+        """节点ID。
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def ShardId(self):
+        """分片ID，与ShardSerialId设置一个。
+        :rtype: str
+        """
+        return self._ShardId
+
+    @ShardId.setter
+    def ShardId(self, ShardId):
+        self._ShardId = ShardId
+
+    @property
+    def ShardSerialId(self):
+        """分片序列ID，与ShardId设置一个。
+        :rtype: str
+        """
+        return self._ShardSerialId
+
+    @ShardSerialId.setter
+    def ShardSerialId(self, ShardSerialId):
+        self._ShardSerialId = ShardSerialId
+
+    @property
+    def Filters(self):
+        """<li><strong>id</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>会话ID</strong>】进行过滤。会话ID例如：125700。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+
+<li><strong>user</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>用户名</strong>】进行过滤。用户名例如：root。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+<li><strong>host</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>客户端Host</strong>】进行过滤。客户端Host例如：127.0.0.1:46295。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：前缀匹配，例如可以查询客户端IP不加端口：127.0.0.1。</p>
+<li><strong>state</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>线程状态</strong>】进行过滤。线程状态例如：Updating。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+<li><strong>db</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>数据库名称</strong>】进行过滤。数据库名称例如：mysql。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+<li><strong>command</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>命令类型</strong>】进行过滤。命令类型例如：Query。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：精确匹配</p>
+<li><strong>info</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>执行语句</strong>】进行过滤。执行语句例如：select id, name from demo.table1 where id > 10。</p>
+    <p style="padding-left: 30px;">类型：String</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：前缀匹配，例如SQL较长，可以输入SQL前缀：select  id, name from demo.table1。</p>
+<li><strong>time</strong></li>
+    <p style="padding-left: 30px;">按照【<strong>执行时间大于多少（秒）</strong>】进行过滤。例如：10，表示查询执行时间超过10秒的会话。</p>
+    <p style="padding-left: 30px;">类型：Integer</p>
+    <p style="padding-left: 30px;">必选：否</p>
+    <p style="padding-left: 30px;">匹配类型：范围匹配，Values值只支持输入1个。</p>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为50。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._NodeId = params.get("NodeId")
+        self._ShardId = params.get("ShardId")
+        self._ShardSerialId = params.get("ShardSerialId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProcessListResponse(AbstractModel):
+    """DescribeProcessList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessList: 当前正在运行的线程（连接/查询）信息列表。
+        :type ProcessList: list of Process
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProcessList = None
+        self._RequestId = None
+
+    @property
+    def ProcessList(self):
+        """当前正在运行的线程（连接/查询）信息列表。
+        :rtype: list of Process
+        """
+        return self._ProcessList
+
+    @ProcessList.setter
+    def ProcessList(self, ProcessList):
+        self._ProcessList = ProcessList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessList") is not None:
+            self._ProcessList = []
+            for item in params.get("ProcessList"):
+                obj = Process()
+                obj._deserialize(item)
+                self._ProcessList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11710,6 +12050,60 @@ class ExpandShardConfig(AbstractModel):
         self._ShardMemory = params.get("ShardMemory")
         self._ShardStorage = params.get("ShardStorage")
         self._ShardNodeCount = params.get("ShardNodeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filter(AbstractModel):
+    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+
+    若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+    若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 需要过滤的字段。
+        :type Name: str
+        :param _Values: 字段的过滤值。
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        """需要过滤的字段。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14045,6 +14439,164 @@ class ModifyInstanceNetworkResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceProtectedPropertyRequest(AbstractModel):
+    """ModifyInstanceProtectedProperty请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _ProtectedProperty: 0-允许删除，无销毁保护，1-禁止删除，有销毁保护
+        :type ProtectedProperty: int
+        """
+        self._InstanceId = None
+        self._ProtectedProperty = None
+
+    @property
+    def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ProtectedProperty(self):
+        """0-允许删除，无销毁保护，1-禁止删除，有销毁保护
+        :rtype: int
+        """
+        return self._ProtectedProperty
+
+    @ProtectedProperty.setter
+    def ProtectedProperty(self, ProtectedProperty):
+        self._ProtectedProperty = ProtectedProperty
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ProtectedProperty = params.get("ProtectedProperty")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceProtectedPropertyResponse(AbstractModel):
+    """ModifyInstanceProtectedProperty返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceSSLAttributesRequest(AbstractModel):
+    """ModifyInstanceSSLAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _SSLEnabled: 是否开启实例的SSL认证。0-关闭；1-开启
+        :type SSLEnabled: int
+        """
+        self._InstanceId = None
+        self._SSLEnabled = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SSLEnabled(self):
+        """是否开启实例的SSL认证。0-关闭；1-开启
+        :rtype: int
+        """
+        return self._SSLEnabled
+
+    @SSLEnabled.setter
+    def SSLEnabled(self, SSLEnabled):
+        self._SSLEnabled = SSLEnabled
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SSLEnabled = params.get("SSLEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceSSLAttributesResponse(AbstractModel):
+    """ModifyInstanceSSLAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceVipRequest(AbstractModel):
     """ModifyInstanceVip请求参数结构体
 
@@ -14880,6 +15432,186 @@ class ParamModifyResult(AbstractModel):
     def _deserialize(self, params):
         self._Param = params.get("Param")
         self._Code = params.get("Code")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Process(AbstractModel):
+    """用于显示当前正在运行的线程（连接/查询）信息，数据源来自系统表：information_schema.processlist。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 线程ID​​：唯一标识当前连接/线程的整数。
+        :type Id: int
+        :param _User: 用户名​​：发起连接的 MySQL 用户。
+        :type User: str
+        :param _Host: 客户端地址​​：发起连接的客户端主机名及端口（格式：host:port）。
+        :type Host: str
+        :param _Db: 当前数据库​​：线程正在使用的数据库名（未选择数据库时为 空串）。
+        :type Db: str
+        :param _Command: 命令类型​​：线程正在执行的命令类型。常见值：
+
+- Sleep：空闲等待状态（等待新查询）。
+- Query：正在执行查询或 SQL 语句。
+- Binlog Dump：主服务器线程向从服务器发送二进制日志。
+- Connect：客户端正在连接。
+- Killed：线程被终止但未完全退出。
+        :type Command: str
+        :param _Time: 执行时间（秒）​​：线程在当前状态持续的秒数。
+        :type Time: int
+        :param _ProcessStartTime: 执行开始时间（秒）​​：线程在当前状态开始执行的时间。
+        :type ProcessStartTime: str
+        :param _State: ​​状态描述​​：线程当前的详细操作状态。常见值：
+
+- Sending data：正在处理/发送数据。
+- Locked：等待表锁释放（例如 MyISAM 表级锁）。
+- Sorting result：排序查询结果。
+- Updating：更新表中数据。
+- 当为NULL返回空串：无明确状态（如 Sleep 时）。
+        :type State: str
+        :param _Info: 执行语句​​：正在执行的 SQL 语句（前 1024 字符）。
+        :type Info: str
+        """
+        self._Id = None
+        self._User = None
+        self._Host = None
+        self._Db = None
+        self._Command = None
+        self._Time = None
+        self._ProcessStartTime = None
+        self._State = None
+        self._Info = None
+
+    @property
+    def Id(self):
+        """线程ID​​：唯一标识当前连接/线程的整数。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def User(self):
+        """用户名​​：发起连接的 MySQL 用户。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        """客户端地址​​：发起连接的客户端主机名及端口（格式：host:port）。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Db(self):
+        """当前数据库​​：线程正在使用的数据库名（未选择数据库时为 空串）。
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Command(self):
+        """命令类型​​：线程正在执行的命令类型。常见值：
+
+- Sleep：空闲等待状态（等待新查询）。
+- Query：正在执行查询或 SQL 语句。
+- Binlog Dump：主服务器线程向从服务器发送二进制日志。
+- Connect：客户端正在连接。
+- Killed：线程被终止但未完全退出。
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Time(self):
+        """执行时间（秒）​​：线程在当前状态持续的秒数。
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def ProcessStartTime(self):
+        """执行开始时间（秒）​​：线程在当前状态开始执行的时间。
+        :rtype: str
+        """
+        return self._ProcessStartTime
+
+    @ProcessStartTime.setter
+    def ProcessStartTime(self, ProcessStartTime):
+        self._ProcessStartTime = ProcessStartTime
+
+    @property
+    def State(self):
+        """​​状态描述​​：线程当前的详细操作状态。常见值：
+
+- Sending data：正在处理/发送数据。
+- Locked：等待表锁释放（例如 MyISAM 表级锁）。
+- Sorting result：排序查询结果。
+- Updating：更新表中数据。
+- 当为NULL返回空串：无明确状态（如 Sleep 时）。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Info(self):
+        """执行语句​​：正在执行的 SQL 语句（前 1024 字符）。
+        :rtype: str
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        self._Db = params.get("Db")
+        self._Command = params.get("Command")
+        self._Time = params.get("Time")
+        self._ProcessStartTime = params.get("ProcessStartTime")
+        self._State = params.get("State")
+        self._Info = params.get("Info")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

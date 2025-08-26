@@ -3868,9 +3868,12 @@ class QueryRewriteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Messages: 需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。针对最后一轮对话进行改写
+        :param _Messages: 说明：需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入
+备注：由于模型字符限制，最多提供4轮对话。针对最后一轮对话进行改写。四轮对话最多包含3600个字符。
         :type Messages: list of Message
-        :param _Model: 模型名称
+        :param _Model: 说明：模型名称
+备注：仅一个模型可选
+默认值：lke-query-rewrite-base
         :type Model: str
         """
         self._Messages = None
@@ -3878,7 +3881,8 @@ class QueryRewriteRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。针对最后一轮对话进行改写
+        """说明：需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入
+备注：由于模型字符限制，最多提供4轮对话。针对最后一轮对话进行改写。四轮对话最多包含3600个字符。
         :rtype: list of Message
         """
         return self._Messages
@@ -3889,7 +3893,9 @@ class QueryRewriteRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称
+        """说明：模型名称
+备注：仅一个模型可选
+默认值：lke-query-rewrite-base
         :rtype: str
         """
         return self._Model
@@ -4814,11 +4820,15 @@ class RunRerankRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Query: 查询内容
+        :param _Query: 说明：查询内容
+备注：用于匹配的query
         :type Query: str
-        :param _Docs: 文档列表，最多20个
+        :param _Docs: 说明：文档列表
+备注：最多60个，Query字段和Docs字段的总长度上限为2000字符
         :type Docs: list of str
-        :param _Model: 模型名称, 默认: lke-reranker-base
+        :param _Model: 说明：模型名称
+备注：仅一个模型可选
+默认值：lke-reranker-base
         :type Model: str
         """
         self._Query = None
@@ -4827,7 +4837,8 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Query(self):
-        """查询内容
+        """说明：查询内容
+备注：用于匹配的query
         :rtype: str
         """
         return self._Query
@@ -4838,7 +4849,8 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Docs(self):
-        """文档列表，最多20个
+        """说明：文档列表
+备注：最多60个，Query字段和Docs字段的总长度上限为2000字符
         :rtype: list of str
         """
         return self._Docs
@@ -4849,7 +4861,9 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称, 默认: lke-reranker-base
+        """说明：模型名称
+备注：仅一个模型可选
+默认值：lke-reranker-base
         :rtype: str
         """
         return self._Model

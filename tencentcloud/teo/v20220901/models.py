@@ -50895,7 +50895,7 @@ class Task(AbstractModel):
 <li>accessDenied：访问被拒绝。</li>
 <li>originPullFailed：回源失败。</li>
         :type FailType: str
-        :param _FailMessage: 刷新、预热失败描述。
+        :param _FailMessage: 清除缓存、预热缓存的失败原因描述。
         :type FailMessage: str
         """
         self._JobId = None
@@ -51010,7 +51010,7 @@ class Task(AbstractModel):
 
     @property
     def FailMessage(self):
-        """刷新、预热失败描述。
+        """清除缓存、预热缓存的失败原因描述。
         :rtype: str
         """
         return self._FailMessage

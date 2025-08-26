@@ -10695,7 +10695,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
         :type ModerationSupplier: str
         :param _ModerationSupplierParam: 第三方审核商送审需要配置信息
         :type ModerationSupplierParam: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
-        :param _SaveModerationFile: 是否保存命中文件 0 默认不保存  1 保存命中文件
+        :param _SaveModerationFile: 是否保存文件  0不保存文件 1保存所有文件 2仅保存命中文件
         :type SaveModerationFile: int
         :param _CallbackAllResults: 是否回调所有审核结果:0 默认回调所有结果 1 仅回调命中结果 
         :type CallbackAllResults: int
@@ -10784,7 +10784,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def SaveModerationFile(self):
-        """是否保存命中文件 0 默认不保存  1 保存命中文件
+        """是否保存文件  0不保存文件 1保存所有文件 2仅保存命中文件
         :rtype: int
         """
         return self._SaveModerationFile

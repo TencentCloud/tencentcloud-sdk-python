@@ -1409,7 +1409,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Template: 特效模板名称。请在 [视频特效模版列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
+        :param _Template: 特效模板名称。请在 [视频特效模板列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
         :type Template: str
         :param _Images: 参考图像，最多输入2张图。
 - 支持传入图片Base64编码或图片URL（确保可访问）
@@ -1440,7 +1440,7 @@ class SubmitTemplateToVideoJobRequest(AbstractModel):
 
     @property
     def Template(self):
-        """特效模板名称。请在 [视频特效模版列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
+        """特效模板名称。请在 [视频特效模板列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
         :rtype: str
         """
         return self._Template

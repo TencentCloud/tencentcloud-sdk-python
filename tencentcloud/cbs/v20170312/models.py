@@ -7506,7 +7506,7 @@ class Placement(AbstractModel):
         :param _CageId: 围笼Id，可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CageId: str
-        :param _ProjectId: 实例所属项目ID，可通过[DescribeProject](/document/api/651/78725)获取。不填默认为0，表示默认项目。
+        :param _ProjectId: 实例所属项目ID，可通过DescribeProject获取。不填默认为0，表示默认项目。
         :type ProjectId: int
         :param _ProjectName: 实例所属项目名称，可通过[DescribeProject](/document/api/651/78725)获取。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7553,7 +7553,7 @@ class Placement(AbstractModel):
 
     @property
     def ProjectId(self):
-        """实例所属项目ID，可通过[DescribeProject](/document/api/651/78725)获取。不填默认为0，表示默认项目。
+        """实例所属项目ID，可通过DescribeProject获取。不填默认为0，表示默认项目。
         :rtype: int
         """
         return self._ProjectId

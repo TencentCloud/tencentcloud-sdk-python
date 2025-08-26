@@ -6128,6 +6128,130 @@ class CreateTWeSeeRecognitionTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTWeTalkProductConfigRequest(AbstractModel):
+    """CreateTWeTalkProductConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _SystemPrompt: 系统提示词
+        :type SystemPrompt: str
+        :param _GreetingMessage: 欢迎语
+        :type GreetingMessage: str
+        :param _VoiceType: 音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
+        :type VoiceType: int
+        :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
+        :type TargetLanguage: str
+        """
+        self._ProductId = None
+        self._SystemPrompt = None
+        self._GreetingMessage = None
+        self._VoiceType = None
+        self._TargetLanguage = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def SystemPrompt(self):
+        """系统提示词
+        :rtype: str
+        """
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+    @property
+    def GreetingMessage(self):
+        """欢迎语
+        :rtype: str
+        """
+        return self._GreetingMessage
+
+    @GreetingMessage.setter
+    def GreetingMessage(self, GreetingMessage):
+        self._GreetingMessage = GreetingMessage
+
+    @property
+    def VoiceType(self):
+        """音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
+        :rtype: int
+        """
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def TargetLanguage(self):
+        """支持的语言，zh-中文；en-英文；默认zh
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._GreetingMessage = params.get("GreetingMessage")
+        self._VoiceType = params.get("VoiceType")
+        self._TargetLanguage = params.get("TargetLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTWeTalkProductConfigResponse(AbstractModel):
+    """CreateTWeTalkProductConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTopicPolicyRequest(AbstractModel):
     """CreateTopicPolicy请求参数结构体
 
@@ -14929,6 +15053,102 @@ class DescribeTWeSeeRecognitionTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTWeTalkProductConfigRequest(AbstractModel):
+    """DescribeTWeTalkProductConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
+        :type TargetLanguage: str
+        """
+        self._ProductId = None
+        self._TargetLanguage = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def TargetLanguage(self):
+        """支持的语言，zh-中文；en-英文；默认zh
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._TargetLanguage = params.get("TargetLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeTalkProductConfigResponse(AbstractModel):
+    """DescribeTWeTalkProductConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 配置信息
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.TalkProductConfigInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """配置信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkProductConfigInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TalkProductConfigInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTopicPolicyRequest(AbstractModel):
     """DescribeTopicPolicy请求参数结构体
 
@@ -19836,6 +20056,150 @@ class GetTWeCallActiveStatusResponse(AbstractModel):
                 obj = TWeCallActiveInfo()
                 obj._deserialize(item)
                 self._TWeCallActiveInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetTWeTalkProductConfigListRequest(AbstractModel):
+    """GetTWeTalkProductConfigList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _TargetLanguage: 	支持的语言，zh-中文；en-英文；默认zh
+        :type TargetLanguage: str
+        :param _Offset: 页码
+        :type Offset: int
+        :param _Limit: 偏移量，10-100
+        :type Limit: int
+        """
+        self._ProductId = None
+        self._TargetLanguage = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def TargetLanguage(self):
+        """	支持的语言，zh-中文；en-英文；默认zh
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+    @property
+    def Offset(self):
+        """页码
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """偏移量，10-100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._TargetLanguage = params.get("TargetLanguage")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTWeTalkProductConfigListResponse(AbstractModel):
+    """GetTWeTalkProductConfigList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 配置信息列表
+        :type Data: list of TalkProductConfigInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """配置信息列表
+        :rtype: list of TalkProductConfigInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TalkProductConfigInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -25106,6 +25470,130 @@ class ModifyTWeSeeConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyTWeTalkProductConfigRequest(AbstractModel):
+    """ModifyTWeTalkProductConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _SystemPrompt: 系统提示词
+        :type SystemPrompt: str
+        :param _GreetingMessage: 欢迎语
+        :type GreetingMessage: str
+        :param _VoiceType: 音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
+        :type VoiceType: int
+        :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
+        :type TargetLanguage: str
+        """
+        self._ProductId = None
+        self._SystemPrompt = None
+        self._GreetingMessage = None
+        self._VoiceType = None
+        self._TargetLanguage = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def SystemPrompt(self):
+        """系统提示词
+        :rtype: str
+        """
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+    @property
+    def GreetingMessage(self):
+        """欢迎语
+        :rtype: str
+        """
+        return self._GreetingMessage
+
+    @GreetingMessage.setter
+    def GreetingMessage(self, GreetingMessage):
+        self._GreetingMessage = GreetingMessage
+
+    @property
+    def VoiceType(self):
+        """音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
+        :rtype: int
+        """
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def TargetLanguage(self):
+        """支持的语言，zh-中文；en-英文；默认zh
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._GreetingMessage = params.get("GreetingMessage")
+        self._VoiceType = params.get("VoiceType")
+        self._TargetLanguage = params.get("TargetLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTWeTalkProductConfigResponse(AbstractModel):
+    """ModifyTWeTalkProductConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyTopicPolicyRequest(AbstractModel):
     """ModifyTopicPolicy请求参数结构体
 
@@ -29027,6 +29515,132 @@ class TWeCallLicenseInfo(AbstractModel):
         self._TWeCallType = params.get("TWeCallType")
         self._TotalNum = params.get("TotalNum")
         self._UsedNum = params.get("UsedNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkProductConfigInfo(AbstractModel):
+    """Talk配置信息描述。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _TargetLanguage: 支持的语言，zh-中文；en-英文；默认zh
+        :type TargetLanguage: str
+        :param _SystemPrompt:  系统提示词
+        :type SystemPrompt: str
+        :param _GreetingMessage: 欢迎语
+        :type GreetingMessage: str
+        :param _VoiceType: 音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
+        :type VoiceType: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        """
+        self._ProductId = None
+        self._TargetLanguage = None
+        self._SystemPrompt = None
+        self._GreetingMessage = None
+        self._VoiceType = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def TargetLanguage(self):
+        """支持的语言，zh-中文；en-英文；默认zh
+        :rtype: str
+        """
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+    @property
+    def SystemPrompt(self):
+        """ 系统提示词
+        :rtype: str
+        """
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+    @property
+    def GreetingMessage(self):
+        """欢迎语
+        :rtype: str
+        """
+        return self._GreetingMessage
+
+    @GreetingMessage.setter
+    def GreetingMessage(self, GreetingMessage):
+        self._GreetingMessage = GreetingMessage
+
+    @property
+    def VoiceType(self):
+        """音色，支持的音色列表：100510000-阅读男声智逍遥；101001-情感女声智瑜；101002-通用女声智聆；101003-客服女声智美；101004-通用男声智云；101005-通用女声智莉；101006-助手女声智言；101008-客服女声智琪；101009-知性女声智芸；101010-通用男声智华；101011-新闻女声智燕；101012-新闻女声智丹；101013-新闻男声智辉；101014 -新闻男声智宁；101015-男童声智萌；101016-女童声智甜；101017-情感女声智蓉；101018-情感男声智靖；101019-粤语女声智彤。
+        :rtype: int
+        """
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._TargetLanguage = params.get("TargetLanguage")
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._GreetingMessage = params.get("GreetingMessage")
+        self._VoiceType = params.get("VoiceType")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

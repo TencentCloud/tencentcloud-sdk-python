@@ -949,6 +949,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceSSLAttributes(self, request):
+        """本接口（DescribeInstanceSSLAttributes）用于拉取实例SSL认证属性
+
+        :param request: Request instance for DescribeInstanceSSLAttributes.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeInstanceSSLAttributesRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeInstanceSSLAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceSSLAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceSSLAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLogFileRetentionPeriod(self, request):
         """本接口(DescribeLogFileRetentionPeriod)用于查看数据库备份日志的备份天数的设置情况。
 
@@ -1009,6 +1032,32 @@ class DcdbClient(AbstractClient):
             body = self.call("DescribeOrders", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOrdersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProcessList(self, request):
+        """本接口 (DescribeProcessList) 用于查询当前正在运行的线程（连接/查询）信息。
+
+        - 可以根据客户端IP，DB，执行时间等信息来查询实例正在运行的线程信息。过滤信息详细请见过滤器Filter。
+        - 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的线程信息。
+
+        :param request: Request instance for DescribeProcessList.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeProcessListRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeProcessListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProcessList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProcessListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1593,6 +1642,52 @@ class DcdbClient(AbstractClient):
             body = self.call("ModifyInstanceNetwork", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceNetworkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceProtectedProperty(self, request):
+        """该接口用于修改实例的保护属性
+
+        :param request: Request instance for ModifyInstanceProtectedProperty.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceProtectedPropertyRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceProtectedPropertyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceProtectedProperty", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceProtectedPropertyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceSSLAttributes(self, request):
+        """本接口  （ModifyInstanceSSLAttributes）用于修改实例SSL认证功能属性
+
+        :param request: Request instance for ModifyInstanceSSLAttributes.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceSSLAttributesRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceSSLAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceSSLAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceSSLAttributesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
