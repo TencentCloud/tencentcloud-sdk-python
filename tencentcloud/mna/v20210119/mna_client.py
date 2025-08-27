@@ -785,6 +785,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReportOrder(self, request):
+        """用户上报自定义的订单信息，多网聚合加速服务将相关信息进行保存
+
+        :param request: Request instance for ReportOrder.
+        :type request: :class:`tencentcloud.mna.v20210119.models.ReportOrderRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.ReportOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReportOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReportOrderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetNotifyUrl(self, request):
         """设置用户流量告警信息接口，通过该接口设置流量包告警阈值以及告警时回调的url和key
 

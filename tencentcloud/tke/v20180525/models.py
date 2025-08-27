@@ -45122,15 +45122,15 @@ class SuperNodeResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeName: 节点名称
+        :param _NodeName: 节点名称，此字段在出参中有效。
         :type NodeName: str
-        :param _Num: 节点上的资源总数
+        :param _Num: 节点上的资源总数，QuotaType为 exact 时，表示创建指定规格的精确配额数量。
         :type Num: int
-        :param _Cpu: 节点上的总核数
+        :param _Cpu: 节点上的总核数，QuotaType为 exact 时表示指定规格的核数。
         :type Cpu: float
-        :param _Memory: 节点上的总内存数
+        :param _Memory: 节点上的总内存数，QuotaType为 exact 时表示指定规格的内存，单位：Gi
         :type Memory: float
-        :param _Gpu: 节点上的总 GPU 卡数
+        :param _Gpu: 节点上的总 GPU 卡数，QuotaType为 exact 时表示指定规格的GPU卡数。
         :type Gpu: float
         :param _QuotaType: 节点资源的配额类型，exact表示精确配额，fuzzy 表示模糊配额。
         :type QuotaType: str
@@ -45138,7 +45138,7 @@ class SuperNodeResource(AbstractModel):
         :type ChargeType: str
         :param _ResourceType: QuotaType为 exact 时，此字段有效，表示精确配额的资源类型。
         :type ResourceType: str
-        :param _DisasterRecoverGroupId: 置放群组 ID
+        :param _DisasterRecoverGroupId: 置放群组 ID，QuotaType为 exact 时有效，表示购买的精确配额需满足置放群组。可通过 [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810) 接口返回值中的DisasterRecoverGroupId获取。
         :type DisasterRecoverGroupId: str
         """
         self._NodeName = None
@@ -45153,7 +45153,7 @@ class SuperNodeResource(AbstractModel):
 
     @property
     def NodeName(self):
-        """节点名称
+        """节点名称，此字段在出参中有效。
         :rtype: str
         """
         return self._NodeName
@@ -45164,7 +45164,7 @@ class SuperNodeResource(AbstractModel):
 
     @property
     def Num(self):
-        """节点上的资源总数
+        """节点上的资源总数，QuotaType为 exact 时，表示创建指定规格的精确配额数量。
         :rtype: int
         """
         return self._Num
@@ -45175,7 +45175,7 @@ class SuperNodeResource(AbstractModel):
 
     @property
     def Cpu(self):
-        """节点上的总核数
+        """节点上的总核数，QuotaType为 exact 时表示指定规格的核数。
         :rtype: float
         """
         return self._Cpu
@@ -45186,7 +45186,7 @@ class SuperNodeResource(AbstractModel):
 
     @property
     def Memory(self):
-        """节点上的总内存数
+        """节点上的总内存数，QuotaType为 exact 时表示指定规格的内存，单位：Gi
         :rtype: float
         """
         return self._Memory
@@ -45197,7 +45197,7 @@ class SuperNodeResource(AbstractModel):
 
     @property
     def Gpu(self):
-        """节点上的总 GPU 卡数
+        """节点上的总 GPU 卡数，QuotaType为 exact 时表示指定规格的GPU卡数。
         :rtype: float
         """
         return self._Gpu
@@ -45241,7 +45241,7 @@ class SuperNodeResource(AbstractModel):
 
     @property
     def DisasterRecoverGroupId(self):
-        """置放群组 ID
+        """置放群组 ID，QuotaType为 exact 时有效，表示购买的精确配额需满足置放群组。可通过 [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810) 接口返回值中的DisasterRecoverGroupId获取。
         :rtype: str
         """
         return self._DisasterRecoverGroupId

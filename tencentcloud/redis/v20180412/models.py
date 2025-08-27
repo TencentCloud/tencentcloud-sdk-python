@@ -20266,14 +20266,14 @@ class RemoveReplicationGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 复制组ID
+        :param _GroupId: 复制组ID。请登录 [Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication) 页面获取复制组 ID。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """复制组ID
+        """复制组ID。请登录 [Redis控制台的全球复制](https://console.cloud.tencent.com/redis/replication) 页面获取复制组 ID。
         :rtype: str
         """
         return self._GroupId

@@ -439,10 +439,19 @@ class AgentInput(AbstractModel):
         :type UserInputValue: :class:`tencentcloud.lke.v20231130.models.AgentInputUserInputValue`
         :param _CustomVarId: 自定义变量（API参数）
         :type CustomVarId: str
+        :param _EnvVarId: 环境变量参数
+        :type EnvVarId: str
+        :param _AppVarId: 应用变量参数
+        :type AppVarId: str
+        :param _SystemVariable: 系统参数
+        :type SystemVariable: :class:`tencentcloud.lke.v20231130.models.AgentInputSystemVariable`
         """
         self._InputType = None
         self._UserInputValue = None
         self._CustomVarId = None
+        self._EnvVarId = None
+        self._AppVarId = None
+        self._SystemVariable = None
 
     @property
     def InputType(self):
@@ -477,6 +486,39 @@ class AgentInput(AbstractModel):
     def CustomVarId(self, CustomVarId):
         self._CustomVarId = CustomVarId
 
+    @property
+    def EnvVarId(self):
+        """环境变量参数
+        :rtype: str
+        """
+        return self._EnvVarId
+
+    @EnvVarId.setter
+    def EnvVarId(self, EnvVarId):
+        self._EnvVarId = EnvVarId
+
+    @property
+    def AppVarId(self):
+        """应用变量参数
+        :rtype: str
+        """
+        return self._AppVarId
+
+    @AppVarId.setter
+    def AppVarId(self, AppVarId):
+        self._AppVarId = AppVarId
+
+    @property
+    def SystemVariable(self):
+        """系统参数
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentInputSystemVariable`
+        """
+        return self._SystemVariable
+
+    @SystemVariable.setter
+    def SystemVariable(self, SystemVariable):
+        self._SystemVariable = SystemVariable
+
 
     def _deserialize(self, params):
         self._InputType = params.get("InputType")
@@ -484,6 +526,62 @@ class AgentInput(AbstractModel):
             self._UserInputValue = AgentInputUserInputValue()
             self._UserInputValue._deserialize(params.get("UserInputValue"))
         self._CustomVarId = params.get("CustomVarId")
+        self._EnvVarId = params.get("EnvVarId")
+        self._AppVarId = params.get("AppVarId")
+        if params.get("SystemVariable") is not None:
+            self._SystemVariable = AgentInputSystemVariable()
+            self._SystemVariable._deserialize(params.get("SystemVariable"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentInputSystemVariable(AbstractModel):
+    """系统参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 系统参数名
+        :type Name: str
+        :param _DialogHistoryLimit: 对话历史轮数的配置；如果Input是系统变量中的“对话历史”时才使用；
+        :type DialogHistoryLimit: int
+        """
+        self._Name = None
+        self._DialogHistoryLimit = None
+
+    @property
+    def Name(self):
+        """系统参数名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DialogHistoryLimit(self):
+        """对话历史轮数的配置；如果Input是系统变量中的“对话历史”时才使用；
+        :rtype: int
+        """
+        return self._DialogHistoryLimit
+
+    @DialogHistoryLimit.setter
+    def DialogHistoryLimit(self, DialogHistoryLimit):
+        self._DialogHistoryLimit = DialogHistoryLimit
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._DialogHistoryLimit = params.get("DialogHistoryLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3299,6 +3397,9 @@ class AppInfo(AbstractModel):
         :type ThoughtModelAliasName: str
         :param _PermissionIds: 权限位信息
         :type PermissionIds: list of str
+        :param _Creator: 创建人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
         """
         self._AppType = None
         self._AppTypeDesc = None
@@ -3315,6 +3416,7 @@ class AppInfo(AbstractModel):
         self._Pattern = None
         self._ThoughtModelAliasName = None
         self._PermissionIds = None
+        self._Creator = None
 
     @property
     def AppType(self):
@@ -3495,6 +3597,18 @@ class AppInfo(AbstractModel):
     def PermissionIds(self, PermissionIds):
         self._PermissionIds = PermissionIds
 
+    @property
+    def Creator(self):
+        """创建人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
 
     def _deserialize(self, params):
         self._AppType = params.get("AppType")
@@ -3512,6 +3626,7 @@ class AppInfo(AbstractModel):
         self._Pattern = params.get("Pattern")
         self._ThoughtModelAliasName = params.get("ThoughtModelAliasName")
         self._PermissionIds = params.get("PermissionIds")
+        self._Creator = params.get("Creator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17584,6 +17699,9 @@ class KnowledgeQaOutput(AbstractModel):
         :param _UseRecommended: 是否打开推荐问题开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type UseRecommended: bool
+        :param _RecommendedPromptMode: 推荐问模式，0.结合知识库&对话历史推荐问题Prompt(默认) 1.仅结合知识库输出推荐问的prompt
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecommendedPromptMode: int
         """
         self._Method = None
         self._UseGeneralKnowledge = None
@@ -17592,6 +17710,7 @@ class KnowledgeQaOutput(AbstractModel):
         self._UseQuestionClarify = None
         self._QuestionClarifyKeywords = None
         self._UseRecommended = None
+        self._RecommendedPromptMode = None
 
     @property
     def Method(self):
@@ -17677,6 +17796,18 @@ class KnowledgeQaOutput(AbstractModel):
     def UseRecommended(self, UseRecommended):
         self._UseRecommended = UseRecommended
 
+    @property
+    def RecommendedPromptMode(self):
+        """推荐问模式，0.结合知识库&对话历史推荐问题Prompt(默认) 1.仅结合知识库输出推荐问的prompt
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RecommendedPromptMode
+
+    @RecommendedPromptMode.setter
+    def RecommendedPromptMode(self, RecommendedPromptMode):
+        self._RecommendedPromptMode = RecommendedPromptMode
+
 
     def _deserialize(self, params):
         self._Method = params.get("Method")
@@ -17686,6 +17817,7 @@ class KnowledgeQaOutput(AbstractModel):
         self._UseQuestionClarify = params.get("UseQuestionClarify")
         self._QuestionClarifyKeywords = params.get("QuestionClarifyKeywords")
         self._UseRecommended = params.get("UseRecommended")
+        self._RecommendedPromptMode = params.get("RecommendedPromptMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

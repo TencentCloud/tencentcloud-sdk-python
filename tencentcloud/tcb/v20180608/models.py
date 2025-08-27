@@ -19278,10 +19278,13 @@ class LogResObject(AbstractModel):
         :type ListOver: bool
         :param _Results: 日志内容信息
         :type Results: list of LogObject
+        :param _AnalysisRecords: 日志聚合结果
+        :type AnalysisRecords: list of str
         """
         self._Context = None
         self._ListOver = None
         self._Results = None
+        self._AnalysisRecords = None
 
     @property
     def Context(self):
@@ -19316,6 +19319,17 @@ class LogResObject(AbstractModel):
     def Results(self, Results):
         self._Results = Results
 
+    @property
+    def AnalysisRecords(self):
+        """日志聚合结果
+        :rtype: list of str
+        """
+        return self._AnalysisRecords
+
+    @AnalysisRecords.setter
+    def AnalysisRecords(self, AnalysisRecords):
+        self._AnalysisRecords = AnalysisRecords
+
 
     def _deserialize(self, params):
         self._Context = params.get("Context")
@@ -19326,6 +19340,7 @@ class LogResObject(AbstractModel):
                 obj = LogObject()
                 obj._deserialize(item)
                 self._Results.append(obj)
+        self._AnalysisRecords = params.get("AnalysisRecords")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

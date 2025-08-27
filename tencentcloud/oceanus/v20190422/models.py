@@ -443,6 +443,14 @@ class Cluster(AbstractModel):
         :param _Yarns: []
 注意：此字段可能返回 null，表示取不到有效值。
         :type Yarns: list of HadoopYarnItem
+        :param _DeploymentMode: 0 单可用区 1多可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeploymentMode: int
+        :param _SlaveZones: 备可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZones: list of SlaveZone
+        :param _LogCOSBucket: 集群的日志cos存储
+        :type LogCOSBucket: str
         """
         self._ClusterId = None
         self._Name = None
@@ -498,6 +506,9 @@ class Cluster(AbstractModel):
         self._RunningMem = None
         self._Setats = None
         self._Yarns = None
+        self._DeploymentMode = None
+        self._SlaveZones = None
+        self._LogCOSBucket = None
 
     @property
     def ClusterId(self):
@@ -1125,6 +1136,41 @@ class Cluster(AbstractModel):
     def Yarns(self, Yarns):
         self._Yarns = Yarns
 
+    @property
+    def DeploymentMode(self):
+        """0 单可用区 1多可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeploymentMode
+
+    @DeploymentMode.setter
+    def DeploymentMode(self, DeploymentMode):
+        self._DeploymentMode = DeploymentMode
+
+    @property
+    def SlaveZones(self):
+        """备可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SlaveZone
+        """
+        return self._SlaveZones
+
+    @SlaveZones.setter
+    def SlaveZones(self, SlaveZones):
+        self._SlaveZones = SlaveZones
+
+    @property
+    def LogCOSBucket(self):
+        """集群的日志cos存储
+        :rtype: str
+        """
+        return self._LogCOSBucket
+
+    @LogCOSBucket.setter
+    def LogCOSBucket(self, LogCOSBucket):
+        self._LogCOSBucket = LogCOSBucket
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1222,6 +1268,14 @@ class Cluster(AbstractModel):
                 obj = HadoopYarnItem()
                 obj._deserialize(item)
                 self._Yarns.append(obj)
+        self._DeploymentMode = params.get("DeploymentMode")
+        if params.get("SlaveZones") is not None:
+            self._SlaveZones = []
+            for item in params.get("SlaveZones"):
+                obj = SlaveZone()
+                obj._deserialize(item)
+                self._SlaveZones.append(obj)
+        self._LogCOSBucket = params.get("LogCOSBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2682,6 +2736,8 @@ class CreateJobConfigRequest(AbstractModel):
         :type ProgramArgsAfterGzip: str
         :param _CheckpointTimeoutSecond: checkpoint 超时时间
         :type CheckpointTimeoutSecond: int
+        :param _CheckpointIntervalSecond: checkpoint 间隔时间
+        :type CheckpointIntervalSecond: int
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -2719,6 +2775,7 @@ class CreateJobConfigRequest(AbstractModel):
         self._UseOldSystemConnector = None
         self._ProgramArgsAfterGzip = None
         self._CheckpointTimeoutSecond = None
+        self._CheckpointIntervalSecond = None
 
     @property
     def JobId(self):
@@ -3116,6 +3173,17 @@ class CreateJobConfigRequest(AbstractModel):
     def CheckpointTimeoutSecond(self, CheckpointTimeoutSecond):
         self._CheckpointTimeoutSecond = CheckpointTimeoutSecond
 
+    @property
+    def CheckpointIntervalSecond(self):
+        """checkpoint 间隔时间
+        :rtype: int
+        """
+        return self._CheckpointIntervalSecond
+
+    @CheckpointIntervalSecond.setter
+    def CheckpointIntervalSecond(self, CheckpointIntervalSecond):
+        self._CheckpointIntervalSecond = CheckpointIntervalSecond
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -3175,6 +3243,7 @@ class CreateJobConfigRequest(AbstractModel):
         self._UseOldSystemConnector = params.get("UseOldSystemConnector")
         self._ProgramArgsAfterGzip = params.get("ProgramArgsAfterGzip")
         self._CheckpointTimeoutSecond = params.get("CheckpointTimeoutSecond")
+        self._CheckpointIntervalSecond = params.get("CheckpointIntervalSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8615,6 +8684,8 @@ class JobConfig(AbstractModel):
         :type JobConfigItem: :class:`tencentcloud.oceanus.v20190422.models.JobConfig`
         :param _CheckpointTimeoutSecond: checkpoint 超时时间
         :type CheckpointTimeoutSecond: int
+        :param _CheckpointIntervalSecond: checkpoint 间隔时间
+        :type CheckpointIntervalSecond: int
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -8655,6 +8726,7 @@ class JobConfig(AbstractModel):
         self._TaskManagerMem = None
         self._JobConfigItem = None
         self._CheckpointTimeoutSecond = None
+        self._CheckpointIntervalSecond = None
 
     @property
     def JobId(self):
@@ -9120,6 +9192,17 @@ class JobConfig(AbstractModel):
     def CheckpointTimeoutSecond(self, CheckpointTimeoutSecond):
         self._CheckpointTimeoutSecond = CheckpointTimeoutSecond
 
+    @property
+    def CheckpointIntervalSecond(self):
+        """checkpoint 间隔时间
+        :rtype: int
+        """
+        return self._CheckpointIntervalSecond
+
+    @CheckpointIntervalSecond.setter
+    def CheckpointIntervalSecond(self, CheckpointIntervalSecond):
+        self._CheckpointIntervalSecond = CheckpointIntervalSecond
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -9184,6 +9267,7 @@ class JobConfig(AbstractModel):
             self._JobConfigItem = JobConfig()
             self._JobConfigItem._deserialize(params.get("JobConfigItem"))
         self._CheckpointTimeoutSecond = params.get("CheckpointTimeoutSecond")
+        self._CheckpointIntervalSecond = params.get("CheckpointIntervalSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13867,6 +13951,78 @@ CLOUD_PREMIUM
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlaveZone(AbstractModel):
+    """多可用区支持备区域
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _Zone: 区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+        self._Zone = None
+
+    @property
+    def VpcId(self):
+        """vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        """子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Zone(self):
+        """区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

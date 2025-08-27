@@ -6273,6 +6273,117 @@ class OrderFlowPackageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OrderInfo(AbstractModel):
+    """返回上报的订单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 父帐号uin
+        :type Uin: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _PackageType: 用量类型
+        :type PackageType: str
+        :param _OrderId: 订单编号唯一标识符
+        :type OrderId: str
+        :param _ReportMonth: 上报月份，默认当前月
+        :type ReportMonth: str
+        :param _Updated: 数据更新时间
+        :type Updated: str
+        """
+        self._Uin = None
+        self._ProjectId = None
+        self._PackageType = None
+        self._OrderId = None
+        self._ReportMonth = None
+        self._Updated = None
+
+    @property
+    def Uin(self):
+        """父帐号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PackageType(self):
+        """用量类型
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def OrderId(self):
+        """订单编号唯一标识符
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def ReportMonth(self):
+        """上报月份，默认当前月
+        :rtype: str
+        """
+        return self._ReportMonth
+
+    @ReportMonth.setter
+    def ReportMonth(self, ReportMonth):
+        self._ReportMonth = ReportMonth
+
+    @property
+    def Updated(self):
+        """数据更新时间
+        :rtype: str
+        """
+        return self._Updated
+
+    @Updated.setter
+    def Updated(self, Updated):
+        self._Updated = Updated
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._ProjectId = params.get("ProjectId")
+        self._PackageType = params.get("PackageType")
+        self._OrderId = params.get("OrderId")
+        self._ReportMonth = params.get("ReportMonth")
+        self._Updated = params.get("Updated")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrderPerLicenseRequest(AbstractModel):
     """OrderPerLicense请求参数结构体
 
@@ -6413,6 +6524,132 @@ class OrderPerLicenseResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
+        self._RequestId = params.get("RequestId")
+
+
+class ReportOrderRequest(AbstractModel):
+    """ReportOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 订单编号唯一标识符
+        :type OrderId: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _PackageType: 用量类型
+        :type PackageType: str
+        :param _ReportMonth: 上报月份，默认当前月
+        :type ReportMonth: str
+        """
+        self._OrderId = None
+        self._ProjectId = None
+        self._PackageType = None
+        self._ReportMonth = None
+
+    @property
+    def OrderId(self):
+        """订单编号唯一标识符
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PackageType(self):
+        """用量类型
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def ReportMonth(self):
+        """上报月份，默认当前月
+        :rtype: str
+        """
+        return self._ReportMonth
+
+    @ReportMonth.setter
+    def ReportMonth(self, ReportMonth):
+        self._ReportMonth = ReportMonth
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._ProjectId = params.get("ProjectId")
+        self._PackageType = params.get("PackageType")
+        self._ReportMonth = params.get("ReportMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportOrderResponse(AbstractModel):
+    """ReportOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderInfo: 订单信息
+        :type OrderInfo: :class:`tencentcloud.mna.v20210119.models.OrderInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrderInfo = None
+        self._RequestId = None
+
+    @property
+    def OrderInfo(self):
+        """订单信息
+        :rtype: :class:`tencentcloud.mna.v20210119.models.OrderInfo`
+        """
+        return self._OrderInfo
+
+    @OrderInfo.setter
+    def OrderInfo(self, OrderInfo):
+        self._OrderInfo = OrderInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OrderInfo") is not None:
+            self._OrderInfo = OrderInfo()
+            self._OrderInfo._deserialize(params.get("OrderInfo"))
         self._RequestId = params.get("RequestId")
 
 

@@ -1713,6 +1713,8 @@ class EnvBaseInfo(AbstractModel):
         :type EnvType: str
         :param _SubnetIds: 子网id
         :type SubnetIds: str
+        :param _Recycle: 回收标志，为空则表示正常，recycle表示已回收
+        :type Recycle: str
         """
         self._EnvId = None
         self._PackageType = None
@@ -1723,6 +1725,7 @@ class EnvBaseInfo(AbstractModel):
         self._Region = None
         self._EnvType = None
         self._SubnetIds = None
+        self._Recycle = None
 
     @property
     def EnvId(self):
@@ -1823,6 +1826,17 @@ class EnvBaseInfo(AbstractModel):
     def SubnetIds(self, SubnetIds):
         self._SubnetIds = SubnetIds
 
+    @property
+    def Recycle(self):
+        """回收标志，为空则表示正常，recycle表示已回收
+        :rtype: str
+        """
+        return self._Recycle
+
+    @Recycle.setter
+    def Recycle(self, Recycle):
+        self._Recycle = Recycle
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -1834,6 +1848,7 @@ class EnvBaseInfo(AbstractModel):
         self._Region = params.get("Region")
         self._EnvType = params.get("EnvType")
         self._SubnetIds = params.get("SubnetIds")
+        self._Recycle = params.get("Recycle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

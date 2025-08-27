@@ -302,6 +302,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateExport(self, request):
+        """本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
+
+        :param request: Request instance for CreateExport.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateExportRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExport", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateHost(self, request):
         """clb-waf中添加防护域名
 
@@ -638,6 +661,29 @@ class WafClient(AbstractClient):
             body = self.call("DeleteDomainWhiteRules", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDomainWhiteRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteExport(self, request):
+        """本接口用于删除日志下载任务
+
+        :param request: Request instance for DeleteExport.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteExportRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteExport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1567,6 +1613,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExports(self, request):
+        """本接口用于获取日志下载任务列表
+
+        :param request: Request instance for DescribeExports.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeExportsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeExportsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExports", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExportsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFindDomainList(self, request):
         """获取发现域名列表接口
 
@@ -1765,6 +1834,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeIpHitItems", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIpHitItemsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogHistogram(self, request):
+        """本接口用于构建日志数量直方图
+
+        :param request: Request instance for DescribeLogHistogram.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLogHistogramRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLogHistogramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogHistogram", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogHistogramResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2179,6 +2271,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeTopAttackDomain", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTopAttackDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTopics(self, request):
+        """本接口用于获取日志主题列表，支持分页
+
+        :param request: Request instance for DescribeTopics.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeTopicsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeTopicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopicsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3907,6 +4022,32 @@ class WafClient(AbstractClient):
             body = self.call("SearchAttackLog", params, headers=headers)
             response = json.loads(body)
             model = models.SearchAttackLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchLog(self, request):
+        """本接口用于检索分析日志，使用该接口时请注意如下事项：
+        1. 该接口除受默认接口请求频率限制外，针对单个日志主题，查询并发数不能超过15。
+        2. 检索语法建议使用CQL语法规则，请使用SyntaxRule参数，将值设置为1。
+        3. API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
+
+        :param request: Request instance for SearchLog.
+        :type request: :class:`tencentcloud.waf.v20180125.models.SearchLogRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.SearchLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
