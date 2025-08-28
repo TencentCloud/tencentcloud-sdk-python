@@ -1195,7 +1195,7 @@ class CreateDeviceIdentityRequest(AbstractModel):
         :type Status: str
         :param _PrimaryKey: 主要签名key，不传则由系统自动生成，需要base64编码。
         :type PrimaryKey: str
-        :param _SecondaryKey: 次要签名key，不传则油系统自动生成，需要base64编码。
+        :param _SecondaryKey: 次要签名key，不传则由系统自动生成，需要base64编码。
         :type SecondaryKey: str
         :param _PropagatingProperties: 该设备id的传播属性设置
         :type PropagatingProperties: list of PropagatingProperty
@@ -1254,7 +1254,7 @@ class CreateDeviceIdentityRequest(AbstractModel):
 
     @property
     def SecondaryKey(self):
-        """次要签名key，不传则油系统自动生成，需要base64编码。
+        """次要签名key，不传则由系统自动生成，需要base64编码。
         :rtype: str
         """
         return self._SecondaryKey

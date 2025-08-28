@@ -422,6 +422,30 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMcpServer(self, request):
+        """本接口（CreateMcpServer）用于创建MCP Server。
+        - 本接口为异步接口，请求发送成功后会返回一个 McpServerId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeMcpServers 接口查询。
+
+        :param request: Request instance for CreateMcpServer.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateMcpServerRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.CreateMcpServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMcpServer", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMcpServerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteBlueprints(self, request):
         """本接口 (DeleteBlueprints) 用于删除镜像。可删除的镜像应满足如下条件：
         1、删除镜像接口需要镜像状态为NORMAL（正常）、ISOLATED（已隔离）、CREATEFAILED（创建失败）、SYNCING_FAILED（目的地域同步失败），其他状态下的镜像不支持删除操作。镜像状态，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintState获取。
@@ -1373,6 +1397,29 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMcpServers(self, request):
+        """本接口（DescribeMcpServers）用于查询MCP Server列表。
+
+        :param request: Request instance for DescribeMcpServers.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeMcpServersRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeMcpServersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMcpServers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMcpServersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeModifyInstanceBundles(self, request):
         """本接口（DescribeModifyInstanceBundles）用于查询实例可变更套餐列表。
 
@@ -2151,6 +2198,30 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMcpServer(self, request):
+        """本接口（ModifyMcpServer）用于修改实例的MCP Server信息。
+        - 本接口为异步接口，API返回时修改操作并未立即完成。MCP Server的修改结果可以通过调用 DescribeMcpServers 接口查询。
+
+        :param request: Request instance for ModifyMcpServer.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyMcpServerRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyMcpServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMcpServer", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMcpServerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySnapshotAttribute(self, request):
         """本接口（ModifySnapshotAttribute）用于修改指定快照的属性。
         <li>“快照名称”仅为方便用户自己管理之用。</li>
@@ -2217,6 +2288,31 @@ class LighthouseClient(AbstractClient):
             body = self.call("RemoveDockerContainers", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveDockerContainersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RemoveMcpServers(self, request):
+        """本接口（RemoveMcpServers）用于删除MCP Server。
+        - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+        - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果，如无法查询到，代表删除成功。
+
+        :param request: Request instance for RemoveMcpServers.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.RemoveMcpServersRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.RemoveMcpServersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveMcpServers", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveMcpServersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2498,6 +2594,31 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RestartMcpServers(self, request):
+        """本接口（RestartMcpServers）用于重启实例中的MCP Server。
+        - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+        - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果。
+
+        :param request: Request instance for RestartMcpServers.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.RestartMcpServersRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.RestartMcpServersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartMcpServers", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartMcpServersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunDockerContainers(self, request):
         """创建并运行多个Docker容器，之后可以通过返回的ActivityIds调用<a href="https://cloud.tencent.com/document/product/1207/95476" target="_blank">DescribeDockerActivities</a>接口查询创建情况。
 
@@ -2597,6 +2718,31 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartMcpServers(self, request):
+        """本接口（StartMcpServers）用于开启实例中的MCP Server。
+        - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+        - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果。
+
+        :param request: Request instance for StartMcpServers.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.StartMcpServersRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.StartMcpServersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartMcpServers", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartMcpServersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopDockerContainers(self, request):
         """停止实例内的Docker容器，之后可以通过返回的ActivityId调用[DescribeDockerActivities](https://cloud.tencent.com/document/product/1207/95476)接口查询停止情况。
 
@@ -2638,6 +2784,31 @@ class LighthouseClient(AbstractClient):
             body = self.call("StopInstances", params, headers=headers)
             response = json.loads(body)
             model = models.StopInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopMcpServers(self, request):
+        """本接口（StopMcpServers）用于关闭实例中的MCP Server。
+        - 本接口为异步接口，API返回时操作并未立即完成。MCP Server的操作结果可以通过调用 DescribeMcpServers 接口查询。
+        - 本接口在操作多个MCP Server时，不会因为某一个失败而停止。您需要通过调用 DescribeMcpServers 接口查询最终操作结果。
+
+        :param request: Request instance for StopMcpServers.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.StopMcpServersRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.StopMcpServersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopMcpServers", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopMcpServersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

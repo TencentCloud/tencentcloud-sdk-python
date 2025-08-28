@@ -410,11 +410,11 @@ class AclRuleInfo(AbstractModel):
         r"""
         :param _Operation: Acl操作方式，枚举值(所有操作: All, 读：Read，写：Write)
         :type Operation: str
-        :param _PermissionType: 权限类型，(Deny，Allow)
+        :param _PermissionType: 权限类型，Deny：拒绝，Allow：允许。
         :type PermissionType: str
-        :param _Host: 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\* 和 ip网段
+        :param _Host: 表示任何host都可以访问
         :type Host: str
-        :param _Principal: 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入格式需要带【User:】前缀。例如用户A，传入为User:A。
+        :param _Principal: 用户，User:*表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入格式需要带【User:】前缀。例如用户A，传入为User:A。
         :type Principal: str
         """
         self._Operation = None
@@ -435,7 +435,7 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def PermissionType(self):
-        """权限类型，(Deny，Allow)
+        """权限类型，Deny：拒绝，Allow：允许。
         :rtype: str
         """
         return self._PermissionType
@@ -446,7 +446,7 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Host(self):
-        """默认为\*，表示任何host都可以访问，当前ckafka不支持host为\* 和 ip网段
+        """表示任何host都可以访问
         :rtype: str
         """
         return self._Host
@@ -457,7 +457,7 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Principal(self):
-        """用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入格式需要带【User:】前缀。例如用户A，传入为User:A。
+        """用户，User:*表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入格式需要带【User:】前缀。例如用户A，传入为User:A。
         :rtype: str
         """
         return self._Principal
@@ -733,7 +733,7 @@ class AuthorizeTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id, 可通过DescribeInstances接口获取
         :type InstanceId: str
         :param _User: 用户
         :type User: str
@@ -746,7 +746,7 @@ class AuthorizeTokenRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id, 可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -929,13 +929,13 @@ class BatchCreateAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _ResourceType: Acl资源类型，(2:TOPIC）
         :type ResourceType: int
-        :param _ResourceNames: 资源列表数组
+        :param _ResourceNames: 资源列表数组，可通过DescribeTopic接口获取。
         :type ResourceNames: list of str
-        :param _RuleList: 设置的ACL规则列表
+        :param _RuleList: 设置的ACL规则列表，可通过DescribeAclRule接口获取。
         :type RuleList: list of AclRuleInfo
         """
         self._InstanceId = None
@@ -945,7 +945,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -967,7 +967,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def ResourceNames(self):
-        """资源列表数组
+        """资源列表数组，可通过DescribeTopic接口获取。
         :rtype: list of str
         """
         return self._ResourceNames
@@ -978,7 +978,7 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        """设置的ACL规则列表
+        """设置的ACL规则列表，可通过DescribeAclRule接口获取。
         :rtype: list of AclRuleInfo
         """
         return self._RuleList
@@ -1579,7 +1579,7 @@ class BrokerTopicData(AbstractModel):
         :type TopicName: str
         :param _TopicId: 主题Id
         :type TopicId: str
-        :param _DataSize: 主题占用Broker 容量大小
+        :param _DataSize: 主题占用Broker 容量大小，单位为Bytes。
         :type DataSize: int
         """
         self._TopicName = None
@@ -1610,7 +1610,7 @@ class BrokerTopicData(AbstractModel):
 
     @property
     def DataSize(self):
-        """主题占用Broker 容量大小
+        """主题占用Broker 容量大小，单位为Bytes。
         :rtype: int
         """
         return self._DataSize
@@ -1707,7 +1707,7 @@ class CancelAuthorizationTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
         :param _User: 用户
         :type User: str
@@ -1720,7 +1720,7 @@ class CancelAuthorizationTokenRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -3712,7 +3712,7 @@ class CreateAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _ResourceType: Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
         :type ResourceType: int
@@ -3740,7 +3740,7 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -3898,7 +3898,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _ResourceType: Acl资源类型,目前只支持Topic,枚举值列表：Topic
         :type ResourceType: str
@@ -3908,9 +3908,9 @@ class CreateAclRuleRequest(AbstractModel):
         :type RuleName: str
         :param _RuleList: 设置的ACL规则列表
         :type RuleList: list of AclRuleInfo
-        :param _Pattern: 表示前缀匹配的前缀的值
+        :param _Pattern: 表示前缀匹配的前缀的值 (当PatternType取值为PREFIXED时，此参数必填)
         :type Pattern: str
-        :param _IsApplied: 预设ACL规则是否应用到新增的topic中
+        :param _IsApplied: 预设ACL规则是否应用到新增的topic中。默认为0，表示否。取值为1时表示是。
         :type IsApplied: int
         :param _Comment: ACL规则的备注
         :type Comment: str
@@ -3926,7 +3926,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -3981,7 +3981,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def Pattern(self):
-        """表示前缀匹配的前缀的值
+        """表示前缀匹配的前缀的值 (当PatternType取值为PREFIXED时，此参数必填)
         :rtype: str
         """
         return self._Pattern
@@ -3992,7 +3992,7 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def IsApplied(self):
-        """预设ACL规则是否应用到新增的topic中
+        """预设ACL规则是否应用到新增的topic中。默认为0，表示否。取值为1时表示是。
         :rtype: int
         """
         return self._IsApplied
@@ -4571,7 +4571,7 @@ class CreateConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _GroupName: 消费分组名称
         :type GroupName: str
@@ -4587,7 +4587,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -4697,7 +4697,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskName: 任务名称
+        :param _TaskName: 任务名称,只能以字母起始,允许包含字母、数字、- 、.  、 下划线且长度不超过64 (、为分割符号规则不包含)
         :type TaskName: str
         :param _TaskType: 任务类型，SOURCE数据接入，SINK数据流出
         :type TaskType: str
@@ -4734,7 +4734,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        """任务名称,只能以字母起始,允许包含字母、数字、- 、.  、 下划线且长度不超过64 (、为分割符号规则不包含)
         :rtype: str
         """
         return self._TaskName
@@ -5384,7 +5384,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _InstanceName: ckafka集群实例Name，是一个不超过 128 个字符的任意字符串。
         :type InstanceName: str
         :param _ZoneId: 可用区。当购买多可用区实例时，当前参数为主可用区。  [查看可用区](https://cloud.tencent.com/document/product/597/55246)
         :type ZoneId: int
@@ -5396,21 +5396,21 @@ class CreateInstancePreRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 子网id
         :type SubnetId: str
-        :param _MsgRetentionTime: 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+        :param _MsgRetentionTime: 可选。实例日志的最长保留时间，单位分钟，不填默认为1440（1天），可设置范围为1分钟到90天。
         :type MsgRetentionTime: int
         :param _ClusterId: 创建实例时可以选择集群Id, 该入参表示集群Id
         :type ClusterId: int
         :param _RenewFlag: 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
         :type RenewFlag: int
-        :param _KafkaVersion: CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1、3.2.3], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
+        :param _KafkaVersion: CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
         :type KafkaVersion: str
         :param _SpecificationsType: 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"
         :type SpecificationsType: str
-        :param _DiskSize: 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
+        :param _DiskSize: 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功。默认取值为500，步长设置为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562
         :type DiskSize: int
-        :param _BandWidth: 实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
+        :param _BandWidth: 实例带宽,默认值为40，单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745
         :type BandWidth: int
-        :param _Partition: 分区大小，如果跟控制台规格配比不相符，则无法创建成功
+        :param _Partition: 分区大小，如果跟控制台规格配比不相符，则无法创建成功。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563
         :type Partition: int
         :param _Tags: 标签
         :type Tags: list of Tag
@@ -5454,7 +5454,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """ckafka集群实例Name，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        """ckafka集群实例Name，是一个不超过 128 个字符的任意字符串。
         :rtype: str
         """
         return self._InstanceName
@@ -5520,7 +5520,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
-        """可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+        """可选。实例日志的最长保留时间，单位分钟，不填默认为1440（1天），可设置范围为1分钟到90天。
         :rtype: int
         """
         return self._MsgRetentionTime
@@ -5553,7 +5553,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
-        """CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1、3.2.3], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
+        """CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
         :rtype: str
         """
         return self._KafkaVersion
@@ -5575,7 +5575,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        """磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
+        """磁盘大小，如果跟控制台规格配比不相符，则无法创建成功。默认取值为500，步长设置为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562
         :rtype: int
         """
         return self._DiskSize
@@ -5586,7 +5586,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def BandWidth(self):
-        """实例带宽,单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s
+        """实例带宽,默认值为40，单位MB/s; 最小值:20MB/s, 高级版最大值:360MB/s,专业版最大值:100000MB/s  标准版固定带宽规格: 40MB/s, 100MB/s, 150MB/s。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745
         :rtype: int
         """
         return self._BandWidth
@@ -5597,7 +5597,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Partition(self):
-        """分区大小，如果跟控制台规格配比不相符，则无法创建成功
+        """分区大小，如果跟控制台规格配比不相符，则无法创建成功。默认值为800，步长为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122563
         :rtype: int
         """
         return self._Partition
@@ -5874,11 +5874,11 @@ class CreatePartitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名称，可通过DescribeTopic接口获取。
         :type TopicName: str
-        :param _PartitionNum: 主题分区个数
+        :param _PartitionNum: 主题分区个数，传入参数为修改后的分区数，而不是增加的分区数，因此传入参数需要大于当前主题分区个数。
         :type PartitionNum: int
         """
         self._InstanceId = None
@@ -5887,7 +5887,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -5898,7 +5898,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名称，可通过DescribeTopic接口获取。
         :rtype: str
         """
         return self._TopicName
@@ -5909,7 +5909,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def PartitionNum(self):
-        """主题分区个数
+        """主题分区个数，传入参数为修改后的分区数，而不是增加的分区数，因此传入参数需要大于当前主题分区个数。
         :rtype: int
         """
         return self._PartitionNum
@@ -6356,7 +6356,7 @@ class CreatePrometheusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
         :param _VpcId: 私有网络Id
         :type VpcId: str
@@ -6369,7 +6369,7 @@ class CreatePrometheusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -6467,21 +6467,21 @@ class CreateRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例唯一id
+        :param _InstanceId: ckafka集群实例id,可通过DescribeInstances接口获取
         :type InstanceId: str
-        :param _VipType: 路由网络类型(3:vpc路由;7:内部支撑路由)
+        :param _VipType: 路由网络类型(3:vpc路由;7:内部支撑路由;1:公网路由)
         :type VipType: int
-        :param _VpcId: vpc网络Id
+        :param _VpcId: vpc网络Id,当vipType为3时必填
         :type VpcId: str
-        :param _SubnetId: vpc子网id
+        :param _SubnetId: vpc子网id,当vipType为3时必填
         :type SubnetId: str
-        :param _AccessType: 访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl
+        :param _AccessType: 访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl,默认为0
         :type AccessType: int
-        :param _AuthFlag: 是否需要权限管理
+        :param _AuthFlag: 是否需要权限管理,该字段已废弃
         :type AuthFlag: int
         :param _CallerAppid: 调用方appId
         :type CallerAppid: int
-        :param _PublicNetwork: 公网带宽
+        :param _PublicNetwork: 公网带宽,公网路由必传,且必选时3的倍数,无默认值
         :type PublicNetwork: int
         :param _Ip: vip地址
         :type Ip: str
@@ -6498,7 +6498,7 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例唯一id
+        """ckafka集群实例id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -6509,7 +6509,7 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def VipType(self):
-        """路由网络类型(3:vpc路由;7:内部支撑路由)
+        """路由网络类型(3:vpc路由;7:内部支撑路由;1:公网路由)
         :rtype: int
         """
         return self._VipType
@@ -6520,7 +6520,7 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """vpc网络Id
+        """vpc网络Id,当vipType为3时必填
         :rtype: str
         """
         return self._VpcId
@@ -6531,7 +6531,7 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """vpc子网id
+        """vpc子网id,当vipType为3时必填
         :rtype: str
         """
         return self._SubnetId
@@ -6542,7 +6542,7 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def AccessType(self):
-        """访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl
+        """访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl,默认为0
         :rtype: int
         """
         return self._AccessType
@@ -6553,7 +6553,7 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def AuthFlag(self):
-        """是否需要权限管理
+        """是否需要权限管理,该字段已废弃
         :rtype: int
         """
         return self._AuthFlag
@@ -6575,7 +6575,7 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def PublicNetwork(self):
-        """公网带宽
+        """公网带宽,公网路由必传,且必选时3的倍数,无默认值
         :rtype: int
         """
         return self._PublicNetwork
@@ -6668,7 +6668,7 @@ class CreateTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
         :param _User: 用户名
         :type User: str
@@ -6678,7 +6678,7 @@ class CreateTokenRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -6762,11 +6762,11 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名称，可通过DescribeTopic接口获取
         :type TopicName: str
-        :param _IpWhiteList: ip白名单列表
+        :param _IpWhiteList: ip白名单列表，最大值为512，即最大允许传入512个ip。
         :type IpWhiteList: list of str
         """
         self._InstanceId = None
@@ -6775,7 +6775,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -6786,7 +6786,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名称，可通过DescribeTopic接口获取
         :rtype: str
         """
         return self._TopicName
@@ -6797,7 +6797,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
-        """ip白名单列表
+        """ip白名单列表，最大值为512，即最大允许传入512个ip。
         :rtype: list of str
         """
         return self._IpWhiteList
@@ -7235,7 +7235,7 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _Name: 用户名称
         :type Name: str
@@ -7248,7 +7248,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -7621,7 +7621,7 @@ class CvmAndIpInfo(AbstractModel):
         r"""
         :param _CkafkaInstanceId: ckafka集群实例Id
         :type CkafkaInstanceId: str
-        :param _InstanceId: CVM实例ID
+        :param _InstanceId: CVM实例ID(ins-test )或POD IP(10.0.0.30)  
         :type InstanceId: str
         :param _Ip: IP地址
         :type Ip: str
@@ -7643,7 +7643,7 @@ class CvmAndIpInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """CVM实例ID
+        """CVM实例ID(ins-test )或POD IP(10.0.0.30)  
         :rtype: str
         """
         return self._InstanceId
@@ -7685,7 +7685,36 @@ class DatahubResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 资源类型
+        :param _Type: 资源类型  type类型如下: 
+KAFKA,
+EB_ES,
+EB_COS,
+EB_CLS,
+EB_,
+MONGODB,
+HTTP,
+TDW,
+ES,
+CLICKHOUSE,
+DTS,
+CLS,
+COS,
+TOPIC,
+MYSQL,
+MQTT,
+MYSQL_DATA,
+DORIS,
+POSTGRESQL,
+TDSQL_C_POSTGRESQL,
+TDSQL_POSTGRESQL,
+WAREHOUSE_POSTGRESQL,
+TDSQL_C_MYSQL,
+MARIADB,
+SQLSERVER,
+CTSDB,
+SCF
+
+
         :type Type: str
         :param _KafkaParam: ckafka配置，Type为KAFKA时必填
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7760,7 +7789,36 @@ class DatahubResource(AbstractModel):
 
     @property
     def Type(self):
-        """资源类型
+        """资源类型  type类型如下: 
+KAFKA,
+EB_ES,
+EB_COS,
+EB_CLS,
+EB_,
+MONGODB,
+HTTP,
+TDW,
+ES,
+CLICKHOUSE,
+DTS,
+CLS,
+COS,
+TOPIC,
+MYSQL,
+MQTT,
+MYSQL_DATA,
+DORIS,
+POSTGRESQL,
+TDSQL_C_POSTGRESQL,
+TDSQL_POSTGRESQL,
+WAREHOUSE_POSTGRESQL,
+TDSQL_C_MYSQL,
+MARIADB,
+SQLSERVER,
+CTSDB,
+SCF
+
+
         :rtype: str
         """
         return self._Type
@@ -8594,7 +8652,7 @@ class DeleteAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _ResourceType: Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
         :type ResourceType: int
@@ -8606,7 +8664,7 @@ class DeleteAclRequest(AbstractModel):
         :type PermissionType: int
         :param _Host: 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
         :type Host: str
-        :param _Principal: 用户列表，默认为*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
+        :param _Principal: 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
         :type Principal: str
         """
         self._InstanceId = None
@@ -8619,7 +8677,7 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -8685,7 +8743,7 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def Principal(self):
-        """用户列表，默认为*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
+        """用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
         :rtype: str
         """
         return self._Principal
@@ -8765,9 +8823,9 @@ class DeleteAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id信息
+        :param _InstanceId: 实例id信息，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _RuleName: acl规则名称
+        :param _RuleName: acl规则名称，可通过DescribeAclRule接口获取。
         :type RuleName: str
         """
         self._InstanceId = None
@@ -8775,7 +8833,7 @@ class DeleteAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id信息
+        """实例id信息，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -8786,7 +8844,7 @@ class DeleteAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """acl规则名称
+        """acl规则名称，可通过DescribeAclRule接口获取。
         :rtype: str
         """
         return self._RuleName
@@ -9102,9 +9160,9 @@ class DeleteGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _Group: 消费分组
+        :param _Group: 消费组名称，可通过DescribeConsumerGroup接口获取。
         :type Group: str
         """
         self._InstanceId = None
@@ -9112,7 +9170,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -9123,7 +9181,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def Group(self):
-        """消费分组
+        """消费组名称，可通过DescribeConsumerGroup接口获取。
         :rtype: str
         """
         return self._Group
@@ -9198,14 +9256,14 @@ class DeleteInstancePostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -9279,14 +9337,14 @@ class DeleteInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -9360,13 +9418,13 @@ class DeleteRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
-        :param _RouteId: 路由id
+        :param _RouteId: 路由id,可通过DescribeRoute接口获取
         :type RouteId: int
         :param _CallerAppid: 调用方appId
         :type CallerAppid: int
-        :param _DeleteRouteTime: 设置定时删除路由时间,若DeleteRouteTime < now ,设置时间小于当前接口提交时间则立即执行;DeleteRouteTime > now,设置时间大于当前接口提交时间,则按照设置的时间,定时执行删除;  该参数设置提交后,无法撤销!!!
+        :param _DeleteRouteTime: 设置定时删除路由时间,仅类型为公网路由支持定时删除,可选择未来的24小时的任意时间
         :type DeleteRouteTime: str
         """
         self._InstanceId = None
@@ -9376,7 +9434,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -9387,7 +9445,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def RouteId(self):
-        """路由id
+        """路由id,可通过DescribeRoute接口获取
         :rtype: int
         """
         return self._RouteId
@@ -9409,7 +9467,7 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def DeleteRouteTime(self):
-        """设置定时删除路由时间,若DeleteRouteTime < now ,设置时间小于当前接口提交时间则立即执行;DeleteRouteTime > now,设置时间大于当前接口提交时间,则按照设置的时间,定时执行删除;  该参数设置提交后,无法撤销!!!
+        """设置定时删除路由时间,仅类型为公网路由支持定时删除,可选择未来的24小时的任意时间
         :rtype: str
         """
         return self._DeleteRouteTime
@@ -9486,7 +9544,7 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
         :param _DelayTime: 修改删除路由的定时时间
         :type DelayTime: str
@@ -9496,7 +9554,7 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -9565,9 +9623,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _TopicName: 主题名
+        :param _TopicName: 主题名，可通过DescribeTopic接口获取。
         :type TopicName: str
         :param _IpWhiteList: ip白名单列表
         :type IpWhiteList: list of str
@@ -9578,7 +9636,7 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -9589,7 +9647,7 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名
+        """主题名，可通过DescribeTopic接口获取。
         :rtype: str
         """
         return self._TopicName
@@ -9772,9 +9830,9 @@ class DeleteUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _Name: 用户名称
+        :param _Name: 用户名称，可通过DescribeUser接口获取。
         :type Name: str
         """
         self._InstanceId = None
@@ -9782,7 +9840,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -9793,7 +9851,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        """用户名称
+        """用户名称，可通过DescribeUser接口获取。
         :rtype: str
         """
         return self._Name
@@ -9868,7 +9926,7 @@ class DescribeACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _ResourceType: Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
         :type ResourceType: int
@@ -9876,7 +9934,7 @@ class DescribeACLRequest(AbstractModel):
         :type ResourceName: str
         :param _Offset: 偏移位置
         :type Offset: int
-        :param _Limit: 个数限制
+        :param _Limit: 个数限制，默认值为50，最大值为50。
         :type Limit: int
         :param _SearchWord: 关键字匹配
         :type SearchWord: str
@@ -9890,7 +9948,7 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -9934,7 +9992,7 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """个数限制
+        """个数限制，默认值为50，最大值为50。
         :rtype: int
         """
         return self._Limit
@@ -10024,13 +10082,13 @@ class DescribeAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _RuleName: ACL规则名
         :type RuleName: str
-        :param _PatternType: ACL规则匹配类型
+        :param _PatternType: ACL规则匹配类型 （PREFIXED：前缀匹配，PRESET：预设策略）
         :type PatternType: str
-        :param _IsSimplified: 是否读取简略的ACL规则
+        :param _IsSimplified: 是否读取简略的ACL规则，默认值为false，表示不读取简略的ACL规则。
         :type IsSimplified: bool
         """
         self._InstanceId = None
@@ -10040,7 +10098,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -10062,7 +10120,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def PatternType(self):
-        """ACL规则匹配类型
+        """ACL规则匹配类型 （PREFIXED：前缀匹配，PRESET：预设策略）
         :rtype: str
         """
         return self._PatternType
@@ -10073,7 +10131,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def IsSimplified(self):
-        """是否读取简略的ACL规则
+        """是否读取简略的ACL规则，默认值为false，表示不读取简略的ACL规则。
         :rtype: bool
         """
         return self._IsSimplified
@@ -10855,7 +10913,7 @@ class DescribeConnectResourceResp(AbstractModel):
         :type Description: str
         :param _Type: 连接源类型
         :type Type: str
-        :param _Status: 连接源的状态
+        :param _Status: 连接源的状态  枚举值: -1 (创建失败) 、0 (创建中) 、 1 (运行中)、 2 (删除中) 、 4 (删除失败) 、 5 (配置更改中) 、 6 (配置更改失败) 、 7 (异常)
         :type Status: int
         :param _CreateTime: 连接源的创建时间
         :type CreateTime: str
@@ -10971,7 +11029,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def Status(self):
-        """连接源的状态
+        """连接源的状态  枚举值: -1 (创建失败) 、0 (创建中) 、 1 (运行中)、 2 (删除中) 、 4 (删除失败) 、 5 (配置更改中) 、 6 (配置更改失败) 、 7 (异常)
         :rtype: int
         """
         return self._Status
@@ -11616,14 +11674,14 @@ class DescribeCvmInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -13846,14 +13904,14 @@ class DescribePrometheusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -17471,7 +17529,7 @@ class FetchDatahubMessageByOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 弹性topic名称
+        :param _Name: 弹性topic名称，可通过DescribeDatahubTopics接口获取。
         :type Name: str
         :param _Partition: 分区id
         :type Partition: int
@@ -17484,7 +17542,7 @@ class FetchDatahubMessageByOffsetRequest(AbstractModel):
 
     @property
     def Name(self):
-        """弹性topic名称
+        """弹性topic名称，可通过DescribeDatahubTopics接口获取。
         :rtype: str
         """
         return self._Name
@@ -17711,9 +17769,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _Topic: 主题名
+        :param _Topic: 主题名，可通过DescribeTopic接口获取。
         :type Topic: str
         :param _Partition: 分区id
         :type Partition: int
@@ -17727,7 +17785,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -17738,7 +17796,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题名
+        """主题名，可通过DescribeTopic接口获取。
         :rtype: str
         """
         return self._Topic
@@ -19020,12 +19078,16 @@ class InquireCkafkaPriceRequest(AbstractModel):
         :param _Bandwidth: 实例内网带宽大小, 单位MB/s (购买时必填，专业版/高级版询价时带宽信息必填)
         :type Bandwidth: int
         :param _InquiryDiskParam: 实例的硬盘购买类型以及大小 (购买时必填，专业版/高级版询价时磁盘信息必填)
+
         :type InquiryDiskParam: :class:`tencentcloud.ckafka.v20190819.models.InquiryDiskParam`
         :param _MessageRetention: 实例消息保留时间大小, 单位小时 (购买时必填)
         :type MessageRetention: int
         :param _Topic: 购买实例topic数, 单位个 (购买时必填)
         :type Topic: int
         :param _Partition: 购买实例分区数, 单位个 (购买时必填，专业版/高级版询价时带宽信息必填)
+分区上限 最大值: 40000,步长: 100
+可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563
+
         :type Partition: int
         :param _ZoneIds: 购买地域, 可通过查看DescribeCkafkaZone这个接口获取ZoneId
         :type ZoneIds: list of int
@@ -19033,7 +19095,7 @@ class InquireCkafkaPriceRequest(AbstractModel):
         :type CategoryAction: str
         :param _BillType: 国内站购买的版本, sv_ckafka_instance_s2_1(入门型), sv_ckafka_instance_s2_2(标准版), sv_ckafka_instance_s2_3(进阶型), 如果instanceType为standards2, 但该参数为空, 则默认值为sv_ckafka_instance_s2_1
         :type BillType: str
-        :param _PublicNetworkParam: 公网带宽计费模式, 目前只有专业版支持公网带宽 (购买公网带宽时必填)
+        :param _PublicNetworkParam: 公网带宽计费模式, 目前只有专业版支持公网带宽 (购买公网带宽时必填),取值为3的倍数
         :type PublicNetworkParam: :class:`tencentcloud.ckafka.v20190819.models.InquiryPublicNetworkParam`
         :param _InstanceId: 续费时的实例id, 续费时填写
         :type InstanceId: str
@@ -19099,6 +19161,7 @@ class InquireCkafkaPriceRequest(AbstractModel):
     @property
     def InquiryDiskParam(self):
         """实例的硬盘购买类型以及大小 (购买时必填，专业版/高级版询价时磁盘信息必填)
+
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryDiskParam`
         """
         return self._InquiryDiskParam
@@ -19132,6 +19195,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
     @property
     def Partition(self):
         """购买实例分区数, 单位个 (购买时必填，专业版/高级版询价时带宽信息必填)
+分区上限 最大值: 40000,步长: 100
+可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563
+
         :rtype: int
         """
         return self._Partition
@@ -19175,7 +19241,7 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def PublicNetworkParam(self):
-        """公网带宽计费模式, 目前只有专业版支持公网带宽 (购买公网带宽时必填)
+        """公网带宽计费模式, 目前只有专业版支持公网带宽 (购买公网带宽时必填),取值为3的倍数
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryPublicNetworkParam`
         """
         return self._PublicNetworkParam
@@ -21586,16 +21652,22 @@ class InstanceScalingDownRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
         :param _UpgradeStrategy: 缩容模式  1:稳定变配 
 2.高速变配
         :type UpgradeStrategy: int
-        :param _DiskSize: 磁盘大小 单位 GB
+        :param _DiskSize: 磁盘大小 单位 GB     最大值为500000,步长100
+可以通过以下链接查看规格限制：https://cloud.tencent.com/document/product/597/122562
+
+
         :type DiskSize: int
         :param _BandWidth: 峰值带宽 单位 MB/s
+可以通过以下链接查看规格限制及对应步长: https://cloud.tencent.com/document/product/597/11745
         :type BandWidth: int
-        :param _Partition: 分区上限
+        :param _Partition: 分区上限 最大值: 40000, 步长: 100
+可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563
+
         :type Partition: int
         """
         self._InstanceId = None
@@ -21606,7 +21678,7 @@ class InstanceScalingDownRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -21629,7 +21701,10 @@ class InstanceScalingDownRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        """磁盘大小 单位 GB
+        """磁盘大小 单位 GB     最大值为500000,步长100
+可以通过以下链接查看规格限制：https://cloud.tencent.com/document/product/597/122562
+
+
         :rtype: int
         """
         return self._DiskSize
@@ -21641,6 +21716,7 @@ class InstanceScalingDownRequest(AbstractModel):
     @property
     def BandWidth(self):
         """峰值带宽 单位 MB/s
+可以通过以下链接查看规格限制及对应步长: https://cloud.tencent.com/document/product/597/11745
         :rtype: int
         """
         return self._BandWidth
@@ -21651,7 +21727,9 @@ class InstanceScalingDownRequest(AbstractModel):
 
     @property
     def Partition(self):
-        """分区上限
+        """分区上限 最大值: 40000, 步长: 100
+可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563
+
         :rtype: int
         """
         return self._Partition
@@ -23761,9 +23839,9 @@ class ModifyInstanceAttributesConfig(AbstractModel):
         r"""
         :param _AutoCreateTopicEnable: 自动创建 true 表示开启，false 表示不开启
         :type AutoCreateTopicEnable: bool
-        :param _DefaultNumPartitions: 可选，如果auto.create.topic.enable设置为true没有设置该值时，默认设置为3
+        :param _DefaultNumPartitions: 新创建主题的默认分区数,如果AutoCreateTopicEnable设置为true没有设置该值时，默认设置为3
         :type DefaultNumPartitions: int
-        :param _DefaultReplicationFactor: 如果auto.create.topic.enable设置为true没有指定该值时默认设置为2
+        :param _DefaultReplicationFactor: 新创建主题的默认副本数,如果AutoCreateTopicEnable设置为true没有指定该值时默认设置为2
         :type DefaultReplicationFactor: int
         """
         self._AutoCreateTopicEnable = None
@@ -23783,7 +23861,7 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultNumPartitions(self):
-        """可选，如果auto.create.topic.enable设置为true没有设置该值时，默认设置为3
+        """新创建主题的默认分区数,如果AutoCreateTopicEnable设置为true没有设置该值时，默认设置为3
         :rtype: int
         """
         return self._DefaultNumPartitions
@@ -23794,7 +23872,7 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultReplicationFactor(self):
-        """如果auto.create.topic.enable设置为true没有指定该值时默认设置为2
+        """新创建主题的默认副本数,如果AutoCreateTopicEnable设置为true没有指定该值时默认设置为2
         :rtype: int
         """
         return self._DefaultReplicationFactor
@@ -23825,9 +23903,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
-        :param _MsgRetentionTime: 实例日志的最长保留时间，单位分钟，最大90天，0代表不开启日志保留时间回收策略
+        :param _MsgRetentionTime: 实例日志的最长保留时间，单位分钟，最大90天，最小为1min
         :type MsgRetentionTime: int
         :param _InstanceName: ckafka集群实例Name
         :type InstanceName: str
@@ -23843,7 +23921,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         :param _MaxMessageByte: 实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
         :type MaxMessageByte: int
-        :param _UncleanLeaderElectionEnable: 集群topic默认 unclean.leader.election.enable配置: 1 开启  0 关闭
+        :param _UncleanLeaderElectionEnable: 是否允许未同步的副本选为 leader: 1 开启  0 关闭
         :type UncleanLeaderElectionEnable: int
         :param _DeleteProtectionEnable: 实例删除保护开关: 1 开启  0 关闭
         :type DeleteProtectionEnable: int
@@ -23862,7 +23940,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -23873,7 +23951,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
-        """实例日志的最长保留时间，单位分钟，最大90天，0代表不开启日志保留时间回收策略
+        """实例日志的最长保留时间，单位分钟，最大90天，最小为1min
         :rtype: int
         """
         return self._MsgRetentionTime
@@ -23965,7 +24043,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def UncleanLeaderElectionEnable(self):
-        """集群topic默认 unclean.leader.election.enable配置: 1 开启  0 关闭
+        """是否允许未同步的副本选为 leader: 1 开启  0 关闭
         :rtype: int
         """
         return self._UncleanLeaderElectionEnable
@@ -24066,13 +24144,18 @@ class ModifyInstancePreRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
-        :param _DiskSize: 预计磁盘，根据磁盘步长，规格向上调整。
+        :param _DiskSize: 磁盘大小 单位 GB     最大值为500000,步长100
+可以通过以下链接查看规格限制：https://cloud.tencent.com/document/product/597/122562
+
         :type DiskSize: int
-        :param _BandWidth: 预计带宽，根据带宽步长，规格向上调整。
+        :param _BandWidth: 峰值带宽 单位 MB/s
+可以通过以下链接查看规格限制及对应步长: https://cloud.tencent.com/document/product/597/11745
+
         :type BandWidth: int
-        :param _Partition: 预计分区，根据带宽步长，规格向上调整。
+        :param _Partition: 分区上限 最大值: 40000, 步长: 100
+可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563
         :type Partition: int
         """
         self._InstanceId = None
@@ -24082,7 +24165,7 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -24093,7 +24176,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        """预计磁盘，根据磁盘步长，规格向上调整。
+        """磁盘大小 单位 GB     最大值为500000,步长100
+可以通过以下链接查看规格限制：https://cloud.tencent.com/document/product/597/122562
+
         :rtype: int
         """
         return self._DiskSize
@@ -24104,7 +24189,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def BandWidth(self):
-        """预计带宽，根据带宽步长，规格向上调整。
+        """峰值带宽 单位 MB/s
+可以通过以下链接查看规格限制及对应步长: https://cloud.tencent.com/document/product/597/11745
+
         :rtype: int
         """
         return self._BandWidth
@@ -24115,7 +24202,8 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def Partition(self):
-        """预计分区，根据带宽步长，规格向上调整。
+        """分区上限 最大值: 40000, 步长: 100
+可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563
         :rtype: int
         """
         return self._Partition
@@ -24192,9 +24280,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _Name: 用户名称
+        :param _Name: 用户名称，可通过DescribeUser接口获取。
         :type Name: str
         :param _Password: 用户当前密码
         :type Password: str
@@ -24208,7 +24296,7 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -24219,7 +24307,7 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def Name(self):
-        """用户名称
+        """用户名称，可通过DescribeUser接口获取。
         :rtype: str
         """
         return self._Name
@@ -24318,9 +24406,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: ckafka集群实例id,可通过DescribeInstances接口获取
         :type InstanceId: str
-        :param _MaintenanceType: 自动化运维类别
+        :param _MaintenanceType: 自动化运维类别, 类别如下: QUOTA、ANALYSIS、RE_BALANCE、ELASTIC_BANDWIDTH
         :type MaintenanceType: str
         :param _MaintenanceSubtype: INSTANCE_STORAGE_CAPACITY(磁盘自动扩容)/MESSAGE_RETENTION_PERIOD(磁盘动态消息保留策略)
         :type MaintenanceSubtype: str
@@ -24336,7 +24424,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
         :type PlannedTime: int
         :param _ExtraConfig: 任务额外信息
         :type ExtraConfig: str
-        :param _Status: 任务状态
+        :param _Status: 任务状态,0 开启,1 关闭
         :type Status: int
         :param _Week: 执行week day
         :type Week: str
@@ -24355,7 +24443,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """ckafka集群实例id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -24366,7 +24454,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def MaintenanceType(self):
-        """自动化运维类别
+        """自动化运维类别, 类别如下: QUOTA、ANALYSIS、RE_BALANCE、ELASTIC_BANDWIDTH
         :rtype: str
         """
         return self._MaintenanceType
@@ -24454,7 +24542,7 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态
+        """任务状态,0 开启,1 关闭
         :rtype: int
         """
         return self._Status
@@ -27833,7 +27921,7 @@ class RenewCkafkaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
         :param _TimeSpan: 续费时长, 默认为1, 单位是月
         :type TimeSpan: int
@@ -27843,7 +27931,7 @@ class RenewCkafkaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -30911,9 +30999,9 @@ class TopicMessageHeapRanking(AbstractModel):
         :type PartitionNum: int
         :param _ReplicaNum: 副本数
         :type ReplicaNum: int
-        :param _TopicTraffic: Topic 流量
+        :param _TopicTraffic: Topic 流量，单位为MB。
         :type TopicTraffic: str
-        :param _MessageHeap: topic消息堆积/占用磁盘
+        :param _MessageHeap: topic消息堆积/占用磁盘，单位为Bytes。
         :type MessageHeap: int
         """
         self._TopicId = None
@@ -30969,7 +31057,7 @@ class TopicMessageHeapRanking(AbstractModel):
 
     @property
     def TopicTraffic(self):
-        """Topic 流量
+        """Topic 流量，单位为MB。
         :rtype: str
         """
         return self._TopicTraffic
@@ -30980,7 +31068,7 @@ class TopicMessageHeapRanking(AbstractModel):
 
     @property
     def MessageHeap(self):
-        """topic消息堆积/占用磁盘
+        """topic消息堆积/占用磁盘，单位为Bytes。
         :rtype: int
         """
         return self._MessageHeap
@@ -31146,7 +31234,7 @@ class TopicPartitionDO(AbstractModel):
         r"""
         :param _Partition: Partition 分区ID
         :type Partition: int
-        :param _LeaderStatus: Leader 运行状态
+        :param _LeaderStatus: Leader 运行状态，0表示正常运行
         :type LeaderStatus: int
         :param _IsrNum: ISR 个数
         :type IsrNum: int
@@ -31171,7 +31259,7 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def LeaderStatus(self):
-        """Leader 运行状态
+        """Leader 运行状态，0表示正常运行
         :rtype: int
         """
         return self._LeaderStatus
@@ -32281,7 +32369,7 @@ class ZoneInfo(AbstractModel):
         :type Flag: bool
         :param _ZoneName: 可用区名称
         :type ZoneName: str
-        :param _ZoneStatus: 可用区状态
+        :param _ZoneStatus: 可用区状态  枚举示例:  3: 开启，4: 关闭;  可用区状态以SoldOut为准
         :type ZoneStatus: int
         :param _Exflag: 额外标识
         :type Exflag: str
@@ -32360,7 +32448,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneStatus(self):
-        """可用区状态
+        """可用区状态  枚举示例:  3: 开启，4: 关闭;  可用区状态以SoldOut为准
         :rtype: int
         """
         return self._ZoneStatus

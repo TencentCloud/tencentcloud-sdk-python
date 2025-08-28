@@ -852,25 +852,27 @@ class CFSOption(AbstractModel):
         :type LocalPath: str
         :param _RemotePath: 文件系统远程挂载ip及路径。
         :type RemotePath: str
-        :param _Protocol: 文件系统协议类型，默认值NFS 3.0。
-<li>NFS 3.0。
-<li>NFS 4.0。
-<li>TURBO。
+        :param _Protocol: 文件系统协议类型。
+<li>NFS 3.0</li>
+<li>NFS 4.0</li>
+<li>TURBO</li>
         :type Protocol: str
         :param _StorageType: 文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
         :type StorageType: str
         :param _MountOption: 文件系统挂载挂载命令参数选项。
-
 - NFS 3.0默认值：vers=3,nolock,proto=tcp,noresvport
 - NFS 4.0默认值：vers=4.0,noresvport
 - TURBO默认值：user_xattr
         :type MountOption: str
+        :param _FileSystemId: 文件系统ID    文件系统ID通过调用接口[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)获取。
+        :type FileSystemId: str
         """
         self._LocalPath = None
         self._RemotePath = None
         self._Protocol = None
         self._StorageType = None
         self._MountOption = None
+        self._FileSystemId = None
 
     @property
     def LocalPath(self):
@@ -896,10 +898,10 @@ class CFSOption(AbstractModel):
 
     @property
     def Protocol(self):
-        """文件系统协议类型，默认值NFS 3.0。
-<li>NFS 3.0。
-<li>NFS 4.0。
-<li>TURBO。
+        """文件系统协议类型。
+<li>NFS 3.0</li>
+<li>NFS 4.0</li>
+<li>TURBO</li>
         :rtype: str
         """
         return self._Protocol
@@ -922,7 +924,6 @@ class CFSOption(AbstractModel):
     @property
     def MountOption(self):
         """文件系统挂载挂载命令参数选项。
-
 - NFS 3.0默认值：vers=3,nolock,proto=tcp,noresvport
 - NFS 4.0默认值：vers=4.0,noresvport
 - TURBO默认值：user_xattr
@@ -934,6 +935,17 @@ class CFSOption(AbstractModel):
     def MountOption(self, MountOption):
         self._MountOption = MountOption
 
+    @property
+    def FileSystemId(self):
+        """文件系统ID    文件系统ID通过调用接口[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)获取。
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
 
     def _deserialize(self, params):
         self._LocalPath = params.get("LocalPath")
@@ -941,6 +953,7 @@ class CFSOption(AbstractModel):
         self._Protocol = params.get("Protocol")
         self._StorageType = params.get("StorageType")
         self._MountOption = params.get("MountOption")
+        self._FileSystemId = params.get("FileSystemId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

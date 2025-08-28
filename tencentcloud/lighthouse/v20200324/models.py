@@ -3037,6 +3037,150 @@ class CreateKeyPairResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMcpServerRequest(AbstractModel):
+    """CreateMcpServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :type InstanceId: str
+        :param _Name: MCP Server名称。最大长度：64
+        :type Name: str
+        :param _Command: Base64编码后的MCP Server启动命令。最大长度：2048
+        :type Command: str
+        :param _Description: MCP Server备注。最大长度：2048
+        :type Description: str
+        :param _Envs: MCP Server环境变量。最大长度：10
+        :type Envs: list of McpServerEnv
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Command = None
+        self._Description = None
+        self._Envs = None
+
+    @property
+    def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        """MCP Server名称。最大长度：64
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Command(self):
+        """Base64编码后的MCP Server启动命令。最大长度：2048
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Description(self):
+        """MCP Server备注。最大长度：2048
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Envs(self):
+        """MCP Server环境变量。最大长度：10
+        :rtype: list of McpServerEnv
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Command = params.get("Command")
+        self._Description = params.get("Description")
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = McpServerEnv()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMcpServerResponse(AbstractModel):
+    """CreateMcpServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _McpServerId: MCP Server ID。
+        :type McpServerId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._McpServerId = None
+        self._RequestId = None
+
+    @property
+    def McpServerId(self):
+        """MCP Server ID。
+        :rtype: str
+        """
+        return self._McpServerId
+
+    @McpServerId.setter
+    def McpServerId(self, McpServerId):
+        self._McpServerId = McpServerId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._McpServerId = params.get("McpServerId")
+        self._RequestId = params.get("RequestId")
+
+
 class DataDiskPrice(AbstractModel):
     """数据盘价格
 
@@ -7972,6 +8116,180 @@ class DescribeKeyPairsResponse(AbstractModel):
                 obj = KeyPair()
                 obj._deserialize(item)
                 self._KeyPairSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMcpServersRequest(AbstractModel):
+    """DescribeMcpServers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :type InstanceId: str
+        :param _McpServerIds: MCP Server ID列表。列表为空时此条件不生效。最大长度：10
+        :type McpServerIds: list of str
+        :param _Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._McpServerIds = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def McpServerIds(self):
+        """MCP Server ID列表。列表为空时此条件不生效。最大长度：10
+        :rtype: list of str
+        """
+        return self._McpServerIds
+
+    @McpServerIds.setter
+    def McpServerIds(self, McpServerIds):
+        self._McpServerIds = McpServerIds
+
+    @property
+    def Limit(self):
+        """返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._McpServerIds = params.get("McpServerIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMcpServersResponse(AbstractModel):
+    """DescribeMcpServers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _McpServerSet: MCP Server列表。
+        :type McpServerSet: list of McpServer
+        :param _TotalCount: 符合条件的MCP Server数量。
+        :type TotalCount: int
+        :param _InstanceId: 实例 ID。	
+        :type InstanceId: str
+        :param _InstanceName: 实例名称。
+        :type InstanceName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._McpServerSet = None
+        self._TotalCount = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._RequestId = None
+
+    @property
+    def McpServerSet(self):
+        """MCP Server列表。
+        :rtype: list of McpServer
+        """
+        return self._McpServerSet
+
+    @McpServerSet.setter
+    def McpServerSet(self, McpServerSet):
+        self._McpServerSet = McpServerSet
+
+    @property
+    def TotalCount(self):
+        """符合条件的MCP Server数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceId(self):
+        """实例 ID。	
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        """实例名称。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("McpServerSet") is not None:
+            self._McpServerSet = []
+            for item in params.get("McpServerSet"):
+                obj = McpServer()
+                obj._deserialize(item)
+                self._McpServerSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
         self._RequestId = params.get("RequestId")
 
 
@@ -14425,6 +14743,289 @@ class LoginSettings(AbstractModel):
         
 
 
+class McpServer(AbstractModel):
+    """MCP Server信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _McpServerId: MCP Server ID。
+        :type McpServerId: str
+        :param _Name: MCP Server名称。最大长度：64
+        :type Name: str
+        :param _McpServerType: MCP Server类型。枚举值：PUBLIC_PACKAGE，公共包安装；AGENT_GENERATED，AI生成。
+        :type McpServerType: str
+        :param _IconUrl: MCP Server图标地址
+        :type IconUrl: str
+        :param _Command: Base64编码后的MCP Server启动命令。最大长度：2048
+        :type Command: str
+        :param _State: MCP Server状态。枚举值如下：
+
+PENDING：表示创建中
+LAUNCH_FAILED：表示创建失败
+RUNNING：表示运行中
+STOPPED：表示关闭
+STARTING：表示开启中
+STOPPING：表示关闭中
+RESTARTING：表示重启中
+REMOVING：表示删除中
+UNKNOWN：表示未知
+ENV_ERROR：表示环境错误
+        :type State: str
+        :param _ServerUrl: MCP Server访问地址。
+        :type ServerUrl: str
+        :param _Config: MCP Server配置
+        :type Config: str
+        :param _Description: MCP Server备注
+        :type Description: str
+        :param _CreatedTime: MCP Server创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+        :type CreatedTime: str
+        :param _UpdatedTime: MCP Server修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+        :type UpdatedTime: str
+        :param _EnvSet: MCP Server环境变量
+        :type EnvSet: list of McpServerEnv
+        """
+        self._McpServerId = None
+        self._Name = None
+        self._McpServerType = None
+        self._IconUrl = None
+        self._Command = None
+        self._State = None
+        self._ServerUrl = None
+        self._Config = None
+        self._Description = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._EnvSet = None
+
+    @property
+    def McpServerId(self):
+        """MCP Server ID。
+        :rtype: str
+        """
+        return self._McpServerId
+
+    @McpServerId.setter
+    def McpServerId(self, McpServerId):
+        self._McpServerId = McpServerId
+
+    @property
+    def Name(self):
+        """MCP Server名称。最大长度：64
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def McpServerType(self):
+        """MCP Server类型。枚举值：PUBLIC_PACKAGE，公共包安装；AGENT_GENERATED，AI生成。
+        :rtype: str
+        """
+        return self._McpServerType
+
+    @McpServerType.setter
+    def McpServerType(self, McpServerType):
+        self._McpServerType = McpServerType
+
+    @property
+    def IconUrl(self):
+        """MCP Server图标地址
+        :rtype: str
+        """
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def Command(self):
+        """Base64编码后的MCP Server启动命令。最大长度：2048
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def State(self):
+        """MCP Server状态。枚举值如下：
+
+PENDING：表示创建中
+LAUNCH_FAILED：表示创建失败
+RUNNING：表示运行中
+STOPPED：表示关闭
+STARTING：表示开启中
+STOPPING：表示关闭中
+RESTARTING：表示重启中
+REMOVING：表示删除中
+UNKNOWN：表示未知
+ENV_ERROR：表示环境错误
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def ServerUrl(self):
+        """MCP Server访问地址。
+        :rtype: str
+        """
+        return self._ServerUrl
+
+    @ServerUrl.setter
+    def ServerUrl(self, ServerUrl):
+        self._ServerUrl = ServerUrl
+
+    @property
+    def Config(self):
+        """MCP Server配置
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Description(self):
+        """MCP Server备注
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedTime(self):
+        """MCP Server创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        """MCP Server修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def EnvSet(self):
+        """MCP Server环境变量
+        :rtype: list of McpServerEnv
+        """
+        return self._EnvSet
+
+    @EnvSet.setter
+    def EnvSet(self, EnvSet):
+        self._EnvSet = EnvSet
+
+
+    def _deserialize(self, params):
+        self._McpServerId = params.get("McpServerId")
+        self._Name = params.get("Name")
+        self._McpServerType = params.get("McpServerType")
+        self._IconUrl = params.get("IconUrl")
+        self._Command = params.get("Command")
+        self._State = params.get("State")
+        self._ServerUrl = params.get("ServerUrl")
+        self._Config = params.get("Config")
+        self._Description = params.get("Description")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        if params.get("EnvSet") is not None:
+            self._EnvSet = []
+            for item in params.get("EnvSet"):
+                obj = McpServerEnv()
+                obj._deserialize(item)
+                self._EnvSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McpServerEnv(AbstractModel):
+    """MCP Server环境变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: MCP Server的环境变量键。最大长度：128
+        :type Key: str
+        :param _Value: MCP Server的环境变量值。最大长度：1024。该字段可能存储密钥，出参时将固定返回“**********”，避免明文泄露。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """MCP Server的环境变量键。最大长度：128
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """MCP Server的环境变量值。最大长度：1024。该字段可能存储密钥，出参时将固定返回“**********”，避免明文泄露。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyBlueprintAttributeRequest(AbstractModel):
     """ModifyBlueprintAttribute请求参数结构体
 
@@ -15774,6 +16375,150 @@ class ModifyInstancesRenewFlagResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMcpServerRequest(AbstractModel):
+    """ModifyMcpServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。可以通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :type InstanceId: str
+        :param _McpServerId: MCP Server ID。可以通过DescribeMcpServers接口返回值中的McpServerId获取。
+        :type McpServerId: str
+        :param _Name: MCP Server名称。最大长度：64
+        :type Name: str
+        :param _Command: Base64编码后的MCP Server启动命令。最大长度：2048
+        :type Command: str
+        :param _Description: MCP Server备注。最大长度：2048
+        :type Description: str
+        :param _Envs: MCP Server环境变量。最大长度：10。用于完整替换MCP Server的环境变量。当该字段为空时，系统将清除当前所有环境变量。若无需修改环境变量，请勿传递该字段。
+        :type Envs: list of McpServerEnv
+        """
+        self._InstanceId = None
+        self._McpServerId = None
+        self._Name = None
+        self._Command = None
+        self._Description = None
+        self._Envs = None
+
+    @property
+    def InstanceId(self):
+        """实例ID。可以通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def McpServerId(self):
+        """MCP Server ID。可以通过DescribeMcpServers接口返回值中的McpServerId获取。
+        :rtype: str
+        """
+        return self._McpServerId
+
+    @McpServerId.setter
+    def McpServerId(self, McpServerId):
+        self._McpServerId = McpServerId
+
+    @property
+    def Name(self):
+        """MCP Server名称。最大长度：64
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Command(self):
+        """Base64编码后的MCP Server启动命令。最大长度：2048
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Description(self):
+        """MCP Server备注。最大长度：2048
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Envs(self):
+        """MCP Server环境变量。最大长度：10。用于完整替换MCP Server的环境变量。当该字段为空时，系统将清除当前所有环境变量。若无需修改环境变量，请勿传递该字段。
+        :rtype: list of McpServerEnv
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._McpServerId = params.get("McpServerId")
+        self._Name = params.get("Name")
+        self._Command = params.get("Command")
+        self._Description = params.get("Description")
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = McpServerEnv()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMcpServerResponse(AbstractModel):
+    """ModifyMcpServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySnapshotAttributeRequest(AbstractModel):
     """ModifySnapshotAttribute请求参数结构体
 
@@ -16229,6 +16974,85 @@ class RemoveDockerContainersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DockerActivityId = params.get("DockerActivityId")
+        self._RequestId = params.get("RequestId")
+
+
+class RemoveMcpServersRequest(AbstractModel):
+    """RemoveMcpServers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。可以通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :type InstanceId: str
+        :param _McpServerIds: MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+        :type McpServerIds: list of str
+        """
+        self._InstanceId = None
+        self._McpServerIds = None
+
+    @property
+    def InstanceId(self):
+        """实例ID。可以通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def McpServerIds(self):
+        """MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+        :rtype: list of str
+        """
+        return self._McpServerIds
+
+    @McpServerIds.setter
+    def McpServerIds(self, McpServerIds):
+        self._McpServerIds = McpServerIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._McpServerIds = params.get("McpServerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveMcpServersResponse(AbstractModel):
+    """RemoveMcpServers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -17488,6 +18312,85 @@ class RestartDockerContainersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RestartMcpServersRequest(AbstractModel):
+    """RestartMcpServers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :type InstanceId: str
+        :param _McpServerIds: MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+        :type McpServerIds: list of str
+        """
+        self._InstanceId = None
+        self._McpServerIds = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def McpServerIds(self):
+        """MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+        :rtype: list of str
+        """
+        return self._McpServerIds
+
+    @McpServerIds.setter
+    def McpServerIds(self, McpServerIds):
+        self._McpServerIds = McpServerIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._McpServerIds = params.get("McpServerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartMcpServersResponse(AbstractModel):
+    """RestartMcpServers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RunDockerContainersRequest(AbstractModel):
     """RunDockerContainers请求参数结构体
 
@@ -18381,6 +19284,85 @@ class StartInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartMcpServersRequest(AbstractModel):
+    """StartMcpServers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :type InstanceId: str
+        :param _McpServerIds: MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+        :type McpServerIds: list of str
+        """
+        self._InstanceId = None
+        self._McpServerIds = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def McpServerIds(self):
+        """MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+        :rtype: list of str
+        """
+        return self._McpServerIds
+
+    @McpServerIds.setter
+    def McpServerIds(self, McpServerIds):
+        self._McpServerIds = McpServerIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._McpServerIds = params.get("McpServerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartMcpServersResponse(AbstractModel):
+    """StartMcpServers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class StopDockerContainersRequest(AbstractModel):
     """StopDockerContainers请求参数结构体
 
@@ -18513,6 +19495,85 @@ class StopInstancesRequest(AbstractModel):
 
 class StopInstancesResponse(AbstractModel):
     """StopInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopMcpServersRequest(AbstractModel):
+    """StopMcpServers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :type InstanceId: str
+        :param _McpServerIds: MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+        :type McpServerIds: list of str
+        """
+        self._InstanceId = None
+        self._McpServerIds = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def McpServerIds(self):
+        """MCP Server ID列表。可通过DescribeMcpServers接口返回值中的McpServerId获取。最大长度：10
+        :rtype: list of str
+        """
+        return self._McpServerIds
+
+    @McpServerIds.setter
+    def McpServerIds(self, McpServerIds):
+        self._McpServerIds = McpServerIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._McpServerIds = params.get("McpServerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopMcpServersResponse(AbstractModel):
+    """StopMcpServers返回参数结构体
 
     """
 

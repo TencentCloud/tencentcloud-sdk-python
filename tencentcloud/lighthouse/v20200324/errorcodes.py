@@ -110,6 +110,9 @@ FAILEDOPERATION_INVALIDCOMMANDNOTFOUND = 'FailedOperation.InvalidCommandNotFound
 # 退还资源失败。
 FAILEDOPERATION_ISOLATERESOURCESFAILED = 'FailedOperation.IsolateResourcesFailed'
 
+# MCP Server操作失败
+FAILEDOPERATION_MCPSERVEROPERATIONFAILED = 'FailedOperation.McpServerOperationFailed'
+
 # 变更实例套餐失败。
 FAILEDOPERATION_MODIFYINSTANCESBUNDLEFAILED = 'FailedOperation.ModifyInstancesBundleFailed'
 
@@ -428,6 +431,15 @@ INVALIDPARAMETERVALUE_LENGTH = 'InvalidParameterValue.Length'
 # 参数值非法，参数值的数量超过最大限制。
 INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 
+# 环境变量无效
+INVALIDPARAMETERVALUE_MCPSERVERENVINVALID = 'InvalidParameterValue.McpServerEnvInvalid'
+
+# MCP Server数量超过限制
+INVALIDPARAMETERVALUE_MCPSERVERLIMITEXCEEDED = 'InvalidParameterValue.McpServerLimitExceeded'
+
+# MCPServer列表过大
+INVALIDPARAMETERVALUE_MCPSERVERLISTTOOLARGE = 'InvalidParameterValue.McpServerListTooLarge'
+
 # 参数值非法，不能为负值。
 INVALIDPARAMETERVALUE_NEGATIVE = 'InvalidParameterValue.Negative'
 
@@ -644,6 +656,12 @@ RESOURCENOTFOUND_KEYIDNOTFOUND = 'ResourceNotFound.KeyIdNotFound'
 # 密钥对不存在。
 RESOURCENOTFOUND_KEYPAIRNOTFOUND = 'ResourceNotFound.KeyPairNotFound'
 
+# MCP Server不存在
+RESOURCENOTFOUND_MCPSERVERNOTFOUND = 'ResourceNotFound.McpServerNotFound'
+
+# 部分MCP Servers未找到，请检查
+RESOURCENOTFOUND_MCPSERVERSPARTIALNOTFOUND = 'ResourceNotFound.McpServersPartialNotFound'
+
 # 自定义镜像不存在。
 RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = 'ResourceNotFound.PrivateBlueprintNotFound'
 
@@ -827,6 +845,9 @@ UNSUPPORTEDOPERATION_KEYPAIRNOTBOUNDTOINSTANCE = 'UnsupportedOperation.KeyPairNo
 # 不支持的操作，实例最近一次的操作尚未完成。
 UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = 'UnsupportedOperation.LatestOperationUnfinished'
 
+# 不支持的操作，MCP Server最近一次的操作尚未完成
+UNSUPPORTEDOPERATION_MCPSERVERLATESTOPERATIONUNFINISHED = 'UnsupportedOperation.McpServerLatestOperationUnfinished'
+
 # 共享镜像不支持此操作。
 UNSUPPORTEDOPERATION_NOTSUPPORTSHAREDBLUEPRINT = 'UnsupportedOperation.NotSupportSharedBlueprint'
 
@@ -847,6 +868,9 @@ UNSUPPORTEDOPERATION_RESOURCENOTRETURNABLE = 'UnsupportedOperation.ResourceNotRe
 
 # 资源变配操作中新旧配置一样，不支持此操作。
 UNSUPPORTEDOPERATION_SAMEWITHOLDCONFIG = 'UnsupportedOperation.SameWithOldConfig'
+
+# 相关服务角色不存在，无法调用此接口。
+UNSUPPORTEDOPERATION_SERVICEROLENOTEXIST = 'UnsupportedOperation.ServiceRoleNotExist'
 
 # 快照忙。
 UNSUPPORTEDOPERATION_SNAPSHOTBUSY = 'UnsupportedOperation.SnapshotBusy'

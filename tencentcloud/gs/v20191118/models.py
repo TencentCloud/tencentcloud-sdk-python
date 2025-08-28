@@ -1521,10 +1521,13 @@ class AndroidInstanceUploadFile(AbstractModel):
         :type FileURL: str
         :param _DestinationDirectory: 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
         :type DestinationDirectory: str
+        :param _DestinationFileName: 目标文件名
+        :type DestinationFileName: str
         """
         self._AndroidInstanceId = None
         self._FileURL = None
         self._DestinationDirectory = None
+        self._DestinationFileName = None
 
     @property
     def AndroidInstanceId(self):
@@ -1559,11 +1562,23 @@ class AndroidInstanceUploadFile(AbstractModel):
     def DestinationDirectory(self, DestinationDirectory):
         self._DestinationDirectory = DestinationDirectory
 
+    @property
+    def DestinationFileName(self):
+        """目标文件名
+        :rtype: str
+        """
+        return self._DestinationFileName
+
+    @DestinationFileName.setter
+    def DestinationFileName(self, DestinationFileName):
+        self._DestinationFileName = DestinationFileName
+
 
     def _deserialize(self, params):
         self._AndroidInstanceId = params.get("AndroidInstanceId")
         self._FileURL = params.get("FileURL")
         self._DestinationDirectory = params.get("DestinationDirectory")
+        self._DestinationFileName = params.get("DestinationFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5903,10 +5918,13 @@ class DistributeFileToAndroidInstancesRequest(AbstractModel):
         :type FileURL: str
         :param _DestinationDirectory: 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
         :type DestinationDirectory: str
+        :param _DestinationFileName: 目标文件名
+        :type DestinationFileName: str
         """
         self._AndroidInstanceIds = None
         self._FileURL = None
         self._DestinationDirectory = None
+        self._DestinationFileName = None
 
     @property
     def AndroidInstanceIds(self):
@@ -5941,11 +5959,23 @@ class DistributeFileToAndroidInstancesRequest(AbstractModel):
     def DestinationDirectory(self, DestinationDirectory):
         self._DestinationDirectory = DestinationDirectory
 
+    @property
+    def DestinationFileName(self):
+        """目标文件名
+        :rtype: str
+        """
+        return self._DestinationFileName
+
+    @DestinationFileName.setter
+    def DestinationFileName(self, DestinationFileName):
+        self._DestinationFileName = DestinationFileName
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._FileURL = params.get("FileURL")
         self._DestinationDirectory = params.get("DestinationDirectory")
+        self._DestinationFileName = params.get("DestinationFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10537,10 +10567,13 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
         :type FileURL: str
         :param _DestinationDirectory: 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
         :type DestinationDirectory: str
+        :param _DestinationFileName: 目标文件名
+        :type DestinationFileName: str
         """
         self._AndroidInstanceIds = None
         self._FileURL = None
         self._DestinationDirectory = None
+        self._DestinationFileName = None
 
     @property
     def AndroidInstanceIds(self):
@@ -10575,11 +10608,23 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
     def DestinationDirectory(self, DestinationDirectory):
         self._DestinationDirectory = DestinationDirectory
 
+    @property
+    def DestinationFileName(self):
+        """目标文件名
+        :rtype: str
+        """
+        return self._DestinationFileName
+
+    @DestinationFileName.setter
+    def DestinationFileName(self, DestinationFileName):
+        self._DestinationFileName = DestinationFileName
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._FileURL = params.get("FileURL")
         self._DestinationDirectory = params.get("DestinationDirectory")
+        self._DestinationFileName = params.get("DestinationFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

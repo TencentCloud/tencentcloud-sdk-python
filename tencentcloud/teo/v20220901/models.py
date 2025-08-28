@@ -6464,7 +6464,7 @@ class ClientAttester(AbstractModel):
 <li>CUSTOM: 用户自定义规则。</li>
         :type Type: str
         :param _AttesterSource: 认证方法。取值有：
-<li>TC-RCE: 使用全栈式风控引擎进行认证；</li>
+<li>TC-RCE: 使用风险识别 RCE 进行认证；</li>
 <li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
         :type AttesterSource: str
         :param _AttesterDuration: 认证有效时间。默认为 60s，支持的单位有：
@@ -6525,7 +6525,7 @@ class ClientAttester(AbstractModel):
     @property
     def AttesterSource(self):
         """认证方法。取值有：
-<li>TC-RCE: 使用全栈式风控引擎进行认证；</li>
+<li>TC-RCE: 使用风险识别 RCE 进行认证；</li>
 <li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
         :rtype: str
         """
@@ -46013,8 +46013,8 @@ class Resource(AbstractModel):
         :param _PlanId: 套餐关联资源 ID。
         :type PlanId: str
         :param _Area: 地域，取值有：
-<li>mainland：国内；</li>
-<li>overseas：海外。</li>
+<li>mainland：中国大陆境内；</li>
+<li>overseas：中国大陆境外。</li>
 <li>global：全球。</li>
         :type Area: str
         :param _Group: 资源类型，取值有：
@@ -46153,8 +46153,8 @@ class Resource(AbstractModel):
     @property
     def Area(self):
         """地域，取值有：
-<li>mainland：国内；</li>
-<li>overseas：海外。</li>
+<li>mainland：中国大陆境内；</li>
+<li>overseas：中国大陆境外。</li>
 <li>global：全球。</li>
         :rtype: str
         """

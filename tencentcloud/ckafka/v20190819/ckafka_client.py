@@ -395,7 +395,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreatePrometheus(self, request):
-        """添加普罗米修斯监控1
+        """添加普罗米修斯监控
 
         :param request: Request instance for CreatePrometheus.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreatePrometheusRequest`
@@ -671,7 +671,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteInstancePost(self, request):
-        """删除后付费实例
+        """删除后付费实例，通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
 
         :param request: Request instance for DeleteInstancePost.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePostRequest`
@@ -694,7 +694,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteInstancePre(self, request):
-        """删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁
+        """删除预付费实例，该接口会对实例执行隔离并删除的动作，执行成功后实例会被直接删除销毁。通过调用API删除不会对连接器和任务进行关联预检查，直接进行实例销毁。
 
         :param request: Request instance for DeleteInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePreRequest`
@@ -1891,7 +1891,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyInstancePre(self, request):
-        """预付费实例变配接口，调整磁盘，带宽
+        """预付费实例变配接口，调整磁盘，带宽,  分区
 
         :param request: Request instance for ModifyInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstancePreRequest`

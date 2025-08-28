@@ -17731,7 +17731,7 @@ class UpdateStreamIngestRequest(AbstractModel):
         :type StreamUrl: str
         :param _Volume: 音量，取值范围[0, 100]，默认100，表示原音量。
         :type Volume: int
-        :param _IsPause: 是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，如果要销毁任务请调用停止接口。
+        :param _IsPause: 是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，暂停超过12小时会自动销毁任务, 建议主动调用停止任务接口。
         :type IsPause: bool
         """
         self._SdkAppId = None
@@ -17786,7 +17786,7 @@ class UpdateStreamIngestRequest(AbstractModel):
 
     @property
     def IsPause(self):
-        """是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，如果要销毁任务请调用停止接口。
+        """是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，暂停超过12小时会自动销毁任务, 建议主动调用停止任务接口。
         :rtype: bool
         """
         return self._IsPause

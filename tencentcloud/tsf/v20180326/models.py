@@ -4984,7 +4984,7 @@ class ClusterV2(AbstractModel):
         :param _KuberneteNativeType: K 表示通过kubeconfig 导入, S 表示通过service account导入
 注意：此字段可能返回 null，表示取不到有效值。
         :type KuberneteNativeType: str
-        :param _KuberneteNativeSecret: native secret
+        :param _KuberneteNativeSecret: Kubernetes 密钥
 注意：此字段可能返回 null，表示取不到有效值。
         :type KuberneteNativeSecret: str
         :param _EnableLogCollection: 是否开启cls日志功能
@@ -5452,7 +5452,7 @@ class ClusterV2(AbstractModel):
 
     @property
     def KuberneteNativeSecret(self):
-        """native secret
+        """Kubernetes 密钥
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7161,7 +7161,7 @@ class ContainerEvent(AbstractModel):
         :type LastTimestamp: int
         :param _Type: 级别
         :type Type: str
-        :param _Kind: 资源类型
+        :param _Kind: Kubernetes 资源类型，典型取值有 Deployment、Pod、Service 等
         :type Kind: str
         :param _Name: 资源名称
         :type Name: str
@@ -7216,7 +7216,7 @@ class ContainerEvent(AbstractModel):
 
     @property
     def Kind(self):
-        """资源类型
+        """Kubernetes 资源类型，典型取值有 Deployment、Pod、Service 等
         :rtype: str
         """
         return self._Kind
@@ -15967,7 +15967,7 @@ class DeleteClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。仅在集群下无部署组、命名空间、云主机时可以删除。
+        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :type ClusterId: str
         :param _Unbind: 是否只解绑，不删除容器集群，默认不传则删除容器集群。
         :type Unbind: bool
@@ -15977,7 +15977,7 @@ class DeleteClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。仅在集群下无部署组、命名空间、云主机时可以删除。
+        """集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :rtype: str
         """
         return self._ClusterId
@@ -21965,7 +21965,7 @@ class DescribeClustersRequest(AbstractModel):
         r"""
         :param _SearchWord: 搜索词，可以搜索ID/名称/备注/标签
         :type SearchWord: str
-        :param _OrderBy: 排序字段，例如创建时间
+        :param _OrderBy: 排序字段，目前仅支持使用“创建时间”
         :type OrderBy: str
         :param _OrderType: 排序方式，0表示升序，1表示倒序
         :type OrderType: int
@@ -21999,7 +21999,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """排序字段，例如创建时间
+        """排序字段，目前仅支持使用“创建时间”
         :rtype: str
         """
         return self._OrderBy
@@ -23028,7 +23028,7 @@ class DescribeContainerEventsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页个数，默认为20， 取值应为1~50
         :type Limit: int
-        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         :param _Kind: event的资源种类
         :type Kind: str
@@ -23095,7 +23095,7 @@ class DescribeContainerEventsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -23221,14 +23221,14 @@ class DescribeContainerGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -23302,14 +23302,14 @@ class DescribeContainerGroupDeployInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -25037,14 +25037,14 @@ class DescribeGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-ab958z6y
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -29632,7 +29632,7 @@ class DescribePodInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 实例所属部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。部署组所在集群必须是活跃状态的。
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         :param _Offset: 偏移量，取值从0开始
         :type Offset: int
@@ -29654,7 +29654,7 @@ class DescribePodInstancesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """实例所属部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。部署组所在集群必须是活跃状态的。
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -35155,15 +35155,15 @@ class ExclusiveInstance(AbstractModel):
         r"""
         :param _CenterType: 配置中心类型[注册中心Registration、配置中心Configuration]
         :type CenterType: str
-        :param _InstanceId: 实例id，通过北极星控制台获取
+        :param _InstanceId: 实例id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
         :type InstanceId: str
         :param _InstanceType: 实例类型，例如北极星Polaris
         :type InstanceType: str
         :param _InstanceName: 实例名称
         :type InstanceName: str
-        :param _RegionId: 实例地域id，通过北极星控制台获取
+        :param _RegionId: 实例地域id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
         :type RegionId: str
-        :param _InstanceNamespaceId: 实例命名空间ID，通过北极星控制台获取
+        :param _InstanceNamespaceId: 实例命名空间ID，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
         :type InstanceNamespaceId: str
         """
         self._CenterType = None
@@ -35186,7 +35186,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id，通过北极星控制台获取
+        """实例id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
         :rtype: str
         """
         return self._InstanceId
@@ -35219,7 +35219,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def RegionId(self):
-        """实例地域id，通过北极星控制台获取
+        """实例地域id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
         :rtype: str
         """
         return self._RegionId
@@ -35230,7 +35230,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def InstanceNamespaceId(self):
-        """实例命名空间ID，通过北极星控制台获取
+        """实例命名空间ID，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
         :rtype: str
         """
         return self._InstanceNamespaceId
@@ -37588,11 +37588,25 @@ class GroupPod(AbstractModel):
         :type ReadyCount: int
         :param _Runtime: 运行时长，单位秒
         :type Runtime: str
-        :param _CreatedAt: 实例启动时的时间戳
+        :param _CreatedAt: 实例启动时的时间戳，单位秒
         :type CreatedAt: str
-        :param _ServiceInstanceStatus: 服务实例状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
+        :param _ServiceInstanceStatus: 服务实例状态，枚举值为：
+- `Starting`：启动中
+- `Running`：运行中
+- `Stopping`：停止中
+- `Stopped`: 已停止
+- `StopFailed`: 停止失败
+- `Abnormal`: 异常
+- `Unknown`: 未知
         :type ServiceInstanceStatus: str
-        :param _InstanceAvailableStatus: 机器实例可使用状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
+        :param _InstanceAvailableStatus: 机器实例可使用状态，枚举值为：
+- `Starting`：启动中
+- `Running`：运行中
+- `Stopping`：停止中
+- `Stopped`: 已停止
+- `StopFailed`: 停止失败
+- `Abnormal`: 异常
+- `Unknown`: 未知
         :type InstanceAvailableStatus: str
         :param _InstanceStatus: 机器实例状态
         :type InstanceStatus: str
@@ -37718,7 +37732,7 @@ class GroupPod(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """实例启动时的时间戳
+        """实例启动时的时间戳，单位秒
         :rtype: str
         """
         return self._CreatedAt
@@ -37729,7 +37743,14 @@ class GroupPod(AbstractModel):
 
     @property
     def ServiceInstanceStatus(self):
-        """服务实例状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
+        """服务实例状态，枚举值为：
+- `Starting`：启动中
+- `Running`：运行中
+- `Stopping`：停止中
+- `Stopped`: 已停止
+- `StopFailed`: 停止失败
+- `Abnormal`: 异常
+- `Unknown`: 未知
         :rtype: str
         """
         return self._ServiceInstanceStatus
@@ -37740,7 +37761,14 @@ class GroupPod(AbstractModel):
 
     @property
     def InstanceAvailableStatus(self):
-        """机器实例可使用状态，枚举值为Starting/Running/Stopping/Stopped/StopFailed/Abnormal/Unknown
+        """机器实例可使用状态，枚举值为：
+- `Starting`：启动中
+- `Running`：运行中
+- `Stopping`：停止中
+- `Stopped`: 已停止
+- `StopFailed`: 停止失败
+- `Abnormal`: 异常
+- `Unknown`: 未知
         :rtype: str
         """
         return self._InstanceAvailableStatus
@@ -40321,7 +40349,16 @@ class InstanceEnrichedInfo(AbstractModel):
         :type WanIp: str
         :param _VpcId: 机器所在VPC
         :type VpcId: str
-        :param _InstanceStatus: 机器运行状态 Pending Running Stopped Rebooting Starting Stopping Abnormal Unknown
+        :param _InstanceStatus: 机器运行状态，枚举值为：
+- `Pending`: 准备中
+-  `Running`: 运行中
+-  `Stopped`: 已停止
+-  `Rebooting`: 重启中
+-  `Starting`: 启动中
+-  `Stopping`: 停止中
+-  `Abnormal`: 异常
+-  `Unknown`: 未知
+-  `Offline`: 离线 
         :type InstanceStatus: str
         :param _InstanceAvailableStatus: 机器可用状态（表示机器上的Agent在线）
         :type InstanceAvailableStatus: str
@@ -40421,7 +40458,16 @@ class InstanceEnrichedInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """机器运行状态 Pending Running Stopped Rebooting Starting Stopping Abnormal Unknown
+        """机器运行状态，枚举值为：
+- `Pending`: 准备中
+-  `Running`: 运行中
+-  `Stopped`: 已停止
+-  `Rebooting`: 重启中
+-  `Starting`: 启动中
+-  `Stopping`: 停止中
+-  `Abnormal`: 异常
+-  `Unknown`: 未知
+-  `Offline`: 离线 
         :rtype: str
         """
         return self._InstanceStatus
@@ -43175,7 +43221,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :type ApplicationId: str
         :param _ApplicationName: 应用名称
         :type ApplicationName: str
@@ -43203,7 +43249,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID，可通过调用[DescribeApplications](https://cloud.tencent.com/document/api/649/36090)查询已创建的应用列表或登录控制台进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/api/649/36094)创建新的应用。
         :rtype: str
         """
         return self._ApplicationId
@@ -43366,7 +43412,7 @@ class ModifyClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。
+        :param _ClusterId: 集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :type ClusterId: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
@@ -43388,7 +43434,7 @@ class ModifyClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID，按照【集群ID】进行过滤，可通过调用DescribeClusters查询已创建的项目列表或登录控制台进行查看；也可以调用CreateCluster创建新的项目。集群ID例如：cls-6a79x94v。
+        """集群ID，按照【集群ID】进行过滤，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录控制台进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。仅在集群下无部署组、命名空间、云主机时可以删除。
         :rtype: str
         """
         return self._ClusterId
@@ -43796,7 +43842,7 @@ class ModifyGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
+        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :type GroupId: str
         :param _GroupName: 部署组名称
         :type GroupName: str
@@ -43812,7 +43858,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID，按照【部署组ID】进行过滤，可通过调用DescribeGroups查询已创建的项目列表或登录控制台进行查看；也可以调用CreateGroup创建新的项目。部署组ID例如：group-9yn2q8yd。
+        """部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
         :rtype: str
         """
         return self._GroupId
@@ -44317,7 +44363,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID，按照【命名空间ID】进行过滤，可通过调用DescribeNamespaces查询已创建的项目列表或登录控制台进行查看；也可以调用CreateNamespace创建新的项目。命名空间ID例如：namespace-6a79x94v。
+        :param _NamespaceId: 命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :type NamespaceId: str
         :param _NamespaceName: 命名空间名称
         :type NamespaceName: str
@@ -44333,7 +44379,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID，按照【命名空间ID】进行过滤，可通过调用DescribeNamespaces查询已创建的项目列表或登录控制台进行查看；也可以调用CreateNamespace创建新的项目。命名空间ID例如：namespace-6a79x94v。
+        """命名空间ID，按照【命名空间ID】进行过滤，可通过调用[DescribeNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录控制台进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新命名空间。
         :rtype: str
         """
         return self._NamespaceId
