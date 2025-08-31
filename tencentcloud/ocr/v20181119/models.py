@@ -2121,6 +2121,8 @@ WARN_RESHOOT_CARD翻拍件告警
         :type Electronic: bool
         :param _BusinessCertificate: 非营业执照的营业类证件识别结果，将以结构化形式呈现。
         :type BusinessCertificate: list of BusinessCertificateInfo
+        :param _Important: 重要提示字段
+        :type Important: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2147,6 +2149,7 @@ WARN_RESHOOT_CARD翻拍件告警
         self._RegistrationAuthority = None
         self._Electronic = None
         self._BusinessCertificate = None
+        self._Important = None
         self._RequestId = None
 
     @property
@@ -2409,6 +2412,17 @@ WARN_RESHOOT_CARD翻拍件告警
         self._BusinessCertificate = BusinessCertificate
 
     @property
+    def Important(self):
+        """重要提示字段
+        :rtype: str
+        """
+        return self._Important
+
+    @Important.setter
+    def Important(self, Important):
+        self._Important = Important
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2449,6 +2463,7 @@ WARN_RESHOOT_CARD翻拍件告警
                 obj = BusinessCertificateInfo()
                 obj._deserialize(item)
                 self._BusinessCertificate.append(obj)
+        self._Important = params.get("Important")
         self._RequestId = params.get("RequestId")
 
 
@@ -22485,6 +22500,8 @@ class QuestionSplitOCRRequest(AbstractModel):
         :type EnableImageCrop: bool
         :param _EnableOnlyDetectBorder: 是否只返回检测框，默认false
         :type EnableOnlyDetectBorder: bool
+        :param _UseNewModel: false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+        :type UseNewModel: bool
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -22492,6 +22509,7 @@ class QuestionSplitOCRRequest(AbstractModel):
         self._PdfPageNumber = None
         self._EnableImageCrop = None
         self._EnableOnlyDetectBorder = None
+        self._UseNewModel = None
 
     @property
     def ImageUrl(self):
@@ -22559,6 +22577,17 @@ class QuestionSplitOCRRequest(AbstractModel):
     def EnableOnlyDetectBorder(self, EnableOnlyDetectBorder):
         self._EnableOnlyDetectBorder = EnableOnlyDetectBorder
 
+    @property
+    def UseNewModel(self):
+        """false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+        :rtype: bool
+        """
+        return self._UseNewModel
+
+    @UseNewModel.setter
+    def UseNewModel(self, UseNewModel):
+        self._UseNewModel = UseNewModel
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -22567,6 +22596,7 @@ class QuestionSplitOCRRequest(AbstractModel):
         self._PdfPageNumber = params.get("PdfPageNumber")
         self._EnableImageCrop = params.get("EnableImageCrop")
         self._EnableOnlyDetectBorder = params.get("EnableOnlyDetectBorder")
+        self._UseNewModel = params.get("UseNewModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

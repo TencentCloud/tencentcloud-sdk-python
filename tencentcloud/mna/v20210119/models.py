@@ -6280,7 +6280,7 @@ class OrderInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: 父帐号uin
+        :param _Uin: 父账号uin
         :type Uin: str
         :param _ProjectId: 项目id
         :type ProjectId: str
@@ -6302,7 +6302,7 @@ class OrderInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """父帐号uin
+        """父账号uin
         :rtype: str
         """
         return self._Uin
