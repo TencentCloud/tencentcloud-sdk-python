@@ -24705,6 +24705,10 @@ class InstanceSpec(AbstractModel):
         :type ZoneStockInfos: list of ZoneStockInfo
         :param _StockCount: 库存数量
         :type StockCount: int
+        :param _MaxCpu: 最大cpu
+        :type MaxCpu: float
+        :param _MinCpu: 最小cpu
+        :type MinCpu: float
         """
         self._Cpu = None
         self._Memory = None
@@ -24716,6 +24720,8 @@ class InstanceSpec(AbstractModel):
         self._MaxIoBandWidth = None
         self._ZoneStockInfos = None
         self._StockCount = None
+        self._MaxCpu = None
+        self._MinCpu = None
 
     @property
     def Cpu(self):
@@ -24827,6 +24833,28 @@ class InstanceSpec(AbstractModel):
     def StockCount(self, StockCount):
         self._StockCount = StockCount
 
+    @property
+    def MaxCpu(self):
+        """最大cpu
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def MinCpu(self):
+        """最小cpu
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
 
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
@@ -24844,6 +24872,8 @@ class InstanceSpec(AbstractModel):
                 obj._deserialize(item)
                 self._ZoneStockInfos.append(obj)
         self._StockCount = params.get("StockCount")
+        self._MaxCpu = params.get("MaxCpu")
+        self._MinCpu = params.get("MinCpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

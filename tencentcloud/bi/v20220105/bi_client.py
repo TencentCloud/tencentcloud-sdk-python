@@ -141,6 +141,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePermissionRanks(self, request):
+        """创建行列权限
+
+        :param request: Request instance for CreatePermissionRanks.
+        :type request: :class:`tencentcloud.bi.v20220105.models.CreatePermissionRanksRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreatePermissionRanksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePermissionRanks", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePermissionRanksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateProject(self, request):
         """创建项目
 
@@ -339,6 +362,75 @@ class BiClient(AbstractClient):
             body = self.call("DescribePageWidgetList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePageWidgetListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePermissionRanksInfo(self, request):
+        """根据角色或标签查询行列权限配置
+
+        :param request: Request instance for DescribePermissionRanksInfo.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribePermissionRanksInfoRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribePermissionRanksInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePermissionRanksInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePermissionRanksInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePermissionRoleInfo(self, request):
+        """行列权限项目内角色列表接口1
+
+        :param request: Request instance for DescribePermissionRoleInfo.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribePermissionRoleInfoRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribePermissionRoleInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePermissionRoleInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePermissionRoleInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePermissionStatusInfo(self, request):
+        """查询行列权限初始状态1
+
+        :param request: Request instance for DescribePermissionStatusInfo.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribePermissionStatusInfoRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribePermissionStatusInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePermissionStatusInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePermissionStatusInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

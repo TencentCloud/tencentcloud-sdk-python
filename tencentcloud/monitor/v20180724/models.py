@@ -29159,7 +29159,7 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
         :type Module: str
         :param _PolicyId: 告警策略 ID
         :type PolicyId: str
-        :param _TriggerTasks: 告警策略触发任务列表，空数据代表解绑
+        :param _TriggerTasks: 告警策略触发任务列表，空数据代表解绑示例值： { "Type": "AS", "TaskConfig": "{\"Region\":\"ap-guangzhou\",\"Group\":\"asg-0zhspjx\",\"Policy\":\"asp-ganig28\"}" }
         :type TriggerTasks: list of AlarmPolicyTriggerTask
         """
         self._Module = None
@@ -29190,7 +29190,7 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
 
     @property
     def TriggerTasks(self):
-        """告警策略触发任务列表，空数据代表解绑
+        """告警策略触发任务列表，空数据代表解绑示例值： { "Type": "AS", "TaskConfig": "{\"Region\":\"ap-guangzhou\",\"Group\":\"asg-0zhspjx\",\"Policy\":\"asp-ganig28\"}" }
         :rtype: list of AlarmPolicyTriggerTask
         """
         return self._TriggerTasks

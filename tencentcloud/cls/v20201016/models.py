@@ -10950,15 +10950,12 @@ class DataTransformTaskInfo(AbstractModel):
         :param _Status: 当前加工任务状态（1准备中/2运行中/3停止中/4已停止）
         :type Status: int
         :param _CreateTime: 加工任务创建时间
-示例值：2025-03-18 19:55:54
 时间格式：yyyy-MM-dd HH:mm:ss
         :type CreateTime: str
         :param _UpdateTime: 最近修改时间
-示例值：2025-04-18 16:55:54
 时间格式：yyyy-MM-dd HH:mm:ss
         :type UpdateTime: str
         :param _LastEnableTime: 最后启用时间，如果需要重建集群，修改该时间
-示例值：2025-05-18 19:55:54
 时间格式：yyyy-MM-dd HH:mm:ss
         :type LastEnableTime: str
         :param _SrcTopicName: 日志主题名称
@@ -11062,7 +11059,6 @@ class DataTransformTaskInfo(AbstractModel):
     @property
     def CreateTime(self):
         """加工任务创建时间
-示例值：2025-03-18 19:55:54
 时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
@@ -11075,7 +11071,6 @@ class DataTransformTaskInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """最近修改时间
-示例值：2025-04-18 16:55:54
 时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
@@ -11088,7 +11083,6 @@ class DataTransformTaskInfo(AbstractModel):
     @property
     def LastEnableTime(self):
         """最后启用时间，如果需要重建集群，修改该时间
-示例值：2025-05-18 19:55:54
 时间格式：yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
@@ -28049,7 +28043,8 @@ class PreviewLogStatistic(AbstractModel):
         :type LogContent: str
         :param _LineNum: 行号。从0开始
         :type LineNum: int
-        :param _DstTopicId: 目标日志主题
+        :param _DstTopicId: 目标日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type DstTopicId: str
         :param _FailReason: 失败错误信息， 空字符串""表示正常
         :type FailReason: str
@@ -28093,7 +28088,8 @@ class PreviewLogStatistic(AbstractModel):
 
     @property
     def DstTopicId(self):
-        """目标日志主题
+        """目标日志主题ID
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :rtype: str
         """
         return self._DstTopicId

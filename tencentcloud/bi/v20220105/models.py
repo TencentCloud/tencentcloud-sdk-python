@@ -2063,6 +2063,265 @@ class CreateEmbedTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePermissionRanksRequest(AbstractModel):
+    """CreatePermissionRanks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 页数
+        :type TableId: int
+        :param _Mode: 条数
+        :type Mode: str
+        :param _RoleType: 角色类型
+        :type RoleType: str
+        :param _RoleId: 所有页码
+        :type RoleId: int
+        :param _RulerInfo: 规则信息
+        :type RulerInfo: str
+        :param _Type: 类型
+        :type Type: str
+        :param _OpenStatus: 状态
+        :type OpenStatus: str
+        :param _ProjectId: 项目id
+        :type ProjectId: int
+        :param _RowColumnConfigList: 行列权限配置
+        :type RowColumnConfigList: list of RowColumnConfig
+        """
+        self._TableId = None
+        self._Mode = None
+        self._RoleType = None
+        self._RoleId = None
+        self._RulerInfo = None
+        self._Type = None
+        self._OpenStatus = None
+        self._ProjectId = None
+        self._RowColumnConfigList = None
+
+    @property
+    def TableId(self):
+        """页数
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def Mode(self):
+        """条数
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def RoleType(self):
+        """角色类型
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def RoleId(self):
+        """所有页码
+        :rtype: int
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RulerInfo(self):
+        """规则信息
+        :rtype: str
+        """
+        return self._RulerInfo
+
+    @RulerInfo.setter
+    def RulerInfo(self, RulerInfo):
+        self._RulerInfo = RulerInfo
+
+    @property
+    def Type(self):
+        """类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def OpenStatus(self):
+        """状态
+        :rtype: str
+        """
+        return self._OpenStatus
+
+    @OpenStatus.setter
+    def OpenStatus(self, OpenStatus):
+        self._OpenStatus = OpenStatus
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RowColumnConfigList(self):
+        """行列权限配置
+        :rtype: list of RowColumnConfig
+        """
+        return self._RowColumnConfigList
+
+    @RowColumnConfigList.setter
+    def RowColumnConfigList(self, RowColumnConfigList):
+        self._RowColumnConfigList = RowColumnConfigList
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._Mode = params.get("Mode")
+        self._RoleType = params.get("RoleType")
+        self._RoleId = params.get("RoleId")
+        self._RulerInfo = params.get("RulerInfo")
+        self._Type = params.get("Type")
+        self._OpenStatus = params.get("OpenStatus")
+        self._ProjectId = params.get("ProjectId")
+        if params.get("RowColumnConfigList") is not None:
+            self._RowColumnConfigList = []
+            for item in params.get("RowColumnConfigList"):
+                obj = RowColumnConfig()
+                obj._deserialize(item)
+                self._RowColumnConfigList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePermissionRanksResponse(AbstractModel):
+    """CreatePermissionRanks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Extra: 112
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Data: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Msg = None
+        self._Extra = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Extra(self):
+        """112
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Msg = params.get("Msg")
+        self._Extra = params.get("Extra")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateProjectRequest(AbstractModel):
     """CreateProject请求参数结构体
 
@@ -4506,6 +4765,567 @@ class DescribePageWidgetListResponse(AbstractModel):
             self._Data = WidgetListVO()
             self._Data._deserialize(params.get("Data"))
         self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePermissionRanksInfoRequest(AbstractModel):
+    """DescribePermissionRanksInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 页数
+        :type TableId: int
+        :param _Mode: 条数
+        :type Mode: str
+        :param _RoleType: 角色类型
+        :type RoleType: str
+        :param _RoleId: 所有页码
+        :type RoleId: int
+        :param _Type: 类型
+        :type Type: str
+        :param _ProjectId: 项目id
+        :type ProjectId: int
+        """
+        self._TableId = None
+        self._Mode = None
+        self._RoleType = None
+        self._RoleId = None
+        self._Type = None
+        self._ProjectId = None
+
+    @property
+    def TableId(self):
+        """页数
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def Mode(self):
+        """条数
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def RoleType(self):
+        """角色类型
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def RoleId(self):
+        """所有页码
+        :rtype: int
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def Type(self):
+        """类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._Mode = params.get("Mode")
+        self._RoleType = params.get("RoleType")
+        self._RoleId = params.get("RoleId")
+        self._Type = params.get("Type")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePermissionRanksInfoResponse(AbstractModel):
+    """DescribePermissionRanksInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Extra: 112
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Data: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.RankInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Msg = None
+        self._Extra = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Extra(self):
+        """112
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.RankInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Msg = params.get("Msg")
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = RankInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePermissionRoleInfoRequest(AbstractModel):
+    """DescribePermissionRoleInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: int
+        :param _PageNo: 页数
+        :type PageNo: int
+        :param _PageSize: 条数
+        :type PageSize: int
+        :param _AllPage: 所有页码
+        :type AllPage: bool
+        """
+        self._ProjectId = None
+        self._PageNo = None
+        self._PageSize = None
+        self._AllPage = None
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNo(self):
+        """页数
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        """条数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def AllPage(self):
+        """所有页码
+        :rtype: bool
+        """
+        return self._AllPage
+
+    @AllPage.setter
+    def AllPage(self, AllPage):
+        self._AllPage = AllPage
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._AllPage = params.get("AllPage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePermissionRoleInfoResponse(AbstractModel):
+    """DescribePermissionRoleInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of Role
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Extra: 112
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Msg = None
+        self._Extra = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Role
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Extra(self):
+        """112
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = Role()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Msg = params.get("Msg")
+        self._Extra = params.get("Extra")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePermissionStatusInfoRequest(AbstractModel):
+    """DescribePermissionStatusInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 页数
+        :type TableId: int
+        :param _Type: 类型
+        :type Type: str
+        :param _ProjectId: 1
+        :type ProjectId: str
+        """
+        self._TableId = None
+        self._Type = None
+        self._ProjectId = None
+
+    @property
+    def TableId(self):
+        """页数
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def Type(self):
+        """类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ProjectId(self):
+        """1
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._Type = params.get("Type")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePermissionStatusInfoResponse(AbstractModel):
+    """DescribePermissionStatusInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Extra: 112
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Data: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.RowColumnStatus`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Msg = None
+        self._Extra = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Extra(self):
+        """112
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.RowColumnStatus`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Msg = params.get("Msg")
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = RowColumnStatus()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -9111,6 +9931,636 @@ class ProjectListData(AbstractModel):
                 self._List.append(obj)
         self._Total = params.get("Total")
         self._TotalPages = params.get("TotalPages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RankInfo(AbstractModel):
+    """行列权限内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Mode: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param _RulerInfo: `
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulerInfo: str
+        :param _RoleId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleId: int
+        :param _RoleType: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleType: str
+        :param _TableId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: int
+        :param _RowColumnConfigList: 行列权限配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowColumnConfigList: list of RowColumnConfig
+        """
+        self._Type = None
+        self._Mode = None
+        self._RulerInfo = None
+        self._RoleId = None
+        self._RoleType = None
+        self._TableId = None
+        self._RowColumnConfigList = None
+
+    @property
+    def Type(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Mode(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def RulerInfo(self):
+        """`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RulerInfo
+
+    @RulerInfo.setter
+    def RulerInfo(self, RulerInfo):
+        self._RulerInfo = RulerInfo
+
+    @property
+    def RoleId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleType(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def TableId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def RowColumnConfigList(self):
+        """行列权限配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RowColumnConfig
+        """
+        return self._RowColumnConfigList
+
+    @RowColumnConfigList.setter
+    def RowColumnConfigList(self, RowColumnConfigList):
+        self._RowColumnConfigList = RowColumnConfigList
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Mode = params.get("Mode")
+        self._RulerInfo = params.get("RulerInfo")
+        self._RoleId = params.get("RoleId")
+        self._RoleType = params.get("RoleType")
+        self._TableId = params.get("TableId")
+        if params.get("RowColumnConfigList") is not None:
+            self._RowColumnConfigList = []
+            for item in params.get("RowColumnConfigList"):
+                obj = RowColumnConfig()
+                obj._deserialize(item)
+                self._RowColumnConfigList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Role(AbstractModel):
+    """角色
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 角色ID
+        :type Id: int
+        :param _RoleName: 角色名称
+        :type RoleName: str
+        :param _CorpId: 企业ID
+        :type CorpId: str
+        :param _RoleType: 角色类型
+        :type RoleType: str
+        :param _Scope: 范围
+        :type Scope: str
+        :param _Description: 描述
+        :type Description: str
+        :param _CreatedAt: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _CreatedUser: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedUser: str
+        :param _UpdatedAt: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        :param _UpdatedUser: 更新人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedUser: str
+        :param _ScopeType: 是否为全局角色（0 不是， 1 是）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScopeType: int
+        :param _CanChoose: 是否可被选
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanChoose: bool
+        :param _ModuleCollection: 角色key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModuleCollection: str
+        """
+        self._Id = None
+        self._RoleName = None
+        self._CorpId = None
+        self._RoleType = None
+        self._Scope = None
+        self._Description = None
+        self._CreatedAt = None
+        self._CreatedUser = None
+        self._UpdatedAt = None
+        self._UpdatedUser = None
+        self._ScopeType = None
+        self._CanChoose = None
+        self._ModuleCollection = None
+
+    @property
+    def Id(self):
+        """角色ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RoleName(self):
+        """角色名称
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def CorpId(self):
+        """企业ID
+        :rtype: str
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def RoleType(self):
+        """角色类型
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def Scope(self):
+        """范围
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Description(self):
+        """描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def CreatedUser(self):
+        """创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedUser
+
+    @CreatedUser.setter
+    def CreatedUser(self, CreatedUser):
+        self._CreatedUser = CreatedUser
+
+    @property
+    def UpdatedAt(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def UpdatedUser(self):
+        """更新人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdatedUser
+
+    @UpdatedUser.setter
+    def UpdatedUser(self, UpdatedUser):
+        self._UpdatedUser = UpdatedUser
+
+    @property
+    def ScopeType(self):
+        """是否为全局角色（0 不是， 1 是）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
+
+    @property
+    def CanChoose(self):
+        """是否可被选
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanChoose
+
+    @CanChoose.setter
+    def CanChoose(self, CanChoose):
+        self._CanChoose = CanChoose
+
+    @property
+    def ModuleCollection(self):
+        """角色key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModuleCollection
+
+    @ModuleCollection.setter
+    def ModuleCollection(self, ModuleCollection):
+        self._ModuleCollection = ModuleCollection
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RoleName = params.get("RoleName")
+        self._CorpId = params.get("CorpId")
+        self._RoleType = params.get("RoleType")
+        self._Scope = params.get("Scope")
+        self._Description = params.get("Description")
+        self._CreatedAt = params.get("CreatedAt")
+        self._CreatedUser = params.get("CreatedUser")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._UpdatedUser = params.get("UpdatedUser")
+        self._ScopeType = params.get("ScopeType")
+        self._CanChoose = params.get("CanChoose")
+        self._ModuleCollection = params.get("ModuleCollection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RowColumnConfig(AbstractModel):
+    """行列权限配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RulerInfo: 行列权限规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulerInfo: str
+        :param _TagValueList: 标签值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValueList: list of RowColumnTagValue
+        """
+        self._RulerInfo = None
+        self._TagValueList = None
+
+    @property
+    def RulerInfo(self):
+        """行列权限规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RulerInfo
+
+    @RulerInfo.setter
+    def RulerInfo(self, RulerInfo):
+        self._RulerInfo = RulerInfo
+
+    @property
+    def TagValueList(self):
+        """标签值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RowColumnTagValue
+        """
+        return self._TagValueList
+
+    @TagValueList.setter
+    def TagValueList(self, TagValueList):
+        self._TagValueList = TagValueList
+
+
+    def _deserialize(self, params):
+        self._RulerInfo = params.get("RulerInfo")
+        if params.get("TagValueList") is not None:
+            self._TagValueList = []
+            for item in params.get("TagValueList"):
+                obj = RowColumnTagValue()
+                obj._deserialize(item)
+                self._TagValueList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RowColumnStatus(AbstractModel):
+    """行列权限初始状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: int
+        :param _Type: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Mode: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param _OpenStatus: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenStatus: str
+        :param _RoleType: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleType: str
+        :param _RoleId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleId: int
+        """
+        self._TableId = None
+        self._Type = None
+        self._Mode = None
+        self._OpenStatus = None
+        self._RoleType = None
+        self._RoleId = None
+
+    @property
+    def TableId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def Type(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Mode(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def OpenStatus(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OpenStatus
+
+    @OpenStatus.setter
+    def OpenStatus(self, OpenStatus):
+        self._OpenStatus = OpenStatus
+
+    @property
+    def RoleType(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def RoleId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._Type = params.get("Type")
+        self._Mode = params.get("Mode")
+        self._OpenStatus = params.get("OpenStatus")
+        self._RoleType = params.get("RoleType")
+        self._RoleId = params.get("RoleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RowColumnTagValue(AbstractModel):
+    """行列权限标签出入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 标签id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Values: 标签值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Id = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Id(self):
+        """标签id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        """标签值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
