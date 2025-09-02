@@ -8655,6 +8655,12 @@ CarInsurance -- 车辆保险单识别模板
 MultiRealEstateCertificate -- 房产材料识别模板
 MultiRealEstateMaterial -- 房产证明识别模板
 HongKongUtilityBill -- 中国香港水电煤单识别模板
+OverseasCheques -- 海外支票
+RegistrationCertificate -- 备案证
+​GridPhoto -- 电网系统照片
+​SignaturePage -- 签署页
+
+
         :type ConfigId: str
         :param _EnableCoord: 是否开启全文字段坐标值的识别
         :type EnableCoord: bool
@@ -8766,6 +8772,12 @@ CarInsurance -- 车辆保险单识别模板
 MultiRealEstateCertificate -- 房产材料识别模板
 MultiRealEstateMaterial -- 房产证明识别模板
 HongKongUtilityBill -- 中国香港水电煤单识别模板
+OverseasCheques -- 海外支票
+RegistrationCertificate -- 备案证
+​GridPhoto -- 电网系统照片
+​SignaturePage -- 签署页
+
+
         :rtype: str
         """
         return self._ConfigId
@@ -36737,9 +36749,13 @@ class Value(AbstractModel):
         :param _Coord: 四点坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :type Coord: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        :param _PageIndex: 页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageIndex: str
         """
         self._AutoContent = None
         self._Coord = None
+        self._PageIndex = None
 
     @property
     def AutoContent(self):
@@ -36764,12 +36780,25 @@ class Value(AbstractModel):
     def Coord(self, Coord):
         self._Coord = Coord
 
+    @property
+    def PageIndex(self):
+        """页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
 
     def _deserialize(self, params):
         self._AutoContent = params.get("AutoContent")
         if params.get("Coord") is not None:
             self._Coord = Polygon()
             self._Coord._deserialize(params.get("Coord"))
+        self._PageIndex = params.get("PageIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

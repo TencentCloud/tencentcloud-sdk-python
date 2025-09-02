@@ -18548,12 +18548,15 @@ class DeleteOrganizationAuthorizationsRequest(AbstractModel):
 </ul>
 
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _AuthorizationIds: 认证流Ids数组 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。 
+        :type AuthorizationIds: list of str
         :param _AdminName: 认证人姓名，组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。 
         :type AdminName: str
         :param _AdminMobile: 认证人手机号，组织机构超管手机号。 在注册流程中，必须是超管本人进行操作。 
         :type AdminMobile: str
         """
         self._Agent = None
+        self._AuthorizationIds = None
         self._AdminName = None
         self._AdminMobile = None
 
@@ -18573,6 +18576,17 @@ class DeleteOrganizationAuthorizationsRequest(AbstractModel):
     @Agent.setter
     def Agent(self, Agent):
         self._Agent = Agent
+
+    @property
+    def AuthorizationIds(self):
+        """认证流Ids数组 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。 
+        :rtype: list of str
+        """
+        return self._AuthorizationIds
+
+    @AuthorizationIds.setter
+    def AuthorizationIds(self, AuthorizationIds):
+        self._AuthorizationIds = AuthorizationIds
 
     @property
     def AdminName(self):
@@ -18601,6 +18615,7 @@ class DeleteOrganizationAuthorizationsRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._AuthorizationIds = params.get("AuthorizationIds")
         self._AdminName = params.get("AdminName")
         self._AdminMobile = params.get("AdminMobile")
         memeber_set = set(params.keys())
