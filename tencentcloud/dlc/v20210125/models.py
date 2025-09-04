@@ -8707,6 +8707,192 @@ class CreateTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTcIcebergTableRequest(AbstractModel):
+    """CreateTcIcebergTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableBaseInfo: 表基本信息
+        :type TableBaseInfo: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        :param _Columns: 表字段信息
+        :type Columns: list of TColumn
+        :param _DryRun: 为true时只获取sql而不执行
+        :type DryRun: bool
+        :param _Partitions: 表分区信息
+        :type Partitions: list of TPartition
+        :param _Properties: 表属性信息
+        :type Properties: list of Property
+        """
+        self._TableBaseInfo = None
+        self._Columns = None
+        self._DryRun = None
+        self._Partitions = None
+        self._Properties = None
+
+    @property
+    def TableBaseInfo(self):
+        """表基本信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        """
+        return self._TableBaseInfo
+
+    @TableBaseInfo.setter
+    def TableBaseInfo(self, TableBaseInfo):
+        self._TableBaseInfo = TableBaseInfo
+
+    @property
+    def Columns(self):
+        """表字段信息
+        :rtype: list of TColumn
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def DryRun(self):
+        """为true时只获取sql而不执行
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def Partitions(self):
+        """表分区信息
+        :rtype: list of TPartition
+        """
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Properties(self):
+        """表属性信息
+        :rtype: list of Property
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        if params.get("TableBaseInfo") is not None:
+            self._TableBaseInfo = TableBaseInfo()
+            self._TableBaseInfo._deserialize(params.get("TableBaseInfo"))
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = TColumn()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        self._DryRun = params.get("DryRun")
+        if params.get("Partitions") is not None:
+            self._Partitions = []
+            for item in params.get("Partitions"):
+                obj = TPartition()
+                obj._deserialize(item)
+                self._Partitions.append(obj)
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTcIcebergTableResponse(AbstractModel):
+    """CreateTcIcebergTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: amoro的SessionId
+        :type SessionId: str
+        :param _SQL: 执行的sql
+        :type SQL: str
+        :param _DryRun: 为true时只返回sql而不实际执行
+        :type DryRun: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SessionId = None
+        self._SQL = None
+        self._DryRun = None
+        self._RequestId = None
+
+    @property
+    def SessionId(self):
+        """amoro的SessionId
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SQL(self):
+        """执行的sql
+        :rtype: str
+        """
+        return self._SQL
+
+    @SQL.setter
+    def SQL(self, SQL):
+        self._SQL = SQL
+
+    @property
+    def DryRun(self):
+        """为true时只返回sql而不实际执行
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._SQL = params.get("SQL")
+        self._DryRun = params.get("DryRun")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateUserRequest(AbstractModel):
     """CreateUser请求参数结构体
 

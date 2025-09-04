@@ -10888,6 +10888,7 @@ class DataTransformResouceInfo(AbstractModel):
 - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
         :type TopicId: str
         :param _Alias: 别名
+限制：不能包含字符 |。
         :type Alias: str
         """
         self._TopicId = None
@@ -10908,6 +10909,7 @@ class DataTransformResouceInfo(AbstractModel):
     @property
     def Alias(self):
         """别名
+限制：不能包含字符 |。
         :rtype: str
         """
         return self._Alias

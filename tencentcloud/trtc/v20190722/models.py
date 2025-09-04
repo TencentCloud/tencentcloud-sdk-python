@@ -13809,8 +13809,9 @@ class SliceParams(AbstractModel):
 示例值：30
         :type MaxIdleTime: int
         :param _SliceAudio: 音频切片时长，默认15s 示例值：15
+取值范围15-60s
         :type SliceAudio: int
-        :param _SliceVideo: 视频截帧间隔时长，默认5s， 示例值：5
+        :param _SliceVideo: 视频截帧间隔时长，默认5s， 示例值：5 取值范围5-60s
         :type SliceVideo: int
         :param _SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
@@ -13854,6 +13855,7 @@ class SliceParams(AbstractModel):
     @property
     def SliceAudio(self):
         """音频切片时长，默认15s 示例值：15
+取值范围15-60s
         :rtype: int
         """
         return self._SliceAudio
@@ -13864,7 +13866,7 @@ class SliceParams(AbstractModel):
 
     @property
     def SliceVideo(self):
-        """视频截帧间隔时长，默认5s， 示例值：5
+        """视频截帧间隔时长，默认5s， 示例值：5 取值范围5-60s
         :rtype: int
         """
         return self._SliceVideo

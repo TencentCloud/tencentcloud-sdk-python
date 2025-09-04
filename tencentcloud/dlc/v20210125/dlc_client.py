@@ -1063,6 +1063,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTcIcebergTable(self, request):
+        """创建TIceberg表
+
+        :param request: Request instance for CreateTcIcebergTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTcIcebergTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateTcIcebergTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTcIcebergTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTcIcebergTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUser(self, request):
         """创建用户
 
