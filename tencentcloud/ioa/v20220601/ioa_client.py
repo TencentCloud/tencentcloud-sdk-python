@@ -164,6 +164,52 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAggrSoftDetail(self, request):
+        """聚合的软件详情
+
+        :param request: Request instance for DescribeAggrSoftDetail.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftDetailRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAggrSoftDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAggrSoftDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAggrSoftDeviceList(self, request):
+        """聚合软件的已安装终端列表
+
+        :param request: Request instance for DescribeAggrSoftDeviceList.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftDeviceListRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAggrSoftDeviceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAggrSoftDeviceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAggrSoftDeviceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDLPFileDetectResult(self, request):
         """webservice查询文件检测结果
 
@@ -201,6 +247,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeDeviceChildGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDeviceChildGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeviceDetailList(self, request):
+        """基于软件查看终端详情列表,私有化调用path为：capi/Software/DescribeDeviceDetailList
+
+        :param request: Request instance for DescribeDeviceDetailList.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceDetailListRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceDetailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceDetailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceDetailListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -408,6 +477,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeVirtualDevices", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVirtualDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExportSoftwareInformationList(self, request):
+        """导出基于指定终端查看软件信息详情列表查询,私有化调用path为：capi/Software/ExportSoftwareInformationList
+
+        :param request: Request instance for ExportSoftwareInformationList.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.ExportSoftwareInformationListRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ExportSoftwareInformationListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportSoftwareInformationList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportSoftwareInformationListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

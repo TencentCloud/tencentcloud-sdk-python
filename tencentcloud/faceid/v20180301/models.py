@@ -8122,6 +8122,10 @@ class IntentionVerifyData(AbstractModel):
         :param _AsrResultSimilarity: 本次流程用户语音与传入文本比对的相似度分值，取值范围 [0.00, 100.00]。只有配置了相似度阈值后才进行语音校验并返回相似度分值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrResultSimilarity: str
+        :param _IntentionVerifyAudio: 意愿确认环节中录制的音频（base64）。
+- 若不存在则为空字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionVerifyAudio: str
         """
         self._IntentionVerifyVideo = None
         self._AsrResult = None
@@ -8129,6 +8133,7 @@ class IntentionVerifyData(AbstractModel):
         self._ErrorMessage = None
         self._IntentionVerifyBestFrame = None
         self._AsrResultSimilarity = None
+        self._IntentionVerifyAudio = None
 
     @property
     def IntentionVerifyVideo(self):
@@ -8210,6 +8215,19 @@ class IntentionVerifyData(AbstractModel):
 
         self._AsrResultSimilarity = AsrResultSimilarity
 
+    @property
+    def IntentionVerifyAudio(self):
+        """意愿确认环节中录制的音频（base64）。
+- 若不存在则为空字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IntentionVerifyAudio
+
+    @IntentionVerifyAudio.setter
+    def IntentionVerifyAudio(self, IntentionVerifyAudio):
+        self._IntentionVerifyAudio = IntentionVerifyAudio
+
 
     def _deserialize(self, params):
         self._IntentionVerifyVideo = params.get("IntentionVerifyVideo")
@@ -8218,6 +8236,7 @@ class IntentionVerifyData(AbstractModel):
         self._ErrorMessage = params.get("ErrorMessage")
         self._IntentionVerifyBestFrame = params.get("IntentionVerifyBestFrame")
         self._AsrResultSimilarity = params.get("AsrResultSimilarity")
+        self._IntentionVerifyAudio = params.get("IntentionVerifyAudio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
