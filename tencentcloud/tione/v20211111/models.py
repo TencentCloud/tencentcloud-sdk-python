@@ -17032,6 +17032,72 @@ class PodInfo(AbstractModel):
         
 
 
+class PodSSHInfo(AbstractModel):
+    """SSH pod访问信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: pod访问ip
+        :type Host: str
+        :param _Port: pod ssh访问端口
+        :type Port: int
+        :param _LoginCommand: ssh访问命令
+        :type LoginCommand: str
+        """
+        self._Host = None
+        self._Port = None
+        self._LoginCommand = None
+
+    @property
+    def Host(self):
+        """pod访问ip
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        """pod ssh访问端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def LoginCommand(self):
+        """ssh访问命令
+        :rtype: str
+        """
+        return self._LoginCommand
+
+    @LoginCommand.setter
+    def LoginCommand(self, LoginCommand):
+        self._LoginCommand = LoginCommand
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._LoginCommand = params.get("LoginCommand")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrivateLinkInfo(AbstractModel):
     """私有连接信息
 
@@ -18391,12 +18457,16 @@ class SSHConfig(AbstractModel):
         :param _IsAddressChanged: 登录地址是否改变
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAddressChanged: bool
+        :param _PodSSHInfo: POD访问信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodSSHInfo: :class:`tencentcloud.tione.v20211111.models.PodSSHInfo`
         """
         self._Enable = None
         self._PublicKey = None
         self._Port = None
         self._LoginCommand = None
         self._IsAddressChanged = None
+        self._PodSSHInfo = None
 
     @property
     def Enable(self):
@@ -18458,6 +18528,18 @@ class SSHConfig(AbstractModel):
     def IsAddressChanged(self, IsAddressChanged):
         self._IsAddressChanged = IsAddressChanged
 
+    @property
+    def PodSSHInfo(self):
+        """POD访问信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.PodSSHInfo`
+        """
+        return self._PodSSHInfo
+
+    @PodSSHInfo.setter
+    def PodSSHInfo(self, PodSSHInfo):
+        self._PodSSHInfo = PodSSHInfo
+
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
@@ -18465,6 +18547,9 @@ class SSHConfig(AbstractModel):
         self._Port = params.get("Port")
         self._LoginCommand = params.get("LoginCommand")
         self._IsAddressChanged = params.get("IsAddressChanged")
+        if params.get("PodSSHInfo") is not None:
+            self._PodSSHInfo = PodSSHInfo()
+            self._PodSSHInfo._deserialize(params.get("PodSSHInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

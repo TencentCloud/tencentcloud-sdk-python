@@ -2567,7 +2567,7 @@ class DescribeDLPFileDetectResultData(AbstractModel):
         :type FileName: str
         :param _Status: 状态：等待检测->正在检测->检测失败/检测成功。或任务不存在
         :type Status: str
-        :param _DetectResult: 文件检测结果，json字符串。
+        :param _DetectResult: 文件检测结果，json字符串。包含文件基本信息如type，path，md5以及命中的信息。其中State为检测状态，0为待解析文件，1为检测中，2为检测完成；FileAbstract为命中的上下文摘要信息，HitRuleid是命中的规则唯一ID，HitRuleCategoryId是规则分类唯一id，HitLevel是文件的等级，HitRuleDesc是规则的名称，HitContent是具体命中的规则以及词库信息，以及命中的内容。EngineConfigVersion是当前词库版本号
         :type DetectResult: str
         """
         self._FileMd5 = None
@@ -2610,7 +2610,7 @@ class DescribeDLPFileDetectResultData(AbstractModel):
 
     @property
     def DetectResult(self):
-        """文件检测结果，json字符串。
+        """文件检测结果，json字符串。包含文件基本信息如type，path，md5以及命中的信息。其中State为检测状态，0为待解析文件，1为检测中，2为检测完成；FileAbstract为命中的上下文摘要信息，HitRuleid是命中的规则唯一ID，HitRuleCategoryId是规则分类唯一id，HitLevel是文件的等级，HitRuleDesc是规则的名称，HitContent是具体命中的规则以及词库信息，以及命中的内容。EngineConfigVersion是当前词库版本号
         :rtype: str
         """
         return self._DetectResult
@@ -2642,7 +2642,7 @@ class DescribeDLPFileDetectResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :type DomainInstanceId: str
         :param _QueryID: 查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
         :type QueryID: str
@@ -2652,7 +2652,7 @@ class DescribeDLPFileDetectResultRequest(AbstractModel):
 
     @property
     def DomainInstanceId(self):
-        """管理域实例ID，用于CAM管理域权限分配
+        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :rtype: str
         """
         return self._DomainInstanceId
@@ -2693,7 +2693,7 @@ class DescribeDLPFileDetectResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 查询任务结果
+        :param _Data: 文件鉴定任务结果数据。详情查看具体数据结构
         :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2703,7 +2703,7 @@ class DescribeDLPFileDetectResultResponse(AbstractModel):
 
     @property
     def Data(self):
-        """查询任务结果
+        """文件鉴定任务结果数据。详情查看具体数据结构
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultData`
         """
         return self._Data

@@ -50708,12 +50708,15 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
         :type ModifySecurityGroup: bool
         :param _SecurityGroupIds: NAT网关绑定的安全组列表，最终状态，空列表表示删除所有安全组，形如: `['sg-1n232323', 'sg-o4242424']`
         :type SecurityGroupIds: list of str
+        :param _DeletionProtectionEnabled: NAT实例是否开启删除保护
+        :type DeletionProtectionEnabled: bool
         """
         self._NatGatewayId = None
         self._NatGatewayName = None
         self._InternetMaxBandwidthOut = None
         self._ModifySecurityGroup = None
         self._SecurityGroupIds = None
+        self._DeletionProtectionEnabled = None
 
     @property
     def NatGatewayId(self):
@@ -50770,6 +50773,17 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def DeletionProtectionEnabled(self):
+        """NAT实例是否开启删除保护
+        :rtype: bool
+        """
+        return self._DeletionProtectionEnabled
+
+    @DeletionProtectionEnabled.setter
+    def DeletionProtectionEnabled(self, DeletionProtectionEnabled):
+        self._DeletionProtectionEnabled = DeletionProtectionEnabled
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -50777,6 +50791,7 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._ModifySecurityGroup = params.get("ModifySecurityGroup")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54920,6 +54935,8 @@ class NatGateway(AbstractModel):
         :type SmartScheduleMode: bool
         :param _DedicatedClusterId: NAT实例归属的专属集群id
         :type DedicatedClusterId: str
+        :param _DeletionProtectionEnabled: NAT实例是否开启删除保护
+        :type DeletionProtectionEnabled: bool
         """
         self._NatGatewayId = None
         self._NatGatewayName = None
@@ -54943,6 +54960,7 @@ class NatGateway(AbstractModel):
         self._NatProductVersion = None
         self._SmartScheduleMode = None
         self._DedicatedClusterId = None
+        self._DeletionProtectionEnabled = None
 
     @property
     def NatGatewayId(self):
@@ -55188,6 +55206,17 @@ class NatGateway(AbstractModel):
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
 
+    @property
+    def DeletionProtectionEnabled(self):
+        """NAT实例是否开启删除保护
+        :rtype: bool
+        """
+        return self._DeletionProtectionEnabled
+
+    @DeletionProtectionEnabled.setter
+    def DeletionProtectionEnabled(self, DeletionProtectionEnabled):
+        self._DeletionProtectionEnabled = DeletionProtectionEnabled
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -55232,6 +55261,7 @@ class NatGateway(AbstractModel):
         self._NatProductVersion = params.get("NatProductVersion")
         self._SmartScheduleMode = params.get("SmartScheduleMode")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58071,6 +58101,8 @@ class PrivateNatGateway(AbstractModel):
         :type VpcType: bool
         :param _CcnId: 跨域私网NAT关联的云联网ID	
         :type CcnId: str
+        :param _DeletionProtectionEnabled: 私网NAT是否开启删除保护
+        :type DeletionProtectionEnabled: bool
         """
         self._NatGatewayId = None
         self._NatGatewayName = None
@@ -58084,6 +58116,7 @@ class PrivateNatGateway(AbstractModel):
         self._CrossDomainInfo = None
         self._VpcType = None
         self._CcnId = None
+        self._DeletionProtectionEnabled = None
 
     @property
     def NatGatewayId(self):
@@ -58217,6 +58250,17 @@ class PrivateNatGateway(AbstractModel):
     def CcnId(self, CcnId):
         self._CcnId = CcnId
 
+    @property
+    def DeletionProtectionEnabled(self):
+        """私网NAT是否开启删除保护
+        :rtype: bool
+        """
+        return self._DeletionProtectionEnabled
+
+    @DeletionProtectionEnabled.setter
+    def DeletionProtectionEnabled(self, DeletionProtectionEnabled):
+        self._DeletionProtectionEnabled = DeletionProtectionEnabled
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -58238,6 +58282,7 @@ class PrivateNatGateway(AbstractModel):
             self._CrossDomainInfo._deserialize(params.get("CrossDomainInfo"))
         self._VpcType = params.get("VpcType")
         self._CcnId = params.get("CcnId")
+        self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

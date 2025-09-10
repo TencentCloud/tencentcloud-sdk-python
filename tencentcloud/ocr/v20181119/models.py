@@ -10615,7 +10615,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
         :type ImageUrl: str
         :param _IsWords: 是否返回单字信息，默认关
         :type IsWords: bool
-        :param _EnableDetectSplit: 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关
+        :param _EnableDetectSplit: 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
         :type EnableDetectSplit: bool
         :param _IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :type IsPdf: bool
@@ -10623,7 +10623,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
         :type PdfPageNumber: int
         :param _EnableDetectText: 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
         :type EnableDetectText: bool
-        :param _ConfigID: 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景 
+        :param _ConfigID: 配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
         :type ConfigID: str
         """
         self._ImageBase64 = None
@@ -10670,7 +10670,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def EnableDetectSplit(self):
-        """是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关
+        """是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
         :rtype: bool
         """
         return self._EnableDetectSplit
@@ -10714,7 +10714,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def ConfigID(self):
-        """配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景 
+        """配置ID支持：  OCR -- 通用场景  MulOCR--多语种场景，注：仅ConfigID配置为OCR时支持
         :rtype: str
         """
         return self._ConfigID

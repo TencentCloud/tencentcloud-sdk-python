@@ -2839,7 +2839,7 @@ class Config(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Retention: 消息保留时间
+        :param _Retention: 消息保留时间，单位ms。
         :type Retention: int
         :param _MinInsyncReplicas: 最小同步复制数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2848,22 +2848,22 @@ class Config(AbstractModel):
 delete：日志按保存时间删除；compact：日志按 key 压缩；compact, delete：日志按 key 压缩且会保存时间删除。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CleanUpPolicy: str
-        :param _SegmentMs: Segment 分片滚动的时长
+        :param _SegmentMs: Segment 分片滚动的时长，单位ms。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentMs: int
         :param _UncleanLeaderElectionEnable: 0表示 false。 1表示 true。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UncleanLeaderElectionEnable: int
-        :param _SegmentBytes: Segment 分片滚动的字节数
+        :param _SegmentBytes: Segment 分片滚动的字节数，单位bytes
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentBytes: int
-        :param _MaxMessageBytes: 最大消息字节数
+        :param _MaxMessageBytes: 最大消息字节数，单位bytes
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMessageBytes: int
-        :param _RetentionBytes: 消息保留文件大小
+        :param _RetentionBytes: 消息保留文件大小，单位Bytes
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionBytes: int
-        :param _LogMsgTimestampType: 消息保存的时间类型
+        :param _LogMsgTimestampType: 消息保存的时间类型，CreateTime表示生产者创建这条消息的时间;LogAppendTime表示broker接收到消息的时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogMsgTimestampType: str
         """
@@ -2879,7 +2879,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def Retention(self):
-        """消息保留时间
+        """消息保留时间，单位ms。
         :rtype: int
         """
         return self._Retention
@@ -2915,7 +2915,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def SegmentMs(self):
-        """Segment 分片滚动的时长
+        """Segment 分片滚动的时长，单位ms。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2939,7 +2939,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def SegmentBytes(self):
-        """Segment 分片滚动的字节数
+        """Segment 分片滚动的字节数，单位bytes
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2951,7 +2951,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def MaxMessageBytes(self):
-        """最大消息字节数
+        """最大消息字节数，单位bytes
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2963,7 +2963,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def RetentionBytes(self):
-        """消息保留文件大小
+        """消息保留文件大小，单位Bytes
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2975,7 +2975,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def LogMsgTimestampType(self):
-        """消息保存的时间类型
+        """消息保存的时间类型，CreateTime表示生产者创建这条消息的时间;LogAppendTime表示broker接收到消息的时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5388,7 +5388,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type InstanceName: str
         :param _ZoneId: 可用区。当购买多可用区实例时，当前参数为主可用区。  [查看可用区](https://cloud.tencent.com/document/product/597/55246)
         :type ZoneId: int
-        :param _Period: 预付费购买时长，例如 "1m",就是一个月
+        :param _Period: 预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m
         :type Period: str
         :param _InstanceType: 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
         :type InstanceType: int
@@ -5476,7 +5476,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Period(self):
-        """预付费购买时长，例如 "1m",就是一个月
+        """预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m
         :rtype: str
         """
         return self._Period
@@ -6475,7 +6475,11 @@ class CreateRouteRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: vpc子网id,当vipType为3时必填
         :type SubnetId: str
-        :param _AccessType: 访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl,默认为0
+        :param _AccessType: 访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0
+vipType=3,支持 0,1,3,4,5
+vipType=7,支持0,1,3
+vipType=1,支持1,3
+
         :type AccessType: int
         :param _AuthFlag: 是否需要权限管理,该字段已废弃
         :type AuthFlag: int
@@ -6542,7 +6546,11 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def AccessType(self):
-        """访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl,默认为0
+        """访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0
+vipType=3,支持 0,1,3,4,5
+vipType=7,支持0,1,3
+vipType=1,支持1,3
+
         :rtype: int
         """
         return self._AccessType
@@ -6873,7 +6881,7 @@ class CreateTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _TopicName: 只能包含字母、数字、下划线、“-”、“.”
         :type TopicName: str
@@ -6887,23 +6895,23 @@ class CreateTopicRequest(AbstractModel):
         :type IpWhiteList: list of str
         :param _CleanUpPolicy: 清理日志策略，日志清理模式，默认为"delete"。"delete"：日志按保存时间删除，"compact"：日志按 key 压缩，"compact, delete"：日志按 key 压缩且会按保存时间删除。
         :type CleanUpPolicy: str
-        :param _Note: 主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _Note: 主题备注，是一个不超过 64 个字符的字符串，可以用字母和数字为首字符，剩余部分可以包含字母、数字和横划线(-)
         :type Note: str
-        :param _MinInsyncReplicas: 默认为1
+        :param _MinInsyncReplicas: 最小同步副本数，默认为1
         :type MinInsyncReplicas: int
-        :param _UncleanLeaderElectionEnable: 是否允许未同步的副本选为leader，false:不允许，true:允许，默认不允许
+        :param _UncleanLeaderElectionEnable: 是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许
         :type UncleanLeaderElectionEnable: int
-        :param _RetentionMs: 可选参数。消息保留时间，单位ms，当前最小值为60000ms
+        :param _RetentionMs: 可选参数。消息保留时间，单位ms，当前最小值为60000。默认值为7200000ms（2小时），最大值为7776000000 ms（90天）。
         :type RetentionMs: int
-        :param _SegmentMs: Segment分片滚动的时长，单位ms，当前最小为3600000ms
+        :param _SegmentMs: Segment分片滚动的时长，单位ms，最小值为86400000ms（1天）。
         :type SegmentMs: int
-        :param _MaxMessageBytes: 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为12582912Byte（即12MB）
+        :param _MaxMessageBytes: 主题消息最大值，单位为 Byte，最小值1024Bytes(即1KB)，最大值为12582912Bytes（即12MB）
         :type MaxMessageBytes: int
         :param _EnableAclRule: 预设ACL规则, 1:打开  0:关闭，默认不打开
         :type EnableAclRule: int
         :param _AclRuleName: 预设ACL规则的名称
         :type AclRuleName: str
-        :param _RetentionBytes: 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+        :param _RetentionBytes: 可选, 保留文件大小. 默认为-1,单位Byte, 当前最小值为1073741824。
         :type RetentionBytes: int
         :param _Tags: 标签列表
         :type Tags: list of Tag
@@ -6928,7 +6936,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -7005,7 +7013,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Note(self):
-        """主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        """主题备注，是一个不超过 64 个字符的字符串，可以用字母和数字为首字符，剩余部分可以包含字母、数字和横划线(-)
         :rtype: str
         """
         return self._Note
@@ -7016,7 +7024,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MinInsyncReplicas(self):
-        """默认为1
+        """最小同步副本数，默认为1
         :rtype: int
         """
         return self._MinInsyncReplicas
@@ -7027,7 +7035,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def UncleanLeaderElectionEnable(self):
-        """是否允许未同步的副本选为leader，false:不允许，true:允许，默认不允许
+        """是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许
         :rtype: int
         """
         return self._UncleanLeaderElectionEnable
@@ -7038,7 +7046,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
-        """可选参数。消息保留时间，单位ms，当前最小值为60000ms
+        """可选参数。消息保留时间，单位ms，当前最小值为60000。默认值为7200000ms（2小时），最大值为7776000000 ms（90天）。
         :rtype: int
         """
         return self._RetentionMs
@@ -7049,7 +7057,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def SegmentMs(self):
-        """Segment分片滚动的时长，单位ms，当前最小为3600000ms
+        """Segment分片滚动的时长，单位ms，最小值为86400000ms（1天）。
         :rtype: int
         """
         return self._SegmentMs
@@ -7060,7 +7068,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MaxMessageBytes(self):
-        """主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为12582912Byte（即12MB）
+        """主题消息最大值，单位为 Byte，最小值1024Bytes(即1KB)，最大值为12582912Bytes（即12MB）
         :rtype: int
         """
         return self._MaxMessageBytes
@@ -7093,7 +7101,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def RetentionBytes(self):
-        """可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+        """可选, 保留文件大小. 默认为-1,单位Byte, 当前最小值为1073741824。
         :rtype: int
         """
         return self._RetentionBytes
@@ -11291,7 +11299,7 @@ class DescribeConnectResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 连接源的Id
+        :param _Result: 连接源数据信息
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11301,7 +11309,7 @@ class DescribeConnectResourceResponse(AbstractModel):
 
     @property
     def Result(self):
-        """连接源的Id
+        """连接源数据信息
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceResp`
         """
         return self._Result
@@ -11338,11 +11346,11 @@ class DescribeConnectResourcesRequest(AbstractModel):
         r"""
         :param _Type: 连接源类型
         :type Type: str
-        :param _SearchWord: 连接源名称的关键字查询
+        :param _SearchWord: 连接源名称的关键字查询,支持模糊匹配
         :type SearchWord: str
         :param _Offset: 分页偏移量，默认为0
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100
+        :param _Limit: 返回数量，默认为20，最大值为1000 (超过1000,则限制为1000)
         :type Limit: int
         :param _ResourceRegion: 连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)
         :type ResourceRegion: str
@@ -11366,7 +11374,7 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        """连接源名称的关键字查询
+        """连接源名称的关键字查询,支持模糊匹配
         :rtype: str
         """
         return self._SearchWord
@@ -11388,7 +11396,7 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100
+        """返回数量，默认为20，最大值为1000 (超过1000,则限制为1000)
         :rtype: int
         """
         return self._Limit
@@ -11533,15 +11541,15 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,通过DescribeInstances接口获取
         :type InstanceId: str
-        :param _GroupName: 可选，用户需要查询的group名称。
+        :param _GroupName: 用户需要查询的group名称。
         :type GroupName: str
-        :param _TopicName: 可选，用户需要查询的group中的对应的topic名称，如果指定了该参数，而group又未指定则忽略该参数。
+        :param _TopicName: 用户需要查询的group中的对应的topic名称，如果指定了该参数，而group又未指定则忽略该参数。
         :type TopicName: str
-        :param _Limit: 本次返回个数限制，最大支持50
+        :param _Limit: 返回消费组的限制数量，最大支持50
         :type Limit: int
-        :param _Offset: 偏移位置
+        :param _Offset: 消费组列表的起始偏移量
         :type Offset: int
         """
         self._InstanceId = None
@@ -11552,7 +11560,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -11563,7 +11571,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """可选，用户需要查询的group名称。
+        """用户需要查询的group名称。
         :rtype: str
         """
         return self._GroupName
@@ -11574,7 +11582,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """可选，用户需要查询的group中的对应的topic名称，如果指定了该参数，而group又未指定则忽略该参数。
+        """用户需要查询的group中的对应的topic名称，如果指定了该参数，而group又未指定则忽略该参数。
         :rtype: str
         """
         return self._TopicName
@@ -11585,7 +11593,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """本次返回个数限制，最大支持50
+        """返回消费组的限制数量，最大支持50
         :rtype: int
         """
         return self._Limit
@@ -11596,7 +11604,7 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移位置
+        """消费组列表的起始偏移量
         :rtype: int
         """
         return self._Offset
@@ -12275,7 +12283,7 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 返回数量，默认为20，最大值为100
+        :param _Limit: 返回数量，默认为20，最大值为100 (超过100限制为100)
         :type Limit: int
         :param _Offset: 分页偏移量，默认为0
         :type Offset: int
@@ -12300,7 +12308,7 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认为20，最大值为100
+        """返回数量，默认为20，最大值为100 (超过100限制为100)
         :rtype: int
         """
         return self._Limit
@@ -13017,9 +13025,9 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
-        :param _GroupList: Kafka 消费分组列表
+        :param _GroupList: Kafka 消费分组列表,可通过DescribeConsumerGroup接口获取
         :type GroupList: list of str
         """
         self._InstanceId = None
@@ -13027,7 +13035,7 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -13038,7 +13046,7 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def GroupList(self):
-        """Kafka 消费分组列表
+        """Kafka 消费分组列表,可通过DescribeConsumerGroup接口获取
         :rtype: list of str
         """
         return self._GroupList
@@ -13418,14 +13426,14 @@ class DescribeInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -14442,9 +14450,9 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名称，可通过DescribeTopic接口获取。
         :type TopicName: str
         """
         self._InstanceId = None
@@ -14452,7 +14460,7 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -14463,7 +14471,7 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名称，可通过DescribeTopic接口获取。
         :rtype: str
         """
         return self._TopicName
@@ -14538,19 +14546,19 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _SearchWord: （过滤条件）按照topicName过滤，支持模糊查询
         :type SearchWord: str
         :param _Offset: 偏移量，不填默认为0
         :type Offset: int
-        :param _Limit: 返回数量，不填则默认 10，最大值20，取值要大于0
+        :param _Limit: 返回数量，不填则默认 20，取值要大于0
         :type Limit: int
         :param _AclRuleName: Acl预设策略名称
         :type AclRuleName: str
-        :param _OrderBy: 根据特定的属性排序(目前支持PartitionNum/CreateTime)
+        :param _OrderBy: 根据特定的属性排序(目前支持PartitionNum/CreateTime)，默认值为CreateTime。
         :type OrderBy: str
-        :param _OrderType: 0-顺序、1-倒序
+        :param _OrderType: 0-顺序、1-倒序，默认值为0。
         :type OrderType: int
         :param _Filters: 目前支持 ReplicaNum （副本数）筛选
         :type Filters: list of Filter
@@ -14566,7 +14574,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -14599,7 +14607,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，不填则默认 10，最大值20，取值要大于0
+        """返回数量，不填则默认 20，取值要大于0
         :rtype: int
         """
         return self._Limit
@@ -14621,7 +14629,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """根据特定的属性排序(目前支持PartitionNum/CreateTime)
+        """根据特定的属性排序(目前支持PartitionNum/CreateTime)，默认值为CreateTime。
         :rtype: str
         """
         return self._OrderBy
@@ -14632,7 +14640,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """0-顺序、1-倒序
+        """0-顺序、1-倒序，默认值为0。
         :rtype: int
         """
         return self._OrderType
@@ -14729,7 +14737,7 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
         :param _RankingType: 排行类别，PRO：Topic生产流量；CON：Topic消费流量
         :type RankingType: str
@@ -14748,7 +14756,7 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -14870,9 +14878,9 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id，可通过DescribeInstances接口获取。
         :type InstanceId: str
-        :param _TopicName: 主题名
+        :param _TopicName: 主题名，可通过DescribeTopic接口获取。
         :type TopicName: str
         """
         self._InstanceId = None
@@ -14880,7 +14888,7 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id，可通过DescribeInstances接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -14891,7 +14899,7 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名
+        """主题名，可通过DescribeTopic接口获取。
         :rtype: str
         """
         return self._TopicName
@@ -15242,7 +15250,7 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
         :type TopicName: str
         :param _Offset: 偏移量，不填默认为0
         :type Offset: int
-        :param _Limit: 返回数量，不填则默认10，最大值20。
+        :param _Limit: 返回数量，默认值为20，必须大于0。
         :type Limit: int
         :param _OutOfSyncReplicaOnly: 仅筛选未同步副本
         :type OutOfSyncReplicaOnly: bool
@@ -15288,7 +15296,7 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，不填则默认10，最大值20。
+        """返回数量，默认值为20，必须大于0。
         :rtype: int
         """
         return self._Limit
@@ -23651,17 +23659,17 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: ckafka集群实例Id,可通过DescribeInstances接口获取
         :type InstanceId: str
-        :param _Group: 消费分组名称
+        :param _Group: 消费分组名称,可通过DescribeConsumerGroup接口获取
         :type Group: str
-        :param _Strategy: 重置offset的策略，入参含义 0. 对齐shift-by参数，代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset)，代表把offset移动到指定的offset位置
+        :param _Strategy: 重置offset的策略,入参含义 0. 对齐shift-by参数,代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset),代表把offset移动到指定的offset位置
         :type Strategy: int
-        :param _Topics: 需要重置的主题名列表， 不填表示全部
+        :param _Topics: 需要重置的主题名列表
         :type Topics: list of str
         :param _Shift: 当strategy为0时，必须包含该字段，可以大于零代表会把offset向后移动shift条，小于零则将offset向前回溯shift条数。正确重置后新的offset应该是(old_offset + shift)，需要注意的是如果新的offset小于partition的earliest则会设置为earliest，如果大于partition 的latest则会设置为latest
         :type Shift: int
-        :param _ShiftTimestamp: 单位ms。当strategy为1时，必须包含该字段，其中-2表示重置offset到最开始的位置，-1表示重置到最新的位置(相当于清空)，其它值则代表指定的时间，会获取topic中指定时间的offset然后进行重置，需要注意的时，如果指定的时间不存在消息，则获取最末尾的offset。
+        :param _ShiftTimestamp: 单位ms。当strategy为1时，必须包含该字段，其中-2表示重置offset到最开始的位置，-1表示重置到最新的位置(相当于清空)，其它值则代表指定的时间，会获取topic中指定时间的offset然后进行重置，需要注意的是，如果指定的时间不存在消息，则获取最末尾的offset。
         :type ShiftTimestamp: int
         :param _Offset: 需要重新设置的offset位置。当strategy为2，必须包含该字段。
         :type Offset: int
@@ -23679,7 +23687,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ckafka集群实例Id
+        """ckafka集群实例Id,可通过DescribeInstances接口获取
         :rtype: str
         """
         return self._InstanceId
@@ -23690,7 +23698,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Group(self):
-        """消费分组名称
+        """消费分组名称,可通过DescribeConsumerGroup接口获取
         :rtype: str
         """
         return self._Group
@@ -23701,7 +23709,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Strategy(self):
-        """重置offset的策略，入参含义 0. 对齐shift-by参数，代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset)，代表把offset移动到指定的offset位置
+        """重置offset的策略,入参含义 0. 对齐shift-by参数,代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset),代表把offset移动到指定的offset位置
         :rtype: int
         """
         return self._Strategy
@@ -23712,7 +23720,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Topics(self):
-        """需要重置的主题名列表， 不填表示全部
+        """需要重置的主题名列表
         :rtype: list of str
         """
         return self._Topics
@@ -23734,7 +23742,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def ShiftTimestamp(self):
-        """单位ms。当strategy为1时，必须包含该字段，其中-2表示重置offset到最开始的位置，-1表示重置到最新的位置(相当于清空)，其它值则代表指定的时间，会获取topic中指定时间的offset然后进行重置，需要注意的时，如果指定的时间不存在消息，则获取最末尾的offset。
+        """单位ms。当strategy为1时，必须包含该字段，其中-2表示重置offset到最开始的位置，-1表示重置到最新的位置(相当于清空)，其它值则代表指定的时间，会获取topic中指定时间的offset然后进行重置，需要注意的是，如果指定的时间不存在消息，则获取最末尾的offset。
         :rtype: int
         """
         return self._ShiftTimestamp
@@ -24653,7 +24661,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type RetentionMs: int
         :param _MaxMessageBytes: 主题消息最大值，单位为 Byte，最大值为12582912Byte（即12MB）。
         :type MaxMessageBytes: int
-        :param _SegmentMs: Segment 分片滚动的时长，单位：ms，当前最小为300000ms。
+        :param _SegmentMs: Segment 分片滚动的时长，单位：ms，当前最小值86400000ms。
         :type SegmentMs: int
         :param _CleanUpPolicy: 消息删除策略，可以选择delete 或者compact
         :type CleanUpPolicy: str
@@ -24783,7 +24791,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def SegmentMs(self):
-        """Segment 分片滚动的时长，单位：ms，当前最小为300000ms。
+        """Segment 分片滚动的时长，单位：ms，当前最小值86400000ms。
         :rtype: int
         """
         return self._SegmentMs
@@ -30021,7 +30029,7 @@ class TopicAttributesResponse(AbstractModel):
         r"""
         :param _TopicId: 主题 ID
         :type TopicId: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间的秒级时间戳
         :type CreateTime: int
         :param _Note: 主题备注
         :type Note: str
@@ -30070,7 +30078,7 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间的秒级时间戳
         :rtype: int
         """
         return self._CreateTime

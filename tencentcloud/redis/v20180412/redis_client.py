@@ -1915,7 +1915,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceAccount(self, request):
-        """本接口（ModifyInstanceAccount）用于修改实例子账号。
+        """本接口（ModifyInstanceAccount）用于修改实例账号。
 
         :param request: Request instance for ModifyInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAccountRequest`

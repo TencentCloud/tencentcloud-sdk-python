@@ -1450,6 +1450,7 @@ class AgentPluginInfo(AbstractModel):
         :param _KnowledgeQa: 知识库问答插件配置
         :type KnowledgeQa: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeQAPlugin`
         :param _EnableRoleAuth: 是否使用一键授权
+注意：此字段可能返回 null，表示取不到有效值。
         :type EnableRoleAuth: bool
         :param _Query: 应用配置的插件query信息
         :type Query: list of AgentPluginQuery
@@ -1523,6 +1524,7 @@ class AgentPluginInfo(AbstractModel):
     @property
     def EnableRoleAuth(self):
         """是否使用一键授权
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableRoleAuth
@@ -10266,10 +10268,24 @@ class DescribeNodeRunRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
         :param _NodeRunId: 节点运行实例ID
         :type NodeRunId: str
         """
+        self._AppBizId = None
         self._NodeRunId = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
 
     @property
     def NodeRunId(self):
@@ -10284,6 +10300,7 @@ class DescribeNodeRunRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
         self._NodeRunId = params.get("NodeRunId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -12788,10 +12805,24 @@ class DescribeWorkflowRunRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
         :param _WorkflowRunId: 工作流运行实例ID
         :type WorkflowRunId: str
         """
+        self._AppBizId = None
         self._WorkflowRunId = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
 
     @property
     def WorkflowRunId(self):
@@ -12806,6 +12837,7 @@ class DescribeWorkflowRunRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
         self._WorkflowRunId = params.get("WorkflowRunId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -16612,6 +16644,8 @@ class KnowledgeBaseInfo(AbstractModel):
         :param _ProcessingFlags: 知识库处理中状态标记，1：向量embedding变更中
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessingFlags: list of int
+        :param _OwnerStaffName: 知识库拥有者的名字
+        :type OwnerStaffName: str
         """
         self._KnowledgeBizId = None
         self._KnowledgeName = None
@@ -16623,6 +16657,7 @@ class KnowledgeBaseInfo(AbstractModel):
         self._OwnerStaffId = None
         self._DocTotal = None
         self._ProcessingFlags = None
+        self._OwnerStaffName = None
 
     @property
     def KnowledgeBizId(self):
@@ -16740,6 +16775,17 @@ class KnowledgeBaseInfo(AbstractModel):
     def ProcessingFlags(self, ProcessingFlags):
         self._ProcessingFlags = ProcessingFlags
 
+    @property
+    def OwnerStaffName(self):
+        """知识库拥有者的名字
+        :rtype: str
+        """
+        return self._OwnerStaffName
+
+    @OwnerStaffName.setter
+    def OwnerStaffName(self, OwnerStaffName):
+        self._OwnerStaffName = OwnerStaffName
+
 
     def _deserialize(self, params):
         self._KnowledgeBizId = params.get("KnowledgeBizId")
@@ -16752,6 +16798,7 @@ class KnowledgeBaseInfo(AbstractModel):
         self._OwnerStaffId = params.get("OwnerStaffId")
         self._DocTotal = params.get("DocTotal")
         self._ProcessingFlags = params.get("ProcessingFlags")
+        self._OwnerStaffName = params.get("OwnerStaffName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21972,7 +22019,7 @@ class ListReleaseItem(AbstractModel):
         :type Desc: str
         :param _UpdateTime: 更新时间
         :type UpdateTime: str
-        :param _Status: 发布状态
+        :param _Status: 发布状态，1：待发布，2：发布中，3：发布成功，5：发布失败
         :type Status: int
         :param _StatusDesc: 发布状态描述
         :type StatusDesc: str
@@ -22039,7 +22086,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def Status(self):
-        """发布状态
+        """发布状态，1：待发布，2：发布中，3：发布成功，5：发布失败
         :rtype: int
         """
         return self._Status
@@ -22339,7 +22386,7 @@ class ListReleaseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -22352,7 +22399,7 @@ class ListReleaseRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """机器人ID
+        """应用ID
         :rtype: str
         """
         return self._BotBizId
@@ -31123,10 +31170,24 @@ class StopWorkflowRunRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
         :param _WorkflowRunId: 工作流运行实例ID
         :type WorkflowRunId: str
         """
+        self._AppBizId = None
         self._WorkflowRunId = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
 
     @property
     def WorkflowRunId(self):
@@ -31141,6 +31202,7 @@ class StopWorkflowRunRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
         self._WorkflowRunId = params.get("WorkflowRunId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

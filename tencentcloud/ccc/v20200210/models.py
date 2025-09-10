@@ -10345,6 +10345,480 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSessionDetailRequest(AbstractModel):
+    """DescribeSessionDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _SessionId: 通话的 session id
+        :type SessionId: str
+        :param _StartTimestamp: 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        :type StartTimestamp: int
+        :param _EndTimestamp: 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+        :type EndTimestamp: int
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+        self._StartTimestamp = None
+        self._EndTimestamp = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        """通话的 session id
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def StartTimestamp(self):
+        """起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        :rtype: int
+        """
+        return self._StartTimestamp
+
+    @StartTimestamp.setter
+    def StartTimestamp(self, StartTimestamp):
+        self._StartTimestamp = StartTimestamp
+
+    @property
+    def EndTimestamp(self):
+        """结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+        :rtype: int
+        """
+        return self._EndTimestamp
+
+    @EndTimestamp.setter
+    def EndTimestamp(self, EndTimestamp):
+        self._EndTimestamp = EndTimestamp
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        self._StartTimestamp = params.get("StartTimestamp")
+        self._EndTimestamp = params.get("EndTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSessionDetailResponse(AbstractModel):
+    """DescribeSessionDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Caller: 主叫号码
+        :type Caller: str
+        :param _Callee: 被叫号码
+        :type Callee: str
+        :param _CallType: 通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫
+        :type CallType: int
+        :param _StartTimeStamp: 开始时间戳，Unix 秒级时间戳
+        :type StartTimeStamp: int
+        :param _RingTimestamp: 振铃时间戳，UNIX 秒级时间戳
+        :type RingTimestamp: int
+        :param _AcceptTimestamp: 接听时间戳，UNIX 秒级时间戳
+        :type AcceptTimestamp: int
+        :param _EndedTimestamp: 结束时间戳，UNIX 秒级时间戳
+        :type EndedTimestamp: int
+        :param _QueuedTimestamp: 进入排队时间，Unix 秒级时间戳
+        :type QueuedTimestamp: int
+        :param _StaffUserId: 座席账号
+        :type StaffUserId: str
+        :param _EndStatus: 参考 DescribeTelCdr 接口 EndStatus 字段
+        :type EndStatus: int
+        :param _QueuedSkillGroupId: 排队技能组 ID
+        :type QueuedSkillGroupId: int
+        :param _QueuedSkillGroupName: 排队技能组名称
+        :type QueuedSkillGroupName: str
+        :param _RecordURL: 录音链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+        :type RecordURL: str
+        :param _CustomRecordURL: 录音转存第三方 COS 链接
+        :type CustomRecordURL: str
+        :param _AsrURL: 录音文本信息链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+        :type AsrURL: str
+        :param _VoicemailRecordURL: 语音留言录音链接
+        :type VoicemailRecordURL: list of str
+        :param _VoicemailAsrURL: 语音留言录音文本信息链接，需在控制台购买离线语音识别套餐包并开启离线语音识别开关
+        :type VoicemailAsrURL: list of str
+        :param _IVRKeyPressed: IVR 按键信息
+        :type IVRKeyPressed: list of IVRKeyPressedElement
+        :param _PostIVRKeyPressed: 满意度按键信息
+        :type PostIVRKeyPressed: list of IVRKeyPressedElement
+        :param _HungUpSide: 挂机方 seat 座席 user 用户 system 系统
+        :type HungUpSide: str
+        :param _UUI: 客户自定义数据（User-to-User Interface）
+        :type UUI: str
+        :param _Events: 通话中的事件列表
+        :type Events: list of SessionEvent
+        :param _ServeParticipants: 服务参与者列表
+        :type ServeParticipants: list of ServeParticipant
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Caller = None
+        self._Callee = None
+        self._CallType = None
+        self._StartTimeStamp = None
+        self._RingTimestamp = None
+        self._AcceptTimestamp = None
+        self._EndedTimestamp = None
+        self._QueuedTimestamp = None
+        self._StaffUserId = None
+        self._EndStatus = None
+        self._QueuedSkillGroupId = None
+        self._QueuedSkillGroupName = None
+        self._RecordURL = None
+        self._CustomRecordURL = None
+        self._AsrURL = None
+        self._VoicemailRecordURL = None
+        self._VoicemailAsrURL = None
+        self._IVRKeyPressed = None
+        self._PostIVRKeyPressed = None
+        self._HungUpSide = None
+        self._UUI = None
+        self._Events = None
+        self._ServeParticipants = None
+        self._RequestId = None
+
+    @property
+    def Caller(self):
+        """主叫号码
+        :rtype: str
+        """
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+    @property
+    def Callee(self):
+        """被叫号码
+        :rtype: str
+        """
+        return self._Callee
+
+    @Callee.setter
+    def Callee(self, Callee):
+        self._Callee = Callee
+
+    @property
+    def CallType(self):
+        """通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫
+        :rtype: int
+        """
+        return self._CallType
+
+    @CallType.setter
+    def CallType(self, CallType):
+        self._CallType = CallType
+
+    @property
+    def StartTimeStamp(self):
+        """开始时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
+        return self._StartTimeStamp
+
+    @StartTimeStamp.setter
+    def StartTimeStamp(self, StartTimeStamp):
+        self._StartTimeStamp = StartTimeStamp
+
+    @property
+    def RingTimestamp(self):
+        """振铃时间戳，UNIX 秒级时间戳
+        :rtype: int
+        """
+        return self._RingTimestamp
+
+    @RingTimestamp.setter
+    def RingTimestamp(self, RingTimestamp):
+        self._RingTimestamp = RingTimestamp
+
+    @property
+    def AcceptTimestamp(self):
+        """接听时间戳，UNIX 秒级时间戳
+        :rtype: int
+        """
+        return self._AcceptTimestamp
+
+    @AcceptTimestamp.setter
+    def AcceptTimestamp(self, AcceptTimestamp):
+        self._AcceptTimestamp = AcceptTimestamp
+
+    @property
+    def EndedTimestamp(self):
+        """结束时间戳，UNIX 秒级时间戳
+        :rtype: int
+        """
+        return self._EndedTimestamp
+
+    @EndedTimestamp.setter
+    def EndedTimestamp(self, EndedTimestamp):
+        self._EndedTimestamp = EndedTimestamp
+
+    @property
+    def QueuedTimestamp(self):
+        """进入排队时间，Unix 秒级时间戳
+        :rtype: int
+        """
+        return self._QueuedTimestamp
+
+    @QueuedTimestamp.setter
+    def QueuedTimestamp(self, QueuedTimestamp):
+        self._QueuedTimestamp = QueuedTimestamp
+
+    @property
+    def StaffUserId(self):
+        """座席账号
+        :rtype: str
+        """
+        return self._StaffUserId
+
+    @StaffUserId.setter
+    def StaffUserId(self, StaffUserId):
+        self._StaffUserId = StaffUserId
+
+    @property
+    def EndStatus(self):
+        """参考 DescribeTelCdr 接口 EndStatus 字段
+        :rtype: int
+        """
+        return self._EndStatus
+
+    @EndStatus.setter
+    def EndStatus(self, EndStatus):
+        self._EndStatus = EndStatus
+
+    @property
+    def QueuedSkillGroupId(self):
+        """排队技能组 ID
+        :rtype: int
+        """
+        return self._QueuedSkillGroupId
+
+    @QueuedSkillGroupId.setter
+    def QueuedSkillGroupId(self, QueuedSkillGroupId):
+        self._QueuedSkillGroupId = QueuedSkillGroupId
+
+    @property
+    def QueuedSkillGroupName(self):
+        """排队技能组名称
+        :rtype: str
+        """
+        return self._QueuedSkillGroupName
+
+    @QueuedSkillGroupName.setter
+    def QueuedSkillGroupName(self, QueuedSkillGroupName):
+        self._QueuedSkillGroupName = QueuedSkillGroupName
+
+    @property
+    def RecordURL(self):
+        """录音链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+        :rtype: str
+        """
+        return self._RecordURL
+
+    @RecordURL.setter
+    def RecordURL(self, RecordURL):
+        self._RecordURL = RecordURL
+
+    @property
+    def CustomRecordURL(self):
+        """录音转存第三方 COS 链接
+        :rtype: str
+        """
+        return self._CustomRecordURL
+
+    @CustomRecordURL.setter
+    def CustomRecordURL(self, CustomRecordURL):
+        self._CustomRecordURL = CustomRecordURL
+
+    @property
+    def AsrURL(self):
+        """录音文本信息链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+        :rtype: str
+        """
+        return self._AsrURL
+
+    @AsrURL.setter
+    def AsrURL(self, AsrURL):
+        self._AsrURL = AsrURL
+
+    @property
+    def VoicemailRecordURL(self):
+        """语音留言录音链接
+        :rtype: list of str
+        """
+        return self._VoicemailRecordURL
+
+    @VoicemailRecordURL.setter
+    def VoicemailRecordURL(self, VoicemailRecordURL):
+        self._VoicemailRecordURL = VoicemailRecordURL
+
+    @property
+    def VoicemailAsrURL(self):
+        """语音留言录音文本信息链接，需在控制台购买离线语音识别套餐包并开启离线语音识别开关
+        :rtype: list of str
+        """
+        return self._VoicemailAsrURL
+
+    @VoicemailAsrURL.setter
+    def VoicemailAsrURL(self, VoicemailAsrURL):
+        self._VoicemailAsrURL = VoicemailAsrURL
+
+    @property
+    def IVRKeyPressed(self):
+        """IVR 按键信息
+        :rtype: list of IVRKeyPressedElement
+        """
+        return self._IVRKeyPressed
+
+    @IVRKeyPressed.setter
+    def IVRKeyPressed(self, IVRKeyPressed):
+        self._IVRKeyPressed = IVRKeyPressed
+
+    @property
+    def PostIVRKeyPressed(self):
+        """满意度按键信息
+        :rtype: list of IVRKeyPressedElement
+        """
+        return self._PostIVRKeyPressed
+
+    @PostIVRKeyPressed.setter
+    def PostIVRKeyPressed(self, PostIVRKeyPressed):
+        self._PostIVRKeyPressed = PostIVRKeyPressed
+
+    @property
+    def HungUpSide(self):
+        """挂机方 seat 座席 user 用户 system 系统
+        :rtype: str
+        """
+        return self._HungUpSide
+
+    @HungUpSide.setter
+    def HungUpSide(self, HungUpSide):
+        self._HungUpSide = HungUpSide
+
+    @property
+    def UUI(self):
+        """客户自定义数据（User-to-User Interface）
+        :rtype: str
+        """
+        return self._UUI
+
+    @UUI.setter
+    def UUI(self, UUI):
+        self._UUI = UUI
+
+    @property
+    def Events(self):
+        """通话中的事件列表
+        :rtype: list of SessionEvent
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def ServeParticipants(self):
+        """服务参与者列表
+        :rtype: list of ServeParticipant
+        """
+        return self._ServeParticipants
+
+    @ServeParticipants.setter
+    def ServeParticipants(self, ServeParticipants):
+        self._ServeParticipants = ServeParticipants
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Caller = params.get("Caller")
+        self._Callee = params.get("Callee")
+        self._CallType = params.get("CallType")
+        self._StartTimeStamp = params.get("StartTimeStamp")
+        self._RingTimestamp = params.get("RingTimestamp")
+        self._AcceptTimestamp = params.get("AcceptTimestamp")
+        self._EndedTimestamp = params.get("EndedTimestamp")
+        self._QueuedTimestamp = params.get("QueuedTimestamp")
+        self._StaffUserId = params.get("StaffUserId")
+        self._EndStatus = params.get("EndStatus")
+        self._QueuedSkillGroupId = params.get("QueuedSkillGroupId")
+        self._QueuedSkillGroupName = params.get("QueuedSkillGroupName")
+        self._RecordURL = params.get("RecordURL")
+        self._CustomRecordURL = params.get("CustomRecordURL")
+        self._AsrURL = params.get("AsrURL")
+        self._VoicemailRecordURL = params.get("VoicemailRecordURL")
+        self._VoicemailAsrURL = params.get("VoicemailAsrURL")
+        if params.get("IVRKeyPressed") is not None:
+            self._IVRKeyPressed = []
+            for item in params.get("IVRKeyPressed"):
+                obj = IVRKeyPressedElement()
+                obj._deserialize(item)
+                self._IVRKeyPressed.append(obj)
+        if params.get("PostIVRKeyPressed") is not None:
+            self._PostIVRKeyPressed = []
+            for item in params.get("PostIVRKeyPressed"):
+                obj = IVRKeyPressedElement()
+                obj._deserialize(item)
+                self._PostIVRKeyPressed.append(obj)
+        self._HungUpSide = params.get("HungUpSide")
+        self._UUI = params.get("UUI")
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = SessionEvent()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        if params.get("ServeParticipants") is not None:
+            self._ServeParticipants = []
+            for item in params.get("ServeParticipants"):
+                obj = ServeParticipant()
+                obj._deserialize(item)
+                self._ServeParticipants.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSkillGroupInfoListRequest(AbstractModel):
     """DescribeSkillGroupInfoList请求参数结构体
 
@@ -10690,6 +11164,165 @@ class DescribeStaffInfoListResponse(AbstractModel):
                 obj = StaffInfo()
                 obj._deserialize(item)
                 self._StaffList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStaffStatusHistoryRequest(AbstractModel):
+    """DescribeStaffStatusHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _StaffUserId: 座席账号
+        :type StaffUserId: str
+        :param _StartTimestamp: 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        :type StartTimestamp: int
+        :param _EndTimestamp: 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于 7 天。
+        :type EndTimestamp: int
+        :param _Cursor: 分页检索时使用的游标
+        :type Cursor: str
+        :param _PageSize: 分页尺寸
+        :type PageSize: int
+        """
+        self._SdkAppId = None
+        self._StaffUserId = None
+        self._StartTimestamp = None
+        self._EndTimestamp = None
+        self._Cursor = None
+        self._PageSize = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def StaffUserId(self):
+        """座席账号
+        :rtype: str
+        """
+        return self._StaffUserId
+
+    @StaffUserId.setter
+    def StaffUserId(self, StaffUserId):
+        self._StaffUserId = StaffUserId
+
+    @property
+    def StartTimestamp(self):
+        """起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        :rtype: int
+        """
+        return self._StartTimestamp
+
+    @StartTimestamp.setter
+    def StartTimestamp(self, StartTimestamp):
+        self._StartTimestamp = StartTimestamp
+
+    @property
+    def EndTimestamp(self):
+        """结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于 7 天。
+        :rtype: int
+        """
+        return self._EndTimestamp
+
+    @EndTimestamp.setter
+    def EndTimestamp(self, EndTimestamp):
+        self._EndTimestamp = EndTimestamp
+
+    @property
+    def Cursor(self):
+        """分页检索时使用的游标
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def PageSize(self):
+        """分页尺寸
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._StaffUserId = params.get("StaffUserId")
+        self._StartTimestamp = params.get("StartTimestamp")
+        self._EndTimestamp = params.get("EndTimestamp")
+        self._Cursor = params.get("Cursor")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStaffStatusHistoryResponse(AbstractModel):
+    """DescribeStaffStatusHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 座席状态数据
+        :type Data: list of StaffStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """座席状态数据
+        :rtype: list of StaffStatus
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = StaffStatus()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11632,6 +12265,98 @@ class ErrStaffItem(AbstractModel):
         self._StaffEmail = params.get("StaffEmail")
         self._Code = params.get("Code")
         self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventStaffDetail(AbstractModel):
+    """座席事件相关详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Staffs: 座席数据
+        :type Staffs: list of EventStaffElement
+        """
+        self._Staffs = None
+
+    @property
+    def Staffs(self):
+        """座席数据
+        :rtype: list of EventStaffElement
+        """
+        return self._Staffs
+
+    @Staffs.setter
+    def Staffs(self, Staffs):
+        self._Staffs = Staffs
+
+
+    def _deserialize(self, params):
+        if params.get("Staffs") is not None:
+            self._Staffs = []
+            for item in params.get("Staffs"):
+                obj = EventStaffElement()
+                obj._deserialize(item)
+                self._Staffs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventStaffElement(AbstractModel):
+    """座席信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mail: 座席邮箱账号
+        :type Mail: str
+        :param _StaffNumber: 座席工号
+        :type StaffNumber: str
+        """
+        self._Mail = None
+        self._StaffNumber = None
+
+    @property
+    def Mail(self):
+        """座席邮箱账号
+        :rtype: str
+        """
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
+    @property
+    def StaffNumber(self):
+        """座席工号
+        :rtype: str
+        """
+        return self._StaffNumber
+
+    @StaffNumber.setter
+    def StaffNumber(self, StaffNumber):
+        self._StaffNumber = StaffNumber
+
+
+    def _deserialize(self, params):
+        self._Mail = params.get("Mail")
+        self._StaffNumber = params.get("StaffNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15265,6 +15990,74 @@ class ServerPushText(AbstractModel):
         
 
 
+class SessionEvent(AbstractModel):
+    """通话事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: 事件时间戳，Unix 秒级时间戳
+        :type Timestamp: int
+        :param _EventType: 事件类型，目前支持 StaffHold StaffUnhold StaffMute StaffUnmute
+        :type EventType: str
+        :param _StaffEventDetail: 座席相关事件详情
+        :type StaffEventDetail: :class:`tencentcloud.ccc.v20200210.models.EventStaffDetail`
+        """
+        self._Timestamp = None
+        self._EventType = None
+        self._StaffEventDetail = None
+
+    @property
+    def Timestamp(self):
+        """事件时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def EventType(self):
+        """事件类型，目前支持 StaffHold StaffUnhold StaffMute StaffUnmute
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def StaffEventDetail(self):
+        """座席相关事件详情
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.EventStaffDetail`
+        """
+        return self._StaffEventDetail
+
+    @StaffEventDetail.setter
+    def StaffEventDetail(self, StaffEventDetail):
+        self._StaffEventDetail = StaffEventDetail
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._EventType = params.get("EventType")
+        if params.get("StaffEventDetail") is not None:
+            self._StaffEventDetail = EventStaffDetail()
+            self._StaffEventDetail._deserialize(params.get("StaffEventDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkillGroupInfoItem(AbstractModel):
     """技能组信息
 
@@ -15855,6 +16648,87 @@ class StaffSkillGroupList(AbstractModel):
     def _deserialize(self, params):
         self._SkillGroupId = params.get("SkillGroupId")
         self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaffStatus(AbstractModel):
+    """座席状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cursor: 查询使用的游标，分页场景使用
+        :type Cursor: str
+        :param _Timestamp: 状态时间戳，Unix 秒级时间戳
+        :type Timestamp: int
+        :param _Status: 座席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
+        :type Status: str
+        :param _SessionId: 状态关联的会话 Id
+        :type SessionId: str
+        """
+        self._Cursor = None
+        self._Timestamp = None
+        self._Status = None
+        self._SessionId = None
+
+    @property
+    def Cursor(self):
+        """查询使用的游标，分页场景使用
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def Timestamp(self):
+        """状态时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Status(self):
+        """座席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SessionId(self):
+        """状态关联的会话 Id
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Cursor = params.get("Cursor")
+        self._Timestamp = params.get("Timestamp")
+        self._Status = params.get("Status")
+        self._SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

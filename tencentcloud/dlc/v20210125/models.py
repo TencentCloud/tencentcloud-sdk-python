@@ -22062,6 +22062,146 @@ class DescribeTablePartitionsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Catalog: 数据目录名称
+        :type Catalog: str
+        :param _Database: 数据库名称
+        :type Database: str
+        :param _Table: 数据表名称
+        :type Table: str
+        :param _Offset: 查询偏移位置
+        :type Offset: int
+        :param _Limit: 当次查询的数量限制
+        :type Limit: int
+        :param _FuzzyPartition: 模糊查询的分区名称
+        :type FuzzyPartition: str
+        :param _Sorts: 排序信息
+        :type Sorts: list of Sort
+        :param _Cursor: 分页查询的游标信息
+        :type Cursor: str
+        """
+        self._Catalog = None
+        self._Database = None
+        self._Table = None
+        self._Offset = None
+        self._Limit = None
+        self._FuzzyPartition = None
+        self._Sorts = None
+        self._Cursor = None
+
+    @property
+    def Catalog(self):
+        """数据目录名称
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def Database(self):
+        """数据库名称
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        """数据表名称
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Offset(self):
+        """查询偏移位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """当次查询的数量限制
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FuzzyPartition(self):
+        """模糊查询的分区名称
+        :rtype: str
+        """
+        return self._FuzzyPartition
+
+    @FuzzyPartition.setter
+    def FuzzyPartition(self, FuzzyPartition):
+        self._FuzzyPartition = FuzzyPartition
+
+    @property
+    def Sorts(self):
+        """排序信息
+        :rtype: list of Sort
+        """
+        return self._Sorts
+
+    @Sorts.setter
+    def Sorts(self, Sorts):
+        self._Sorts = Sorts
+
+    @property
+    def Cursor(self):
+        """分页查询的游标信息
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+
+    def _deserialize(self, params):
+        self._Catalog = params.get("Catalog")
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._FuzzyPartition = params.get("FuzzyPartition")
+        if params.get("Sorts") is not None:
+            self._Sorts = []
+            for item in params.get("Sorts"):
+                obj = Sort()
+                obj._deserialize(item)
+                self._Sorts.append(obj)
+        self._Cursor = params.get("Cursor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeTablePartitionsResponse(AbstractModel):
     """DescribeTablePartitions返回参数结构体
@@ -22070,10 +22210,24 @@ class DescribeTablePartitionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MixedPartitions: 分区信息值
+        :type MixedPartitions: :class:`tencentcloud.dlc.v20210125.models.MixedTablePartitions`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._MixedPartitions = None
         self._RequestId = None
+
+    @property
+    def MixedPartitions(self):
+        """分区信息值
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.MixedTablePartitions`
+        """
+        return self._MixedPartitions
+
+    @MixedPartitions.setter
+    def MixedPartitions(self, MixedPartitions):
+        self._MixedPartitions = MixedPartitions
 
     @property
     def RequestId(self):
@@ -22088,6 +22242,9 @@ class DescribeTablePartitionsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("MixedPartitions") is not None:
+            self._MixedPartitions = MixedTablePartitions()
+            self._MixedPartitions._deserialize(params.get("MixedPartitions"))
         self._RequestId = params.get("RequestId")
 
 
@@ -28105,6 +28262,117 @@ class HiveInfo(AbstractModel):
         
 
 
+class HiveTablePartition(AbstractModel):
+    """Hive表分区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Partition: 分区信息名称
+        :type Partition: str
+        :param _Records: 分区记录数
+        :type Records: int
+        :param _DataFileStorage: 分区数据文件存储量
+        :type DataFileStorage: int
+        :param _CreateTime: 分区创建时间
+        :type CreateTime: str
+        :param _ModifiedTime: 分区schema更新时间
+        :type ModifiedTime: str
+        :param _LastAccessTime: 最后一次分区更新的访问时间
+        :type LastAccessTime: str
+        """
+        self._Partition = None
+        self._Records = None
+        self._DataFileStorage = None
+        self._CreateTime = None
+        self._ModifiedTime = None
+        self._LastAccessTime = None
+
+    @property
+    def Partition(self):
+        """分区信息名称
+        :rtype: str
+        """
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def Records(self):
+        """分区记录数
+        :rtype: int
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def DataFileStorage(self):
+        """分区数据文件存储量
+        :rtype: int
+        """
+        return self._DataFileStorage
+
+    @DataFileStorage.setter
+    def DataFileStorage(self, DataFileStorage):
+        self._DataFileStorage = DataFileStorage
+
+    @property
+    def CreateTime(self):
+        """分区创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifiedTime(self):
+        """分区schema更新时间
+        :rtype: str
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def LastAccessTime(self):
+        """最后一次分区更新的访问时间
+        :rtype: str
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+
+    def _deserialize(self, params):
+        self._Partition = params.get("Partition")
+        self._Records = params.get("Records")
+        self._DataFileStorage = params.get("DataFileStorage")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._LastAccessTime = params.get("LastAccessTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HouseEventsInfo(AbstractModel):
     """集群事件日志
 
@@ -28167,6 +28435,149 @@ class HouseEventsInfo(AbstractModel):
         self._Time = params.get("Time")
         self._EventsAction = params.get("EventsAction")
         self._ClusterInfo = params.get("ClusterInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IcebergTablePartition(AbstractModel):
+    """Iceberg表分区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Partition: 分区信息名称
+        :type Partition: str
+        :param _Records: 分区记录数
+        :type Records: int
+        :param _DataFileSize: 分区数据文件数量
+        :type DataFileSize: int
+        :param _DataFileStorage: 分区数据文件存储量
+        :type DataFileStorage: int
+        :param _CreateTime: 分区创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 分区更新时间
+        :type UpdateTime: str
+        :param _LastUpdateSnapshotId: 最后一次分区更新的快照ID
+        :type LastUpdateSnapshotId: str
+        :param _Location: 分区的location
+        :type Location: :class:`tencentcloud.dlc.v20210125.models.LocationInfo`
+        """
+        self._Partition = None
+        self._Records = None
+        self._DataFileSize = None
+        self._DataFileStorage = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LastUpdateSnapshotId = None
+        self._Location = None
+
+    @property
+    def Partition(self):
+        """分区信息名称
+        :rtype: str
+        """
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def Records(self):
+        """分区记录数
+        :rtype: int
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def DataFileSize(self):
+        """分区数据文件数量
+        :rtype: int
+        """
+        return self._DataFileSize
+
+    @DataFileSize.setter
+    def DataFileSize(self, DataFileSize):
+        self._DataFileSize = DataFileSize
+
+    @property
+    def DataFileStorage(self):
+        """分区数据文件存储量
+        :rtype: int
+        """
+        return self._DataFileStorage
+
+    @DataFileStorage.setter
+    def DataFileStorage(self, DataFileStorage):
+        self._DataFileStorage = DataFileStorage
+
+    @property
+    def CreateTime(self):
+        """分区创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """分区更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LastUpdateSnapshotId(self):
+        """最后一次分区更新的快照ID
+        :rtype: str
+        """
+        return self._LastUpdateSnapshotId
+
+    @LastUpdateSnapshotId.setter
+    def LastUpdateSnapshotId(self, LastUpdateSnapshotId):
+        self._LastUpdateSnapshotId = LastUpdateSnapshotId
+
+    @property
+    def Location(self):
+        """分区的location
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.LocationInfo`
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        self._Partition = params.get("Partition")
+        self._Records = params.get("Records")
+        self._DataFileSize = params.get("DataFileSize")
+        self._DataFileStorage = params.get("DataFileStorage")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LastUpdateSnapshotId = params.get("LastUpdateSnapshotId")
+        if params.get("Location") is not None:
+            self._Location = LocationInfo()
+            self._Location._deserialize(params.get("Location"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29194,6 +29605,57 @@ class ListTaskJobLogNameResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LocationInfo(AbstractModel):
+    """Location信息结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: 桶名称
+        :type Bucket: str
+        :param _DataLocation: location路径
+        :type DataLocation: str
+        """
+        self._Bucket = None
+        self._DataLocation = None
+
+    @property
+    def Bucket(self):
+        """桶名称
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def DataLocation(self):
+        """location路径
+        :rtype: str
+        """
+        return self._DataLocation
+
+    @DataLocation.setter
+    def DataLocation(self, DataLocation):
+        self._DataLocation = DataLocation
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._DataLocation = params.get("DataLocation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LockComponentInfo(AbstractModel):
     """元数据加锁内容
 
@@ -29492,6 +29954,112 @@ class LockMetaDataResponse(AbstractModel):
         self._LockId = params.get("LockId")
         self._LockState = params.get("LockState")
         self._RequestId = params.get("RequestId")
+
+
+class MixedTablePartitions(AbstractModel):
+    """DLC分区信息查询返回数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableFormat: 数据表格式
+        :type TableFormat: str
+        :param _TotalSize: 分区总数
+        :type TotalSize: int
+        :param _NextCursor: 分页查询的游标信息，在获取下一页信息时需要回传到服务端
+        :type NextCursor: str
+        :param _IcebergPartitions: iceberg表分区信息
+        :type IcebergPartitions: list of IcebergTablePartition
+        :param _HivePartitions: hive表分区信息
+        :type HivePartitions: list of HiveTablePartition
+        """
+        self._TableFormat = None
+        self._TotalSize = None
+        self._NextCursor = None
+        self._IcebergPartitions = None
+        self._HivePartitions = None
+
+    @property
+    def TableFormat(self):
+        """数据表格式
+        :rtype: str
+        """
+        return self._TableFormat
+
+    @TableFormat.setter
+    def TableFormat(self, TableFormat):
+        self._TableFormat = TableFormat
+
+    @property
+    def TotalSize(self):
+        """分区总数
+        :rtype: int
+        """
+        return self._TotalSize
+
+    @TotalSize.setter
+    def TotalSize(self, TotalSize):
+        self._TotalSize = TotalSize
+
+    @property
+    def NextCursor(self):
+        """分页查询的游标信息，在获取下一页信息时需要回传到服务端
+        :rtype: str
+        """
+        return self._NextCursor
+
+    @NextCursor.setter
+    def NextCursor(self, NextCursor):
+        self._NextCursor = NextCursor
+
+    @property
+    def IcebergPartitions(self):
+        """iceberg表分区信息
+        :rtype: list of IcebergTablePartition
+        """
+        return self._IcebergPartitions
+
+    @IcebergPartitions.setter
+    def IcebergPartitions(self, IcebergPartitions):
+        self._IcebergPartitions = IcebergPartitions
+
+    @property
+    def HivePartitions(self):
+        """hive表分区信息
+        :rtype: list of HiveTablePartition
+        """
+        return self._HivePartitions
+
+    @HivePartitions.setter
+    def HivePartitions(self, HivePartitions):
+        self._HivePartitions = HivePartitions
+
+
+    def _deserialize(self, params):
+        self._TableFormat = params.get("TableFormat")
+        self._TotalSize = params.get("TotalSize")
+        self._NextCursor = params.get("NextCursor")
+        if params.get("IcebergPartitions") is not None:
+            self._IcebergPartitions = []
+            for item in params.get("IcebergPartitions"):
+                obj = IcebergTablePartition()
+                obj._deserialize(item)
+                self._IcebergPartitions.append(obj)
+        if params.get("HivePartitions") is not None:
+            self._HivePartitions = []
+            for item in params.get("HivePartitions"):
+                obj = HiveTablePartition()
+                obj._deserialize(item)
+                self._HivePartitions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyAdvancedStoreLocationRequest(AbstractModel):
@@ -35322,6 +35890,57 @@ class SmartPolicyBaseInfo(AbstractModel):
         self._Database = params.get("Database")
         self._Table = params.get("Table")
         self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Sort(AbstractModel):
+    """排序结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Field: 排序字段
+        :type Field: str
+        :param _Asc: 是否按照ASC排序，否则DESC排序
+        :type Asc: bool
+        """
+        self._Field = None
+        self._Asc = None
+
+    @property
+    def Field(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def Asc(self):
+        """是否按照ASC排序，否则DESC排序
+        :rtype: bool
+        """
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+
+    def _deserialize(self, params):
+        self._Field = params.get("Field")
+        self._Asc = params.get("Asc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

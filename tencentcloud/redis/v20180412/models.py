@@ -1572,9 +1572,12 @@ class ClearInstanceRequest(AbstractModel):
 - 免密访问：无需配置。
 - 密码认证：必须配置。字符个数为[8,64]，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
         :type Password: str
+        :param _EncryptPassword: 是否加密密码
+        :type EncryptPassword: bool
         """
         self._InstanceId = None
         self._Password = None
+        self._EncryptPassword = None
 
     @property
     def InstanceId(self):
@@ -1600,10 +1603,22 @@ class ClearInstanceRequest(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def EncryptPassword(self):
+        """是否加密密码
+        :rtype: bool
+        """
+        return self._EncryptPassword
+
+    @EncryptPassword.setter
+    def EncryptPassword(self, EncryptPassword):
+        self._EncryptPassword = EncryptPassword
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Password = params.get("Password")
+        self._EncryptPassword = params.get("EncryptPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1710,6 +1725,8 @@ class CloneInstancesRequest(AbstractModel):
 仅支持已开通秒级备份的实例
 
         :type CloneTime: str
+        :param _EncryptPassword: 是否加密密码
+        :type EncryptPassword: bool
         """
         self._InstanceId = None
         self._GoodsNum = None
@@ -1731,6 +1748,7 @@ class CloneInstancesRequest(AbstractModel):
         self._TemplateId = None
         self._AlarmPolicyList = None
         self._CloneTime = None
+        self._EncryptPassword = None
 
     @property
     def InstanceId(self):
@@ -1958,6 +1976,17 @@ class CloneInstancesRequest(AbstractModel):
     def CloneTime(self, CloneTime):
         self._CloneTime = CloneTime
 
+    @property
+    def EncryptPassword(self):
+        """是否加密密码
+        :rtype: bool
+        """
+        return self._EncryptPassword
+
+    @EncryptPassword.setter
+    def EncryptPassword(self, EncryptPassword):
+        self._EncryptPassword = EncryptPassword
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1990,6 +2019,7 @@ class CloneInstancesRequest(AbstractModel):
         self._TemplateId = params.get("TemplateId")
         self._AlarmPolicyList = params.get("AlarmPolicyList")
         self._CloneTime = params.get("CloneTime")
+        self._EncryptPassword = params.get("EncryptPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2212,11 +2242,13 @@ class CreateInstanceAccountRequest(AbstractModel):
 - replication：副本节点
         :type ReadonlyPolicy: list of str
         :param _Privilege: 账户读写权限，支持选择只读与读写权限。
-- r：只读
-- rw: 读写权限
+- r：只读。
+- rw: 读写。
         :type Privilege: str
-        :param _Remark: 子账号描述信息，长度[0,64] 字节，支持中文。
+        :param _Remark: 账号备注描述信息，长度为[0,64] 字节，支持中文。
         :type Remark: str
+        :param _EncryptPassword: 是否加密密码
+        :type EncryptPassword: bool
         """
         self._InstanceId = None
         self._AccountName = None
@@ -2224,6 +2256,7 @@ class CreateInstanceAccountRequest(AbstractModel):
         self._ReadonlyPolicy = None
         self._Privilege = None
         self._Remark = None
+        self._EncryptPassword = None
 
     @property
     def InstanceId(self):
@@ -2280,8 +2313,8 @@ class CreateInstanceAccountRequest(AbstractModel):
     @property
     def Privilege(self):
         """账户读写权限，支持选择只读与读写权限。
-- r：只读
-- rw: 读写权限
+- r：只读。
+- rw: 读写。
         :rtype: str
         """
         return self._Privilege
@@ -2292,7 +2325,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """子账号描述信息，长度[0,64] 字节，支持中文。
+        """账号备注描述信息，长度为[0,64] 字节，支持中文。
         :rtype: str
         """
         return self._Remark
@@ -2300,6 +2333,17 @@ class CreateInstanceAccountRequest(AbstractModel):
     @Remark.setter
     def Remark(self, Remark):
         self._Remark = Remark
+
+    @property
+    def EncryptPassword(self):
+        """是否加密密码
+        :rtype: bool
+        """
+        return self._EncryptPassword
+
+    @EncryptPassword.setter
+    def EncryptPassword(self, EncryptPassword):
+        self._EncryptPassword = EncryptPassword
 
 
     def _deserialize(self, params):
@@ -2309,6 +2353,7 @@ class CreateInstanceAccountRequest(AbstractModel):
         self._ReadonlyPolicy = params.get("ReadonlyPolicy")
         self._Privilege = params.get("Privilege")
         self._Remark = params.get("Remark")
+        self._EncryptPassword = params.get("EncryptPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2326,7 +2371,7 @@ class CreateInstanceAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2336,7 +2381,7 @@ class CreateInstanceAccountResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。
         :rtype: int
         """
         return self._TaskId
@@ -2456,6 +2501,8 @@ class CreateInstancesRequest(AbstractModel):
 - 请登录[腾讯云可观测平台-告警管理-策略管理](https://console.cloud.tencent.com/monitor/alarm/policy)获取告警策略 ID。
 - 若不配置该参数，则绑定默认告警策略。默认告警策略具体信息，请登录[腾讯云可观测平台-告警管理-策略管理](https://console.cloud.tencent.com/monitor/alarm/policy)查看。
         :type AlarmPolicyList: list of str
+        :param _EncryptPassword: 是否加密密码
+        :type EncryptPassword: bool
         """
         self._TypeId = None
         self._MemSize = None
@@ -2483,6 +2530,7 @@ class CreateInstancesRequest(AbstractModel):
         self._ProductVersion = None
         self._RedisClusterId = None
         self._AlarmPolicyList = None
+        self._EncryptPassword = None
 
     @property
     def TypeId(self):
@@ -2805,6 +2853,17 @@ class CreateInstancesRequest(AbstractModel):
     def AlarmPolicyList(self, AlarmPolicyList):
         self._AlarmPolicyList = AlarmPolicyList
 
+    @property
+    def EncryptPassword(self):
+        """是否加密密码
+        :rtype: bool
+        """
+        return self._EncryptPassword
+
+    @EncryptPassword.setter
+    def EncryptPassword(self, EncryptPassword):
+        self._EncryptPassword = EncryptPassword
+
 
     def _deserialize(self, params):
         self._TypeId = params.get("TypeId")
@@ -2843,6 +2902,7 @@ class CreateInstancesRequest(AbstractModel):
         self._ProductVersion = params.get("ProductVersion")
         self._RedisClusterId = params.get("RedisClusterId")
         self._AlarmPolicyList = params.get("AlarmPolicyList")
+        self._EncryptPassword = params.get("EncryptPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2918,12 +2978,11 @@ class CreateParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 参数模板名称。
+        :param _Name: 参数模板名称。字符长度要求为[2,64]。
         :type Name: str
         :param _Description: 参数模板描述。
         :type Description: str
         :param _ProductType: 产品类型。
-- 2：Redis 2.8 内存版（标准架构）。
 - 6：Redis 4.0 内存版（标准架构）。
 - 7：Redis 4.0 内存版（集群架构）。
 - 8：Redis 5.0 内存版（标准架构）。
@@ -2946,7 +3005,7 @@ class CreateParamTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        """参数模板名称。
+        """参数模板名称。字符长度要求为[2,64]。
         :rtype: str
         """
         return self._Name
@@ -2969,7 +3028,6 @@ class CreateParamTemplateRequest(AbstractModel):
     @property
     def ProductType(self):
         """产品类型。
-- 2：Redis 2.8 内存版（标准架构）。
 - 6：Redis 4.0 内存版（标准架构）。
 - 7：Redis 4.0 内存版（集群架构）。
 - 8：Redis 5.0 内存版（标准架构）。
@@ -5887,14 +5945,14 @@ class DescribeInstanceLogDeliveryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance)在实例列表复制实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID。
+        """实例ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -7006,11 +7064,11 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID 。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _Limit: 分页大小
+        :param _Limit: 分页大小。默认为100，最大值为 200。
         :type Limit: int
-        :param _Offset: 偏移量，取Limit整数倍
+        :param _Offset: 偏移量，取Limit整数倍，默认值为0。计算公式：offset=limit*(页码-1)。
         :type Offset: int
         """
         self._InstanceId = None
@@ -7019,7 +7077,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID 。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -7030,7 +7088,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小
+        """分页大小。默认为100，最大值为 200。
         :rtype: int
         """
         return self._Limit
@@ -7041,7 +7099,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，取Limit整数倍
+        """偏移量，取Limit整数倍，默认值为0。计算公式：offset=limit*(页码-1)。
         :rtype: int
         """
         return self._Offset
@@ -7294,14 +7352,14 @@ class DescribeInstanceSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例 ID 列表，数组长度限制[0,100]。例如：["crs-f2ho5rsz\n"]
+        :param _InstanceIds: 实例 ID 列表，数组长度限制[0,100]。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
 
     @property
     def InstanceIds(self):
-        """实例 ID 列表，数组长度限制[0,100]。例如：["crs-f2ho5rsz\n"]
+        """实例 ID 列表，数组长度限制[0,100]。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -13806,7 +13864,7 @@ class InstanceSet(AbstractModel):
         :type InstanceName: str
         :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _Appid: 用户APPID。APPID是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 APPID。
+        :param _Appid: 用户AppId。AppId是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 AppId。
 
         :type Appid: int
         :param _ProjectId: 项目 ID。
@@ -13939,6 +13997,8 @@ class InstanceSet(AbstractModel):
         :type UpgradeRedisVersion: str
         :param _BackupMode: 备份模式：- SecondLevelBackup   秒级备份- NormalLevelBackup    普通备份
         :type BackupMode: str
+        :param _DeleteProtectionSwitch: 删除保护开关，0关闭，1开启
+        :type DeleteProtectionSwitch: int
         """
         self._InstanceName = None
         self._InstanceId = None
@@ -14000,6 +14060,7 @@ class InstanceSet(AbstractModel):
         self._UpgradeProxyVersion = None
         self._UpgradeRedisVersion = None
         self._BackupMode = None
+        self._DeleteProtectionSwitch = None
 
     @property
     def InstanceName(self):
@@ -14025,7 +14086,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Appid(self):
-        """用户APPID。APPID是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 APPID。
+        """用户AppId。AppId是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 AppId。
 
         :rtype: int
         """
@@ -14682,6 +14743,17 @@ class InstanceSet(AbstractModel):
     def BackupMode(self, BackupMode):
         self._BackupMode = BackupMode
 
+    @property
+    def DeleteProtectionSwitch(self):
+        """删除保护开关，0关闭，1开启
+        :rtype: int
+        """
+        return self._DeleteProtectionSwitch
+
+    @DeleteProtectionSwitch.setter
+    def DeleteProtectionSwitch(self, DeleteProtectionSwitch):
+        self._DeleteProtectionSwitch = DeleteProtectionSwitch
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -14759,6 +14831,7 @@ class InstanceSet(AbstractModel):
         self._UpgradeProxyVersion = params.get("UpgradeProxyVersion")
         self._UpgradeRedisVersion = params.get("UpgradeRedisVersion")
         self._BackupMode = params.get("BackupMode")
+        self._DeleteProtectionSwitch = params.get("DeleteProtectionSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15763,10 +15836,13 @@ class ModfiyInstancePasswordRequest(AbstractModel):
 - 不能以"/"开头。
 - 至少包含小写字母a - z、大写字母A - Z、数字0 - 9、特殊字符 ()~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
         :type Password: str
+        :param _EncryptPassword: 是否加密密码
+        :type EncryptPassword: bool
         """
         self._InstanceId = None
         self._OldPassword = None
         self._Password = None
+        self._EncryptPassword = None
 
     @property
     def InstanceId(self):
@@ -15804,11 +15880,23 @@ class ModfiyInstancePasswordRequest(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def EncryptPassword(self):
+        """是否加密密码
+        :rtype: bool
+        """
+        return self._EncryptPassword
+
+    @EncryptPassword.setter
+    def EncryptPassword(self, EncryptPassword):
+        self._EncryptPassword = EncryptPassword
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._OldPassword = params.get("OldPassword")
         self._Password = params.get("Password")
+        self._EncryptPassword = params.get("EncryptPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16203,10 +16291,12 @@ class ModifyConnectionConfigRequest(AbstractModel):
         :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
         :param _Bandwidth: 附加带宽，大于0，单位MB。
+**说明**：Bandwidth 和 ClientLimit 参数不能同时为空，您必须至少选择其中一个进行配置。
         :type Bandwidth: int
         :param _ClientLimit: 单分片的总连接数。
 - 未开启副本只读时，下限为10000，上限为40000。
 - 开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
+**说明**：Bandwidth 和 ClientLimit 参数不能同时为空，您必须至少选择其中一个进行配置。
         :type ClientLimit: int
         """
         self._InstanceId = None
@@ -16227,6 +16317,7 @@ class ModifyConnectionConfigRequest(AbstractModel):
     @property
     def Bandwidth(self):
         """附加带宽，大于0，单位MB。
+**说明**：Bandwidth 和 ClientLimit 参数不能同时为空，您必须至少选择其中一个进行配置。
         :rtype: int
         """
         return self._Bandwidth
@@ -16240,6 +16331,7 @@ class ModifyConnectionConfigRequest(AbstractModel):
         """单分片的总连接数。
 - 未开启副本只读时，下限为10000，上限为40000。
 - 开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
+**说明**：Bandwidth 和 ClientLimit 参数不能同时为空，您必须至少选择其中一个进行配置。
         :rtype: int
         """
         return self._ClientLimit
@@ -16415,25 +16507,29 @@ class ModifyInstanceAccountRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param _AccountName: 子账号名称，如果要修改主账号，填 root。
+        :param _AccountName: 指定需修改的账号。
+- root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。
+- 自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。
         :type AccountName: str
-        :param _AccountPassword: 子账号密码。
+        :param _AccountPassword: 指定所修改账号访问的密码。
         :type AccountPassword: str
-        :param _Remark: 子账号描述信息
+        :param _Remark: 账号描述信息
         :type Remark: str
-        :param _ReadonlyPolicy: 账号读写路由策略。
-- master：表示主节点。
-- replication：表示从节点。
+        :param _ReadonlyPolicy: 指定所修改账号读写请求路由的策略。
+- master：表示读写请求路由至主节点。
+- replication：表示读写请求路由至从节点。
         :type ReadonlyPolicy: list of str
-        :param _Privilege: 子账号读写策略。
+        :param _Privilege: 指定所修改账号的读写权限。
 - r：只读。
 - w：只写。
 - rw：读写。
         :type Privilege: str
-        :param _NoAuth: 指定是否将主账号切换为免密账号。这里只适用于主账号，子账号不可免密。
-- true：将主账号切换为免密账号。
-- false：不切换。
+        :param _NoAuth: 指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。
+- true：默认账号（root）设置为免密账号。
+- false：默认账号（root）不设置为免密账号。
         :type NoAuth: bool
+        :param _EncryptPassword: 指定所修改的账号是否加密密码
+        :type EncryptPassword: bool
         """
         self._InstanceId = None
         self._AccountName = None
@@ -16442,6 +16538,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
         self._ReadonlyPolicy = None
         self._Privilege = None
         self._NoAuth = None
+        self._EncryptPassword = None
 
     @property
     def InstanceId(self):
@@ -16456,7 +16553,9 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """子账号名称，如果要修改主账号，填 root。
+        """指定需修改的账号。
+- root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。
+- 自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。
         :rtype: str
         """
         return self._AccountName
@@ -16467,7 +16566,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountPassword(self):
-        """子账号密码。
+        """指定所修改账号访问的密码。
         :rtype: str
         """
         return self._AccountPassword
@@ -16478,7 +16577,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """子账号描述信息
+        """账号描述信息
         :rtype: str
         """
         return self._Remark
@@ -16489,9 +16588,9 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def ReadonlyPolicy(self):
-        """账号读写路由策略。
-- master：表示主节点。
-- replication：表示从节点。
+        """指定所修改账号读写请求路由的策略。
+- master：表示读写请求路由至主节点。
+- replication：表示读写请求路由至从节点。
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -16502,7 +16601,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def Privilege(self):
-        """子账号读写策略。
+        """指定所修改账号的读写权限。
 - r：只读。
 - w：只写。
 - rw：读写。
@@ -16516,9 +16615,9 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def NoAuth(self):
-        """指定是否将主账号切换为免密账号。这里只适用于主账号，子账号不可免密。
-- true：将主账号切换为免密账号。
-- false：不切换。
+        """指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。
+- true：默认账号（root）设置为免密账号。
+- false：默认账号（root）不设置为免密账号。
         :rtype: bool
         """
         return self._NoAuth
@@ -16526,6 +16625,17 @@ class ModifyInstanceAccountRequest(AbstractModel):
     @NoAuth.setter
     def NoAuth(self, NoAuth):
         self._NoAuth = NoAuth
+
+    @property
+    def EncryptPassword(self):
+        """指定所修改的账号是否加密密码
+        :rtype: bool
+        """
+        return self._EncryptPassword
+
+    @EncryptPassword.setter
+    def EncryptPassword(self, EncryptPassword):
+        self._EncryptPassword = EncryptPassword
 
 
     def _deserialize(self, params):
@@ -16536,6 +16646,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
         self._ReadonlyPolicy = params.get("ReadonlyPolicy")
         self._Privilege = params.get("Privilege")
         self._NoAuth = params.get("NoAuth")
+        self._EncryptPassword = params.get("EncryptPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16553,7 +16664,7 @@ class ModifyInstanceAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID。
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16563,7 +16674,7 @@ class ModifyInstanceAccountResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID。
         :rtype: int
         """
         return self._TaskId
@@ -17506,6 +17617,7 @@ class ModifyInstanceRequest(AbstractModel):
 - rename：表示实例重命名。
 - modifyProject：修改实例所属项目。
 - modifyAutoRenew：修改实例续费标记。
+- modifyDeleteProtectionSwitch：修改实例删除保护。
         :type Operation: str
         :param _InstanceIds: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。每次请求的实例数量的上限为10。
         :type InstanceIds: list of str
@@ -17518,6 +17630,8 @@ class ModifyInstanceRequest(AbstractModel):
 - 1：自动续费。
 - 2：明确不自动续费。
         :type AutoRenews: list of int
+        :param _DeleteProtectionSwitches: 删除保护开关。- 0：默认状态，指关闭。- 1：开关打开。
+        :type DeleteProtectionSwitches: list of int
         :param _InstanceId: 目前在废弃中，存量用户还可以使用，建议新用户使用 InstanceIds。
         :type InstanceId: str
         :param _InstanceName: 已经废弃
@@ -17530,6 +17644,7 @@ class ModifyInstanceRequest(AbstractModel):
         self._InstanceNames = None
         self._ProjectId = None
         self._AutoRenews = None
+        self._DeleteProtectionSwitches = None
         self._InstanceId = None
         self._InstanceName = None
         self._AutoRenew = None
@@ -17540,6 +17655,7 @@ class ModifyInstanceRequest(AbstractModel):
 - rename：表示实例重命名。
 - modifyProject：修改实例所属项目。
 - modifyAutoRenew：修改实例续费标记。
+- modifyDeleteProtectionSwitch：修改实例删除保护。
         :rtype: str
         """
         return self._Operation
@@ -17596,6 +17712,17 @@ class ModifyInstanceRequest(AbstractModel):
         self._AutoRenews = AutoRenews
 
     @property
+    def DeleteProtectionSwitches(self):
+        """删除保护开关。- 0：默认状态，指关闭。- 1：开关打开。
+        :rtype: list of int
+        """
+        return self._DeleteProtectionSwitches
+
+    @DeleteProtectionSwitches.setter
+    def DeleteProtectionSwitches(self, DeleteProtectionSwitches):
+        self._DeleteProtectionSwitches = DeleteProtectionSwitches
+
+    @property
     def InstanceId(self):
         warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
 
@@ -17647,6 +17774,7 @@ class ModifyInstanceRequest(AbstractModel):
         self._InstanceNames = params.get("InstanceNames")
         self._ProjectId = params.get("ProjectId")
         self._AutoRenews = params.get("AutoRenews")
+        self._DeleteProtectionSwitches = params.get("DeleteProtectionSwitches")
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
         self._AutoRenew = params.get("AutoRenew")
@@ -20663,10 +20791,13 @@ class ResetPasswordRequest(AbstractModel):
 - false：切换为非免密码实例。
 - true：切换为免密码实例。默认 false。
         :type NoAuth: bool
+        :param _EncryptPassword: 是否加密密码
+        :type EncryptPassword: bool
         """
         self._InstanceId = None
         self._Password = None
         self._NoAuth = None
+        self._EncryptPassword = None
 
     @property
     def InstanceId(self):
@@ -20703,11 +20834,23 @@ class ResetPasswordRequest(AbstractModel):
     def NoAuth(self, NoAuth):
         self._NoAuth = NoAuth
 
+    @property
+    def EncryptPassword(self):
+        """是否加密密码
+        :rtype: bool
+        """
+        return self._EncryptPassword
+
+    @EncryptPassword.setter
+    def EncryptPassword(self, EncryptPassword):
+        self._EncryptPassword = EncryptPassword
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Password = params.get("Password")
         self._NoAuth = params.get("NoAuth")
+        self._EncryptPassword = params.get("EncryptPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20885,9 +21028,9 @@ class RestoreInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 待操作的实例ID，可通过 DescribeInstances 接口返回值中的 InstanceId 获取。
+        :param _InstanceId: 待操作的实例ID，可通过 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
-        :param _BackupId: 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
+        :param _BackupId: 备份ID，可通过 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 接口返回的参数 RedisBackupSet 获取。
         :type BackupId: str
         :param _Password: 实例密码，恢复实例时，需要校验实例密码（免密实例不需要传密码）
         :type Password: str
@@ -20898,7 +21041,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """待操作的实例ID，可通过 DescribeInstances 接口返回值中的 InstanceId 获取。
+        """待操作的实例ID，可通过 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 接口返回值中的 InstanceId 获取。
         :rtype: str
         """
         return self._InstanceId
@@ -20909,7 +21052,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        """备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
+        """备份ID，可通过 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 接口返回的参数 RedisBackupSet 获取。
         :rtype: str
         """
         return self._BackupId

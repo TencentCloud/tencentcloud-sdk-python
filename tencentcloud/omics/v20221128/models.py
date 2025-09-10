@@ -3437,6 +3437,72 @@ class NFOption(AbstractModel):
         
 
 
+class NotificationType(AbstractModel):
+    """通知类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StationMessage: 腾讯健康组学平台站点信息。
+        :type StationMessage: bool
+        :param _Email: 邮箱列表。
+        :type Email: list of str
+        :param _CurrentUserEmail: 当前用户邮箱。
+        :type CurrentUserEmail: bool
+        """
+        self._StationMessage = None
+        self._Email = None
+        self._CurrentUserEmail = None
+
+    @property
+    def StationMessage(self):
+        """腾讯健康组学平台站点信息。
+        :rtype: bool
+        """
+        return self._StationMessage
+
+    @StationMessage.setter
+    def StationMessage(self, StationMessage):
+        self._StationMessage = StationMessage
+
+    @property
+    def Email(self):
+        """邮箱列表。
+        :rtype: list of str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CurrentUserEmail(self):
+        """当前用户邮箱。
+        :rtype: bool
+        """
+        return self._CurrentUserEmail
+
+    @CurrentUserEmail.setter
+    def CurrentUserEmail(self, CurrentUserEmail):
+        self._CurrentUserEmail = CurrentUserEmail
+
+
+    def _deserialize(self, params):
+        self._StationMessage = params.get("StationMessage")
+        self._Email = params.get("Email")
+        self._CurrentUserEmail = params.get("CurrentUserEmail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceIds(AbstractModel):
     """云资源ID。
 
@@ -4137,6 +4203,14 @@ class RunApplicationRequest(AbstractModel):
         :type AccessMode: str
         :param _VolumeIds: 缓存卷ID，不填使用默认缓存卷，暂时仅支持Nextflow。
         :type VolumeIds: list of str
+        :param _ResultNotification: 是否开启结果通知。
+        :type ResultNotification: bool
+        :param _TimeoutNotification: 是否开启超时通知。
+        :type TimeoutNotification: bool
+        :param _TimeoutNotificationMinutes: 任务超时通知时间（单位：分钟），支持5到2880分钟。
+        :type TimeoutNotificationMinutes: int
+        :param _EmailForNotification: 接受通知邮件地址列表。
+        :type EmailForNotification: list of str
         """
         self._ApplicationId = None
         self._Name = None
@@ -4154,6 +4228,10 @@ class RunApplicationRequest(AbstractModel):
         self._WorkDir = None
         self._AccessMode = None
         self._VolumeIds = None
+        self._ResultNotification = None
+        self._TimeoutNotification = None
+        self._TimeoutNotificationMinutes = None
+        self._EmailForNotification = None
 
     @property
     def ApplicationId(self):
@@ -4333,6 +4411,50 @@ class RunApplicationRequest(AbstractModel):
     def VolumeIds(self, VolumeIds):
         self._VolumeIds = VolumeIds
 
+    @property
+    def ResultNotification(self):
+        """是否开启结果通知。
+        :rtype: bool
+        """
+        return self._ResultNotification
+
+    @ResultNotification.setter
+    def ResultNotification(self, ResultNotification):
+        self._ResultNotification = ResultNotification
+
+    @property
+    def TimeoutNotification(self):
+        """是否开启超时通知。
+        :rtype: bool
+        """
+        return self._TimeoutNotification
+
+    @TimeoutNotification.setter
+    def TimeoutNotification(self, TimeoutNotification):
+        self._TimeoutNotification = TimeoutNotification
+
+    @property
+    def TimeoutNotificationMinutes(self):
+        """任务超时通知时间（单位：分钟），支持5到2880分钟。
+        :rtype: int
+        """
+        return self._TimeoutNotificationMinutes
+
+    @TimeoutNotificationMinutes.setter
+    def TimeoutNotificationMinutes(self, TimeoutNotificationMinutes):
+        self._TimeoutNotificationMinutes = TimeoutNotificationMinutes
+
+    @property
+    def EmailForNotification(self):
+        """接受通知邮件地址列表。
+        :rtype: list of str
+        """
+        return self._EmailForNotification
+
+    @EmailForNotification.setter
+    def EmailForNotification(self, EmailForNotification):
+        self._EmailForNotification = EmailForNotification
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -4355,6 +4477,10 @@ class RunApplicationRequest(AbstractModel):
         self._WorkDir = params.get("WorkDir")
         self._AccessMode = params.get("AccessMode")
         self._VolumeIds = params.get("VolumeIds")
+        self._ResultNotification = params.get("ResultNotification")
+        self._TimeoutNotification = params.get("TimeoutNotification")
+        self._TimeoutNotificationMinutes = params.get("TimeoutNotificationMinutes")
+        self._EmailForNotification = params.get("EmailForNotification")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4476,8 +4602,8 @@ class RunGroup(AbstractModel):
         :type ExecutionTime: :class:`tencentcloud.omics.v20221128.models.ExecutionTime`
         :param _ErrorMessage: 错误信息。
         :type ErrorMessage: str
-        :param _ResultNotify: 运行结果通知方式。
-        :type ResultNotify: str
+        :param _Notification: 任务批次通知。
+        :type Notification: :class:`tencentcloud.omics.v20221128.models.RunGroupNotification`
         :param _CreateTime: 创建时间。
         :type CreateTime: str
         :param _UpdateTime: 更新时间。
@@ -4486,6 +4612,8 @@ class RunGroup(AbstractModel):
         :type Creator: str
         :param _CreatorId: 创建者ID。
         :type CreatorId: str
+        :param _ResultNotify: 运行结果通知方式。
+        :type ResultNotify: str
         """
         self._RunGroupId = None
         self._ProjectId = None
@@ -4514,11 +4642,12 @@ class RunGroup(AbstractModel):
         self._RunStatusCounts = None
         self._ExecutionTime = None
         self._ErrorMessage = None
-        self._ResultNotify = None
+        self._Notification = None
         self._CreateTime = None
         self._UpdateTime = None
         self._Creator = None
         self._CreatorId = None
+        self._ResultNotify = None
 
     @property
     def RunGroupId(self):
@@ -4825,15 +4954,15 @@ class RunGroup(AbstractModel):
         self._ErrorMessage = ErrorMessage
 
     @property
-    def ResultNotify(self):
-        """运行结果通知方式。
-        :rtype: str
+    def Notification(self):
+        """任务批次通知。
+        :rtype: :class:`tencentcloud.omics.v20221128.models.RunGroupNotification`
         """
-        return self._ResultNotify
+        return self._Notification
 
-    @ResultNotify.setter
-    def ResultNotify(self, ResultNotify):
-        self._ResultNotify = ResultNotify
+    @Notification.setter
+    def Notification(self, Notification):
+        self._Notification = Notification
 
     @property
     def CreateTime(self):
@@ -4878,6 +5007,17 @@ class RunGroup(AbstractModel):
     @CreatorId.setter
     def CreatorId(self, CreatorId):
         self._CreatorId = CreatorId
+
+    @property
+    def ResultNotify(self):
+        """运行结果通知方式。
+        :rtype: str
+        """
+        return self._ResultNotify
+
+    @ResultNotify.setter
+    def ResultNotify(self, ResultNotify):
+        self._ResultNotify = ResultNotify
 
 
     def _deserialize(self, params):
@@ -4926,11 +5066,160 @@ class RunGroup(AbstractModel):
             self._ExecutionTime = ExecutionTime()
             self._ExecutionTime._deserialize(params.get("ExecutionTime"))
         self._ErrorMessage = params.get("ErrorMessage")
-        self._ResultNotify = params.get("ResultNotify")
+        if params.get("Notification") is not None:
+            self._Notification = RunGroupNotification()
+            self._Notification._deserialize(params.get("Notification"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._Creator = params.get("Creator")
         self._CreatorId = params.get("CreatorId")
+        self._ResultNotify = params.get("ResultNotify")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunGroupNotification(AbstractModel):
+    """任务批次通知。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultNotification: 结果通知。
+        :type ResultNotification: :class:`tencentcloud.omics.v20221128.models.RunGroupResultNotification`
+        :param _TimeoutNotification: 超时通知。
+        :type TimeoutNotification: :class:`tencentcloud.omics.v20221128.models.RunGroupTimeoutNotification`
+        """
+        self._ResultNotification = None
+        self._TimeoutNotification = None
+
+    @property
+    def ResultNotification(self):
+        """结果通知。
+        :rtype: :class:`tencentcloud.omics.v20221128.models.RunGroupResultNotification`
+        """
+        return self._ResultNotification
+
+    @ResultNotification.setter
+    def ResultNotification(self, ResultNotification):
+        self._ResultNotification = ResultNotification
+
+    @property
+    def TimeoutNotification(self):
+        """超时通知。
+        :rtype: :class:`tencentcloud.omics.v20221128.models.RunGroupTimeoutNotification`
+        """
+        return self._TimeoutNotification
+
+    @TimeoutNotification.setter
+    def TimeoutNotification(self, TimeoutNotification):
+        self._TimeoutNotification = TimeoutNotification
+
+
+    def _deserialize(self, params):
+        if params.get("ResultNotification") is not None:
+            self._ResultNotification = RunGroupResultNotification()
+            self._ResultNotification._deserialize(params.get("ResultNotification"))
+        if params.get("TimeoutNotification") is not None:
+            self._TimeoutNotification = RunGroupTimeoutNotification()
+            self._TimeoutNotification._deserialize(params.get("TimeoutNotification"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunGroupResultNotification(AbstractModel):
+    """任务批次结果通知
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NotificationType: 通知类型。
+        :type NotificationType: :class:`tencentcloud.omics.v20221128.models.NotificationType`
+        """
+        self._NotificationType = None
+
+    @property
+    def NotificationType(self):
+        """通知类型。
+        :rtype: :class:`tencentcloud.omics.v20221128.models.NotificationType`
+        """
+        return self._NotificationType
+
+    @NotificationType.setter
+    def NotificationType(self, NotificationType):
+        self._NotificationType = NotificationType
+
+
+    def _deserialize(self, params):
+        if params.get("NotificationType") is not None:
+            self._NotificationType = NotificationType()
+            self._NotificationType._deserialize(params.get("NotificationType"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunGroupTimeoutNotification(AbstractModel):
+    """任务批次超时通知。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeoutMinutes: 任务批次超时时间，单位分钟。
+        :type TimeoutMinutes: int
+        :param _NotificationType: 通知类型。
+        :type NotificationType: :class:`tencentcloud.omics.v20221128.models.NotificationType`
+        """
+        self._TimeoutMinutes = None
+        self._NotificationType = None
+
+    @property
+    def TimeoutMinutes(self):
+        """任务批次超时时间，单位分钟。
+        :rtype: int
+        """
+        return self._TimeoutMinutes
+
+    @TimeoutMinutes.setter
+    def TimeoutMinutes(self, TimeoutMinutes):
+        self._TimeoutMinutes = TimeoutMinutes
+
+    @property
+    def NotificationType(self):
+        """通知类型。
+        :rtype: :class:`tencentcloud.omics.v20221128.models.NotificationType`
+        """
+        return self._NotificationType
+
+    @NotificationType.setter
+    def NotificationType(self, NotificationType):
+        self._NotificationType = NotificationType
+
+
+    def _deserialize(self, params):
+        self._TimeoutMinutes = params.get("TimeoutMinutes")
+        if params.get("NotificationType") is not None:
+            self._NotificationType = NotificationType()
+            self._NotificationType._deserialize(params.get("NotificationType"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

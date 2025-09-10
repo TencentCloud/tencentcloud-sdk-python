@@ -32,6 +32,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 更新ACL失败
 FAILEDOPERATION_ACCESSCONTROLLIST = 'FailedOperation.AccessControlList'
 
+# 可用区资源包配额不足
+FAILEDOPERATION_CDCQUOTAINSUFFICIENT = 'FailedOperation.CdcQuotaInsufficient'
+
 # 关闭数据层失败，至少要保留热层和温层其中一层。
 FAILEDOPERATION_CLOSEDATATIER = 'FailedOperation.CloseDataTier'
 
@@ -604,6 +607,9 @@ UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = 'UnsupportedOperation.IndexSettin
 
 # 不支持该操作，服务类型有误。
 UNSUPPORTEDOPERATION_INSTANCETYPEERROR = 'UnsupportedOperation.InstanceTypeError'
+
+# 当前ES集群版本过低，不支持Gpu机器
+UNSUPPORTEDOPERATION_KERNELNOTSUPPORTGPU = 'UnsupportedOperation.KernelNotSupportGpu'
 
 # 不支持该操作，license的类型有误。
 UNSUPPORTEDOPERATION_LICENSEERROR = 'UnsupportedOperation.LicenseError'

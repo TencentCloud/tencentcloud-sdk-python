@@ -1182,6 +1182,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SetDBInstanceDeletionProtection(self, request):
+        """本接口（SetDBInstanceDeletionProtection）用于设置实例销毁保护
+
+        :param request: Request instance for SetDBInstanceDeletionProtection.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.SetDBInstanceDeletionProtectionRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.SetDBInstanceDeletionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetDBInstanceDeletionProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetDBInstanceDeletionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetInstanceMaintenance(self, request):
         """本接口（SetInstanceMaintenance ） 用于设置实例维护时间窗。
 

@@ -1140,6 +1140,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSessionDetail(self, request):
+        """获取通话详情
+
+        :param request: Request instance for DescribeSessionDetail.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSessionDetailRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeSessionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSessionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSessionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSkillGroupInfoList(self, request):
         """获取技能组信息列表
 
@@ -1177,6 +1200,29 @@ class CccClient(AbstractClient):
             body = self.call("DescribeStaffInfoList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeStaffInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStaffStatusHistory(self, request):
+        """查询座席状态历史
+
+        :param request: Request instance for DescribeStaffStatusHistory.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusHistoryRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStaffStatusHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStaffStatusHistoryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

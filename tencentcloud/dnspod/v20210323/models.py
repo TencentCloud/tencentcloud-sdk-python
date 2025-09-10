@@ -19237,6 +19237,8 @@ class UserInfo(AbstractModel):
         :type Uin: int
         :param _FreeNs: 所属 DNS 服务器
         :type FreeNs: list of str
+        :param _AllowTransferIn: 用户是否允许任何人转移域名到本账号
+        :type AllowTransferIn: bool
         """
         self._Nick = None
         self._Id = None
@@ -19250,6 +19252,7 @@ class UserInfo(AbstractModel):
         self._WechatBinded = None
         self._Uin = None
         self._FreeNs = None
+        self._AllowTransferIn = None
 
     @property
     def Nick(self):
@@ -19383,6 +19386,17 @@ class UserInfo(AbstractModel):
     def FreeNs(self, FreeNs):
         self._FreeNs = FreeNs
 
+    @property
+    def AllowTransferIn(self):
+        """用户是否允许任何人转移域名到本账号
+        :rtype: bool
+        """
+        return self._AllowTransferIn
+
+    @AllowTransferIn.setter
+    def AllowTransferIn(self, AllowTransferIn):
+        self._AllowTransferIn = AllowTransferIn
+
 
     def _deserialize(self, params):
         self._Nick = params.get("Nick")
@@ -19397,6 +19411,7 @@ class UserInfo(AbstractModel):
         self._WechatBinded = params.get("WechatBinded")
         self._Uin = params.get("Uin")
         self._FreeNs = params.get("FreeNs")
+        self._AllowTransferIn = params.get("AllowTransferIn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -11561,6 +11561,85 @@ class SetBackupRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SetDBInstanceDeletionProtectionRequest(AbstractModel):
+    """SetDBInstanceDeletionProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceIds: list of str
+        :param _EnableDeletionProtection: 实例销毁保护选项，取值范围：0-关闭销毁保护，1-开启销毁保护
+        :type EnableDeletionProtection: int
+        """
+        self._InstanceIds = None
+        self._EnableDeletionProtection = None
+
+    @property
+    def InstanceIds(self):
+        """实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def EnableDeletionProtection(self):
+        """实例销毁保护选项，取值范围：0-关闭销毁保护，1-开启销毁保护
+        :rtype: int
+        """
+        return self._EnableDeletionProtection
+
+    @EnableDeletionProtection.setter
+    def EnableDeletionProtection(self, EnableDeletionProtection):
+        self._EnableDeletionProtection = EnableDeletionProtection
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._EnableDeletionProtection = params.get("EnableDeletionProtection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetDBInstanceDeletionProtectionResponse(AbstractModel):
+    """SetDBInstanceDeletionProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SetInstanceMaintenanceRequest(AbstractModel):
     """SetInstanceMaintenance请求参数结构体
 

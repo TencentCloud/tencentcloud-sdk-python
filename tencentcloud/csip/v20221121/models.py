@@ -27,8 +27,7 @@ class AKInfo(AbstractModel):
         r"""
         :param _ID: ak对应id
         :type ID: int
-        :param _Name: ak具体值\n
-临时密钥时返回临时密钥
+        :param _Name: ak具体值 临时密钥时返回临时密钥
         :type Name: str
         :param _User: 所属账号
         :type User: str
@@ -53,8 +52,7 @@ class AKInfo(AbstractModel):
 
     @property
     def Name(self):
-        """ak具体值\n
-临时密钥时返回临时密钥
+        """ak具体值 临时密钥时返回临时密钥
         :rtype: str
         """
         return self._Name
@@ -151,6 +149,12 @@ class AccessKeyAlarm(AbstractModel):
         :type AppID: int
         :param _LeakEvidence: 泄漏证据
         :type LeakEvidence: list of str
+        :param _IsSupportEditWhiteAccount: 是否支持编辑信任账号
+        :type IsSupportEditWhiteAccount: bool
+        :param _Evidence: 告警证据
+        :type Evidence: str
+        :param _RuleKey: 告警规则标识
+        :type RuleKey: str
         """
         self._Name = None
         self._Level = None
@@ -171,6 +175,9 @@ class AccessKeyAlarm(AbstractModel):
         self._Type = None
         self._AppID = None
         self._LeakEvidence = None
+        self._IsSupportEditWhiteAccount = None
+        self._Evidence = None
+        self._RuleKey = None
 
     @property
     def Name(self):
@@ -386,6 +393,39 @@ class AccessKeyAlarm(AbstractModel):
     def LeakEvidence(self, LeakEvidence):
         self._LeakEvidence = LeakEvidence
 
+    @property
+    def IsSupportEditWhiteAccount(self):
+        """是否支持编辑信任账号
+        :rtype: bool
+        """
+        return self._IsSupportEditWhiteAccount
+
+    @IsSupportEditWhiteAccount.setter
+    def IsSupportEditWhiteAccount(self, IsSupportEditWhiteAccount):
+        self._IsSupportEditWhiteAccount = IsSupportEditWhiteAccount
+
+    @property
+    def Evidence(self):
+        """告警证据
+        :rtype: str
+        """
+        return self._Evidence
+
+    @Evidence.setter
+    def Evidence(self, Evidence):
+        self._Evidence = Evidence
+
+    @property
+    def RuleKey(self):
+        """告警规则标识
+        :rtype: str
+        """
+        return self._RuleKey
+
+    @RuleKey.setter
+    def RuleKey(self, RuleKey):
+        self._RuleKey = RuleKey
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -407,6 +447,9 @@ class AccessKeyAlarm(AbstractModel):
         self._Type = params.get("Type")
         self._AppID = params.get("AppID")
         self._LeakEvidence = params.get("LeakEvidence")
+        self._IsSupportEditWhiteAccount = params.get("IsSupportEditWhiteAccount")
+        self._Evidence = params.get("Evidence")
+        self._RuleKey = params.get("RuleKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -595,6 +638,7 @@ class AccessKeyAsset(AbstractModel):
         :param _Status: AK状态 
 0:禁用
 1:已启用
+2:已删除(已在cam侧删除，安全中心仍然存留之前的记录)
         :type Status: int
         :param _CheckStatus: 0 表示已检测
 1 表示检测中
@@ -793,6 +837,7 @@ class AccessKeyAsset(AbstractModel):
         """AK状态 
 0:禁用
 1:已启用
+2:已删除(已在cam侧删除，安全中心仍然存留之前的记录)
         :rtype: int
         """
         return self._Status
@@ -906,6 +951,8 @@ class AccessKeyRisk(AbstractModel):
         :type CheckStatus: int
         :param _AppID: 所属appid
         :type AppID: int
+        :param _QueryParam: 对应风险的查询参数
+        :type QueryParam: str
         """
         self._Name = None
         self._Level = None
@@ -927,6 +974,7 @@ class AccessKeyRisk(AbstractModel):
         self._Type = None
         self._CheckStatus = None
         self._AppID = None
+        self._QueryParam = None
 
     @property
     def Name(self):
@@ -1155,6 +1203,17 @@ class AccessKeyRisk(AbstractModel):
     def AppID(self, AppID):
         self._AppID = AppID
 
+    @property
+    def QueryParam(self):
+        """对应风险的查询参数
+        :rtype: str
+        """
+        return self._QueryParam
+
+    @QueryParam.setter
+    def QueryParam(self, QueryParam):
+        self._QueryParam = QueryParam
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1177,6 +1236,7 @@ class AccessKeyRisk(AbstractModel):
         self._Type = params.get("Type")
         self._CheckStatus = params.get("CheckStatus")
         self._AppID = params.get("AppID")
+        self._QueryParam = params.get("QueryParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9341,6 +9401,8 @@ class CallRecord(AbstractModel):
         :type ISP: str
         :param _VpcInfo: 账号外vpc信息列表
         :type VpcInfo: list of SourceIPVpcInfo
+        :param _ReqClient: 调用请求客户端列表
+        :type ReqClient: list of str
         """
         self._CallID = None
         self._AccessKey = None
@@ -9367,6 +9429,7 @@ class CallRecord(AbstractModel):
         self._ShowStatus = None
         self._ISP = None
         self._VpcInfo = None
+        self._ReqClient = None
 
     @property
     def CallID(self):
@@ -9647,6 +9710,17 @@ class CallRecord(AbstractModel):
     def VpcInfo(self, VpcInfo):
         self._VpcInfo = VpcInfo
 
+    @property
+    def ReqClient(self):
+        """调用请求客户端列表
+        :rtype: list of str
+        """
+        return self._ReqClient
+
+    @ReqClient.setter
+    def ReqClient(self, ReqClient):
+        self._ReqClient = ReqClient
+
 
     def _deserialize(self, params):
         self._CallID = params.get("CallID")
@@ -9679,6 +9753,7 @@ class CallRecord(AbstractModel):
                 obj = SourceIPVpcInfo()
                 obj._deserialize(item)
                 self._VpcInfo.append(obj)
+        self._ReqClient = params.get("ReqClient")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

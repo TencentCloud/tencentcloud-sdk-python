@@ -935,6 +935,10 @@ class ClusterInfo(AbstractModel):
         :type IsReadOnlyUlogBackupExpireDay: int
         :param _RestProxyStatus: restproxy状态
         :type RestProxyStatus: int
+        :param _ShardTotalNum: 该集群shard总数
+        :type ShardTotalNum: int
+        :param _ShardUsedNum: 已使用的shard总数
+        :type ShardUsedNum: int
         """
         self._ClusterName = None
         self._ClusterId = None
@@ -966,6 +970,8 @@ class ClusterInfo(AbstractModel):
         self._UlogBackupExpireDay = None
         self._IsReadOnlyUlogBackupExpireDay = None
         self._RestProxyStatus = None
+        self._ShardTotalNum = None
+        self._ShardUsedNum = None
 
     @property
     def ClusterName(self):
@@ -1297,6 +1303,28 @@ class ClusterInfo(AbstractModel):
     def RestProxyStatus(self, RestProxyStatus):
         self._RestProxyStatus = RestProxyStatus
 
+    @property
+    def ShardTotalNum(self):
+        """该集群shard总数
+        :rtype: int
+        """
+        return self._ShardTotalNum
+
+    @ShardTotalNum.setter
+    def ShardTotalNum(self, ShardTotalNum):
+        self._ShardTotalNum = ShardTotalNum
+
+    @property
+    def ShardUsedNum(self):
+        """已使用的shard总数
+        :rtype: int
+        """
+        return self._ShardUsedNum
+
+    @ShardUsedNum.setter
+    def ShardUsedNum(self, ShardUsedNum):
+        self._ShardUsedNum = ShardUsedNum
+
 
     def _deserialize(self, params):
         self._ClusterName = params.get("ClusterName")
@@ -1341,6 +1369,8 @@ class ClusterInfo(AbstractModel):
         self._UlogBackupExpireDay = params.get("UlogBackupExpireDay")
         self._IsReadOnlyUlogBackupExpireDay = params.get("IsReadOnlyUlogBackupExpireDay")
         self._RestProxyStatus = params.get("RestProxyStatus")
+        self._ShardTotalNum = params.get("ShardTotalNum")
+        self._ShardUsedNum = params.get("ShardUsedNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

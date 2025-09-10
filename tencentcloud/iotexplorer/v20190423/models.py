@@ -12561,9 +12561,12 @@ class DescribeFirmwareRequest(AbstractModel):
         :type ProductID: str
         :param _FirmwareVersion: 固件版本号
         :type FirmwareVersion: str
+        :param _FwType: 固件模块
+        :type FwType: str
         """
         self._ProductID = None
         self._FirmwareVersion = None
+        self._FwType = None
 
     @property
     def ProductID(self):
@@ -12587,10 +12590,22 @@ class DescribeFirmwareRequest(AbstractModel):
     def FirmwareVersion(self, FirmwareVersion):
         self._FirmwareVersion = FirmwareVersion
 
+    @property
+    def FwType(self):
+        """固件模块
+        :rtype: str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
 
     def _deserialize(self, params):
         self._ProductID = params.get("ProductID")
         self._FirmwareVersion = params.get("FirmwareVersion")
+        self._FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12857,6 +12872,22 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         :type CreateUserId: int
         :param _CreatorNickName: 创建账号ID昵称
         :type CreatorNickName: str
+        :param _DelayTime: 延迟时间
+        :type DelayTime: int
+        :param _TimeoutInterval: 超时时间
+        :type TimeoutInterval: int
+        :param _UpgradeMethod: 静默升级or用户确认升级
+        :type UpgradeMethod: int
+        :param _MaxRetryNum: 最大重试次数
+        :type MaxRetryNum: int
+        :param _FwType: 固件类型
+        :type FwType: str
+        :param _RetryInterval: 重试间隔时间单位min
+        :type RetryInterval: int
+        :param _OverrideMode: 是否覆盖任务
+        :type OverrideMode: int
+        :param _TaskUserDefine: 用户自定义消息
+        :type TaskUserDefine: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12870,6 +12901,14 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._OriginalVersion = None
         self._CreateUserId = None
         self._CreatorNickName = None
+        self._DelayTime = None
+        self._TimeoutInterval = None
+        self._UpgradeMethod = None
+        self._MaxRetryNum = None
+        self._FwType = None
+        self._RetryInterval = None
+        self._OverrideMode = None
+        self._TaskUserDefine = None
         self._RequestId = None
 
     @property
@@ -12983,6 +13022,94 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._CreatorNickName = CreatorNickName
 
     @property
+    def DelayTime(self):
+        """延迟时间
+        :rtype: int
+        """
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def TimeoutInterval(self):
+        """超时时间
+        :rtype: int
+        """
+        return self._TimeoutInterval
+
+    @TimeoutInterval.setter
+    def TimeoutInterval(self, TimeoutInterval):
+        self._TimeoutInterval = TimeoutInterval
+
+    @property
+    def UpgradeMethod(self):
+        """静默升级or用户确认升级
+        :rtype: int
+        """
+        return self._UpgradeMethod
+
+    @UpgradeMethod.setter
+    def UpgradeMethod(self, UpgradeMethod):
+        self._UpgradeMethod = UpgradeMethod
+
+    @property
+    def MaxRetryNum(self):
+        """最大重试次数
+        :rtype: int
+        """
+        return self._MaxRetryNum
+
+    @MaxRetryNum.setter
+    def MaxRetryNum(self, MaxRetryNum):
+        self._MaxRetryNum = MaxRetryNum
+
+    @property
+    def FwType(self):
+        """固件类型
+        :rtype: str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+    @property
+    def RetryInterval(self):
+        """重试间隔时间单位min
+        :rtype: int
+        """
+        return self._RetryInterval
+
+    @RetryInterval.setter
+    def RetryInterval(self, RetryInterval):
+        self._RetryInterval = RetryInterval
+
+    @property
+    def OverrideMode(self):
+        """是否覆盖任务
+        :rtype: int
+        """
+        return self._OverrideMode
+
+    @OverrideMode.setter
+    def OverrideMode(self, OverrideMode):
+        self._OverrideMode = OverrideMode
+
+    @property
+    def TaskUserDefine(self):
+        """用户自定义消息
+        :rtype: str
+        """
+        return self._TaskUserDefine
+
+    @TaskUserDefine.setter
+    def TaskUserDefine(self, TaskUserDefine):
+        self._TaskUserDefine = TaskUserDefine
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -13005,6 +13132,14 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._OriginalVersion = params.get("OriginalVersion")
         self._CreateUserId = params.get("CreateUserId")
         self._CreatorNickName = params.get("CreatorNickName")
+        self._DelayTime = params.get("DelayTime")
+        self._TimeoutInterval = params.get("TimeoutInterval")
+        self._UpgradeMethod = params.get("UpgradeMethod")
+        self._MaxRetryNum = params.get("MaxRetryNum")
+        self._FwType = params.get("FwType")
+        self._RetryInterval = params.get("RetryInterval")
+        self._OverrideMode = params.get("OverrideMode")
+        self._TaskUserDefine = params.get("TaskUserDefine")
         self._RequestId = params.get("RequestId")
 
 
@@ -18487,10 +18622,13 @@ class GetCOSURLRequest(AbstractModel):
         :type FirmwareVersion: str
         :param _FileSize: 文件大小
         :type FileSize: int
+        :param _FwType: 模块类型or固件类型
+        :type FwType: str
         """
         self._ProductID = None
         self._FirmwareVersion = None
         self._FileSize = None
+        self._FwType = None
 
     @property
     def ProductID(self):
@@ -18525,11 +18663,23 @@ class GetCOSURLRequest(AbstractModel):
     def FileSize(self, FileSize):
         self._FileSize = FileSize
 
+    @property
+    def FwType(self):
+        """模块类型or固件类型
+        :rtype: str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
 
     def _deserialize(self, params):
         self._ProductID = params.get("ProductID")
         self._FirmwareVersion = params.get("FirmwareVersion")
         self._FileSize = params.get("FileSize")
+        self._FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18598,6 +18748,8 @@ class GetDeviceListRequest(AbstractModel):
         :type Limit: int
         :param _FirmwareVersion: 设备固件版本号，若不带此参数会返回所有固件版本的设备。传"None-FirmwareVersion"查询无版本号的设备
         :type FirmwareVersion: str
+        :param _FwType: 固件类型
+        :type FwType: str
         :param _DeviceName: 需要过滤的设备名称
         :type DeviceName: str
         :param _ProjectId: 项目ID。产品 ID 为 -1 时，该参数必填
@@ -18609,6 +18761,7 @@ class GetDeviceListRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._FirmwareVersion = None
+        self._FwType = None
         self._DeviceName = None
         self._ProjectId = None
         self._Filters = None
@@ -18658,6 +18811,17 @@ class GetDeviceListRequest(AbstractModel):
         self._FirmwareVersion = FirmwareVersion
 
     @property
+    def FwType(self):
+        """固件类型
+        :rtype: str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+    @property
     def DeviceName(self):
         """需要过滤的设备名称
         :rtype: str
@@ -18696,6 +18860,7 @@ class GetDeviceListRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._FirmwareVersion = params.get("FirmwareVersion")
+        self._FwType = params.get("FwType")
         self._DeviceName = params.get("DeviceName")
         self._ProjectId = params.get("ProjectId")
         if params.get("Filters") is not None:
@@ -20973,6 +21138,14 @@ class InvokeAISearchServiceRequest(AbstractModel):
 符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
 
         :type TimeZone: str
+        :param _SearchMode: 取值为1表示高级搜索，取值为2表示简单搜索，默认为1
+        :type SearchMode: int
+        :param _Limit: 最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50
+        :type Limit: int
+        :param _VectorSearchRadius: 向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5
+        :type VectorSearchRadius: float
+        :param _VectorSearchTopK: 指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
+        :type VectorSearchTopK: int
         """
         self._ProductId = None
         self._DeviceName = None
@@ -20983,6 +21156,10 @@ class InvokeAISearchServiceRequest(AbstractModel):
         self._StartTimeMs = None
         self._EndTimeMs = None
         self._TimeZone = None
+        self._SearchMode = None
+        self._Limit = None
+        self._VectorSearchRadius = None
+        self._VectorSearchTopK = None
 
     @property
     def ProductId(self):
@@ -21097,6 +21274,50 @@ class InvokeAISearchServiceRequest(AbstractModel):
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
 
+    @property
+    def SearchMode(self):
+        """取值为1表示高级搜索，取值为2表示简单搜索，默认为1
+        :rtype: int
+        """
+        return self._SearchMode
+
+    @SearchMode.setter
+    def SearchMode(self, SearchMode):
+        self._SearchMode = SearchMode
+
+    @property
+    def Limit(self):
+        """最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def VectorSearchRadius(self):
+        """向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5
+        :rtype: float
+        """
+        return self._VectorSearchRadius
+
+    @VectorSearchRadius.setter
+    def VectorSearchRadius(self, VectorSearchRadius):
+        self._VectorSearchRadius = VectorSearchRadius
+
+    @property
+    def VectorSearchTopK(self):
+        """指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
+        :rtype: int
+        """
+        return self._VectorSearchTopK
+
+    @VectorSearchTopK.setter
+    def VectorSearchTopK(self, VectorSearchTopK):
+        self._VectorSearchTopK = VectorSearchTopK
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -21108,6 +21329,10 @@ class InvokeAISearchServiceRequest(AbstractModel):
         self._StartTimeMs = params.get("StartTimeMs")
         self._EndTimeMs = params.get("EndTimeMs")
         self._TimeZone = params.get("TimeZone")
+        self._SearchMode = params.get("SearchMode")
+        self._Limit = params.get("Limit")
+        self._VectorSearchRadius = params.get("VectorSearchRadius")
+        self._VectorSearchTopK = params.get("VectorSearchTopK")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27586,9 +27811,12 @@ class PublishFirmwareUpdateMessageRequest(AbstractModel):
         :type ProductID: str
         :param _DeviceName: 设备名称。
         :type DeviceName: str
+        :param _FwType: 固件类型
+        :type FwType: str
         """
         self._ProductID = None
         self._DeviceName = None
+        self._FwType = None
 
     @property
     def ProductID(self):
@@ -27612,10 +27840,22 @@ class PublishFirmwareUpdateMessageRequest(AbstractModel):
     def DeviceName(self, DeviceName):
         self._DeviceName = DeviceName
 
+    @property
+    def FwType(self):
+        """固件类型
+        :rtype: str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
 
     def _deserialize(self, params):
         self._ProductID = params.get("ProductID")
         self._DeviceName = params.get("DeviceName")
+        self._FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

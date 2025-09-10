@@ -12122,6 +12122,8 @@ class RecognizeConfig(AbstractModel):
         :type HotWordList: str
         :param _VadSilenceTime: 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
         :type VadSilenceTime: int
+        :param _VadLevel: vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :type VadLevel: int
         """
         self._Language = None
         self._AlternativeLanguage = None
@@ -12129,6 +12131,7 @@ class RecognizeConfig(AbstractModel):
         self._TranslationLanguage = None
         self._HotWordList = None
         self._VadSilenceTime = None
+        self._VadLevel = None
 
     @property
     def Language(self):
@@ -12271,6 +12274,17 @@ class RecognizeConfig(AbstractModel):
     def VadSilenceTime(self, VadSilenceTime):
         self._VadSilenceTime = VadSilenceTime
 
+    @property
+    def VadLevel(self):
+        """vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :rtype: int
+        """
+        return self._VadLevel
+
+    @VadLevel.setter
+    def VadLevel(self, VadLevel):
+        self._VadLevel = VadLevel
+
 
     def _deserialize(self, params):
         self._Language = params.get("Language")
@@ -12279,6 +12293,7 @@ class RecognizeConfig(AbstractModel):
         self._TranslationLanguage = params.get("TranslationLanguage")
         self._HotWordList = params.get("HotWordList")
         self._VadSilenceTime = params.get("VadSilenceTime")
+        self._VadLevel = params.get("VadLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14309,6 +14324,8 @@ TranscriptionMode为0时，需要保证一个房间内只发起一个任务，�
         :type RoomIdType: int
         :param _RecognizeConfig: 语音识别配置。
         :type RecognizeConfig: :class:`tencentcloud.trtc.v20190722.models.RecognizeConfig`
+        :param _TranslationConfig: 翻译相关配置
+        :type TranslationConfig: :class:`tencentcloud.trtc.v20190722.models.TranslationConfig`
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -14316,6 +14333,7 @@ TranscriptionMode为0时，需要保证一个房间内只发起一个任务，�
         self._SessionId = None
         self._RoomIdType = None
         self._RecognizeConfig = None
+        self._TranslationConfig = None
 
     @property
     def SdkAppId(self):
@@ -14385,6 +14403,17 @@ TranscriptionMode为0时，需要保证一个房间内只发起一个任务，�
     def RecognizeConfig(self, RecognizeConfig):
         self._RecognizeConfig = RecognizeConfig
 
+    @property
+    def TranslationConfig(self):
+        """翻译相关配置
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranslationConfig`
+        """
+        return self._TranslationConfig
+
+    @TranslationConfig.setter
+    def TranslationConfig(self, TranslationConfig):
+        self._TranslationConfig = TranslationConfig
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -14397,6 +14426,9 @@ TranscriptionMode为0时，需要保证一个房间内只发起一个任务，�
         if params.get("RecognizeConfig") is not None:
             self._RecognizeConfig = RecognizeConfig()
             self._RecognizeConfig._deserialize(params.get("RecognizeConfig"))
+        if params.get("TranslationConfig") is not None:
+            self._TranslationConfig = TranslationConfig()
+            self._TranslationConfig._deserialize(params.get("TranslationConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16557,6 +16589,42 @@ class TRTCDataResult(AbstractModel):
         
 
 
+class TTSConfig(AbstractModel):
+    """TTS相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: 音色ID
+        :type VoiceId: str
+        """
+        self._VoiceId = None
+
+    @property
+    def VoiceId(self):
+        """音色ID
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TencentVod(AbstractModel):
     """腾讯云点播相关参数。
 
@@ -17066,6 +17134,8 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         :type TargetUserIdList: list of str
         :param _VoicePrint: 声纹配置
         :type VoicePrint: :class:`tencentcloud.trtc.v20190722.models.VoicePrint`
+        :param _TurnDetection: 语义断句检测
+        :type TurnDetection: :class:`tencentcloud.trtc.v20190722.models.TurnDetection`
         """
         self._UserId = None
         self._UserSig = None
@@ -17076,6 +17146,7 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         self._TargetUserId = None
         self._TargetUserIdList = None
         self._VoicePrint = None
+        self._TurnDetection = None
 
     @property
     def UserId(self):
@@ -17186,6 +17257,17 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
     def VoicePrint(self, VoicePrint):
         self._VoicePrint = VoicePrint
 
+    @property
+    def TurnDetection(self):
+        """语义断句检测
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TurnDetection`
+        """
+        return self._TurnDetection
+
+    @TurnDetection.setter
+    def TurnDetection(self, TurnDetection):
+        self._TurnDetection = TurnDetection
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -17199,6 +17281,81 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         if params.get("VoicePrint") is not None:
             self._VoicePrint = VoicePrint()
             self._VoicePrint._deserialize(params.get("VoicePrint"))
+        if params.get("TurnDetection") is not None:
+            self._TurnDetection = TurnDetection()
+            self._TurnDetection._deserialize(params.get("TurnDetection"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslationConfig(AbstractModel):
+    """翻译相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetLanguages: 翻译的目标语言，目标语种列表（ISO 639-1）
+
+        :type TargetLanguages: list of str
+        :param _Mode:  1： 仅文字翻译，  2： 语音同传
+
+        :type Mode: int
+        :param _TTSConfig: 语音同传配置，开启同传时，需要传递
+        :type TTSConfig: :class:`tencentcloud.trtc.v20190722.models.TTSConfig`
+        """
+        self._TargetLanguages = None
+        self._Mode = None
+        self._TTSConfig = None
+
+    @property
+    def TargetLanguages(self):
+        """翻译的目标语言，目标语种列表（ISO 639-1）
+
+        :rtype: list of str
+        """
+        return self._TargetLanguages
+
+    @TargetLanguages.setter
+    def TargetLanguages(self, TargetLanguages):
+        self._TargetLanguages = TargetLanguages
+
+    @property
+    def Mode(self):
+        """ 1： 仅文字翻译，  2： 语音同传
+
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def TTSConfig(self):
+        """语音同传配置，开启同传时，需要传递
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TTSConfig`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+
+    def _deserialize(self, params):
+        self._TargetLanguages = params.get("TargetLanguages")
+        self._Mode = params.get("Mode")
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = TTSConfig()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

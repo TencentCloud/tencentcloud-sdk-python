@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 表格表头重复
 FAILEDOPERATION_DUPLICATETABLEHEADER = 'FailedOperation.DuplicateTableHeader'
 
+# 邮件数量超出限制
+FAILEDOPERATION_EMAILCOUNTLIMITEXCEEDED = 'FailedOperation.EmailCountLimitExceeded'
+
 # 表格表头为空
 FAILEDOPERATION_EMPTYTABLEHEADER = 'FailedOperation.EmptyTableHeader'
 
@@ -74,6 +77,9 @@ INVALIDPARAMETERVALUE_INVALIDCSVFORMAT = 'InvalidParameterValue.InvalidCsvFormat
 # 描述错误
 INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = 'InvalidParameterValue.InvalidDescription'
 
+# 邮箱格式错误
+INVALIDPARAMETERVALUE_INVALIDEMAILFORMAT = 'InvalidParameterValue.InvalidEmailFormat'
+
 # 输入JSON格式错误
 INVALIDPARAMETERVALUE_INVALIDINPUTJSONFORMAT = 'InvalidParameterValue.InvalidInputJsonFormat'
 
@@ -85,6 +91,9 @@ INVALIDPARAMETERVALUE_INVALIDNAME = 'InvalidParameterValue.InvalidName'
 
 # 运行参数错误
 INVALIDPARAMETERVALUE_INVALIDRUNOPTION = 'InvalidParameterValue.InvalidRunOption'
+
+# 超时分钟数无效
+INVALIDPARAMETERVALUE_INVALIDTIMEOUTMINUTES = 'InvalidParameterValue.InvalidTimeoutMinutes'
 
 # 表格数据与类型长度不匹配
 INVALIDPARAMETERVALUE_TABLEDATATYPELENGTHMISMATCH = 'InvalidParameterValue.TableDataTypeLengthMismatch'

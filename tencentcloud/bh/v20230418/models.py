@@ -2449,6 +2449,8 @@ class CheckLDAPConnectionRequest(AbstractModel):
         :type IpBackup: str
         :param _DomainId: 网络域id
         :type DomainId: str
+        :param _AttributeUserName: 用户名称映射属性
+        :type AttributeUserName: str
         """
         self._Enable = None
         self._Ip = None
@@ -2459,6 +2461,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
         self._AdminPassword = None
         self._IpBackup = None
         self._DomainId = None
+        self._AttributeUserName = None
 
     @property
     def Enable(self):
@@ -2559,6 +2562,17 @@ class CheckLDAPConnectionRequest(AbstractModel):
     def DomainId(self, DomainId):
         self._DomainId = DomainId
 
+    @property
+    def AttributeUserName(self):
+        """用户名称映射属性
+        :rtype: str
+        """
+        return self._AttributeUserName
+
+    @AttributeUserName.setter
+    def AttributeUserName(self, AttributeUserName):
+        self._AttributeUserName = AttributeUserName
+
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
@@ -2570,6 +2584,7 @@ class CheckLDAPConnectionRequest(AbstractModel):
         self._AdminPassword = params.get("AdminPassword")
         self._IpBackup = params.get("IpBackup")
         self._DomainId = params.get("DomainId")
+        self._AttributeUserName = params.get("AttributeUserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

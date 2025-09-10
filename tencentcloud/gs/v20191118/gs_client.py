@@ -766,6 +766,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisconnectAndroidInstance(self, request):
+        """断开安卓实例
+
+        :param request: Request instance for DisconnectAndroidInstance.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DisconnectAndroidInstanceRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DisconnectAndroidInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisconnectAndroidInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisconnectAndroidInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DistributeFileToAndroidInstances(self, request):
         """将一个文件批量分发到多个实例，一次接口调用触发一次文件分发，一次文件分发只会从公网下载一次，然后文件会走内网分发到实例列表中的实例。
 

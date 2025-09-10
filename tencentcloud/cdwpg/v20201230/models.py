@@ -2494,6 +2494,10 @@ class DescribeSlowLogRequest(AbstractModel):
         :type OrderByType: str
         :param _Duration: 过滤时间
         :type Duration: float
+        :param _UserName: 执行用户
+        :type UserName: str
+        :param _QueryString: query 语句
+        :type QueryString: str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -2504,6 +2508,8 @@ class DescribeSlowLogRequest(AbstractModel):
         self._OrderBy = None
         self._OrderByType = None
         self._Duration = None
+        self._UserName = None
+        self._QueryString = None
 
     @property
     def InstanceId(self):
@@ -2604,6 +2610,28 @@ class DescribeSlowLogRequest(AbstractModel):
     def Duration(self, Duration):
         self._Duration = Duration
 
+    @property
+    def UserName(self):
+        """执行用户
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def QueryString(self):
+        """query 语句
+        :rtype: str
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2615,6 +2643,8 @@ class DescribeSlowLogRequest(AbstractModel):
         self._OrderBy = params.get("OrderBy")
         self._OrderByType = params.get("OrderByType")
         self._Duration = params.get("Duration")
+        self._UserName = params.get("UserName")
+        self._QueryString = params.get("QueryString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
