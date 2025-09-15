@@ -4327,6 +4327,96 @@ JsonType为1：转义。示例：
         
 
 
+class ConsumerGroup(AbstractModel):
+    r"""kafka协议消费组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Group: 消费组名称
+        :type Group: str
+        :param _State: 状态。
+
+- Empty：组内没有成员，但存在已提交的偏移量。所有消费者都离开但保留了偏移量
+- Dead：组内没有成员，且没有已提交的偏移量。组被删除或长时间无活动
+- Stable：组内成员正常消费，分区分配平衡。正常运行状态
+- PreparingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+- CompletingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+
+        :type State: str
+        :param _ProtocolName: 分区分配策略均衡算法名称。
+
+- 常见均衡算法如下：
+    - range:按分区范围分配
+    - roundrobin:轮询式分配
+    - sticky:粘性分配（避免不必要的重平衡）
+        :type ProtocolName: str
+        """
+        self._Group = None
+        self._State = None
+        self._ProtocolName = None
+
+    @property
+    def Group(self):
+        r"""消费组名称
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def State(self):
+        r"""状态。
+
+- Empty：组内没有成员，但存在已提交的偏移量。所有消费者都离开但保留了偏移量
+- Dead：组内没有成员，且没有已提交的偏移量。组被删除或长时间无活动
+- Stable：组内成员正常消费，分区分配平衡。正常运行状态
+- PreparingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+- CompletingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def ProtocolName(self):
+        r"""分区分配策略均衡算法名称。
+
+- 常见均衡算法如下：
+    - range:按分区范围分配
+    - roundrobin:轮询式分配
+    - sticky:粘性分配（避免不必要的重平衡）
+        :rtype: str
+        """
+        return self._ProtocolName
+
+    @ProtocolName.setter
+    def ProtocolName(self, ProtocolName):
+        self._ProtocolName = ProtocolName
+
+
+    def _deserialize(self, params):
+        self._Group = params.get("Group")
+        self._State = params.get("State")
+        self._ProtocolName = params.get("ProtocolName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerFileInfo(AbstractModel):
     r"""自建k8s-容器文件路径信息
 
@@ -8542,7 +8632,11 @@ class CreateLogsetRequest(AbstractModel):
         :type LogsetName: str
         :param _Tags: 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
         :type Tags: list of Tag
-        :param _LogsetId: 日志集ID，格式为：用户自定义部分-用户appid，用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符，尾部需要使用-拼接用户appid
+        :param _LogsetId: 日志集ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
+
+- 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符。
+- 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
+- 如果指定该字段，需保证全地域唯一
         :type LogsetId: str
         """
         self._LogsetName = None
@@ -8575,7 +8669,11 @@ class CreateLogsetRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""日志集ID，格式为：用户自定义部分-用户appid，用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符，尾部需要使用-拼接用户appid
+        r"""日志集ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
+
+- 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符。
+- 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
+- 如果指定该字段，需保证全地域唯一
         :rtype: str
         """
         return self._LogsetId
@@ -9624,9 +9722,10 @@ class CreateTopicRequest(AbstractModel):
 非0：开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
 仅在StorageType为 hot 时生效。
         :type HotPeriod: int
-        :param _TopicId: 主题自定义ID，格式为：用户自定义部分-APPID。未填写该参数时将自动生成ID。
+        :param _TopicId: 主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
 - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
-- APPID可在https://console.cloud.tencent.com/developer页面查询
+- 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
+- 如果指定该字段，需保证全地域唯一
         :type TopicId: str
         :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。默认为false。
 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
@@ -9770,9 +9869,10 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""主题自定义ID，格式为：用户自定义部分-APPID。未填写该参数时将自动生成ID。
+        r"""主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
 - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
-- APPID可在https://console.cloud.tencent.com/developer页面查询
+- 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
+- 如果指定该字段，需保证全地域唯一
         :rtype: str
         """
         return self._TopicId
@@ -15624,6 +15724,353 @@ class DescribeIndexResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeKafkaConsumerGroupDetailRequest(AbstractModel):
+    r"""DescribeKafkaConsumerGroupDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :type TopicId: str
+        :param _Group: 消费组名称
+        :type Group: str
+        """
+        self._TopicId = None
+        self._Group = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Group(self):
+        r"""消费组名称
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKafkaConsumerGroupDetailResponse(AbstractModel):
+    r"""DescribeKafkaConsumerGroupDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogsetId: 日志集id
+        :type LogsetId: str
+        :param _Group: 消费组名称
+        :type Group: str
+        :param _PartitionInfos: 消费组信息列表
+        :type PartitionInfos: list of GroupPartitionInfo
+        :param _State: Empty：组内没有成员，但存在已提交的偏移量。所有消费者都离开但保留了偏移量
+Dead：组内没有成员，且没有已提交的偏移量。组被删除或长时间无活动
+Stable：组内成员正常消费，分区分配平衡。正常运行状态
+PreparingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+CompletingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+        :type State: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogsetId = None
+        self._Group = None
+        self._PartitionInfos = None
+        self._State = None
+        self._RequestId = None
+
+    @property
+    def LogsetId(self):
+        r"""日志集id
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Group(self):
+        r"""消费组名称
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def PartitionInfos(self):
+        r"""消费组信息列表
+        :rtype: list of GroupPartitionInfo
+        """
+        return self._PartitionInfos
+
+    @PartitionInfos.setter
+    def PartitionInfos(self, PartitionInfos):
+        self._PartitionInfos = PartitionInfos
+
+    @property
+    def State(self):
+        r"""Empty：组内没有成员，但存在已提交的偏移量。所有消费者都离开但保留了偏移量
+Dead：组内没有成员，且没有已提交的偏移量。组被删除或长时间无活动
+Stable：组内成员正常消费，分区分配平衡。正常运行状态
+PreparingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+CompletingRebalance：组正在准备重新平衡。有新成员加入或现有成员离开
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogsetId = params.get("LogsetId")
+        self._Group = params.get("Group")
+        if params.get("PartitionInfos") is not None:
+            self._PartitionInfos = []
+            for item in params.get("PartitionInfos"):
+                obj = GroupPartitionInfo()
+                obj._deserialize(item)
+                self._PartitionInfos.append(obj)
+        self._State = params.get("State")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKafkaConsumerGroupListRequest(AbstractModel):
+    r"""DescribeKafkaConsumerGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :type TopicId: str
+        :param _Filters: - group
+按照【消费组名称】进行过滤。
+类型：String
+必选：否
+示例：消费组1
+
+每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._TopicId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题id。
+- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Filters(self):
+        r"""- group
+按照【消费组名称】进行过滤。
+类型：String
+必选：否
+示例：消费组1
+
+每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKafkaConsumerGroupListResponse(AbstractModel):
+    r"""DescribeKafkaConsumerGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicName: 日志主题名称
+        :type TopicName: str
+        :param _LogsetId: 日志集id
+        :type LogsetId: str
+        :param _Total: 总个数
+        :type Total: int
+        :param _Groups: 消费组信息列表
+        :type Groups: list of ConsumerGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TopicName = None
+        self._LogsetId = None
+        self._Total = None
+        self._Groups = None
+        self._RequestId = None
+
+    @property
+    def TopicName(self):
+        r"""日志主题名称
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def LogsetId(self):
+        r"""日志集id
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Total(self):
+        r"""总个数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Groups(self):
+        r"""消费组信息列表
+        :rtype: list of ConsumerGroup
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TopicName = params.get("TopicName")
+        self._LogsetId = params.get("LogsetId")
+        self._Total = params.get("Total")
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = ConsumerGroup()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeKafkaConsumerRequest(AbstractModel):
     r"""DescribeKafkaConsumer请求参数结构体
 
@@ -19720,6 +20167,72 @@ class GetAlarmLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Columns.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class GroupPartitionInfo(AbstractModel):
+    r"""kafka协议消费组区分信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionId: 分区id
+        :type PartitionId: int
+        :param _CommitTimestamp: 分区最新数据时间戳，单位：s
+        :type CommitTimestamp: int
+        :param _Consumer: 消费者
+        :type Consumer: str
+        """
+        self._PartitionId = None
+        self._CommitTimestamp = None
+        self._Consumer = None
+
+    @property
+    def PartitionId(self):
+        r"""分区id
+        :rtype: int
+        """
+        return self._PartitionId
+
+    @PartitionId.setter
+    def PartitionId(self, PartitionId):
+        self._PartitionId = PartitionId
+
+    @property
+    def CommitTimestamp(self):
+        r"""分区最新数据时间戳，单位：s
+        :rtype: int
+        """
+        return self._CommitTimestamp
+
+    @CommitTimestamp.setter
+    def CommitTimestamp(self, CommitTimestamp):
+        self._CommitTimestamp = CommitTimestamp
+
+    @property
+    def Consumer(self):
+        r"""消费者
+        :rtype: str
+        """
+        return self._Consumer
+
+    @Consumer.setter
+    def Consumer(self, Consumer):
+        self._Consumer = Consumer
+
+
+    def _deserialize(self, params):
+        self._PartitionId = params.get("PartitionId")
+        self._CommitTimestamp = params.get("CommitTimestamp")
+        self._Consumer = params.get("Consumer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GroupTriggerConditionInfo(AbstractModel):
@@ -24852,6 +25365,55 @@ class ModifyIndexResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyKafkaConsumerGroupOffsetRequest(AbstractModel):
+    r"""ModifyKafkaConsumerGroupOffset请求参数结构体
+
+    """
+
+
+class ModifyKafkaConsumerGroupOffsetResponse(AbstractModel):
+    r"""ModifyKafkaConsumerGroupOffset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 状态码。0：成功，-1：失败
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Code(self):
+        r"""状态码。0：成功，-1：失败
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
         self._RequestId = params.get("RequestId")
 
 

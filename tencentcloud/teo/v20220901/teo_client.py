@@ -2932,6 +2932,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTimingL7OriginPullData(self, request):
+        r"""本接口用以查询七层域名业务的回源时序数据。
+
+        :param request: Request instance for DescribeTimingL7OriginPullData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7OriginPullDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7OriginPullDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimingL7OriginPullData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTimingL7OriginPullDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTopL7AnalysisData(self, request):
         r"""本接口用于查询七层域名业务按照指定维度的 topN 数据。
         注意：

@@ -11930,7 +11930,7 @@ class CreateNatGatewayRequest(AbstractModel):
         :type VpcId: str
         :param _InternetMaxBandwidthOut: NAT网关最大外网出带宽(单位：Mbps)，支持的参数值：20, 50, 100, 200, 500, 1000, 2000, 5000，默认: 100Mbps。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为5000Mbps。
         :type InternetMaxBandwidthOut: int
-        :param _MaxConcurrentConnection: NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为100000。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
+        :param _MaxConcurrentConnection: NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为1000000。 当NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
         :type MaxConcurrentConnection: int
         :param _AddressCount: 新建弹性公网IP个数，系统会按您的要求创建对应数量的弹性公网IP，其中AddressCount和PublicAddresses两个参数至少填写一个。
         :type AddressCount: int
@@ -11950,6 +11950,8 @@ class CreateNatGatewayRequest(AbstractModel):
         :type PublicIpFromSameZone: bool
         :param _NatProductVersion: NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关，默认值是1。
         :type NatProductVersion: int
+        :param _DeletionProtectionEnabled: NAT实例是否开启删除保护
+        :type DeletionProtectionEnabled: bool
         """
         self._NatGatewayName = None
         self._VpcId = None
@@ -11964,6 +11966,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self._PublicIpAddressesBandwidthOut = None
         self._PublicIpFromSameZone = None
         self._NatProductVersion = None
+        self._DeletionProtectionEnabled = None
 
     @property
     def NatGatewayName(self):
@@ -12000,7 +12003,7 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def MaxConcurrentConnection(self):
-        r"""NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为100000。  当以下NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
+        r"""NAT网关并发连接数上限，支持参数值：1000000、3000000、10000000，默认值为1000000。 当NatProductVersion参数值为2即标准型时，此参数无需填写，默认为2000000。
         :rtype: int
         """
         return self._MaxConcurrentConnection
@@ -12112,6 +12115,17 @@ class CreateNatGatewayRequest(AbstractModel):
     def NatProductVersion(self, NatProductVersion):
         self._NatProductVersion = NatProductVersion
 
+    @property
+    def DeletionProtectionEnabled(self):
+        r"""NAT实例是否开启删除保护
+        :rtype: bool
+        """
+        return self._DeletionProtectionEnabled
+
+    @DeletionProtectionEnabled.setter
+    def DeletionProtectionEnabled(self, DeletionProtectionEnabled):
+        self._DeletionProtectionEnabled = DeletionProtectionEnabled
+
 
     def _deserialize(self, params):
         self._NatGatewayName = params.get("NatGatewayName")
@@ -12132,6 +12146,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self._PublicIpAddressesBandwidthOut = params.get("PublicIpAddressesBandwidthOut")
         self._PublicIpFromSameZone = params.get("PublicIpFromSameZone")
         self._NatProductVersion = params.get("NatProductVersion")
+        self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13164,6 +13179,8 @@ class CreatePrivateNatGatewayRequest(AbstractModel):
         :type VpcType: bool
         :param _CcnId: 云联网类型私网NAT网关需要绑定的云联网实例ID。
         :type CcnId: str
+        :param _DeletionProtectionEnabled: 私网NAT实例是否开启删除保护
+        :type DeletionProtectionEnabled: bool
         """
         self._NatGatewayName = None
         self._VpcId = None
@@ -13171,6 +13188,7 @@ class CreatePrivateNatGatewayRequest(AbstractModel):
         self._Tags = None
         self._VpcType = None
         self._CcnId = None
+        self._DeletionProtectionEnabled = None
 
     @property
     def NatGatewayName(self):
@@ -13238,6 +13256,17 @@ class CreatePrivateNatGatewayRequest(AbstractModel):
     def CcnId(self, CcnId):
         self._CcnId = CcnId
 
+    @property
+    def DeletionProtectionEnabled(self):
+        r"""私网NAT实例是否开启删除保护
+        :rtype: bool
+        """
+        return self._DeletionProtectionEnabled
+
+    @DeletionProtectionEnabled.setter
+    def DeletionProtectionEnabled(self, DeletionProtectionEnabled):
+        self._DeletionProtectionEnabled = DeletionProtectionEnabled
+
 
     def _deserialize(self, params):
         self._NatGatewayName = params.get("NatGatewayName")
@@ -13251,6 +13280,7 @@ class CreatePrivateNatGatewayRequest(AbstractModel):
                 self._Tags.append(obj)
         self._VpcType = params.get("VpcType")
         self._CcnId = params.get("CcnId")
+        self._DeletionProtectionEnabled = params.get("DeletionProtectionEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29614,11 +29644,7 @@ class DescribeNatGatewaysRequest(AbstractModel):
         r"""
         :param _NatGatewayIds: NAT网关统一 ID，形如：`nat-123xx454`。每次请求的实例上限为100。参数不支持同时指定NatGatewayIds和Filters。
         :type NatGatewayIds: list of str
-        :param _Filters: 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。
-<li>nat-gateway-id - String - （过滤条件）协议端口模板实例ID，形如：`nat-123xx454`。</li>
-<li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li>
-<li>nat-gateway-name - String - （过滤条件）协议端口模板实例ID，形如：`test_nat`。</li>
-<li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li>
+        :param _Filters: 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -29643,11 +29669,7 @@ class DescribeNatGatewaysRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。
-<li>nat-gateway-id - String - （过滤条件）协议端口模板实例ID，形如：`nat-123xx454`。</li>
-<li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li>
-<li>nat-gateway-name - String - （过滤条件）协议端口模板实例ID，形如：`test_nat`。</li>
-<li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li>
+        r"""过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。<li>nat-gateway-id - String - （过滤条件）NAT实例ID，形如：`nat-123xx454`。</li><li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li><li>nat-gateway-name - String - （过滤条件）协议端口模板实例名称，形如：`test_nat`。</li><li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li><li>nat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -29710,11 +29732,14 @@ class DescribeNatGatewaysResponse(AbstractModel):
         :type NatGatewaySet: list of NatGateway
         :param _TotalCount: 符合条件的NAT网关对象个数。
         :type TotalCount: int
+        :param _VerboseLevel: 输出信息详细程度，DETAIL代表输出实例所有信息；COMPACT代表不输出NAT规则和自定义路由，输出实例基本信息、特性开关和EIP信息；SIMPLE代表仅输出实例基本信息和特性开关
+        :type VerboseLevel: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NatGatewaySet = None
         self._TotalCount = None
+        self._VerboseLevel = None
         self._RequestId = None
 
     @property
@@ -29740,6 +29765,17 @@ class DescribeNatGatewaysResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def VerboseLevel(self):
+        r"""输出信息详细程度，DETAIL代表输出实例所有信息；COMPACT代表不输出NAT规则和自定义路由，输出实例基本信息、特性开关和EIP信息；SIMPLE代表仅输出实例基本信息和特性开关
+        :rtype: str
+        """
+        return self._VerboseLevel
+
+    @VerboseLevel.setter
+    def VerboseLevel(self, VerboseLevel):
+        self._VerboseLevel = VerboseLevel
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -29759,6 +29795,7 @@ class DescribeNatGatewaysResponse(AbstractModel):
                 obj._deserialize(item)
                 self._NatGatewaySet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._VerboseLevel = params.get("VerboseLevel")
         self._RequestId = params.get("RequestId")
 
 
@@ -31540,11 +31577,7 @@ class DescribePrivateNatGatewaysRequest(AbstractModel):
         r"""
         :param _NatGatewayIds: 私网网关唯一`ID`，形如：`intranat-0g3blj80`。
         :type NatGatewayIds: list of str
-        :param _Filters: 过滤条件。
-<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li>
-<li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li>
-<li>VpcId - String - 私网网关所在`VpcId`。</li>
-<li>TagKey - Tag数组 - 私网网关标签键值对数组</li>
+        :param _Filters: 过滤条件。<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li><li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li><li>VpcId - String - 私网网关所在`VpcId`。</li><li>TagKey - Tag数组 - 私网网关标签键值对数组</li><li>intranat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -31575,11 +31608,7 @@ class DescribePrivateNatGatewaysRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。
-<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li>
-<li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li>
-<li>VpcId - String - 私网网关所在`VpcId`。</li>
-<li>TagKey - Tag数组 - 私网网关标签键值对数组</li>
+        r"""过滤条件。<li>NatGatewayId - String - 私网网关唯一`ID`，形如：`intranat-0g3blj80`。</li><li>NatGatewayName - String - 专线网关名称，默认模糊查询。</li><li>VpcId - String - 私网网关所在`VpcId`。</li><li>TagKey - Tag数组 - 私网网关标签键值对数组</li><li>intranat-status - String - （过滤条件）NAT实例当前状态，形如：`AVAILABLE`。</li>
         :rtype: list of Filter
         """
         return self._Filters

@@ -35,7 +35,7 @@ class CreateTtsTaskRequest(AbstractModel):
         :type ProjectId: int
         :param _ModelType: 模型类型，1-默认模型。
         :type ModelType: int
-        :param _VoiceType: 音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
+        :param _VoiceType: 音色 ID，价格请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
         :type VoiceType: int
         :param _PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
         :type PrimaryLanguage: int
@@ -126,7 +126,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def VoiceType(self):
-        r"""音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
+        r"""音色 ID，价格请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
         :rtype: int
         """
         return self._VoiceType
@@ -660,7 +660,7 @@ class TextToVoiceRequest(AbstractModel):
         :type ProjectId: int
         :param _ModelType: 模型类型，1-默认模型。
         :type ModelType: int
-        :param _VoiceType: 音色 ID，包括标准音色、精品音色、大模型音色与基础版复刻音色。不同音色价格有差异，详情请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。<br>若使用一句话版声音复刻，请填入固定值“200000000”。
+        :param _VoiceType: 音色 ID，包括精品音色、大模型音色与基础版复刻音色。不同音色价格有差异，详情请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。<br>若使用一句话版声音复刻，请填入固定值“200000000”。
         :type VoiceType: int
         :param _FastVoiceType: 一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。
         :type FastVoiceType: str
@@ -768,7 +768,7 @@ class TextToVoiceRequest(AbstractModel):
 
     @property
     def VoiceType(self):
-        r"""音色 ID，包括标准音色、精品音色、大模型音色与基础版复刻音色。不同音色价格有差异，详情请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。<br>若使用一句话版声音复刻，请填入固定值“200000000”。
+        r"""音色 ID，包括精品音色、大模型音色与基础版复刻音色。不同音色价格有差异，详情请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。<br>若使用一句话版声音复刻，请填入固定值“200000000”。
         :rtype: int
         """
         return self._VoiceType

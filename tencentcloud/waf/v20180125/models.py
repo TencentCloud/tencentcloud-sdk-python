@@ -8930,7 +8930,7 @@ class CreateExportRequest(AbstractModel):
         :type TopicId: str
         :param _Count: 日志导出数量,  最大值5000万
         :type Count: int
-        :param _Query: 日志导出检索语句，不支持<a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>
+        :param _Query: 日志导出检索语句，需要进行base64编码,不支持<a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>
         :type Query: str
         :param _From: 日志导出起始时间，毫秒时间戳
         :type From: int
@@ -8980,7 +8980,7 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""日志导出检索语句，不支持<a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>
+        r"""日志导出检索语句，需要进行base64编码,不支持<a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>
         :rtype: str
         """
         return self._Query
@@ -19619,7 +19619,7 @@ class DescribeLogHistogramRequest(AbstractModel):
         :type From: int
         :param _To: 要查询的日志的结束时间，Unix时间戳，单位ms
         :type To: int
-        :param _Query: 查询语句
+        :param _Query: 查询语句，进行base64编码
         :type Query: str
         :param _TopicId: 日志主题ID，可以通过DescribeTopics接口获取,访问日志主题ID和攻击日志主题ID方式不同，注意DescribeTopics接口使用方法
         :type TopicId: str
@@ -19661,7 +19661,7 @@ class DescribeLogHistogramRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询语句
+        r"""查询语句，进行base64编码
         :rtype: str
         """
         return self._Query
@@ -43287,9 +43287,7 @@ class SearchLogRequest(AbstractModel):
         :type From: int
         :param _To: 要检索分析的日志的结束时间，Unix时间戳（毫秒）
         :type To: int
-        :param _Query: 检索分析语句，最大长度为12KB
-语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
-使用*或空字符串可查询所有日志
+        :param _Query: 检索分析语句，需要进行base64编码，最大长度为12KB语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句使用*或空字符串可查询所有日志
         :type Query: str
         :param _SyntaxRule: 检索语法规则，默认值为0，推荐使用1 (CQL语法)。
 0：Lucene语法，1：CQL语法。
@@ -43370,9 +43368,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""检索分析语句，最大长度为12KB
-语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
-使用*或空字符串可查询所有日志
+        r"""检索分析语句，需要进行base64编码，最大长度为12KB语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句使用*或空字符串可查询所有日志
         :rtype: str
         """
         return self._Query

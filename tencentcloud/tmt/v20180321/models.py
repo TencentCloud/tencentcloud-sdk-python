@@ -612,8 +612,8 @@ class ImageTranslateLLMRequest(AbstractModel):
         :param _Target: 目标语言，支持语言列表：
 
 - 中文：zh
-- 繁体（台湾）：zh-TW
-- 繁体（香港）：zh-HK
+- 繁体（中国台湾）：zh-TW
+- 繁体（中国香港）：zh-HK
 - 英文：en
 - 日语：ja
 - 韩语：ko
@@ -655,8 +655,8 @@ class ImageTranslateLLMRequest(AbstractModel):
         r"""目标语言，支持语言列表：
 
 - 中文：zh
-- 繁体（台湾）：zh-TW
-- 繁体（香港）：zh-HK
+- 繁体（中国台湾）：zh-TW
+- 繁体（中国香港）：zh-HK
 - 英文：en
 - 日语：ja
 - 韩语：ko

@@ -494,6 +494,7 @@ class Activity(AbstractModel):
 <li>action-AIQualityControl：媒体质检</li>
 <li>action-SmartSubtitles：智能字幕</li>
 <li>action-exec-rules：判断规则</li>
+<li>action-SmartErase：智能擦除</li>
 
 
 
@@ -525,6 +526,7 @@ class Activity(AbstractModel):
 <li>action-AIQualityControl：媒体质检</li>
 <li>action-SmartSubtitles：智能字幕</li>
 <li>action-exec-rules：判断规则</li>
+<li>action-SmartErase：智能擦除</li>
 
 
 
@@ -619,6 +621,9 @@ class ActivityPara(AbstractModel):
         :param _SmartSubtitlesTask: 智能字幕任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        :param _SmartEraseTask: 智能擦除任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -632,6 +637,7 @@ class ActivityPara(AbstractModel):
         self._QualityControlTask = None
         self._ExecRulesTask = None
         self._SmartSubtitlesTask = None
+        self._SmartEraseTask = None
 
     @property
     def TranscodeTask(self):
@@ -777,6 +783,18 @@ class ActivityPara(AbstractModel):
     def SmartSubtitlesTask(self, SmartSubtitlesTask):
         self._SmartSubtitlesTask = SmartSubtitlesTask
 
+    @property
+    def SmartEraseTask(self):
+        r"""智能擦除任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        """
+        return self._SmartEraseTask
+
+    @SmartEraseTask.setter
+    def SmartEraseTask(self, SmartEraseTask):
+        self._SmartEraseTask = SmartEraseTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -815,6 +833,9 @@ class ActivityPara(AbstractModel):
         if params.get("SmartSubtitlesTask") is not None:
             self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
             self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
+        if params.get("SmartEraseTask") is not None:
+            self._SmartEraseTask = SmartEraseTaskInput()
+            self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -868,6 +889,9 @@ class ActivityResItem(AbstractModel):
         :param _SmartSubtitlesTask: 智能字幕任务输出
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
+        :param _SmartEraseTask: 智能擦除任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -881,6 +905,7 @@ class ActivityResItem(AbstractModel):
         self._QualityControlTask = None
         self._ExecRuleTask = None
         self._SmartSubtitlesTask = None
+        self._SmartEraseTask = None
 
     @property
     def TranscodeTask(self):
@@ -1026,6 +1051,18 @@ class ActivityResItem(AbstractModel):
     def SmartSubtitlesTask(self, SmartSubtitlesTask):
         self._SmartSubtitlesTask = SmartSubtitlesTask
 
+    @property
+    def SmartEraseTask(self):
+        r"""智能擦除任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
+        """
+        return self._SmartEraseTask
+
+    @SmartEraseTask.setter
+    def SmartEraseTask(self, SmartEraseTask):
+        self._SmartEraseTask = SmartEraseTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -1064,6 +1101,9 @@ class ActivityResItem(AbstractModel):
         if params.get("SmartSubtitlesTask") is not None:
             self._SmartSubtitlesTask = ScheduleSmartSubtitleTaskResult()
             self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
+        if params.get("SmartEraseTask") is not None:
+            self._SmartEraseTask = SmartEraseTaskResult()
+            self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1093,6 +1133,7 @@ class ActivityResult(AbstractModel):
 <li>AIAnalysis：智能分析。</li>
 <li>AiQualityControl：媒体质检。</li>
 <li>SmartSubtitles：智能字幕。</li>
+<li>SmartErase：智能擦除。</li>
         :type ActivityType: str
         :param _ActivityResItem: 原子任务输出。
         :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
@@ -1114,6 +1155,7 @@ class ActivityResult(AbstractModel):
 <li>AIAnalysis：智能分析。</li>
 <li>AiQualityControl：媒体质检。</li>
 <li>SmartSubtitles：智能字幕。</li>
+<li>SmartErase：智能擦除。</li>
         :rtype: str
         """
         return self._ActivityType
@@ -1259,16 +1301,17 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type SubStreamObjectName: str
         :param _SegmentObjectName: 转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`。
         :type SegmentObjectName: str
-        :param _AddOnSubtitles: 要插入的字幕文件。
+        :param _AddOnSubtitles: 外挂字幕功能，指定要插入的字幕文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddOnSubtitles: list of AddOnSubtitle
         :param _DrmInfo: Drm信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         :param _DefinitionType: 自适应转码模板类型：
 Common：音视频类型
 PureAudio：纯音频类型
         :type DefinitionType: str
-        :param _SubtitleTemplate: 字幕参数
+        :param _SubtitleTemplate: 硬字幕（压制字幕）功能，指定字幕来源、字体大小、位置等字幕参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         :param _StdExtInfo: 转码参数扩展字段
@@ -1362,7 +1405,7 @@ PureAudio：纯音频类型
 
     @property
     def AddOnSubtitles(self):
-        r"""要插入的字幕文件。
+        r"""外挂字幕功能，指定要插入的字幕文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AddOnSubtitle
         """
@@ -1375,6 +1418,7 @@ PureAudio：纯音频类型
     @property
     def DrmInfo(self):
         r"""Drm信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         return self._DrmInfo
@@ -1398,7 +1442,7 @@ PureAudio：纯音频类型
 
     @property
     def SubtitleTemplate(self):
-        r"""字幕参数
+        r"""硬字幕（压制字幕）功能，指定字幕来源、字体大小、位置等字幕参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
@@ -12924,6 +12968,251 @@ class BatchSubTaskResult(AbstractModel):
         
 
 
+class BeautyConfig(AbstractModel):
+    r"""美颜配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeautyEffectItems: 美颜效果
+        :type BeautyEffectItems: list of BeautyEffectItemConfig
+        :param _BeautyFilterItems: 美颜滤镜
+        :type BeautyFilterItems: list of BeautyFilterItemConfig
+        """
+        self._BeautyEffectItems = None
+        self._BeautyFilterItems = None
+
+    @property
+    def BeautyEffectItems(self):
+        r"""美颜效果
+        :rtype: list of BeautyEffectItemConfig
+        """
+        return self._BeautyEffectItems
+
+    @BeautyEffectItems.setter
+    def BeautyEffectItems(self, BeautyEffectItems):
+        self._BeautyEffectItems = BeautyEffectItems
+
+    @property
+    def BeautyFilterItems(self):
+        r"""美颜滤镜
+        :rtype: list of BeautyFilterItemConfig
+        """
+        return self._BeautyFilterItems
+
+    @BeautyFilterItems.setter
+    def BeautyFilterItems(self, BeautyFilterItems):
+        self._BeautyFilterItems = BeautyFilterItems
+
+
+    def _deserialize(self, params):
+        if params.get("BeautyEffectItems") is not None:
+            self._BeautyEffectItems = []
+            for item in params.get("BeautyEffectItems"):
+                obj = BeautyEffectItemConfig()
+                obj._deserialize(item)
+                self._BeautyEffectItems.append(obj)
+        if params.get("BeautyFilterItems") is not None:
+            self._BeautyFilterItems = []
+            for item in params.get("BeautyFilterItems"):
+                obj = BeautyFilterItemConfig()
+                obj._deserialize(item)
+                self._BeautyFilterItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BeautyEffectItemConfig(AbstractModel):
+    r"""美颜效果配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型名称。取值如下：
+
+<li>Whiten：美白</li>
+<li>Smooth：磨皮</li>
+<li>BeautyThinFace：瘦脸</li>
+<li>NatureFace：自然脸型</li>
+<li>VFace：V脸</li>
+<li>EnlargeEye：大眼</li>
+<li>EyeLighten：亮眼</li>
+<li>RemoveEyeBags：祛眼袋</li>
+<li>ThinNose：瘦鼻</li>
+<li>RemoveLawLine：祛法令纹</li>
+<li>ToothWhiten：牙齿美白</li>
+
+
+        :type Type: str
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param _Value: 效果强度，值范围：[0, 100]。
+        :type Value: int
+        """
+        self._Type = None
+        self._Switch = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""类型名称。取值如下：
+
+<li>Whiten：美白</li>
+<li>Smooth：磨皮</li>
+<li>BeautyThinFace：瘦脸</li>
+<li>NatureFace：自然脸型</li>
+<li>VFace：V脸</li>
+<li>EnlargeEye：大眼</li>
+<li>EyeLighten：亮眼</li>
+<li>RemoveEyeBags：祛眼袋</li>
+<li>ThinNose：瘦鼻</li>
+<li>RemoveLawLine：祛法令纹</li>
+<li>ToothWhiten：牙齿美白</li>
+
+
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Switch(self):
+        r"""能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Value(self):
+        r"""效果强度，值范围：[0, 100]。
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Switch = params.get("Switch")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BeautyFilterItemConfig(AbstractModel):
+    r"""美颜滤镜配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型名称。取值如下：
+
+<li>Dongjing：东京</li>
+<li>QingJiaopian：轻胶片</li>
+<li>Meiwei：美味</li>
+
+
+        :type Type: str
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param _Value: 效果强度，值范围：[0, 100]。
+        :type Value: int
+        """
+        self._Type = None
+        self._Switch = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""类型名称。取值如下：
+
+<li>Dongjing：东京</li>
+<li>QingJiaopian：轻胶片</li>
+<li>Meiwei：美味</li>
+
+
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Switch(self):
+        r"""能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Value(self):
+        r"""效果强度，值范围：[0, 100]。
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Switch = params.get("Switch")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlindWatermarkConfig(AbstractModel):
     r"""盲水印配置
 
@@ -19893,6 +20182,8 @@ hi：印地语
 fr：法语
 de：德语
 zh_dialect：中文方言
+zh_en: 中英
+prime_zh: 中英方言
         :type VideoSrcLanguage: str
         :param _SubtitleType: 智能字幕字幕语言类型
 0: 源语言
@@ -19906,6 +20197,7 @@ zh_dialect：中文方言
         :type Comment: str
         :param _SubtitleFormat: 智能字幕文件格式
  vtt: WebVTT 格式
+ srt: SRT 格式
 不填或填空：不生成字幕文件
         :type SubtitleFormat: str
         :param _AsrHotWordsConfigure: ASR热词库参数
@@ -19981,6 +20273,8 @@ hi：印地语
 fr：法语
 de：德语
 zh_dialect：中文方言
+zh_en: 中英
+prime_zh: 中英方言
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -20021,6 +20315,7 @@ zh_dialect：中文方言
     def SubtitleFormat(self):
         r"""智能字幕文件格式
  vtt: WebVTT 格式
+ srt: SRT 格式
 不填或填空：不生成字幕文件
         :rtype: str
         """
@@ -33674,6 +33969,195 @@ class EnhanceConfig(AbstractModel):
         
 
 
+class EraseArea(AbstractModel):
+    r"""智能擦除，擦除区域坐标配置。
+    区域由左上角与右下角点的坐标确定。
+    坐标原点为画面左上角，坐标点可使用像素值或百分比单位指定。
+    对自动擦除区域：
+    当单位为%时，坐标范围为[0,1]；
+    当单位为px时，X值范围为 [0，视频画面宽度]，Y值范围为 [0，视频画面高度]
+    对指定擦除区域：
+    当单位为%时，坐标范围为[0,1)；
+    当单位为px时，X值范围为 [0，视频画面宽度]，Y值范围为 [0，视频画面高度]
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LeftTopX: 区域左上角X坐标。
+如当Unit取1即使用百分比单位时，0.05表示区域左上角离整个画面左上角的横向距离为画面宽度的5%。
+        :type LeftTopX: float
+        :param _LeftTopY: 区域左上角Y坐标。
+如当Unit取1即使用百分比单位时，0.1表示区域左上角离整个画面左上角的纵向距离为画面高度的10%。
+        :type LeftTopY: float
+        :param _RightBottomX: 区域右下角X坐标。
+如当Unit取1即使用百分比单位时，0.75表示区域右下角离整个画面左上角的横向距离为画面宽度的75%。
+        :type RightBottomX: float
+        :param _RightBottomY: 区域右下角Y坐标。
+如当Unit取1即使用百分比单位时，0.9表示区域右下角离整个画面左上角的纵向距离为画面高度的90%。
+        :type RightBottomY: float
+        :param _Unit: 坐标单位
+- 1 百分比
+- 2 像素值
+        :type Unit: int
+        """
+        self._LeftTopX = None
+        self._LeftTopY = None
+        self._RightBottomX = None
+        self._RightBottomY = None
+        self._Unit = None
+
+    @property
+    def LeftTopX(self):
+        r"""区域左上角X坐标。
+如当Unit取1即使用百分比单位时，0.05表示区域左上角离整个画面左上角的横向距离为画面宽度的5%。
+        :rtype: float
+        """
+        return self._LeftTopX
+
+    @LeftTopX.setter
+    def LeftTopX(self, LeftTopX):
+        self._LeftTopX = LeftTopX
+
+    @property
+    def LeftTopY(self):
+        r"""区域左上角Y坐标。
+如当Unit取1即使用百分比单位时，0.1表示区域左上角离整个画面左上角的纵向距离为画面高度的10%。
+        :rtype: float
+        """
+        return self._LeftTopY
+
+    @LeftTopY.setter
+    def LeftTopY(self, LeftTopY):
+        self._LeftTopY = LeftTopY
+
+    @property
+    def RightBottomX(self):
+        r"""区域右下角X坐标。
+如当Unit取1即使用百分比单位时，0.75表示区域右下角离整个画面左上角的横向距离为画面宽度的75%。
+        :rtype: float
+        """
+        return self._RightBottomX
+
+    @RightBottomX.setter
+    def RightBottomX(self, RightBottomX):
+        self._RightBottomX = RightBottomX
+
+    @property
+    def RightBottomY(self):
+        r"""区域右下角Y坐标。
+如当Unit取1即使用百分比单位时，0.9表示区域右下角离整个画面左上角的纵向距离为画面高度的90%。
+        :rtype: float
+        """
+        return self._RightBottomY
+
+    @RightBottomY.setter
+    def RightBottomY(self, RightBottomY):
+        self._RightBottomY = RightBottomY
+
+    @property
+    def Unit(self):
+        r"""坐标单位
+- 1 百分比
+- 2 像素值
+        :rtype: int
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+
+    def _deserialize(self, params):
+        self._LeftTopX = params.get("LeftTopX")
+        self._LeftTopY = params.get("LeftTopY")
+        self._RightBottomX = params.get("RightBottomX")
+        self._RightBottomY = params.get("RightBottomY")
+        self._Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EraseTimeArea(AbstractModel):
+    r"""智能擦除，指定擦除区域配置。
+    对指定时间段内的指定区域直接进行擦除。
+    当BeginMs和EndMs均取0时对整个视频内的指定区域直接进行擦除。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginMs: 开始时间，单位:毫秒
+        :type BeginMs: int
+        :param _EndMs: 结束时间，单位:毫秒
+        :type EndMs: int
+        :param _Areas: 时间段内擦除区域列表
+        :type Areas: list of EraseArea
+        """
+        self._BeginMs = None
+        self._EndMs = None
+        self._Areas = None
+
+    @property
+    def BeginMs(self):
+        r"""开始时间，单位:毫秒
+        :rtype: int
+        """
+        return self._BeginMs
+
+    @BeginMs.setter
+    def BeginMs(self, BeginMs):
+        self._BeginMs = BeginMs
+
+    @property
+    def EndMs(self):
+        r"""结束时间，单位:毫秒
+        :rtype: int
+        """
+        return self._EndMs
+
+    @EndMs.setter
+    def EndMs(self, EndMs):
+        self._EndMs = EndMs
+
+    @property
+    def Areas(self):
+        r"""时间段内擦除区域列表
+        :rtype: list of EraseArea
+        """
+        return self._Areas
+
+    @Areas.setter
+    def Areas(self, Areas):
+        self._Areas = Areas
+
+
+    def _deserialize(self, params):
+        self._BeginMs = params.get("BeginMs")
+        self._EndMs = params.get("EndMs")
+        if params.get("Areas") is not None:
+            self._Areas = []
+            for item in params.get("Areas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._Areas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EvaluationMediaInputInfo(AbstractModel):
     r"""视频评测任务的视频来源信息
 
@@ -33681,7 +34165,7 @@ class EvaluationMediaInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceId: 对比视频的来源 ID，当评测任务的类型为 BD_RATE 且对比视频来自用户输入时有效；当对比视频来自转码模版时为空
+        :param _SourceId: 对比视频的来源 ID，当评测任务的类型为 BD_RATE 且对比视频来自用户输入时有效；当对比视频来自转码模板时为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceId: str
         :param _InputInfo: 对比视频的输入信息
@@ -33693,7 +34177,7 @@ class EvaluationMediaInputInfo(AbstractModel):
 
     @property
     def SourceId(self):
-        r"""对比视频的来源 ID，当评测任务的类型为 BD_RATE 且对比视频来自用户输入时有效；当对比视频来自转码模版时为空
+        r"""对比视频的来源 ID，当评测任务的类型为 BD_RATE 且对比视频来自用户输入时有效；当对比视频来自转码模板时为空
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33969,13 +34453,13 @@ class EvaluationTaskInput(AbstractModel):
 
 
 class EvaluationTemplateInputInfo(AbstractModel):
-    r"""在评测中使用的转码模版的信息
+    r"""在评测中使用的转码模板的信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: 转码模版的 ID。
+        :param _Definition: 转码模板的 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         """
@@ -33983,7 +34467,7 @@ class EvaluationTemplateInputInfo(AbstractModel):
 
     @property
     def Definition(self):
-        r"""转码模版的 ID。
+        r"""转码模板的 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37823,11 +38307,14 @@ class ImageTaskInput(AbstractModel):
         :param _BlindWatermarkConfig: 盲水印配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkConfig`
+        :param _BeautyConfig: 美颜配置。
+        :type BeautyConfig: :class:`tencentcloud.mps.v20190612.models.BeautyConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
         self._EraseConfig = None
         self._BlindWatermarkConfig = None
+        self._BeautyConfig = None
 
     @property
     def EncodeConfig(self):
@@ -37877,6 +38364,17 @@ class ImageTaskInput(AbstractModel):
     def BlindWatermarkConfig(self, BlindWatermarkConfig):
         self._BlindWatermarkConfig = BlindWatermarkConfig
 
+    @property
+    def BeautyConfig(self):
+        r"""美颜配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BeautyConfig`
+        """
+        return self._BeautyConfig
+
+    @BeautyConfig.setter
+    def BeautyConfig(self, BeautyConfig):
+        self._BeautyConfig = BeautyConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -37891,6 +38389,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("BlindWatermarkConfig") is not None:
             self._BlindWatermarkConfig = BlindWatermarkConfig()
             self._BlindWatermarkConfig._deserialize(params.get("BlindWatermarkConfig"))
+        if params.get("BeautyConfig") is not None:
+            self._BeautyConfig = BeautyConfig()
+            self._BeautyConfig._deserialize(params.get("BeautyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43340,6 +43841,7 @@ class MediaInputInfo(AbstractModel):
 <li> COS：COS源</li>
 <li> URL：URL源</li>
 <li> AWS-S3：AWS 源，目前只支持转码任务 </li>
+<li> VOD：点播专业版 </li>
         :type Type: str
         :param _CosInputInfo: 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 对象信息。
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
@@ -43349,11 +43851,15 @@ class MediaInputInfo(AbstractModel):
         :param _S3InputInfo: 当 Type 为 AWS-S3 时有效，则该项为必填，表示媒体处理 AWS S3 对象信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type S3InputInfo: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
+        :param _VODInputInfo: 当 Type 为 VOD 时有效，则该项为必填，表示媒体处理 点播专业版 对象信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VODInputInfo: :class:`tencentcloud.mps.v20190612.models.VODInputInfo`
         """
         self._Type = None
         self._CosInputInfo = None
         self._UrlInputInfo = None
         self._S3InputInfo = None
+        self._VODInputInfo = None
 
     @property
     def Type(self):
@@ -43361,6 +43867,7 @@ class MediaInputInfo(AbstractModel):
 <li> COS：COS源</li>
 <li> URL：URL源</li>
 <li> AWS-S3：AWS 源，目前只支持转码任务 </li>
+<li> VOD：点播专业版 </li>
         :rtype: str
         """
         return self._Type
@@ -43404,6 +43911,18 @@ class MediaInputInfo(AbstractModel):
     def S3InputInfo(self, S3InputInfo):
         self._S3InputInfo = S3InputInfo
 
+    @property
+    def VODInputInfo(self):
+        r"""当 Type 为 VOD 时有效，则该项为必填，表示媒体处理 点播专业版 对象信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VODInputInfo`
+        """
+        return self._VODInputInfo
+
+    @VODInputInfo.setter
+    def VODInputInfo(self, VODInputInfo):
+        self._VODInputInfo = VODInputInfo
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -43416,6 +43935,9 @@ class MediaInputInfo(AbstractModel):
         if params.get("S3InputInfo") is not None:
             self._S3InputInfo = S3InputInfo()
             self._S3InputInfo._deserialize(params.get("S3InputInfo"))
+        if params.get("VODInputInfo") is not None:
+            self._VODInputInfo = VODInputInfo()
+            self._VODInputInfo._deserialize(params.get("VODInputInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48409,9 +48931,12 @@ hi：印地语
 fr：法语
 de：德语
 zh_dialect：中文方言
+zh_en: 中英
+prime_zh: 中英方言
         :type VideoSrcLanguage: str
         :param _SubtitleFormat: 智能字幕文件格式
  vtt: WebVTT 格式
+srt: SRT格式
 不填或填空：不生成字幕文件
         :type SubtitleFormat: str
         :param _SubtitleType: 智能字幕字幕语言类型
@@ -48527,6 +49052,8 @@ hi：印地语
 fr：法语
 de：德语
 zh_dialect：中文方言
+zh_en: 中英
+prime_zh: 中英方言
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -48539,6 +49066,7 @@ zh_dialect：中文方言
     def SubtitleFormat(self):
         r"""智能字幕文件格式
  vtt: WebVTT 格式
+srt: SRT格式
 不填或填空：不生成字幕文件
         :rtype: str
         """
@@ -52862,6 +53390,8 @@ class ProcessMediaRequest(AbstractModel):
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         :param _SmartSubtitlesTask: 智能字幕
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        :param _SmartEraseTask: 智能擦除类型任务参数
+        :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
         :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param _TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
@@ -52892,6 +53422,7 @@ class ProcessMediaRequest(AbstractModel):
         self._AiRecognitionTask = None
         self._AiQualityControlTask = None
         self._SmartSubtitlesTask = None
+        self._SmartEraseTask = None
         self._TaskNotifyConfig = None
         self._TasksPriority = None
         self._SessionId = None
@@ -53020,6 +53551,17 @@ class ProcessMediaRequest(AbstractModel):
         self._SmartSubtitlesTask = SmartSubtitlesTask
 
     @property
+    def SmartEraseTask(self):
+        r"""智能擦除类型任务参数
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        """
+        return self._SmartEraseTask
+
+    @SmartEraseTask.setter
+    def SmartEraseTask(self, SmartEraseTask):
+        self._SmartEraseTask = SmartEraseTask
+
+    @property
     def TaskNotifyConfig(self):
         r"""任务的事件通知信息，不填代表不获取事件通知。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
@@ -53129,6 +53671,9 @@ class ProcessMediaRequest(AbstractModel):
         if params.get("SmartSubtitlesTask") is not None:
             self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
             self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
+        if params.get("SmartEraseTask") is not None:
+            self._SmartEraseTask = SmartEraseTaskInput()
+            self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -53799,10 +54344,16 @@ class QualityControlItemConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 质检项名称。质检项取值如下：
-<li>LowEvaluation：无参考打分</li>
+<li>LowEvaluation：视频无参考评分（MOS）</li>
+<li>AudioEvaluation：音频无参考评分（MOS）</li>
 <li>Mosaic：马赛克检测</li>
 <li>CrashScreen：花屏检测</li>
 <li>Blur：模糊检测</li>
+<li>Jitter：抖动检测</li>
+<li>Noise：噪点检测</li>
+<li>QRCode：二维码检测</li>
+<li>BarCode：条形码检测</li>
+<li>AppletCode：小程序码检测</li>
 <li>BlackWhiteEdge：黑白边检测</li>
 <li>SolidColorScreen：纯色屏检测</li>
 <li>LowLighting：低光照</li>
@@ -53810,11 +54361,7 @@ class QualityControlItemConfig(AbstractModel):
 <li>NoVoice：静音检测</li>
 <li>LowVoice：低音检测</li>
 <li>HighVoice：爆音检测</li>
-<li>Jitter：抖动检测</li>
-<li>Noise：噪点检测</li>
-<li>QRCode：二维码检测</li>
-<li>BarCode：条形码检测</li>
-<li>AppletCode：小程序码检测</li>
+<li>AudioNoise：音频噪声检测</li>
 <li>VideoResolutionChanged：视频分辨率变化</li>
 <li>AudioSampleRateChanged：音频采样率变化</li>
 <li>AudioChannelsChanged：音频通道数变化</li>
@@ -53892,10 +54439,16 @@ class QualityControlItemConfig(AbstractModel):
     @property
     def Type(self):
         r"""质检项名称。质检项取值如下：
-<li>LowEvaluation：无参考打分</li>
+<li>LowEvaluation：视频无参考评分（MOS）</li>
+<li>AudioEvaluation：音频无参考评分（MOS）</li>
 <li>Mosaic：马赛克检测</li>
 <li>CrashScreen：花屏检测</li>
 <li>Blur：模糊检测</li>
+<li>Jitter：抖动检测</li>
+<li>Noise：噪点检测</li>
+<li>QRCode：二维码检测</li>
+<li>BarCode：条形码检测</li>
+<li>AppletCode：小程序码检测</li>
 <li>BlackWhiteEdge：黑白边检测</li>
 <li>SolidColorScreen：纯色屏检测</li>
 <li>LowLighting：低光照</li>
@@ -53903,11 +54456,7 @@ class QualityControlItemConfig(AbstractModel):
 <li>NoVoice：静音检测</li>
 <li>LowVoice：低音检测</li>
 <li>HighVoice：爆音检测</li>
-<li>Jitter：抖动检测</li>
-<li>Noise：噪点检测</li>
-<li>QRCode：二维码检测</li>
-<li>BarCode：条形码检测</li>
-<li>AppletCode：小程序码检测</li>
+<li>AudioNoise：音频噪声检测</li>
 <li>VideoResolutionChanged：视频分辨率变化</li>
 <li>AudioSampleRateChanged：音频采样率变化</li>
 <li>AudioChannelsChanged：音频通道数变化</li>
@@ -54641,6 +55190,111 @@ class RawImageWatermarkInput(AbstractModel):
         
 
 
+class RawSmartEraseParameter(AbstractModel):
+    r"""智能擦除自定义参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EraseType: 擦除类型
+- subtitle 去字幕
+- watermark 去水印
+- privacy 隐私保护
+        :type EraseType: str
+        :param _EraseSubtitleConfig: 字幕擦除配置；
+当EraseType值为：subtitle，此字段为必填参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        :param _EraseWatermarkConfig: 水印擦除配置；
+当EraseType值为：watermark，此字段为必填参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        :param _ErasePrivacyConfig: 隐私保护配置；
+当EraseType值为：privacy，此字段为必填参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        """
+        self._EraseType = None
+        self._EraseSubtitleConfig = None
+        self._EraseWatermarkConfig = None
+        self._ErasePrivacyConfig = None
+
+    @property
+    def EraseType(self):
+        r"""擦除类型
+- subtitle 去字幕
+- watermark 去水印
+- privacy 隐私保护
+        :rtype: str
+        """
+        return self._EraseType
+
+    @EraseType.setter
+    def EraseType(self, EraseType):
+        self._EraseType = EraseType
+
+    @property
+    def EraseSubtitleConfig(self):
+        r"""字幕擦除配置；
+当EraseType值为：subtitle，此字段为必填参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
+        """
+        return self._EraseSubtitleConfig
+
+    @EraseSubtitleConfig.setter
+    def EraseSubtitleConfig(self, EraseSubtitleConfig):
+        self._EraseSubtitleConfig = EraseSubtitleConfig
+
+    @property
+    def EraseWatermarkConfig(self):
+        r"""水印擦除配置；
+当EraseType值为：watermark，此字段为必填参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
+        """
+        return self._EraseWatermarkConfig
+
+    @EraseWatermarkConfig.setter
+    def EraseWatermarkConfig(self, EraseWatermarkConfig):
+        self._EraseWatermarkConfig = EraseWatermarkConfig
+
+    @property
+    def ErasePrivacyConfig(self):
+        r"""隐私保护配置；
+当EraseType值为：privacy，此字段为必填参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        """
+        return self._ErasePrivacyConfig
+
+    @ErasePrivacyConfig.setter
+    def ErasePrivacyConfig(self, ErasePrivacyConfig):
+        self._ErasePrivacyConfig = ErasePrivacyConfig
+
+
+    def _deserialize(self, params):
+        self._EraseType = params.get("EraseType")
+        if params.get("EraseSubtitleConfig") is not None:
+            self._EraseSubtitleConfig = SmartEraseSubtitleConfig()
+            self._EraseSubtitleConfig._deserialize(params.get("EraseSubtitleConfig"))
+        if params.get("EraseWatermarkConfig") is not None:
+            self._EraseWatermarkConfig = SmartEraseWatermarkConfig()
+            self._EraseWatermarkConfig._deserialize(params.get("EraseWatermarkConfig"))
+        if params.get("ErasePrivacyConfig") is not None:
+            self._ErasePrivacyConfig = SmartErasePrivacyConfig()
+            self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RawSmartSubtitleParameter(AbstractModel):
     r"""自定义智能字幕参数
 
@@ -54677,9 +55331,12 @@ hi：印地语
 fr：法语
 de：德语
 zh_dialect：中文方言
+zh_en: 中英
+prime_zh: 中英方言
         :type VideoSrcLanguage: str
         :param _SubtitleFormat: 智能字幕文件格式
  vtt: WebVTT 格式
+srt: SRT格式
 不填或填空：不生成字幕文件
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleFormat: str
@@ -54764,6 +55421,8 @@ hi：印地语
 fr：法语
 de：德语
 zh_dialect：中文方言
+zh_en: 中英
+prime_zh: 中英方言
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -54776,6 +55435,7 @@ zh_dialect：中文方言
     def SubtitleFormat(self):
         r"""智能字幕文件格式
  vtt: WebVTT 格式
+srt: SRT格式
 不填或填空：不生成字幕文件
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -58626,6 +59286,696 @@ class SimpleAesDrm(AbstractModel):
         
 
 
+class SmartErasePrivacyConfig(AbstractModel):
+    r"""智能擦除模板隐私保护配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivacyModel: 隐私保护擦除方式。
+- blur 模糊
+- mosaic 马赛克
+        :type PrivacyModel: str
+        :param _PrivacyTargets: 隐私保护目标，（在API Explorer上使用时无需传入数组，添加相应项并填入对应值即可）。
+- face 人脸
+- plate 车牌
+        :type PrivacyTargets: list of str
+        """
+        self._PrivacyModel = None
+        self._PrivacyTargets = None
+
+    @property
+    def PrivacyModel(self):
+        r"""隐私保护擦除方式。
+- blur 模糊
+- mosaic 马赛克
+        :rtype: str
+        """
+        return self._PrivacyModel
+
+    @PrivacyModel.setter
+    def PrivacyModel(self, PrivacyModel):
+        self._PrivacyModel = PrivacyModel
+
+    @property
+    def PrivacyTargets(self):
+        r"""隐私保护目标，（在API Explorer上使用时无需传入数组，添加相应项并填入对应值即可）。
+- face 人脸
+- plate 车牌
+        :rtype: list of str
+        """
+        return self._PrivacyTargets
+
+    @PrivacyTargets.setter
+    def PrivacyTargets(self, PrivacyTargets):
+        self._PrivacyTargets = PrivacyTargets
+
+
+    def _deserialize(self, params):
+        self._PrivacyModel = params.get("PrivacyModel")
+        self._PrivacyTargets = params.get("PrivacyTargets")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartEraseSubtitleConfig(AbstractModel):
+    r"""智能擦除模板去字幕配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleEraseMethod: 字幕擦除方式。
+**自动擦除：**通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。
+当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。
+**指定区域擦除：**若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。
+当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。
+- auto 自动擦除
+- custom 指定区域擦除
+
+        :type SubtitleEraseMethod: str
+        :param _SubtitleModel: 字幕擦除模型。
+**标准版（推荐）：**若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。
+**区域版：**若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。
+- standard 标准模型
+- area 区域模型
+        :type SubtitleModel: str
+        :param _OcrSwitch: 是否开启OCR字幕提取，默认取OFF。
+当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。
+- ON 开启
+- OFF 关闭
+        :type OcrSwitch: str
+        :param _SubtitleLang: 字幕语言，用于指导OCR识别，默认取zh_en；仅当OcrSwitch取"ON"时生效。
+- zh_en 中英文
+- multi 其他
+其他具体支持识别如下语言：
+中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语
+
+
+        :type SubtitleLang: str
+        :param _SubtitleFormat: 字幕文件格式，默认取vtt；仅当OcrSwitch取"ON"时生效。
+- srt srt格式
+- vtt WebVTT格式
+        :type SubtitleFormat: str
+        :param _TransSwitch: 是否开启字幕翻译，默认取OFF；仅当OcrSwitch取"ON"时生效。
+- ON 开启
+- OFF 关闭
+        :type TransSwitch: str
+        :param _TransDstLang: 字幕翻译目标语言，默认取en；仅当TransSwitch取"ON"时生效。
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+        :type TransDstLang: str
+        :param _AutoAreas: 自动擦除自定义区域。
+对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
+注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+        :type AutoAreas: list of EraseArea
+        :param _CustomAreas: 指定擦除自定义区域。
+对选定区域，在选定时间段内不进行检测识别直接进行擦除。
+注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+        :type CustomAreas: list of EraseTimeArea
+        """
+        self._SubtitleEraseMethod = None
+        self._SubtitleModel = None
+        self._OcrSwitch = None
+        self._SubtitleLang = None
+        self._SubtitleFormat = None
+        self._TransSwitch = None
+        self._TransDstLang = None
+        self._AutoAreas = None
+        self._CustomAreas = None
+
+    @property
+    def SubtitleEraseMethod(self):
+        r"""字幕擦除方式。
+**自动擦除：**通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。
+当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。
+**指定区域擦除：**若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。
+当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。
+- auto 自动擦除
+- custom 指定区域擦除
+
+        :rtype: str
+        """
+        return self._SubtitleEraseMethod
+
+    @SubtitleEraseMethod.setter
+    def SubtitleEraseMethod(self, SubtitleEraseMethod):
+        self._SubtitleEraseMethod = SubtitleEraseMethod
+
+    @property
+    def SubtitleModel(self):
+        r"""字幕擦除模型。
+**标准版（推荐）：**若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。
+**区域版：**若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。
+- standard 标准模型
+- area 区域模型
+        :rtype: str
+        """
+        return self._SubtitleModel
+
+    @SubtitleModel.setter
+    def SubtitleModel(self, SubtitleModel):
+        self._SubtitleModel = SubtitleModel
+
+    @property
+    def OcrSwitch(self):
+        r"""是否开启OCR字幕提取，默认取OFF。
+当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。
+- ON 开启
+- OFF 关闭
+        :rtype: str
+        """
+        return self._OcrSwitch
+
+    @OcrSwitch.setter
+    def OcrSwitch(self, OcrSwitch):
+        self._OcrSwitch = OcrSwitch
+
+    @property
+    def SubtitleLang(self):
+        r"""字幕语言，用于指导OCR识别，默认取zh_en；仅当OcrSwitch取"ON"时生效。
+- zh_en 中英文
+- multi 其他
+其他具体支持识别如下语言：
+中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语
+
+
+        :rtype: str
+        """
+        return self._SubtitleLang
+
+    @SubtitleLang.setter
+    def SubtitleLang(self, SubtitleLang):
+        self._SubtitleLang = SubtitleLang
+
+    @property
+    def SubtitleFormat(self):
+        r"""字幕文件格式，默认取vtt；仅当OcrSwitch取"ON"时生效。
+- srt srt格式
+- vtt WebVTT格式
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def TransSwitch(self):
+        r"""是否开启字幕翻译，默认取OFF；仅当OcrSwitch取"ON"时生效。
+- ON 开启
+- OFF 关闭
+        :rtype: str
+        """
+        return self._TransSwitch
+
+    @TransSwitch.setter
+    def TransSwitch(self, TransSwitch):
+        self._TransSwitch = TransSwitch
+
+    @property
+    def TransDstLang(self):
+        r"""字幕翻译目标语言，默认取en；仅当TransSwitch取"ON"时生效。
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+        :rtype: str
+        """
+        return self._TransDstLang
+
+    @TransDstLang.setter
+    def TransDstLang(self, TransDstLang):
+        self._TransDstLang = TransDstLang
+
+    @property
+    def AutoAreas(self):
+        r"""自动擦除自定义区域。
+对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
+注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+        :rtype: list of EraseArea
+        """
+        return self._AutoAreas
+
+    @AutoAreas.setter
+    def AutoAreas(self, AutoAreas):
+        self._AutoAreas = AutoAreas
+
+    @property
+    def CustomAreas(self):
+        r"""指定擦除自定义区域。
+对选定区域，在选定时间段内不进行检测识别直接进行擦除。
+注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+        :rtype: list of EraseTimeArea
+        """
+        return self._CustomAreas
+
+    @CustomAreas.setter
+    def CustomAreas(self, CustomAreas):
+        self._CustomAreas = CustomAreas
+
+
+    def _deserialize(self, params):
+        self._SubtitleEraseMethod = params.get("SubtitleEraseMethod")
+        self._SubtitleModel = params.get("SubtitleModel")
+        self._OcrSwitch = params.get("OcrSwitch")
+        self._SubtitleLang = params.get("SubtitleLang")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        self._TransSwitch = params.get("TransSwitch")
+        self._TransDstLang = params.get("TransDstLang")
+        if params.get("AutoAreas") is not None:
+            self._AutoAreas = []
+            for item in params.get("AutoAreas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._AutoAreas.append(obj)
+        if params.get("CustomAreas") is not None:
+            self._CustomAreas = []
+            for item in params.get("CustomAreas"):
+                obj = EraseTimeArea()
+                obj._deserialize(item)
+                self._CustomAreas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartEraseTaskInput(AbstractModel):
+    r"""智能擦除任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 智能擦除模板id。
+        :type Definition: int
+        :param _RawParameter: 智能擦除自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定智能擦除参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartEraseParameter`
+        :param _OutputStorage: 文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputObjectPath: 文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+
+**注意**：目前不支持`BatchProcessMedia`接口。
+        :type OutputObjectPath: str
+        """
+        self._Definition = None
+        self._RawParameter = None
+        self._OutputStorage = None
+        self._OutputObjectPath = None
+
+    @property
+    def Definition(self):
+        r"""智能擦除模板id。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RawParameter(self):
+        r"""智能擦除自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定智能擦除参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartEraseParameter`
+        """
+        return self._RawParameter
+
+    @RawParameter.setter
+    def RawParameter(self, RawParameter):
+        self._RawParameter = RawParameter
+
+    @property
+    def OutputStorage(self):
+        r"""文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputObjectPath(self):
+        r"""文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+
+**注意**：目前不支持`BatchProcessMedia`接口。
+        :rtype: str
+        """
+        return self._OutputObjectPath
+
+    @OutputObjectPath.setter
+    def OutputObjectPath(self, OutputObjectPath):
+        self._OutputObjectPath = OutputObjectPath
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("RawParameter") is not None:
+            self._RawParameter = RawSmartEraseParameter()
+            self._RawParameter._deserialize(params.get("RawParameter"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputObjectPath = params.get("OutputObjectPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartEraseTaskResult(AbstractModel):
+    r"""智能擦除任务结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 智能擦除输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        :param _Output: 智能擦除任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
+        :param _Progress: 任务进度。	
+        :type Progress: int
+        :param _BeginProcessTime: 任务开始执行的时间，采用 ISO 日期格式。
+        :type BeginProcessTime: str
+        :param _FinishTime: 任务执行完毕的时间，采用 ISO 日期格式。
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        r"""任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        r"""错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""智能擦除输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""智能擦除任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        r"""任务进度。	
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        r"""任务开始执行的时间，采用 ISO 日期格式。
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""任务执行完毕的时间，采用 ISO 日期格式。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartEraseTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskDelLogoOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartEraseWatermarkConfig(AbstractModel):
+    r"""智能擦除模板去水印配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WatermarkEraseMethod: 水印擦除方式。
+**自动擦除：**通过A模型自动识别视频中的水印，擦除后生成新的视频。适用于动态水印。
+当使用自动擦除时，若您不指定AutoAreas，将对视频全屏进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。
+**指定区域擦除：**针对位置较固定的静态水印，建议您直接指定擦除区域。
+当您选择指定区域擦除时，请至少传入一个指定区域。
+
+- auto 自动擦除
+- custom 指定区域擦除
+        :type WatermarkEraseMethod: str
+        :param _WatermarkModel: 水印擦除模型。
+基础版：效果一般，性价比高，适合动画或背景较干净的视频。
+高级版：效果更好，适合短剧等现实风格视频。
+- basic 基础版
+- advanced 高级版
+        :type WatermarkModel: str
+        :param _AutoAreas: 自动擦除自定义区域。
+对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
+注意，当擦除方式为custom时，此参数将不会生效。
+        :type AutoAreas: list of EraseArea
+        :param _CustomAreas: 指定擦除自定义区域。
+对选定区域，在选定时间段内不进行检测识别直接进行擦除。
+        :type CustomAreas: list of EraseTimeArea
+        """
+        self._WatermarkEraseMethod = None
+        self._WatermarkModel = None
+        self._AutoAreas = None
+        self._CustomAreas = None
+
+    @property
+    def WatermarkEraseMethod(self):
+        r"""水印擦除方式。
+**自动擦除：**通过A模型自动识别视频中的水印，擦除后生成新的视频。适用于动态水印。
+当使用自动擦除时，若您不指定AutoAreas，将对视频全屏进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。
+**指定区域擦除：**针对位置较固定的静态水印，建议您直接指定擦除区域。
+当您选择指定区域擦除时，请至少传入一个指定区域。
+
+- auto 自动擦除
+- custom 指定区域擦除
+        :rtype: str
+        """
+        return self._WatermarkEraseMethod
+
+    @WatermarkEraseMethod.setter
+    def WatermarkEraseMethod(self, WatermarkEraseMethod):
+        self._WatermarkEraseMethod = WatermarkEraseMethod
+
+    @property
+    def WatermarkModel(self):
+        r"""水印擦除模型。
+基础版：效果一般，性价比高，适合动画或背景较干净的视频。
+高级版：效果更好，适合短剧等现实风格视频。
+- basic 基础版
+- advanced 高级版
+        :rtype: str
+        """
+        return self._WatermarkModel
+
+    @WatermarkModel.setter
+    def WatermarkModel(self, WatermarkModel):
+        self._WatermarkModel = WatermarkModel
+
+    @property
+    def AutoAreas(self):
+        r"""自动擦除自定义区域。
+对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
+注意，当擦除方式为custom时，此参数将不会生效。
+        :rtype: list of EraseArea
+        """
+        return self._AutoAreas
+
+    @AutoAreas.setter
+    def AutoAreas(self, AutoAreas):
+        self._AutoAreas = AutoAreas
+
+    @property
+    def CustomAreas(self):
+        r"""指定擦除自定义区域。
+对选定区域，在选定时间段内不进行检测识别直接进行擦除。
+        :rtype: list of EraseTimeArea
+        """
+        return self._CustomAreas
+
+    @CustomAreas.setter
+    def CustomAreas(self, CustomAreas):
+        self._CustomAreas = CustomAreas
+
+
+    def _deserialize(self, params):
+        self._WatermarkEraseMethod = params.get("WatermarkEraseMethod")
+        self._WatermarkModel = params.get("WatermarkModel")
+        if params.get("AutoAreas") is not None:
+            self._AutoAreas = []
+            for item in params.get("AutoAreas"):
+                obj = EraseArea()
+                obj._deserialize(item)
+                self._AutoAreas.append(obj)
+        if params.get("CustomAreas") is not None:
+            self._CustomAreas = []
+            for item in params.get("CustomAreas"):
+                obj = EraseTimeArea()
+                obj._deserialize(item)
+                self._CustomAreas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmartSubtitleTaskAsrFullTextResult(AbstractModel):
     r"""语音全文识别结果。
 
@@ -58774,9 +60124,12 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
         :type SegmentSet: list of SmartSubtitleTaskAsrFullTextSegmentItem
         :param _SubtitlePath: 字幕文件地址。
         :type SubtitlePath: str
+        :param _OutputStorage: 字幕文件存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
         self._SubtitlePath = None
+        self._OutputStorage = None
 
     @property
     def SegmentSet(self):
@@ -58801,6 +60154,17 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
     def SubtitlePath(self, SubtitlePath):
         self._SubtitlePath = SubtitlePath
 
+    @property
+    def OutputStorage(self):
+        r"""字幕文件存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -58810,6 +60174,9 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
         self._SubtitlePath = params.get("SubtitlePath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59247,9 +60614,12 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
         :type SegmentSet: list of SmartSubtitleTaskTransTextSegmentItem
         :param _SubtitlePath: 字幕文件地址。
         :type SubtitlePath: str
+        :param _OutputStorage: 字幕文件存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
         self._SubtitlePath = None
+        self._OutputStorage = None
 
     @property
     def SegmentSet(self):
@@ -59274,6 +60644,17 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
     def SubtitlePath(self, SubtitlePath):
         self._SubtitlePath = SubtitlePath
 
+    @property
+    def OutputStorage(self):
+        r"""字幕文件存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -59283,6 +60664,9 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
         self._SubtitlePath = params.get("SubtitlePath")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61856,6 +63240,7 @@ class TaskOutputStorage(AbstractModel):
         :param _Type: 媒体处理输出对象存储位置的类型，支持：
 <li>COS：COS存储</li>
 <li>AWS-S3：AWS 存储，只适用于AWS任务，且要求同区域</li>
+<li> VOD：点播专业版 </li>
         :type Type: str
         :param _CosOutputStorage: 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 输出位置。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -61863,16 +63248,21 @@ class TaskOutputStorage(AbstractModel):
         :param _S3OutputStorage: 当 Type 为 AWS-S3 时有效，则该项为必填，表示媒体处理 AWS S3 输出位置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type S3OutputStorage: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
+        :param _VODOutputStorage: 当 Type 为 VOD 时有效，则该项为必填，表示媒体处理 点播专业版 输出位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VODOutputStorage: :class:`tencentcloud.mps.v20190612.models.VODOutputStorage`
         """
         self._Type = None
         self._CosOutputStorage = None
         self._S3OutputStorage = None
+        self._VODOutputStorage = None
 
     @property
     def Type(self):
         r"""媒体处理输出对象存储位置的类型，支持：
 <li>COS：COS存储</li>
 <li>AWS-S3：AWS 存储，只适用于AWS任务，且要求同区域</li>
+<li> VOD：点播专业版 </li>
         :rtype: str
         """
         return self._Type
@@ -61905,6 +63295,18 @@ class TaskOutputStorage(AbstractModel):
     def S3OutputStorage(self, S3OutputStorage):
         self._S3OutputStorage = S3OutputStorage
 
+    @property
+    def VODOutputStorage(self):
+        r"""当 Type 为 VOD 时有效，则该项为必填，表示媒体处理 点播专业版 输出位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VODOutputStorage`
+        """
+        return self._VODOutputStorage
+
+    @VODOutputStorage.setter
+    def VODOutputStorage(self, VODOutputStorage):
+        self._VODOutputStorage = VODOutputStorage
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -61914,6 +63316,9 @@ class TaskOutputStorage(AbstractModel):
         if params.get("S3OutputStorage") is not None:
             self._S3OutputStorage = S3OutputStorage()
             self._S3OutputStorage._deserialize(params.get("S3OutputStorage"))
+        if params.get("VODOutputStorage") is not None:
+            self._VODOutputStorage = VODOutputStorage()
+            self._VODOutputStorage._deserialize(params.get("VODOutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64377,6 +65782,153 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
         self._LabelSet = params.get("LabelSet")
         self._BlockConfidence = params.get("BlockConfidence")
         self._ReviewConfidence = params.get("ReviewConfidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VODInputInfo(AbstractModel):
+    r"""媒体处理 VOD （点播专业版）对象信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: 媒体处理对象文件所在的 *Bucket ID*
+        :type Bucket: str
+        :param _Region: 媒体处理对象文件所在的 Bucket 所属园区
+        :type Region: str
+        :param _Object: 媒体处理对象文件的输入路径
+        :type Object: str
+        :param _SubAppId: 点播专业版应用Id
+        :type SubAppId: int
+        """
+        self._Bucket = None
+        self._Region = None
+        self._Object = None
+        self._SubAppId = None
+
+    @property
+    def Bucket(self):
+        r"""媒体处理对象文件所在的 *Bucket ID*
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        r"""媒体处理对象文件所在的 Bucket 所属园区
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Object(self):
+        r"""媒体处理对象文件的输入路径
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def SubAppId(self):
+        r"""点播专业版应用Id
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._Object = params.get("Object")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VODOutputStorage(AbstractModel):
+    r"""媒体处理 VOD（点播专业版） 输出对象信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: 媒体处理生成的文件输出的目标 *Bucket ID*
+        :type Bucket: str
+        :param _Region: 媒体处理生成的文件输出的目标 Bucket 的园区
+        :type Region: str
+        :param _SubAppId: 点播专业版应用Id
+        :type SubAppId: int
+        """
+        self._Bucket = None
+        self._Region = None
+        self._SubAppId = None
+
+    @property
+    def Bucket(self):
+        r"""媒体处理生成的文件输出的目标 *Bucket ID*
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        r"""媒体处理生成的文件输出的目标 Bucket 的园区
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SubAppId(self):
+        r"""点播专业版应用Id
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67016,6 +68568,9 @@ class WorkflowTask(AbstractModel):
         :param _SmartSubtitlesTaskResult: 智能字幕任务的执行结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartSubtitlesTaskResult: list of SmartSubtitlesResult
+        :param _SmartEraseTaskResult: 智能擦除任务的执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartEraseTaskResult: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
         """
         self._TaskId = None
         self._Status = None
@@ -67029,6 +68584,7 @@ class WorkflowTask(AbstractModel):
         self._AiRecognitionResultSet = None
         self._AiQualityControlTaskResult = None
         self._SmartSubtitlesTaskResult = None
+        self._SmartEraseTaskResult = None
 
     @property
     def TaskId(self):
@@ -67168,6 +68724,18 @@ class WorkflowTask(AbstractModel):
     def SmartSubtitlesTaskResult(self, SmartSubtitlesTaskResult):
         self._SmartSubtitlesTaskResult = SmartSubtitlesTaskResult
 
+    @property
+    def SmartEraseTaskResult(self):
+        r"""智能擦除任务的执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
+        """
+        return self._SmartEraseTaskResult
+
+    @SmartEraseTaskResult.setter
+    def SmartEraseTaskResult(self, SmartEraseTaskResult):
+        self._SmartEraseTaskResult = SmartEraseTaskResult
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -67213,6 +68781,9 @@ class WorkflowTask(AbstractModel):
                 obj = SmartSubtitlesResult()
                 obj._deserialize(item)
                 self._SmartSubtitlesTaskResult.append(obj)
+        if params.get("SmartEraseTaskResult") is not None:
+            self._SmartEraseTaskResult = SmartEraseTaskResult()
+            self._SmartEraseTaskResult._deserialize(params.get("SmartEraseTaskResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

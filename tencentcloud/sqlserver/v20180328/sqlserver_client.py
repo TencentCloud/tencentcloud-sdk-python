@@ -2741,7 +2741,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDatabaseShrinkMDF(self, request):
-        r"""本接口(ModifyDatabaseShrinkDMF)用于收缩数据库mdf(Shrink mdf)。
+        r"""本接口（ModifyDatabaseShrinkMDF）用于收缩数据库 mdf（Shrink mdf）。
 
         :param request: Request instance for ModifyDatabaseShrinkMDF.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseShrinkMDFRequest`

@@ -25075,6 +25075,207 @@ class DescribeTimingL7CacheDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTimingL7OriginPullDataRequest(AbstractModel):
+    r"""DescribeTimingL7OriginPullData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间。
+        :type StartTime: str
+        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+        :type EndTime: str
+        :param _MetricNames: 指标列表，取值有:
+<li>l7Flow_outFlux_hy: EdgeOne 节点至源站方向的请求流量，单位：Byte；</li>
+<li>l7Flow_outBandwidth_hy: EdgeOne 节点至源站方向的请求带宽，单位：bps；</li>
+<li>l7Flow_request_hy: EdgeOne 节点至源站方向的请求数，单位：次。</li>
+<li>l7Flow_inFlux_hy: 源站至 EdgeOne 节点方向的响应流量，单位：Byte；</li>
+<li>l7Flow_inBandwidth_hy: 源站至 EdgeOne 节点方向的响应带宽，单位：bps；</li>
+
+        :type MetricNames: list of str
+        :param _ZoneIds: 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+        :type ZoneIds: list of str
+        :param _Interval: 查询时间粒度，取值有：
+<li>min: 1分钟；</li>
+<li>5min: 5分钟；</li>
+<li>hour: 1小时；</li>
+<li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+        :type Interval: str
+        :param _Filters: 过滤条件，详细的过滤条件如下：
+<li>domain：客户端请求的域名。若按泛域名接入 EdgeOne，则数据中记录为泛域名，而不是具体域名。</li>
+        :type Filters: list of QueryCondition
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._MetricNames = None
+        self._ZoneIds = None
+        self._Interval = None
+        self._Filters = None
+
+    @property
+    def StartTime(self):
+        r"""开始时间。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MetricNames(self):
+        r"""指标列表，取值有:
+<li>l7Flow_outFlux_hy: EdgeOne 节点至源站方向的请求流量，单位：Byte；</li>
+<li>l7Flow_outBandwidth_hy: EdgeOne 节点至源站方向的请求带宽，单位：bps；</li>
+<li>l7Flow_request_hy: EdgeOne 节点至源站方向的请求数，单位：次。</li>
+<li>l7Flow_inFlux_hy: 源站至 EdgeOne 节点方向的响应流量，单位：Byte；</li>
+<li>l7Flow_inBandwidth_hy: 源站至 EdgeOne 节点方向的响应带宽，单位：bps；</li>
+
+        :rtype: list of str
+        """
+        return self._MetricNames
+
+    @MetricNames.setter
+    def MetricNames(self, MetricNames):
+        self._MetricNames = MetricNames
+
+    @property
+    def ZoneIds(self):
+        r"""站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def Interval(self):
+        r"""查询时间粒度，取值有：
+<li>min: 1分钟；</li>
+<li>5min: 5分钟；</li>
+<li>hour: 1小时；</li>
+<li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+        :rtype: str
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Filters(self):
+        r"""过滤条件，详细的过滤条件如下：
+<li>domain：客户端请求的域名。若按泛域名接入 EdgeOne，则数据中记录为泛域名，而不是具体域名。</li>
+        :rtype: list of QueryCondition
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._MetricNames = params.get("MetricNames")
+        self._ZoneIds = params.get("ZoneIds")
+        self._Interval = params.get("Interval")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimingL7OriginPullDataResponse(AbstractModel):
+    r"""DescribeTimingL7OriginPullData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询结果的总条数。
+        :type TotalCount: int
+        :param _TimingDataRecords: 回源时序数据列表。
+        :type TimingDataRecords: list of TimingDataRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TimingDataRecords = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询结果的总条数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TimingDataRecords(self):
+        r"""回源时序数据列表。
+        :rtype: list of TimingDataRecord
+        """
+        return self._TimingDataRecords
+
+    @TimingDataRecords.setter
+    def TimingDataRecords(self, TimingDataRecords):
+        self._TimingDataRecords = TimingDataRecords
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TimingDataRecords") is not None:
+            self._TimingDataRecords = []
+            for item in params.get("TimingDataRecords"):
+                obj = TimingDataRecord()
+                obj._deserialize(item)
+                self._TimingDataRecords.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTopL7AnalysisDataRequest(AbstractModel):
     r"""DescribeTopL7AnalysisData请求参数结构体
 
@@ -36962,6 +37163,8 @@ class ModifyHostsCertificateRequest(AbstractModel):
         :type ApplyType: str
         :param _ClientCertInfo: 在边缘双向认证场景下，该字段为客户端的 CA 证书，部署在 EO 节点内，用于客户端对 EO 节点进行认证。默认关闭，不填写表示保持原有配置。
         :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
+        :param _UpstreamCertInfo: 用于配置 EO 节点回源时携带的证书，用于回源双向认证握手，默认关闭，不填写表示保持原有配置。该配置当前为白名单内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service)。
+        :type UpstreamCertInfo: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         self._ZoneId = None
         self._Hosts = None
@@ -36969,6 +37172,7 @@ class ModifyHostsCertificateRequest(AbstractModel):
         self._ServerCertInfo = None
         self._ApplyType = None
         self._ClientCertInfo = None
+        self._UpstreamCertInfo = None
 
     @property
     def ZoneId(self):
@@ -37047,6 +37251,17 @@ class ModifyHostsCertificateRequest(AbstractModel):
     def ClientCertInfo(self, ClientCertInfo):
         self._ClientCertInfo = ClientCertInfo
 
+    @property
+    def UpstreamCertInfo(self):
+        r"""用于配置 EO 节点回源时携带的证书，用于回源双向认证握手，默认关闭，不填写表示保持原有配置。该配置当前为白名单内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service)。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
+        """
+        return self._UpstreamCertInfo
+
+    @UpstreamCertInfo.setter
+    def UpstreamCertInfo(self, UpstreamCertInfo):
+        self._UpstreamCertInfo = UpstreamCertInfo
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -37062,6 +37277,9 @@ class ModifyHostsCertificateRequest(AbstractModel):
         if params.get("ClientCertInfo") is not None:
             self._ClientCertInfo = MutualTLS()
             self._ClientCertInfo._deserialize(params.get("ClientCertInfo"))
+        if params.get("UpstreamCertInfo") is not None:
+            self._UpstreamCertInfo = UpstreamCertInfo()
+            self._UpstreamCertInfo._deserialize(params.get("UpstreamCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -8119,6 +8119,148 @@ class DescribeKeyPairsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMcpServerTemplatesRequest(AbstractModel):
+    r"""DescribeMcpServerTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤器列表。
+<li>name-description</li>按照MCP Server模板名称或描述进行过滤（支持模糊匹配）。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+        :type Filters: list of Filter
+        :param _Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :type Offset: int
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Filters(self):
+        r"""过滤器列表。
+<li>name-description</li>按照MCP Server模板名称或描述进行过滤（支持模糊匹配）。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMcpServerTemplatesResponse(AbstractModel):
+    r"""DescribeMcpServerTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _McpServerTemplateSet: MCP Server模板列表。
+        :type McpServerTemplateSet: list of McpServerTemplate
+        :param _TotalCount: 符合条件的MCP Server模板数量。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._McpServerTemplateSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def McpServerTemplateSet(self):
+        r"""MCP Server模板列表。
+        :rtype: list of McpServerTemplate
+        """
+        return self._McpServerTemplateSet
+
+    @McpServerTemplateSet.setter
+    def McpServerTemplateSet(self, McpServerTemplateSet):
+        self._McpServerTemplateSet = McpServerTemplateSet
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的MCP Server模板数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("McpServerTemplateSet") is not None:
+            self._McpServerTemplateSet = []
+            for item in params.get("McpServerTemplateSet"):
+                obj = McpServerTemplate()
+                obj._deserialize(item)
+                self._McpServerTemplateSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMcpServersRequest(AbstractModel):
     r"""DescribeMcpServers请求参数结构体
 
@@ -9407,15 +9549,17 @@ class DetailPrice(AbstractModel):
         r"""
         :param _PriceName: 描述计费项目名称，目前取值
 <li>"DiskSpace"代表云硬盘空间收费项。</li>
-<li>"DiskBackupQuota"代表云硬盘备份点配额收费项。</li>
+<li>"DiskBackupQuota"代表数据盘备份点配额收费项。</li>
+<li>"Instance"代表实例收费项。</li>
+<li>"SystemDiskBackupQuota"代表系统盘备份点配额收费项。</li>
         :type PriceName: str
-        :param _OriginUnitPrice: 云硬盘计费项维度单价。
+        :param _OriginUnitPrice: 计费项维度单价。
         :type OriginUnitPrice: float
-        :param _OriginalPrice: 云硬盘计费项维度总价。
+        :param _OriginalPrice: 计费项维度总价。
         :type OriginalPrice: float
-        :param _Discount: 云硬盘在计费项维度折扣。
+        :param _Discount: 计费项维度折扣。
         :type Discount: float
-        :param _DiscountPrice: 云硬盘在计费项维度折后总价。
+        :param _DiscountPrice: 计费项维度折后总价。
         :type DiscountPrice: float
         """
         self._PriceName = None
@@ -9428,7 +9572,9 @@ class DetailPrice(AbstractModel):
     def PriceName(self):
         r"""描述计费项目名称，目前取值
 <li>"DiskSpace"代表云硬盘空间收费项。</li>
-<li>"DiskBackupQuota"代表云硬盘备份点配额收费项。</li>
+<li>"DiskBackupQuota"代表数据盘备份点配额收费项。</li>
+<li>"Instance"代表实例收费项。</li>
+<li>"SystemDiskBackupQuota"代表系统盘备份点配额收费项。</li>
         :rtype: str
         """
         return self._PriceName
@@ -9439,7 +9585,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginUnitPrice(self):
-        r"""云硬盘计费项维度单价。
+        r"""计费项维度单价。
         :rtype: float
         """
         return self._OriginUnitPrice
@@ -9450,7 +9596,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""云硬盘计费项维度总价。
+        r"""计费项维度总价。
         :rtype: float
         """
         return self._OriginalPrice
@@ -9461,7 +9607,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def Discount(self):
-        r"""云硬盘在计费项维度折扣。
+        r"""计费项维度折扣。
         :rtype: float
         """
         return self._Discount
@@ -9472,7 +9618,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        r"""云硬盘在计费项维度折后总价。
+        r"""计费项维度折后总价。
         :rtype: float
         """
         return self._DiscountPrice
@@ -9697,41 +9843,41 @@ class DiscountDetail(AbstractModel):
 
 
 class Disk(AbstractModel):
-    r"""磁盘信息
+    r"""云硬盘信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _DiskId: 磁盘ID
+        :param _DiskId: 云硬盘ID。
         :type DiskId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例ID。
         :type InstanceId: str
-        :param _Zone: 可用区
+        :param _Zone: 可用区。
         :type Zone: str
-        :param _DiskName: 磁盘名称
+        :param _DiskName: 云硬盘名称。
         :type DiskName: str
-        :param _DiskUsage: 磁盘类型
+        :param _DiskUsage: 云硬盘类型。
 枚举值：
 <li> SYSTEM_DISK: 系统盘 </li>
 <li> DATA_DISK: 数据盘 </li>
 
         :type DiskUsage: str
-        :param _DiskType: 磁盘介质类型
+        :param _DiskType: 云硬盘介质类型。
 枚举值:
 <li> CLOUD_BASIC: 普通云硬盘 </li>
 <li> CLOUD_PREMIUM: 高性能云硬盘 </li>
 <li> CLOUD_SSD: SSD云硬盘 </li>
         :type DiskType: str
-        :param _DiskChargeType: 磁盘付费类型
+        :param _DiskChargeType: 云硬盘付费类型。
 <li> PREPAID: 预付费 </li>
 <li> POSTPAID_BY_HOUR: 按小时后付费 </li>
         :type DiskChargeType: str
-        :param _DiskSize: 磁盘大小, 单位GB
+        :param _DiskSize: 云硬盘大小, 单位GB。
         :type DiskSize: int
-        :param _RenewFlag: 续费标识
+        :param _RenewFlag: 续费标识。
         :type RenewFlag: str
-        :param _DiskState: 磁盘状态，取值范围：
+        :param _DiskState: 云硬盘状态，取值范围：
 <li>PENDING：创建中。 </li>
 <li>UNATTACHED：待挂载。</li>
 <li>ATTACHING：挂载中。</li>
@@ -9743,15 +9889,15 @@ class Disk(AbstractModel):
 <li> DELETING：删除中。</li>
 <li> FREEZING：冻结中。</li>
         :type DiskState: str
-        :param _Attached: 磁盘挂载状态
+        :param _Attached: 云硬盘挂载状态。
         :type Attached: bool
-        :param _DeleteWithInstance: 是否随实例释放
+        :param _DeleteWithInstance: 是否随实例释放。
         :type DeleteWithInstance: bool
-        :param _LatestOperation: 上一次操作
+        :param _LatestOperation: 上一次操作。
         :type LatestOperation: str
-        :param _LatestOperationState: 上一次操作状态
+        :param _LatestOperationState: 上一次操作状态。
         :type LatestOperationState: str
-        :param _LatestOperationRequestId: 上一次请求ID
+        :param _LatestOperationRequestId: 上一次请求ID。
         :type LatestOperationRequestId: str
         :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
@@ -9793,7 +9939,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskId(self):
-        r"""磁盘ID
+        r"""云硬盘ID。
         :rtype: str
         """
         return self._DiskId
@@ -9804,7 +9950,7 @@ class Disk(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -9815,7 +9961,7 @@ class Disk(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""可用区。
         :rtype: str
         """
         return self._Zone
@@ -9826,7 +9972,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskName(self):
-        r"""磁盘名称
+        r"""云硬盘名称。
         :rtype: str
         """
         return self._DiskName
@@ -9837,7 +9983,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskUsage(self):
-        r"""磁盘类型
+        r"""云硬盘类型。
 枚举值：
 <li> SYSTEM_DISK: 系统盘 </li>
 <li> DATA_DISK: 数据盘 </li>
@@ -9852,7 +9998,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""磁盘介质类型
+        r"""云硬盘介质类型。
 枚举值:
 <li> CLOUD_BASIC: 普通云硬盘 </li>
 <li> CLOUD_PREMIUM: 高性能云硬盘 </li>
@@ -9867,7 +10013,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskChargeType(self):
-        r"""磁盘付费类型
+        r"""云硬盘付费类型。
 <li> PREPAID: 预付费 </li>
 <li> POSTPAID_BY_HOUR: 按小时后付费 </li>
         :rtype: str
@@ -9880,7 +10026,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""磁盘大小, 单位GB
+        r"""云硬盘大小, 单位GB。
         :rtype: int
         """
         return self._DiskSize
@@ -9891,7 +10037,7 @@ class Disk(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标识
+        r"""续费标识。
         :rtype: str
         """
         return self._RenewFlag
@@ -9902,7 +10048,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskState(self):
-        r"""磁盘状态，取值范围：
+        r"""云硬盘状态，取值范围：
 <li>PENDING：创建中。 </li>
 <li>UNATTACHED：待挂载。</li>
 <li>ATTACHING：挂载中。</li>
@@ -9923,7 +10069,7 @@ class Disk(AbstractModel):
 
     @property
     def Attached(self):
-        r"""磁盘挂载状态
+        r"""云硬盘挂载状态。
         :rtype: bool
         """
         return self._Attached
@@ -9934,7 +10080,7 @@ class Disk(AbstractModel):
 
     @property
     def DeleteWithInstance(self):
-        r"""是否随实例释放
+        r"""是否随实例释放。
         :rtype: bool
         """
         return self._DeleteWithInstance
@@ -9945,7 +10091,7 @@ class Disk(AbstractModel):
 
     @property
     def LatestOperation(self):
-        r"""上一次操作
+        r"""上一次操作。
         :rtype: str
         """
         return self._LatestOperation
@@ -9956,7 +10102,7 @@ class Disk(AbstractModel):
 
     @property
     def LatestOperationState(self):
-        r"""上一次操作状态
+        r"""上一次操作状态。
         :rtype: str
         """
         return self._LatestOperationState
@@ -9967,7 +10113,7 @@ class Disk(AbstractModel):
 
     @property
     def LatestOperationRequestId(self):
-        r"""上一次请求ID
+        r"""上一次请求ID。
         :rtype: str
         """
         return self._LatestOperationRequestId
@@ -13875,7 +14021,7 @@ class InstanceIdentifier(AbstractModel):
 
 
 class InstancePrice(AbstractModel):
-    r"""关于Lighthouse Instance实例的价格信息
+    r"""关于Lighthouse Instance实例的价格信息。
 
     """
 
@@ -13891,12 +14037,15 @@ class InstancePrice(AbstractModel):
         :type DiscountPrice: float
         :param _Currency: 价格货币单位。取值范围CNY:人民币。USD:美元。
         :type Currency: str
+        :param _DetailPrices: 计费项目明细。
+        :type DetailPrices: list of DetailPrice
         """
         self._OriginalBundlePrice = None
         self._OriginalPrice = None
         self._Discount = None
         self._DiscountPrice = None
         self._Currency = None
+        self._DetailPrices = None
 
     @property
     def OriginalBundlePrice(self):
@@ -13953,6 +14102,17 @@ class InstancePrice(AbstractModel):
     def Currency(self, Currency):
         self._Currency = Currency
 
+    @property
+    def DetailPrices(self):
+        r"""计费项目明细。
+        :rtype: list of DetailPrice
+        """
+        return self._DetailPrices
+
+    @DetailPrices.setter
+    def DetailPrices(self, DetailPrices):
+        self._DetailPrices = DetailPrices
+
 
     def _deserialize(self, params):
         self._OriginalBundlePrice = params.get("OriginalBundlePrice")
@@ -13960,6 +14120,12 @@ class InstancePrice(AbstractModel):
         self._Discount = params.get("Discount")
         self._DiscountPrice = params.get("DiscountPrice")
         self._Currency = params.get("Currency")
+        if params.get("DetailPrices") is not None:
+            self._DetailPrices = []
+            for item in params.get("DetailPrices"):
+                obj = DetailPrice()
+                obj._deserialize(item)
+                self._DetailPrices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15026,6 +15192,188 @@ class McpServerEnv(AbstractModel):
         
 
 
+class McpServerTemplate(AbstractModel):
+    r"""MCP Server模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: MCP Server名称
+        :type Name: str
+        :param _Command: Base64编码之后的MCP Server启动命令。
+        :type Command: str
+        :param _Description: 描述
+        :type Description: str
+        :param _IconUrl: MCP Server图标地址
+        :type IconUrl: str
+        :param _CommunityUrl: MCP Server社区地址
+        :type CommunityUrl: str
+        :param _PlatformUrl: MCP Server关联的开发平台地址或开放平台地址
+        :type PlatformUrl: str
+        :param _EnvSet: MCP Server环境变量
+        :type EnvSet: list of McpServerTemplateEnv
+        """
+        self._Name = None
+        self._Command = None
+        self._Description = None
+        self._IconUrl = None
+        self._CommunityUrl = None
+        self._PlatformUrl = None
+        self._EnvSet = None
+
+    @property
+    def Name(self):
+        r"""MCP Server名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Command(self):
+        r"""Base64编码之后的MCP Server启动命令。
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IconUrl(self):
+        r"""MCP Server图标地址
+        :rtype: str
+        """
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def CommunityUrl(self):
+        r"""MCP Server社区地址
+        :rtype: str
+        """
+        return self._CommunityUrl
+
+    @CommunityUrl.setter
+    def CommunityUrl(self, CommunityUrl):
+        self._CommunityUrl = CommunityUrl
+
+    @property
+    def PlatformUrl(self):
+        r"""MCP Server关联的开发平台地址或开放平台地址
+        :rtype: str
+        """
+        return self._PlatformUrl
+
+    @PlatformUrl.setter
+    def PlatformUrl(self, PlatformUrl):
+        self._PlatformUrl = PlatformUrl
+
+    @property
+    def EnvSet(self):
+        r"""MCP Server环境变量
+        :rtype: list of McpServerTemplateEnv
+        """
+        return self._EnvSet
+
+    @EnvSet.setter
+    def EnvSet(self, EnvSet):
+        self._EnvSet = EnvSet
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Command = params.get("Command")
+        self._Description = params.get("Description")
+        self._IconUrl = params.get("IconUrl")
+        self._CommunityUrl = params.get("CommunityUrl")
+        self._PlatformUrl = params.get("PlatformUrl")
+        if params.get("EnvSet") is not None:
+            self._EnvSet = []
+            for item in params.get("EnvSet"):
+                obj = McpServerTemplateEnv()
+                obj._deserialize(item)
+                self._EnvSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McpServerTemplateEnv(AbstractModel):
+    r"""MCP Server模板环境变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: MCP Server模板的环境变量键
+        :type Key: str
+        :param _Value: MCP Server模板的环境变量值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""MCP Server模板的环境变量键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""MCP Server模板的环境变量值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyBlueprintAttributeRequest(AbstractModel):
     r"""ModifyBlueprintAttribute请求参数结构体
 
@@ -15378,7 +15726,7 @@ class ModifyDisksBackupQuotaRequest(AbstractModel):
         r"""
         :param _DiskIds: 云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
         :type DiskIds: list of str
-        :param _DiskBackupQuota: 云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须不小于已存在的备份点数量。
+        :param _DiskBackupQuota: 云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须大于等于已存在的备份点数量。
         :type DiskBackupQuota: int
         """
         self._DiskIds = None
@@ -15397,7 +15745,7 @@ class ModifyDisksBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
-        r"""云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须不小于已存在的备份点数量。
+        r"""云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须大于等于已存在的备份点数量。
         :rtype: int
         """
         return self._DiskBackupQuota

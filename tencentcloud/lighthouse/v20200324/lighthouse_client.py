@@ -1397,6 +1397,29 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMcpServerTemplates(self, request):
+        r"""本接口（DescribeMcpServerTemplates）用于查询MCP Server模板列表。
+
+        :param request: Request instance for DescribeMcpServerTemplates.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeMcpServerTemplatesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeMcpServerTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMcpServerTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMcpServerTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMcpServers(self, request):
         r"""本接口（DescribeMcpServers）用于查询MCP Server列表。
 
@@ -1925,7 +1948,7 @@ class LighthouseClient(AbstractClient):
 
     def ModifyDisksBackupQuota(self, request):
         r"""本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。
-        该操作目前仅支持云硬盘类型为数据盘且状态是ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
+        该操作目前仅支持状态是ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
         支持批量操作。每次批量请求云硬盘数量上限为15个。
 
         :param request: Request instance for ModifyDisksBackupQuota.

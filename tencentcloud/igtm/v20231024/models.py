@@ -5080,9 +5080,9 @@ class ModifyAddressPoolRequest(AbstractModel):
         :type PoolName: str
         :param _TrafficStrategy: 流量策略: WEIGHT负载均衡，ALL解析全部
         :type TrafficStrategy: str
-        :param _MonitorId: 监控器id
+        :param _MonitorId: 监控器id，当监控器已关联策略时，此字段必传
         :type MonitorId: int
-        :param _AddressSet: 地址列表
+        :param _AddressSet: 地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。
         :type AddressSet: list of Address
         """
         self._PoolId = None
@@ -5126,7 +5126,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        r"""监控器id
+        r"""监控器id，当监控器已关联策略时，此字段必传
         :rtype: int
         """
         return self._MonitorId
@@ -5137,7 +5137,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def AddressSet(self):
-        r"""地址列表
+        r"""地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。
         :rtype: list of Address
         """
         return self._AddressSet

@@ -50,6 +50,30 @@ class Ai3dClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryHunyuanTo3DProJob(self, request):
+        r"""混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+
+        :param request: Request instance for QueryHunyuanTo3DProJob.
+        :type request: :class:`tencentcloud.ai3d.v20250513.models.QueryHunyuanTo3DProJobRequest`
+        :rtype: :class:`tencentcloud.ai3d.v20250513.models.QueryHunyuanTo3DProJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryHunyuanTo3DProJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryHunyuanTo3DProJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitHunyuanTo3DJob(self, request):
         r"""混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
         默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
@@ -65,6 +89,30 @@ class Ai3dClient(AbstractClient):
             body = self.call("SubmitHunyuanTo3DJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitHunyuanTo3DJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuanTo3DProJob(self, request):
+        r"""混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+
+        :param request: Request instance for SubmitHunyuanTo3DProJob.
+        :type request: :class:`tencentcloud.ai3d.v20250513.models.SubmitHunyuanTo3DProJobRequest`
+        :rtype: :class:`tencentcloud.ai3d.v20250513.models.SubmitHunyuanTo3DProJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuanTo3DProJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuanTo3DProJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

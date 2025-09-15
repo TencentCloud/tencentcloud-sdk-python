@@ -1574,6 +1574,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeKafkaConsumerGroupDetail(self, request):
+        r"""获取Kafka协议消费组详情
+
+        :param request: Request instance for DescribeKafkaConsumerGroupDetail.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerGroupDetailRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerGroupDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKafkaConsumerGroupDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKafkaConsumerGroupDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKafkaConsumerGroupList(self, request):
+        r"""获取Kafka协议消费组信息列表
+
+        :param request: Request instance for DescribeKafkaConsumerGroupList.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerGroupListRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKafkaConsumerGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKafkaConsumerGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeKafkaRecharges(self, request):
         r"""本接口用于获取Kafka数据订阅任务
 
@@ -2233,6 +2279,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyKafkaConsumer", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyKafkaConsumerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyKafkaConsumerGroupOffset(self, request):
+        r"""修改Kafka协议消费组点位
+
+        :param request: Request instance for ModifyKafkaConsumerGroupOffset.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaConsumerGroupOffsetRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaConsumerGroupOffsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKafkaConsumerGroupOffset", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKafkaConsumerGroupOffsetResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

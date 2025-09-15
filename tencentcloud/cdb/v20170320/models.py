@@ -568,6 +568,10 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
         :type AutoLoadBalance: bool
         :param _AccessMode: 访问模式：nearby - 就近访问，balance - 均衡分配，默认就近访问。
         :type AccessMode: str
+        :param _ApNodeAsRoNode: 是否将libra节点当作普通RO节点
+        :type ApNodeAsRoNode: str
+        :param _ApQueryToOtherNode: libra节点故障，是否转发给其他节点
+        :type ApQueryToOtherNode: str
         """
         self._ProxyGroupId = None
         self._WeightMode = None
@@ -583,6 +587,8 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
         self._ProxyAllocation = None
         self._AutoLoadBalance = None
         self._AccessMode = None
+        self._ApNodeAsRoNode = None
+        self._ApQueryToOtherNode = None
 
     @property
     def ProxyGroupId(self):
@@ -741,6 +747,28 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
     def AccessMode(self, AccessMode):
         self._AccessMode = AccessMode
 
+    @property
+    def ApNodeAsRoNode(self):
+        r"""是否将libra节点当作普通RO节点
+        :rtype: str
+        """
+        return self._ApNodeAsRoNode
+
+    @ApNodeAsRoNode.setter
+    def ApNodeAsRoNode(self, ApNodeAsRoNode):
+        self._ApNodeAsRoNode = ApNodeAsRoNode
+
+    @property
+    def ApQueryToOtherNode(self):
+        r"""libra节点故障，是否转发给其他节点
+        :rtype: str
+        """
+        return self._ApQueryToOtherNode
+
+    @ApQueryToOtherNode.setter
+    def ApQueryToOtherNode(self, ApQueryToOtherNode):
+        self._ApQueryToOtherNode = ApQueryToOtherNode
+
 
     def _deserialize(self, params):
         self._ProxyGroupId = params.get("ProxyGroupId")
@@ -762,6 +790,8 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
                 self._ProxyAllocation.append(obj)
         self._AutoLoadBalance = params.get("AutoLoadBalance")
         self._AccessMode = params.get("AccessMode")
+        self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
+        self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32411,6 +32441,10 @@ class ProxyAddress(AbstractModel):
         :type AccessMode: str
         :param _AutoLoadBalance: 是否开启自动负载均衡
         :type AutoLoadBalance: bool
+        :param _ApNodeAsRoNode: 是否把libra当作ro节点
+        :type ApNodeAsRoNode: bool
+        :param _ApQueryToOtherNode: libra节点故障，是否转发给其他节点
+        :type ApQueryToOtherNode: bool
         """
         self._ProxyAddressId = None
         self._UniqVpcId = None
@@ -32430,6 +32464,8 @@ class ProxyAddress(AbstractModel):
         self._ProxyAllocation = None
         self._AccessMode = None
         self._AutoLoadBalance = None
+        self._ApNodeAsRoNode = None
+        self._ApQueryToOtherNode = None
 
     @property
     def ProxyAddressId(self):
@@ -32630,6 +32666,28 @@ class ProxyAddress(AbstractModel):
     def AutoLoadBalance(self, AutoLoadBalance):
         self._AutoLoadBalance = AutoLoadBalance
 
+    @property
+    def ApNodeAsRoNode(self):
+        r"""是否把libra当作ro节点
+        :rtype: bool
+        """
+        return self._ApNodeAsRoNode
+
+    @ApNodeAsRoNode.setter
+    def ApNodeAsRoNode(self, ApNodeAsRoNode):
+        self._ApNodeAsRoNode = ApNodeAsRoNode
+
+    @property
+    def ApQueryToOtherNode(self):
+        r"""libra节点故障，是否转发给其他节点
+        :rtype: bool
+        """
+        return self._ApQueryToOtherNode
+
+    @ApQueryToOtherNode.setter
+    def ApQueryToOtherNode(self, ApQueryToOtherNode):
+        self._ApQueryToOtherNode = ApQueryToOtherNode
+
 
     def _deserialize(self, params):
         self._ProxyAddressId = params.get("ProxyAddressId")
@@ -32655,6 +32713,8 @@ class ProxyAddress(AbstractModel):
                 self._ProxyAllocation.append(obj)
         self._AccessMode = params.get("AccessMode")
         self._AutoLoadBalance = params.get("AutoLoadBalance")
+        self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
+        self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

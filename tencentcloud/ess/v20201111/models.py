@@ -393,6 +393,9 @@ class ApproverInfo(AbstractModel):
         :param _SignEndpoints: 进入签署流程的限制，目前支持以下选项：
 <ul><li> <b>空值（默认）</b> :无限制，可在任何场景进入签署流程。</li><li> <b>link</b> :选择此选项后，将无法通过控制台或电子签小程序列表进入填写或签署操作，仅可预览合同。填写或签署流程只能通过短信或发起方提供的专用链接进行。</li></ul>
         :type SignEndpoints: list of str
+        :param _RegisterInfo: 快速注册相关信息
+
+        :type RegisterInfo: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
         """
         self._ApproverType = None
         self._ApproverName = None
@@ -418,6 +421,7 @@ class ApproverInfo(AbstractModel):
         self._Deadline = None
         self._Components = None
         self._SignEndpoints = None
+        self._RegisterInfo = None
 
     @property
     def ApproverType(self):
@@ -788,6 +792,18 @@ class ApproverInfo(AbstractModel):
     def SignEndpoints(self, SignEndpoints):
         self._SignEndpoints = SignEndpoints
 
+    @property
+    def RegisterInfo(self):
+        r"""快速注册相关信息
+
+        :rtype: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
+        """
+        return self._RegisterInfo
+
+    @RegisterInfo.setter
+    def RegisterInfo(self, RegisterInfo):
+        self._RegisterInfo = RegisterInfo
+
 
     def _deserialize(self, params):
         self._ApproverType = params.get("ApproverType")
@@ -831,6 +847,9 @@ class ApproverInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Components.append(obj)
         self._SignEndpoints = params.get("SignEndpoints")
+        if params.get("RegisterInfo") is not None:
+            self._RegisterInfo = RegisterInfo()
+            self._RegisterInfo._deserialize(params.get("RegisterInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6600,10 +6619,7 @@ class CreateDocumentRequest(AbstractModel):
 注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。
 ![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)
         :type FormFields: list of FormField
-        :param _NeedPreview: 是否为预览模式，取值如下：
-<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> 
-<li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font> </li></ul>
-注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
+        :param _NeedPreview: 是否为预览模式，取值如下：<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 1.以预览模式创建的合同仅供查看，因此参与方无法进行签署操作;；2.以预览模式调用该接口返回的FlowId为临时Flowld，无法用于发起和拉取信息。</font> </li></ul>注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
         :type NeedPreview: bool
         :param _PreviewType: 预览模式下产生的预览链接类型 
 <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
@@ -6695,10 +6711,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def NeedPreview(self):
-        r"""是否为预览模式，取值如下：
-<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> 
-<li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font> </li></ul>
-注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
+        r"""是否为预览模式，取值如下：<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 1.以预览模式创建的合同仅供查看，因此参与方无法进行签署操作;；2.以预览模式调用该接口返回的FlowId为临时Flowld，无法用于发起和拉取信息。</font> </li></ul>注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
         :rtype: bool
         """
         return self._NeedPreview
@@ -22782,7 +22795,7 @@ class DescribeInformationExtractionTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Fields: 信息提取任务结果
+        :param _Fields: 合同信息提取字段信息
         :type Fields: list of ExtractionField
         :param _Status: 合同智能提取任务状态。
 状态如下：
@@ -22798,17 +22811,20 @@ class DescribeInformationExtractionTaskResponse(AbstractModel):
 
 注意：`链接有效期为5分钟，过期后可重新获取`
         :type Url: str
+        :param _Results: 合同信息提取结果信息
+        :type Results: list of ExtractionTaskResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Fields = None
         self._Status = None
         self._Url = None
+        self._Results = None
         self._RequestId = None
 
     @property
     def Fields(self):
-        r"""信息提取任务结果
+        r"""合同信息提取字段信息
         :rtype: list of ExtractionField
         """
         return self._Fields
@@ -22850,6 +22866,17 @@ class DescribeInformationExtractionTaskResponse(AbstractModel):
         self._Url = Url
 
     @property
+    def Results(self):
+        r"""合同信息提取结果信息
+        :rtype: list of ExtractionTaskResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -22870,6 +22897,12 @@ class DescribeInformationExtractionTaskResponse(AbstractModel):
                 self._Fields.append(obj)
         self._Status = params.get("Status")
         self._Url = params.get("Url")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = ExtractionTaskResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25926,6 +25959,197 @@ class ExtractionField(AbstractModel):
         self._Type = params.get("Type")
         self._Description = params.get("Description")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractionFieldResult(AbstractModel):
+    r"""合同信息提取字段值信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 字段ID
+        :type Id: str
+        :param _Name: 用于合同智能提取的字段名称。
+        :type Name: str
+        :param _Type: 合同智能提取的字段类型，目前仅支持TEXT、DATE、NUMBER、OPTION类型。
+
+类型支持如下： 1、TEXT（文本） 2、DATE（日期） 3、NUMBER（数字） 4、OPTION（选项值）
+        :type Type: str
+        :param _Values: 提取出合同中的字段信息。
+        :type Values: list of str
+        :param _RequiresSemanticExtraction: 是否需要语义提取，默认为false
+        :type RequiresSemanticExtraction: bool
+        :param _Positions: 提取出值在合同中的坐标位置信息
+        :type Positions: list of PositionInfo
+        """
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._Values = None
+        self._RequiresSemanticExtraction = None
+        self._Positions = None
+
+    @property
+    def Id(self):
+        r"""字段ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""用于合同智能提取的字段名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""合同智能提取的字段类型，目前仅支持TEXT、DATE、NUMBER、OPTION类型。
+
+类型支持如下： 1、TEXT（文本） 2、DATE（日期） 3、NUMBER（数字） 4、OPTION（选项值）
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Values(self):
+        r"""提取出合同中的字段信息。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def RequiresSemanticExtraction(self):
+        r"""是否需要语义提取，默认为false
+        :rtype: bool
+        """
+        return self._RequiresSemanticExtraction
+
+    @RequiresSemanticExtraction.setter
+    def RequiresSemanticExtraction(self, RequiresSemanticExtraction):
+        self._RequiresSemanticExtraction = RequiresSemanticExtraction
+
+    @property
+    def Positions(self):
+        r"""提取出值在合同中的坐标位置信息
+        :rtype: list of PositionInfo
+        """
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Values = params.get("Values")
+        self._RequiresSemanticExtraction = params.get("RequiresSemanticExtraction")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = PositionInfo()
+                obj._deserialize(item)
+                self._Positions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractionTaskResult(AbstractModel):
+    r"""合同信息提取结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 用于合同信息提取的资源ID。
+        :type ResourceId: str
+        :param _ResourceName: 用于合同信息提取的资源名称。
+        :type ResourceName: str
+        :param _ExtractionFieldResults: 根据当前合同提取出的字段信息
+        :type ExtractionFieldResults: list of ExtractionFieldResult
+        """
+        self._ResourceId = None
+        self._ResourceName = None
+        self._ExtractionFieldResults = None
+
+    @property
+    def ResourceId(self):
+        r"""用于合同信息提取的资源ID。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""用于合同信息提取的资源名称。
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ExtractionFieldResults(self):
+        r"""根据当前合同提取出的字段信息
+        :rtype: list of ExtractionFieldResult
+        """
+        return self._ExtractionFieldResults
+
+    @ExtractionFieldResults.setter
+    def ExtractionFieldResults(self, ExtractionFieldResults):
+        self._ExtractionFieldResults = ExtractionFieldResults
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        if params.get("ExtractionFieldResults") is not None:
+            self._ExtractionFieldResults = []
+            for item in params.get("ExtractionFieldResults"):
+                obj = ExtractionFieldResult()
+                obj._deserialize(item)
+                self._ExtractionFieldResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34819,6 +35043,8 @@ class RegisterInfo(AbstractModel):
         :type Uscc: str
         :param _UnifiedSocialCreditCode: <font color="red">字段不再使用</font>，社会统一信用代码
         :type UnifiedSocialCreditCode: str
+        :param _OrganizationAddress: 组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。
+        :type OrganizationAddress: str
         :param _AuthorizationTypes: 指定企业认证的授权方式 支持多选:
 
 <ul>
@@ -34837,6 +35063,7 @@ class RegisterInfo(AbstractModel):
         self._LegalName = None
         self._Uscc = None
         self._UnifiedSocialCreditCode = None
+        self._OrganizationAddress = None
         self._AuthorizationTypes = None
         self._AuthorizationType = None
 
@@ -34879,6 +35106,17 @@ class RegisterInfo(AbstractModel):
         self._UnifiedSocialCreditCode = UnifiedSocialCreditCode
 
     @property
+    def OrganizationAddress(self):
+        r"""组织机构企业注册地址。 请确认该企业注册地址与企业营业执照中注册的地址一致。
+        :rtype: str
+        """
+        return self._OrganizationAddress
+
+    @OrganizationAddress.setter
+    def OrganizationAddress(self, OrganizationAddress):
+        self._OrganizationAddress = OrganizationAddress
+
+    @property
     def AuthorizationTypes(self):
         warnings.warn("parameter `AuthorizationTypes` is deprecated", DeprecationWarning) 
 
@@ -34919,6 +35157,7 @@ class RegisterInfo(AbstractModel):
         self._LegalName = params.get("LegalName")
         self._Uscc = params.get("Uscc")
         self._UnifiedSocialCreditCode = params.get("UnifiedSocialCreditCode")
+        self._OrganizationAddress = params.get("OrganizationAddress")
         self._AuthorizationTypes = params.get("AuthorizationTypes")
         self._AuthorizationType = params.get("AuthorizationType")
         memeber_set = set(params.keys())

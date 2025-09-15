@@ -445,12 +445,15 @@ class CreateCloudRunServerRequest(AbstractModel):
         :type ServerConfig: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
         :param _Items: 服务配置信息
         :type Items: list of DiffConfigItem
+        :param _VpcInfo: vpc 信息
+        :type VpcInfo: :class:`tencentcloud.tcbr.v20220217.models.CreateVpcInfo`
         """
         self._EnvId = None
         self._ServerName = None
         self._DeployInfo = None
         self._ServerConfig = None
         self._Items = None
+        self._VpcInfo = None
 
     @property
     def EnvId(self):
@@ -507,6 +510,17 @@ class CreateCloudRunServerRequest(AbstractModel):
     def Items(self, Items):
         self._Items = Items
 
+    @property
+    def VpcInfo(self):
+        r"""vpc 信息
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.CreateVpcInfo`
+        """
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -523,6 +537,9 @@ class CreateCloudRunServerRequest(AbstractModel):
                 obj = DiffConfigItem()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = CreateVpcInfo()
+            self._VpcInfo._deserialize(params.get("VpcInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -574,6 +591,72 @@ class CreateCloudRunServerResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class CreateVpcInfo(AbstractModel):
+    r"""创建 vpc 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: vpc id
+        :type VpcId: str
+        :param _CreateType: 1 新建 2 指定
+        :type CreateType: int
+        :param _SubnetIds: 子网ID列表
+        :type SubnetIds: list of str
+        """
+        self._VpcId = None
+        self._CreateType = None
+        self._SubnetIds = None
+
+    @property
+    def VpcId(self):
+        r"""vpc id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def CreateType(self):
+        r"""1 新建 2 指定
+        :rtype: int
+        """
+        return self._CreateType
+
+    @CreateType.setter
+    def CreateType(self, CreateType):
+        self._CreateType = CreateType
+
+    @property
+    def SubnetIds(self):
+        r"""子网ID列表
+        :rtype: list of str
+        """
+        return self._SubnetIds
+
+    @SubnetIds.setter
+    def SubnetIds(self, SubnetIds):
+        self._SubnetIds = SubnetIds
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._CreateType = params.get("CreateType")
+        self._SubnetIds = params.get("SubnetIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DatabasesInfo(AbstractModel):
@@ -1065,12 +1148,15 @@ class DescribeCloudRunServersRequest(AbstractModel):
         :type ServerName: str
         :param _ServerType: 服务类型：function | container
         :type ServerType: str
+        :param _VpcId: vpcId
+        :type VpcId: str
         """
         self._EnvId = None
         self._PageSize = None
         self._PageNum = None
         self._ServerName = None
         self._ServerType = None
+        self._VpcId = None
 
     @property
     def EnvId(self):
@@ -1129,6 +1215,17 @@ class DescribeCloudRunServersRequest(AbstractModel):
     def ServerType(self, ServerType):
         self._ServerType = ServerType
 
+    @property
+    def VpcId(self):
+        r"""vpcId
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -1136,6 +1233,7 @@ class DescribeCloudRunServersRequest(AbstractModel):
         self._PageNum = params.get("PageNum")
         self._ServerName = params.get("ServerName")
         self._ServerType = params.get("ServerType")
+        self._VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

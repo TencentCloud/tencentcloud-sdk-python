@@ -1099,6 +1099,11 @@ def test_import_tcss():
     from tencentcloud.tcss.v20201101 import models
 
 
+def test_import_tdai():
+    from tencentcloud.tdai.v20250717 import tdai_client
+    from tencentcloud.tdai.v20250717 import models
+
+
 def test_import_tdcpg():
     from tencentcloud.tdcpg.v20211118 import tdcpg_client
     from tencentcloud.tdcpg.v20211118 import models

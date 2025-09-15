@@ -8677,13 +8677,18 @@ class DescribeCloudStorageAIServiceRequest(AbstractModel):
         :param _DeviceName: 设备名称
         :type DeviceName: str
         :param _ServiceType: 云存 AI 服务类型。可选值：
-- `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
         :type ServiceType: str
+        :param _ChannelId: 通道 ID
+        :type ChannelId: int
+        :param _UserId: 用户 ID
+        :type UserId: str
         """
         self._ProductId = None
         self._DeviceName = None
         self._ServiceType = None
+        self._ChannelId = None
+        self._UserId = None
 
     @property
     def ProductId(self):
@@ -8710,7 +8715,6 @@ class DescribeCloudStorageAIServiceRequest(AbstractModel):
     @property
     def ServiceType(self):
         r"""云存 AI 服务类型。可选值：
-- `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
         :rtype: str
         """
@@ -8720,11 +8724,35 @@ class DescribeCloudStorageAIServiceRequest(AbstractModel):
     def ServiceType(self, ServiceType):
         self._ServiceType = ServiceType
 
+    @property
+    def ChannelId(self):
+        r"""通道 ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def UserId(self):
+        r"""用户 ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._ServiceType = params.get("ServiceType")
+        self._ChannelId = params.get("ChannelId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

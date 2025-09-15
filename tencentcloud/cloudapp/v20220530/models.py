@@ -18,6 +18,144 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class DescribeLicenseRequest(AbstractModel):
+    r"""DescribeLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 可选过滤器
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        r"""可选过滤器
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLicenseResponse(AbstractModel):
+    r"""DescribeLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: 针对上面raw的签名
+        :type Token: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Token = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        r"""针对上面raw的签名
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._RequestId = params.get("RequestId")
+
+
+class Filter(AbstractModel):
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤 ID、名称、状态等
+
+    - 若存在多个 Filter 时，Filter间的关系为逻辑与（AND）关系。
+    - 若同一个 Filter 存在多个 Values，同一 Filter 下 Values 间的关系为逻辑或（OR）关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 需要过滤的字段
+        :type Name: str
+        :param _Values: 字段的过滤值
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""需要过滤的字段
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""字段的过滤值
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class License(AbstractModel):
     r"""表示应用实例的软件授权，包含颁发信息、激活信息等内容。
 

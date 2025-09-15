@@ -10585,6 +10585,8 @@ class Receiver(AbstractModel):
         :type WechatFlag: int
         :param _Uin: 账号uin
         :type Uin: int
+        :param _CountryCode: 国家代码
+        :type CountryCode: str
         """
         self._Uid = None
         self._Name = None
@@ -10596,6 +10598,7 @@ class Receiver(AbstractModel):
         self._IsReceiverOwner = None
         self._WechatFlag = None
         self._Uin = None
+        self._CountryCode = None
 
     @property
     def Uid(self):
@@ -10708,6 +10711,17 @@ class Receiver(AbstractModel):
     def Uin(self, Uin):
         self._Uin = Uin
 
+    @property
+    def CountryCode(self):
+        r"""国家代码
+        :rtype: str
+        """
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
 
     def _deserialize(self, params):
         self._Uid = params.get("Uid")
@@ -10720,6 +10734,7 @@ class Receiver(AbstractModel):
         self._IsReceiverOwner = params.get("IsReceiverOwner")
         self._WechatFlag = params.get("WechatFlag")
         self._Uin = params.get("Uin")
+        self._CountryCode = params.get("CountryCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

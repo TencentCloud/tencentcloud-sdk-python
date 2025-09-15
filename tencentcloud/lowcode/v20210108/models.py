@@ -18,6 +18,125 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AppJobInfo(AbstractModel):
+    r"""安装应用，任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Step: 当前步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Step: int
+        :param _Id: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _TotalStep: 任务总共步骤数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalStep: int
+        :param _StepDesc: 当前步骤详情
+        :type StepDesc: str
+        :param _ErrMsg: 错误信息
+        :type ErrMsg: str
+        """
+        self._Status = None
+        self._Step = None
+        self._Id = None
+        self._TotalStep = None
+        self._StepDesc = None
+        self._ErrMsg = None
+
+    @property
+    def Status(self):
+        r"""状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Step(self):
+        r"""当前步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
+    @property
+    def Id(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TotalStep(self):
+        r"""任务总共步骤数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalStep
+
+    @TotalStep.setter
+    def TotalStep(self, TotalStep):
+        self._TotalStep = TotalStep
+
+    @property
+    def StepDesc(self):
+        r"""当前步骤详情
+        :rtype: str
+        """
+        return self._StepDesc
+
+    @StepDesc.setter
+    def StepDesc(self, StepDesc):
+        self._StepDesc = StepDesc
+
+    @property
+    def ErrMsg(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Step = params.get("Step")
+        self._Id = params.get("Id")
+        self._TotalStep = params.get("TotalStep")
+        self._StepDesc = params.get("StepDesc")
+        self._ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckDeployAppRequest(AbstractModel):
     r"""CheckDeployApp请求参数结构体
 
@@ -1583,6 +1702,214 @@ class DeployAppResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAppsRequest(AbstractModel):
+    r"""DescribeApps请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 分页每页个数
+        :type Limit: int
+        :param _Offset: 分页Offset
+        :type Offset: int
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _Keyword: 搜索关键词
+        :type Keyword: str
+        :param _AppIds: 应用id
+        :type AppIds: list of str
+        :param _Channel: 来源类型
+        :type Channel: str
+        :param _Type: 1-自定义应用；2-模型应用
+        :type Type: int
+        :param _Favorite: 应用是否收藏
+        :type Favorite: bool
+        """
+        self._Limit = None
+        self._Offset = None
+        self._EnvId = None
+        self._Keyword = None
+        self._AppIds = None
+        self._Channel = None
+        self._Type = None
+        self._Favorite = None
+
+    @property
+    def Limit(self):
+        r"""分页每页个数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页Offset
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Keyword(self):
+        r"""搜索关键词
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def AppIds(self):
+        r"""应用id
+        :rtype: list of str
+        """
+        return self._AppIds
+
+    @AppIds.setter
+    def AppIds(self, AppIds):
+        self._AppIds = AppIds
+
+    @property
+    def Channel(self):
+        r"""来源类型
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+    @property
+    def Type(self):
+        r"""1-自定义应用；2-模型应用
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Favorite(self):
+        r"""应用是否收藏
+        :rtype: bool
+        """
+        return self._Favorite
+
+    @Favorite.setter
+    def Favorite(self, Favorite):
+        self._Favorite = Favorite
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._EnvId = params.get("EnvId")
+        self._Keyword = params.get("Keyword")
+        self._AppIds = params.get("AppIds")
+        self._Channel = params.get("Channel")
+        self._Type = params.get("Type")
+        self._Favorite = params.get("Favorite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppsResponse(AbstractModel):
+    r"""DescribeApps返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Weapps: 应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weapps: list of Weapp
+        :param _Count: 应用个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Weapps = None
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def Weapps(self):
+        r"""应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Weapp
+        """
+        return self._Weapps
+
+    @Weapps.setter
+    def Weapps(self, Weapps):
+        self._Weapps = Weapps
+
+    @property
+    def Count(self):
+        r"""应用个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Weapps") is not None:
+            self._Weapps = []
+            for item in params.get("Weapps"):
+                obj = Weapp()
+                obj._deserialize(item)
+                self._Weapps.append(obj)
+        self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataSourceListRequest(AbstractModel):
     r"""DescribeDataSourceList请求参数结构体
 
@@ -2425,6 +2752,336 @@ class DescribeKnowledgeSetListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRelatedUsersRequest(AbstractModel):
+    r"""DescribeRelatedUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: 角色id
+        :type RoleId: int
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _PageNo: 页码
+        :type PageNo: int
+        :param _PageSize: 页面含量
+        :type PageSize: int
+        :param _EnvType: 环境类型
+        :type EnvType: str
+        """
+        self._RoleId = None
+        self._EnvId = None
+        self._PageNo = None
+        self._PageSize = None
+        self._EnvType = None
+
+    @property
+    def RoleId(self):
+        r"""角色id
+        :rtype: int
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def PageNo(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""页面含量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def EnvType(self):
+        r"""环境类型
+        :rtype: str
+        """
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._EnvId = params.get("EnvId")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._EnvType = params.get("EnvType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRelatedUsersResponse(AbstractModel):
+    r"""DescribeRelatedUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 关联的用户列表
+        :type Data: list of WedaUser
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""关联的用户列表
+        :rtype: list of WedaUser
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = WedaUser()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceRoleListRequest(AbstractModel):
+    r"""DescribeResourceRoleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _ResourceType: 资源类型
+        :type ResourceType: str
+        :param _EnvType: 预览：pre；非预览：prod
+        :type EnvType: str
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _SubType: 子资源类型
+        :type SubType: str
+        :param _PageNo: 页码
+        :type PageNo: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        """
+        self._ResourceId = None
+        self._ResourceType = None
+        self._EnvType = None
+        self._EnvId = None
+        self._SubType = None
+        self._PageNo = None
+        self._PageSize = None
+
+    @property
+    def ResourceId(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def EnvType(self):
+        r"""预览：pre；非预览：prod
+        :rtype: str
+        """
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def SubType(self):
+        r"""子资源类型
+        :rtype: str
+        """
+        return self._SubType
+
+    @SubType.setter
+    def SubType(self, SubType):
+        self._SubType = SubType
+
+    @property
+    def PageNo(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._EnvType = params.get("EnvType")
+        self._EnvId = params.get("EnvId")
+        self._SubType = params.get("SubType")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceRoleListResponse(AbstractModel):
+    r"""DescribeResourceRoleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 角色列表
+        :type Data: :class:`tencentcloud.lowcode.v20210108.models.RoleListPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""角色列表
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.RoleListPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = RoleListPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DocumentQuery(AbstractModel):
     r"""删除文档时查询入参
 
@@ -3111,6 +3768,102 @@ true：将全文的 keywords 追加到切分后的段落。
         
 
 
+class OrgResp(AbstractModel):
+    r"""组织架构返回参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrgId: 部门id
+        :type OrgId: str
+        :param _OrgName: 部门名称
+        :type OrgName: str
+        :param _OrgIdentity: 部门标识
+        :type OrgIdentity: str
+        :param _Level: 部门层级
+        :type Level: str
+        :param _PrimaryColumn: 主键字段
+        :type PrimaryColumn: str
+        """
+        self._OrgId = None
+        self._OrgName = None
+        self._OrgIdentity = None
+        self._Level = None
+        self._PrimaryColumn = None
+
+    @property
+    def OrgId(self):
+        r"""部门id
+        :rtype: str
+        """
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def OrgName(self):
+        r"""部门名称
+        :rtype: str
+        """
+        return self._OrgName
+
+    @OrgName.setter
+    def OrgName(self, OrgName):
+        self._OrgName = OrgName
+
+    @property
+    def OrgIdentity(self):
+        r"""部门标识
+        :rtype: str
+        """
+        return self._OrgIdentity
+
+    @OrgIdentity.setter
+    def OrgIdentity(self, OrgIdentity):
+        self._OrgIdentity = OrgIdentity
+
+    @property
+    def Level(self):
+        r"""部门层级
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def PrimaryColumn(self):
+        r"""主键字段
+        :rtype: str
+        """
+        return self._PrimaryColumn
+
+    @PrimaryColumn.setter
+    def PrimaryColumn(self, PrimaryColumn):
+        self._PrimaryColumn = PrimaryColumn
+
+
+    def _deserialize(self, params):
+        self._OrgId = params.get("OrgId")
+        self._OrgName = params.get("OrgName")
+        self._OrgIdentity = params.get("OrgIdentity")
+        self._Level = params.get("Level")
+        self._PrimaryColumn = params.get("PrimaryColumn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PageQuery(AbstractModel):
     r"""查询条件
 
@@ -3721,6 +4474,203 @@ class RelationField(AbstractModel):
         self._Field = params.get("Field")
         self._Format = params.get("Format")
         self._RelateDataSourceName = params.get("RelateDataSourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoleGroup(AbstractModel):
+    r"""权限组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 权限组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 权限组名称
+        :type Name: str
+        :param _GroupIdentity: 权限组标识
+        :type GroupIdentity: str
+        :param _GroupDesc: 权限组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupDesc: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _RoleList: 角色数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleList: list of WedaRole
+        """
+        self._Id = None
+        self._Name = None
+        self._GroupIdentity = None
+        self._GroupDesc = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._RoleList = None
+
+    @property
+    def Id(self):
+        r"""权限组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""权限组名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def GroupIdentity(self):
+        r"""权限组标识
+        :rtype: str
+        """
+        return self._GroupIdentity
+
+    @GroupIdentity.setter
+    def GroupIdentity(self, GroupIdentity):
+        self._GroupIdentity = GroupIdentity
+
+    @property
+    def GroupDesc(self):
+        r"""权限组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupDesc
+
+    @GroupDesc.setter
+    def GroupDesc(self, GroupDesc):
+        self._GroupDesc = GroupDesc
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RoleList(self):
+        r"""角色数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WedaRole
+        """
+        return self._RoleList
+
+    @RoleList.setter
+    def RoleList(self, RoleList):
+        self._RoleList = RoleList
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._GroupIdentity = params.get("GroupIdentity")
+        self._GroupDesc = params.get("GroupDesc")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("RoleList") is not None:
+            self._RoleList = []
+            for item in params.get("RoleList"):
+                obj = WedaRole()
+                obj._deserialize(item)
+                self._RoleList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoleListPage(AbstractModel):
+    r"""角色分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleList: 角色列表
+        :type RoleList: list of WedaRole
+        :param _Total: 总数
+        :type Total: int
+        """
+        self._RoleList = None
+        self._Total = None
+
+    @property
+    def RoleList(self):
+        r"""角色列表
+        :rtype: list of WedaRole
+        """
+        return self._RoleList
+
+    @RoleList.setter
+    def RoleList(self, RoleList):
+        self._RoleList = RoleList
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        if params.get("RoleList") is not None:
+            self._RoleList = []
+            for item in params.get("RoleList"):
+                obj = WedaRole()
+                obj._deserialize(item)
+                self._RoleList.append(obj)
+        self._Total = params.get("Total")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4595,6 +5545,1276 @@ class UploadKnowledgeDocumentSetRsp(AbstractModel):
         self._FileTitle = params.get("FileTitle")
         self._FileMetaData = params.get("FileMetaData")
         self._FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Weapp(AbstractModel):
+    r"""低码应用详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 应用id
+        :type Id: str
+        :param _Owner: 应用所属者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
+        :param _Name: 标识
+        :type Name: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Title: 应用名称
+        :type Title: str
+        :param _Env: 环境信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Env: str
+        :param _Status: 状态.
+0:已经安装
+3:安装中
+4:安装失败
+        :type Status: int
+        :param _EnvId: 环境信息
+        :type EnvId: str
+        :param _EnvRegion: 环境地域
+        :type EnvRegion: str
+        :param _PkgId: 资源包
+        :type PkgId: str
+        :param _CmsProject: 应用信息是否安装到cms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CmsProject: int
+        :param _Channel: 渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Channel: str
+        :param _TemplateId: 模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        :param _ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _Source: 来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _IsFree: 是否计费应用
+        :type IsFree: bool
+        :param _ContentType: 应用内容类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentType: str
+        :param _AppType: 应用类型，是否为B端应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppType: int
+        :param _AttachAppId: 关联B端一样id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachAppId: str
+        :param _EType: 应用类型，是否为企业应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EType: int
+        :param _EData: 企业应用数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EData: str
+        :param _LastMpCiId: 最新一次小程序构建id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastMpCiId: str
+        :param _LastMpCiStatus: 最新一次小程序状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastMpCiStatus: str
+        :param _LastWebCiId: 最新一次web构建id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastWebCiId: str
+        :param _LastWebCiStatus: 最新一次web状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastWebCiStatus: str
+        :param _LastDeployTime: 最新部署时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastDeployTime: str
+        :param _FlowId: 安装任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _JobInfo: 任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobInfo: :class:`tencentcloud.lowcode.v20210108.models.AppJobInfo`
+        :param _Platform: 应用端
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Platform: str
+        :param _LastWebCiMode: 最新一次web构建模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastWebCiMode: int
+        :param _LastMpCiMode: 最新一次小程序构建模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastMpCiMode: int
+        :param _SceneType: 应用场景化入口类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneType: str
+        :param _ClientId: client_Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientId: str
+        :param _IconUrl: 图标地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IconUrl: str
+        :param _FaviconUrl: 页面图标地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaviconUrl: str
+        :param _BackgroundColor: 图标背景色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackgroundColor: str
+        :param _Favorite: 应用是否收藏
+        :type Favorite: bool
+        :param _PublishPlatform: 发布平台：web、mp、pc、adminPortal、xPagePC、cloudAdmin
+        :type PublishPlatform: str
+        """
+        self._Id = None
+        self._Owner = None
+        self._Name = None
+        self._Description = None
+        self._Title = None
+        self._Env = None
+        self._Status = None
+        self._EnvId = None
+        self._EnvRegion = None
+        self._PkgId = None
+        self._CmsProject = None
+        self._Channel = None
+        self._TemplateId = None
+        self._ExpireTime = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Source = None
+        self._IsFree = None
+        self._ContentType = None
+        self._AppType = None
+        self._AttachAppId = None
+        self._EType = None
+        self._EData = None
+        self._LastMpCiId = None
+        self._LastMpCiStatus = None
+        self._LastWebCiId = None
+        self._LastWebCiStatus = None
+        self._LastDeployTime = None
+        self._FlowId = None
+        self._JobInfo = None
+        self._Platform = None
+        self._LastWebCiMode = None
+        self._LastMpCiMode = None
+        self._SceneType = None
+        self._ClientId = None
+        self._IconUrl = None
+        self._FaviconUrl = None
+        self._BackgroundColor = None
+        self._Favorite = None
+        self._PublishPlatform = None
+
+    @property
+    def Id(self):
+        r"""应用id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Owner(self):
+        r"""应用所属者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def Name(self):
+        r"""标识
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Title(self):
+        r"""应用名称
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Env(self):
+        r"""环境信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Status(self):
+        r"""状态.
+0:已经安装
+3:安装中
+4:安装失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EnvId(self):
+        r"""环境信息
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def EnvRegion(self):
+        r"""环境地域
+        :rtype: str
+        """
+        return self._EnvRegion
+
+    @EnvRegion.setter
+    def EnvRegion(self, EnvRegion):
+        self._EnvRegion = EnvRegion
+
+    @property
+    def PkgId(self):
+        r"""资源包
+        :rtype: str
+        """
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def CmsProject(self):
+        r"""应用信息是否安装到cms
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CmsProject
+
+    @CmsProject.setter
+    def CmsProject(self, CmsProject):
+        self._CmsProject = CmsProject
+
+    @property
+    def Channel(self):
+        r"""渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+    @property
+    def TemplateId(self):
+        r"""模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Source(self):
+        r"""来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def IsFree(self):
+        r"""是否计费应用
+        :rtype: bool
+        """
+        return self._IsFree
+
+    @IsFree.setter
+    def IsFree(self, IsFree):
+        self._IsFree = IsFree
+
+    @property
+    def ContentType(self):
+        r"""应用内容类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def AppType(self):
+        r"""应用类型，是否为B端应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def AttachAppId(self):
+        r"""关联B端一样id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AttachAppId
+
+    @AttachAppId.setter
+    def AttachAppId(self, AttachAppId):
+        self._AttachAppId = AttachAppId
+
+    @property
+    def EType(self):
+        r"""应用类型，是否为企业应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EType
+
+    @EType.setter
+    def EType(self, EType):
+        self._EType = EType
+
+    @property
+    def EData(self):
+        r"""企业应用数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EData
+
+    @EData.setter
+    def EData(self, EData):
+        self._EData = EData
+
+    @property
+    def LastMpCiId(self):
+        r"""最新一次小程序构建id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastMpCiId
+
+    @LastMpCiId.setter
+    def LastMpCiId(self, LastMpCiId):
+        self._LastMpCiId = LastMpCiId
+
+    @property
+    def LastMpCiStatus(self):
+        r"""最新一次小程序状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastMpCiStatus
+
+    @LastMpCiStatus.setter
+    def LastMpCiStatus(self, LastMpCiStatus):
+        self._LastMpCiStatus = LastMpCiStatus
+
+    @property
+    def LastWebCiId(self):
+        r"""最新一次web构建id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastWebCiId
+
+    @LastWebCiId.setter
+    def LastWebCiId(self, LastWebCiId):
+        self._LastWebCiId = LastWebCiId
+
+    @property
+    def LastWebCiStatus(self):
+        r"""最新一次web状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastWebCiStatus
+
+    @LastWebCiStatus.setter
+    def LastWebCiStatus(self, LastWebCiStatus):
+        self._LastWebCiStatus = LastWebCiStatus
+
+    @property
+    def LastDeployTime(self):
+        r"""最新部署时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastDeployTime
+
+    @LastDeployTime.setter
+    def LastDeployTime(self, LastDeployTime):
+        self._LastDeployTime = LastDeployTime
+
+    @property
+    def FlowId(self):
+        r"""安装任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def JobInfo(self):
+        r"""任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.AppJobInfo`
+        """
+        return self._JobInfo
+
+    @JobInfo.setter
+    def JobInfo(self, JobInfo):
+        self._JobInfo = JobInfo
+
+    @property
+    def Platform(self):
+        r"""应用端
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def LastWebCiMode(self):
+        r"""最新一次web构建模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastWebCiMode
+
+    @LastWebCiMode.setter
+    def LastWebCiMode(self, LastWebCiMode):
+        self._LastWebCiMode = LastWebCiMode
+
+    @property
+    def LastMpCiMode(self):
+        r"""最新一次小程序构建模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastMpCiMode
+
+    @LastMpCiMode.setter
+    def LastMpCiMode(self, LastMpCiMode):
+        self._LastMpCiMode = LastMpCiMode
+
+    @property
+    def SceneType(self):
+        r"""应用场景化入口类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def ClientId(self):
+        r"""client_Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def IconUrl(self):
+        r"""图标地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def FaviconUrl(self):
+        r"""页面图标地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FaviconUrl
+
+    @FaviconUrl.setter
+    def FaviconUrl(self, FaviconUrl):
+        self._FaviconUrl = FaviconUrl
+
+    @property
+    def BackgroundColor(self):
+        r"""图标背景色
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BackgroundColor
+
+    @BackgroundColor.setter
+    def BackgroundColor(self, BackgroundColor):
+        self._BackgroundColor = BackgroundColor
+
+    @property
+    def Favorite(self):
+        r"""应用是否收藏
+        :rtype: bool
+        """
+        return self._Favorite
+
+    @Favorite.setter
+    def Favorite(self, Favorite):
+        self._Favorite = Favorite
+
+    @property
+    def PublishPlatform(self):
+        r"""发布平台：web、mp、pc、adminPortal、xPagePC、cloudAdmin
+        :rtype: str
+        """
+        return self._PublishPlatform
+
+    @PublishPlatform.setter
+    def PublishPlatform(self, PublishPlatform):
+        self._PublishPlatform = PublishPlatform
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Owner = params.get("Owner")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Title = params.get("Title")
+        self._Env = params.get("Env")
+        self._Status = params.get("Status")
+        self._EnvId = params.get("EnvId")
+        self._EnvRegion = params.get("EnvRegion")
+        self._PkgId = params.get("PkgId")
+        self._CmsProject = params.get("CmsProject")
+        self._Channel = params.get("Channel")
+        self._TemplateId = params.get("TemplateId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Source = params.get("Source")
+        self._IsFree = params.get("IsFree")
+        self._ContentType = params.get("ContentType")
+        self._AppType = params.get("AppType")
+        self._AttachAppId = params.get("AttachAppId")
+        self._EType = params.get("EType")
+        self._EData = params.get("EData")
+        self._LastMpCiId = params.get("LastMpCiId")
+        self._LastMpCiStatus = params.get("LastMpCiStatus")
+        self._LastWebCiId = params.get("LastWebCiId")
+        self._LastWebCiStatus = params.get("LastWebCiStatus")
+        self._LastDeployTime = params.get("LastDeployTime")
+        self._FlowId = params.get("FlowId")
+        if params.get("JobInfo") is not None:
+            self._JobInfo = AppJobInfo()
+            self._JobInfo._deserialize(params.get("JobInfo"))
+        self._Platform = params.get("Platform")
+        self._LastWebCiMode = params.get("LastWebCiMode")
+        self._LastMpCiMode = params.get("LastMpCiMode")
+        self._SceneType = params.get("SceneType")
+        self._ClientId = params.get("ClientId")
+        self._IconUrl = params.get("IconUrl")
+        self._FaviconUrl = params.get("FaviconUrl")
+        self._BackgroundColor = params.get("BackgroundColor")
+        self._Favorite = params.get("Favorite")
+        self._PublishPlatform = params.get("PublishPlatform")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WedaRole(AbstractModel):
+    r"""weda角色
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 角色名称
+        :type Name: str
+        :param _RoleIdentity: 角色标识
+        :type RoleIdentity: str
+        :param _Id: 角色id
+        :type Id: int
+        :param _ParentRoleId: 父角色id
+        :type ParentRoleId: int
+        :param _ChildRoleId: 子角色id
+        :type ChildRoleId: int
+        :param _EnvIdentity: 环境标识
+        :type EnvIdentity: str
+        :param _IsReleased: 是否已发布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsReleased: bool
+        """
+        self._Name = None
+        self._RoleIdentity = None
+        self._Id = None
+        self._ParentRoleId = None
+        self._ChildRoleId = None
+        self._EnvIdentity = None
+        self._IsReleased = None
+
+    @property
+    def Name(self):
+        r"""角色名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RoleIdentity(self):
+        r"""角色标识
+        :rtype: str
+        """
+        return self._RoleIdentity
+
+    @RoleIdentity.setter
+    def RoleIdentity(self, RoleIdentity):
+        self._RoleIdentity = RoleIdentity
+
+    @property
+    def Id(self):
+        r"""角色id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ParentRoleId(self):
+        r"""父角色id
+        :rtype: int
+        """
+        return self._ParentRoleId
+
+    @ParentRoleId.setter
+    def ParentRoleId(self, ParentRoleId):
+        self._ParentRoleId = ParentRoleId
+
+    @property
+    def ChildRoleId(self):
+        r"""子角色id
+        :rtype: int
+        """
+        return self._ChildRoleId
+
+    @ChildRoleId.setter
+    def ChildRoleId(self, ChildRoleId):
+        self._ChildRoleId = ChildRoleId
+
+    @property
+    def EnvIdentity(self):
+        r"""环境标识
+        :rtype: str
+        """
+        return self._EnvIdentity
+
+    @EnvIdentity.setter
+    def EnvIdentity(self, EnvIdentity):
+        self._EnvIdentity = EnvIdentity
+
+    @property
+    def IsReleased(self):
+        r"""是否已发布
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsReleased
+
+    @IsReleased.setter
+    def IsReleased(self, IsReleased):
+        self._IsReleased = IsReleased
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._RoleIdentity = params.get("RoleIdentity")
+        self._Id = params.get("Id")
+        self._ParentRoleId = params.get("ParentRoleId")
+        self._ChildRoleId = params.get("ChildRoleId")
+        self._EnvIdentity = params.get("EnvIdentity")
+        self._IsReleased = params.get("IsReleased")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WedaUser(AbstractModel):
+    r"""weda用户
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 腾讯云主账号uin
+        :type Uin: int
+        :param _Name: 名字
+        :type Name: str
+        :param _Env: 环境
+        :type Env: int
+        :param _Type: 类型
+        :type Type: int
+        :param _NickName: 昵称
+        :type NickName: str
+        :param _Email: 邮箱
+        :type Email: str
+        :param _Phone: 手机号
+        :type Phone: str
+        :param _ProjectId: 项目id
+        :type ProjectId: int
+        :param _Uuid: 用户uuid
+        :type Uuid: str
+        :param _Source: 渠道，1:自建；2:企业微信导入
+        :type Source: int
+        :param _OpenId: 微信openid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenId: str
+        :param _RelatedRoles: 关联角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedRoles: list of WedaRole
+        :param _WechatUserId: 企业微信userid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatUserId: str
+        :param _InternalUserType: 内部用户类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalUserType: int
+        :param _UserId: 微搭用户id
+        :type UserId: int
+        :param _OrgName: 所属部门名称
+        :type OrgName: str
+        :param _UserSchema: 用户schema
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserSchema: str
+        :param _UserExtend: 用户扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserExtend: str
+        :param _IsLicensed: 用户是否授权License
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLicensed: bool
+        :param _RelatedRoleGroups: 权限组数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedRoleGroups: list of RoleGroup
+        :param _Orgs: 兼岗部门
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Orgs: list of OrgResp
+        :param _MainOrg: 主岗部门
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainOrg: list of OrgResp
+        :param _ParentUserId: 直属上级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentUserId: int
+        :param _PrimaryColumn: 主列字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrimaryColumn: str
+        :param _AvatarUrl: 用户头像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvatarUrl: str
+        :param _LastLoginTime: 最后登录时间
+        :type LastLoginTime: str
+        """
+        self._Uin = None
+        self._Name = None
+        self._Env = None
+        self._Type = None
+        self._NickName = None
+        self._Email = None
+        self._Phone = None
+        self._ProjectId = None
+        self._Uuid = None
+        self._Source = None
+        self._OpenId = None
+        self._RelatedRoles = None
+        self._WechatUserId = None
+        self._InternalUserType = None
+        self._UserId = None
+        self._OrgName = None
+        self._UserSchema = None
+        self._UserExtend = None
+        self._IsLicensed = None
+        self._RelatedRoleGroups = None
+        self._Orgs = None
+        self._MainOrg = None
+        self._ParentUserId = None
+        self._PrimaryColumn = None
+        self._AvatarUrl = None
+        self._LastLoginTime = None
+
+    @property
+    def Uin(self):
+        r"""腾讯云主账号uin
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        r"""名字
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Env(self):
+        r"""环境
+        :rtype: int
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Type(self):
+        r"""类型
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NickName(self):
+        r"""昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Email(self):
+        r"""邮箱
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Phone(self):
+        r"""手机号
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Uuid(self):
+        r"""用户uuid
+        :rtype: str
+        """
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def Source(self):
+        r"""渠道，1:自建；2:企业微信导入
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def OpenId(self):
+        r"""微信openid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def RelatedRoles(self):
+        r"""关联角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WedaRole
+        """
+        return self._RelatedRoles
+
+    @RelatedRoles.setter
+    def RelatedRoles(self, RelatedRoles):
+        self._RelatedRoles = RelatedRoles
+
+    @property
+    def WechatUserId(self):
+        r"""企业微信userid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WechatUserId
+
+    @WechatUserId.setter
+    def WechatUserId(self, WechatUserId):
+        self._WechatUserId = WechatUserId
+
+    @property
+    def InternalUserType(self):
+        r"""内部用户类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InternalUserType
+
+    @InternalUserType.setter
+    def InternalUserType(self, InternalUserType):
+        self._InternalUserType = InternalUserType
+
+    @property
+    def UserId(self):
+        r"""微搭用户id
+        :rtype: int
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def OrgName(self):
+        r"""所属部门名称
+        :rtype: str
+        """
+        return self._OrgName
+
+    @OrgName.setter
+    def OrgName(self, OrgName):
+        self._OrgName = OrgName
+
+    @property
+    def UserSchema(self):
+        r"""用户schema
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserSchema
+
+    @UserSchema.setter
+    def UserSchema(self, UserSchema):
+        self._UserSchema = UserSchema
+
+    @property
+    def UserExtend(self):
+        r"""用户扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserExtend
+
+    @UserExtend.setter
+    def UserExtend(self, UserExtend):
+        self._UserExtend = UserExtend
+
+    @property
+    def IsLicensed(self):
+        r"""用户是否授权License
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsLicensed
+
+    @IsLicensed.setter
+    def IsLicensed(self, IsLicensed):
+        self._IsLicensed = IsLicensed
+
+    @property
+    def RelatedRoleGroups(self):
+        r"""权限组数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RoleGroup
+        """
+        return self._RelatedRoleGroups
+
+    @RelatedRoleGroups.setter
+    def RelatedRoleGroups(self, RelatedRoleGroups):
+        self._RelatedRoleGroups = RelatedRoleGroups
+
+    @property
+    def Orgs(self):
+        r"""兼岗部门
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgResp
+        """
+        return self._Orgs
+
+    @Orgs.setter
+    def Orgs(self, Orgs):
+        self._Orgs = Orgs
+
+    @property
+    def MainOrg(self):
+        r"""主岗部门
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgResp
+        """
+        return self._MainOrg
+
+    @MainOrg.setter
+    def MainOrg(self, MainOrg):
+        self._MainOrg = MainOrg
+
+    @property
+    def ParentUserId(self):
+        r"""直属上级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ParentUserId
+
+    @ParentUserId.setter
+    def ParentUserId(self, ParentUserId):
+        self._ParentUserId = ParentUserId
+
+    @property
+    def PrimaryColumn(self):
+        r"""主列字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PrimaryColumn
+
+    @PrimaryColumn.setter
+    def PrimaryColumn(self, PrimaryColumn):
+        self._PrimaryColumn = PrimaryColumn
+
+    @property
+    def AvatarUrl(self):
+        r"""用户头像
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AvatarUrl
+
+    @AvatarUrl.setter
+    def AvatarUrl(self, AvatarUrl):
+        self._AvatarUrl = AvatarUrl
+
+    @property
+    def LastLoginTime(self):
+        r"""最后登录时间
+        :rtype: str
+        """
+        return self._LastLoginTime
+
+    @LastLoginTime.setter
+    def LastLoginTime(self, LastLoginTime):
+        self._LastLoginTime = LastLoginTime
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Env = params.get("Env")
+        self._Type = params.get("Type")
+        self._NickName = params.get("NickName")
+        self._Email = params.get("Email")
+        self._Phone = params.get("Phone")
+        self._ProjectId = params.get("ProjectId")
+        self._Uuid = params.get("Uuid")
+        self._Source = params.get("Source")
+        self._OpenId = params.get("OpenId")
+        if params.get("RelatedRoles") is not None:
+            self._RelatedRoles = []
+            for item in params.get("RelatedRoles"):
+                obj = WedaRole()
+                obj._deserialize(item)
+                self._RelatedRoles.append(obj)
+        self._WechatUserId = params.get("WechatUserId")
+        self._InternalUserType = params.get("InternalUserType")
+        self._UserId = params.get("UserId")
+        self._OrgName = params.get("OrgName")
+        self._UserSchema = params.get("UserSchema")
+        self._UserExtend = params.get("UserExtend")
+        self._IsLicensed = params.get("IsLicensed")
+        if params.get("RelatedRoleGroups") is not None:
+            self._RelatedRoleGroups = []
+            for item in params.get("RelatedRoleGroups"):
+                obj = RoleGroup()
+                obj._deserialize(item)
+                self._RelatedRoleGroups.append(obj)
+        if params.get("Orgs") is not None:
+            self._Orgs = []
+            for item in params.get("Orgs"):
+                obj = OrgResp()
+                obj._deserialize(item)
+                self._Orgs.append(obj)
+        if params.get("MainOrg") is not None:
+            self._MainOrg = []
+            for item in params.get("MainOrg"):
+                obj = OrgResp()
+                obj._deserialize(item)
+                self._MainOrg.append(obj)
+        self._ParentUserId = params.get("ParentUserId")
+        self._PrimaryColumn = params.get("PrimaryColumn")
+        self._AvatarUrl = params.get("AvatarUrl")
+        self._LastLoginTime = params.get("LastLoginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

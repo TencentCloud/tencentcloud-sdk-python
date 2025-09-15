@@ -1913,8 +1913,7 @@ class CreateScanUserRequest(AbstractModel):
         :param _UserId: 需要新增送检的用户号。示例：1234
 (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
         :type UserId: int
-        :param _UserIdString: 需要新增送检的用户号。示例："1234"
-(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+        :param _UserIdString: 需要新增送检的用户号，长度不超过1024字符。示例："1234"(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
         :type UserIdString: str
         :param _ExpirationTime: 当前用户送检过期时间，单位：秒。
 若参数不为0，则在过期时间之后，用户不会被送检。
@@ -1951,8 +1950,7 @@ class CreateScanUserRequest(AbstractModel):
 
     @property
     def UserIdString(self):
-        r"""需要新增送检的用户号。示例："1234"
-(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+        r"""需要新增送检的用户号，长度不超过1024字符。示例："1234"(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
         :rtype: str
         """
         return self._UserIdString
@@ -2442,8 +2440,7 @@ class DeleteScanUserRequest(AbstractModel):
         :param _UserId: 需要删除送检的用户号。示例：1234
 (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
         :type UserId: int
-        :param _UserIdString: 需要删除送检的用户号。示例："1234"
-(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+        :param _UserIdString: 需要删除送检的用户号，长度不超过1024字符。示例："1234"(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
         :type UserIdString: str
         """
         self._BizId = None
@@ -2475,8 +2472,7 @@ class DeleteScanUserRequest(AbstractModel):
 
     @property
     def UserIdString(self):
-        r"""需要删除送检的用户号。示例："1234"
-(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+        r"""需要删除送检的用户号，长度不超过1024字符。示例："1234"(若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
         :rtype: str
         """
         return self._UserIdString
@@ -7949,9 +7945,9 @@ class UpdateScanRoomsRequest(AbstractModel):
         r"""
         :param _BizId: 应用ID
         :type BizId: int
-        :param _RoomIdString: 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
+        :param _RoomIdString: 需要送检的所有房间号。多个房间号之间用","分隔，长度不超过1024字符。示例："0001,0002,0003"
         :type RoomIdString: str
-        :param _RoomIdRegex: 符合此正则表达式规则的房间号将被送检。示例：^6.*（表示所有以6开头的房间号将被送检）
+        :param _RoomIdRegex: 符合此正则表达式规则的房间号将被送检，最大不能超过10个。示例：^6.*（表示所有以6开头的房间号将被送检）
         :type RoomIdRegex: list of str
         """
         self._BizId = None
@@ -7971,7 +7967,7 @@ class UpdateScanRoomsRequest(AbstractModel):
 
     @property
     def RoomIdString(self):
-        r"""需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
+        r"""需要送检的所有房间号。多个房间号之间用","分隔，长度不超过1024字符。示例："0001,0002,0003"
         :rtype: str
         """
         return self._RoomIdString
@@ -7982,7 +7978,7 @@ class UpdateScanRoomsRequest(AbstractModel):
 
     @property
     def RoomIdRegex(self):
-        r"""符合此正则表达式规则的房间号将被送检。示例：^6.*（表示所有以6开头的房间号将被送检）
+        r"""符合此正则表达式规则的房间号将被送检，最大不能超过10个。示例：^6.*（表示所有以6开头的房间号将被送检）
         :rtype: list of str
         """
         return self._RoomIdRegex
@@ -8058,9 +8054,9 @@ class UpdateScanUsersRequest(AbstractModel):
         r"""
         :param _BizId: 应用ID
         :type BizId: int
-        :param _UserIdString: 需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
+        :param _UserIdString: 需要送检的所有用户号。多个用户号之间用","分隔，长度不超过1024字符。示例："0001,0002,0003"
         :type UserIdString: str
-        :param _UserIdRegex: 符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
+        :param _UserIdRegex: 符合此正则表达式规则的用户号将被送检，最大不能超过10个。示例：["^6.*"] 表示所有以6开头的用户号将被送检
         :type UserIdRegex: list of str
         """
         self._BizId = None
@@ -8080,7 +8076,7 @@ class UpdateScanUsersRequest(AbstractModel):
 
     @property
     def UserIdString(self):
-        r"""需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
+        r"""需要送检的所有用户号。多个用户号之间用","分隔，长度不超过1024字符。示例："0001,0002,0003"
         :rtype: str
         """
         return self._UserIdString
@@ -8091,7 +8087,7 @@ class UpdateScanUsersRequest(AbstractModel):
 
     @property
     def UserIdRegex(self):
-        r"""符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
+        r"""符合此正则表达式规则的用户号将被送检，最大不能超过10个。示例：["^6.*"] 表示所有以6开头的用户号将被送检
         :rtype: list of str
         """
         return self._UserIdRegex

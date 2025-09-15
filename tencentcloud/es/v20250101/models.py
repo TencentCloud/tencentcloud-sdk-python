@@ -39,6 +39,12 @@ class ChatCompletionsRequest(AbstractModel):
         :type OnlineSearch: bool
         :param _OnlineSearchOptions: 当 OnlineSearch 为 true 时，指定的搜索引擎，默认为 bing。
         :type OnlineSearchOptions: :class:`tencentcloud.es.v20250101.models.OnlineSearchOptions`
+        :param _Tools: 可调用的工具列表，当前支持模型：hunyuan-turbo, deepseek-v3。
+        :type Tools: list of Tool
+        :param _ToolChoice: 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、deepseek-v3 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+        :type ToolChoice: str
+        :param _CustomTool: 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+        :type CustomTool: :class:`tencentcloud.es.v20250101.models.Tool`
         """
         self._Messages = None
         self._ModelName = None
@@ -47,6 +53,9 @@ class ChatCompletionsRequest(AbstractModel):
         self._Temperature = None
         self._OnlineSearch = None
         self._OnlineSearchOptions = None
+        self._Tools = None
+        self._ToolChoice = None
+        self._CustomTool = None
 
     @property
     def Messages(self):
@@ -125,6 +134,39 @@ class ChatCompletionsRequest(AbstractModel):
     def OnlineSearchOptions(self, OnlineSearchOptions):
         self._OnlineSearchOptions = OnlineSearchOptions
 
+    @property
+    def Tools(self):
+        r"""可调用的工具列表，当前支持模型：hunyuan-turbo, deepseek-v3。
+        :rtype: list of Tool
+        """
+        return self._Tools
+
+    @Tools.setter
+    def Tools(self, Tools):
+        self._Tools = Tools
+
+    @property
+    def ToolChoice(self):
+        r"""工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、deepseek-v3 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+        :rtype: str
+        """
+        return self._ToolChoice
+
+    @ToolChoice.setter
+    def ToolChoice(self, ToolChoice):
+        self._ToolChoice = ToolChoice
+
+    @property
+    def CustomTool(self):
+        r"""强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+        :rtype: :class:`tencentcloud.es.v20250101.models.Tool`
+        """
+        return self._CustomTool
+
+    @CustomTool.setter
+    def CustomTool(self, CustomTool):
+        self._CustomTool = CustomTool
+
 
     def _deserialize(self, params):
         if params.get("Messages") is not None:
@@ -141,6 +183,16 @@ class ChatCompletionsRequest(AbstractModel):
         if params.get("OnlineSearchOptions") is not None:
             self._OnlineSearchOptions = OnlineSearchOptions()
             self._OnlineSearchOptions._deserialize(params.get("OnlineSearchOptions"))
+        if params.get("Tools") is not None:
+            self._Tools = []
+            for item in params.get("Tools"):
+                obj = Tool()
+                obj._deserialize(item)
+                self._Tools.append(obj)
+        self._ToolChoice = params.get("ToolChoice")
+        if params.get("CustomTool") is not None:
+            self._CustomTool = Tool()
+            self._CustomTool._deserialize(params.get("CustomTool"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2310,6 +2362,59 @@ class TokenUsage(AbstractModel):
         
 
 
+class Tool(AbstractModel):
+    r"""用户指定模型使用的工具
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 工具类型，当前只支持function
+        :type Type: str
+        :param _Function: 具体要调用的function
+        :type Function: :class:`tencentcloud.es.v20250101.models.ToolFunction`
+        """
+        self._Type = None
+        self._Function = None
+
+    @property
+    def Type(self):
+        r"""工具类型，当前只支持function
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Function(self):
+        r"""具体要调用的function
+        :rtype: :class:`tencentcloud.es.v20250101.models.ToolFunction`
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Function") is not None:
+            self._Function = ToolFunction()
+            self._Function._deserialize(params.get("Function"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ToolCall(AbstractModel):
     r"""模型生成的工具调用
 
@@ -2434,6 +2539,72 @@ class ToolCallFunction(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Arguments = params.get("Arguments")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ToolFunction(AbstractModel):
+    r"""function定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: function名称，只能包含a-z，A-Z，0-9，_或-
+        :type Name: str
+        :param _Parameters: function参数，一般为json字符串
+        :type Parameters: str
+        :param _Description: function的简单描述
+        :type Description: str
+        """
+        self._Name = None
+        self._Parameters = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        r"""function名称，只能包含a-z，A-Z，0-9，_或-
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Parameters(self):
+        r"""function参数，一般为json字符串
+        :rtype: str
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def Description(self):
+        r"""function的简单描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Parameters = params.get("Parameters")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

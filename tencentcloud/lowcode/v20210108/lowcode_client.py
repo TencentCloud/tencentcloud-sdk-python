@@ -164,6 +164,29 @@ class LowcodeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApps(self, request):
+        r"""分页获取当前用户的应用列表
+
+        :param request: Request instance for DescribeApps.
+        :type request: :class:`tencentcloud.lowcode.v20210108.models.DescribeAppsRequest`
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.DescribeAppsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApps", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataSourceList(self, request):
         r"""获取数据源详情列表
 
@@ -247,6 +270,52 @@ class LowcodeClient(AbstractClient):
             body = self.call("DescribeKnowledgeSetList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeKnowledgeSetListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRelatedUsers(self, request):
+        r"""获取角色关联的用户列表
+
+        :param request: Request instance for DescribeRelatedUsers.
+        :type request: :class:`tencentcloud.lowcode.v20210108.models.DescribeRelatedUsersRequest`
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.DescribeRelatedUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRelatedUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRelatedUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceRoleList(self, request):
+        r"""查询资源关联的角色列表
+
+        :param request: Request instance for DescribeResourceRoleList.
+        :type request: :class:`tencentcloud.lowcode.v20210108.models.DescribeResourceRoleListRequest`
+        :rtype: :class:`tencentcloud.lowcode.v20210108.models.DescribeResourceRoleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceRoleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceRoleListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
